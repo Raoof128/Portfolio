@@ -44,3 +44,13 @@
     - Rewrote `README.md` to highlight featured work (Mehr Guard, GitSwitch, ECRSM) and engineering philosophy.
     - Fixed repository clone URL in documentation.
     - Verified remote synchronization with the renamed `Portfolio` repo.
+
+### Raouf: 2026-01-30
+- **Scope**: High-Impact Polish & Refinement
+- **Summary**: Implemented critical structure fixes, data centralization, and "Make it go crazy" performance upgrades.
+- **Changes**:
+    - **Single Source of Truth**: Centralized project data in `src/lib/data.ts` and refactored Home/Projects pages to consume it.
+    - **Structural Fix**: Removed duplicate Header/Footer from dynamic project pages (`[slug]/page.tsx`).
+    - **Performance**: Added `VideoFacade.tsx` for click-to-load YouTube (Lighthouse win).
+    - **SEO & Social**: Added comprehensive OpenGraph/Twitter cards in `layout.tsx`.
+    - **UI Polish**: Added support for external links in `NeonButton`, refined focus styles, and fixed typing in `data.ts`.

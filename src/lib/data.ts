@@ -1,6 +1,27 @@
-import { ProjectData } from "@/components/ui/ProjectCard"
+export interface Project {
+  slug: string;
+  title: string;
+  description: string;
+  fullDescription: string;
+  tags: string[];
+  links: {
+    demo?: string;
+    repo?: string;
+    caseStudy?: string;
+  };
+  build: {
+    stack: string[];
+    features: string[];
+  };
+  secure: {
+    measures: string[];
+  };
+  problem: string;
+  solution: string[];
+  proof: string[];
+}
 
-export const projects: Record<string, ProjectData & { slug: string; fullDescription: string; problem: string; solution: string[]; proof: string[] }> = {
+export const projects: Record<string, Project> = {
   "mehr-guard": {
     slug: "mehr-guard",
     title: "Mehr Guard",
@@ -9,7 +30,7 @@ export const projects: Record<string, ProjectData & { slug: string; fullDescript
     links: {
       demo: "https://www.youtube.com/watch?v=n8bheouj4jM",
       // Repo link inferred from clone command in README
-      repo: "https://github.com/Raoof128/Raoof128.github.io", 
+      repo: "https://github.com/Raoof128/Raoof128.github.io",
       caseStudy: "/projects/mehr-guard"
     },
     build: {

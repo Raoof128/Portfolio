@@ -1,4 +1,5 @@
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { projects } from "@/lib/data";
 
 export default function ProjectsPage() {
   return (
@@ -8,71 +9,19 @@ export default function ProjectsPage() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Mehr Guard */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-3">
-          <ProjectCard
-            featured
-            title="Mehr Guard"
-            description="Advanced security monitoring system with real-time threat detection."
-            tags={["Next.js", "Python", "Deep Learning"]}
-            buildItems={[
-              "Microservices architecture using gRPC",
-              "Real-time websocket feeds for alerts",
-              "Dashboard optimized for SOC teams"
-            ]}
-            secureItems={[
-              "Zero-trust authentication flow",
-              "End-to-end encryption for logs",
-              "Privacy-preserving AI models"
-            ]}
-            links={{
-              demo: "https://www.youtube.com/watch?v=n8bheouj4jM",
-              caseStudy: "/projects/mehr-guard"
-            }}
-          />
-        </div>
-
-        {/* GitSwitch */}
-        <ProjectCard
-          title="GitSwitch"
-          description="Context-aware git profile switcher for developers."
-          tags={["Rust", "CLI", "Productivity"]}
-          buildItems={[
-            "Native binary performance (Rust)",
-            "Cross-platform file system watcher",
-            "Shell integration (Zsh/Bash)"
-          ]}
-          secureItems={[
-            "Local-only data storage",
-            "Sign commits automatically with GPG",
-            "No telemetry"
-          ]}
-          links={{
-            repo: "https://github.com/Raoof128/GitSwitch",
-            caseStudy: "/projects/gitswitch"
-          }}
-        />
-
-        {/* ECRSM */}
-        <ProjectCard
-          title="ECRSM"
-          description="Experimental Container Runtime Security Monitor."
-          tags={["eBPF", "Go", "Linux"]}
-          buildItems={[
-            "Kernel-level observability",
-            "Low overhead (<1% CPU)",
-            "JSON logging output"
-          ]}
-          secureItems={[
-            "Read-only eBPF probes",
-            "Detects shell execution in containers",
-            "Rootkit evasion detection"
-          ]}
-          links={{
-            repo: "https://github.com/Raoof128/ECRSM",
-            caseStudy: "/projects/ecrsm"
-          }}
-        />
+        {Object.values(projects).map((project) => (
+          <div key={project.slug} className={project.slug === "mehr-guard" ? "col-span-1 md:col-span-2 lg:col-span-3" : ""}>
+            <ProjectCard
+              featured={project.slug === "mehr-guard"}
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              buildItems={project.build.features.slice(0, 3)} // Show top 3 features
+              secureItems={project.secure.measures.slice(0, 3)} // Show top 3 security measures
+              links={project.links}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

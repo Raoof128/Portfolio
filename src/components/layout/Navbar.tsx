@@ -44,7 +44,7 @@ export function Navbar() {
                                 key={item.path}
                                 href={item.path}
                                 className={cn(
-                                    "font-mono text-sm tracking-wide transition-all duration-200 relative py-1",
+                                    "font-mono text-sm tracking-wide transition-all duration-200 relative py-1 focus:outline-none focus:text-cyan",
                                     isActive
                                         ? "text-cyan"
                                         : "text-zinc-400 hover:text-cyan"

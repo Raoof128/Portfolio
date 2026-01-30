@@ -55,3 +55,10 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `README.md`, `AGENT.md`, `CHANGELOG.md`
 - **Verification**: Verified GitHub remote and scannability of new README.
 - **Follow-ups**: None.
+
+### Raouf: 2026-01-30
+- **Scope**: High-Impact Polish & Refinement
+- **Summary**: Implemented "Make it go crazy" upgrades: centralized data in `data.ts`, fixed duplicate layouts, added `VideoFacade` for performance, upgraded metadata (SEO/OG), and enhanced security headers.
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `src/app/projects/page.tsx`, `src/app/projects/[slug]/page.tsx`, `src/components/ui/VideoFacade.tsx`, `src/app/layout.tsx`, `src/components/ui/NeonButton.tsx`
+- **Verification**: Verified dynamic routes, video click-to-load, and metadata tags.
+- **Follow-ups**: None.

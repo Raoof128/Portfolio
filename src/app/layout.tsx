@@ -17,8 +17,32 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
-  description: "Portfolio of Mohammad Raouf Abedini - Cybersecurity & Software Engineering",
+  title: {
+    default: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
+    template: "%s | Mohammad Raouf Abedini"
+  },
+  description: "Portfolio of Mohammad Raouf Abedini - Cybersecurity & Software Engineering. Specialized in privacy-first security tools, systems programming, and secure architecture.",
+  keywords: ["Cybersecurity", "Software Engineering", "Portfolio", "Mohammad Raouf Abedini", "Raouf", "Next.js", "React", "Rust", "Go", "eBPF"],
+  authors: [{ name: "Mohammad Raouf Abedini", url: "https://raouf.sh" }],
+  creator: "Mohammad Raouf Abedini",
+  openGraph: {
+    type: "website",
+    locale: "en_AU",
+    url: "https://raouf.sh",
+    title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
+    description: "Building privacy-first security tools and scalable systems.",
+    siteName: "Mohammad Raouf Abedini Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
+    description: "Building privacy-first security tools and scalable systems.",
+    creator: "@Raoof128",
+  },
+  metadataBase: new URL("https://raouf.sh"),
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

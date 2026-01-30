@@ -5,6 +5,7 @@ import React from "react";
 interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   variant?: "primary" | "secondary" | "outline";
+  external?: boolean;
   children: React.ReactNode;
 }
 
@@ -37,6 +38,13 @@ export function NeonButton({
   );
 
   if (href) {
+    if (props.external) {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={cn(baseStyles, variants[variant], className)}>
+          {content}
+        </a>
+      )
+    }
     return (
       <Link href={href} className={cn(baseStyles, variants[variant], className)}>
         {content}
