@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/raoof.r12/Desktop/Raouf/Portfolio/logs/.1a2c85b50f7c19c476f1815b8695b742a268e0cb-audit.json",
+    "files": [
+        {
+            "date": 1769757860040,
+            "name": "/Users/raoof.r12/Desktop/Raouf/Portfolio/logs/mcp-puppeteer-2026-01-30.log",
+            "hash": "489b3f1b3811070a1d70104f6a5ae418ab3d22e5eea86de126ce0cfafee3a05a"
+        }
+    ],
+    "hashType": "sha256"
+}

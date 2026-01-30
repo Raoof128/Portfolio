@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  /* Base Colors - Dark Charcoal & Soft Neon Cyan */
+  --background: #09090b;
+  /* Zinc-950/Charcoal */
+  --foreground: #e4e4e7;
+  /* Zinc-200/Off-white */
+
+  --color-cyber-black: #050505;
+  --color-cyber-dark: #0f1115;
+  --color-cyber-gray: #27272a;
+
+  /* Accent - Soft Cyan */
+  --color-cyan-DEFAULT: #06b6d4;
+  /* Cyan-500 base */
+  --color-cyan-glow: #22d3ee;
+  /* Cyan-400 glow */
+  --color-cyan-dim: rgba(6, 182, 212, 0.1);
+
+  --radius: 0rem;
+  /* Cyber ops usually sharp */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cyber-black: var(--color-cyber-black);
+  --color-cyber-dark: var(--color-cyber-dark);
+  --color-cyan: var(--color-cyan-DEFAULT);
+  --color-cyan-glow: var(--color-cyan-glow);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-fira-code);
+
+  --animate-scanline: scanline 8s linear infinite;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utilities */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px var(--color-cyan-dim);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 5px var(--color-cyan-dim);
+  }
+
+  .cyber-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(6, 182, 212, 0.3);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 182, 212, 0.5);
+  }
+}
+
+/* Animations */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}

@@ -1,0 +1,6 @@
+Contact: mailto:contact@raouf.sh
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Encryption: https://raouf.sh/pgp-key.txt
+Policy: https://raouf.sh/security-policy
+Ack: https://raouf.sh/hall-of-fame
