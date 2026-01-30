@@ -48,3 +48,10 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `AGENT.md`, `CHANGELOG.md`, `README.md`, `src/app/layout.tsx`, `src/components/layout/Navbar.tsx`, `src/components/layout/Header.tsx`
 - **Verification**: Verified titles, metadata, and logos.
 - **Follow-ups**: Monitor for any overlooked branding strings.
+
+### Raouf: 2026-01-30
+- **Scope**: Portfolio Professionalization & Fixes
+- **Summary**: Refactored `README.md` to be a professional portfolio site repository description. Fixed repository URL typo from "Porfolio" to "Portfolio".
+- **Files Changed**: `README.md`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: Verified GitHub remote and scannability of new README.
+- **Follow-ups**: None.

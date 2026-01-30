@@ -36,3 +36,11 @@
     - Updated `layout.tsx` metadata title and description.
     - Updated `Navbar.tsx` and `Header.tsx` logotype displays.
     - Preserved technical URLs (sitemap, robots, security.txt) to avoid site breakage.
+
+### Raouf: 2026-01-30
+- **Scope**: Portfolio Refinement
+- **Summary**: Transformed `README.md` from product-focused to identity-focused. Standardized repo naming.
+- **Changes**:
+    - Rewrote `README.md` to highlight featured work (Mehr Guard, GitSwitch, ECRSM) and engineering philosophy.
+    - Fixed repository clone URL in documentation.
+    - Verified remote synchronization with the renamed `Portfolio` repo.

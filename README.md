@@ -1,59 +1,74 @@
-# Mohammad Raouf Abedini Portfolio
+# Mohammad Raouf Abedini | Cybersecurity & Software Engineering
 
-> **Cyber-ops Command Centre for Security & Software Engineering**
+Welcome to the source code of my professional portfolio. This repository hosts my "Cyber-ops Command Centre"—a high-performance, accessible portal designed to showcase my work in security engineering and software development.
 
-A high-performance, accessible, and security-credible portfolio built for recruiters and the security community. Designed with a "cyber-ops" aesthetic but behaving like a fast, professional product site.
+**Live Site:** [raouf.sh](https://raouf.sh) (Coming Soon)
 
-## 🛡️ North Star
-- **Proof > Personality**: Grounded in real artifacts, READMEs, and demos.
-- **Fast > Flashy**: Quick load times, Lighthouse-optimized, no unnecessary gimmicks.
-- **Security-First**: Built with security headers, privacy-by-design, and best practices.
+---
 
-## 🚀 Tech Stack
-- **Framework**: Next.js 14+ (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: CSS Transitions + Framer Motion (for micro-interactions)
-- **Icons**: Lucide React
-- **Verification**: `security.txt` compliance
+## 📌 Featured Work
 
-## 📑 Features
-- **Project Case Studies**: Eng-doc style write-ups focused on Problem/Solution/Build/Secure phases.
-- **The Lab**: Deep-dives into systems programming, eBPF visibility, and security research.
-- **Build | Secure Signature**: Dual-perspective analysis for every featured project.
-- **Interactive HUD**: Real-time system status and tech-stack visibility panels.
-- **Performance Optimized**: Click-to-load video facades and minimal client-side JS.
+This portfolio showcases deep-dives into three main engineering pillars:
 
-## 🏗️ Architecture
-- `/projects`: Detailed walkthroughs of core tools like Mehr Guard, GitSwitch, and ECRSM.
-- `/lab`: Systems engineering research logs.
-- `/write-ups`: Professional postmortems and security detection notes.
-- `/.well-known/security.txt`: Standardized security contact information.
+### 🛡️ [Mehr Guard](https://github.com/Raoof128/Raoof128.github.io)
+**Privacy-first QR & Link Security.** 
+- Built with Kotlin Multiplatform (Android, iOS, Desktop, Web).
+- 100% Offline Phishing Detection using ensemble ML and 25+ heuristics.
+- Developed at Macquarie University.
 
-## 🛠️ Local Development
+### 🔄 [GitSwitch](https://github.com/Raoof128/GitSwitch)
+**Context-aware Git identity manager.**
+- High-performance CLI tool built in Rust.
+- Secure GPG/SSH key switching based on project directory.
+- Focused on developer productivity and commit security.
+
+### 👁️ [ECRSM](https://github.com/Raoof128/ECRSM)
+**Experimental Container Runtime Security Monitor.**
+- Kernel-level visibility using eBPF and Go.
+- Real-time detection of reverse shells and process injection.
+- Visualization dashboard for runtime alerts.
+
+---
+
+## 🛠️ The Tech Behind The Portfolio
+
+This project is a demonstration of modern web standards and "Professional Ops" design.
+
+- **Core**: Next.js 14+ (App Router), React 19, TypeScript.
+- **Styling**: Tailwind CSS with a custom "Cyber-ops" design system.
+- **Aesthetics**: Custom scanline animations, radial HUD grids, and glassmorphism.
+- **Security**: 
+  - `security.txt` compliance (RFC 9116).
+  - Strict security headers and privacy-first defaults.
+  - Static-first delivery for minimal attack surface.
+- **Performance**: Click-to-load asset facades and optimized Lighthouse scores.
+
+---
+
+## 🚀 Local Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/Raoof128/Porfolio.git
+git clone https://github.com/Raoof128/Portfolio.git
 
 # Install dependencies
 npm install
 
-# Run development server
+# Start development server
 npm run dev
 ```
 
-## 🔒 Security Posture
-This site implements:
-- Strict Security Headers (CSP, HSTS, XFO)
-- Privacy-first defaults (no tracking, no 3rd party scripts)
-- Static-first delivery for minimal attack surface
-
 ---
 
-## 👨‍💻 Author
-**Mohammad Raouf Abedini** - Cybersecurity + Software Engineering
-[GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com)
+## 👨‍💻 Identity
+
+I build software that is **secure by default** and **high-performance by design**.
+
+- **Focus**: Systems Programming, Network Security, Application Security, and DX.
+- **University**: Macquarie University, Sydney.
+- **Philosophy**: Proof > Personality. Every project is backed by verified READMEs and demos.
+
+[GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com) | [Contact](mailto:contact@raouf.sh)
 
 ---
 <p align="center">
