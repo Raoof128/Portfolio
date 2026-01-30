@@ -1,4 +1,4 @@
-# Raouf.sh Portfolio
+# Mohammad Raouf Abedini Portfolio
 
 > **Cyber-ops Command Centre for Security & Software Engineering**
 
@@ -52,7 +52,7 @@ This site implements:
 ---
 
 ## 👨‍💻 Author
-**Raouf** - Cybersecurity + Software Engineering
+**Mohammad Raouf Abedini** - Cybersecurity + Software Engineering
 [GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com)
 
 ---

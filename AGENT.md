@@ -1,6 +1,6 @@
 # AGENT.md - AI Governance & Instruction Set
 
-This file provides context and rules for AI coding assistants (agents) working on the **Raouf.sh Portfolio**.
+This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
 ## 🛡️ The Raouf Change Protocol (MANDATORY)
 
@@ -41,3 +41,10 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `AGENT.md`, `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `README.md`, `docs/*`
 - **Verification**: Manual review of file contents.
 - **Follow-ups**: Initialize git and push to GitHub.
+
+### Raouf: 2026-01-30
+- **Scope**: Rebranding
+- **Summary**: Replaced all display occurrences of "raouf.sh" and "Raouf.sh" with "Mohammad Raouf Abedini". Technical URLs/emails were preserved to maintain site functionality.
+- **Files Changed**: `AGENT.md`, `CHANGELOG.md`, `README.md`, `src/app/layout.tsx`, `src/components/layout/Navbar.tsx`, `src/components/layout/Header.tsx`
+- **Verification**: Verified titles, metadata, and logos.
+- **Follow-ups**: Monitor for any overlooked branding strings.

@@ -17,8 +17,8 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Raouf.sh | Cybersecurity + Software Engineering",
-  description: "Portfolio of Raouf - Cybersecurity & Software Engineering",
+  title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
+  description: "Portfolio of Mohammad Raouf Abedini - Cybersecurity & Software Engineering",
 };
 
 export default function RootLayout({

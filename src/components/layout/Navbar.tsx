@@ -31,7 +31,7 @@ export function Navbar() {
                         <Terminal className="w-5 h-5 text-cyan" />
                     </div>
                     <span className="font-mono font-bold text-lg tracking-tight text-foreground group-hover:text-cyan transition-colors">
-                        ~/raouf.sh
+                        ~/mohammad-raouf-abedini
                     </span>
                 </Link>
 
