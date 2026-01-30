@@ -2,7 +2,7 @@ import { NeonButton } from "@/components/ui/NeonButton";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import Link from "next/link";
-import { ArrowRight, Download, Play, Terminal, Shield, Activity } from "lucide-react";
+import { ArrowRight, Download, Play } from "lucide-react";
 import { projects, writeups } from "@/lib/data";
 import { VideoFacade } from "@/components/ui/VideoFacade";
 
@@ -86,7 +86,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ... (Philosophy and Lab sections are fine) ... */}
+      {/* SECTION 3: BUILD | SECURE Philosophy */}
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 gap-0 border border-white/10 bg-zinc-900/20">
+          {/* BUILD */}
+          <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 group hover:bg-white/5 transition-colors">
+            {/* BUILD ICON PLACEHOLDER (restored) */}
+            <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center mb-6 group-hover:bg-cyan/10 group-hover:text-cyan transition-colors">
+              <span className="font-mono text-xl font-bold">&lt;/&gt;</span>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-4">BUILD</h3>
+            <p className="text-zinc-400 leading-relaxed mb-6">
+              Software should be performant, maintainable, and delightful to use. I focus on clean architecture, modern patterns, and developer experience.
+            </p>
+            <ul className="space-y-2 font-mono text-sm text-zinc-500">
+              <li className="flex items-center"><span className="text-cyan mr-2">+</span> Scalable Architecture</li>
+              <li className="flex items-center"><span className="text-cyan mr-2">+</span> Performance Optimization</li>
+              <li className="flex items-center"><span className="text-cyan mr-2">+</span> Type Safety</li>
+            </ul>
+          </div>
+
+          {/* SECURE */}
+          <div className="p-8 md:p-12 group hover:bg-white/5 transition-colors">
+            {/* SECURE ICON PLACEHOLDER (restored) */}
+            <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center mb-6 group-hover:bg-cyan/10 group-hover:text-cyan transition-colors">
+              <span className="font-mono text-xl font-bold">#</span>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-4">SECURE</h3>
+            <p className="text-zinc-400 leading-relaxed mb-6">
+              Security isn&apos;t an afterthought. It&apos;s built-in. I apply threat modelling, defensible network architecture, and safe defaults to every system.
+            </p>
+            <ul className="space-y-2 font-mono text-sm text-zinc-500">
+              <li className="flex items-center"><span className="text-cyan mr-2">+</span> Threat Modelling</li>
+              <li className="flex items-center"><span className="text-cyan mr-2">+</span> Privacy by Design</li>
+              <li className="flex items-center"><span className="text-cyan mr-2">+</span> Defensive Coding</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: LAB TEASER */}
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <HUDFrame className="bg-gradient-to-r from-zinc-900 via-zinc-900/50 to-transparent border-l-4 border-l-cyan">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-cyan font-mono animate-pulse">●</span>
+                <h3 className="font-mono text-lg text-white">THE_LAB</h3>
+              </div>
+              <p className="text-zinc-400 max-w-2xl">
+                Exploring the depths of systems programming and security engineering.
+                Current focus: <span className="text-cyan">eBPF</span> runtime visibility and kernel-level tracing.
+              </p>
+            </div>
+            <NeonButton href="/lab" variant="outline" className="min-w-[150px]">
+              ENTER LAB
+            </NeonButton>
+          </div>
+        </HUDFrame>
+      </section>
 
       {/* SECTION 5: LATEST WRITE-UPS */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
