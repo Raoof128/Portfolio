@@ -1,0 +1,8 @@
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: OpenPGP.js v4.10.10
+Comment: https://openpgpjs.org
+
+xsBNBGAW4rkBCAC1... (PLACEHOLDER KEY - CONTACT OWNER FOR ACTUAL KEY) ...
+...
+=Z8x9
+-----END PGP PUBLIC KEY BLOCK-----

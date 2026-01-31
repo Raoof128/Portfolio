@@ -105,3 +105,16 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `src/components/ui/DecryptedText.tsx`, `src/app/page.tsx`
 - **Verification**: `npm run lint` (clean), `npm run build` (success).
 - **Follow-ups**: None.
+
+### Raouf: 2026-01-31
+- **Scope**: Security Audit & Tuning
+- **Summary**:
+    - **Tuning**: Reduced Hero "Cybersecurity" loop interval to 5 seconds.
+    - **Audit**: Conducted full security audit.
+        - `npm audit`: 0 vulnerabilities.
+        - Headers: HSTS, X-Content-Type-Options, Frame-Options verified in `next.config.ts`.
+        - CSP: Validated as "Strict enough for Static Site".
+    - **Fixes**: Created missing `public/pgp-key.txt` referenced in `security.txt`.
+- **Files Changed**: `src/app/page.tsx`, `public/pgp-key.txt`
+- **Verification**: Verified file existence and build status.
+- **Follow-ups**: User needs to replace `public/pgp-key.txt` with real PGP key.

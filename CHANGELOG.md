@@ -107,3 +107,13 @@
 - **Changes**:
     - **Component**: Enhanced `DecryptedText.tsx` to accept `loopInterval` (ms).
     - **Home**: Configured "Cybersecurity" text to re-scramble every 10 seconds.
+
+### Raouf: 2026-01-31
+- **Scope**: Security Audit & Animation Tuning
+- **Summary**: Security baseline verification and animation timing adjustments.
+- **Changes**:
+    - **Animation**: Increased frequency of Hero text descramble loop (10s -> 5s).
+    - **Security**:
+        - Audited dependencies (0 vulnerabilities).
+        - Audited HTTP headers (CSP, HSTS active).
+        - Fixed broken link in `security.txt` by adding placeholder `pgp-key.txt`.
