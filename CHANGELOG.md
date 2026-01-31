@@ -125,3 +125,11 @@
     - **Accessibility**: Implemented ARIA Tab Pattern in `ProjectCard` for screen reader support.
     - **SEO**: Dynamic generation of `sitemap.xml` covering all sub-routes.
     - **UX**: Custom "404 System Error" page matching the site's command center aesthetic.
+
+### Raouf: 2026-01-31
+- **Scope**: SEO & AI Authority (GEO)
+- **Summary**: Upgraded the site architecture to be "AI-First" using Generative Engine Optimization techniques.
+- **Changes**:
+    - **AI Beacon**: Deployed `public/llms.txt` for improved crawler context.
+    - **Semantic Authority**: Added structured JSON-LD schema linking Raouf to "Cybersecurity" and "eBPF" knowledge graphs.
+    - **Freshness**: Added dynamic "Last Index" timestamp to the footer.

@@ -22,8 +22,9 @@ export function Footer() {
         </div>
 
         <div className="flex items-center space-x-2 text-xs font-mono text-zinc-600">
-          <span>SECURE_CONNECTION_ESTABLISHED</span>
-          <span className="w-2 h-2 bg-green-900 rounded-full animate-pulse border border-green-500/50" />
+          <span className="hidden md:inline">System Status: ONLINE</span>
+          <span className="hidden md:inline mx-2">|</span>
+          <span>Last Index: {new Date().toLocaleDateString('en-AU', { month: 'short', year: 'numeric' })}</span>
         </div>
 
         <div>

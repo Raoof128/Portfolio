@@ -50,11 +50,43 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammad Raouf Abedini",
+    "alternateName": "Raouf",
+    "url": "https://raouf.sh",
+    "jobTitle": "Cybersecurity Specialist",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "knowsAbout": [
+      { "@type": "Thing", "name": "Cybersecurity" },
+      { "@type": "Thing", "name": "eBPF (Extended Berkeley Packet Filter)" },
+      { "@type": "Thing", "name": "Network Security" },
+      { "@type": "Thing", "name": "Rust Programming Language" },
+      { "@type": "Thing", "name": "Next.js" },
+      { "@type": "Thing", "name": "Penetration Testing" }
+    ],
+    "sameAs": [
+      "https://github.com/Raoof128",
+      "https://linkedin.com",
+      "https://twitter.com/Raoof128"
+    ]
+  };
+
   return (
     <html lang="en">
       <body
         className={`${inter.variable} ${firaCode.variable} antialiased bg-background text-foreground`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <GridBackground />
         <Scanline />
         <Navbar />

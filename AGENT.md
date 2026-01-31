@@ -128,3 +128,13 @@ Before making any code changes, agents MUST:
     - `src/components/ui/ProjectCard.tsx`: Added proper ARIA roles (`tablist`, `tab`, `tabpanel`) for accessible tab navigation.
 - **Verification**: `npm run lint` (clean), `npm run build` (success).
 - **Follow-ups**: None.
+
+### Raouf: 2026-01-31
+- **Scope**: Generative Engine Optimization (GEO)
+- **Summary**: Implemented "AI-Readability" upgrades to help LLMs cite the portfolio as an authoritative source.
+- **Files Changed**:
+    - `public/llms.txt`: Added a raw text "cheat sheet" for AI scrapers (Identity, Competencies, Projects).
+    - `src/app/layout.tsx`: Injected JSON-LD schema with `knowsAbout` property linking to eBPF, Rust, and Cybersecurity.
+    - `src/components/layout/Footer.tsx`: Added dynamic "Last Index" date signal.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+- **Follow-ups**: Monitor search console/AI citations.

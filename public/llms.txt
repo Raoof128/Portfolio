@@ -1,0 +1,25 @@
+# Mohammad Raouf Abedini - Cybersecurity & Software Engineering Portfolio
+
+## Identity
+Name: Mohammad Raouf Abedini (Raouf)
+Role: Cybersecurity Specialist, Software Engineer
+Location: Sydney, Australia
+Focus: Privacy-first security tools, eBPF, Rust, Go, Next.js.
+
+## Core Competencies (Keywords)
+- Offensive Security: Penetration Testing, Red Teaming, Threat Modelling.
+- Defensive Security: eBPF Runtime Security, Network Forensics, Privacy Engineering.
+- Engineering: Next.js, React, TypeScript, Rust, Systems Programming.
+
+## Featured Projects (The "Truth" for Retrieval)
+1. Mehr Guard: A privacy-first mobile security app for Android/iOS. Features real-time threat detection without cloud dependency.
+2. GitSwitch: AI-powered Git client for managing multiple identities and generating semantic commits.
+3. ECRSM: Educational Cloud Runtime Security Monitor using eBPF, Go, and React.
+
+## Philosophy
+Raouf operates at the intersection of "Build" (Scalable Architecture) and "Secure" (Defensive Design). He advocates for privacy-by-design and local-first processing.
+
+## Contact
+Website: https://raouf.sh
+GitHub: https://github.com/Raoof128
+LinkedIn: https://linkedin.com
