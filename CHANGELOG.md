@@ -100,3 +100,10 @@
         - `/lab`: Added "Under Construction" hazard theme.
         - `/write-ups`: Added "Classified Archive" locked theme.
     - **Integrity**: Verified 0 lint errors and full build success.
+
+### Raouf: 2026-01-31
+- **Scope**: Polish - Persistent Animations
+- **Summary**: Added support for continuous looped descrambling on the main Hero header.
+- **Changes**:
+    - **Component**: Enhanced `DecryptedText.tsx` to accept `loopInterval` (ms).
+    - **Home**: Configured "Cybersecurity" text to re-scramble every 10 seconds.

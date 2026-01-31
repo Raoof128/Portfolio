@@ -98,3 +98,10 @@ Before making any code changes, agents MUST:
     - `src/app/write-ups/page.tsx`: Upgraded to "Classified Archive" theme.
 - **Verification**: `npm run lint` (clean), `npm run build` (success).
 - **Follow-ups**: Ready for deployment.
+
+### Raouf: 2026-01-31
+- **Scope**: Hero Animation Enhancement
+- **Summary**: Updated `DecryptedText` component to support a `loopInterval` prop and applied a 10-second loop to the "Cybersecurity" text in the Hero section.
+- **Files Changed**: `src/components/ui/DecryptedText.tsx`, `src/app/page.tsx`
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+- **Follow-ups**: None.

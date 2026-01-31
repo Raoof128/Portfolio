@@ -7,11 +7,12 @@ interface DecryptedTextProps {
   text: string;
   className?: string;
   animateOnHover?: boolean;
+  loopInterval?: number;
 }
 
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*";
 
-export function DecryptedText({ text, className = "", animateOnHover = false }: DecryptedTextProps) {
+export function DecryptedText({ text, className = "", animateOnHover = false, loopInterval = 0 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text);
   const [trigger, setTrigger] = useState(0); // Used to re-trigger animation
 
@@ -31,6 +32,16 @@ export function DecryptedText({ text, className = "", animateOnHover = false }: 
 
     return () => clearInterval(interval);
   }, [text, trigger]);
+
+  // Loop effect
+  useEffect(() => {
+    if (loopInterval > 0) {
+      const loop = setInterval(() => {
+        setTrigger(prev => prev + 1);
+      }, loopInterval);
+      return () => clearInterval(loop);
+    }
+  }, [loopInterval]);
 
   return (
     <motion.span 

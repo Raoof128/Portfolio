@@ -38,7 +38,7 @@ export default function Home() {
 
             {/* 2. Decrypted Header */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.1]">
-              <DecryptedText text="Cybersecurity" /> <br />
+              <DecryptedText text="Cybersecurity" loopInterval={10000} /> <br />
               <span className="text-cyan-500 block mt-2">+ Engineering</span>
             </h1>
 
