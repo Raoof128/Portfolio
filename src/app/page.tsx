@@ -2,76 +2,97 @@ import { NeonButton } from "@/components/ui/NeonButton";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import Link from "next/link";
-import { ArrowRight, Download, Play } from "lucide-react";
+import { ArrowRight, Download, Terminal } from "lucide-react";
 import { projects, writeups } from "@/lib/data";
-import { VideoFacade } from "@/components/ui/VideoFacade";
+
+// NEW IMPORTS
+import { DecryptedText } from "@/components/ui/DecryptedText";
+import { ActiveGrid } from "@/components/ui/ActiveGrid";
+import { TerminalFeed } from "@/components/ui/TerminalFeed";
 
 export default function Home() {
   return (
-    <div className="space-y-24 pb-24">
-      {/* SECTION 1: HERO */}
-      <section className="relative pt-12 md:pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="space-y-24 pb-24 overflow-x-hidden">
+      
+      {/* --- SECTION 1: HERO --- */}
+      <section className="relative pt-12 md:pt-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[90vh] flex flex-col justify-center">
+        
+        {/* 1. Living Background */}
+        <ActiveGrid />
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          
           {/* Left: Intro */}
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="inline-block px-3 py-1 bg-cyan/10 border border-cyan/20 rounded-sm">
-              <span className="font-mono text-cyan text-sm tracking-widest">&gt; whoami</span>
+            
+            {/* Status Badge */}
+            <div className="inline-flex items-center space-x-3 px-3 py-1 bg-cyan-500/5 border border-cyan-500/20 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              <span className="font-mono text-cyan-400 text-xs tracking-widest uppercase">
+                System Online
+              </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-              Cybersecurity <span className="text-cyan">+</span> <br />
-              Software Engineering
+            {/* 2. Decrypted Header */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.1]">
+              <DecryptedText text="Cybersecurity" /> <br />
+              <span className="text-cyan-500 block mt-2">+ Engineering</span>
             </h1>
 
             <p className="text-lg text-zinc-400 max-w-xl leading-relaxed">
-              I build privacy-first security tools, developer productivity apps, and runtime visibility systems.
-              Focusing on the intersection of <span className="text-white font-medium">offensive security</span> and <span className="text-white font-medium">scalable architecture</span>.
+              Building <span className="text-zinc-200">privacy-first</span> security tools and scalable runtime systems.
+              Operating at the edge of offensive security and distributed architecture.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <NeonButton href="/projects" variant="primary">
-                RUN: PROJECTS
+                <Terminal className="w-4 h-4 mr-2" /> EXECUTE_PROJECTS
               </NeonButton>
               <NeonButton href="/resume" variant="secondary">
-                <Download className="w-4 h-4 mr-2" /> RESUME
-              </NeonButton>
-              <NeonButton href="https://www.youtube.com/watch?v=n8bheouj4jM" variant="outline" className="border-zinc-700 text-zinc-400 hover:text-white">
-                <Play className="w-4 h-4 mr-2" /> DEMO
+                <Download className="w-4 h-4 mr-2" /> EXPORT_RESUME
               </NeonButton>
             </div>
           </div>
 
-
-
-          {/* Right: HUD Panel */}
-          <div className="relative animate-in fade-in slide-in-from-right-4 duration-700 delay-100">
-            <HUDFrame title="LIVE_DEMO_FEED" className="backdrop-blur-sm bg-black/40 p-4">
-              <VideoFacade videoId="n8bheouj4jM" title="Mehr Guard Demo" />
-
-              <div className="mt-4 flex justify-between items-center font-mono text-xs text-zinc-500">
-                <span>TARGET: ANDROID/IOS</span>
-                <span className="text-cyan">STATUS: ONLINE</span>
-              </div>
-            </HUDFrame>
+          {/* Right: The Terminal Feed */}
+          <div className="relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-200 hidden lg:block">
+            {/* Decorative Frame around the terminal */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg blur opacity-30" />
+            <TerminalFeed />
           </div>
         </div>
       </section>
 
 
-      {/* SECTION 2: FEATURED PROJECTS */}
+      {/* --- SECTION 2: FEATURED PROJECTS (Focus Mode) --- */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-            <span className="text-cyan font-mono mr-3">01.</span>Featured Projects
+        <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-4">
+          <h2 className="text-3xl font-bold text-white tracking-tight">
+            <span className="text-cyan-500 font-mono mr-3">01.</span>Deployed Systems
           </h2>
-          <Link href="/projects" className="hidden md:flex items-center text-cyan font-mono text-sm hover:underline">
-            VIEW_ALL <ArrowRight className="w-4 h-4 ml-1" />
+          <Link href="/projects" className="hidden md:flex items-center text-zinc-400 hover:text-cyan-400 transition-colors font-mono text-sm">
+            VIEW_ALL_LOGS <ArrowRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* FOCUS MODE TRICK: 
+          group/grid on container. 
+          group-hover/grid:opacity-50 on container hover makes everything transparent.
+          hover:!opacity-100 on specific card brings it back.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 group/grid">
           {Object.values(projects).map((project) => (
-            <div key={project.slug} className={project.slug === "mehr-guard" ? "col-span-1 md:col-span-2 lg:col-span-3" : ""}>
+            <div 
+              key={project.slug} 
+              className={`
+                transition-all duration-500 ease-out
+                group-hover/grid:opacity-40 group-hover/grid:scale-95 hover:!opacity-100 hover:!scale-100
+                ${project.slug === "mehr-guard" ? "col-span-1 md:col-span-2 lg:col-span-3" : ""}
+              `}
+            >
               <ProjectCard
                 featured={project.slug === "mehr-guard"}
                 title={project.title}
@@ -91,7 +112,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-0 border border-white/10 bg-zinc-900/20">
           {/* BUILD */}
           <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 group hover:bg-white/5 transition-colors">
-            {/* BUILD ICON PLACEHOLDER (restored) */}
+            {/* BUILD ICON PLACEHOLDER */}
             <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center mb-6 group-hover:bg-cyan/10 group-hover:text-cyan transition-colors">
               <span className="font-mono text-xl font-bold">&lt;/&gt;</span>
             </div>
@@ -108,7 +129,7 @@ export default function Home() {
 
           {/* SECURE */}
           <div className="p-8 md:p-12 group hover:bg-white/5 transition-colors">
-            {/* SECURE ICON PLACEHOLDER (restored) */}
+            {/* SECURE ICON PLACEHOLDER */}
             <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center mb-6 group-hover:bg-cyan/10 group-hover:text-cyan transition-colors">
               <span className="font-mono text-xl font-bold">#</span>
             </div>
@@ -174,7 +195,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+      
     </div>
   );
 }

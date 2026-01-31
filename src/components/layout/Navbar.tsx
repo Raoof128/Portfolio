@@ -62,7 +62,7 @@ export function Navbar() {
                     })}
 
                     <Link
-                        href="mailto:contact@raouf.sh" // Placeholder email
+                        href="/contact"
                         className="px-4 py-1.5 border border-zinc-700 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_10px_rgba(6,182,212,0.2)] transition-all bg-zinc-900/50"
                     >
                         Contact
@@ -95,7 +95,7 @@ export function Navbar() {
                         </Link>
                     ))}
                     <Link
-                        href="mailto:contact@raouf.sh"
+                        href="/contact"
                         onClick={() => setMobileOpen(false)}
                         className="block w-full text-center py-3 border border-zinc-700 text-cyan font-mono text-sm"
                     >

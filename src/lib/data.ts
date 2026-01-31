@@ -1,6 +1,8 @@
 export interface Project {
   slug: string;
   title: string;
+  category: "OFFENSIVE" | "DEFENSIVE" | "ENGINEERING";
+  year: string;
   description: string;
   fullDescription: string;
   tags: string[];
@@ -25,11 +27,12 @@ export const projects: Record<string, Project> = {
   "mehr-guard": {
     slug: "mehr-guard",
     title: "Mehr Guard",
+    category: "DEFENSIVE",
+    year: "2024",
     description: "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://www.youtube.com/watch?v=n8bheouj4jM",
-      // Repo link inferred from clone command in README
       repo: "https://github.com/Raoof128/Raoof128.github.io",
       caseStudy: "/projects/mehr-guard"
     },
@@ -68,6 +71,8 @@ export const projects: Record<string, Project> = {
   "gitswitch": {
     slug: "gitswitch",
     title: "GitSwitch",
+    category: "ENGINEERING",
+    year: "2024",
     description: "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
     tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
     links: {
@@ -109,6 +114,8 @@ export const projects: Record<string, Project> = {
   "ecrsm": {
     slug: "ecrsm",
     title: "ECRSM",
+    category: "OFFENSIVE",
+    year: "2025",
     description: "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
     tags: ["eBPF", "Go", "React", "Kernel", "Runtime Security"],
     links: {

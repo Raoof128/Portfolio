@@ -62,3 +62,41 @@
     - **Audit**: `npm run lint` passing (0 errors). `npm run build` passing (all routes static).
     - **Fix**: Restored "Philosophy" and "Lab" sections in Home page that were temporarily hidden.
     - **Cleanup**: Removed unused imports (`Terminal`, `Shield`, `Activity`) from Home page.
+
+### Raouf: 2026-01-31
+- **Scope**: UI Overhaul - Command Center Theme
+- **Summary**: Transformed the portfolio into a dynamic "Command Center" with living background, cryptographic text reveals, and terminal boot logs.
+- **Changes**:
+    - **New Components**:
+        - `ActiveGrid`: Tactical map background effect with data packet pulses.
+        - `DecryptedText`: Matrix-style text scrambling/descrambling animation.
+        - `TerminalFeed`: Auto-scrolling Linux/eBPF boot log simulation.
+    - **Home Page Upgrade**:
+        - Integrated new components into Hero section.
+        - Implemented "Focus Mode" for Featured Projects (dimming non-hovered items).
+        - Updated visual hierarchy and typography.
+
+### Raouf: 2026-01-31
+- **Scope**: Interactive "Ops" Features
+- **Summary**: Added immersive "Keylogger" contact form and "Classified Archive" project database.
+- **Changes**:
+    - **Contact Page**:
+        - Replaced static links with `SecureContactForm`.
+        - Added real-time "monitoring/encryption" typing animations.
+        - Included "Session ID" generation.
+    - **Projects Page**:
+        - Implemented "Classified Archive" UI.
+        - Added functional Search (grep) and Category filters.
+        - Refactored project list into dense "file explorer" rows.
+    - **Data**:
+        - Enriched project metadata with Categories (OFFENSIVE, DEFENSIVE, ENGINEERING) and Year.
+
+### Raouf: 2026-01-31
+- **Scope**: System Audit & Consistency
+- **Summary**: Final polish pass ensuring navigation flows correctly and placeholder pages match the new aesthetic.
+- **Changes**:
+    - **Navigation Fixes**: Redirected all "Contact" calls to action to the new `/contact` page.
+    - **Visual Upgrades**:
+        - `/lab`: Added "Under Construction" hazard theme.
+        - `/write-ups`: Added "Classified Archive" locked theme.
+    - **Integrity**: Verified 0 lint errors and full build success.
