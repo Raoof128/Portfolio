@@ -118,3 +118,13 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `src/app/page.tsx`, `public/pgp-key.txt`
 - **Verification**: Verified file existence and build status.
 - **Follow-ups**: User needs to replace `public/pgp-key.txt` with real PGP key.
+
+### Raouf: 2026-01-31
+- **Scope**: Polish - Usability & SEO
+- **Summary**: Implemented improvements from full system audit.
+- **Files Changed**:
+    - `src/app/sitemap.ts`: Now dynamically generates URLs for all projects and write-ups.
+    - `src/app/not-found.tsx`: Created custom 404 page with "System Failure" theme and terminal output.
+    - `src/components/ui/ProjectCard.tsx`: Added proper ARIA roles (`tablist`, `tab`, `tabpanel`) for accessible tab navigation.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+- **Follow-ups**: None.

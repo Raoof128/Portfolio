@@ -46,11 +46,15 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
         </div>
 
         {/* Tabs Control */}
-        <div className="mt-6 flex border-b border-white/10">
+        <div className="mt-6 flex border-b border-white/10" role="tablist" aria-label="Project Details">
           <button
+            id={`tab-build-${title}`}
+            role="tab"
+            aria-selected={activeTab === "build"}
+            aria-controls={`panel-build-${title}`}
             onClick={() => setActiveTab("build")}
             className={cn(
-              "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2",
+              "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2 focus:outline-none focus:ring-2 focus:ring-cyan/50 rounded-t-sm",
               activeTab === "build"
                 ? "border-cyan text-cyan bg-cyan/5"
                 : "border-transparent text-zinc-500 hover:text-zinc-300"
@@ -59,9 +63,13 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
             <Database className="w-3 h-3" /> BUILD
           </button>
           <button
+            id={`tab-secure-${title}`}
+            role="tab"
+            aria-selected={activeTab === "secure"}
+            aria-controls={`panel-secure-${title}`}
             onClick={() => setActiveTab("secure")}
             className={cn(
-              "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2",
+              "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2 focus:outline-none focus:ring-2 focus:ring-cyan/50 rounded-t-sm",
               activeTab === "secure"
                 ? "border-cyan text-cyan bg-cyan/5"
                 : "border-transparent text-zinc-500 hover:text-zinc-300"
@@ -72,7 +80,12 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
         </div>
 
         {/* Tab Content */}
-        <div className="h-40 overflow-y-auto pr-2 custom-scrollbar pt-4">
+        <div 
+          className="h-40 overflow-y-auto pr-2 custom-scrollbar pt-4"
+          role="tabpanel"
+          id={`panel-${activeTab}-${title}`}
+          aria-labelledby={`tab-${activeTab}-${title}`}
+        >
           <ul className="space-y-2">
             {(activeTab === "build" ? buildItems : secureItems).map((item, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm text-zinc-300">

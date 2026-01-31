@@ -117,3 +117,11 @@
         - Audited dependencies (0 vulnerabilities).
         - Audited HTTP headers (CSP, HSTS active).
         - Fixed broken link in `security.txt` by adding placeholder `pgp-key.txt`.
+
+### Raouf: 2026-01-31
+- **Scope**: Polish - UX & Accessibility
+- **Summary**: Fixed accessibility gaps and enhanced error handling flows.
+- **Changes**:
+    - **Accessibility**: Implemented ARIA Tab Pattern in `ProjectCard` for screen reader support.
+    - **SEO**: Dynamic generation of `sitemap.xml` covering all sub-routes.
+    - **UX**: Custom "404 System Error" page matching the site's command center aesthetic.
