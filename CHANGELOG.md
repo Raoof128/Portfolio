@@ -2,6 +2,48 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-02-01
+- **Scope**: Polish - Lab Section Professionalization
+- **Summary**: Upgraded Lab section to be fully functional and professional.
+    - **Detail Views**: Created `/lab/[id]` pages to display experiment details with a code editor UI.
+    - **Content**: Enriched `data.ts` with realistic code snippets (Rust, Python, Go) for keylogger, packet sniffer, and steganography experiments.
+    - **Navigation**: Linked Lab index to detail pages.
+- **Files Changed**: `src/lib/data.ts`, `src/app/lab/page.tsx`, `src/app/lab/[id]/page.tsx`.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+
+### Raouf: 2026-02-01
+- **Scope**: Feature Implementation - Lab & Write-ups
+- **Summary**: Implemented functional Lab and Write-ups sections.
+    - **Lab**: Created a data-driven experiment list in `src/app/lab/page.tsx` pulling from `data.ts`.
+    - **Write-ups**: Implemented dynamic routing (`/write-ups/[slug]`) and a clean article reader interface.
+    - **Data**: Enriched `data.ts` with placeholder Lab Experiments and Write-up content to enable immediate site functionality.
+- **Files Changed**: `src/lib/data.ts`, `src/app/lab/page.tsx`, `src/app/write-ups/page.tsx`, `src/app/write-ups/[slug]/page.tsx`.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+
+### Raouf: 2026-02-01
+- **Scope**: Polish - Placeholder Cleanup
+- **Summary**: Replaced visual placeholders with final assets. Updated `Home` page icons and `SecureContactForm` placeholder text to match the "Command Center" theme.
+- **Files Changed**: `src/app/page.tsx`, `src/components/ui/SecureContactForm.tsx`.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+
+### Raouf: 2026-02-01
+- **Scope**: Privacy Update
+- **Summary**: Removed personal phone number from the Resume page for privacy. Conducted a placeholder audit.
+- **Files Changed**: `src/app/resume/page.tsx`.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+
+### Raouf: 2026-02-01
+- **Scope**: Content Expansion - Resume Page
+- **Summary**: Implemented the full Resume page (`/resume`) with structured data and "Command Center" styling. Enhanced `NeonButton` to support `download` attribute for PDF downloads.
+- **Files Changed**: `src/app/resume/page.tsx`, `src/components/ui/NeonButton.tsx`.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+
+### Raouf: 2026-02-01
+- **Scope**: Content Expansion - About Page
+- **Summary**: Created a dedicated `/about` page featuring the user's bio and profile image, integrated with the "Command Center" visual theme. Updated navigation.
+- **Files Changed**: `src/app/about/page.tsx`, `src/components/layout/Navbar.tsx`, `public/Raouf_2.png`.
+- **Verification**: `npm run lint` (clean), `npm run build` (success).
+
 ### Raouf: 2026-01-30
 - **Scope**: Project Initialization
 - **Summary**: Initial setup of Mohammad Raouf Abedini portfolio based on user blueprint.

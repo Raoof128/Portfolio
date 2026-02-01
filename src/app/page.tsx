@@ -2,7 +2,7 @@ import { NeonButton } from "@/components/ui/NeonButton";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import Link from "next/link";
-import { ArrowRight, Download, Terminal } from "lucide-react";
+import { ArrowRight, Download, Terminal, Code2, ShieldCheck } from "lucide-react";
 import { projects, writeups } from "@/lib/data";
 
 // NEW IMPORTS
@@ -112,9 +112,9 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-0 border border-white/10 bg-zinc-900/20">
           {/* BUILD */}
           <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 group hover:bg-white/5 transition-colors">
-            {/* BUILD ICON PLACEHOLDER */}
+            {/* BUILD ICON */}
             <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center mb-6 group-hover:bg-cyan/10 group-hover:text-cyan transition-colors">
-              <span className="font-mono text-xl font-bold">&lt;/&gt;</span>
+              <Code2 className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-white mb-4">BUILD</h3>
             <p className="text-zinc-400 leading-relaxed mb-6">
@@ -129,9 +129,9 @@ export default function Home() {
 
           {/* SECURE */}
           <div className="p-8 md:p-12 group hover:bg-white/5 transition-colors">
-            {/* SECURE ICON PLACEHOLDER */}
+            {/* SECURE ICON */}
             <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center mb-6 group-hover:bg-cyan/10 group-hover:text-cyan transition-colors">
-              <span className="font-mono text-xl font-bold">#</span>
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-white mb-4">SECURE</h3>
             <p className="text-zinc-400 leading-relaxed mb-6">

@@ -38,7 +38,7 @@ export function SecureContactForm() {
             <label className="text-xs font-mono text-cyan-500">TARGET_ID (Name)</label>
             <input 
               type="text" 
-              placeholder="John Doe"
+              placeholder="ENTER_IDENTITY"
               onKeyDown={handleTyping}
               className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
@@ -47,7 +47,7 @@ export function SecureContactForm() {
             <label className="text-xs font-mono text-cyan-500">RETURN_PATH (Email)</label>
             <input 
               type="email" 
-              placeholder="john@example.com"
+              placeholder="secure@gateway.io"
               onKeyDown={handleTyping}
               className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
@@ -58,7 +58,7 @@ export function SecureContactForm() {
           <label className="text-xs font-mono text-cyan-500">PAYLOAD (Message)</label>
           <textarea 
             rows={4}
-            placeholder="Initiating handshake..."
+            placeholder="TRANSMITTING_ENCRYPTED_PAYLOAD..."
             onKeyDown={handleTyping}
             className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
           />

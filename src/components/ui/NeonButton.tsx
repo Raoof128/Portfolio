@@ -6,12 +6,15 @@ interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   href?: string;
   variant?: "primary" | "secondary" | "outline";
   external?: boolean;
+  download?: boolean;
   children: React.ReactNode;
 }
 
 export function NeonButton({
   href,
   variant = "primary",
+  external,
+  download,
   className,
   children,
   ...props
@@ -38,9 +41,15 @@ export function NeonButton({
   );
 
   if (href) {
-    if (props.external) {
+    if (external || download) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={cn(baseStyles, variants[variant], className)}>
+        <a 
+          href={href} 
+          target={external ? "_blank" : undefined} 
+          rel={external ? "noopener noreferrer" : undefined}
+          download={download}
+          className={cn(baseStyles, variants[variant], className)}
+        >
           {content}
         </a>
       )

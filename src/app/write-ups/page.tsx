@@ -1,35 +1,71 @@
-import { FileText, Lock } from "lucide-react";
+import { ActiveGrid } from "@/components/ui/ActiveGrid";
+import { HUDFrame } from "@/components/ui/HUDFrame";
+import { DecryptedText } from "@/components/ui/DecryptedText";
+import { writeups } from "@/lib/data";
+import Link from "next/link";
+import { ArrowRight, Lock } from "lucide-react";
+
+export const metadata = {
+  title: "Write-ups | Mohammad Raouf Abedini",
+  description: "Security research, CTF walkthroughs, and technical articles.",
+};
 
 export default function WriteUpsPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-[60vh] flex flex-col items-center justify-center">
-      <div className="w-full max-w-2xl border border-zinc-800 bg-zinc-900/30 p-12 text-center relative">
+    <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
+      <ActiveGrid />
+      
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Lock Icon */}
-        <div className="flex justify-center mb-6">
-           <Lock className="w-12 h-12 text-zinc-700" />
+        {/* Header */}
+        <div className="mb-12">
+           <div className="flex items-center space-x-2 text-cyan mb-2">
+            <Lock className="w-4 h-4" />
+            <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">Classified Archive</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+            <DecryptedText text="Write-ups" />
+          </h1>
+          <p className="text-zinc-400 max-w-2xl">
+             Technical analysis, CTF solutions, and engineering logs. 
+             <br/>
+             <span className="text-xs font-mono text-zinc-600"> CLEARANCE_LEVEL: PUBLIC</span>
+          </p>
         </div>
 
-        <h1 className="text-3xl font-bold text-zinc-600 font-mono mb-2">
-          CLASSIFIED_ARCHIVE
-        </h1>
-        
-        <p className="text-zinc-500 mb-8">
-          You do not have the required clearance level to access these records yet.
-          <br />
-          (Content migration in progress...)
-        </p>
+        {/* List */}
+        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+          {writeups.map((post) => (
+            <Link key={post.slug} href={`/write-ups/${post.slug}`} className="block group">
+              <HUDFrame className="p-6 bg-zinc-900/40 backdrop-blur-md border border-white/5 hover:border-cyan/50 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3 text-xs font-mono text-zinc-500">
+                      <span className="text-cyan">{post.date}</span>
+                      <span>|</span>
+                      <span className="px-1.5 py-0.5 bg-white/5 rounded text-zinc-400">{post.tag}</span>
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-zinc-400 max-w-2xl">
+                      {post.takeaway}
+                    </p>
+                  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-lg mx-auto opacity-50 pointer-events-none select-none">
-           {[1, 2, 3].map((i) => (
-             <div key={i} className="p-3 border border-zinc-800 bg-black/20 rounded flex items-center gap-3">
-               <FileText className="w-4 h-4 text-zinc-700" />
-               <div className="h-2 w-24 bg-zinc-800 rounded animate-pulse" />
-             </div>
-           ))}
+                  <div className="flex items-center text-zinc-600 group-hover:text-cyan transition-colors">
+                    <span className="text-xs font-mono mr-2 hidden md:inline-block">READ_FILE</span>
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+
+                </div>
+              </HUDFrame>
+            </Link>
+          ))}
         </div>
 
-      </div>
+      </main>
     </div>
   );
 }
