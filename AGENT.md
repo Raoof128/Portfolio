@@ -217,3 +217,12 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `public/CNAME`.
 - **Verification**: `gh api` confirmed `cname: "raoof.r12.com"`.
 - **Follow-ups**: User must configure DNS records.
+
+### Raouf: 2026-02-01
+- **Scope**: Fix - Revert Custom Domain & Workflow Patch
+- **Summary**: Reverted custom domain configuration to use default GitHub Pages URL. Fixed a typo in the GitHub Actions workflow.
+    - **Revert**: Deleted `public/CNAME` and unset custom domain via API. Site is now at `https://raoof128.github.io/Portfolio/`.
+    - **Fix**: Corrected `actions/actions/checkout` to `actions/checkout` in `deploy.yml` to resolve build failure.
+- **Files Changed**: `.github/workflows/deploy.yml`, `public/CNAME` (deleted).
+- **Verification**: `gh api` confirmed `cname: null`. `git push` successful.
+- **Follow-ups**: Monitor GitHub Actions for success.
