@@ -68,7 +68,7 @@ I build software that is **secure by default** and **high-performance by design*
 - **University**: Macquarie University, Sydney.
 - **Philosophy**: Proof > Personality. Every project is backed by verified READMEs and demos.
 
-[GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com) | [Contact](mailto:raoof.r12@gmail.com)
+[GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com/in/mohammad-raouf-abedini-885a9226a) | [Contact](mailto:raoof.r12@gmail.com)
 
 ---
 <p align="center">

@@ -1,17 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useId } from "react";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { Send, Lock, AlertTriangle } from "lucide-react";
 
 export function SecureContactForm() {
   const [status, setStatus] = useState<"IDLE" | "TYPING" | "ENCRYPTING">("IDLE");
-  const [traceId, setTraceId] = useState("");
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTraceId(Math.random().toString(36).substring(7).toUpperCase());
-  }, []);
+  const uniqueId = useId();
+  const traceId = uniqueId.replace(/:/g, "").slice(0, 6).toUpperCase();
 
   const handleTyping = () => {
     setStatus("TYPING");
@@ -35,8 +31,10 @@ export function SecureContactForm() {
       <form className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label className="text-xs font-mono text-cyan-500">TARGET_ID (Name)</label>
+            <label htmlFor="contact-name" className="text-xs font-mono text-cyan-500">TARGET_ID (Name)</label>
             <input 
+              id="contact-name"
+              name="name"
               type="text" 
               placeholder="ENTER_IDENTITY"
               onKeyDown={handleTyping}
@@ -44,8 +42,10 @@ export function SecureContactForm() {
             />
           </div>
           <div className="space-y-1">
-            <label className="text-xs font-mono text-cyan-500">RETURN_PATH (Email)</label>
+            <label htmlFor="contact-email" className="text-xs font-mono text-cyan-500">RETURN_PATH (Email)</label>
             <input 
+              id="contact-email"
+              name="email"
               type="email" 
               placeholder="secure@gateway.io"
               onKeyDown={handleTyping}
@@ -55,8 +55,10 @@ export function SecureContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs font-mono text-cyan-500">PAYLOAD (Message)</label>
+          <label htmlFor="contact-message" className="text-xs font-mono text-cyan-500">PAYLOAD (Message)</label>
           <textarea 
+            id="contact-message"
+            name="message"
             rows={4}
             placeholder="TRANSMITTING_ENCRYPTED_PAYLOAD..."
             onKeyDown={handleTyping}

@@ -74,14 +74,22 @@ export function Navbar() {
                 <button
                     className="md:hidden p-2 text-zinc-400 hover:text-cyan"
                     onClick={() => setMobileOpen(!mobileOpen)}
+                    aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={mobileOpen}
+                    aria-controls="mobile-menu"
                 >
-                    {mobileOpen ? <X /> : <Menu />}
+                    {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
                 </button>
             </div>
 
             {/* Mobile Menu */}
             {mobileOpen && (
-                <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-white/10 p-4 flex flex-col space-y-4 shadow-2xl">
+                <div 
+                    id="mobile-menu"
+                    className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-white/10 p-4 flex flex-col space-y-4 shadow-2xl"
+                    role="navigation"
+                    aria-label="Mobile navigation"
+                >
                     {navItems.map((item) => (
                         <Link
                             key={item.path}

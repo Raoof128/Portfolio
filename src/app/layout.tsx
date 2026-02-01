@@ -55,7 +55,8 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
-                  "url": "https://raoof128.github.io/Portfolio",    "jobTitle": "Cybersecurity Specialist",
+                  "url": "https://raoof128.github.io/Portfolio",
+    "jobTitle": "Cybersecurity Specialist",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Sydney",
@@ -72,7 +73,7 @@ export default function RootLayout({
     ],
     "sameAs": [
       "https://github.com/Raoof128",
-      "https://linkedin.com",
+      "https://linkedin.com/in/mohammad-raouf-abedini-885a9226a",
       "https://twitter.com/Raoof128"
     ]
   };
