@@ -24,9 +24,9 @@ export default function NotFound() {
           </p>
 
           <div className="font-mono text-xs text-zinc-600 bg-black/50 p-4 rounded border border-zinc-800 text-left space-y-1">
-            <p><span className="text-purple-400">root@raouf:~$</span> ping target_url</p>
+            <p><span className="text-purple-400">root@portfolio:~$</span> ping target_url</p>
             <p>ping: unknown host</p>
-            <p><span className="text-purple-400">root@raouf:~$</span> trace route</p>
+            <p><span className="text-purple-400">root@portfolio:~$</span> trace route</p>
             <p className="text-red-400">Trace failed. Destination unreachable.</p>
           </div>
         </div>

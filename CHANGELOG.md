@@ -3,6 +3,23 @@
 ## [Unreleased]
 
 ### Raouf: 2026-02-01
+- **Scope**: Audit - Responsiveness & Consistency
+- **Summary**: Conducted a full file-by-file audit for mobile responsiveness and content consistency.
+    - **Responsiveness**: Fixed grid layouts in `SecureContactForm` and `About` stats to be mobile-first (`grid-cols-1 sm:grid-cols-2`).
+    - **Consistency**: Updated `not-found.tsx` to remove old branding references (`root@raouf` -> `root@portfolio`).
+    - **Placeholders**: Updated `pgp-key.txt` with a more professional simulated block.
+- **Files Changed**: `src/components/ui/SecureContactForm.tsx`, `src/app/about/page.tsx`, `src/app/not-found.tsx`, `public/pgp-key.txt`.
+- **Verification**: Code review and build verification.
+
+### Raouf: 2026-02-01
+- **Scope**: Fix - CI Build & BasePath
+- **Summary**: Resolved GitHub Actions failure (`tar: out: Cannot open`) by taking manual control of the Next.js configuration.
+    - **Analysis**: The `actions/configure-pages` step was likely conflicting with `next.config.ts`, causing `output: 'export'` to be ignored.
+    - **Fix**: Removed `static_site_generator: next` from the workflow and manually added `basePath: "/Portfolio"` to `next.config.ts`.
+- **Files Changed**: `next.config.ts`, `.github/workflows/deploy.yml`.
+- **Verification**: Local build passes. Git push to trigger CI.
+
+### Raouf: 2026-02-01
 - **Scope**: Fix - Revert Custom Domain & Workflow Patch
 - **Summary**: Reverted custom domain configuration to use default GitHub Pages URL. Fixed a typo in the GitHub Actions workflow.
     - **Revert**: Deleted `public/CNAME` and unset custom domain via API. Site is now at `https://raoof128.github.io/Portfolio/`.

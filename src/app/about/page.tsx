@@ -135,7 +135,7 @@ export default function AboutPage() {
             </div>
 
             {/* Stats / Metadata */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                <div className="border border-white/10 p-3 bg-zinc-900/50">
                   <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider mb-1">Experience</div>
                   <div className="text-2xl font-bold text-white font-mono">4+ <span className="text-cyan text-sm">YRS</span></div>
