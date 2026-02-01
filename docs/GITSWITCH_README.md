@@ -29,7 +29,7 @@
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/raoof/gitswitch.git
+    git clone https://github.com/Raoof128/gitswitch.git
     cd gitswitch
     ```
 

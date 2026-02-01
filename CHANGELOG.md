@@ -3,6 +3,14 @@
 ## [Unreleased]
 
 ### Raouf: 2026-02-01
+- **Scope**: Audit - Documentation Consistency
+- **Summary**: Audited all `README.md` and `docs/*` files for accuracy and consistency with the codebase.
+    - **Fix**: Corrected `README.md` to describe GitSwitch as an Electron/React app (was incorrectly listed as Rust).
+    - **Links**: Updated repository URLs in documentation to point to the `Raoof128` namespace.
+- **Files Changed**: `README.md`, `docs/GITSWITCH_README.md`, `docs/ECRSM_README.md`.
+- **Verification**: Cross-referenced `data.ts` with documentation.
+
+### Raouf: 2026-02-01
 - **Scope**: Audit - Responsiveness & Consistency
 - **Summary**: Conducted a full file-by-file audit for mobile responsiveness and content consistency.
     - **Responsiveness**: Fixed grid layouts in `SecureContactForm` and `About` stats to be mobile-first (`grid-cols-1 sm:grid-cols-2`).

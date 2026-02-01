@@ -18,9 +18,9 @@ This portfolio showcases deep-dives into three main engineering pillars:
 
 ### 🔄 [GitSwitch](https://github.com/Raoof128/GitSwitch)
 **Context-aware Git identity manager.**
-- High-performance CLI tool built in Rust.
-- Secure GPG/SSH key switching based on project directory.
-- Focused on developer productivity and commit security.
+- Modern desktop app built with Electron, React 19, and TypeScript.
+- AI-powered semantic commit generation (Gemini 3).
+- Secure OS-keychain storage and multi-account switching.
 
 ### 👁️ [ECRSM](https://github.com/Raoof128/ECRSM)
 **Experimental Container Runtime Security Monitor.**

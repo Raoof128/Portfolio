@@ -82,8 +82,8 @@ Additional design notes live in `docs/ARCHITECTURE.md` (includes Mermaid flow).
 ## Kubernetes (Helm) quickstart
 ```
 helm install runtime ./deploy/helm \
-  --set image.agent="ghcr.io/you/runtime-agent:tag" \
-  --set image.dashboard="ghcr.io/you/runtime-dashboard:tag"
+  --set image.agent="ghcr.io/Raoof128/runtime-agent:tag" \
+  --set image.dashboard="ghcr.io/Raoof128/runtime-dashboard:tag"
 ```
 - DaemonSet runs the agent with BPF privileges (hostPID + BPF/SYS_ADMIN caps).
 - Dashboard served via ClusterIP service on port 8080.

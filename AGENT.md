@@ -245,3 +245,12 @@ Before making any code changes, agents MUST:
 - **Files Changed**: `src/components/ui/SecureContactForm.tsx`, `src/app/about/page.tsx`, `src/app/not-found.tsx`, `public/pgp-key.txt`.
 - **Verification**: Code review and build verification.
 - **Follow-ups**: None.
+
+### Raouf: 2026-02-01
+- **Scope**: Audit - Documentation Consistency
+- **Summary**: Audited all `README.md` and `docs/*` files for accuracy and consistency with the codebase.
+    - **Fix**: Corrected `README.md` to describe GitSwitch as an Electron/React app (was incorrectly listed as Rust).
+    - **Links**: Updated repository URLs in documentation to point to the `Raoof128` namespace.
+- **Files Changed**: `README.md`, `docs/GITSWITCH_README.md`, `docs/ECRSM_README.md`.
+- **Verification**: Cross-referenced `data.ts` with documentation.
+- **Follow-ups**: None.
