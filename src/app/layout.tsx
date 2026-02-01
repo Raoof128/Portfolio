@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   },
   description: "Portfolio of Mohammad Raouf Abedini - Cybersecurity & Software Engineering. Specialized in privacy-first security tools, systems programming, and secure architecture.",
   keywords: ["Cybersecurity", "Software Engineering", "Portfolio", "Mohammad Raouf Abedini", "Raouf", "Next.js", "React", "Rust", "Go", "eBPF"],
-  authors: [{ name: "Mohammad Raouf Abedini", url: "https://raouf.sh" }],
+  authors: [{ name: "Mohammad Raouf Abedini", url: "https://raoof128.github.io/Portfolio" }],
   creator: "Mohammad Raouf Abedini",
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://raouf.sh",
+    url: "https://raoof128.github.io/Portfolio",
     title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
     description: "Building privacy-first security tools and scalable systems.",
     siteName: "Mohammad Raouf Abedini Portfolio",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description: "Building privacy-first security tools and scalable systems.",
     creator: "@Raoof128",
   },
-  metadataBase: new URL("https://raouf.sh"),
+  metadataBase: new URL("https://raoof128.github.io/Portfolio"),
   alternates: {
     canonical: "/",
   },
@@ -55,8 +55,7 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
-    "url": "https://raouf.sh",
-    "jobTitle": "Cybersecurity Specialist",
+                  "url": "https://raoof128.github.io/Portfolio",    "jobTitle": "Cybersecurity Specialist",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Sydney",

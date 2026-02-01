@@ -3,6 +3,34 @@
 ## [Unreleased]
 
 ### Raouf: 2026-02-01
+- **Scope**: DevOps - Custom Domain
+- **Summary**: Configured GitHub Pages to use the custom domain `raoof.r12.com`.
+    - **Asset**: Created `public/CNAME`.
+    - **Config**: Updated GitHub repository settings via CLI to bind the custom domain.
+    - **Note**: HTTPS enforcement requires DNS propagation.
+- **Files Changed**: `public/CNAME`.
+- **Verification**: `gh api` confirmed `cname: "raoof.r12.com"`.
+
+### Raouf: 2026-02-01
+- **Scope**: Rebranding & Audit
+- **Summary**: Replaced all instances of `raouf.sh` with `raoof128.github.io/Portfolio` (for URLs) or `raoof.r12@gmail.com` (for contact). Conducted full system audit.
+    - **Rebranding**: Updated `layout.tsx`, `sitemap.ts`, `robots.ts`, `llms.txt`, `security.txt`, `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`.
+    - **Fix**: Added `export const dynamic = 'force-static'` to `robots.ts` and `sitemap.ts` to fix static export build errors.
+    - **Audit**: Passed `npm run lint`, `npm run build`, and `npm audit` (0 vulnerabilities).
+- **Files Changed**: `src/app/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, `public/llms.txt`, `public/security.txt`, `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`.
+- **Verification**: Build successful, site ready for deployment.
+
+### Raouf: 2026-02-01
+- **Scope**: DevOps - GitHub Pages Deployment
+- **Summary**: Configured the project for static export and automated deployment via GitHub Actions. 
+    - **Config**: Updated `next.config.ts` with `output: 'export'` and unoptimized images.
+    - **Workflow**: Created `.github/workflows/deploy.yml` for automated CI/CD.
+    - **Polish**: Implemented custom global scrollbar with cyan neon glow effects.
+    - **Deployment**: Switched to `Raoof128` account and enabled GitHub Pages via CLI.
+- **Files Changed**: `next.config.ts`, `.github/workflows/deploy.yml`, `src/app/globals.css`.
+- **Verification**: `git push` success, GitHub Pages API confirmed activation.
+
+### Raouf: 2026-02-01
 - **Scope**: Polish - Lab Section Professionalization
 - **Summary**: Upgraded Lab section to be fully functional and professional.
     - **Detail Views**: Created `/lab/[id]` pages to display experiment details with a code editor UI.

@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next'
 import { projects, writeups } from '@/lib/data'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://raouf.sh'
+  const baseUrl = 'https://raoof128.github.io/Portfolio'
   
   const projectUrls = Object.values(projects).map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,

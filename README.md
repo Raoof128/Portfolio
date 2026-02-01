@@ -2,7 +2,7 @@
 
 Welcome to the source code of my professional portfolio. This repository hosts my "Cyber-ops Command Centre"—a high-performance, accessible portal designed to showcase my work in security engineering and software development.
 
-**Live Site:** [raouf.sh](https://raouf.sh) (Coming Soon)
+**Live Site:** [raoof128.github.io/Portfolio](https://raoof128.github.io/Portfolio)
 
 ---
 
@@ -68,7 +68,7 @@ I build software that is **secure by default** and **high-performance by design*
 - **University**: Macquarie University, Sydney.
 - **Philosophy**: Proof > Personality. Every project is backed by verified READMEs and demos.
 
-[GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com) | [Contact](mailto:contact@raouf.sh)
+[GitHub](https://github.com/Raoof128) | [LinkedIn](https://linkedin.com) | [Contact](mailto:raoof.r12@gmail.com)
 
 ---
 <p align="center">

@@ -1,4 +1,4 @@
-# Contributing to Raouf.sh Portfolio
+# Contributing to Mohammad Raouf Abedini's Portfolio
 
 First off, thank you for considering contributing to this project!
 
