@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useId } from "react";
+import { useState, useId, type FormEvent } from "react";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { Send, Lock, AlertTriangle } from "lucide-react";
 
@@ -13,6 +13,18 @@ export function SecureContactForm() {
     setStatus("TYPING");
     const timeout = setTimeout(() => setStatus("ENCRYPTING"), 800);
     return () => clearTimeout(timeout);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:raoof.r12@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -28,14 +40,15 @@ export function SecureContactForm() {
         </span>
       </div>
 
-      <form className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label htmlFor="contact-name" className="text-xs font-mono text-cyan-500">TARGET_ID (Name)</label>
-            <input 
+            <input
               id="contact-name"
               name="name"
-              type="text" 
+              type="text"
+              required
               placeholder="ENTER_IDENTITY"
               onKeyDown={handleTyping}
               className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
@@ -43,10 +56,11 @@ export function SecureContactForm() {
           </div>
           <div className="space-y-1">
             <label htmlFor="contact-email" className="text-xs font-mono text-cyan-500">RETURN_PATH (Email)</label>
-            <input 
+            <input
               id="contact-email"
               name="email"
-              type="email" 
+              type="email"
+              required
               placeholder="secure@gateway.io"
               onKeyDown={handleTyping}
               className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
@@ -56,10 +70,11 @@ export function SecureContactForm() {
 
         <div className="space-y-1">
           <label htmlFor="contact-message" className="text-xs font-mono text-cyan-500">PAYLOAD (Message)</label>
-          <textarea 
+          <textarea
             id="contact-message"
             name="message"
             rows={4}
+            required
             placeholder="TRANSMITTING_ENCRYPTED_PAYLOAD..."
             onKeyDown={handleTyping}
             className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
@@ -68,9 +83,9 @@ export function SecureContactForm() {
 
         <div className="flex items-center justify-between pt-2">
           <p className="text-[10px] text-zinc-600 font-mono">
-            * Warning: Keystrokes are definitely not recorded. Trust me.
+            * Opens your default mail client to send.
           </p>
-          <NeonButton variant="primary" className="px-6">
+          <NeonButton type="submit" variant="primary" className="px-6">
             <Send className="w-3 h-3 mr-2" /> TRANSMIT
           </NeonButton>
         </div>

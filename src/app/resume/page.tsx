@@ -1,5 +1,4 @@
-import { NeonButton } from "@/components/ui/NeonButton";
-import { Download, Mail, Github, Linkedin, MapPin } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { DecryptedText } from "@/components/ui/DecryptedText";
@@ -17,14 +16,11 @@ export default function ResumePage() {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Actions */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             <span className="text-cyan font-mono mr-2">/</span>
             <DecryptedText text="Resume" />
           </h1>
-          <NeonButton href="/resume.pdf" variant="primary" download>
-            <Download className="w-4 h-4 mr-2" /> DOWNLOAD_PDF
-          </NeonButton>
         </div>
 
         {/* Resume Content Wrapper */}

@@ -109,7 +109,7 @@ export default function AboutPage() {
               
               <HUDFrame className="relative bg-zinc-900 overflow-hidden aspect-[4/5] w-full">
                 <Image 
-                  src="/Raouf_2.png" 
+                  src="/Raouf_2.jpg" 
                   alt="Mohammad Raouf Abedini" 
                   fill
                   className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0"

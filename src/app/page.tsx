@@ -109,6 +109,11 @@ export default function Home() {
 
       {/* SECTION 3: BUILD | SECURE Philosophy */}
       <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between mb-12 border-b border-white/5 pb-4">
+          <h2 className="text-3xl font-bold text-white tracking-tight">
+            <span className="text-cyan-500 font-mono mr-3">02.</span>Philosophy
+          </h2>
+        </div>
         <div className="grid md:grid-cols-2 gap-0 border border-white/10 bg-zinc-900/20">
           {/* BUILD */}
           <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 group hover:bg-white/5 transition-colors">

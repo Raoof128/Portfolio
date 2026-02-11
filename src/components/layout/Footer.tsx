@@ -7,14 +7,14 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
 
         <div className="flex items-center space-x-6">
-          <Link href="https://github.com/Raoof128" className="text-zinc-500 hover:text-cyan transition-colors">
+          <a href="https://github.com/Raoof128" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan transition-colors">
             <Github className="w-5 h-5" />
             <span className="sr-only">GitHub</span>
-          </Link>
-          <Link href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a" className="text-zinc-500 hover:text-cyan transition-colors">
+          </a>
+          <a href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan transition-colors">
             <Linkedin className="w-5 h-5" />
             <span className="sr-only">LinkedIn</span>
-          </Link>
+          </a>
           <Link href="/contact" className="text-zinc-500 hover:text-cyan transition-colors">
             <Mail className="w-5 h-5" />
             <span className="sr-only">Contact Page</span>

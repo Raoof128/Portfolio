@@ -12,14 +12,19 @@ interface DecryptedTextProps {
 
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*";
 
+function scramble(text: string): string {
+  return text.split("").map(() => chars[Math.floor(Math.random() * chars.length)]).join("");
+}
+
 export function DecryptedText({ text, className = "", animateOnHover = false, loopInterval = 0 }: DecryptedTextProps) {
-  const [displayText, setDisplayText] = useState(text);
-  const [trigger, setTrigger] = useState(0); // Used to re-trigger animation
+  // Initialize with scrambled text to avoid hydration flash
+  const [displayText, setDisplayText] = useState(() => scramble(text));
+  const [trigger, setTrigger] = useState(0);
 
   useEffect(() => {
     let iteration = 0;
     const interval = setInterval(() => {
-      setDisplayText(() => 
+      setDisplayText(() =>
         text.split("").map((letter, index) => {
           if (index < iteration) return text[index];
           return chars[Math.floor(Math.random() * chars.length)];
@@ -27,7 +32,7 @@ export function DecryptedText({ text, className = "", animateOnHover = false, lo
       );
 
       if (iteration >= text.length) clearInterval(interval);
-      iteration += 1 / 2; // Speed control: higher denominator = slower
+      iteration += 1 / 2;
     }, 30);
 
     return () => clearInterval(interval);
@@ -44,9 +49,10 @@ export function DecryptedText({ text, className = "", animateOnHover = false, lo
   }, [loopInterval]);
 
   return (
-    <motion.span 
+    <motion.span
       className={`inline-block whitespace-pre-wrap ${className}`}
       onMouseEnter={() => animateOnHover && setTrigger(prev => prev + 1)}
+      suppressHydrationWarning
     >
       {displayText}
     </motion.span>

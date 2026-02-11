@@ -1,6 +1,5 @@
 import { SecureContactForm } from "@/components/ui/SecureContactForm"
 import { Github, Linkedin } from "lucide-react"
-import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -34,12 +33,12 @@ export default function ContactPage() {
 
         {/* Alternate Comms */}
         <div className="flex justify-center gap-6 pt-4 border-t border-white/5">
-          <Link href="https://github.com/Raoof128" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs">
+          <a href="https://github.com/Raoof128" target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs">
             <Github className="w-4 h-4 mr-2" /> GITHUB_FREQ
-          </Link>
-          <Link href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs">
+          </a>
+          <a href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a" target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs">
             <Linkedin className="w-4 h-4 mr-2" /> LINKEDIN_FREQ
-          </Link>
+          </a>
         </div>
 
       </div>

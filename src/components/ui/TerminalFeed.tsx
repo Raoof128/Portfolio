@@ -15,21 +15,30 @@ const BOOT_LOGS = [
   { msg: "INIT: Starting main process loop...", color: "text-white" },
 ];
 
+interface LogEntry {
+  id: number;
+  msg: string;
+  color: string;
+}
+
+let logCounter = 0;
+
 export function TerminalFeed() {
-  const [logs, setLogs] = useState<typeof BOOT_LOGS>([]);
+  const [logs, setLogs] = useState<LogEntry[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       setLogs(prev => {
-        const newLogs = [...prev, BOOT_LOGS[index]];
-        if (newLogs.length > 8) newLogs.shift(); // Keep only last 8 lines
+        const entry: LogEntry = { ...BOOT_LOGS[index], id: ++logCounter };
+        const newLogs = [...prev, entry];
+        if (newLogs.length > 8) newLogs.shift();
         return newLogs;
       });
-      
+
       index = (index + 1) % BOOT_LOGS.length;
-    }, 800); // New line every 800ms
+    }, 800);
 
     return () => clearInterval(interval);
   }, []);
@@ -51,10 +60,10 @@ export function TerminalFeed() {
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
          </div>
       </div>
-      
+
       <div className="space-y-1 relative">
-        {logs.map((log, i) => (
-          <div key={i} className={`${log.color} animate-in fade-in slide-in-from-left-2 duration-300`}>
+        {logs.map((log) => (
+          <div key={log.id} className={`${log.color} animate-in fade-in slide-in-from-left-2 duration-300`}>
             <span className="opacity-50 mr-2">[{new Date().toISOString().split('T')[1].slice(0,8)}]</span>
             {log.msg}
           </div>

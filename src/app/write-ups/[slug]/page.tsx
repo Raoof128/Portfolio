@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { ArrowLeft, Calendar, Terminal } from "lucide-react";
+import { SimpleMarkdown } from "@/components/ui/SimpleMarkdown";
 
 export function generateStaticParams() {
   return writeups.map((post) => ({
@@ -72,17 +73,7 @@ export default async function WriteupPage({ params }: PageProps) {
 
         {/* Content */}
         <div className="prose prose-invert prose-cyan max-w-none">
-            {/* 
-                We use react-markdown here if installed, otherwise simpler rendering.
-                The prompt didn't specify installing libraries, but 'react-markdown' is standard.
-                However, to be safe and avoid "package not found" without checking package.json, 
-                I will stick to basic whitespace rendering or verify if I can use it.
-                I will assume I cannot install new packages easily without user permission.
-                So I will perform a simple split/map for paragraphs or just whitespace-pre-wrap.
-            */}
-             <div className="whitespace-pre-wrap font-sans text-zinc-300 leading-relaxed">
-                {post.content}
-             </div>
+            <SimpleMarkdown content={post.content} />
         </div>
         
         {/* Footer */}

@@ -28,7 +28,7 @@ export default async function ProjectPage({ params }: PageProps) {
         {/* Project Hero */}
         <section className="border-b border-white/10 bg-white/5 py-12 md:py-20">
           <div className="container mx-auto px-4 md:px-6">
-            <Link href="/projects" className="inline-flex items-center text-sm text-gray-500 hover:text-cyan mb-8 transition-colors font-mono">
+            <Link href="/projects" className="inline-flex items-center text-sm text-zinc-500 hover:text-cyan mb-8 transition-colors font-mono">
               <ArrowLeft size={14} className="mr-2" /> Back to Projects
             </Link>
 
@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
                   {project.title}
                 </h1>
-                <p className="text-xl text-gray-400 leading-relaxed">
+                <p className="text-xl text-zinc-400 leading-relaxed">
                   {project.fullDescription}
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: PageProps) {
               <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
                 <span className="text-cyan">01.</span> Problem
               </h2>
-              <div className="prose prose-invert max-w-none text-gray-400 border-l-2 border-white/10 pl-6">
+              <div className="prose prose-invert max-w-none text-zinc-400 border-l-2 border-white/10 pl-6">
                 <p>{project.problem}</p>
               </div>
             </section>
@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: PageProps) {
               <div className="bg-black/40 border border-white/10 p-6 rounded-sm">
                 <ul className="grid gap-3">
                   {project.solution.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-300">
+                    <li key={i} className="flex items-start gap-3 text-zinc-300">
                       <ArrowRight size={16} className="mt-1 text-cyan shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -106,10 +106,10 @@ export default async function ProjectPage({ params }: PageProps) {
                 </h2>
                 <div className="bg-white/5 border border-white/10 p-6 h-full">
                   <div className="mb-4">
-                    <h4 className="text-xs uppercase text-gray-500 font-mono mb-2">Tech Stack</h4>
+                    <h4 className="text-xs uppercase text-zinc-500 font-mono mb-2">Tech Stack</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.build?.stack.map(tech => (
-                        <span key={tech} className="text-xs border border-white/20 px-2 py-1 text-gray-300 bg-white/5">
+                        <span key={tech} className="text-xs border border-white/20 px-2 py-1 text-zinc-300 bg-white/5">
                           {tech}
                         </span>
                       ))}
@@ -117,7 +117,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   </div>
                   <ul className="space-y-2">
                     {project.build?.features.map((feat, i) => (
-                      <li key={i} className="text-sm text-gray-400 flex gap-2">
+                      <li key={i} className="text-sm text-zinc-400 flex gap-2">
                         <span className="text-cyan">•</span> {feat}
                       </li>
                     ))}
@@ -133,7 +133,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 <div className="bg-white/5 border border-white/10 p-6 h-full">
                   <ul className="space-y-3">
                     {project.secure?.measures.map((measure, i) => (
-                      <li key={i} className="text-sm text-gray-400 flex gap-2">
+                      <li key={i} className="text-sm text-zinc-400 flex gap-2">
                         <CheckCircle size={14} className="mt-1 text-green-400 shrink-0" />
                         {measure}
                       </li>
@@ -154,7 +154,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 </p>
                 <ul className="space-y-3">
                   {project.proof.map((proof, i) => (
-                    <li key={i} className="font-mono text-sm text-gray-300 flex items-start gap-3">
+                    <li key={i} className="font-mono text-sm text-zinc-300 flex items-start gap-3">
                       <span className="text-cyan mt-1">&gt;</span>
                       {proof}
                     </li>
@@ -172,12 +172,12 @@ export default async function ProjectPage({ params }: PageProps) {
                 <h3 className="font-mono font-bold text-white mb-4">Project Links</h3>
                 <div className="space-y-3">
                   {project.links.demo && (
-                    <a href={project.links.demo} target="_blank" rel="noopener" className="flex items-center justify-between text-sm text-gray-400 hover:text-cyan transition-colors border-b border-white/5 pb-2">
+                    <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-zinc-400 hover:text-cyan transition-colors border-b border-white/5 pb-2">
                       Watch Demo <Play size={14} />
                     </a>
                   )}
                   {project.links.repo && (
-                    <a href={project.links.repo} target="_blank" rel="noopener" className="flex items-center justify-between text-sm text-gray-400 hover:text-cyan transition-colors border-b border-white/5 pb-2">
+                    <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-zinc-400 hover:text-cyan transition-colors border-b border-white/5 pb-2">
                       Source Code <Github size={14} />
                     </a>
                   )}
