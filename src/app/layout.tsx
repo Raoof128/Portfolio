@@ -84,6 +84,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${chakraPetch.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
+        suppressHydrationWarning
       >
         <script
           type="application/ld+json"

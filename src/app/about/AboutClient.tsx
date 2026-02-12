@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { basePath } from "@/lib/constants";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { DecryptedText } from "@/components/ui/DecryptedText";
@@ -91,7 +92,7 @@ export function AboutClient() {
             <motion.div className="relative group" whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}>
               <div className="absolute -inset-0.5 bg-gradient-to-b from-cyan/50 to-transparent opacity-50 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
               <HUDFrame className="relative bg-zinc-900 overflow-hidden aspect-[4/5] w-full">
-                <Image src="/Raouf_2.jpg" alt="Mohammad Raouf Abedini" fill className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0" priority />
+                <Image src={`${basePath}/Raouf_2.jpg`} alt="Mohammad Raouf Abedini" fill className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0" priority />
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent pointer-events-none"></div>
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                   <div className="font-mono text-xs text-cyan/80">
