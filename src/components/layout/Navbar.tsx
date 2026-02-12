@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Terminal, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
     { name: "/about", path: "/about" },
@@ -17,9 +18,25 @@ const navItems = [
 export function Navbar() {
     const pathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-40 border-b border-white/10 bg-background/80 backdrop-blur-md h-16">
+        <nav
+            className={cn(
+                "fixed top-0 left-0 right-0 z-40 border-b h-16 transition-all duration-300",
+                scrolled
+                    ? "border-white/10 glass-strong"
+                    : "border-transparent bg-transparent"
+            )}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
 
                 {/* Logo / Home */}
@@ -56,7 +73,11 @@ export function Navbar() {
                                     {item.name}
                                 </span>
                                 {isActive && (
-                                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+                                    <motion.span
+                                        layoutId="nav-indicator"
+                                        className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan shadow-[0_0_8px_rgba(6,182,212,0.8)]"
+                                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                                    />
                                 )}
                             </Link>
                         );
@@ -82,36 +103,42 @@ export function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
-            {mobileOpen && (
-                <div 
-                    id="mobile-menu"
-                    className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-white/10 p-4 flex flex-col space-y-4 shadow-2xl"
-                    role="navigation"
-                    aria-label="Mobile navigation"
-                >
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.path}
-                            href={item.path}
-                            onClick={() => setMobileOpen(false)}
-                            className={cn(
-                                "block font-mono text-base p-2 hover:bg-white/5",
-                                pathname.startsWith(item.path) ? "text-cyan border-l-2 border-cyan bg-white/5" : "text-zinc-400"
-                            )}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
-                    <Link
-                        href="/contact"
-                        onClick={() => setMobileOpen(false)}
-                        className="block w-full text-center py-3 border border-zinc-700 text-cyan font-mono text-sm"
+            {/* Mobile Menu with AnimatePresence */}
+            <AnimatePresence>
+                {mobileOpen && (
+                    <motion.div
+                        id="mobile-menu"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="md:hidden absolute top-16 left-0 right-0 glass-strong border-b border-white/10 p-4 flex flex-col space-y-4 shadow-2xl"
+                        role="navigation"
+                        aria-label="Mobile navigation"
                     >
-                        CONTACT
-                    </Link>
-                </div>
-            )}
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.path}
+                                href={item.path}
+                                onClick={() => setMobileOpen(false)}
+                                className={cn(
+                                    "block font-mono text-base p-2 hover:bg-white/5",
+                                    pathname.startsWith(item.path) ? "text-cyan border-l-2 border-cyan bg-white/5" : "text-zinc-400"
+                                )}
+                            >
+                                {item.name}
+                            </Link>
+                        ))}
+                        <Link
+                            href="/contact"
+                            onClick={() => setMobileOpen(false)}
+                            className="block w-full text-center py-3 border border-zinc-700 text-cyan font-mono text-sm"
+                        >
+                            CONTACT
+                        </Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 }

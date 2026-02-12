@@ -23,6 +23,28 @@ vi.mock('next/image', () => ({
   },
 }));
 
+// Mock IntersectionObserver for framer-motion useInView
+class MockIntersectionObserver {
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+  root = null;
+  rootMargin = '';
+  thresholds = [0];
+  takeRecords = vi.fn().mockReturnValue([]);
+
+  constructor(callback: IntersectionObserverCallback) {
+    // Immediately report all observed elements as intersecting
+    setTimeout(() => {
+      callback([{ isIntersecting: true, intersectionRatio: 1 } as IntersectionObserverEntry], this);
+    }, 0);
+  }
+}
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  value: MockIntersectionObserver,
+});
+
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

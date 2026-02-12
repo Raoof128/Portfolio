@@ -18,6 +18,22 @@
   /* Cyan-400 glow */
   --color-cyan-dim: rgba(6, 182, 212, 0.1);
 
+  /* Accent - Amber */
+  --color-amber-DEFAULT: #f59e0b;
+  --color-amber-glow: #fbbf24;
+  --color-amber-dim: rgba(245, 158, 11, 0.1);
+
+  /* Accent - Purple */
+  --color-purple-DEFAULT: #8b5cf6;
+  --color-purple-glow: #a78bfa;
+  --color-purple-dim: rgba(139, 92, 246, 0.1);
+
+  /* Glass / Surface tokens */
+  --glass-bg: rgba(9, 9, 11, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --surface-1: rgba(255, 255, 255, 0.03);
+  --surface-2: rgba(255, 255, 255, 0.06);
+
   --radius: 0rem;
   /* Cyber ops usually sharp */
 }
@@ -29,11 +45,17 @@
   --color-cyber-dark: var(--color-cyber-dark);
   --color-cyan: var(--color-cyan-DEFAULT);
   --color-cyan-glow: var(--color-cyan-glow);
+  --color-amber: var(--color-amber-DEFAULT);
+  --color-amber-glow: var(--color-amber-glow);
+  --color-purple: var(--color-purple-DEFAULT);
+  --color-purple-glow: var(--color-purple-glow);
 
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-fira-code);
+  --font-sans: var(--font-chakra-petch);
+  --font-mono: var(--font-jetbrains-mono);
 
   --animate-scanline: scanline 8s linear infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-border-trace: border-trace 3s linear infinite;
 }
 
 body {
@@ -59,6 +81,35 @@ body {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  /* Glass utility classes */
+  .glass {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-strong {
+    background: rgba(9, 9, 11, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(6, 182, 212, 0.3) 20%,
+      rgba(139, 92, 246, 0.2) 50%,
+      rgba(245, 158, 11, 0.3) 80%,
+      transparent 100%
+    );
   }
 
   /* Custom Scrollbar - Global Application */
@@ -99,5 +150,25 @@ body {
 
   100% {
     transform: translateY(100%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  }
+}
+
+@keyframes border-trace {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
   }
 }

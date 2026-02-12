@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Fira_Code } from "next/font/google";
+import { Chakra_Petch, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { GridBackground } from "@/components/ui/GridBackground";
 import { Scanline } from "@/components/ui/Scanline";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const chakraPetch = Chakra_Petch({
+  variable: "--font-chakra-petch",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -50,12 +51,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  // Static, trusted JSON-LD structured data for SEO - no user input involved
+  const jsonLdString = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
-                  "url": "https://raoof128.github.io/Portfolio",
+    "url": "https://raoof128.github.io/Portfolio",
     "jobTitle": "Cybersecurity Specialist",
     "address": {
       "@type": "PostalAddress",
@@ -76,16 +78,16 @@ export default function RootLayout({
       "https://linkedin.com/in/mohammad-raouf-abedini-885a9226a",
       "https://twitter.com/Raoof128"
     ]
-  };
+  });
 
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${firaCode.variable} antialiased bg-background text-foreground`}
+        className={`${chakraPetch.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString }}
         />
         <GridBackground />
         <Scanline />

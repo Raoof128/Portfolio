@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ProjectCard } from './ProjectCard';
 
 const mockProject = {
@@ -36,14 +36,16 @@ describe('ProjectCard', () => {
     });
   });
 
-  it('switches to secure tab when clicked', () => {
+  it('switches to secure tab when clicked', async () => {
     render(<ProjectCard {...mockProject} />);
-    
+
     const secureTab = screen.getByRole('tab', { name: /secure/i });
     fireEvent.click(secureTab);
-    
-    mockProject.secureItems.forEach(item => {
-      expect(screen.getByText(item)).toBeInTheDocument();
+
+    await waitFor(() => {
+      mockProject.secureItems.forEach(item => {
+        expect(screen.getByText(item)).toBeInTheDocument();
+      });
     });
   });
 
