@@ -2,6 +2,30 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-02-25
+- **Scope**: Comprehensive Portfolio Audit & Production Hardening
+- **Summary**: Completed a full repository audit and implemented production-focused upgrades.
+    - **Code quality/accessibility**: Fixed `ProjectCard` ARIA tab-panel wiring with stable DOM-safe IDs and improved accessibility test coverage.
+    - **Form hardening**: Added robust input validation, timeout cleanup, error state handling, and test coverage to `SecureContactForm`.
+    - **Refactor/maintainability**: Centralized canonical URLs and identity links in `src/lib/constants.ts` and propagated across metadata/routes/components.
+    - **Route hardening**: Added static-params strictness and metadata generation for `projects/[slug]`.
+    - **Cleanup**: Removed unused scroll logic from `TerminalFeed`.
+    - **Professional docs**: Rewrote `README.md`, upgraded `CONTRIBUTING.md`, and added `SECURITY.md`, `docs/ARCHITECTURE.md`, and `docs/API_REFERENCE.md`.
+    - **CI/CD & dev tooling**: Added `.github/workflows/ci.yml`, modernized deploy workflow, and added `.editorconfig`, `.nvmrc`, and `.devcontainer/devcontainer.json`.
+    - **Security dependencies**: Ran lockfile refresh (`npm audit fix`) to resolve audit findings.
+- **Files Changed**:
+    - **Source**: `src/lib/constants.ts`, `src/app/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, `src/app/projects/[slug]/page.tsx`, `src/components/ui/ProjectCard.tsx`, `src/components/ui/SecureContactForm.tsx`, `src/components/ui/TerminalFeed.tsx`, `src/components/layout/Footer.tsx`, `src/app/contact/ContactClient.tsx`, `src/app/security-policy/SecurityPolicyClient.tsx`, `src/app/resume/ResumeClient.tsx`
+    - **Tests**: `src/components/ui/ProjectCard.test.tsx`, `src/components/ui/SecureContactForm.test.tsx`
+    - **Docs/Policy**: `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `docs/ARCHITECTURE.md`, `docs/API_REFERENCE.md`
+    - **Automation/Config**: `.github/workflows/deploy.yml`, `.github/workflows/ci.yml`, `.editorconfig`, `.nvmrc`, `.devcontainer/devcontainer.json`, `package-lock.json`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 60/60 tests pass
+    - `npm run build`: pass (23 routes static/SSG)
+    - `npm audit --audit-level=moderate`: 0 vulnerabilities
+- **Follow-ups**: Continue periodic dependency refresh and keep CI quality gates mandatory for PR merges.
+
 ### Raouf: 2026-02-02
 - **Scope**: A+ Grade Achievement - Testing & Quality Infrastructure
 - **Summary**: Achieved A+ project grade by implementing comprehensive testing framework and quality assurance infrastructure. No e2e tests per requirements - focused on unit and component testing.

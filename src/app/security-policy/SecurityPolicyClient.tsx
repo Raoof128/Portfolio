@@ -9,8 +9,11 @@ import { Shield, AlertTriangle, Mail, Clock, CheckCircle, ExternalLink } from "l
 import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function SecurityPolicyClient() {
+  const reportLink = `mailto:${CONTACT_EMAIL}`;
+
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
@@ -34,9 +37,9 @@ export function SecurityPolicyClient() {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2"><Mail className="w-5 h-5 text-cyan" /> Report a Vulnerability</h2>
-                  <p className="text-zinc-400">Found a security issue? Contact me directly at{" "}<a href="mailto:raoof.r12@gmail.com" className="text-cyan hover:underline">raoof.r12@gmail.com</a></p>
+                  <p className="text-zinc-400">Found a security issue? Contact me directly at{" "}<a href={reportLink} className="text-cyan hover:underline">{CONTACT_EMAIL}</a></p>
                 </div>
-                <NeonButton href="mailto:raoof.r12@gmail.com" variant="primary"><Mail className="w-4 h-4 mr-2" /> SEND_REPORT</NeonButton>
+                <NeonButton href={reportLink} variant="primary"><Mail className="w-4 h-4 mr-2" /> SEND_REPORT</NeonButton>
               </div>
             </HUDFrame>
           </AnimatedSection>

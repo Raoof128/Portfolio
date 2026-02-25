@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const BOOT_LOGS = [
   { msg: "KERNEL: Initializing eBPF subsystem...", color: "text-zinc-400" },
@@ -19,19 +19,22 @@ interface LogEntry {
   id: number;
   msg: string;
   color: string;
+  timestamp: string;
 }
-
-let logCounter = 0;
 
 export function TerminalFeed() {
   const [logs, setLogs] = useState<LogEntry[]>([]);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const logCounterRef = useRef(0);
 
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       setLogs(prev => {
-        const entry: LogEntry = { ...BOOT_LOGS[index], id: ++logCounter };
+        const entry: LogEntry = {
+          ...BOOT_LOGS[index],
+          id: ++logCounterRef.current,
+          timestamp: new Date().toISOString().split("T")[1].slice(0, 8),
+        };
         const newLogs = [...prev, entry];
         if (newLogs.length > 8) newLogs.shift();
         return newLogs;
@@ -42,13 +45,6 @@ export function TerminalFeed() {
 
     return () => clearInterval(interval);
   }, []);
-
-  // Auto-scroll to bottom
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [logs]);
 
   return (
     <div className="font-mono text-xs md:text-sm h-[200px] overflow-hidden flex flex-col justify-end p-4 bg-black/80 border-l-2 border-cyan-500/50 backdrop-blur-sm rounded-r-md">
@@ -64,7 +60,7 @@ export function TerminalFeed() {
       <div className="space-y-1 relative">
         {logs.map((log) => (
           <div key={log.id} className={`${log.color} animate-in fade-in slide-in-from-left-2 duration-300`}>
-            <span className="opacity-50 mr-2">[{new Date().toISOString().split('T')[1].slice(0,8)}]</span>
+            <span className="opacity-50 mr-2">[{log.timestamp}]</span>
             {log.msg}
           </div>
         ))}

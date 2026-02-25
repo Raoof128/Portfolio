@@ -57,6 +57,18 @@ describe('ProjectCard', () => {
     expect(screen.getByRole('tabpanel')).toBeInTheDocument();
   });
 
+  it('keeps tab controls bound to a stable panel id', () => {
+    render(<ProjectCard {...mockProject} />);
+
+    const buildTab = screen.getByRole('tab', { name: /build/i });
+    const secureTab = screen.getByRole('tab', { name: /secure/i });
+    const panel = screen.getByRole('tabpanel');
+
+    expect(buildTab).toHaveAttribute('aria-controls', panel.getAttribute('id'));
+    expect(secureTab).toHaveAttribute('aria-controls', panel.getAttribute('id'));
+    expect(panel.getAttribute('id')).not.toContain(' ');
+  });
+
   it('renders demo link when provided', () => {
     render(<ProjectCard {...mockProject} />);
     const demoLink = screen.getByRole('link', { name: /watch demo/i });

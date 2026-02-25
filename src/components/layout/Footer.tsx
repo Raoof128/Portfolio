@@ -5,6 +5,7 @@ import { Github, Linkedin, Mail, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { fadeInUp } from "@/lib/utils";
+import { GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
 
           <div className="flex items-center space-x-6">
             <motion.a
-              href="https://github.com/Raoof128"
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-500 hover:text-cyan transition-colors"
@@ -25,7 +26,7 @@ export function Footer() {
               <span className="sr-only">GitHub</span>
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a"
+              href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-500 hover:text-cyan transition-colors"

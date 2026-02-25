@@ -7,6 +7,7 @@ import { DecryptedText } from "@/components/ui/DecryptedText";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 
 export function ResumeClient() {
   return (
@@ -32,14 +33,14 @@ export function ResumeClient() {
                   <p className="text-lg text-cyan font-mono mb-4">Systems Support Analyst | Cybersecurity Student</p>
                   <div className="flex flex-col gap-2 text-zinc-400 text-sm font-mono">
                     <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-zinc-500" /> Sydney, NSW, Australia</div>
-                    <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-zinc-500" /> raoof.r12@gmail.com</div>
+                    <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-zinc-500" /> {CONTACT_EMAIL}</div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 justify-center md:items-end">
-                  <a href="https://github.com/Raoof128" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-cyan transition-colors text-sm font-mono group">
+                  <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-cyan transition-colors text-sm font-mono group">
                     <span>github.com/Raoof128</span> <Github className="w-4 h-4 group-hover:animate-pulse" />
                   </a>
-                  <a href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-cyan transition-colors text-sm font-mono group">
+                  <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-cyan transition-colors text-sm font-mono group">
                     <span>linkedin.com/in/mohammad-raouf-abedini</span> <Linkedin className="w-4 h-4 group-hover:animate-pulse" />
                   </a>
                 </div>

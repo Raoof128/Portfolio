@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-dev",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "postCreateCommand": "npm ci",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { Github, Linkedin } from "lucide-react"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { fadeInUp } from "@/lib/utils"
 import { motion } from "framer-motion"
+import { GITHUB_URL, LINKEDIN_URL } from "@/lib/constants"
 
 export function ContactClient() {
   return (
@@ -29,10 +30,10 @@ export function ContactClient() {
 
         <AnimatedSection variants={fadeInUp} delay={0.3}>
           <div className="flex justify-center gap-6 pt-4 border-t border-white/5">
-            <motion.a href="https://github.com/Raoof128" target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+            <motion.a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
               <Github className="w-4 h-4 mr-2" /> GITHUB_FREQ
             </motion.a>
-            <motion.a href="https://linkedin.com/in/mohammad-raouf-abedini-885a9226a" target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+            <motion.a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-500 hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
               <Linkedin className="w-4 h-4 mr-2" /> LINKEDIN_FREQ
             </motion.a>
           </div>

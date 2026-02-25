@@ -5,6 +5,13 @@ import { GridBackground } from "@/components/ui/GridBackground";
 import { Scanline } from "@/components/ui/Scanline";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import {
+  GITHUB_URL,
+  LINKEDIN_URL,
+  SITE_NAME,
+  SITE_URL,
+  TWITTER_URL,
+} from "@/lib/constants";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
@@ -24,15 +31,15 @@ export const metadata: Metadata = {
   },
   description: "Portfolio of Mohammad Raouf Abedini - Cybersecurity & Software Engineering. Specialized in privacy-first security tools, systems programming, and secure architecture.",
   keywords: ["Cybersecurity", "Software Engineering", "Portfolio", "Mohammad Raouf Abedini", "Raouf", "Next.js", "React", "Rust", "Go", "eBPF"],
-  authors: [{ name: "Mohammad Raouf Abedini", url: "https://raoof128.github.io/Portfolio" }],
+  authors: [{ name: "Mohammad Raouf Abedini", url: SITE_URL }],
   creator: "Mohammad Raouf Abedini",
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://raoof128.github.io/Portfolio",
+    url: SITE_URL,
     title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
     description: "Building privacy-first security tools and scalable systems.",
-    siteName: "Mohammad Raouf Abedini Portfolio",
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
@@ -40,7 +47,7 @@ export const metadata: Metadata = {
     description: "Building privacy-first security tools and scalable systems.",
     creator: "@Raoof128",
   },
-  metadataBase: new URL("https://raoof128.github.io/Portfolio"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -57,7 +64,7 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
-    "url": "https://raoof128.github.io/Portfolio",
+    "url": SITE_URL,
     "jobTitle": "Cybersecurity Specialist",
     "address": {
       "@type": "PostalAddress",
@@ -74,9 +81,9 @@ export default function RootLayout({
       { "@type": "Thing", "name": "Penetration Testing" }
     ],
     "sameAs": [
-      "https://github.com/Raoof128",
-      "https://linkedin.com/in/mohammad-raouf-abedini-885a9226a",
-      "https://twitter.com/Raoof128"
+      GITHUB_URL,
+      LINKEDIN_URL,
+      TWITTER_URL
     ]
   });
 
