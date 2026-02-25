@@ -36,6 +36,19 @@ Before making any code changes, agents MUST:
 ---
 
 ### Raouf: 2026-02-25
+- **Scope**: Focused Audit & Hardening - About Page and Profile Photo Reliability
+- **Summary**: Performed a deep reliability audit of the `/about` route and profile image rendering pipeline. Identified that About content could remain visually hidden when client hydration/animation did not execute promptly due motion-wrapper defaults, and implemented a stable render path so core bio content is visible in static HTML immediately. Hardened profile photo behavior with deterministic basePath-aware source resolution and explicit fallback UI for image load failures. Added dedicated About tests for heading/photo rendering and fallback behavior, and cleaned test mocks to avoid non-DOM prop warnings.
+- **Files Changed**:
+    - **About route**: `src/app/about/AboutClient.tsx`, `src/app/about/page.tsx`
+    - **Tests**: `src/app/about/AboutClient.test.tsx`, `src/test/setup.ts`
+- **Verification**:
+    - `npm run lint`: clean
+    - `npm run test:ci`: 62 tests passing (9 files)
+    - `npm run build`: static export successful (23 routes)
+    - Verified `out/about.html` now contains visible About content by default and image source `/Portfolio/Raouf_2.jpg`
+- **Follow-ups**: If additional image assets are added, keep basePath-aware references and fallback rendering for critical profile/media sections.
+
+### Raouf: 2026-02-25
 - **Scope**: Comprehensive Portfolio Audit & Production Hardening
 - **Summary**: Completed a full repository audit and delivered production-grade upgrades across code quality, accessibility, security posture, CI/CD, and documentation. Fixed tab-to-panel ARIA wiring in `ProjectCard`, hardened `SecureContactForm` validation/state handling, removed dead logic from `TerminalFeed`, centralized canonical URLs/contact metadata in `constants.ts`, and added project route metadata/static param hardening. Upgraded repository documentation with architecture and API/data reference docs plus an improved README and security policy.
 - **Files Changed**:

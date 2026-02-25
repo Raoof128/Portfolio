@@ -3,6 +3,26 @@
 ## [Unreleased]
 
 ### Raouf: 2026-02-25
+- **Scope**: Focused Audit & Hardening - About Page and Profile Photo Reliability
+- **Summary**: Completed a targeted production audit for About content and profile photo stability.
+    - **Root cause identified**: Core About content depended on client animation/hydration state and could appear broken/hidden under inconsistent client execution.
+    - **Visibility fix**: Updated About layout composition to ensure bio and profile sections render visibly in static HTML by default.
+    - **Photo reliability**: Enforced basePath-aware profile image source for GitHub Pages static hosting and added robust fallback UI (`PHOTO_UNAVAILABLE`) on image load failure.
+    - **Quality tests**: Added About-specific tests for heading/photo rendering and fallback path.
+    - **Test infra polish**: Updated shared `next/image` mock to strip non-DOM props (`fill`, `priority`, `unoptimized`, `loader`) and keep test logs clean.
+- **Files Changed**:
+    - `src/app/about/AboutClient.tsx`
+    - `src/app/about/page.tsx`
+    - `src/app/about/AboutClient.test.tsx` (new)
+    - `src/test/setup.ts`
+- **Verification**:
+    - `npm run lint`: pass (0 warnings/errors)
+    - `npm run test:ci`: pass (62/62 tests)
+    - `npm run build`: pass (23 static/SSG routes)
+    - Static export check: `out/about.html` contains visible About content and `/Portfolio/Raouf_2.jpg`
+- **Follow-ups**: Keep fallback pattern for high-visibility media assets and avoid hydration-gated rendering for critical identity content.
+
+### Raouf: 2026-02-25
 - **Scope**: Comprehensive Portfolio Audit & Production Hardening
 - **Summary**: Completed a full repository audit and implemented production-focused upgrades.
     - **Code quality/accessibility**: Fixed `ProjectCard` ARIA tab-panel wiring with stable DOM-safe IDs and improved accessibility test coverage.

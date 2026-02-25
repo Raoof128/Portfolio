@@ -18,8 +18,13 @@ vi.mock('next/navigation', () => ({
 
 // Mock Next.js image
 vi.mock('next/image', () => ({
-  default: function ImageMock({ src, alt, ...props }: { src: string; alt: string; [key: string]: unknown }) {
-    return React.createElement('img', { src, alt, ...props });
+  default: function ImageMock(props: { src: string; alt: string; [key: string]: unknown }) {
+    const { src, alt, ...rest } = props;
+    delete rest.fill;
+    delete rest.priority;
+    delete rest.unoptimized;
+    delete rest.loader;
+    return React.createElement('img', { src, alt, ...rest });
   },
 }));
 

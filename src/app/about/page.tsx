@@ -1,7 +1,7 @@
 import { AboutClient } from "./AboutClient";
 
 export const metadata = {
-  title: "About | Mohammad Raouf Abedini",
+  title: "About",
   description: "Cybersecurity student and developer specializing in offensive security, digital forensics, and applied cryptography.",
 };
 

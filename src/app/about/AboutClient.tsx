@@ -1,17 +1,22 @@
 "use client";
 
-import Image from "next/image";
-import { basePath } from "@/lib/constants";
+import { useState } from "react";
+import Image, { type ImageLoaderProps } from "next/image";
+import { BASE_PATH } from "@/lib/constants";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Terminal, Shield, Cpu, Network } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInLeft, fadeInRight, fadeInUp, staggerContainer } from "@/lib/utils";
+import { fadeInUp, staggerContainer } from "@/lib/utils";
+
+function profileImageLoader({ src }: ImageLoaderProps): string {
+  return src;
+}
 
 export function AboutClient() {
+  const [photoLoadFailed, setPhotoLoadFailed] = useState(false);
+
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
@@ -20,14 +25,14 @@ export function AboutClient() {
         <div className="grid lg:grid-cols-12 gap-12 items-start">
 
           {/* LEFT COLUMN */}
-          <AnimatedSection variants={fadeInLeft} className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-8">
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-cyan mb-2">
                 <span className="h-px w-8 bg-cyan/50"></span>
                 <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">Identity Record</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-                <DecryptedText text="About Me" />
+                About Me
               </h1>
             </div>
 
@@ -85,14 +90,33 @@ export function AboutClient() {
                 Let&apos;s Connect
               </NeonButton>
             </div>
-          </AnimatedSection>
+          </div>
 
           {/* RIGHT COLUMN */}
-          <AnimatedSection variants={fadeInRight} delay={0.2} className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-8">
             <motion.div className="relative group" whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 200, damping: 20 }}>
               <div className="absolute -inset-0.5 bg-gradient-to-b from-cyan/50 to-transparent opacity-50 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
               <HUDFrame className="relative bg-zinc-900 overflow-hidden aspect-[4/5] w-full">
-                <Image src={`${basePath}/Raouf_2.jpg`} alt="Mohammad Raouf Abedini" fill className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0" priority />
+                {!photoLoadFailed ? (
+                  <Image
+                    loader={profileImageLoader}
+                    src={`${BASE_PATH}/Raouf_2.jpg`}
+                    alt="Mohammad Raouf Abedini"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    unoptimized
+                    className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0"
+                    priority
+                    onError={() => setPhotoLoadFailed(true)}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-zinc-900 to-black">
+                    <div className="text-center font-mono">
+                      <p className="text-cyan text-2xl font-bold tracking-widest">MRA</p>
+                      <p className="text-zinc-500 text-xs mt-2">PHOTO_UNAVAILABLE</p>
+                    </div>
+                  </div>
+                )}
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent pointer-events-none"></div>
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                   <div className="font-mono text-xs text-cyan/80">
@@ -109,7 +133,7 @@ export function AboutClient() {
               </HUDFrame>
             </motion.div>
 
-            <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <motion.div variants={staggerContainer} initial={false} whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <motion.div variants={fadeInUp} className="border border-white/10 p-3 bg-zinc-900/50 hover:border-amber/30 transition-colors">
                 <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider mb-1">Experience</div>
                 <div className="text-2xl font-bold text-white font-mono">4+ <span className="text-amber text-sm">YRS</span></div>
@@ -119,7 +143,7 @@ export function AboutClient() {
                 <div className="text-2xl font-bold text-white font-mono">76+ <span className="text-purple text-sm">WAM</span></div>
               </motion.div>
             </motion.div>
-          </AnimatedSection>
+          </div>
         </div>
       </main>
     </div>
