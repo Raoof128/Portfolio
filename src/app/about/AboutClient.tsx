@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image, { type ImageLoaderProps } from "next/image";
+import Image from "next/image";
 import { BASE_PATH } from "@/lib/constants";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
@@ -10,12 +10,29 @@ import { Terminal, Shield, Cpu, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 
-function profileImageLoader({ src }: ImageLoaderProps): string {
-  return src;
-}
+const PROFILE_PHOTO_SOURCES = [
+  `${BASE_PATH}/Raouf_2.jpg`,
+  `${BASE_PATH}/Raouf_2.png`,
+] as const;
 
 export function AboutClient() {
+  const [photoSourceIndex, setPhotoSourceIndex] = useState(0);
   const [photoLoadFailed, setPhotoLoadFailed] = useState(false);
+  const photoSource = PROFILE_PHOTO_SOURCES[photoSourceIndex];
+
+  const handlePhotoError = () => {
+    if (photoSourceIndex < PROFILE_PHOTO_SOURCES.length - 1) {
+      setPhotoSourceIndex((currentIndex) => currentIndex + 1);
+      return;
+    }
+
+    setPhotoLoadFailed(true);
+  };
+
+  const handlePhotoRetry = () => {
+    setPhotoSourceIndex(0);
+    setPhotoLoadFailed(false);
+  };
 
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
@@ -99,21 +116,28 @@ export function AboutClient() {
               <HUDFrame className="relative bg-zinc-900 overflow-hidden aspect-[4/5] w-full">
                 {!photoLoadFailed ? (
                   <Image
-                    loader={profileImageLoader}
-                    src={`${BASE_PATH}/Raouf_2.jpg`}
+                    key={photoSource}
+                    src={photoSource}
                     alt="Mohammad Raouf Abedini"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     unoptimized
-                    className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0"
                     priority
-                    onError={() => setPhotoLoadFailed(true)}
+                    className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0"
+                    onError={handlePhotoError}
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-zinc-900 to-black">
                     <div className="text-center font-mono">
                       <p className="text-cyan text-2xl font-bold tracking-widest">MRA</p>
                       <p className="text-zinc-500 text-xs mt-2">PHOTO_UNAVAILABLE</p>
+                      <button
+                        type="button"
+                        className="mt-4 px-3 py-1 border border-cyan/30 text-cyan/80 text-xs hover:border-cyan hover:text-cyan transition-colors"
+                        onClick={handlePhotoRetry}
+                      >
+                        RETRY_PHOTO
+                      </button>
                     </div>
                   </div>
                 )}

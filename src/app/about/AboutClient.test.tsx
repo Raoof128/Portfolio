@@ -20,7 +20,27 @@ describe("AboutClient", () => {
     const image = screen.getByAltText("Mohammad Raouf Abedini");
     fireEvent.error(image);
 
+    const fallbackImage = screen.getByAltText("Mohammad Raouf Abedini");
+    expect(fallbackImage).toHaveAttribute("src", "/Portfolio/Raouf_2.png");
+
+    fireEvent.error(fallbackImage);
+
     expect(screen.getByText("PHOTO_UNAVAILABLE")).toBeInTheDocument();
     expect(screen.getByText("MRA")).toBeInTheDocument();
+  });
+
+  it("allows retry after fallback", () => {
+    render(<AboutClient />);
+
+    const image = screen.getByAltText("Mohammad Raouf Abedini");
+    fireEvent.error(image);
+    fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
+
+    fireEvent.click(screen.getByRole("button", { name: "RETRY_PHOTO" }));
+
+    expect(screen.getByAltText("Mohammad Raouf Abedini")).toHaveAttribute(
+      "src",
+      "/Portfolio/Raouf_2.jpg",
+    );
   });
 });

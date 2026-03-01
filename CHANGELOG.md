@@ -2,6 +2,41 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-03-02
+- **Scope**: Full Repository Audit - Quality Gates and Dependency Security
+- **Summary**: Completed a comprehensive repository audit and hardening pass.
+    - **Structure/docs check**: Verified all required professional assets and engineering configs are present and consistent (`README.md`, `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `docs/ARCHITECTURE.md`, `docs/API_REFERENCE.md`, CI workflows, devcontainer, lint/test configs).
+    - **Code quality gates**: Re-ran linting, typechecking, full unit/component suite, and production build to validate release readiness.
+    - **Security remediation**: `npm audit` reported high-severity transitive vulnerabilities in `minimatch` and `rollup`; applied `npm audit fix` and updated lockfile to remove vulnerabilities.
+- **Files Changed**:
+    - `package-lock.json`
+    - `AGENT.md`
+    - `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: pass (63/63)
+    - `npm run build`: pass (23 static/SSG routes)
+    - `npm audit --audit-level=moderate`: pass (0 vulnerabilities)
+- **Follow-ups**: Maintain periodic dependency maintenance and keep full gate execution mandatory before deployment.
+
+### Raouf: 2026-03-02
+- **Scope**: About Page Photo Audit - Reload-Dependent Rendering Fix
+- **Summary**: Completed a focused audit of the `About Me` photo module and fixed reload-dependent behavior.
+    - **Root issue**: Single-source image failure handling (`Raouf_2.jpg`) could leave the photo section in a persistent fallback state after transient errors.
+    - **Reliability fix**: Added deterministic source fallback chain (`/Portfolio/Raouf_2.jpg` -> `/Portfolio/Raouf_2.png`) in `AboutClient`.
+    - **Recovery UX**: Added explicit `RETRY_PHOTO` action to recover from fallback state without manual browser refresh.
+    - **Test hardening**: Expanded About tests to validate fallback source switching and retry reset behavior.
+- **Files Changed**:
+    - `src/app/about/AboutClient.tsx`
+    - `src/app/about/AboutClient.test.tsx`
+    - `AGENT.md`
+    - `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run test:ci -- src/app/about/AboutClient.test.tsx`: pass (3/3)
+- **Follow-ups**: Execute full suite (`npm run test:ci`) and full static export build (`npm run build`) before release.
+
 ### Raouf: 2026-02-25
 - **Scope**: Focused Audit & Hardening - About Page and Profile Photo Reliability
 - **Summary**: Completed a targeted production audit for About content and profile photo stability.

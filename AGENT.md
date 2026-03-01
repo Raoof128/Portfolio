@@ -35,6 +35,34 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-03-02
+- **Scope**: Full Repository Audit - Quality Gates and Dependency Security
+- **Summary**: Executed a full production audit across repository structure, professional documentation presence, code quality gates, build pipeline, and dependency security. Verified all required docs/configs exist (`README`, `LICENSE`, `CONTRIBUTING`, `CODE_OF_CONDUCT`, `SECURITY`, architecture/API docs, CI workflows, devcontainer, lint/test config). Ran full validation stack and identified two high-severity transitive vulnerabilities (`minimatch`, `rollup`) via `npm audit`; remediated by applying `npm audit fix` and refreshing lockfile.
+- **Files Changed**:
+    - `package-lock.json`
+    - `AGENT.md`
+    - `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: clean
+    - `npm run typecheck`: clean
+    - `npm run test:ci`: 63/63 tests passing
+    - `npm run build`: static generation successful (23 routes)
+    - `npm audit --audit-level=moderate`: 0 vulnerabilities
+- **Follow-ups**: Keep dependency audit checks in CI and run scheduled lockfile refreshes to minimize transitive CVE drift.
+
+### Raouf: 2026-03-02
+- **Scope**: About Page Photo Audit - Reload-Dependent Rendering Fix
+- **Summary**: Audited the About photo section for reliability under client navigation and refresh scenarios. Identified fragility in single-source image error handling where one transient failure locked the UI into fallback state until manual reload. Implemented multi-source fallback (`.jpg` then `.png`) with deterministic retry behavior (`RETRY_PHOTO`) so the profile photo can recover without requiring page reload.
+- **Files Changed**:
+    - `src/app/about/AboutClient.tsx`
+    - `src/app/about/AboutClient.test.tsx`
+    - `AGENT.md`
+    - `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: clean
+    - `npm run test:ci -- src/app/about/AboutClient.test.tsx`: 3/3 tests passing
+- **Follow-ups**: Run full regression suite (`npm run test:ci`) and full production build (`npm run build`) before deployment cut.
+
 ### Raouf: 2026-02-25
 - **Scope**: Focused Audit & Hardening - About Page and Profile Photo Reliability
 - **Summary**: Performed a deep reliability audit of the `/about` route and profile image rendering pipeline. Identified that About content could remain visually hidden when client hydration/animation did not execute promptly due motion-wrapper defaults, and implemented a stable render path so core bio content is visible in static HTML immediately. Hardened profile photo behavior with deterministic basePath-aware source resolution and explicit fallback UI for image load failures. Added dedicated About tests for heading/photo rendering and fallback behavior, and cleaned test mocks to avoid non-DOM prop warnings.
