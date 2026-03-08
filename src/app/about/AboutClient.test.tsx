@@ -7,7 +7,7 @@ describe("AboutClient", () => {
     render(<AboutClient />);
 
     expect(
-      screen.getByRole("heading", { name: /about me/i }),
+      screen.getByRole("heading", { name: /mohammad raouf abedini/i }),
     ).toBeInTheDocument();
 
     const image = screen.getByAltText("Mohammad Raouf Abedini");
