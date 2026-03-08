@@ -12,7 +12,7 @@ import { fadeInUp, staggerContainer } from "@/lib/utils";
 
 export function WriteUpsClient() {
   return (
-    <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
+    <div className="relative min-h-screen pt-24 pb-12">
       <ActiveGrid />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection variants={fadeInUp}>

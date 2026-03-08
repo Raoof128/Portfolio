@@ -3,6 +3,13 @@
 ## [Unreleased]
 
 ### Raouf: 2026-03-08
+- **Scope**: Double Scrollbar Fix + Full Responsive Audit
+- **Summary**: Fixed double scrollbar caused by `body { overflow-x: hidden }` without matching rule on `html`. Moved `html` scrollbar styles out of `@layer utilities` into a top-level block with `overflow-x: hidden`. Audited all pages one-by-one: fixed `BentoCard` missing `className` prop (Mehr Guard never actually spanned 2 columns — removed inner wrapper div, added `md:col-span-2` to grid cell). Reduced hero/section padding from `py-28` → `py-16 md:py-28` for mobile. Made Navbar logo text responsive (`~/raouf` on mobile, full name on sm+). Fixed nested `<main>` tags in 5 page clients (About, Resume, Lab, WriteUps, ProjectDetail) → changed to `<div>` per HTML spec (only one `<main>` per page).
+- **Files Changed**: `src/app/globals.css`, `src/app/page.tsx`, `src/components/layout/Navbar.tsx`, `src/app/about/AboutClient.tsx`, `src/app/resume/ResumeClient.tsx`, `src/app/lab/LabClient.tsx`, `src/app/write-ups/WriteUpsClient.tsx`, `src/app/projects/[slug]/ProjectDetailClient.tsx`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run test:ci`: 63/63, `npm run build`: 24 routes, Cloudflare deploy: success
+- **Follow-ups**: None.
+
+### Raouf: 2026-03-08
 - **Scope**: About Page Full Redesign — GitHub Profile Content Integration
 - **Summary**: Pulled full content from `github.com/Raoof128/Raoof128` README and redesigned `AboutClient.tsx` from scratch with 5 sections. Added AI/ML Security, Cloud & Infra, and Australian Compliance specialization pillars. Added 7-entry Active Operations lab feed with ACTIVE/ARCHIVED/CONCEPT status. Expanded skills matrix to 45+ skills across 5 categories. Improved photo overlay with CLEARANCE/LOCATION labels and green online indicator. Fixed test assertion for new `h1` heading text.
 - **Files Changed**: `src/app/about/AboutClient.tsx`, `src/app/about/AboutClient.test.tsx`, `AGENT.md`, `CHANGELOG.md`

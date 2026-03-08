@@ -12,7 +12,7 @@ import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 
 export function ResumeClient() {
   return (
-    <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
+    <div className="relative min-h-screen pt-24 pb-12">
       <ActiveGrid />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection variants={fadeInUp}>
