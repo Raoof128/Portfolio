@@ -33,17 +33,18 @@ const CATEGORY_STYLE: Record<string, { dot: string; badge: string; hover: string
 /* ─── Bento Card ─────────────────────────────────────────────────────── */
 
 function BentoCard({
-  slug, accentHover, cornerClass, children,
+  slug, accentHover, cornerClass, className, children,
 }: {
   slug: string;
   accentHover: string;
   cornerClass: string;
+  className?: string;
   children: React.ReactNode;
 }) {
   return (
     <motion.div
       variants={fadeInUp}
-      className={`group relative p-6 border border-white/8 bg-zinc-900/40 hover:bg-zinc-900/70 ${accentHover} transition-all duration-300`}
+      className={`group relative p-6 border border-white/8 bg-zinc-900/40 hover:bg-zinc-900/70 ${accentHover} transition-all duration-300${className ? ` ${className}` : ""}`}
       whileHover={{ y: -3 }}
     >
       {children}
@@ -102,7 +103,7 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-16 items-center py-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-16 items-center py-20 lg:py-28">
 
           {/* Left */}
           <div className="space-y-10">
@@ -242,9 +243,9 @@ export default function Home() {
           BENTO PROJECTS
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28">
 
-          <div className="flex items-end justify-between mb-14 border-b border-white/5 pb-5">
+          <div className="flex items-end justify-between mb-10 md:mb-14 border-b border-white/5 pb-5">
             <div>
               <p className="font-mono text-[10px] text-zinc-600 tracking-[0.3em] uppercase mb-2">
                 Deployed Systems
@@ -279,9 +280,9 @@ export default function Home() {
                   slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
+                  className="md:col-span-2"
                 >
-                  <div className="md:col-span-2 [grid-column:span_2_/_span_2]">
-                    <div className="flex items-start justify-between mb-5">
+                  <div className="flex items-start justify-between mb-5">
                       <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                         {p.category}
                       </span>
@@ -321,7 +322,6 @@ export default function Home() {
                         Case Study <ArrowRight className="w-3 h-3" />
                       </span>
                     </div>
-                  </div>
                 </BentoCard>
               );
             })()}
@@ -464,8 +464,8 @@ export default function Home() {
           PHILOSOPHY — Ghost letter depth trick
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
-          <div className="flex items-end justify-between mb-14 border-b border-white/5 pb-5">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28">
+          <div className="flex items-end justify-between mb-10 md:mb-14 border-b border-white/5 pb-5">
             <div>
               <p className="font-mono text-[10px] text-zinc-600 tracking-[0.3em] uppercase mb-2">
                 Operating Principles
@@ -542,7 +542,7 @@ export default function Home() {
           LAB TEASER
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28">
           <HUDFrame className="bg-gradient-to-r from-zinc-900 via-zinc-900/60 to-transparent border-l-4 border-l-cyan p-8 md:p-12">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div className="space-y-5">
@@ -584,8 +584,8 @@ export default function Home() {
           WRITE-UPS — Editorial numbered list
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 pb-36">
-          <div className="flex items-end justify-between mb-14 border-b border-white/5 pb-5">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28 pb-20 md:pb-36">
+          <div className="flex items-end justify-between mb-10 md:mb-14 border-b border-white/5 pb-5">
             <div>
               <p className="font-mono text-[10px] text-zinc-600 tracking-[0.3em] uppercase mb-2">
                 Technical Writing

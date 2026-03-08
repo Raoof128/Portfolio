@@ -14,7 +14,7 @@ export function WriteUpsClient() {
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection variants={fadeInUp}>
           <div className="mb-12">
             <div className="flex items-center space-x-2 text-cyan mb-2">
@@ -59,7 +59,7 @@ export function WriteUpsClient() {
             </motion.div>
           ))}
         </motion.div>
-      </main>
+      </div>
     </div>
   );
 }

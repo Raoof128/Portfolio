@@ -14,7 +14,7 @@ export function ResumeClient() {
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection variants={fadeInUp}>
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -242,7 +242,7 @@ export function ResumeClient() {
           </AnimatedSection>
 
         </motion.div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -48,8 +48,9 @@ export function Navbar() {
                     <div className="p-1 border border-transparent group-hover:border-cyan/50 rounded-sm transition-colors">
                         <Terminal className="w-5 h-5 text-cyan" />
                     </div>
-                    <span className="font-mono font-bold text-lg tracking-tight text-foreground group-hover:text-cyan transition-colors">
-                        ~/mohammad-raouf-abedini
+                    <span className="font-mono font-bold text-sm md:text-base lg:text-lg tracking-tight text-foreground group-hover:text-cyan transition-colors">
+                        <span className="sm:hidden">~/raouf</span>
+                        <span className="hidden sm:inline">~/mohammad-raouf-abedini</span>
                     </span>
                 </Link>
 

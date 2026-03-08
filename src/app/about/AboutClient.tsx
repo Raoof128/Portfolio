@@ -135,7 +135,7 @@ export function AboutClient() {
     <div className="relative min-h-screen pt-24 pb-16 overflow-x-hidden">
       <ActiveGrid />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20">
 
         {/* ─── HERO ─── */}
         <motion.div
@@ -383,7 +383,7 @@ export function AboutClient() {
           </div>
         </motion.section>
 
-      </main>
+      </div>
     </div>
   );
 }

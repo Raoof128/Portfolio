@@ -15,7 +15,7 @@ export function LabClient() {
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <AnimatedSection variants={fadeInUp}>
           <div className="mb-12">
@@ -80,7 +80,7 @@ export function LabClient() {
           <AlertTriangle className="w-3 h-3 text-yellow-600/50" />
           <span>USE_CODE_AT_OWN_RISK</span>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

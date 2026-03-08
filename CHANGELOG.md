@@ -3,6 +3,24 @@
 ## [Unreleased]
 
 ### Raouf: 2026-03-08
+- **Scope**: About Page Full Redesign — GitHub Profile Content Integration
+- **Summary**: Pulled full content from `github.com/Raoof128/Raoof128` README and redesigned `AboutClient.tsx` from scratch with 5 sections. Added AI/ML Security, Cloud & Infra, and Australian Compliance specialization pillars. Added 7-entry Active Operations lab feed with ACTIVE/ARCHIVED/CONCEPT status. Expanded skills matrix to 45+ skills across 5 categories. Improved photo overlay with CLEARANCE/LOCATION labels and green online indicator. Fixed test assertion for new `h1` heading text.
+- **Files Changed**: `src/app/about/AboutClient.tsx`, `src/app/about/AboutClient.test.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run test:ci`: 63/63, `npm run build`: pass (24 routes), Cloudflare deploy: success
+- **Follow-ups**: Update Lab page to surface the 7 operations listed on About.
+
+### Raouf: 2026-03-08
+- **Scope**: Full Site Audit - Content Sync & Data Accuracy
+- **Summary**: Conducted full audit across all pages/components against resume DOCX and codebase. Fixed all stale content, added missing project, corrected schema data.
+    - **layout.tsx**: Fixed JSON-LD `jobTitle` → "Freelance Full-Stack Developer & Security Engineer", `addressLocality` → "Castle Hill", expanded `knowsAbout` with Kotlin MP, FastAPI, Web/Mobile App Security.
+    - **data.ts**: Added PhishPatrol project (4th project, 50+ student deployments). Site now generates 24 static routes.
+    - **AboutClient.tsx**: Rewrote bio to reflect 70+ projects / 1,000+ users narrative. Updated tech stack card (Kotlin, Bash, SQL, Burp Suite, Nmap, Docker, FastAPI). Changed stat card from "4+ YRS" → "70+ SHIPPED".
+    - **page.tsx**: Sharpened hero description ("70+ projects. 1,000+ users.") and fixed lab teaser to reflect actual lab content (Rust, Python, Go) instead of generic eBPF copy.
+- **Files Changed**: `src/app/layout.tsx`, `src/lib/data.ts`, `src/app/about/AboutClient.tsx`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run test:ci`: 63/63, `npm run build`: pass (24 routes), Cloudflare deploy: success
+- **Follow-ups**: Consider adding Syllabus Sync as a full project entry.
+
+### Raouf: 2026-03-08
 - **Scope**: Resume Content Sync from DOCX
 - **Summary**: Read `Raouf_Portfolio_Resume.docx` and updated `ResumeClient.tsx` to match. Key additions: new Freelance role (Jan 2024–Present), corrected title at Iran Pharmacy ("IT Manager"), updated Professional Summary, expanded Technical Skills (Kotlin, Bash, SQL, Swift/Go, Burp Suite, Wireshark, Nmap, Docker, FastAPI, OWASP, MITRE ATT&CK, NIST), updated location to Castle Hill, added PhishPatrol project, added Leadership & Community section (Anthropic evaluation, peer mentoring), renumbered sections to 07.
 - **Files Changed**: `src/app/resume/ResumeClient.tsx`

@@ -21,7 +21,7 @@ interface Project {
 export function ProjectDetailClient({ project }: { project: Project }) {
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <main className="flex-1 pb-24">
+      <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
           <section className="border-b border-white/10 bg-white/5 py-12 md:py-20">
@@ -192,7 +192,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
           </AnimatedSection>
 
         </div>
-      </main>
+      </div>
     </div>
   )
 }
