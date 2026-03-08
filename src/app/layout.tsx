@@ -65,20 +65,23 @@ export default function RootLayout({
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
     "url": SITE_URL,
-    "jobTitle": "Cybersecurity Specialist",
+    "jobTitle": "Freelance Full-Stack Developer & Security Engineer",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Sydney",
+      "addressLocality": "Castle Hill",
       "addressRegion": "NSW",
       "addressCountry": "AU"
     },
     "knowsAbout": [
       { "@type": "Thing", "name": "Cybersecurity" },
+      { "@type": "Thing", "name": "Web Application Security" },
+      { "@type": "Thing", "name": "Mobile App Security" },
+      { "@type": "Thing", "name": "Penetration Testing" },
       { "@type": "Thing", "name": "eBPF (Extended Berkeley Packet Filter)" },
       { "@type": "Thing", "name": "Network Security" },
-      { "@type": "Thing", "name": "Rust Programming Language" },
+      { "@type": "Thing", "name": "Kotlin Multiplatform" },
       { "@type": "Thing", "name": "Next.js" },
-      { "@type": "Thing", "name": "Penetration Testing" }
+      { "@type": "Thing", "name": "FastAPI" }
     ],
     "sameAs": [
       GITHUB_URL,

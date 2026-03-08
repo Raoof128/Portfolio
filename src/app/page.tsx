@@ -61,8 +61,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg text-zinc-400 max-w-xl leading-relaxed"
             >
-              Building <span className="text-zinc-200">privacy-first</span> security tools and scalable runtime systems.
-              Operating at the edge of offensive security and distributed architecture.
+              70+ projects. 1,000+ users. Security embedded from <span className="text-zinc-200">design to deployment</span> — across mobile, web, and kernel space.
             </motion.p>
 
             <motion.div
@@ -217,8 +216,7 @@ export default function Home() {
                   <h3 className="font-mono text-lg text-white">THE_LAB</h3>
                 </div>
                 <p className="text-zinc-400 max-w-2xl">
-                  Exploring the depths of systems programming and security engineering.
-                  Current focus: <span className="text-cyan">eBPF</span> runtime visibility and kernel-level tracing.
+                  Hands-on security research and systems experiments. Current work: <span className="text-cyan">Rust</span> keylogger analysis, raw socket packet sniffing, and <span className="text-cyan">Go</span> steganography tooling.
                 </p>
               </div>
               <NeonButton href="/lab" variant="outline" className="min-w-[150px]">

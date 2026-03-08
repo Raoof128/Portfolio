@@ -58,10 +58,10 @@ export function AboutClient() {
                 Hey, I&apos;m <span className="text-white font-semibold">Raouf</span>.
               </p>
               <p className="mt-4 text-zinc-400 leading-relaxed">
-                I&apos;m a cybersecurity student at <span className="text-cyan">Macquarie University</span> building production-grade security tools and exploring the intersection of AI and security. Currently in my final year with a <span className="text-white">76+ WAM</span>, specializing in offensive security, digital forensics, and applied cryptography.
+                I&apos;m a final-year Cyber Security student at <span className="text-cyan">Macquarie University</span> (WAM: 76+) with <span className="text-white">70+ independent projects</span> spanning web application security, mobile app security, full-stack development, and AI tooling.
               </p>
               <p className="mt-4 text-zinc-400 leading-relaxed">
-                I&apos;ve spent 4+ years in IT support solving real-world technical problems, and now I&apos;m channeling that experience into creating secure, reliable applications. My projects like <span className="text-cyan">MehrGuard</span> (offline security scanner) and contributions to Syllabus Sync showcase my commitment to security-first development.
+                I ship production applications serving <span className="text-white">1,000+ end users</span> and embed security across the entire development lifecycle — from threat modelling and secure code review through to deployment and incident remediation. Projects like <span className="text-cyan">Mehr Guard</span> (submitted to KotlinConf) and <span className="text-cyan">PhishPatrol</span> (deployed to 50+ students) reflect that commitment.
               </p>
             </HUDFrame>
 
@@ -76,15 +76,15 @@ export function AboutClient() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-4 border border-white/5 bg-white/5 rounded-sm hover:border-cyan/30 transition-colors group">
                   <div className="flex items-center gap-2 mb-2 text-zinc-200 font-mono text-sm group-hover:text-cyan">
-                    <Cpu className="w-4 h-4" /> Tech Stack
+                    <Cpu className="w-4 h-4" /> Languages
                   </div>
-                  <p className="text-xs text-zinc-500 font-mono">Python, JavaScript/TypeScript, C/C++</p>
+                  <p className="text-xs text-zinc-500 font-mono">Python, TypeScript, Kotlin, C/C++, Bash, SQL</p>
                 </div>
                 <div className="p-4 border border-white/5 bg-white/5 rounded-sm hover:border-cyan/30 transition-colors group">
                   <div className="flex items-center gap-2 mb-2 text-zinc-200 font-mono text-sm group-hover:text-cyan">
-                    <Network className="w-4 h-4" /> Environments
+                    <Network className="w-4 h-4" /> Tools &amp; Platforms
                   </div>
-                  <p className="text-xs text-zinc-500 font-mono">Linux/Windows, Cloud Arch, Mobile Dev</p>
+                  <p className="text-xs text-zinc-500 font-mono">Burp Suite, Wireshark, Nmap, Docker, Kali Linux, Next.js, FastAPI</p>
                 </div>
               </div>
             </div>
@@ -159,8 +159,8 @@ export function AboutClient() {
 
             <motion.div variants={staggerContainer} initial={false} whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <motion.div variants={fadeInUp} className="border border-white/10 p-3 bg-zinc-900/50 hover:border-amber/30 transition-colors">
-                <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider mb-1">Experience</div>
-                <div className="text-2xl font-bold text-white font-mono">4+ <span className="text-amber text-sm">YRS</span></div>
+                <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider mb-1">Projects</div>
+                <div className="text-2xl font-bold text-white font-mono">70+ <span className="text-amber text-sm">SHIPPED</span></div>
               </motion.div>
               <motion.div variants={fadeInUp} className="border border-white/10 p-3 bg-zinc-900/50 hover:border-purple/30 transition-colors">
                 <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider mb-1">Academics</div>
