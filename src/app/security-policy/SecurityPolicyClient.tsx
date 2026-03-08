@@ -50,7 +50,7 @@ export function SecurityPolicyClient() {
               <HUDFrame className="p-6 bg-zinc-900/50">
                 <p className="text-zinc-400 mb-4">This security policy applies to the following assets:</p>
                 <ul className="space-y-2 text-zinc-300">
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" /><span><code className="text-cyan">raoof128.github.io/Portfolio</code> - This portfolio website</span></li>
+                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" /><span><code className="text-cyan">raoufabedini.dev</code> - This portfolio website</span></li>
                   <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" /><span>Any open-source repositories under <code className="text-cyan">github.com/Raoof128</code></span></li>
                 </ul>
               </HUDFrame>

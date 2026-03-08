@@ -2,6 +2,39 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-03-08
+- **Scope**: Resume Content Sync from DOCX
+- **Summary**: Read `Raouf_Portfolio_Resume.docx` and updated `ResumeClient.tsx` to match. Key additions: new Freelance role (Jan 2024–Present), corrected title at Iran Pharmacy ("IT Manager"), updated Professional Summary, expanded Technical Skills (Kotlin, Bash, SQL, Swift/Go, Burp Suite, Wireshark, Nmap, Docker, FastAPI, OWASP, MITRE ATT&CK, NIST), updated location to Castle Hill, added PhishPatrol project, added Leadership & Community section (Anthropic evaluation, peer mentoring), renumbered sections to 07.
+- **Files Changed**: `src/app/resume/ResumeClient.tsx`
+- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run build`: pass (23 routes), Cloudflare Pages deploy: success
+- **Follow-ups**: None.
+
+### Raouf: 2026-03-08
+- **Scope**: DevOps - Cloudflare Pages Deployment with Custom Domain
+- **Summary**: Migrated production deployment from GitHub Pages to Cloudflare Pages and configured custom domain `raoufabedini.dev`.
+    - **Config**: Removed `basePath: "/Portfolio"` from `next.config.ts` (was GitHub Pages-specific; not needed for root custom domain).
+    - **Domain rebrand**: Updated `src/lib/constants.ts` — `BASE_PATH` → `""`, `SITE_ORIGIN` → `"https://raoufabedini.dev"`. `SITE_URL` now resolves to `https://raoufabedini.dev`.
+    - **Content**: Updated hardcoded `raoof128.github.io/Portfolio` references in `SecurityPolicyClient.tsx`, `public/security.txt`, and `public/llms.txt` to `raoufabedini.dev`.
+    - **Tests**: Updated `AboutClient.test.tsx` path assertions (`/Portfolio/Raouf_2.jpg` → `/Raouf_2.jpg`) to match empty `BASE_PATH`.
+    - **Deploy**: Created Cloudflare Pages project `raoufabedini`, deployed 229 files from `out/`, attached custom domain via Cloudflare API.
+- **Files Changed**:
+    - `next.config.ts`
+    - `src/lib/constants.ts`
+    - `src/app/security-policy/SecurityPolicyClient.tsx`
+    - `src/app/about/AboutClient.test.tsx`
+    - `public/security.txt`
+    - `public/llms.txt`
+    - `AGENT.md`
+    - `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: pass (63/63)
+    - `npm run build`: pass (23 static/SSG routes)
+    - Cloudflare Pages deploy: 229 files uploaded, live at `https://89969fd8.raoufabedini.pages.dev`
+    - Custom domain `raoufabedini.dev`: attached, status pending DNS propagation
+- **Follow-ups**: Wait for DNS to propagate (~1-2 min); verify `https://raoufabedini.dev` is live. Update GitHub Actions `deploy.yml` if keeping GitHub as a CI source.
+
 ### Raouf: 2026-03-02
 - **Scope**: Full Repository Audit - Quality Gates and Dependency Security
 - **Summary**: Completed a comprehensive repository audit and hardening pass.

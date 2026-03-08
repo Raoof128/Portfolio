@@ -1,5 +1,5 @@
-export const BASE_PATH = "/Portfolio";
-export const SITE_ORIGIN = "https://raoof128.github.io";
+export const BASE_PATH = "";
+export const SITE_ORIGIN = "https://raoufabedini.dev";
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
 export const SITE_NAME = "Mohammad Raouf Abedini Portfolio";
 

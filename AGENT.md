@@ -35,6 +35,19 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-03-08
+- **Scope**: Cloudflare Pages Deployment with Custom Domain
+- **Summary**: Migrated from GitHub Pages to Cloudflare Pages. Removed `basePath: "/Portfolio"` from `next.config.ts`, updated `constants.ts` (`BASE_PATH=""`, `SITE_ORIGIN="https://raoufabedini.dev"`), updated all hardcoded legacy domain references across source and public files, fixed test path assertions, rebuilt static export, deployed 229 files to Cloudflare Pages project `raoufabedini`, and attached custom domain `raoufabedini.dev` via Cloudflare API.
+- **Files Changed**: `next.config.ts`, `src/lib/constants.ts`, `src/app/security-policy/SecurityPolicyClient.tsx`, `src/app/about/AboutClient.test.tsx`, `public/security.txt`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: clean
+    - `npm run typecheck`: clean
+    - `npm run test:ci`: 63/63 passing
+    - `npm run build`: 23 routes, static export successful
+    - Cloudflare Pages deploy: success (229 files)
+    - Custom domain: `raoufabedini.dev` attached, pending DNS activation
+- **Follow-ups**: Confirm `https://raoufabedini.dev` is live once DNS propagates.
+
 ### Raouf: 2026-03-02
 - **Scope**: Full Repository Audit - Quality Gates and Dependency Security
 - **Summary**: Executed a full production audit across repository structure, professional documentation presence, code quality gates, build pipeline, and dependency security. Verified all required docs/configs exist (`README`, `LICENSE`, `CONTRIBUTING`, `CODE_OF_CONDUCT`, `SECURITY`, architecture/API docs, CI workflows, devcontainer, lint/test config). Ran full validation stack and identified two high-severity transitive vulnerabilities (`minimatch`, `rollup`) via `npm audit`; remediated by applying `npm audit fix` and refreshing lockfile.

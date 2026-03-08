@@ -11,7 +11,7 @@ describe("AboutClient", () => {
     ).toBeInTheDocument();
 
     const image = screen.getByAltText("Mohammad Raouf Abedini");
-    expect(image).toHaveAttribute("src", "/Portfolio/Raouf_2.jpg");
+    expect(image).toHaveAttribute("src", "/Raouf_2.jpg");
   });
 
   it("shows a fallback when photo fails to load", () => {
@@ -21,7 +21,7 @@ describe("AboutClient", () => {
     fireEvent.error(image);
 
     const fallbackImage = screen.getByAltText("Mohammad Raouf Abedini");
-    expect(fallbackImage).toHaveAttribute("src", "/Portfolio/Raouf_2.png");
+    expect(fallbackImage).toHaveAttribute("src", "/Raouf_2.png");
 
     fireEvent.error(fallbackImage);
 
@@ -40,7 +40,7 @@ describe("AboutClient", () => {
 
     expect(screen.getByAltText("Mohammad Raouf Abedini")).toHaveAttribute(
       "src",
-      "/Portfolio/Raouf_2.jpg",
+      "/Raouf_2.jpg",
     );
   });
 });
