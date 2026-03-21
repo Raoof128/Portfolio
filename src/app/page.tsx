@@ -391,6 +391,44 @@ export default function Home() {
               );
             })()}
 
+            {/* Nexus Archive */}
+            {(() => {
+              const p = projects["nexus-archive"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner}>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
+                      {p.category}
+                    </span>
+                    <span className="font-mono text-[10px] text-zinc-600">{p.year}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-zinc-400 leading-relaxed mb-4">{p.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {p.tags.slice(0, 4).map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-zinc-600 border border-white/8 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {p.links.repo && (
+                    <a
+                      href={p.links.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 font-mono text-xs text-zinc-600 hover:text-cyan transition-colors relative z-10"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="w-3 h-3" /> Repo
+                    </a>
+                  )}
+                </BentoCard>
+              );
+            })()}
+
             {/* ECRSM — spans 2 cols on desktop */}
             {(() => {
               const p = projects["ecrsm"];

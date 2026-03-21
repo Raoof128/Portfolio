@@ -154,6 +154,50 @@ export const projects: Record<string, Project> = {
       "Positive student engagement feedback"
     ]
   },
+  "nexus-archive": {
+    slug: "nexus-archive",
+    title: "Nexus Archive",
+    category: "ENGINEERING",
+    year: "2026",
+    description: "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
+    tags: ["React", "Python", "Litestar", "Supabase", "AI", "Full-Stack"],
+    links: {
+      repo: "https://github.com/Raoof128/Nexus_Archive",
+      caseStudy: "/projects/nexus-archive"
+    },
+    build: {
+      stack: ["React 19", "Vite", "Tailwind CSS 4", "TanStack Query", "Python 3.12", "Litestar", "Supabase PostgreSQL", "Docker", "Terraform"],
+      features: [
+        "AI-assisted media recommendations via Gemini with graceful degradation",
+        "Real-time chat transcripts with user-scoped sanitization",
+        "Status tracking, ratings, and reviews for anime, movies, and books",
+        "Smart filtering and search across entire media library"
+      ]
+    },
+    secure: {
+      measures: [
+        "HttpOnly SameSite=Strict auth cookies (no frontend-readable tokens)",
+        "Short-lived access tokens with silent rotation via /auth/refresh",
+        "AI prompt isolation with XML delimiters, string scrubbing, and PII masking",
+        "Encrypted takeaway persistence (AES via TAKEAWAY_ENCRYPTION_KEY)",
+        "Bandit, pip-audit, npm audit, and secret scanning in CI"
+      ]
+    },
+    fullDescription: "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
+    problem: "Existing media trackers are fragmented across platforms with weak security postures. Users need a unified catalog that treats their entertainment library as a curated identity system, not just a checklist — with real security built in.",
+    solution: [
+      "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
+      "Implemented backend-managed HttpOnly auth cookies replacing frontend-readable Supabase tokens",
+      "Integrated Gemini AI for media recommendations with shared per-user rate limiting and local fallback",
+      "Added encrypted takeaway persistence and AI prompt isolation with PII masking"
+    ],
+    proof: [
+      "Hardened auth: HttpOnly + SameSite=Strict cookies with silent token rotation",
+      "CI security gates: Bandit, pip-audit, npm audit, secret scanning",
+      "Locust load testing for performance verification",
+      "Terraform IaC scaffold for reproducible Supabase + Vercel deployments"
+    ]
+  },
   "ecrsm": {
     slug: "ecrsm",
     title: "ECRSM",

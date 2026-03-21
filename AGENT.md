@@ -35,6 +35,17 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-03-21
+- **Scope**: Add Nexus Archive Project to Portfolio
+- **Summary**: Added Nexus Archive (cyberpunk-styled personal media vault) as the 5th project. Created full project entry in `data.ts` with ENGINEERING category, and added a bento card on the homepage between GitSwitch and ECRSM. The project detail page, sitemap, and projects archive auto-generate from the data layer.
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 63/63 passing
+    - `npm run build`: pass (25 routes — was 24, +1 for `/projects/nexus-archive`)
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
 ### Raouf: 2026-03-08
 - **Scope**: Cloudflare Pages Deployment with Custom Domain
 - **Summary**: Migrated from GitHub Pages to Cloudflare Pages. Removed `basePath: "/Portfolio"` from `next.config.ts`, updated `constants.ts` (`BASE_PATH=""`, `SITE_ORIGIN="https://raoufabedini.dev"`), updated all hardcoded legacy domain references across source and public files, fixed test path assertions, rebuilt static export, deployed 229 files to Cloudflare Pages project `raoufabedini`, and attached custom domain `raoufabedini.dev` via Cloudflare API.

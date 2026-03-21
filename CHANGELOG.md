@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-03-21
+- **Scope**: Add Nexus Archive Project to Portfolio
+- **Summary**: Added Nexus Archive as the 5th project entry. Full-stack cyberpunk media vault (React 19 + Litestar + Supabase) with hardened cookie-based auth, encrypted takeaways, AI recommendations, and CI security gates. Added data entry in `data.ts` (ENGINEERING category, 2026) and homepage bento card in `page.tsx`. Project detail page, sitemap, and archive auto-generated from data layer. Build now produces 25 static routes (+1).
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run test:ci`: 63/63, `npm run build`: 25 routes
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
 ### Raouf: 2026-03-08
 - **Scope**: Double Scrollbar Fix + Full Responsive Audit
 - **Summary**: Fixed double scrollbar caused by `body { overflow-x: hidden }` without matching rule on `html`. Moved `html` scrollbar styles out of `@layer utilities` into a top-level block with `overflow-x: hidden`. Audited all pages one-by-one: fixed `BentoCard` missing `className` prop (Mehr Guard never actually spanned 2 columns — removed inner wrapper div, added `md:col-span-2` to grid cell). Reduced hero/section padding from `py-28` → `py-16 md:py-28` for mobile. Made Navbar logo text responsive (`~/raouf` on mobile, full name on sm+). Fixed nested `<main>` tags in 5 page clients (About, Resume, Lab, WriteUps, ProjectDetail) → changed to `<div>` per HTML spec (only one `<main>` per page).
