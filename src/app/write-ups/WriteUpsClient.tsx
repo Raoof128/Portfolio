@@ -29,10 +29,10 @@ export function WriteUpsClient() {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               <DecryptedText text="Write-ups" />
             </h1>
-            <p className="text-zinc-400 max-w-2xl">
+            <p className="text-text-body max-w-2xl">
               Technical analysis, CTF solutions, and engineering logs.
               <br/>
-              <span className="text-xs font-mono text-zinc-600"> CLEARANCE_LEVEL: PUBLIC</span>
+              <span className="text-xs font-mono text-text-meta"> CLEARANCE_LEVEL: PUBLIC</span>
             </p>
           </div>
         </AnimatedSection>
@@ -42,18 +42,18 @@ export function WriteUpsClient() {
             <motion.div key={post.slug} variants={fadeInUp}>
               <Link href={`/write-ups/${post.slug}`} className="block group">
                 <motion.div whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}>
-                  <HUDFrame className="p-6 bg-zinc-900/40 backdrop-blur-md border border-white/5 hover:border-cyan/50 transition-all duration-300">
+                  <HUDFrame className="p-6 bg-[#06080d]/60 backdrop-blur-md hover:border-cyan/40 hover:bg-cyan/[0.04] transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="space-y-2">
-                        <div className="flex items-center gap-3 text-xs font-mono text-zinc-500">
+                        <div className="flex items-center gap-3 text-xs font-mono text-text-meta">
                           <span className="text-cyan">{post.date}</span>
-                          <span>|</span>
-                          <span className="px-1.5 py-0.5 bg-white/5 rounded text-zinc-400">{post.tag}</span>
+                          <span className="text-cyan/30">|</span>
+                          <span className="px-1.5 py-0.5 bg-cyan/5 border border-cyan/10 text-text-meta">{post.tag}</span>
                         </div>
                         <h2 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan transition-colors">{post.title}</h2>
-                        <p className="text-zinc-400 max-w-2xl">{post.takeaway}</p>
+                        <p className="text-text-body max-w-2xl">{post.takeaway}</p>
                       </div>
-                      <div className="flex items-center text-zinc-600 group-hover:text-cyan transition-colors">
+                      <div className="flex items-center text-text-meta group-hover:text-cyan transition-colors">
                         <span className="text-xs font-mono mr-2 hidden md:inline-block">READ_FILE</span>
                         <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                       </div>

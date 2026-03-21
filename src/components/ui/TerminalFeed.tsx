@@ -25,35 +25,35 @@ interface RawLog {
 
 const BOOT_SEQUENCE: RawLog[] = [
   { prompt: "~", msg: "neofetch --short", color: "text-cyan", delay: 400, typeSpeed: 28 },
-  { msg: "  OS      Arch Linux x86_64", color: "text-zinc-500", typeSpeed: 0 },
-  { msg: "  Host    raouf@castle-hill", color: "text-zinc-500", typeSpeed: 0 },
-  { msg: "  Uptime  3y 127d", color: "text-zinc-500", typeSpeed: 0 },
+  { msg: "  OS      Arch Linux x86_64", color: "text-text-body", typeSpeed: 0 },
+  { msg: "  Host    raouf@castle-hill", color: "text-text-body", typeSpeed: 0 },
+  { msg: "  Uptime  3y 127d", color: "text-text-body", typeSpeed: 0 },
   { prompt: "~", msg: "systemctl status security.target", color: "text-cyan", delay: 600, typeSpeed: 22 },
   { msg: "● security.target - Security Stack", color: "text-green-400", typeSpeed: 0 },
   { msg: "  Loaded: active (running)", color: "text-green-400", typeSpeed: 0 },
   { prompt: "#", msg: "bpftool prog list | head -3", color: "text-amber", delay: 500, typeSpeed: 24 },
-  { msg: "  42: tracepoint  tag 9ef3..  execve_monitor", color: "text-zinc-400", typeSpeed: 0 },
-  { msg: "  43: tracepoint  tag a1f7..  connect_guard", color: "text-zinc-400", typeSpeed: 0 },
-  { msg: "  44: xdp         tag d82c..  packet_filter", color: "text-zinc-400", typeSpeed: 0 },
+  { msg: "  42: tracepoint  tag 9ef3..  execve_monitor", color: "text-text-body", typeSpeed: 0 },
+  { msg: "  43: tracepoint  tag a1f7..  connect_guard", color: "text-text-body", typeSpeed: 0 },
+  { msg: "  44: xdp         tag d82c..  packet_filter", color: "text-text-body", typeSpeed: 0 },
   { prompt: "~", msg: "cargo test --release 2>&1 | tail -1", color: "text-cyan", delay: 500, typeSpeed: 20 },
   { msg: "  test result: ok. 87 passed; 0 failed", color: "text-green-400", typeSpeed: 0 },
   { prompt: "~", msg: "kubectl get pods -n monitor", color: "text-cyan", delay: 600, typeSpeed: 22 },
-  { msg: "  ecrsm-agent    1/1  Running  0  12d", color: "text-zinc-400", typeSpeed: 0 },
-  { msg: "  ecrsm-dash     1/1  Running  0  12d", color: "text-zinc-400", typeSpeed: 0 },
+  { msg: "  ecrsm-agent    1/1  Running  0  12d", color: "text-text-body", typeSpeed: 0 },
+  { msg: "  ecrsm-dash     1/1  Running  0  12d", color: "text-text-body", typeSpeed: 0 },
 ];
 
 const AMBIENT_LOGS: RawLog[] = [
   { msg: "NET    eth0  TLS 1.3 handshake ✓", color: "text-green-400" },
-  { msg: "SCAN   443   certificate valid 247d", color: "text-zinc-400" },
-  { msg: "EBPF   execve_monitor  pid=3847  /usr/bin/node", color: "text-zinc-500" },
+  { msg: "SCAN   443   certificate valid 247d", color: "text-text-body" },
+  { msg: "EBPF   execve_monitor  pid=3847  /usr/bin/node", color: "text-text-body" },
   { msg: "AUTH   session refresh  user=raouf  ✓", color: "text-purple-400" },
   { msg: "WARN   blocked  origin=unknown  → 403", color: "text-amber" },
-  { msg: "NET    dns query  raoufabedini.dev  → CF", color: "text-zinc-400" },
-  { msg: "EBPF   connect_guard  pid=4102  → 10.0.0.1:443", color: "text-zinc-500" },
+  { msg: "NET    dns query  raoufabedini.dev  → CF", color: "text-text-body" },
+  { msg: "EBPF   connect_guard  pid=4102  → 10.0.0.1:443", color: "text-text-body" },
   { msg: "OK     health check  /healthz  200  4ms", color: "text-green-400" },
   { msg: "SCAN   port sweep detected  src=192.168.1.x  dropped", color: "text-amber" },
   { msg: "AUTH   passkey verify  credential_id=a7f2..  ✓", color: "text-purple-400" },
-  { msg: "EBPF   xdp_filter  dropped 12 malformed packets", color: "text-zinc-500" },
+  { msg: "EBPF   xdp_filter  dropped 12 malformed packets", color: "text-text-body" },
   { msg: "NET    wss://  upgrade  dashboard client  ✓", color: "text-green-400" },
 ];
 
@@ -227,7 +227,7 @@ export function TerminalFeed() {
 
   return (
     <div
-      className="relative font-mono text-[11px] leading-[1.6] h-[320px] bg-[#0a0a0c] border border-white/[0.06] overflow-hidden select-none"
+      className="relative font-mono text-[11px] leading-[1.6] h-[320px] bg-[#0a0a0c] border border-cyan/10 overflow-hidden select-none"
       role="img"
       aria-label="Animated terminal showing system boot sequence and security monitoring"
     >
@@ -241,18 +241,18 @@ export function TerminalFeed() {
       />
 
       {/* Top chrome bar */}
-      <div className="relative z-10 flex items-center justify-between px-4 py-2.5 border-b border-white/[0.06] bg-white/[0.02]">
+      <div className="relative z-10 flex items-center justify-between px-4 py-2.5 border-b border-cyan/10 bg-cyan/[0.03]">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">
             <div className="w-[9px] h-[9px] rounded-full bg-[#ff5f57]/70" />
             <div className="w-[9px] h-[9px] rounded-full bg-[#febc2e]/70" />
             <div className="w-[9px] h-[9px] rounded-full bg-[#28c840]/70" />
           </div>
-          <span className="text-zinc-600 text-[10px] ml-3 tracking-wider">raouf@castle-hill</span>
+          <span className="text-text-meta text-[10px] ml-3 tracking-wider">raouf@castle-hill</span>
         </div>
         <div className="flex items-center gap-2">
           <span className={`w-1.5 h-1.5 rounded-full ${phase === "ambient" ? "bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.6)]" : "bg-amber animate-pulse"}`} />
-          <span className="text-zinc-600 text-[10px] tracking-wider uppercase">
+          <span className="text-text-meta text-[10px] tracking-wider uppercase">
             {phase === "boot" ? "booting" : phase === "ready" ? "ready" : "monitoring"}
           </span>
         </div>

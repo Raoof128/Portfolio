@@ -37,26 +37,26 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
             {/* Left Column: Info */}
             <AnimatedSection variants={fadeInLeft} className="lg:col-span-4 space-y-6">
 
-                <div className="p-6 bg-zinc-900/80 border border-white/10 rounded-lg backdrop-blur-sm">
-                    <div className="font-mono text-xs text-zinc-500 mb-2">EXPERIMENT_ID: {exp.id}</div>
+                <div className="p-6 bg-[#06080d]/60 border border-cyan/12 rounded-lg backdrop-blur-sm">
+                    <div className="font-mono text-xs text-text-body mb-2">EXPERIMENT_ID: {exp.id}</div>
                     <h1 className="text-2xl font-bold text-white mb-4">{exp.title}</h1>
 
                     <div className={`inline-flex items-center gap-2 px-2 py-1 rounded border text-xs font-mono mb-6 ${
                          exp.status === 'ACTIVE' ? 'bg-green-500/10 text-green-400 border-green-500/30' :
                          exp.status === 'CONCEPT' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30' :
-                         'bg-zinc-800 text-zinc-500 border-zinc-700'
+                         'bg-cyber-gray text-text-body border-cyan/15'
                     }`}>
                         <span className="relative flex h-2 w-2">
                              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${exp.status === 'ACTIVE' ? 'bg-green-400' : 'hidden'}`}></span>
                              <span className={`relative inline-flex rounded-full h-2 w-2 ${
                                  exp.status === 'ACTIVE' ? 'bg-green-500' :
-                                 exp.status === 'CONCEPT' ? 'bg-yellow-500' : 'bg-zinc-500'
+                                 exp.status === 'CONCEPT' ? 'bg-yellow-500' : 'bg-text-body'
                              }`}></span>
                         </span>
                         {exp.status}
                     </div>
 
-                    <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                    <p className="text-text-body text-sm leading-relaxed mb-6">
                         {exp.description}
                     </p>
 
@@ -65,7 +65,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                             <div className="text-xs font-mono text-cyan mb-2 flex items-center gap-2">
                                 <Terminal className="w-3 h-3" /> OBJECTIVE
                             </div>
-                            <p className="text-sm text-zinc-300">
+                            <p className="text-sm text-slate-300">
                                 {exp.objective}
                             </p>
                         </div>
@@ -74,16 +74,16 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                              <div className="text-xs font-mono text-yellow-500 mb-2 flex items-center gap-2">
                                 <AlertTriangle className="w-3 h-3" /> CONSTRAINTS
                             </div>
-                            <p className="text-xs text-zinc-400 font-mono bg-black/30 p-2 rounded border border-yellow-500/10">
+                            <p className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10">
                                 {exp.constraints}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                 <div className="p-4 border border-dashed border-zinc-800 rounded flex flex-wrap gap-2">
+                 <div className="p-4 border border-dashed border-cyan/15 rounded flex flex-wrap gap-2">
                     {exp.tech.map(t => (
-                        <span key={t} className="text-xs font-mono px-2 py-1 bg-white/5 text-zinc-400 rounded flex items-center gap-1">
+                        <span key={t} className="text-xs font-mono px-2 py-1 bg-cyan/5 text-text-body rounded flex items-center gap-1">
                             <Cpu className="w-3 h-3" /> {t}
                         </span>
                     ))}
@@ -93,25 +93,25 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
 
             {/* Right Column: Code Editor */}
             <AnimatedSection variants={fadeInRight} delay={0.15} className="lg:col-span-8">
-                <div className="bg-[#0d0d0d] border border-zinc-800 rounded-lg overflow-hidden font-mono text-sm shadow-2xl">
+                <div className="bg-[#0d0d0d] border border-cyber-gray rounded-lg overflow-hidden font-mono text-sm shadow-2xl">
 
                     {/* Fake Window Header */}
-                    <div className="bg-zinc-900 border-b border-zinc-800 p-3 flex items-center justify-between">
+                    <div className="bg-cyber-dark border-b border-cyber-gray p-3 flex items-center justify-between">
                         <div className="flex gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
                             <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
                             <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
                         </div>
-                        <div className="text-zinc-500 text-xs">src/main.{exp.tech[0]?.toLowerCase() || 'code'}</div>
+                        <div className="text-text-body text-xs">src/main.{exp.tech[0]?.toLowerCase() || 'code'}</div>
                         <div className="w-10"></div>
                     </div>
 
                     {/* Code Content */}
                     <div className="p-6 overflow-x-auto">
-                        <pre className="text-zinc-300 leading-relaxed">
+                        <pre className="text-slate-300 leading-relaxed">
                             {exp.codeSnippet.split('\n').map((line, i) => (
                                 <div key={i} className="table-row">
-                                    <span className="table-cell text-zinc-700 select-none text-right pr-4">{i + 1}</span>
+                                    <span className="table-cell text-text-meta select-none text-right pr-4">{i + 1}</span>
                                     <span className="table-cell whitespace-pre">{line}</span>
                                 </div>
                             ))}

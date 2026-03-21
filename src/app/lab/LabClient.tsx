@@ -31,7 +31,7 @@ export function LabClient() {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               <DecryptedText text="The Lab" />
             </h1>
-            <p className="text-zinc-400 max-w-2xl">
+            <p className="text-text-body max-w-2xl">
               A collection of <span className="text-cyan">Proof of Concepts</span>, snippets, and unfinished research.
               Code here is volatile and provided &quot;as is&quot; for educational purposes.
             </p>
@@ -43,24 +43,24 @@ export function LabClient() {
             <motion.div key={exp.id} variants={fadeInUp}>
               <GlowCard
                 glowColor={exp.status === 'ACTIVE' ? 'cyan' : exp.status === 'CONCEPT' ? 'amber' : 'purple'}
-                className="p-6 group hover:bg-zinc-800/50 transition-colors h-full flex flex-col"
+                className="p-6 group hover:bg-cyber-gray/50 transition-colors h-full flex flex-col"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <div className="font-mono text-xs text-zinc-600">ID: {exp.id}</div>
+                  <div className="font-mono text-xs text-text-meta">ID: {exp.id}</div>
                   <div className={`px-2 py-0.5 rounded text-[10px] font-mono tracking-wider border ${
                     exp.status === 'ACTIVE' ? 'bg-green-500/10 text-green-400 border-green-500/30' :
                     exp.status === 'CONCEPT' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30' :
-                    'bg-zinc-800 text-zinc-500 border-zinc-700'
+                    'bg-cyber-gray text-text-body border-cyan/15'
                   }`}>
                     {exp.status}
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">{exp.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow">{exp.description}</p>
+                <p className="text-text-body text-sm leading-relaxed mb-6 flex-grow">{exp.description}</p>
                 <div className="space-y-4">
                   <div className="flex flex-wrap gap-2">
                     {exp.tech.map(t => (
-                      <span key={t} className="text-[10px] font-mono px-1.5 py-0.5 bg-white/5 text-zinc-400 rounded">{t}</span>
+                      <span key={t} className="text-[10px] font-mono px-1.5 py-0.5 bg-cyan/5 text-text-body rounded">{t}</span>
                     ))}
                   </div>
                   <Link href={`/lab/${exp.id}`} className="flex items-center text-xs font-mono text-cyan hover:underline decoration-dotted">
@@ -76,17 +76,17 @@ export function LabClient() {
               href="https://github.com/Raoof128"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-dashed border-zinc-800 rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 hover:opacity-100 hover:border-cyan/30 transition-all h-full group cursor-pointer block"
+              className="border border-dashed border-cyber-gray rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 hover:opacity-100 hover:border-cyan/30 transition-all h-full group cursor-pointer block"
             >
-              <div className="w-10 h-10 rounded-full bg-zinc-800 group-hover:bg-cyan/10 flex items-center justify-center mb-3 transition-colors">
-                <GitBranch className="w-5 h-5 text-zinc-500 group-hover:text-cyan transition-colors" />
+              <div className="w-10 h-10 rounded-full bg-cyber-gray group-hover:bg-cyan/10 flex items-center justify-center mb-3 transition-colors">
+                <GitBranch className="w-5 h-5 text-text-body group-hover:text-cyan transition-colors" />
               </div>
-              <p className="text-sm text-zinc-500 font-mono group-hover:text-zinc-400 transition-colors">View more on GitHub</p>
+              <p className="text-sm text-text-body font-mono group-hover:text-cyan transition-colors">View more on GitHub</p>
             </a>
           </motion.div>
         </motion.div>
 
-        <div className="mt-16 border-t border-white/5 pt-8 flex items-center justify-center gap-2 text-xs text-zinc-600 font-mono">
+        <div className="mt-16 border-t border-cyan/10 pt-8 flex items-center justify-center gap-2 text-xs text-text-meta font-mono">
           <AlertTriangle className="w-3 h-3 text-yellow-600/50" />
           <span>USE_CODE_AT_OWN_RISK</span>
         </div>

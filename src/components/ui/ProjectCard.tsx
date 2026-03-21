@@ -49,7 +49,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
           <div className="flex justify-between items-start">
             <div>
               <h3 className="text-2xl font-bold font-mono tracking-tight text-white">{title}</h3>
-              <p className="mt-2 text-zinc-400 leading-relaxed max-w-xl">{description}</p>
+              <p className="mt-2 text-text-body leading-relaxed max-w-xl">{description}</p>
             </div>
             {featured && <div className="hidden sm:block text-xs font-mono text-cyan/70 border border-cyan/30 px-2 py-1">FEATURED_OP</div>}
           </div>
@@ -57,14 +57,14 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
           {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-2">
             {tags.map((tag) => (
-              <span key={tag} className="text-xs font-mono text-zinc-500 bg-zinc-900/50 px-2 py-1 border border-zinc-800">
+              <span key={tag} className="text-xs font-mono text-text-body bg-[#06080d]/60 px-2 py-1 border border-cyan/15">
                 {tag}
               </span>
             ))}
           </div>
 
           {/* Tabs Control */}
-          <div className="mt-6 flex border-b border-white/10" role="tablist" aria-label="Project Details">
+          <div className="mt-6 flex border-b border-cyan/12" role="tablist" aria-label="Project Details">
             <button
               id={buildTabId}
               role="tab"
@@ -76,7 +76,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
                 "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2 focus:outline-none focus:ring-2 focus:ring-cyan/50 rounded-t-sm",
                 activeTab === "build"
                   ? "border-cyan text-cyan bg-cyan/5"
-                  : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  : "border-transparent text-text-body hover:text-slate-300"
               )}
             >
               <Database className="w-3 h-3" /> BUILD
@@ -92,7 +92,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
                 "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2 focus:outline-none focus:ring-2 focus:ring-cyan/50 rounded-t-sm",
                 activeTab === "secure"
                   ? "border-cyan text-cyan bg-cyan/5"
-                  : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  : "border-transparent text-text-body hover:text-slate-300"
               )}
             >
               <Lock className="w-3 h-3" /> SECURE
@@ -116,7 +116,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
                 className="space-y-2"
               >
                 {(activeTab === "build" ? buildItems : secureItems).map((item, idx) => (
-                  <li key={`${item}-${idx}`} className="flex items-start gap-2 text-sm text-zinc-300">
+                  <li key={`${item}-${idx}`} className="flex items-start gap-2 text-sm text-slate-300">
                     <span className="text-cyan mt-1">&#x25B9;</span>
                     {item}
                   </li>
@@ -127,7 +127,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-6 pt-6 border-t border-white/5 flex flex-wrap gap-4">
+        <div className="mt-6 pt-6 border-t border-cyan/10 flex flex-wrap gap-4">
           {links.demo && (
             <NeonButton href={links.demo} variant="primary" className="text-xs py-2 px-4">
               <Play className="w-3 h-3 mr-2" /> WATCH DEMO
@@ -141,7 +141,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
           {links.caseStudy && (
             <Link
               href={links.caseStudy}
-              className="flex items-center text-xs font-mono text-zinc-500 hover:text-cyan ml-auto transition-colors"
+              className="flex items-center text-xs font-mono text-text-body hover:text-cyan ml-auto transition-colors"
             >
               READ CASE STUDY <ArrowUpRight className="w-3 h-3 ml-1" />
             </Link>

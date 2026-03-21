@@ -31,12 +31,12 @@ export default function ProjectsArchive() {
 
       {/* HEADER */}
       <AnimatedSection variants={fadeInUp}>
-        <div className="border-b border-zinc-800 pb-8">
+        <div className="border-b border-cyber-gray pb-8">
           <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
             <Terminal className="text-cyan-500 w-6 h-6" />
             PROJECT_DB
           </h1>
-          <p className="text-zinc-400 font-mono text-sm">
+          <p className="text-text-body font-mono text-sm">
             Index of deployed tools, research prototypes, and architectural proofs.
           </p>
 
@@ -46,14 +46,14 @@ export default function ProjectsArchive() {
             {/* Faux 'Grep' Search */}
             <div className="relative w-full md:w-96 group">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-zinc-500 font-mono text-xs">&gt; grep</span>
+                <span className="text-text-body font-mono text-xs">&gt; grep</span>
               </div>
               <input
                 type="text"
                 placeholder="search_query..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="block w-full pl-16 pr-3 py-2 border border-zinc-700 rounded-sm leading-5 bg-black/50 text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 sm:text-sm font-mono transition-all"
+                className="block w-full pl-16 pr-3 py-2 border border-cyan/15 rounded-sm leading-5 bg-black/50 text-slate-300 placeholder-cyan/30 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 sm:text-sm font-mono transition-all"
               />
             </div>
 
@@ -63,7 +63,7 @@ export default function ProjectsArchive() {
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className="relative px-3 py-1 text-xs font-mono border rounded-sm transition-all border-zinc-800 text-zinc-500 hover:border-zinc-600 hover:text-zinc-300"
+                  className="relative px-3 py-1 text-xs font-mono border rounded-sm transition-all border-cyber-gray text-text-body hover:border-cyan/25 hover:text-slate-300"
                 >
                   {filter === cat && (
                     <motion.div
@@ -100,29 +100,29 @@ export default function ProjectsArchive() {
                 <motion.div
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="group relative bg-zinc-900/20 border border-white/5 hover:border-cyan-500/30 p-4 md:p-6 transition-all hover:bg-zinc-900/40"
+                  className="group relative bg-[#06080d]/60 border border-cyan/10 hover:border-cyan-500/30 p-4 md:p-6 transition-all hover:bg-cyan/[0.04]"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
 
                     {/* Title & Tags */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-bold text-zinc-100 group-hover:text-cyan-400 transition-colors">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-cyan-400 transition-colors">
                           {project.title}
                         </h3>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-gray text-text-body border border-cyan/15">
                           {project.year || "2024"}
                         </span>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {project.tags.slice(0, 4).map(tag => (
-                          <span key={tag} className="text-xs text-zinc-500 font-mono">#{tag}</span>
+                          <span key={tag} className="text-xs text-text-body font-mono">#{tag}</span>
                         ))}
                       </div>
                     </div>
 
                     {/* Description Preview */}
-                    <p className="text-sm text-zinc-400 max-w-xl md:text-right line-clamp-2">
+                    <p className="text-sm text-text-body max-w-xl md:text-right line-clamp-2">
                       {project.description}
                     </p>
 
@@ -142,9 +142,9 @@ export default function ProjectsArchive() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="py-20 text-center border border-dashed border-zinc-800 rounded-lg"
+              className="py-20 text-center border border-dashed border-cyber-gray rounded-lg"
             >
-              <p className="text-zinc-500 font-mono">Query returned 0 results.</p>
+              <p className="text-text-body font-mono">Query returned 0 results.</p>
             </motion.div>
           )}
         </AnimatePresence>

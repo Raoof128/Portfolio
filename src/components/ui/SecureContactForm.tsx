@@ -65,7 +65,7 @@ export function SecureContactForm() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 border border-zinc-800 bg-black/40 backdrop-blur-sm rounded-lg relative overflow-hidden">
+    <div className="max-w-xl mx-auto p-6 border border-cyan/15 bg-black/40 backdrop-blur-sm rounded-lg relative overflow-hidden">
       {/* Decorative 'Scanner' Bar */}
       <div
         className={`absolute top-0 left-0 w-full h-1 transition-colors duration-300 ${
@@ -77,8 +77,8 @@ export function SecureContactForm() {
         }`}
       />
 
-      <div className="flex justify-between items-center mb-6 font-mono text-xs text-zinc-500">
-        <span>SESSION_ID: <span className="text-zinc-300">{traceId}</span></span>
+      <div className="flex justify-between items-center mb-6 font-mono text-xs text-text-body">
+        <span>SESSION_ID: <span className="text-slate-300">{traceId}</span></span>
         <span
           className={`flex items-center gap-2 ${
             status === "TYPING"
@@ -108,7 +108,7 @@ export function SecureContactForm() {
               autoComplete="name"
               placeholder="ENTER_IDENTITY"
               onKeyDown={handleTyping}
-              className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
+              className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
           <div className="space-y-1">
@@ -122,7 +122,7 @@ export function SecureContactForm() {
               autoComplete="email"
               placeholder="secure@gateway.io"
               onKeyDown={handleTyping}
-              className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
+              className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ export function SecureContactForm() {
             maxLength={2000}
             placeholder="TRANSMITTING_ENCRYPTED_PAYLOAD..."
             onKeyDown={handleTyping}
-            className="w-full bg-zinc-900/50 border border-zinc-700 text-zinc-100 p-2 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
+            className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-2 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
           />
         </div>
 
@@ -148,7 +148,7 @@ export function SecureContactForm() {
         )}
 
         <div className="flex items-center justify-between pt-2">
-          <p className="text-[10px] text-zinc-600 font-mono">
+          <p className="text-[10px] text-text-meta font-mono">
             * Opens your default mail client to send.
           </p>
           <NeonButton type="submit" variant="primary" className="px-6" disabled={status === "ENCRYPTING" || status === "SENT"}>

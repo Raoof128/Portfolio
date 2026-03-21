@@ -31,13 +31,13 @@ export function ActiveGrid() {
           <div
             key={i}
             className={`
-              relative transition-all duration-1000 ease-in-out border border-cyan-500/10 rounded-sm
-              ${activeCells.includes(i) ? "bg-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.4)] border-cyan-500/50" : "bg-transparent"}
+              relative transition-all duration-1000 ease-in-out border border-cyan/8 rounded-sm
+              ${activeCells.includes(i) ? "bg-cyan/15 shadow-[0_0_18px_rgba(6,182,212,0.35)] border-cyan/40" : "bg-transparent"}
             `}
           >
              {/* The "Data Packet" Pulse */}
              {activeCells.includes(i) && (
-                <div className="absolute inset-0 bg-cyan-400/30 animate-ping" />
+                <div className="absolute inset-0 bg-cyan/25 animate-ping" />
              )}
           </div>
         ))}

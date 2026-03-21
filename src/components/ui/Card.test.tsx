@@ -16,8 +16,8 @@ describe('Card', () => {
     const { container } = render(<Card>Content</Card>);
     const card = container.firstChild;
     expect(card).toHaveClass('border');
-    expect(card).toHaveClass('border-white/10');
-    expect(card).toHaveClass('bg-white/5');
+    expect(card).toHaveClass('border-cyan/12');
+    expect(card).toHaveClass('bg-cyan/5');
   });
 
   it('applies custom className', () => {

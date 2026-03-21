@@ -24,9 +24,9 @@ export function ProjectDetailClient({ project }: { project: Project }) {
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
-          <section className="border-b border-white/10 bg-white/5 py-12 md:py-20">
+          <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
-              <Link href="/projects" className="inline-flex items-center text-sm text-zinc-500 hover:text-cyan mb-8 transition-colors font-mono">
+              <Link href="/projects" className="inline-flex items-center text-sm text-text-body hover:text-cyan mb-8 transition-colors font-mono">
                 <ArrowLeft size={14} className="mr-2" /> Back to Projects
               </Link>
 
@@ -42,7 +42,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
                     {project.title}
                   </h1>
-                  <p className="text-xl text-zinc-400 leading-relaxed">
+                  <p className="text-xl text-text-body leading-relaxed">
                     {project.fullDescription}
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
                   <span className="text-cyan">01.</span> Problem
                 </h2>
-                <div className="prose prose-invert max-w-none text-zinc-400 border-l-2 border-white/10 pl-6">
+                <div className="prose prose-invert max-w-none text-text-body border-l-2 border-cyan/12 pl-6">
                   <p>{project.problem}</p>
                 </div>
               </section>
@@ -85,10 +85,10 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
                   <span className="text-cyan">02.</span> Solution Overview
                 </h2>
-                <div className="bg-black/40 border border-white/10 p-6 rounded-sm">
+                <div className="bg-black/40 border border-cyan/12 p-6 rounded-sm">
                   <ul className="grid gap-3">
                     {project.solution.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-zinc-300">
+                      <li key={i} className="flex items-start gap-3 text-slate-300">
                         <ArrowRight size={16} className="mt-1 text-cyan shrink-0" />
                         <span>{item}</span>
                       </li>
@@ -104,12 +104,12 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
                     <Code size={20} className="text-cyan" /> Build
                   </h2>
-                  <div className="bg-white/5 border border-white/10 p-6 h-full">
+                  <div className="bg-cyan/5 border border-cyan/12 p-6 h-full">
                     <div className="mb-4">
-                      <h4 className="text-xs uppercase text-zinc-500 font-mono mb-2">Tech Stack</h4>
+                      <h4 className="text-xs uppercase text-text-body font-mono mb-2">Tech Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.build?.stack.map(tech => (
-                          <span key={tech} className="text-xs border border-white/20 px-2 py-1 text-zinc-300 bg-white/5">
+                          <span key={tech} className="text-xs border border-cyan/20 px-2 py-1 text-slate-300 bg-cyan/5">
                             {tech}
                           </span>
                         ))}
@@ -117,7 +117,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                     </div>
                     <ul className="space-y-2">
                       {project.build?.features.map((feat, i) => (
-                        <li key={i} className="text-sm text-zinc-400 flex gap-2">
+                        <li key={i} className="text-sm text-text-body flex gap-2">
                           <span className="text-cyan">&bull;</span> {feat}
                         </li>
                       ))}
@@ -131,10 +131,10 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
                     <Shield size={20} className="text-purple" /> Secure
                   </h2>
-                  <div className="bg-white/5 border border-white/10 p-6 h-full">
+                  <div className="bg-cyan/5 border border-cyan/12 p-6 h-full">
                     <ul className="space-y-3">
                       {project.secure?.measures.map((measure, i) => (
-                        <li key={i} className="text-sm text-zinc-400 flex gap-2">
+                        <li key={i} className="text-sm text-text-body flex gap-2">
                           <CheckCircle size={14} className="mt-1 text-green-400 shrink-0" />
                           {measure}
                         </li>
@@ -156,7 +156,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   </p>
                   <ul className="space-y-3">
                     {project.proof.map((proof, i) => (
-                      <li key={i} className="font-mono text-sm text-zinc-300 flex items-start gap-3">
+                      <li key={i} className="font-mono text-sm text-slate-300 flex items-start gap-3">
                         <span className="text-cyan mt-1">&gt;</span>
                         {proof}
                       </li>
@@ -172,16 +172,16 @@ export function ProjectDetailClient({ project }: { project: Project }) {
           <AnimatedSection variants={fadeInRight} delay={0.2} className="lg:col-span-4">
             <div className="space-y-8">
               <div className="sticky top-24">
-                <div className="border border-white/10 p-6 bg-black/20">
+                <div className="border border-cyan/12 p-6 bg-black/20">
                   <h3 className="font-mono font-bold text-white mb-4">Project Links</h3>
                   <div className="space-y-3">
                     {project.links.demo && (
-                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-zinc-400 hover:text-cyan transition-colors border-b border-white/5 pb-2">
+                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
                         Watch Demo <Play size={14} />
                       </a>
                     )}
                     {project.links.repo && (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-zinc-400 hover:text-cyan transition-colors border-b border-white/5 pb-2">
+                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
                         Source Code <Github size={14} />
                       </a>
                     )}

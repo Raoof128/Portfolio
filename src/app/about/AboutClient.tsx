@@ -109,7 +109,7 @@ const activeLabs = [
 
 const statusStyles: Record<string, string> = {
   ACTIVE:   "text-green-400 border-green-400/30 bg-green-400/5",
-  ARCHIVED: "text-zinc-500 border-zinc-600/30 bg-zinc-600/5",
+  ARCHIVED: "text-text-body border-text-body/30 bg-text-body/5",
   CONCEPT:  "text-amber border-amber/30 bg-amber/5",
 };
 
@@ -159,21 +159,21 @@ export function AboutClient() {
               </p>
             </div>
 
-            <HUDFrame className="p-6 md:p-8 bg-zinc-900/50 backdrop-blur-sm space-y-4">
-              <p className="text-zinc-300 leading-relaxed">
+            <HUDFrame className="p-6 md:p-8 bg-[#06080d]/60 backdrop-blur-sm space-y-4">
+              <p className="text-slate-300 leading-relaxed">
                 Final-year Cyber Security student at{" "}
                 <span className="text-cyan">Macquarie University</span> (WAM: 76+) obsessed with building{" "}
                 <span className="text-white font-semibold">SOC pipelines</span>,{" "}
                 <span className="text-white font-semibold">detection engines</span>, and{" "}
                 <span className="text-white font-semibold">AI threat tools</span>.
               </p>
-              <p className="text-zinc-400 leading-relaxed">
+              <p className="text-text-body leading-relaxed">
                 I ship production applications serving{" "}
                 <span className="text-white">1,000+ end users</span> across 70+ independent projects
                 spanning web security, mobile, full-stack, and AI tooling — embedding security from
                 threat modelling through to deployment and incident remediation.
               </p>
-              <p className="text-zinc-400 leading-relaxed">
+              <p className="text-text-body leading-relaxed">
                 I specialize in{" "}
                 <span className="text-cyan">full attack–defence simulations</span> (cloud, AD, hybrid),
                 Australian compliance automation (SOCI, Essential Eight, CDR), and pushing the limits
@@ -188,9 +188,9 @@ export function AboutClient() {
                 { value: "1K+", label: "Users Served", color: "text-purple" },
                 { value: "76+", label: "WAM", color: "text-amber" },
               ].map((s) => (
-                <div key={s.label} className="border border-white/10 p-4 bg-zinc-900/50 hover:border-white/20 transition-colors text-center">
+                <div key={s.label} className="border border-cyan/12 p-4 bg-[#06080d]/60 hover:border-cyan/20 transition-colors text-center">
                   <div className={`text-2xl font-bold font-mono ${s.color}`}>{s.value}</div>
-                  <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider mt-1">{s.label}</div>
+                  <div className="text-xs text-text-body font-mono uppercase tracking-wider mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -198,15 +198,15 @@ export function AboutClient() {
             {/* Social links */}
             <div className="flex flex-wrap gap-3">
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-cyan/40 hover:text-cyan text-zinc-400 font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-all">
                 <Github className="w-3.5 h-3.5" /> github.com/Raoof128
               </a>
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-cyan/40 hover:text-cyan text-zinc-400 font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-all">
                 <Linkedin className="w-3.5 h-3.5" /> LinkedIn
               </a>
               <a href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-cyan/40 hover:text-cyan text-zinc-400 font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-all">
                 <Mail className="w-3.5 h-3.5" /> {CONTACT_EMAIL}
               </a>
             </div>
@@ -221,7 +221,7 @@ export function AboutClient() {
           <motion.div variants={fadeInUp} className="lg:col-span-5">
             <motion.div className="relative group" whileHover={{ scale: 1.015 }} transition={{ type: "spring", stiffness: 200, damping: 22 }}>
               <div className="absolute -inset-0.5 bg-gradient-to-b from-cyan/40 to-purple/20 opacity-40 blur-sm group-hover:opacity-80 transition-opacity duration-500" />
-              <HUDFrame className="relative bg-zinc-900 overflow-hidden aspect-[4/5] w-full">
+              <HUDFrame className="relative bg-cyber-dark overflow-hidden aspect-[4/5] w-full">
                 {!photoLoadFailed ? (
                   <Image
                     key={photoSource}
@@ -235,10 +235,10 @@ export function AboutClient() {
                     onError={handlePhotoError}
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-zinc-900 to-black">
+                  <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-cyber-dark to-black">
                     <div className="text-center font-mono">
                       <p className="text-cyan text-2xl font-bold tracking-widest">MRA</p>
-                      <p className="text-zinc-500 text-xs mt-2">PHOTO_UNAVAILABLE</p>
+                      <p className="text-text-body text-xs mt-2">PHOTO_UNAVAILABLE</p>
                       <button type="button"
                         className="mt-4 px-3 py-1 border border-cyan/30 text-cyan/80 text-xs hover:border-cyan hover:text-cyan transition-colors"
                         onClick={handlePhotoRetry}>
@@ -266,21 +266,21 @@ export function AboutClient() {
 
         {/* ─── SPECIALIZATIONS ─── */}
         <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
-          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-white/10 pb-3 mb-8">
+          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-cyan/12 pb-3 mb-8">
             <span className="text-cyan font-bold font-mono text-lg">01.</span>
             <h2 className="text-2xl font-bold text-white uppercase tracking-wider">Specializations</h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-4">
             {specializations.map((spec) => (
               <motion.div key={spec.label} variants={fadeInUp}>
-                <div className={`group h-full p-6 border bg-zinc-900/40 hover:bg-zinc-900/70 transition-all duration-300 ${spec.accentClass}`}>
+                <div className={`group h-full p-6 border bg-[#06080d]/60 hover:bg-cyan/[0.04] transition-all duration-300 ${spec.accentClass}`}>
                   <div className="flex items-center gap-3 mb-5">
                     <spec.icon className={`w-5 h-5 ${spec.iconClass}`} />
                     <h3 className={`font-mono text-sm font-bold uppercase tracking-wide ${spec.iconClass}`}>{spec.label}</h3>
                   </div>
                   <ul className="space-y-2">
                     {spec.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-zinc-400">
+                      <li key={item} className="flex items-start gap-2 text-sm text-text-body">
                         <ChevronRight className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${spec.iconClass} opacity-60`} />
                         {item}
                       </li>
@@ -294,7 +294,7 @@ export function AboutClient() {
 
         {/* ─── SKILLS MATRIX ─── */}
         <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
-          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-white/10 pb-3 mb-8">
+          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-cyan/12 pb-3 mb-8">
             <span className="text-cyan font-bold font-mono text-lg">02.</span>
             <h2 className="text-2xl font-bold text-white uppercase tracking-wider">Skills Matrix</h2>
           </motion.div>
@@ -303,12 +303,12 @@ export function AboutClient() {
               <motion.div key={group.label} variants={fadeInUp}>
                 <div className="flex items-start gap-4">
                   <div className="w-28 shrink-0 pt-1">
-                    <span className="font-mono text-xs text-zinc-500 uppercase tracking-widest">{group.label}</span>
+                    <span className="font-mono text-xs text-text-body uppercase tracking-widest">{group.label}</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
                       <span key={skill}
-                        className="px-2.5 py-1 border border-white/8 bg-white/3 hover:border-cyan/40 hover:text-cyan text-zinc-400 font-mono text-xs transition-colors cursor-default">
+                        className="px-2.5 py-1 border border-cyan/10 bg-cyan/[0.03] hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-colors cursor-default">
                         {skill}
                       </span>
                     ))}
@@ -321,23 +321,23 @@ export function AboutClient() {
 
         {/* ─── ACTIVE OPERATIONS ─── */}
         <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
-          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-white/10 pb-3 mb-8">
+          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-cyan/12 pb-3 mb-8">
             <span className="text-cyan font-bold font-mono text-lg">03.</span>
             <h2 className="text-2xl font-bold text-white uppercase tracking-wider">Active Operations</h2>
-            <span className="ml-auto font-mono text-xs text-zinc-600">THE_LAB</span>
+            <span className="ml-auto font-mono text-xs text-text-meta">THE_LAB</span>
           </motion.div>
           <div className="space-y-1">
             {activeLabs.map((lab) => (
               <motion.div key={lab.id} variants={fadeInUp}>
-                <div className="group flex items-center gap-4 p-3 border border-transparent hover:border-white/8 hover:bg-white/3 transition-all">
-                  <span className="font-mono text-xs text-zinc-600 w-8 shrink-0">{lab.id}</span>
+                <div className="group flex items-center gap-4 p-3 border border-transparent hover:border-cyan/10 hover:bg-cyan/[0.03] transition-all">
+                  <span className="font-mono text-xs text-text-meta w-8 shrink-0">{lab.id}</span>
                   <span className={`font-mono text-[10px] px-2 py-0.5 border uppercase tracking-widest shrink-0 ${statusStyles[lab.status]}`}>
                     {lab.status}
                   </span>
-                  <span className="text-sm text-zinc-300 group-hover:text-white transition-colors font-medium">{lab.title}</span>
+                  <span className="text-sm text-slate-300 group-hover:text-white transition-colors font-medium">{lab.title}</span>
                   <div className="ml-auto hidden sm:flex gap-2">
                     {lab.tags.map((tag) => (
-                      <span key={tag} className="font-mono text-[10px] text-zinc-600 bg-white/3 px-2 py-0.5">
+                      <span key={tag} className="font-mono text-[10px] text-text-meta bg-cyan/[0.03] px-2 py-0.5">
                         {tag}
                       </span>
                     ))}
@@ -355,29 +355,29 @@ export function AboutClient() {
 
         {/* ─── EDUCATION QUICK VIEW ─── */}
         <motion.section variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
-          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-white/10 pb-3 mb-8">
+          <motion.div variants={fadeInUp} className="flex items-center gap-3 border-b border-cyan/12 pb-3 mb-8">
             <span className="text-cyan font-bold font-mono text-lg">04.</span>
             <h2 className="text-2xl font-bold text-white uppercase tracking-wider">Education</h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-4">
             <motion.div variants={fadeInUp}>
-              <HUDFrame className="p-5 bg-zinc-900/40 h-full">
+              <HUDFrame className="p-5 bg-[#06080d]/60 h-full">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="text-white font-bold">Bachelor of Cyber Security</h3>
                   <span className="font-mono text-xs text-cyan shrink-0">2024–2026</span>
                 </div>
-                <p className="text-zinc-500 font-mono text-xs mb-3">Macquarie University · WAM 76.27</p>
-                <p className="text-xs text-zinc-400">Digital Forensics · Network Security · Cloud Computing · NLP &amp; ML · Offensive Security · Applied Cryptography</p>
+                <p className="text-text-body font-mono text-xs mb-3">Macquarie University · WAM 76.27</p>
+                <p className="text-xs text-text-body">Digital Forensics · Network Security · Cloud Computing · NLP &amp; ML · Offensive Security · Applied Cryptography</p>
               </HUDFrame>
             </motion.div>
             <motion.div variants={fadeInUp}>
-              <HUDFrame className="p-5 bg-zinc-900/40 h-full">
+              <HUDFrame className="p-5 bg-[#06080d]/60 h-full">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="text-white font-bold">Diploma of Information Technology</h3>
                   <span className="font-mono text-xs text-amber shrink-0">2023–2024</span>
                 </div>
-                <p className="text-zinc-500 font-mono text-xs mb-3">Macquarie University · WAM 71.75</p>
-                <p className="text-xs text-zinc-400">Foundations in systems, networking, and software engineering.</p>
+                <p className="text-text-body font-mono text-xs mb-3">Macquarie University · WAM 71.75</p>
+                <p className="text-xs text-text-body">Foundations in systems, networking, and software engineering.</p>
               </HUDFrame>
             </motion.div>
           </div>

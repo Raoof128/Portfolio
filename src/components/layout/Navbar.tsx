@@ -33,7 +33,7 @@ export function Navbar() {
             className={cn(
                 "fixed top-0 left-0 right-0 z-40 border-b h-16 transition-all duration-300",
                 scrolled
-                    ? "border-white/10 glass-strong"
+                    ? "border-cyan/10 glass-strong"
                     : "border-transparent bg-transparent"
             )}
         >
@@ -66,7 +66,7 @@ export function Navbar() {
                                     "font-mono text-sm tracking-wide transition-all duration-200 relative py-1 focus:outline-none focus:text-cyan",
                                     isActive
                                         ? "text-cyan"
-                                        : "text-zinc-400 hover:text-cyan"
+                                        : "text-text-body hover:text-cyan"
                                 )}
                             >
                                 <span className="relative z-10">
@@ -86,7 +86,7 @@ export function Navbar() {
 
                     <Link
                         href="/contact"
-                        className="px-4 py-1.5 border border-zinc-700 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_10px_rgba(6,182,212,0.2)] transition-all bg-zinc-900/50"
+                        className="px-4 py-1.5 border border-cyan/15 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] transition-all bg-cyber-dark/50"
                     >
                         Contact
                     </Link>
@@ -94,7 +94,7 @@ export function Navbar() {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden p-2 text-zinc-400 hover:text-cyan"
+                    className="md:hidden p-2 text-text-body hover:text-cyan"
                     onClick={() => setMobileOpen(!mobileOpen)}
                     aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
                     aria-expanded={mobileOpen}
@@ -113,7 +113,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden absolute top-16 left-0 right-0 glass-strong border-b border-white/10 p-4 flex flex-col space-y-4 shadow-2xl"
+                        className="md:hidden absolute top-16 left-0 right-0 glass-strong border-b border-cyan/10 p-4 flex flex-col space-y-4 shadow-2xl"
                         role="navigation"
                         aria-label="Mobile navigation"
                     >
@@ -123,8 +123,8 @@ export function Navbar() {
                                 href={item.path}
                                 onClick={() => setMobileOpen(false)}
                                 className={cn(
-                                    "block font-mono text-base p-2 hover:bg-white/5",
-                                    pathname.startsWith(item.path) ? "text-cyan border-l-2 border-cyan bg-white/5" : "text-zinc-400"
+                                    "block font-mono text-base p-2 hover:bg-cyan/5",
+                                    pathname.startsWith(item.path) ? "text-cyan border-l-2 border-cyan bg-cyan/5" : "text-text-body"
                                 )}
                             >
                                 {item.name}
@@ -133,7 +133,7 @@ export function Navbar() {
                         <Link
                             href="/contact"
                             onClick={() => setMobileOpen(false)}
-                            className="block w-full text-center py-3 border border-zinc-700 text-cyan font-mono text-sm"
+                            className="block w-full text-center py-3 border border-cyan/20 text-cyan font-mono text-sm hover:bg-cyan/5 transition-colors"
                         >
                             CONTACT
                         </Link>

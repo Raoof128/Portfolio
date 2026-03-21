@@ -8,7 +8,7 @@ export function Card({ className, children, hoverEffect = true, ...props }: Card
   return (
     <div 
       className={cn(
-        "bg-white/5 border border-white/10 p-6 overflow-hidden relative",
+        "bg-cyan/5 border border-cyan/12 p-6 overflow-hidden relative",
         hoverEffect && "transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_15px_rgba(0,229,255,0.1)]",
         className
       )} 

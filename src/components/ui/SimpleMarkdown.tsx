@@ -57,7 +57,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     // H2: ##
     if (trimmed.startsWith("## ")) {
       elements.push(
-        <h2 key={i} className="text-2xl font-bold text-white mt-10 mb-4 font-mono border-b border-white/10 pb-2">
+        <h2 key={i} className="text-2xl font-bold text-white mt-10 mb-4 font-mono border-b border-cyan/12 pb-2">
           {renderInline(trimmed.slice(3))}
         </h2>
       );
@@ -71,7 +71,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
       while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
         const itemText = lines[i].trim().replace(/^\d+\.\s+/, "");
         items.push(
-          <li key={i} className="flex items-start gap-2 text-zinc-300">
+          <li key={i} className="flex items-start gap-2 text-slate-300">
             <span className="text-cyan mt-1 shrink-0">▹</span>
             <span>{renderInline(itemText)}</span>
           </li>
@@ -92,7 +92,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
       while (i < lines.length && (lines[i].trim().startsWith("* ") || lines[i].trim().startsWith("- "))) {
         const itemText = lines[i].trim().slice(2);
         items.push(
-          <li key={i} className="flex items-start gap-2 text-zinc-300">
+          <li key={i} className="flex items-start gap-2 text-slate-300">
             <span className="text-cyan mt-1 shrink-0">▹</span>
             <span>{renderInline(itemText)}</span>
           </li>
@@ -109,7 +109,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
 
     // Regular paragraph
     elements.push(
-      <p key={i} className="text-zinc-300 leading-relaxed my-4">
+      <p key={i} className="text-slate-300 leading-relaxed my-4">
         {renderInline(trimmed)}
       </p>
     );

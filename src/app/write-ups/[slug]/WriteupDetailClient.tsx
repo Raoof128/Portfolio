@@ -34,13 +34,13 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
 
         {/* Header */}
         <AnimatedSection variants={fadeInUp} delay={0.1}>
-          <header className="mb-12 border-b border-white/10 pb-8">
+          <header className="mb-12 border-b border-cyan/12 pb-8">
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-cyan mb-4">
               <span className="flex items-center gap-1 bg-cyan/10 px-2 py-1 rounded">
                 <Terminal className="w-3 h-3" />
                 {post.tag}
               </span>
-              <span className="flex items-center gap-1 text-zinc-500">
+              <span className="flex items-center gap-1 text-text-body">
                 <Calendar className="w-3 h-3" />
                 {post.date}
               </span>
@@ -50,7 +50,7 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
               {post.title}
             </h1>
 
-            <p className="text-xl text-zinc-400 font-light border-l-4 border-cyan pl-4 italic">
+            <p className="text-xl text-text-body font-light border-l-4 border-cyan pl-4 italic">
               {post.takeaway}
             </p>
           </header>
@@ -65,7 +65,7 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
 
         {/* Footer */}
         <AnimatedSection variants={fadeInUp} delay={0.3}>
-          <div className="mt-16 pt-8 border-t border-white/10 flex justify-between items-center text-sm text-zinc-500 font-mono">
+          <div className="mt-16 pt-8 border-t border-cyan/12 flex justify-between items-center text-sm text-text-body font-mono">
             <span>END_OF_TRANSMISSION</span>
             <span>ID: {post.slug.toUpperCase()}</span>
           </div>

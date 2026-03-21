@@ -27,12 +27,12 @@ export default function NotFound() {
             <span>ERROR_CODE: PAGE_NOT_FOUND</span>
           </div>
 
-          <p className="text-zinc-400 text-lg">
+          <p className="text-text-body text-lg">
             The requested signal path could not be resolved. <br />
             The resource may have been moved, deleted, or classified.
           </p>
 
-          <div className="font-mono text-xs text-zinc-600 bg-black/50 p-4 rounded border border-zinc-800 text-left space-y-1">
+          <div className="font-mono text-xs text-text-meta bg-black/50 p-4 rounded border border-cyber-gray text-left space-y-1">
             <p><span className="text-purple">root@portfolio:~$</span> ping target_url</p>
             <p>ping: unknown host</p>
             <p><span className="text-purple">root@portfolio:~$</span> trace route</p>
