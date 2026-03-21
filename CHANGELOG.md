@@ -3,6 +3,13 @@
 ## [Unreleased]
 
 ### Raouf: 2026-03-21
+- **Scope**: Add Write-Ups for NanoMatch + SentinelFlow
+- **Summary**: Added two new technical write-ups based on internet research of repo READMEs and source code. (1) **"Building a Sub-Microsecond Matching Engine in C++20"** — covers three-layer data structure design (sorted map + linked-list queues + hash map), integer prices, pool allocator, order type semantics, and latency profiling. (2) **"Anatomy of a Network Intrusion Detection System"** — covers the capture→parse→detect→alert pipeline, BPF filters, layered protocol dissection with `std::optional`, Snort-inspired rule engine, stateful vs stateless detection (port scans, SYN floods, DNS tunnelling), and zero-copy parsing. Build produces 29 static routes (+2 write-up pages).
+- **Files Changed**: `src/lib/data.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
+### Raouf: 2026-03-21
 - **Scope**: Add NanoMatch + SentinelFlow Projects
 - **Summary**: Added two new C++ systems programming projects. (1) **NanoMatch** — high-performance limit order book and matching engine in C++20, 9.29M ops/sec throughput, 84ns p50 latency, 60+ tests. (2) **SentinelFlow** — real-time network IDS in C++17, 28M+ packets/sec, Snort-inspired rule engine, layered protocol dissection, 27 tests. Homepage grid now 7 projects across 3 rows: Mehr Guard (2-col) + Syllabus Sync, GitSwitch + Nexus Archive + NanoMatch, SentinelFlow + ECRSM (2-col). Build produces 27 static routes.
 - **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`

@@ -36,6 +36,17 @@ Before making any code changes, agents MUST:
 ---
 
 ### Raouf: 2026-03-21
+- **Scope**: Add Write-Ups for NanoMatch + SentinelFlow
+- **Summary**: Added two technical write-ups based on internet research of repo READMEs and source code. (1) "Building a Sub-Microsecond Matching Engine in C++20" — three-layer data structure design, integer prices, pool allocator, order type semantics, latency profiling. (2) "Anatomy of a Network Intrusion Detection System" — capture→parse→detect→alert pipeline, BPF filters, layered protocol dissection, Snort-inspired rules, stateful vs stateless detection, zero-copy parsing. Build produces 29 routes (+2 write-up detail pages).
+- **Files Changed**: `src/lib/data.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65 passing
+    - `npm run build`: pass (29 routes)
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
+### Raouf: 2026-03-21
 - **Scope**: Add NanoMatch + SentinelFlow Projects
 - **Summary**: Added two new C++ systems programming projects to data layer and homepage bento grid. (1) NanoMatch — C++20 limit order book matching engine (9.29M ops/sec, 84ns p50 latency, 60+ tests, custom pool allocator). (2) SentinelFlow — C++17 real-time network IDS (28M+ pkt/sec, Snort-inspired rules, 7 protocol layers, 27 tests). Homepage grid now shows 7 projects in 3 rows. Build produces 27 static routes (2 new project detail pages).
 - **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`

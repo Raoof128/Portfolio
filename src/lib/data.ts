@@ -341,6 +341,132 @@ export interface Writeup {
 
 export const writeups: Writeup[] = [
   {
+    slug: "nanomatch-deep-dive",
+    title: "Building a Sub-Microsecond Matching Engine in C++20",
+    date: "2026-03-10",
+    tag: "C++",
+    takeaway: "How a three-layer data structure design achieves O(1) cancellation and 84ns median latency.",
+    content: `
+## Why Build a Matching Engine?
+
+Every electronic exchange — NYSE, NASDAQ, CME — runs a matching engine at its core. It is the system that pairs buy orders with sell orders at the best available price. Understanding how one works at the systems level means understanding price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
+
+**NanoMatch** is my from-scratch implementation in modern C++20, achieving 9.29M operations per second with 84ns p50 latency.
+
+### The Three-Layer Data Structure
+
+A naive implementation might use a single priority queue. The problem: O(1) best price but O(n) cancellation. On real exchanges, **90%+ of all order activity is cancellations**, so optimising cancel latency matters more than insert.
+
+NanoMatch uses three cooperating structures:
+
+| Layer | Structure | Purpose |
+|-------|-----------|---------|
+| **Price levels** | \`std::map<Price, PriceLevel>\` | Sorted by price. \`std::greater\` for bids (highest first), \`std::less\` for asks (lowest first). O(log M) insert, O(1) best via \`begin()\`. |
+| **Order queue** | \`std::list<Order>\` per level | FIFO queue at each price. O(1) append, O(1) erase by iterator. |
+| **Lookup** | \`std::unordered_map<OrderID, Iterator>\` | O(1) cancel — hash lookup yields a list iterator, erase is constant time. |
+
+This is the same asymptotic profile used by production exchange engines.
+
+### Integer Prices — Avoiding Floating-Point Traps
+
+Prices are stored as \`int32_t\` in cents (\`$101.50 = 10150\`). Floating-point comparison (\`==\`) is unreliable due to representation error. In a matching engine, this could cause price levels that should merge remaining as separate entries, or orders matching at the wrong price. Integer arithmetic makes comparison exact and deterministic.
+
+### The Pool Allocator
+
+Every \`malloc\` / \`free\` on the hot path risks kernel-mode syscalls, lock contention in the allocator, and cache pollution. NanoMatch uses a custom free-list pool allocator:
+
+- Pre-allocates a contiguous \`std::vector<T>\` of fixed capacity
+- \`allocate()\` = pop head of free list = O(1), zero syscalls
+- \`deallocate()\` = push to head = O(1), zero syscalls
+- All memory lives in a single cache-friendly contiguous block
+
+The benchmark shows the pool allocator eliminates the allocation jitter that causes tail latency spikes.
+
+### Order Types Done Right
+
+Four order types with production-grade semantics:
+
+- **Limit**: Match what crosses, rest the remainder on the book
+- **Market**: Price set to \`MAX/MIN\` to guarantee crossing, never rests
+- **IOC** (Immediate-or-Cancel): Like limit but cancel unfilled remainder
+- **FOK** (Fill-or-Kill): Atomic pre-check via \`can_fill_completely()\` — scans all crossable levels before executing. If insufficient liquidity exists, zero fills occur
+
+Modify is implemented as cancel + re-add, which is **correct exchange behavior** — modifications lose time priority, just like on NYSE and NASDAQ.
+
+### Latency Profile
+
+| Percentile | Latency |
+|------------|---------|
+| p50 | 84 ns |
+| p99 | 625 ns |
+| p99.9 | 1,250 ns |
+
+The 15x ratio between p50 and p99.9 is realistic. Spikes come from red-black tree rebalancing on new price level insertion, orders sweeping multiple levels, and cache misses on cold levels. In production, **tail latency is the metric that differentiates systems**.
+    `
+  },
+  {
+    slug: "sentinelflow-deep-dive",
+    title: "Anatomy of a Network Intrusion Detection System",
+    date: "2026-03-15",
+    tag: "Network Security",
+    takeaway: "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 28M packets/sec.",
+    content: `
+## The IDS Pipeline
+
+Commercial intrusion detection systems like Snort and Suricata follow a common architecture: **Capture → Parse → Detect → Alert**. SentinelFlow implements this full pipeline in C++17 with libpcap, achieving 28M+ packets/sec parsing throughput on a single thread.
+
+### Capture: BPF Filters Run in Kernel Space
+
+SentinelFlow uses libpcap with a polymorphic \`PacketCapture\` interface — \`LiveCapture\` for real-time traffic and \`PcapFileReader\` for offline analysis. The critical optimisation is BPF (Berkeley Packet Filter): a filter expression like \`tcp port 80\` is compiled via \`pcap_compile()\` and runs **inside the kernel**. Packets that don't match are never copied to userspace — orders of magnitude more efficient than filtering in application code.
+
+### Layered Protocol Dissection
+
+Network frames are nested structures. You cannot jump to a fixed byte offset because each layer has variable length:
+
+1. **Ethernet** (14 bytes) — \`ntohs\` on EtherType dispatches to IPv4 (\`0x0800\`) or ARP (\`0x0806\`)
+2. **IPv4** — IHL (Internet Header Length) field tells you where L4 starts. Variable due to IP options.
+3. **TCP** — \`data_offset\` field tells you where the payload begins. Variable due to TCP options.
+4. **UDP** (8 bytes) — Fixed header, but conditionally triggers DNS parsing when port is 53
+5. **DNS** — Walks label-encoded query names (length-prefixed segments)
+6. **ICMP** / **ARP** — Type codes and hardware addresses
+
+Each parser is a stateless free function operating on raw \`const uint8_t*\` — zero copies, zero allocations. The \`ParsedPacket\` struct uses \`std::optional<T>\` for each layer: if a parse fails or the protocol isn't present, the optional stays empty and downstream layers are skipped.
+
+### Snort-Inspired Rule Engine
+
+SentinelFlow implements a subset of the Snort rule language — the de facto standard for signature-based detection:
+
+\`\`\`
+alert tcp any any -> any 22 (msg:"SSH brute force"; flags:S; threshold:10,60; sid:2001;)
+\`\`\`
+
+Rules are declarative. The **header** acts as a fast pre-filter (protocol, IP, port), while **options** refine the match: flag bitmasks, payload content strings, DNS query length thresholds. The rule parser extracts these into structured objects for the signature matcher to evaluate against each packet.
+
+### Stateful vs. Stateless Detection
+
+Signature matching catches known-bad patterns in individual packets. But many real attacks are distributed across multiple packets:
+
+- **Port scans** — Only visible when you track the set of destination ports per source IP over time. SentinelFlow maintains a \`std::set<uint16_t>\` per IP pair, firing when 15+ unique ports are hit in 60 seconds.
+- **SYN floods** — Detected by monitoring half-open connection rates. A \`std::deque\` of SYN timestamps per destination IP, pruned lazily on access. Fires at 100+ SYNs in 10 seconds.
+- **DNS tunnelling** — Exfiltration via encoded DNS queries produces anomalously long query names. The detector tracks queries exceeding 50 characters and fires when volume passes threshold.
+
+All stateful detectors use sliding time windows with **lazy pruning** — old entries are removed on the next access rather than by a background thread. This eliminates synchronisation overhead.
+
+### Zero-Copy Parsing Performance
+
+The parsers operate directly on the raw buffer provided by libpcap. No intermediate copies, no dynamic allocation per packet. The \`memcpy\` + \`ntohs/ntohl\` pattern is the standard approach in high-performance packet processing (used in DPDK, PF_RING, and production NIDS). The benchmark proves **28M+ packets/sec** on a single thread — pure parsing throughput measured over 5 million synthetic TCP SYN packets.
+
+### Alert Outputs
+
+The alert system uses a strategy pattern — \`AlertManager\` dispatches each alert to all registered outputs:
+
+- **Console**: ANSI color-coded by severity (green → yellow → red → bold red)
+- **CSV**: RFC 4180-compliant with proper escaping, ready for SIEM ingestion
+
+Adding a new output (syslog, webhook, Kafka) means implementing a single \`emit()\` method.
+    `
+  },
+  {
     slug: "ecrsm-deep-dive",
     title: "Deep Dive: eBPF Runtime Monitoring",
     date: "2025-01-15",
