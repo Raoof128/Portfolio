@@ -113,7 +113,7 @@ export const projects: Record<string, Project> = {
   },
   "syllabus-sync": {
     slug: "syllabus-sync",
-    title: "Syllabus Sync",
+    title: "Syllabus-Sync",
     category: "ENGINEERING",
     year: "2026",
     description: "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Full student operations suite with 503 tests across 92 files.",
