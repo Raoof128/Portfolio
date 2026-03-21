@@ -80,7 +80,7 @@ export function DecryptedText({ text, className = "", animateOnHover = false, lo
       suppressHydrationWarning
       aria-label={text}
     >
-      <span aria-hidden="true">{shown}</span>
+      <span aria-hidden="true" suppressHydrationWarning>{shown}</span>
     </motion.span>
   );
 }
