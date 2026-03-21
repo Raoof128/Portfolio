@@ -49,10 +49,10 @@ export function Footer() {
           </div>
 
           <div>
-            <Link href="/.well-known/security.txt" className="flex items-center text-xs font-mono text-zinc-600 hover:text-cyan transition-colors">
+            <a href="/.well-known/security.txt" className="flex items-center text-xs font-mono text-zinc-600 hover:text-cyan transition-colors">
               <Shield className="w-3 h-3 mr-2" />
               security.txt
-            </Link>
+            </a>
           </div>
 
         </div>
