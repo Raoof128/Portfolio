@@ -24,28 +24,29 @@ const TICKER = [
   "THREAT INTELLIGENCE", "ZERO TRUST ARCHITECTURE",
 ];
 
-const CATEGORY_STYLE: Record<string, { dot: string; badge: string; hover: string; corner: string }> = {
-  DEFENSIVE:   { dot: "bg-cyan",   badge: "text-cyan border-cyan/25 bg-cyan/5",     hover: "hover:border-cyan/30",   corner: "border-cyan/20 group-hover:border-cyan/50"   },
-  ENGINEERING: { dot: "bg-purple", badge: "text-purple border-purple/25 bg-purple/5", hover: "hover:border-purple/30", corner: "border-purple/20 group-hover:border-purple/50" },
-  OFFENSIVE:   { dot: "bg-amber",  badge: "text-amber border-amber/25 bg-amber/5",   hover: "hover:border-amber/30",  corner: "border-amber/20 group-hover:border-amber/50"  },
+const CATEGORY_STYLE: Record<string, { dot: string; badge: string; hover: string; corner: string; tint: string }> = {
+  DEFENSIVE:   { dot: "bg-cyan",   badge: "text-cyan border-cyan/25 bg-cyan/5",     hover: "hover:border-cyan/30",   corner: "border-cyan/20 group-hover:border-cyan/50",   tint: "hover:bg-cyan/[0.03]"   },
+  ENGINEERING: { dot: "bg-purple", badge: "text-purple border-purple/25 bg-purple/5", hover: "hover:border-purple/30", corner: "border-purple/20 group-hover:border-purple/50", tint: "hover:bg-purple/[0.03]" },
+  OFFENSIVE:   { dot: "bg-amber",  badge: "text-amber border-amber/25 bg-amber/5",   hover: "hover:border-amber/30",  corner: "border-amber/20 group-hover:border-amber/50",  tint: "hover:bg-amber/[0.03]"  },
 };
 
 /* ─── Bento Card ─────────────────────────────────────────────────────── */
 
 function BentoCard({
-  slug, accentHover, cornerClass, className, children,
+  slug, accentHover, cornerClass, tint, className, children,
 }: {
   slug: string;
   accentHover: string;
   cornerClass: string;
+  tint?: string;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
     <motion.div
       variants={fadeInUp}
-      className={`group relative p-6 border border-white/8 bg-zinc-900/40 hover:bg-zinc-900/70 ${accentHover} transition-all duration-300${className ? ` ${className}` : ""}`}
-      whileHover={{ y: -3 }}
+      className={`group relative p-6 border border-white/8 bg-zinc-900/40 hover:shadow-[0_8px_32px_rgba(6,182,212,0.08)] ${accentHover} ${tint ?? ""} transition-all duration-300 cursor-pointer${className ? ` ${className}` : ""}`}
+      whileHover={{ y: -6 }}
     >
       {children}
       {/* HUD corner markers */}
@@ -85,7 +86,7 @@ export default function Home() {
                 }`,
               }}
               animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
-              transition={{ duration: 28 + i * 12, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 14 + i * 6, repeat: Infinity, ease: "linear" }}
             />
           ))}
           {/* Radar pulses */}
@@ -95,7 +96,7 @@ export default function Home() {
               className="absolute rounded-full border border-cyan/8"
               initial={{ width: 40, height: 40, opacity: 0.8 }}
               animate={{ width: 700, height: 700, opacity: 0 }}
-              transition={{ duration: 4, repeat: Infinity, delay, ease: "easeOut" }}
+              transition={{ duration: 3.5, repeat: Infinity, delay, ease: "easeOut" }}
             />
           ))}
           {/* Centre pip */}
@@ -103,7 +104,7 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-16 items-center py-20 lg:py-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-20 lg:py-28">
 
           {/* Left */}
           <div className="space-y-10">
@@ -196,7 +197,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 48 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.75 }}
-            className="hidden lg:block relative"
+            className="hidden md:block relative"
           >
             <div className="absolute -inset-px bg-gradient-to-br from-cyan/15 via-transparent to-purple/10 blur-md opacity-60 pointer-events-none" />
             <TerminalFeed />
@@ -226,14 +227,14 @@ export default function Home() {
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
         >
           {[...TICKER, ...TICKER].map((item, i) => (
             <span key={i} className="flex items-center shrink-0">
-              <span className="font-mono text-[11px] text-zinc-600 tracking-[0.18em] uppercase px-6">
+              <span className="font-mono text-[11px] text-zinc-500 tracking-[0.18em] uppercase px-6">
                 {item}
               </span>
-              <span className="text-cyan/25 text-xs">◆</span>
+              <span className="text-cyan/40 text-xs">◆</span>
             </span>
           ))}
         </motion.div>
@@ -280,6 +281,7 @@ export default function Home() {
                   slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
+                  tint={s.tint}
                   className="md:col-span-2"
                 >
                   <div className="flex items-start justify-between mb-5">
@@ -331,7 +333,7 @@ export default function Home() {
               const p = projects["syllabus-sync"];
               const s = CATEGORY_STYLE[p.category];
               return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner}>
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                       {p.category}
@@ -369,7 +371,7 @@ export default function Home() {
               const p = projects["gitswitch"];
               const s = CATEGORY_STYLE[p.category];
               return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner}>
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                       {p.category}
@@ -407,7 +409,7 @@ export default function Home() {
               const p = projects["nexus-archive"];
               const s = CATEGORY_STYLE[p.category];
               return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner}>
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                       {p.category}
@@ -448,8 +450,8 @@ export default function Home() {
                 <motion.div
                   key={p.slug}
                   variants={fadeInUp}
-                  className={`group relative p-6 border border-white/8 bg-zinc-900/40 hover:bg-zinc-900/70 ${s.hover} transition-all duration-300 md:col-span-2`}
-                  whileHover={{ y: -3 }}
+                  className={`group relative p-6 border border-white/8 bg-zinc-900/40 hover:bg-zinc-900/70 hover:shadow-[0_8px_32px_rgba(6,182,212,0.08)] ${s.hover} transition-all duration-300 md:col-span-2 cursor-pointer`}
+                  whileHover={{ y: -6 }}
                 >
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>

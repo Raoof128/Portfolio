@@ -53,7 +53,7 @@
   --font-sans: var(--font-chakra-petch);
   --font-mono: var(--font-jetbrains-mono);
 
-  --animate-scanline: scanline 8s linear infinite;
+  --animate-scanline: scanline 4s linear infinite;
   --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
   --animate-border-trace: border-trace 3s linear infinite;
 }
@@ -116,6 +116,7 @@ body {
       rgba(245, 158, 11, 0.3) 80%,
       transparent 100%
     );
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.15), 0 0 4px rgba(139, 92, 246, 0.1);
   }
 
   /* Custom Scrollbar - Global Application */

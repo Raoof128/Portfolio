@@ -12,7 +12,12 @@ import { fadeInUp, staggerContainer } from "@/lib/utils";
 
 export function LabClient() {
   return (
-    <div className="relative min-h-screen pt-24 pb-12">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="relative min-h-screen pt-24 pb-12"
+    >
       <ActiveGrid />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -67,12 +72,17 @@ export function LabClient() {
           ))}
 
           <motion.div variants={fadeInUp}>
-            <div className="border border-dashed border-zinc-800 rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 hover:opacity-100 transition-opacity h-full">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mb-3">
-                <GitBranch className="w-5 h-5 text-zinc-500" />
+            <a
+              href="https://github.com/Raoof128"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-dashed border-zinc-800 rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 hover:opacity-100 hover:border-cyan/30 transition-all h-full group cursor-pointer block"
+            >
+              <div className="w-10 h-10 rounded-full bg-zinc-800 group-hover:bg-cyan/10 flex items-center justify-center mb-3 transition-colors">
+                <GitBranch className="w-5 h-5 text-zinc-500 group-hover:text-cyan transition-colors" />
               </div>
-              <p className="text-sm text-zinc-500 font-mono">MORE_EXPERIMENTS_PENDING...</p>
-            </div>
+              <p className="text-sm text-zinc-500 font-mono group-hover:text-zinc-400 transition-colors">View more on GitHub</p>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -81,6 +91,6 @@ export function LabClient() {
           <span>USE_CODE_AT_OWN_RISK</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

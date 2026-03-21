@@ -3,6 +3,13 @@
 ## [Unreleased]
 
 ### Raouf: 2026-03-21
+- **Scope**: Visual & UX Polish — Animation Timing, Hover Effects, Footer, Page Transitions
+- **Summary**: 14 visual/UX fixes. Faster animations (orbital 28s→14s, ticker 55s→32s, scanline 8s→4s, stagger 0.1→0.06). Bumped scanline/ticker visibility. Bento cards: glow shadow, cursor-pointer, category bg tints. Section divider glow. Page entrance animations on projects/lab/write-ups. Terminal visible on tablet (md). Footer redesigned: 3-col with nav links, status, copyright, back-to-top. Contact form SENT state with disabled button. Lab placeholder → GitHub link. 65 tests (+2).
+- **Files Changed**: `utils.ts`, `page.tsx`, `globals.css`, `Scanline.tsx`, `Footer.tsx`, `Footer.test.tsx`, `SecureContactForm.tsx`, `projects/page.tsx`, `LabClient.tsx`, `WriteUpsClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 25 routes
+- **Follow-ups**: Deploy.
+
+### Raouf: 2026-03-21
 - **Scope**: Full Portfolio Audit — Content, SEO, Accessibility, Security Fixes
 - **Summary**: Fixed 20 audit items. (1) **Content**: Resume now lists all 5 projects, fixed Syllabus-Sync stats, expanded llms.txt from 3→5 projects. (2) **SEO**: Added OG/Twitter cards to 7 pages, fixed writeup metadata template. (3) **Accessibility**: DecryptedText now respects `prefers-reduced-motion` (via `useSyncExternalStore`) and exposes `aria-label`; added skip-to-content link; added `aria-hidden` on decorative elements; added global `prefers-reduced-motion` CSS. (4) **Docs/Security**: Replaced all `raoof128.github.io` URLs with `raoufabedini.dev` in README.md, SECURITY.md, and docs/MEHR_GUARD_README.md; updated README deployment section for Cloudflare.
 - **Files Changed**: `ResumeClient.tsx`, `llms.txt`, `README.md`, `SECURITY.md`, `MEHR_GUARD_README.md`, `about/page.tsx`, `lab/page.tsx`, `write-ups/page.tsx`, `resume/page.tsx`, `projects/[slug]/page.tsx`, `write-ups/[slug]/page.tsx`, `DecryptedText.tsx`, `layout.tsx`, `globals.css`, `page.tsx`, `AGENT.md`, `CHANGELOG.md`

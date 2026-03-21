@@ -22,7 +22,12 @@ export default function ProjectsArchive() {
   });
 
   return (
-    <div className="min-h-screen pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="min-h-screen pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8"
+    >
 
       {/* HEADER */}
       <AnimatedSection variants={fadeInUp}>
@@ -144,6 +149,6 @@ export default function ProjectsArchive() {
           )}
         </AnimatePresence>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

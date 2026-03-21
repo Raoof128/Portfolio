@@ -12,7 +12,12 @@ import { fadeInUp, staggerContainer } from "@/lib/utils";
 
 export function WriteUpsClient() {
   return (
-    <div className="relative min-h-screen pt-24 pb-12">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="relative min-h-screen pt-24 pb-12"
+    >
       <ActiveGrid />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection variants={fadeInUp}>
@@ -60,6 +65,6 @@ export function WriteUpsClient() {
           ))}
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -8,7 +8,7 @@ import { CONTACT_EMAIL } from "@/lib/constants";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function SecureContactForm() {
-  const [status, setStatus] = useState<"IDLE" | "TYPING" | "ENCRYPTING" | "ERROR">("IDLE");
+  const [status, setStatus] = useState<"IDLE" | "TYPING" | "ENCRYPTING" | "SENT" | "ERROR">("IDLE");
   const [error, setError] = useState<string | null>(null);
   const uniqueId = useId();
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -57,7 +57,11 @@ export function SecureContactForm() {
 
     const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
     const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.assign(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`);
+
+    setTimeout(() => {
+      window.location.assign(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`);
+      setStatus("SENT");
+    }, 600);
   };
 
   return (
@@ -87,7 +91,7 @@ export function SecureContactForm() {
           }`}
         >
           {status === "TYPING" || status === "ERROR" ? <AlertTriangle className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
-          {status === "TYPING" ? "KEYLOGGING_ACTIVE..." : status === "ENCRYPTING" ? "PAYLOAD_ENCRYPTING..." : status === "ERROR" ? "VALIDATION_ERROR" : "CHANNEL_SECURE"}
+          {status === "TYPING" ? "KEYLOGGING_ACTIVE..." : status === "ENCRYPTING" ? "PAYLOAD_ENCRYPTING..." : status === "SENT" ? "TRANSMISSION_COMPLETE ✓" : status === "ERROR" ? "VALIDATION_ERROR" : "CHANNEL_SECURE"}
         </span>
       </div>
 
@@ -147,8 +151,8 @@ export function SecureContactForm() {
           <p className="text-[10px] text-zinc-600 font-mono">
             * Opens your default mail client to send.
           </p>
-          <NeonButton type="submit" variant="primary" className="px-6">
-            <Send className="w-3 h-3 mr-2" /> TRANSMIT
+          <NeonButton type="submit" variant="primary" className="px-6" disabled={status === "ENCRYPTING" || status === "SENT"}>
+            <Send className="w-3 h-3 mr-2" /> {status === "ENCRYPTING" ? "ENCRYPTING..." : status === "SENT" ? "SENT ✓" : "TRANSMIT"}
           </NeonButton>
         </div>
       </form>

@@ -36,6 +36,17 @@ Before making any code changes, agents MUST:
 ---
 
 ### Raouf: 2026-03-21
+- **Scope**: Visual & UX Polish — Animation Timing, Hover Effects, Footer, Page Transitions
+- **Summary**: Fixed 14 visual/UX audit items across 3 tiers. Tier 1 (quick wins): Doubled orbital ring speed (28s→14s), ticker speed (55s→32s), scanline speed (8s→4s). Bumped scanline opacity (0.03→0.07), ticker contrast (zinc-600→zinc-500). Added bento card glow shadow on hover, cursor-pointer, and category color tints. Added section divider glow. Tier 2: Added page entrance animations to projects, lab, write-ups. Showed terminal on tablet (lg→md). Redesigned footer with 3-col layout (branding, nav links, system status), copyright, back-to-top button. Added contact form SENT state with disabled button. Tier 3: Replaced lab placeholder with GitHub link. Tightened stagger (0.1→0.06). Updated footer tests (+2 new).
+- **Files Changed**: `src/lib/utils.ts`, `src/app/page.tsx`, `src/app/globals.css`, `src/components/ui/Scanline.tsx`, `src/components/layout/Footer.tsx`, `src/components/layout/Footer.test.tsx`, `src/components/ui/SecureContactForm.tsx`, `src/app/projects/page.tsx`, `src/app/lab/LabClient.tsx`, `src/app/write-ups/WriteUpsClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65 passing (+2 new footer tests)
+    - `npm run build`: pass (25 routes)
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
+### Raouf: 2026-03-21
 - **Scope**: Full Portfolio Audit — Content, SEO, Accessibility, Security Fixes
 - **Summary**: Fixed 20 audit issues across content accuracy, SEO metadata, accessibility, and documentation. Resume: added Nexus Archive + ECRSM to Featured Projects, fixed Syllabus-Sync stats (503 tests/92 files). llms.txt: expanded from 3 to 5 projects. README.md + SECURITY.md: replaced all `raoof128.github.io` URLs with `raoufabedini.dev`. Added OG/Twitter cards to 7 pages (about, lab, write-ups, resume, project detail, writeup detail). DecryptedText: added `prefers-reduced-motion` via `useSyncExternalStore`, `aria-label` for screen readers. Layout: added skip-to-content link, `aria-hidden` on decorative hero elements. globals.css: added `prefers-reduced-motion` global suppression. Fixed docs/MEHR_GUARD_README.md outdated URL.
 - **Files Changed**: `src/app/resume/ResumeClient.tsx`, `public/llms.txt`, `README.md`, `SECURITY.md`, `docs/MEHR_GUARD_README.md`, `src/app/about/page.tsx`, `src/app/lab/page.tsx`, `src/app/write-ups/page.tsx`, `src/app/resume/page.tsx`, `src/app/projects/[slug]/page.tsx`, `src/app/write-ups/[slug]/page.tsx`, `src/components/ui/DecryptedText.tsx`, `src/app/layout.tsx`, `src/app/globals.css`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`

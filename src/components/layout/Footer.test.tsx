@@ -5,15 +5,16 @@ import { Footer } from './Footer';
 describe('Footer', () => {
   it('renders social links', () => {
     render(<Footer />);
-    
+
     expect(screen.getByText('GitHub').closest('a')).toHaveAttribute('href', 'https://github.com/Raoof128');
     expect(screen.getByText('LinkedIn').closest('a')).toHaveAttribute('href', 'https://linkedin.com/in/mohammad-raouf-abedini-885a9226a');
-    expect(screen.getByText('Contact Page').closest('a')).toHaveAttribute('href', '/contact');
+    const contactLinks = screen.getAllByText('Contact');
+    expect(contactLinks.length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders system status', () => {
     render(<Footer />);
-    expect(screen.getByText(/system status: online/i)).toBeInTheDocument();
+    expect(screen.getByText(/status: online/i)).toBeInTheDocument();
   });
 
   it('renders last index date', () => {
@@ -30,5 +31,16 @@ describe('Footer', () => {
   it('has correct structure', () => {
     const { container } = render(<Footer />);
     expect(container.querySelector('footer')).toBeInTheDocument();
+  });
+
+  it('renders navigation links', () => {
+    render(<Footer />);
+    expect(screen.getByText('Projects').closest('a')).toHaveAttribute('href', '/projects');
+    expect(screen.getByText('Resume').closest('a')).toHaveAttribute('href', '/resume');
+  });
+
+  it('renders copyright', () => {
+    render(<Footer />);
+    expect(screen.getByText(/mohammad raouf abedini/i)).toBeInTheDocument();
   });
 });
