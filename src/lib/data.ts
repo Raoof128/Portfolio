@@ -201,7 +201,7 @@ export const projects: Record<string, Project> = {
   },
   "ecrsm": {
     slug: "ecrsm",
-    title: "ECRSM",
+    title: "eBPF Cloud Runtime Security Monitor",
     category: "OFFENSIVE",
     year: "2025",
     description: "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
