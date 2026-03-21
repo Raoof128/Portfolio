@@ -31,10 +31,10 @@ export function ContactClient() {
         <AnimatedSection variants={fadeInUp} delay={0.3}>
           <div className="flex justify-center gap-6 pt-4 border-t border-cyan/10">
             <motion.a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-              <Github className="w-4 h-4 mr-2" /> GITHUB_FREQ
+              <Github className="w-4 h-4 mr-2" /> GitHub
             </motion.a>
             <motion.a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-              <Linkedin className="w-4 h-4 mr-2" /> LINKEDIN_FREQ
+              <Linkedin className="w-4 h-4 mr-2" /> LinkedIn
             </motion.a>
           </div>
         </AnimatedSection>
