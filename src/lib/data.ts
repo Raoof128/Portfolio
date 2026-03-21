@@ -111,49 +111,6 @@ export const projects: Record<string, Project> = {
       "Cyberpunk-inspired UI"
     ]
   },
-  "phishpatrol": {
-    slug: "phishpatrol",
-    title: "PhishPatrol",
-    category: "DEFENSIVE",
-    year: "2025",
-    description: "Interactive cybersecurity education game teaching phishing awareness and social engineering recognition. Deployed to 50+ students.",
-    tags: ["Web", "Education", "Security Awareness", "JavaScript"],
-    links: {
-      repo: "https://github.com/Raoof128",
-      caseStudy: "/projects/phishpatrol"
-    },
-    build: {
-      stack: ["JavaScript", "HTML5", "CSS3"],
-      features: [
-        "Interactive phishing simulation scenarios",
-        "Real-world social engineering examples",
-        "Measurable student progress tracking",
-        "Deployed to 50+ students"
-      ]
-    },
-    secure: {
-      measures: [
-        "No PII collected from students",
-        "Safe sandbox simulation environment",
-        "Educational-only threat scenarios",
-        "Verified zero real credential exposure"
-      ]
-    },
-    fullDescription: "PhishPatrol is an interactive cybersecurity education game designed to teach phishing awareness and social engineering recognition through realistic simulated scenarios.",
-    problem: "Security awareness training is often dry and ineffective. Students need engaging, realistic simulations to genuinely internalize phishing recognition skills.",
-    solution: [
-      "Designed interactive game scenarios mirroring real-world phishing attacks",
-      "Built measurable assessment system to track threat recognition improvement",
-      "Deployed to 50+ students at Macquarie University",
-      "Achieved measurable improvement in phishing recognition rates"
-    ],
-    proof: [
-      "50+ student deployments",
-      "Measurable improvement in threat recognition",
-      "Zero real credentials exposed in simulations",
-      "Positive student engagement feedback"
-    ]
-  },
   "syllabus-sync": {
     slug: "syllabus-sync",
     title: "Syllabus Sync",
