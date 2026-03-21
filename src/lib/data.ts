@@ -154,6 +154,50 @@ export const projects: Record<string, Project> = {
       "Positive student engagement feedback"
     ]
   },
+  "syllabus-sync": {
+    slug: "syllabus-sync",
+    title: "Syllabus Sync",
+    category: "ENGINEERING",
+    year: "2026",
+    description: "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Full student operations suite with 503 tests across 92 files.",
+    tags: ["Next.js 16", "Supabase", "TypeScript", "AI/LLM", "WebAuthn", "Full-Stack"],
+    links: {
+      repo: "https://github.com/Raoof128/syllabus-sync",
+      caseStudy: "/projects/syllabus-sync"
+    },
+    build: {
+      stack: ["Next.js 16", "TypeScript 5", "Supabase PostgreSQL", "TanStack Query", "Leaflet + Google Maps", "Framer Motion", "Radix UI", "Sentry"],
+      features: [
+        "LLM OCR pipeline extracting structured JSON from PDF syllabi",
+        "Syllabus-as-Code — assessments and deadlines as version-controlled artefacts",
+        "Full student OS: calendar, reminders, campus map, notifications",
+        "503 tests across 92 files with CI/CD quality gates"
+      ]
+    },
+    secure: {
+      measures: [
+        "Zero-Trust proxy middleware — every route authenticated by default",
+        "Supabase Row-Level Security enforced at database layer",
+        "WebAuthn/FIDO2 passkey authentication (no passwords stored)",
+        "LLM prompt injection mitigation with schema-constrained output and input sanitisation",
+        "Secrets scanner in CI blocks credential patterns from commits"
+      ]
+    },
+    fullDescription: "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite — calendar, map, notifications, and multi-profile management.",
+    problem: "Australian universities publish syllabi as unstructured PDFs. Students manually copy assessment dates into calendars, and AI assistants hallucinate deadlines because no machine-readable source of truth exists.",
+    solution: [
+      "Built an LLM OCR pipeline that extracts structured JSON from PDF syllabi with Zod schema validation",
+      "Implemented Syllabus-as-Code where assessments and deadlines are version-controlled, diff-able artefacts",
+      "Created a full student OS with calendar, campus navigation (Leaflet + Google Maps), and push notifications",
+      "Architected for fork-ability — any Australian university can adopt by swapping data/ and environment variables"
+    ],
+    proof: [
+      "503 tests across 92 files — all passing in CI",
+      "Zero-Trust proxy catches misconfiguration by default (validated in production)",
+      "Designed to serve ~47,000 MQ students; fork-ready for 1M+ across Australian universities",
+      "WebAuthn passkey auth — no shared secrets leave the device"
+    ]
+  },
   "nexus-archive": {
     slug: "nexus-archive",
     title: "Nexus Archive",

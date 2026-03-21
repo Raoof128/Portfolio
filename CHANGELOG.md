@@ -3,10 +3,10 @@
 ## [Unreleased]
 
 ### Raouf: 2026-03-21
-- **Scope**: Add Nexus Archive Project to Portfolio
-- **Summary**: Added Nexus Archive as the 5th project entry. Full-stack cyberpunk media vault (React 19 + Litestar + Supabase) with hardened cookie-based auth, encrypted takeaways, AI recommendations, and CI security gates. Added data entry in `data.ts` (ENGINEERING category, 2026) and homepage bento card in `page.tsx`. Project detail page, sitemap, and archive auto-generated from data layer. Build now produces 25 static routes (+1).
+- **Scope**: Add Nexus Archive + Syllabus Sync Projects to Portfolio
+- **Summary**: Added two new projects to portfolio. (1) **Nexus Archive** — cyberpunk media vault (React 19 + Litestar + Supabase) with hardened cookie auth, encrypted takeaways, AI recommendations, CI security gates. (2) **Syllabus Sync** — AI-native Campus OS (Next.js 16 + Supabase + WebAuthn + LLM OCR) that transforms PDF syllabi into agent-readable data with 503 tests. Pushed Syllabus Sync to new GitHub repo `Raoof128/syllabus-sync`. Both added to `data.ts` (ENGINEERING, 2026) with homepage bento cards. Reordered homepage grid: Mehr Guard (2-col), Syllabus Sync, PhishPatrol, GitSwitch, Nexus Archive, ECRSM (2-col). Build now produces 26 static routes (+2).
 - **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
-- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run test:ci`: 63/63, `npm run build`: 25 routes
+- **Verification**: `npm run lint`: pass, `npm run typecheck`: pass, `npm run test:ci`: 63/63, `npm run build`: 26 routes
 - **Follow-ups**: Deploy to Cloudflare Pages.
 
 ### Raouf: 2026-03-08
