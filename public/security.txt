@@ -1,5 +1,6 @@
 Contact: mailto:raoof.r12@gmail.com
-Expires: 2026-12-31T23:00:00.000Z
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
 Encryption: https://raoufabedini.dev/pgp-key.txt
 Policy: https://raoufabedini.dev/security-policy
 Ack: https://raoufabedini.dev/hall-of-fame
