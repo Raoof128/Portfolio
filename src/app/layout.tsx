@@ -100,10 +100,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString }}
         />
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan focus:text-black focus:font-mono focus:text-sm">
+          Skip to main content
+        </a>
         <GridBackground />
         <Scanline />
         <Navbar />
-        <main className="min-h-screen pt-16 flex flex-col">
+        <main id="main-content" className="min-h-screen pt-16 flex flex-col">
           <div className="flex-1">
             {children}
           </div>

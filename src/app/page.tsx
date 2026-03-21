@@ -72,7 +72,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
 
         {/* Orbital rings */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-end pr-0 lg:pr-24">
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-end pr-0 lg:pr-24" aria-hidden="true">
           {[780, 580, 400, 240].map((size, i) => (
             <motion.div
               key={size}

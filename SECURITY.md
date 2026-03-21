@@ -4,7 +4,7 @@
 
 This policy applies to:
 
-- `https://raoof128.github.io/Portfolio`
+- `https://raoufabedini.dev`
 - Source code in this repository
 - Public portfolio pages and static assets shipped from this repository
 
@@ -17,7 +17,7 @@ Please report vulnerabilities privately via email:
 
 For encrypted reports, use the public key published at:
 
-- `https://raoof128.github.io/Portfolio/pgp-key.txt`
+- `https://raoufabedini.dev/pgp-key.txt`
 
 ## What to Include
 
@@ -50,4 +50,4 @@ Out-of-scope examples:
 
 Valid, responsibly disclosed findings may be acknowledged on:
 
-- `https://raoof128.github.io/Portfolio/hall-of-fame`
+- `https://raoufabedini.dev/hall-of-fame`

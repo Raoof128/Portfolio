@@ -15,4 +15,4 @@ All security-critical logic lives in `common/`. Platform modules handle camera/U
 
 ## 🔗 Links
 - [Demo Video](https://youtu.be/n8bheouj4jM)
-- [Web Demo](https://raoof128.github.io)
+- [Web Demo](https://raoufabedini.dev/projects/mehr-guard)

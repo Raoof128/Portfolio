@@ -46,7 +46,7 @@ export function ResumeClient() {
                     <span>github.com/Raoof128</span> <Github className="w-4 h-4 group-hover:animate-pulse" />
                   </a>
                   <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-cyan transition-colors text-sm font-mono group">
-                    <span>linkedin.com/in/mohammad-raouf-abedini</span> <Linkedin className="w-4 h-4 group-hover:animate-pulse" />
+                    <span>LinkedIn Profile</span> <Linkedin className="w-4 h-4 group-hover:animate-pulse" />
                   </a>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export function ResumeClient() {
                   <li>Architected production web applications with security-first design using TypeScript, Next.js, FastAPI, and Cloudflare, serving 1,000+ end users across live deployments.</li>
                   <li>Engineered a secure iOS in-app purchase bridge with StoreKit 2 and Cloudflare Workers, implementing cryptographic receipt validation and tamper-resistant API design.</li>
                   <li>Executed a full Moodle LMS production migration with a documented cutover runbook, staging-to-production swap, and post-deployment security hardening — achieving zero downtime.</li>
-                  <li>Developed Syllabus Sync with OAuth 2.0, passkey authentication, and 500+ automated tests across 35 locales, embedding security from design through deployment.</li>
+                  <li>Developed Syllabus-Sync with OAuth 2.0, passkey authentication, and 503 automated tests across 92 files, embedding security from design through deployment.</li>
                 </ul>
               </div>
 
@@ -188,15 +188,27 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
+                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">Syllabus-Sync <span className="text-zinc-500 font-normal text-sm">&mdash; Next.js 16, Supabase, WebAuthn</span></h4>
+                  </div>
+                  <p className="text-sm text-zinc-400">AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Zero-Trust proxy, passkey authentication, and 503 automated tests across 92 files with CI/CD quality gates.</p>
+                </div>
+                <div className="group">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
                     <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">GitSwitch <span className="text-zinc-500 font-normal text-sm">&mdash; Electron, React</span></h4>
                   </div>
                   <p className="text-sm text-zinc-400">Engineered a multi-account Git identity management desktop app featuring secure credential handling and complete identity isolation between developer contexts.</p>
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">Syllabus Sync <span className="text-zinc-500 font-normal text-sm">&mdash; Next.js, FastAPI, OAuth 2.0</span></h4>
+                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">Nexus Archive <span className="text-zinc-500 font-normal text-sm">&mdash; React 19, Litestar, Supabase</span></h4>
                   </div>
-                  <p className="text-sm text-zinc-400">Full-stack academic planning tool with passkey authentication, 500+ automated security tests across 35 locales, and continuous security hardening baked into the CI/CD pipeline.</p>
+                  <p className="text-sm text-zinc-400">Cyberpunk-styled personal media vault with HttpOnly cookie auth, encrypted takeaways, AI-assisted recommendations via Gemini, and shared per-user rate limiting.</p>
+                </div>
+                <div className="group">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
+                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">eBPF Cloud Runtime Security Monitor <span className="text-zinc-500 font-normal text-sm">&mdash; eBPF (C), Go, React</span></h4>
+                  </div>
+                  <p className="text-sm text-zinc-400">Educational read-only runtime visibility stack combining kernel eBPF tracepoints, a Go agent for metadata enrichment, and a real-time React dashboard via WebSockets.</p>
                 </div>
                 <div className="p-3 border border-white/5 bg-white/5 rounded-sm text-sm text-zinc-500 font-mono">
                   <span className="text-cyan">+70</span> security &amp; AI projects at <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="text-cyan hover:underline">github.com/Raoof128</a>

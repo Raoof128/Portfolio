@@ -20,8 +20,17 @@ export async function generateMetadata({ params }: PageProps) {
     if (!post) return { title: "Not Found" };
 
     return {
-      title: `${post.title} | Raouf Security`,
+      title: `${post.title} | Write-ups`,
       description: post.takeaway,
+      openGraph: {
+        title: `${post.title} | Mohammad Raouf Abedini`,
+        description: post.takeaway,
+      },
+      twitter: {
+        card: "summary",
+        title: `${post.title} | Mohammad Raouf Abedini`,
+        description: post.takeaway,
+      },
     };
   }
 

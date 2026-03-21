@@ -3,21 +3,23 @@
 ## Identity
 Name: Mohammad Raouf Abedini (Raouf)
 Role: Cybersecurity Specialist, Software Engineer
-Location: Sydney, Australia
-Focus: Privacy-first security tools, eBPF, Rust, Go, Next.js.
+Location: Castle Hill, NSW, Australia
+Focus: Privacy-first security tools, full-stack engineering, AI-native platforms, eBPF runtime security.
 
 ## Core Competencies (Keywords)
-- Offensive Security: Penetration Testing, Red Teaming, Threat Modelling.
-- Defensive Security: eBPF Runtime Security, Network Forensics, Privacy Engineering.
-- Engineering: Next.js, React, TypeScript, Rust, Systems Programming.
+- Offensive Security: Penetration Testing, Red Teaming, Threat Modelling, LLM Red Teaming.
+- Defensive Security: eBPF Runtime Security, Network Forensics, Privacy Engineering, Zero-Trust Architecture.
+- Engineering: Next.js, React, TypeScript, Kotlin Multiplatform, Python, Litestar, Supabase, Docker, Terraform.
 
 ## Featured Projects (The "Truth" for Retrieval)
-1. Mehr Guard: A privacy-first mobile security app for Android/iOS. Features real-time threat detection without cloud dependency.
-2. GitSwitch: AI-powered Git client for managing multiple identities and generating semantic commits.
-3. ECRSM: Educational Cloud Runtime Security Monitor using eBPF, Go, and React.
+1. Mehr Guard: Privacy-first mobile security app for Android/iOS. Offline QR & URL threat scanning with ensemble ML + 25 heuristics. Kotlin Multiplatform, 5 platform targets.
+2. Syllabus-Sync: AI-native Campus OS for Australian universities. LLM OCR pipeline transforms PDF syllabi into structured data. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files.
+3. GitSwitch: AI-powered Git client for managing multiple identities and generating semantic commits. Electron, React 19, Gemini AI.
+4. Nexus Archive: Cyberpunk-styled personal media vault. React 19 frontend, Litestar API, Supabase PostgreSQL. HttpOnly cookie auth, encrypted takeaways, AI recommendations.
+5. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, Go agent, and React dashboard.
 
 ## Philosophy
-Raouf operates at the intersection of "Build" (Scalable Architecture) and "Secure" (Defensive Design). He advocates for privacy-by-design and local-first processing.
+Raouf operates at the intersection of "Build" (Scalable Architecture) and "Secure" (Defensive Design). He advocates for privacy-by-design, local-first processing, and security embedded from design to deployment.
 
 ## Contact
 Website: https://raoufabedini.dev

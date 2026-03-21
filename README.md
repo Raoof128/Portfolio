@@ -2,15 +2,15 @@
 
 Production-grade Next.js portfolio website for showcasing cybersecurity engineering projects, write-ups, and lab experiments.
 
-[Live Site](https://raoof128.github.io/Portfolio) · [Security Policy](./SECURITY.md) · [Architecture](./docs/ARCHITECTURE.md) · [API/Data Reference](./docs/API_REFERENCE.md)
+[Live Site](https://raoufabedini.dev) · [Security Policy](./SECURITY.md) · [Architecture](./docs/ARCHITECTURE.md) · [API/Data Reference](./docs/API_REFERENCE.md)
 
 ## Highlights
 
-- Next.js App Router with static export for GitHub Pages.
-- Strict TypeScript, ESLint, and Vitest test suite.
+- Next.js App Router with static export deployed to Cloudflare Pages.
+- Strict TypeScript, ESLint, and Vitest test suite (63 tests).
 - Security-first content and disclosure workflow (`security.txt`, Hall of Fame, policy page).
 - Reusable UI system with animation primitives and responsive layouts.
-- Structured project/write-up/lab data model powering dynamic static routes.
+- 5 featured projects with auto-generated detail pages, search, and filtering.
 
 ## Tech Stack
 
@@ -30,7 +30,7 @@ flowchart TD
   D --> E["sitemap.xml / robots.txt / JSON-LD"]
   F["GitHub Actions"] --> G["Quality Gates: lint + typecheck + tests"]
   G --> H["Static Build Artifact: out/"]
-  H --> I["GitHub Pages Deployment"]
+  H --> I["Cloudflare Pages Deployment"]
 ```
 
 Detailed design notes are documented in [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
@@ -69,7 +69,7 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000/Portfolio`.
+Open `http://localhost:3000`.
 
 ## Quality Commands
 
@@ -82,10 +82,10 @@ npm run build
 
 ## Deployment
 
-This repository is configured for GitHub Pages static hosting:
+This repository is deployed to Cloudflare Pages:
 
-- `next.config.ts` uses `output: "export"` and `basePath: "/Portfolio"`.
-- Deployments run from `.github/workflows/deploy.yml` on pushes to `main`.
+- `next.config.ts` uses `output: "export"` for static generation.
+- Production site: `https://raoufabedini.dev`
 - PR and branch quality checks run from `.github/workflows/ci.yml`.
 
 ## Security

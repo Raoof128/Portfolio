@@ -36,6 +36,17 @@ Before making any code changes, agents MUST:
 ---
 
 ### Raouf: 2026-03-21
+- **Scope**: Full Portfolio Audit — Content, SEO, Accessibility, Security Fixes
+- **Summary**: Fixed 20 audit issues across content accuracy, SEO metadata, accessibility, and documentation. Resume: added Nexus Archive + ECRSM to Featured Projects, fixed Syllabus-Sync stats (503 tests/92 files). llms.txt: expanded from 3 to 5 projects. README.md + SECURITY.md: replaced all `raoof128.github.io` URLs with `raoufabedini.dev`. Added OG/Twitter cards to 7 pages (about, lab, write-ups, resume, project detail, writeup detail). DecryptedText: added `prefers-reduced-motion` via `useSyncExternalStore`, `aria-label` for screen readers. Layout: added skip-to-content link, `aria-hidden` on decorative hero elements. globals.css: added `prefers-reduced-motion` global suppression. Fixed docs/MEHR_GUARD_README.md outdated URL.
+- **Files Changed**: `src/app/resume/ResumeClient.tsx`, `public/llms.txt`, `README.md`, `SECURITY.md`, `docs/MEHR_GUARD_README.md`, `src/app/about/page.tsx`, `src/app/lab/page.tsx`, `src/app/write-ups/page.tsx`, `src/app/resume/page.tsx`, `src/app/projects/[slug]/page.tsx`, `src/app/write-ups/[slug]/page.tsx`, `src/components/ui/DecryptedText.tsx`, `src/app/layout.tsx`, `src/app/globals.css`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 63/63 passing
+    - `npm run build`: pass (25 routes)
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
+### Raouf: 2026-03-21
 - **Scope**: Add Nexus Archive + Syllabus Sync, Remove PhishPatrol
 - **Summary**: Added two new projects: (1) Nexus Archive — cyberpunk media vault (React 19 + Litestar + Supabase). (2) Syllabus Sync — AI-native Campus OS (Next.js 16 + Supabase + WebAuthn + LLM OCR). Pushed Syllabus Sync to new `Raoof128/syllabus-sync` GitHub repo. Removed PhishPatrol from data layer and homepage bento grid. Portfolio now has 5 projects: Mehr Guard, Syllabus Sync, GitSwitch, Nexus Archive, ECRSM.
 - **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`

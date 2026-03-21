@@ -29,6 +29,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${project.title} | Projects`,
     description: project.description,
+    openGraph: {
+      title: `${project.title} | Mohammad Raouf Abedini`,
+      description: project.description,
+    },
+    twitter: {
+      card: "summary",
+      title: `${project.title} | Mohammad Raouf Abedini`,
+      description: project.description,
+    },
   };
 }
 
