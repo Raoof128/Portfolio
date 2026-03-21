@@ -188,12 +188,6 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">PhishPatrol <span className="text-zinc-500 font-normal text-sm">&mdash; Web, Interactive Game</span></h4>
-                  </div>
-                  <p className="text-sm text-zinc-400">Designed and launched an interactive cybersecurity education game teaching phishing awareness and social engineering recognition; deployed to 50+ students with measurable improvement in threat recognition.</p>
-                </div>
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
                     <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">GitSwitch <span className="text-zinc-500 font-normal text-sm">&mdash; Electron, React</span></h4>
                   </div>
                   <p className="text-sm text-zinc-400">Engineered a multi-account Git identity management desktop app featuring secure credential handling and complete identity isolation between developer contexts.</p>
