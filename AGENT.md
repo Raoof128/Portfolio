@@ -36,6 +36,17 @@ Before making any code changes, agents MUST:
 ---
 
 ### Raouf: 2026-03-21
+- **Scope**: Add NanoMatch + SentinelFlow Projects
+- **Summary**: Added two new C++ systems programming projects to data layer and homepage bento grid. (1) NanoMatch — C++20 limit order book matching engine (9.29M ops/sec, 84ns p50 latency, 60+ tests, custom pool allocator). (2) SentinelFlow — C++17 real-time network IDS (28M+ pkt/sec, Snort-inspired rules, 7 protocol layers, 27 tests). Homepage grid now shows 7 projects in 3 rows. Build produces 27 static routes (2 new project detail pages).
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65 passing
+    - `npm run build`: pass (27 routes)
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
+### Raouf: 2026-03-21
 - **Scope**: Visual & UX Polish — Animation Timing, Hover Effects, Footer, Page Transitions
 - **Summary**: Fixed 14 visual/UX audit items across 3 tiers. Tier 1 (quick wins): Doubled orbital ring speed (28s→14s), ticker speed (55s→32s), scanline speed (8s→4s). Bumped scanline opacity (0.03→0.07), ticker contrast (zinc-600→zinc-500). Added bento card glow shadow on hover, cursor-pointer, and category color tints. Added section divider glow. Tier 2: Added page entrance animations to projects, lab, write-ups. Showed terminal on tablet (lg→md). Redesigned footer with 3-col layout (branding, nav links, system status), copyright, back-to-top button. Added contact form SENT state with disabled button. Tier 3: Replaced lab placeholder with GitHub link. Tightened stagger (0.1→0.06). Updated footer tests (+2 new).
 - **Files Changed**: `src/lib/utils.ts`, `src/app/page.tsx`, `src/app/globals.css`, `src/components/ui/Scanline.tsx`, `src/components/layout/Footer.tsx`, `src/components/layout/Footer.test.tsx`, `src/components/ui/SecureContactForm.tsx`, `src/app/projects/page.tsx`, `src/app/lab/LabClient.tsx`, `src/app/write-ups/WriteUpsClient.tsx`, `AGENT.md`, `CHANGELOG.md`

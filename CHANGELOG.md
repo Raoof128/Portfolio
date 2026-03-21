@@ -3,6 +3,13 @@
 ## [Unreleased]
 
 ### Raouf: 2026-03-21
+- **Scope**: Add NanoMatch + SentinelFlow Projects
+- **Summary**: Added two new C++ systems programming projects. (1) **NanoMatch** — high-performance limit order book and matching engine in C++20, 9.29M ops/sec throughput, 84ns p50 latency, 60+ tests. (2) **SentinelFlow** — real-time network IDS in C++17, 28M+ packets/sec, Snort-inspired rule engine, layered protocol dissection, 27 tests. Homepage grid now 7 projects across 3 rows: Mehr Guard (2-col) + Syllabus Sync, GitSwitch + Nexus Archive + NanoMatch, SentinelFlow + ECRSM (2-col). Build produces 27 static routes.
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 27 routes
+- **Follow-ups**: Deploy to Cloudflare Pages.
+
+### Raouf: 2026-03-21
 - **Scope**: Visual & UX Polish — Animation Timing, Hover Effects, Footer, Page Transitions
 - **Summary**: 14 visual/UX fixes. Faster animations (orbital 28s→14s, ticker 55s→32s, scanline 8s→4s, stagger 0.1→0.06). Bumped scanline/ticker visibility. Bento cards: glow shadow, cursor-pointer, category bg tints. Section divider glow. Page entrance animations on projects/lab/write-ups. Terminal visible on tablet (md). Footer redesigned: 3-col with nav links, status, copyright, back-to-top. Contact form SENT state with disabled button. Lab placeholder → GitHub link. 65 tests (+2).
 - **Files Changed**: `utils.ts`, `page.tsx`, `globals.css`, `Scanline.tsx`, `Footer.tsx`, `Footer.test.tsx`, `SecureContactForm.tsx`, `projects/page.tsx`, `LabClient.tsx`, `WriteUpsClient.tsx`, `AGENT.md`, `CHANGELOG.md`

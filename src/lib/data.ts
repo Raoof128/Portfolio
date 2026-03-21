@@ -199,6 +199,92 @@ export const projects: Record<string, Project> = {
       "Terraform IaC scaffold for reproducible Supabase + Vercel deployments"
     ]
   },
+  "nanomatch": {
+    slug: "nanomatch",
+    title: "NanoMatch",
+    category: "ENGINEERING",
+    year: "2026",
+    description: "High-performance limit order book and matching engine in C++20. Price-time priority matching at 9.29M ops/sec with 84ns p50 latency.",
+    tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
+    links: {
+      repo: "https://github.com/Raoof128/NanoMatch",
+      caseStudy: "/projects/nanomatch"
+    },
+    build: {
+      stack: ["C++20", "CMake 3.20+", "Google Test 1.17", "GitHub Actions CI/CD", "AddressSanitizer", "UBSan"],
+      features: [
+        "Price-time priority (FIFO) matching algorithm",
+        "4 order types: Limit, Market, IOC, Fill-or-Kill",
+        "O(1) order cancellation/modification via hash map",
+        "Custom pool allocator eliminating heap allocation overhead"
+      ]
+    },
+    secure: {
+      measures: [
+        "AddressSanitizer and UndefinedBehaviorSanitizer in CI",
+        "60+ unit tests across 18 test suites",
+        "cppcheck static analysis on every push",
+        "No external runtime dependencies"
+      ]
+    },
+    fullDescription: "NanoMatch is a high-performance limit order book and matching engine built in modern C++20. It simulates a financial exchange's core operations, processing buy/sell orders with price-time priority matching at millions of operations per second.",
+    problem: "Financial exchanges require ultra-low-latency order matching. Understanding how matching engines work at the systems level demands building one from scratch with real performance constraints.",
+    solution: [
+      "Implemented price-time priority (FIFO) matching with support for Limit, Market, IOC, and FOK orders",
+      "Designed O(1) order cancellation and modification using hash map indexing",
+      "Built a custom pool allocator to eliminate heap allocation overhead on the hot path",
+      "Added multi-instrument support with independent order books per symbol"
+    ],
+    proof: [
+      "Throughput: 9.29M ops/sec on benchmarks",
+      "Latency: 84ns p50, sub-microsecond p99",
+      "60+ unit tests across 18 test suites — all passing",
+      "CI: ASan, UBSan, cppcheck, clang-format on every push"
+    ]
+  },
+  "sentinelflow": {
+    slug: "sentinelflow",
+    title: "SentinelFlow",
+    category: "DEFENSIVE",
+    year: "2026",
+    description: "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection at 28M+ packets/sec.",
+    tags: ["C++17", "libpcap", "IDS", "Network Security", "Systems Programming"],
+    links: {
+      repo: "https://github.com/Raoof128/SentinelFlow",
+      caseStudy: "/projects/sentinelflow"
+    },
+    build: {
+      stack: ["C++17", "libpcap", "CMake", "Google Test", "Snort-inspired Rules", "BPF Filters"],
+      features: [
+        "Live network capture via libpcap with configurable BPF filters",
+        "Layered protocol dissection: Ethernet, IPv4, TCP, UDP, ICMP, DNS, ARP",
+        "Snort-inspired configurable rule engine with signature matching",
+        "Stateful threat detection (port scans, SYN floods, DNS tunneling)"
+      ]
+    },
+    secure: {
+      measures: [
+        "Color-coded severity-level alerting (LOW → CRITICAL)",
+        "27 unit/integration tests covering all protocol layers",
+        "CSV export for forensic analysis and SIEM integration",
+        "Configurable BPF filters for targeted capture"
+      ]
+    },
+    fullDescription: "SentinelFlow is a real-time network intrusion detection system that captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and exports security alerts to console and CSV formats.",
+    problem: "Network intrusion detection requires deep packet inspection at wire speed. Commercial IDS solutions are opaque — building one from scratch reveals how protocol dissection, signature matching, and stateful analysis actually work.",
+    solution: [
+      "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
+      "Built a Snort-inspired configurable rule engine for flexible signature matching",
+      "Added stateful threat detection for port scans, SYN floods, and DNS tunneling",
+      "Engineered for throughput: 28M+ packets/sec parsing performance"
+    ],
+    proof: [
+      "Throughput: 28M+ packets/sec parsing performance",
+      "Protocol coverage: 7 protocols across Layers 2-7",
+      "27 unit/integration tests — all passing",
+      "Supports both live capture and pcap file analysis"
+    ]
+  },
   "ecrsm": {
     slug: "ecrsm",
     title: "eBPF Cloud Runtime Security Monitor",

@@ -445,6 +445,82 @@ export default function Home() {
               );
             })()}
 
+            {/* NanoMatch */}
+            {(() => {
+              const p = projects["nanomatch"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
+                      [{s.prefix}] {p.category}
+                    </span>
+                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {p.tags.slice(0, 4).map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {p.links.repo && (
+                    <a
+                      href={p.links.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="w-3 h-3" /> Repo
+                    </a>
+                  )}
+                </BentoCard>
+              );
+            })()}
+
+            {/* SentinelFlow */}
+            {(() => {
+              const p = projects["sentinelflow"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
+                      [{s.prefix}] {p.category}
+                    </span>
+                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {p.tags.slice(0, 4).map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {p.links.repo && (
+                    <a
+                      href={p.links.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="w-3 h-3" /> Repo
+                    </a>
+                  )}
+                </BentoCard>
+              );
+            })()}
+
             {/* ECRSM — spans 2 cols on desktop */}
             {(() => {
               const p = projects["ecrsm"];
