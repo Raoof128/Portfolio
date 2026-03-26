@@ -22,7 +22,7 @@ export function SecureContactForm() {
       clearTimeout(typingTimeoutRef.current);
     }
 
-    typingTimeoutRef.current = setTimeout(() => setStatus("ENCRYPTING"), 800);
+    typingTimeoutRef.current = setTimeout(() => setStatus("IDLE"), 800);
   };
 
   useEffect(() => {
