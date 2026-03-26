@@ -12,7 +12,7 @@ This policy applies to:
 
 Please report vulnerabilities privately via email:
 
-- Contact: `raoof.r12@gmail.com`
+- Contact: `raoof.r999@outlook.com`
 - Subject format: `[SECURITY] <short summary>`
 
 For encrypted reports, use the public key published at:
