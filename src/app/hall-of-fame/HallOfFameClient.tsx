@@ -36,7 +36,7 @@ export function HallOfFameClient() {
                   <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2"><Shield className="w-5 h-5 text-cyan" /> Found a Vulnerability?</h2>
                   <p className="text-text-body">Report it responsibly and get recognized here. Check my{" "}<Link href="/security-policy" className="text-cyan hover:underline">security policy</Link>{" "}for guidelines.</p>
                 </div>
-                <NeonButton href="mailto:raoof.r12@gmail.com" variant="primary"><Mail className="w-4 h-4 mr-2" /> REPORT</NeonButton>
+                <NeonButton href="mailto:raoof.r999@outlook.com" variant="primary"><Mail className="w-4 h-4 mr-2" /> REPORT</NeonButton>
               </div>
             </HUDFrame>
           </AnimatedSection>

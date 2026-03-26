@@ -17,11 +17,12 @@ import { TerminalFeed } from "@/components/ui/TerminalFeed";
 /* ─── Constants ──────────────────────────────────────────────────────── */
 
 const TICKER = [
-  "SYSTEM ONLINE", "70+ PROJECTS SHIPPED", "1,000+ USERS SERVED",
-  "CASTLE HILL · NSW · AU", "LLM RED TEAMING", "ESSENTIAL EIGHT COMPLIANCE",
-  "KOTLIN MULTIPLATFORM", "SOC AUTOMATION", "ACTIVE DIRECTORY LABS",
-  "OFFENSIVE SECURITY", "AWS · AZURE · GCP", "WAM 76+", "NOV 2026 GRADUATE",
-  "THREAT INTELLIGENCE", "ZERO TRUST ARCHITECTURE",
+  "SYSTEM ONLINE", "AI & CYBERSECURITY RESEARCH", "70+ PROJECTS SHIPPED",
+  "1,000+ USERS SERVED", "LLM SECURITY EVALUATION", "ADVERSARIAL ML",
+  "THREAT DETECTION ENGINEERING", "NETWORK INTRUSION DETECTION",
+  "AI SAFETY", "ANTHROPIC AI EVALUATOR", "7 YEARS EXPERIENCE",
+  "NOV 2026 GRADUATE", "OFFENSIVE SECURITY", "PRIVACY-PRESERVING ANALYSIS",
+  "CASTLE HILL · NSW · AU",
 ];
 
 const CATEGORY_STYLE: Record<string, { dot: string; badge: string; hover: string; corner: string; tint: string; prefix: string }> = {
@@ -137,17 +138,17 @@ export default function Home() {
               <div className="space-y-0.5 leading-none">
                 {/* Solid fill */}
                 <h1 className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight text-white">
-                  <DecryptedText text="CYBER" loopInterval={5000} />
+                  <DecryptedText text="AI +" loopInterval={5000} />
                 </h1>
                 {/* Outline — 2026 text-stroke effect */}
                 <h1
                   className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
                   style={{ WebkitTextStroke: "1.5px rgba(6,182,212,0.45)", color: "transparent" } as React.CSSProperties}
                 >
-                  SECURITY
+                  CYBER
                 </h1>
                 <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-cyan tracking-tight pt-2">
-                  + Engineering
+                  Research
                 </h2>
               </div>
             </motion.div>
@@ -158,9 +159,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.48 }}
               className="text-text-body text-lg max-w-md leading-relaxed"
             >
-              70+ projects. 1,000+ users. Security embedded from{" "}
-              <span className="text-foreground">design to deployment</span> — across
-              mobile, web, and kernel space.
+              AI safety, LLM security, and threat detection research.{" "}
+              <span className="text-foreground">70+ projects</span>, 1,000+ users,
+              and 7 years across security operations, systems programming, and applied ML.
             </motion.p>
 
             {/* Stat chips */}
@@ -170,7 +171,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.58 }}
               className="flex flex-wrap gap-2"
             >
-              {["Nov 2026 Graduate", "Macquarie University", "WAM 76+"].map((c) => (
+              {["Anthropic AI Evaluator", "Macquarie University", "Nov 2026 Graduate"].map((c) => (
                 <span key={c} className="px-3 py-1 border border-cyan/12 text-text-meta font-mono text-xs">
                   {c}
                 </span>
@@ -676,12 +677,12 @@ export default function Home() {
                   <div className="w-10 h-10 bg-cyber-dark border border-cyan/15 flex items-center justify-center mb-7 group-hover:border-cyan/40 group-hover:bg-cyan/8 transition-all">
                     <Code2 className="w-5 h-5 text-text-body group-hover:text-cyan transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">BUILD</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">RESEARCH</h3>
                   <p className="text-text-body leading-relaxed mb-7 text-sm max-w-sm">
-                    Software should be performant, maintainable, and delightful. Clean architecture, modern patterns, and developer experience — built to last.
+                    Rigorous methodology, reproducible results, and responsible disclosure. AI safety and security research that moves the field forward.
                   </p>
                   <ul className="space-y-2 font-mono text-xs text-text-meta">
-                    {["Scalable Architecture", "Performance First", "Type Safety"].map((item) => (
+                    {["AI Safety & LLM Evaluation", "Adversarial ML", "Peer-Reviewed Work"].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <span className="text-cyan">+</span> {item}
                       </li>
@@ -706,10 +707,10 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">SECURE</h3>
                   <p className="text-text-body leading-relaxed mb-7 text-sm max-w-sm">
-                    Security isn&apos;t an afterthought. Threat modelling, defensible architecture, and safe defaults — applied from day zero.
+                    Security isn&apos;t an afterthought. Threat detection, defensible architecture, and safe defaults — applied from design to deployment.
                   </p>
                   <ul className="space-y-2 font-mono text-xs text-text-meta">
-                    {["Threat Modelling", "Privacy by Design", "Defensive Coding"].map((item) => (
+                    {["Threat Detection Engineering", "Privacy by Design", "Defensive Coding"].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <span className="text-purple">+</span> {item}
                       </li>
@@ -744,9 +745,9 @@ export default function Home() {
                   <span className="font-mono text-[10px] text-text-meta">/ active_operations</span>
                 </div>
                 <p className="text-text-body max-w-lg text-sm leading-relaxed">
-                  Hands-on security research. Current work:{" "}
-                  <span className="text-cyan">Rust</span> keylogger analysis, raw socket sniffing, and{" "}
-                  <span className="text-cyan">Go</span> steganography tooling.
+                  Hands-on AI &amp; security research. Current work:{" "}
+                  <span className="text-cyan">LLM red teaming</span>, adversarial ML, and{" "}
+                  <span className="text-cyan">threat detection</span> engineering.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {["AD Attack Lab", "SOC Automation", "AI Red Team", "ML Anomaly Detection"].map((lab) => (

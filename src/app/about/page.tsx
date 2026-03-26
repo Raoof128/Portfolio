@@ -3,15 +3,15 @@ import { AboutClient } from "./AboutClient";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Cybersecurity student and developer specializing in offensive security, digital forensics, and applied cryptography.",
+  description: "AI and cybersecurity researcher specializing in AI safety, LLM security, threat detection engineering, and adversarial machine learning.",
   openGraph: {
     title: "About | Mohammad Raouf Abedini",
-    description: "Cybersecurity student and developer specializing in offensive security, digital forensics, and applied cryptography.",
+    description: "AI and cybersecurity researcher specializing in AI safety, LLM security, threat detection engineering, and adversarial machine learning.",
   },
   twitter: {
     card: "summary",
     title: "About | Mohammad Raouf Abedini",
-    description: "Cybersecurity student and developer specializing in offensive security, digital forensics, and applied cryptography.",
+    description: "AI and cybersecurity researcher specializing in AI safety, LLM security, threat detection engineering, and adversarial machine learning.",
   },
 };
 

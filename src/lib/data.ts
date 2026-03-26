@@ -330,6 +330,49 @@ export const projects: Record<string, Project> = {
       "12-page paper with 51 citations accepted as arXiv preprint under CC BY 4.0"
     ]
   },
+  "phishpatrol": {
+    slug: "phishpatrol",
+    title: "PhishPatrol",
+    category: "OFFENSIVE",
+    year: "2024",
+    description: "AI-powered phishing simulation and cybersecurity education platform using NLP to generate dynamic, realistic social engineering scenarios. Adopted by 50+ students for interactive security awareness training.",
+    tags: ["Python", "Generative AI", "NLP", "Security Education", "Social Engineering"],
+    links: {
+      repo: "https://github.com/Raoof128/PhishPatrol",
+      caseStudy: "/projects/phishpatrol"
+    },
+    build: {
+      stack: ["Python", "Generative AI", "NLP", "Large Language Models"],
+      features: [
+        "Dynamic phishing scenario generation using NLP",
+        "Realistic social engineering simulation at scale",
+        "Interactive security awareness training modules",
+        "LLM misuse vector exploration for defensive purposes"
+      ]
+    },
+    secure: {
+      measures: [
+        "Controlled environment for educational use only",
+        "Prompt guardrails preventing real-world exploitation",
+        "All generated content watermarked as simulation",
+        "No real credential collection or exfiltration"
+      ]
+    },
+    fullDescription: "PhishPatrol is an AI-powered phishing simulation and cybersecurity education platform that uses Natural Language Processing to generate dynamic, realistic social engineering scenarios. It explores how LLMs can be misused for social engineering at scale while providing interactive security awareness training adopted by 50+ students.",
+    problem: "Traditional security awareness training uses static, outdated phishing examples that don't reflect modern AI-powered social engineering threats. Students and professionals need exposure to realistic, AI-generated attack scenarios to build genuine recognition skills.",
+    solution: [
+      "Built an NLP-powered engine that generates dynamic, contextually realistic phishing scenarios",
+      "Implemented interactive training modules where students identify and analyze social engineering vectors",
+      "Explored LLM misuse vectors for social engineering to understand defensive countermeasures",
+      "Deployed as an educational tool adopted by 50+ students for security awareness training"
+    ],
+    proof: [
+      "Adopted by 50+ students for interactive security awareness training",
+      "Generates contextually varied social engineering scenarios using generative AI",
+      "Demonstrates LLM misuse vectors with responsible guardrails",
+      "Practical application of NLP for defensive cybersecurity education"
+    ]
+  },
   "ecrsm": {
     slug: "ecrsm",
     title: "eBPF Cloud Runtime Security Monitor",

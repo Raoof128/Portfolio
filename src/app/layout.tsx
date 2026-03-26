@@ -26,25 +26,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
+    default: "Mohammad Raouf Abedini | AI & Cybersecurity Researcher",
     template: "%s | Mohammad Raouf Abedini"
   },
-  description: "Portfolio of Mohammad Raouf Abedini - Cybersecurity & Software Engineering. Specialized in privacy-first security tools, systems programming, and secure architecture.",
-  keywords: ["Cybersecurity", "Software Engineering", "Portfolio", "Mohammad Raouf Abedini", "Raouf", "Next.js", "React", "Rust", "Go", "eBPF"],
+  description: "AI and cybersecurity researcher specializing in AI safety, LLM security evaluation, threat detection engineering, and adversarial machine learning. 70+ research and engineering projects, Anthropic AI evaluator, Macquarie University.",
+  keywords: ["AI Safety", "Cybersecurity Research", "LLM Security", "Adversarial Machine Learning", "Threat Detection", "Mohammad Raouf Abedini", "Network Intrusion Detection", "AI Model Evaluation", "Privacy-Preserving Data Analysis", "Offensive Security"],
   authors: [{ name: "Mohammad Raouf Abedini", url: SITE_URL }],
   creator: "Mohammad Raouf Abedini",
   openGraph: {
     type: "website",
     locale: "en_AU",
     url: SITE_URL,
-    title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
-    description: "Building privacy-first security tools and scalable systems.",
+    title: "Mohammad Raouf Abedini | AI & Cybersecurity Researcher",
+    description: "AI safety, LLM security, and threat detection research. 70+ projects, Anthropic AI evaluator.",
     siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohammad Raouf Abedini | Cybersecurity + Software Engineering",
-    description: "Building privacy-first security tools and scalable systems.",
+    title: "Mohammad Raouf Abedini | AI & Cybersecurity Researcher",
+    description: "AI safety, LLM security, and threat detection research. 70+ projects, Anthropic AI evaluator.",
     creator: "@Raoof128",
   },
   metadataBase: new URL(SITE_URL),
@@ -65,7 +65,7 @@ export default function RootLayout({
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
     "url": SITE_URL,
-    "jobTitle": "Freelance Full-Stack Developer & Security Engineer",
+    "jobTitle": "AI & Cybersecurity Researcher",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Castle Hill",
@@ -73,15 +73,15 @@ export default function RootLayout({
       "addressCountry": "AU"
     },
     "knowsAbout": [
+      { "@type": "Thing", "name": "AI Safety & LLM Security" },
+      { "@type": "Thing", "name": "Adversarial Machine Learning" },
+      { "@type": "Thing", "name": "Threat Detection Engineering" },
+      { "@type": "Thing", "name": "Network Intrusion Detection" },
+      { "@type": "Thing", "name": "Offensive Security" },
+      { "@type": "Thing", "name": "Privacy-Preserving Data Analysis" },
+      { "@type": "Thing", "name": "AI Model Evaluation" },
       { "@type": "Thing", "name": "Cybersecurity" },
-      { "@type": "Thing", "name": "Web Application Security" },
-      { "@type": "Thing", "name": "Mobile App Security" },
-      { "@type": "Thing", "name": "Penetration Testing" },
-      { "@type": "Thing", "name": "eBPF (Extended Berkeley Packet Filter)" },
-      { "@type": "Thing", "name": "Network Security" },
-      { "@type": "Thing", "name": "Kotlin Multiplatform" },
-      { "@type": "Thing", "name": "Next.js" },
-      { "@type": "Thing", "name": "FastAPI" }
+      { "@type": "Thing", "name": "Secure Software Architecture" }
     ],
     "sameAs": [
       GITHUB_URL,

@@ -17,59 +17,59 @@ const PROFILE_PHOTO_SOURCES = [
 
 const specializations = [
   {
-    icon: Shield,
-    label: "Offensive & Defensive Security",
-    accent: "cyan",
-    accentClass: "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
-    iconClass: "text-cyan",
-    items: [
-      "Penetration Testing & Red Teaming",
-      "Active Directory Attack & Defence",
-      "Malware Analysis & Sandbox RE",
-      "SIEM / SOC Automation (SOAR)",
-      "T-Pot Honeypot & Threat Intel",
-    ],
-  },
-  {
     icon: Brain,
-    label: "AI / ML Security",
+    label: "AI Safety & LLM Security",
     accent: "purple",
     accentClass: "text-purple border-purple/20 group-hover:border-purple/60 group-hover:bg-purple/5",
     iconClass: "text-purple",
     items: [
-      "LLM Red Teaming & Jailbreak Detection",
-      "AI-Powered Scam Detection (Transformers)",
+      "LLM Security Evaluation & Red Teaming",
+      "Adversarial Machine Learning & Prompt Injection",
+      "AI-Powered Phishing Simulation (NLP)",
+      "AI Model Benchmarking (Anthropic)",
       "ML Network Anomaly Detection",
-      "Real-Time Phishing Browser Extension",
-      "Adversarial Prompt Injection Testing",
     ],
   },
   {
-    icon: Cloud,
-    label: "Cloud & Infrastructure",
-    accent: "amber",
-    accentClass: "text-amber border-amber/20 group-hover:border-amber/60 group-hover:bg-amber/5",
-    iconClass: "text-amber",
-    items: [
-      "AWS / Azure / GCP multi-cloud",
-      "Kubernetes & Docker orchestration",
-      "LEO Satellite Cyber Lab (uplink/spoofing)",
-      "CI/CD security hardening",
-      "Cloudflare Workers & edge security",
-    ],
-  },
-  {
-    icon: FileCode2,
-    label: "Australian Compliance",
+    icon: Shield,
+    label: "Threat Detection Engineering",
     accent: "cyan",
     accentClass: "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
     iconClass: "text-cyan",
     items: [
-      "SOCI Act — asset classification engine",
-      "Essential Eight continuous auditor",
-      "CDR / FAPI / OAuth conformance",
-      "Privacy Act & PQC migration auditor",
-      "MITRE ATT&CK maturity mapping",
+      "Network Intrusion Detection Systems",
+      "Penetration Testing & Red Teaming",
+      "Active Directory Attack & Defence",
+      "SIEM / SOC Automation (SOAR)",
+      "Malware Analysis & Sandbox RE",
+    ],
+  },
+  {
+    icon: Cloud,
+    label: "Systems & Infrastructure",
+    accent: "amber",
+    accentClass: "text-amber border-amber/20 group-hover:border-amber/60 group-hover:bg-amber/5",
+    iconClass: "text-amber",
+    items: [
+      "High-Performance C/C++ Systems",
+      "eBPF Kernel-Level Monitoring",
+      "Docker, Terraform & CI/CD Security",
+      "AWS / Azure / GCP Multi-Cloud",
+      "Cloudflare Workers & Edge Security",
+    ],
+  },
+  {
+    icon: FileCode2,
+    label: "Research Interests",
+    accent: "cyan",
+    accentClass: "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
+    iconClass: "text-cyan",
+    items: [
+      "AI Safety & Adversarial Robustness",
+      "Privacy-Preserving Data Analysis",
+      "Phishing & Social Engineering Simulation",
+      "Secure Software Architecture",
+      "Offensive Security & Vulnerability Analysis",
     ],
   },
 ];
@@ -77,23 +77,23 @@ const specializations = [
 const skillGroups = [
   {
     label: "Languages",
-    skills: ["Python", "TypeScript", "Kotlin", "Go", "C/C++", "C#", "Bash", "PowerShell", "SQL", "Solidity"],
+    skills: ["Python", "C/C++ (C++20/17)", "TypeScript", "Kotlin", "SQL", "Bash", "Go", "Swift"],
   },
   {
     label: "AI / ML",
-    skills: ["PyTorch", "TensorFlow", "OpenCV", "Transformers", "Isolation Forest", "Autoencoders"],
+    skills: ["LLM Evaluation", "NLP", "Classification Algorithms", "Prompt Engineering", "AI Model Benchmarking", "Data Pipelines"],
   },
   {
-    label: "Security Tools",
-    skills: ["Burp Suite", "Wireshark", "Nmap", "YARA", "Zeek", "Suricata", "Sysmon", "Wazuh", "KQL"],
+    label: "Security",
+    skills: ["OWASP Top 10", "MITRE ATT&CK", "NIST CSF", "Wireshark", "Nmap", "Burp Suite", "Incident Response", "Digital Forensics"],
+  },
+  {
+    label: "Systems",
+    skills: ["Memory Management", "Custom Allocators", "libpcap", "CMake", "Google Test", "Linux (Ubuntu/Kali)"],
   },
   {
     label: "Cloud & Infra",
-    skills: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Nginx", "GitHub Actions", "Cloudflare"],
-  },
-  {
-    label: "Frameworks",
-    skills: ["OWASP Top 10", "MITRE ATT&CK", "NIST CSF", "Essential Eight", "SOCI Act", "FAPI / OAuth 2.0"],
+    skills: ["Docker", "Terraform", "Cloudflare Workers", "GitHub Actions CI/CD", "PostgreSQL", "Serverless"],
   },
 ];
 
@@ -155,29 +155,28 @@ export function AboutClient() {
                 Mohammad Raouf Abedini
               </h1>
               <p className="font-mono text-cyan text-lg tracking-wide">
-                Cybersecurity &amp; AI Security Engineer
+                AI &amp; Cybersecurity Researcher
               </p>
             </div>
 
             <HUDFrame className="p-6 md:p-8 bg-[#06080d]/60 backdrop-blur-sm space-y-4">
               <p className="text-slate-300 leading-relaxed">
-                Final-year Cyber Security student at{" "}
-                <span className="text-cyan">Macquarie University</span> (WAM: 76+) obsessed with building{" "}
-                <span className="text-white font-semibold">SOC pipelines</span>,{" "}
-                <span className="text-white font-semibold">detection engines</span>, and{" "}
-                <span className="text-white font-semibold">AI threat tools</span>.
+                AI and cybersecurity researcher graduating with a Bachelor of Cyber Security from{" "}
+                <span className="text-cyan">Macquarie University</span> (November 2026). My work sits at the intersection of{" "}
+                <span className="text-white font-semibold">artificial intelligence safety</span> and{" "}
+                <span className="text-white font-semibold">offensive/defensive security</span>.
               </p>
               <p className="text-text-body leading-relaxed">
-                I ship production applications serving{" "}
-                <span className="text-white">1,000+ end users</span> across 70+ independent projects
-                spanning web security, mobile, full-stack, and AI tooling — embedding security from
-                threat modelling through to deployment and incident remediation.
+                I build detection systems that identify threats in real time, evaluate{" "}
+                <span className="text-white">Large Language Model (LLM) outputs</span> for security vulnerabilities,
+                and develop AI-powered tools that make security accessible at scale. Shipped{" "}
+                <span className="text-white">70+ independent research and engineering projects</span> serving 1,000+ end users.
               </p>
               <p className="text-text-body leading-relaxed">
-                I specialize in{" "}
-                <span className="text-cyan">full attack–defence simulations</span> (cloud, AD, hybrid),
-                Australian compliance automation (SOCI, Essential Eight, CDR), and pushing the limits
-                of AI + cybersecurity.
+                Completed paid{" "}
+                <span className="text-cyan">AI model evaluation for Anthropic</span> and bring{" "}
+                <span className="text-white">7 years of combined experience</span> across security operations,
+                systems programming, and applied machine learning.
               </p>
             </HUDFrame>
 
@@ -256,7 +255,7 @@ export function AboutClient() {
                       ONLINE
                     </span>
                   </div>
-                  <div>CLEARANCE: SEC-ENGINEER</div>
+                  <div>CLEARANCE: AI-RESEARCHER</div>
                   <div>LOCATION: CASTLE HILL, NSW</div>
                 </div>
               </HUDFrame>
