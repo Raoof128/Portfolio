@@ -1,7 +1,7 @@
 export const BASE_PATH = "";
 export const SITE_ORIGIN = "https://raoufabedini.dev";
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
-export const SITE_NAME = "Mohammad Raouf Abedini — AI & Cybersecurity Researcher";
+export const SITE_NAME = "Mohammad Raouf Abedini — AI Security Researcher";
 
 export const CONTACT_EMAIL = "raoof.r999@outlook.com";
 export const GITHUB_URL = "https://github.com/Raoof128";

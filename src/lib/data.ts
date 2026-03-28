@@ -204,7 +204,7 @@ export const projects: Record<string, Project> = {
     title: "NanoMatch",
     category: "ENGINEERING",
     year: "2026",
-    description: "High-performance limit order book and matching engine in C++20. Price-time priority matching at 9.29M ops/sec with 84ns p50 latency.",
+    description: "High-performance limit order book and matching engine in C++20. Processing 1M+ orders/second with sub-microsecond latency.",
     tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/NanoMatch",
@@ -236,8 +236,8 @@ export const projects: Record<string, Project> = {
       "Added multi-instrument support with independent order books per symbol"
     ],
     proof: [
-      "Throughput: 9.29M ops/sec on benchmarks",
-      "Latency: 84ns p50, sub-microsecond p99",
+      "Throughput: 1M+ orders/second with sub-microsecond latency",
+      "Comprehensive test suite with p50/p99 latency benchmarks",
       "60+ unit tests across 18 test suites — all passing",
       "CI: ASan, UBSan, cppcheck, clang-format on every push"
     ]
@@ -247,7 +247,7 @@ export const projects: Record<string, Project> = {
     title: "SentinelFlow",
     category: "DEFENSIVE",
     year: "2026",
-    description: "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection at 28M+ packets/sec.",
+    description: "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second.",
     tags: ["C++17", "libpcap", "IDS", "Network Security", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/SentinelFlow",
@@ -276,10 +276,10 @@ export const projects: Record<string, Project> = {
       "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
       "Built a Snort-inspired configurable rule engine for flexible signature matching",
       "Added stateful threat detection for port scans, SYN floods, and DNS tunneling",
-      "Engineered for throughput: 28M+ packets/sec parsing performance"
+      "Engineered for throughput: 500K+ packets/sec parsing performance"
     ],
     proof: [
-      "Throughput: 28M+ packets/sec parsing performance",
+      "Throughput: 500K+ packets/sec parsing performance",
       "Protocol coverage: 7 protocols across Layers 2-7",
       "27 unit/integration tests — all passing",
       "Supports both live capture and pcap file analysis"
@@ -584,13 +584,13 @@ The full 12-page paper, PoC implementations, and disclosure materials are availa
     title: "Building a Sub-Microsecond Matching Engine in C++20",
     date: "2026-03-10",
     tag: "C++",
-    takeaway: "How a three-layer data structure design achieves O(1) cancellation and 84ns median latency.",
+    takeaway: "How a three-layer data structure design achieves O(1) cancellation and sub-microsecond latency.",
     content: `
 ## Why Build a Matching Engine?
 
 Every electronic exchange — NYSE, NASDAQ, CME — runs a matching engine at its core. It is the system that pairs buy orders with sell orders at the best available price. Understanding how one works at the systems level means understanding price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
 
-**NanoMatch** is my from-scratch implementation in modern C++20, achieving 9.29M operations per second with 84ns p50 latency.
+**NanoMatch** is my from-scratch implementation in modern C++20, processing 1M+ orders per second with sub-microsecond latency.
 
 ### The Three-Layer Data Structure
 
@@ -648,11 +648,11 @@ The 15x ratio between p50 and p99.9 is realistic. Spikes come from red-black tre
     title: "Anatomy of a Network Intrusion Detection System",
     date: "2026-03-15",
     tag: "Network Security",
-    takeaway: "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 28M packets/sec.",
+    takeaway: "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 500K+ packets/sec.",
     content: `
 ## The IDS Pipeline
 
-Commercial intrusion detection systems like Snort and Suricata follow a common architecture: **Capture → Parse → Detect → Alert**. SentinelFlow implements this full pipeline in C++17 with libpcap, achieving 28M+ packets/sec parsing throughput on a single thread.
+Commercial intrusion detection systems like Snort and Suricata follow a common architecture: **Capture → Parse → Detect → Alert**. SentinelFlow implements this full pipeline in C++17 with libpcap, parsing 500K+ packets/sec on a single thread.
 
 ### Capture: BPF Filters Run in Kernel Space
 
@@ -693,7 +693,7 @@ All stateful detectors use sliding time windows with **lazy pruning** — old en
 
 ### Zero-Copy Parsing Performance
 
-The parsers operate directly on the raw buffer provided by libpcap. No intermediate copies, no dynamic allocation per packet. The \`memcpy\` + \`ntohs/ntohl\` pattern is the standard approach in high-performance packet processing (used in DPDK, PF_RING, and production NIDS). The benchmark proves **28M+ packets/sec** on a single thread — pure parsing throughput measured over 5 million synthetic TCP SYN packets.
+The parsers operate directly on the raw buffer provided by libpcap. No intermediate copies, no dynamic allocation per packet. The \`memcpy\` + \`ntohs/ntohl\` pattern is the standard approach in high-performance packet processing (used in DPDK, PF_RING, and production NIDS). The benchmark proves **500K+ packets/sec** on a single thread — pure parsing throughput measured over synthetic TCP SYN packets.
 
 ### Alert Outputs
 

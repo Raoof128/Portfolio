@@ -28,7 +28,7 @@ export function Footer() {
             <div className="space-y-4">
               <p className="font-mono text-sm text-slate-300 tracking-tight">~/mohammad-raouf-abedini</p>
               <p className="text-xs text-text-body leading-relaxed max-w-xs">
-                AI &amp; Cybersecurity Research. AI safety, threat detection, and security from design to deployment.
+                AI Security Research. Vulnerability research, responsible disclosure, and reducing catastrophic risks from advanced AI.
               </p>
               <div className="flex items-center gap-4 pt-1">
                 <motion.a

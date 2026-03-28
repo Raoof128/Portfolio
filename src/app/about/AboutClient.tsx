@@ -17,59 +17,59 @@ const PROFILE_PHOTO_SOURCES = [
 
 const specializations = [
   {
+    icon: Shield,
+    label: "Vulnerability Research & Disclosure",
+    accent: "cyan",
+    accentClass: "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
+    iconClass: "text-cyan",
+    items: [
+      "Cross-Platform Exploit Development (Win32 API, macOS ScreenCaptureKit)",
+      "Responsible Disclosure (OWASP/FIRST/CISA Frameworks)",
+      "Peer-Reviewed Security Analysis",
+      "Penetration Testing & Secure Code Review",
+      "W3C Screen Capture Specification",
+    ],
+  },
+  {
     icon: Brain,
     label: "AI Safety & LLM Security",
     accent: "purple",
     accentClass: "text-purple border-purple/20 group-hover:border-purple/60 group-hover:bg-purple/5",
     iconClass: "text-purple",
     items: [
-      "LLM Security Evaluation & Red Teaming",
-      "Adversarial Machine Learning & Prompt Injection",
-      "AI-Powered Phishing Simulation (NLP)",
-      "AI Model Benchmarking (Anthropic)",
-      "ML Network Anomaly Detection",
-    ],
-  },
-  {
-    icon: Shield,
-    label: "Threat Detection Engineering",
-    accent: "cyan",
-    accentClass: "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
-    iconClass: "text-cyan",
-    items: [
-      "Network Intrusion Detection Systems",
-      "Penetration Testing & Red Teaming",
-      "Active Directory Attack & Defence",
-      "SIEM / SOC Automation (SOAR)",
-      "Malware Analysis & Sandbox RE",
+      "LLM Integration & Evaluation (Anthropic)",
+      "AI-Assisted Vulnerability Research",
+      "AI Capability Uplift Measurement",
+      "Dual-Use Risk Assessment",
+      "Intent-vs-Artefact Safety Boundary Characterisation",
     ],
   },
   {
     icon: Cloud,
-    label: "Systems & Infrastructure",
+    label: "Python & Systems Programming",
     accent: "amber",
     accentClass: "text-amber border-amber/20 group-hover:border-amber/60 group-hover:bg-amber/5",
     iconClass: "text-amber",
     items: [
-      "High-Performance C/C++ Systems",
-      "eBPF Kernel-Level Monitoring",
-      "Docker, Terraform & CI/CD Security",
-      "AWS / Azure / GCP Multi-Cloud",
-      "Cloudflare Workers & Edge Security",
+      "Python (Primary), C, C++, TypeScript, Swift",
+      "High-Performance C/C++ Systems (1M+ ops/sec)",
+      "Network Packet Processing (libpcap)",
+      "Linux (Ubuntu/Kali), CMake, Docker",
+      "GitHub Actions CI/CD, Google Test",
     ],
   },
   {
     icon: FileCode2,
-    label: "Research Interests",
+    label: "Offensive Security",
     accent: "cyan",
     accentClass: "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
     iconClass: "text-cyan",
     items: [
-      "AI Safety & Adversarial Robustness",
-      "Privacy-Preserving Data Analysis",
-      "Phishing & Social Engineering Simulation",
-      "Secure Software Architecture",
-      "Offensive Security & Vulnerability Analysis",
+      "Threat Modelling (MITRE ATT&CK, OWASP Top 10)",
+      "Network Intrusion Detection Systems",
+      "Wireshark, Nmap, Burp Suite",
+      "NLP-Powered Phishing Simulation",
+      "NIST Framework & Compliance",
     ],
   },
 ];
@@ -77,23 +77,23 @@ const specializations = [
 const skillGroups = [
   {
     label: "Languages",
-    skills: ["Python", "C/C++ (C++20/17)", "TypeScript", "Kotlin", "SQL", "Bash", "Go", "Swift"],
-  },
-  {
-    label: "AI / ML",
-    skills: ["LLM Evaluation", "NLP", "Classification Algorithms", "Prompt Engineering", "AI Model Benchmarking", "Data Pipelines"],
+    skills: ["Python (primary)", "C", "C++", "TypeScript", "JavaScript", "Swift", "Kotlin", "Bash", "SQL", "Go (familiar)"],
   },
   {
     label: "Security",
-    skills: ["OWASP Top 10", "MITRE ATT&CK", "NIST CSF", "Wireshark", "Nmap", "Burp Suite", "Incident Response", "Digital Forensics"],
+    skills: ["Vulnerability Research", "Cross-Platform Exploit Development", "Threat Modelling", "Secure Code Review", "Penetration Testing", "Responsible Disclosure", "Wireshark", "Nmap", "Burp Suite"],
+  },
+  {
+    label: "AI & ML",
+    skills: ["LLM Integration & Evaluation", "AI-Assisted Vulnerability Research", "NLP", "Generative AI Tooling", "ML Model Evaluation", "Dual-Use Risk Assessment"],
   },
   {
     label: "Systems",
-    skills: ["Memory Management", "Custom Allocators", "libpcap", "CMake", "Google Test", "Linux (Ubuntu/Kali)"],
+    skills: ["Linux (Ubuntu/Kali)", "CMake", "Docker", "Git/GitHub", "GitHub Actions CI/CD", "Google Test", "FastAPI", "Cloudflare Workers", "libpcap"],
   },
   {
-    label: "Cloud & Infra",
-    skills: ["Docker", "Terraform", "Cloudflare Workers", "GitHub Actions CI/CD", "PostgreSQL", "Serverless"],
+    label: "Frameworks",
+    skills: ["OWASP Top 10", "MITRE ATT&CK", "NIST", "W3C Screen Capture Spec"],
   },
 ];
 
@@ -155,28 +155,28 @@ export function AboutClient() {
                 Mohammad Raouf Abedini
               </h1>
               <p className="font-mono text-cyan text-lg tracking-wide">
-                AI &amp; Cybersecurity Researcher
+                AI Security Researcher
               </p>
             </div>
 
             <HUDFrame className="p-6 md:p-8 bg-[#06080d]/60 backdrop-blur-sm space-y-4">
               <p className="text-slate-300 leading-relaxed">
-                AI and cybersecurity researcher graduating with a Bachelor of Cyber Security from{" "}
-                <span className="text-cyan">Macquarie University</span> (November 2026). My work sits at the intersection of{" "}
-                <span className="text-white font-semibold">artificial intelligence safety</span> and{" "}
-                <span className="text-white font-semibold">offensive/defensive security</span>.
+                AI security researcher and final-year Cyber Security student at{" "}
+                <span className="text-cyan">Macquarie University</span> (graduating November 2026) with demonstrated ability to{" "}
+                <span className="text-white font-semibold">independently discover, validate, and responsibly disclose</span>{" "}
+                cross-platform vulnerabilities.
               </p>
               <p className="text-text-body leading-relaxed">
-                I build detection systems that identify threats in real time, evaluate{" "}
-                <span className="text-white">Large Language Model (LLM) outputs</span> for security vulnerabilities,
-                and develop AI-powered tools that make security accessible at scale. Shipped{" "}
-                <span className="text-white">70+ independent research and engineering projects</span> serving 1,000+ end users.
+                Authored <span className="text-white">&ldquo;The Invisible Window&rdquo;</span> &mdash; a peer-reviewed-format security analysis
+                demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14&ndash;26 using documented OS-level APIs,
+                with a novel finding that Apple&apos;s macOS 15 mitigation remains ineffective on macOS 26.
               </p>
               <p className="text-text-body leading-relaxed">
-                Completed paid{" "}
-                <span className="text-cyan">AI model evaluation for Anthropic</span> and bring{" "}
-                <span className="text-white">7 years of combined experience</span> across security operations,
-                systems programming, and applied machine learning.
+                Fluent in Python with production experience across C/C++, TypeScript, and Swift.
+                Completed <span className="text-cyan">AI model evaluation for Anthropic</span> (Claude Code Human Preference),
+                benchmarking LLM code outputs for quality, security, and reliability.{" "}
+                <span className="text-white font-semibold">Motivated by reducing catastrophic risks from advanced AI</span> &mdash;
+                eager to measure capability uplift, characterise safety boundaries, and develop defensive applications.
               </p>
             </HUDFrame>
 
@@ -184,8 +184,8 @@ export function AboutClient() {
             <div className="grid grid-cols-3 gap-3">
               {[
                 { value: "70+", label: "Projects", color: "text-cyan" },
-                { value: "1K+", label: "Users Served", color: "text-purple" },
-                { value: "76+", label: "WAM", color: "text-amber" },
+                { value: "100%", label: "Evasion Rate", color: "text-purple" },
+                { value: "3+2", label: "Vendors Disclosed", color: "text-amber" },
               ].map((s) => (
                 <div key={s.label} className="border border-cyan/12 p-4 bg-[#06080d]/60 hover:border-cyan/20 transition-colors text-center">
                   <div className={`text-2xl font-bold font-mono ${s.color}`}>{s.value}</div>
@@ -255,7 +255,7 @@ export function AboutClient() {
                       ONLINE
                     </span>
                   </div>
-                  <div>CLEARANCE: AI-RESEARCHER</div>
+                  <div>CLEARANCE: AI-SECURITY-RESEARCHER</div>
                   <div>LOCATION: CASTLE HILL, NSW</div>
                 </div>
               </HUDFrame>

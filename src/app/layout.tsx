@@ -26,25 +26,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mohammad Raouf Abedini | AI & Cybersecurity Researcher",
+    default: "Mohammad Raouf Abedini | AI Security Researcher",
     template: "%s | Mohammad Raouf Abedini"
   },
-  description: "AI and cybersecurity researcher specializing in AI safety, LLM security evaluation, threat detection engineering, and adversarial machine learning. 70+ research and engineering projects, Anthropic AI evaluator, Macquarie University.",
-  keywords: ["AI Safety", "Cybersecurity Research", "LLM Security", "Adversarial Machine Learning", "Threat Detection", "Mohammad Raouf Abedini", "Network Intrusion Detection", "AI Model Evaluation", "Privacy-Preserving Data Analysis", "Offensive Security"],
+  description: "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — peer-reviewed security analysis achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
+  keywords: ["AI Security Research", "Vulnerability Research", "Responsible Disclosure", "LLM Security Evaluation", "Cross-Platform Exploit Development", "Mohammad Raouf Abedini", "AI Safety", "Screen Capture Evasion", "Offensive Security", "Python Systems Programming", "Anthropic"],
   authors: [{ name: "Mohammad Raouf Abedini", url: SITE_URL }],
   creator: "Mohammad Raouf Abedini",
   openGraph: {
     type: "website",
     locale: "en_AU",
     url: SITE_URL,
-    title: "Mohammad Raouf Abedini | AI & Cybersecurity Researcher",
-    description: "AI safety, LLM security, and threat detection research. 70+ projects, Anthropic AI evaluator.",
+    title: "Mohammad Raouf Abedini | AI Security Researcher",
+    description: "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
     siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohammad Raouf Abedini | AI & Cybersecurity Researcher",
-    description: "AI safety, LLM security, and threat detection research. 70+ projects, Anthropic AI evaluator.",
+    title: "Mohammad Raouf Abedini | AI Security Researcher",
+    description: "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
     creator: "@Raoof128",
   },
   metadataBase: new URL(SITE_URL),
@@ -65,7 +65,7 @@ export default function RootLayout({
     "name": "Mohammad Raouf Abedini",
     "alternateName": "Raouf",
     "url": SITE_URL,
-    "jobTitle": "AI & Cybersecurity Researcher",
+    "jobTitle": "AI Security Researcher",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Castle Hill",
@@ -73,15 +73,15 @@ export default function RootLayout({
       "addressCountry": "AU"
     },
     "knowsAbout": [
-      { "@type": "Thing", "name": "AI Safety & LLM Security" },
-      { "@type": "Thing", "name": "Adversarial Machine Learning" },
-      { "@type": "Thing", "name": "Threat Detection Engineering" },
-      { "@type": "Thing", "name": "Network Intrusion Detection" },
+      { "@type": "Thing", "name": "Vulnerability Research" },
+      { "@type": "Thing", "name": "Responsible Disclosure" },
+      { "@type": "Thing", "name": "AI Safety & LLM Security Evaluation" },
+      { "@type": "Thing", "name": "Cross-Platform Exploit Development" },
       { "@type": "Thing", "name": "Offensive Security" },
-      { "@type": "Thing", "name": "Privacy-Preserving Data Analysis" },
+      { "@type": "Thing", "name": "Python & Systems Programming" },
       { "@type": "Thing", "name": "AI Model Evaluation" },
-      { "@type": "Thing", "name": "Cybersecurity" },
-      { "@type": "Thing", "name": "Secure Software Architecture" }
+      { "@type": "Thing", "name": "Dual-Use Risk Assessment" },
+      { "@type": "Thing", "name": "Reducing Catastrophic AI Risks" }
     ],
     "sameAs": [
       GITHUB_URL,

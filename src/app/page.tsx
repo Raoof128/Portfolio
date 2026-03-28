@@ -17,12 +17,12 @@ import { TerminalFeed } from "@/components/ui/TerminalFeed";
 /* ─── Constants ──────────────────────────────────────────────────────── */
 
 const TICKER = [
-  "SYSTEM ONLINE", "AI & CYBERSECURITY RESEARCH", "70+ PROJECTS SHIPPED",
-  "1,000+ USERS SERVED", "LLM SECURITY EVALUATION", "ADVERSARIAL ML",
-  "THREAT DETECTION ENGINEERING", "NETWORK INTRUSION DETECTION",
-  "AI SAFETY", "ANTHROPIC AI EVALUATOR", "7 YEARS EXPERIENCE",
-  "NOV 2026 GRADUATE", "OFFENSIVE SECURITY", "PRIVACY-PRESERVING ANALYSIS",
-  "CASTLE HILL · NSW · AU",
+  "SYSTEM ONLINE", "AI SECURITY RESEARCH", "VULNERABILITY RESEARCH",
+  "RESPONSIBLE DISCLOSURE", "CROSS-PLATFORM EXPLOIT DEVELOPMENT",
+  "LLM SECURITY EVALUATION", "AI SAFETY", "ANTHROPIC AI EVALUATOR",
+  "PYTHON & SYSTEMS PROGRAMMING", "REDUCING CATASTROPHIC AI RISKS",
+  "THE INVISIBLE WINDOW", "70+ PROJECTS SHIPPED", "OFFENSIVE SECURITY",
+  "DUAL-USE RISK ASSESSMENT", "CASTLE HILL · NSW · AU",
 ];
 
 const CATEGORY_STYLE: Record<string, { dot: string; badge: string; hover: string; corner: string; tint: string; prefix: string }> = {
@@ -159,9 +159,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.48 }}
               className="text-text-body text-lg max-w-md leading-relaxed"
             >
-              AI safety, LLM security, and threat detection research.{" "}
-              <span className="text-foreground">70+ projects</span>, 1,000+ users,
-              and 7 years across security operations, systems programming, and applied ML.
+              Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities.{" "}
+              Authored <span className="text-foreground">&ldquo;The Invisible Window&rdquo;</span> &mdash; 100% screen capture evasion.
+              Motivated by reducing catastrophic risks from advanced AI.
             </motion.p>
 
             {/* Stat chips */}
@@ -171,7 +171,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.58 }}
               className="flex flex-wrap gap-2"
             >
-              {["Anthropic AI Evaluator", "Macquarie University", "Nov 2026 Graduate"].map((c) => (
+              {["Anthropic AI Evaluator", "Vulnerability Researcher", "Macquarie University · Nov 2026"].map((c) => (
                 <span key={c} className="px-3 py-1 border border-cyan/12 text-text-meta font-mono text-xs">
                   {c}
                 </span>
@@ -679,10 +679,10 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">RESEARCH</h3>
                   <p className="text-text-body leading-relaxed mb-7 text-sm max-w-sm">
-                    Rigorous methodology, reproducible results, and responsible disclosure. AI safety and security research that moves the field forward.
+                    Independently discover, validate, and responsibly disclose vulnerabilities. Measure AI capability uplift, characterise safety boundaries, and publish reproducible findings.
                   </p>
                   <ul className="space-y-2 font-mono text-xs text-text-meta">
-                    {["AI Safety & LLM Evaluation", "Adversarial ML", "Peer-Reviewed Work"].map((item) => (
+                    {["Vulnerability Research & Disclosure", "AI Safety & LLM Evaluation", "Dual-Use Risk Assessment"].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <span className="text-cyan">+</span> {item}
                       </li>
@@ -707,10 +707,10 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">SECURE</h3>
                   <p className="text-text-body leading-relaxed mb-7 text-sm max-w-sm">
-                    Security isn&apos;t an afterthought. Threat detection, defensible architecture, and safe defaults — applied from design to deployment.
+                    Defensive applications that reduce real-world risk. Cross-platform exploit development informs better defences — offensive knowledge applied to protective systems.
                   </p>
                   <ul className="space-y-2 font-mono text-xs text-text-meta">
-                    {["Threat Detection Engineering", "Privacy by Design", "Defensive Coding"].map((item) => (
+                    {["Cross-Platform Exploit Development", "Responsible Disclosure (OWASP/FIRST/CISA)", "Defensive Applications"].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <span className="text-purple">+</span> {item}
                       </li>
@@ -745,12 +745,12 @@ export default function Home() {
                   <span className="font-mono text-[10px] text-text-meta">/ active_operations</span>
                 </div>
                 <p className="text-text-body max-w-lg text-sm leading-relaxed">
-                  Hands-on AI &amp; security research. Current work:{" "}
-                  <span className="text-cyan">LLM red teaming</span>, adversarial ML, and{" "}
-                  <span className="text-cyan">threat detection</span> engineering.
+                  Hands-on vulnerability research and AI safety experimentation. Current work:{" "}
+                  <span className="text-cyan">cross-platform exploit development</span>, AI capability uplift measurement, and{" "}
+                  <span className="text-cyan">safety boundary characterisation</span>.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["AD Attack Lab", "SOC Automation", "AI Red Team", "ML Anomaly Detection"].map((lab) => (
+                  {["Vulnerability Research", "AI Safety", "Exploit Development", "Responsible Disclosure"].map((lab) => (
                     <span key={lab} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2.5 py-1">
                       {lab}
                     </span>
