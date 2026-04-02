@@ -267,7 +267,7 @@ export function TerminalFeed() {
             {/* Inline cursor on the currently typing line */}
             {!line.done && !reducedMotion && (
               <span
-                className="inline-block w-[7px] h-[13px] ml-px translate-y-[2px] bg-cyan shadow-[0_0_8px_rgba(81,40,136,0.5)]"
+                className="inline-block w-[7px] h-[13px] ml-px translate-y-[2px] bg-cyan shadow-[0_0_8px_rgba(124,77,189,0.5)]"
                 style={{ opacity: cursorVisible ? 1 : 0 }}
               />
             )}
@@ -279,7 +279,7 @@ export function TerminalFeed() {
           <div className="mt-0.5">
             <span className="text-cyan mr-1.5">❯</span>
             <span
-              className="inline-block w-[7px] h-[13px] translate-y-[2px] bg-cyan shadow-[0_0_8px_rgba(81,40,136,0.5)]"
+              className="inline-block w-[7px] h-[13px] translate-y-[2px] bg-cyan shadow-[0_0_8px_rgba(124,77,189,0.5)]"
               style={{ opacity: cursorVisible ? 1 : 0 }}
             />
           </div>
