@@ -46,7 +46,7 @@ function BentoCard({
   return (
     <motion.div
       variants={fadeInUp}
-      className={`group relative p-6 border border-cyan/10 bg-[#06080d]/60 hover:shadow-[0_8px_32px_rgba(6,182,212,0.12)] ${accentHover} ${tint ?? ""} transition-all duration-300 cursor-pointer${className ? ` ${className}` : ""}`}
+      className={`group relative p-6 border border-cyan/10 bg-[#06080d]/60 hover:shadow-[0_8px_32px_rgba(81,40,136,0.12)] ${accentHover} ${tint ?? ""} transition-all duration-300 cursor-pointer${className ? ` ${className}` : ""}`}
       whileHover={{ y: -6 }}
     >
       {children}
@@ -83,7 +83,7 @@ export default function Home() {
                 width: size,
                 height: size,
                 border: `1px ${i % 2 === 0 ? "dashed" : "solid"} ${
-                  i % 2 === 0 ? "rgba(6,182,212,0.07)" : "rgba(139,92,246,0.05)"
+                  i % 2 === 0 ? "rgba(81,40,136,0.07)" : "rgba(139,92,246,0.05)"
                 }`,
               }}
               animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
@@ -101,7 +101,7 @@ export default function Home() {
             />
           ))}
           {/* Centre pip */}
-          <div className="absolute w-2 h-2 rounded-full bg-cyan shadow-[0_0_16px_rgba(6,182,212,0.9)]" />
+          <div className="absolute w-2 h-2 rounded-full bg-cyan shadow-[0_0_16px_rgba(81,40,136,0.9)]" />
         </div>
 
         {/* Content */}
@@ -119,7 +119,7 @@ export default function Home() {
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inset-0 rounded-full bg-cyan opacity-75" />
-                <span className="relative rounded-full h-2 w-2 bg-cyan shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+                <span className="relative rounded-full h-2 w-2 bg-cyan shadow-[0_0_8px_rgba(81,40,136,0.8)]" />
               </span>
               <span className="font-mono text-cyan/80 text-xs tracking-widest uppercase">
                 System Online · Castle Hill, NSW
@@ -143,7 +143,7 @@ export default function Home() {
                 {/* Outline — 2026 text-stroke effect */}
                 <h1
                   className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
-                  style={{ WebkitTextStroke: "1.5px rgba(6,182,212,0.45)", color: "transparent" } as React.CSSProperties}
+                  style={{ WebkitTextStroke: "1.5px rgba(81,40,136,0.45)", color: "transparent" } as React.CSSProperties}
                 >
                   CYBER
                 </h1>
@@ -675,7 +675,7 @@ export default function Home() {
                 <motion.div
                   key={p.slug}
                   variants={fadeInUp}
-                  className={`group relative p-6 border border-cyan/10 bg-[#06080d]/60 hover:bg-cyan/[0.04] hover:shadow-[0_8px_32px_rgba(6,182,212,0.12)] ${s.hover} transition-all duration-300 md:col-span-2 cursor-pointer`}
+                  className={`group relative p-6 border border-cyan/10 bg-[#06080d]/60 hover:bg-cyan/[0.04] hover:shadow-[0_8px_32px_rgba(81,40,136,0.12)] ${s.hover} transition-all duration-300 md:col-span-2 cursor-pointer`}
                   whileHover={{ y: -6 }}
                 >
                   <div className="flex items-start justify-between mb-5">
@@ -759,7 +759,7 @@ export default function Home() {
                 {/* Ghost letter */}
                 <span
                   className="absolute -top-4 -left-3 text-[10rem] font-bold leading-none select-none pointer-events-none"
-                  style={{ color: "rgba(6,182,212,0.07)" } as React.CSSProperties}
+                  style={{ color: "rgba(81,40,136,0.07)" } as React.CSSProperties}
                 >
                   B
                 </span>

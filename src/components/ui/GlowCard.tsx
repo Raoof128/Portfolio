@@ -12,7 +12,7 @@ interface GlowCardProps {
 const glowColors = {
   cyan: {
     border: "hover:border-cyan/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]",
+    shadow: "hover:shadow-[0_0_30px_rgba(81,40,136,0.2)]",
     trace: "from-cyan/60 via-transparent to-cyan/60",
   },
   amber: {
