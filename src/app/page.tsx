@@ -146,7 +146,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.48 }}
               className="text-text-body text-lg max-w-md leading-relaxed"
             >
-              <span className="text-text-meta/60 italic text-sm block mb-2">{`"Seek, and ye shall find" — Matthew 7:7`}</span>
+              <span className="text-text-meta/60 italic text-sm block mb-2 animate-pulse-glow">{`"Seek, and ye shall find" — Matthew 7:7`}</span>
               Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities.{" "}
               Authored <span className="text-foreground">&ldquo;The Invisible Window&rdquo;</span> &mdash; 100% screen capture evasion.
               Motivated by reducing catastrophic risks from advanced AI.
