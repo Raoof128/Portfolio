@@ -577,6 +577,96 @@ export default function Home() {
               );
             })()}
 
+            {/* SimurghForge — 2 cols */}
+            {(() => {
+              const p = projects["simurghforge"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard
+                  key={p.slug}
+                  slug={p.slug}
+                  accentHover={s.hover}
+                  cornerClass={s.corner}
+                  tint={s.tint}
+                  className="md:col-span-2"
+                >
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
+                      [{s.prefix}] {p.category}
+                    </span>
+                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-text-body leading-relaxed mb-5 max-w-xl">
+                    {p.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {p.tags.map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-4 pointer-events-none">
+                    {p.links.repo && (
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-3 h-3" /> Repo
+                      </a>
+                    )}
+                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
+                      Case Study <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </BentoCard>
+              );
+            })()}
+
+            {/* Aion */}
+            {(() => {
+              const p = projects["aion"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
+                      [{s.prefix}] {p.category}
+                    </span>
+                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {p.tags.slice(0, 4).map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {p.links.repo && (
+                    <a
+                      href={p.links.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="w-3 h-3" /> Repo
+                    </a>
+                  )}
+                </BentoCard>
+              );
+            })()}
+
             {/* ECRSM — spans 2 cols on desktop */}
             {(() => {
               const p = projects["ecrsm"];

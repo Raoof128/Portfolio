@@ -415,6 +415,94 @@ export const projects: Record<string, Project> = {
       "Container/K8s metadata enrichment",
       "Verifiable via synthetic attack scripts"
     ]
+  },
+  "simurghforge": {
+    slug: "simurghforge",
+    title: "SimurghForge",
+    category: "ENGINEERING",
+    year: "2026",
+    description: "Universal file converter for macOS. 49 formats across images, documents, audio, video, and data — powered by 9 conversion engines. Zero cloud, single .app bundle.",
+    tags: ["Tauri v2", "Rust", "React", "TypeScript", "FFmpeg", "macOS"],
+    links: {
+      repo: "https://github.com/Raoof128/SimurghForge",
+      caseStudy: "/projects/simurghforge"
+    },
+    build: {
+      stack: ["Tauri v2 (Rust 1.77+)", "React 18", "TypeScript", "Vite", "Tailwind CSS v4", "FFmpeg", "LibreOffice", "Pandoc", "Python Pandas", "ImageMagick"],
+      features: [
+        "9 conversion engines: 4 native Rust + 5 CLI-bridged (FFmpeg, LibreOffice, Pandoc, Pandas, ImageMagick)",
+        "49 supported formats across images, documents, audio, video, and structured data",
+        "Batch conversion up to 50 files with configurable concurrency (Tokio semaphore)",
+        "MIME-type detection via magic bytes for automatic engine routing"
+      ]
+    },
+    secure: {
+      measures: [
+        "100% local processing — zero network calls, no cloud dependency",
+        "MIME-based magic byte detection prevents extension spoofing",
+        "Path sanitisation for all file operations",
+        "Single .app bundle — no background services or daemons"
+      ]
+    },
+    fullDescription: "SimurghForge is a universal file converter for macOS built with Tauri v2 (Rust backend + React/TypeScript frontend). It converts files across 49 formats spanning images, documents, audio, video, and structured data using 9 specialised conversion engines — 4 native Rust engines for maximum performance and 5 CLI-bridged engines for format breadth. All processing happens locally with zero cloud dependency.",
+    problem: "File conversion typically requires uploading sensitive documents to cloud services, using multiple specialised tools, or installing bloated Electron apps. Users need a single, fast, privacy-respecting tool that handles all common formats locally.",
+    solution: [
+      "Built a three-tier engine architecture: native Rust (fastest), CLI tools (feature-rich), and Python (tabular data)",
+      "Implemented MIME-type detection via magic bytes for automatic engine selection",
+      "Designed batch orchestration with Tokio semaphore-based concurrency control",
+      "Shipped as a single .app bundle with quality presets (Low/Medium/High/Lossless)"
+    ],
+    proof: [
+      "49 formats supported across 5 categories (images, documents, audio, video, data)",
+      "9 conversion engines with automatic routing based on MIME detection",
+      "Batch processing up to 50 files with configurable threading (1-8 threads)",
+      "Zero network calls — fully offline local processing"
+    ]
+  },
+  "aion": {
+    slug: "aion",
+    title: "Aion",
+    category: "ENGINEERING",
+    year: "2026",
+    description: "AI-powered Bible companion using Hybrid RAG. Keyword + semantic vector search (pgvector), real-time SSE streaming via Gemini, and cross-platform support with Tauri v2.",
+    tags: ["React Native", "Expo", "Supabase", "pgvector", "Gemini AI", "Tauri v2"],
+    links: {
+      repo: "https://github.com/Raoof128/Aion",
+      caseStudy: "/projects/aion"
+    },
+    build: {
+      stack: ["React Native 0.81", "Expo 54", "TypeScript", "Supabase PostgreSQL", "pgvector", "OpenAI Embeddings", "Gemini 3.1 Flash", "Tauri v2", "TanStack Query v5", "NativeWind"],
+      features: [
+        "Hybrid RAG pipeline: regex keyword extraction + OpenAI embedding (1536-dim) + pgvector semantic search",
+        "Real-time SSE streaming from Gemini via Supabase Edge Functions",
+        "Rich inline verse cards with book/chapter/verse attribution",
+        "Cross-platform: React Native (iOS/Android) + Tauri v2 (macOS/Windows/Linux)"
+      ]
+    },
+    secure: {
+      measures: [
+        "All API keys (OpenAI, Gemini, service_role) stored server-side only in Edge Function secrets",
+        "IP-based rate limiting: 5/min burst, 30/3hrs per IP, 200/day global cap",
+        "Row-Level Security (RLS) on all Supabase tables",
+        "500-character message length cap to prevent token-stuffing",
+        "Exact-match response cache (zero LLM cost on repeated queries)",
+        "Fail-closed: rate limit errors default to deny"
+      ]
+    },
+    fullDescription: "Aion is an AI-powered Bible companion that lets users ask questions about scripture in plain language. Responses are grounded in actual Bible data retrieved via a Hybrid RAG pipeline combining keyword matching and semantic vector search (pgvector), then streamed in real time via SSE from Gemini. The app runs on mobile (React Native + Expo) and desktop (Tauri v2).",
+    problem: "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
+    solution: [
+      "Built a Hybrid RAG pipeline combining regex-based keyword extraction with OpenAI embedding (1536-dim) + pgvector semantic search",
+      "Implemented real-time SSE streaming from Gemini via Supabase Edge Functions",
+      "Designed rich inline verse cards with full book/chapter/verse attribution for verifiability",
+      "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop"
+    ],
+    proof: [
+      "Hybrid RAG retrieval ensures answers are grounded in actual scripture, not hallucinated",
+      "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
+      "Exact-match response cache eliminates redundant LLM costs",
+      "Anonymous auth with zero sign-up friction — Supabase RLS enforced on all tables"
+    ]
   }
 };
 
