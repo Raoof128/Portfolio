@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerContainerSlow } from "@/lib/utils";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import { TerminalFeed } from "@/components/ui/TerminalFeed";
-import { TelemetryViz } from "@/components/ui/TelemetryViz";
+import { ParticleNetwork } from "@/components/ui/ParticleNetwork";
 
 /* ─── Constants ──────────────────────────────────────────────────────── */
 
@@ -84,43 +84,12 @@ export default function Home() {
     <div>
 
       {/* ══════════════════════════════════════════════
-          HERO — Orbital Command Center
+          HERO — Interactive Particle Network
       ══════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
 
-        {/* Network telemetry background — calm data topology */}
-        <TelemetryViz />
-
-        {/* Orbital rings */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-end pr-0 lg:pr-24" aria-hidden="true">
-          {[780, 580, 400, 240].map((size, i) => (
-            <motion.div
-              key={size}
-              className="absolute rounded-full"
-              style={{
-                width: size,
-                height: size,
-                border: `1px ${i % 2 === 0 ? "dashed" : "solid"} ${
-                  i % 2 === 0 ? "rgba(167,139,250,0.07)" : "rgba(16,185,129,0.05)"
-                }`,
-              }}
-              animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
-              transition={{ duration: 14 + i * 6, repeat: Infinity, ease: "linear" }}
-            />
-          ))}
-          {/* Radar pulses */}
-          {[0, 1.4, 2.8].map((delay) => (
-            <motion.div
-              key={delay}
-              className="absolute rounded-full border border-cyan/8"
-              initial={{ width: 40, height: 40, opacity: 0.8 }}
-              animate={{ width: 700, height: 700, opacity: 0 }}
-              transition={{ duration: 3.5, repeat: Infinity, delay, ease: "easeOut" }}
-            />
-          ))}
-          {/* Centre pip */}
-          <div className="absolute w-2 h-2 rounded-full bg-cyan shadow-[0_0_16px_rgba(167,139,250,0.9)]" />
-        </div>
+        {/* Interactive particle mesh — mouse-reactive network topology */}
+        <ParticleNetwork />
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-20 lg:py-28">
