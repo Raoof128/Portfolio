@@ -14,7 +14,7 @@ export function ContactClient() {
         <AnimatedSection variants={fadeInUp}>
           <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl font-mono font-bold text-white">
-              Open <span className="text-cyan-500">Secure Channel</span>
+              Open <span className="text-cyan">Secure Channel</span>
             </h1>
             <p className="text-text-body text-sm md:text-base max-w-lg mx-auto">
               Initiate encrypted communication.
@@ -30,10 +30,10 @@ export function ContactClient() {
 
         <AnimatedSection variants={fadeInUp} delay={0.3}>
           <div className="flex justify-center gap-6 pt-4 border-t border-cyan/10">
-            <motion.a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+            <motion.a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
               <Github className="w-4 h-4 mr-2" /> GitHub
             </motion.a>
-            <motion.a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan-400 transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+            <motion.a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
               <Linkedin className="w-4 h-4 mr-2" /> LinkedIn
             </motion.a>
           </div>

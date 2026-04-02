@@ -119,7 +119,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                     </div>
 
                     {/* Status Bar */}
-                    <div className="bg-cyan-500/10 border-t border-cyan-500/20 p-2 text-xs text-cyan flex justify-between px-4">
+                    <div className="bg-cyan/10 border-t border-cyan/20 p-2 text-xs text-cyan flex justify-between px-4">
                         <span>READ_ONLY_MODE</span>
                         <span>UTF-8</span>
                     </div>

@@ -33,7 +33,7 @@ export function SecurityPolicyClient() {
 
         <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} className="space-y-8">
           <AnimatedSection variants={fadeInUp}>
-            <HUDFrame className="p-6 md:p-8 bg-cyan-500/5 border-l-4 border-l-cyan">
+            <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-l-4 border-l-cyan">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2"><Mail className="w-5 h-5 text-cyan" /> Report a Vulnerability</h2>

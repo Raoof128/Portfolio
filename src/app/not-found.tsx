@@ -18,7 +18,7 @@ export default function NotFound() {
         <motion.div variants={scaleIn} className="relative">
           <h1 className="text-9xl font-bold font-mono text-zinc-900 absolute top-0 left-1/2 -translate-x-1/2 select-none blur-sm">404</h1>
           <h1 className="text-9xl font-bold font-mono text-white relative z-10">404</h1>
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-cyan-500/50 animate-scanline" />
+          <div className="absolute top-1/2 left-0 w-full h-1 bg-cyan/50 animate-scanline" />
         </motion.div>
 
         <motion.div variants={fadeInUp} className="space-y-4">

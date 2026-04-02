@@ -73,7 +73,7 @@ export function SecureContactForm() {
             ? "bg-red-500 animate-pulse"
             : status === "ERROR"
               ? "bg-amber-500"
-              : "bg-cyan-500/50"
+              : "bg-cyan/50"
         }`}
       />
 
@@ -86,7 +86,7 @@ export function SecureContactForm() {
               : status === "ERROR"
                 ? "text-amber-400"
                 : status === "ENCRYPTING"
-                  ? "text-cyan-400"
+                  ? "text-cyan"
                   : "text-green-400"
           }`}
         >
@@ -98,7 +98,7 @@ export function SecureContactForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label htmlFor="contact-name" className="text-xs font-mono text-cyan-500">TARGET_ID (Name)</label>
+            <label htmlFor="contact-name" className="text-xs font-mono text-cyan">TARGET_ID (Name)</label>
             <input
               id="contact-name"
               name="name"
@@ -112,7 +112,7 @@ export function SecureContactForm() {
             />
           </div>
           <div className="space-y-1">
-            <label htmlFor="contact-email" className="text-xs font-mono text-cyan-500">RETURN_PATH (Email)</label>
+            <label htmlFor="contact-email" className="text-xs font-mono text-cyan">RETURN_PATH (Email)</label>
             <input
               id="contact-email"
               name="email"
@@ -128,7 +128,7 @@ export function SecureContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="contact-message" className="text-xs font-mono text-cyan-500">PAYLOAD (Message)</label>
+          <label htmlFor="contact-message" className="text-xs font-mono text-cyan">PAYLOAD (Message)</label>
           <textarea
             id="contact-message"
             name="message"

@@ -33,7 +33,7 @@ export default function ProjectsArchive() {
       <AnimatedSection variants={fadeInUp}>
         <div className="border-b border-cyber-gray pb-8">
           <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-            <Terminal className="text-cyan-500 w-6 h-6" />
+            <Terminal className="text-cyan w-6 h-6" />
             PROJECT_DB
           </h1>
           <p className="text-text-body font-mono text-sm">
@@ -53,7 +53,7 @@ export default function ProjectsArchive() {
                 placeholder="search_query..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="block w-full pl-16 pr-3 py-2 border border-cyan/15 rounded-sm leading-5 bg-black/50 text-slate-300 placeholder-cyan/30 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 sm:text-sm font-mono transition-all"
+                className="block w-full pl-16 pr-3 py-2 border border-cyan/15 rounded-sm leading-5 bg-black/50 text-slate-300 placeholder-cyan/30 focus:outline-none focus:border-cyan focus:ring-1 focus:ring-cyan sm:text-sm font-mono transition-all"
               />
             </div>
 
@@ -68,11 +68,11 @@ export default function ProjectsArchive() {
                   {filter === cat && (
                     <motion.div
                       layoutId="filter-indicator"
-                      className="absolute inset-0 bg-cyan-500/10 border border-cyan-500 rounded-sm"
+                      className="absolute inset-0 bg-cyan/10 border border-cyan rounded-sm"
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
-                  <span className={`relative z-10 ${filter === cat ? "text-cyan-400" : ""}`}>
+                  <span className={`relative z-10 ${filter === cat ? "text-cyan" : ""}`}>
                     --{cat.toLowerCase()}
                   </span>
                 </button>
@@ -100,14 +100,14 @@ export default function ProjectsArchive() {
                 <motion.div
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="group relative bg-[#06080d]/60 border border-cyan/10 hover:border-cyan-500/30 p-4 md:p-6 transition-all hover:bg-cyan/[0.04]"
+                  className="group relative bg-[#06080d]/60 border border-cyan/10 hover:border-cyan/30 p-4 md:p-6 transition-all hover:bg-cyan/[0.04]"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
 
                     {/* Title & Tags */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-cyan-400 transition-colors">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-cyan transition-colors">
                           {project.title}
                         </h3>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-gray text-text-body border border-cyan/15">
