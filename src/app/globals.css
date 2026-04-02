@@ -166,6 +166,11 @@ body {
 }
 
 /* Animations */
+@keyframes text-blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
 @keyframes scanline {
   0% {
     transform: translateY(-100%);
