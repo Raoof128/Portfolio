@@ -43,7 +43,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
       transition={hoverSpring}
       className="h-full"
     >
-      <HUDFrame className={cn("flex flex-col h-full hover:shadow-[0_0_30px_rgba(124,77,189,0.1)] transition-shadow duration-300", featured ? "lg:col-span-2" : "")} title="PROJECT_MODULE">
+      <HUDFrame className={cn("flex flex-col h-full hover:shadow-[0_0_30px_rgba(167,139,250,0.1)] transition-shadow duration-300", featured ? "lg:col-span-2" : "")} title="PROJECT_MODULE">
         <div className="flex-1 space-y-4">
           {/* Header */}
           <div className="flex justify-between items-start">

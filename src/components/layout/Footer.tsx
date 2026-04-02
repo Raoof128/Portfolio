@@ -81,7 +81,7 @@ export function Footer() {
               <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-4">System</p>
               <div className="space-y-2 text-xs font-mono text-text-meta">
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_rgba(124,77,189,0.7)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_rgba(167,139,250,0.7)]" />
                   <span>Status: ONLINE</span>
                 </div>
                 <div>Last Index: {new Date().toLocaleDateString("en-AU", { month: "short", year: "numeric" })}</div>

@@ -76,7 +76,7 @@ export function Navbar() {
                                 {isActive && (
                                     <motion.span
                                         layoutId="nav-indicator"
-                                        className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan shadow-[0_0_8px_rgba(124,77,189,0.8)]"
+                                        className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan shadow-[0_0_8px_rgba(167,139,250,0.8)]"
                                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                                     />
                                 )}
@@ -86,7 +86,7 @@ export function Navbar() {
 
                     <Link
                         href="/contact"
-                        className="px-4 py-1.5 border border-cyan/15 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_15px_rgba(124,77,189,0.25)] transition-all bg-cyber-dark/50"
+                        className="px-4 py-1.5 border border-cyan/15 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_15px_rgba(167,139,250,0.25)] transition-all bg-cyber-dark/50"
                     >
                         Contact
                     </Link>

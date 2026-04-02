@@ -37,7 +37,7 @@ export function HUDFrame({ children, className, title, corners = true, ...props 
                         variants={cornerVariants}
                         className="absolute -top-[1px] -left-[1px] w-5 h-5 border-t border-l border-cyan"
                     >
-                        <span className="absolute -top-[2px] -left-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(124,77,189,0.8)]" />
+                        <span className="absolute -top-[2px] -left-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
                     </motion.div>
                     <motion.div
                         custom={1}
@@ -46,7 +46,7 @@ export function HUDFrame({ children, className, title, corners = true, ...props 
                         variants={cornerVariants}
                         className="absolute -top-[1px] -right-[1px] w-5 h-5 border-t border-r border-cyan"
                     >
-                        <span className="absolute -top-[2px] -right-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(124,77,189,0.8)]" />
+                        <span className="absolute -top-[2px] -right-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
                     </motion.div>
                     <motion.div
                         custom={2}
@@ -55,7 +55,7 @@ export function HUDFrame({ children, className, title, corners = true, ...props 
                         variants={cornerVariants}
                         className="absolute -bottom-[1px] -left-[1px] w-5 h-5 border-b border-l border-cyan"
                     >
-                        <span className="absolute -bottom-[2px] -left-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(124,77,189,0.8)]" />
+                        <span className="absolute -bottom-[2px] -left-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
                     </motion.div>
                     <motion.div
                         custom={3}
@@ -64,7 +64,7 @@ export function HUDFrame({ children, className, title, corners = true, ...props 
                         variants={cornerVariants}
                         className="absolute -bottom-[1px] -right-[1px] w-5 h-5 border-b border-r border-cyan"
                     >
-                        <span className="absolute -bottom-[2px] -right-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(124,77,189,0.8)]" />
+                        <span className="absolute -bottom-[2px] -right-[2px] w-1 h-1 bg-cyan shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
                     </motion.div>
                 </>
             )}

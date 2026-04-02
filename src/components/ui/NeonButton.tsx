@@ -26,9 +26,9 @@ export function NeonButton({
   const baseStyles = "relative inline-flex items-center justify-center px-6 py-3 font-mono text-sm font-medium tracking-wide transition-all duration-300 group overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan/60 focus:ring-offset-2 focus:ring-offset-[#06080d]";
 
   const variants = {
-    primary: "bg-cyan/10 text-cyan border border-cyan/50 hover:bg-cyan/25 hover:border-cyan hover:shadow-[0_0_30px_rgba(124,77,189,0.4)]",
+    primary: "bg-cyan/10 text-cyan border border-cyan/50 hover:bg-cyan/25 hover:border-cyan hover:shadow-[0_0_30px_rgba(167,139,250,0.4)]",
     secondary: "bg-cyber-dark border border-cyan/15 text-slate-300 hover:text-white hover:border-cyan/30 hover:bg-cyan/[0.06]",
-    outline: "bg-transparent border border-cyan/30 text-cyan/80 hover:border-cyan hover:text-cyan hover:bg-cyan/5 hover:shadow-[0_0_20px_rgba(124,77,189,0.2)]"
+    outline: "bg-transparent border border-cyan/30 text-cyan/80 hover:border-cyan hover:text-cyan hover:bg-cyan/5 hover:shadow-[0_0_20px_rgba(167,139,250,0.2)]"
   };
 
   const content = (

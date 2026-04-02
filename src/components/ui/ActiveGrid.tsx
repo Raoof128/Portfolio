@@ -32,7 +32,7 @@ export function ActiveGrid() {
             key={i}
             className={`
               relative transition-all duration-1000 ease-in-out border border-cyan/8 rounded-sm
-              ${activeCells.includes(i) ? "bg-cyan/15 shadow-[0_0_18px_rgba(124,77,189,0.35)] border-cyan/40" : "bg-transparent"}
+              ${activeCells.includes(i) ? "bg-cyan/15 shadow-[0_0_18px_rgba(167,139,250,0.35)] border-cyan/40" : "bg-transparent"}
             `}
           >
              {/* The "Data Packet" Pulse */}
