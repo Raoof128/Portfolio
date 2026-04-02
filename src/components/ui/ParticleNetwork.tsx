@@ -12,16 +12,24 @@ function subscribe(cb: () => void) {
 function getSnap() { return window.matchMedia(rmq).matches; }
 function getServer() { return false; }
 
-/* ─── Config ────────────────────────────────────────────────────────── */
-const PARTICLE_COUNT = 90;
-const CONNECTION_DIST = 130;
-const MOUSE_RADIUS = 200;
-const MOUSE_STRENGTH = 0.025;
-const DRIFT_SPEED = 0.35;
-const PULSE_INTERVAL = 800;        // Much more frequent pulses
-const PULSE_TRAVEL_SPEED = 5;
-const SHOOTING_STAR_INTERVAL = 1200; // New shooting star every 1.2s
-const TRAIL_LENGTH = 12;            // Frames of trail history
+/* ─── Responsive config ─────────────────────────────────────────────── */
+function getConfig(w: number) {
+  const isMobile = w < 768;
+  const isTablet = w >= 768 && w < 1024;
+  return {
+    particleCount: isMobile ? 35 : isTablet ? 55 : 90,
+    connectionDist: isMobile ? 70 : isTablet ? 100 : 130,
+    mouseRadius: isMobile ? 120 : 200,
+    mouseStrength: 0.025,
+    driftSpeed: isMobile ? 0.25 : 0.35,
+    pulseInterval: isMobile ? 1200 : 800,
+    pulseTravel: 5,
+    starInterval: isMobile ? 2000 : 1200,
+    starLength: isMobile ? [25, 35] as const : [40, 60] as const, // [min, range]
+    trailLength: isMobile ? 6 : 12,
+    maxDpr: isMobile ? 1.5 : 2,
+  };
+}
 
 /* ─── Colors ────────────────────────────────────────────────────────── */
 const VIOLET = { r: 167, g: 139, b: 250 };
@@ -53,7 +61,7 @@ interface ShootingStar {
   y: number;
   vx: number;
   vy: number;
-  life: number;      // 0→1 (dies at 1)
+  life: number;
   speed: number;
   length: number;
   color: typeof VIOLET | typeof EMERALD | typeof WHITE;
@@ -67,17 +75,19 @@ export function ParticleNetwork() {
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const rafRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
+  const configRef = useRef(getConfig(1024));
   const reducedMotion = useSyncExternalStore(subscribe, getSnap, getServer);
 
-  /* ─── Init particles ────────────────────────────────────────────── */
+  /* ─── Init particles (responsive count) ─────────────────────────── */
   const initParticles = useCallback((w: number, h: number) => {
+    const cfg = configRef.current;
     const particles: Particle[] = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < cfg.particleCount; i++) {
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * DRIFT_SPEED * 2,
-        vy: (Math.random() - 0.5) * DRIFT_SPEED * 2,
+        vx: (Math.random() - 0.5) * cfg.driftSpeed * 2,
+        vy: (Math.random() - 0.5) * cfg.driftSpeed * 2,
         radius: Math.random() * 1.5 + 0.5,
         baseAlpha: Math.random() * 0.4 + 0.15,
         pulseAlpha: 0,
@@ -89,11 +99,11 @@ export function ParticleNetwork() {
 
   /* ─── Spawn shooting star ───────────────────────────────────────── */
   const spawnShootingStar = useCallback(() => {
-    const { w, h } = sizeRef.current;
+    const { w } = sizeRef.current;
     if (w === 0) return;
+    const cfg = configRef.current;
 
-    // Random direction — mostly diagonal
-    const angle = (Math.random() * 0.8 + 0.2) * Math.PI; // 36°–180° range
+    const angle = (Math.random() * 0.8 + 0.2) * Math.PI;
     const speed = Math.random() * 4 + 3;
     const colors = [VIOLET, EMERALD, WHITE];
 
@@ -104,7 +114,7 @@ export function ParticleNetwork() {
       vy: Math.abs(Math.sin(angle)) * speed + 1.5,
       life: 0,
       speed,
-      length: Math.random() * 60 + 40,
+      length: Math.random() * cfg.starLength[1] + cfg.starLength[0],
       color: colors[Math.floor(Math.random() * colors.length)],
     });
   }, []);
@@ -117,10 +127,14 @@ export function ParticleNetwork() {
     if (!ctx) return;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 2);
       const rect = canvas.parentElement?.getBoundingClientRect();
       const w = rect?.width ?? window.innerWidth;
       const h = rect?.height ?? window.innerHeight;
+
+      // Update responsive config
+      configRef.current = getConfig(w);
+      const dpr = Math.min(window.devicePixelRatio, configRef.current.maxDpr);
+
       sizeRef.current = { w, h };
       canvas.width = w * dpr;
       canvas.height = h * dpr;
@@ -128,15 +142,16 @@ export function ParticleNetwork() {
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      if (particlesRef.current.length === 0) {
-        initParticles(w, h);
-      }
+      // Re-init particles on resize (responsive count changes)
+      initParticles(w, h);
+      pulsesRef.current = [];
+      shootingStarsRef.current = [];
     };
 
     resize();
     window.addEventListener("resize", resize);
 
-    /* Mouse tracking */
+    /* Mouse tracking (desktop) */
     const onMouse = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
@@ -147,57 +162,77 @@ export function ParticleNetwork() {
     canvas.addEventListener("mousemove", onMouse);
     canvas.addEventListener("mouseleave", onMouseLeave);
 
-    /* Pulse spawner — fires multiple pulses per interval */
-    const pulseTimer = setInterval(() => {
-      const particles = particlesRef.current;
-      if (particles.length < 2) return;
+    /* Touch tracking (mobile) */
+    const onTouch = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      mouseRef.current = { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+    };
+    const onTouchEnd = () => {
+      mouseRef.current = { x: -9999, y: -9999 };
+    };
+    canvas.addEventListener("touchmove", onTouch, { passive: true });
+    canvas.addEventListener("touchstart", onTouch, { passive: true });
+    canvas.addEventListener("touchend", onTouchEnd);
 
-      // Spawn 1-3 pulses at once
-      const count = Math.floor(Math.random() * 3) + 1;
-      for (let n = 0; n < count; n++) {
-        const fromIdx = Math.floor(Math.random() * particles.length);
-        let toIdx = -1;
-        let minDist = Infinity;
-        for (let j = 0; j < particles.length; j++) {
-          if (j === fromIdx) continue;
-          const dx = particles[fromIdx].x - particles[j].x;
-          const dy = particles[fromIdx].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST && dist < minDist) {
-            minDist = dist;
-            toIdx = j;
+    /* Pulse spawner */
+    let pulseTimer: ReturnType<typeof setInterval>;
+    let starTimer: ReturnType<typeof setInterval>;
+
+    const startTimers = () => {
+      const cfg = configRef.current;
+      clearInterval(pulseTimer);
+      clearInterval(starTimer);
+
+      pulseTimer = setInterval(() => {
+        const particles = particlesRef.current;
+        const c = configRef.current;
+        if (particles.length < 2) return;
+
+        const count = Math.floor(Math.random() * 3) + 1;
+        for (let n = 0; n < count; n++) {
+          const fromIdx = Math.floor(Math.random() * particles.length);
+          let toIdx = -1;
+          let minDist = Infinity;
+          for (let j = 0; j < particles.length; j++) {
+            if (j === fromIdx) continue;
+            const dx = particles[fromIdx].x - particles[j].x;
+            const dy = particles[fromIdx].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < c.connectionDist && dist < minDist) {
+              minDist = dist;
+              toIdx = j;
+            }
           }
+          if (toIdx === -1) continue;
+
+          pulsesRef.current.push({
+            fromIdx, toIdx, progress: 0,
+            x: particles[fromIdx].x, y: particles[fromIdx].y,
+          });
+          particles[fromIdx].pulseAlpha = 1;
         }
-        if (toIdx === -1) continue;
+      }, cfg.pulseInterval);
 
-        pulsesRef.current.push({
-          fromIdx,
-          toIdx,
-          progress: 0,
-          x: particles[fromIdx].x,
-          y: particles[fromIdx].y,
-        });
-        particles[fromIdx].pulseAlpha = 1;
-      }
-    }, PULSE_INTERVAL);
+      starTimer = setInterval(() => spawnShootingStar(), cfg.starInterval);
+    };
 
-    /* Shooting star spawner */
-    const starTimer = setInterval(() => {
-      spawnShootingStar();
-    }, SHOOTING_STAR_INTERVAL);
+    startTimers();
 
     /* Reduced motion: static frame */
     if (reducedMotion) {
       const particles = particlesRef.current;
       const { w, h } = sizeRef.current;
+      const cfg = configRef.current;
       ctx.clearRect(0, 0, w, h);
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            const alpha = (1 - dist / CONNECTION_DIST) * 0.12;
+          if (dist < cfg.connectionDist) {
+            const alpha = (1 - dist / cfg.connectionDist) * 0.12;
             ctx.strokeStyle = `rgba(${VIOLET.r},${VIOLET.g},${VIOLET.b},${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
@@ -217,6 +252,9 @@ export function ParticleNetwork() {
         window.removeEventListener("resize", resize);
         canvas.removeEventListener("mousemove", onMouse);
         canvas.removeEventListener("mouseleave", onMouseLeave);
+        canvas.removeEventListener("touchmove", onTouch);
+        canvas.removeEventListener("touchstart", onTouch);
+        canvas.removeEventListener("touchend", onTouchEnd);
         clearInterval(pulseTimer);
         clearInterval(starTimer);
       };
@@ -229,47 +267,42 @@ export function ParticleNetwork() {
       const stars = shootingStarsRef.current;
       const mouse = mouseRef.current;
       const { w, h } = sizeRef.current;
+      const cfg = configRef.current;
 
       ctx.clearRect(0, 0, w, h);
 
       /* ── Update particles ──────────────────────────────────────── */
       for (const p of particles) {
-        // Store trail position
         p.trail.unshift({ x: p.x, y: p.y });
-        if (p.trail.length > TRAIL_LENGTH) p.trail.pop();
+        if (p.trail.length > cfg.trailLength) p.trail.pop();
 
-        // Drift
         p.x += p.vx;
         p.y += p.vy;
 
-        // Mouse attraction
+        // Mouse/touch attraction
         const mdx = mouse.x - p.x;
         const mdy = mouse.y - p.y;
         const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mDist < MOUSE_RADIUS && mDist > 1) {
-          p.vx += (mdx / mDist) * MOUSE_STRENGTH;
-          p.vy += (mdy / mDist) * MOUSE_STRENGTH;
+        if (mDist < cfg.mouseRadius && mDist > 1) {
+          p.vx += (mdx / mDist) * cfg.mouseStrength;
+          p.vy += (mdy / mDist) * cfg.mouseStrength;
         }
 
-        // Damping
         p.vx *= 0.99;
         p.vy *= 0.99;
 
-        // Speed limit
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-        if (speed > DRIFT_SPEED * 3) {
-          p.vx = (p.vx / speed) * DRIFT_SPEED * 3;
-          p.vy = (p.vy / speed) * DRIFT_SPEED * 3;
+        if (speed > cfg.driftSpeed * 3) {
+          p.vx = (p.vx / speed) * cfg.driftSpeed * 3;
+          p.vy = (p.vy / speed) * cfg.driftSpeed * 3;
         }
 
-        // Wrap edges
         const margin = 20;
         if (p.x < -margin) { p.x = w + margin; p.trail = []; }
         if (p.x > w + margin) { p.x = -margin; p.trail = []; }
         if (p.y < -margin) { p.y = h + margin; p.trail = []; }
         if (p.y > h + margin) { p.y = -margin; p.trail = []; }
 
-        // Decay pulse
         if (p.pulseAlpha > 0) p.pulseAlpha *= 0.93;
       }
 
@@ -279,8 +312,8 @@ export function ParticleNetwork() {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            const alpha = (1 - dist / CONNECTION_DIST) * 0.15;
+          if (dist < cfg.connectionDist) {
+            const alpha = (1 - dist / cfg.connectionDist) * 0.15;
             ctx.strokeStyle = `rgba(${VIOLET.r},${VIOLET.g},${VIOLET.b},${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
@@ -291,14 +324,14 @@ export function ParticleNetwork() {
         }
       }
 
-      /* ── Mouse glow ────────────────────────────────────────────── */
+      /* ── Mouse/touch glow ──────────────────────────────────────── */
       if (mouse.x > 0 && mouse.y > 0) {
-        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, MOUSE_RADIUS);
+        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, cfg.mouseRadius);
         grad.addColorStop(0, `rgba(${VIOLET.r},${VIOLET.g},${VIOLET.b},0.06)`);
         grad.addColorStop(1, `rgba(${VIOLET.r},${VIOLET.g},${VIOLET.b},0)`);
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, MOUSE_RADIUS, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, cfg.mouseRadius, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -307,11 +340,10 @@ export function ParticleNetwork() {
         const alpha = Math.min(p.baseAlpha + p.pulseAlpha * 0.6, 1);
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
 
-        // Comet trail (only when moving fast enough)
         if (speed > 0.15 && p.trail.length > 2) {
           const trailCol = p.pulseAlpha > 0.1 ? EMERALD : VIOLET;
           for (let t = 1; t < p.trail.length; t++) {
-            const tailAlpha = (1 - t / p.trail.length) * alpha * 0.4 * (speed / (DRIFT_SPEED * 3));
+            const tailAlpha = (1 - t / p.trail.length) * alpha * 0.4 * (speed / (cfg.driftSpeed * 3));
             if (tailAlpha < 0.01) continue;
             ctx.strokeStyle = `rgba(${trailCol.r},${trailCol.g},${trailCol.b},${tailAlpha})`;
             ctx.lineWidth = p.radius * (1 - t / p.trail.length * 0.7);
@@ -322,7 +354,6 @@ export function ParticleNetwork() {
           }
         }
 
-        // Pulse glow
         if (p.pulseAlpha > 0.05) {
           const glowR = p.radius + p.pulseAlpha * 8;
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
@@ -334,7 +365,6 @@ export function ParticleNetwork() {
           ctx.fill();
         }
 
-        // Core dot
         const col = p.pulseAlpha > 0.1 ? EMERALD : VIOLET;
         ctx.fillStyle = `rgba(${col.r},${col.g},${col.b},${alpha})`;
         ctx.beginPath();
@@ -347,13 +377,14 @@ export function ParticleNetwork() {
         const pulse = pulses[i];
         const from = particles[pulse.fromIdx];
         const to = particles[pulse.toIdx];
+        if (!from || !to) { pulses.splice(i, 1); continue; }
 
         const dx = to.x - from.x;
         const dy = to.y - from.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 1) { pulses.splice(i, 1); continue; }
 
-        pulse.progress += PULSE_TRAVEL_SPEED / dist;
+        pulse.progress += cfg.pulseTravel / dist;
         pulse.x = from.x + dx * pulse.progress;
         pulse.y = from.y + dy * pulse.progress;
 
@@ -363,7 +394,6 @@ export function ParticleNetwork() {
           continue;
         }
 
-        // Pulse dot with glow
         const pulseAlpha = 1 - pulse.progress * 0.4;
         const grad = ctx.createRadialGradient(pulse.x, pulse.y, 0, pulse.x, pulse.y, 5);
         grad.addColorStop(0, `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},${pulseAlpha})`);
@@ -373,7 +403,6 @@ export function ParticleNetwork() {
         ctx.arc(pulse.x, pulse.y, 5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Pulse trail line
         ctx.strokeStyle = `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},${pulseAlpha * 0.4})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -386,18 +415,15 @@ export function ParticleNetwork() {
       for (let i = stars.length - 1; i >= 0; i--) {
         const star = stars[i];
 
-        // Update position
         star.x += star.vx;
         star.y += star.vy;
         star.life += 0.012;
 
-        // Remove dead stars
         if (star.life >= 1 || star.x < -100 || star.x > w + 100 || star.y > h + 100) {
           stars.splice(i, 1);
           continue;
         }
 
-        // Brightness curve: fade in fast, hold, fade out
         const brightness = star.life < 0.1
           ? star.life / 0.1
           : star.life > 0.7
@@ -406,7 +432,6 @@ export function ParticleNetwork() {
 
         const c = star.color;
 
-        // Draw the tail (gradient line)
         const tailX = star.x - (star.vx / star.speed) * star.length;
         const tailY = star.y - (star.vy / star.speed) * star.length;
 
@@ -423,7 +448,6 @@ export function ParticleNetwork() {
         ctx.lineTo(star.x, star.y);
         ctx.stroke();
 
-        // Head glow
         const headGrad = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, 3);
         headGrad.addColorStop(0, `rgba(255,255,255,${brightness * 0.9})`);
         headGrad.addColorStop(0.5, `rgba(${c.r},${c.g},${c.b},${brightness * 0.5})`);
@@ -434,7 +458,7 @@ export function ParticleNetwork() {
         ctx.fill();
       }
 
-      ctx.lineCap = "butt"; // Reset
+      ctx.lineCap = "butt";
       rafRef.current = requestAnimationFrame(draw);
     };
 
@@ -445,6 +469,9 @@ export function ParticleNetwork() {
       window.removeEventListener("resize", resize);
       canvas.removeEventListener("mousemove", onMouse);
       canvas.removeEventListener("mouseleave", onMouseLeave);
+      canvas.removeEventListener("touchmove", onTouch);
+      canvas.removeEventListener("touchstart", onTouch);
+      canvas.removeEventListener("touchend", onTouchEnd);
       clearInterval(pulseTimer);
       clearInterval(starTimer);
     };
@@ -454,7 +481,7 @@ export function ParticleNetwork() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 pointer-events-none md:pointer-events-auto z-0"
-      style={{ opacity: 0.7 }}
+      style={{ opacity: 0.7, touchAction: "pan-y" }}
       aria-hidden="true"
     />
   );
