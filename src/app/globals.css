@@ -20,10 +20,10 @@
   --color-amber-glow: #fbbf24;
   --color-amber-dim: rgba(245, 158, 11, 0.12);
 
-  /* Accent - Purple (data / categories) */
-  --color-purple-DEFAULT: #a855f7;
-  --color-purple-glow: #c084fc;
-  --color-purple-dim: rgba(168, 85, 247, 0.12);
+  /* Accent - Emerald (data / engineering categories) */
+  --color-purple-DEFAULT: #10b981;
+  --color-purple-glow: #34d399;
+  --color-purple-dim: rgba(16, 185, 129, 0.12);
 
   /* Typography tokens */
   --text-body: #94a3b8;
@@ -117,11 +117,11 @@ body {
       90deg,
       transparent 0%,
       rgba(124, 77, 189, 0.6) 20%,
-      rgba(168, 85, 247, 0.45) 50%,
+      rgba(16, 185, 129, 0.45) 50%,
       rgba(124, 77, 189, 0.6) 80%,
       transparent 100%
     );
-    box-shadow: 0 0 16px rgba(124, 77, 189, 0.35), 0 0 6px rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 16px rgba(124, 77, 189, 0.35), 0 0 6px rgba(16, 185, 129, 0.2);
   }
 
   /* Custom Scrollbar — HUD-integrated */

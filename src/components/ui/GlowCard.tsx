@@ -22,7 +22,7 @@ const glowColors = {
   },
   purple: {
     border: "hover:border-purple/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]",
+    shadow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]",
     trace: "from-purple/60 via-transparent to-purple/60",
   },
 };

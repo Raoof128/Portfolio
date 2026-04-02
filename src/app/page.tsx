@@ -83,7 +83,7 @@ export default function Home() {
                 width: size,
                 height: size,
                 border: `1px ${i % 2 === 0 ? "dashed" : "solid"} ${
-                  i % 2 === 0 ? "rgba(124,77,189,0.07)" : "rgba(139,92,246,0.05)"
+                  i % 2 === 0 ? "rgba(124,77,189,0.07)" : "rgba(16,185,129,0.05)"
                 }`,
               }}
               animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
@@ -143,7 +143,7 @@ export default function Home() {
                 {/* Outline — 2026 text-stroke effect */}
                 <h1
                   className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
-                  style={{ WebkitTextStroke: "1.5px rgba(124,77,189,0.45)", color: "transparent" } as React.CSSProperties}
+                  style={{ WebkitTextStroke: "1.5px rgba(124,77,189,0.7)", color: "transparent" } as React.CSSProperties}
                 >
                   CYBER
                 </h1>
@@ -787,7 +787,7 @@ export default function Home() {
                 {/* Ghost letter */}
                 <span
                   className="absolute -top-4 -right-3 text-[10rem] font-bold leading-none select-none pointer-events-none text-right"
-                  style={{ color: "rgba(168,85,247,0.07)" } as React.CSSProperties}
+                  style={{ color: "rgba(16,185,129,0.07)" } as React.CSSProperties}
                 >
                   S
                 </span>
