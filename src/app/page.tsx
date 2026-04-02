@@ -146,6 +146,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.48 }}
               className="text-text-body text-lg max-w-md leading-relaxed"
             >
+              <span className="text-text-meta/60 italic text-sm block mb-2">{`"Seek, and ye shall find" — Matthew 7:7`}</span>
               Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities.{" "}
               Authored <span className="text-foreground">&ldquo;The Invisible Window&rdquo;</span> &mdash; 100% screen capture evasion.
               Motivated by reducing catastrophic risks from advanced AI.
@@ -199,9 +200,6 @@ export default function Home() {
           transition={{ delay: 1.5 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
-          <span className="font-mono text-[8px] text-text-meta/50 tracking-[0.2em] italic">
-            {`// "Seek, and ye shall find" — Matthew 7:7`}
-          </span>
           <span className="font-mono text-[9px] text-text-meta tracking-[0.4em] uppercase">Scroll</span>
           <motion.div
             animate={{ scaleY: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
