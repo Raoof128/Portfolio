@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerContainerSlow } from "@/lib/utils";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import { TerminalFeed } from "@/components/ui/TerminalFeed";
+import { TelemetryViz } from "@/components/ui/TelemetryViz";
 
 /* ─── Constants ──────────────────────────────────────────────────────── */
 
@@ -87,6 +88,9 @@ export default function Home() {
       ══════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
 
+        {/* Network telemetry background — calm data topology */}
+        <TelemetryViz />
+
         {/* Orbital rings */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-end pr-0 lg:pr-24" aria-hidden="true">
           {[780, 580, 400, 240].map((size, i) => (
@@ -140,11 +144,11 @@ export default function Home() {
               </span>
             </motion.div>
 
-            {/* Architectural headline */}
+            {/* Architectural headline — clip-path reveal */}
             <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, y: 32, clipPath: "inset(0 100% 0 0)" }}
+              animate={{ opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)" }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="font-mono text-[10px] text-text-meta tracking-[0.4em] uppercase mb-5">
                 Mohammad Raouf Abedini
