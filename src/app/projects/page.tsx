@@ -100,7 +100,7 @@ export default function ProjectsArchive() {
                 <motion.div
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="group relative bg-[#06080d]/60 border border-cyan/10 hover:border-cyan/30 p-4 md:p-6 transition-all hover:bg-cyan/[0.04]"
+                  className="group relative bg-[#06080d]/60 border border-cyan/10 hover:border-cyan/30 hover:shadow-[0_4px_20px_rgba(167,139,250,0.1)] p-4 md:p-6 transition-all hover:bg-cyan/[0.04]"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
 

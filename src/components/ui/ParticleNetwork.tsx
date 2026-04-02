@@ -453,7 +453,7 @@ export function ParticleNetwork() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-auto z-0"
+      className="absolute inset-0 pointer-events-none md:pointer-events-auto z-0"
       style={{ opacity: 0.7 }}
       aria-hidden="true"
     />

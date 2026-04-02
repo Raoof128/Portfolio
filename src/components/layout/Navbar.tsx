@@ -123,7 +123,7 @@ export function Navbar() {
                                 href={item.path}
                                 onClick={() => setMobileOpen(false)}
                                 className={cn(
-                                    "block font-mono text-base p-2 hover:bg-cyan/5",
+                                    "block font-mono text-base py-3 px-3 hover:bg-cyan/5",
                                     pathname.startsWith(item.path) ? "text-cyan border-l-2 border-cyan bg-cyan/5" : "text-text-body"
                                 )}
                             >

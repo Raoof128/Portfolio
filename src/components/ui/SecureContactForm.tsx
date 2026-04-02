@@ -108,7 +108,7 @@ export function SecureContactForm() {
               autoComplete="name"
               placeholder="ENTER_IDENTITY"
               onKeyDown={handleTyping}
-              className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
+              className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
           <div className="space-y-1">
@@ -122,7 +122,7 @@ export function SecureContactForm() {
               autoComplete="email"
               placeholder="secure@gateway.io"
               onKeyDown={handleTyping}
-              className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-2 text-sm focus:border-red-500 focus:outline-none transition-colors"
+              className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ export function SecureContactForm() {
             maxLength={2000}
             placeholder="TRANSMITTING_ENCRYPTED_PAYLOAD..."
             onKeyDown={handleTyping}
-            className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-2 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
+            className="w-full bg-[#06080d]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
           />
         </div>
 

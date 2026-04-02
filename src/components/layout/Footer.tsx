@@ -59,7 +59,7 @@ export function Footer() {
                   <Linkedin className="w-4 h-4" />
                   <span className="sr-only">LinkedIn</span>
                 </motion.a>
-                <Link href="/contact" className="text-text-body hover:text-cyan transition-colors">
+                <Link href="/contact" className="text-text-body hover:text-cyan hover:-translate-y-0.5 transition-all">
                   <Mail className="w-4 h-4" />
                   <span className="sr-only">Contact</span>
                 </Link>

@@ -99,23 +99,23 @@ export function ResumeClient() {
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">Technical Proficiencies</h3>
               </div>
               <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 gap-4">
-                <motion.div variants={fadeInUp} className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 transition-colors">
+                <motion.div variants={fadeInUp} className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(167,139,250,0.1)] transition-all">
                   <h4 className="text-cyan font-mono text-sm mb-3 font-bold">&gt; Languages</h4>
                   <p className="text-sm text-text-body">Python (primary), C, C++, TypeScript, JavaScript, Swift, Kotlin, Bash, SQL, Go (familiar)</p>
                 </motion.div>
-                <motion.div variants={fadeInUp} className="p-4 bg-amber/5 border border-amber/10 rounded-sm hover:border-amber/30 transition-colors">
+                <motion.div variants={fadeInUp} className="p-4 bg-amber/5 border border-amber/10 rounded-sm hover:border-amber/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] transition-all">
                   <h4 className="text-amber font-mono text-sm mb-3 font-bold">&gt; Security &amp; Offensive</h4>
                   <p className="text-sm text-text-body">Vulnerability research, cross-platform exploit development (Win32 API, macOS ScreenCaptureKit), threat modelling, secure code review, penetration testing, responsible disclosure (OWASP/FIRST/CISA), Wireshark, Nmap, Burp Suite</p>
                 </motion.div>
-                <motion.div variants={fadeInUp} className="p-4 bg-purple/5 border border-purple/10 rounded-sm hover:border-purple/30 transition-colors">
+                <motion.div variants={fadeInUp} className="p-4 bg-purple/5 border border-purple/10 rounded-sm hover:border-purple/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(16,185,129,0.1)] transition-all">
                   <h4 className="text-purple font-mono text-sm mb-3 font-bold">&gt; AI &amp; ML</h4>
                   <p className="text-sm text-text-body">Large Language Model (LLM) integration &amp; evaluation, AI-assisted vulnerability research, Natural Language Processing (NLP), generative AI tooling, ML model evaluation, dual-use risk assessment</p>
                 </motion.div>
-                <motion.div variants={fadeInUp} className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 transition-colors">
+                <motion.div variants={fadeInUp} className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(167,139,250,0.1)] transition-all">
                   <h4 className="text-cyan font-mono text-sm mb-3 font-bold">&gt; Systems &amp; Tools</h4>
                   <p className="text-sm text-text-body">Linux (Ubuntu/Kali), CMake, Docker, Git/GitHub, GitHub Actions CI/CD, Google Test, FastAPI, Cloudflare Workers, libpcap</p>
                 </motion.div>
-                <motion.div variants={fadeInUp} className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 transition-colors md:col-span-2">
+                <motion.div variants={fadeInUp} className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(167,139,250,0.1)] transition-all md:col-span-2">
                   <h4 className="text-cyan font-mono text-sm mb-3 font-bold">&gt; Frameworks</h4>
                   <p className="text-sm text-text-body">Open Web Application Security Project (OWASP) Top 10, MITRE ATT&amp;CK, National Institute of Standards and Technology (NIST) Framework, W3C Screen Capture Specification</p>
                 </motion.div>

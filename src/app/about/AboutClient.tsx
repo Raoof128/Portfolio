@@ -142,7 +142,7 @@ export function AboutClient() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="grid lg:grid-cols-12 gap-12 items-start"
+          className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start"
         >
           {/* Left */}
           <motion.div variants={fadeInUp} className="lg:col-span-7 space-y-8">
@@ -197,15 +197,15 @@ export function AboutClient() {
             {/* Social links */}
             <div className="flex flex-wrap gap-3">
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(167,139,250,0.15)] text-text-body font-mono text-xs transition-all">
                 <Github className="w-3.5 h-3.5" /> github.com/Raoof128
               </a>
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(167,139,250,0.15)] text-text-body font-mono text-xs transition-all">
                 <Linkedin className="w-3.5 h-3.5" /> LinkedIn
               </a>
               <a href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan text-text-body font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(167,139,250,0.15)] text-text-body font-mono text-xs transition-all">
                 <Mail className="w-3.5 h-3.5" /> {CONTACT_EMAIL}
               </a>
             </div>
@@ -335,7 +335,7 @@ export function AboutClient() {
           <div className="space-y-1">
             {activeLabs.map((lab) => (
               <motion.div key={lab.id} variants={fadeInUp}>
-                <div className="group flex items-center gap-4 p-3 border border-transparent hover:border-cyan/10 hover:bg-cyan/[0.03] transition-all">
+                <div className="group flex items-center gap-4 p-3 border border-transparent hover:border-cyan/25 hover:bg-cyan/[0.06] transition-all">
                   <span className="font-mono text-xs text-text-meta w-8 shrink-0">{lab.id}</span>
                   <span className={`font-mono text-[10px] px-2 py-0.5 border uppercase tracking-widest shrink-0 ${statusStyles[lab.status]}`}>
                     {lab.status}
