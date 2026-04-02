@@ -218,6 +218,12 @@ export function AboutClient() {
 
           {/* Right – Photo */}
           <motion.div variants={fadeInUp} className="lg:col-span-5">
+            <motion.div
+              initial={{ clipPath: "inset(100% 0 0 0)" }}
+              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            >
             <motion.div className="relative group" whileHover={{ scale: 1.015 }} transition={{ type: "spring", stiffness: 200, damping: 22 }}>
               <div className="absolute -inset-0.5 bg-gradient-to-b from-cyan/40 to-purple/20 opacity-40 blur-sm group-hover:opacity-80 transition-opacity duration-500" />
               <HUDFrame className="relative bg-cyber-dark overflow-hidden aspect-[4/5] w-full">
@@ -259,6 +265,7 @@ export function AboutClient() {
                   <div>LOCATION: CASTLE HILL, NSW</div>
                 </div>
               </HUDFrame>
+            </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>

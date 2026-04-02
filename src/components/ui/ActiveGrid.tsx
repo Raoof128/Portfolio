@@ -13,7 +13,7 @@ export function ActiveGrid() {
         Math.floor(Math.random() * 100)
       );
       setActiveCells(newCells);
-    }, 1500);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);

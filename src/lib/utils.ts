@@ -55,6 +55,16 @@ export const staggerContainer: Variants = {
   },
 };
 
+export const staggerContainerSlow: Variants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
 export const hoverSpring: Transition = {
   type: "spring",
   stiffness: 300,

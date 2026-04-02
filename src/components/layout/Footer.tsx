@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Github, Linkedin, Mail, Shield, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { fadeInUp } from "@/lib/utils";
+import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 
 const navLinks = [
@@ -22,10 +22,16 @@ export function Footer() {
       <footer className="border-t border-cyan/10 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+          >
 
             {/* Col 1 — Branding + socials */}
-            <div className="space-y-4">
+            <motion.div variants={fadeInUp} className="space-y-4">
               <p className="font-mono text-sm text-slate-300 tracking-tight">~/mohammad-raouf-abedini</p>
               <p className="text-xs text-text-body leading-relaxed max-w-xs">
                 AI Security Research. Vulnerability research, responsible disclosure, and reducing catastrophic risks from advanced AI.
@@ -58,10 +64,10 @@ export function Footer() {
                   <span className="sr-only">Contact</span>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
             {/* Col 2 — Quick nav */}
-            <div>
+            <motion.div variants={fadeInUp}>
               <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-4">Navigation</p>
               <nav className="grid grid-cols-2 gap-x-6 gap-y-2">
                 {navLinks.map((link) => (
@@ -74,10 +80,10 @@ export function Footer() {
                   </Link>
                 ))}
               </nav>
-            </div>
+            </motion.div>
 
             {/* Col 3 — Status + security */}
-            <div className="space-y-4">
+            <motion.div variants={fadeInUp} className="space-y-4">
               <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-4">System</p>
               <div className="space-y-2 text-xs font-mono text-text-meta">
                 <div className="flex items-center gap-2">
@@ -90,8 +96,8 @@ export function Footer() {
                 <Shield className="w-3 h-3 mr-1.5" />
                 security.txt
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Bottom bar */}
           <div className="mt-10 pt-6 border-t border-cyan/8 flex items-center justify-between">
