@@ -192,13 +192,16 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll line */}
+        {/* Scroll line + verse */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
+          <span className="font-mono text-[8px] text-text-meta/50 tracking-[0.2em] italic">
+            {`// "Seek, and ye shall find" — Matthew 7:7`}
+          </span>
           <span className="font-mono text-[9px] text-text-meta tracking-[0.4em] uppercase">Scroll</span>
           <motion.div
             animate={{ scaleY: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}

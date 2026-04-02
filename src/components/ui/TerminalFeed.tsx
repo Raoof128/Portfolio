@@ -55,6 +55,7 @@ const AMBIENT_LOGS: RawLog[] = [
   { msg: "VULN   ScreenCaptureKit  macOS_26.3.1  bypass confirmed", color: "text-purple-400" },
   { msg: "AI     dual_use_risk  assessment_complete  low  ✓", color: "text-text-body" },
   { msg: "LLM    prompt_injection_test  isolation  ✓", color: "text-green-400" },
+  { msg: "SYS    // \"seek, and ye shall find\" — Matthew 7:7", color: "text-text-meta" },
 ];
 
 /* ─── Typing engine ─────────────────────────────────────────────────── */
@@ -163,7 +164,7 @@ export function TerminalFeed() {
   useEffect(() => {
     if (phase !== "ready") return;
     const lineId = ++idRef.current;
-    const readyMsg = "  ▸ all systems nominal — portfolio online";
+    const readyMsg = "  ▸ all systems nominal — \"seek, and ye shall find\"";
 
     if (reducedMotion) {
       setLines(prev => [...prev, { id: lineId, prompt: undefined, text: readyMsg, color: "text-green-400", done: true }]);
