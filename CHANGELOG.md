@@ -9,6 +9,13 @@
 - **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes, grep on built HTML: 0 `peer-reviewed` on home/about/resume/invisible-window
 - **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
 
+### Raouf: 2026-04-23 (3rd pass)
+- **Scope**: Pin Invisible Window Research to top of Projects list + manual Cloudflare Pages redeploy
+- **Summary**: Reordered the `projects` Record in `src/lib/data.ts` so `"invisible-window-research"` is the first key. `/projects` uses `Object.values(projects)` for its list (order = declaration order), so this is the only source of truth that needed to change. Manually redeployed via `wrangler pages deploy out --project-name raoufabedini --branch main`.
+- **Files Changed**: `src/lib/data.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes; invisible-window-research is key 1 of 11 in data.ts.
+- **Follow-ups**: Verify live ordering after deploy.
+
 ### Raouf: 2026-04-23 (follow-up)
 - **Scope**: Remove residual "peer-reviewed" language + mobile hero button wrap
 - **Summary**: Replaced "peer-reviewed" framing with "12-page IEEE-format security research paper" on the About bio, Resume executive-summary, and root `layout.tsx` metadata description (homepage OG/description). Added `flex-wrap` and tighter mobile gap on the project-detail hero button row so Demo/Repo/Paper buttons stack cleanly on narrow viewports.

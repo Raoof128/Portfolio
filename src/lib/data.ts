@@ -25,6 +25,64 @@ export interface Project {
 }
 
 export const projects: Record<string, Project> = {
+  "invisible-window-research": {
+    slug: "invisible-window-research",
+    title: "Invisible Window Research",
+    category: "OFFENSIVE",
+    year: "2026",
+    description: "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion on Windows 10/11 and macOS 14–26 using documented OS display APIs. Responsibly disclosed to vendors.",
+    tags: ["Security Research", "Windows", "macOS", "WebRTC", "Responsible Disclosure", "PoC"],
+    links: {
+      repo: "https://github.com/Raoof128/invisible-window-research",
+      paper: "/Invisible_Window_Research.pdf",
+      caseStudy: "/projects/invisible-window-research"
+    },
+    build: {
+      stack: [
+        "Win32 C (Windows PoC)",
+        "Swift / AppKit (macOS PoC)",
+        "Python (pixel-level forensic verification)",
+        "LaTeX (IEEE conference template, 12 pages, 51 references)"
+      ],
+      features: [
+        "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+) — excludes window from all screen capture APIs with zero visual artefact",
+        "NSWindow.SharingType.none (macOS) — hides window from CGWindowListCreateImage and ScreenCaptureKit-backed capture on macOS 14–26",
+        "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent",
+        "Empirical contradiction of the community assumption that macOS 15+ mitigated the attack vector"
+      ]
+    },
+    secure: {
+      measures: [
+        "Discovery and verification (January 2026)",
+        "Proctoring vendors notified with 90-day disclosure window (January 2026)",
+        "OS vendors (Microsoft, Apple) notified through security reporting channels (February 2026)",
+        "Public release after 90-day window (March 2026)",
+        "Proof-of-concept source code withheld; available to verified security researchers and proctoring vendors on request",
+        "Uses only documented, user-level OS APIs — no kernel exploits, no privilege escalation",
+        "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines"
+      ]
+    },
+    fullDescription: "A 12-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs — SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS — that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
+    problem: "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. This assumption is false. Both Windows and macOS provide documented, publicly supported APIs that exclude application windows from all screen capture pipelines without privilege escalation, kernel modification, or detectable side effects. The integrity guarantee offered by capture-based proctoring is structurally broken.",
+    solution: [
+      "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
+      "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS) — both documented in official SDK references",
+      "Built proof-of-concept implementations in Win32 C (Windows) and Swift (macOS) demonstrating full screen-capture evasion",
+      "Evaluated against representative WebRTC proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26",
+      "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
+      "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
+      "Followed 90-day coordinated disclosure: proctoring vendors (Jan 2026), OS vendors (Feb 2026), public release (Mar 2026)"
+    ],
+    proof: [
+      "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
+      "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
+      "macOS 26.3.1 remains fully vulnerable despite Apple's documented ScreenCaptureKit changes in macOS 15 — contradicting prevailing community assumptions",
+      "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
+      "Behavioural detection ineffective — gaze tracking (p = 0.41, n = 8) and mouse dynamics fell within normal exam-behaviour variance",
+      "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
+      "Published as arXiv preprint under CC BY 4.0 — 12 pages, 51 references, IEEE conference format"
+    ]
+  },
   "mehr-guard": {
     slug: "mehr-guard",
     title: "Mehr Guard",
@@ -284,64 +342,6 @@ export const projects: Record<string, Project> = {
       "Protocol coverage: 7 protocols across Layers 2-7",
       "27 unit/integration tests — all passing",
       "Supports both live capture and pcap file analysis"
-    ]
-  },
-  "invisible-window-research": {
-    slug: "invisible-window-research",
-    title: "Invisible Window Research",
-    category: "OFFENSIVE",
-    year: "2026",
-    description: "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion on Windows 10/11 and macOS 14–26 using documented OS display APIs. Responsibly disclosed to vendors.",
-    tags: ["Security Research", "Windows", "macOS", "WebRTC", "Responsible Disclosure", "PoC"],
-    links: {
-      repo: "https://github.com/Raoof128/invisible-window-research",
-      paper: "/Invisible_Window_Research.pdf",
-      caseStudy: "/projects/invisible-window-research"
-    },
-    build: {
-      stack: [
-        "Win32 C (Windows PoC)",
-        "Swift / AppKit (macOS PoC)",
-        "Python (pixel-level forensic verification)",
-        "LaTeX (IEEE conference template, 12 pages, 51 references)"
-      ],
-      features: [
-        "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+) — excludes window from all screen capture APIs with zero visual artefact",
-        "NSWindow.SharingType.none (macOS) — hides window from CGWindowListCreateImage and ScreenCaptureKit-backed capture on macOS 14–26",
-        "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent",
-        "Empirical contradiction of the community assumption that macOS 15+ mitigated the attack vector"
-      ]
-    },
-    secure: {
-      measures: [
-        "Discovery and verification (January 2026)",
-        "Proctoring vendors notified with 90-day disclosure window (January 2026)",
-        "OS vendors (Microsoft, Apple) notified through security reporting channels (February 2026)",
-        "Public release after 90-day window (March 2026)",
-        "Proof-of-concept source code withheld; available to verified security researchers and proctoring vendors on request",
-        "Uses only documented, user-level OS APIs — no kernel exploits, no privilege escalation",
-        "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines"
-      ]
-    },
-    fullDescription: "A 12-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs — SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS — that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
-    problem: "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. This assumption is false. Both Windows and macOS provide documented, publicly supported APIs that exclude application windows from all screen capture pipelines without privilege escalation, kernel modification, or detectable side effects. The integrity guarantee offered by capture-based proctoring is structurally broken.",
-    solution: [
-      "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
-      "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS) — both documented in official SDK references",
-      "Built proof-of-concept implementations in Win32 C (Windows) and Swift (macOS) demonstrating full screen-capture evasion",
-      "Evaluated against representative WebRTC proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26",
-      "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
-      "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
-      "Followed 90-day coordinated disclosure: proctoring vendors (Jan 2026), OS vendors (Feb 2026), public release (Mar 2026)"
-    ],
-    proof: [
-      "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
-      "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
-      "macOS 26.3.1 remains fully vulnerable despite Apple's documented ScreenCaptureKit changes in macOS 15 — contradicting prevailing community assumptions",
-      "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
-      "Behavioural detection ineffective — gaze tracking (p = 0.41, n = 8) and mouse dynamics fell within normal exam-behaviour variance",
-      "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
-      "Published as arXiv preprint under CC BY 4.0 — 12 pages, 51 references, IEEE conference format"
     ]
   },
   "phishpatrol": {

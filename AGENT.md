@@ -47,6 +47,19 @@ Before making any code changes, agents MUST:
     - Built HTML greps show 0 occurrences of `peer-reviewed` across `index.html`, `about.html`, `resume.html`, and `projects/invisible-window-research.html`
 - **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
 
+### Raouf: 2026-04-23 (3rd pass)
+- **Scope**: Pin Invisible Window Research to top of Projects list + manual Cloudflare Pages redeploy
+- **Summary**: Reordered the `projects` Record in `src/lib/data.ts` so `"invisible-window-research"` is the first key. `/projects` is data-driven via `Object.values(projects)` (filter/search preserves declaration order), and `/projects/[slug]` uses `generateStaticParams` off the same Record — no other code paths needed changes. Triggered an explicit `wrangler pages deploy out --project-name raoufabedini --branch main` after the build to redeploy Cloudflare Pages immediately rather than wait on the GitHub integration.
+- **Files Changed**: `src/lib/data.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65
+    - `npm run build`: pass (29 routes; `out/projects/invisible-window-research.html` present; `out/Invisible_Window_Research.pdf` present)
+    - `grep '^  "' src/lib/data.ts`: invisible-window-research is key 1 of 11
+    - `wrangler pages deploy`: see follow-up for deploy URL
+- **Follow-ups**: Verify `raoufabedini.dev/projects` renders Invisible Window Research at position 1.
+
 ### Raouf: 2026-04-23 (follow-up)
 - **Scope**: Remove residual "peer-reviewed" language + mobile hero button wrap
 - **Summary**: Replaced "peer-reviewed" framing with "12-page IEEE-format security research paper" on the About page bio, Resume executive-summary, and root `layout.tsx` metadata description (which governs the homepage OG/description). Added `flex-wrap` and tighter mobile gap to the project-detail hero button row so the Demo/Repo/Paper buttons stack cleanly on narrow viewports instead of overflowing.
