@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-04-23
+- **Scope**: Invisible Window Research — Rewrite Project Copy + Add Paper Download
+- **Summary**: Replaced every section of `/projects/invisible-window-research` with defensible copy: hero reframed as a "12-page IEEE-format research paper" with explicit `getDisplayMedia()` and macOS 26 hook; problem section tightened to trust-boundary framing; solution overview now covers W3C↔OS-compositor trust boundary, behavioural-detection analysis, five countermeasures, and the full coordinated-disclosure timeline; tech stack rescopes Python to pixel-level forensic verification (replaces the inaccurate MCP reasoning-engine line); build bullets add concrete pixel forensics (80.27% Windows diff; 1,170,560-pixel transparent macOS capture); secure section lists January→March 2026 timeline, PoC-withheld policy, and ACM/IEEE/CISA ethics alignment; proof section adds 10,000+ frame measurement, behavioural stats (gaze p=0.41, n=8), and corrected "published as arXiv preprint". Added a Paper download button (outline variant, FileText icon) next to Repo on the project hero, plus a sidebar link. Extended `Project.links` interface with optional `paper?: string`. Copied `Invisible_Window_Research.pdf` (313 KB) into `public/` for static serving.
+- **Files Changed**: `src/lib/data.ts`, `src/app/projects/[slug]/ProjectDetailClient.tsx`, `src/app/about/AboutClient.tsx`, `src/app/resume/ResumeClient.tsx`, `src/app/layout.tsx`, `public/Invisible_Window_Research.pdf` (new), `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes, grep on built HTML: 0 `peer-reviewed` on home/about/resume/invisible-window
+- **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
+
+### Raouf: 2026-04-23 (follow-up)
+- **Scope**: Remove residual "peer-reviewed" language + mobile hero button wrap
+- **Summary**: Replaced "peer-reviewed" framing with "12-page IEEE-format security research paper" on the About bio, Resume executive-summary, and root `layout.tsx` metadata description (homepage OG/description). Added `flex-wrap` and tighter mobile gap on the project-detail hero button row so Demo/Repo/Paper buttons stack cleanly on narrow viewports.
+- **Files Changed**: `src/app/about/AboutClient.tsx`, `src/app/resume/ResumeClient.tsx`, `src/app/layout.tsx`, `src/app/projects/[slug]/ProjectDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes
+- **Follow-ups**: None.
+
 ### Raouf: 2026-03-21
 - **Scope**: Add Write-Ups for NanoMatch + SentinelFlow
 - **Summary**: Added two new technical write-ups based on internet research of repo READMEs and source code. (1) **"Building a Sub-Microsecond Matching Engine in C++20"** — covers three-layer data structure design (sorted map + linked-list queues + hash map), integer prices, pool allocator, order type semantics, and latency profiling. (2) **"Anatomy of a Network Intrusion Detection System"** — covers the capture→parse→detect→alert pipeline, BPF filters, layered protocol dissection with `std::optional`, Snort-inspired rule engine, stateful vs stateless detection (port scans, SYN floods, DNS tunnelling), and zero-copy parsing. Build produces 29 static routes (+2 write-up pages).

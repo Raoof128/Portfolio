@@ -35,6 +35,30 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-04-23
+- **Scope**: Invisible Window Research — Rewrite Project Copy + Add Paper Download
+- **Summary**: Rewrote the `/projects/invisible-window-research` page copy end-to-end so the page can survive a domain expert reading the underlying paper. Updates: (1) Hero/fullDescription reframed as a "12-page IEEE-format research paper" with explicit `getDisplayMedia()` reference and macOS 26 hook. (2) Problem section tightened to the trust-boundary framing. (3) Solution overview expanded with W3C Screen Capture ↔ OS compositor trust boundary, behavioural detection analysis, five-countermeasure survey, and coordinated-disclosure timeline. (4) Tech stack rescoped — Python reframed as "pixel-level forensic verification" (replaces the inaccurate "reasoning engine / MCP server" line). (5) Build bullets include concrete pixel forensics (80.27% Windows capture diff; 1,170,560-pixel transparent macOS capture). (6) Secure section now lists the full January→March 2026 disclosure timeline, PoC-withheld policy, and ACM/IEEE/CISA ethics alignment. (7) Proof section includes measurement over 10,000+ frames, behavioural detection stats (gaze p=0.41, n=8), and "published as arXiv preprint" (arXiv does not "accept"). Added a dedicated Paper download button (outline variant, FileText icon) next to the Repo button on the project hero, plus a corresponding sidebar link. Extended the `Project.links` interface with optional `paper?: string`. Copied `Invisible_Window_Research.pdf` (313 KB) into `public/` for static serving.
+- **Files Changed**: `src/lib/data.ts`, `src/app/projects/[slug]/ProjectDetailClient.tsx`, `src/app/about/AboutClient.tsx`, `src/app/resume/ResumeClient.tsx`, `src/app/layout.tsx`, `public/Invisible_Window_Research.pdf` (new), `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65 passing (9 files)
+    - `npm run build`: pass (29 routes; `/projects/invisible-window-research` generated; PDF copied to `out/`)
+    - Built HTML greps show 0 occurrences of `peer-reviewed` across `index.html`, `about.html`, `resume.html`, and `projects/invisible-window-research.html`
+- **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
+
+### Raouf: 2026-04-23 (follow-up)
+- **Scope**: Remove residual "peer-reviewed" language + mobile hero button wrap
+- **Summary**: Replaced "peer-reviewed" framing with "12-page IEEE-format security research paper" on the About page bio, Resume executive-summary, and root `layout.tsx` metadata description (which governs the homepage OG/description). Added `flex-wrap` and tighter mobile gap to the project-detail hero button row so the Demo/Repo/Paper buttons stack cleanly on narrow viewports instead of overflowing.
+- **Files Changed**: `src/app/about/AboutClient.tsx`, `src/app/resume/ResumeClient.tsx`, `src/app/layout.tsx`, `src/app/projects/[slug]/ProjectDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65 passing
+    - `npm run build`: pass (29 routes)
+    - Grep on built HTML: 0 `peer-reviewed` matches on home/about/resume/invisible-window pages
+- **Follow-ups**: None.
+
 ### Raouf: 2026-03-21
 - **Scope**: Add Write-Ups for NanoMatch + SentinelFlow
 - **Summary**: Added two technical write-ups based on internet research of repo READMEs and source code. (1) "Building a Sub-Microsecond Matching Engine in C++20" — three-layer data structure design, integer prices, pool allocator, order type semantics, latency profiling. (2) "Anatomy of a Network Intrusion Detection System" — capture→parse→detect→alert pipeline, BPF filters, layered protocol dissection, Snort-inspired rules, stateful vs stateless detection, zero-copy parsing. Build produces 29 routes (+2 write-up detail pages).

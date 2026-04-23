@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     default: "Mohammad Raouf Abedini | AI Security Researcher",
     template: "%s | Mohammad Raouf Abedini"
   },
-  description: "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — peer-reviewed security analysis achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
+  description: "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — a 12-page IEEE-format security research paper achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
   keywords: ["AI Security Research", "Vulnerability Research", "Responsible Disclosure", "LLM Security Evaluation", "Cross-Platform Exploit Development", "Mohammad Raouf Abedini", "AI Safety", "Screen Capture Evasion", "Offensive Security", "Python Systems Programming", "Anthropic"],
   authors: [{ name: "Mohammad Raouf Abedini", url: SITE_URL }],
   creator: "Mohammad Raouf Abedini",

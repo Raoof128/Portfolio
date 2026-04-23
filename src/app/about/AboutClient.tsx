@@ -167,7 +167,7 @@ export function AboutClient() {
                 cross-platform vulnerabilities.
               </p>
               <p className="text-text-body leading-relaxed">
-                Authored <span className="text-white">&ldquo;The Invisible Window&rdquo;</span> &mdash; a peer-reviewed-format security analysis
+                Authored <span className="text-white">&ldquo;The Invisible Window&rdquo;</span> &mdash; a 12-page IEEE-format security research paper
                 demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14&ndash;26 using documented OS-level APIs,
                 with a novel finding that Apple&apos;s macOS 15 mitigation remains ineffective on macOS 26.
               </p>
