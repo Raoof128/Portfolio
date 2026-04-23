@@ -91,7 +91,7 @@ export const projects: Record<string, Project> = {
     description: "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
-      demo: "https://www.youtube.com/watch?v=n8bheouj4jM",
+      demo: "https://raoof128.github.io/dashboard.html",
       repo: "https://github.com/Raoof128/Raoof128.github.io",
       caseStudy: "/projects/mehr-guard"
     },

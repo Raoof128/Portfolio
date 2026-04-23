@@ -193,18 +193,18 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll line + verse */}
+        {/* Scroll indicator — hidden on small screens where hero content fills the viewport */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+          className="hidden lg:flex absolute bottom-4 left-1/2 -translate-x-1/2 flex-col items-center gap-2 pointer-events-none z-20"
         >
           <span className="font-mono text-[9px] text-text-meta tracking-[0.4em] uppercase">Scroll</span>
           <motion.div
             animate={{ scaleY: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
             transition={{ repeat: Infinity, duration: 1.8 }}
-            className="w-px h-10 bg-gradient-to-b from-cyan/40 to-transparent"
+            className="w-px h-8 bg-gradient-to-b from-cyan/40 to-transparent"
           />
         </motion.div>
       </section>
@@ -351,18 +351,24 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-4 pointer-events-none">
+                    <div className="flex flex-wrap gap-4 pointer-events-none">
                       {p.links.demo && (
-                        <span className="flex items-center gap-1.5 font-mono text-xs text-text-body group-hover:text-cyan transition-colors pointer-events-auto relative z-10">
+                        <a
+                          href={p.links.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10 pointer-events-auto"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           <ExternalLink className="w-3 h-3" /> Demo
-                        </span>
+                        </a>
                       )}
                       {p.links.repo && (
                         <a
                           href={p.links.repo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
+                          className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10 pointer-events-auto"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Github className="w-3 h-3" /> Repo
