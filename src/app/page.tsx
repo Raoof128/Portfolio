@@ -282,7 +282,7 @@ export default function Home() {
                       [{s.prefix}] {p.category}
                     </span>
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest">PEER-REVIEWED PAPER</span>
+                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest">IEEE-FORMAT PAPER</span>
                       <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
                     </div>
                   </div>
@@ -720,6 +720,16 @@ export default function Home() {
               );
             })()}
           </motion.div>
+
+          {/* Mobile-only View All CTA */}
+          <div className="md:hidden mt-8 flex justify-center">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 border border-cyan/25 bg-cyan/5 px-4 py-2 text-cyan/90 hover:text-cyan hover:border-cyan/60 transition-colors font-mono text-xs tracking-widest uppercase"
+            >
+              View All Projects <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
         </section>
       </AnimatedSection>
 
@@ -887,10 +897,10 @@ export default function Home() {
             className="space-y-0"
           >
             {writeups.map((post, i) => (
-              <motion.div key={post.slug} variants={fadeInUp}>
+              <motion.div key={post.slug} variants={fadeInUp} className="min-w-0">
                 <Link
                   href={`/write-ups/${post.slug}`}
-                  className="group flex items-start sm:items-center justify-between gap-6 py-5 px-2 border-b border-cyan/8 hover:border-cyan/20 hover:bg-cyan/[0.03] transition-all -mx-2 px-2"
+                  className="group flex items-start sm:items-center justify-between gap-4 sm:gap-6 py-5 px-2 -mx-2 border-b border-cyan/8 hover:border-cyan/20 hover:bg-cyan/[0.03] transition-all"
                 >
                   <div className="flex items-start sm:items-center gap-5 min-w-0">
                     <span className="font-mono text-xs text-text-meta shrink-0 mt-0.5 sm:mt-0 w-6 tabular-nums">
@@ -914,6 +924,16 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Mobile-only View All CTA */}
+          <div className="md:hidden mt-8 flex justify-center">
+            <Link
+              href="/write-ups"
+              className="inline-flex items-center gap-2 border border-cyan/25 bg-cyan/5 px-4 py-2 text-cyan/90 hover:text-cyan hover:border-cyan/60 transition-colors font-mono text-xs tracking-widest uppercase"
+            >
+              View All Write-ups <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
         </section>
       </AnimatedSection>
 

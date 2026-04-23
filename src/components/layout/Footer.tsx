@@ -100,7 +100,7 @@ export function Footer() {
           </motion.div>
 
           {/* Bottom bar */}
-          <div className="mt-10 pt-6 border-t border-cyan/8 flex items-center justify-between">
+          <div className="mt-10 pt-6 border-t border-cyan/8 flex flex-wrap items-center justify-between gap-3">
             <p className="text-[10px] font-mono text-text-meta opacity-80">
               &copy; {new Date().getFullYear()} Mohammad Raouf Abedini
             </p>

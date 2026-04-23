@@ -25,7 +25,7 @@ const specializations = [
     items: [
       "Cross-Platform Exploit Development (Win32 API, macOS ScreenCaptureKit)",
       "Responsible Disclosure (OWASP/FIRST/CISA Frameworks)",
-      "Peer-Reviewed Security Analysis",
+      "IEEE-Format Security Research",
       "Penetration Testing & Secure Code Review",
       "W3C Screen Capture Specification",
     ],
@@ -307,7 +307,7 @@ export function AboutClient() {
           <div className="space-y-5">
             {skillGroups.map((group) => (
               <motion.div key={group.label} variants={fadeInUp}>
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
                   <div className="w-28 shrink-0 pt-1">
                     <span className="font-mono text-xs text-text-body uppercase tracking-widest">{group.label}</span>
                   </div>
@@ -335,13 +335,13 @@ export function AboutClient() {
           <div className="space-y-1">
             {activeLabs.map((lab) => (
               <motion.div key={lab.id} variants={fadeInUp}>
-                <div className="group flex items-center gap-4 p-3 border border-transparent hover:border-cyan/25 hover:bg-cyan/[0.06] transition-all">
+                <div className="group flex items-center gap-3 sm:gap-4 p-3 border border-transparent hover:border-cyan/25 hover:bg-cyan/[0.06] transition-all min-w-0">
                   <span className="font-mono text-xs text-text-meta w-8 shrink-0">{lab.id}</span>
                   <span className={`font-mono text-[10px] px-2 py-0.5 border uppercase tracking-widest shrink-0 ${statusStyles[lab.status]}`}>
                     {lab.status}
                   </span>
-                  <span className="text-sm text-slate-300 group-hover:text-white transition-colors font-medium">{lab.title}</span>
-                  <div className="ml-auto hidden sm:flex gap-2">
+                  <span className="text-sm text-slate-300 group-hover:text-white transition-colors font-medium truncate min-w-0">{lab.title}</span>
+                  <div className="ml-auto hidden sm:flex gap-2 shrink-0">
                     {lab.tags.map((tag) => (
                       <span key={tag} className="font-mono text-[10px] text-text-meta bg-cyan/[0.03] px-2 py-0.5">
                         {tag}

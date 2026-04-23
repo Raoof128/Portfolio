@@ -9,6 +9,13 @@
 - **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes, grep on built HTML: 0 `peer-reviewed` on home/about/resume/invisible-window
 - **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
 
+### Raouf: 2026-04-23 (4th pass — responsive audit)
+- **Scope**: Full file-by-file responsive audit + polish
+- **Summary**: Audited every page and shared component for mobile/tablet/desktop behaviour. Home: "PEER-REVIEWED PAPER" bento badge → "IEEE-FORMAT PAPER"; added mobile-only "View All" CTAs at the bottom of the Projects and Write-ups sections (desktop links were `hidden md:flex`); cleaned duplicated `px-2` on writeup rows. About: "Peer-Reviewed Security Analysis" → "IEEE-Format Security Research"; Skills Matrix rows stack on mobile instead of squeezing chips against the 28-unit label column; Active Operations row titles truncate instead of pushing tags off-screen. 404: responsive numeral (`text-7xl sm:text-8xl md:text-9xl`). SimpleMarkdown: added fenced code blocks (with lang badge + horizontal scroll), horizontal rules, tables (full-bleed scroll on mobile), blockquotes, responsive heading sizes, `break-words` on lists/paragraphs — the Invisible Window writeup's code blocks, tables, and HRs now render properly instead of as plain paragraphs. Footer bottom bar now wraps on very narrow viewports.
+- **Files Changed**: `src/app/page.tsx`, `src/app/about/AboutClient.tsx`, `src/app/not-found.tsx`, `src/components/ui/SimpleMarkdown.tsx`, `src/components/layout/Footer.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes, `grep <table|<pre|<hr` on invisible-window writeup HTML confirms tables/code/hrs now render, `grep peer-reviewed` on home/about/resume/invisible-window: 0 matches.
+- **Follow-ups**: Verify responsive rendering live in DevTools device toolbar.
+
 ### Raouf: 2026-04-23 (3rd pass)
 - **Scope**: Pin Invisible Window Research to top of Projects list + manual Cloudflare Pages redeploy
 - **Summary**: Reordered the `projects` Record in `src/lib/data.ts` so `"invisible-window-research"` is the first key. `/projects` uses `Object.values(projects)` for its list (order = declaration order), so this is the only source of truth that needed to change. Manually redeployed via `wrangler pages deploy out --project-name raoufabedini --branch main`.

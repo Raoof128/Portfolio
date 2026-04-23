@@ -47,6 +47,27 @@ Before making any code changes, agents MUST:
     - Built HTML greps show 0 occurrences of `peer-reviewed` across `index.html`, `about.html`, `resume.html`, and `projects/invisible-window-research.html`
 - **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
 
+### Raouf: 2026-04-23 (4th pass — responsive audit)
+- **Scope**: Full file-by-file responsive & polish audit across all pages and shared components
+- **Summary**: Audited every page (`/`, `/about`, `/projects`, `/projects/[slug]`, `/lab`, `/lab/[id]`, `/write-ups`, `/write-ups/[slug]`, `/resume`, `/contact`, `/hall-of-fame`, `/security-policy`, 404) and every layout/ui component for mobile / tablet / desktop behaviour. Fixed the issues that materially affected small-screen usability or content fidelity:
+    1. `src/app/page.tsx` — replaced residual "PEER-REVIEWED PAPER" badge with "IEEE-FORMAT PAPER" on the Invisible Window hero bento card. Added mobile-only "View All Projects" and "View All Write-ups" CTAs at the end of those sections (the desktop "View All" links are `hidden md:flex`, so mobile users had no path to the full index). Fixed duplicated `px-2` on the writeup list-row anchor and added `min-w-0` to the row wrapper so long titles truncate cleanly instead of forcing overflow.
+    2. `src/app/about/AboutClient.tsx` — replaced residual "Peer-Reviewed Security Analysis" specialization item with "IEEE-Format Security Research". Skills matrix rows now stack (`flex-col sm:flex-row`) on mobile so the 28-unit label column no longer squeezes the skill chips. Active Operations rows got `min-w-0 truncate` on the title span and `shrink-0` on the tag group so long titles can't push tags off-screen.
+    3. `src/app/not-found.tsx` — 404 numeral responsive: `text-7xl sm:text-8xl md:text-9xl` (was fixed `text-9xl`, which overflowed on small phones).
+    4. `src/components/ui/SimpleMarkdown.tsx` — added support for fenced code blocks with language label + horizontal scroll on overflow, horizontal rules, tables with full-bleed horizontal scroll wrapper on mobile (`-mx-4 sm:mx-0 overflow-x-auto`), and blockquotes. The Invisible Window writeup relies on all four — they previously rendered as plain paragraphs. Headings scale on mobile (`text-lg sm:text-xl`, `text-xl sm:text-2xl`); list items and paragraphs got `break-words` + `min-w-0` for long URL/symbol resilience.
+    5. `src/components/layout/Footer.tsx` — bottom bar now `flex flex-wrap … gap-3` so the copyright + back-to-top button wrap gracefully on very narrow viewports.
+    6. Pinned the Invisible Window Research project to the top of the Projects list in `src/lib/data.ts` (carried over from prior pass; confirmed the reorder is reflected on the built `/projects` page).
+    Confirmed no responsive regressions on `/projects`, `/projects/[slug]`, `/lab`, `/lab/[id]`, `/write-ups`, `/write-ups/[slug]`, `/resume`, `/contact`, `/hall-of-fame`, `/security-policy` — all already use mobile-first patterns (`grid-cols-1 md:grid-cols-*`, `flex-col md:flex-row`, responsive `text-*/md:text-*` scales). `overflow-x: clip` on `body` in `globals.css` remains a global safety net.
+- **Files Changed**: `src/app/page.tsx`, `src/app/about/AboutClient.tsx`, `src/app/not-found.tsx`, `src/components/ui/SimpleMarkdown.tsx`, `src/components/layout/Footer.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65
+    - `npm run build`: pass (29 routes)
+    - `grep peer-reviewed` on built HTML (home/about/resume/invisible-window project): 0 matches
+    - `grep <table|<pre|<hr` on `out/write-ups/invisible-window-research.html`: tables, code blocks, and hrs now render (previously all plain text)
+    - `wrangler pages deploy`: manual deploy — see follow-up
+- **Follow-ups**: User to verify live responsive rendering via Chrome DevTools device toolbar (iPhone SE, iPad, 1440px desktop) on all pages, especially `/write-ups/invisible-window-research` for the newly-rendering tables and code blocks.
+
 ### Raouf: 2026-04-23 (3rd pass)
 - **Scope**: Pin Invisible Window Research to top of Projects list + manual Cloudflare Pages redeploy
 - **Summary**: Reordered the `projects` Record in `src/lib/data.ts` so `"invisible-window-research"` is the first key. `/projects` is data-driven via `Object.values(projects)` (filter/search preserves declaration order), and `/projects/[slug]` uses `generateStaticParams` off the same Record — no other code paths needed changes. Triggered an explicit `wrangler pages deploy out --project-name raoufabedini --branch main` after the build to redeploy Cloudflare Pages immediately rather than wait on the GitHub integration.
