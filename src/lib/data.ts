@@ -178,6 +178,7 @@ export const projects: Record<string, Project> = {
     description: "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Full student operations suite with 503 tests across 92 files.",
     tags: ["Next.js 16", "Supabase", "TypeScript", "AI/LLM", "WebAuthn", "Full-Stack"],
     links: {
+      demo: "https://syllabus-sync-mq.vercel.app/login?redirectTo=%2Fhome",
       repo: "https://github.com/Raoof128/syllabus-sync",
       caseStudy: "/projects/syllabus-sync"
     },
@@ -222,6 +223,7 @@ export const projects: Record<string, Project> = {
     description: "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
     tags: ["React", "Python", "Litestar", "Supabase", "AI", "Full-Stack"],
     links: {
+      demo: "https://home-notes-app.uk/",
       repo: "https://github.com/Raoof128/Nexus_Archive",
       caseStudy: "/projects/nexus-archive"
     },

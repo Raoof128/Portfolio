@@ -9,6 +9,13 @@
 - **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes, grep on built HTML: 0 `peer-reviewed` on home/about/resume/invisible-window
 - **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
 
+### Raouf: 2026-04-23 (5th pass — demo links)
+- **Scope**: Add live demo links for Syllabus Sync and Nexus Archive
+- **Summary**: Added demo URLs in `src/lib/data.ts` — Syllabus Sync (syllabus-sync-mq.vercel.app) and Nexus Archive (home-notes-app.uk). Project detail pages auto-render Demo buttons from the data. Also added explicit Demo links next to Repo on the homepage bento cards for both, using `flex-wrap items-center gap-4` to keep the layout clean on narrow viewports.
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: lint: pass, typecheck: pass, test:ci: 65/65, build: 29 routes, both demo URLs present on home + detail HTML.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-04-23 (4th pass — responsive audit)
 - **Scope**: Full file-by-file responsive audit + polish
 - **Summary**: Audited every page and shared component for mobile/tablet/desktop behaviour. Home: "PEER-REVIEWED PAPER" bento badge → "IEEE-FORMAT PAPER"; added mobile-only "View All" CTAs at the bottom of the Projects and Write-ups sections (desktop links were `hidden md:flex`); cleaned duplicated `px-2` on writeup rows. About: "Peer-Reviewed Security Analysis" → "IEEE-Format Security Research"; Skills Matrix rows stack on mobile instead of squeezing chips against the 28-unit label column; Active Operations row titles truncate instead of pushing tags off-screen. 404: responsive numeral (`text-7xl sm:text-8xl md:text-9xl`). SimpleMarkdown: added fenced code blocks (with lang badge + horizontal scroll), horizontal rules, tables (full-bleed scroll on mobile), blockquotes, responsive heading sizes, `break-words` on lists/paragraphs — the Invisible Window writeup's code blocks, tables, and HRs now render properly instead of as plain paragraphs. Footer bottom bar now wraps on very narrow viewports.

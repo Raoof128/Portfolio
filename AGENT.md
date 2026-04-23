@@ -47,6 +47,19 @@ Before making any code changes, agents MUST:
     - Built HTML greps show 0 occurrences of `peer-reviewed` across `index.html`, `about.html`, `resume.html`, and `projects/invisible-window-research.html`
 - **Follow-ups**: Pushed to `main`; Cloudflare Pages auto-redeploys.
 
+### Raouf: 2026-04-23 (5th pass — demo links)
+- **Scope**: Add live demo links for Syllabus Sync and Nexus Archive
+- **Summary**: Added `demo` URLs to `src/lib/data.ts` for two projects — Syllabus Sync (https://syllabus-sync-mq.vercel.app/login?redirectTo=%2Fhome) and Nexus Archive (https://home-notes-app.uk/). The project detail pages (`ProjectDetailClient.tsx`) already conditionally render a "Demo" button in the hero and a "Watch Demo" link in the sidebar when `project.links.demo` exists, so the buttons appear automatically. Also added an explicit "Demo" link (ExternalLink icon) next to the "Repo" link on the homepage bento cards for both projects — previously these smaller cards only exposed the repo link, so the demos would have been hidden until a user clicked into the case study. The link row now uses `flex-wrap items-center gap-4` to keep the layout clean on narrow viewports.
+- **Files Changed**: `src/lib/data.ts`, `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 65/65
+    - `npm run build`: pass (29 routes)
+    - `grep` on built HTML confirms both demo URLs are present on home, `/projects/syllabus-sync`, and `/projects/nexus-archive`
+    - `wrangler pages deploy`: manual deploy — see follow-up
+- **Follow-ups**: None.
+
 ### Raouf: 2026-04-23 (4th pass — responsive audit)
 - **Scope**: Full file-by-file responsive & polish audit across all pages and shared components
 - **Summary**: Audited every page (`/`, `/about`, `/projects`, `/projects/[slug]`, `/lab`, `/lab/[id]`, `/write-ups`, `/write-ups/[slug]`, `/resume`, `/contact`, `/hall-of-fame`, `/security-policy`, 404) and every layout/ui component for mobile / tablet / desktop behaviour. Fixed the issues that materially affected small-screen usability or content fidelity:

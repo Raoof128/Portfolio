@@ -399,17 +399,30 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Repo
-                    </a>
-                  )}
+                  <div className="flex flex-wrap items-center gap-4">
+                    {p.links.demo && (
+                      <a
+                        href={p.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-3 h-3" /> Demo
+                      </a>
+                    )}
+                    {p.links.repo && (
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-3 h-3" /> Repo
+                      </a>
+                    )}
+                  </div>
                 </BentoCard>
               );
             })()}
@@ -475,17 +488,30 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Repo
-                    </a>
-                  )}
+                  <div className="flex flex-wrap items-center gap-4">
+                    {p.links.demo && (
+                      <a
+                        href={p.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-3 h-3" /> Demo
+                      </a>
+                    )}
+                    {p.links.repo && (
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-3 h-3" /> Repo
+                      </a>
+                    )}
+                  </div>
                 </BentoCard>
               );
             })()}
