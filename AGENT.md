@@ -35,6 +35,19 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-15 (write-up hydration fix)
+- **Scope**: Fix Invisible Window write-up hydration error
+- **Summary**: Removed render-time `new Date()` calls from the shared footer and replaced them with deterministic static labels. Static export had been baking one footer date into HTML at build time while the client recomputed a different date during hydration on later visits, which can trigger React production error #418 on pages such as `/write-ups/invisible-window-research`. Added footer regression assertions for the stable last-index and copyright text.
+- **Files Changed**: `src/components/layout/Footer.tsx`, `src/components/layout/Footer.test.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 67/67 passing
+    - `npm run build`: pass (35 generated static pages)
+    - Browser static-export QA on `/write-ups/invisible-window-research`: title/heading present, `Last Index: May 2026` present, no console warnings/errors, screenshot captured
+    - BACK_TO_ARCHIVE navigation to `/write-ups` works with no console errors
+- **Follow-ups**: `net::ERR_BLOCKED_BY_CLIENT` was not reproduced locally and usually indicates a browser extension/content blocker rather than an app error.
+
 ### Raouf: 2026-05-15
 - **Scope**: Add DOI records and connected Project Simurgh entry
 - **Summary**: Added the Zenodo archival DOI for Invisible Window Research (`10.5281/ZENODO.20195135`) to the typed project data model, rendered it as an external DOI button/sidebar link on the project detail page, and surfaced the DOI on the homepage featured project card. Added a separate `Project Simurgh` portfolio entry directly after Invisible Window Research, preserving the existing `simurghforge` entry as a different project. Project Simurgh links to `Raoof128/Project-Simurgh#13-status-license`, uses its README DOI (`10.5281/ZENODO.20195198`), and renders as a connected defensive follow-up on the homepage and `/projects/project-simurgh`. Updated the API/data reference, `public/llms.txt`, and data-layer regression tests.

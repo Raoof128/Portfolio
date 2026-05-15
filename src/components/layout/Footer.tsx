@@ -16,6 +16,9 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
+const LAST_INDEX_LABEL = "May 2026";
+const COPYRIGHT_YEAR = "2026";
+
 export function Footer() {
   return (
     <AnimatedSection variants={fadeInUp}>
@@ -90,7 +93,7 @@ export function Footer() {
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_rgba(167,139,250,0.7)]" />
                   <span>Status: ONLINE</span>
                 </div>
-                <div>Last Index: {new Date().toLocaleDateString("en-AU", { month: "short", year: "numeric" })}</div>
+                <div>Last Index: {LAST_INDEX_LABEL}</div>
               </div>
               <a href="/.well-known/security.txt" className="inline-flex items-center text-xs font-mono text-text-meta hover:text-cyan transition-colors">
                 <Shield className="w-3 h-3 mr-1.5" />
@@ -102,7 +105,7 @@ export function Footer() {
           {/* Bottom bar */}
           <div className="mt-10 pt-6 border-t border-cyan/8 flex flex-wrap items-center justify-between gap-3">
             <p className="text-[10px] font-mono text-text-meta opacity-80">
-              &copy; {new Date().getFullYear()} Mohammad Raouf Abedini
+              &copy; {COPYRIGHT_YEAR} Mohammad Raouf Abedini
             </p>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

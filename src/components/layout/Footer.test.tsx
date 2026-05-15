@@ -19,7 +19,7 @@ describe('Footer', () => {
 
   it('renders last index date', () => {
     render(<Footer />);
-    expect(screen.getByText(/last index:/i)).toBeInTheDocument();
+    expect(screen.getByText('Last Index: May 2026')).toBeInTheDocument();
   });
 
   it('renders security.txt link', () => {
@@ -41,6 +41,6 @@ describe('Footer', () => {
 
   it('renders copyright', () => {
     render(<Footer />);
-    expect(screen.getByText(/mohammad raouf abedini/i)).toBeInTheDocument();
+    expect(screen.getByText(/© 2026 Mohammad Raouf Abedini/i)).toBeInTheDocument();
   });
 });
