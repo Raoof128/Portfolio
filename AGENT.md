@@ -35,6 +35,19 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-15 (static visibility fallback)
+- **Scope**: Make write-up pages readable when client JavaScript is blocked
+- **Summary**: Removed the global page-transition wrapper that emitted route content with `opacity:0` in static HTML, and changed `AnimatedSection` so server-rendered content is visible by default instead of hidden until Framer Motion hydrates. This fixes the failure mode where `/write-ups/invisible-window-research` looks broken if a browser extension blocks a Next.js chunk (`net::ERR_BLOCKED_BY_CLIENT`) or hydration fails before animations can reveal the article.
+- **Files Changed**: `src/app/template.tsx`, `src/components/ui/AnimatedSection.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 67/67 passing
+    - `npm run build`: pass (35 generated static pages)
+    - Generated HTML grep confirms the write-up no longer has the route-level `opacity:0; transform: translateY(12px)` wrapper
+    - Browser static-export QA confirms `/write-ups/invisible-window-research` title, main heading, and first section are visible with no console errors
+- **Follow-ups**: None.
+
 ### Raouf: 2026-05-15 (write-up hydration fix)
 - **Scope**: Fix Invisible Window write-up hydration error
 - **Summary**: Removed render-time `new Date()` calls from the shared footer and replaced them with deterministic static labels. Static export had been baking one footer date into HTML at build time while the client recomputed a different date during hydration on later visits, which can trigger React production error #418 on pages such as `/write-ups/invisible-window-research`. Added footer regression assertions for the stable last-index and copyright text.

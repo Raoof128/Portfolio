@@ -27,8 +27,8 @@ export function AnimatedSection({
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={false}
+      animate={isInView ? "visible" : undefined}
       variants={variants}
       transition={{ delay }}
       className={className}
