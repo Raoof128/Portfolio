@@ -11,6 +11,7 @@ export interface Project {
     repo?: string;
     caseStudy?: string;
     paper?: string;
+    doi?: string;
   };
   build: {
     stack: string[];
@@ -35,6 +36,7 @@ export const projects: Record<string, Project> = {
     links: {
       repo: "https://github.com/Raoof128/invisible-window-research",
       paper: "/Invisible_Window_Research.pdf",
+      doi: "https://doi.org/10.5281/zenodo.20195135",
       caseStudy: "/projects/invisible-window-research"
     },
     build: {
@@ -80,7 +82,61 @@ export const projects: Record<string, Project> = {
       "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
       "Behavioural detection ineffective — gaze tracking (p = 0.41, n = 8) and mouse dynamics fell within normal exam-behaviour variance",
       "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
-      "Published as arXiv preprint under CC BY 4.0 — 12 pages, 51 references, IEEE conference format"
+      "Published with archival DOI 10.5281/ZENODO.20195135 under CC BY 4.0 — 12 pages, 51 references, IEEE conference format"
+    ]
+  },
+  "project-simurgh": {
+    slug: "project-simurgh",
+    title: "Project Simurgh",
+    category: "DEFENSIVE",
+    year: "2026",
+    description: "Zero-trust integrity API connected to The Invisible Window research. Validates behavioral intent and environment integrity without relying on screen pixels, webcam frames, or invasive visual surveillance.",
+    tags: ["Integrity API", "AI Safety", "Proctoring", "Telemetry", "Node.js", "Privacy"],
+    links: {
+      repo: "https://github.com/Raoof128/Project-Simurgh#13-status-license",
+      doi: "https://doi.org/10.5281/zenodo.20195198",
+      caseStudy: "/projects/project-simurgh"
+    },
+    build: {
+      stack: [
+        "Node.js / Express",
+        "Browser telemetry client",
+        "HMAC tamper-evident audit chain",
+        "macOS Swift Local Integrity Node",
+        "Optional AI narrative analysis"
+      ],
+      features: [
+        "Samples lightweight behavioral telemetry windows instead of recording screen pixels",
+        "Detects focus loss, bulk paste, idle gaps, typing anomalies, and display-affinity risk signals",
+        "Stage 1 Academic Shield workflow covers exam lifecycle, privacy acceptance, local risk scoring, reports, and audit verification",
+        "Stage 2 proof pipeline signs privacy-preserving integrity envelopes for future device-level trust"
+      ]
+    },
+    secure: {
+      measures: [
+        "No screen pixels, webcam frames, audio, typed answer content, pasted content, or personal identity data collected",
+        "Student identifiers hashed before storage",
+        "Instructor, helper, audit, and session boundaries separated with dedicated secrets",
+        "Replay protection rejects duplicate sequences, stale timestamps, future timestamps, and malformed telemetry",
+        "HMAC-SHA256 linked audit chain makes report tampering detectable",
+        "Privacy-preserving reviewer model: Simurgh produces review recommendations, not automatic misconduct findings"
+      ]
+    },
+    fullDescription: "Project Simurgh is the defensive counterpart to The Invisible Window research: a zero-trust integrity API for autonomous agents and high-stakes proctoring. Instead of trusting a visual stream that can be structurally bypassed, Simurgh validates behavioral and environment metadata, builds tamper-evident audit records, and keeps the integrity signal privacy-preserving.",
+    problem: "The Invisible Window shows that browser and OS screen-capture pipelines cannot be treated as ground truth. Proctoring platforms and agentic AI systems that rely on screenshots or UI vision can be deceived by documented display-affinity APIs and click-through overlays. A safer integrity layer needs to verify behavior and environment state without expanding surveillance.",
+    solution: [
+      "Built a metadata-only integrity pipeline that evaluates behavioral telemetry rather than screen contents",
+      "Added Academic Shield flows for exam creation, session join, privacy acceptance, telemetry submission, review reports, and audit verification",
+      "Separated deterministic local scoring from optional AI narrative analysis so provider failures do not break the authoritative score",
+      "Added native-helper and Local Integrity Node direction for detecting display-affinity and producing signed proof envelopes",
+      "Anchored the project to The Invisible Window threat model while keeping the implementation vendor-neutral and privacy-preserving"
+    ],
+    proof: [
+      "Archived with DOI 10.5281/ZENODO.20195198",
+      "Stage 1 research MVP and Stage 1.5 validation pack documented in the repository",
+      "Telemetry payloads are lightweight behavioral JSON windows, not video streams",
+      "Audit verification endpoint validates the HMAC-linked event chain",
+      "GitHub Stage 1 checks run the project quality gate on main and pull requests"
     ]
   },
   "mehr-guard": {

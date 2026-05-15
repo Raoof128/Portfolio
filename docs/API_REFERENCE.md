@@ -17,7 +17,7 @@ Defined in `src/lib/data.ts`.
 | `description` | `string` | Card summary |
 | `fullDescription` | `string` | Detail-page summary |
 | `tags` | `string[]` | Search/filter labels |
-| `links` | `demo?`, `repo?`, `caseStudy?` | External/internal links |
+| `links` | `demo?`, `repo?`, `caseStudy?`, `paper?`, `doi?` | External/internal links |
 | `build` | `stack[]`, `features[]` | Engineering implementation notes |
 | `secure` | `measures[]` | Security controls applied |
 | `problem` | `string` | Problem statement |

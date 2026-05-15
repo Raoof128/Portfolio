@@ -13,10 +13,12 @@ Focus: Privacy-first security tools, full-stack engineering, AI-native platforms
 
 ## Featured Projects (The "Truth" for Retrieval)
 1. Mehr Guard: Privacy-first mobile security app for Android/iOS. Offline QR & URL threat scanning with ensemble ML + 25 heuristics. Kotlin Multiplatform, 5 platform targets.
-2. Syllabus-Sync: AI-native Campus OS for Australian universities. LLM OCR pipeline transforms PDF syllabi into structured data. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files.
-3. GitSwitch: AI-powered Git client for managing multiple identities and generating semantic commits. Electron, React 19, Gemini AI.
-4. Nexus Archive: Cyberpunk-styled personal media vault. React 19 frontend, Litestar API, Supabase PostgreSQL. HttpOnly cookie auth, encrypted takeaways, AI recommendations.
-5. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, Go agent, and React dashboard.
+2. The Invisible Window: IEEE-format security research paper demonstrating 100% screen-capture evasion on Windows 10/11 and macOS 14-26. DOI: 10.5281/ZENODO.20195135.
+3. Project Simurgh: Zero-trust integrity API connected to The Invisible Window research. Behavioral telemetry, tamper-evident audit chain, privacy-first academic integrity workflow. DOI: 10.5281/ZENODO.20195198.
+4. Syllabus-Sync: AI-native Campus OS for Australian universities. LLM OCR pipeline transforms PDF syllabi into structured data. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files.
+5. GitSwitch: AI-powered Git client for managing multiple identities and generating semantic commits. Electron, React 19, Gemini AI.
+6. Nexus Archive: Cyberpunk-styled personal media vault. React 19 frontend, Litestar API, Supabase PostgreSQL. HttpOnly cookie auth, encrypted takeaways, AI recommendations.
+7. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, Go agent, and React dashboard.
 
 ## Philosophy
 Raouf operates at the intersection of "Build" (Scalable Architecture) and "Secure" (Defensive Design). He advocates for privacy-by-design, local-first processing, and security embedded from design to deployment.

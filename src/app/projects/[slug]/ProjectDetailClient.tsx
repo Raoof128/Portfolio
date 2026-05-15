@@ -2,7 +2,7 @@
 
 import { NeonButton } from "@/components/ui/NeonButton"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
-import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText } from "lucide-react"
+import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
 
@@ -15,7 +15,7 @@ interface Project {
   build: { stack: string[]; features: string[] };
   secure: { measures: string[] };
   proof: string[];
-  links: { demo?: string; repo?: string; paper?: string };
+  links: { demo?: string; repo?: string; paper?: string; doi?: string };
 }
 
 export function ProjectDetailClient({ project }: { project: Project }) {
@@ -61,6 +61,11 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   {project.links.paper && (
                     <NeonButton href={project.links.paper} variant="outline" download>
                       <FileText size={16} className="mr-2" /> Paper
+                    </NeonButton>
+                  )}
+                  {project.links.doi && (
+                    <NeonButton href={project.links.doi} variant="outline" external>
+                      <ExternalLink size={16} className="mr-2" /> DOI
                     </NeonButton>
                   )}
                 </div>
@@ -193,6 +198,11 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                     {project.links.paper && (
                       <a href={project.links.paper} download className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
                         Download Paper <FileText size={14} />
+                      </a>
+                    )}
+                    {project.links.doi && (
+                      <a href={project.links.doi} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
+                        DOI Record <ExternalLink size={14} />
                       </a>
                     )}
                   </div>

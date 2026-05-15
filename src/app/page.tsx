@@ -299,7 +299,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-4 pointer-events-none">
+                  <div className="flex flex-wrap items-center gap-4">
                     {p.links.repo && (
                       <a
                         href={p.links.repo}
@@ -309,6 +309,83 @@ export default function Home() {
                         onClick={(e) => e.stopPropagation()}
                       >
                         <Github className="w-3 h-3" /> Repo
+                      </a>
+                    )}
+                    {p.links.doi && (
+                      <a
+                        href={p.links.doi}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-3 h-3" /> DOI 10.5281/ZENODO.20195135
+                      </a>
+                    )}
+                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
+                      Case Study <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </BentoCard>
+              );
+            })()}
+
+            {/* Project Simurgh — connected defensive follow-up */}
+            {(() => {
+              const p = projects["project-simurgh"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard
+                  key={p.slug}
+                  slug={p.slug}
+                  accentHover={s.hover}
+                  cornerClass={s.corner}
+                  tint={s.tint}
+                  className="md:col-span-3"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase self-start`}>
+                      [{s.prefix}] {p.category}
+                    </span>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest">CONNECTED TO INVISIBLE WINDOW</span>
+                      <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan transition-colors max-w-2xl">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-text-body leading-relaxed mb-5 max-w-3xl">
+                    {p.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {p.tags.map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-4">
+                    {p.links.repo && (
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-3 h-3" /> Repo
+                      </a>
+                    )}
+                    {p.links.doi && (
+                      <a
+                        href={p.links.doi}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-3 h-3" /> DOI 10.5281/ZENODO.20195198
                       </a>
                     )}
                     <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">

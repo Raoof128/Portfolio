@@ -35,6 +35,18 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-15
+- **Scope**: Add DOI records and connected Project Simurgh entry
+- **Summary**: Added the Zenodo archival DOI for Invisible Window Research (`10.5281/ZENODO.20195135`) to the typed project data model, rendered it as an external DOI button/sidebar link on the project detail page, and surfaced the DOI on the homepage featured project card. Added a separate `Project Simurgh` portfolio entry directly after Invisible Window Research, preserving the existing `simurghforge` entry as a different project. Project Simurgh links to `Raoof128/Project-Simurgh#13-status-license`, uses its README DOI (`10.5281/ZENODO.20195198`), and renders as a connected defensive follow-up on the homepage and `/projects/project-simurgh`. Updated the API/data reference, `public/llms.txt`, and data-layer regression tests.
+- **Files Changed**: `src/lib/data.ts`, `src/app/projects/[slug]/ProjectDetailClient.tsx`, `src/app/page.tsx`, `src/lib/data.test.ts`, `docs/API_REFERENCE.md`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**:
+    - `npm run lint`: pass
+    - `npm run typecheck`: pass
+    - `npm run test:ci`: 67/67 passing
+    - `npm run build`: pass (35 generated static pages)
+    - Built output grep confirms both DOI records and `/projects/project-simurgh` are present
+- **Follow-ups**: None.
+
 ### Raouf: 2026-04-23
 - **Scope**: Invisible Window Research — Rewrite Project Copy + Add Paper Download
 - **Summary**: Rewrote the `/projects/invisible-window-research` page copy end-to-end so the page can survive a domain expert reading the underlying paper. Updates: (1) Hero/fullDescription reframed as a "12-page IEEE-format research paper" with explicit `getDisplayMedia()` reference and macOS 26 hook. (2) Problem section tightened to the trust-boundary framing. (3) Solution overview expanded with W3C Screen Capture ↔ OS compositor trust boundary, behavioural detection analysis, five-countermeasure survey, and coordinated-disclosure timeline. (4) Tech stack rescoped — Python reframed as "pixel-level forensic verification" (replaces the inaccurate "reasoning engine / MCP server" line). (5) Build bullets include concrete pixel forensics (80.27% Windows capture diff; 1,170,560-pixel transparent macOS capture). (6) Secure section now lists the full January→March 2026 disclosure timeline, PoC-withheld policy, and ACM/IEEE/CISA ethics alignment. (7) Proof section includes measurement over 10,000+ frames, behavioural detection stats (gaze p=0.41, n=8), and "published as arXiv preprint" (arXiv does not "accept"). Added a dedicated Paper download button (outline variant, FileText icon) next to the Repo button on the project hero, plus a corresponding sidebar link. Extended the `Project.links` interface with optional `paper?: string`. Copied `Invisible_Window_Research.pdf` (313 KB) into `public/` for static serving.

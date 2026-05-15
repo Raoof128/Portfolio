@@ -37,6 +37,21 @@ describe('Data Layer', () => {
       expect(projects['ecrsm'].category).toBe('OFFENSIVE');
     });
 
+    it('should publish the Invisible Window archival DOI', () => {
+      expect(projects['invisible-window-research']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20195135');
+      expect(projects['invisible-window-research']?.proof.join(' ')).toContain('10.5281/ZENODO.20195135');
+    });
+
+    it('should list Project Simurgh directly after Invisible Window with its DOI', () => {
+      const projectKeys = Object.keys(projects);
+      const invisibleWindowIndex = projectKeys.indexOf('invisible-window-research');
+
+      expect(projectKeys[invisibleWindowIndex + 1]).toBe('project-simurgh');
+      expect(projects['project-simurgh']?.links.repo).toBe('https://github.com/Raoof128/Project-Simurgh#13-status-license');
+      expect(projects['project-simurgh']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20195198');
+      expect(projects['project-simurgh']?.description).toContain('connected to The Invisible Window research');
+    });
+
     it('each project should have valid links structure', () => {
       Object.values(projects).forEach((project: Project) => {
         expect(project.links).toHaveProperty('repo');
