@@ -8,28 +8,28 @@ import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
-
-interface Project {
-  title: string;
-  tags: string[];
-  fullDescription: string;
-  problem: string;
-  solution: string[];
-  build: { stack: string[]; features: string[] };
-  secure: { measures: string[] };
-  proof: string[];
-  links: { demo?: string; repo?: string; paper?: string; doi?: string };
-}
+import { Project, getProjectFullDescription } from "@/lib/data"
+import { useTranslation } from "@/i18n/provider"
+import { defaultLocale } from "@/i18n"
+import { cn } from "@/lib/utils"
 
 const IW = "invisible-window-research";
 const PS = "project-simurgh";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
+  const { locale, t } = useTranslation();
+  const dictionary = t;
   const isIW = slug === IW;
   const isPS = slug === PS;
+  const isRTL = locale === 'fa' || locale === 'ar';
+
+  const getPath = (path: string) => {
+    if (locale === defaultLocale) return path;
+    return `/${locale}${path}`;
+  };
 
   // Per-page accent theme — content body sections
-  const t = isPS
+  const theme = isPS
     ? {
         accent:       "text-orange-400",
         accentSecond: "text-orange-300",
@@ -65,8 +65,10 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         check:        "text-green-400",
       };
 
+  const localizedFullDescription = getProjectFullDescription(project, locale);
+
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className={cn("min-h-screen bg-background flex flex-col", isRTL && "text-right")}>
       {isPS && <ThemeInjector theme="simurgh" />}
       {isIW && <ThemeInjector theme="invisible-window" />}
       <div className="flex-1 pb-24">
@@ -76,12 +78,12 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             /* ── Project Simurgh: fire-shield hero ── */
             <section className="border-b border-orange-900/30 overflow-hidden" style={{ background: "#010101" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href="/projects" className="inline-flex items-center text-sm text-orange-400/70 hover:text-orange-400 pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
-                  <ArrowLeft size={14} className="mr-2" /> Back to Projects
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-orange-400/70 hover:text-orange-400 pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
                 </Link>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
                   <div className="space-y-4 md:space-y-6">
-                    <div className="flex flex-wrap gap-2">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
                       {project.tags.map(tag => (
                         <span key={tag} className="text-xs font-mono text-orange-400 border border-orange-500/40 bg-orange-500/5 px-2 py-1">
                           {tag}
@@ -92,13 +94,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                       {project.title}
                     </h1>
                     <p className="text-base md:text-lg text-orange-200/60 leading-relaxed">
-                      {project.fullDescription}
+                      {localizedFullDescription}
                     </p>
-                    <div className="flex flex-wrap gap-3">
-                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className="mr-2" /> Demo</NeonButton>}
-                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className="mr-2" /> Repo</NeonButton>}
-                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className="mr-2" /> Paper</NeonButton>}
-                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className="mr-2" /> DOI</NeonButton>}
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
                     </div>
                   </div>
                   <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
@@ -111,12 +113,12 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             /* ── Invisible Window: jellyfish hero ── */
             <section className="border-b border-blue-900/30 overflow-hidden" style={{ background: "#05020a" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href="/projects" className="inline-flex items-center text-sm text-[#91A3B0] hover:text-[#00A693] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
-                  <ArrowLeft size={14} className="mr-2" /> Back to Projects
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#91A3B0] hover:text-[#00A693] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
                 </Link>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
                   <div className="space-y-4 md:space-y-6">
-                    <div className="flex flex-wrap gap-2">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
                       {project.tags.map(tag => (
                         <span key={tag} className="text-xs font-mono text-[#00A693] border border-[#00A693]/40 bg-[#00A693]/5 px-2 py-1">
                           {tag}
@@ -127,13 +129,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                       {project.title}
                     </h1>
                     <p className="text-base md:text-lg text-[#91A3B0] leading-relaxed">
-                      {project.fullDescription}
+                      {localizedFullDescription}
                     </p>
-                    <div className="flex flex-wrap gap-3">
-                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className="mr-2" /> Demo</NeonButton>}
-                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className="mr-2" /> Repo</NeonButton>}
-                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className="mr-2" /> Paper</NeonButton>}
-                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className="mr-2" /> DOI</NeonButton>}
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
                     </div>
                   </div>
                   <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
@@ -146,12 +148,12 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             /* ── Default hero ── */
             <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href="/projects" className="inline-flex items-center text-sm text-text-body hover:text-cyan mb-8 transition-colors font-mono">
-                  <ArrowLeft size={14} className="mr-2" /> Back to Projects
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-text-body hover:text-cyan mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
                 </Link>
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                   <div className="space-y-4 max-w-3xl">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className={cn("flex flex-wrap gap-2 mb-4", isRTL && "justify-end")}>
                       {project.tags.map(tag => (
                         <span key={tag} className="text-xs font-mono text-cyan border border-cyan/30 px-2 py-1 bg-cyan/5">
                           {tag}
@@ -162,28 +164,28 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                       {project.title}
                     </h1>
                     <p className="text-xl text-text-body leading-relaxed">
-                      {project.fullDescription}
+                      {localizedFullDescription}
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-3 md:gap-4 shrink-0">
+                  <div className={cn("flex flex-wrap gap-3 md:gap-4 shrink-0", isRTL && "justify-end")}>
                     {project.links.demo && (
                       <NeonButton href={project.links.demo} external>
-                        <Play size={16} className="mr-2" /> Demo
+                        <Play size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo
                       </NeonButton>
                     )}
                     {project.links.repo && (
                       <NeonButton href={project.links.repo} variant="secondary" external>
-                        <Github size={16} className="mr-2" /> Repo
+                        <Github size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}
                       </NeonButton>
                     )}
                     {project.links.paper && (
                       <NeonButton href={project.links.paper} variant="outline" download>
-                        <FileText size={16} className="mr-2" /> Paper
+                        <FileText size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper
                       </NeonButton>
                     )}
                     {project.links.doi && (
                       <NeonButton href={project.links.doi} variant="outline" external>
-                        <ExternalLink size={16} className="mr-2" /> DOI
+                        <ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI
                       </NeonButton>
                     )}
                   </div>
@@ -193,7 +195,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : ""}`}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
@@ -201,9 +203,9 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             <AnimatedSection variants={fadeInUp}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className={t.accent}>01.</span> Problem
+                  <span className={theme.accent}>01.</span> {t.project_detail.problem}
                 </h2>
-                <div className={`prose prose-invert max-w-none text-text-body border-l-2 ${t.border} pl-6`}>
+                <div className={cn(`prose prose-invert max-w-none text-text-body border-l-2 ${theme.border} pl-6`, isRTL && "border-l-0 border-r-2 pr-6 pl-0")}>
                   <p>{project.problem}</p>
                 </div>
               </section>
@@ -212,13 +214,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             <AnimatedSection variants={fadeInUp} delay={0.1}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className={t.accent}>02.</span> Solution Overview
+                  <span className={theme.accent}>02.</span> {t.project_detail.solution_overview}
                 </h2>
-                <div className={`bg-black/40 border ${t.border} p-6 rounded-sm`}>
+                <div className={`bg-black/40 border ${theme.border} p-6 rounded-sm`}>
                   <ul className="grid gap-3">
                     {project.solution.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-slate-300">
-                        <ArrowRight size={16} className={`mt-1 ${t.bullet} shrink-0`} />
+                        <ArrowRight size={16} className={cn(`mt-1 ${theme.bullet} shrink-0`, isRTL && "rotate-180")} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -231,14 +233,14 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
               <AnimatedSection variants={fadeInLeft}>
                 <section className="space-y-4">
                   <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                    <Code size={20} className={t.accent} /> Build
+                    <Code size={20} className={theme.accent} /> {t.project_detail.build}
                   </h2>
-                  <div className={`${t.bg} border ${t.border} p-6 h-full`}>
+                  <div className={`${theme.bg} border ${theme.border} p-6 h-full`}>
                     <div className="mb-4">
-                      <h4 className="text-xs uppercase text-text-body font-mono mb-2">Tech Stack</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <h4 className="text-xs uppercase text-text-body font-mono mb-2">{t.project_detail.tech_stack}</h4>
+                      <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
                         {project.build?.stack.map(tech => (
-                          <span key={tech} className={`text-xs border ${t.borderB} px-2 py-1 text-slate-300 ${t.bg}`}>
+                          <span key={tech} className={`text-xs border ${theme.borderB} px-2 py-1 text-slate-300 ${theme.bg}`}>
                             {tech}
                           </span>
                         ))}
@@ -247,7 +249,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                     <ul className="space-y-2">
                       {project.build?.features.map((feat, i) => (
                         <li key={i} className="text-sm text-text-body flex gap-2">
-                          <span className={t.bullet}>&bull;</span> {feat}
+                          <span className={theme.bullet}>&bull;</span> {feat}
                         </li>
                       ))}
                     </ul>
@@ -258,13 +260,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
               <AnimatedSection variants={fadeInRight} delay={0.1}>
                 <section className="space-y-4">
                   <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                    <Shield size={20} className={t.accentSecond} /> Secure
+                    <Shield size={20} className={theme.accentSecond} /> {t.project_detail.secure}
                   </h2>
-                  <div className={`${t.bg} border ${t.border} p-6 h-full`}>
+                  <div className={`${theme.bg} border ${theme.border} p-6 h-full`}>
                     <ul className="space-y-3">
                       {project.secure?.measures.map((measure, i) => (
                         <li key={i} className="text-sm text-text-body flex gap-2">
-                          <CheckCircle size={14} className={`mt-1 ${t.check} shrink-0`} />
+                          <CheckCircle size={14} className={cn(`mt-1 ${theme.check} shrink-0`, isRTL && "order-last ml-2")} />
                           {measure}
                         </li>
                       ))}
@@ -277,16 +279,16 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             <AnimatedSection variants={fadeInUp} delay={0.15}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className={t.accent}>03.</span> Proof & Verification
+                  <span className={theme.accent}>03.</span> {t.project_detail.proof}
                 </h2>
-                <div className={`border ${t.borderB} ${t.bg} p-6 space-y-4`}>
-                  <p className={`font-mono text-sm ${t.accent} mb-4 uppercase tracking-widest border-b ${t.borderB} pb-2 inline-block`}>
-                    Verified Claims
+                <div className={`border ${theme.borderB} ${theme.bg} p-6 space-y-4`}>
+                  <p className={`font-mono text-sm ${theme.accent} mb-4 uppercase tracking-widest border-b ${theme.borderB} pb-2 inline-block`}>
+                    {t.project_detail.verified_claims}
                   </p>
                   <ul className="space-y-3">
                     {project.proof.map((proof, i) => (
                       <li key={i} className="font-mono text-sm text-slate-300 flex items-start gap-3">
-                        <span className={`${t.bullet} mt-1`}>&gt;</span>
+                        <span className={cn(`${theme.bullet} mt-1`, isRTL && "rotate-180")}>&gt;</span>
                         {proof}
                       </li>
                     ))}
@@ -301,27 +303,27 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           <AnimatedSection variants={fadeInRight} delay={0.2} className="lg:col-span-4">
             <div className="space-y-8">
               <div className="sticky top-24">
-                <div className={`border ${t.border} p-6 bg-black/20`}>
-                  <h3 className="font-mono font-bold text-white mb-4">Project Links</h3>
+                <div className={`border ${theme.border} p-6 bg-black/20`}>
+                  <h3 className="font-mono font-bold text-white mb-4">{t.project_detail.project_links}</h3>
                   <div className="space-y-3">
                     {project.links.demo && (
-                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
-                        Watch Demo <Play size={14} />
+                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}>
+                        {t.project_detail.watch_demo} <Play size={14} className={cn(isRTL && "order-first")} />
                       </a>
                     )}
                     {project.links.repo && (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
-                        Source Code <Github size={14} />
+                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}>
+                        {t.project_detail.source_code} <Github size={14} className={cn(isRTL && "order-first")} />
                       </a>
                     )}
                     {project.links.paper && (
-                      <a href={project.links.paper} download className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
-                        Download Paper <FileText size={14} />
+                      <a href={project.links.paper} download className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}>
+                        {t.project_detail.download_paper} <FileText size={14} className={cn(isRTL && "order-first")} />
                       </a>
                     )}
                     {project.links.doi && (
-                      <a href={project.links.doi} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
-                        DOI Record <ExternalLink size={14} />
+                      <a href={project.links.doi} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}>
+                        {t.project_detail.doi_record} <ExternalLink size={14} className={cn(isRTL && "order-first")} />
                       </a>
                     )}
                   </div>

@@ -1,23 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { projects } from "@/lib/data";
+import { projects, getProjectDescription } from "@/lib/data";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Terminal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
+import { useTranslation } from "@/i18n/provider";
+import { defaultLocale } from "@/i18n";
 
 export default function ProjectsArchive() {
+  const { locale, t } = useTranslation();
   const [filter, setFilter] = useState("ALL");
   const [query, setQuery] = useState("");
+
+  const getPath = (path: string) => {
+    if (locale === defaultLocale) return path;
+    return `/${locale}${path}`;
+  };
 
   const categories = ["ALL", "OFFENSIVE", "DEFENSIVE", "ENGINEERING"];
 
   const filteredProjects = Object.values(projects).filter((p) => {
     const matchesCategory = filter === "ALL" || p.category?.toUpperCase() === filter;
-    const matchesSearch = p.title.toLowerCase().includes(query.toLowerCase()) ||
-                          p.description.toLowerCase().includes(query.toLowerCase());
+    const desc = getProjectDescription(p, locale);
+    const matchesSearch =
+      p.title.toLowerCase().includes(query.toLowerCase()) ||
+      desc.toLowerCase().includes(query.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -28,17 +38,14 @@ export default function ProjectsArchive() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="min-h-screen pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8"
     >
-
       {/* HEADER */}
       <AnimatedSection variants={fadeInUp}>
         <div className="border-b border-cyber-gray pb-8">
           <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
             <Terminal className="text-cyan w-6 h-6" />
-            PROJECT_DB
+            {t.projects_page.title}
           </h1>
-          <p className="text-text-body font-mono text-sm">
-            Index of deployed tools, research prototypes, and architectural proofs.
-          </p>
+          <p className="text-text-body font-mono text-sm">{t.projects_page.subtitle}</p>
 
           {/* CONTROLS */}
           <div className="mt-8 flex flex-col md:flex-row gap-4 justify-between items-end md:items-center">
@@ -50,7 +57,7 @@ export default function ProjectsArchive() {
               </div>
               <input
                 type="text"
-                placeholder="search_query..."
+                placeholder={t.projects_page.search_placeholder}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="block w-full pl-16 pr-3 py-2 border border-cyan/15 rounded-sm leading-5 bg-black/50 text-slate-300 placeholder-cyan/30 focus:outline-none focus:border-cyan focus:ring-1 focus:ring-cyan sm:text-sm font-mono transition-all"
@@ -92,11 +99,7 @@ export default function ProjectsArchive() {
         <AnimatePresence mode="wait">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project) => (
-              <motion.div
-                key={project.slug}
-                variants={fadeInUp}
-                layout
-              >
+              <motion.div key={project.slug} variants={fadeInUp} layout>
                 <motion.div
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -123,13 +126,13 @@ export default function ProjectsArchive() {
 
                     {/* Description Preview */}
                     <p className="text-sm text-text-body max-w-xl md:text-right line-clamp-2">
-                      {project.description}
+                      {getProjectDescription(project, locale)}
                     </p>
 
                     {/* Action */}
                     <div className="shrink-0">
-                      <NeonButton href={`/projects/${project.slug}`} variant="outline" className="text-xs h-8 px-4">
-                        ACCESS_FILE
+                      <NeonButton href={getPath(`/projects/${project.slug}`)} variant="outline" className="text-xs h-8 px-4">
+                        {t.projects_page.access_file}
                       </NeonButton>
                     </div>
                   </div>
@@ -144,7 +147,7 @@ export default function ProjectsArchive() {
               exit={{ opacity: 0 }}
               className="py-20 text-center border border-dashed border-cyber-gray rounded-lg"
             >
-              <p className="text-text-body font-mono">Query returned 0 results.</p>
+              <p className="text-text-body font-mono">{t.projects_page.empty_results}</p>
             </motion.div>
           )}
         </AnimatePresence>

@@ -1,124 +1,105 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, Shield, ArrowUp } from "lucide-react";
-import { motion } from "framer-motion";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { fadeInUp, staggerContainer } from "@/lib/utils";
-import { GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
-
-const navLinks = [
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Lab", href: "/lab" },
-  { name: "Write-ups", href: "/write-ups" },
-  { name: "Resume", href: "/resume" },
-  { name: "Contact", href: "/contact" },
-];
-
-const LAST_INDEX_LABEL = "May 2026";
-const COPYRIGHT_YEAR = "2026";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from "@/lib/constants";
+import { useTranslation } from "@/i18n/provider";
+import { defaultLocale } from "@/i18n";
 
 export function Footer() {
+  const { locale, t } = useTranslation();
+  
+  const getPath = (path: string) => {
+      if (locale === defaultLocale) return path;
+      return `/${locale}${path}`;
+  };
+
+  const navLinks = [
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.projects, href: "/projects" },
+    { name: t.nav.lab, href: "/lab" },
+    { name: t.nav.writeups, href: "/write-ups" },
+    { name: t.nav.resume, href: "/resume" },
+    { name: t.nav.contact, href: "/contact" },
+  ];
+
+  const socialLinks = [
+    { name: "GitHub", href: GITHUB_URL, icon: Github },
+    { name: "LinkedIn", href: LINKEDIN_URL, icon: Linkedin },
+    { name: "Twitter", href: TWITTER_URL, icon: Twitter },
+    { name: "Email", href: "mailto:raoof.r12@gmail.com", icon: Mail },
+  ];
+
   return (
-    <AnimatedSection variants={fadeInUp}>
-      <footer className="border-t border-cyan/10 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
-          >
-
-            {/* Col 1 — Branding + socials */}
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <p className="font-mono text-sm text-slate-300 tracking-tight">~/mohammad-raouf-abedini</p>
-              <p className="text-xs text-text-body leading-relaxed max-w-xs">
-                AI Security Research. Vulnerability research, responsible disclosure, and reducing catastrophic risks from advanced AI.
-              </p>
-              <div className="flex items-center gap-4 pt-1">
-                <motion.a
-                  href={GITHUB_URL}
+    <footer className="border-t border-cyan/10 bg-[#030712] py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          
+          {/* Brand/Identity */}
+          <div className="md:col-span-2 space-y-6">
+            <Link href={getPath("/")} className="font-mono font-bold text-lg tracking-tight text-white group">
+              ~/mohammad-raouf-abedini<span className="text-cyan animate-pulse">_</span>
+            </Link>
+            <p className="text-text-body text-sm max-w-sm leading-relaxed">
+              {t.hero.intro}
+            </p>
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-text-body hover:text-cyan transition-colors"
-                  whileHover={{ y: -2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="p-2 border border-cyan/10 text-text-meta hover:text-cyan hover:border-cyan/40 transition-all bg-cyber-dark/50"
+                  aria-label={social.name}
                 >
-                  <Github className="w-4 h-4" />
-                  <span className="sr-only">GitHub</span>
-                </motion.a>
-                <motion.a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-text-body hover:text-cyan transition-colors"
-                  whileHover={{ y: -2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <Linkedin className="w-4 h-4" />
-                  <span className="sr-only">LinkedIn</span>
-                </motion.a>
-                <Link href="/contact" className="text-text-body hover:text-cyan hover:-translate-y-0.5 transition-all">
-                  <Mail className="w-4 h-4" />
-                  <span className="sr-only">Contact</span>
-                </Link>
-              </div>
-            </motion.div>
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
 
-            {/* Col 2 — Quick nav */}
-            <motion.div variants={fadeInUp}>
-              <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-4">Navigation</p>
-              <nav className="grid grid-cols-2 gap-x-6 gap-y-2">
-                {navLinks.map((link) => (
+          {/* Links */}
+          <div className="space-y-6">
+            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">{t.nav.home}</h4>
+            <ul className="space-y-3">
+              {navLinks.map((link) => (
+                <li key={link.name}>
                   <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-xs font-mono text-text-body hover:text-cyan transition-colors"
+                    href={getPath(link.href)}
+                    className="text-sm text-text-body hover:text-cyan transition-colors font-mono"
                   >
                     {link.name}
                   </Link>
-                ))}
-              </nav>
-            </motion.div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Col 3 — Status + security */}
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-4">System</p>
-              <div className="space-y-2 text-xs font-mono text-text-meta">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_rgba(0,245,255,0.7)]" />
-                  <span>Status: ONLINE</span>
-                </div>
-                <div>Last Index: {LAST_INDEX_LABEL}</div>
+          {/* Legal/Metadata */}
+          <div className="space-y-6">
+            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">{t.footer.status}</h4>
+            <div className="space-y-4 font-mono">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-text-meta">{t.footer.last_index}:</span>
+                <span className="text-cyan">{t.footer.last_index_value}</span>
               </div>
-              <a href="/.well-known/security.txt" className="inline-flex items-center text-xs font-mono text-text-meta hover:text-cyan transition-colors">
-                <Shield className="w-3 h-3 mr-1.5" />
-                security.txt
-              </a>
-            </motion.div>
-          </motion.div>
-
-          {/* Bottom bar */}
-          <div className="mt-10 pt-6 border-t border-cyan/8 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-[10px] font-mono text-text-meta opacity-80">
-              &copy; {COPYRIGHT_YEAR} Mohammad Raouf Abedini
-            </p>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-1.5 text-[10px] font-mono text-text-meta hover:text-cyan transition-colors"
-              aria-label="Back to top"
-            >
-              <ArrowUp className="w-3 h-3" />
-              TOP
-            </button>
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="text-text-meta">{t.footer.environment}:</span>
+                <span className="text-purple uppercase">PROD-SYD</span>
+              </div>
+              <div className="pt-4 border-t border-cyan/5">
+                <p className="text-[10px] text-text-meta leading-relaxed">
+                  © 2026 Mohammad Raouf Abedini. {t.footer.all_rights_reserved}.
+                  <br />
+                  <span className="opacity-60">{t.footer.built_with} Next.js, {t.footer.designed_by} Raouf.</span>
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>
-      </footer>
-    </AnimatedSection>
+      </div>
+    </footer>
   );
 }

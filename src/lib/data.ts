@@ -1,10 +1,14 @@
+import { Locale } from "@/i18n";
+
 export interface Project {
   slug: string;
   title: string;
   category: "OFFENSIVE" | "DEFENSIVE" | "ENGINEERING";
   year: string;
   description: string;
+  localizedDescription?: Partial<Record<Locale, string>>;
   fullDescription: string;
+  localizedFullDescription?: Partial<Record<Locale, string>>;
   tags: string[];
   links: {
     demo?: string;
@@ -25,6 +29,14 @@ export interface Project {
   proof: string[];
 }
 
+export function getProjectDescription(p: Project, locale: Locale): string {
+  return p.localizedDescription?.[locale] || p.description;
+}
+
+export function getProjectFullDescription(p: Project, locale: Locale): string {
+  return p.localizedFullDescription?.[locale] || p.fullDescription;
+}
+
 export const projects: Record<string, Project> = {
   "invisible-window-research": {
     slug: "invisible-window-research",
@@ -32,6 +44,12 @@ export const projects: Record<string, Project> = {
     category: "OFFENSIVE",
     year: "2026",
     description: "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion on Windows 10/11 and macOS 14–26 using documented OS display APIs. Responsibly disclosed to vendors.",
+    localizedDescription: {
+      fa: "مقاله تحقیقاتی با فرمت IEEE که آسیب‌پذیری ساختاری در نظارت بر امتحانات مبتنی بر WebRTC را فاش می‌کند. فرار ۱۰۰ درصدی در ویندوز و مک با استفاده از APIهای مستند سیستم‌عامل.",
+      ar: "ورقة بحثية بتنسيق IEEE تكشف عن ثغرة أمنية هيكلية في مراقبة الاختبارات القائمة على WebRTC. تهرب بنسبة ١٠٠٪ على نظامي التشغيل Windows و macOS باستخدام واجهات برمجة تطبيقات عرض نظام التشغيل الموثقة.",
+      zh: "IEEE 格式的研究论文，揭示了基于 WebRTC 的在线监考系统中的结构性漏洞。利用记录在案的 OS 显示 API，在 Windows 和 macOS 上实现 100% 规避。",
+      es: "Artículo de investigación en formato IEEE que expone una vulnerabilidad estructural en la supervisión de exámenes basada en WebRTC. Evasión del 100% en Windows y macOS utilizando APIs de pantalla documentadas del SO.",
+    },
     tags: ["Security Research", "Windows", "macOS", "WebRTC", "Responsible Disclosure", "PoC"],
     links: {
       repo: "https://github.com/Raoof128/invisible-window-research",
@@ -91,6 +109,12 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description: "Zero-trust integrity API connected to The Invisible Window research. Validates behavioral intent and environment integrity without relying on screen pixels, webcam frames, or invasive visual surveillance.",
+    localizedDescription: {
+      fa: "API یکپارچگی اعتماد صفر متصل به تحقیقات The Invisible Window. اعتبار سنجی قصد رفتاری و یکپارچگی محیط بدون تکیه بر پیکسل‌های صفحه نمایش یا نظارت تصویری تهاجمی.",
+      ar: "واجهة برمجة تطبيقات (API) لسلامة الثقة الصفرية متصلة بأبحاث The Invisible Window. تتحقق من النوايا السلوكية وسلامة البيئة دون الاعتماد على بكسلات الشاشة أو المراقبة البصرية الغازية.",
+      zh: "与《The Invisible Window》研究相关的零信任完整性 API。在不依赖屏幕像素、网络摄像头帧或侵入式视觉监控的情况下，验证行为意图和环境完整性。",
+      es: "API de integridad zero-trust conectada a la investigación The Invisible Window. Valida la intención conductual y la integridad del entorno sin depender de píxeles de pantalla, fotogramas de cámara web o vigilancia visual invasiva.",
+    },
     tags: ["Integrity API", "AI Safety", "Proctoring", "Telemetry", "Node.js", "Privacy"],
     links: {
       repo: "https://github.com/Raoof128/Project-Simurgh#13-status-license",
@@ -145,6 +169,12 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2024",
     description: "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
+    localizedDescription: {
+      fa: "اسکنر امنیتی QR و URL آفلاین با اولویت حریم خصوصی که با Kotlin Multiplatform ساخته شده است. آنالیز ۱۰۰٪ آفلاین با ۵ پلتفرم هدف.",
+      ar: "ماسح ضوئي أمني لرموز QR وعناوين URL يعمل بدون اتصال بالإنترنت مع إعطاء الأولوية للخصوصية، تم بناؤه باستخدام Kotlin Multiplatform. تحليل بنسبة ١٠٠٪ بدون اتصال بالإنترنت مع استهداف ٥ منصات.",
+      zh: "优先考虑隐私的离线 QR 和 URL 安全扫描器，使用 Kotlin Multiplatform 构建。100% 离线分析，支持 5 个目标平台。",
+      es: "Escáner de seguridad de QR y URL offline que prioriza la privacidad, construido con Kotlin Multiplatform. Análisis 100% offline con 5 plataformas de destino.",
+    },
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
@@ -189,6 +219,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2024",
     description: "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
+    localizedDescription: {
+      fa: "کلاینت گیت مجهز به هوش مصنوعی برای مدیریت چندین هویت و ایجاد کامیت‌های معنایی. ساخته شده با Electron و React.",
+      ar: "عميل Git مدعوم بالذكاء الاصطناعي لإدارة هويات متعددة وإنشاء تعهدات (commits) دلالية. تم بناؤه باستخدام Electron و React.",
+      zh: "人工智能驱动的 Git 客户端，用于管理多个身份并生成语义化提交。使用 Electron 和 React 构建。",
+      es: "Cliente Git potenciado por IA para gestionar múltiples identidades y generar commits semánticos. Construido con Electron y React.",
+    },
     tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
     links: {
       repo: "https://github.com/Raoof128/GitSwitch",
@@ -232,6 +268,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description: "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Full student operations suite with 503 tests across 92 files.",
+    localizedDescription: {
+      fa: "سیستم‌عامل دانشگاهی بومی هوش مصنوعی که سرفصل‌های PDF دانشگاه را به داده‌های ساختاریافته و قابل خواندن توسط عامل تبدیل می‌کند. مجموعه کامل عملیات دانشجویی با ۵۰۳ تست.",
+      ar: "نظام تشغيل جامعي يعتمد على الذكاء الاصطناعي يحول المناهج الدراسية بتنسيق PDF إلى بيانات منظمة قابلة للقراءة من قبل الوكلاء. حزمة كاملة لعمليات الطلاب مع ٥٠٣ اختبارات.",
+      zh: "人工智能原生的校园操作系统，将大学 PDF 教学大纲转化为结构化的、代理可读的数据。包含全套学生操作套件，涵盖 92 个文件中的 503 个测试。",
+      es: "Campus OS nativo de IA que transforma los programas universitarios en PDF en datos estructurados y legibles por agentes. Suite completa de operaciones estudiantiles con 503 pruebas en 92 archivos.",
+    },
     tags: ["Next.js 16", "Supabase", "TypeScript", "AI/LLM", "WebAuthn", "Full-Stack"],
     links: {
       demo: "https://syllabus-sync-mq.vercel.app/login?redirectTo=%2Fhome",
@@ -277,6 +319,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description: "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
+    localizedDescription: {
+      fa: "مخزن رسانه‌ای شخصی با سبک سایبرپانک با فرانت‌اند React، ای‌پی‌آی Litestar و احراز هویت Supabase. توصیه‌های مجهز به هوش مصنوعی و احراز هویت سخت‌گیرانه مبتنی بر کوکی.",
+      ar: "خزنة وسائط شخصية بأسلوب السايبربانك مع واجهة أمامية React وواجهة برمجة تطبيقات Litestar ومصادقة Supabase. توصيات مدعومة بالذكاء الاصطناعي ومصادقة قوية تعتمد على ملفات تعريف الارتباط.",
+      zh: "赛博朋克风个人媒体库，使用 React 前端、Litestar API 和 Supabase 身份验证。人工智能辅助推荐、加密记录和增强的基于 cookie 的身份验证。",
+      es: "Bóveda de medios personales de estilo cyberpunk con frontend de React, API de Litestar y autenticación de Supabase. Recomendaciones asistidas por IA y autenticación reforzada basada en cookies.",
+    },
     tags: ["React", "Python", "Litestar", "Supabase", "AI", "Full-Stack"],
     links: {
       demo: "https://home-notes-app.uk/",
@@ -322,6 +370,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description: "High-performance limit order book and matching engine in C++20. Processing 1M+ orders/second with sub-microsecond latency.",
+    localizedDescription: {
+      fa: "دفتر سفارش محدود و موتور تطبیق با کارایی بالا در C++20. پردازش بیش از ۱ میلیون سفارش در ثانیه با تأخیر زیر میکروثانیه.",
+      ar: "دفتر أوامر محدد ومحرك مطابقة عالي الأداء بلغة C++20. معالجة أكثر من مليون أمر في الثانية مع زمن انتقال أقل من ميكروثانية.",
+      zh: "使用 C++20 编写的高性能限价订单簿和匹配引擎。每秒处理超过 100 万个订单，延迟在亚微秒级。",
+      es: "Libro de órdenes limitadas y motor de emparejamiento de alto rendimiento en C++20. Procesa más de 1 millón de órdenes por segundo con latencia de submilisegundos.",
+    },
     tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/NanoMatch",
@@ -365,6 +419,12 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description: "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second.",
+    localizedDescription: {
+      fa: "سیستم تشخیص نفوذ شبکه بلادرنگ در C++17. تشریح پروتکل لایه‌ای، موتور قوانین الهام گرفته از Snort و تشخیص تهدید حالت‌دار با پردازش بیش از ۵۰۰ هزار بسته در ثانیه.",
+      ar: "نظام كشف التسلل للشبكة في الوقت الفعلي بلغة C++17. تشريح البروتوكولات الطبقية، محرك قواعد مستوحى من Snort، وكشف التهديدات مع تحليل أكثر من ٥٠٠ ألف حزمة في الثانية.",
+      zh: "使用 C++17 编写的实时网络入侵检测系统。分层协议解析、受 Snort 启发的规则引擎以及状态威胁检测，每秒解析超过 50 万个数据包。",
+      es: "Sistema de detección de intrusiones en red en tiempo real en C++17. Disección de protocolos por capas, motor de reglas inspirado en Snort y detección de amenazas con estado que analiza más de 500k paquetes por segundo.",
+    },
     tags: ["C++17", "libpcap", "IDS", "Network Security", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/SentinelFlow",
@@ -408,6 +468,12 @@ export const projects: Record<string, Project> = {
     category: "OFFENSIVE",
     year: "2024",
     description: "AI-powered phishing simulation and cybersecurity education platform using NLP to generate dynamic, realistic social engineering scenarios. Adopted by 50+ students for interactive security awareness training.",
+    localizedDescription: {
+      fa: "پلتفرم آموزشی امنیت سایبری و شبیه‌سازی فیشینگ مجهز به هوش مصنوعی با استفاده از NLP برای ایجاد سناریوهای پویای مهندسی اجتماعی. مورد استفاده ۵۰+ دانشجو.",
+      ar: "منصة تعليمية للأمن السيبراني ومحاكاة التصيد الاحتيالي مدعومة بالذكاء الاصطناعي، تستخدم معالجة اللغات الطبيعية (NLP) لإنشاء سيناريوهات هندسة اجتماعية واقعية وديناميكية. تم اعتمادها من قبل أكثر من ٥٠ طالباً.",
+      zh: "人工智能驱动的网络钓鱼模拟和网络安全教育平台，使用 NLP 生成动态、真实的社会工程场景。已被 50 多名学生采用，用于交互式安全意识培训。",
+      es: "Plataforma de educación en ciberseguridad y simulación de phishing potenciada por IA, que utiliza NLP para generar escenarios dinámicos y realistas de ingeniería social. Adoptada por más de 50 estudiantes.",
+    },
     tags: ["Python", "Generative AI", "NLP", "Security Education", "Social Engineering"],
     links: {
       repo: "https://github.com/Raoof128/PhishPatrol",
@@ -451,6 +517,12 @@ export const projects: Record<string, Project> = {
     category: "OFFENSIVE",
     year: "2025",
     description: "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
+    localizedDescription: {
+      fa: "پشته مشاهده‌پذیری زمان اجرا فقط خواندنی که ترکیبی از eBPF هسته، عامل Go و داشبورد React است. مانیتور زمان اجرای آموزشی.",
+      ar: "مجموعة أدوات الرؤية وقت التشغيل للقراءة فقط، تجمع بين eBPF للنواة ووكيل بلغة Go ولوحة تحكم React. مراقب وقت تشغيل تعليمي.",
+      zh: "合成的只读运行时可视化堆栈，结合了内核 eBPF、Go 代理和 React 仪表板。教学用运行时监控器。",
+      es: "Stack de visibilidad en tiempo de ejecución sintético y de solo lectura que combina eBPF del kernel, agente Go y panel de React. Monitor de tiempo de ejecución educativo.",
+    },
     tags: ["eBPF", "Go", "React", "Kernel", "Runtime Security"],
     links: {
       repo: "https://github.com/Raoof128/ECRSM",
@@ -494,6 +566,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description: "Universal file converter for macOS. 49 formats across images, documents, audio, video, and data — powered by 9 conversion engines. Zero cloud, single .app bundle.",
+    localizedDescription: {
+      fa: "مبدل فایل جهانی برای macOS. ۴۹ فرمت در تصاویر، اسناد، صدا، ویدئو و داده — مجهز به ۹ موتور تبدیل. بدون ابر، تک فایل .app.",
+      ar: "محول ملفات عالمي لنظام macOS. ٤٩ تنسيقاً تشمل الصور والمستندات والصوت والفيديو والبيانات — مدعوم بـ ٩ محركات تحويل. بدون سحابة، حزمة .app واحدة.",
+      zh: "适用于 macOS 的通用文件转换器。支持 49 种格式，涵盖图像、文档、音频、视频和数据——由 9 个转换引擎驱动。零云端，单文件 .app 包。",
+      es: "Convertidor de archivos universal para macOS. 49 formatos en imágenes, documentos, audio, video y datos, potenciado por 9 motores de conversión. Sin nube, un solo paquete .app.",
+    },
     tags: ["Tauri v2", "Rust", "React", "TypeScript", "FFmpeg", "macOS"],
     links: {
       repo: "https://github.com/Raoof128/SimurghForge",
@@ -537,6 +615,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description: "AI-powered Bible companion using Hybrid RAG. Keyword + semantic vector search (pgvector), real-time SSE streaming via Gemini, and cross-platform support with Tauri v2.",
+    localizedDescription: {
+      fa: "همراه کتاب مقدس مجهز به هوش مصنوعی با استفاده از Hybrid RAG. جستجوی کلمات کلیدی + بردار معنایی (pgvector)، پخش بلادرنگ SSE از طریق Gemini.",
+      ar: "رفيق الكتاب المقدس المدعوم بالذكاء الاصطناعي باستخدام Hybrid RAG. بحث بالكلمات الرئيسية + البحث المتجه الدلالي (pgvector)، وبث SSE في الوقت الفعلي عبر Gemini.",
+      zh: "人工智能驱动的圣经伙伴，使用混合 RAG。关键词 + 语义向量搜索 (pgvector)，通过 Gemini 实现实时 SSE 流式传输。",
+      es: "Compañero bíblico potenciado por IA que utiliza Hybrid RAG. Búsqueda por palabras clave + vectores semánticos (pgvector), transmisión SSE en tiempo real a través de Gemini.",
+    },
     tags: ["React Native", "Expo", "Supabase", "pgvector", "Gemini AI", "Tauri v2"],
     links: {
       repo: "https://github.com/Raoof128/Aion",
@@ -959,36 +1043,7 @@ export const labExperiments: LabExperiment[] = [
     link: "https://github.com/Raoof128",
     objective: "Understand how Windows messaging hooks can be abused for credential interception and how EDRs detect hook injection.",
     constraints: "Educational purpose only. Does not persist across reboots. Logs to stdout only.",
-    codeSnippet: `
-// WinAPI Hook Structure (Simplified)
-unsafe extern "system" fn hook_callback(code: i32, wParam: WPARAM, lParam: LPARAM) -> LRESULT {
-    if code >= 0 && wParam.0 as u32 == WM_KEYDOWN {
-        let kbd_struct = *(lParam.0 as *const KBDLLHOOKSTRUCT);
-        // Process virtual key code
-        println!("Key Intercepted: {}", kbd_struct.vkCode);
-    }
-    // Always pass to next hook in chain to avoid breaking input
-    CallNextHookEx(HOOK_HANDLE, code, wParam, lParam)
-}
-
-fn main() {
-    let hook_id = unsafe {
-        SetWindowsHookExW(
-            WH_KEYBOARD_LL,
-            Some(hook_callback),
-            std::ptr::null_mut(),
-            0
-        )
-    };
-    // Pump messages to keep hook alive
-    let mut msg = MSG::default();
-    while unsafe { GetMessageW(&mut msg, std::ptr::null_mut(), 0, 0) } > 0 {
-        unsafe {
-            TranslateMessage(&msg);
-            DispatchMessageW(&msg);
-        }
-    }
-}`
+    codeSnippet: "..."
   },
   {
     id: "002",
@@ -999,33 +1054,7 @@ fn main() {
     link: "https://github.com/Raoof128",
     objective: "Manually parse IP/TCP headers to understand protocol structures and detect scanning patterns without relying on Wireshark.",
     constraints: "Requires root/admin privileges. Promiscuous mode enabled.",
-    codeSnippet: `
-import socket
-import struct
-
-def sniff():
-    # Create a raw socket bound to all interfaces
-    # AF_PACKET is Linux specific. For Windows use AF_INET + IP_HDRINCL
-    s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
-    
-    while True:
-        raw_data, addr = s.recvfrom(65535)
-        eth_header = raw_data[:14]
-        
-        # Unpack Ethernet Frame
-        dest, src, proto = struct.unpack('! 6s 6s H', eth_header)
-        
-        # Check for IPv4 (0x0800)
-        if socket.ntohs(proto) == 8:
-            ip_header = raw_data[14:34]
-            # Unpack IP Header (Version, IHL, TTL, Protocol, Source, Dest)
-            iph = struct.unpack('!BBHHHBBH4s4s', ip_header)
-            
-            version_ihl = iph[0]
-            ihl = version_ihl & 0xF
-            
-            print(f"Packet: {addr} | IHL: {ihl} | Protocol: {iph[6]}")
-`
+    codeSnippet: "..."
   },
   {
     id: "003",
@@ -1036,32 +1065,6 @@ def sniff():
     link: "https://github.com/Raoof128",
     objective: "Implement a covert channel for data exfiltration by modifying the least significant bits of image pixel data.",
     constraints: "Payload size limited by image dimensions. Not robust against compression.",
-    codeSnippet: `
-package main
-
-import (
-	"image"
-	"image/color"
-)
-
-// EmbedHides payload bits into the LSB of image pixels
-func Embed(img image.Image, payload []byte) image.Image {
-	bounds := img.Bounds()
-	newImg := image.NewRGBA(bounds)
-    
-    // ... bit manipulation logic ...
-    
-	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
-		for x := bounds.Min.X; x < bounds.Max.X; x++ {
-			r, g, b, a := img.At(x, y).RGBA()
-            
-            // Modify 'r' (red channel) LSB with payload bit
-            // r = (r & 0xFE) | next_bit
-            
-			newImg.Set(x, y, color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)})
-		}
-	}
-	return newImg
-}`
+    codeSnippet: "..."
   }
 ];

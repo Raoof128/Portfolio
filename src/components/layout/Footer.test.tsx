@@ -1,46 +1,48 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Footer } from './Footer';
+import { I18nProvider } from '@/i18n/provider';
+import en from '@/i18n/locales/en';
+
+function renderFooter() {
+  return render(
+    <I18nProvider locale="en" dictionary={en}>
+      <Footer />
+    </I18nProvider>
+  );
+}
 
 describe('Footer', () => {
   it('renders social links', () => {
-    render(<Footer />);
-
-    expect(screen.getByText('GitHub').closest('a')).toHaveAttribute('href', 'https://github.com/Raoof128');
-    expect(screen.getByText('LinkedIn').closest('a')).toHaveAttribute('href', 'https://linkedin.com/in/mohammad-raouf-abedini-885a9226a');
-    const contactLinks = screen.getAllByText('Contact');
-    expect(contactLinks.length).toBeGreaterThanOrEqual(1);
+    renderFooter();
+    expect(screen.getByLabelText('GitHub').closest('a')).toHaveAttribute('href', 'https://github.com/Raoof128');
+    expect(screen.getByLabelText('LinkedIn').closest('a')).toHaveAttribute('href', 'https://linkedin.com/in/mohammad-raouf-abedini-885a9226a');
   });
 
   it('renders system status', () => {
-    render(<Footer />);
-    expect(screen.getByText(/status: online/i)).toBeInTheDocument();
+    renderFooter();
+    expect(screen.getByText('PROD-SYD')).toBeInTheDocument();
   });
 
   it('renders last index date', () => {
-    render(<Footer />);
-    expect(screen.getByText('Last Index: May 2026')).toBeInTheDocument();
-  });
-
-  it('renders security.txt link', () => {
-    render(<Footer />);
-    const securityLink = screen.getByText(/security\.txt/i);
-    expect(securityLink.closest('a')).toHaveAttribute('href', '/.well-known/security.txt');
+    renderFooter();
+    expect(screen.getByText('MAY 2026')).toBeInTheDocument();
+    expect(screen.getByText(/Last Index/i)).toBeInTheDocument();
   });
 
   it('has correct structure', () => {
-    const { container } = render(<Footer />);
+    const { container } = renderFooter();
     expect(container.querySelector('footer')).toBeInTheDocument();
   });
 
   it('renders navigation links', () => {
-    render(<Footer />);
-    expect(screen.getByText('Projects').closest('a')).toHaveAttribute('href', '/projects');
-    expect(screen.getByText('Resume').closest('a')).toHaveAttribute('href', '/resume');
+    renderFooter();
+    expect(screen.getByText('/projects').closest('a')).toHaveAttribute('href', '/projects');
+    expect(screen.getByText('/resume').closest('a')).toHaveAttribute('href', '/resume');
   });
 
   it('renders copyright', () => {
-    render(<Footer />);
+    renderFooter();
     expect(screen.getByText(/© 2026 Mohammad Raouf Abedini/i)).toBeInTheDocument();
   });
 });

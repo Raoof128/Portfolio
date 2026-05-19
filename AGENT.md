@@ -35,6 +35,41 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-19 (i18n senior audit — quality fixes)
+- **Scope**: 4-phase structured i18n audit — coverage, quality, hardcoded strings, consistency
+- **Summary**: 0 missing keys (Dictionary type enforcement), 0 empty values, 0 structural issues. 3 quality fixes: zh stats_projects counter word removed, zh stats_vendors restructured to natural Chinese label, fa hall_of_fame report_guidance restructured for natural preposition-bracketing around link.
+- **Files Changed**: `src/i18n/locales/zh.ts`, `src/i18n/locales/fa.ts`
+- **Verification**: tsc 0 errors; lint pass; 66/66 tests
+- **Follow-ups**: None — all locales production-ready.
+
+### Raouf: 2026-05-19 (i18n full audit — 121-issue deep pass)
+- **Scope**: Full file-by-file audit + translate all remaining hardcoded strings (121 issues across 33 files)
+- **Summary**: Added project_detail (12), writeups_detail (1), hall_of_fame (15), security_policy (32) namespaces to all 5 locales, plus extensions to footer/common/about. Rewrote HallOfFameClient + SecurityPolicyClient with full translations + RTL. Fixed 11 ternary anti-patterns in ProjectDetailClient. Fixed Footer/LanguageSwitcher/AboutClient labels.
+- **Files Changed**: 5 locale files + ProjectDetailClient, WriteupDetailClient, HallOfFameClient, SecurityPolicyClient, Footer, LanguageSwitcher, AboutClient
+- **Verification**: lint pass; tsc pass; 66/66 tests
+- **Follow-ups**: Brand text, resume body, skill names, ticker, metadata stay English by design.
+
+### Raouf: 2026-05-19 (i18n audit pass)
+- **Scope**: Wire remaining untranslated pages, add Vazirmatn font, rebuild sitemap
+- **Summary**: Added `projects_page`, `resume_page`, `not_found`, `lab_detail` namespaces to all 5 locale files; wired useTranslation into projects/page.tsx, not-found.tsx, LabDetailClient, ResumeClient; added Vazirmatn via next/font/google; rebuilt sitemap with full locale × route coverage + hreflang alternates.
+- **Files Changed**: 5 locale files, 5 component files, layout.tsx, sitemap.ts
+- **Verification**: lint pass; tsc pass; 66/66 tests
+- **Follow-ups**: Run `npm run build` before deploy. security-policy/hall-of-fame intentionally English-only.
+
+### Raouf: 2026-05-19 (i18n rollout completion)
+- **Scope**: Complete Gemini's i18n migration — restore missing data, fill locale gaps, fix test suite
+- **Summary**: Restored 5 stripped writeups in data.ts; added `contact`, `lab_page`, `writeups_page` to ar/es/zh locales; fixed Footer/Navbar/AboutClient tests with I18nProvider wrappers; replaced `locale as any` with `locale` in page.tsx and ProjectDetailClient; typed dictionary loader as `Promise<Dictionary>`.
+- **Files Changed**: `src/lib/data.ts`, `src/i18n/locales/ar.ts`, `src/i18n/locales/es.ts`, `src/i18n/locales/zh.ts`, `src/i18n/index.ts`, `src/components/layout/Footer.test.tsx`, `src/components/layout/Navbar.test.tsx`, `src/app/[locale]/about/AboutClient.test.tsx`, `src/app/[locale]/page.tsx`, `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 66/66 passing
+- **Follow-ups**: Run `npm run build` before deploy to verify all locale static pages generate.
+
+### Raouf: 2026-05-19 (proxy.ts API fix)
+- **Scope**: Fix incorrect Next.js 16 proxy API usage in `src/proxy.ts`
+- **Summary**: Replaced `import { proxy } from 'next/server'` with `import { NextResponse }`, changed `export default proxy(...)` wrapper pattern to `export function proxy(request: NextRequest)`, and replaced `proxy.rewrite(url)` with `NextResponse.rewrite(url)`. Added a `config.matcher` to exclude static/API paths at framework level.
+- **Files Changed**: `src/proxy.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx tsc --noEmit`: zero errors in `proxy.ts`
+- **Follow-ups**: Pre-existing TS errors in i18n locale files (ar/es/zh missing keys) need fixing as part of i18n rollout.
+
 ### Raouf: 2026-05-19 (singularity hero)
 - **Scope**: Replace hero particle network + terminal with singularity animation
 - **Summary**: Removed `ParticleNetwork` and `TerminalFeed` from homepage hero. New `SingularityCanvas` component ports the preview.html black hole / accretion disk canvas animation to TypeScript React with DPR handling, reduced-motion support, and `visibilitychange` pause/resume. Hero layout changed from `md:grid-cols-2` to single-column so the singularity occupies the full viewport.

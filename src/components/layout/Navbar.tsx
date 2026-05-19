@@ -6,17 +6,13 @@ import { cn } from "@/lib/utils";
 import { Terminal, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navItems = [
-    { name: "/about", path: "/about" },
-    { name: "/projects", path: "/projects" },
-    { name: "/lab", path: "/lab" },
-    { name: "/write-ups", path: "/write-ups" },
-    { name: "/resume", path: "/resume" },
-];
+import { useTranslation } from "@/i18n/provider";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { defaultLocale } from "@/i18n";
 
 export function Navbar() {
     const pathname = usePathname();
+    const { locale, t } = useTranslation();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -27,6 +23,27 @@ export function Navbar() {
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const navItems = [
+        { name: t.nav.about, path: "/about" },
+        { name: t.nav.projects, path: "/projects" },
+        { name: t.nav.lab, path: "/lab" },
+        { name: t.nav.writeups, path: "/write-ups" },
+        { name: t.nav.resume, path: "/resume" },
+    ];
+
+    const getPath = (path: string) => {
+        if (locale === defaultLocale) return path;
+        return `/${locale}${path}`;
+    };
+
+    const isPathActive = (path: string) => {
+        const localizedPath = getPath(path);
+        if (path === "/") {
+            return pathname === localizedPath || pathname === "/en";
+        }
+        return pathname.startsWith(localizedPath);
+    };
 
     return (
         <nav
@@ -41,9 +58,9 @@ export function Navbar() {
 
                 {/* Logo / Home */}
                 <Link
-                    href="/"
+                    href={getPath("/")}
                     className="flex items-center space-x-2 group"
-                    aria-label="Home"
+                    aria-label={t.nav.home}
                 >
                     <div className="p-1 border border-transparent group-hover:border-cyan/50 rounded-sm transition-colors">
                         <Terminal className="w-5 h-5 text-cyan" />
@@ -55,13 +72,13 @@ export function Navbar() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
                     {navItems.map((item) => {
-                        const isActive = pathname.startsWith(item.path);
+                        const isActive = isPathActive(item.path);
                         return (
                             <Link
                                 key={item.path}
-                                href={item.path}
+                                href={getPath(item.path)}
                                 className={cn(
                                     "font-mono text-sm tracking-wide transition-all duration-200 relative py-1 focus:outline-none focus:text-cyan",
                                     isActive
@@ -70,7 +87,7 @@ export function Navbar() {
                                 )}
                             >
                                 <span className="relative z-10">
-                                    {isActive && <span className="mr-2 text-cyan/50">&gt;</span>}
+                                    {isActive && <span className={cn(locale === 'fa' || locale === 'ar' ? "ml-2" : "mr-2", "text-cyan/50")}>&gt;</span>}
                                     {item.name}
                                 </span>
                                 {isActive && (
@@ -85,23 +102,30 @@ export function Navbar() {
                     })}
 
                     <Link
-                        href="/contact"
+                        href={getPath("/contact")}
                         className="px-4 py-1.5 border border-cyan/15 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_15px_rgba(0,245,255,0.25)] transition-all bg-cyber-dark/50"
                     >
-                        Contact
+                        {t.nav.contact}
                     </Link>
+
+                    <div className="border-l border-cyan/10 h-6 mx-2" />
+                    
+                    <LanguageSwitcher />
                 </div>
 
                 {/* Mobile Toggle */}
-                <button
-                    className="md:hidden p-2 text-text-body hover:text-cyan"
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                    aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-                    aria-expanded={mobileOpen}
-                    aria-controls="mobile-menu"
-                >
-                    {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-                </button>
+                <div className="flex items-center gap-4 md:hidden">
+                    <LanguageSwitcher />
+                    <button
+                        className="p-2 text-text-body hover:text-cyan"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                        aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={mobileOpen}
+                        aria-controls="mobile-menu"
+                    >
+                        {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu with AnimatePresence */}
@@ -120,22 +144,24 @@ export function Navbar() {
                         {navItems.map((item) => (
                             <Link
                                 key={item.path}
-                                href={item.path}
+                                href={getPath(item.path)}
                                 onClick={() => setMobileOpen(false)}
                                 className={cn(
                                     "block font-mono text-base py-3 px-3 hover:bg-cyan/5",
-                                    pathname.startsWith(item.path) ? "text-cyan border-l-2 border-cyan bg-cyan/5" : "text-text-body"
+                                    isPathActive(item.path) 
+                                      ? cn("text-cyan bg-cyan/5", locale === 'fa' || locale === 'ar' ? "border-r-2 border-cyan" : "border-l-2 border-cyan") 
+                                      : "text-text-body"
                                 )}
                             >
                                 {item.name}
                             </Link>
                         ))}
                         <Link
-                            href="/contact"
+                            href={getPath("/contact")}
                             onClick={() => setMobileOpen(false)}
                             className="block w-full text-center py-3 border border-cyan/20 text-cyan font-mono text-sm hover:bg-cyan/5 transition-colors"
                         >
-                            CONTACT
+                            {t.nav.contact.toUpperCase()}
                         </Link>
                     </motion.div>
                 )}

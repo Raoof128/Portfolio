@@ -8,11 +8,14 @@ import {
   ArrowRight, Download, Terminal, Code2, Shield,
   Github, ExternalLink,
 } from "lucide-react";
-import { projects, writeups } from "@/lib/data";
+import { projects, writeups, getProjectDescription } from "@/lib/data";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerContainerSlow } from "@/lib/utils";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import { SingularityCanvas } from "@/components/ui/SingularityCanvas";
+import { useTranslation } from "@/i18n/provider";
+import { defaultLocale } from "@/i18n";
+import { cn } from "@/lib/utils";
 
 /* ─── Constants ──────────────────────────────────────────────────────── */
 
@@ -34,7 +37,7 @@ const CATEGORY_STYLE: Record<string, { dot: string; badge: string; hover: string
 /* ─── Bento Card ─────────────────────────────────────────────────────── */
 
 function BentoCard({
-  slug, accentHover, cornerClass, tint, className, children, glowPulse,
+  slug, accentHover, cornerClass, tint, className, children, glowPulse, locale,
 }: {
   slug: string;
   accentHover: string;
@@ -43,7 +46,13 @@ function BentoCard({
   className?: string;
   children: React.ReactNode;
   glowPulse?: boolean;
+  locale: string;
 }) {
+  const getPath = (path: string) => {
+    if (locale === defaultLocale) return path;
+    return `/${locale}${path}`;
+  };
+
   return (
     <motion.div
       variants={fadeInUp}
@@ -68,7 +77,7 @@ function BentoCard({
         />
       )}
       <Link
-        href={`/projects/${slug}`}
+        href={getPath(`/projects/${slug}`)}
         className="absolute inset-0"
         aria-label={`View ${slug} case study`}
       />
@@ -79,6 +88,15 @@ function BentoCard({
 /* ─── Page ───────────────────────────────────────────────────────────── */
 
 export default function Home() {
+  const { locale, t } = useTranslation();
+
+  const getPath = (path: string) => {
+    if (locale === defaultLocale) return path;
+    return `/${locale}${path}`;
+  };
+
+  const isRTL = locale === 'fa' || locale === 'ar';
+
   return (
     <div>
 
@@ -92,7 +110,7 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-28">
-          <div className="max-w-2xl space-y-10">
+          <div className={cn("max-w-2xl space-y-10", isRTL && "mr-0 ml-auto text-right")}>
 
             {/* Badge */}
             <motion.div
@@ -106,7 +124,7 @@ export default function Home() {
                 <span className="relative rounded-full h-2 w-2 bg-cyan shadow-[0_0_8px_rgba(0,245,255,0.8)]" />
               </span>
               <span className="font-mono text-cyan/80 text-xs tracking-widest uppercase">
-                System Online · Castle Hill, NSW
+                {t.hero.system_online}
               </span>
             </motion.div>
 
@@ -122,17 +140,17 @@ export default function Home() {
               <div className="space-y-0.5 leading-none">
                 {/* Solid fill */}
                 <h1 className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight text-white">
-                  <DecryptedText text="AI +" loopInterval={12000} />
+                  <DecryptedText text={t.hero.title_prefix} loopInterval={12000} />
                 </h1>
                 {/* Outline — text-stroke effect */}
                 <h1
                   className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
                   style={{ WebkitTextStroke: "1.5px rgba(0,245,255,0.7)", color: "transparent" } as React.CSSProperties}
                 >
-                  CYBER
+                  {t.hero.title_cyber}
                 </h1>
                 <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-cyan tracking-tight pt-2">
-                  Research
+                  {t.hero.title_research}
                 </h2>
               </div>
             </motion.div>
@@ -143,10 +161,8 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.48 }}
               className="text-text-body text-lg max-w-md leading-relaxed"
             >
-              <span className="text-cyan italic text-sm block mb-2" style={{ animation: "text-blink 6s ease-in-out infinite" }}>{`"Seek, and ye shall find" — Matthew 7:7`}</span>
-              Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities.{" "}
-              Authored <span className="text-foreground">&ldquo;The Invisible Window&rdquo;</span> &mdash; 100% screen capture evasion.
-              Motivated by reducing catastrophic risks from advanced AI.
+              <span className="text-cyan italic text-sm block mb-2" style={{ animation: "text-blink 6s ease-in-out infinite" }}>{t.hero.philosophy_quote}</span>
+              {t.hero.intro}
             </motion.p>
 
             {/* Stat chips — staggered entrance */}
@@ -154,9 +170,9 @@ export default function Home() {
               variants={staggerContainerSlow}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-2"
+              className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}
             >
-              {["Anthropic AI Evaluator", "Vulnerability Researcher", "Macquarie University · Nov 2026"].map((c) => (
+              {[t.hero.evaluator, t.hero.researcher, t.hero.university].map((c) => (
                 <motion.span key={c} variants={fadeInUp} className="px-3 py-1 border border-cyan/12 text-text-meta font-mono text-xs">
                   {c}
                 </motion.span>
@@ -167,19 +183,19 @@ export default function Home() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.68 }}
-              className="flex flex-wrap gap-4"
+              className={cn("flex flex-wrap gap-4", isRTL && "justify-end")}
             >
-              <NeonButton href="/projects" variant="primary">
-                <Terminal className="w-4 h-4" /> View Projects
+              <NeonButton href={getPath("/projects")} variant="primary">
+                <Terminal className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} /> {t.hero.view_projects}
               </NeonButton>
-              <NeonButton href="/resume" variant="secondary">
-                <Download className="w-4 h-4" /> Resume
+              <NeonButton href={getPath("/resume")} variant="outline">
+                <Download className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} /> {t.hero.view_resume}
               </NeonButton>
             </motion.div>
           </div>
         </div>
 
-        {/* Scroll indicator — hidden on small screens where hero content fills the viewport */}
+        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -227,16 +243,16 @@ export default function Home() {
                 Deployed Systems
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                <span className="text-cyan font-mono mr-3 text-glow"><DecryptedText text="01." /></span>Projects
+                <span className="text-cyan font-mono mr-3 text-glow"><DecryptedText text="01." /></span>{t.nav.projects.startsWith('/') ? t.nav.projects.substring(1) : t.nav.projects}
               </h2>
             </div>
             <div className="hidden md:flex items-center gap-4">
               <span className="font-mono text-[9px] text-text-meta tracking-widest opacity-60" aria-hidden="true">SEC:01.003</span>
               <Link
-                href="/projects"
+                href={getPath("/projects")}
                 className="flex items-center gap-2 text-text-body hover:text-cyan transition-colors font-mono text-xs"
               >
-                View All <ArrowRight className="w-3 h-3" />
+                {t.writeups.view_all} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
               </Link>
             </div>
           </div>
@@ -262,13 +278,14 @@ export default function Home() {
                   tint={s.tint}
                   className="md:col-span-3"
                   glowPulse
+                  locale={locale}
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase self-start`}>
                       [{s.prefix}] {p.category}
                     </span>
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest">IEEE-FORMAT PAPER</span>
+                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest uppercase">{isRTL ? "مقاله IEEE" : "IEEE-FORMAT PAPER"}</span>
                       <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
                     </div>
                   </div>
@@ -276,12 +293,12 @@ export default function Home() {
                     {p.title}
                   </h3>
                   <p className="text-sm text-text-body leading-relaxed mb-5 max-w-3xl">
-                    {p.description}
+                    {getProjectDescription(p, locale)}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-6">
-                    {p.tags.map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
+                    {p.tags.map((tag) => (
+                      <span key={tag} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {tag}
                       </span>
                     ))}
                   </div>
@@ -294,7 +311,7 @@ export default function Home() {
                         className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github className="w-3 h-3" /> Repo
+                        <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
                     {p.links.doi && (
@@ -309,7 +326,7 @@ export default function Home() {
                       </a>
                     )}
                     <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
-                      Case Study <ArrowRight className="w-3 h-3" />
+                      {t.common.case_study} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
                     </span>
                   </div>
                 </BentoCard>
@@ -328,13 +345,14 @@ export default function Home() {
                   cornerClass={s.corner}
                   tint={s.tint}
                   className="md:col-span-3"
+                  locale={locale}
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase self-start`}>
                       [{s.prefix}] {p.category}
                     </span>
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest">CONNECTED TO INVISIBLE WINDOW</span>
+                      <span className="font-mono text-[10px] text-cyan border border-cyan/30 px-2 py-0.5 tracking-widest uppercase">{isRTL ? "متصل بـ INVISIBLE WINDOW" : "CONNECTED TO INVISIBLE WINDOW"}</span>
                       <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
                     </div>
                   </div>
@@ -342,12 +360,12 @@ export default function Home() {
                     {p.title}
                   </h3>
                   <p className="text-sm text-text-body leading-relaxed mb-5 max-w-3xl">
-                    {p.description}
+                    {getProjectDescription(p, locale)}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-6">
-                    {p.tags.map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
+                    {p.tags.map((tag) => (
+                      <span key={tag} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {tag}
                       </span>
                     ))}
                   </div>
@@ -360,7 +378,7 @@ export default function Home() {
                         className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github className="w-3 h-3" /> Repo
+                        <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
                     {p.links.doi && (
@@ -375,7 +393,7 @@ export default function Home() {
                       </a>
                     )}
                     <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
-                      Case Study <ArrowRight className="w-3 h-3" />
+                      {t.common.case_study} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
                     </span>
                   </div>
                 </BentoCard>
@@ -394,6 +412,7 @@ export default function Home() {
                   cornerClass={s.corner}
                   tint={s.tint}
                   className="md:col-span-2"
+                  locale={locale}
                 >
                   <div className="flex items-start justify-between mb-5">
                       <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
@@ -405,12 +424,12 @@ export default function Home() {
                       {p.title}
                     </h3>
                     <p className="text-sm text-text-body leading-relaxed mb-5 max-w-xl">
-                      {p.description}
+                      {getProjectDescription(p, locale)}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {p.tags.map((t) => (
-                        <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                          {t}
+                      {p.tags.map((tag) => (
+                        <span key={tag} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                          {tag}
                         </span>
                       ))}
                     </div>
@@ -434,23 +453,23 @@ export default function Home() {
                           className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10 pointer-events-auto"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Github className="w-3 h-3" /> Repo
+                          <Github className="w-3 h-3" /> {t.common.repo}
                         </a>
                       )}
                       <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
-                        Case Study <ArrowRight className="w-3 h-3" />
+                        {t.common.case_study} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
                       </span>
                     </div>
                 </BentoCard>
               );
             })()}
 
-            {/* Syllabus Sync — 1 col (right of mehr-guard) */}
+            {/* Syllabus Sync — 1 col */}
             {(() => {
               const p = projects["syllabus-sync"];
               const s = CATEGORY_STYLE[p.category];
               return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint} locale={locale}>
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                       [{s.prefix}] {p.category}
@@ -460,26 +479,15 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
+                  <p className="text-sm text-text-body leading-relaxed mb-4">{getProjectDescription(p, locale)}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
+                    {p.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {tag}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
-                    {p.links.demo && (
-                      <a
-                        href={p.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink className="w-3 h-3" /> Demo
-                      </a>
-                    )}
                     {p.links.repo && (
                       <a
                         href={p.links.repo}
@@ -488,7 +496,7 @@ export default function Home() {
                         className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github className="w-3 h-3" /> Repo
+                        <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
                   </div>
@@ -501,7 +509,7 @@ export default function Home() {
               const p = projects["gitswitch"];
               const s = CATEGORY_STYLE[p.category];
               return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint} locale={locale}>
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                       [{s.prefix}] {p.category}
@@ -511,11 +519,11 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
+                  <p className="text-sm text-text-body leading-relaxed mb-4">{getProjectDescription(p, locale)}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
+                    {p.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {tag}
                       </span>
                     ))}
                   </div>
@@ -527,7 +535,7 @@ export default function Home() {
                       className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Github className="w-3 h-3" /> Repo
+                      <Github className="w-3 h-3" /> {t.common.repo}
                     </a>
                   )}
                 </BentoCard>
@@ -539,7 +547,7 @@ export default function Home() {
               const p = projects["nexus-archive"];
               const s = CATEGORY_STYLE[p.category];
               return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
+                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint} locale={locale}>
                   <div className="flex items-start justify-between mb-5">
                     <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
                       [{s.prefix}] {p.category}
@@ -549,151 +557,15 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
+                  <p className="text-sm text-text-body leading-relaxed mb-4">{getProjectDescription(p, locale)}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
+                    {p.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
+                        {tag}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
-                    {p.links.demo && (
-                      <a
-                        href={p.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink className="w-3 h-3" /> Demo
-                      </a>
-                    )}
-                    {p.links.repo && (
-                      <a
-                        href={p.links.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Github className="w-3 h-3" /> Repo
-                      </a>
-                    )}
-                  </div>
-                </BentoCard>
-              );
-            })()}
-
-            {/* NanoMatch */}
-            {(() => {
-              const p = projects["nanomatch"];
-              const s = CATEGORY_STYLE[p.category];
-              return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
-                      [{s.prefix}] {p.category}
-                    </span>
-                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Repo
-                    </a>
-                  )}
-                </BentoCard>
-              );
-            })()}
-
-            {/* SentinelFlow */}
-            {(() => {
-              const p = projects["sentinelflow"];
-              const s = CATEGORY_STYLE[p.category];
-              return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
-                      [{s.prefix}] {p.category}
-                    </span>
-                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Repo
-                    </a>
-                  )}
-                </BentoCard>
-              );
-            })()}
-
-            {/* SimurghForge — 2 cols */}
-            {(() => {
-              const p = projects["simurghforge"];
-              const s = CATEGORY_STYLE[p.category];
-              return (
-                <BentoCard
-                  key={p.slug}
-                  slug={p.slug}
-                  accentHover={s.hover}
-                  cornerClass={s.corner}
-                  tint={s.tint}
-                  className="md:col-span-2"
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
-                      [{s.prefix}] {p.category}
-                    </span>
-                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-5 max-w-xl">
-                    {p.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {p.tags.map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4 pointer-events-none">
                     {p.links.repo && (
                       <a
                         href={p.links.repo}
@@ -702,127 +574,23 @@ export default function Home() {
                         className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github className="w-3 h-3" /> Repo
+                        <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
-                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
-                      Case Study <ArrowRight className="w-3 h-3" />
-                    </span>
                   </div>
                 </BentoCard>
               );
             })()}
 
-            {/* Aion */}
-            {(() => {
-              const p = projects["aion"];
-              const s = CATEGORY_STYLE[p.category];
-              return (
-                <BentoCard key={p.slug} slug={p.slug} accentHover={s.hover} cornerClass={s.corner} tint={s.tint}>
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
-                      [{s.prefix}] {p.category}
-                    </span>
-                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Repo
-                    </a>
-                  )}
-                </BentoCard>
-              );
-            })()}
-
-            {/* ECRSM — spans 2 cols on desktop */}
-            {(() => {
-              const p = projects["ecrsm"];
-              const s = CATEGORY_STYLE[p.category];
-              return (
-                <motion.div
-                  key={p.slug}
-                  variants={fadeInUp}
-                  className={`group relative p-6 border border-cyan/10 bg-[#030712]/60 hover:bg-cyan/[0.04] hover:shadow-[0_8px_32px_rgba(0,245,255,0.12)] ${s.hover} transition-all duration-300 md:col-span-2 cursor-pointer`}
-                  whileHover={{ y: -6 }}
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase`}>
-                      [{s.prefix}] {p.category}
-                    </span>
-                    <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
-                  </div>
-                  <div className="md:grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber transition-colors">
-                        {p.title}
-                      </h3>
-                      <p className="text-sm text-text-body leading-relaxed mb-4">{p.description}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.tags.map((t) => (
-                          <span key={t} className="font-mono text-[10px] text-text-meta border border-cyan/10 px-2 py-0.5">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 md:mt-0">
-                      <p className="font-mono text-[10px] text-text-meta tracking-widest uppercase mb-3">
-                        Security Posture
-                      </p>
-                      <ul className="space-y-1.5">
-                        {p.secure.measures.map((m) => (
-                          <li key={m} className="flex items-start gap-2 text-xs text-text-body">
-                            <span className="text-amber mt-0.5 shrink-0">›</span>
-                            {m}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-5 flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10 w-fit"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Repo
-                    </a>
-                  )}
-                  {/* HUD corners */}
-                  <div className={`absolute top-0 left-0 w-5 h-5 border-t border-l ${s.corner} transition-colors`} />
-                  <div className={`absolute bottom-0 right-0 w-5 h-5 border-b border-r ${s.corner} transition-colors`} />
-                  <Link href={`/projects/${p.slug}`} className="absolute inset-0" aria-label="View ECRSM" />
-                </motion.div>
-              );
-            })()}
           </motion.div>
 
           {/* Mobile-only View All CTA */}
           <div className="md:hidden mt-8 flex justify-center">
             <Link
-              href="/projects"
+              href={getPath("/projects")}
               className="inline-flex items-center gap-2 border border-cyan/25 bg-cyan/5 px-4 py-2 text-cyan/90 hover:text-cyan hover:border-cyan/60 transition-colors font-mono text-xs tracking-widest uppercase"
             >
-              View All Projects <ArrowRight className="w-3 h-3" />
+              {t.common.view_all_projects} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
             </Link>
           </div>
         </section>
@@ -831,17 +599,17 @@ export default function Home() {
       <div className="section-divider max-w-7xl mx-auto" />
 
       {/* ══════════════════════════════════════════════
-          PHILOSOPHY — Ghost letter depth trick
+          PHILOSOPHY
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28">
           <div className="flex items-end justify-between mb-10 md:mb-14 border-b border-cyan/10 pb-5">
             <div>
               <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-2">
-                Operating Principles
+                {t.philosophy.subtitle}
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                <span className="text-cyan font-mono mr-3 text-glow"><DecryptedText text="02." /></span>Philosophy
+                <span className="text-cyan font-mono mr-3 text-glow"><DecryptedText text="02." /></span>{t.philosophy.title}
               </h2>
             </div>
             <span className="hidden md:block font-mono text-[9px] text-text-meta tracking-widest opacity-60" aria-hidden="true">SEC:02.001</span>
@@ -859,15 +627,15 @@ export default function Home() {
                   className="absolute -top-4 -left-3 text-[10rem] font-bold leading-none select-none pointer-events-none"
                   style={{ color: "rgba(0,245,255,0.07)" } as React.CSSProperties}
                 >
-                  B
+                  R
                 </motion.span>
                 <div className="relative z-10">
                   <div className="w-10 h-10 bg-cyber-dark border border-cyan/15 flex items-center justify-center mb-7 group-hover:border-cyan/40 group-hover:bg-cyan/8 transition-all">
                     <Code2 className="w-5 h-5 text-text-body group-hover:text-cyan transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">RESEARCH</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">{t.philosophy.research_title}</h3>
                   <p className="text-text-body leading-relaxed mb-7 text-sm max-w-sm">
-                    Independently discover, validate, and responsibly disclose vulnerabilities. Measure AI capability uplift, characterise safety boundaries, and publish reproducible findings.
+                    {t.philosophy.research_body}
                   </p>
                   <ul className="space-y-2 font-mono text-xs text-text-meta">
                     {["Vulnerability Research & Disclosure", "AI Safety & LLM Evaluation", "Dual-Use Risk Assessment"].map((item) => (
@@ -888,7 +656,7 @@ export default function Home() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-                  className="absolute -top-4 -right-3 text-[10rem] font-bold leading-none select-none pointer-events-none text-right"
+                  className={cn("absolute -top-4 text-[10rem] font-bold leading-none select-none pointer-events-none", isRTL ? "-left-3" : "-right-3")}
                   style={{ color: "rgba(139,92,246,0.07)" } as React.CSSProperties}
                 >
                   S
@@ -897,9 +665,9 @@ export default function Home() {
                   <div className="w-10 h-10 bg-cyber-dark border border-purple/15 flex items-center justify-center mb-7 group-hover:border-purple/40 group-hover:bg-purple/8 transition-all">
                     <Shield className="w-5 h-5 text-text-body group-hover:text-purple transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">SECURE</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">{t.philosophy.secure_title}</h3>
                   <p className="text-text-body leading-relaxed mb-7 text-sm max-w-sm">
-                    Defensive applications that reduce real-world risk. Cross-platform exploit development informs better defences — offensive knowledge applied to protective systems.
+                    {t.philosophy.secure_body}
                   </p>
                   <ul className="space-y-2 font-mono text-xs text-text-meta">
                     {["Cross-Platform Exploit Development", "Responsible Disclosure (OWASP/FIRST/CISA)", "Defensive Applications"].map((item) => (
@@ -922,7 +690,7 @@ export default function Home() {
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28">
-          <HUDFrame className="bg-gradient-to-r from-cyber-dark via-cyber-dark/60 to-transparent border-l-4 border-l-amber p-8 md:p-12">
+          <HUDFrame className={cn("bg-gradient-to-r from-cyber-dark via-cyber-dark/60 to-transparent p-8 md:p-12", isRTL ? "border-r-4 border-r-amber" : "border-l-4 border-l-amber")}>
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
@@ -933,13 +701,11 @@ export default function Home() {
                   >
                     ◆
                   </motion.span>
-                  <span className="font-mono text-sm tracking-widest uppercase text-white">THE_LAB</span>
-                  <span className="font-mono text-[10px] text-text-meta">/ active_operations</span>
+                  <span className="font-mono text-sm tracking-widest uppercase text-white">{t.lab.title}</span>
+                  <span className="font-mono text-[10px] text-text-meta">{t.lab.subtitle}</span>
                 </div>
                 <p className="text-text-body max-w-lg text-sm leading-relaxed">
-                  Hands-on vulnerability research and AI safety experimentation. Current work:{" "}
-                  <span className="text-cyan">cross-platform exploit development</span>, AI capability uplift measurement, and{" "}
-                  <span className="text-cyan">safety boundary characterisation</span>.
+                  {t.lab.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {["Vulnerability Research", "AI Safety", "Exploit Development", "Responsible Disclosure"].map((lab) => (
@@ -949,8 +715,8 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <NeonButton href="/lab" variant="outline" className="shrink-0">
-                ENTER_LAB
+              <NeonButton href={getPath("/lab")} variant="outline" className="shrink-0">
+                {t.lab.enter_lab}
               </NeonButton>
             </div>
           </HUDFrame>
@@ -960,26 +726,26 @@ export default function Home() {
       <div className="section-divider max-w-7xl mx-auto" />
 
       {/* ══════════════════════════════════════════════
-          WRITE-UPS — Editorial numbered list
+          WRITE-UPS
       ══════════════════════════════════════════════ */}
       <AnimatedSection variants={fadeInUp}>
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28 pb-20 md:pb-36">
           <div className="flex items-end justify-between mb-10 md:mb-14 border-b border-cyan/10 pb-5">
             <div>
               <p className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase mb-2">
-                Technical Writing
+                {t.writeups.subtitle}
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                <span className="text-cyan font-mono mr-3 text-glow"><DecryptedText text="03." /></span>Write-ups
+                <span className="text-cyan font-mono mr-3 text-glow"><DecryptedText text="03." /></span>{t.writeups.title}
               </h2>
             </div>
             <div className="hidden md:flex items-center gap-4">
               <span className="font-mono text-[9px] text-text-meta tracking-widest opacity-60" aria-hidden="true">SEC:03.007</span>
               <Link
-                href="/write-ups"
+                href={getPath("/write-ups")}
                 className="flex items-center gap-2 text-text-body hover:text-cyan transition-colors font-mono text-xs"
               >
-                View All <ArrowRight className="w-3 h-3" />
+                {t.writeups.view_all} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
               </Link>
             </div>
           </div>
@@ -994,7 +760,7 @@ export default function Home() {
             {writeups.map((post, i) => (
               <motion.div key={post.slug} variants={fadeInUp} className="min-w-0">
                 <Link
-                  href={`/write-ups/${post.slug}`}
+                  href={getPath(`/write-ups/${post.slug}`)}
                   className="group flex items-start sm:items-center justify-between gap-4 sm:gap-6 py-5 px-2 -mx-2 border-b border-cyan/8 hover:border-cyan/20 hover:bg-cyan/[0.03] transition-all"
                 >
                   <div className="flex items-start sm:items-center gap-5 min-w-0">
@@ -1013,7 +779,7 @@ export default function Home() {
                       {post.tag}
                     </span>
                     <span className="font-mono text-xs text-text-meta tabular-nums">{post.date}</span>
-                    <ArrowRight className="w-4 h-4 text-cyan/30 group-hover:text-cyan transition-colors" />
+                    <ArrowRight className={cn("w-4 h-4 text-cyan/30 group-hover:text-cyan transition-colors", isRTL ? "rotate-180" : "")} />
                   </div>
                 </Link>
               </motion.div>
@@ -1023,10 +789,10 @@ export default function Home() {
           {/* Mobile-only View All CTA */}
           <div className="md:hidden mt-8 flex justify-center">
             <Link
-              href="/write-ups"
+              href={getPath("/write-ups")}
               className="inline-flex items-center gap-2 border border-cyan/25 bg-cyan/5 px-4 py-2 text-cyan/90 hover:text-cyan hover:border-cyan/60 transition-colors font-mono text-xs tracking-widest uppercase"
             >
-              View All Write-ups <ArrowRight className="w-3 h-3" />
+              {t.writeups.view_all} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
             </Link>
           </div>
         </section>

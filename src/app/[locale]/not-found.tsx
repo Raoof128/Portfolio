@@ -4,8 +4,21 @@ import { AlertTriangle, Home, Terminal } from "lucide-react";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { motion } from "framer-motion";
 import { scaleIn, fadeInUp, staggerContainer } from "@/lib/utils";
+import { useTranslation } from "@/i18n/provider";
+import { defaultLocale } from "@/i18n";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/i18n/navigation";
 
 export default function NotFound() {
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPath(pathname ?? "");
+  const { t } = useTranslation();
+
+  const getPath = (path: string) => {
+    if (currentLocale === defaultLocale) return path;
+    return `/${currentLocale}${path}`;
+  };
+
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center p-4 text-center">
       <motion.div
@@ -28,8 +41,7 @@ export default function NotFound() {
           </div>
 
           <p className="text-text-body text-lg">
-            The requested signal path could not be resolved. <br />
-            The resource may have been moved, deleted, or classified.
+            {t.not_found.description}
           </p>
 
           <div className="font-mono text-xs text-text-meta bg-black/50 p-4 rounded border border-cyber-gray text-left space-y-1">
@@ -41,11 +53,11 @@ export default function NotFound() {
         </motion.div>
 
         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <NeonButton href="/" variant="primary">
-            <Home className="w-4 h-4 mr-2" /> RETURN_HOME
+          <NeonButton href={getPath("/")} variant="primary">
+            <Home className="w-4 h-4 mr-2" /> {t.not_found.return_home}
           </NeonButton>
-          <NeonButton href="/projects" variant="outline">
-            <Terminal className="w-4 h-4 mr-2" /> BROWSE_PROJECTS
+          <NeonButton href={getPath("/projects")} variant="outline">
+            <Terminal className="w-4 h-4 mr-2" /> {t.not_found.browse_projects}
           </NeonButton>
         </motion.div>
       </motion.div>

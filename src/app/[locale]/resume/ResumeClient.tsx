@@ -9,8 +9,11 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { CONTACT_EMAIL, CONTACT_EMAIL_GMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import { useTranslation } from "@/i18n/provider";
 
 export function ResumeClient() {
+  const { t } = useTranslation();
+
   return (
     <div className="relative min-h-screen pt-24 pb-12">
       <ActiveGrid />
@@ -19,10 +22,10 @@ export function ResumeClient() {
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
               <span className="text-cyan font-mono mr-2">/</span>
-              <DecryptedText text="Resume" />
+              <DecryptedText text={t.resume_page.title} />
             </h1>
             <NeonButton href="/Raouf_Portfolio_Resume.docx" download variant="outline">
-              <Download className="w-4 h-4" /> Download Resume
+              <Download className="w-4 h-4" /> {t.resume_page.download}
             </NeonButton>
           </div>
         </AnimatedSection>
