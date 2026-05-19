@@ -2,6 +2,7 @@
 
 import { NeonButton } from "@/components/ui/NeonButton"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
+import { RoyalAbyssCanvas } from "@/components/ui/RoyalAbyssCanvas"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
@@ -18,14 +19,27 @@ interface Project {
   links: { demo?: string; repo?: string; paper?: string; doi?: string };
 }
 
-export function ProjectDetailClient({ project }: { project: Project }) {
+const IW = "invisible-window-research";
+
+export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
+  const isIW = slug === IW;
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
-          <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
-            <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <section
+            className={`border-b overflow-hidden ${
+              isIW
+                ? "relative min-h-[55vh] flex items-end border-blue-900/30"
+                : "border-cyan/12 bg-cyan/5 py-12 md:py-20"
+            }`}
+          >
+            {isIW && <RoyalAbyssCanvas />}
+            <div
+              className={`max-w-7xl mx-auto px-4 md:px-6 w-full ${isIW ? "relative z-10 py-12 md:py-20" : ""}`}
+            >
               <Link href="/projects" className="inline-flex items-center text-sm text-text-body hover:text-cyan mb-8 transition-colors font-mono">
                 <ArrowLeft size={14} className="mr-2" /> Back to Projects
               </Link>
@@ -34,7 +48,14 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                 <div className="space-y-4 max-w-3xl">
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map(tag => (
-                      <span key={tag} className="text-xs font-mono text-cyan border border-cyan/30 px-2 py-1 bg-cyan/5">
+                      <span
+                        key={tag}
+                        className={`text-xs font-mono border px-2 py-1 ${
+                          isIW
+                            ? "text-[#00A693] border-[#00A693]/40 bg-[#00A693]/5"
+                            : "text-cyan border-cyan/30 bg-cyan/5"
+                        }`}
+                      >
                         {tag}
                       </span>
                     ))}
@@ -42,7 +63,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
                     {project.title}
                   </h1>
-                  <p className="text-xl text-text-body leading-relaxed">
+                  <p className={`text-xl leading-relaxed ${isIW ? "text-[#91A3B0]" : "text-text-body"}`}>
                     {project.fullDescription}
                   </p>
                 </div>
