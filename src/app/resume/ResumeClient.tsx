@@ -8,7 +8,7 @@ import { DecryptedText } from "@/components/ui/DecryptedText";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import { CONTACT_EMAIL, CONTACT_EMAIL_GMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 
 export function ResumeClient() {
   return (
@@ -38,7 +38,12 @@ export function ResumeClient() {
                   <p className="text-lg text-cyan font-mono mb-4">AI Security Researcher &middot; Vulnerability Research &middot; Offensive Security &middot; Python &amp; Systems Programming</p>
                   <div className="flex flex-col gap-2 text-text-body text-sm font-mono">
                     <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-text-body" /> Castle Hill, Sydney, NSW, Australia</div>
-                    <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-text-body" /> {CONTACT_EMAIL}</div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-text-body shrink-0" />
+                      <a href={`mailto:${CONTACT_EMAIL_GMAIL}`} className="hover:text-cyan transition-colors">{CONTACT_EMAIL_GMAIL}</a>
+                      <span className="text-text-meta opacity-40">·</span>
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-cyan transition-colors">{CONTACT_EMAIL}</a>
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 justify-center md:items-end">
