@@ -12,6 +12,14 @@
 /es    /es    200
 /es/*  /es/:splat  200
 
+# Root-level RSC prefetch files (requested when user is on / and hovers nav links)
+/__next._tree.txt                    /en/__next._tree.txt                    200
+/__next._full.txt                    /en/__next._full.txt                    200
+/__next._head.txt                    /en/__next._head.txt                    200
+/__next._index.txt                   /en/__next._index.txt                   200
+/__next.$d$locale.__PAGE__.txt       /en/__next.$d$locale.__PAGE__.txt       200
+/__next.$d$locale.txt                /en/__next.$d$locale.txt                200
+
 # English routes — exact match + sub-path wildcard
 # The /* rule covers RSC prefetch files (__next._tree.txt etc.) and slugs
 /                /en             200
