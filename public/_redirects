@@ -1,0 +1,17 @@
+# Redirect public /en/* back to clean English URLs
+/en /  302
+/en/* /:splat  302
+
+# Rewrite clean English root paths to locale-prefixed pages (200 = rewrite, URL stays clean)
+/  /en  200
+/projects  /en/projects  200
+/lab  /en/lab  200
+/write-ups  /en/write-ups  200
+/resume  /en/resume  200
+/about  /en/about  200
+/contact  /en/contact  200
+/hall-of-fame  /en/hall-of-fame  200
+/security-policy  /en/security-policy  200
+/projects/:slug  /en/projects/:slug  200
+/write-ups/:slug  /en/write-ups/:slug  200
+/lab/:id  /en/lab/:id  200

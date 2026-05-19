@@ -1,0 +1,7 @@
+# HTML pages: always revalidate so stale chunk references never occur
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Immutable static assets (content-hashed filenames, safe to cache forever)
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
