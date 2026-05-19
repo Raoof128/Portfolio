@@ -33,18 +33,14 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
           {isPS ? (
-            /* ── Project Simurgh: fire-shield hero, creature on the right ── */
-            <section
-              className="border-b border-orange-900/30 overflow-hidden"
-              style={{ background: "#010101" }}
-            >
+            /* ── Project Simurgh: fire-shield hero ── */
+            <section className="border-b border-orange-900/30 overflow-hidden" style={{ background: "#010101" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href="/projects" className="inline-flex items-center text-sm text-orange-400/70 hover:text-orange-400 pt-10 mb-8 transition-colors font-mono">
+                <Link href="/projects" className="inline-flex items-center text-sm text-orange-400/70 hover:text-orange-400 pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
                   <ArrowLeft size={14} className="mr-2" /> Back to Projects
                 </Link>
-                <div className="grid md:grid-cols-2 gap-8 items-center pb-12 md:pb-16">
-                  {/* Left: text + links */}
-                  <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map(tag => (
                         <span key={tag} className="text-xs font-mono text-orange-400 border border-orange-500/40 bg-orange-500/5 px-2 py-1">
@@ -52,55 +48,34 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                         </span>
                       ))}
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
                       {project.title}
                     </h1>
-                    <p className="text-lg text-orange-200/60 leading-relaxed">
+                    <p className="text-base md:text-lg text-orange-200/60 leading-relaxed">
                       {project.fullDescription}
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      {project.links.demo && (
-                        <NeonButton href={project.links.demo} external>
-                          <Play size={16} className="mr-2" /> Demo
-                        </NeonButton>
-                      )}
-                      {project.links.repo && (
-                        <NeonButton href={project.links.repo} variant="secondary" external>
-                          <Github size={16} className="mr-2" /> Repo
-                        </NeonButton>
-                      )}
-                      {project.links.paper && (
-                        <NeonButton href={project.links.paper} variant="outline" download>
-                          <FileText size={16} className="mr-2" /> Paper
-                        </NeonButton>
-                      )}
-                      {project.links.doi && (
-                        <NeonButton href={project.links.doi} variant="outline" external>
-                          <ExternalLink size={16} className="mr-2" /> DOI
-                        </NeonButton>
-                      )}
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className="mr-2" /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className="mr-2" /> Repo</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className="mr-2" /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className="mr-2" /> DOI</NeonButton>}
                     </div>
                   </div>
-                  {/* Right: fire shield */}
-                  <div className="relative h-[380px] md:h-[480px] overflow-hidden">
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
                     <FireShieldCanvas />
                   </div>
                 </div>
               </div>
             </section>
           ) : isIW ? (
-            /* ── Invisible Window: 2-col hero, creature on the right ── */
-            <section
-              className="border-b border-blue-900/30 overflow-hidden"
-              style={{ background: "#05020a" }}
-            >
+            /* ── Invisible Window: jellyfish hero ── */
+            <section className="border-b border-blue-900/30 overflow-hidden" style={{ background: "#05020a" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href="/projects" className="inline-flex items-center text-sm text-[#91A3B0] hover:text-[#00A693] pt-10 mb-8 transition-colors font-mono">
+                <Link href="/projects" className="inline-flex items-center text-sm text-[#91A3B0] hover:text-[#00A693] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
                   <ArrowLeft size={14} className="mr-2" /> Back to Projects
                 </Link>
-                <div className="grid md:grid-cols-2 gap-8 items-center pb-12 md:pb-16">
-                  {/* Left: text + links */}
-                  <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map(tag => (
                         <span key={tag} className="text-xs font-mono text-[#00A693] border border-[#00A693]/40 bg-[#00A693]/5 px-2 py-1">
@@ -108,37 +83,20 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                         </span>
                       ))}
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
                       {project.title}
                     </h1>
-                    <p className="text-lg text-[#91A3B0] leading-relaxed">
+                    <p className="text-base md:text-lg text-[#91A3B0] leading-relaxed">
                       {project.fullDescription}
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      {project.links.demo && (
-                        <NeonButton href={project.links.demo} external>
-                          <Play size={16} className="mr-2" /> Demo
-                        </NeonButton>
-                      )}
-                      {project.links.repo && (
-                        <NeonButton href={project.links.repo} variant="secondary" external>
-                          <Github size={16} className="mr-2" /> Repo
-                        </NeonButton>
-                      )}
-                      {project.links.paper && (
-                        <NeonButton href={project.links.paper} variant="outline" download>
-                          <FileText size={16} className="mr-2" /> Paper
-                        </NeonButton>
-                      )}
-                      {project.links.doi && (
-                        <NeonButton href={project.links.doi} variant="outline" external>
-                          <ExternalLink size={16} className="mr-2" /> DOI
-                        </NeonButton>
-                      )}
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className="mr-2" /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className="mr-2" /> Repo</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className="mr-2" /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className="mr-2" /> DOI</NeonButton>}
                     </div>
                   </div>
-                  {/* Right: jellyfish creature */}
-                  <div className="relative h-[380px] md:h-[480px] overflow-hidden">
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
                     <RoyalAbyssCanvas />
                   </div>
                 </div>
