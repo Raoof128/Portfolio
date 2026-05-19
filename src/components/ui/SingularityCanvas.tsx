@@ -452,7 +452,7 @@ export function SingularityCanvas() {
 
   return (
     <div
-      className="absolute inset-0 -z-10 overflow-hidden"
+      className="absolute inset-0 z-0 overflow-hidden"
       style={{
         background:
           "radial-gradient(circle at 50% 50%, rgba(111,253,242,0.06), transparent 24%), " +
