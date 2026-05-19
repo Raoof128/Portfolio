@@ -1,41 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  /* Base — deep black with subtle blue undertone (powered-on monitor) */
-  --background: #06080d;
-  --foreground: #e2e8f0;
-  /* Slate-200: cooler, more technical white */
+  /* Base — near-black navy: research console */
+  --background: #030712;
+  --foreground: #EAF6FF;
 
-  --color-cyber-black: #030508;
-  --color-cyber-dark: #0a0e17;
-  --color-cyber-gray: #1a1f2e;
+  --color-cyber-black: #010409;
+  --color-cyber-dark:  #07111F;
+  --color-cyber-gray:  #0f1f35;
 
-  /* Accent - Primary (neon violet HUD) */
-  --color-cyan-DEFAULT: #a78bfa;
-  --color-cyan-glow: #c4b5fd;
-  --color-cyan-dim: rgba(167, 139, 250, 0.15);
+  /* Accent - Primary: singularity cyan */
+  --color-cyan-DEFAULT: #00F5FF;
+  --color-cyan-glow:    #7ff9ff;
+  --color-cyan-dim:     rgba(0, 245, 255, 0.18);
 
-  /* Accent - Amber (alerts / active status) */
-  --color-amber-DEFAULT: #f59e0b;
-  --color-amber-glow: #fbbf24;
-  --color-amber-dim: rgba(245, 158, 11, 0.12);
+  /* Accent - Secondary: royal violet */
+  --color-purple-DEFAULT: #8B5CF6;
+  --color-purple-glow:    #a78bfa;
+  --color-purple-dim:     rgba(139, 92, 246, 0.16);
 
-  /* Accent - Emerald (data / engineering categories) */
-  --color-purple-DEFAULT: #10b981;
-  --color-purple-glow: #34d399;
-  --color-purple-dim: rgba(16, 185, 129, 0.12);
+  /* Accent - Highlight: warm gold */
+  --color-amber-DEFAULT: #F6C85F;
+  --color-amber-glow:    #fde68a;
+  --color-amber-dim:     rgba(246, 200, 95, 0.12);
 
-  /* Typography tokens */
-  --text-body: #94a3b8;
-  /* Slate-400: cooler than zinc-400 */
-  --text-meta: rgba(167, 139, 250, 0.8);
-  /* Violet-washed metadata */
+  /* Typography */
+  --text-body: #8EA3B8;
+  --text-meta: rgba(0, 245, 255, 0.75);
 
-  /* Glass / Surface tokens — violet-tinted */
-  --glass-bg: rgba(6, 8, 13, 0.7);
-  --glass-border: rgba(167, 139, 250, 0.12);
-  --surface-1: rgba(167, 139, 250, 0.04);
-  --surface-2: rgba(167, 139, 250, 0.08);
+  /* Glass / Surface — cyan-tinted */
+  --glass-bg:     rgba(3, 7, 18, 0.75);
+  --glass-border: rgba(0, 245, 255, 0.12);
+  --surface-1:    rgba(0, 245, 255, 0.04);
+  --surface-2:    rgba(0, 245, 255, 0.08);
 
   --radius: 0rem;
 }

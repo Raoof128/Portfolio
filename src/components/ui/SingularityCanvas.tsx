@@ -3,10 +3,10 @@
 import { useEffect, useRef, useCallback } from "react";
 
 const PALETTE = {
-  cyan: "#6ffdf2",
-  violet: "#a78bfa",
-  amber: "#f6d365",
-  white: "#ffffff",
+  cyan:   "#00F5FF",   // singularity event-horizon ring
+  violet: "#8B5CF6",   // outer accretion disk
+  amber:  "#F6C85F",   // gold sparks
+  white:  "#ffffff",
 } as const;
 
 const CFG = {
@@ -364,7 +364,7 @@ export function SingularityCanvas() {
       ctx.fill();
       ctx.globalCompositeOperation = "source-over";
       const voidG = ctx.createRadialGradient(x - r * 0.2, y - r * 0.25, r * 0.1, x, y, r * 1.08);
-      voidG.addColorStop(0, "#02030a");
+      voidG.addColorStop(0, "#030712");
       voidG.addColorStop(0.76, "#000000");
       voidG.addColorStop(1, "rgba(0,0,0,0.82)");
       ctx.fillStyle = voidG;
@@ -464,10 +464,10 @@ export function SingularityCanvas() {
       className="absolute inset-0 z-0 overflow-hidden"
       style={{
         background:
-          "radial-gradient(circle at 50% 50%, rgba(111,253,242,0.06), transparent 24%), " +
-          "radial-gradient(circle at 34% 22%, rgba(167,139,250,0.12), transparent 28%), " +
-          "radial-gradient(circle at 68% 78%, rgba(246,211,101,0.07), transparent 22%), " +
-          "linear-gradient(135deg, #01020a 0%, #060815 50%, #02030a 100%)",
+          "radial-gradient(circle at 50% 50%, rgba(0,245,255,0.06), transparent 24%), " +
+          "radial-gradient(circle at 34% 22%, rgba(139,92,246,0.10), transparent 28%), " +
+          "radial-gradient(circle at 68% 78%, rgba(246,200,95,0.05), transparent 22%), " +
+          "linear-gradient(135deg, #030712 0%, #07111F 50%, #030712 100%)",
       }}
       aria-hidden="true"
     >
@@ -479,7 +479,7 @@ export function SingularityCanvas() {
         style={{
           inset: "-18%",
           background:
-            "conic-gradient(from 120deg at 50% 50%, transparent 0 18%, rgba(111,253,242,0.12), transparent 35% 58%, rgba(167,139,250,0.12), transparent 80% 100%)",
+            "conic-gradient(from 120deg at 50% 50%, transparent 0 18%, rgba(0,245,255,0.10), transparent 35% 58%, rgba(139,92,246,0.10), transparent 80% 100%)",
           filter: "blur(60px) saturate(1.15)",
           opacity: 0.85,
           animation: "singularity-aurora 18s ease-in-out infinite alternate",
