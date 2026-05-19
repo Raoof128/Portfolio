@@ -28,7 +28,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isIW = slug === IW;
   const isPS = slug === PS;
 
-  // Per-page accent theme — only the content body sections use this
+  // Per-page accent theme — content body sections
   const t = isPS
     ? {
         accent:       "text-orange-400",
@@ -39,6 +39,19 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bg:           "bg-orange-500/5",
         hover:        "hover:text-orange-400",
         bullet:       "text-orange-400",
+        check:        "text-orange-300",
+      }
+    : isIW
+    ? {
+        accent:       "text-[#00A693]",
+        accentSecond: "text-[#317873]",
+        border:       "border-[#00A693]/20",
+        borderB:      "border-[#00A693]/30",
+        borderSub:    "border-[#00A693]/15",
+        bg:           "bg-[#00A693]/5",
+        hover:        "hover:text-[#00A693]",
+        bullet:       "text-[#00A693]",
+        check:        "text-[#6ffdf2]",
       }
     : {
         accent:       "text-cyan",
@@ -49,11 +62,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bg:           "bg-cyan/5",
         hover:        "hover:text-cyan",
         bullet:       "text-cyan",
+        check:        "text-green-400",
       };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {isPS && <ThemeInjector theme="simurgh" />}
+      {isIW && <ThemeInjector theme="invisible-window" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -178,7 +193,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : ""}`}>
+        <div className={`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : ""}`}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
@@ -249,7 +264,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                     <ul className="space-y-3">
                       {project.secure?.measures.map((measure, i) => (
                         <li key={i} className="text-sm text-text-body flex gap-2">
-                          <CheckCircle size={14} className={`mt-1 ${isPS ? "text-orange-300" : "text-green-400"} shrink-0`} />
+                          <CheckCircle size={14} className={`mt-1 ${t.check} shrink-0`} />
                           {measure}
                         </li>
                       ))}

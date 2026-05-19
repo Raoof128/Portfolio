@@ -40,6 +40,37 @@
   --radius: 0rem;
 }
 
+/* ── Invisible Window Research: full green palette override ── */
+[data-theme="invisible-window"] {
+  --background:            #02030a;
+  --color-cyber-dark:      #030810;
+  --color-cyber-gray:      #081018;
+
+  /* cyan → Persian Green Brilliant */
+  --color-cyan-DEFAULT:    #00A693;
+  --color-cyan-glow:       #6ffdf2;
+  --color-cyan-dim:        rgba(0, 166, 147, 0.15);
+
+  /* purple → Persian Green Moderate */
+  --color-purple-DEFAULT:  #317873;
+  --color-purple-glow:     #00A693;
+  --color-purple-dim:      rgba(49, 120, 115, 0.12);
+
+  /* amber stays warm */
+  --color-amber-DEFAULT:   #f6d365;
+  --color-amber-glow:      #fde68a;
+  --color-amber-dim:       rgba(246, 211, 101, 0.12);
+
+  --text-meta:             rgba(0, 166, 147, 0.8);
+
+  --glass-bg:              rgba(2, 3, 10, 0.75);
+  --glass-border:          rgba(0, 166, 147, 0.12);
+  --surface-1:             rgba(0, 166, 147, 0.04);
+  --surface-2:             rgba(0, 166, 147, 0.08);
+
+  scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
+}
+
 /* ── Project Simurgh: full orange palette override ── */
 [data-theme="simurgh"] {
   --background:            #070300;
