@@ -1,9 +1,33 @@
 # Redirect public /en/* back to clean English URLs
-/en /  302
+/en  /  302
 /en/* /:splat  302
 
-# Catch-all: rewrite any path without a direct file match to /en/
-# This covers HTML pages, RSC __next.* prefetch files, and all sub-routes.
-# Cloudflare Pages serves actual files (/_next/static/, /fa/*, /ar/*, etc.)
-# directly BEFORE consulting _redirects, so they are not affected.
-/* /en/:splat  200
+# Non-English locale routes — exact and sub-paths (pass through unchanged)
+/fa    /fa    200
+/fa/*  /fa/:splat  200
+/ar    /ar    200
+/ar/*  /ar/:splat  200
+/zh    /zh    200
+/zh/*  /zh/:splat  200
+/es    /es    200
+/es/*  /es/:splat  200
+
+# English routes — exact match + sub-path wildcard
+# The /* rule covers RSC prefetch files (__next._tree.txt etc.) and slugs
+/                /en             200
+/about           /en/about       200
+/about/*         /en/about/:splat      200
+/contact         /en/contact     200
+/contact/*       /en/contact/:splat    200
+/resume          /en/resume      200
+/resume/*        /en/resume/:splat     200
+/projects        /en/projects    200
+/projects/*      /en/projects/:splat   200
+/lab             /en/lab         200
+/lab/*           /en/lab/:splat        200
+/write-ups       /en/write-ups   200
+/write-ups/*     /en/write-ups/:splat  200
+/hall-of-fame    /en/hall-of-fame      200
+/hall-of-fame/*  /en/hall-of-fame/:splat  200
+/security-policy     /en/security-policy   200
+/security-policy/*   /en/security-policy/:splat  200
