@@ -40,6 +40,39 @@
   --radius: 0rem;
 }
 
+/* ── Project Simurgh: full orange palette override ── */
+[data-theme="simurgh"] {
+  --background:            #070300;
+  --color-cyber-dark:      #120800;
+  --color-cyber-gray:      #1f1000;
+
+  /* cyan → orange-400 */
+  --color-cyan-DEFAULT:    #fb923c;
+  --color-cyan-glow:       #fdba74;
+  --color-cyan-dim:        rgba(251, 146, 60, 0.15);
+
+  /* purple/emerald → amber */
+  --color-purple-DEFAULT:  #f97316;
+  --color-purple-glow:     #fb923c;
+  --color-purple-dim:      rgba(249, 115, 22, 0.12);
+
+  /* amber stays warm */
+  --color-amber-DEFAULT:   #fbbf24;
+  --color-amber-glow:      #fde68a;
+  --color-amber-dim:       rgba(251, 191, 36, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(251, 146, 60, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(7, 3, 0, 0.75);
+  --glass-border:          rgba(251, 146, 60, 0.12);
+  --surface-1:             rgba(251, 146, 60, 0.04);
+  --surface-2:             rgba(251, 146, 60, 0.08);
+
+  scrollbar-color: rgba(251, 146, 60, 0.5) #070300;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

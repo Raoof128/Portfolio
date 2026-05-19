@@ -4,6 +4,7 @@ import { NeonButton } from "@/components/ui/NeonButton"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { RoyalAbyssCanvas } from "@/components/ui/RoyalAbyssCanvas"
 import { FireShieldCanvas } from "@/components/ui/FireShieldCanvas"
+import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
@@ -52,6 +53,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      {isPS && <ThemeInjector theme="simurgh" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
