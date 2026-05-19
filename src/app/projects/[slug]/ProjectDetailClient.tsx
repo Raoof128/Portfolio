@@ -27,6 +27,29 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isIW = slug === IW;
   const isPS = slug === PS;
 
+  // Per-page accent theme — only the content body sections use this
+  const t = isPS
+    ? {
+        accent:       "text-orange-400",
+        accentSecond: "text-orange-300",
+        border:       "border-orange-500/20",
+        borderB:      "border-orange-500/30",
+        borderSub:    "border-orange-500/15",
+        bg:           "bg-orange-500/5",
+        hover:        "hover:text-orange-400",
+        bullet:       "text-orange-400",
+      }
+    : {
+        accent:       "text-cyan",
+        accentSecond: "text-purple",
+        border:       "border-cyan/12",
+        borderB:      "border-cyan/20",
+        borderSub:    "border-cyan/10",
+        bg:           "bg-cyan/5",
+        hover:        "hover:text-cyan",
+        bullet:       "text-cyan",
+      };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="flex-1 pb-24">
@@ -153,7 +176,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className={`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : ""}`}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
@@ -161,9 +184,9 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             <AnimatedSection variants={fadeInUp}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan">01.</span> Problem
+                  <span className={t.accent}>01.</span> Problem
                 </h2>
-                <div className="prose prose-invert max-w-none text-text-body border-l-2 border-cyan/12 pl-6">
+                <div className={`prose prose-invert max-w-none text-text-body border-l-2 ${t.border} pl-6`}>
                   <p>{project.problem}</p>
                 </div>
               </section>
@@ -172,13 +195,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             <AnimatedSection variants={fadeInUp} delay={0.1}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan">02.</span> Solution Overview
+                  <span className={t.accent}>02.</span> Solution Overview
                 </h2>
-                <div className="bg-black/40 border border-cyan/12 p-6 rounded-sm">
+                <div className={`bg-black/40 border ${t.border} p-6 rounded-sm`}>
                   <ul className="grid gap-3">
                     {project.solution.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-slate-300">
-                        <ArrowRight size={16} className="mt-1 text-cyan shrink-0" />
+                        <ArrowRight size={16} className={`mt-1 ${t.bullet} shrink-0`} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -191,14 +214,14 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
               <AnimatedSection variants={fadeInLeft}>
                 <section className="space-y-4">
                   <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                    <Code size={20} className="text-cyan" /> Build
+                    <Code size={20} className={t.accent} /> Build
                   </h2>
-                  <div className="bg-cyan/5 border border-cyan/12 p-6 h-full">
+                  <div className={`${t.bg} border ${t.border} p-6 h-full`}>
                     <div className="mb-4">
                       <h4 className="text-xs uppercase text-text-body font-mono mb-2">Tech Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.build?.stack.map(tech => (
-                          <span key={tech} className="text-xs border border-cyan/20 px-2 py-1 text-slate-300 bg-cyan/5">
+                          <span key={tech} className={`text-xs border ${t.borderB} px-2 py-1 text-slate-300 ${t.bg}`}>
                             {tech}
                           </span>
                         ))}
@@ -207,7 +230,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                     <ul className="space-y-2">
                       {project.build?.features.map((feat, i) => (
                         <li key={i} className="text-sm text-text-body flex gap-2">
-                          <span className="text-cyan">&bull;</span> {feat}
+                          <span className={t.bullet}>&bull;</span> {feat}
                         </li>
                       ))}
                     </ul>
@@ -218,13 +241,13 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
               <AnimatedSection variants={fadeInRight} delay={0.1}>
                 <section className="space-y-4">
                   <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                    <Shield size={20} className="text-purple" /> Secure
+                    <Shield size={20} className={t.accentSecond} /> Secure
                   </h2>
-                  <div className="bg-cyan/5 border border-cyan/12 p-6 h-full">
+                  <div className={`${t.bg} border ${t.border} p-6 h-full`}>
                     <ul className="space-y-3">
                       {project.secure?.measures.map((measure, i) => (
                         <li key={i} className="text-sm text-text-body flex gap-2">
-                          <CheckCircle size={14} className="mt-1 text-green-400 shrink-0" />
+                          <CheckCircle size={14} className={`mt-1 ${isPS ? "text-orange-300" : "text-green-400"} shrink-0`} />
                           {measure}
                         </li>
                       ))}
@@ -237,16 +260,16 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             <AnimatedSection variants={fadeInUp} delay={0.15}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan">03.</span> Proof & Verification
+                  <span className={t.accent}>03.</span> Proof & Verification
                 </h2>
-                <div className="border border-cyan/20 bg-cyan/5 p-6 space-y-4">
-                  <p className="font-mono text-sm text-cyan mb-4 uppercase tracking-widest border-b border-cyan/20 pb-2 inline-block">
+                <div className={`border ${t.borderB} ${t.bg} p-6 space-y-4`}>
+                  <p className={`font-mono text-sm ${t.accent} mb-4 uppercase tracking-widest border-b ${t.borderB} pb-2 inline-block`}>
                     Verified Claims
                   </p>
                   <ul className="space-y-3">
                     {project.proof.map((proof, i) => (
                       <li key={i} className="font-mono text-sm text-slate-300 flex items-start gap-3">
-                        <span className="text-cyan mt-1">&gt;</span>
+                        <span className={`${t.bullet} mt-1`}>&gt;</span>
                         {proof}
                       </li>
                     ))}
@@ -261,26 +284,26 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           <AnimatedSection variants={fadeInRight} delay={0.2} className="lg:col-span-4">
             <div className="space-y-8">
               <div className="sticky top-24">
-                <div className="border border-cyan/12 p-6 bg-black/20">
+                <div className={`border ${t.border} p-6 bg-black/20`}>
                   <h3 className="font-mono font-bold text-white mb-4">Project Links</h3>
                   <div className="space-y-3">
                     {project.links.demo && (
-                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
+                      <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
                         Watch Demo <Play size={14} />
                       </a>
                     )}
                     {project.links.repo && (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
+                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
                         Source Code <Github size={14} />
                       </a>
                     )}
                     {project.links.paper && (
-                      <a href={project.links.paper} download className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
+                      <a href={project.links.paper} download className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
                         Download Paper <FileText size={14} />
                       </a>
                     )}
                     {project.links.doi && (
-                      <a href={project.links.doi} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between text-sm text-text-body hover:text-cyan transition-colors border-b border-cyan/10 pb-2">
+                      <a href={project.links.doi} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${t.hover} transition-colors border-b ${t.borderSub} pb-2`}>
                         DOI Record <ExternalLink size={14} />
                       </a>
                     )}
