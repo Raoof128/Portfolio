@@ -35,6 +35,13 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-19 (singularity hero)
+- **Scope**: Replace hero particle network + terminal with singularity animation
+- **Summary**: Removed `ParticleNetwork` and `TerminalFeed` from homepage hero. New `SingularityCanvas` component ports the preview.html black hole / accretion disk canvas animation to TypeScript React with DPR handling, reduced-motion support, and `visibilitychange` pause/resume. Hero layout changed from `md:grid-cols-2` to single-column so the singularity occupies the full viewport.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx` (new), `src/app/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-05-15 (static visibility fallback)
 - **Scope**: Make write-up pages readable when client JavaScript is blocked
 - **Summary**: Removed the global page-transition wrapper that emitted route content with `opacity:0` in static HTML, and changed `AnimatedSection` so server-rendered content is visible by default instead of hidden until Framer Motion hydrates. This fixes the failure mode where `/write-ups/invisible-window-research` looks broken if a browser extension blocks a Next.js chunk (`net::ERR_BLOCKED_BY_CLIENT`) or hydration fails before animations can reveal the article.

@@ -12,8 +12,7 @@ import { projects, writeups } from "@/lib/data";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, staggerContainerSlow } from "@/lib/utils";
 import { DecryptedText } from "@/components/ui/DecryptedText";
-import { TerminalFeed } from "@/components/ui/TerminalFeed";
-import { ParticleNetwork } from "@/components/ui/ParticleNetwork";
+import { SingularityCanvas } from "@/components/ui/SingularityCanvas";
 
 /* ─── Constants ──────────────────────────────────────────────────────── */
 
@@ -84,18 +83,16 @@ export default function Home() {
     <div>
 
       {/* ══════════════════════════════════════════════
-          HERO — Interactive Particle Network
+          HERO — Singularity
       ══════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
 
-        {/* Interactive particle mesh — mouse-reactive network topology */}
-        <ParticleNetwork />
+        {/* Singularity canvas — accretion disk black hole animation */}
+        <SingularityCanvas />
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-20 lg:py-28">
-
-          {/* Left */}
-          <div className="space-y-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-28">
+          <div className="max-w-2xl space-y-10">
 
             {/* Badge */}
             <motion.div
@@ -127,7 +124,7 @@ export default function Home() {
                 <h1 className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight text-white">
                   <DecryptedText text="AI +" loopInterval={12000} />
                 </h1>
-                {/* Outline — 2026 text-stroke effect */}
+                {/* Outline — text-stroke effect */}
                 <h1
                   className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
                   style={{ WebkitTextStroke: "1.5px rgba(167,139,250,0.7)", color: "transparent" } as React.CSSProperties}
@@ -180,17 +177,6 @@ export default function Home() {
               </NeonButton>
             </motion.div>
           </div>
-
-          {/* Right — Terminal */}
-          <motion.div
-            initial={{ opacity: 0, x: 48 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.75 }}
-            className="hidden md:block relative"
-          >
-            <div className="absolute -inset-px bg-gradient-to-br from-cyan/15 via-transparent to-purple/10 blur-md opacity-60 pointer-events-none" />
-            <TerminalFeed />
-          </motion.div>
         </div>
 
         {/* Scroll indicator — hidden on small screens where hero content fills the viewport */}
