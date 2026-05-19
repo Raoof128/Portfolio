@@ -3,6 +3,7 @@
 import { NeonButton } from "@/components/ui/NeonButton"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { RoyalAbyssCanvas } from "@/components/ui/RoyalAbyssCanvas"
+import { FireShieldCanvas } from "@/components/ui/FireShieldCanvas"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
@@ -20,16 +21,74 @@ interface Project {
 }
 
 const IW = "invisible-window-research";
+const PS = "project-simurgh";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const isIW = slug === IW;
+  const isPS = slug === PS;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
-          {isIW ? (
+          {isPS ? (
+            /* ── Project Simurgh: fire-shield hero, creature on the right ── */
+            <section
+              className="border-b border-orange-900/30 overflow-hidden"
+              style={{ background: "#010101" }}
+            >
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href="/projects" className="inline-flex items-center text-sm text-orange-400/70 hover:text-orange-400 pt-10 mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className="mr-2" /> Back to Projects
+                </Link>
+                <div className="grid md:grid-cols-2 gap-8 items-center pb-12 md:pb-16">
+                  {/* Left: text + links */}
+                  <div className="space-y-6">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-mono text-orange-400 border border-orange-500/40 bg-orange-500/5 px-2 py-1">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
+                      {project.title}
+                    </h1>
+                    <p className="text-lg text-orange-200/60 leading-relaxed">
+                      {project.fullDescription}
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {project.links.demo && (
+                        <NeonButton href={project.links.demo} external>
+                          <Play size={16} className="mr-2" /> Demo
+                        </NeonButton>
+                      )}
+                      {project.links.repo && (
+                        <NeonButton href={project.links.repo} variant="secondary" external>
+                          <Github size={16} className="mr-2" /> Repo
+                        </NeonButton>
+                      )}
+                      {project.links.paper && (
+                        <NeonButton href={project.links.paper} variant="outline" download>
+                          <FileText size={16} className="mr-2" /> Paper
+                        </NeonButton>
+                      )}
+                      {project.links.doi && (
+                        <NeonButton href={project.links.doi} variant="outline" external>
+                          <ExternalLink size={16} className="mr-2" /> DOI
+                        </NeonButton>
+                      )}
+                    </div>
+                  </div>
+                  {/* Right: fire shield */}
+                  <div className="relative h-[380px] md:h-[480px] overflow-hidden">
+                    <FireShieldCanvas />
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : isIW ? (
             /* ── Invisible Window: 2-col hero, creature on the right ── */
             <section
               className="border-b border-blue-900/30 overflow-hidden"
