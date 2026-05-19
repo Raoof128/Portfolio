@@ -65,6 +65,7 @@ export function SingularityCanvas() {
     let dpr = 1;
     let frame = 0;
     let rafId: number | null = null;
+    let lastTimestamp = 0;
     let stars: Star[] = [];
     let particles: Particle[] = [];
 
@@ -389,7 +390,12 @@ export function SingularityCanvas() {
       ctx.shadowBlur = 0;
     }
 
-    function draw() {
+    function draw(timestamp: number) {
+      // Skip physics if tab was hidden — prevents burst movement on focus return.
+      // A gap >100ms means the loop was paused; redraw visuals but don't advance state.
+      const skipPhysics = lastTimestamp > 0 && timestamp - lastTimestamp > 100;
+      lastTimestamp = timestamp;
+
       ctx.clearRect(0, 0, width, height);
       drawStars();
       const ox = width * 0.5;
@@ -407,23 +413,26 @@ export function SingularityCanvas() {
       ctx.save();
       ctx.globalCompositeOperation = "screen";
       for (const p of particles) {
-        updateParticle(p);
+        if (!skipPhysics) updateParticle(p);
         drawParticle(p, ox, oy);
       }
       ctx.restore();
       drawHorizon(ox, oy);
       ctx.restore();
-      if (!rmq.matches) frame += 1;
+      if (!rmq.matches && !skipPhysics) frame += 1;
       rafId = requestAnimationFrame(draw);
     }
 
     function stop() {
       if (rafId !== null) cancelAnimationFrame(rafId);
       rafId = null;
+      lastTimestamp = 0;
     }
 
     function start() {
-      if (rafId === null) rafId = requestAnimationFrame(draw);
+      // Always cancel before re-queuing — eliminates any double-loop race.
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(draw);
     }
 
     const onResize = () => resize();
