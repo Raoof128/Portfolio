@@ -159,7 +159,7 @@ export function AboutClient() {
               </p>
             </div>
 
-            <HUDFrame className="p-6 md:p-8 bg-[#06080d]/60 backdrop-blur-sm space-y-4">
+            <HUDFrame className="p-6 md:p-8 bg-[#030712]/60 backdrop-blur-sm space-y-4">
               <p className="text-slate-300 leading-relaxed">
                 AI security researcher and final-year Cyber Security student at{" "}
                 <span className="text-cyan">Macquarie University</span> (graduating November 2026) with demonstrated ability to{" "}
@@ -187,7 +187,7 @@ export function AboutClient() {
                 { value: "100%", label: "Evasion Rate", color: "text-purple" },
                 { value: "3+2", label: "Vendors Disclosed", color: "text-amber" },
               ].map((s) => (
-                <div key={s.label} className="border border-cyan/12 p-4 bg-[#06080d]/60 hover:border-cyan/20 transition-colors text-center">
+                <div key={s.label} className="border border-cyan/12 p-4 bg-[#030712]/60 hover:border-cyan/20 transition-colors text-center">
                   <div className={`text-2xl font-bold font-mono ${s.color}`}>{s.value}</div>
                   <div className="text-xs text-text-body font-mono uppercase tracking-wider mt-1">{s.label}</div>
                 </div>
@@ -197,15 +197,15 @@ export function AboutClient() {
             {/* Social links */}
             <div className="flex flex-wrap gap-3">
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(167,139,250,0.15)] text-text-body font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,245,255,0.15)] text-text-body font-mono text-xs transition-all">
                 <Github className="w-3.5 h-3.5" /> github.com/Raoof128
               </a>
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(167,139,250,0.15)] text-text-body font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,245,255,0.15)] text-text-body font-mono text-xs transition-all">
                 <Linkedin className="w-3.5 h-3.5" /> LinkedIn
               </a>
               <a href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(167,139,250,0.15)] text-text-body font-mono text-xs transition-all">
+                className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,245,255,0.15)] text-text-body font-mono text-xs transition-all">
                 <Mail className="w-3.5 h-3.5" /> {CONTACT_EMAIL}
               </a>
             </div>
@@ -279,7 +279,7 @@ export function AboutClient() {
           <div className="grid md:grid-cols-2 gap-4">
             {specializations.map((spec) => (
               <motion.div key={spec.label} variants={fadeInUp}>
-                <div className={`group h-full p-6 border bg-[#06080d]/60 hover:bg-cyan/[0.04] transition-all duration-300 ${spec.accentClass}`}>
+                <div className={`group h-full p-6 border bg-[#030712]/60 hover:bg-cyan/[0.04] transition-all duration-300 ${spec.accentClass}`}>
                   <div className="flex items-center gap-3 mb-5">
                     <spec.icon className={`w-5 h-5 ${spec.iconClass}`} />
                     <h3 className={`font-mono text-sm font-bold uppercase tracking-wide ${spec.iconClass}`}>{spec.label}</h3>
@@ -367,7 +367,7 @@ export function AboutClient() {
           </motion.div>
           <div className="grid md:grid-cols-2 gap-4">
             <motion.div variants={fadeInUp}>
-              <HUDFrame className="p-5 bg-[#06080d]/60 h-full">
+              <HUDFrame className="p-5 bg-[#030712]/60 h-full">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="text-white font-bold">Bachelor of Cyber Security</h3>
                   <span className="font-mono text-xs text-cyan shrink-0">2024–2026</span>
@@ -377,7 +377,7 @@ export function AboutClient() {
               </HUDFrame>
             </motion.div>
             <motion.div variants={fadeInUp}>
-              <HUDFrame className="p-5 bg-[#06080d]/60 h-full">
+              <HUDFrame className="p-5 bg-[#030712]/60 h-full">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="text-white font-bold">Diploma of Information Technology</h3>
                   <span className="font-mono text-xs text-amber shrink-0">2023–2024</span>

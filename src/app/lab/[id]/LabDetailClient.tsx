@@ -37,7 +37,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
             {/* Left Column: Info */}
             <AnimatedSection variants={fadeInLeft} className="lg:col-span-4 space-y-6">
 
-                <div className="p-6 bg-[#06080d]/60 border border-cyan/12 rounded-lg backdrop-blur-sm">
+                <div className="p-6 bg-[#030712]/60 border border-cyan/12 rounded-lg backdrop-blur-sm">
                     <div className="font-mono text-xs text-text-body mb-2">EXPERIMENT_ID: {exp.id}</div>
                     <h1 className="text-2xl font-bold text-white mb-4">{exp.title}</h1>
 

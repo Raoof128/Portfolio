@@ -42,7 +42,7 @@ export function WriteUpsClient() {
             <motion.div key={post.slug} variants={fadeInUp}>
               <Link href={`/write-ups/${post.slug}`} className="block group">
                 <motion.div whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}>
-                  <HUDFrame className="p-6 bg-[#06080d]/60 backdrop-blur-md hover:border-cyan/40 hover:bg-cyan/[0.04] transition-all duration-300">
+                  <HUDFrame className="p-6 bg-[#030712]/60 backdrop-blur-md hover:border-cyan/40 hover:bg-cyan/[0.04] transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="space-y-2">
                         <div className="flex items-center gap-3 text-xs font-mono text-text-meta">

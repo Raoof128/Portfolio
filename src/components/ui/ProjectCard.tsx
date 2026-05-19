@@ -43,7 +43,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
       transition={hoverSpring}
       className="h-full"
     >
-      <HUDFrame className={cn("flex flex-col h-full hover:shadow-[0_0_30px_rgba(167,139,250,0.1)] transition-shadow duration-300", featured ? "lg:col-span-2" : "")} title="PROJECT_MODULE">
+      <HUDFrame className={cn("flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,245,255,0.1)] transition-shadow duration-300", featured ? "lg:col-span-2" : "")} title="PROJECT_MODULE">
         <div className="flex-1 space-y-4">
           {/* Header */}
           <div className="flex justify-between items-start">
@@ -57,7 +57,7 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
           {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-2">
             {tags.map((tag) => (
-              <span key={tag} className="text-xs font-mono text-text-body bg-[#06080d]/60 px-2 py-1 border border-cyan/15">
+              <span key={tag} className="text-xs font-mono text-text-body bg-[#030712]/60 px-2 py-1 border border-cyan/15">
                 {tag}
               </span>
             ))}

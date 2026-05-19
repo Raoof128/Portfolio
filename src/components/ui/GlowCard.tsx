@@ -12,7 +12,7 @@ interface GlowCardProps {
 const glowColors = {
   cyan: {
     border: "hover:border-cyan/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(167,139,250,0.2)]",
+    shadow: "hover:shadow-[0_0_30px_rgba(0,245,255,0.2)]",
     trace: "from-cyan/60 via-transparent to-cyan/60",
   },
   amber: {
@@ -22,7 +22,7 @@ const glowColors = {
   },
   purple: {
     border: "hover:border-purple/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]",
+    shadow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]",
     trace: "from-purple/60 via-transparent to-purple/60",
   },
 };
@@ -39,7 +39,7 @@ export function GlowCard({
       whileHover={{ y: -4 }}
       transition={hoverSpring}
       className={cn(
-        "relative border border-cyan/8 bg-[#06080d]/60 backdrop-blur-sm transition-all duration-300 hover:bg-cyan/[0.04]",
+        "relative border border-cyan/8 bg-[#030712]/60 backdrop-blur-sm transition-all duration-300 hover:bg-cyan/[0.04]",
         colors.border,
         colors.shadow,
         className

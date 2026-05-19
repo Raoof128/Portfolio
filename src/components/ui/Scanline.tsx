@@ -8,7 +8,7 @@ export function Scanline() {
             <div
                 className="absolute inset-0 opacity-[0.05]"
                 style={{
-                    backgroundImage: "linear-gradient(rgba(6, 8, 13, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(167, 139, 250, 0.04), rgba(16, 185, 129, 0.02), rgba(167, 139, 250, 0.04))",
+                    backgroundImage: "linear-gradient(rgba(3, 7, 18, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(0, 245, 255, 0.04), rgba(139, 92, 246, 0.02), rgba(0, 245, 255, 0.04))",
                     backgroundSize: "100% 2px, 3px 100%"
                 }}
             />

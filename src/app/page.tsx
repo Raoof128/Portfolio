@@ -47,7 +47,7 @@ function BentoCard({
   return (
     <motion.div
       variants={fadeInUp}
-      className={`group relative p-6 border border-cyan/10 bg-[#06080d]/60 hover:shadow-[0_8px_32px_rgba(167,139,250,0.12)] ${accentHover} ${tint ?? ""} transition-all duration-300 cursor-pointer${className ? ` ${className}` : ""}`}
+      className={`group relative p-6 border border-cyan/10 bg-[#030712]/60 hover:shadow-[0_8px_32px_rgba(0,245,255,0.12)] ${accentHover} ${tint ?? ""} transition-all duration-300 cursor-pointer${className ? ` ${className}` : ""}`}
       whileHover={{ y: -6 }}
     >
       {children}
@@ -59,9 +59,9 @@ function BentoCard({
           className="absolute inset-0 -z-10 pointer-events-none"
           animate={{
             boxShadow: [
-              "0 0 0px rgba(167,139,250,0)",
-              "0 0 30px rgba(167,139,250,0.15), inset 0 0 20px rgba(167,139,250,0.05)",
-              "0 0 0px rgba(167,139,250,0)",
+              "0 0 0px rgba(0,245,255,0)",
+              "0 0 30px rgba(0,245,255,0.15), inset 0 0 20px rgba(0,245,255,0.05)",
+              "0 0 0px rgba(0,245,255,0)",
             ],
           }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -103,7 +103,7 @@ export default function Home() {
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inset-0 rounded-full bg-cyan opacity-75" />
-                <span className="relative rounded-full h-2 w-2 bg-cyan shadow-[0_0_8px_rgba(167,139,250,0.8)]" />
+                <span className="relative rounded-full h-2 w-2 bg-cyan shadow-[0_0_8px_rgba(0,245,255,0.8)]" />
               </span>
               <span className="font-mono text-cyan/80 text-xs tracking-widest uppercase">
                 System Online · Castle Hill, NSW
@@ -127,7 +127,7 @@ export default function Home() {
                 {/* Outline — text-stroke effect */}
                 <h1
                   className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
-                  style={{ WebkitTextStroke: "1.5px rgba(167,139,250,0.7)", color: "transparent" } as React.CSSProperties}
+                  style={{ WebkitTextStroke: "1.5px rgba(0,245,255,0.7)", color: "transparent" } as React.CSSProperties}
                 >
                   CYBER
                 </h1>
@@ -759,7 +759,7 @@ export default function Home() {
                 <motion.div
                   key={p.slug}
                   variants={fadeInUp}
-                  className={`group relative p-6 border border-cyan/10 bg-[#06080d]/60 hover:bg-cyan/[0.04] hover:shadow-[0_8px_32px_rgba(167,139,250,0.12)] ${s.hover} transition-all duration-300 md:col-span-2 cursor-pointer`}
+                  className={`group relative p-6 border border-cyan/10 bg-[#030712]/60 hover:bg-cyan/[0.04] hover:shadow-[0_8px_32px_rgba(0,245,255,0.12)] ${s.hover} transition-all duration-300 md:col-span-2 cursor-pointer`}
                   whileHover={{ y: -6 }}
                 >
                   <div className="flex items-start justify-between mb-5">
@@ -857,7 +857,7 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute -top-4 -left-3 text-[10rem] font-bold leading-none select-none pointer-events-none"
-                  style={{ color: "rgba(167,139,250,0.07)" } as React.CSSProperties}
+                  style={{ color: "rgba(0,245,255,0.07)" } as React.CSSProperties}
                 >
                   B
                 </motion.span>
@@ -889,7 +889,7 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                   className="absolute -top-4 -right-3 text-[10rem] font-bold leading-none select-none pointer-events-none text-right"
-                  style={{ color: "rgba(16,185,129,0.07)" } as React.CSSProperties}
+                  style={{ color: "rgba(139,92,246,0.07)" } as React.CSSProperties}
                 >
                   S
                 </motion.span>

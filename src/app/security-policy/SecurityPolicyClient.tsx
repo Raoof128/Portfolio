@@ -47,7 +47,7 @@ export function SecurityPolicyClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">01.</span> Scope</h2>
-              <HUDFrame className="p-6 bg-[#06080d]/60">
+              <HUDFrame className="p-6 bg-[#030712]/60">
                 <p className="text-text-body mb-4">This security policy applies to the following assets:</p>
                 <ul className="space-y-2 text-slate-300">
                   <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" /><span><code className="text-cyan">raoufabedini.dev</code> - This portfolio website</span></li>
@@ -61,13 +61,13 @@ export function SecurityPolicyClient() {
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">02.</span> What to Report</h2>
               <div className="grid md:grid-cols-2 gap-4">
-                <HUDFrame className="p-6 bg-[#06080d]/60">
+                <HUDFrame className="p-6 bg-[#030712]/60">
                   <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-green-400" /> In Scope</h3>
                   <ul className="space-y-2 text-sm text-text-body">
                     <li>Cross-Site Scripting (XSS)</li><li>Cross-Site Request Forgery (CSRF)</li><li>Security misconfigurations</li><li>Information disclosure</li><li>Authentication/authorization flaws</li><li>Injection vulnerabilities</li>
                   </ul>
                 </HUDFrame>
-                <HUDFrame className="p-6 bg-[#06080d]/60">
+                <HUDFrame className="p-6 bg-[#030712]/60">
                   <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2"><AlertTriangle className="w-5 h-5 text-yellow-400" /> Out of Scope</h3>
                   <ul className="space-y-2 text-sm text-text-body">
                     <li>Social engineering attacks</li><li>Physical security issues</li><li>Denial of Service (DoS/DDoS)</li><li>Spam or phishing attempts</li><li>Issues in third-party services</li><li>Rate limiting issues</li>
@@ -80,7 +80,7 @@ export function SecurityPolicyClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">03.</span> Response Timeline</h2>
-              <HUDFrame className="p-6 bg-[#06080d]/60">
+              <HUDFrame className="p-6 bg-[#030712]/60">
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan/10 border border-cyan/30 shrink-0"><Clock className="w-5 h-5 text-cyan" /></div>
@@ -102,7 +102,7 @@ export function SecurityPolicyClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">04.</span> Responsible Disclosure Guidelines</h2>
-              <HUDFrame className="p-6 bg-[#06080d]/60">
+              <HUDFrame className="p-6 bg-[#030712]/60">
                 <ul className="space-y-3 text-text-body">
                   <li className="flex items-start gap-2"><span className="text-cyan mt-1">1.</span><span>Do not access, modify, or delete data that does not belong to you.</span></li>
                   <li className="flex items-start gap-2"><span className="text-cyan mt-1">2.</span><span>Do not perform attacks that could harm the availability of services.</span></li>
@@ -117,7 +117,7 @@ export function SecurityPolicyClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">05.</span> Encrypted Communication</h2>
-              <HUDFrame className="p-6 bg-[#06080d]/60">
+              <HUDFrame className="p-6 bg-[#030712]/60">
                 <p className="text-text-body mb-4">For sensitive reports, you can encrypt your message using my PGP key:</p>
                 <Link href="/pgp-key.txt" className="inline-flex items-center text-cyan hover:underline font-mono text-sm"><ExternalLink className="w-4 h-4 mr-2" />Download PGP Public Key</Link>
               </HUDFrame>
@@ -127,7 +127,7 @@ export function SecurityPolicyClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">06.</span> Acknowledgments</h2>
-              <HUDFrame className="p-6 bg-[#06080d]/60">
+              <HUDFrame className="p-6 bg-[#030712]/60">
                 <p className="text-text-body mb-4">I appreciate responsible security researchers who help improve the security of my projects. Valid reports may be acknowledged in the{" "}<Link href="/hall-of-fame" className="text-cyan hover:underline">Security Hall of Fame</Link>.</p>
                 <p className="text-text-body text-sm font-mono">Note: This is a personal portfolio project. No monetary bounties are offered, but your contribution will be recognized.</p>
               </HUDFrame>

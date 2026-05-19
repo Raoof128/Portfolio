@@ -295,7 +295,7 @@ export function SingularityCanvas() {
       for (const dir of [-1, 1] as const) {
         const gradient = ctx.createLinearGradient(0, 0, 0, length * dir);
         gradient.addColorStop(0, "rgba(255,255,255,0.42)");
-        gradient.addColorStop(0.16, "rgba(167,139,250,0.24)");
+        gradient.addColorStop(0.16, "rgba(0,245,255,0.24)");
         gradient.addColorStop(0.62, "rgba(111,253,242,0.08)");
         gradient.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = gradient;
@@ -355,7 +355,7 @@ export function SingularityCanvas() {
       ctx.globalCompositeOperation = "screen";
       const halo = ctx.createRadialGradient(x, y, r * 0.85, x, y, r * 5.3);
       halo.addColorStop(0, "rgba(255,255,255,0.42)");
-      halo.addColorStop(0.13, "rgba(167,139,250,0.28)");
+      halo.addColorStop(0.13, "rgba(0,245,255,0.28)");
       halo.addColorStop(0.38, "rgba(111,253,242,0.13)");
       halo.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = halo;

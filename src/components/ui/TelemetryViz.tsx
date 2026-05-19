@@ -73,8 +73,8 @@ export function TelemetryViz() {
       >
         <defs>
           <radialGradient id="node-glow">
-            <stop offset="0%" stopColor="rgba(167,139,250,0.4)" />
-            <stop offset="100%" stopColor="rgba(167,139,250,0)" />
+            <stop offset="0%" stopColor="rgba(0,245,255,0.4)" />
+            <stop offset="100%" stopColor="rgba(0,245,255,0)" />
           </radialGradient>
           <filter id="blur-sm">
             <feGaussianBlur stdDeviation="0.3" />
@@ -91,7 +91,7 @@ export function TelemetryViz() {
               key={`${from}-${to}`}
               x1={a.x} y1={a.y}
               x2={b.x} y2={b.y}
-              stroke={isActive ? "rgba(167,139,250,0.5)" : "rgba(167,139,250,0.08)"}
+              stroke={isActive ? "rgba(0,245,255,0.5)" : "rgba(0,245,255,0.08)"}
               strokeWidth={isActive ? 0.4 : 0.15}
               className="transition-all duration-500"
             />
@@ -113,7 +113,7 @@ export function TelemetryViz() {
               <circle
                 cx={node.x} cy={node.y}
                 r={isActive ? 0.8 : 0.4}
-                fill={isActive ? "#a78bfa" : "rgba(167,139,250,0.35)"}
+                fill={isActive ? "#8B5CF6" : "rgba(0,245,255,0.35)"}
                 className="transition-all duration-300"
               />
               {/* Label */}
@@ -121,7 +121,7 @@ export function TelemetryViz() {
                 x={node.x} y={node.y - 2}
                 textAnchor="middle"
                 className="transition-all duration-300"
-                fill={isActive ? "rgba(167,139,250,0.7)" : "rgba(167,139,250,0.12)"}
+                fill={isActive ? "rgba(0,245,255,0.7)" : "rgba(0,245,255,0.12)"}
                 fontSize="1.4"
                 fontFamily="var(--font-mono)"
               >

@@ -44,7 +44,7 @@ export function HallOfFameClient() {
 
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
-              <HUDFrame className="p-12 bg-[#06080d]/60 text-center">
+              <HUDFrame className="p-12 bg-[#030712]/60 text-center">
                 <div className="flex flex-col items-center justify-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-cyber-gray/50 flex items-center justify-center border border-cyan/15"><Users className="w-8 h-8 text-text-meta" /></div>
                   <div>
@@ -60,7 +60,7 @@ export function HallOfFameClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-white flex items-center gap-2"><span className="text-cyan font-mono">01.</span> Recognition Criteria</h2>
-              <HUDFrame className="p-6 bg-[#06080d]/60">
+              <HUDFrame className="p-6 bg-[#030712]/60">
                 <p className="text-text-body mb-4">To be listed in the Hall of Fame, researchers must:</p>
                 <ul className="space-y-2 text-slate-300">
                   <li className="flex items-start gap-2"><span className="text-cyan mt-0.5">1.</span><span>Report a valid, in-scope security vulnerability</span></li>
@@ -74,7 +74,7 @@ export function HallOfFameClient() {
 
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4">
-              <HUDFrame className="p-6 bg-[#06080d]/60 border-l-4 border-l-amber">
+              <HUDFrame className="p-6 bg-[#030712]/60 border-l-4 border-l-amber">
                 <p className="text-text-body text-sm"><span className="text-amber font-bold">Note:</span> This is a personal portfolio project. While I deeply appreciate security research efforts, no monetary bounties are offered. Recognition in this Hall of Fame is the primary acknowledgment for valid reports.</p>
               </HUDFrame>
             </section>
