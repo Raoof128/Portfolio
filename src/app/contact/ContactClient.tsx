@@ -1,7 +1,7 @@
 "use client";
 
 import { SecureContactForm } from "@/components/ui/SecureContactForm"
-import { Github, Linkedin } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { fadeInUp } from "@/lib/utils"
 import { motion } from "framer-motion"
@@ -29,7 +29,10 @@ export function ContactClient() {
         </AnimatedSection>
 
         <AnimatedSection variants={fadeInUp} delay={0.3}>
-          <div className="flex justify-center gap-6 pt-4 border-t border-cyan/10">
+          <div className="flex flex-wrap justify-center gap-6 pt-4 border-t border-cyan/10">
+            <motion.a href="mailto:raoof.r12@gmail.com" className="flex items-center text-text-body hover:text-cyan transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <Mail className="w-4 h-4 mr-2" /> raoof.r12@gmail.com
+            </motion.a>
             <motion.a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center text-text-body hover:text-cyan transition-colors font-mono text-xs" whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
               <Github className="w-4 h-4 mr-2" /> GitHub
             </motion.a>
