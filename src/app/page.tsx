@@ -85,7 +85,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           HERO — Singularity
       ══════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden -mt-16 pt-16">
 
         {/* Singularity canvas — accretion disk black hole animation */}
         <SingularityCanvas />
