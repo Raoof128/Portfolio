@@ -134,6 +134,39 @@
   scrollbar-color: rgba(214, 178, 101, 0.5) #080600;
 }
 
+/* ── SimurghForge: water blue palette override ── */
+[data-theme="simurghforge"] {
+  --background:            #020d17;
+  --color-cyber-dark:      #010a12;
+  --color-cyber-gray:      #041829;
+
+  /* cyan → sky water blue */
+  --color-cyan-DEFAULT:    #56aed7;
+  --color-cyan-glow:       #93d3ef;
+  --color-cyan-dim:        rgba(86, 174, 215, 0.15);
+
+  /* purple → deep teal */
+  --color-purple-DEFAULT:  #2e7ea8;
+  --color-purple-glow:     #56aed7;
+  --color-purple-dim:      rgba(46, 126, 168, 0.12);
+
+  /* amber → pale ochre */
+  --color-amber-DEFAULT:   #df9f43;
+  --color-amber-glow:      #f0c87a;
+  --color-amber-dim:       rgba(223, 159, 67, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(86, 174, 215, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(2, 13, 23, 0.75);
+  --glass-border:          rgba(86, 174, 215, 0.12);
+  --surface-1:             rgba(86, 174, 215, 0.04);
+  --surface-2:             rgba(86, 174, 215, 0.08);
+
+  scrollbar-color: rgba(86, 174, 215, 0.5) #020d17;
+}
+
 /* ── ECRSM: dual magenta + lime palette override ── */
 [data-theme="ecrsm"] {
   --background:            #07030e;
