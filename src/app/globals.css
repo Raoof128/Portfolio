@@ -169,6 +169,34 @@
   scrollbar-color: rgba(26, 128, 180, 0.5) #cbe3f0;
 }
 
+/* Force all text black on the light SimurghForge page */
+[data-theme="simurghforge"] .text-white,
+[data-theme="simurghforge"] h1,
+[data-theme="simurghforge"] h2,
+[data-theme="simurghforge"] h3,
+[data-theme="simurghforge"] h4 {
+  color: #0a1e2c;
+}
+[data-theme="simurghforge"] .text-slate-300,
+[data-theme="simurghforge"] .text-slate-400,
+[data-theme="simurghforge"] .text-slate-500,
+[data-theme="simurghforge"] .text-text-body,
+[data-theme="simurghforge"] p {
+  color: #1a3a50;
+}
+[data-theme="simurghforge"] .text-foreground {
+  color: #0a1e2c;
+}
+[data-theme="simurghforge"] nav a,
+[data-theme="simurghforge"] nav span,
+[data-theme="simurghforge"] nav button,
+[data-theme="simurghforge"] footer,
+[data-theme="simurghforge"] footer a,
+[data-theme="simurghforge"] footer p,
+[data-theme="simurghforge"] footer span {
+  color: #0a1e2c;
+}
+
 /* ── ECRSM: dual magenta + lime palette override ── */
 [data-theme="ecrsm"] {
   --background:            #07030e;
