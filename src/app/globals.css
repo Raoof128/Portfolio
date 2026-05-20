@@ -169,33 +169,68 @@
   scrollbar-color: rgba(26, 128, 180, 0.5) #cbe3f0;
 }
 
-/* Force all text black on the light SimurghForge page */
+/* ── SimurghForge light-page element overrides ── */
+
+/* Text: force all to dark ink */
 [data-theme="simurghforge"] .text-white,
 [data-theme="simurghforge"] h1,
 [data-theme="simurghforge"] h2,
 [data-theme="simurghforge"] h3,
-[data-theme="simurghforge"] h4 {
-  color: #0a1e2c;
-}
+[data-theme="simurghforge"] h4 { color: #0a1e2c; }
+
 [data-theme="simurghforge"] .text-slate-300,
 [data-theme="simurghforge"] .text-slate-400,
 [data-theme="simurghforge"] .text-slate-500,
 [data-theme="simurghforge"] .text-text-body,
-[data-theme="simurghforge"] p {
-  color: #1a3a50;
-}
-[data-theme="simurghforge"] .text-foreground {
-  color: #0a1e2c;
-}
+[data-theme="simurghforge"] p { color: #1a3a50; }
+
+[data-theme="simurghforge"] .text-foreground { color: #0a1e2c; }
+[data-theme="simurghforge"] li { color: #1a3a50; }
+[data-theme="simurghforge"] span { color: inherit; }
+
+/* Nav + footer */
 [data-theme="simurghforge"] nav a,
 [data-theme="simurghforge"] nav span,
 [data-theme="simurghforge"] nav button,
 [data-theme="simurghforge"] footer,
 [data-theme="simurghforge"] footer a,
 [data-theme="simurghforge"] footer p,
-[data-theme="simurghforge"] footer span {
+[data-theme="simurghforge"] footer span { color: #0a1e2c; }
+
+/* Card / panel backgrounds: replace dark overlays with light water tints */
+[data-theme="simurghforge"] .bg-black\/40,
+[data-theme="simurghforge"] .bg-black\/20,
+[data-theme="simurghforge"] .bg-black\/30,
+[data-theme="simurghforge"] .bg-black\/50,
+[data-theme="simurghforge"] .bg-black\/60 {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Invert prose so it reads dark on light background */
+[data-theme="simurghforge"] .prose-invert {
+  --tw-prose-body:     #1a3a50;
+  --tw-prose-headings: #0a1e2c;
+  --tw-prose-links:    #1a80b4;
+  --tw-prose-bold:     #0a1e2c;
+  --tw-prose-code:     #0e5a80;
+  color: #1a3a50;
+}
+
+/* Year / category badge chips */
+[data-theme="simurghforge"] .bg-cyber-gray,
+[data-theme="simurghforge"] .border-cyber-gray {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(26, 128, 180, 0.3);
+}
+
+/* Input / search boxes */
+[data-theme="simurghforge"] input {
+  background-color: rgba(255, 255, 255, 0.6);
   color: #0a1e2c;
 }
+
+/* Mono / code labels */
+[data-theme="simurghforge"] .font-mono { color: inherit; }
 
 /* ── ECRSM: dual magenta + lime palette override ── */
 [data-theme="ecrsm"] {
