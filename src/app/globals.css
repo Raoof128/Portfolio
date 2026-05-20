@@ -169,6 +169,21 @@
   scrollbar-color: rgba(26, 128, 180, 0.5) #cbe3f0;
 }
 
+/* ── SimurghForge: navbar + footer background overrides ── */
+[data-theme="simurghforge"] header,
+[data-theme="simurghforge"] nav {
+  background-color: #cbe3f0 !important;
+  border-color: rgba(26, 128, 180, 0.25) !important;
+}
+[data-theme="simurghforge"] .glass-strong {
+  background: rgba(203, 227, 240, 0.92) !important;
+  border-color: rgba(26, 128, 180, 0.25) !important;
+}
+[data-theme="simurghforge"] footer {
+  background-color: #b0d4e8 !important;
+  border-color: rgba(26, 128, 180, 0.2) !important;
+}
+
 /* ── SimurghForge light-page element overrides ── */
 
 /* Text: force all to dark ink */
