@@ -12,6 +12,7 @@ import { CelestialCatcher } from "@/components/ui/CelestialCatcher"
 import { CosmicOracleEye } from "@/components/ui/CosmicOracleEye"
 import { ConstellationOwl } from "@/components/ui/ConstellationOwl"
 import { KoiPond } from "@/components/ui/KoiPond"
+import { WheelsOfEzekiel } from "@/components/ui/WheelsOfEzekiel"
 import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
@@ -31,6 +32,7 @@ const NM = "nanomatch";
 const SF = "sentinelflow";
 const EC = "ecrsm";
 const SFG = "simurghforge";
+const AI = "aion";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const { locale, t } = useTranslation();
@@ -45,6 +47,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isSF = slug === SF;
   const isEC = slug === EC;
   const isSFG = slug === SFG;
+  const isAI  = slug === AI;
   const isRTL = locale === 'fa' || locale === 'ar';
 
   const getPath = (path: string) => {
@@ -112,6 +115,18 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         hover:        "hover:text-[#d6b265]",
         bullet:       "text-[#d6b265]",
         check:        "text-[#f0c87a]",
+      }
+    : isAI
+    ? {
+        accent:       "text-[#dc2626]",
+        accentSecond: "text-[#f59e0b]",
+        border:       "border-[#dc2626]/20",
+        borderB:      "border-[#f59e0b]/30",
+        borderSub:    "border-[#dc2626]/15",
+        bg:           "bg-[#dc2626]/5",
+        hover:        "hover:text-[#dc2626]",
+        bullet:       "text-[#f59e0b]",
+        check:        "text-[#f59e0b]",
       }
     : isSFG
     ? {
@@ -199,6 +214,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       {isSF && <ThemeInjector theme="sentinelflow" />}
       {isEC && <ThemeInjector theme="ecrsm" />}
       {isSFG && <ThemeInjector theme="simurghforge" />}
+      {isAI  && <ThemeInjector theme="aion" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -373,6 +389,41 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                   </div>
                   <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
                     <KineticLotus />
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : isAI ? (
+            /* ── Aion: wheels of ezekiel hero ── */
+            <section className="border-b border-red-900/30 overflow-hidden" style={{ background: "#06050a" }}>
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#dc2626]/70 hover:text-[#dc2626] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
+                      {project.tags.map((tag, i) => (
+                        <span key={tag} className={`text-xs font-mono px-2 py-1 border ${i % 2 === 0 ? "text-[#f59e0b] border-[#f59e0b]/40 bg-[#f59e0b]/5" : "text-[#dc2626] border-[#dc2626]/40 bg-[#dc2626]/5"}`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-orange-200/60 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <WheelsOfEzekiel />
                   </div>
                 </div>
               </div>
@@ -603,7 +654,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : isAI ? "bg-[#06050a]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">

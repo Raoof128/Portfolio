@@ -134,6 +134,39 @@
   scrollbar-color: rgba(214, 178, 101, 0.5) #080600;
 }
 
+/* ── Aion: apocalyptic void + fire palette override ── */
+[data-theme="aion"] {
+  --background:            #06050a;
+  --color-cyber-dark:      #0e0b14;
+  --color-cyber-gray:      #1c1a24;
+
+  /* cyan → saffron vermilion red */
+  --color-cyan-DEFAULT:    #dc2626;
+  --color-cyan-glow:       #f87171;
+  --color-cyan-dim:        rgba(220, 38, 38, 0.15);
+
+  /* purple → amber gold */
+  --color-purple-DEFAULT:  #f59e0b;
+  --color-purple-glow:     #fcd34d;
+  --color-purple-dim:      rgba(245, 158, 11, 0.12);
+
+  /* amber → pale celestial */
+  --color-amber-DEFAULT:   #fbbf24;
+  --color-amber-glow:      #fde68a;
+  --color-amber-dim:       rgba(251, 191, 36, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(245, 158, 11, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(6, 5, 10, 0.85);
+  --glass-border:          rgba(220, 38, 38, 0.15);
+  --surface-1:             rgba(220, 38, 38, 0.05);
+  --surface-2:             rgba(245, 158, 11, 0.06);
+
+  scrollbar-color: rgba(220, 38, 38, 0.5) #06050a;
+}
+
 /* ── SimurghForge: watercolor pond palette override ── */
 [data-theme="simurghforge"] {
   --background:            #cbe3f0;
