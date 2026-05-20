@@ -379,7 +379,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             </section>
           ) : isSFG ? (
             /* ── SimurghForge: koi pond hero ── */
-            <section className="border-b border-sky-900/30 overflow-hidden" style={{ background: "#020d17" }}>
+            <section className="border-b border-sky-700/30 overflow-hidden" style={{ background: "#0d2d42" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#56aed7]/70 hover:text-[#56aed7] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
                   <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
@@ -603,7 +603,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#020d17]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#0d2d42]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
