@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useCallback } from "react";
 
+const W = 400;
+const H = 500;
 const NUM_NODES = 20;
 const HELIX_RADIUS = 70;
 const ROTATION_SPEED = 0.025;
@@ -12,14 +14,12 @@ const MAGENTA = (op: number) => `rgba(255,0,127,${op})`;
 export function DnaHelixCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const draw = useCallback(() => {
+  const animate = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const W = canvas.width;
-    const H = canvas.height;
     let angle = 0;
     let lastTimestamp = 0;
     let rafId = 0;
@@ -27,9 +27,7 @@ export function DnaHelixCanvas() {
     function loop(ts: number) {
       const gap = ts - lastTimestamp;
       lastTimestamp = ts;
-      const skipPhysics = gap > 100;
-
-      if (!skipPhysics) angle += ROTATION_SPEED;
+      if (gap <= 100) angle += ROTATION_SPEED;
 
       ctx!.clearRect(0, 0, W, H);
 
@@ -97,11 +95,8 @@ export function DnaHelixCanvas() {
     start();
 
     const handleVisibility = () => {
-      if (document.hidden) {
-        cancelAnimationFrame(rafId);
-      } else {
-        start();
-      }
+      if (document.hidden) cancelAnimationFrame(rafId);
+      else start();
     };
     document.addEventListener("visibilitychange", handleVisibility);
 
@@ -112,31 +107,17 @@ export function DnaHelixCanvas() {
   }, []);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const observer = new ResizeObserver(() => {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      const ctx = canvas.getContext("2d");
-      if (ctx) ctx.scale(dpr, dpr);
-    });
-    observer.observe(canvas);
-
-    const cleanup = draw();
-    return () => {
-      observer.disconnect();
-      cleanup?.();
-    };
-  }, [draw]);
+    return animate();
+  }, [animate]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full"
-      style={{ background: "#030308" }}
-    />
+    <div className="w-full h-full flex items-center justify-center" style={{ background: "#030308" }}>
+      <canvas
+        ref={canvasRef}
+        width={W}
+        height={H}
+        style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+      />
+    </div>
   );
 }
