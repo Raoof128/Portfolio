@@ -68,6 +68,39 @@
   scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
 }
 
+/* ── Mehr Guard: full pink/magenta palette override ── */
+[data-theme="mehr-guard"] {
+  --background:            #030308;
+  --color-cyber-dark:      #0d0310;
+  --color-cyber-gray:      #1a0520;
+
+  /* cyan → hot pink / magenta */
+  --color-cyan-DEFAULT:    #FF007F;
+  --color-cyan-glow:       #ff66b2;
+  --color-cyan-dim:        rgba(255, 0, 127, 0.15);
+
+  /* purple → deep magenta */
+  --color-purple-DEFAULT:  #c2006b;
+  --color-purple-glow:     #FF007F;
+  --color-purple-dim:      rgba(194, 0, 107, 0.12);
+
+  /* amber → rose gold */
+  --color-amber-DEFAULT:   #ff6eb4;
+  --color-amber-glow:      #ffb3d9;
+  --color-amber-dim:       rgba(255, 110, 180, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(255, 0, 127, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(3, 3, 8, 0.75);
+  --glass-border:          rgba(255, 0, 127, 0.12);
+  --surface-1:             rgba(255, 0, 127, 0.04);
+  --surface-2:             rgba(255, 0, 127, 0.08);
+
+  scrollbar-color: rgba(255, 0, 127, 0.5) #030308;
+}
+
 /* ── GitSwitch: full crimson palette override ── */
 [data-theme="gitswitch"] {
   --background:            #0c0303;
