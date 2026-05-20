@@ -163,6 +163,55 @@ export const projects: Record<string, Project> = {
       "GitHub Stage 1 checks run the project quality gate on main and pull requests"
     ]
   },
+  "gitswitch": {
+    slug: "gitswitch",
+    title: "GitSwitch",
+    category: "ENGINEERING",
+    year: "2024",
+    description: "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
+    localizedDescription: {
+      fa: "کلاینت گیت مجهز به هوش مصنوعی برای مدیریت چندین هویت و ایجاد کامیت‌های معنایی. ساخته شده با Electron و React.",
+      ar: "عميل Git مدعوم بالذكاء الاصطناعي لإدارة هويات متعددة وإنشاء تعهدات (commits) دلالية. تم بناؤه باستخدام Electron و React.",
+      zh: "人工智能驱动的 Git 客户端，用于管理多个身份并生成语义化提交。使用 Electron 和 React 构建。",
+      es: "Cliente Git potenciado por IA para gestionar múltiples identidades y generar commits semánticos. Construido con Electron y React.",
+    },
+    tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
+    links: {
+      repo: "https://github.com/Raoof128/GitSwitch",
+      caseStudy: "/projects/gitswitch"
+    },
+    build: {
+      stack: ["Electron", "React 19", "TypeScript", "Zustand", "Google Gemini AI"],
+      features: [
+        "Multi-Account Management (Personal, Work)",
+        "AI Commit Generation (Gemini 3)",
+        "Smart Diff Viewer with syntax highlighting",
+        "Drag & Drop repository management"
+      ]
+    },
+    secure: {
+      measures: [
+        "API keys redacted from logs & wiped from memory",
+        "Secure OS-keychain storage for secrets",
+        "Enforced timeouts & input sanitization",
+        "Privacy First design"
+      ]
+    },
+    fullDescription: "Gitswitch is a modern, AI-powered Git client designed for developers who manage multiple accounts and repositories. It offers a seamless experience for switching identities and generating semantic commit messages.",
+    problem: "Developers often struggle with managing multiple git identities (personal vs work) and writing consistent commit messages.",
+    solution: [
+      "Created a seamless identity switcher for global/local git config",
+      "Integrated Gemini 3 AI for semantic commit generation",
+      "Built a secure, modern Electron app with strict isolation",
+      "Implemented smart diff viewing for better code review"
+    ],
+    proof: [
+      "Secure OS-keychain integration",
+      "Memory wiping for API keys",
+      "React 19 + Electron 33 modern stack",
+      "Cyberpunk-inspired UI"
+    ]
+  },
   "mehr-guard": {
     slug: "mehr-guard",
     title: "Mehr Guard",
@@ -211,55 +260,6 @@ export const projects: Record<string, Project> = {
       "Performance: <5ms P99 latency",
       "Privacy: Verified 0 network calls via ./judge/verify_offline.sh",
       "Code Sharing: ~100% shared detection logic"
-    ]
-  },
-  "gitswitch": {
-    slug: "gitswitch",
-    title: "GitSwitch",
-    category: "ENGINEERING",
-    year: "2024",
-    description: "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
-    localizedDescription: {
-      fa: "کلاینت گیت مجهز به هوش مصنوعی برای مدیریت چندین هویت و ایجاد کامیت‌های معنایی. ساخته شده با Electron و React.",
-      ar: "عميل Git مدعوم بالذكاء الاصطناعي لإدارة هويات متعددة وإنشاء تعهدات (commits) دلالية. تم بناؤه باستخدام Electron و React.",
-      zh: "人工智能驱动的 Git 客户端，用于管理多个身份并生成语义化提交。使用 Electron 和 React 构建。",
-      es: "Cliente Git potenciado por IA para gestionar múltiples identidades y generar commits semánticos. Construido con Electron y React.",
-    },
-    tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
-    links: {
-      repo: "https://github.com/Raoof128/GitSwitch",
-      caseStudy: "/projects/gitswitch"
-    },
-    build: {
-      stack: ["Electron", "React 19", "TypeScript", "Zustand", "Google Gemini AI"],
-      features: [
-        "Multi-Account Management (Personal, Work)",
-        "AI Commit Generation (Gemini 3)",
-        "Smart Diff Viewer with syntax highlighting",
-        "Drag & Drop repository management"
-      ]
-    },
-    secure: {
-      measures: [
-        "API keys redacted from logs & wiped from memory",
-        "Secure OS-keychain storage for secrets",
-        "Enforced timeouts & input sanitization",
-        "Privacy First design"
-      ]
-    },
-    fullDescription: "Gitswitch is a modern, AI-powered Git client designed for developers who manage multiple accounts and repositories. It offers a seamless experience for switching identities and generating semantic commit messages.",
-    problem: "Developers often struggle with managing multiple git identities (personal vs work) and writing consistent commit messages.",
-    solution: [
-      "Created a seamless identity switcher for global/local git config",
-      "Integrated Gemini 3 AI for semantic commit generation",
-      "Built a secure, modern Electron app with strict isolation",
-      "Implemented smart diff viewing for better code review"
-    ],
-    proof: [
-      "Secure OS-keychain integration",
-      "Memory wiping for API keys",
-      "React 19 + Electron 33 modern stack",
-      "Cyberpunk-inspired UI"
     ]
   },
   "syllabus-sync": {

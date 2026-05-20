@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-05-19 (fix: Cloudflare Pages routing + cache headers)
+- **Scope**: Fix 404 on chunk assets and missing root index.html after i18n migration
+- **Summary**: `proxy.ts` does not execute in a plain `wrangler pages deploy out/` — it requires Cloudflare Workers setup. Added `public/_redirects` to handle all locale routing at CDN level: clean English paths (/, /projects, /lab, /write-ups, /resume, /about, /contact, /hall-of-fame, /security-policy, /projects/:slug, /write-ups/:slug, /lab/:id) rewrite to /en/* via status 200; public /en/* paths redirect 302 back to clean URLs. Added `public/_headers` so HTML pages are served with `max-age=0, must-revalidate` preventing browsers from caching stale HTML that references outdated content-hashed JS chunks — the root cause of the 404 chunk error. Also fixed `[locale]/layout.tsx` LayoutProps type for Next.js 16 compatibility (params.locale must be `string` at framework level, narrowed to `Locale` at runtime).
+- **Files Changed**: `public/_redirects` (new), `public/_headers` (new), `src/app/[locale]/layout.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run build`: 155 static pages; `wrangler pages deploy`: deployed to https://e3eb23a9.raoufabedini.pages.dev; `git push origin main`: pushed
+- **Follow-ups**: If Cloudflare Workers-based middleware is needed in future, use `@cloudflare/next-on-pages` adapter instead of plain static export deploy.
+
 ### Raouf: 2026-05-19 (i18n senior audit pass — quality fixes)
 - **Scope**: Full repository-wide i18n audit per structured 4-phase prompt — coverage, quality, hardcoded strings, consistency
 - **Summary**: Confirmed all 4 non-English locale files (fa, ar, zh, es) have full 165-key coverage matching English — TypeScript `Dictionary` type enforcement guarantees zero structural gaps at compile time. Quality pass found 3 issues across 2 files: (1) `zh.about.stats_projects` had counter word "个项目" → natural label "项目"; (2) `zh.about.stats_vendors` had grammatically fragmented "家厂商披露" → natural "已披露厂商"; (3) `fa.hall_of_fame.report_guidance` + `report_guidance_suffix` were structured so the linked text ("سیاست امنیتی") appeared stranded after a complete sentence — restructured to "...برای راهنمایی به [link] مراجعه کنید." matching the Arabic pattern. No missing keys, no empty values, no broken placeholders found. Hardcoded string audit confirms previous session covered all translatable UI. Intentional English-only content confirmed: brand marks, resume body, skill names, TICKER, JSON-LD/metadata.

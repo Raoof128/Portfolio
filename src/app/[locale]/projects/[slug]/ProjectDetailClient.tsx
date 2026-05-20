@@ -4,6 +4,7 @@ import { NeonButton } from "@/components/ui/NeonButton"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { RoyalAbyssCanvas } from "@/components/ui/RoyalAbyssCanvas"
 import { FireShieldCanvas } from "@/components/ui/FireShieldCanvas"
+import { DandelionSpinner } from "@/components/ui/DandelionSpinner"
 import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
@@ -15,12 +16,14 @@ import { cn } from "@/lib/utils"
 
 const IW = "invisible-window-research";
 const PS = "project-simurgh";
+const GS = "gitswitch";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const { locale, t } = useTranslation();
   const dictionary = t;
   const isIW = slug === IW;
   const isPS = slug === PS;
+  const isGS = slug === GS;
   const isRTL = locale === 'fa' || locale === 'ar';
 
   const getPath = (path: string) => {
@@ -53,6 +56,18 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bullet:       "text-[#00A693]",
         check:        "text-[#6ffdf2]",
       }
+    : isGS
+    ? {
+        accent:       "text-[#FF4D4D]",
+        accentSecond: "text-[#FFD1D1]",
+        border:       "border-[#FF4D4D]/20",
+        borderB:      "border-[#FF4D4D]/30",
+        borderSub:    "border-[#FF4D4D]/15",
+        bg:           "bg-[#FF4D4D]/5",
+        hover:        "hover:text-[#FF4D4D]",
+        bullet:       "text-[#FF4D4D]",
+        check:        "text-[#FFD1D1]",
+      }
     : {
         accent:       "text-cyan",
         accentSecond: "text-purple",
@@ -71,6 +86,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
     <div className={cn("min-h-screen bg-background flex flex-col", isRTL && "text-right")}>
       {isPS && <ThemeInjector theme="simurgh" />}
       {isIW && <ThemeInjector theme="invisible-window" />}
+      {isGS && <ThemeInjector theme="gitswitch" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -144,6 +160,41 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                 </div>
               </div>
             </section>
+          ) : isGS ? (
+            /* ── GitSwitch: dandelion hero ── */
+            <section className="border-b border-red-900/30 overflow-hidden" style={{ background: "#0c0303" }}>
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#FF4D4D]/70 hover:text-[#FF4D4D] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-mono text-[#FF4D4D] border border-[#FF4D4D]/40 bg-[#FF4D4D]/5 px-2 py-1">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-red-200/60 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <DandelionSpinner />
+                  </div>
+                </div>
+              </div>
+            </section>
           ) : (
             /* ── Default hero ── */
             <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
@@ -195,7 +246,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">

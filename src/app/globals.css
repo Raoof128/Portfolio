@@ -68,6 +68,39 @@
   scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
 }
 
+/* ── GitSwitch: full crimson palette override ── */
+[data-theme="gitswitch"] {
+  --background:            #0c0303;
+  --color-cyber-dark:      #1a0303;
+  --color-cyber-gray:      #2a0808;
+
+  /* cyan → crimson */
+  --color-cyan-DEFAULT:    #FF4D4D;
+  --color-cyan-glow:       #FFD1D1;
+  --color-cyan-dim:        rgba(255, 77, 77, 0.15);
+
+  /* purple → blood red */
+  --color-purple-DEFAULT:  #B30000;
+  --color-purple-glow:     #FF4D4D;
+  --color-purple-dim:      rgba(179, 0, 0, 0.12);
+
+  /* amber stays warm */
+  --color-amber-DEFAULT:   #ff8c42;
+  --color-amber-glow:      #ffb380;
+  --color-amber-dim:       rgba(255, 140, 66, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(255, 77, 77, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(12, 3, 3, 0.75);
+  --glass-border:          rgba(255, 77, 77, 0.12);
+  --surface-1:             rgba(255, 77, 77, 0.04);
+  --surface-2:             rgba(255, 77, 77, 0.08);
+
+  scrollbar-color: rgba(255, 77, 77, 0.5) #0c0303;
+}
+
 /* ── Project Simurgh: full orange palette override ── */
 [data-theme="simurgh"] {
   --background:            #070300;
