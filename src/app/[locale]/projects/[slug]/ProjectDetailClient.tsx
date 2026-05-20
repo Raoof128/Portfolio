@@ -6,6 +6,7 @@ import { RoyalAbyssCanvas } from "@/components/ui/RoyalAbyssCanvas"
 import { FireShieldCanvas } from "@/components/ui/FireShieldCanvas"
 import { DandelionSpinner } from "@/components/ui/DandelionSpinner"
 import { DnaHelixCanvas } from "@/components/ui/DnaHelixCanvas"
+import { KineticLotus } from "@/components/ui/KineticLotus"
 import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
@@ -19,6 +20,7 @@ const IW = "invisible-window-research";
 const PS = "project-simurgh";
 const GS = "gitswitch";
 const MG = "mehr-guard";
+const SS = "syllabus-sync";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const { locale, t } = useTranslation();
@@ -27,6 +29,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isPS = slug === PS;
   const isGS = slug === GS;
   const isMG = slug === MG;
+  const isSS = slug === SS;
   const isRTL = locale === 'fa' || locale === 'ar';
 
   const getPath = (path: string) => {
@@ -83,6 +86,18 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bullet:       "text-[#FF007F]",
         check:        "text-[#ff66b2]",
       }
+    : isSS
+    ? {
+        accent:       "text-[#d6b265]",
+        accentSecond: "text-[#f0c87a]",
+        border:       "border-[#d6b265]/20",
+        borderB:      "border-[#d6b265]/30",
+        borderSub:    "border-[#d6b265]/15",
+        bg:           "bg-[#d6b265]/5",
+        hover:        "hover:text-[#d6b265]",
+        bullet:       "text-[#d6b265]",
+        check:        "text-[#f0c87a]",
+      }
     : {
         accent:       "text-cyan",
         accentSecond: "text-purple",
@@ -103,6 +118,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       {isIW && <ThemeInjector theme="invisible-window" />}
       {isGS && <ThemeInjector theme="gitswitch" />}
       {isMG && <ThemeInjector theme="mehr-guard" />}
+      {isSS && <ThemeInjector theme="syllabus-sync" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -246,6 +262,41 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                 </div>
               </div>
             </section>
+          ) : isSS ? (
+            /* ── Syllabus-Sync: kinetic lotus hero ── */
+            <section className="border-b border-yellow-900/30 overflow-hidden" style={{ background: "#080600" }}>
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#d6b265]/70 hover:text-[#d6b265] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-mono text-[#d6b265] border border-[#d6b265]/40 bg-[#d6b265]/5 px-2 py-1">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-yellow-200/60 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <KineticLotus />
+                  </div>
+                </div>
+              </div>
+            </section>
           ) : (
             /* ── Default hero ── */
             <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
@@ -297,7 +348,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">

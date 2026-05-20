@@ -68,6 +68,39 @@
   scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
 }
 
+/* ── Syllabus-Sync: full gold palette override ── */
+[data-theme="syllabus-sync"] {
+  --background:            #080600;
+  --color-cyber-dark:      #120e00;
+  --color-cyber-gray:      #1e1800;
+
+  /* cyan → gold */
+  --color-cyan-DEFAULT:    #d6b265;
+  --color-cyan-glow:       #f0c87a;
+  --color-cyan-dim:        rgba(214, 178, 101, 0.15);
+
+  /* purple → amber */
+  --color-purple-DEFAULT:  #b8952a;
+  --color-purple-glow:     #d6b265;
+  --color-purple-dim:      rgba(184, 149, 42, 0.12);
+
+  /* amber stays warm */
+  --color-amber-DEFAULT:   #e8c97a;
+  --color-amber-glow:      #f5e0a0;
+  --color-amber-dim:       rgba(232, 201, 122, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(214, 178, 101, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(8, 6, 0, 0.75);
+  --glass-border:          rgba(214, 178, 101, 0.12);
+  --surface-1:             rgba(214, 178, 101, 0.04);
+  --surface-2:             rgba(214, 178, 101, 0.08);
+
+  scrollbar-color: rgba(214, 178, 101, 0.5) #080600;
+}
+
 /* ── Mehr Guard: full pink/magenta palette override ── */
 [data-theme="mehr-guard"] {
   --background:            #030308;
