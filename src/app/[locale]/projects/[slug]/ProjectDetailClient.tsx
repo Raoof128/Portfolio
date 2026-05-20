@@ -8,6 +8,7 @@ import { DandelionSpinner } from "@/components/ui/DandelionSpinner"
 import { DnaHelixCanvas } from "@/components/ui/DnaHelixCanvas"
 import { KineticLotus } from "@/components/ui/KineticLotus"
 import { KineticAstrolabe } from "@/components/ui/KineticAstrolabe"
+import { CelestialCatcher } from "@/components/ui/CelestialCatcher"
 import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
@@ -23,6 +24,7 @@ const GS = "gitswitch";
 const MG = "mehr-guard";
 const SS = "syllabus-sync";
 const NA = "nexus-archive";
+const NM = "nanomatch";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const { locale, t } = useTranslation();
@@ -33,6 +35,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isMG = slug === MG;
   const isSS = slug === SS;
   const isNA = slug === NA;
+  const isNM = slug === NM;
   const isRTL = locale === 'fa' || locale === 'ar';
 
   const getPath = (path: string) => {
@@ -101,6 +104,18 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bullet:       "text-[#d6b265]",
         check:        "text-[#f0c87a]",
       }
+    : isNM
+    ? {
+        accent:       "text-[#cc1b5d]",
+        accentSecond: "text-[#ff6b9d]",
+        border:       "border-[#cc1b5d]/20",
+        borderB:      "border-[#cc1b5d]/30",
+        borderSub:    "border-[#cc1b5d]/15",
+        bg:           "bg-[#cc1b5d]/5",
+        hover:        "hover:text-[#cc1b5d]",
+        bullet:       "text-[#cc1b5d]",
+        check:        "text-[#ff6b9d]",
+      }
     : isNA
     ? {
         accent:       "text-[#4d79ff]",
@@ -135,6 +150,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       {isMG && <ThemeInjector theme="mehr-guard" />}
       {isSS && <ThemeInjector theme="syllabus-sync" />}
       {isNA && <ThemeInjector theme="nexus-archive" />}
+      {isNM && <ThemeInjector theme="nanomatch" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -313,6 +329,41 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                 </div>
               </div>
             </section>
+          ) : isNM ? (
+            /* ── NanoMatch: celestial catcher hero ── */
+            <section className="border-b border-rose-900/30 overflow-hidden" style={{ background: "#161115" }}>
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#cc1b5d]/70 hover:text-[#cc1b5d] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-mono text-[#cc1b5d] border border-[#cc1b5d]/40 bg-[#cc1b5d]/5 px-2 py-1">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-rose-200/60 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <CelestialCatcher />
+                  </div>
+                </div>
+              </div>
+            </section>
           ) : isNA ? (
             /* ── Nexus Archive: astrolabe hero ── */
             <section className="border-b border-blue-900/30 overflow-hidden" style={{ background: "#000035" }}>
@@ -399,7 +450,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
