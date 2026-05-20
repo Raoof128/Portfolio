@@ -66,7 +66,7 @@ export function KineticAstrolabe() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #0a0e12;
+          background: #000035;
         }
         .ka-container {
           width: min(300px, 70vw);

@@ -103,15 +103,15 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       }
     : isNA
     ? {
-        accent:       "text-[#06b6d4]",
-        accentSecond: "text-[#a5f3fc]",
-        border:       "border-[#06b6d4]/20",
-        borderB:      "border-[#06b6d4]/30",
-        borderSub:    "border-[#06b6d4]/15",
-        bg:           "bg-[#06b6d4]/5",
-        hover:        "hover:text-[#06b6d4]",
-        bullet:       "text-[#06b6d4]",
-        check:        "text-[#a5f3fc]",
+        accent:       "text-[#4d79ff]",
+        accentSecond: "text-[#99bbff]",
+        border:       "border-[#4d79ff]/20",
+        borderB:      "border-[#4d79ff]/30",
+        borderSub:    "border-[#4d79ff]/15",
+        bg:           "bg-[#4d79ff]/5",
+        hover:        "hover:text-[#4d79ff]",
+        bullet:       "text-[#4d79ff]",
+        check:        "text-[#99bbff]",
       }
     : {
         accent:       "text-cyan",
@@ -315,16 +315,16 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             </section>
           ) : isNA ? (
             /* ── Nexus Archive: astrolabe hero ── */
-            <section className="border-b border-cyan-900/30 overflow-hidden" style={{ background: "#0a0e12" }}>
+            <section className="border-b border-blue-900/30 overflow-hidden" style={{ background: "#000035" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#06b6d4]/70 hover:text-[#06b6d4] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#4d79ff]/70 hover:text-[#4d79ff] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
                   <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
                 </Link>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
                   <div className="space-y-4 md:space-y-6">
                     <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
                       {project.tags.map(tag => (
-                        <span key={tag} className="text-xs font-mono text-[#06b6d4] border border-[#06b6d4]/40 bg-[#06b6d4]/5 px-2 py-1">
+                        <span key={tag} className="text-xs font-mono text-[#4d79ff] border border-[#4d79ff]/40 bg-[#4d79ff]/5 px-2 py-1">
                           {tag}
                         </span>
                       ))}
@@ -332,7 +332,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
                       {project.title}
                     </h1>
-                    <p className="text-base md:text-lg text-cyan-200/60 leading-relaxed">
+                    <p className="text-base md:text-lg text-blue-200/60 leading-relaxed">
                       {localizedFullDescription}
                     </p>
                     <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
@@ -399,7 +399,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#0a0e12]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">

@@ -68,37 +68,37 @@
   scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
 }
 
-/* ── Nexus Archive: full ice-blue/cyan palette override ── */
+/* ── Nexus Archive: full navy-blue palette override ── */
 [data-theme="nexus-archive"] {
-  --background:            #0a0e12;
-  --color-cyber-dark:      #0d1318;
-  --color-cyber-gray:      #151e26;
+  --background:            #000035;
+  --color-cyber-dark:      #00002a;
+  --color-cyber-gray:      #00004a;
 
-  /* cyan → deep ice cyan */
-  --color-cyan-DEFAULT:    #06b6d4;
-  --color-cyan-glow:       #a5f3fc;
-  --color-cyan-dim:        rgba(6, 182, 212, 0.15);
+  /* cyan → electric royal blue */
+  --color-cyan-DEFAULT:    #4d79ff;
+  --color-cyan-glow:       #99bbff;
+  --color-cyan-dim:        rgba(77, 121, 255, 0.15);
 
-  /* purple → teal */
-  --color-purple-DEFAULT:  #0891b2;
-  --color-purple-glow:     #06b6d4;
-  --color-purple-dim:      rgba(8, 145, 178, 0.12);
+  /* purple → deep royal */
+  --color-purple-DEFAULT:  #2244cc;
+  --color-purple-glow:     #4d79ff;
+  --color-purple-dim:      rgba(34, 68, 204, 0.12);
 
-  /* amber → icy highlight */
-  --color-amber-DEFAULT:   #67e8f9;
-  --color-amber-glow:      #a5f3fc;
-  --color-amber-dim:       rgba(103, 232, 249, 0.12);
+  /* amber → periwinkle */
+  --color-amber-DEFAULT:   #7799ff;
+  --color-amber-glow:      #aabbff;
+  --color-amber-dim:       rgba(119, 153, 255, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(6, 182, 212, 0.8);
+  --text-meta:             rgba(77, 121, 255, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(10, 14, 18, 0.75);
-  --glass-border:          rgba(6, 182, 212, 0.12);
-  --surface-1:             rgba(6, 182, 212, 0.04);
-  --surface-2:             rgba(6, 182, 212, 0.08);
+  --glass-bg:              rgba(0, 0, 53, 0.75);
+  --glass-border:          rgba(77, 121, 255, 0.12);
+  --surface-1:             rgba(77, 121, 255, 0.04);
+  --surface-2:             rgba(77, 121, 255, 0.08);
 
-  scrollbar-color: rgba(6, 182, 212, 0.5) #0a0e12;
+  scrollbar-color: rgba(77, 121, 255, 0.5) #000035;
 }
 
 /* ── Syllabus-Sync: full gold palette override ── */
