@@ -134,6 +134,39 @@
   scrollbar-color: rgba(214, 178, 101, 0.5) #080600;
 }
 
+/* ── ECRSM: dual magenta + lime palette override ── */
+[data-theme="ecrsm"] {
+  --background:            #07030e;
+  --color-cyber-dark:      #050209;
+  --color-cyber-gray:      #120518;
+
+  /* cyan → luminous magenta */
+  --color-cyan-DEFAULT:    #d946ef;
+  --color-cyan-glow:       #f0abfc;
+  --color-cyan-dim:        rgba(217, 70, 239, 0.15);
+
+  /* purple → electric lime */
+  --color-purple-DEFAULT:  #39ff14;
+  --color-purple-glow:     #86efac;
+  --color-purple-dim:      rgba(57, 255, 20, 0.12);
+
+  /* amber → soft violet */
+  --color-amber-DEFAULT:   #e879f9;
+  --color-amber-glow:      #f0abfc;
+  --color-amber-dim:       rgba(232, 121, 249, 0.12);
+
+  /* meta text */
+  --text-meta:             rgba(217, 70, 239, 0.8);
+
+  /* glass / surface tokens */
+  --glass-bg:              rgba(7, 3, 14, 0.75);
+  --glass-border:          rgba(217, 70, 239, 0.12);
+  --surface-1:             rgba(217, 70, 239, 0.04);
+  --surface-2:             rgba(217, 70, 239, 0.08);
+
+  scrollbar-color: rgba(217, 70, 239, 0.5) #07030e;
+}
+
 /* ── SentinelFlow: full olive palette override ── */
 [data-theme="sentinelflow"] {
   --background:            #11150c;

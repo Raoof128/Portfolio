@@ -10,6 +10,7 @@ import { KineticLotus } from "@/components/ui/KineticLotus"
 import { KineticAstrolabe } from "@/components/ui/KineticAstrolabe"
 import { CelestialCatcher } from "@/components/ui/CelestialCatcher"
 import { CosmicOracleEye } from "@/components/ui/CosmicOracleEye"
+import { ConstellationOwl } from "@/components/ui/ConstellationOwl"
 import { ThemeInjector } from "@/components/ui/ThemeInjector"
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
@@ -27,6 +28,7 @@ const SS = "syllabus-sync";
 const NA = "nexus-archive";
 const NM = "nanomatch";
 const SF = "sentinelflow";
+const EC = "ecrsm";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const { locale, t } = useTranslation();
@@ -39,6 +41,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isNA = slug === NA;
   const isNM = slug === NM;
   const isSF = slug === SF;
+  const isEC = slug === EC;
   const isRTL = locale === 'fa' || locale === 'ar';
 
   const getPath = (path: string) => {
@@ -107,6 +110,18 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bullet:       "text-[#d6b265]",
         check:        "text-[#f0c87a]",
       }
+    : isEC
+    ? {
+        accent:       "text-[#d946ef]",
+        accentSecond: "text-[#39ff14]",
+        border:       "border-[#d946ef]/20",
+        borderB:      "border-[#d946ef]/30",
+        borderSub:    "border-[#39ff14]/15",
+        bg:           "bg-[#d946ef]/5",
+        hover:        "hover:text-[#d946ef]",
+        bullet:       "text-[#39ff14]",
+        check:        "text-[#d946ef]",
+      }
     : isSF
     ? {
         accent:       "text-[#6b8e23]",
@@ -167,6 +182,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       {isNA && <ThemeInjector theme="nexus-archive" />}
       {isNM && <ThemeInjector theme="nanomatch" />}
       {isSF && <ThemeInjector theme="sentinelflow" />}
+      {isEC && <ThemeInjector theme="ecrsm" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -345,6 +361,41 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                 </div>
               </div>
             </section>
+          ) : isEC ? (
+            /* ── ECRSM: constellation owl hero ── */
+            <section className="border-b border-fuchsia-900/30 overflow-hidden" style={{ background: "#07030e" }}>
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#d946ef]/70 hover:text-[#d946ef] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
+                      {project.tags.map((tag, i) => (
+                        <span key={tag} className={`text-xs font-mono px-2 py-1 border ${i % 2 === 0 ? "text-[#d946ef] border-[#d946ef]/40 bg-[#d946ef]/5" : "text-[#39ff14] border-[#39ff14]/40 bg-[#39ff14]/5"}`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-fuchsia-200/60 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <ConstellationOwl />
+                  </div>
+                </div>
+              </div>
+            </section>
           ) : isSF ? (
             /* ── SentinelFlow: cosmic oracle eye hero ── */
             <section className="border-b border-lime-900/30 overflow-hidden" style={{ background: "#11150c" }}>
@@ -501,7 +552,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
