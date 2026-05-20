@@ -134,37 +134,39 @@
   scrollbar-color: rgba(214, 178, 101, 0.5) #080600;
 }
 
-/* ── SimurghForge: water blue palette override ── */
+/* ── SimurghForge: watercolor pond palette override ── */
 [data-theme="simurghforge"] {
-  --background:            #0d2d42;
-  --color-cyber-dark:      #081e2c;
-  --color-cyber-gray:      #143d58;
+  --background:            #cbe3f0;
+  --foreground:            #0a1e2c;
+  --color-cyber-dark:      #b8d8ea;
+  --color-cyber-gray:      #a0cce0;
 
-  /* cyan → sky water blue */
-  --color-cyan-DEFAULT:    #56aed7;
-  --color-cyan-glow:       #93d3ef;
-  --color-cyan-dim:        rgba(86, 174, 215, 0.25);
+  /* text body override for light bg */
+  --text-body:             #1a3a50;
+  --text-meta:             rgba(14, 64, 96, 0.7);
 
-  /* purple → deep teal */
-  --color-purple-DEFAULT:  #2e7ea8;
-  --color-purple-glow:     #56aed7;
-  --color-purple-dim:      rgba(46, 126, 168, 0.18);
+  /* cyan → deep water (#56aed7 shows clearly on light bg) */
+  --color-cyan-DEFAULT:    #1a80b4;
+  --color-cyan-glow:       #56aed7;
+  --color-cyan-dim:        rgba(26, 128, 180, 0.15);
 
-  /* amber → pale ochre */
-  --color-amber-DEFAULT:   #df9f43;
-  --color-amber-glow:      #f0c87a;
-  --color-amber-dim:       rgba(223, 159, 67, 0.15);
+  /* purple → teal ink */
+  --color-purple-DEFAULT:  #0e5a80;
+  --color-purple-glow:     #1a80b4;
+  --color-purple-dim:      rgba(14, 90, 128, 0.12);
 
-  /* meta text */
-  --text-meta:             rgba(147, 211, 239, 0.9);
+  /* amber → warm ochre */
+  --color-amber-DEFAULT:   #c17f20;
+  --color-amber-glow:      #df9f43;
+  --color-amber-dim:       rgba(193, 127, 32, 0.15);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(13, 45, 66, 0.85);
-  --glass-border:          rgba(86, 174, 215, 0.2);
-  --surface-1:             rgba(86, 174, 215, 0.08);
-  --surface-2:             rgba(86, 174, 215, 0.14);
+  --glass-bg:              rgba(203, 227, 240, 0.85);
+  --glass-border:          rgba(26, 128, 180, 0.2);
+  --surface-1:             rgba(26, 128, 180, 0.06);
+  --surface-2:             rgba(26, 128, 180, 0.12);
 
-  scrollbar-color: rgba(86, 174, 215, 0.6) #0d2d42;
+  scrollbar-color: rgba(26, 128, 180, 0.5) #cbe3f0;
 }
 
 /* ── ECRSM: dual magenta + lime palette override ── */

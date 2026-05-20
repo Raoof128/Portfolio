@@ -115,15 +115,15 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       }
     : isSFG
     ? {
-        accent:       "text-[#56aed7]",
-        accentSecond: "text-[#93d3ef]",
-        border:       "border-[#56aed7]/20",
-        borderB:      "border-[#56aed7]/30",
-        borderSub:    "border-[#56aed7]/15",
-        bg:           "bg-[#56aed7]/5",
-        hover:        "hover:text-[#56aed7]",
-        bullet:       "text-[#56aed7]",
-        check:        "text-[#93d3ef]",
+        accent:       "text-[#1a80b4]",
+        accentSecond: "text-[#0e5a80]",
+        border:       "border-[#1a80b4]/25",
+        borderB:      "border-[#1a80b4]/40",
+        borderSub:    "border-[#1a80b4]/15",
+        bg:           "bg-[#1a80b4]/8",
+        hover:        "hover:text-[#1a80b4]",
+        bullet:       "text-[#1a80b4]",
+        check:        "text-[#0e5a80]",
       }
     : isEC
     ? {
@@ -379,24 +379,24 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
             </section>
           ) : isSFG ? (
             /* ── SimurghForge: koi pond hero ── */
-            <section className="border-b border-sky-700/30 overflow-hidden" style={{ background: "#0d2d42" }}>
+            <section className="border-b border-sky-300/50 overflow-hidden" style={{ background: "#cbe3f0" }}>
               <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#56aed7]/70 hover:text-[#56aed7] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#1a80b4]/70 hover:text-[#1a80b4] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
                   <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
                 </Link>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
                   <div className="space-y-4 md:space-y-6">
                     <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
                       {project.tags.map(tag => (
-                        <span key={tag} className="text-xs font-mono text-[#56aed7] border border-[#56aed7]/40 bg-[#56aed7]/5 px-2 py-1">
+                        <span key={tag} className="text-xs font-mono text-[#0e5a80] border border-[#1a80b4]/40 bg-[#1a80b4]/10 px-2 py-1">
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-[#0a1e2c] leading-tight">
                       {project.title}
                     </h1>
-                    <p className="text-base md:text-lg text-sky-200/60 leading-relaxed">
+                    <p className="text-base md:text-lg text-[#1a3a50]/80 leading-relaxed">
                       {localizedFullDescription}
                     </p>
                     <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
@@ -603,7 +603,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#0d2d42]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
