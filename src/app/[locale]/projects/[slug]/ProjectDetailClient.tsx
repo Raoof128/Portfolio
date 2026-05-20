@@ -1,19 +1,23 @@
 "use client";
 
+import dynamic from "next/dynamic"
 import { NeonButton } from "@/components/ui/NeonButton"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
-import { RoyalAbyssCanvas } from "@/components/ui/RoyalAbyssCanvas"
-import { FireShieldCanvas } from "@/components/ui/FireShieldCanvas"
-import { DandelionSpinner } from "@/components/ui/DandelionSpinner"
-import { DnaHelixCanvas } from "@/components/ui/DnaHelixCanvas"
-import { KineticLotus } from "@/components/ui/KineticLotus"
-import { KineticAstrolabe } from "@/components/ui/KineticAstrolabe"
-import { CelestialCatcher } from "@/components/ui/CelestialCatcher"
-import { CosmicOracleEye } from "@/components/ui/CosmicOracleEye"
-import { ConstellationOwl } from "@/components/ui/ConstellationOwl"
-import { KoiPond } from "@/components/ui/KoiPond"
-import { WheelsOfEzekiel } from "@/components/ui/WheelsOfEzekiel"
 import { ThemeInjector } from "@/components/ui/ThemeInjector"
+
+// All canvas/SVG animations use ssr:false to prevent hydration mismatches
+// caused by inline <style> tags rendering differently on server vs client.
+const RoyalAbyssCanvas  = dynamic(() => import("@/components/ui/RoyalAbyssCanvas").then(m => ({ default: m.RoyalAbyssCanvas })),  { ssr: false })
+const FireShieldCanvas  = dynamic(() => import("@/components/ui/FireShieldCanvas").then(m => ({ default: m.FireShieldCanvas })),  { ssr: false })
+const DandelionSpinner  = dynamic(() => import("@/components/ui/DandelionSpinner").then(m => ({ default: m.DandelionSpinner })),  { ssr: false })
+const DnaHelixCanvas    = dynamic(() => import("@/components/ui/DnaHelixCanvas").then(m => ({ default: m.DnaHelixCanvas })),      { ssr: false })
+const KineticLotus      = dynamic(() => import("@/components/ui/KineticLotus").then(m => ({ default: m.KineticLotus })),          { ssr: false })
+const KineticAstrolabe  = dynamic(() => import("@/components/ui/KineticAstrolabe").then(m => ({ default: m.KineticAstrolabe })),  { ssr: false })
+const CelestialCatcher  = dynamic(() => import("@/components/ui/CelestialCatcher").then(m => ({ default: m.CelestialCatcher })),  { ssr: false })
+const CosmicOracleEye   = dynamic(() => import("@/components/ui/CosmicOracleEye").then(m => ({ default: m.CosmicOracleEye })),    { ssr: false })
+const ConstellationOwl  = dynamic(() => import("@/components/ui/ConstellationOwl").then(m => ({ default: m.ConstellationOwl })),  { ssr: false })
+const KoiPond           = dynamic(() => import("@/components/ui/KoiPond").then(m => ({ default: m.KoiPond })),                    { ssr: false })
+const WheelsOfEzekiel   = dynamic(() => import("@/components/ui/WheelsOfEzekiel").then(m => ({ default: m.WheelsOfEzekiel })),    { ssr: false })
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
