@@ -18,7 +18,7 @@ const CosmicOracleEye   = dynamic(() => import("@/components/ui/CosmicOracleEye"
 const ConstellationOwl  = dynamic(() => import("@/components/ui/ConstellationOwl").then(m => ({ default: m.ConstellationOwl })),  { ssr: false })
 const KoiPond           = dynamic(() => import("@/components/ui/KoiPond").then(m => ({ default: m.KoiPond })),                    { ssr: false })
 const WheelsOfEzekiel   = dynamic(() => import("@/components/ui/WheelsOfEzekiel").then(m => ({ default: m.WheelsOfEzekiel })),    { ssr: false })
-import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink } from "lucide-react"
+import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink, BookOpen, Quote } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
 import { Project, getProjectFullDescription } from "@/lib/data"
@@ -280,10 +280,11 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                       {localizedFullDescription}
                     </p>
                     <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
-                      {project.links.demo   && <NeonButton href={project.links.demo}   external><Play     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
-                      {project.links.repo   && <NeonButton href={project.links.repo}   variant="secondary" external><Github   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
-                      {project.links.paper  && <NeonButton href={project.links.paper}  variant="outline" download><FileText  size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
-                      {project.links.doi    && <NeonButton href={project.links.doi}    variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                      {project.links.demo     && <NeonButton href={project.links.demo}     external><Play        size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo     && <NeonButton href={project.links.repo}     variant="secondary" external><Github     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.preprint && <NeonButton href={project.links.preprint} external><BookOpen   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Read the preprint</NeonButton>}
+                      {project.links.paper    && <NeonButton href={project.links.paper}    variant="outline" download><FileText   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi      && <NeonButton href={project.links.doi}      variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
                     </div>
                   </div>
                   <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
@@ -784,6 +785,11 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                         {t.project_detail.download_paper} <FileText size={14} className={cn(isRTL && "order-first")} />
                       </a>
                     )}
+                    {project.links.preprint && (
+                      <a href={project.links.preprint} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}>
+                        Read the preprint <BookOpen size={14} className={cn(isRTL && "order-first")} />
+                      </a>
+                    )}
                     {project.links.doi && (
                       <a href={project.links.doi} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}>
                         {t.project_detail.doi_record} <ExternalLink size={14} className={cn(isRTL && "order-first")} />
@@ -791,6 +797,16 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                     )}
                   </div>
                 </div>
+              {project.citation && (
+                <div className={`border ${theme.border} p-4 bg-black/20 mt-4`}>
+                  <h3 className="font-mono text-xs uppercase tracking-widest text-text-body mb-3 flex items-center gap-2">
+                    <Quote size={12} className={theme.accent} /> Cite this work
+                  </h3>
+                  <p className="text-xs text-slate-400 leading-relaxed font-mono break-words">
+                    {project.citation}
+                  </p>
+                </div>
+              )}
               </div>
             </div>
           </AnimatedSection>
