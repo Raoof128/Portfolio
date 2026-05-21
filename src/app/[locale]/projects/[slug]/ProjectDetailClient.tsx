@@ -796,17 +796,17 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                     )}
                   </div>
                 </div>
+              </div>
               {project.citation && (
-                <div className={`border ${theme.border} p-4 bg-black/20 mt-4`}>
-                  <h3 className="font-mono text-xs uppercase tracking-widest text-text-body mb-3 flex items-center gap-2">
-                    <Quote size={12} className={theme.accent} /> Cite this work
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed font-mono break-words">
+                <div className="border border-white/10 p-4 bg-black/20" suppressHydrationWarning>
+                  <p className="font-mono text-xs uppercase tracking-widest text-text-body mb-3 flex items-center gap-2">
+                    <Quote size={12} /> Cite this work
+                  </p>
+                  <p className="text-xs text-slate-400 leading-relaxed font-mono break-all">
                     {project.citation}
                   </p>
                 </div>
               )}
-              </div>
             </div>
           </AnimatedSection>
 
