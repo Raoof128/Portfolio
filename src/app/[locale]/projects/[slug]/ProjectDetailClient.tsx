@@ -283,7 +283,6 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                       {project.links.demo     && <NeonButton href={project.links.demo}     external><Play        size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
                       {project.links.repo     && <NeonButton href={project.links.repo}     variant="secondary" external><Github     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
                       {project.links.preprint && <NeonButton href={project.links.preprint} external><BookOpen   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Read the preprint</NeonButton>}
-                      {project.links.paper    && <NeonButton href={project.links.paper}    variant="outline" download><FileText   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
                       {project.links.doi      && <NeonButton href={project.links.doi}      variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
                     </div>
                   </div>
