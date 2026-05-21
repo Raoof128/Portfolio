@@ -38,8 +38,8 @@ describe('Data Layer', () => {
     });
 
     it('should publish the Invisible Window archival DOI', () => {
-      expect(projects['invisible-window-research']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20195135');
-      expect(projects['invisible-window-research']?.proof.join(' ')).toContain('10.5281/ZENODO.20195135');
+      expect(projects['invisible-window-research']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20319832');
+      expect(projects['invisible-window-research']?.proof.join(' ')).toContain('10.5281/zenodo.20319832');
     });
 
     it('should list Project Simurgh directly after Invisible Window with its DOI', () => {
