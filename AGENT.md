@@ -35,6 +35,13 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-25 (Australia/Sydney)
+- **Scope**: Preprint & DOI Audit — Invisible Window & Project Simurgh
+- **Summary**: Replaced the old "Invisible Window" PDF with the V2.0 preprint (DOI 10.5281/zenodo.20376495, 13 pages, 53 references) and added the newly published preprint for "Project Simurgh" (DOI 10.5281/zenodo.20374849, 12 pages, 31 references) in public/. Added the "Read the preprint" button/link and citation blocks to Project Simurgh's layout. Updated llms.txt, dynamized the homepage DOI text, and updated regression tests.
+- **Files Changed**: `public/Invisible_Window_Research_Preprint_V2.0.pdf`, `public/Project_Simurgh_Preprint_v1.0.pdf`, `public/llms.txt`, `src/app/[locale]/page.tsx`, `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `src/lib/data.ts`, `src/lib/data.test.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: Run `npm run test:ci` (66/66 tests passing), `npm run lint` (clean), and `npm run build` (150 static routes prerendered).
+- **Follow-ups**: Verify that download links for papers on the details pages function correctly in production.
+
 ### Raouf: 2026-05-19 (i18n senior audit — quality fixes)
 - **Scope**: 4-phase structured i18n audit — coverage, quality, hardcoded strings, consistency
 - **Summary**: 0 missing keys (Dictionary type enforcement), 0 empty values, 0 structural issues. 3 quality fixes: zh stats_projects counter word removed, zh stats_vendors restructured to natural Chinese label, fa hall_of_fame report_guidance restructured for natural preposition-bracketing around link.

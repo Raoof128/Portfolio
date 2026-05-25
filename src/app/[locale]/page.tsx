@@ -323,7 +323,7 @@ export default function Home() {
                         className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <ExternalLink className="w-3 h-3" /> DOI 10.5281/ZENODO.20195135
+                        <ExternalLink className="w-3 h-3" /> DOI {p.links.doi.replace("https://doi.org/", "").toUpperCase()}
                       </a>
                     )}
                     <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
@@ -390,7 +390,7 @@ export default function Home() {
                         className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <ExternalLink className="w-3 h-3" /> DOI 10.5281/ZENODO.20195198
+                        <ExternalLink className="w-3 h-3" /> DOI {p.links.doi.replace("https://doi.org/", "").toUpperCase()}
                       </a>
                     )}
                     <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">

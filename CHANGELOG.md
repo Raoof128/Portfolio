@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-05-25 (Australia/Sydney)
+- **Scope**: Preprint & DOI Audit — Invisible Window & Project Simurgh
+- **Summary**: Replaced the old "Invisible Window" PDF with the V2.0 preprint (DOI 10.5281/zenodo.20376495, 13 pages, 53 references) and added the newly published preprint for "Project Simurgh" (DOI 10.5281/zenodo.20374849, 12 pages, 31 references) in public/. Added the "Read the preprint" button/link and citation blocks to Project Simurgh's layout. Updated llms.txt, dynamized the homepage DOI text, and updated regression tests.
+- **Files Changed**: `public/Invisible_Window_Research_Preprint_V2.0.pdf`, `public/Project_Simurgh_Preprint_v1.0.pdf`, `public/llms.txt`, `src/app/[locale]/page.tsx`, `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `src/lib/data.ts`, `src/lib/data.test.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: Run `npm run test:ci` (66/66 tests passing), `npm run lint` (clean), and `npm run build` (150 static routes prerendered).
+- **Follow-ups**: Verify that download links for papers on the details pages function correctly in production.
+
 ### Raouf: 2026-05-19 (fix: Cloudflare Pages routing + cache headers)
 - **Scope**: Fix 404 on chunk assets and missing root index.html after i18n migration
 - **Summary**: `proxy.ts` does not execute in a plain `wrangler pages deploy out/` — it requires Cloudflare Workers setup. Added `public/_redirects` to handle all locale routing at CDN level: clean English paths (/, /projects, /lab, /write-ups, /resume, /about, /contact, /hall-of-fame, /security-policy, /projects/:slug, /write-ups/:slug, /lab/:id) rewrite to /en/* via status 200; public /en/* paths redirect 302 back to clean URLs. Added `public/_headers` so HTML pages are served with `max-age=0, must-revalidate` preventing browsers from caching stale HTML that references outdated content-hashed JS chunks — the root cause of the 404 chunk error. Also fixed `[locale]/layout.tsx` LayoutProps type for Next.js 16 compatibility (params.locale must be `string` at framework level, narrowed to `Locale` at runtime).

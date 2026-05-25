@@ -55,12 +55,12 @@ export const projects: Record<string, Project> = {
     tags: ["Security Research", "Windows", "macOS", "WebRTC", "Responsible Disclosure", "PoC"],
     links: {
       repo: "https://github.com/Raoof128/invisible-window-research",
-      paper: "/Invisible_Window_Research.pdf",
-      preprint: "https://zenodo.org/records/20319832",
-      doi: "https://doi.org/10.5281/zenodo.20319832",
+      paper: "/Invisible_Window_Research_Preprint_V2.0.pdf",
+      preprint: "https://zenodo.org/records/20376495",
+      doi: "https://doi.org/10.5281/zenodo.20376495",
       caseStudy: "/projects/invisible-window-research"
     },
-    citation: "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20319832",
+    citation: "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20376495",
     build: {
       stack: [
         "Win32 C (Windows PoC)",
@@ -104,7 +104,7 @@ export const projects: Record<string, Project> = {
       "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
       "Behavioural detection ineffective — gaze tracking (p = 0.41, n = 8) and mouse dynamics fell within normal exam-behaviour variance",
       "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
-      "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20319832 — 13 pages, 53 references, IEEE conference format"
+      "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20376495 — 13 pages, 53 references, IEEE conference format"
     ]
   },
   "project-simurgh": {
@@ -122,9 +122,12 @@ export const projects: Record<string, Project> = {
     tags: ["Integrity API", "AI Safety", "Proctoring", "Telemetry", "Node.js", "Privacy"],
     links: {
       repo: "https://github.com/Raoof128/Project-Simurgh#13-status-license",
-      doi: "https://doi.org/10.5281/zenodo.20195198",
+      paper: "/Project_Simurgh_Preprint_v1.0.pdf",
+      preprint: "https://zenodo.org/records/20374849",
+      doi: "https://doi.org/10.5281/zenodo.20374849",
       caseStudy: "/projects/project-simurgh"
     },
+    citation: "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
     build: {
       stack: [
         "Node.js / Express",
@@ -160,7 +163,7 @@ export const projects: Record<string, Project> = {
       "Anchored the project to The Invisible Window threat model while keeping the implementation vendor-neutral and privacy-preserving"
     ],
     proof: [
-      "Archived with DOI 10.5281/ZENODO.20195198",
+      "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20374849 — 12 pages, 31 references, IEEE conference format",
       "Stage 1 research MVP and Stage 1.5 validation pack documented in the repository",
       "Telemetry payloads are lightweight behavioral JSON windows, not video streams",
       "Audit verification endpoint validates the HMAC-linked event chain",

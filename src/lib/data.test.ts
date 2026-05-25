@@ -37,18 +37,23 @@ describe('Data Layer', () => {
       expect(projects['ecrsm'].category).toBe('OFFENSIVE');
     });
 
-    it('should publish the Invisible Window archival DOI', () => {
-      expect(projects['invisible-window-research']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20319832');
-      expect(projects['invisible-window-research']?.proof.join(' ')).toContain('10.5281/zenodo.20319832');
+    it('should publish the Invisible Window archival DOI and preprint', () => {
+      expect(projects['invisible-window-research']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20376495');
+      expect(projects['invisible-window-research']?.links.preprint).toBe('https://zenodo.org/records/20376495');
+      expect(projects['invisible-window-research']?.links.paper).toBe('/Invisible_Window_Research_Preprint_V2.0.pdf');
+      expect(projects['invisible-window-research']?.proof.join(' ')).toContain('10.5281/zenodo.20376495');
     });
 
-    it('should list Project Simurgh directly after Invisible Window with its DOI', () => {
+    it('should list Project Simurgh directly after Invisible Window with its DOI, preprint, paper, and citation', () => {
       const projectKeys = Object.keys(projects);
       const invisibleWindowIndex = projectKeys.indexOf('invisible-window-research');
 
       expect(projectKeys[invisibleWindowIndex + 1]).toBe('project-simurgh');
       expect(projects['project-simurgh']?.links.repo).toBe('https://github.com/Raoof128/Project-Simurgh#13-status-license');
-      expect(projects['project-simurgh']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20195198');
+      expect(projects['project-simurgh']?.links.doi).toBe('https://doi.org/10.5281/zenodo.20374849');
+      expect(projects['project-simurgh']?.links.preprint).toBe('https://zenodo.org/records/20374849');
+      expect(projects['project-simurgh']?.links.paper).toBe('/Project_Simurgh_Preprint_v1.0.pdf');
+      expect(projects['project-simurgh']?.citation).toBe('Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849');
       expect(projects['project-simurgh']?.description).toContain('connected to The Invisible Window research');
     });
 
