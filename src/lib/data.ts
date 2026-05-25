@@ -57,7 +57,6 @@ export const projects: Record<string, Project> = {
       repo: "https://github.com/Raoof128/invisible-window-research",
       paper: "/Invisible_Window_Research_Preprint_V2.0.pdf",
       preprint: "https://zenodo.org/records/20376495",
-      doi: "https://doi.org/10.5281/zenodo.20376495",
       caseStudy: "/projects/invisible-window-research"
     },
     citation: "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20376495",
@@ -124,7 +123,6 @@ export const projects: Record<string, Project> = {
       repo: "https://github.com/Raoof128/Project-Simurgh#13-status-license",
       paper: "/Project_Simurgh_Preprint_v1.0.pdf",
       preprint: "https://zenodo.org/records/20374849",
-      doi: "https://doi.org/10.5281/zenodo.20374849",
       caseStudy: "/projects/project-simurgh"
     },
     citation: "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
