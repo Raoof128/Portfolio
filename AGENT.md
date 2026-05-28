@@ -35,6 +35,13 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-05-28 (Australia/Sydney)
+- **Scope**: Lab section full audit — placeholder code, dead fields, type duplication, broken file extension
+- **Summary**: Replaced all three `codeSnippet: "..."` placeholders with real educational code (Rust WinAPI keylogger, Python raw-socket sniffer, Go LSB steganography). Removed dead `link?` field from `LabExperiment` interface and all entries. Fixed `LabDetailClient.tsx` to import the type from `@/lib/data` instead of redefining it locally. Fixed the fake editor filename with an `EXT_MAP` (`rust→rs`, `python→py`, `go→go`).
+- **Files Changed**: `src/lib/data.ts`, `src/app/[locale]/lab/[id]/LabDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 66/66 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-05-25 (Australia/Sydney)
 - **Scope**: Preprint, Paper, & Repo Layout — Invisible Window & Project Simurgh
 - **Summary**: Updated project link assets for Invisible Window and Project Simurgh. Retained repository, preprint, and direct PDF paper download options (removed the DOI record link). Wired direct paper download buttons for both projects on their details pages and updated data layer tests.
