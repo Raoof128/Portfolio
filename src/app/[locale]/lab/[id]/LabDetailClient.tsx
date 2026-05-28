@@ -8,16 +8,21 @@ import { fadeInLeft, fadeInRight } from "@/lib/utils";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { cn } from "@/lib/utils";
+import type { LabExperiment } from "@/lib/data";
 
-interface LabExperiment {
-  id: string;
-  title: string;
-  status: string;
-  description: string;
-  objective: string;
-  constraints: string;
-  tech: string[];
-  codeSnippet: string;
+const EXT_MAP: Record<string, string> = {
+  rust: "rs",
+  python: "py",
+  go: "go",
+  javascript: "js",
+  typescript: "ts",
+  c: "c",
+  cpp: "cpp",
+};
+
+function editorFilename(tech: string[]): string {
+  const first = (tech[0] ?? "").toLowerCase();
+  return `src/main.${EXT_MAP[first] ?? (first || "code")}`;
 }
 
 export function LabDetailClient({ exp }: { exp: LabExperiment }) {
@@ -107,7 +112,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                   <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
                   <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
                 </div>
-                <div className="text-text-body text-xs">src/main.{exp.tech[0]?.toLowerCase() || "code"}</div>
+                <div className="text-text-body text-xs">{editorFilename(exp.tech)}</div>
                 <div className="w-10" />
               </div>
 

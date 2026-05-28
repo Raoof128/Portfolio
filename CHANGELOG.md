@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-05-28 (Australia/Sydney)
+- **Scope**: Lab section full audit — placeholder code, dead fields, type duplication, broken file extension
+- **Summary**: Four issues fixed: (1) Replaced all three `codeSnippet: "..."` placeholders with real, commented educational code — Rust `SetWindowsHookEx` keylogger (ARCHIVED), Python raw-socket TCP sniffer with manual IP/TCP header parsing (ACTIVE), and Go LSB PNG steganography with length-prefixed embedding (CONCEPT). (2) Removed the dead `link?` field from `LabExperiment` interface and all three entries — it pointed to the generic GitHub profile and was never rendered anywhere. (3) In `LabDetailClient.tsx`, removed the locally-redefined `LabExperiment` interface and replaced it with a type import from `@/lib/data`, eliminating silent drift risk. (4) Fixed the fake editor filename — `tech[0].toLowerCase()` was producing `src/main.rust`/`src/main.python`; added an `EXT_MAP` lookup so Rust→`.rs`, Python→`.py`, Go→`.go`.
+- **Files Changed**: `src/lib/data.ts`, `src/app/[locale]/lab/[id]/LabDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 66/66 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-05-25 (Australia/Sydney)
 - **Scope**: Preprint, Paper, & Repo Layout — Invisible Window & Project Simurgh
 - **Summary**: Updated project link assets for Invisible Window and Project Simurgh. Retained repository, preprint, and direct PDF paper download options (removed the DOI record link). Wired direct paper download buttons for both projects on their details pages and updated data layer tests.

