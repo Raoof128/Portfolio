@@ -35,6 +35,13 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan body background
+- **Scope**: Apply #DAA520 theme to all Zurvan detail page elements
+- **Summary**: Added `isZV ? "bg-[#040300]"` to the body content grid background ternary — the one gap left after the theme object was wired. `#040300` is a near-black golden void matching the canvas hero.
+- **Files Changed**: `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan CosmicLoom animation
 - **Scope**: Add Project Zurvan canvas hero animation + full #DAA520 colour palette
 - **Summary**: Created `CosmicLoomCanvas.tsx` — 3D lemniscate particle system. Lemniscate always drawn as 3-pass glowing stroke. 200 particles in two factions (Ahura gold / Ahriman crimson). Shamseh mandala background. Auto-oscillating rotation replaces mouse tracking. Wired into ProjectDetailClient.tsx with `isZV` slug, theme block, ThemeInjector, dynamic import, and hero section before default fallback.

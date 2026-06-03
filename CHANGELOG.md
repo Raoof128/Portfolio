@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan body background
+- **Scope**: Apply #DAA520 theme to all Zurvan detail page elements
+- **Summary**: The `theme` object already covered all content sections (section numbers, borders, bullets, icons, sidebar). The only missing element was the per-project body container background tint. Added `isZV ? "bg-[#040300]"` to the inline ternary in the content grid div — `#040300` is a near-black with a minute golden-void undertone that matches the `#020103` canvas hero background and the #DAA520 palette.
+- **Files Changed**: `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan CosmicLoom animation
 - **Scope**: Add Project Zurvan canvas hero animation + full #DAA520 colour palette
 - **Summary**: Created `CosmicLoomCanvas.tsx` — a 3D lemniscate-of-Bernoulli (infinity-sign) particle system using the Zurvan Protocol design from the supplied HTML. Key decisions: (1) the lemniscate is always drawn as a visible glowing stroke using three render passes (wide haze 10px, medium 4px, crisp 1.2px) so the ∞ shape is immediately readable; (2) 200 particles in two factions — Ahura (gold, #DAA520/#FFD700) orbiting the lemniscate with positive phase offset and Ahriman (crimson) with π phase offset — connected by same-faction webbing within 42px; (3) a singularity core glow sits permanently at the crossing point (0,0,0); (4) a subtle Persian Shamseh mandala rotates in the background at 0.0006 rad/frame; (5) mouse tracking from the HTML was replaced with a deterministic sin-based auto-oscillation (rotY = sin(frame×0.008)×0.35, rotX = sin(frame×0.005)×0.22+0.14) since the canvas lives inside a fixed-size hero container; (6) visibility-change pause/resume and RAF cleanup on unmount follow the existing DnaHelixCanvas pattern; background is `#020103` (primordial void). Wired into `ProjectDetailClient.tsx`: added `ZV = "project-zurvan"` constant, `isZV` boolean, `#DAA520` theme block, `ThemeInjector theme="zurvan"`, `CosmicLoomCanvas` dynamic import (ssr:false), and a Zurvan hero section inserted before the default fallback in the ternary chain.

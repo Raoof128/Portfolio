@@ -712,7 +712,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
           )}
         </AnimatedSection>
 
-        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : isAI ? "bg-[#06050a]" : ""}`, isRTL && "direction-rtl")}>
+        <div className={cn(`max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : isAI ? "bg-[#06050a]" : isZV ? "bg-[#040300]" : ""}`, isRTL && "direction-rtl")}>
 
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-16">
