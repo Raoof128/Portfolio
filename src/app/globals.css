@@ -549,21 +549,21 @@ body {
 @layer utilities {
   .text-glow {
     text-shadow:
-      0 0 6px rgba(0, 245, 255, 0.7),
-      0 0 18px rgba(0, 200, 255, 0.5),
-      0 0 40px rgba(0, 200, 255, 0.2);
+      0 0 6px var(--color-cyan-dim),
+      0 0 18px var(--color-cyan-dim),
+      0 0 40px var(--color-cyan-dim);
   }
 
   .border-glow {
     box-shadow:
-      0 0 6px rgba(0, 245, 255, 0.4),
-      0 0 14px rgba(0, 200, 255, 0.25);
+      0 0 6px var(--color-cyan-dim),
+      0 0 14px var(--color-cyan-dim);
   }
 
   .cyber-grid {
     background-size: 40px 40px;
-    background-image: linear-gradient(to right, rgba(0, 245, 255, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 245, 255, 0.06) 1px, transparent 1px);
+    background-image: linear-gradient(to right, var(--surface-2) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--surface-2) 1px, transparent 1px);
     mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
   }
 
@@ -576,8 +576,8 @@ body {
   }
 
   .glass-strong {
-    background: rgba(3, 7, 18, 0.88);
-    border-color: rgba(0, 245, 255, 0.15);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
@@ -589,15 +589,15 @@ body {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 245, 255, 0.7) 20%,
-      rgba(139, 92, 246, 0.5) 50%,
-      rgba(0, 245, 255, 0.7) 80%,
+      var(--color-cyan) 20%,
+      var(--color-purple) 50%,
+      var(--color-cyan) 80%,
       transparent 100%
     );
     box-shadow:
-      0 0 12px rgba(0, 245, 255, 0.4),
-      0 0 30px rgba(0, 200, 255, 0.2),
-      0 0 4px rgba(139, 92, 246, 0.15);
+      0 0 12px var(--color-cyan-dim),
+      0 0 30px var(--color-cyan-dim),
+      0 0 4px var(--color-purple-dim);
   }
 
   /* Custom Scrollbar — HUD-integrated */
@@ -608,19 +608,19 @@ body {
 
   ::-webkit-scrollbar-track {
     background: var(--color-cyber-black);
-    border-left: 1px solid rgba(0, 245, 255, 0.1);
+    border-left: 1px solid var(--color-cyan-dim);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 245, 255, 0.6);
+    background: var(--color-cyan);
     border-radius: 0px;
-    box-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
+    box-shadow: 0 0 8px var(--color-cyan-dim);
     transition: background 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-cyan);
-    box-shadow: 0 0 14px rgba(0, 245, 255, 0.6);
+    box-shadow: 0 0 14px var(--color-cyan-dim);
   }
 
 }
@@ -653,11 +653,11 @@ body {
 @keyframes pulse-glow {
   0%, 100% {
     opacity: 0.4;
-    box-shadow: 0 0 8px rgba(0, 245, 255, 0.3), 0 0 20px rgba(0, 200, 255, 0.15);
+    box-shadow: 0 0 8px var(--color-cyan-dim), 0 0 20px var(--color-cyan-dim);
   }
   50% {
     opacity: 1;
-    box-shadow: 0 0 14px rgba(0, 245, 255, 0.6), 0 0 36px rgba(0, 200, 255, 0.3);
+    box-shadow: 0 0 14px var(--color-cyan-dim), 0 0 36px var(--color-cyan-dim);
   }
 }
 

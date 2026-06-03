@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan header/footer theme fix
+- **Scope**: Remove default cyan fallback from shared header/footer chrome on Zurvan
+- **Summary**: Replaced the remaining hardcoded cyan glow values in shared navbar/global utilities with active theme CSS variables. Changed the footer background from fixed `#030712` to `bg-background` so it follows `[data-theme="zurvan"]`. This keeps the Zurvan page chrome aligned to `#EDAB18` rather than falling back to the default cyan ambience.
+- **Files Changed**: `src/components/layout/Navbar.tsx`, `src/components/layout/Footer.tsx`, `src/app/globals.css`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 67/67 passing; Browser QA on `http://localhost:3000/en/projects/project-zurvan`: `data-theme="zurvan"`, `--color-cyan-DEFAULT: #edab18`, header terminal icon computed as `rgb(237, 171, 24)`, footer accent computed as `rgb(237, 171, 24)`, footer background computed as `rgb(4, 3, 1)`, no console warnings/errors.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan palette and starfield polish
 - **Scope**: Align Project Zurvan detail page colours and animation visibility
 - **Summary**: Replaced Zurvan-specific `#DAA520`/yellow styling with the requested `#EDAB18` palette across hero tags, links, section accents, borders, and content panels. Added the missing `[data-theme="zurvan"]` global token block so shared page chrome follows the same theme as the other project pages. Updated `CosmicLoomCanvas` to use the `#EDAB18` gold family and draw a deterministic twinkling starfield behind the infinity animation so the background stars remain visible.
