@@ -168,6 +168,66 @@ export const projects: Record<string, Project> = {
       "GitHub Stage 1 checks run the project quality gate on main and pull requests"
     ]
   },
+  "project-zurvan": {
+    slug: "project-zurvan",
+    title: "Project Zurvan",
+    category: "ENGINEERING",
+    year: "2026",
+    description: "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 183 tests passing.",
+    localizedDescription: {
+      fa: "موتور دانش مبتنی بر هوش مصنوعی و محلی‌محور. اسناد را دریافت می‌کند، دانش ساختاریافته استخراج می‌کند و از طریق سرور MCP در اختیار عامل‌های هوش مصنوعی قرار می‌دهد. ۱۸۳ آزمون موفق.",
+      ar: "محرك معرفة محلي يعمل بالذكاء الاصطناعي. يستوعب أي مستند، يستخرج المعرفة المنظمة (ادعاءات، مفاهيم، كيانات، قرارات)، ويعرضها لعوامل الذكاء الاصطناعي عبر خادم MCP. ١٨٣ اختباراً ناجحاً.",
+      zh: "本地优先的 LLM 知识引擎。摄取任意文档，提取结构化知识（声明、概念、实体、决策），并通过 MCP stdio 服务器将其暴露给 AI 代理。183 个测试通过。",
+      es: "Motor de conocimiento LLM local. Ingiere cualquier documento, extrae conocimiento estructurado (afirmaciones, conceptos, entidades, decisiones) y lo expone a agentes de IA mediante un servidor MCP stdio. 183 pruebas aprobadas.",
+    },
+    tags: ["Python", "LLM", "MCP", "Knowledge Graph", "SQLite", "Local-first", "AI Agents"],
+    links: {
+      repo: "https://github.com/Raoof128/Project-Zurvan",
+      caseStudy: "/projects/project-zurvan"
+    },
+    build: {
+      stack: [
+        "Python 3.10+",
+        "SQLite FTS5 (hybrid search)",
+        "MCP stdio server",
+        "OpenAI / Anthropic / Mock LLM providers",
+        "Obsidian-compatible vault layout"
+      ],
+      features: [
+        "Ingests Markdown, PDF, TXT, and images into a linked, searchable, git-friendly wiki",
+        "LLM extraction layer produces typed knowledge nodes: claims, concepts, entities, and decisions — compounded additively across sources",
+        "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces dense context bundles for agent prompts",
+        "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
+        "Multi-project federation — cross-vault search, contradiction detection, and policy radar across independent vaults",
+        "183 tests passing across 18 completed phases"
+      ]
+    },
+    secure: {
+      measures: [
+        "Local-first by design — no cloud storage or external transmission of document content",
+        "MCP server is read-only by default; write mode requires explicit opt-in flag",
+        "Project paths stored in ~/.zurvan/projects.json — never committed to version control",
+        "Mock LLM provider available for safe dev/test without API key exposure",
+        "Agent memory isolated per vault; cross-vault federation requires explicit registration"
+      ]
+    },
+    fullDescription: "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki — then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
+    problem: "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge — which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
+    solution: [
+      "Built a local document ingestion pipeline (MD, PDF, TXT, images) feeding a SQLite-backed knowledge store",
+      "LLM extraction layer produces typed nodes — claims, concepts, entities, decisions — compounded additively across sources as the corpus grows",
+      "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces deep context bundles for agent prompts",
+      "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
+      "Multi-project federation manages independent vaults with cross-vault search, contradiction detection, and policy drift radar"
+    ],
+    proof: [
+      "183 tests passing across 18 completed development phases",
+      "MCP server verified with Claude Code and Cursor client setup guides",
+      "Obsidian vault integration with colour-coded 7-type knowledge graph (claims, concepts, entities, decisions, sessions, contradictions, syntheses)",
+      "Evidence pack → report → review → publish pipeline runs fully offline",
+      "Agent workflow orchestration (preflight / postedit / session close) documented for Claude Code and Codex"
+    ]
+  },
   "gitswitch": {
     slug: "gitswitch",
     title: "GitSwitch",

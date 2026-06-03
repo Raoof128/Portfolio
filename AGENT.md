@@ -35,6 +35,20 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan CosmicLoom animation
+- **Scope**: Add Project Zurvan canvas hero animation + full #DAA520 colour palette
+- **Summary**: Created `CosmicLoomCanvas.tsx` — 3D lemniscate particle system. Lemniscate always drawn as 3-pass glowing stroke. 200 particles in two factions (Ahura gold / Ahriman crimson). Shamseh mandala background. Auto-oscillating rotation replaces mouse tracking. Wired into ProjectDetailClient.tsx with `isZV` slug, theme block, ThemeInjector, dynamic import, and hero section before default fallback.
+- **Files Changed**: `src/components/ui/CosmicLoomCanvas.tsx` (new), `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
+### Raouf: 2026-06-03 (Australia/Sydney)
+- **Scope**: Add Project Zurvan to portfolio project list
+- **Summary**: Added Project Zurvan (local-first LLM knowledge engine, Python 3.10+, 183 tests, 18 phases) as a new portfolio entry positioned directly after Project Simurgh in `data.ts`. Added a full-width (md:col-span-3) bento card in the homepage grid with purple ENGINEERING accent styling and "LOCAL-FIRST · MCP AGENT MEMORY" badge. Added a data-layer regression test asserting `project-zurvan` follows `project-simurgh` in key order. Added entry #4 in `public/llms.txt`, renumbering Syllabus-Sync through ECRSM.
+- **Files Changed**: `src/lib/data.ts`, `src/app/[locale]/page.tsx`, `src/lib/data.test.ts`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-05-28 (Australia/Sydney)
 - **Scope**: Lab section full audit — placeholder code, dead fields, type duplication, broken file extension
 - **Summary**: Replaced all three `codeSnippet: "..."` placeholders with real educational code (Rust WinAPI keylogger, Python raw-socket sniffer, Go LSB steganography). Removed dead `link?` field from `LabExperiment` interface and all entries. Fixed `LabDetailClient.tsx` to import the type from `@/lib/data` instead of redefining it locally. Fixed the fake editor filename with an `EXT_MAP` (`rust→rs`, `python→py`, `go→go`).

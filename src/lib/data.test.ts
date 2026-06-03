@@ -57,6 +57,15 @@ describe('Data Layer', () => {
       expect(projects['project-simurgh']?.description).toContain('connected to The Invisible Window research');
     });
 
+    it('should list Project Zurvan directly after Project Simurgh', () => {
+      const projectKeys = Object.keys(projects);
+      const simurghIndex = projectKeys.indexOf('project-simurgh');
+      expect(projectKeys[simurghIndex + 1]).toBe('project-zurvan');
+      expect(projects['project-zurvan']?.links.repo).toBe('https://github.com/Raoof128/Project-Zurvan');
+      expect(projects['project-zurvan']?.category).toBe('ENGINEERING');
+      expect(projects['project-zurvan']?.build.stack).toBeInstanceOf(Array);
+    });
+
     it('each project should have valid links structure', () => {
       Object.values(projects).forEach((project: Project) => {
         expect(project.links).toHaveProperty('repo');

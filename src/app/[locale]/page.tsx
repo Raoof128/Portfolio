@@ -401,6 +401,62 @@ export default function Home() {
               );
             })()}
 
+            {/* Project Zurvan — LLM knowledge engine */}
+            {(() => {
+              const p = projects["project-zurvan"];
+              const s = CATEGORY_STYLE[p.category];
+              return (
+                <BentoCard
+                  key={p.slug}
+                  slug={p.slug}
+                  accentHover={s.hover}
+                  cornerClass={s.corner}
+                  tint={s.tint}
+                  className="md:col-span-3"
+                  locale={locale}
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
+                    <span className={`font-mono text-[10px] px-2 py-0.5 border ${s.badge} tracking-widest uppercase self-start`}>
+                      [{s.prefix}] {p.category}
+                    </span>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="font-mono text-[10px] text-purple-400 border border-purple-400/30 px-2 py-0.5 tracking-widest uppercase">LOCAL-FIRST · MCP AGENT MEMORY</span>
+                      <span className="font-mono text-[10px] text-text-meta">{p.year}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors max-w-2xl">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-text-body leading-relaxed mb-5 max-w-3xl">
+                    {getProjectDescription(p, locale)}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {p.tags.map((tag) => (
+                      <span key={tag} className="font-mono text-[10px] text-text-meta border border-purple-400/10 px-2 py-0.5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-4">
+                    {p.links.repo && (
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-purple-400 transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-3 h-3" /> {t.common.repo}
+                      </a>
+                    )}
+                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-purple-400 transition-colors">
+                      {t.common.case_study} <ArrowRight className={cn("w-3 h-3", isRTL ? "rotate-180" : "")} />
+                    </span>
+                  </div>
+                </BentoCard>
+              );
+            })()}
+
             {/* Mehr Guard — 2 cols */}
             {(() => {
               const p = projects["mehr-guard"];

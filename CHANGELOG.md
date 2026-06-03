@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan CosmicLoom animation
+- **Scope**: Add Project Zurvan canvas hero animation + full #DAA520 colour palette
+- **Summary**: Created `CosmicLoomCanvas.tsx` — a 3D lemniscate-of-Bernoulli (infinity-sign) particle system using the Zurvan Protocol design from the supplied HTML. Key decisions: (1) the lemniscate is always drawn as a visible glowing stroke using three render passes (wide haze 10px, medium 4px, crisp 1.2px) so the ∞ shape is immediately readable; (2) 200 particles in two factions — Ahura (gold, #DAA520/#FFD700) orbiting the lemniscate with positive phase offset and Ahriman (crimson) with π phase offset — connected by same-faction webbing within 42px; (3) a singularity core glow sits permanently at the crossing point (0,0,0); (4) a subtle Persian Shamseh mandala rotates in the background at 0.0006 rad/frame; (5) mouse tracking from the HTML was replaced with a deterministic sin-based auto-oscillation (rotY = sin(frame×0.008)×0.35, rotX = sin(frame×0.005)×0.22+0.14) since the canvas lives inside a fixed-size hero container; (6) visibility-change pause/resume and RAF cleanup on unmount follow the existing DnaHelixCanvas pattern; background is `#020103` (primordial void). Wired into `ProjectDetailClient.tsx`: added `ZV = "project-zurvan"` constant, `isZV` boolean, `#DAA520` theme block, `ThemeInjector theme="zurvan"`, `CosmicLoomCanvas` dynamic import (ssr:false), and a Zurvan hero section inserted before the default fallback in the ternary chain.
+- **Files Changed**: `src/components/ui/CosmicLoomCanvas.tsx` (new), `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
+### Raouf: 2026-06-03 (Australia/Sydney)
+- **Scope**: Add Project Zurvan to portfolio project list
+- **Summary**: Added Project Zurvan (local-first LLM knowledge engine, Python 3.10+, 183 tests, 18 phases) as a new portfolio entry positioned directly after Project Simurgh in `data.ts`. Added a full-width (md:col-span-3) bento card in the homepage grid with purple ENGINEERING accent styling and "LOCAL-FIRST · MCP AGENT MEMORY" badge. Added a data-layer regression test asserting `project-zurvan` follows `project-simurgh` in key order. Added entry #4 in `public/llms.txt`, renumbering Syllabus-Sync through ECRSM.
+- **Files Changed**: `src/lib/data.ts`, `src/app/[locale]/page.tsx`, `src/lib/data.test.ts`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npx tsc --noEmit`: pass; `npm run test:ci`: 67/67 passing
+- **Follow-ups**: None.
+
 ### Raouf: 2026-05-28 (Australia/Sydney)
 - **Scope**: Lab section full audit — placeholder code, dead fields, type duplication, broken file extension
 - **Summary**: Four issues fixed: (1) Replaced all three `codeSnippet: "..."` placeholders with real, commented educational code — Rust `SetWindowsHookEx` keylogger (ARCHIVED), Python raw-socket TCP sniffer with manual IP/TCP header parsing (ACTIVE), and Go LSB PNG steganography with length-prefixed embedding (CONCEPT). (2) Removed the dead `link?` field from `LabExperiment` interface and all three entries — it pointed to the generic GitHub profile and was never rendered anywhere. (3) In `LabDetailClient.tsx`, removed the locally-redefined `LabExperiment` interface and replaced it with a type import from `@/lib/data`, eliminating silent drift risk. (4) Fixed the fake editor filename — `tech[0].toLowerCase()` was producing `src/main.rust`/`src/main.python`; added an `EXT_MAP` lookup so Rust→`.rs`, Python→`.py`, Go→`.go`.

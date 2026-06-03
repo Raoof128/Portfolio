@@ -18,6 +18,7 @@ const CosmicOracleEye   = dynamic(() => import("@/components/ui/CosmicOracleEye"
 const ConstellationOwl  = dynamic(() => import("@/components/ui/ConstellationOwl").then(m => ({ default: m.ConstellationOwl })),  { ssr: false })
 const KoiPond           = dynamic(() => import("@/components/ui/KoiPond").then(m => ({ default: m.KoiPond })),                    { ssr: false })
 const WheelsOfEzekiel   = dynamic(() => import("@/components/ui/WheelsOfEzekiel").then(m => ({ default: m.WheelsOfEzekiel })),    { ssr: false })
+const CosmicLoomCanvas  = dynamic(() => import("@/components/ui/CosmicLoomCanvas").then(m => ({ default: m.CosmicLoomCanvas })),  { ssr: false })
 import { ArrowLeft, Github, Play, Shield, Code, CheckCircle, ArrowRight, FileText, ExternalLink, BookOpen, Quote } from "lucide-react"
 import Link from "next/link"
 import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils"
@@ -36,7 +37,8 @@ const NM = "nanomatch";
 const SF = "sentinelflow";
 const EC = "ecrsm";
 const SFG = "simurghforge";
-const AI = "aion";
+const AI  = "aion";
+const ZV  = "project-zurvan";
 
 export function ProjectDetailClient({ project, slug }: { project: Project; slug: string }) {
   const { locale, t } = useTranslation();
@@ -52,6 +54,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
   const isEC = slug === EC;
   const isSFG = slug === SFG;
   const isAI  = slug === AI;
+  const isZV  = slug === ZV;
   const isRTL = locale === 'fa' || locale === 'ar';
 
   const getPath = (path: string) => {
@@ -192,6 +195,18 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
         bullet:       "text-[#4d79ff]",
         check:        "text-[#99bbff]",
       }
+    : isZV
+    ? {
+        accent:       "text-[#DAA520]",
+        accentSecond: "text-[#FFD700]",
+        border:       "border-[#DAA520]/20",
+        borderB:      "border-[#DAA520]/30",
+        borderSub:    "border-[#DAA520]/15",
+        bg:           "bg-[#DAA520]/5",
+        hover:        "hover:text-[#DAA520]",
+        bullet:       "text-[#DAA520]",
+        check:        "text-[#FFD700]",
+      }
     : {
         accent:       "text-cyan",
         accentSecond: "text-purple",
@@ -219,6 +234,7 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
       {isEC && <ThemeInjector theme="ecrsm" />}
       {isSFG && <ThemeInjector theme="simurghforge" />}
       {isAI  && <ThemeInjector theme="aion" />}
+      {isZV  && <ThemeInjector theme="zurvan" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -605,6 +621,42 @@ export function ProjectDetailClient({ project, slug }: { project: Project; slug:
                   </div>
                   <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
                     <KineticAstrolabe />
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : isZV ? (
+            /* ── Project Zurvan: cosmic loom hero ── */
+            <section className="border-b border-yellow-900/30 overflow-hidden" style={{ background: "#020103" }}>
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link href={getPath("/projects")} className="inline-flex items-center text-sm text-[#DAA520]/70 hover:text-[#DAA520] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono">
+                  <ArrowLeft size={14} className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")} /> {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-mono text-[#DAA520] border border-[#DAA520]/40 bg-[#DAA520]/5 px-2 py-1">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-yellow-200/60 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
+                      {project.links.demo     && <NeonButton href={project.links.demo}     external><Play        size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo</NeonButton>}
+                      {project.links.repo     && <NeonButton href={project.links.repo}     variant="secondary" external><Github     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> {dictionary.common.repo}</NeonButton>}
+                      {project.links.preprint && <NeonButton href={project.links.preprint} external><BookOpen   size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Read the preprint</NeonButton>}
+                      {project.links.paper    && <NeonButton href={project.links.paper}    variant="outline" download><FileText     size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Paper</NeonButton>}
+                      {project.links.doi      && <NeonButton href={project.links.doi}      variant="outline" external><ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI</NeonButton>}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <CosmicLoomCanvas />
                   </div>
                 </div>
               </div>
