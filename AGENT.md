@@ -35,6 +35,13 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan palette and starfield polish
+- **Scope**: Align Project Zurvan detail page colours and animation visibility
+- **Summary**: Replaced Zurvan-specific `#DAA520`/yellow styling with the requested `#EDAB18` palette across hero tags, links, section accents, borders, and content panels. Added the missing `[data-theme="zurvan"]` global token block so shared page chrome follows the same theme as the other project pages. Updated `CosmicLoomCanvas` to use the `#EDAB18` gold family and draw a deterministic twinkling starfield behind the infinity animation so the background stars remain visible.
+- **Files Changed**: `src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx`, `src/components/ui/CosmicLoomCanvas.tsx`, `src/app/globals.css`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 67/67 passing; `npm run build`: pass, 155 static pages generated; Browser QA on `http://localhost:3000/en/projects/project-zurvan`: title correct, `data-theme="zurvan"`, `--color-cyan-DEFAULT: #edab18`, one canvas rendered, no console warnings/errors, screenshot confirms visible stars behind the infinity sign.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-03 (Australia/Sydney) — Zurvan body background
 - **Scope**: Apply #DAA520 theme to all Zurvan detail page elements
 - **Summary**: Added `isZV ? "bg-[#040300]"` to the body content grid background ternary — the one gap left after the theme object was wired. `#040300` is a near-black golden void matching the canvas hero.

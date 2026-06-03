@@ -7,14 +7,20 @@ const H = 500;
 const SCALE = 155;        // lemniscate amplitude
 const PERSPECTIVE = 700;
 const PARTICLE_COUNT = 200;
+const STAR_COUNT = 90;
 const SPEED = 0.006;
 const TRAIL = 0.15;       // background fade alpha — lower = longer trails
 
-// Palette anchored to #DAA520 (goldenrod)
-const GOLD  = (op: number) => `rgba(218,165,32,${op})`;
-const GOLDB = (op: number) => `rgba(255,215,0,${op})`;   // bright flash
+// Palette anchored to #EDAB18 (Zurvan gold)
+const GOLD  = (op: number) => `rgba(237,171,24,${op})`;
+const GOLDB = (op: number) => `rgba(255,215,122,${op})`;   // bright flash
 const CRIM  = (op: number) => `rgba(220,20,60,${op})`;
 const WHITE = (op: number) => `rgba(255,255,255,${op})`;
+
+const seededUnit = (index: number, salt: number) => {
+  const x = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+};
 
 function project3D(
   x: number, y: number, z: number,
@@ -43,6 +49,14 @@ const LEMN_STEPS = 320;
 const LEMN_PATH = Array.from({ length: LEMN_STEPS }, (_, i) =>
   lemniPoint((i / LEMN_STEPS) * Math.PI * 2)
 );
+
+const STARS = Array.from({ length: STAR_COUNT }, (_, i) => ({
+  x: (seededUnit(i, 1) - 0.5) * W * 0.9,
+  y: (seededUnit(i, 2) - 0.5) * H * 0.78,
+  r: 0.55 + seededUnit(i, 3) * 1.25,
+  phase: seededUnit(i, 4) * Math.PI * 2,
+  warm: seededUnit(i, 5) > 0.55,
+}));
 
 class Spark {
   t: number;
@@ -95,7 +109,7 @@ export function CosmicLoomCanvas() {
     function drawShamseh(rotX: number, rotY: number) {
       ctx.save();
       ctx.globalCompositeOperation = "lighter";
-      ctx.strokeStyle = GOLD(0.025);
+      ctx.strokeStyle = GOLD(0.04);
       ctx.lineWidth = 0.7;
       // Rotate in screen space for the mandala feel
       ctx.rotate(frame * 0.0006 + rotY * 0.3);
@@ -110,6 +124,22 @@ export function CosmicLoomCanvas() {
         ctx.lineTo(maxR * 0.3, -maxR * 0.07);
         ctx.closePath();
         ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawStarfield() {
+      ctx.save();
+      ctx.globalCompositeOperation = "screen";
+      for (const star of STARS) {
+        const twinkle = 0.45 + Math.sin(frame * 0.018 + star.phase) * 0.22;
+        const alpha = Math.max(0.18, twinkle);
+        ctx.fillStyle = star.warm
+          ? `rgba(255,228,163,${alpha})`
+          : `rgba(234,246,255,${alpha * 0.78})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fill();
       }
       ctx.restore();
     }
@@ -151,6 +181,7 @@ export function CosmicLoomCanvas() {
       ctx.save();
       ctx.translate(W / 2, H / 2);
 
+      drawStarfield();
       drawShamseh(rotX, rotY);
       drawLemniscate(rotX, rotY);
 

@@ -167,6 +167,37 @@
   scrollbar-color: rgba(220, 38, 38, 0.5) #06050a;
 }
 
+/* ── Project Zurvan: golden void palette override ── */
+[data-theme="zurvan"] {
+  --background:            #040301;
+  --color-cyber-dark:      #080502;
+  --color-cyber-gray:      #151006;
+
+  /* cyan -> Zurvan gold */
+  --color-cyan-DEFAULT:    #EDAB18;
+  --color-cyan-glow:       #FFD77A;
+  --color-cyan-dim:        rgba(237, 171, 24, 0.15);
+
+  /* purple -> deep bronze */
+  --color-purple-DEFAULT:  #B8790C;
+  --color-purple-glow:     #EDAB18;
+  --color-purple-dim:      rgba(184, 121, 12, 0.12);
+
+  /* amber -> pale astral gold */
+  --color-amber-DEFAULT:   #F6BF45;
+  --color-amber-glow:      #FFE4A3;
+  --color-amber-dim:       rgba(246, 191, 69, 0.12);
+
+  --text-meta:             rgba(237, 171, 24, 0.8);
+
+  --glass-bg:              rgba(4, 3, 1, 0.82);
+  --glass-border:          rgba(237, 171, 24, 0.13);
+  --surface-1:             rgba(237, 171, 24, 0.04);
+  --surface-2:             rgba(237, 171, 24, 0.08);
+
+  scrollbar-color: rgba(237, 171, 24, 0.5) #040301;
+}
+
 /* ── SimurghForge: watercolor pond palette override ── */
 [data-theme="simurghforge"] {
   --background:            #cbe3f0;
