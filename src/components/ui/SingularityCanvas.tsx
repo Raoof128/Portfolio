@@ -106,10 +106,8 @@ export function SingularityCanvas() {
 
     function makeParticle(initial = false): Particle {
       const bias = Math.random();
-      const innerStableRadius = CFG.horizonRadius + 108;
       const radius = initial
-        ? innerStableRadius +
-          Math.pow(bias, 0.72) * (CFG.diskRadius - innerStableRadius + 42)
+        ? CFG.horizonRadius + 28 + Math.pow(bias, 1.75) * CFG.diskRadius
         : CFG.diskRadius + Math.random() * 80;
       return {
         radius,

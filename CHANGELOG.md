@@ -2,14 +2,6 @@
 
 ## [Unreleased]
 
-### Raouf: 2026-06-06 (Australia/Sydney) — Singularity first-load particle audit
-
-- **Scope**: Audit and stabilize homepage singularity particle motion on first page load
-- **Summary**: Traced the initial speed burst to `SingularityCanvas` seeding first-load particles too close to the event horizon. Because particle angular velocity is inverse-radius, the initial near-horizon cluster appeared much faster until those particles were replaced by the normal outer-disk respawn path. Adjusted the initial radius distribution to start particles in the stable accretion-disk band while preserving the existing steady-state respawn behavior.
-- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `AGENT.md`, `CHANGELOG.md`
-- **Verification**: `npx prettier --check src/components/ui/SingularityCanvas.tsx`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68 passing; `npm run build`: pass, 155 static pages generated. Browser rendered audit attempted against `http://localhost:3001/en`, but the in-app Browser rejected localhost navigation under URL policy, so visual screenshot evidence could not be collected in-tool.
-- **Follow-ups**: Manually view the homepage once in a local browser if visual confirmation beyond source/build verification is required.
-
 ### Raouf: 2026-06-06 (Australia/Sydney) — Resume paper updates
 
 - **Scope**: Update the portfolio resume with Project Simurgh supplement and Aion-BibleQA research
