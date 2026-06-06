@@ -3,10 +3,10 @@
 import { useEffect, useRef, useCallback } from "react";
 
 const PALETTE = {
-  cyan:   "#00F5FF",   // singularity event-horizon ring
-  violet: "#8B5CF6",   // outer accretion disk
-  amber:  "#F6C85F",   // gold sparks
-  white:  "#ffffff",
+  cyan: "#00F5FF", // singularity event-horizon ring
+  violet: "#8B5CF6", // outer accretion disk
+  amber: "#F6C85F", // gold sparks
+  white: "#ffffff",
 } as const;
 
 const CFG = {
@@ -106,8 +106,10 @@ export function SingularityCanvas() {
 
     function makeParticle(initial = false): Particle {
       const bias = Math.random();
+      const innerStableRadius = CFG.horizonRadius + 108;
       const radius = initial
-        ? CFG.horizonRadius + 28 + Math.pow(bias, 1.75) * CFG.diskRadius
+        ? innerStableRadius +
+          Math.pow(bias, 0.72) * (CFG.diskRadius - innerStableRadius + 42)
         : CFG.diskRadius + Math.random() * 80;
       return {
         radius,
@@ -120,13 +122,15 @@ export function SingularityCanvas() {
           Math.random() > 0.72
             ? PALETTE.amber
             : Math.random() > 0.5
-            ? PALETTE.cyan
-            : PALETTE.violet,
+              ? PALETTE.cyan
+              : PALETTE.violet,
       };
     }
 
     function initParticles() {
-      particles = Array.from({ length: particleCount() }, () => makeParticle(true));
+      particles = Array.from({ length: particleCount() }, () =>
+        makeParticle(true),
+      );
     }
 
     function project(x: number, y: number, z: number): Projected {
@@ -140,7 +144,11 @@ export function SingularityCanvas() {
       return { x: x1 * scale, y: y2 * scale, z: z2, scale };
     }
 
-    function orbitalPoint(radius: number, angle: number, yOffset: number): Projected {
+    function orbitalPoint(
+      radius: number,
+      angle: number,
+      yOffset: number,
+    ): Projected {
       const x = Math.cos(angle) * radius;
       const z = Math.sin(angle) * radius;
       const gravity = -3150 / (radius * radius + 130);
@@ -170,7 +178,11 @@ export function SingularityCanvas() {
     function drawParticle(p: Particle, ox: number, oy: number) {
       const head = orbitalPoint(p.radius, p.angle, p.yOsc);
       if (head.scale <= 0) return;
-      const proximity = clamp((p.radius - CFG.horizonRadius) / CFG.diskRadius, 0, 1);
+      const proximity = clamp(
+        (p.radius - CFG.horizonRadius) / CFG.diskRadius,
+        0,
+        1,
+      );
       const alpha = 0.34 + (1 - proximity) * 0.62;
       const dotSize = p.size * head.scale * (1.15 - proximity * 0.25);
       if (p.trail.length > 1 && proximity < 0.72 && !rmq.matches) {
@@ -316,7 +328,7 @@ export function SingularityCanvas() {
       radius: number,
       speed: number,
       colour: string,
-      alpha: number
+      alpha: number,
     ) {
       ctx.save();
       ctx.translate(ox, oy);
@@ -330,7 +342,11 @@ export function SingularityCanvas() {
         const end = start + segLen * 0.55;
         for (let j = 0; j <= 12; j++) {
           const theta = start + (end - start) * (j / 12);
-          const p = project(Math.cos(theta) * radius, 0, Math.sin(theta) * radius);
+          const p = project(
+            Math.cos(theta) * radius,
+            0,
+            Math.sin(theta) * radius,
+          );
           if (j === 0) ctx.moveTo(p.x, p.y);
           else ctx.lineTo(p.x, p.y);
         }
@@ -363,7 +379,14 @@ export function SingularityCanvas() {
       ctx.arc(x, y, r * 5.3, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalCompositeOperation = "source-over";
-      const voidG = ctx.createRadialGradient(x - r * 0.2, y - r * 0.25, r * 0.1, x, y, r * 1.08);
+      const voidG = ctx.createRadialGradient(
+        x - r * 0.2,
+        y - r * 0.25,
+        r * 0.1,
+        x,
+        y,
+        r * 1.08,
+      );
       voidG.addColorStop(0, "#030712");
       voidG.addColorStop(0.76, "#000000");
       voidG.addColorStop(1, "rgba(0,0,0,0.82)");
@@ -384,7 +407,13 @@ export function SingularityCanvas() {
       ctx.shadowColor = PALETTE.amber;
       ctx.shadowBlur = 18;
       ctx.beginPath();
-      ctx.arc(x, y, r * 1.34 + Math.sin(frame * 0.02) * 1.6, 0.25, Math.PI * 1.38);
+      ctx.arc(
+        x,
+        y,
+        r * 1.34 + Math.sin(frame * 0.02) * 1.6,
+        0.25,
+        Math.PI * 1.38,
+      );
       ctx.stroke();
       ctx.restore();
       ctx.shadowBlur = 0;
@@ -436,8 +465,14 @@ export function SingularityCanvas() {
     }
 
     const onResize = () => resize();
-    const onRmqChange = () => { resize(); frame = 0; };
-    const onVisibility = () => { if (document.hidden) stop(); else start(); };
+    const onRmqChange = () => {
+      resize();
+      frame = 0;
+    };
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else start();
+    };
 
     window.addEventListener("resize", onResize, { passive: true });
     rmq.addEventListener?.("change", onRmqChange);
@@ -471,7 +506,10 @@ export function SingularityCanvas() {
       }}
       aria-hidden="true"
     >
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full block"
+      />
 
       {/* Aurora */}
       <div
@@ -496,7 +534,8 @@ export function SingularityCanvas() {
             "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), " +
             "linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
           backgroundSize: "54px 54px",
-          maskImage: "radial-gradient(circle at center, black, transparent 78%)",
+          maskImage:
+            "radial-gradient(circle at center, black, transparent 78%)",
           zIndex: 2,
         }}
       />
