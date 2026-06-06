@@ -14,7 +14,8 @@ const en = {
     title_cyber: "CYBER",
     title_research: "Research",
     philosophy_quote: '"Seek, and ye shall find" — Matthew 7:7',
-    intro: "Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities. Authored \"The Invisible Window\" — 100% screen capture evasion. Motivated by reducing catastrophic risks from advanced AI.",
+    intro:
+      'Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities. Authored "The Invisible Window" — 100% screen capture evasion. Motivated by reducing catastrophic risks from advanced AI.',
     view_projects: "View Projects",
     view_resume: "View Resume",
     researcher: "Vulnerability Researcher",
@@ -25,16 +26,20 @@ const en = {
     title: "Philosophy",
     subtitle: "Operating Principles",
     research_title: "RESEARCH",
-    research_body: "Independently discover, validate, and responsibly disclose vulnerabilities. Measure AI capability uplift, characterise safety boundaries, and publish reproducible findings.",
+    research_body:
+      "Independently discover, validate, and responsibly disclose vulnerabilities. Measure AI capability uplift, characterise safety boundaries, and publish reproducible findings.",
     secure_title: "SECURE",
-    secure_body: "Defensive applications that reduce real-world risk. Cross-platform exploit development informs better defences — offensive knowledge applied to protective systems.",
+    secure_body:
+      "Defensive applications that reduce real-world risk. Cross-platform exploit development informs better defences — offensive knowledge applied to protective systems.",
   },
   lab: {
     title: "THE_LAB",
     subtitle: "/ active_operations",
-    description: "Hands-on vulnerability research and AI safety experimentation. Current work: cross-platform exploit development, AI capability uplift measurement, and safety boundary characterisation.",
+    description:
+      "Hands-on vulnerability research and AI safety experimentation. Current work: cross-platform exploit development, AI capability uplift measurement, and safety boundary characterisation.",
     enter_lab: "ENTER_LAB",
-    disclaimer: "For defensive research only. No credential capture. No persistence. No deployment guidance.",
+    disclaimer:
+      "For defensive research only. No credential capture. No persistence. No deployment guidance.",
   },
   writeups: {
     title: "Write-ups",
@@ -63,9 +68,12 @@ const en = {
     identity_record: "Identity Record",
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "AI Security Researcher",
-    bio_1: "AI security researcher and final-year Cyber Security student at Macquarie University (graduating November 2026) with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities.",
-    bio_2: "Authored \"The Invisible Window\" — a 12-page IEEE-format security research paper demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14–26 using documented OS-level APIs, with a novel finding that Apple's macOS 15 mitigation remains ineffective on macOS 26.",
-    bio_3: "Fluent in Python with production experience across C/C++, TypeScript, and Swift. Completed AI model evaluation for Anthropic (Claude Code Human Preference), benchmarking LLM code outputs for quality, security, and reliability. Motivated by reducing catastrophic risks from advanced AI — eager to measure capability uplift, characterise safety boundaries, and develop defensive applications.",
+    bio_1:
+      "AI security researcher and final-year Cyber Security student at Macquarie University (graduating November 2026) with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities.",
+    bio_2:
+      'Authored "The Invisible Window" — a 12-page IEEE-format security research paper demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14–26 using documented OS-level APIs, with a novel finding that Apple\'s macOS 15 mitigation remains ineffective on macOS 26.',
+    bio_3:
+      "Fluent in Python with production experience across C/C++, TypeScript, and Swift. Completed AI model evaluation for Anthropic (Claude Code Human Preference), benchmarking LLM code outputs for quality, security, and reliability. Motivated by reducing catastrophic risks from advanced AI — eager to measure capability uplift, characterise safety boundaries, and develop defensive applications.",
     stats_projects: "Projects",
     stats_evasion: "Evasion Rate",
     stats_vendors: "Vendors Disclosed",
@@ -83,8 +91,10 @@ const en = {
     terminal_location: "LOCATION: CASTLE HILL, NSW",
     degree_bachelor: "Bachelor of Cyber Security",
     degree_diploma: "Diploma of Information Technology",
-    degree_bachelor_courses: "Digital Forensics · Network Security · Cloud Computing · NLP & ML · Offensive Security · Applied Cryptography",
-    degree_diploma_desc: "Foundations in systems, networking, and software engineering.",
+    degree_bachelor_courses:
+      "Digital Forensics · Network Security · Cloud Computing · NLP & ML · Offensive Security · Applied Cryptography",
+    degree_diploma_desc:
+      "Foundations in systems, networking, and software engineering.",
   },
   contact: {
     title_1: "Open",
@@ -97,7 +107,8 @@ const en = {
     title: "The Lab",
     description_1: "A collection of",
     description_2: "Proof of Concepts",
-    description_3: "snippets, and unfinished research. Code here is volatile and provided \"as is\" for educational purposes.",
+    description_3:
+      'snippets, and unfinished research. Code here is volatile and provided "as is" for educational purposes.',
     view_analysis: "VIEW_ANALYSIS",
     more_on_github: "View more on GitHub",
     risk_disclaimer: "USE_CODE_AT_OWN_RISK",
@@ -111,7 +122,8 @@ const en = {
   },
   projects_page: {
     title: "PROJECT_DB",
-    subtitle: "Index of deployed tools, research prototypes, and architectural proofs.",
+    subtitle:
+      "Index of deployed tools, research prototypes, and architectural proofs.",
     search_placeholder: "search_query...",
     empty_results: "Query returned 0 results.",
     access_file: "ACCESS_FILE",
@@ -121,7 +133,8 @@ const en = {
     download: "Download Resume",
   },
   not_found: {
-    description: "The requested signal path could not be resolved. The resource may have been moved, deleted, or classified.",
+    description:
+      "The requested signal path could not be resolved. The resource may have been moved, deleted, or classified.",
     return_home: "RETURN_HOME",
     browse_projects: "BROWSE_PROJECTS",
   },
@@ -144,6 +157,10 @@ const en = {
     watch_demo: "Watch Demo",
     source_code: "Source Code",
     download_paper: "Download Paper",
+    research_papers: "Research Papers",
+    paper: "Paper",
+    papers: "Papers",
+    open_record: "Open Record",
     doi_record: "DOI Record",
   },
   writeups_detail: {
@@ -152,26 +169,30 @@ const en = {
   hall_of_fame: {
     title: "Hall of Fame",
     subtitle: "Recognition",
-    description: "Recognizing security researchers who have helped improve the security of my projects through responsible disclosure.",
+    description:
+      "Recognizing security researchers who have helped improve the security of my projects through responsible disclosure.",
     found_vuln_heading: "Found a Vulnerability?",
     report_guidance: "Report it responsibly and get recognized here. Check my",
     report_guidance_suffix: "for guidelines.",
     security_policy_link: "security policy",
     report_btn: "REPORT",
     no_entries_title: "No Entries Yet",
-    no_entries_desc: "This page is waiting for its first security researcher. Find a vulnerability, report it responsibly, and become the first to be recognized.",
+    no_entries_desc:
+      "This page is waiting for its first security researcher. Find a vulnerability, report it responsibly, and become the first to be recognized.",
     awaiting_badge: "AWAITING_FIRST_ENTRY",
     criteria_title: "Recognition Criteria",
     criteria_1: "Report a valid, in-scope security vulnerability",
     criteria_2: "Follow responsible disclosure guidelines",
     criteria_3: "Allow reasonable time for the issue to be fixed",
     criteria_4: "Not publicly disclose the vulnerability before coordination",
-    bounty_note: "This is a personal portfolio project. While I deeply appreciate security research efforts, no monetary bounties are offered. Recognition in this Hall of Fame is the primary acknowledgment for valid reports.",
+    bounty_note:
+      "This is a personal portfolio project. While I deeply appreciate security research efforts, no monetary bounties are offered. Recognition in this Hall of Fame is the primary acknowledgment for valid reports.",
   },
   security_policy: {
     title: "Security Policy",
     subtitle: "Security Protocol",
-    description: "Responsible disclosure guidelines for reporting security vulnerabilities.",
+    description:
+      "Responsible disclosure guidelines for reporting security vulnerabilities.",
     report_heading: "Report a Vulnerability",
     report_intro: "Found a security issue? Contact me directly at",
     send_report: "SEND_REPORT",
@@ -196,9 +217,11 @@ const en = {
     out_6: "Rate limiting issues",
     timeline_title: "Response Timeline",
     t1_heading: "Initial Response: 48-72 hours",
-    t1_desc: "I will acknowledge receipt of your report and provide an initial assessment.",
+    t1_desc:
+      "I will acknowledge receipt of your report and provide an initial assessment.",
     t2_heading: "Resolution: 7-30 days",
-    t2_desc: "Depending on severity, I will work to resolve the issue within this timeframe.",
+    t2_desc:
+      "Depending on severity, I will work to resolve the issue within this timeframe.",
     t3_heading: "Disclosure: Coordinated",
     t3_desc: "We will coordinate public disclosure after the fix is deployed.",
     guidelines_title: "Responsible Disclosure Guidelines",
@@ -208,12 +231,15 @@ const en = {
     g4: "Give reasonable time to address the issue before public disclosure.",
     g5: "Act in good faith and avoid privacy violations.",
     encrypted_title: "Encrypted Communication",
-    encrypted_desc: "For sensitive reports, you can encrypt your message using my PGP key:",
+    encrypted_desc:
+      "For sensitive reports, you can encrypt your message using my PGP key:",
     pgp_link: "Download PGP Public Key",
     ack_title: "Acknowledgments",
-    ack_desc: "I appreciate responsible security researchers who help improve the security of my projects. Valid reports may be acknowledged in the",
+    ack_desc:
+      "I appreciate responsible security researchers who help improve the security of my projects. Valid reports may be acknowledged in the",
     ack_hall_of_fame: "Security Hall of Fame",
-    ack_note: "Note: This is a personal portfolio project. No monetary bounties are offered, but your contribution will be recognized.",
+    ack_note:
+      "Note: This is a personal portfolio project. No monetary bounties are offered, but your contribution will be recognized.",
   },
 };
 

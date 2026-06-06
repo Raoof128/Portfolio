@@ -1,5 +1,17 @@
 import { Locale } from "@/i18n";
 
+export interface ProjectPaper {
+  title: string;
+  label: string;
+  href: string;
+  kind: "download" | "external";
+  venue?: string;
+  year?: string;
+  status?: string;
+  description?: string;
+  doi?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -18,6 +30,7 @@ export interface Project {
     doi?: string;
     preprint?: string;
   };
+  papers?: ProjectPaper[];
   citation?: string;
   build: {
     stack: string[];
@@ -45,34 +58,58 @@ export const projects: Record<string, Project> = {
     title: "Invisible Window Research",
     category: "OFFENSIVE",
     year: "2026",
-    description: "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion on Windows 10/11 and macOS 14–26 using documented OS display APIs. Responsibly disclosed to vendors.",
+    description:
+      "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion on Windows 10/11 and macOS 14–26 using documented OS display APIs. Responsibly disclosed to vendors.",
     localizedDescription: {
       fa: "مقاله تحقیقاتی با فرمت IEEE که آسیب‌پذیری ساختاری در نظارت بر امتحانات مبتنی بر WebRTC را فاش می‌کند. فرار ۱۰۰ درصدی در ویندوز و مک با استفاده از APIهای مستند سیستم‌عامل.",
       ar: "ورقة بحثية بتنسيق IEEE تكشف عن ثغرة أمنية هيكلية في مراقبة الاختبارات القائمة على WebRTC. تهرب بنسبة ١٠٠٪ على نظامي التشغيل Windows و macOS باستخدام واجهات برمجة تطبيقات عرض نظام التشغيل الموثقة.",
       zh: "IEEE 格式的研究论文，揭示了基于 WebRTC 的在线监考系统中的结构性漏洞。利用记录在案的 OS 显示 API，在 Windows 和 macOS 上实现 100% 规避。",
       es: "Artículo de investigación en formato IEEE que expone una vulnerabilidad estructural en la supervisión de exámenes basada en WebRTC. Evasión del 100% en Windows y macOS utilizando APIs de pantalla documentadas del SO.",
     },
-    tags: ["Security Research", "Windows", "macOS", "WebRTC", "Responsible Disclosure", "PoC"],
+    tags: [
+      "Security Research",
+      "Windows",
+      "macOS",
+      "WebRTC",
+      "Responsible Disclosure",
+      "PoC",
+    ],
     links: {
       repo: "https://github.com/Raoof128/invisible-window-research",
       paper: "/Invisible_Window_Research_Preprint_V2.0.pdf",
       preprint: "https://zenodo.org/records/20376495",
-      caseStudy: "/projects/invisible-window-research"
+      caseStudy: "/projects/invisible-window-research",
     },
-    citation: "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20376495",
+    papers: [
+      {
+        title:
+          "The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+        label: "IEEE-format preprint",
+        href: "/Invisible_Window_Research_Preprint_V2.0.pdf",
+        kind: "download",
+        venue: "Zenodo",
+        year: "2026",
+        status: "CC BY 4.0 preprint",
+        description:
+          "13-page research paper documenting cross-platform screen-capture evasion and coordinated vendor disclosure.",
+        doi: "10.5281/zenodo.20376495",
+      },
+    ],
+    citation:
+      "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20376495",
     build: {
       stack: [
         "Win32 C (Windows PoC)",
         "Swift / AppKit (macOS PoC)",
         "Python (pixel-level forensic verification)",
-        "LaTeX (IEEE conference template, 13 pages, 53 references)"
+        "LaTeX (IEEE conference template, 13 pages, 53 references)",
       ],
       features: [
         "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+) — excludes window from all screen capture APIs with zero visual artefact",
         "NSWindow.SharingType.none (macOS) — hides window from CGWindowListCreateImage and ScreenCaptureKit-backed capture on macOS 14–26",
         "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent",
-        "Empirical contradiction of the community assumption that macOS 15+ mitigated the attack vector"
-      ]
+        "Empirical contradiction of the community assumption that macOS 15+ mitigated the attack vector",
+      ],
     },
     secure: {
       measures: [
@@ -82,11 +119,13 @@ export const projects: Record<string, Project> = {
         "Public release following OS vendor responses (May 2026)",
         "Proof-of-concept source code withheld; available to verified security researchers on request",
         "Uses only documented, user-level OS APIs — no kernel exploits, no privilege escalation",
-        "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines"
-      ]
+        "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines",
+      ],
     },
-    fullDescription: "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs — SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS — that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
-    problem: "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. This assumption is false. Both Windows and macOS provide documented, publicly supported APIs that exclude application windows from all screen capture pipelines without privilege escalation, kernel modification, or detectable side effects. The integrity guarantee offered by capture-based proctoring is structurally broken.",
+    fullDescription:
+      "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs — SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS — that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
+    problem:
+      "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. This assumption is false. Both Windows and macOS provide documented, publicly supported APIs that exclude application windows from all screen capture pipelines without privilege escalation, kernel modification, or detectable side effects. The integrity guarantee offered by capture-based proctoring is structurally broken.",
     solution: [
       "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
       "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS) — both documented in official SDK references",
@@ -94,7 +133,7 @@ export const projects: Record<string, Project> = {
       "Evaluated against representative WebRTC proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26",
       "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
       "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
-      "Coordinated OS vendor disclosure: Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) both responded with formal classifications"
+      "Coordinated OS vendor disclosure: Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) both responded with formal classifications",
     ],
     proof: [
       "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
@@ -103,43 +142,80 @@ export const projects: Record<string, Project> = {
       "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
       "Behavioural detection ineffective — gaze tracking (p = 0.41, n = 8) and mouse dynamics fell within normal exam-behaviour variance",
       "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
-      "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20376495 — 13 pages, 53 references, IEEE conference format"
-    ]
+      "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20376495 — 13 pages, 53 references, IEEE conference format",
+    ],
   },
   "project-simurgh": {
     slug: "project-simurgh",
     title: "Project Simurgh",
     category: "DEFENSIVE",
     year: "2026",
-    description: "Zero-trust integrity API connected to The Invisible Window research. Validates behavioral intent and environment integrity without relying on screen pixels, webcam frames, or invasive visual surveillance.",
+    description:
+      "Zero-trust integrity API connected to The Invisible Window research. Validates behavioral intent and environment integrity without relying on screen pixels, webcam frames, or invasive visual surveillance.",
     localizedDescription: {
       fa: "API یکپارچگی اعتماد صفر متصل به تحقیقات The Invisible Window. اعتبار سنجی قصد رفتاری و یکپارچگی محیط بدون تکیه بر پیکسل‌های صفحه نمایش یا نظارت تصویری تهاجمی.",
       ar: "واجهة برمجة تطبيقات (API) لسلامة الثقة الصفرية متصلة بأبحاث The Invisible Window. تتحقق من النوايا السلوكية وسلامة البيئة دون الاعتماد على بكسلات الشاشة أو المراقبة البصرية الغازية.",
       zh: "与《The Invisible Window》研究相关的零信任完整性 API。在不依赖屏幕像素、网络摄像头帧或侵入式视觉监控的情况下，验证行为意图和环境完整性。",
       es: "API de integridad zero-trust conectada a la investigación The Invisible Window. Valida la intención conductual y la integridad del entorno sin depender de píxeles de pantalla, fotogramas de cámara web o vigilancia visual invasiva.",
     },
-    tags: ["Integrity API", "AI Safety", "Proctoring", "Telemetry", "Node.js", "Privacy"],
+    tags: [
+      "Integrity API",
+      "AI Safety",
+      "Proctoring",
+      "Telemetry",
+      "Node.js",
+      "Privacy",
+    ],
     links: {
       repo: "https://github.com/Raoof128/Project-Simurgh#13-status-license",
       paper: "/Project_Simurgh_Preprint_v1.0.pdf",
       preprint: "https://zenodo.org/records/20374849",
-      caseStudy: "/projects/project-simurgh"
+      caseStudy: "/projects/project-simurgh",
     },
-    citation: "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
+    papers: [
+      {
+        title:
+          "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions",
+        label: "IEEE-format preprint",
+        href: "/Project_Simurgh_Preprint_v1.0.pdf",
+        kind: "download",
+        venue: "Zenodo",
+        year: "2026",
+        status: "CC BY 4.0 preprint",
+        description:
+          "12-page defensive follow-up to The Invisible Window, replacing visual surveillance with metadata-only integrity proofs.",
+        doi: "10.5281/zenodo.20374849",
+      },
+      {
+        title:
+          "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University",
+        label: "Supplement preprint",
+        href: "/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+        kind: "download",
+        venue: "Zenodo",
+        year: "2026",
+        status: "Phase C preprint",
+        description:
+          "5-page voting-adjacent pilot reporting 31 consented sessions alongside a Macquarie student-society event, with ballot-choice exclusion, HMAC audit chaining, forbidden-field rejection, and 5/5 collection-closure gates.",
+        doi: "10.5281/zenodo.20549736",
+      },
+    ],
+    citation:
+      "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
     build: {
       stack: [
         "Node.js / Express",
         "Browser telemetry client",
         "HMAC tamper-evident audit chain",
         "macOS Swift Local Integrity Node",
-        "Optional AI narrative analysis"
+        "Optional AI narrative analysis",
       ],
       features: [
         "Samples lightweight behavioral telemetry windows instead of recording screen pixels",
         "Detects focus loss, bulk paste, idle gaps, typing anomalies, and display-affinity risk signals",
         "Stage 1 Academic Shield workflow covers exam lifecycle, privacy acceptance, local risk scoring, reports, and audit verification",
-        "Stage 2 proof pipeline signs privacy-preserving integrity envelopes for future device-level trust"
-      ]
+        "Stage 2 proof pipeline signs privacy-preserving integrity envelopes for future device-level trust",
+      ],
     },
     secure: {
       measures: [
@@ -148,42 +224,53 @@ export const projects: Record<string, Project> = {
         "Instructor, helper, audit, and session boundaries separated with dedicated secrets",
         "Replay protection rejects duplicate sequences, stale timestamps, future timestamps, and malformed telemetry",
         "HMAC-SHA256 linked audit chain makes report tampering detectable",
-        "Privacy-preserving reviewer model: Simurgh produces review recommendations, not automatic misconduct findings"
-      ]
+        "Privacy-preserving reviewer model: Simurgh produces review recommendations, not automatic misconduct findings",
+      ],
     },
-    fullDescription: "Project Simurgh is the defensive counterpart to The Invisible Window research: a zero-trust integrity API for autonomous agents and high-stakes proctoring. Instead of trusting a visual stream that can be structurally bypassed, Simurgh validates behavioral and environment metadata, builds tamper-evident audit records, and keeps the integrity signal privacy-preserving.",
-    problem: "The Invisible Window shows that browser and OS screen-capture pipelines cannot be treated as ground truth. Proctoring platforms and agentic AI systems that rely on screenshots or UI vision can be deceived by documented display-affinity APIs and click-through overlays. A safer integrity layer needs to verify behavior and environment state without expanding surveillance.",
+    fullDescription:
+      "Project Simurgh is the defensive counterpart to The Invisible Window research: a zero-trust integrity API for autonomous agents and high-stakes proctoring. Instead of trusting a visual stream that can be structurally bypassed, Simurgh validates behavioral and environment metadata, builds tamper-evident audit records, and keeps the integrity signal privacy-preserving.",
+    problem:
+      "The Invisible Window shows that browser and OS screen-capture pipelines cannot be treated as ground truth. Proctoring platforms and agentic AI systems that rely on screenshots or UI vision can be deceived by documented display-affinity APIs and click-through overlays. A safer integrity layer needs to verify behavior and environment state without expanding surveillance.",
     solution: [
       "Built a metadata-only integrity pipeline that evaluates behavioral telemetry rather than screen contents",
       "Added Academic Shield flows for exam creation, session join, privacy acceptance, telemetry submission, review reports, and audit verification",
       "Separated deterministic local scoring from optional AI narrative analysis so provider failures do not break the authoritative score",
       "Added native-helper and Local Integrity Node direction for detecting display-affinity and producing signed proof envelopes",
-      "Anchored the project to The Invisible Window threat model while keeping the implementation vendor-neutral and privacy-preserving"
+      "Anchored the project to The Invisible Window threat model while keeping the implementation vendor-neutral and privacy-preserving",
     ],
     proof: [
       "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20374849 — 12 pages, 31 references, IEEE conference format",
       "Stage 1 research MVP and Stage 1.5 validation pack documented in the repository",
       "Telemetry payloads are lightweight behavioral JSON windows, not video streams",
       "Audit verification endpoint validates the HMAC-linked event chain",
-      "GitHub Stage 1 checks run the project quality gate on main and pull requests"
-    ]
+      "GitHub Stage 1 checks run the project quality gate on main and pull requests",
+    ],
   },
   "project-zurvan": {
     slug: "project-zurvan",
     title: "Project Zurvan",
     category: "ENGINEERING",
     year: "2026",
-    description: "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 183 tests passing.",
+    description:
+      "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 183 tests passing.",
     localizedDescription: {
       fa: "موتور دانش مبتنی بر هوش مصنوعی و محلی‌محور. اسناد را دریافت می‌کند، دانش ساختاریافته استخراج می‌کند و از طریق سرور MCP در اختیار عامل‌های هوش مصنوعی قرار می‌دهد. ۱۸۳ آزمون موفق.",
       ar: "محرك معرفة محلي يعمل بالذكاء الاصطناعي. يستوعب أي مستند، يستخرج المعرفة المنظمة (ادعاءات، مفاهيم، كيانات، قرارات)، ويعرضها لعوامل الذكاء الاصطناعي عبر خادم MCP. ١٨٣ اختباراً ناجحاً.",
       zh: "本地优先的 LLM 知识引擎。摄取任意文档，提取结构化知识（声明、概念、实体、决策），并通过 MCP stdio 服务器将其暴露给 AI 代理。183 个测试通过。",
       es: "Motor de conocimiento LLM local. Ingiere cualquier documento, extrae conocimiento estructurado (afirmaciones, conceptos, entidades, decisiones) y lo expone a agentes de IA mediante un servidor MCP stdio. 183 pruebas aprobadas.",
     },
-    tags: ["Python", "LLM", "MCP", "Knowledge Graph", "SQLite", "Local-first", "AI Agents"],
+    tags: [
+      "Python",
+      "LLM",
+      "MCP",
+      "Knowledge Graph",
+      "SQLite",
+      "Local-first",
+      "AI Agents",
+    ],
     links: {
       repo: "https://github.com/Raoof128/Project-Zurvan",
-      caseStudy: "/projects/project-zurvan"
+      caseStudy: "/projects/project-zurvan",
     },
     build: {
       stack: [
@@ -191,7 +278,7 @@ export const projects: Record<string, Project> = {
         "SQLite FTS5 (hybrid search)",
         "MCP stdio server",
         "OpenAI / Anthropic / Mock LLM providers",
-        "Obsidian-compatible vault layout"
+        "Obsidian-compatible vault layout",
       ],
       features: [
         "Ingests Markdown, PDF, TXT, and images into a linked, searchable, git-friendly wiki",
@@ -199,8 +286,8 @@ export const projects: Record<string, Project> = {
         "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces dense context bundles for agent prompts",
         "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
         "Multi-project federation — cross-vault search, contradiction detection, and policy radar across independent vaults",
-        "183 tests passing across 18 completed phases"
-      ]
+        "183 tests passing across 18 completed phases",
+      ],
     },
     secure: {
       measures: [
@@ -208,32 +295,35 @@ export const projects: Record<string, Project> = {
         "MCP server is read-only by default; write mode requires explicit opt-in flag",
         "Project paths stored in ~/.zurvan/projects.json — never committed to version control",
         "Mock LLM provider available for safe dev/test without API key exposure",
-        "Agent memory isolated per vault; cross-vault federation requires explicit registration"
-      ]
+        "Agent memory isolated per vault; cross-vault federation requires explicit registration",
+      ],
     },
-    fullDescription: "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki — then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
-    problem: "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge — which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
+    fullDescription:
+      "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki — then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
+    problem:
+      "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge — which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
     solution: [
       "Built a local document ingestion pipeline (MD, PDF, TXT, images) feeding a SQLite-backed knowledge store",
       "LLM extraction layer produces typed nodes — claims, concepts, entities, decisions — compounded additively across sources as the corpus grows",
       "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces deep context bundles for agent prompts",
       "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
-      "Multi-project federation manages independent vaults with cross-vault search, contradiction detection, and policy drift radar"
+      "Multi-project federation manages independent vaults with cross-vault search, contradiction detection, and policy drift radar",
     ],
     proof: [
       "183 tests passing across 18 completed development phases",
       "MCP server verified with Claude Code and Cursor client setup guides",
       "Obsidian vault integration with colour-coded 7-type knowledge graph (claims, concepts, entities, decisions, sessions, contradictions, syntheses)",
       "Evidence pack → report → review → publish pipeline runs fully offline",
-      "Agent workflow orchestration (preflight / postedit / session close) documented for Claude Code and Codex"
-    ]
+      "Agent workflow orchestration (preflight / postedit / session close) documented for Claude Code and Codex",
+    ],
   },
-  "gitswitch": {
+  gitswitch: {
     slug: "gitswitch",
     title: "GitSwitch",
     category: "ENGINEERING",
     year: "2024",
-    description: "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
+    description:
+      "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
     localizedDescription: {
       fa: "کلاینت گیت مجهز به هوش مصنوعی برای مدیریت چندین هویت و ایجاد کامیت‌های معنایی. ساخته شده با Electron و React.",
       ar: "عميل Git مدعوم بالذكاء الاصطناعي لإدارة هويات متعددة وإنشاء تعهدات (commits) دلالية. تم بناؤه باستخدام Electron و React.",
@@ -243,46 +333,55 @@ export const projects: Record<string, Project> = {
     tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
     links: {
       repo: "https://github.com/Raoof128/GitSwitch",
-      caseStudy: "/projects/gitswitch"
+      caseStudy: "/projects/gitswitch",
     },
     build: {
-      stack: ["Electron", "React 19", "TypeScript", "Zustand", "Google Gemini AI"],
+      stack: [
+        "Electron",
+        "React 19",
+        "TypeScript",
+        "Zustand",
+        "Google Gemini AI",
+      ],
       features: [
         "Multi-Account Management (Personal, Work)",
         "AI Commit Generation (Gemini 3)",
         "Smart Diff Viewer with syntax highlighting",
-        "Drag & Drop repository management"
-      ]
+        "Drag & Drop repository management",
+      ],
     },
     secure: {
       measures: [
         "API keys redacted from logs & wiped from memory",
         "Secure OS-keychain storage for secrets",
         "Enforced timeouts & input sanitization",
-        "Privacy First design"
-      ]
+        "Privacy First design",
+      ],
     },
-    fullDescription: "Gitswitch is a modern, AI-powered Git client designed for developers who manage multiple accounts and repositories. It offers a seamless experience for switching identities and generating semantic commit messages.",
-    problem: "Developers often struggle with managing multiple git identities (personal vs work) and writing consistent commit messages.",
+    fullDescription:
+      "Gitswitch is a modern, AI-powered Git client designed for developers who manage multiple accounts and repositories. It offers a seamless experience for switching identities and generating semantic commit messages.",
+    problem:
+      "Developers often struggle with managing multiple git identities (personal vs work) and writing consistent commit messages.",
     solution: [
       "Created a seamless identity switcher for global/local git config",
       "Integrated Gemini 3 AI for semantic commit generation",
       "Built a secure, modern Electron app with strict isolation",
-      "Implemented smart diff viewing for better code review"
+      "Implemented smart diff viewing for better code review",
     ],
     proof: [
       "Secure OS-keychain integration",
       "Memory wiping for API keys",
       "React 19 + Electron 33 modern stack",
-      "Cyberpunk-inspired UI"
-    ]
+      "Cyberpunk-inspired UI",
+    ],
   },
   "mehr-guard": {
     slug: "mehr-guard",
     title: "Mehr Guard",
     category: "DEFENSIVE",
     year: "2024",
-    description: "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
+    description:
+      "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
     localizedDescription: {
       fa: "اسکنر امنیتی QR و URL آفلاین با اولویت حریم خصوصی که با Kotlin Multiplatform ساخته شده است. آنالیز ۱۰۰٪ آفلاین با ۵ پلتفرم هدف.",
       ar: "ماسح ضوئي أمني لرموز QR وعناوين URL يعمل بدون اتصال بالإنترنت مع إعطاء الأولوية للخصوصية، تم بناؤه باستخدام Kotlin Multiplatform. تحليل بنسبة ١٠٠٪ بدون اتصال بالإنترنت مع استهداف ٥ منصات.",
@@ -293,66 +392,91 @@ export const projects: Record<string, Project> = {
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
       repo: "https://github.com/Raoof128/Raoof128.github.io",
-      caseStudy: "/projects/mehr-guard"
+      caseStudy: "/projects/mehr-guard",
     },
     build: {
-      stack: ["Kotlin Multiplatform", "Compose Multiplatform", "SwiftUI", "ML Kit", "SQLDelight"],
+      stack: [
+        "Kotlin Multiplatform",
+        "Compose Multiplatform",
+        "SwiftUI",
+        "ML Kit",
+        "SQLDelight",
+      ],
       features: [
         "5 Platform Targets (Android, iOS, JVM, JS, Wasm)",
         "Ensemble ML Model (Logistic Regression + Gradient Boosting)",
         "Heuristics Engine (25+ checks)",
-        "Red Team Mode for verification"
-      ]
+        "Red Team Mode for verification",
+      ],
     },
     secure: {
       measures: [
         "100% Offline Analysis (Zero network calls)",
         "On-device ML & Heuristics",
         "No data collection",
-        "Privacy by Architecture"
-      ]
+        "Privacy by Architecture",
+      ],
     },
-    fullDescription: "Mehr Guard is a privacy-first QR code and URL security scanner built with Kotlin Multiplatform. It detects phishing attacks, brand impersonation, and malicious redirects entirely on-device.",
-    problem: "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
+    fullDescription:
+      "Mehr Guard is a privacy-first QR code and URL security scanner built with Kotlin Multiplatform. It detects phishing attacks, brand impersonation, and malicious redirects entirely on-device.",
+    problem:
+      "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
     solution: [
       "Built a 100% offline analysis engine using Kotlin Multiplatform",
       "Implemented an ensemble ML model + 25 heuristics for high accuracy",
       "Targeted 5 platforms (Android, iOS, Desktop, Web) with ~52% code sharing",
-      "Achieved <5ms latency for real-time scanning"
+      "Achieved <5ms latency for real-time scanning",
     ],
     proof: [
       "F1 Score: 87% on red team corpus",
       "Performance: <5ms P99 latency",
       "Privacy: Verified 0 network calls via ./judge/verify_offline.sh",
-      "Code Sharing: ~100% shared detection logic"
-    ]
+      "Code Sharing: ~100% shared detection logic",
+    ],
   },
   "syllabus-sync": {
     slug: "syllabus-sync",
     title: "Syllabus-Sync",
     category: "ENGINEERING",
     year: "2026",
-    description: "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Full student operations suite with 503 tests across 92 files.",
+    description:
+      "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Full student operations suite with 503 tests across 92 files.",
     localizedDescription: {
       fa: "سیستم‌عامل دانشگاهی بومی هوش مصنوعی که سرفصل‌های PDF دانشگاه را به داده‌های ساختاریافته و قابل خواندن توسط عامل تبدیل می‌کند. مجموعه کامل عملیات دانشجویی با ۵۰۳ تست.",
       ar: "نظام تشغيل جامعي يعتمد على الذكاء الاصطناعي يحول المناهج الدراسية بتنسيق PDF إلى بيانات منظمة قابلة للقراءة من قبل الوكلاء. حزمة كاملة لعمليات الطلاب مع ٥٠٣ اختبارات.",
       zh: "人工智能原生的校园操作系统，将大学 PDF 教学大纲转化为结构化的、代理可读的数据。包含全套学生操作套件，涵盖 92 个文件中的 503 个测试。",
       es: "Campus OS nativo de IA que transforma los programas universitarios en PDF en datos estructurados y legibles por agentes. Suite completa de operaciones estudiantiles con 503 pruebas en 92 archivos.",
     },
-    tags: ["Next.js 16", "Supabase", "TypeScript", "AI/LLM", "WebAuthn", "Full-Stack"],
+    tags: [
+      "Next.js 16",
+      "Supabase",
+      "TypeScript",
+      "AI/LLM",
+      "WebAuthn",
+      "Full-Stack",
+    ],
     links: {
       demo: "https://syllabus-sync-mq.vercel.app/login?redirectTo=%2Fhome",
       repo: "https://github.com/Raoof128/syllabus-sync",
-      caseStudy: "/projects/syllabus-sync"
+      caseStudy: "/projects/syllabus-sync",
     },
     build: {
-      stack: ["Next.js 16", "TypeScript 5", "Supabase PostgreSQL", "TanStack Query", "Leaflet + Google Maps", "Framer Motion", "Radix UI", "Sentry"],
+      stack: [
+        "Next.js 16",
+        "TypeScript 5",
+        "Supabase PostgreSQL",
+        "TanStack Query",
+        "Leaflet + Google Maps",
+        "Framer Motion",
+        "Radix UI",
+        "Sentry",
+      ],
       features: [
         "LLM OCR pipeline extracting structured JSON from PDF syllabi",
         "Syllabus-as-Code — assessments and deadlines as version-controlled artefacts",
         "Full student OS: calendar, reminders, campus map, notifications",
-        "503 tests across 92 files with CI/CD quality gates"
-      ]
+        "503 tests across 92 files with CI/CD quality gates",
+      ],
     },
     secure: {
       measures: [
@@ -360,30 +484,33 @@ export const projects: Record<string, Project> = {
         "Supabase Row-Level Security enforced at database layer",
         "WebAuthn/FIDO2 passkey authentication (no passwords stored)",
         "LLM prompt injection mitigation with schema-constrained output and input sanitisation",
-        "Secrets scanner in CI blocks credential patterns from commits"
-      ]
+        "Secrets scanner in CI blocks credential patterns from commits",
+      ],
     },
-    fullDescription: "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite — calendar, map, notifications, and multi-profile management.",
-    problem: "Australian universities publish syllabi as unstructured PDFs. Students manually copy assessment dates into calendars, and AI assistants hallucinate deadlines because no machine-readable source of truth exists.",
+    fullDescription:
+      "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite — calendar, map, notifications, and multi-profile management.",
+    problem:
+      "Australian universities publish syllabi as unstructured PDFs. Students manually copy assessment dates into calendars, and AI assistants hallucinate deadlines because no machine-readable source of truth exists.",
     solution: [
       "Built an LLM OCR pipeline that extracts structured JSON from PDF syllabi with Zod schema validation",
       "Implemented Syllabus-as-Code where assessments and deadlines are version-controlled, diff-able artefacts",
       "Created a full student OS with calendar, campus navigation (Leaflet + Google Maps), and push notifications",
-      "Architected for fork-ability — any Australian university can adopt by swapping data/ and environment variables"
+      "Architected for fork-ability — any Australian university can adopt by swapping data/ and environment variables",
     ],
     proof: [
       "503 tests across 92 files — all passing in CI",
       "Zero-Trust proxy catches misconfiguration by default (validated in production)",
       "Designed to serve ~47,000 MQ students; fork-ready for 1M+ across Australian universities",
-      "WebAuthn passkey auth — no shared secrets leave the device"
-    ]
+      "WebAuthn passkey auth — no shared secrets leave the device",
+    ],
   },
   "nexus-archive": {
     slug: "nexus-archive",
     title: "Nexus Archive",
     category: "ENGINEERING",
     year: "2026",
-    description: "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
+    description:
+      "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
     localizedDescription: {
       fa: "مخزن رسانه‌ای شخصی با سبک سایبرپانک با فرانت‌اند React، ای‌پی‌آی Litestar و احراز هویت Supabase. توصیه‌های مجهز به هوش مصنوعی و احراز هویت سخت‌گیرانه مبتنی بر کوکی.",
       ar: "خزنة وسائط شخصية بأسلوب السايبربانك مع واجهة أمامية React وواجهة برمجة تطبيقات Litestar ومصادقة Supabase. توصيات مدعومة بالذكاء الاصطناعي ومصادقة قوية تعتمد على ملفات تعريف الارتباط.",
@@ -394,16 +521,26 @@ export const projects: Record<string, Project> = {
     links: {
       demo: "https://home-notes-app.uk/",
       repo: "https://github.com/Raoof128/Nexus_Archive",
-      caseStudy: "/projects/nexus-archive"
+      caseStudy: "/projects/nexus-archive",
     },
     build: {
-      stack: ["React 19", "Vite", "Tailwind CSS 4", "TanStack Query", "Python 3.12", "Litestar", "Supabase PostgreSQL", "Docker", "Terraform"],
+      stack: [
+        "React 19",
+        "Vite",
+        "Tailwind CSS 4",
+        "TanStack Query",
+        "Python 3.12",
+        "Litestar",
+        "Supabase PostgreSQL",
+        "Docker",
+        "Terraform",
+      ],
       features: [
         "AI-assisted media recommendations via Gemini with graceful degradation",
         "Real-time chat transcripts with user-scoped sanitization",
         "Status tracking, ratings, and reviews for anime, movies, and books",
-        "Smart filtering and search across entire media library"
-      ]
+        "Smart filtering and search across entire media library",
+      ],
     },
     secure: {
       measures: [
@@ -411,30 +548,33 @@ export const projects: Record<string, Project> = {
         "Short-lived access tokens with silent rotation via /auth/refresh",
         "AI prompt isolation with XML delimiters, string scrubbing, and PII masking",
         "Encrypted takeaway persistence (AES via TAKEAWAY_ENCRYPTION_KEY)",
-        "Bandit, pip-audit, npm audit, and secret scanning in CI"
-      ]
+        "Bandit, pip-audit, npm audit, and secret scanning in CI",
+      ],
     },
-    fullDescription: "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
-    problem: "Existing media trackers are fragmented across platforms with weak security postures. Users need a unified catalog that treats their entertainment library as a curated identity system, not just a checklist — with real security built in.",
+    fullDescription:
+      "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
+    problem:
+      "Existing media trackers are fragmented across platforms with weak security postures. Users need a unified catalog that treats their entertainment library as a curated identity system, not just a checklist — with real security built in.",
     solution: [
       "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
       "Implemented backend-managed HttpOnly auth cookies replacing frontend-readable Supabase tokens",
       "Integrated Gemini AI for media recommendations with shared per-user rate limiting and local fallback",
-      "Added encrypted takeaway persistence and AI prompt isolation with PII masking"
+      "Added encrypted takeaway persistence and AI prompt isolation with PII masking",
     ],
     proof: [
       "Hardened auth: HttpOnly + SameSite=Strict cookies with silent token rotation",
       "CI security gates: Bandit, pip-audit, npm audit, secret scanning",
       "Locust load testing for performance verification",
-      "Terraform IaC scaffold for reproducible Supabase + Vercel deployments"
-    ]
+      "Terraform IaC scaffold for reproducible Supabase + Vercel deployments",
+    ],
   },
-  "nanomatch": {
+  nanomatch: {
     slug: "nanomatch",
     title: "NanoMatch",
     category: "ENGINEERING",
     year: "2026",
-    description: "High-performance limit order book and matching engine in C++20. Processing 1M+ orders/second with sub-microsecond latency.",
+    description:
+      "High-performance limit order book and matching engine in C++20. Processing 1M+ orders/second with sub-microsecond latency.",
     localizedDescription: {
       fa: "دفتر سفارش محدود و موتور تطبیق با کارایی بالا در C++20. پردازش بیش از ۱ میلیون سفارش در ثانیه با تأخیر زیر میکروثانیه.",
       ar: "دفتر أوامر محدد ومحرك مطابقة عالي الأداء بلغة C++20. معالجة أكثر من مليون أمر في الثانية مع زمن انتقال أقل من ميكروثانية.",
@@ -444,95 +584,121 @@ export const projects: Record<string, Project> = {
     tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/NanoMatch",
-      caseStudy: "/projects/nanomatch"
+      caseStudy: "/projects/nanomatch",
     },
     build: {
-      stack: ["C++20", "CMake 3.20+", "Google Test 1.17", "GitHub Actions CI/CD", "AddressSanitizer", "UBSan"],
+      stack: [
+        "C++20",
+        "CMake 3.20+",
+        "Google Test 1.17",
+        "GitHub Actions CI/CD",
+        "AddressSanitizer",
+        "UBSan",
+      ],
       features: [
         "Price-time priority (FIFO) matching algorithm",
         "4 order types: Limit, Market, IOC, Fill-or-Kill",
         "O(1) order cancellation/modification via hash map",
-        "Custom pool allocator eliminating heap allocation overhead"
-      ]
+        "Custom pool allocator eliminating heap allocation overhead",
+      ],
     },
     secure: {
       measures: [
         "AddressSanitizer and UndefinedBehaviorSanitizer in CI",
         "60+ unit tests across 18 test suites",
         "cppcheck static analysis on every push",
-        "No external runtime dependencies"
-      ]
+        "No external runtime dependencies",
+      ],
     },
-    fullDescription: "NanoMatch is a high-performance limit order book and matching engine built in modern C++20. It simulates a financial exchange's core operations, processing buy/sell orders with price-time priority matching at millions of operations per second.",
-    problem: "Financial exchanges require ultra-low-latency order matching. Understanding how matching engines work at the systems level demands building one from scratch with real performance constraints.",
+    fullDescription:
+      "NanoMatch is a high-performance limit order book and matching engine built in modern C++20. It simulates a financial exchange's core operations, processing buy/sell orders with price-time priority matching at millions of operations per second.",
+    problem:
+      "Financial exchanges require ultra-low-latency order matching. Understanding how matching engines work at the systems level demands building one from scratch with real performance constraints.",
     solution: [
       "Implemented price-time priority (FIFO) matching with support for Limit, Market, IOC, and FOK orders",
       "Designed O(1) order cancellation and modification using hash map indexing",
       "Built a custom pool allocator to eliminate heap allocation overhead on the hot path",
-      "Added multi-instrument support with independent order books per symbol"
+      "Added multi-instrument support with independent order books per symbol",
     ],
     proof: [
       "Throughput: 1M+ orders/second with sub-microsecond latency",
       "Comprehensive test suite with p50/p99 latency benchmarks",
       "60+ unit tests across 18 test suites — all passing",
-      "CI: ASan, UBSan, cppcheck, clang-format on every push"
-    ]
+      "CI: ASan, UBSan, cppcheck, clang-format on every push",
+    ],
   },
-  "sentinelflow": {
+  sentinelflow: {
     slug: "sentinelflow",
     title: "SentinelFlow",
     category: "DEFENSIVE",
     year: "2026",
-    description: "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second.",
+    description:
+      "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second.",
     localizedDescription: {
       fa: "سیستم تشخیص نفوذ شبکه بلادرنگ در C++17. تشریح پروتکل لایه‌ای، موتور قوانین الهام گرفته از Snort و تشخیص تهدید حالت‌دار با پردازش بیش از ۵۰۰ هزار بسته در ثانیه.",
       ar: "نظام كشف التسلل للشبكة في الوقت الفعلي بلغة C++17. تشريح البروتوكولات الطبقية، محرك قواعد مستوحى من Snort، وكشف التهديدات مع تحليل أكثر من ٥٠٠ ألف حزمة في الثانية.",
       zh: "使用 C++17 编写的实时网络入侵检测系统。分层协议解析、受 Snort 启发的规则引擎以及状态威胁检测，每秒解析超过 50 万个数据包。",
       es: "Sistema de detección de intrusiones en red en tiempo real en C++17. Disección de protocolos por capas, motor de reglas inspirado en Snort y detección de amenazas con estado que analiza más de 500k paquetes por segundo.",
     },
-    tags: ["C++17", "libpcap", "IDS", "Network Security", "Systems Programming"],
+    tags: [
+      "C++17",
+      "libpcap",
+      "IDS",
+      "Network Security",
+      "Systems Programming",
+    ],
     links: {
       repo: "https://github.com/Raoof128/SentinelFlow",
-      caseStudy: "/projects/sentinelflow"
+      caseStudy: "/projects/sentinelflow",
     },
     build: {
-      stack: ["C++17", "libpcap", "CMake", "Google Test", "Snort-inspired Rules", "BPF Filters"],
+      stack: [
+        "C++17",
+        "libpcap",
+        "CMake",
+        "Google Test",
+        "Snort-inspired Rules",
+        "BPF Filters",
+      ],
       features: [
         "Live network capture via libpcap with configurable BPF filters",
         "Layered protocol dissection: Ethernet, IPv4, TCP, UDP, ICMP, DNS, ARP",
         "Snort-inspired configurable rule engine with signature matching",
-        "Stateful threat detection (port scans, SYN floods, DNS tunneling)"
-      ]
+        "Stateful threat detection (port scans, SYN floods, DNS tunneling)",
+      ],
     },
     secure: {
       measures: [
         "Color-coded severity-level alerting (LOW → CRITICAL)",
         "27 unit/integration tests covering all protocol layers",
         "CSV export for forensic analysis and SIEM integration",
-        "Configurable BPF filters for targeted capture"
-      ]
+        "Configurable BPF filters for targeted capture",
+      ],
     },
-    fullDescription: "SentinelFlow is a real-time network intrusion detection system that captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and exports security alerts to console and CSV formats.",
-    problem: "Network intrusion detection requires deep packet inspection at wire speed. Commercial IDS solutions are opaque — building one from scratch reveals how protocol dissection, signature matching, and stateful analysis actually work.",
+    fullDescription:
+      "SentinelFlow is a real-time network intrusion detection system that captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and exports security alerts to console and CSV formats.",
+    problem:
+      "Network intrusion detection requires deep packet inspection at wire speed. Commercial IDS solutions are opaque — building one from scratch reveals how protocol dissection, signature matching, and stateful analysis actually work.",
     solution: [
       "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
       "Built a Snort-inspired configurable rule engine for flexible signature matching",
       "Added stateful threat detection for port scans, SYN floods, and DNS tunneling",
-      "Engineered for throughput: 500K+ packets/sec parsing performance"
+      "Engineered for throughput: 500K+ packets/sec parsing performance",
     ],
     proof: [
       "Throughput: 500K+ packets/sec parsing performance",
       "Protocol coverage: 7 protocols across Layers 2-7",
       "27 unit/integration tests — all passing",
-      "Supports both live capture and pcap file analysis"
-    ]
+      "Supports both live capture and pcap file analysis",
+    ],
   },
-  "ecrsm": {
+  ecrsm: {
     slug: "ecrsm",
     title: "eBPF Cloud Runtime Security Monitor",
     category: "OFFENSIVE",
     year: "2025",
-    description: "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
+    description:
+      "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
     localizedDescription: {
       fa: "پشته مشاهده‌پذیری زمان اجرا فقط خواندنی که ترکیبی از eBPF هسته، عامل Go و داشبورد React است. مانیتور زمان اجرای آموزشی.",
       ar: "مجموعة أدوات الرؤية وقت التشغيل للقراءة فقط، تجمع بين eBPF للنواة ووكيل بلغة Go ولوحة تحكم React. مراقب وقت تشغيل تعليمي.",
@@ -542,46 +708,54 @@ export const projects: Record<string, Project> = {
     tags: ["eBPF", "Go", "React", "Kernel", "Runtime Security"],
     links: {
       repo: "https://github.com/Raoof128/ECRSM",
-      caseStudy: "/projects/ecrsm"
+      caseStudy: "/projects/ecrsm",
     },
     build: {
-      stack: ["eBPF (C)", "Go (Agent)", "React (Dashboard)", "Kubernetes (Helm)"],
+      stack: [
+        "eBPF (C)",
+        "Go (Agent)",
+        "React (Dashboard)",
+        "Kubernetes (Helm)",
+      ],
       features: [
         "Kernel tracepoints (execve, connect, ptrace, mmap)",
         "Go agent for enrichment & rules",
         "Live WebSocket dashboard",
-        "Kubernetes DaemonSet deployment"
-      ]
+        "Kubernetes DaemonSet deployment",
+      ],
     },
     secure: {
       measures: [
         "Read-only introspection (no kernel writes)",
         "Metadata only (no payloads/secrets)",
         "Least privilege (BPF/SYS_ADMIN caps only)",
-        "Safe synthetic simulations"
-      ]
+        "Safe synthetic simulations",
+      ],
     },
-    fullDescription: "ECRSM is an educational eBPF-based Cloud Runtime Security Monitor. It provides a synthetic, read-only runtime visibility stack combining kernel eBPF, a Go agent, and a React dashboard.",
-    problem: "Understanding runtime security at the kernel level is complex. ECRSM provides a safe, educational platform to learn eBPF-based monitoring.",
+    fullDescription:
+      "ECRSM is an educational eBPF-based Cloud Runtime Security Monitor. It provides a synthetic, read-only runtime visibility stack combining kernel eBPF, a Go agent, and a React dashboard.",
+    problem:
+      "Understanding runtime security at the kernel level is complex. ECRSM provides a safe, educational platform to learn eBPF-based monitoring.",
     solution: [
       "Implemented eBPF hooks for safe syscall tracepoints",
       "Built a Go agent to collect and enrich metadata",
       "Created a real-time React dashboard for visualization",
-      "Designed safe synthetic attack simulations"
+      "Designed safe synthetic attack simulations",
     ],
     proof: [
       "Detects reverse shells, process injection, suspicious execs",
       "Low-overhead perf buffer data transmission",
       "Container/K8s metadata enrichment",
-      "Verifiable via synthetic attack scripts"
-    ]
+      "Verifiable via synthetic attack scripts",
+    ],
   },
-  "simurghforge": {
+  simurghforge: {
     slug: "simurghforge",
     title: "SimurghForge",
     category: "ENGINEERING",
     year: "2026",
-    description: "Universal file converter for macOS. 49 formats across images, documents, audio, video, and data — powered by 9 conversion engines. Zero cloud, single .app bundle.",
+    description:
+      "Universal file converter for macOS. 49 formats across images, documents, audio, video, and data — powered by 9 conversion engines. Zero cloud, single .app bundle.",
     localizedDescription: {
       fa: "مبدل فایل جهانی برای macOS. ۴۹ فرمت در تصاویر، اسناد، صدا، ویدئو و داده — مجهز به ۹ موتور تبدیل. بدون ابر، تک فایل .app.",
       ar: "محول ملفات عالمي لنظام macOS. ٤٩ تنسيقاً تشمل الصور والمستندات والصوت والفيديو والبيانات — مدعوم بـ ٩ محركات تحويل. بدون سحابة، حزمة .app واحدة.",
@@ -591,65 +765,112 @@ export const projects: Record<string, Project> = {
     tags: ["Tauri v2", "Rust", "React", "TypeScript", "FFmpeg", "macOS"],
     links: {
       repo: "https://github.com/Raoof128/SimurghForge",
-      caseStudy: "/projects/simurghforge"
+      caseStudy: "/projects/simurghforge",
     },
     build: {
-      stack: ["Tauri v2 (Rust 1.77+)", "React 18", "TypeScript", "Vite", "Tailwind CSS v4", "FFmpeg", "LibreOffice", "Pandoc", "Python Pandas", "ImageMagick"],
+      stack: [
+        "Tauri v2 (Rust 1.77+)",
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS v4",
+        "FFmpeg",
+        "LibreOffice",
+        "Pandoc",
+        "Python Pandas",
+        "ImageMagick",
+      ],
       features: [
         "9 conversion engines: 4 native Rust + 5 CLI-bridged (FFmpeg, LibreOffice, Pandoc, Pandas, ImageMagick)",
         "49 supported formats across images, documents, audio, video, and structured data",
         "Batch conversion up to 50 files with configurable concurrency (Tokio semaphore)",
-        "MIME-type detection via magic bytes for automatic engine routing"
-      ]
+        "MIME-type detection via magic bytes for automatic engine routing",
+      ],
     },
     secure: {
       measures: [
         "100% local processing — zero network calls, no cloud dependency",
         "MIME-based magic byte detection prevents extension spoofing",
         "Path sanitisation for all file operations",
-        "Single .app bundle — no background services or daemons"
-      ]
+        "Single .app bundle — no background services or daemons",
+      ],
     },
-    fullDescription: "SimurghForge is a universal file converter for macOS built with Tauri v2 (Rust backend + React/TypeScript frontend). It converts files across 49 formats spanning images, documents, audio, video, and structured data using 9 specialised conversion engines — 4 native Rust engines for maximum performance and 5 CLI-bridged engines for format breadth. All processing happens locally with zero cloud dependency.",
-    problem: "File conversion typically requires uploading sensitive documents to cloud services, using multiple specialised tools, or installing bloated Electron apps. Users need a single, fast, privacy-respecting tool that handles all common formats locally.",
+    fullDescription:
+      "SimurghForge is a universal file converter for macOS built with Tauri v2 (Rust backend + React/TypeScript frontend). It converts files across 49 formats spanning images, documents, audio, video, and structured data using 9 specialised conversion engines — 4 native Rust engines for maximum performance and 5 CLI-bridged engines for format breadth. All processing happens locally with zero cloud dependency.",
+    problem:
+      "File conversion typically requires uploading sensitive documents to cloud services, using multiple specialised tools, or installing bloated Electron apps. Users need a single, fast, privacy-respecting tool that handles all common formats locally.",
     solution: [
       "Built a three-tier engine architecture: native Rust (fastest), CLI tools (feature-rich), and Python (tabular data)",
       "Implemented MIME-type detection via magic bytes for automatic engine selection",
       "Designed batch orchestration with Tokio semaphore-based concurrency control",
-      "Shipped as a single .app bundle with quality presets (Low/Medium/High/Lossless)"
+      "Shipped as a single .app bundle with quality presets (Low/Medium/High/Lossless)",
     ],
     proof: [
       "49 formats supported across 5 categories (images, documents, audio, video, data)",
       "9 conversion engines with automatic routing based on MIME detection",
       "Batch processing up to 50 files with configurable threading (1-8 threads)",
-      "Zero network calls — fully offline local processing"
-    ]
+      "Zero network calls — fully offline local processing",
+    ],
   },
-  "aion": {
+  aion: {
     slug: "aion",
     title: "Aion",
     category: "ENGINEERING",
     year: "2026",
-    description: "AI-powered Bible companion using Hybrid RAG. Keyword + semantic vector search (pgvector), real-time SSE streaming via Gemini, and cross-platform support with Tauri v2.",
+    description:
+      "AI-powered Bible companion using Hybrid RAG. Keyword + semantic vector search (pgvector), real-time SSE streaming via Gemini, and cross-platform support with Tauri v2.",
     localizedDescription: {
       fa: "همراه کتاب مقدس مجهز به هوش مصنوعی با استفاده از Hybrid RAG. جستجوی کلمات کلیدی + بردار معنایی (pgvector)، پخش بلادرنگ SSE از طریق Gemini.",
       ar: "رفيق الكتاب المقدس المدعوم بالذكاء الاصطناعي باستخدام Hybrid RAG. بحث بالكلمات الرئيسية + البحث المتجه الدلالي (pgvector)، وبث SSE في الوقت الفعلي عبر Gemini.",
       zh: "人工智能驱动的圣经伙伴，使用混合 RAG。关键词 + 语义向量搜索 (pgvector)，通过 Gemini 实现实时 SSE 流式传输。",
       es: "Compañero bíblico potenciado por IA que utiliza Hybrid RAG. Búsqueda por palabras clave + vectores semánticos (pgvector), transmisión SSE en tiempo real a través de Gemini.",
     },
-    tags: ["React Native", "Expo", "Supabase", "pgvector", "Gemini AI", "Tauri v2"],
+    tags: [
+      "React Native",
+      "Expo",
+      "Supabase",
+      "pgvector",
+      "Gemini AI",
+      "Tauri v2",
+    ],
     links: {
       repo: "https://github.com/Raoof128/Aion",
-      caseStudy: "/projects/aion"
+      caseStudy: "/projects/aion",
     },
+    papers: [
+      {
+        title:
+          "Aion-BibleQA: Evaluating Retrieval and Citation Faithfulness in Verse-Grounded Bible RAG Systems",
+        label: "Preprint",
+        href: "/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+        kind: "download",
+        venue: "Zenodo",
+        year: "2026",
+        status: "Pilot benchmark preprint",
+        description:
+          "8-page paper introducing a 40-question Bible RAG benchmark for citation faithfulness and false-premise robustness, with v3 retrieval reaching R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals.",
+        doi: "10.5281/zenodo.20522874",
+      },
+    ],
     build: {
-      stack: ["React Native 0.81", "Expo 54", "TypeScript", "Supabase PostgreSQL", "pgvector", "OpenAI Embeddings", "Gemini 3.1 Flash", "Tauri v2", "TanStack Query v5", "NativeWind"],
+      stack: [
+        "React Native 0.81",
+        "Expo 54",
+        "TypeScript",
+        "Supabase PostgreSQL",
+        "pgvector",
+        "OpenAI Embeddings",
+        "Gemini 3.1 Flash",
+        "Tauri v2",
+        "TanStack Query v5",
+        "NativeWind",
+      ],
       features: [
         "Hybrid RAG pipeline: regex keyword extraction + OpenAI embedding (1536-dim) + pgvector semantic search",
         "Real-time SSE streaming from Gemini via Supabase Edge Functions",
         "Rich inline verse cards with book/chapter/verse attribution",
-        "Cross-platform: React Native (iOS/Android) + Tauri v2 (macOS/Windows/Linux)"
-      ]
+        "Cross-platform: React Native (iOS/Android) + Tauri v2 (macOS/Windows/Linux)",
+      ],
     },
     secure: {
       measures: [
@@ -658,24 +879,26 @@ export const projects: Record<string, Project> = {
         "Row-Level Security (RLS) on all Supabase tables",
         "500-character message length cap to prevent token-stuffing",
         "Exact-match response cache (zero LLM cost on repeated queries)",
-        "Fail-closed: rate limit errors default to deny"
-      ]
+        "Fail-closed: rate limit errors default to deny",
+      ],
     },
-    fullDescription: "Aion is an AI-powered Bible companion that lets users ask questions about scripture in plain language. Responses are grounded in actual Bible data retrieved via a Hybrid RAG pipeline combining keyword matching and semantic vector search (pgvector), then streamed in real time via SSE from Gemini. The app runs on mobile (React Native + Expo) and desktop (Tauri v2).",
-    problem: "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
+    fullDescription:
+      "Aion is an AI-powered Bible companion that lets users ask questions about scripture in plain language. Responses are grounded in actual Bible data retrieved via a Hybrid RAG pipeline combining keyword matching and semantic vector search (pgvector), then streamed in real time via SSE from Gemini. The app runs on mobile (React Native + Expo) and desktop (Tauri v2).",
+    problem:
+      "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
     solution: [
       "Built a Hybrid RAG pipeline combining regex-based keyword extraction with OpenAI embedding (1536-dim) + pgvector semantic search",
       "Implemented real-time SSE streaming from Gemini via Supabase Edge Functions",
       "Designed rich inline verse cards with full book/chapter/verse attribution for verifiability",
-      "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop"
+      "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop",
     ],
     proof: [
       "Hybrid RAG retrieval ensures answers are grounded in actual scripture, not hallucinated",
       "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
       "Exact-match response cache eliminates redundant LLM costs",
-      "Anonymous auth with zero sign-up friction — Supabase RLS enforced on all tables"
-    ]
-  }
+      "Anonymous auth with zero sign-up friction — Supabase RLS enforced on all tables",
+    ],
+  },
 };
 
 export interface Writeup {
@@ -690,10 +913,12 @@ export interface Writeup {
 export const writeups: Writeup[] = [
   {
     slug: "invisible-window-research",
-    title: "How I Made Windows Invisible to Screen Capture — and Why Exam Proctoring Is Broken",
+    title:
+      "How I Made Windows Invisible to Screen Capture — and Why Exam Proctoring Is Broken",
     date: "2026-03-20",
     tag: "Security Research",
-    takeaway: "Documented OS APIs on Windows and macOS allow any app to hide its window from all screen capture, defeating WebRTC-based exam proctoring with 100% evasion and zero artifacts.",
+    takeaway:
+      "Documented OS APIs on Windows and macOS allow any app to hide its window from all screen capture, defeating WebRTC-based exam proctoring with 100% evasion and zero artifacts.",
     content: `
 ## The Vulnerability in One Sentence
 
@@ -837,14 +1062,15 @@ The vendors' responses confirmed awareness of the OS-level mechanism. The core c
 Screen-capture-based exam proctoring on Windows and macOS provides a weaker integrity guarantee than its deployment context requires. The attack surface is a single API call, requires no elevated privileges, leaves no log artifacts, and works across all tested platform versions including the latest macOS release. This is not a novel implementation flaw — it is a systemic design incompatibility between content protection APIs and the integrity assumptions embedded in remote proctoring architecture.
 
 The full 12-page paper, PoC implementations, and disclosure materials are available in the repository.
-    `
+    `,
   },
   {
     slug: "nanomatch-deep-dive",
     title: "Building a Sub-Microsecond Matching Engine in C++20",
     date: "2026-03-10",
     tag: "C++",
-    takeaway: "How a three-layer data structure design achieves O(1) cancellation and sub-microsecond latency.",
+    takeaway:
+      "How a three-layer data structure design achieves O(1) cancellation and sub-microsecond latency.",
     content: `
 ## Why Build a Matching Engine?
 
@@ -901,14 +1127,15 @@ Modify is implemented as cancel + re-add, which is **correct exchange behavior**
 | p99.9 | 1,250 ns |
 
 The 15x ratio between p50 and p99.9 is realistic. Spikes come from red-black tree rebalancing on new price level insertion, orders sweeping multiple levels, and cache misses on cold levels. In production, **tail latency is the metric that differentiates systems**.
-    `
+    `,
   },
   {
     slug: "sentinelflow-deep-dive",
     title: "Anatomy of a Network Intrusion Detection System",
     date: "2026-03-15",
     tag: "Network Security",
-    takeaway: "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 500K+ packets/sec.",
+    takeaway:
+      "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 500K+ packets/sec.",
     content: `
 ## The IDS Pipeline
 
@@ -963,14 +1190,15 @@ The alert system uses a strategy pattern — \`AlertManager\` dispatches each al
 - **CSV**: RFC 4180-compliant with proper escaping, ready for SIEM ingestion
 
 Adding a new output (syslog, webhook, Kafka) means implementing a single \`emit()\` method.
-    `
+    `,
   },
   {
     slug: "ecrsm-deep-dive",
     title: "Deep Dive: eBPF Runtime Monitoring",
     date: "2025-01-15",
     tag: "eBPF",
-    takeaway: "How to build safe, read-only kernel probes for container security.",
+    takeaway:
+      "How to build safe, read-only kernel probes for container security.",
     content: `
 ## Introduction
 
@@ -987,7 +1215,7 @@ In this deep dive, I'll explain how **ECRSM** uses eBPF tracepoints to monitor s
 ### Safety First
 
 Writing to the kernel is dangerous. ECRSM strictly uses **read-only** tracepoints. We never modify packet data or syscall arguments, ensuring system stability is never compromised.
-    `
+    `,
   },
   {
     slug: "kmp-security",
@@ -1011,7 +1239,7 @@ For security tools, consistency is key. If your iOS app uses a different regex f
 ### The Result
 
 We achieved ~52% code sharing across 5 platforms, meaning a single developer can audit the security core once and deploy fixes everywhere instantly.
-    `
+    `,
   },
   {
     slug: "electron-security",
@@ -1033,8 +1261,8 @@ Electron apps are essentially web pages with Node.js access. This is a terrifyin
 ### Handling Secrets
 
 Never store secrets in \`localStorage\`. GitSwitch uses the OS native Keychain (via \`keytar\`) to store GitHub Personal Access Tokens, ensuring they are encrypted at rest.
-    `
-  }
+    `,
+  },
 ];
 
 export interface LabExperiment {
@@ -1053,10 +1281,13 @@ export const labExperiments: LabExperiment[] = [
     id: "001",
     title: "Rust Keylogger PoC",
     status: "ARCHIVED",
-    description: "A Windows-based keylogger demonstrating the usage of SetWindowsHookEx and proper hook chaining for educational detection analysis.",
+    description:
+      "A Windows-based keylogger demonstrating the usage of SetWindowsHookEx and proper hook chaining for educational detection analysis.",
     tech: ["Rust", "WinAPI", "Unsafe"],
-    objective: "Understand how Windows messaging hooks can be abused for credential interception and how EDRs detect hook injection.",
-    constraints: "Educational purpose only. Does not persist across reboots. Logs to stdout only.",
+    objective:
+      "Understand how Windows messaging hooks can be abused for credential interception and how EDRs detect hook injection.",
+    constraints:
+      "Educational purpose only. Does not persist across reboots. Logs to stdout only.",
     codeSnippet: `use std::ptr;
 use winapi::shared::minwindef::{LPARAM, LRESULT, WPARAM};
 use winapi::shared::windef::HHOOK;
@@ -1094,16 +1325,19 @@ fn main() {
         }
         UnhookWindowsHookEx(HOOK);
     }
-}`
+}`,
   },
   {
     id: "002",
     title: "Raw Socket Packet Sniffer",
     status: "ACTIVE",
-    description: "Python script utilizing raw sockets to capture and parse TCP/IP headers manually. Implements basic SYN-scan detection without relying on libpcap.",
+    description:
+      "Python script utilizing raw sockets to capture and parse TCP/IP headers manually. Implements basic SYN-scan detection without relying on libpcap.",
     tech: ["Python", "Networking", "Raw Sockets"],
-    objective: "Manually parse IP/TCP headers to understand protocol structures and detect scanning patterns without relying on Wireshark.",
-    constraints: "Requires root/admin privileges. Linux only (AF_PACKET). For macOS use BPF socket instead.",
+    objective:
+      "Manually parse IP/TCP headers to understand protocol structures and detect scanning patterns without relying on Wireshark.",
+    constraints:
+      "Requires root/admin privileges. Linux only (AF_PACKET). For macOS use BPF socket instead.",
     codeSnippet: `import socket
 import struct
 
@@ -1141,16 +1375,19 @@ def sniff() -> None:
             continue
 
 if __name__ == "__main__":
-    sniff()`
+    sniff()`,
   },
   {
     id: "003",
     title: "Steganography Tool",
     status: "CONCEPT",
-    description: "LSB (Least Significant Bit) image steganography in Go. Embeds a length-prefixed payload into the red channel of PNG pixels.",
+    description:
+      "LSB (Least Significant Bit) image steganography in Go. Embeds a length-prefixed payload into the red channel of PNG pixels.",
     tech: ["Go", "Cryptography", "Image Processing"],
-    objective: "Implement a covert channel by modifying the least significant bits of image pixel data, then verify extraction round-trips cleanly.",
-    constraints: "Payload size limited to (width × height) / 8 bytes. Not robust against JPEG re-encoding or image resizing.",
+    objective:
+      "Implement a covert channel by modifying the least significant bits of image pixel data, then verify extraction round-trips cleanly.",
+    constraints:
+      "Payload size limited to (width × height) / 8 bytes. Not robust against JPEG re-encoding or image resizing.",
     codeSnippet: `package main
 
 import (
@@ -1202,6 +1439,6 @@ func main() {
 	defer out.Close()
 	png.Encode(out, dst)
 	fmt.Println("Done — payload embedded into stego.png")
-}`
-  }
+}`,
+  },
 ];

@@ -16,7 +16,8 @@ const es: Dictionary = {
     title_cyber: "CIBER",
     title_research: "Investigación",
     philosophy_quote: '"Buscad, y hallaréis" — Mateo 7:7',
-    intro: "Descubrimiento, validación y divulgación responsable de vulnerabilidades multiplataforma de forma independiente. Autor de \"The Invisible Window\" — evasión del 100% en la captura de pantalla. Motivado por reducir los riesgos catastróficos de la IA avanzada.",
+    intro:
+      'Descubrimiento, validación y divulgación responsable de vulnerabilidades multiplataforma de forma independiente. Autor de "The Invisible Window" — evasión del 100% en la captura de pantalla. Motivado por reducir los riesgos catastróficos de la IA avanzada.',
     view_projects: "Ver Proyectos",
     view_resume: "Ver Currículum",
     researcher: "Investigador de Vulnerabilidades",
@@ -27,16 +28,20 @@ const es: Dictionary = {
     title: "Filosofía",
     subtitle: "Principios Operativos",
     research_title: "INVESTIGACIÓN",
-    research_body: "Descubrir, validar y divulgar vulnerabilidades de forma responsable e independiente. Medir la mejora de las capacidades de la IA, caracterizar los límites de seguridad y publicar hallazgos reproducibles.",
+    research_body:
+      "Descubrir, validar y divulgar vulnerabilidades de forma responsable e independiente. Medir la mejora de las capacidades de la IA, caracterizar los límites de seguridad y publicar hallazgos reproducibles.",
     secure_title: "SEGURIDAD",
-    secure_body: "Aplicaciones defensivas que reducen los riesgos del mundo real. El desarrollo de exploits multiplataforma ayuda a crear mejores defensas: conocimiento ofensivo aplicado a sistemas de protección.",
+    secure_body:
+      "Aplicaciones defensivas que reducen los riesgos del mundo real. El desarrollo de exploits multiplataforma ayuda a crear mejores defensas: conocimiento ofensivo aplicado a sistemas de protección.",
   },
   lab: {
     title: "EL_LAB",
     subtitle: "/ operaciones_activas",
-    description: "Investigación práctica de vulnerabilidades y experimentación en seguridad de la IA. Trabajo actual: desarrollo de exploits multiplataforma, medición de la mejora de capacidades de la IA y caracterización de límites de seguridad.",
+    description:
+      "Investigación práctica de vulnerabilidades y experimentación en seguridad de la IA. Trabajo actual: desarrollo de exploits multiplataforma, medición de la mejora de capacidades de la IA y caracterización de límites de seguridad.",
     enter_lab: "ENTRAR_AL_LAB",
-    disclaimer: "Solo para investigación defensiva. Sin captura de credenciales. Sin persistencia. Sin guía de despliegue.",
+    disclaimer:
+      "Solo para investigación defensiva. Sin captura de credenciales. Sin persistencia. Sin guía de despliegue.",
   },
   writeups: {
     title: "Artículos",
@@ -65,9 +70,12 @@ const es: Dictionary = {
     identity_record: "Registro de Identidad",
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "Investigador de Seguridad de IA",
-    bio_1: "Investigador de seguridad de IA y estudiante de último año de Ciberseguridad en la Universidad Macquarie (graduación en noviembre de 2026) con capacidad demostrada para descubrir, validar y divulgar de forma responsable vulnerabilidades multiplataforma de forma independiente.",
-    bio_2: "Autor de \"The Invisible Window\", un artículo de investigación de seguridad de 12 páginas en formato IEEE que demuestra la evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14-26 utilizando APIs documentadas a nivel de SO, con el hallazgo novedoso de que la mitigación de macOS 15 de Apple sigue siendo ineficaz en macOS 26.",
-    bio_3: "Fluido en Python con experiencia en producción en C/C++, TypeScript y Swift. Realicé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code). Motivado por reducir los riesgos catastróficos de la IA avanzada: ansioso por medir la mejora de las capacidades, caracterizar los límites de seguridad y desarrollar aplicaciones defensivas.",
+    bio_1:
+      "Investigador de seguridad de IA y estudiante de último año de Ciberseguridad en la Universidad Macquarie (graduación en noviembre de 2026) con capacidad demostrada para descubrir, validar y divulgar de forma responsable vulnerabilidades multiplataforma de forma independiente.",
+    bio_2:
+      'Autor de "The Invisible Window", un artículo de investigación de seguridad de 12 páginas en formato IEEE que demuestra la evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14-26 utilizando APIs documentadas a nivel de SO, con el hallazgo novedoso de que la mitigación de macOS 15 de Apple sigue siendo ineficaz en macOS 26.',
+    bio_3:
+      "Fluido en Python con experiencia en producción en C/C++, TypeScript y Swift. Realicé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code). Motivado por reducir los riesgos catastróficos de la IA avanzada: ansioso por medir la mejora de las capacidades, caracterizar los límites de seguridad y desarrollar aplicaciones defensivas.",
     stats_projects: "Proyectos",
     stats_evasion: "Tasa de Evasión",
     stats_vendors: "Vendedores Divulgados",
@@ -85,8 +93,10 @@ const es: Dictionary = {
     terminal_location: "UBICACIÓN: CASTLE HILL, NSW",
     degree_bachelor: "Licenciatura en Ciberseguridad",
     degree_diploma: "Diploma de Tecnología de la Información",
-    degree_bachelor_courses: "Forense Digital · Seguridad de Redes · Computación en la Nube · NLP y ML · Seguridad Ofensiva · Criptografía Aplicada",
-    degree_diploma_desc: "Fundamentos en sistemas, redes e ingeniería de software.",
+    degree_bachelor_courses:
+      "Forense Digital · Seguridad de Redes · Computación en la Nube · NLP y ML · Seguridad Ofensiva · Criptografía Aplicada",
+    degree_diploma_desc:
+      "Fundamentos en sistemas, redes e ingeniería de software.",
   },
   contact: {
     title_1: "Abrir",
@@ -99,7 +109,8 @@ const es: Dictionary = {
     title: "El Lab",
     description_1: "Una colección de",
     description_2: "Pruebas de Concepto",
-    description_3: "fragmentos e investigaciones sin terminar. El código aquí es volátil y se proporciona «tal cual» con fines educativos.",
+    description_3:
+      "fragmentos e investigaciones sin terminar. El código aquí es volátil y se proporciona «tal cual» con fines educativos.",
     view_analysis: "VER_ANÁLISIS",
     more_on_github: "Ver más en GitHub",
     risk_disclaimer: "USAR_CÓDIGO_BAJO_TU_PROPIO_RIESGO",
@@ -113,7 +124,8 @@ const es: Dictionary = {
   },
   projects_page: {
     title: "BASE_DE_DATOS",
-    subtitle: "Índice de herramientas desplegadas, prototipos de investigación y pruebas de arquitectura.",
+    subtitle:
+      "Índice de herramientas desplegadas, prototipos de investigación y pruebas de arquitectura.",
     search_placeholder: "búsqueda...",
     empty_results: "La consulta no devolvió resultados.",
     access_file: "ACCEDER_ARCHIVO",
@@ -123,7 +135,8 @@ const es: Dictionary = {
     download: "Descargar Currículum",
   },
   not_found: {
-    description: "La ruta de señal solicitada no pudo resolverse. El recurso puede haber sido movido, eliminado o clasificado.",
+    description:
+      "La ruta de señal solicitada no pudo resolverse. El recurso puede haber sido movido, eliminado o clasificado.",
     return_home: "VOLVER_INICIO",
     browse_projects: "VER_PROYECTOS",
   },
@@ -146,6 +159,10 @@ const es: Dictionary = {
     watch_demo: "Ver Demo",
     source_code: "Código Fuente",
     download_paper: "Descargar Artículo",
+    research_papers: "Artículos de Investigación",
+    paper: "Artículo",
+    papers: "Artículos",
+    open_record: "Abrir Registro",
     doi_record: "Registro DOI",
   },
   writeups_detail: {
@@ -154,31 +171,40 @@ const es: Dictionary = {
   hall_of_fame: {
     title: "Salón de la Fama",
     subtitle: "Reconocimiento",
-    description: "Reconociendo a los investigadores de seguridad que han ayudado a mejorar la seguridad de mis proyectos mediante la divulgación responsable.",
+    description:
+      "Reconociendo a los investigadores de seguridad que han ayudado a mejorar la seguridad de mis proyectos mediante la divulgación responsable.",
     found_vuln_heading: "¿Encontraste una Vulnerabilidad?",
-    report_guidance: "Repórtala responsablemente y sé reconocido aquí. Consulta mi",
+    report_guidance:
+      "Repórtala responsablemente y sé reconocido aquí. Consulta mi",
     report_guidance_suffix: "para las directrices.",
     security_policy_link: "política de seguridad",
     report_btn: "REPORTAR",
     no_entries_title: "Sin Entradas Aún",
-    no_entries_desc: "Esta página espera a su primer investigador de seguridad. Encuentra una vulnerabilidad, repórtala responsablemente y sé el primero en ser reconocido.",
+    no_entries_desc:
+      "Esta página espera a su primer investigador de seguridad. Encuentra una vulnerabilidad, repórtala responsablemente y sé el primero en ser reconocido.",
     awaiting_badge: "ESPERANDO_PRIMERA_ENTRADA",
     criteria_title: "Criterios de Reconocimiento",
-    criteria_1: "Reportar una vulnerabilidad de seguridad válida y dentro del alcance",
+    criteria_1:
+      "Reportar una vulnerabilidad de seguridad válida y dentro del alcance",
     criteria_2: "Seguir las directrices de divulgación responsable",
     criteria_3: "Permitir tiempo razonable para que se solucione el problema",
-    criteria_4: "No divulgar públicamente la vulnerabilidad antes de la coordinación",
-    bounty_note: "Este es un proyecto de portafolio personal. Aunque aprecio profundamente los esfuerzos de los investigadores de seguridad, no se ofrecen recompensas monetarias. El reconocimiento en este Salón de la Fama es el principal agradecimiento por los informes válidos.",
+    criteria_4:
+      "No divulgar públicamente la vulnerabilidad antes de la coordinación",
+    bounty_note:
+      "Este es un proyecto de portafolio personal. Aunque aprecio profundamente los esfuerzos de los investigadores de seguridad, no se ofrecen recompensas monetarias. El reconocimiento en este Salón de la Fama es el principal agradecimiento por los informes válidos.",
   },
   security_policy: {
     title: "Política de Seguridad",
     subtitle: "Protocolo de Seguridad",
-    description: "Directrices de divulgación responsable para reportar vulnerabilidades de seguridad.",
+    description:
+      "Directrices de divulgación responsable para reportar vulnerabilidades de seguridad.",
     report_heading: "Reportar una Vulnerabilidad",
-    report_intro: "¿Encontraste un problema de seguridad? Contáctame directamente en",
+    report_intro:
+      "¿Encontraste un problema de seguridad? Contáctame directamente en",
     send_report: "ENVIAR_REPORTE",
     scope_title: "Alcance",
-    scope_desc: "Esta política de seguridad se aplica a los siguientes activos:",
+    scope_desc:
+      "Esta política de seguridad se aplica a los siguientes activos:",
     scope_site: "Este sitio web de portafolio",
     scope_repos: "Cualquier repositorio de código abierto bajo",
     what_title: "Qué Reportar",
@@ -198,11 +224,14 @@ const es: Dictionary = {
     out_6: "Problemas de limitación de velocidad",
     timeline_title: "Cronograma de Respuesta",
     t1_heading: "Respuesta Inicial: 48-72 horas",
-    t1_desc: "Confirmaré la recepción de tu reporte y proporcionaré una evaluación inicial.",
+    t1_desc:
+      "Confirmaré la recepción de tu reporte y proporcionaré una evaluación inicial.",
     t2_heading: "Resolución: 7-30 días",
-    t2_desc: "Dependiendo de la severidad, trabajaré para resolver el problema dentro de este plazo.",
+    t2_desc:
+      "Dependiendo de la severidad, trabajaré para resolver el problema dentro de este plazo.",
     t3_heading: "Divulgación: Coordinada",
-    t3_desc: "Coordinaremos la divulgación pública después de que se despliegue la corrección.",
+    t3_desc:
+      "Coordinaremos la divulgación pública después de que se despliegue la corrección.",
     guidelines_title: "Directrices de Divulgación Responsable",
     g1: "No accedas, modifiques ni elimines datos que no te pertenecen.",
     g2: "No realices ataques que puedan perjudicar la disponibilidad de los servicios.",
@@ -210,12 +239,15 @@ const es: Dictionary = {
     g4: "Da tiempo razonable para abordar el problema antes de la divulgación pública.",
     g5: "Actúa de buena fe y evita las violaciones de privacidad.",
     encrypted_title: "Comunicación Cifrada",
-    encrypted_desc: "Para informes sensibles, puedes cifrar tu mensaje usando mi clave PGP:",
+    encrypted_desc:
+      "Para informes sensibles, puedes cifrar tu mensaje usando mi clave PGP:",
     pgp_link: "Descargar Clave PGP Pública",
     ack_title: "Reconocimientos",
-    ack_desc: "Aprecio a los investigadores de seguridad responsables que ayudan a mejorar la seguridad de mis proyectos. Los informes válidos pueden ser reconocidos en el",
+    ack_desc:
+      "Aprecio a los investigadores de seguridad responsables que ayudan a mejorar la seguridad de mis proyectos. Los informes válidos pueden ser reconocidos en el",
     ack_hall_of_fame: "Salón de la Fama de Seguridad",
-    ack_note: "Nota: Este es un proyecto de portafolio personal. No se ofrecen recompensas monetarias, pero tu contribución será reconocida.",
+    ack_note:
+      "Nota: Este es un proyecto de portafolio personal. No se ofrecen recompensas monetarias, pero tu contribución será reconocida.",
   },
 };
 

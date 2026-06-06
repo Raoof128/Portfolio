@@ -16,7 +16,8 @@ const zh: Dictionary = {
     title_cyber: "网络安全",
     title_research: "研究",
     philosophy_quote: '"寻找，就寻见" — 马太福音 7:7',
-    intro: "独立发现、验证并负责任地披露跨平台漏洞。著有《The Invisible Window》——实现 100% 屏幕捕获规避。致力于降低高级人工智能带来的灾难性风险。",
+    intro:
+      "独立发现、验证并负责任地披露跨平台漏洞。著有《The Invisible Window》——实现 100% 屏幕捕获规避。致力于降低高级人工智能带来的灾难性风险。",
     view_projects: "查看项目",
     view_resume: "查看简历",
     researcher: "漏洞研究员",
@@ -27,14 +28,17 @@ const zh: Dictionary = {
     title: "理念",
     subtitle: "运作原则",
     research_title: "研究",
-    research_body: "独立发现、验证并负责任地披露漏洞。评估人工智能能力提升，界定安全边界，并发布可重现的研究结果。",
+    research_body:
+      "独立发现、验证并负责任地披露漏洞。评估人工智能能力提升，界定安全边界，并发布可重现的研究结果。",
     secure_title: "防御",
-    secure_body: "开发旨在降低现实世界风险的防御性应用。跨平台漏洞开发为构建更强的防御体系提供参考——将攻击性知识应用于保护系统。",
+    secure_body:
+      "开发旨在降低现实世界风险的防御性应用。跨平台漏洞开发为构建更强的防御体系提供参考——将攻击性知识应用于保护系统。",
   },
   lab: {
     title: "实验室",
     subtitle: "/ 活动_运营",
-    description: "漏洞研究与人工智能安全实验。当前工作：跨平台漏洞开发、人工智能能力提升测量以及安全边界界定。",
+    description:
+      "漏洞研究与人工智能安全实验。当前工作：跨平台漏洞开发、人工智能能力提升测量以及安全边界界定。",
     enter_lab: "进入实验室",
     disclaimer: "仅用于防御性研究。无凭证获取。无持久化。无部署指导。",
   },
@@ -65,9 +69,12 @@ const zh: Dictionary = {
     identity_record: "身份记录",
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "人工智能安全研究员",
-    bio_1: "人工智能安全研究员，麦觉理大学网络安全专业应届毕业生（2026年11月毕业）。具有独立发现、验证并负责任地披露跨平台漏洞的能力。",
-    bio_2: "著有《The Invisible Window》——一份 12 页的 IEEE 格式安全研究论文，展示了在 Windows 10/11 和 macOS 14–26 上利用操作系统级 API 实现 100% 屏幕捕获规避，并发现苹果在 macOS 15 中的缓解措施对 macOS 26 依然无效。",
-    bio_3: "精通 Python，在 C/C++、TypeScript 和 Swift 方面具有生产经验。完成了 Anthropic 的 AI 模型评估（Claude Code 人类偏好测试）。致力于降低高级人工智能带来的灾难性风险——渴望测量能力提升、界定安全边界并开发防御性应用。",
+    bio_1:
+      "人工智能安全研究员，麦觉理大学网络安全专业应届毕业生（2026年11月毕业）。具有独立发现、验证并负责任地披露跨平台漏洞的能力。",
+    bio_2:
+      "著有《The Invisible Window》——一份 12 页的 IEEE 格式安全研究论文，展示了在 Windows 10/11 和 macOS 14–26 上利用操作系统级 API 实现 100% 屏幕捕获规避，并发现苹果在 macOS 15 中的缓解措施对 macOS 26 依然无效。",
+    bio_3:
+      "精通 Python，在 C/C++、TypeScript 和 Swift 方面具有生产经验。完成了 Anthropic 的 AI 模型评估（Claude Code 人类偏好测试）。致力于降低高级人工智能带来的灾难性风险——渴望测量能力提升、界定安全边界并开发防御性应用。",
     stats_projects: "项目",
     stats_evasion: "规避率",
     stats_vendors: "已披露厂商",
@@ -85,7 +92,8 @@ const zh: Dictionary = {
     terminal_location: "位置：NSW 卡斯尔希尔",
     degree_bachelor: "网络安全学士",
     degree_diploma: "信息技术文凭",
-    degree_bachelor_courses: "数字取证 · 网络安全 · 云计算 · NLP与ML · 攻击性安全 · 应用密码学",
+    degree_bachelor_courses:
+      "数字取证 · 网络安全 · 云计算 · NLP与ML · 攻击性安全 · 应用密码学",
     degree_diploma_desc: "系统、网络和软件工程基础。",
   },
   contact: {
@@ -99,7 +107,8 @@ const zh: Dictionary = {
     title: "实验室",
     description_1: "一系列",
     description_2: "概念验证（PoC）",
-    description_3: "代码片段及未完成的研究。此处代码具有实验性质，仅供教育目的使用，\"按原样\"提供。",
+    description_3:
+      '代码片段及未完成的研究。此处代码具有实验性质，仅供教育目的使用，"按原样"提供。',
     view_analysis: "查看分析",
     more_on_github: "在 GitHub 上查看更多",
     risk_disclaimer: "使用代码风险自负",
@@ -146,6 +155,10 @@ const zh: Dictionary = {
     watch_demo: "观看演示",
     source_code: "源代码",
     download_paper: "下载论文",
+    research_papers: "研究论文",
+    paper: "论文",
+    papers: "论文",
+    open_record: "打开记录",
     doi_record: "DOI 记录",
   },
   writeups_detail: {
@@ -161,14 +174,16 @@ const zh: Dictionary = {
     security_policy_link: "安全政策",
     report_btn: "举报",
     no_entries_title: "暂无记录",
-    no_entries_desc: "此页面正在等待第一位安全研究员。发现漏洞，负责任地报告，成为第一位获得认可的人。",
+    no_entries_desc:
+      "此页面正在等待第一位安全研究员。发现漏洞，负责任地报告，成为第一位获得认可的人。",
     awaiting_badge: "等待首条记录",
     criteria_title: "认可标准",
     criteria_1: "报告有效且在范围内的安全漏洞",
     criteria_2: "遵守负责任披露指南",
     criteria_3: "给予合理的修复时间",
     criteria_4: "在协调之前不公开披露漏洞",
-    bounty_note: "这是一个个人作品集项目。尽管我非常感谢安全研究员的努力，但不提供货币奖励。在荣誉殿堂中的认可是对有效报告的主要回报。",
+    bounty_note:
+      "这是一个个人作品集项目。尽管我非常感谢安全研究员的努力，但不提供货币奖励。在荣誉殿堂中的认可是对有效报告的主要回报。",
   },
   security_policy: {
     title: "安全政策",
@@ -215,7 +230,8 @@ const zh: Dictionary = {
     ack_title: "致谢",
     ack_desc: "我感谢帮助提升我项目安全性的负责任安全研究员。有效报告可能会在",
     ack_hall_of_fame: "安全荣誉殿堂",
-    ack_note: "注意：这是一个个人作品集项目。不提供货币奖励，但您的贡献将获得认可。",
+    ack_note:
+      "注意：这是一个个人作品集项目。不提供货币奖励，但您的贡献将获得认可。",
   },
 };
 
