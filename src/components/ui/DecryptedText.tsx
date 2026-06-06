@@ -12,10 +12,6 @@ interface DecryptedTextProps {
 
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*";
 
-function scramble(text: string): string {
-  return text.split("").map(() => chars[Math.floor(Math.random() * chars.length)]).join("");
-}
-
 const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
 
 function subscribe(callback: () => void) {
@@ -38,7 +34,7 @@ function usePrefersReducedMotion() {
 
 export function DecryptedText({ text, className = "", animateOnHover = false, loopInterval = 0 }: DecryptedTextProps) {
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [displayText, setDisplayText] = useState(() => scramble(text));
+  const [displayText, setDisplayText] = useState(text);
   const [trigger, setTrigger] = useState(0);
 
   useEffect(() => {

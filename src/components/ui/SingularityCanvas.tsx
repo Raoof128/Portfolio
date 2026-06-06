@@ -73,6 +73,11 @@ export function SingularityCanvas() {
     let stars: Star[] = [];
     let particles: Particle[] = [];
 
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+
     function clamp(v: number, lo: number, hi: number) {
       return Math.max(lo, Math.min(hi, v));
     }
@@ -99,13 +104,32 @@ export function SingularityCanvas() {
 
     function initStars() {
       const count = rmq.matches ? 40 : clamp(Math.floor(width / 10), 64, 160);
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 1.5 + 0.35,
-        twinkle: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.002 + 0.0008,
-      }));
+      if (stars.length === 0) {
+        stars = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 1.5 + 0.35,
+          twinkle: Math.random() * Math.PI * 2,
+          speed: Math.random() * 0.002 + 0.0008,
+        }));
+      } else if (stars.length < count) {
+        const diff = count - stars.length;
+        for (let i = 0; i < diff; i++) {
+          stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 1.5 + 0.35,
+            twinkle: Math.random() * Math.PI * 2,
+            speed: Math.random() * 0.002 + 0.0008,
+          });
+        }
+      } else if (stars.length > count) {
+        stars.length = count;
+      }
+      for (const s of stars) {
+        if (s.x > width) s.x = Math.random() * width;
+        if (s.y > height) s.y = Math.random() * height;
+      }
     }
 
     function makeParticle(initial = false): Particle {
@@ -131,14 +155,22 @@ export function SingularityCanvas() {
     }
 
     function initParticles() {
-      particles = Array.from({ length: particleCount() }, () =>
-        makeParticle(true),
-      );
+      const targetCount = particleCount();
+      if (particles.length === 0) {
+        particles = Array.from({ length: targetCount }, () => makeParticle(true));
+      } else if (particles.length < targetCount) {
+        const diff = targetCount - particles.length;
+        for (let i = 0; i < diff; i++) {
+          particles.push(makeParticle(true));
+        }
+      } else if (particles.length > targetCount) {
+        particles.length = targetCount;
+      }
     }
 
     function project(x: number, y: number, z: number): Projected {
-      const rotX = CFG.rotX;
-      const rotY = CFG.rotY + Math.sin(frame * 0.002) * 0.028;
+      const rotX = CFG.rotX + mouseY * 0.12;
+      const rotY = CFG.rotY + Math.sin(frame * 0.002) * 0.028 + mouseX * 0.12;
       const x1 = x * Math.cos(rotY) - z * Math.sin(rotY);
       const z1 = x * Math.sin(rotY) + z * Math.cos(rotY);
       const y2 = y * Math.cos(rotX) - z1 * Math.sin(rotX);
@@ -192,7 +224,7 @@ export function SingularityCanvas() {
         1,
       );
       const alpha = 0.34 + (1 - proximity) * 0.62;
-      const dotSize = p.size * head.scale * (1.15 - proximity * 0.25);
+      const dotSize = Math.max(0.1, p.size * head.scale * (1.15 - proximity * 0.25));
       if (p.trail.length > 1 && proximity < 0.72 && !rmq.matches) {
         ctx.beginPath();
         ctx.moveTo(ox + head.x, oy + head.y);
@@ -224,7 +256,9 @@ export function SingularityCanvas() {
         ctx.globalAlpha = Math.max(0.08, t);
         ctx.fillStyle = s.r > 1.3 ? PALETTE.cyan : "#dce6ff";
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        const starParallaxX = mouseX * s.r * 15;
+        const starParallaxY = mouseY * s.r * 15;
+        ctx.arc(s.x + starParallaxX, s.y + starParallaxY, s.r, 0, Math.PI * 2);
         ctx.fill();
       }
       ctx.restore();
@@ -292,18 +326,25 @@ export function SingularityCanvas() {
           if (j === 0) ctx.moveTo(p.x, p.y);
           else ctx.lineTo(p.x, p.y);
         }
-        ctx.strokeStyle = i % 2 ? PALETTE.violet : PALETTE.cyan;
-        ctx.globalAlpha = 0.11 - i * 0.012;
-        ctx.lineWidth = 1.1;
+        const strokeColor = i % 2 ? PALETTE.violet : PALETTE.cyan;
+        const baseAlpha = 0.11 - i * 0.012;
+
         if (!rmq.matches) {
-          ctx.shadowColor = i % 2 ? PALETTE.violet : PALETTE.cyan;
-          ctx.shadowBlur = 14;
+          ctx.save();
+          ctx.strokeStyle = strokeColor;
+          ctx.globalAlpha = baseAlpha * 0.45;
+          ctx.lineWidth = 4.5;
+          ctx.stroke();
+          ctx.restore();
         }
+
+        ctx.strokeStyle = strokeColor;
+        ctx.globalAlpha = baseAlpha;
+        ctx.lineWidth = 1.1;
         ctx.stroke();
       }
       ctx.restore();
       ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
     }
 
     function drawJets(ox: number, oy: number) {
@@ -361,17 +402,22 @@ export function SingularityCanvas() {
           else ctx.lineTo(p.x, p.y);
         }
       }
+
+      if (!rmq.matches) {
+        ctx.save();
+        ctx.strokeStyle = colour;
+        ctx.globalAlpha = alpha * 0.5;
+        ctx.lineWidth = 3.5;
+        ctx.stroke();
+        ctx.restore();
+      }
+
       ctx.globalAlpha = alpha;
       ctx.strokeStyle = colour;
       ctx.lineWidth = 1;
-      if (!rmq.matches) {
-        ctx.shadowColor = colour;
-        ctx.shadowBlur = 9;
-      }
       ctx.stroke();
       ctx.restore();
       ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
     }
 
     function drawHorizon(ox: number, oy: number) {
@@ -407,21 +453,43 @@ export function SingularityCanvas() {
       ctx.arc(x, y, r * 1.08, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalCompositeOperation = "screen";
+
+      if (!rmq.matches) {
+        ctx.save();
+        ctx.lineWidth = 7.5;
+        ctx.strokeStyle = PALETTE.cyan;
+        ctx.globalAlpha = 0.4;
+        ctx.beginPath();
+        ctx.arc(x, y, r * 1.04, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
       ctx.lineWidth = 2.2;
       ctx.strokeStyle = "rgba(255,255,255,0.88)";
-      if (!rmq.matches) {
-        ctx.shadowColor = PALETTE.cyan;
-        ctx.shadowBlur = 24;
-      }
       ctx.beginPath();
       ctx.arc(x, y, r * 1.04, 0, Math.PI * 2);
       ctx.stroke();
+
+      if (!rmq.matches) {
+        ctx.save();
+        ctx.lineWidth = 5.5;
+        ctx.strokeStyle = PALETTE.amber;
+        ctx.globalAlpha = 0.3;
+        ctx.beginPath();
+        ctx.arc(
+          x,
+          y,
+          r * 1.34 + Math.sin(frame * 0.02) * 1.6,
+          0.25,
+          Math.PI * 1.38,
+        );
+        ctx.stroke();
+        ctx.restore();
+      }
+
       ctx.lineWidth = 1;
       ctx.strokeStyle = "rgba(246,211,101,0.55)";
-      if (!rmq.matches) {
-        ctx.shadowColor = PALETTE.amber;
-        ctx.shadowBlur = 18;
-      }
       ctx.beginPath();
       ctx.arc(
         x,
@@ -432,7 +500,6 @@ export function SingularityCanvas() {
       );
       ctx.stroke();
       ctx.restore();
-      ctx.shadowBlur = 0;
     }
 
     function draw(timestamp: number) {
@@ -444,6 +511,15 @@ export function SingularityCanvas() {
           ? 0
           : clamp(elapsedMs / CFG.targetFrameMs, 0, CFG.maxFrameStep);
       const physicsStep = rmq.matches ? 0 : step;
+
+      if (!rmq.matches && step > 0) {
+        const lerpFactor = clamp(0.04 * step, 0, 1);
+        mouseX += (targetMouseX - mouseX) * lerpFactor;
+        mouseY += (targetMouseY - mouseY) * lerpFactor;
+      } else {
+        mouseX = 0;
+        mouseY = 0;
+      }
 
       ctx.clearRect(0, 0, width, height);
       drawStars();
@@ -479,7 +555,6 @@ export function SingularityCanvas() {
     }
 
     function start() {
-      // Always cancel before re-queuing — eliminates any double-loop race.
       if (rafId !== null) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(draw);
     }
@@ -494,8 +569,14 @@ export function SingularityCanvas() {
       if (document.hidden) stop();
       else start();
     };
+    const onMouseMove = (e: MouseEvent) => {
+      if (rmq.matches) return;
+      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    };
 
     window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
     rmq.addEventListener?.("change", onRmqChange);
     document.addEventListener("visibilitychange", onVisibility);
 
@@ -505,6 +586,7 @@ export function SingularityCanvas() {
     return () => {
       stop();
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("mousemove", onMouseMove);
       rmq.removeEventListener?.("change", onRmqChange);
       document.removeEventListener("visibilitychange", onVisibility);
     };

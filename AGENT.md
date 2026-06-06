@@ -40,6 +40,22 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-06 (Australia/Sydney) — Root layout tag fix
+
+- **Scope**: Resolve runtime layout validation error
+- **Summary**: Removed the redundant top-level root layout file `src/app/layout.tsx`. Next.js localized layouts (`src/app/[locale]/layout.tsx`) serve as root layouts; keeping a top-level layout that lacks `<html>` and `<body>` tags causes runtime crashes. Cleared cached `.next` directory to reset TS compiler route declarations.
+- **Files Changed**: `src/app/layout.tsx` (deleted)
+- **Verification**: `rm -rf .next && npm run typecheck`: pass; `npm run lint`: pass; `npm run test:ci`: 68/68 passing; `npm run build`: pass (155 routes generated).
+- **Follow-ups**: None.
+
+### Raouf: 2026-06-06 (Australia/Sydney) — Singularity & DecryptedText Audit
+
+- **Scope**: Optimize and enhance homepage animations (Singularity & DecryptedText)
+- **Summary**: Replaced pixel-level context `shadowBlur` with performant double-pass overlay glows (thick low-opacity backstroke) to resolve rendering lag on high-DPI displays. Added smooth cursor-parallax 3D viewport tilting on the singularity disk and size-weighted depth shifts on background stars. Hardened resize calculations to adapt existing particle/star lists dynamically without jarring animation resets. Resolved Next.js hydration mismatch warning in `DecryptedText` by initializing state with clear text and scrambling only on client mount.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `src/components/ui/DecryptedText.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass (0 errors); `npm run typecheck`: pass; `npm run test:ci`: 68/68 passing; `npm run build`: pass (155 routes generated).
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-06 (Australia/Sydney) — Singularity rAF timing hardening
 
 - **Scope**: Improve homepage singularity particle animation using current browser animation guidance
