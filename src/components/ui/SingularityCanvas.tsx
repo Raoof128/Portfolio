@@ -15,6 +15,9 @@ const CFG = {
   horizonRadius: 42,
   rotX: 0.48,
   rotY: -0.12,
+  targetFrameMs: 1000 / 60,
+  maxFrameStep: 2,
+  pausedFrameGapMs: 100,
 } as const;
 
 interface Star {
@@ -38,6 +41,7 @@ interface Particle {
   yOsc: number;
   size: number;
   trail: TrailPoint[];
+  trailClock: number;
   tint: string;
 }
 
@@ -116,6 +120,7 @@ export function SingularityCanvas() {
         yOsc: (Math.random() - 0.5) * 11,
         size: 0.45 + Math.random() * 1.55,
         trail: [],
+        trailClock: 0,
         tint:
           Math.random() > 0.72
             ? PALETTE.amber
@@ -153,10 +158,10 @@ export function SingularityCanvas() {
       return project(x, yOffset + gravity, z);
     }
 
-    function updateParticle(p: Particle) {
-      p.angle += p.speed;
-      p.radius -= rmq.matches ? 0.08 : 0.38;
-      p.yOsc += Math.sin(frame * 0.006 + p.angle) * 0.003;
+    function updateParticle(p: Particle, step: number) {
+      p.angle += p.speed * step;
+      p.radius -= 0.38 * step;
+      p.yOsc += Math.sin(frame * 0.006 + p.angle) * 0.003 * step;
       if (p.radius < CFG.horizonRadius + 3) {
         const fresh = makeParticle(false);
         p.radius = fresh.radius;
@@ -165,12 +170,17 @@ export function SingularityCanvas() {
         p.yOsc = fresh.yOsc;
         p.size = fresh.size;
         p.trail = [];
+        p.trailClock = 0;
         p.tint = fresh.tint;
         return;
       }
-      p.trail.push({ r: p.radius, a: p.angle, y: p.yOsc });
-      const maxTrail = width < 700 ? 3 : 6;
-      if (p.trail.length > maxTrail) p.trail.shift();
+      p.trailClock += step;
+      if (p.trailClock >= 1) {
+        p.trailClock %= 1;
+        p.trail.push({ r: p.radius, a: p.angle, y: p.yOsc });
+        const maxTrail = width < 700 ? 3 : 6;
+        if (p.trail.length > maxTrail) p.trail.shift();
+      }
     }
 
     function drawParticle(p: Particle, ox: number, oy: number) {
@@ -285,8 +295,10 @@ export function SingularityCanvas() {
         ctx.strokeStyle = i % 2 ? PALETTE.violet : PALETTE.cyan;
         ctx.globalAlpha = 0.11 - i * 0.012;
         ctx.lineWidth = 1.1;
-        ctx.shadowColor = i % 2 ? PALETTE.violet : PALETTE.cyan;
-        ctx.shadowBlur = 14;
+        if (!rmq.matches) {
+          ctx.shadowColor = i % 2 ? PALETTE.violet : PALETTE.cyan;
+          ctx.shadowBlur = 14;
+        }
         ctx.stroke();
       }
       ctx.restore();
@@ -352,8 +364,10 @@ export function SingularityCanvas() {
       ctx.globalAlpha = alpha;
       ctx.strokeStyle = colour;
       ctx.lineWidth = 1;
-      ctx.shadowColor = colour;
-      ctx.shadowBlur = 9;
+      if (!rmq.matches) {
+        ctx.shadowColor = colour;
+        ctx.shadowBlur = 9;
+      }
       ctx.stroke();
       ctx.restore();
       ctx.globalAlpha = 1;
@@ -395,15 +409,19 @@ export function SingularityCanvas() {
       ctx.globalCompositeOperation = "screen";
       ctx.lineWidth = 2.2;
       ctx.strokeStyle = "rgba(255,255,255,0.88)";
-      ctx.shadowColor = PALETTE.cyan;
-      ctx.shadowBlur = 24;
+      if (!rmq.matches) {
+        ctx.shadowColor = PALETTE.cyan;
+        ctx.shadowBlur = 24;
+      }
       ctx.beginPath();
       ctx.arc(x, y, r * 1.04, 0, Math.PI * 2);
       ctx.stroke();
       ctx.lineWidth = 1;
       ctx.strokeStyle = "rgba(246,211,101,0.55)";
-      ctx.shadowColor = PALETTE.amber;
-      ctx.shadowBlur = 18;
+      if (!rmq.matches) {
+        ctx.shadowColor = PALETTE.amber;
+        ctx.shadowBlur = 18;
+      }
       ctx.beginPath();
       ctx.arc(
         x,
@@ -418,10 +436,14 @@ export function SingularityCanvas() {
     }
 
     function draw(timestamp: number) {
-      // Skip physics if tab was hidden — prevents burst movement on focus return.
-      // A gap >100ms means the loop was paused; redraw visuals but don't advance state.
-      const skipPhysics = lastTimestamp > 0 && timestamp - lastTimestamp > 100;
+      const elapsedMs =
+        lastTimestamp > 0 ? timestamp - lastTimestamp : CFG.targetFrameMs;
       lastTimestamp = timestamp;
+      const step =
+        elapsedMs > CFG.pausedFrameGapMs
+          ? 0
+          : clamp(elapsedMs / CFG.targetFrameMs, 0, CFG.maxFrameStep);
+      const physicsStep = rmq.matches ? 0 : step;
 
       ctx.clearRect(0, 0, width, height);
       drawStars();
@@ -440,13 +462,13 @@ export function SingularityCanvas() {
       ctx.save();
       ctx.globalCompositeOperation = "screen";
       for (const p of particles) {
-        if (!skipPhysics) updateParticle(p);
+        if (physicsStep > 0) updateParticle(p, physicsStep);
         drawParticle(p, ox, oy);
       }
       ctx.restore();
       drawHorizon(ox, oy);
       ctx.restore();
-      if (!rmq.matches && !skipPhysics) frame += 1;
+      frame += physicsStep;
       rafId = requestAnimationFrame(draw);
     }
 
@@ -466,6 +488,7 @@ export function SingularityCanvas() {
     const onRmqChange = () => {
       resize();
       frame = 0;
+      lastTimestamp = 0;
     };
     const onVisibility = () => {
       if (document.hidden) stop();

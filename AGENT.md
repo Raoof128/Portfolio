@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-06 (Australia/Sydney) — Singularity rAF timing hardening
+
+- **Scope**: Improve homepage singularity particle animation using current browser animation guidance
+- **Summary**: Kept the original particle distribution and visual model intact while converting the simulation from frame-count motion to `requestAnimationFrame` timestamp-based motion. Added a 60fps-normalized timestep, clamped long startup/background gaps to prevent catch-up bursts, made trail sampling time-based so high-refresh displays do not shorten trails, disabled non-essential physics under `prefers-reduced-motion`, and skipped expensive shadow blur passes in reduced-motion mode. Reviewed MDN `requestAnimationFrame`, Canvas optimization, OffscreenCanvas, and reduced-motion guidance; deferred a worker-based OffscreenCanvas migration because it would move the whole render loop across threads and needs visual QA before changing production behavior.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check src/components/ui/SingularityCanvas.tsx`: pass; original radius formula `CFG.horizonRadius + 28 + Math.pow(bias, 1.75) * CFG.diskRadius` confirmed intact; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68 passing; `npm run build`: pass, 155 static pages generated.
+- **Follow-ups**: If animation still needs deeper performance work, prototype OffscreenCanvas worker rendering behind a feature flag and verify visually across desktop/mobile before release.
+
 ### Raouf: 2026-06-06 (Australia/Sydney) — Resume paper updates
 
 - **Scope**: Update the portfolio resume with Project Simurgh supplement and Aion-BibleQA research
