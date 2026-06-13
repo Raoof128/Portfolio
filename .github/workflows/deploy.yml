@@ -13,13 +13,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  # Build holds NO secrets: untrusted dependency code (npm ci / build) never
+  # runs in a process that can see the Cloudflare token.
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # Exposed as env so the deploy step can self-skip when the secret is absent
-    # (the site keeps deploying manually via `wrangler pages deploy out`).
-    env:
-      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    outputs:
+      has_token: ${{ steps.check.outputs.has_token }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,8 +45,34 @@ jobs:
       - name: Build static artifact
         run: npm run build
 
+      # Emit only a boolean — the token value is never placed in output/env.
+      - name: Check deploy token presence
+        id: check
+        run: echo "has_token=${{ secrets.CLOUDFLARE_API_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload static artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out
+          retention-days: 1
+
+  # Deploy is the only job that holds the Cloudflare token, and it runs no
+  # third-party build code — just artifact download and wrangler.
+  deploy:
+    needs: build
+    # Only main reaches production — blocks workflow_dispatch on arbitrary refs.
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.has_token == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download static artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: out
+
       - name: Deploy to Cloudflare Pages
-        if: ${{ env.CF_API_TOKEN != '' }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
