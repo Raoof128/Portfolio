@@ -22,10 +22,10 @@ jobs:
       has_token: ${{ steps.check.outputs.has_token }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: npm
@@ -51,7 +51,7 @@ jobs:
         run: echo "has_token=${{ secrets.CLOUDFLARE_API_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
       - name: Upload static artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site
           path: out
@@ -67,7 +67,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Download static artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site
           path: out

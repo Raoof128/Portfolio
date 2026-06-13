@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-13 (Australia/Sydney) — Bump GitHub Actions off deprecated Node 20
+
+- **Scope**: Clear the Node 20 runtime deprecation warning across both workflows
+- **Summary**: Bumped pinned actions to their current latest majors (all run on Node 24): `actions/checkout@v4 → v6` and `actions/setup-node@v4 → v6` in both `ci.yml` and `deploy.yml`, plus `actions/upload-artifact@v4 → v7` and `actions/download-artifact@v4 → v8` in `deploy.yml`. Verified latest majors via the GitHub releases API before pinning (checkout v6, setup-node v6, upload-artifact v7, download-artifact v8).
+- **Files Changed**: `.github/workflows/ci.yml`, `.github/workflows/deploy.yml`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: Pending live run on push; expect no Node 20 deprecation annotation.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-13 (Australia/Sydney) — Cloudflare Pages auto-deploy workflow
 
 - **Scope**: Add CI/CD auto-deploy to Cloudflare Pages (replacing manual `wrangler` deploys)
