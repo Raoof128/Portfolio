@@ -43,3 +43,6 @@ next-env.d.ts
 # logs and temporary files
 logs/
 src.zip
+
+# local agent context (private, not for the repo)
+CLAUDE.md

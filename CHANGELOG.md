@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-13 (Australia/Sydney) — Remove stale GitHub Pages workflow + add private CLAUDE.md
+
+- **Scope**: Correct the deployment automation and add local agent context
+- **Summary**: Deleted `.github/workflows/deploy.yml`, which still deployed to GitHub Pages even though the site migrated to Cloudflare Pages (project `raoufabedini`, `raoufabedini.dev`); redeploys are done manually via `wrangler pages deploy out --project-name raoufabedini --branch main` and `ci.yml` already covers lint/typecheck/test. Added a private, gitignored `CLAUDE.md` capturing stack, the Cloudflare deploy command, required checks, the Raouf Change Protocol, the data-layer/paper recipe, and project facts. Added `CLAUDE.md` to `.gitignore`.
+- **Files Changed**: `.github/workflows/deploy.yml` (deleted), `.gitignore`, `CLAUDE.md` (gitignored, not committed), `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `git check-ignore CLAUDE.md`: ignored; `npm run lint`/`typecheck`/`test:ci` (68/68)/`build` (155 pages): pass; manual Cloudflare deploy succeeded (`wrangler pages deploy out --project-name raoufabedini --branch main`).
+- **Follow-ups**: None. If automated CI deploys are wanted later, add `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` repo secrets and a `cloudflare/wrangler-action` step.
+
 ### Raouf: 2026-06-13 (Australia/Sydney) — Banking Shield preprint
 
 - **Scope**: Add the Banking Shield paper to the Project Simurgh research paper library
