@@ -78,7 +78,7 @@ describe("Data Layer", () => {
       expect(projects["project-simurgh"]?.links.paper).toBe(
         "/Project_Simurgh_Preprint_v1.0.pdf",
       );
-      expect(projects["project-simurgh"]?.papers).toHaveLength(2);
+      expect(projects["project-simurgh"]?.papers).toHaveLength(3);
       expect(projects["project-simurgh"]?.papers).toEqual([
         expect.objectContaining({
           title:
@@ -93,6 +93,13 @@ describe("Data Layer", () => {
           href: "/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
           kind: "download",
           doi: "10.5281/zenodo.20549736",
+        }),
+        expect.objectContaining({
+          title:
+            "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations",
+          href: "/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+          kind: "download",
+          doi: "10.5281/zenodo.20675513",
         }),
       ]);
       expect(projects["project-simurgh"]?.citation).toBe(

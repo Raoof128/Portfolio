@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-13 (Australia/Sydney) — Banking Shield preprint
+
+- **Scope**: Add the Banking Shield paper to the Project Simurgh research paper library
+- **Summary**: Copied `Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf` into `public/`, read the full preprint, and added a third typed `ProjectPaper` entry to `project-simurgh.papers`. The paper (Source repo: `github.com/Raoof128/Project-Simurgh`) is a fictional non-bank research prototype turning privacy/overclaim boundaries into machine-checkable evidence — a 46-name forbidden-field firewall, a deterministic offline AI privacy firewall, and per-response privacy receipts on per-session HMAC audit chains; at evidence freeze 417/417 unit tests, 43/43 E2E, 27/27 security checks, three privacy audits, and a no-egress static gate passed, with a five-tester/30-session dry run showing zero sensitive values in evidence and 5/5 non-claim checklist comprehension. Added Zenodo DOI `10.5281/zenodo.20675513` and updated the data-layer regression test to expect three Simurgh papers.
+- **Files Changed**: `public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf`, `src/lib/data.ts`, `src/lib/data.test.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npm run lint`: pass (0 errors); `npm run typecheck`: pass; `npm run test:ci`: 68/68 passing; `npm run build`: pass, 155 static pages generated; built `out/en/projects/project-simurgh.html` contains the Banking Shield title, `10.5281/zenodo.20675513`, `/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf`, and the `Author-prepared preprint` status; PDF emitted to `out/`.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-06 (Australia/Sydney) — Root layout tag fix
 
 - **Scope**: Resolve runtime layout validation error

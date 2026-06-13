@@ -199,6 +199,19 @@ export const projects: Record<string, Project> = {
           "5-page voting-adjacent pilot reporting 31 consented sessions alongside a Macquarie student-society event, with ballot-choice exclusion, HMAC audit chaining, forbidden-field rejection, and 5/5 collection-closure gates.",
         doi: "10.5281/zenodo.20549736",
       },
+      {
+        title:
+          "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations",
+        label: "Banking-adjacent preprint",
+        href: "/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+        kind: "download",
+        venue: "Zenodo",
+        year: "2026",
+        status: "Author-prepared preprint",
+        description:
+          "Fictional, non-bank research prototype that turns privacy and overclaim boundaries into machine-checkable evidence: a 46-name forbidden-field firewall whose rejections become audit events, a deterministic offline AI privacy firewall, and per-response privacy receipts anchored in per-session HMAC audit chains. At the evidence freeze all 417/417 unit tests, 43/43 end-to-end checks, and 27/27 security checks passed across three privacy audits and a no-egress static gate, with a formative five-tester dry run (30 sessions) recording zero sensitive values in evidence and 5/5 non-claim checklist comprehension.",
+        doi: "10.5281/zenodo.20675513",
+      },
     ],
     citation:
       "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
