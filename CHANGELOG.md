@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-13 (Australia/Sydney) — Cloudflare Pages auto-deploy workflow
+
+- **Scope**: Add CI/CD auto-deploy to Cloudflare Pages (replacing manual `wrangler` deploys)
+- **Summary**: Added `.github/workflows/deploy.yml` that, on push to `main` (or manual dispatch), runs lint/typecheck/test/build then deploys `out/` to Cloudflare Pages via `cloudflare/wrangler-action@v3` (`pages deploy out --project-name=raoufabedini --branch=main`). Set the `CLOUDFLARE_ACCOUNT_ID` GitHub repo secret via `gh secret set`. The `CLOUDFLARE_API_TOKEN` secret must be created in the Cloudflare dashboard (Account → Cloudflare Pages → Edit) — wrangler's OAuth token is API-blocked from minting tokens. The deploy step self-skips (`if: env.CF_API_TOKEN != ''`) until that secret exists, so runs stay green and manual `wrangler` deploys keep working in the meantime.
+- **Files Changed**: `.github/workflows/deploy.yml` (new, Cloudflare version), `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `gh secret list`: `CLOUDFLARE_ACCOUNT_ID` present; workflow YAML uses no untrusted event input in `run:` steps; pending live run on push.
+- **Follow-ups**: User creates `CLOUDFLARE_API_TOKEN` in dashboard + `gh secret set CLOUDFLARE_API_TOKEN`; after that, every push to `main` auto-deploys (or re-run via workflow_dispatch).
+
 ### Raouf: 2026-06-13 (Australia/Sydney) — Remove stale GitHub Pages workflow + add private CLAUDE.md
 
 - **Scope**: Correct the deployment automation and add local agent context
