@@ -40,6 +40,38 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-26 (Australia/Sydney) — Fix per-page canonical URLs (self-referential, locale-aware)
+
+- **Scope**: Resolve Search Console "User-declared canonical: homepage" on every sub-page so each URL declares itself canonical
+- **Summary**: The shared `[locale]/layout.tsx` set `alternates.canonical: "/"` and no page overrode it, so sub-pages inherited the homepage canonical. Added `src/lib/seo.ts` `buildAlternates(path, locale)` returning a self-referential canonical (English clean root path; other locales under `/fa|/ar|/zh|/es`) + hreflang `languages`. Converted all static-metadata pages to `generateMetadata({ params })` calling it (about, lab, resume, contact, write-ups, hall-of-fame, security-policy, projects/layout for `/projects`), added `alternates` to the detail pages' `generateMetadata` (projects/[slug], write-ups/[slug], lab/[id]) with widened locale params, and switched the root layout to `buildAlternates("", locale)` so localized homepages self-canonical too. Verified `Raouf_2.jpg` is emitted to `out/` (the SC "resource didn't load" note is a render-snapshot quirk).
+- **Files Changed**: `src/lib/seo.ts` (new), `src/app/[locale]/layout.tsx`, about/lab/resume/contact/write-ups/hall-of-fame/security-policy `page.tsx`, `projects/layout.tsx`, `projects/[slug]/page.tsx`, `write-ups/[slug]/page.tsx`, `lab/[id]/page.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`/`typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. Every built `<link rel="canonical">` self-references (e.g. `/about`→`/about`, `/projects/project-simurgh`→ itself, home→`https://raoufabedini.dev`, `/fa`→`/fa`, `/fa/about`→`/fa/about`).
+- **Follow-ups**: After deploy, Search Console → Test live URL → Request indexing on the main pages.
+
+### Raouf: 2026-06-26 (Australia/Sydney) — Visible ORCID links everywhere + "graduate / available now" positioning
+
+- **Scope**: Make ORCID human-clickable site-wide and change availability copy from future-dated to "graduate, available now"
+- **Summary**: Added a visible ORCID link to the global Footer social row (every page; `Fingerprint` icon, `aria-label="ORCID"`) and the Resume header (next to GitHub/LinkedIn). ORCID is now connected in five places: homepage Person `sameAs`, per-project article/code author, `llms.txt`, Footer, Resume. Repositioned availability — Resume About summary + `about.bio_1` (en) changed "final-year Cyber Security student … (graduating November 2026)" → "Cyber Security graduate from Macquarie University, available now"; Resume Additional-Info line "Available … fellowship from July 2026" → "Available now for full-time roles and fellowships". Education degree span `May 2024 – Nov 2026` kept as factual record.
+- **Files Changed**: `src/components/layout/Footer.tsx`, `src/app/[locale]/resume/ResumeClient.tsx`, `src/i18n/locales/en.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. Built output confirms footer ORCID link + aria-label on home, `ORCID iD` link + `Available now` + `Cyber Security graduate from` on resume with 0 stale "graduating November 2026"/"from July 2026"/"final-year … student", about bio updated, education span preserved.
+- **Follow-ups**: Non-English bios never carried the November/availability claim, so no translation change needed.
+
+### Raouf: 2026-06-26 (Australia/Sydney) — ORCID identity + per-project ScholarlyArticle/SoftwareSourceCode JSON-LD + dateModified
+
+- **Scope**: Strengthen research E-E-A-T for Google AI search and AI answer engines — ORCID, per-project research/code structured data with DOIs, freshness signal
+- **Summary**: Added `ORCID_URL` (`0009-0000-6214-258X`) and a static `SITE_LAST_MODIFIED` constant. ORCID now appears in the homepage Person `sameAs` and `llms.txt`; the WebSite JSON-LD node gained `dateModified`. `projects/[slug]/page.tsx` (server component) now emits a per-project `@graph`: a `SoftwareSourceCode` node (or `CreativeWork` without a repo) with `codeRepository`/`keywords`/ORCID author, plus a `ScholarlyArticle` for every paper that has a DOI (keyed on `doi.org/<doi>`, with headline/abstract/datePublished/dateModified/ORCID author/Zenodo publisher/DOI `PropertyValue`). All authors share the layout Person `@id` (`#person`) so project + papers + profile resolve to one ORCID researcher. `dateModified` is a static constant to avoid hydration mismatch. JSON-LD emitted via the same `dangerouslySetInnerHTML`+`JSON.stringify` pattern as `layout.tsx` (trusted static data only).
+- **Files Changed**: `src/lib/constants.ts`, `src/app/[locale]/layout.tsx`, `src/app/[locale]/projects/[slug]/page.tsx`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. Built output confirms ORCID in home `sameAs`, WebSite `dateModified`, Simurgh page has 3 DOIs as `ScholarlyArticle` + `SoftwareSourceCode` + ORCID author, invisible-window DOI present, and a paperless project (gitswitch) emits `SoftwareSourceCode` with 0 articles.
+- **Follow-ups**: Validate via Google Rich Results Test / Search Console after deploy; bump `SITE_LAST_MODIFIED` on future content updates.
+
+### Raouf: 2026-06-26 (Australia/Sydney) — Correct X/Twitter link + AI-search structured-data hardening
+
+- **Scope**: Fix the wrong X (Twitter) profile link site-wide and strengthen structured data for Google AI search / AEO-GEO and AI answer engines
+- **Summary**: The X link was wrong in two places — `TWITTER_URL` pointed at `twitter.com/Raoof128` and the Twitter card `creator` was `@Raoof128`; both now use the correct handle `Raoofr12` (`https://x.com/Raoofr12`, `@Raoofr12`), plus a Twitter card `site` tag. The corrected URL flows automatically to the Footer social icon and the JSON-LD `sameAs`. Researched Google's official 2026 AI-features optimization guide (AEO/GEO is "still SEO"; no AI-specific files/markup required — structured data, E-E-A-T, crawlability, unique content matter) and current GEO guidance. Enriched the homepage JSON-LD into a `@graph`: a `Person` (`#person`) gaining `image` + `email`, and a new `WebSite` (`#website`) whose `publisher` references the Person — one connected entity for person + site. Added the X link to `public/llms.txt`. `layout.tsx` was Prettier-reformatted as part of the edit.
+- **Files Changed**: `src/lib/constants.ts`, `src/app/[locale]/layout.tsx`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. Built `out/en.html` contains `x.com/Raoofr12`, `@Raoofr12`, `"@type":"WebSite"`, `#person`, `Raouf_2.jpg`; remaining `Raoof128` is the GitHub URL only.
+- **Follow-ups**: Deploy via `wrangler pages deploy out --project-name raoufabedini --branch main`. Optional next SEO: Google Search Console + sitemap submission; per-project `ScholarlyArticle`/`SoftwareSourceCode` JSON-LD with DOIs; keep `dateModified` fresh.
+
 ### Raouf: 2026-06-13 (Australia/Sydney) — Bump GitHub Actions off deprecated Node 20
 
 - **Scope**: Clear the Node 20 runtime deprecation warning across both workflows

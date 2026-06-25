@@ -69,7 +69,7 @@ const en = {
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "AI Security Researcher",
     bio_1:
-      "AI security researcher and final-year Cyber Security student at Macquarie University (graduating November 2026) with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities.",
+      "AI security researcher and Cyber Security graduate from Macquarie University, available now, with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities.",
     bio_2:
       'Authored "The Invisible Window" — a 12-page IEEE-format security research paper demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14–26 using documented OS-level APIs, with a novel finding that Apple\'s macOS 15 mitigation remains ineffective on macOS 26.',
     bio_3:

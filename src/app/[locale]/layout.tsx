@@ -6,14 +6,24 @@ import { Scanline } from "@/components/ui/Scanline";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
+  CONTACT_EMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
+  ORCID_URL,
+  SITE_LAST_MODIFIED,
   SITE_NAME,
   SITE_URL,
   TWITTER_URL,
 } from "@/lib/constants";
-import { Locale, getLocaleConfig, locales, getDictionary, defaultLocale } from "@/i18n";
+import {
+  Locale,
+  getLocaleConfig,
+  locales,
+  getDictionary,
+  defaultLocale,
+} from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
+import { buildAlternates } from "@/lib/seo";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
@@ -36,44 +46,66 @@ export async function generateStaticParams() {
   return Object.keys(locales).map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = (rawLocale in locales ? rawLocale : defaultLocale) as Locale;
-  
+
   return {
     title: {
       default: "Mohammad Raouf Abedini | AI Security Researcher",
-      template: "%s | Mohammad Raouf Abedini"
+      template: "%s | Mohammad Raouf Abedini",
     },
-    description: "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — a 12-page IEEE-format security research paper achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
-    keywords: ["AI Security Research", "Vulnerability Research", "Responsible Disclosure", "LLM Security Evaluation", "Cross-Platform Exploit Development", "Mohammad Raouf Abedini", "AI Safety", "Screen Capture Evasion", "Offensive Security", "Python Systems Programming", "Anthropic"],
+    description:
+      "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — a 12-page IEEE-format security research paper achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
+    keywords: [
+      "AI Security Research",
+      "Vulnerability Research",
+      "Responsible Disclosure",
+      "LLM Security Evaluation",
+      "Cross-Platform Exploit Development",
+      "Mohammad Raouf Abedini",
+      "AI Safety",
+      "Screen Capture Evasion",
+      "Offensive Security",
+      "Python Systems Programming",
+      "Anthropic",
+    ],
     authors: [{ name: "Mohammad Raouf Abedini", url: SITE_URL }],
     creator: "Mohammad Raouf Abedini",
     openGraph: {
       type: "website",
-      locale: locale === 'fa' ? 'fa_IR' : locale === 'ar' ? 'ar_SA' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_ES' : 'en_AU',
+      locale:
+        locale === "fa"
+          ? "fa_IR"
+          : locale === "ar"
+            ? "ar_SA"
+            : locale === "zh"
+              ? "zh_CN"
+              : locale === "es"
+                ? "es_ES"
+                : "en_AU",
       url: SITE_URL,
       title: "Mohammad Raouf Abedini | AI Security Researcher",
-      description: "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
+      description:
+        "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
       siteName: SITE_NAME,
     },
     twitter: {
       card: "summary_large_image",
       title: "Mohammad Raouf Abedini | AI Security Researcher",
-      description: "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
-      creator: "@Raoof128",
+      description:
+        "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
+      creator: "@Raoofr12",
+      site: "@Raoofr12",
     },
     metadataBase: new URL(SITE_URL),
-    alternates: {
-      canonical: "/",
-      languages: {
-        'en': '/',
-        'fa': '/fa',
-        'ar': '/ar',
-        'zh': '/zh',
-        'es': '/es',
-      }
-    },
+    // Homepage self-canonical (locale-aware: en → "/", fa → "/fa", …). Sub-pages
+    // override this with their own canonical via generateMetadata + buildAlternates.
+    alternates: buildAlternates("", locale),
   };
 }
 
@@ -91,33 +123,45 @@ export default async function RootLayout({
 
   const jsonLdString = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mohammad Raouf Abedini",
-    "alternateName": "Raouf",
-    "url": SITE_URL,
-    "jobTitle": "AI Security Researcher",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Castle Hill",
-      "addressRegion": "NSW",
-      "addressCountry": "AU"
-    },
-    "knowsAbout": [
-      { "@type": "Thing", "name": "Vulnerability Research" },
-      { "@type": "Thing", "name": "Responsible Disclosure" },
-      { "@type": "Thing", "name": "AI Safety & LLM Security Evaluation" },
-      { "@type": "Thing", "name": "Cross-Platform Exploit Development" },
-      { "@type": "Thing", "name": "Offensive Security" },
-      { "@type": "Thing", "name": "Python & Systems Programming" },
-      { "@type": "Thing", "name": "AI Model Evaluation" },
-      { "@type": "Thing", "name": "Dual-Use Risk Assessment" },
-      { "@type": "Thing", "name": "Reducing Catastrophic AI Risks" }
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: "Mohammad Raouf Abedini",
+        alternateName: "Raouf",
+        url: SITE_URL,
+        image: `${SITE_URL}/Raouf_2.jpg`,
+        email: `mailto:${CONTACT_EMAIL}`,
+        jobTitle: "AI Security Researcher",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Castle Hill",
+          addressRegion: "NSW",
+          addressCountry: "AU",
+        },
+        knowsAbout: [
+          { "@type": "Thing", name: "Vulnerability Research" },
+          { "@type": "Thing", name: "Responsible Disclosure" },
+          { "@type": "Thing", name: "AI Safety & LLM Security Evaluation" },
+          { "@type": "Thing", name: "Cross-Platform Exploit Development" },
+          { "@type": "Thing", name: "Offensive Security" },
+          { "@type": "Thing", name: "Python & Systems Programming" },
+          { "@type": "Thing", name: "AI Model Evaluation" },
+          { "@type": "Thing", name: "Dual-Use Risk Assessment" },
+          { "@type": "Thing", name: "Reducing Catastrophic AI Risks" },
+        ],
+        sameAs: [GITHUB_URL, LINKEDIN_URL, TWITTER_URL, ORCID_URL],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
+        inLanguage: locale,
+        dateModified: SITE_LAST_MODIFIED,
+        publisher: { "@id": `${SITE_URL}/#person` },
+      },
     ],
-    "sameAs": [
-      GITHUB_URL,
-      LINKEDIN_URL,
-      TWITTER_URL
-    ]
   });
 
   return (
@@ -131,7 +175,10 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString }}
         />
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan focus:text-black focus:font-mono focus:text-sm">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan focus:text-black focus:font-mono focus:text-sm"
+        >
           Skip to main content
         </a>
         <GridBackground />
@@ -139,9 +186,7 @@ export default async function RootLayout({
         <I18nProvider locale={locale} dictionary={dictionary}>
           <Navbar />
           <main id="main-content" className="min-h-screen pt-16 flex flex-col">
-            <div className="flex-1">
-              {children}
-            </div>
+            <div className="flex-1">{children}</div>
             <Footer />
           </main>
         </I18nProvider>

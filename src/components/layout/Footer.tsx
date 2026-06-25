@@ -1,17 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from "@/lib/constants";
+import { Fingerprint, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import {
+  GITHUB_URL,
+  LINKEDIN_URL,
+  ORCID_URL,
+  TWITTER_URL,
+} from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 
 export function Footer() {
   const { locale, t } = useTranslation();
-  
+
   const getPath = (path: string) => {
-      if (locale === defaultLocale) return path;
-      return `/${locale}${path}`;
+    if (locale === defaultLocale) return path;
+    return `/${locale}${path}`;
   };
 
   const navLinks = [
@@ -27,6 +32,7 @@ export function Footer() {
     { name: "GitHub", href: GITHUB_URL, icon: Github },
     { name: "LinkedIn", href: LINKEDIN_URL, icon: Linkedin },
     { name: "Twitter", href: TWITTER_URL, icon: Twitter },
+    { name: "ORCID", href: ORCID_URL, icon: Fingerprint },
     { name: "Email", href: "mailto:raoof.r12@gmail.com", icon: Mail },
   ];
 
@@ -34,11 +40,14 @@ export function Footer() {
     <footer className="border-t border-cyan/10 bg-background py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
-          
           {/* Brand/Identity */}
           <div className="md:col-span-2 space-y-6">
-            <Link href={getPath("/")} className="font-mono font-bold text-lg tracking-tight text-white group">
-              ~/mohammad-raouf-abedini<span className="text-cyan animate-pulse">_</span>
+            <Link
+              href={getPath("/")}
+              className="font-mono font-bold text-lg tracking-tight text-white group"
+            >
+              ~/mohammad-raouf-abedini
+              <span className="text-cyan animate-pulse">_</span>
             </Link>
             <p className="text-text-body text-sm max-w-sm leading-relaxed">
               {t.hero.intro}
@@ -61,7 +70,9 @@ export function Footer() {
 
           {/* Links */}
           <div className="space-y-6">
-            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">{t.nav.home}</h4>
+            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
+              {t.nav.home}
+            </h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -78,7 +89,9 @@ export function Footer() {
 
           {/* Legal/Metadata */}
           <div className="space-y-6">
-            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">{t.footer.status}</h4>
+            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
+              {t.footer.status}
+            </h4>
             <div className="space-y-4 font-mono">
               <div className="flex items-center justify-between text-[11px]">
                 <span className="text-text-meta">{t.footer.last_index}:</span>
@@ -92,12 +105,13 @@ export function Footer() {
                 <p className="text-[10px] text-text-meta leading-relaxed">
                   © 2026 Mohammad Raouf Abedini. {t.footer.all_rights_reserved}.
                   <br />
-                  <span className="opacity-60">{t.footer.built_with} Next.js, {t.footer.designed_by} Raouf.</span>
+                  <span className="opacity-60">
+                    {t.footer.built_with} Next.js, {t.footer.designed_by} Raouf.
+                  </span>
                 </p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </footer>

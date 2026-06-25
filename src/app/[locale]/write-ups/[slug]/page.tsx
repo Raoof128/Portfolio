@@ -1,5 +1,6 @@
 import { writeups } from "@/lib/data";
 import { notFound } from "next/navigation";
+import { buildAlternates } from "@/lib/seo";
 import { WriteupDetailClient } from "./WriteupDetailClient";
 
 export function generateStaticParams() {
@@ -14,25 +15,31 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps) {
-    const { slug } = await params;
-    const post = writeups.find((p) => p.slug === slug);
-    if (!post) return { title: "Not Found" };
+// Locale is present in params at runtime (parent [locale] segment) for canonical.
+interface MetadataProps {
+  params: Promise<{ locale: string; slug: string }>;
+}
 
-    return {
-      title: `${post.title} | Write-ups`,
+export async function generateMetadata({ params }: MetadataProps) {
+  const { locale, slug } = await params;
+  const post = writeups.find((p) => p.slug === slug);
+  if (!post) return { title: "Not Found" };
+
+  return {
+    title: `${post.title} | Write-ups`,
+    description: post.takeaway,
+    alternates: buildAlternates(`/write-ups/${slug}`, locale),
+    openGraph: {
+      title: `${post.title} | Mohammad Raouf Abedini`,
       description: post.takeaway,
-      openGraph: {
-        title: `${post.title} | Mohammad Raouf Abedini`,
-        description: post.takeaway,
-      },
-      twitter: {
-        card: "summary",
-        title: `${post.title} | Mohammad Raouf Abedini`,
-        description: post.takeaway,
-      },
-    };
-  }
+    },
+    twitter: {
+      card: "summary",
+      title: `${post.title} | Mohammad Raouf Abedini`,
+      description: post.takeaway,
+    },
+  };
+}
 
 export default async function WriteupPage({ params }: PageProps) {
   const { slug } = await params;

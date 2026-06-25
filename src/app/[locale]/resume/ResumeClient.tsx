@@ -1,6 +1,13 @@
 "use client";
 
-import { Mail, Github, Linkedin, MapPin, Download } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  MapPin,
+  Download,
+  Fingerprint,
+} from "lucide-react";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { NeonButton } from "@/components/ui/NeonButton";
@@ -13,6 +20,7 @@ import {
   CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
+  ORCID_URL,
 } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 
@@ -101,6 +109,15 @@ export function ResumeClient() {
                     <span>LinkedIn Profile</span>{" "}
                     <Linkedin className="w-4 h-4 group-hover:animate-pulse" />
                   </a>
+                  <a
+                    href={ORCID_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-text-body hover:text-cyan transition-colors text-sm font-mono group"
+                  >
+                    <span>ORCID iD</span>{" "}
+                    <Fingerprint className="w-4 h-4 group-hover:animate-pulse" />
+                  </a>
                 </div>
               </div>
             </HUDFrame>
@@ -116,20 +133,20 @@ export function ResumeClient() {
                 </h3>
               </div>
               <p className="text-text-body leading-relaxed max-w-3xl">
-                AI security researcher and final-year Cyber Security student at
-                Macquarie University (graduating November 2026) with
-                demonstrated ability to independently discover, validate, and
-                responsibly disclose cross-platform vulnerabilities. Authored
-                &ldquo;The Invisible Window&rdquo; &mdash; a 12-page IEEE-format
-                security research paper demonstrating 100% screen capture
-                evasion on Windows 10/11 and macOS 14&ndash;26 using documented
-                OS-level APIs. Recent research also includes Project Simurgh
-                privacy-preserving integrity evidence (DOI:
-                10.5281/zenodo.20549736) and Aion-BibleQA citation-faithfulness
-                evaluation for Bible RAG systems (DOI: 10.5281/zenodo.20522874).
-                Completed AI model evaluation for Anthropic (Claude Code Human
-                Preference), benchmarking LLM code outputs for quality,
-                security, and reliability.
+                AI security researcher and Cyber Security graduate from
+                Macquarie University, available now, with demonstrated ability
+                to independently discover, validate, and responsibly disclose
+                cross-platform vulnerabilities. Authored &ldquo;The Invisible
+                Window&rdquo; &mdash; a 12-page IEEE-format security research
+                paper demonstrating 100% screen capture evasion on Windows 10/11
+                and macOS 14&ndash;26 using documented OS-level APIs. Recent
+                research also includes Project Simurgh privacy-preserving
+                integrity evidence (DOI: 10.5281/zenodo.20549736) and
+                Aion-BibleQA citation-faithfulness evaluation for Bible RAG
+                systems (DOI: 10.5281/zenodo.20522874). Completed AI model
+                evaluation for Anthropic (Claude Code Human Preference),
+                benchmarking LLM code outputs for quality, security, and
+                reliability.
               </p>
             </section>
           </AnimatedSection>
@@ -617,8 +634,8 @@ export function ResumeClient() {
               </div>
               <div className="grid sm:grid-cols-2 gap-4 text-sm text-text-body">
                 <div className="flex items-start gap-2">
-                  <span className="text-cyan mt-1">&#x25CF;</span> Available for
-                  full-time, 4-month fellowship from July 2026
+                  <span className="text-cyan mt-1">&#x25CF;</span> Available now
+                  for full-time roles and fellowships
                 </div>
                 <div className="flex items-start gap-2">
                   <span className="text-purple mt-1">&#x25CF;</span> English
