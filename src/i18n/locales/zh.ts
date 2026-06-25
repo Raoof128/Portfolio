@@ -86,7 +86,7 @@ const zh: Dictionary = {
     education: "教育背景",
     photo_unavailable: "照片不可用",
     retry_photo: "重试",
-    terminal_subject: "主题：RAOUF.M",
+    terminal_subject: "主题：RAOUF ABEDINI",
     terminal_online: "在线",
     terminal_clearance: "权限：AI-SECURITY-RESEARCHER",
     terminal_location: "位置：NSW 卡斯尔希尔",

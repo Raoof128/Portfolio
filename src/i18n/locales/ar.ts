@@ -87,7 +87,7 @@ const ar: Dictionary = {
     education: "التعليم",
     photo_unavailable: "الصورة غير متاحة",
     retry_photo: "إعادة المحاولة",
-    terminal_subject: "الموضوع: RAOUF.M",
+    terminal_subject: "الموضوع: RAOUF ABEDINI",
     terminal_online: "متصل",
     terminal_clearance: "التصاريح: AI-SECURITY-RESEARCHER",
     terminal_location: "الموقع: كاسل هيل، NSW",

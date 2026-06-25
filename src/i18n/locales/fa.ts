@@ -87,7 +87,7 @@ const fa: Dictionary = {
     education: "تحصیلات",
     photo_unavailable: "عکس در دسترس نیست",
     retry_photo: "تلاش مجدد",
-    terminal_subject: "موضوع: RAOUF.M",
+    terminal_subject: "موضوع: RAOUF ABEDINI",
     terminal_online: "آنلاین",
     terminal_clearance: "دسترسی: AI-SECURITY-RESEARCHER",
     terminal_location: "موقعیت: کسل هیل، NSW",

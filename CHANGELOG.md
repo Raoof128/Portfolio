@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-26 (Australia/Sydney) — Name consistency (RAOUF.M → RAOUF ABEDINI), ORCID on About, research-forward bio
+
+- **Scope**: Three asks — (1) make every name display "Mohammad Raouf Abedini"/"Raouf Abedini" (kill "RAOUF.M"), (2) add ORCID to the About page, (3) rewrite the About bio as a strong researcher narrative grounded in the actual project portfolio
+- **Summary**: (1) The only non-conforming name was `about.terminal_subject: "...: RAOUF.M"` in the About photo HUD overlay — fixed in all five locales to "...: RAOUF ABEDINI" (en/fa/ar/es/zh). Other "Raouf" usages are intentional and left as-is: JSON-LD `alternateName: "Raouf"`, Navbar terminal brand `~/raouf`, footer "designed by Raouf.", llms.txt narrative, and the academic citations "Abedini, M. R. (2026)" (correct APA author format). (2) Added a visible ORCID link (`Fingerprint` icon) to the About hero social row next to GitHub/LinkedIn/Email. (3) Rewrote `about.bio_1/2/3` (en) into a research-led story: lead now states five DOI-archived Zenodo preprints indexed under ORCID across offensive/defensive/AI-evaluation work; bio_2 keeps the Invisible Window flagship (100% evasion, macOS 26 novel finding, OWASP/FIRST/CISA disclosure); bio_3 surfaces Project Simurgh (3 preprints) + Aion-BibleQA (R@5 0.941, zero unsupported citations) + Anthropic evaluation. Verified all five project DOIs in `data.ts` (20376495, 20374849, 20549736, 20675513, 20522874) to keep the "five preprints" claim accurate. Non-English bios keep their existing professional translations (not re-translated this pass).
+- **Files Changed**: `src/i18n/locales/en.ts`, `src/i18n/locales/fa.ts`, `src/i18n/locales/ar.ts`, `src/i18n/locales/es.ts`, `src/i18n/locales/zh.ts`, `src/app/[locale]/about/AboutClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. Built `out/en/about.html`: 0 occurrences of `RAOUF.M`, contains `SUBJECT: RAOUF ABEDINI`, the ORCID link `href="https://orcid.org/0009-0000-6214-258X"`, and bio markers `five DOI-archived preprints` + `R@5 0.941`; site-wide `out/` sweep for `RAOUF.M`/`Raouf.M` returns 0 files.
+- **Follow-ups**: Optionally re-translate the research-forward bio into fa/ar/zh/es for bilingual consistency. Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-06-26 (Australia/Sydney) — Fix per-page canonical URLs (self-referential, locale-aware)
 
 - **Scope**: Resolve Search Console "User-declared canonical: https://raoufabedini.dev/" on every sub-page — each URL must declare itself canonical, not the homepage

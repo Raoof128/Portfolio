@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-26 (Australia/Sydney) — Name consistency (RAOUF.M → RAOUF ABEDINI), ORCID on About, research-forward bio
+
+- **Scope**: Make every name display "Mohammad Raouf Abedini"/"Raouf Abedini", add ORCID to About, rewrite About bio as a strong researcher narrative
+- **Summary**: Fixed the only stray name — `about.terminal_subject` photo-HUD label "RAOUF.M" → "RAOUF ABEDINI" across all five locales. Left intentional informal usages (JSON-LD `alternateName: "Raouf"`, Navbar `~/raouf`, footer "designed by Raouf.", llms.txt narrative, APA citations "Abedini, M. R."). Added a visible ORCID link (`Fingerprint`) to the About hero social row. Rewrote `about.bio_1/2/3` (en) to lead with five DOI-archived Zenodo preprints (ORCID-indexed) spanning offensive vuln research, Project Simurgh integrity systems (3 preprints), and Aion-BibleQA citation-faithfulness (R@5 0.941); kept Invisible Window flagship + Anthropic evaluation. Confirmed all 5 DOIs in data.ts so the "five preprints" claim is accurate.
+- **Files Changed**: `src/i18n/locales/en.ts`, `fa.ts`, `ar.ts`, `es.ts`, `zh.ts`, `src/app/[locale]/about/AboutClient.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`/`typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. `out/en/about.html`: 0 `RAOUF.M`, has `SUBJECT: RAOUF ABEDINI`, ORCID link, `five DOI-archived preprints`, `R@5 0.941`; site-wide sweep for `RAOUF.M` returns 0.
+- **Follow-ups**: Optionally re-translate the new bio into fa/ar/zh/es.
+
 ### Raouf: 2026-06-26 (Australia/Sydney) — Fix per-page canonical URLs (self-referential, locale-aware)
 
 - **Scope**: Resolve Search Console "User-declared canonical: homepage" on every sub-page so each URL declares itself canonical

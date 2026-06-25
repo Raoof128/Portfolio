@@ -69,11 +69,11 @@ const en = {
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "AI Security Researcher",
     bio_1:
-      "AI security researcher and Cyber Security graduate from Macquarie University, available now, with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities.",
+      "Independent AI-security researcher and Cyber Security graduate from Macquarie University, available now. The work is backed by five DOI-archived preprints on Zenodo (indexed under ORCID), spanning offensive vulnerability research, privacy-preserving integrity systems, and citation-faithfulness evaluation for AI.",
     bio_2:
-      'Authored "The Invisible Window" — a 12-page IEEE-format security research paper demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14–26 using documented OS-level APIs, with a novel finding that Apple\'s macOS 15 mitigation remains ineffective on macOS 26.',
+      'Lead author of "The Invisible Window" — a 12-page IEEE-format paper demonstrating 100% screen-capture evasion across Windows 10/11 and macOS 14–26 using only documented OS-level APIs, including the novel finding that Apple\'s macOS 15 mitigation remains ineffective on macOS 26. Findings were disclosed responsibly under OWASP/FIRST/CISA guidance.',
     bio_3:
-      "Fluent in Python with production experience across C/C++, TypeScript, and Swift. Completed AI model evaluation for Anthropic (Claude Code Human Preference), benchmarking LLM code outputs for quality, security, and reliability. Motivated by reducing catastrophic risks from advanced AI — eager to measure capability uplift, characterise safety boundaries, and develop defensive applications.",
+      "On the defensive side: Project Simurgh's privacy-preserving device-integrity proofs and tamper-evident audit chains (three preprints), and Aion-BibleQA's citation-faithfulness benchmark for retrieval-augmented LLMs (R@5 0.941, zero unsupported citations). Completed AI-model evaluation for Anthropic (Claude Code Human Preference), with production code in Python, C/C++, TypeScript, and Swift. Focused on reducing catastrophic risks from advanced AI by measuring capability uplift, characterising safety boundaries, and shipping defensive tooling.",
     stats_projects: "Projects",
     stats_evasion: "Evasion Rate",
     stats_vendors: "Vendors Disclosed",
@@ -85,7 +85,7 @@ const en = {
     education: "Education",
     photo_unavailable: "PHOTO_UNAVAILABLE",
     retry_photo: "RETRY_PHOTO",
-    terminal_subject: "SUBJECT: RAOUF.M",
+    terminal_subject: "SUBJECT: RAOUF ABEDINI",
     terminal_online: "ONLINE",
     terminal_clearance: "CLEARANCE: AI-SECURITY-RESEARCHER",
     terminal_location: "LOCATION: CASTLE HILL, NSW",

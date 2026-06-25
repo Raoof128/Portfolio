@@ -87,7 +87,7 @@ const es: Dictionary = {
     education: "Educación",
     photo_unavailable: "FOTO_NO_DISPONIBLE",
     retry_photo: "REINTENTAR",
-    terminal_subject: "SUJETO: RAOUF.M",
+    terminal_subject: "SUJETO: RAOUF ABEDINI",
     terminal_online: "EN LÍNEA",
     terminal_clearance: "ACCESO: AI-SECURITY-RESEARCHER",
     terminal_location: "UBICACIÓN: CASTLE HILL, NSW",
