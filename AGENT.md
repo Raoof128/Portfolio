@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-06-26 (Australia/Sydney) — Translate research-forward About bio into fa/ar/zh/es
+
+- **Scope**: Align the four non-English About bios with the new English research narrative
+- **Summary**: Translated `about.bio_1/2/3` into fa/ar/zh/es — five DOI-archived Zenodo preprints (ORCID-indexed), Invisible Window flagship (macOS 26 novel finding, OWASP/FIRST/CISA), Project Simurgh (3 preprints), Aion-BibleQA (R@5 0.941), Anthropic evaluation. Technical proper nouns kept in Latin. Also removes the stale "graduating November 2026" framing that remained only in these bios. Kept the hero `university` label ("Macquarie · Nov 2026") as a factual credential date.
+- **Files Changed**: `src/i18n/locales/fa.ts`, `ar.ts`, `zh.ts`, `es.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Localized About pages render the new bio (fa/ar/zh/es all include `R@5` + DOI/Zenodo wording).
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-26 (Australia/Sydney) — Name consistency (RAOUF.M → RAOUF ABEDINI), ORCID on About, research-forward bio
 
 - **Scope**: Make every name display "Mohammad Raouf Abedini"/"Raouf Abedini", add ORCID to About, rewrite About bio as a strong researcher narrative

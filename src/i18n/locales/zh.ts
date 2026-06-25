@@ -70,11 +70,11 @@ const zh: Dictionary = {
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "人工智能安全研究员",
     bio_1:
-      "人工智能安全研究员，麦觉理大学网络安全专业应届毕业生（2026年11月毕业）。具有独立发现、验证并负责任地披露跨平台漏洞的能力。",
+      "独立人工智能安全研究员，麦觉理大学网络安全专业毕业生，现可入职。研究工作由 Zenodo 上五篇带 DOI 的预印本支撑（已在 ORCID 下编入索引），涵盖攻击性漏洞研究、隐私保护完整性系统以及面向 AI 的引用忠实度评估。",
     bio_2:
-      "著有《The Invisible Window》——一份 12 页的 IEEE 格式安全研究论文，展示了在 Windows 10/11 和 macOS 14–26 上利用操作系统级 API 实现 100% 屏幕捕获规避，并发现苹果在 macOS 15 中的缓解措施对 macOS 26 依然无效。",
+      "《The Invisible Window》的主要作者——一篇 12 页 IEEE 格式论文，仅利用操作系统级的有文档记录的 API，即在 Windows 10/11 与 macOS 14–26 上实现 100% 屏幕捕获规避，并提出新发现：苹果在 macOS 15 中的缓解措施在 macOS 26 上依然无效。相关发现已依据 OWASP/FIRST/CISA 框架负责任地披露。",
     bio_3:
-      "精通 Python，在 C/C++、TypeScript 和 Swift 方面具有生产经验。完成了 Anthropic 的 AI 模型评估（Claude Code 人类偏好测试）。致力于降低高级人工智能带来的灾难性风险——渴望测量能力提升、界定安全边界并开发防御性应用。",
+      "在防御方面：《Project Simurgh》的隐私保护设备完整性证明与防篡改审计链（三篇预印本），以及《Aion-BibleQA》面向检索增强大语言模型的引用忠实度基准（R@5 为 0.941，零无依据引用）。完成了 Anthropic 的 AI 模型评估（Claude Code 人类偏好测试），并具备 Python、C/C++、TypeScript 和 Swift 的生产经验。致力于通过测量能力提升、界定安全边界和构建防御性工具来降低高级人工智能带来的灾难性风险。",
     stats_projects: "项目",
     stats_evasion: "规避率",
     stats_vendors: "已披露厂商",

@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-06-26 (Australia/Sydney) — Translate research-forward About bio into fa/ar/zh/es
+
+- **Scope**: Bring the four non-English About bios in line with the new English research-led narrative (bilingual consistency)
+- **Summary**: Replaced `about.bio_1/2/3` in `fa`, `ar`, `zh`, and `es` with faithful translations of the English banger bio — five DOI-archived Zenodo preprints (ORCID-indexed), the Invisible Window flagship (100% evasion, macOS 26 novel finding, OWASP/FIRST/CISA disclosure), Project Simurgh (three preprints), and Aion-BibleQA (R@5 0.941, zero unsupported citations) with Anthropic evaluation. Technical proper nouns (DOI, Zenodo, ORCID, IEEE, Anthropic, Claude Code, Windows/macOS, Python/C/C++/TypeScript/Swift, R@5, project names) kept in Latin script. This also removed the stale "final-year student / graduating November 2026" framing that still lived only in these four bios. Left the hero `university` credential label ("Macquarie University · Nov 2026", consistent across all locales) as a factual graduation date — same reasoning as the kept resume education span.
+- **Files Changed**: `src/i18n/locales/fa.ts`, `src/i18n/locales/ar.ts`, `src/i18n/locales/zh.ts`, `src/i18n/locales/es.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass (Dictionary type enforces full key parity across locales); `npm run test:ci`: 68/68; `npm run build`: 155 pages. Built localized About pages confirm the new bio: `out/fa/about.html` (پیش‌چاپ دارای DOI), `out/ar/about.html` (مسوّدات بحثية ذات DOI), `out/zh/about.html` (带 DOI 的预印本), `out/es/about.html` (preprints con DOI) — all include `R@5`. No `graduating November 2026` framing remains in any bio.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-06-26 (Australia/Sydney) — Name consistency (RAOUF.M → RAOUF ABEDINI), ORCID on About, research-forward bio
 
 - **Scope**: Three asks — (1) make every name display "Mohammad Raouf Abedini"/"Raouf Abedini" (kill "RAOUF.M"), (2) add ORCID to the About page, (3) rewrite the About bio as a strong researcher narrative grounded in the actual project portfolio

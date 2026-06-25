@@ -71,11 +71,11 @@ const es: Dictionary = {
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle: "Investigador de Seguridad de IA",
     bio_1:
-      "Investigador de seguridad de IA y estudiante de último año de Ciberseguridad en la Universidad Macquarie (graduación en noviembre de 2026) con capacidad demostrada para descubrir, validar y divulgar de forma responsable vulnerabilidades multiplataforma de forma independiente.",
+      "Investigador independiente de seguridad de IA y graduado en Ciberseguridad por la Universidad Macquarie, disponible ahora. El trabajo está respaldado por cinco preprints con DOI en Zenodo (indexados bajo ORCID), que abarcan investigación ofensiva de vulnerabilidades, sistemas de integridad que preservan la privacidad y evaluación de fidelidad de citas para IA.",
     bio_2:
-      'Autor de "The Invisible Window", un artículo de investigación de seguridad de 12 páginas en formato IEEE que demuestra la evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14-26 utilizando APIs documentadas a nivel de SO, con el hallazgo novedoso de que la mitigación de macOS 15 de Apple sigue siendo ineficaz en macOS 26.',
+      'Autor principal de "The Invisible Window", un artículo de 12 páginas en formato IEEE que demuestra una evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14–26 utilizando únicamente APIs documentadas a nivel de SO, incluido el hallazgo novedoso de que la mitigación de macOS 15 de Apple sigue siendo ineficaz en macOS 26. Los hallazgos se divulgaron de forma responsable conforme a los marcos OWASP/FIRST/CISA.',
     bio_3:
-      "Fluido en Python con experiencia en producción en C/C++, TypeScript y Swift. Realicé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code). Motivado por reducir los riesgos catastróficos de la IA avanzada: ansioso por medir la mejora de las capacidades, caracterizar los límites de seguridad y desarrollar aplicaciones defensivas.",
+      "En el lado defensivo: las pruebas de integridad de dispositivos que preservan la privacidad y las cadenas de auditoría a prueba de manipulaciones de «Project Simurgh» (tres preprints), y el banco de pruebas de fidelidad de citas de «Aion-BibleQA» para LLM con recuperación aumentada (R@5 de 0,941, cero citas sin respaldo). Completé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code), con experiencia en producción en Python, C/C++, TypeScript y Swift. Centrado en reducir los riesgos catastróficos de la IA avanzada midiendo la mejora de capacidades, caracterizando los límites de seguridad y desarrollando herramientas defensivas.",
     stats_projects: "Proyectos",
     stats_evasion: "Tasa de Evasión",
     stats_vendors: "Vendedores Divulgados",
