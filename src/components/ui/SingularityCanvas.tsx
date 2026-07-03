@@ -2,789 +2,393 @@
 
 import { useEffect, useRef, useCallback } from "react";
 
-const PALETTE = {
-  cyan: "#00F5FF", // singularity event-horizon ring
-  violet: "#8B5CF6", // outer accretion disk
-  amber: "#F6C85F", // gold sparks
-  white: "#ffffff",
-} as const;
+/**
+ * SingularityCanvas — a GPU-raymarched Schwarzschild black hole.
+ *
+ * A single WebGL2 fragment shader marches one ray per pixel, bending it toward
+ * the singularity each step (conserved-angular-momentum photon deflection,
+ * accel = -1.5·h²·p/r⁵) so the far side of the accretion disk lenses up and
+ * over the shadow. The disk is graded to the site palette (cyan/violet/amber)
+ * rather than physical blackbody orange, with relativistic Doppler beaming
+ * brightening the approaching limb and a crisp photon ring at the photon sphere.
+ *
+ * No external library. Falls back to the wrapper's CSS nebula when WebGL2 is
+ * unavailable, and renders a single frozen frame under prefers-reduced-motion.
+ */
 
-const CFG = {
-  perspective: 980,
-  diskRadius: 365,
-  horizonRadius: 42,
-  rotX: 0.48,
-  rotY: -0.12,
-  targetFrameMs: 1000 / 60,
-  maxFrameStep: 2,
-  pausedFrameGapMs: 100,
-} as const;
+const VERT = `#version 300 es
+precision highp float;
+const vec2 verts[3] = vec2[3](vec2(-1.,-1.), vec2(3.,-1.), vec2(-1.,3.));
+void main(){ gl_Position = vec4(verts[gl_VertexID], 0., 1.); }`;
 
-interface Star {
-  x: number;
-  y: number;
-  r: number;
-  twinkle: number;
-  speed: number;
+function fragSource(steps: number): string {
+  return `#version 300 es
+precision highp float;
+
+uniform vec2 u_res;
+uniform float u_time;
+out vec4 outColor;
+
+const vec3 CY = vec3(0.000, 0.961, 1.000);   // #00F5FF cyan — brand rim/ring
+const vec3 EMBER = vec3(0.32, 0.09, 0.02);   // deep ember (cool outer disk)
+const vec3 AM    = vec3(0.965, 0.560, 0.180); // amber
+const vec3 GOLD  = vec3(1.000, 0.760, 0.360); // gold
+const vec3 HOT   = vec3(1.000, 0.945, 0.820); // warm white-hot core
+
+const float RS     = 1.0;    // event-horizon radius (scaled units)
+const float INNER  = 3.0;    // accretion-disk inner edge (~ISCO)
+const float OUTER  = 12.5;   // accretion-disk outer edge
+const float TH     = 0.68;   // accretion-disk half-thickness
+
+float hash21(vec2 p){
+  p = fract(p * vec2(123.34, 345.45));
+  p += dot(p, p + 34.345);
+  return fract(p.x * p.y);
+}
+float vnoise(vec2 p){
+  vec2 i = floor(p), f = fract(p);
+  f = f*f*(3.0 - 2.0*f);
+  float a = hash21(i), b = hash21(i+vec2(1,0));
+  float c = hash21(i+vec2(0,1)), d = hash21(i+vec2(1,1));
+  return mix(mix(a,b,f.x), mix(c,d,f.x), f.y);
+}
+float fbm(vec2 p){
+  float s = 0.0, a = 0.5;
+  for(int i=0;i<4;i++){ s += a*vnoise(p); p *= 2.03; a *= 0.5; }
+  return s;
 }
 
-interface TrailPoint {
-  r: number;
-  a: number;
-  y: number;
+// Disk color ramp keyed on heat h∈[0,1] (1 = hot inner edge).
+// Gargantua-warm: ember → amber → gold → warm white-hot core.
+vec3 diskRamp(float h){
+  vec3 c = mix(EMBER, AM, smoothstep(0.04, 0.34, h)); // ember → amber
+  c = mix(c, GOLD, smoothstep(0.32, 0.66, h));         // → gold (dominant band)
+  c = mix(c, HOT, smoothstep(0.74, 1.0, h));           // → warm white-hot
+  return c;
 }
 
-interface Particle {
-  radius: number;
-  angle: number;
-  speed: number;
-  yOsc: number;
-  size: number;
-  trail: TrailPoint[];
-  trailClock: number;
-  tint: string;
-  flare: number;
-}
+void main(){
+  vec2 uv = (gl_FragCoord.xy - 0.5*u_res) / u_res.y;
+  float aspect = u_res.x / u_res.y;
+  // On wide screens push the hole right so the left stays dark for the headline;
+  // on portrait (mobile) centre it and zoom out so it stays fully in frame.
+  float wide = smoothstep(0.8, 1.4, aspect);
+  float off = mix(0.12, 0.30, wide);   // portrait: near-centre, landscape: right
+  float yoff = mix(-0.30, -0.01, wide); // portrait: drop below the headline
+  float zoom = mix(1.85, 1.05, wide);   // portrait: zoom out so it stays small
+  vec2 aim = uv - vec2(off, yoff);
 
-interface Projected {
-  x: number;
-  y: number;
-  z: number;
-  scale: number;
+  // Autonomous cinematic camera — a slow sway with inclination breathing so
+  // the disk turns, opens and closes on its own (seamless, never stalls).
+  // Kept near edge-on (Interstellar/Gargantua) so the disk wraps into a
+  // near-complete halo over AND under the shadow.
+  float yaw = sin(u_time * 0.085) * 0.34;
+  float pit = 0.098 + sin(u_time * 0.125 + 1.0) * 0.035;
+  float cd = 16.5;
+  vec3 ro = vec3(sin(yaw)*cd, sin(pit)*cd, -cos(yaw)*cos(pit)*cd);
+  vec3 fw = normalize(-ro);
+  vec3 rt = normalize(cross(fw, vec3(0,1,0)));
+  vec3 up = cross(rt, fw);
+  vec3 rd = normalize(fw + (aim.x*rt + aim.y*up) * zoom);
+
+  vec3 p = ro;
+  vec3 v = rd;
+  vec3 hvec = cross(p, v);
+  float h2 = dot(hvec, hvec);
+
+  vec3 col = vec3(0.0);
+  float alpha = 0.0;
+  float minR = 1e9;
+  bool captured = false;
+
+  // Volumetric march: bend the ray toward the singularity each step and
+  // accumulate accretion-disk emission wherever it passes through the disk
+  // slab. Absorption (front-to-back) lets the near disk occlude the lensed
+  // images behind it, so the multiple images blend instead of aliasing.
+  for(int i=0; i<${steps}; i++){
+    float r2 = dot(p, p);
+    float r = sqrt(r2);
+    minR = min(minR, r);
+
+    if(r2 < RS*RS){ captured = true; break; }
+    if(r2 > 1600.0) break;
+    if(alpha > 0.995) break;
+
+    // Adaptive step: coarse far out, fine near the hole and near the disk
+    // plane so the thin slab is never skipped.
+    float dt = clamp(r * 0.13, 0.22, 1.1);
+    dt = min(dt, abs(p.y) * 0.65 + 0.12);
+
+    if(abs(p.y) < TH){
+      float rc2 = p.x*p.x + p.z*p.z;
+      if(rc2 > INNER*INNER && rc2 < OUTER*OUTER){
+        float rc = sqrt(rc2);
+        float pang = atan(p.z, p.x);
+        float heat = clamp(1.0 - (rc-INNER)/(OUTER-INNER), 0.0, 1.0);
+        float kep = pow(INNER/rc, 1.5);              // keplerian angular speed
+        float spin = u_time * 0.26 * kep;
+        float cs = cos(spin), sn = sin(spin);
+        vec2 q = mat2(cs,-sn,sn,cs) * p.xz;
+        // Silky turbulence — soft banding, low contrast, for the creamy
+        // Double-Negative disk rather than a noisy one.
+        float swirl = fbm(q * 0.45 + vec2(rc * 0.2, 0.0));
+        swirl = mix(0.5, swirl, 0.72) * (0.85 + 0.22 * fbm(q * 1.4 - u_time * 0.04));
+        float vprof = 1.0 - smoothstep(0.0, TH, abs(p.y)); // fade at slab faces
+        float edge = smoothstep(INNER, INNER+0.5, rc)
+                   * smoothstep(OUTER, OUTER-3.2, rc);
+
+        // Doppler beaming, dialled WAY down — Nolan/Thorne muted the brightness
+        // asymmetry so Gargantua's halo reads evenly bright top and bottom.
+        vec3 orb = normalize(vec3(-p.z, 0.0, p.x));
+        float dop = dot(orb, normalize(-v));
+        float beam = clamp(1.0 + 0.28*dop, 0.68, 1.4);
+
+        // A faint warm hot-spot drifting round the inner disk — subtle life,
+        // not a strobe.
+        float hot = pow(max(cos(pang - u_time * 0.5), 0.0), 40.0)
+                  * smoothstep(6.5, INNER + 0.4, rc);
+
+        float emis = heat*heat * (0.45 + 0.75*swirl) * vprof * beam * edge
+                   * (1.0 + hot * 1.8);
+        vec3 dc = diskRamp(heat);
+        dc = mix(dc, HOT, clamp(dop*0.14, 0.0, 0.22));       // gentle limb warm-white
+        dc = mix(dc, vec3(1.0, 0.94, 0.82), clamp(hot, 0.0, 0.5)); // warm flare
+
+        float local = emis * dt * 1.25;
+        col += dc * local * (1.5 - alpha) * 0.78;
+        alpha += clamp(local, 0.0, 1.0) * (1.0 - alpha);
+      }
+    }
+
+    vec3 accel = -1.5 * h2 * p / (r2 * r2 * r);
+    v += accel * dt;
+    p += v * dt;
+  }
+
+  // Rays that fall past the horizon carry the faint higher-order disk images
+  // that read as onion rings inside the shadow — darken them to a clean void.
+  if(captured) col *= 0.03;
+
+  float atten = 1.0 - alpha*0.7;
+
+  // Cyan photon ring — the brand signature hugging the warm shadow. Grazing
+  // rays pile up at the photon sphere (1.5·RS); a faint shimmer keeps it alive.
+  float pr = abs(minR - 1.5);
+  float shim = 0.88 + 0.12 * sin(u_time * 2.1);
+  col += CY * pow(smoothstep(0.75, 0.0, pr), 2.0) * 1.2 * shim * atten;
+  col += vec3(0.75, 1.0, 1.0) * smoothstep(0.1, 0.0, pr)
+       * (0.85 + 0.15 * sin(u_time * 3.0)) * atten;
+
+  // Lensed background starfield (uses the bent escape direction) — crisp points.
+  if(!captured){
+    vec3 sd = normalize(v);
+    vec2 suv = vec2(atan(sd.z, sd.x) * 3.5, sd.y * 4.0);
+    vec2 g = suv * 26.0;
+    vec2 id = floor(g);
+    vec2 f = fract(g);
+    float rnd = hash21(id);
+    vec2 sp = vec2(hash21(id + 1.7), hash21(id + 4.3));
+    float d = length(f - sp);
+    float star = smoothstep(0.09, 0.0, d) * step(0.86, rnd);
+    float tw = 0.6 + 0.4*sin(u_time*1.4 + rnd*30.0);
+    vec3 sc = mix(vec3(0.8,0.88,1.0), CY, step(0.6, hash21(id + 9.1)));
+    col += sc * star * tw * 0.55 * atten;
+  }
+
+  // Bloom — a soft cyan halo hugging the shadow plus a tighter hot core glow.
+  float rr = length(aim);
+  col += CY * 0.05 * exp(-rr*3.4) * atten;
+  col += vec3(0.6, 0.92, 1.0) * 0.04 * exp(-rr*7.5) * atten;
+
+  // Reinhard tone map + slight lift, with a touch of saturation for punch.
+  col = col / (col + vec3(0.72));
+  float lum = dot(col, vec3(0.299, 0.587, 0.114));
+  col = mix(vec3(lum), col, 1.32);
+  col = pow(max(col, 0.0), vec3(0.85));
+
+  outColor = vec4(col, 1.0);
+}`;
 }
 
 export function SingularityCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const run = useCallback(() => {
-    if (!canvasRef.current) return;
-    const canvas = canvasRef.current as HTMLCanvasElement;
-    const ctxMaybe = canvas.getContext("2d", { alpha: true });
-    if (!ctxMaybe) return;
-    const ctx = ctxMaybe as CanvasRenderingContext2D;
+    const canvasEl = canvasRef.current;
+    if (!canvasEl) return;
+    const canvas: HTMLCanvasElement = canvasEl;
+    const gl = canvas.getContext("webgl2", {
+      alpha: false,
+      antialias: false,
+      premultipliedAlpha: false,
+      powerPreference: "high-performance",
+    });
+    if (!gl) return; // fall back to the wrapper's CSS nebula
 
     const rmq = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let width = 0;
     let height = 0;
-    let dpr = 1;
-    let frame = 0;
+    let program: WebGLProgram | null = null;
+    let compiledSteps = -1;
+    let uRes: WebGLUniformLocation | null = null;
+    let uTime: WebGLUniformLocation | null = null;
+
     let rafId: number | null = null;
-    let lastTimestamp = 0;
     let inView = true;
-    let stars: Star[] = [];
-    let particles: Particle[] = [];
-    const pulses: { age: number }[] = [];
-    let nextFlare = 360;
+    let contextLost = false;
+    let lastTs = 0;
+    let elapsed = 0;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetMouseX = 0;
-    let targetMouseY = 0;
+    // Runtime performance guard: if the opening second runs slow, drop to a
+    // lighter tier once so weak/integrated GPUs stay smooth.
+    let degraded = false;
+    let perfFrames = 0;
+    let perfSlow = 0;
+    let perfDone = false;
 
-    // Per-frame rotation cache — project() runs thousands of times a frame,
-    // so the shared sin/cos pairs are computed once in draw().
-    let cosRX = 1;
-    let sinRX = 0;
-    let cosRY = 1;
-    let sinRY = 0;
-    // Screen-space centre + radius of the event-horizon shadow, per frame.
-    let cX = 0;
-    let cY = 0;
-    let hR = CFG.horizonRadius;
-
-    function clamp(v: number, lo: number, hi: number) {
-      return Math.max(lo, Math.min(hi, v));
+    function qualitySteps(): number {
+      if (rmq.matches) return 90;
+      if (degraded) return width < 640 ? 84 : 108;
+      if (width < 640) return 122;
+      if (width < 1024) return 140;
+      return 170;
+    }
+    function renderScale(): number {
+      if (rmq.matches) return 0.7;
+      if (degraded) return 0.58;
+      if (width < 640) return 0.72;
+      return 0.8;
     }
 
-    function particleCount() {
-      if (rmq.matches) return 70;
-      if (width < 640) return 170;
-      if (width < 980) return 260;
-      return 430;
+    function compile(type: number, src: string): WebGLShader | null {
+      const sh = gl!.createShader(type);
+      if (!sh) return null;
+      gl!.shaderSource(sh, src);
+      gl!.compileShader(sh);
+      if (!gl!.getShaderParameter(sh, gl!.COMPILE_STATUS)) {
+        gl!.deleteShader(sh);
+        return null;
+      }
+      return sh;
+    }
+
+    function buildProgram(steps: number): boolean {
+      const vs = compile(gl!.VERTEX_SHADER, VERT);
+      const fs = compile(gl!.FRAGMENT_SHADER, fragSource(steps));
+      if (!vs || !fs) return false;
+      const prog = gl!.createProgram();
+      if (!prog) return false;
+      gl!.attachShader(prog, vs);
+      gl!.attachShader(prog, fs);
+      gl!.linkProgram(prog);
+      gl!.deleteShader(vs);
+      gl!.deleteShader(fs);
+      if (!gl!.getProgramParameter(prog, gl!.LINK_STATUS)) {
+        gl!.deleteProgram(prog);
+        return false;
+      }
+      if (program) gl!.deleteProgram(program);
+      program = prog;
+      compiledSteps = steps;
+      uRes = gl!.getUniformLocation(prog, "u_res");
+      uTime = gl!.getUniformLocation(prog, "u_time");
+      gl!.useProgram(prog);
+      return true;
     }
 
     function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = window.innerWidth;
       height = window.innerHeight;
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
+      const scale = renderScale();
+      const cap = 1600;
+      let bw = Math.round(width * scale);
+      let bh = Math.round(height * scale);
+      const longest = Math.max(bw, bh);
+      if (longest > cap) {
+        const k = cap / longest;
+        bw = Math.round(bw * k);
+        bh = Math.round(bh * k);
+      }
+      canvas.width = bw;
+      canvas.height = bh;
       canvas.style.width = width + "px";
       canvas.style.height = height + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      initStars();
-      initParticles();
+      gl!.viewport(0, 0, bw, bh);
+      const want = qualitySteps();
+      if (want !== compiledSteps) buildProgram(want);
     }
 
-    function initStars() {
-      const count = rmq.matches ? 40 : clamp(Math.floor(width / 10), 64, 160);
-      if (stars.length === 0) {
-        stars = Array.from({ length: count }, () => ({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          r: Math.random() * 1.5 + 0.35,
-          twinkle: Math.random() * Math.PI * 2,
-          speed: Math.random() * 0.002 + 0.0008,
-        }));
-      } else if (stars.length < count) {
-        const diff = count - stars.length;
-        for (let i = 0; i < diff; i++) {
-          stars.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            r: Math.random() * 1.5 + 0.35,
-            twinkle: Math.random() * Math.PI * 2,
-            speed: Math.random() * 0.002 + 0.0008,
-          });
-        }
-      } else if (stars.length > count) {
-        stars.length = count;
-      }
-      for (const s of stars) {
-        if (s.x > width) s.x = Math.random() * width;
-        if (s.y > height) s.y = Math.random() * height;
-      }
+    function render() {
+      if (!program) return;
+      gl!.useProgram(program);
+      if (uRes) gl!.uniform2f(uRes, canvas.width, canvas.height);
+      if (uTime) gl!.uniform1f(uTime, elapsed);
+      gl!.drawArrays(gl!.TRIANGLES, 0, 3);
     }
 
-    function makeParticle(initial = false): Particle {
-      const bias = Math.random();
-      // Initial spread is linear ≈ the steady-state distribution (uniform
-      // inward drift from the outer rim). A core-biased spread front-loads
-      // the fastest inner orbits and makes the first seconds look sped-up.
-      const radius = initial
-        ? CFG.horizonRadius + 24 + bias * (CFG.diskRadius + 56)
-        : CFG.diskRadius + Math.random() * 80;
-      return {
-        radius,
-        angle: Math.random() * Math.PI * 2,
-        speed: (110 / radius) * (rmq.matches ? 0.018 : 0.042),
-        yOsc: (Math.random() - 0.5) * 11,
-        size: 0.45 + Math.random() * 1.55,
-        trail: [],
-        trailClock: 0,
-        tint:
-          Math.random() > 0.72
-            ? PALETTE.amber
-            : Math.random() > 0.5
-              ? PALETTE.cyan
-              : PALETTE.violet,
-        flare: 0,
-      };
-    }
+    function frame(ts: number) {
+      if (contextLost) return;
+      const dt = lastTs > 0 ? Math.min((ts - lastTs) / 1000, 0.05) : 0;
+      lastTs = ts;
+      elapsed += dt;
+      render();
 
-    function initParticles() {
-      const targetCount = particleCount();
-      if (particles.length === 0) {
-        particles = Array.from({ length: targetCount }, () =>
-          makeParticle(true),
-        );
-      } else if (particles.length < targetCount) {
-        const diff = targetCount - particles.length;
-        for (let i = 0; i < diff; i++) {
-          particles.push(makeParticle(true));
-        }
-      } else if (particles.length > targetCount) {
-        particles.length = targetCount;
-      }
-    }
-
-    function updateRotation() {
-      const rotX = CFG.rotX + mouseY * 0.12;
-      const rotY = CFG.rotY + Math.sin(frame * 0.002) * 0.028 + mouseX * 0.12;
-      cosRX = Math.cos(rotX);
-      sinRX = Math.sin(rotX);
-      cosRY = Math.cos(rotY);
-      sinRY = Math.sin(rotY);
-    }
-
-    function project(x: number, y: number, z: number): Projected {
-      const x1 = x * cosRY - z * sinRY;
-      const z1 = x * sinRY + z * cosRY;
-      const y2 = y * cosRX - z1 * sinRX;
-      const z2 = y * sinRX + z1 * cosRX;
-      const scale = CFG.perspective / (CFG.perspective + z2);
-      return { x: x1 * scale, y: y2 * scale, z: z2, scale };
-    }
-
-    /**
-     * Screen-space gravitational lensing around the shadow.
-     * Light from behind the hole cannot cross the shadow disk: it wraps
-     * around the photon ring instead (Einstein-rim pile-up). Light in
-     * front is only weakly deflected outward.
-     */
-    function lens(px: number, py: number, z: number): { x: number; y: number } {
-      const dx = px - cX;
-      const dy = py - cY;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 0.5 || d > hR * 3.6) return { x: px, y: py };
-      const behind = z > 4;
-      if (behind && d < hR * 1.55) {
-        const t = d / (hR * 1.55);
-        const wrapped = hR * (1.06 + t * t * 0.85);
-        const f = wrapped / d;
-        return { x: cX + dx * f, y: cY + dy * f };
-      }
-      const bend = clamp(
-        ((hR * hR) / (d * d)) * (behind ? 0.5 : 0.06),
-        0,
-        behind ? 0.9 : 0.25,
-      );
-      return { x: cX + dx * (1 + bend), y: cY + dy * (1 + bend) };
-    }
-
-    function orbitalPoint(
-      radius: number,
-      angle: number,
-      yOffset: number,
-    ): Projected {
-      const x = Math.cos(angle) * radius;
-      const z = Math.sin(angle) * radius;
-      const gravity = -3150 / (radius * radius + 130);
-      return project(x, yOffset + gravity, z);
-    }
-
-    function updateParticle(p: Particle, step: number) {
-      // Spin-up: ease orbital motion in over the first ~3 s so the disk
-      // settles into speed instead of opening at full whip (also hides
-      // the doubled frame-steps of hydration jank on first load).
-      const warmT = clamp(frame / 180, 0, 1);
-      const warm = 0.3 + 0.7 * warmT * (2 - warmT);
-      // Time dilation: infall slows and orbit whips faster near the horizon,
-      // so particles appear to freeze at the edge instead of popping out.
-      const over = p.radius - CFG.horizonRadius;
-      const dilation = clamp(over / (CFG.horizonRadius * 1.1), 0.05, 1);
-      p.angle += p.speed * step * warm * (1 + (1 - dilation) * 2.2);
-      p.radius -=
-        0.38 * step * warm * (0.25 + dilation * 0.75) * (p.flare > 0 ? 5.5 : 1);
-      p.yOsc += Math.sin(frame * 0.006 + p.angle) * 0.003 * step;
-      if (p.radius < CFG.horizonRadius + 1.5) {
-        if (p.flare > 0 && pulses.length < 4) pulses.push({ age: 0 });
-        const fresh = makeParticle(false);
-        p.radius = fresh.radius;
-        p.angle = fresh.angle;
-        p.speed = fresh.speed;
-        p.yOsc = fresh.yOsc;
-        p.size = fresh.size;
-        p.trail = [];
-        p.trailClock = 0;
-        p.tint = fresh.tint;
-        p.flare = 0;
-        return;
-      }
-      p.trailClock += step;
-      if (p.trailClock >= 1) {
-        p.trailClock %= 1;
-        p.trail.push({ r: p.radius, a: p.angle, y: p.yOsc });
-        const maxTrail = p.flare > 0 ? 10 : width < 700 ? 3 : 6;
-        if (p.trail.length > maxTrail) p.trail.shift();
-      }
-    }
-
-    function drawParticle(p: Particle, ox: number, oy: number) {
-      const head = orbitalPoint(p.radius, p.angle, p.yOsc);
-      if (head.scale <= 0) return;
-      const lensedHead = lens(head.x, head.y, head.z);
-      const proximity = clamp(
-        (p.radius - CFG.horizonRadius) / CFG.diskRadius,
-        0,
-        1,
-      );
-      // Gravitational redshift: light dims to nothing at the horizon.
-      const fade = clamp(
-        (p.radius - CFG.horizonRadius) / (CFG.horizonRadius * 0.75),
-        0,
-        1,
-      );
-      // Relativistic Doppler beaming: the approaching side of the disk
-      // (cos(angle) < 0, left of screen) is boosted, the receding side dims.
-      const beam = clamp(1 - 0.85 * Math.cos(p.angle), 0.18, 1.85);
-      const flaring = p.flare > 0;
-      const alpha =
-        (0.34 + (1 - proximity) * 0.62) *
-        clamp(beam * 0.75, 0.3, 1.3) *
-        fade *
-        (flaring ? 1.4 : 1);
-      const dotSize =
-        Math.max(0.1, p.size * head.scale * (1.15 - proximity * 0.25)) *
-        (0.85 + beam * 0.18) *
-        (flaring ? 1.9 : 1);
-      let colour = p.tint;
-      if (flaring || (beam > 1.45 && proximity < 0.55)) colour = PALETTE.white;
-      else if (beam < 0.5 || fade < 0.5) colour = PALETTE.violet;
-      if (p.trail.length > 1 && proximity < 0.72 && !rmq.matches) {
-        ctx.beginPath();
-        ctx.moveTo(ox + lensedHead.x, oy + lensedHead.y);
-        for (let i = p.trail.length - 1; i >= 0; i--) {
-          const t = p.trail[i];
-          const pt = orbitalPoint(t.r, t.a, t.y);
-          const lp = lens(pt.x, pt.y, pt.z);
-          ctx.lineTo(ox + lp.x, oy + lp.y);
-        }
-        ctx.strokeStyle = flaring
-          ? PALETTE.amber
-          : proximity < 0.18
-            ? "rgba(255,255,255,0.36)"
-            : colour;
-        ctx.globalAlpha = clamp(alpha * (flaring ? 0.55 : 0.34), 0, 1);
-        ctx.lineWidth = Math.max(0.3, dotSize * 0.72);
-        ctx.stroke();
-      }
-      if (flaring) {
-        ctx.globalAlpha = clamp(alpha * 0.28, 0, 1);
-        ctx.fillStyle = PALETTE.amber;
-        ctx.beginPath();
-        ctx.arc(
-          ox + lensedHead.x,
-          oy + lensedHead.y,
-          dotSize * 3.1,
-          0,
-          Math.PI * 2,
-        );
-        ctx.fill();
-      }
-      ctx.globalAlpha = clamp(alpha, 0, 1);
-      ctx.fillStyle = colour;
-      ctx.beginPath();
-      ctx.arc(ox + lensedHead.x, oy + lensedHead.y, dotSize, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-
-    function drawStars(
-      centreScreenX: number,
-      centreScreenY: number,
-      shadowR: number,
-    ) {
-      ctx.save();
-      ctx.globalCompositeOperation = "screen";
-      for (const s of stars) {
-        const t = rmq.matches
-          ? 0.32
-          : 0.24 + Math.sin(frame * s.speed + s.twinkle) * 0.18;
-        let sx = s.x + mouseX * s.r * 15;
-        let sy = s.y + mouseY * s.r * 15;
-        // Background stars lens around the shadow — or vanish behind it.
-        const dx = sx - centreScreenX;
-        const dy = sy - centreScreenY;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < shadowR * 1.15) continue;
-        if (d < shadowR * 6) {
-          const bend = clamp(((shadowR * shadowR) / (d * d)) * 0.55, 0, 0.8);
-          sx = centreScreenX + dx * (1 + bend);
-          sy = centreScreenY + dy * (1 + bend);
-        }
-        ctx.globalAlpha = Math.max(0.08, t);
-        ctx.fillStyle = s.r > 1.3 ? PALETTE.cyan : "#dce6ff";
-        ctx.beginPath();
-        ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
-      ctx.globalAlpha = 1;
-    }
-
-    function drawGrid(ox: number, oy: number) {
-      ctx.save();
-      ctx.translate(ox, oy);
-      ctx.globalCompositeOperation = "screen";
-      for (let radius = CFG.horizonRadius + 22; radius < 520; radius += 38) {
-        ctx.beginPath();
-        const opacity = Math.max(0, 1 - radius / 520) * 0.13;
-        for (let a = 0; a <= Math.PI * 2 + 0.08; a += 0.08) {
-          const x = Math.cos(a) * radius;
-          const z = Math.sin(a) * radius;
-          const gravity = -42000 / (radius * radius + 180);
-          const p = project(x, gravity + 54, z);
-          if (a === 0) ctx.moveTo(p.x, p.y);
-          else ctx.lineTo(p.x, p.y);
-        }
-        ctx.strokeStyle = radius < 180 ? PALETTE.violet : PALETTE.cyan;
-        ctx.globalAlpha = opacity;
-        ctx.lineWidth = 0.9;
-        ctx.stroke();
-      }
-      for (let spoke = 0; spoke < 20; spoke++) {
-        const a = (spoke / 20) * Math.PI * 2 + frame * 0.0015;
-        ctx.beginPath();
-        for (let r = CFG.horizonRadius + 30; r < 490; r += 20) {
-          const x = Math.cos(a) * r;
-          const z = Math.sin(a) * r;
-          const gravity = -26000 / (r * r + 200);
-          const p = project(x, gravity + 52, z);
-          if (r === CFG.horizonRadius + 30) ctx.moveTo(p.x, p.y);
-          else ctx.lineTo(p.x, p.y);
-        }
-        ctx.globalAlpha = 0.026;
-        ctx.strokeStyle = PALETTE.cyan;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      }
-      ctx.restore();
-      ctx.globalAlpha = 1;
-    }
-
-    function drawFeatherArcs(ox: number, oy: number) {
-      if (rmq.matches) return;
-      ctx.save();
-      ctx.translate(ox, oy);
-      ctx.globalCompositeOperation = "screen";
-      ctx.lineCap = "round";
-      for (let i = 0; i < 5; i++) {
-        const radius = 245 + i * 34;
-        const spin = frame * (0.0022 + i * 0.0004);
-        const start = spin + i * 0.58;
-        const end = start + Math.PI * (0.34 + i * 0.018);
-        ctx.beginPath();
-        for (let j = 0; j <= 34; j++) {
-          const t = j / 34;
-          const theta = start + (end - start) * t;
-          const x = Math.cos(theta) * radius;
-          const z = Math.sin(theta) * radius;
-          const p = project(x, 10 - i * 2, z);
-          if (j === 0) ctx.moveTo(p.x, p.y);
-          else ctx.lineTo(p.x, p.y);
-        }
-        const strokeColor = i % 2 ? PALETTE.violet : PALETTE.cyan;
-        const baseAlpha = 0.11 - i * 0.012;
-
-        if (!rmq.matches) {
-          ctx.save();
-          ctx.strokeStyle = strokeColor;
-          ctx.globalAlpha = baseAlpha * 0.45;
-          ctx.lineWidth = 4.5;
-          ctx.stroke();
-          ctx.restore();
-        }
-
-        ctx.strokeStyle = strokeColor;
-        ctx.globalAlpha = baseAlpha;
-        ctx.lineWidth = 1.1;
-        ctx.stroke();
-      }
-      ctx.restore();
-      ctx.globalAlpha = 1;
-    }
-
-    function drawJets(ox: number, oy: number) {
-      if (width < 620) return;
-      const centre = project(0, 0, 0);
-      const length = Math.min(width, height) * 0.52 * centre.scale;
-      const beamWidth = 10 * centre.scale;
-      ctx.save();
-      ctx.translate(ox + centre.x, oy + centre.y);
-      ctx.globalCompositeOperation = "screen";
-      for (const dir of [-1, 1] as const) {
-        const gradient = ctx.createLinearGradient(0, 0, 0, length * dir);
-        gradient.addColorStop(0, "rgba(255,255,255,0.42)");
-        gradient.addColorStop(0.16, "rgba(0,245,255,0.24)");
-        gradient.addColorStop(0.62, "rgba(111,253,242,0.08)");
-        gradient.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.moveTo(-beamWidth * 0.45, 0);
-        ctx.lineTo(beamWidth * 0.45, 0);
-        ctx.lineTo(beamWidth * 3.1, length * dir);
-        ctx.lineTo(-beamWidth * 3.1, length * dir);
-        ctx.closePath();
-        ctx.fill();
-      }
-      ctx.restore();
-    }
-
-    function drawHudRing(
-      ox: number,
-      oy: number,
-      radius: number,
-      speed: number,
-      colour: string,
-      alpha: number,
-    ) {
-      ctx.save();
-      ctx.translate(ox, oy);
-      ctx.globalCompositeOperation = "screen";
-      ctx.beginPath();
-      const segments = 10;
-      const rotation = frame * speed;
-      const segLen = (Math.PI * 2) / segments;
-      for (let i = 0; i < segments; i++) {
-        const start = i * segLen + rotation;
-        const end = start + segLen * 0.55;
-        for (let j = 0; j <= 12; j++) {
-          const theta = start + (end - start) * (j / 12);
-          const p = project(
-            Math.cos(theta) * radius,
-            0,
-            Math.sin(theta) * radius,
-          );
-          if (j === 0) ctx.moveTo(p.x, p.y);
-          else ctx.lineTo(p.x, p.y);
-        }
-      }
-
-      if (!rmq.matches) {
-        ctx.save();
-        ctx.strokeStyle = colour;
-        ctx.globalAlpha = alpha * 0.5;
-        ctx.lineWidth = 3.5;
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = colour;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.restore();
-      ctx.globalAlpha = 1;
-    }
-
-    /**
-     * The lensed image of the disk's far side — light bent over and under
-     * the shadow (the Gargantua arch). Doppler gradient: the approaching
-     * (left) limb burns white-cyan, the receding limb cools to violet.
-     */
-    function drawLensedArcs(x: number, y: number, r: number) {
-      ctx.save();
-      ctx.globalCompositeOperation = "screen";
-      ctx.lineCap = "round";
-      const shimmer = rmq.matches ? 0 : Math.sin(frame * 0.013) * 1.4;
-      const gradient = ctx.createLinearGradient(x - r * 1.7, y, x + r * 1.7, y);
-      gradient.addColorStop(0, "rgba(255,255,255,0.95)");
-      gradient.addColorStop(0.3, "rgba(0,245,255,0.75)");
-      gradient.addColorStop(0.68, "rgba(246,200,95,0.35)");
-      gradient.addColorStop(1, "rgba(139,92,246,0.12)");
-      ctx.strokeStyle = gradient;
-      // Upper arch — far disk bent over the top of the shadow.
-      const arcs: [number, number, number, number][] = [
-        // [radiusX factor, radiusY factor, startAngle, endAngle]
-        [1.5, 1.3, Math.PI * 1.04, Math.PI * 1.96],
-        [1.26, 1.06, Math.PI * 0.1, Math.PI * 0.9],
-      ];
-      for (const [rx, ry, a0, a1] of arcs) {
-        for (const [w, a] of [
-          [7, 0.07],
-          [2.6, 0.16],
-          [1, 0.38],
-        ] as const) {
-          ctx.beginPath();
-          ctx.ellipse(x, y, r * rx + shimmer, r * ry + shimmer, 0, a0, a1);
-          ctx.globalAlpha = a;
-          ctx.lineWidth = w;
-          ctx.stroke();
-        }
-      }
-      ctx.restore();
-      ctx.globalAlpha = 1;
-    }
-
-    function drawHorizon(ox: number, oy: number) {
-      const p = project(0, 0, 0);
-      const r = CFG.horizonRadius * p.scale;
-      const x = ox + p.x;
-      const y = oy + p.y;
-      ctx.save();
-      ctx.globalCompositeOperation = "screen";
-      const halo = ctx.createRadialGradient(x, y, r * 0.85, x, y, r * 5.3);
-      halo.addColorStop(0, "rgba(255,255,255,0.42)");
-      halo.addColorStop(0.13, "rgba(0,245,255,0.28)");
-      halo.addColorStop(0.38, "rgba(111,253,242,0.13)");
-      halo.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = halo;
-      ctx.beginPath();
-      ctx.arc(x, y, r * 5.3, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalCompositeOperation = "source-over";
-      const voidG = ctx.createRadialGradient(
-        x - r * 0.2,
-        y - r * 0.25,
-        r * 0.1,
-        x,
-        y,
-        r * 1.08,
-      );
-      voidG.addColorStop(0, "#030712");
-      voidG.addColorStop(0.76, "#000000");
-      voidG.addColorStop(1, "rgba(0,0,0,0.82)");
-      ctx.fillStyle = voidG;
-      ctx.beginPath();
-      ctx.arc(x, y, r * 1.08, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalCompositeOperation = "screen";
-
-      drawLensedArcs(x, y, r);
-
-      if (!rmq.matches) {
-        ctx.save();
-        ctx.lineWidth = 7.5;
-        ctx.strokeStyle = PALETTE.cyan;
-        ctx.globalAlpha = 0.4;
-        ctx.beginPath();
-        ctx.arc(x, y, r * 1.04, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      // Photon ring — crisp primary image at the shadow edge…
-      ctx.lineWidth = 2.2;
-      ctx.strokeStyle = "rgba(255,255,255,0.88)";
-      ctx.beginPath();
-      ctx.arc(x, y, r * 1.04, 0, Math.PI * 2);
-      ctx.stroke();
-      // …and the thin higher-order image just inside it.
-      ctx.lineWidth = 0.8;
-      ctx.strokeStyle = "rgba(0,245,255,0.55)";
-      ctx.beginPath();
-      ctx.arc(x, y, r * 0.955, 0, Math.PI * 2);
-      ctx.stroke();
-
-      if (!rmq.matches) {
-        ctx.save();
-        ctx.lineWidth = 5.5;
-        ctx.strokeStyle = PALETTE.amber;
-        ctx.globalAlpha = 0.3;
-        ctx.beginPath();
-        ctx.arc(
-          x,
-          y,
-          r * 1.34 + Math.sin(frame * 0.02) * 1.6,
-          0.25,
-          Math.PI * 1.38,
-        );
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = "rgba(246,211,101,0.55)";
-      ctx.beginPath();
-      ctx.arc(
-        x,
-        y,
-        r * 1.34 + Math.sin(frame * 0.02) * 1.6,
-        0.25,
-        Math.PI * 1.38,
-      );
-      ctx.stroke();
-
-      // Light echoes — flares that crossed the horizon ring outward.
-      for (const pulse of pulses) {
-        const pr = r * (1.06 + pulse.age * 1.1);
-        const pa = Math.pow(1 - pulse.age, 2) * 0.55;
-        ctx.lineWidth = Math.max(0.4, (1 - pulse.age) * 3);
-        ctx.strokeStyle = PALETTE.white;
-        ctx.globalAlpha = pa;
-        ctx.beginPath();
-        ctx.arc(x, y, pr, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.strokeStyle = PALETTE.cyan;
-        ctx.globalAlpha = pa * 0.6;
-        ctx.beginPath();
-        ctx.arc(x, y, pr * 1.06, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-      ctx.restore();
-      ctx.globalAlpha = 1;
-    }
-
-    function draw(timestamp: number) {
-      const elapsedMs =
-        lastTimestamp > 0 ? timestamp - lastTimestamp : CFG.targetFrameMs;
-      lastTimestamp = timestamp;
-      const step =
-        elapsedMs > CFG.pausedFrameGapMs
-          ? 0
-          : clamp(elapsedMs / CFG.targetFrameMs, 0, CFG.maxFrameStep);
-      const physicsStep = rmq.matches ? 0 : step;
-
-      if (!rmq.matches && step > 0) {
-        const lerpFactor = clamp(0.04 * step, 0, 1);
-        mouseX += (targetMouseX - mouseX) * lerpFactor;
-        mouseY += (targetMouseY - mouseY) * lerpFactor;
-      } else {
-        mouseX = 0;
-        mouseY = 0;
-      }
-
-      updateRotation();
-      const centre = project(0, 0, 0);
-      cX = centre.x;
-      cY = centre.y;
-      hR = CFG.horizonRadius * centre.scale;
-
-      ctx.clearRect(0, 0, width, height);
-      const ox = width * 0.5;
-      const oy = height * 0.5;
-      const scale = clamp(Math.min(width, height) / 850, 0.62, 1.08);
-      drawStars(ox + cX * scale, oy + cY * scale, hR * scale);
-      ctx.save();
-      ctx.translate(ox, oy);
-      ctx.scale(scale, scale);
-      ctx.translate(-ox, -oy);
-      drawGrid(ox, oy);
-      drawFeatherArcs(ox, oy);
-      drawHudRing(ox, oy, 420, 0.004, PALETTE.cyan, 0.18);
-      drawHudRing(ox, oy, 350, -0.006, PALETTE.violet, 0.14);
-      drawJets(ox, oy);
-      ctx.save();
-      ctx.globalCompositeOperation = "screen";
-      for (const p of particles) {
-        if (physicsStep > 0) updateParticle(p, physicsStep);
-        drawParticle(p, ox, oy);
-      }
-      ctx.restore();
-      drawHorizon(ox, oy);
-      ctx.restore();
-
-      if (physicsStep > 0) {
-        if (frame >= nextFlare) {
-          const candidate =
-            particles[Math.floor(Math.random() * particles.length)];
-          if (candidate && candidate.radius > CFG.diskRadius * 0.45) {
-            candidate.flare = 1;
-            candidate.trail = [];
+      // Sample frame times after a short warm-up; degrade once if >40% slow.
+      if (!perfDone && !degraded && dt > 0 && elapsed > 0.6) {
+        perfFrames++;
+        if (dt > 1 / 45) perfSlow++;
+        if (perfFrames >= 90) {
+          perfDone = true;
+          if (perfSlow > 36) {
+            degraded = true;
+            resize();
           }
-          nextFlare = frame + 260 + Math.random() * 320;
-        }
-        for (let i = pulses.length - 1; i >= 0; i--) {
-          pulses[i].age += 0.016 * physicsStep;
-          if (pulses[i].age >= 1) pulses.splice(i, 1);
         }
       }
 
-      frame += physicsStep;
-      rafId = requestAnimationFrame(draw);
+      rafId = requestAnimationFrame(frame);
     }
 
     function stop() {
       if (rafId !== null) cancelAnimationFrame(rafId);
       rafId = null;
-      lastTimestamp = 0;
+      lastTs = 0;
     }
-
     function start() {
-      if (document.hidden || !inView) return;
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(draw);
+      if (contextLost || document.hidden || !inView) return;
+      if (rmq.matches) {
+        elapsed = 8.0; // frozen representative frame
+        render();
+        return;
+      }
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(frame);
     }
 
-    const onResize = () => resize();
-    const onRmqChange = () => {
+    const onResize = () => {
       resize();
-      frame = 0;
-      lastTimestamp = 0;
+      if (rmq.matches) render();
     };
-    const onVisibility = () => {
-      if (document.hidden) stop();
-      else start();
+    const onVisibility = () => (document.hidden ? stop() : start());
+    const onRmqChange = () => {
+      stop();
+      resize();
+      start();
     };
-    const onMouseMove = (e: MouseEvent) => {
-      if (rmq.matches) return;
-      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    const onLost = (e: Event) => {
+      e.preventDefault();
+      contextLost = true;
+      stop();
+    };
+    const onRestored = () => {
+      contextLost = false;
+      compiledSteps = -1;
+      program = null;
+      resize();
+      start();
     };
 
-    // Pause the whole render loop once the hero scrolls out of view.
     const io = new IntersectionObserver(
       (entries) => {
         inView = entries[0]?.isIntersecting ?? true;
@@ -795,8 +399,9 @@ export function SingularityCanvas() {
     );
     io.observe(canvas);
 
+    canvas.addEventListener("webglcontextlost", onLost, false);
+    canvas.addEventListener("webglcontextrestored", onRestored, false);
     window.addEventListener("resize", onResize, { passive: true });
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
     rmq.addEventListener?.("change", onRmqChange);
     document.addEventListener("visibilitychange", onVisibility);
 
@@ -806,10 +411,12 @@ export function SingularityCanvas() {
     return () => {
       stop();
       io.disconnect();
+      canvas.removeEventListener("webglcontextlost", onLost);
+      canvas.removeEventListener("webglcontextrestored", onRestored);
       window.removeEventListener("resize", onResize);
-      window.removeEventListener("mousemove", onMouseMove);
       rmq.removeEventListener?.("change", onRmqChange);
       document.removeEventListener("visibilitychange", onVisibility);
+      if (program) gl.deleteProgram(program);
     };
   }, []);
 
@@ -841,9 +448,9 @@ export function SingularityCanvas() {
         style={{
           inset: "-18%",
           background:
-            "conic-gradient(from 120deg at 50% 50%, transparent 0 18%, rgba(0,245,255,0.10), transparent 35% 58%, rgba(139,92,246,0.10), transparent 80% 100%)",
+            "conic-gradient(from 120deg at 50% 50%, transparent 0 18%, rgba(0,245,255,0.08), transparent 35% 58%, rgba(139,92,246,0.08), transparent 80% 100%)",
           filter: "blur(60px) saturate(1.15)",
-          opacity: 0.85,
+          opacity: 0.45,
           animation: "singularity-aurora 18s ease-in-out infinite alternate",
           zIndex: 1,
         }}
@@ -853,7 +460,7 @@ export function SingularityCanvas() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          opacity: 0.09,
+          opacity: 0.07,
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), " +
             "linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
@@ -869,7 +476,7 @@ export function SingularityCanvas() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at center, transparent 0 28%, rgba(0,0,0,0.22) 62%, rgba(0,0,0,0.78) 100%)",
+            "radial-gradient(circle at center, transparent 0 30%, rgba(0,0,0,0.20) 64%, rgba(0,0,0,0.74) 100%)",
           zIndex: 3,
         }}
       />
@@ -878,7 +485,7 @@ export function SingularityCanvas() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          opacity: 0.04,
+          opacity: 0.035,
           background:
             "repeating-linear-gradient(to bottom, rgba(255,255,255,0.18) 0, rgba(255,255,255,0.18) 1px, transparent 2px, transparent 7px)",
           mixBlendMode: "screen",

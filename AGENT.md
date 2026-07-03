@@ -40,6 +40,30 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-03 (Australia/Sydney) — Hero singularity: Interstellar/Gargantua hybrid (warm gold disk + cyan brand rim)
+
+- **Scope**: Re-grade the WebGL black hole toward the Interstellar "Gargantua" look while keeping the site's cyan identity (user chose the hybrid option)
+- **Summary**: Disk body re-graded to a warm Gargantua ramp (ember → amber → gold → warm white-hot; new `EMBER/AM/GOLD/HOT` constants, `VI` removed) instead of the cyan/violet disk. Kept the **cyan photon ring + cyan rim glow** as the brand signature hugging the shadow (brightened ~1.2× so it reads intentionally against the gold). Matched Nolan/Thorne's choices: dialled Doppler beaming WAY down (`clamp(1+0.28·dop, 0.68, 1.4)`) so the halo is evenly bright top/bottom, and softened turbulence for the creamy Double-Negative disk (low-contrast `mix(0.5,swirl,0.72)`). For the wrap-around halo, moved the camera nearer edge-on (`pit 0.098`, breathing ±0.035) and widened the disk (`TH 0.55→0.68`, `OUTER 11.5→12.5`, gentler edge fade). Hot-spot flare kept but subtler and warm. Void cleaned (`captured *= 0.03`). Autonomous loop, perf guard, reduced-motion, and fallbacks unchanged.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Live preview desktop + 375 mobile: warm gold Gargantua with visible cyan photon rim, even halo, clean void, 0 console errors, headline legible.
+- **Follow-ups**: Deploy when approved via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
+### Raouf: 2026-07-03 (Australia/Sydney) — Hero singularity: autonomous loop motion + eye-catching polish
+
+- **Scope**: Frontend-design audit — make the WebGL black hole self-animate (no mouse) and more jaw-dropping for recruiters/AI reviewers
+- **Summary**: Removed all mouse-driven camera parallax (dropped the `u_mouse` uniform, the `mousemove` listener, and the `mouseX/Y` lerp state) and replaced it with an autonomous cinematic camera — a slow seamless yaw sway (`sin(t·0.085)·0.34`) plus inclination breathing (`sin(t·0.125)·0.05`) so the disk turns/opens/closes on its own while the hole stays composed right-of-headline (text stays readable). Polish: a hot-spot now orbits the inner disk (`pow(max(cos(θ−t·0.55),0),48)`) as a travelling flare, the disk gained a second turbulence octave for filamentary detail, the photon ring shimmers, and a tighter hot-core bloom was added. Disk spin bumped 0.20→0.26. Reduced-motion still renders one frozen frame; perf guard / IntersectionObserver / WebGL fallback unchanged.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Live preview: two frames 2.6s apart (no mouse) differ — confirmed self-animating; 0 console errors; readable at 1280.
+- **Follow-ups**: Deploy when approved via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
+### Raouf: 2026-07-03 (Australia/Sydney) — Rewrite hero singularity as a WebGL2 raymarched black hole
+
+- **Scope**: Replace the 2D-canvas particle singularity (user: "looks cheap / scattered dots" + "motion janky") with a GPU-raymarched black hole
+- **Summary**: Searched current developer docs (dotcrossdot raymarching walkthrough, oseiskar/black-hole, ebruneton black_hole_shader, threejsroadmap WebGPU) for the technique, then wrote a single WebGL2 fragment shader (no library — honours the "no massive deps" rule). One ray per pixel is bent toward the singularity each step (conserved-angular-momentum photon deflection `accel = -1.5·h²·p/r⁵`) so the far accretion disk lenses up and over the shadow (Gargantua arch). Disk is volumetric (slab of half-thickness `TH`, front-to-back absorption) so the multiple lensed images blend instead of aliasing; graded to the site palette (amber→violet→cyan→cyan-white by heat) with relativistic Doppler beaming on the approaching limb, a photon ring at 1.5·RS, and a lensed point-star field. Captured rays are darkened to 0.05 for a clean black void. Composition is responsive (desktop: hole pushed screen-right for the headline; portrait: centred, dropped below the headline, zoomed out). Perf: internal-resolution scaling (0.7–0.8), quality tiers by width, `IntersectionObserver` + visibility pause, and a runtime FPS guard that drops one tier if the opening second runs slow. Reduced-motion renders a single frozen frame; no-WebGL2 falls back to the wrapper's CSS nebula. DOM overlays (aurora/grain/vignette/scanlines) retained at lower opacity.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx` (full rewrite), `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Live preview: 60fps desktop, 0 console errors; verified desktop (1280/1440), mobile (375) compositions and the lensed arch, clean shadow, vivid cyan disk, crisp stars.
+- **Follow-ups**: Deploy when approved via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-03 (Australia/Sydney) — Fix hero singularity opening too fast on first load
 
 - **Scope**: Bug fix — the disk looked hyper-fast for the first seconds after page load, then settled to normal speed
