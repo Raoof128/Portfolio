@@ -149,8 +149,11 @@ export function SingularityCanvas() {
 
     function makeParticle(initial = false): Particle {
       const bias = Math.random();
+      // Initial spread is linear ≈ the steady-state distribution (uniform
+      // inward drift from the outer rim). A core-biased spread front-loads
+      // the fastest inner orbits and makes the first seconds look sped-up.
       const radius = initial
-        ? CFG.horizonRadius + 28 + Math.pow(bias, 1.75) * CFG.diskRadius
+        ? CFG.horizonRadius + 24 + bias * (CFG.diskRadius + 56)
         : CFG.diskRadius + Math.random() * 80;
       return {
         radius,
@@ -242,13 +245,18 @@ export function SingularityCanvas() {
     }
 
     function updateParticle(p: Particle, step: number) {
+      // Spin-up: ease orbital motion in over the first ~3 s so the disk
+      // settles into speed instead of opening at full whip (also hides
+      // the doubled frame-steps of hydration jank on first load).
+      const warmT = clamp(frame / 180, 0, 1);
+      const warm = 0.3 + 0.7 * warmT * (2 - warmT);
       // Time dilation: infall slows and orbit whips faster near the horizon,
       // so particles appear to freeze at the edge instead of popping out.
       const over = p.radius - CFG.horizonRadius;
       const dilation = clamp(over / (CFG.horizonRadius * 1.1), 0.05, 1);
-      p.angle += p.speed * step * (1 + (1 - dilation) * 2.2);
+      p.angle += p.speed * step * warm * (1 + (1 - dilation) * 2.2);
       p.radius -=
-        0.38 * step * (0.25 + dilation * 0.75) * (p.flare > 0 ? 5.5 : 1);
+        0.38 * step * warm * (0.25 + dilation * 0.75) * (p.flare > 0 ? 5.5 : 1);
       p.yOsc += Math.sin(frame * 0.006 + p.angle) * 0.003 * step;
       if (p.radius < CFG.horizonRadius + 1.5) {
         if (p.flare > 0 && pulses.length < 4) pulses.push({ age: 0 });

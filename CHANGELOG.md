@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-03 (Australia/Sydney) — Fix hero singularity opening too fast on first load
+
+- **Scope**: Bug fix — on first load the singularity animated visibly too fast for a few seconds, then stabilised to normal speed
+- **Summary**: Two compounding causes. (1) Initial particle distribution was core-heavy: `makeParticle(initial)` used `Math.pow(bias, 1.75) * diskRadius`, skewing most first-paint particles toward small radii, where angular velocity is highest (`speed = 110/radius`, further multiplied up to ~3.2× by the time-dilation whip near the horizon). Respawned particles enter at the slow outer rim (`diskRadius + rand*80`), so as the initial inner swarm fell in and respawned outward, the disk visibly "calmed down" — the reported fast→normal transition. (2) Hydration jank amplified the effect: while the main thread stutters on load, the frame-step catch-up clamp advances physics up to 2× per rendered frame, doubling per-frame displacement and reading as frantic. Fix: initial radii now spread linearly across the disk (`horizonRadius + 24 + bias * (diskRadius + 56)`), matching the steady-state distribution of uniform inward drift; and `updateParticle` gains a spin-up ramp — an ease-out `warm` factor (0.3 → 1.0 over the first 180 physics frames ≈ 3 s) applied to both orbital and infall motion, so the disk gracefully accelerates into its normal speed and hydration-jank strobing is hidden. `frame` persists across the IntersectionObserver pause/resume, so scrolling away and back does not replay the ramp.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 static pages. Dev-server preview reload at 1280×800: first-paint particles evenly spread across the disk (no inner-core swarm), motion eases in smoothly, 0 console errors/warnings.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-07-03 (Australia/Sydney) — Hero singularity: gravitational lensing, Doppler beaming, photon ring, infall flares + perf
 
 - **Scope**: Full audit and creative rebuild of the hero landing black-hole animation (`SingularityCanvas`) — make the singularity physically breathtaking without leaving the Professional-Ops design system

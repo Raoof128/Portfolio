@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-03 (Australia/Sydney) — Fix hero singularity opening too fast on first load
+
+- **Scope**: Bug fix — the disk looked hyper-fast for the first seconds after page load, then settled to normal speed
+- **Summary**: Root cause: `makeParticle(initial)` seeded first-paint particles with `Math.pow(bias, 1.75)`, piling most of them into small radii where angular velocity (`110/radius`, plus the time-dilation whip) is highest; steady-state respawns happen at the slow outer rim, so the fast inner swarm drained away over the first seconds — hence "fast, then normal". Hydration jank amplified it (frame-step catch-up doubles per-frame displacement). Fix: initial radii now spread linearly (≈ steady-state distribution), and `updateParticle` gains a ~3 s ease-out spin-up ramp (`warm` 0.3→1.0 over 180 frames) on orbital + infall motion, which also masks jank strobing during hydration.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Dev-server preview reload: particles evenly distributed at first paint, disk eases into speed, 0 console errors.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-07-03 (Australia/Sydney) — Hero singularity: gravitational lensing, Doppler beaming, photon ring, infall flares + perf
 
 - **Scope**: Full audit + creative upgrade of the hero `SingularityCanvas` black-hole animation
