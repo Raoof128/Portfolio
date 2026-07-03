@@ -3,232 +3,232 @@
 :root {
   /* Base — near-black navy: research console */
   --background: #030712;
-  --foreground: #EAF6FF;
+  --foreground: #eaf6ff;
 
   --color-cyber-black: #010409;
-  --color-cyber-dark:  #07111F;
-  --color-cyber-gray:  #0f1f35;
+  --color-cyber-dark: #07111f;
+  --color-cyber-gray: #0f1f35;
 
   /* Accent - Primary: singularity cyan */
-  --color-cyan-DEFAULT: #00F5FF;
-  --color-cyan-glow:    #7ff9ff;
-  --color-cyan-dim:     rgba(0, 245, 255, 0.18);
+  --color-cyan-DEFAULT: #00f5ff;
+  --color-cyan-glow: #7ff9ff;
+  --color-cyan-dim: rgba(0, 245, 255, 0.18);
 
   /* Accent - Secondary: royal violet */
-  --color-purple-DEFAULT: #8B5CF6;
-  --color-purple-glow:    #a78bfa;
-  --color-purple-dim:     rgba(139, 92, 246, 0.16);
+  --color-purple-DEFAULT: #8b5cf6;
+  --color-purple-glow: #a78bfa;
+  --color-purple-dim: rgba(139, 92, 246, 0.16);
 
   /* Accent - Highlight: warm gold */
-  --color-amber-DEFAULT: #F6C85F;
-  --color-amber-glow:    #fde68a;
-  --color-amber-dim:     rgba(246, 200, 95, 0.12);
+  --color-amber-DEFAULT: #f6c85f;
+  --color-amber-glow: #fde68a;
+  --color-amber-dim: rgba(246, 200, 95, 0.12);
 
   /* Typography */
-  --text-body: #8EA3B8;
+  --text-body: #8ea3b8;
   --text-meta: rgba(0, 245, 255, 0.75);
 
   /* Glass / Surface — cyan-tinted */
-  --glass-bg:     rgba(3, 7, 18, 0.75);
+  --glass-bg: rgba(3, 7, 18, 0.75);
   --glass-border: rgba(0, 245, 255, 0.12);
-  --surface-1:    rgba(0, 245, 255, 0.04);
-  --surface-2:    rgba(0, 245, 255, 0.08);
+  --surface-1: rgba(0, 245, 255, 0.04);
+  --surface-2: rgba(0, 245, 255, 0.08);
 
   --radius: 0rem;
 }
 
 /* ── Invisible Window Research: full green palette override ── */
 [data-theme="invisible-window"] {
-  --background:            #02030a;
-  --color-cyber-dark:      #030810;
-  --color-cyber-gray:      #081018;
+  --background: #02030a;
+  --color-cyber-dark: #030810;
+  --color-cyber-gray: #081018;
 
   /* cyan → Persian Green Brilliant */
-  --color-cyan-DEFAULT:    #00A693;
-  --color-cyan-glow:       #6ffdf2;
-  --color-cyan-dim:        rgba(0, 166, 147, 0.15);
+  --color-cyan-DEFAULT: #00a693;
+  --color-cyan-glow: #6ffdf2;
+  --color-cyan-dim: rgba(0, 166, 147, 0.15);
 
   /* purple → Persian Green Moderate */
-  --color-purple-DEFAULT:  #317873;
-  --color-purple-glow:     #00A693;
-  --color-purple-dim:      rgba(49, 120, 115, 0.12);
+  --color-purple-DEFAULT: #317873;
+  --color-purple-glow: #00a693;
+  --color-purple-dim: rgba(49, 120, 115, 0.12);
 
   /* amber stays warm */
-  --color-amber-DEFAULT:   #f6d365;
-  --color-amber-glow:      #fde68a;
-  --color-amber-dim:       rgba(246, 211, 101, 0.12);
+  --color-amber-DEFAULT: #f6d365;
+  --color-amber-glow: #fde68a;
+  --color-amber-dim: rgba(246, 211, 101, 0.12);
 
-  --text-meta:             rgba(0, 166, 147, 0.8);
+  --text-meta: rgba(0, 166, 147, 0.8);
 
-  --glass-bg:              rgba(2, 3, 10, 0.75);
-  --glass-border:          rgba(0, 166, 147, 0.12);
-  --surface-1:             rgba(0, 166, 147, 0.04);
-  --surface-2:             rgba(0, 166, 147, 0.08);
+  --glass-bg: rgba(2, 3, 10, 0.75);
+  --glass-border: rgba(0, 166, 147, 0.12);
+  --surface-1: rgba(0, 166, 147, 0.04);
+  --surface-2: rgba(0, 166, 147, 0.08);
 
   scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
 }
 
 /* ── Nexus Archive: full navy-blue palette override ── */
 [data-theme="nexus-archive"] {
-  --background:            #000035;
-  --color-cyber-dark:      #00002a;
-  --color-cyber-gray:      #00004a;
+  --background: #000035;
+  --color-cyber-dark: #00002a;
+  --color-cyber-gray: #00004a;
 
   /* cyan → electric royal blue */
-  --color-cyan-DEFAULT:    #4d79ff;
-  --color-cyan-glow:       #99bbff;
-  --color-cyan-dim:        rgba(77, 121, 255, 0.15);
+  --color-cyan-DEFAULT: #4d79ff;
+  --color-cyan-glow: #99bbff;
+  --color-cyan-dim: rgba(77, 121, 255, 0.15);
 
   /* purple → deep royal */
-  --color-purple-DEFAULT:  #2244cc;
-  --color-purple-glow:     #4d79ff;
-  --color-purple-dim:      rgba(34, 68, 204, 0.12);
+  --color-purple-DEFAULT: #2244cc;
+  --color-purple-glow: #4d79ff;
+  --color-purple-dim: rgba(34, 68, 204, 0.12);
 
   /* amber → periwinkle */
-  --color-amber-DEFAULT:   #7799ff;
-  --color-amber-glow:      #aabbff;
-  --color-amber-dim:       rgba(119, 153, 255, 0.12);
+  --color-amber-DEFAULT: #7799ff;
+  --color-amber-glow: #aabbff;
+  --color-amber-dim: rgba(119, 153, 255, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(77, 121, 255, 0.8);
+  --text-meta: rgba(77, 121, 255, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(0, 0, 53, 0.75);
-  --glass-border:          rgba(77, 121, 255, 0.12);
-  --surface-1:             rgba(77, 121, 255, 0.04);
-  --surface-2:             rgba(77, 121, 255, 0.08);
+  --glass-bg: rgba(0, 0, 53, 0.75);
+  --glass-border: rgba(77, 121, 255, 0.12);
+  --surface-1: rgba(77, 121, 255, 0.04);
+  --surface-2: rgba(77, 121, 255, 0.08);
 
   scrollbar-color: rgba(77, 121, 255, 0.5) #000035;
 }
 
 /* ── Syllabus-Sync: full gold palette override ── */
 [data-theme="syllabus-sync"] {
-  --background:            #080600;
-  --color-cyber-dark:      #120e00;
-  --color-cyber-gray:      #1e1800;
+  --background: #080600;
+  --color-cyber-dark: #120e00;
+  --color-cyber-gray: #1e1800;
 
   /* cyan → gold */
-  --color-cyan-DEFAULT:    #d6b265;
-  --color-cyan-glow:       #f0c87a;
-  --color-cyan-dim:        rgba(214, 178, 101, 0.15);
+  --color-cyan-DEFAULT: #d6b265;
+  --color-cyan-glow: #f0c87a;
+  --color-cyan-dim: rgba(214, 178, 101, 0.15);
 
   /* purple → amber */
-  --color-purple-DEFAULT:  #b8952a;
-  --color-purple-glow:     #d6b265;
-  --color-purple-dim:      rgba(184, 149, 42, 0.12);
+  --color-purple-DEFAULT: #b8952a;
+  --color-purple-glow: #d6b265;
+  --color-purple-dim: rgba(184, 149, 42, 0.12);
 
   /* amber stays warm */
-  --color-amber-DEFAULT:   #e8c97a;
-  --color-amber-glow:      #f5e0a0;
-  --color-amber-dim:       rgba(232, 201, 122, 0.12);
+  --color-amber-DEFAULT: #e8c97a;
+  --color-amber-glow: #f5e0a0;
+  --color-amber-dim: rgba(232, 201, 122, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(214, 178, 101, 0.8);
+  --text-meta: rgba(214, 178, 101, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(8, 6, 0, 0.75);
-  --glass-border:          rgba(214, 178, 101, 0.12);
-  --surface-1:             rgba(214, 178, 101, 0.04);
-  --surface-2:             rgba(214, 178, 101, 0.08);
+  --glass-bg: rgba(8, 6, 0, 0.75);
+  --glass-border: rgba(214, 178, 101, 0.12);
+  --surface-1: rgba(214, 178, 101, 0.04);
+  --surface-2: rgba(214, 178, 101, 0.08);
 
   scrollbar-color: rgba(214, 178, 101, 0.5) #080600;
 }
 
 /* ── Aion: apocalyptic void + fire palette override ── */
 [data-theme="aion"] {
-  --background:            #06050a;
-  --color-cyber-dark:      #0e0b14;
-  --color-cyber-gray:      #1c1a24;
+  --background: #06050a;
+  --color-cyber-dark: #0e0b14;
+  --color-cyber-gray: #1c1a24;
 
   /* cyan → saffron vermilion red */
-  --color-cyan-DEFAULT:    #dc2626;
-  --color-cyan-glow:       #f87171;
-  --color-cyan-dim:        rgba(220, 38, 38, 0.15);
+  --color-cyan-DEFAULT: #dc2626;
+  --color-cyan-glow: #f87171;
+  --color-cyan-dim: rgba(220, 38, 38, 0.15);
 
   /* purple → amber gold */
-  --color-purple-DEFAULT:  #f59e0b;
-  --color-purple-glow:     #fcd34d;
-  --color-purple-dim:      rgba(245, 158, 11, 0.12);
+  --color-purple-DEFAULT: #f59e0b;
+  --color-purple-glow: #fcd34d;
+  --color-purple-dim: rgba(245, 158, 11, 0.12);
 
   /* amber → pale celestial */
-  --color-amber-DEFAULT:   #fbbf24;
-  --color-amber-glow:      #fde68a;
-  --color-amber-dim:       rgba(251, 191, 36, 0.12);
+  --color-amber-DEFAULT: #fbbf24;
+  --color-amber-glow: #fde68a;
+  --color-amber-dim: rgba(251, 191, 36, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(245, 158, 11, 0.8);
+  --text-meta: rgba(245, 158, 11, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(6, 5, 10, 0.85);
-  --glass-border:          rgba(220, 38, 38, 0.15);
-  --surface-1:             rgba(220, 38, 38, 0.05);
-  --surface-2:             rgba(245, 158, 11, 0.06);
+  --glass-bg: rgba(6, 5, 10, 0.85);
+  --glass-border: rgba(220, 38, 38, 0.15);
+  --surface-1: rgba(220, 38, 38, 0.05);
+  --surface-2: rgba(245, 158, 11, 0.06);
 
   scrollbar-color: rgba(220, 38, 38, 0.5) #06050a;
 }
 
 /* ── Project Zurvan: golden void palette override ── */
 [data-theme="zurvan"] {
-  --background:            #040301;
-  --color-cyber-dark:      #080502;
-  --color-cyber-gray:      #151006;
+  --background: #040301;
+  --color-cyber-dark: #080502;
+  --color-cyber-gray: #151006;
 
   /* cyan -> Zurvan gold */
-  --color-cyan-DEFAULT:    #EDAB18;
-  --color-cyan-glow:       #FFD77A;
-  --color-cyan-dim:        rgba(237, 171, 24, 0.15);
+  --color-cyan-DEFAULT: #edab18;
+  --color-cyan-glow: #ffd77a;
+  --color-cyan-dim: rgba(237, 171, 24, 0.15);
 
   /* purple -> deep bronze */
-  --color-purple-DEFAULT:  #B8790C;
-  --color-purple-glow:     #EDAB18;
-  --color-purple-dim:      rgba(184, 121, 12, 0.12);
+  --color-purple-DEFAULT: #b8790c;
+  --color-purple-glow: #edab18;
+  --color-purple-dim: rgba(184, 121, 12, 0.12);
 
   /* amber -> pale astral gold */
-  --color-amber-DEFAULT:   #F6BF45;
-  --color-amber-glow:      #FFE4A3;
-  --color-amber-dim:       rgba(246, 191, 69, 0.12);
+  --color-amber-DEFAULT: #f6bf45;
+  --color-amber-glow: #ffe4a3;
+  --color-amber-dim: rgba(246, 191, 69, 0.12);
 
-  --text-meta:             rgba(237, 171, 24, 0.8);
+  --text-meta: rgba(237, 171, 24, 0.8);
 
-  --glass-bg:              rgba(4, 3, 1, 0.82);
-  --glass-border:          rgba(237, 171, 24, 0.13);
-  --surface-1:             rgba(237, 171, 24, 0.04);
-  --surface-2:             rgba(237, 171, 24, 0.08);
+  --glass-bg: rgba(4, 3, 1, 0.82);
+  --glass-border: rgba(237, 171, 24, 0.13);
+  --surface-1: rgba(237, 171, 24, 0.04);
+  --surface-2: rgba(237, 171, 24, 0.08);
 
   scrollbar-color: rgba(237, 171, 24, 0.5) #040301;
 }
 
 /* ── SimurghForge: watercolor pond palette override ── */
 [data-theme="simurghforge"] {
-  --background:            #cbe3f0;
-  --foreground:            #0a1e2c;
-  --color-cyber-dark:      #b8d8ea;
-  --color-cyber-gray:      #a0cce0;
+  --background: #cbe3f0;
+  --foreground: #0a1e2c;
+  --color-cyber-dark: #b8d8ea;
+  --color-cyber-gray: #a0cce0;
 
   /* text body override for light bg */
-  --text-body:             #1a3a50;
-  --text-meta:             rgba(14, 64, 96, 0.7);
+  --text-body: #1a3a50;
+  --text-meta: rgba(14, 64, 96, 0.7);
 
   /* cyan → deep water (#56aed7 shows clearly on light bg) */
-  --color-cyan-DEFAULT:    #1a80b4;
-  --color-cyan-glow:       #56aed7;
-  --color-cyan-dim:        rgba(26, 128, 180, 0.15);
+  --color-cyan-DEFAULT: #1a80b4;
+  --color-cyan-glow: #56aed7;
+  --color-cyan-dim: rgba(26, 128, 180, 0.15);
 
   /* purple → teal ink */
-  --color-purple-DEFAULT:  #0e5a80;
-  --color-purple-glow:     #1a80b4;
-  --color-purple-dim:      rgba(14, 90, 128, 0.12);
+  --color-purple-DEFAULT: #0e5a80;
+  --color-purple-glow: #1a80b4;
+  --color-purple-dim: rgba(14, 90, 128, 0.12);
 
   /* amber → warm ochre */
-  --color-amber-DEFAULT:   #c17f20;
-  --color-amber-glow:      #df9f43;
-  --color-amber-dim:       rgba(193, 127, 32, 0.15);
+  --color-amber-DEFAULT: #c17f20;
+  --color-amber-glow: #df9f43;
+  --color-amber-dim: rgba(193, 127, 32, 0.15);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(203, 227, 240, 0.85);
-  --glass-border:          rgba(26, 128, 180, 0.2);
-  --surface-1:             rgba(26, 128, 180, 0.06);
-  --surface-2:             rgba(26, 128, 180, 0.12);
+  --glass-bg: rgba(203, 227, 240, 0.85);
+  --glass-border: rgba(26, 128, 180, 0.2);
+  --surface-1: rgba(26, 128, 180, 0.06);
+  --surface-2: rgba(26, 128, 180, 0.12);
 
   scrollbar-color: rgba(26, 128, 180, 0.5) #cbe3f0;
 }
@@ -255,17 +255,27 @@
 [data-theme="simurghforge"] h1,
 [data-theme="simurghforge"] h2,
 [data-theme="simurghforge"] h3,
-[data-theme="simurghforge"] h4 { color: #0a1e2c; }
+[data-theme="simurghforge"] h4 {
+  color: #0a1e2c;
+}
 
 [data-theme="simurghforge"] .text-slate-300,
 [data-theme="simurghforge"] .text-slate-400,
 [data-theme="simurghforge"] .text-slate-500,
 [data-theme="simurghforge"] .text-text-body,
-[data-theme="simurghforge"] p { color: #1a3a50; }
+[data-theme="simurghforge"] p {
+  color: #1a3a50;
+}
 
-[data-theme="simurghforge"] .text-foreground { color: #0a1e2c; }
-[data-theme="simurghforge"] li { color: #1a3a50; }
-[data-theme="simurghforge"] span { color: inherit; }
+[data-theme="simurghforge"] .text-foreground {
+  color: #0a1e2c;
+}
+[data-theme="simurghforge"] li {
+  color: #1a3a50;
+}
+[data-theme="simurghforge"] span {
+  color: inherit;
+}
 
 /* Nav + footer */
 [data-theme="simurghforge"] nav a,
@@ -274,7 +284,9 @@
 [data-theme="simurghforge"] footer,
 [data-theme="simurghforge"] footer a,
 [data-theme="simurghforge"] footer p,
-[data-theme="simurghforge"] footer span { color: #0a1e2c; }
+[data-theme="simurghforge"] footer span {
+  color: #0a1e2c;
+}
 
 /* Card / panel backgrounds: replace dark overlays with light water tints */
 [data-theme="simurghforge"] .bg-black\/40,
@@ -287,11 +299,11 @@
 
 /* Invert prose so it reads dark on light background */
 [data-theme="simurghforge"] .prose-invert {
-  --tw-prose-body:     #1a3a50;
+  --tw-prose-body: #1a3a50;
   --tw-prose-headings: #0a1e2c;
-  --tw-prose-links:    #1a80b4;
-  --tw-prose-bold:     #0a1e2c;
-  --tw-prose-code:     #0e5a80;
+  --tw-prose-links: #1a80b4;
+  --tw-prose-bold: #0a1e2c;
+  --tw-prose-code: #0e5a80;
   color: #1a3a50;
 }
 
@@ -309,202 +321,204 @@
 }
 
 /* Mono / code labels */
-[data-theme="simurghforge"] .font-mono { color: inherit; }
+[data-theme="simurghforge"] .font-mono {
+  color: inherit;
+}
 
 /* ── ECRSM: dual magenta + lime palette override ── */
 [data-theme="ecrsm"] {
-  --background:            #07030e;
-  --color-cyber-dark:      #050209;
-  --color-cyber-gray:      #120518;
+  --background: #07030e;
+  --color-cyber-dark: #050209;
+  --color-cyber-gray: #120518;
 
   /* cyan → luminous magenta */
-  --color-cyan-DEFAULT:    #d946ef;
-  --color-cyan-glow:       #f0abfc;
-  --color-cyan-dim:        rgba(217, 70, 239, 0.15);
+  --color-cyan-DEFAULT: #d946ef;
+  --color-cyan-glow: #f0abfc;
+  --color-cyan-dim: rgba(217, 70, 239, 0.15);
 
   /* purple → electric lime */
-  --color-purple-DEFAULT:  #39ff14;
-  --color-purple-glow:     #86efac;
-  --color-purple-dim:      rgba(57, 255, 20, 0.12);
+  --color-purple-DEFAULT: #39ff14;
+  --color-purple-glow: #86efac;
+  --color-purple-dim: rgba(57, 255, 20, 0.12);
 
   /* amber → soft violet */
-  --color-amber-DEFAULT:   #e879f9;
-  --color-amber-glow:      #f0abfc;
-  --color-amber-dim:       rgba(232, 121, 249, 0.12);
+  --color-amber-DEFAULT: #e879f9;
+  --color-amber-glow: #f0abfc;
+  --color-amber-dim: rgba(232, 121, 249, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(217, 70, 239, 0.8);
+  --text-meta: rgba(217, 70, 239, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(7, 3, 14, 0.75);
-  --glass-border:          rgba(217, 70, 239, 0.12);
-  --surface-1:             rgba(217, 70, 239, 0.04);
-  --surface-2:             rgba(217, 70, 239, 0.08);
+  --glass-bg: rgba(7, 3, 14, 0.75);
+  --glass-border: rgba(217, 70, 239, 0.12);
+  --surface-1: rgba(217, 70, 239, 0.04);
+  --surface-2: rgba(217, 70, 239, 0.08);
 
   scrollbar-color: rgba(217, 70, 239, 0.5) #07030e;
 }
 
 /* ── SentinelFlow: full olive palette override ── */
 [data-theme="sentinelflow"] {
-  --background:            #11150c;
-  --color-cyber-dark:      #0d1009;
-  --color-cyber-gray:      #1a2010;
+  --background: #11150c;
+  --color-cyber-dark: #0d1009;
+  --color-cyber-gray: #1a2010;
 
   /* cyan → olive drab */
-  --color-cyan-DEFAULT:    #6b8e23;
-  --color-cyan-glow:       #b2d270;
-  --color-cyan-dim:        rgba(107, 142, 35, 0.15);
+  --color-cyan-DEFAULT: #6b8e23;
+  --color-cyan-glow: #b2d270;
+  --color-cyan-dim: rgba(107, 142, 35, 0.15);
 
   /* purple → moss */
-  --color-purple-DEFAULT:  #485f18;
-  --color-purple-glow:     #6b8e23;
-  --color-purple-dim:      rgba(72, 95, 24, 0.12);
+  --color-purple-DEFAULT: #485f18;
+  --color-purple-glow: #6b8e23;
+  --color-purple-dim: rgba(72, 95, 24, 0.12);
 
   /* amber → sage */
-  --color-amber-DEFAULT:   #9ab84a;
-  --color-amber-glow:      #b2d270;
-  --color-amber-dim:       rgba(154, 184, 74, 0.12);
+  --color-amber-DEFAULT: #9ab84a;
+  --color-amber-glow: #b2d270;
+  --color-amber-dim: rgba(154, 184, 74, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(107, 142, 35, 0.8);
+  --text-meta: rgba(107, 142, 35, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(17, 21, 12, 0.75);
-  --glass-border:          rgba(107, 142, 35, 0.12);
-  --surface-1:             rgba(107, 142, 35, 0.04);
-  --surface-2:             rgba(107, 142, 35, 0.08);
+  --glass-bg: rgba(17, 21, 12, 0.75);
+  --glass-border: rgba(107, 142, 35, 0.12);
+  --surface-1: rgba(107, 142, 35, 0.04);
+  --surface-2: rgba(107, 142, 35, 0.08);
 
   scrollbar-color: rgba(107, 142, 35, 0.5) #11150c;
 }
 
 /* ── NanoMatch: full raspberry palette override ── */
 [data-theme="nanomatch"] {
-  --background:            #161115;
-  --color-cyber-dark:      #100c0f;
-  --color-cyber-gray:      #241820;
+  --background: #161115;
+  --color-cyber-dark: #100c0f;
+  --color-cyber-gray: #241820;
 
   /* cyan → deep raspberry */
-  --color-cyan-DEFAULT:    #cc1b5d;
-  --color-cyan-glow:       #ff6b9d;
-  --color-cyan-dim:        rgba(204, 27, 93, 0.15);
+  --color-cyan-DEFAULT: #cc1b5d;
+  --color-cyan-glow: #ff6b9d;
+  --color-cyan-dim: rgba(204, 27, 93, 0.15);
 
   /* purple → plum */
-  --color-purple-DEFAULT:  #a0144a;
-  --color-purple-glow:     #cc1b5d;
-  --color-purple-dim:      rgba(160, 20, 74, 0.12);
+  --color-purple-DEFAULT: #a0144a;
+  --color-purple-glow: #cc1b5d;
+  --color-purple-dim: rgba(160, 20, 74, 0.12);
 
   /* amber → frosted pink */
-  --color-amber-DEFAULT:   #ff6b9d;
-  --color-amber-glow:      #ffaacc;
-  --color-amber-dim:       rgba(255, 107, 157, 0.12);
+  --color-amber-DEFAULT: #ff6b9d;
+  --color-amber-glow: #ffaacc;
+  --color-amber-dim: rgba(255, 107, 157, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(204, 27, 93, 0.8);
+  --text-meta: rgba(204, 27, 93, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(22, 17, 21, 0.75);
-  --glass-border:          rgba(204, 27, 93, 0.12);
-  --surface-1:             rgba(204, 27, 93, 0.04);
-  --surface-2:             rgba(204, 27, 93, 0.08);
+  --glass-bg: rgba(22, 17, 21, 0.75);
+  --glass-border: rgba(204, 27, 93, 0.12);
+  --surface-1: rgba(204, 27, 93, 0.04);
+  --surface-2: rgba(204, 27, 93, 0.08);
 
   scrollbar-color: rgba(204, 27, 93, 0.5) #161115;
 }
 
 /* ── Mehr Guard: full pink/magenta palette override ── */
 [data-theme="mehr-guard"] {
-  --background:            #030308;
-  --color-cyber-dark:      #0d0310;
-  --color-cyber-gray:      #1a0520;
+  --background: #030308;
+  --color-cyber-dark: #0d0310;
+  --color-cyber-gray: #1a0520;
 
   /* cyan → hot pink / magenta */
-  --color-cyan-DEFAULT:    #FF007F;
-  --color-cyan-glow:       #ff66b2;
-  --color-cyan-dim:        rgba(255, 0, 127, 0.15);
+  --color-cyan-DEFAULT: #ff007f;
+  --color-cyan-glow: #ff66b2;
+  --color-cyan-dim: rgba(255, 0, 127, 0.15);
 
   /* purple → deep magenta */
-  --color-purple-DEFAULT:  #c2006b;
-  --color-purple-glow:     #FF007F;
-  --color-purple-dim:      rgba(194, 0, 107, 0.12);
+  --color-purple-DEFAULT: #c2006b;
+  --color-purple-glow: #ff007f;
+  --color-purple-dim: rgba(194, 0, 107, 0.12);
 
   /* amber → rose gold */
-  --color-amber-DEFAULT:   #ff6eb4;
-  --color-amber-glow:      #ffb3d9;
-  --color-amber-dim:       rgba(255, 110, 180, 0.12);
+  --color-amber-DEFAULT: #ff6eb4;
+  --color-amber-glow: #ffb3d9;
+  --color-amber-dim: rgba(255, 110, 180, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(255, 0, 127, 0.8);
+  --text-meta: rgba(255, 0, 127, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(3, 3, 8, 0.75);
-  --glass-border:          rgba(255, 0, 127, 0.12);
-  --surface-1:             rgba(255, 0, 127, 0.04);
-  --surface-2:             rgba(255, 0, 127, 0.08);
+  --glass-bg: rgba(3, 3, 8, 0.75);
+  --glass-border: rgba(255, 0, 127, 0.12);
+  --surface-1: rgba(255, 0, 127, 0.04);
+  --surface-2: rgba(255, 0, 127, 0.08);
 
   scrollbar-color: rgba(255, 0, 127, 0.5) #030308;
 }
 
 /* ── GitSwitch: full crimson palette override ── */
 [data-theme="gitswitch"] {
-  --background:            #0c0303;
-  --color-cyber-dark:      #1a0303;
-  --color-cyber-gray:      #2a0808;
+  --background: #0c0303;
+  --color-cyber-dark: #1a0303;
+  --color-cyber-gray: #2a0808;
 
   /* cyan → crimson */
-  --color-cyan-DEFAULT:    #FF4D4D;
-  --color-cyan-glow:       #FFD1D1;
-  --color-cyan-dim:        rgba(255, 77, 77, 0.15);
+  --color-cyan-DEFAULT: #ff4d4d;
+  --color-cyan-glow: #ffd1d1;
+  --color-cyan-dim: rgba(255, 77, 77, 0.15);
 
   /* purple → blood red */
-  --color-purple-DEFAULT:  #B30000;
-  --color-purple-glow:     #FF4D4D;
-  --color-purple-dim:      rgba(179, 0, 0, 0.12);
+  --color-purple-DEFAULT: #b30000;
+  --color-purple-glow: #ff4d4d;
+  --color-purple-dim: rgba(179, 0, 0, 0.12);
 
   /* amber stays warm */
-  --color-amber-DEFAULT:   #ff8c42;
-  --color-amber-glow:      #ffb380;
-  --color-amber-dim:       rgba(255, 140, 66, 0.12);
+  --color-amber-DEFAULT: #ff8c42;
+  --color-amber-glow: #ffb380;
+  --color-amber-dim: rgba(255, 140, 66, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(255, 77, 77, 0.8);
+  --text-meta: rgba(255, 77, 77, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(12, 3, 3, 0.75);
-  --glass-border:          rgba(255, 77, 77, 0.12);
-  --surface-1:             rgba(255, 77, 77, 0.04);
-  --surface-2:             rgba(255, 77, 77, 0.08);
+  --glass-bg: rgba(12, 3, 3, 0.75);
+  --glass-border: rgba(255, 77, 77, 0.12);
+  --surface-1: rgba(255, 77, 77, 0.04);
+  --surface-2: rgba(255, 77, 77, 0.08);
 
   scrollbar-color: rgba(255, 77, 77, 0.5) #0c0303;
 }
 
 /* ── Project Simurgh: full orange palette override ── */
 [data-theme="simurgh"] {
-  --background:            #070300;
-  --color-cyber-dark:      #120800;
-  --color-cyber-gray:      #1f1000;
+  --background: #070300;
+  --color-cyber-dark: #120800;
+  --color-cyber-gray: #1f1000;
 
   /* cyan → orange-400 */
-  --color-cyan-DEFAULT:    #fb923c;
-  --color-cyan-glow:       #fdba74;
-  --color-cyan-dim:        rgba(251, 146, 60, 0.15);
+  --color-cyan-DEFAULT: #fb923c;
+  --color-cyan-glow: #fdba74;
+  --color-cyan-dim: rgba(251, 146, 60, 0.15);
 
   /* purple/emerald → amber */
-  --color-purple-DEFAULT:  #f97316;
-  --color-purple-glow:     #fb923c;
-  --color-purple-dim:      rgba(249, 115, 22, 0.12);
+  --color-purple-DEFAULT: #f97316;
+  --color-purple-glow: #fb923c;
+  --color-purple-dim: rgba(249, 115, 22, 0.12);
 
   /* amber stays warm */
-  --color-amber-DEFAULT:   #fbbf24;
-  --color-amber-glow:      #fde68a;
-  --color-amber-dim:       rgba(251, 191, 36, 0.12);
+  --color-amber-DEFAULT: #fbbf24;
+  --color-amber-glow: #fde68a;
+  --color-amber-dim: rgba(251, 191, 36, 0.12);
 
   /* meta text */
-  --text-meta:             rgba(251, 146, 60, 0.8);
+  --text-meta: rgba(251, 146, 60, 0.8);
 
   /* glass / surface tokens */
-  --glass-bg:              rgba(7, 3, 0, 0.75);
-  --glass-border:          rgba(251, 146, 60, 0.12);
-  --surface-1:             rgba(251, 146, 60, 0.04);
-  --surface-2:             rgba(251, 146, 60, 0.08);
+  --glass-bg: rgba(7, 3, 0, 0.75);
+  --glass-border: rgba(251, 146, 60, 0.12);
+  --surface-1: rgba(251, 146, 60, 0.04);
+  --surface-2: rgba(251, 146, 60, 0.08);
 
   scrollbar-color: rgba(251, 146, 60, 0.5) #070300;
 }
@@ -562,7 +576,8 @@ body {
 
   .cyber-grid {
     background-size: 40px 40px;
-    background-image: linear-gradient(to right, var(--surface-2) 1px, transparent 1px),
+    background-image:
+      linear-gradient(to right, var(--surface-2) 1px, transparent 1px),
       linear-gradient(to bottom, var(--surface-2) 1px, transparent 1px);
     mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
   }
@@ -622,12 +637,13 @@ body {
     background: var(--color-cyan);
     box-shadow: 0 0 14px var(--color-cyan-dim);
   }
-
 }
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -636,8 +652,13 @@ body {
 
 /* Animations */
 @keyframes text-blink {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes scanline {
@@ -651,13 +672,18 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.4;
-    box-shadow: 0 0 8px var(--color-cyan-dim), 0 0 20px var(--color-cyan-dim);
+    box-shadow:
+      0 0 8px var(--color-cyan-dim),
+      0 0 20px var(--color-cyan-dim);
   }
   50% {
     opacity: 1;
-    box-shadow: 0 0 14px var(--color-cyan-dim), 0 0 36px var(--color-cyan-dim);
+    box-shadow:
+      0 0 14px var(--color-cyan-dim),
+      0 0 36px var(--color-cyan-dim);
   }
 }
 

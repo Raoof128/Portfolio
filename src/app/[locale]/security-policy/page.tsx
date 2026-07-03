@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SecurityPolicyClient } from "./SecurityPolicyClient";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
@@ -8,10 +9,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getDictionary(locale as Locale);
   return {
-    title: "Security Policy | Mohammad Raouf Abedini",
-    description:
-      "Security vulnerability disclosure policy and responsible disclosure guidelines.",
+    title: t.seo.security_policy_title,
+    description: t.seo.security_policy_description,
     alternates: buildAlternates("/security-policy", locale),
   };
 }

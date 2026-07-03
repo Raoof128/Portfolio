@@ -35,174 +35,15 @@ const PROFILE_PHOTO_SOURCES = [
   `${BASE_PATH}/Raouf_2.png`,
 ] as const;
 
-const specializations = [
-  {
-    icon: Shield,
-    label: "Vulnerability Research & Disclosure",
-    accent: "cyan",
-    accentClass:
-      "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
-    iconClass: "text-cyan",
-    items: [
-      "Cross-Platform Exploit Development (Win32 API, macOS ScreenCaptureKit)",
-      "Responsible Disclosure (OWASP/FIRST/CISA Frameworks)",
-      "IEEE-Format Security Research",
-      "Penetration Testing & Secure Code Review",
-      "W3C Screen Capture Specification",
-    ],
-  },
-  {
-    icon: Brain,
-    label: "AI Safety & LLM Security",
-    accent: "purple",
-    accentClass:
-      "text-purple border-purple/20 group-hover:border-purple/60 group-hover:bg-purple/5",
-    iconClass: "text-purple",
-    items: [
-      "LLM Integration & Evaluation (Anthropic)",
-      "AI-Assisted Vulnerability Research",
-      "AI Capability Uplift Measurement",
-      "Dual-Use Risk Assessment",
-      "Intent-vs-Artefact Safety Boundary Characterisation",
-    ],
-  },
-  {
-    icon: Cloud,
-    label: "Python & Systems Programming",
-    accent: "amber",
-    accentClass:
-      "text-amber border-amber/20 group-hover:border-amber/60 group-hover:bg-amber/5",
-    iconClass: "text-amber",
-    items: [
-      "Python (Primary), C, C++, TypeScript, Swift",
-      "High-Performance C/C++ Systems (1M+ ops/sec)",
-      "Network Packet Processing (libpcap)",
-      "Linux (Ubuntu/Kali), CMake, Docker",
-      "GitHub Actions CI/CD, Google Test",
-    ],
-  },
-  {
-    icon: FileCode2,
-    label: "Offensive Security",
-    accent: "cyan",
-    accentClass:
-      "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
-    iconClass: "text-cyan",
-    items: [
-      "Threat Modelling (MITRE ATT&CK, OWASP Top 10)",
-      "Network Intrusion Detection Systems",
-      "Wireshark, Nmap, Burp Suite",
-      "NLP-Powered Phishing Simulation",
-      "NIST Framework & Compliance",
-    ],
-  },
-];
-
-const skillGroups = [
-  {
-    label: "Languages",
-    skills: [
-      "Python (primary)",
-      "C",
-      "C++",
-      "TypeScript",
-      "JavaScript",
-      "Swift",
-      "Kotlin",
-      "Bash",
-      "SQL",
-      "Go (familiar)",
-    ],
-  },
-  {
-    label: "Security",
-    skills: [
-      "Vulnerability Research",
-      "Cross-Platform Exploit Development",
-      "Threat Modelling",
-      "Secure Code Review",
-      "Penetration Testing",
-      "Responsible Disclosure",
-      "Wireshark",
-      "Nmap",
-      "Burp Suite",
-    ],
-  },
-  {
-    label: "AI & ML",
-    skills: [
-      "LLM Integration & Evaluation",
-      "AI-Assisted Vulnerability Research",
-      "NLP",
-      "Generative AI Tooling",
-      "ML Model Evaluation",
-      "Dual-Use Risk Assessment",
-    ],
-  },
-  {
-    label: "Systems",
-    skills: [
-      "Linux (Ubuntu/Kali)",
-      "CMake",
-      "Docker",
-      "Git/GitHub",
-      "GitHub Actions CI/CD",
-      "Google Test",
-      "FastAPI",
-      "Cloudflare Workers",
-      "libpcap",
-    ],
-  },
-  {
-    label: "Frameworks",
-    skills: ["OWASP Top 10", "MITRE ATT&CK", "NIST", "W3C Screen Capture Spec"],
-  },
-];
-
-const activeLabs = [
-  {
-    id: "001",
-    status: "ACTIVE",
-    title: "AD Attack & Defence Lab",
-    tags: ["Purple Team", "Kerberoasting", "DC-Sync"],
-  },
-  {
-    id: "002",
-    status: "ACTIVE",
-    title: "SOC Automation Platform",
-    tags: ["SOAR", "KQL", "E8 Maturity"],
-  },
-  {
-    id: "003",
-    status: "ACTIVE",
-    title: "AI Red Team Framework",
-    tags: ["LLM", "Jailbreak", "Adversarial"],
-  },
-  {
-    id: "004",
-    status: "ACTIVE",
-    title: "ML Anomaly Detection Pipeline",
-    tags: ["Zeek", "Suricata", "Isolation Forest"],
-  },
-  {
-    id: "005",
-    status: "ARCHIVED",
-    title: "LEO Satellite Cyber Lab",
-    tags: ["Uplink Jamming", "Spoofing", "Telemetry"],
-  },
-  {
-    id: "006",
-    status: "ARCHIVED",
-    title: "Malware Analysis Sandbox",
-    tags: ["RE", "YARA", "API Hooking"],
-  },
-  {
-    id: "007",
-    status: "CONCEPT",
-    title: "PQC Migration Auditor",
-    tags: ["Post-Quantum", "Crypto Inventory"],
-  },
-];
+const activeLabTags: Record<string, string[]> = {
+  "001": ["Purple Team", "Kerberoasting", "DC-Sync"],
+  "002": ["SOAR", "KQL", "E8 Maturity"],
+  "003": ["LLM", "Jailbreak", "Adversarial"],
+  "004": ["Zeek", "Suricata", "Isolation Forest"],
+  "005": ["Uplink Jamming", "Spoofing", "Telemetry"],
+  "006": ["RE", "YARA", "API Hooking"],
+  "007": ["Post-Quantum", "Crypto Inventory"],
+};
 
 const statusStyles: Record<string, string> = {
   ACTIVE: "text-green-400 border-green-400/30 bg-green-400/5",
@@ -215,6 +56,148 @@ export function AboutClient() {
   const [photoSourceIndex, setPhotoSourceIndex] = useState(0);
   const [photoLoadFailed, setPhotoLoadFailed] = useState(false);
   const photoSource = PROFILE_PHOTO_SOURCES[photoSourceIndex];
+
+  const specializations = [
+    {
+      icon: Shield,
+      label: t.about.spec1_label,
+      accentClass:
+        "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
+      iconClass: "text-cyan",
+      items: [
+        t.about.spec1_item1,
+        t.about.spec1_item2,
+        t.about.spec1_item3,
+        t.about.spec1_item4,
+        t.about.spec1_item5,
+      ],
+    },
+    {
+      icon: Brain,
+      label: t.about.spec2_label,
+      accentClass:
+        "text-purple border-purple/20 group-hover:border-purple/60 group-hover:bg-purple/5",
+      iconClass: "text-purple",
+      items: [
+        t.about.spec2_item1,
+        t.about.spec2_item2,
+        t.about.spec2_item3,
+        t.about.spec2_item4,
+        t.about.spec2_item5,
+      ],
+    },
+    {
+      icon: Cloud,
+      label: t.about.spec3_label,
+      accentClass:
+        "text-amber border-amber/20 group-hover:border-amber/60 group-hover:bg-amber/5",
+      iconClass: "text-amber",
+      items: [
+        t.about.spec3_item1,
+        t.about.spec3_item2,
+        t.about.spec3_item3,
+        t.about.spec3_item4,
+        t.about.spec3_item5,
+      ],
+    },
+    {
+      icon: FileCode2,
+      label: t.about.spec4_label,
+      accentClass:
+        "text-cyan border-cyan/20 group-hover:border-cyan/60 group-hover:bg-cyan/5",
+      iconClass: "text-cyan",
+      items: [
+        t.about.spec4_item1,
+        t.about.spec4_item2,
+        t.about.spec4_item3,
+        t.about.spec4_item4,
+        t.about.spec4_item5,
+      ],
+    },
+  ];
+
+  const skillGroups = [
+    {
+      label: t.about.skill_group1_label,
+      skills: [
+        t.about.skill_group1_1,
+        t.about.skill_group1_2,
+        t.about.skill_group1_3,
+        t.about.skill_group1_4,
+        t.about.skill_group1_5,
+        t.about.skill_group1_6,
+        t.about.skill_group1_7,
+        t.about.skill_group1_8,
+        t.about.skill_group1_9,
+        t.about.skill_group1_10,
+      ],
+    },
+    {
+      label: t.about.skill_group2_label,
+      skills: [
+        t.about.skill_group2_1,
+        t.about.skill_group2_2,
+        t.about.skill_group2_3,
+        t.about.skill_group2_4,
+        t.about.skill_group2_5,
+        t.about.skill_group2_6,
+        t.about.skill_group2_7,
+        t.about.skill_group2_8,
+        t.about.skill_group2_9,
+      ],
+    },
+    {
+      label: t.about.skill_group3_label,
+      skills: [
+        t.about.skill_group3_1,
+        t.about.skill_group3_2,
+        t.about.skill_group3_3,
+        t.about.skill_group3_4,
+        t.about.skill_group3_5,
+        t.about.skill_group3_6,
+      ],
+    },
+    {
+      label: t.about.skill_group4_label,
+      skills: [
+        t.about.skill_group4_1,
+        t.about.skill_group4_2,
+        t.about.skill_group4_3,
+        t.about.skill_group4_4,
+        t.about.skill_group4_5,
+        t.about.skill_group4_6,
+        t.about.skill_group4_7,
+        t.about.skill_group4_8,
+        t.about.skill_group4_9,
+      ],
+    },
+    {
+      label: t.about.skill_group5_label,
+      skills: [
+        t.about.skill_group5_1,
+        t.about.skill_group5_2,
+        t.about.skill_group5_3,
+        t.about.skill_group5_4,
+      ],
+    },
+  ];
+
+  const statusLabel = (status: string) =>
+    status === "ACTIVE"
+      ? t.about.status_active
+      : status === "ARCHIVED"
+        ? t.about.status_archived
+        : t.about.status_concept;
+
+  const activeLabs = [
+    { id: "001", status: "ACTIVE", title: t.about.ops_lab1_title },
+    { id: "002", status: "ACTIVE", title: t.about.ops_lab2_title },
+    { id: "003", status: "ACTIVE", title: t.about.ops_lab3_title },
+    { id: "004", status: "ACTIVE", title: t.about.ops_lab4_title },
+    { id: "005", status: "ARCHIVED", title: t.about.ops_lab5_title },
+    { id: "006", status: "ARCHIVED", title: t.about.ops_lab6_title },
+    { id: "007", status: "CONCEPT", title: t.about.ops_lab7_title },
+  ].map((lab) => ({ ...lab, tags: activeLabTags[lab.id] }));
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -569,7 +552,7 @@ export function AboutClient() {
                 isRTL ? "mr-auto" : "ml-auto",
               )}
             >
-              THE_LAB
+              {t.lab.title}
             </span>
           </motion.div>
           <div className="space-y-1">
@@ -587,7 +570,7 @@ export function AboutClient() {
                   <span
                     className={`font-mono text-[10px] px-2 py-0.5 border uppercase tracking-widest shrink-0 ${statusStyles[lab.status]}`}
                   >
-                    {lab.status}
+                    {statusLabel(lab.status)}
                   </span>
                   <span className="text-sm text-slate-300 group-hover:text-white transition-colors font-medium truncate min-w-0">
                     {lab.title}

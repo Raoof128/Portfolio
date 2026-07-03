@@ -4,11 +4,15 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { Send, Lock, AlertTriangle } from "lucide-react";
 import { CONTACT_EMAIL } from "@/lib/constants";
+import { useTranslation } from "@/i18n/provider";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function SecureContactForm() {
-  const [status, setStatus] = useState<"IDLE" | "TYPING" | "ENCRYPTING" | "SENT" | "ERROR">("IDLE");
+  const { t } = useTranslation();
+  const [status, setStatus] = useState<
+    "IDLE" | "TYPING" | "ENCRYPTING" | "SENT" | "ERROR"
+  >("IDLE");
   const [error, setError] = useState<string | null>(null);
   const uniqueId = useId();
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -42,13 +46,13 @@ export function SecureContactForm() {
 
     if (!name || !email || !message) {
       setStatus("ERROR");
-      setError("All fields are required before transmission.");
+      setError(t.contact_form.error_required);
       return;
     }
 
     if (!EMAIL_PATTERN.test(email)) {
       setStatus("ERROR");
-      setError("Please enter a valid email address.");
+      setError(t.contact_form.error_invalid_email);
       return;
     }
 
@@ -56,10 +60,14 @@ export function SecureContactForm() {
     setError(null);
 
     const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-    const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
+    const body = encodeURIComponent(
+      `From: ${name}\nEmail: ${email}\n\n${message}`,
+    );
 
     setTimeout(() => {
-      window.location.assign(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`);
+      window.location.assign(
+        `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`,
+      );
       setStatus("SENT");
     }, 600);
   };
@@ -78,7 +86,10 @@ export function SecureContactForm() {
       />
 
       <div className="flex justify-between items-center mb-6 font-mono text-xs text-text-body">
-        <span>SESSION_ID: <span className="text-slate-300">{traceId}</span></span>
+        <span>
+          {t.contact_form.session_id_label}{" "}
+          <span className="text-slate-300">{traceId}</span>
+        </span>
         <span
           className={`flex items-center gap-2 ${
             status === "TYPING"
@@ -90,15 +101,32 @@ export function SecureContactForm() {
                   : "text-green-400"
           }`}
         >
-          {status === "TYPING" || status === "ERROR" ? <AlertTriangle className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
-          {status === "TYPING" ? "KEYLOGGING_ACTIVE..." : status === "ENCRYPTING" ? "PAYLOAD_ENCRYPTING..." : status === "SENT" ? "TRANSMISSION_COMPLETE ✓" : status === "ERROR" ? "VALIDATION_ERROR" : "CHANNEL_SECURE"}
+          {status === "TYPING" || status === "ERROR" ? (
+            <AlertTriangle className="w-3 h-3" />
+          ) : (
+            <Lock className="w-3 h-3" />
+          )}
+          {status === "TYPING"
+            ? t.contact_form.status_keylogging
+            : status === "ENCRYPTING"
+              ? t.contact_form.status_encrypting
+              : status === "SENT"
+                ? t.contact_form.status_sent
+                : status === "ERROR"
+                  ? t.contact_form.status_error
+                  : t.contact_form.status_secure}
         </span>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label htmlFor="contact-name" className="text-xs font-mono text-cyan">TARGET_ID (Name)</label>
+            <label
+              htmlFor="contact-name"
+              className="text-xs font-mono text-cyan"
+            >
+              {t.contact_form.name_label}
+            </label>
             <input
               id="contact-name"
               name="name"
@@ -106,13 +134,18 @@ export function SecureContactForm() {
               required
               maxLength={80}
               autoComplete="name"
-              placeholder="ENTER_IDENTITY"
+              placeholder={t.contact_form.name_placeholder}
               onKeyDown={handleTyping}
               className="w-full bg-[#030712]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
           <div className="space-y-1">
-            <label htmlFor="contact-email" className="text-xs font-mono text-cyan">RETURN_PATH (Email)</label>
+            <label
+              htmlFor="contact-email"
+              className="text-xs font-mono text-cyan"
+            >
+              {t.contact_form.email_label}
+            </label>
             <input
               id="contact-email"
               name="email"
@@ -120,7 +153,7 @@ export function SecureContactForm() {
               required
               maxLength={120}
               autoComplete="email"
-              placeholder="secure@gateway.io"
+              placeholder={t.contact_form.email_placeholder}
               onKeyDown={handleTyping}
               className="w-full bg-[#030712]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
@@ -128,31 +161,50 @@ export function SecureContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="contact-message" className="text-xs font-mono text-cyan">PAYLOAD (Message)</label>
+          <label
+            htmlFor="contact-message"
+            className="text-xs font-mono text-cyan"
+          >
+            {t.contact_form.message_label}
+          </label>
           <textarea
             id="contact-message"
             name="message"
             rows={4}
             required
             maxLength={2000}
-            placeholder="TRANSMITTING_ENCRYPTED_PAYLOAD..."
+            placeholder={t.contact_form.message_placeholder}
             onKeyDown={handleTyping}
             className="w-full bg-[#030712]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
           />
         </div>
 
         {error && (
-          <p role="alert" aria-live="polite" className="text-xs font-mono text-amber-400">
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-xs font-mono text-amber-400"
+          >
             {error}
           </p>
         )}
 
         <div className="flex items-center justify-between pt-2">
           <p className="text-[10px] text-text-meta font-mono">
-            * Opens your default mail client to send.
+            {t.contact_form.mail_client_note}
           </p>
-          <NeonButton type="submit" variant="primary" className="px-6" disabled={status === "ENCRYPTING" || status === "SENT"}>
-            <Send className="w-3 h-3 mr-2" /> {status === "ENCRYPTING" ? "ENCRYPTING..." : status === "SENT" ? "SENT ✓" : "TRANSMIT"}
+          <NeonButton
+            type="submit"
+            variant="primary"
+            className="px-6"
+            disabled={status === "ENCRYPTING" || status === "SENT"}
+          >
+            <Send className="w-3 h-3 mr-2" />{" "}
+            {status === "ENCRYPTING"
+              ? t.contact_form.cta_encrypting
+              : status === "SENT"
+                ? t.contact_form.cta_sent
+                : t.contact_form.cta_transmit}
           </NeonButton>
         </div>
       </form>

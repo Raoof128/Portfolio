@@ -10,8 +10,12 @@ function subscribe(cb: () => void) {
   m.addEventListener("change", cb);
   return () => m.removeEventListener("change", cb);
 }
-function getSnap() { return window.matchMedia(rmq).matches; }
-function getServer() { return false; }
+function getSnap() {
+  return window.matchMedia(rmq).matches;
+}
+function getServer() {
+  return false;
+}
 
 /* ─── Static network topology (no randomness on render) ─────────────── */
 const NODES = [
@@ -26,11 +30,17 @@ const NODES = [
 ];
 
 const EDGES: [number, number][] = [
-  [0, 1], [0, 2], [0, 3],
-  [1, 3], [1, 4],
-  [2, 5], [2, 6],
-  [3, 4], [3, 6],
-  [6, 7], [4, 7],
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [1, 3],
+  [1, 4],
+  [2, 5],
+  [2, 6],
+  [3, 4],
+  [3, 6],
+  [6, 7],
+  [4, 7],
   [5, 6],
 ];
 
@@ -89,8 +99,10 @@ export function TelemetryViz() {
           return (
             <line
               key={`${from}-${to}`}
-              x1={a.x} y1={a.y}
-              x2={b.x} y2={b.y}
+              x1={a.x}
+              y1={a.y}
+              x2={b.x}
+              y2={b.y}
               stroke={isActive ? "rgba(0,245,255,0.5)" : "rgba(0,245,255,0.08)"}
               strokeWidth={isActive ? 0.4 : 0.15}
               className="transition-all duration-500"
@@ -105,20 +117,24 @@ export function TelemetryViz() {
             <g key={node.id}>
               {/* Glow circle (always visible, subtle) */}
               <circle
-                cx={node.x} cy={node.y} r={isActive ? 2.5 : 1.2}
+                cx={node.x}
+                cy={node.y}
+                r={isActive ? 2.5 : 1.2}
                 fill="url(#node-glow)"
                 className="transition-all duration-500"
               />
               {/* Core dot */}
               <circle
-                cx={node.x} cy={node.y}
+                cx={node.x}
+                cy={node.y}
                 r={isActive ? 0.8 : 0.4}
                 fill={isActive ? "#8B5CF6" : "rgba(0,245,255,0.35)"}
                 className="transition-all duration-300"
               />
               {/* Label */}
               <text
-                x={node.x} y={node.y - 2}
+                x={node.x}
+                y={node.y - 2}
                 textAnchor="middle"
                 className="transition-all duration-300"
                 fill={isActive ? "rgba(0,245,255,0.7)" : "rgba(0,245,255,0.12)"}

@@ -53,25 +53,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = (rawLocale in locales ? rawLocale : defaultLocale) as Locale;
+  const t = await getDictionary(locale);
 
   return {
     title: {
-      default: "Mohammad Raouf Abedini | AI Security Researcher",
+      default: t.seo.home_title_default,
       template: "%s | Mohammad Raouf Abedini",
     },
-    description:
-      "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — a 12-page IEEE-format security research paper achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
+    description: t.seo.home_description,
     keywords: [
-      "AI Security Research",
-      "Vulnerability Research",
-      "Responsible Disclosure",
-      "LLM Security Evaluation",
-      "Cross-Platform Exploit Development",
+      t.seo.keyword_1,
+      t.seo.keyword_2,
+      t.seo.keyword_3,
+      t.seo.keyword_4,
+      t.seo.keyword_5,
       "Mohammad Raouf Abedini",
-      "AI Safety",
-      "Screen Capture Evasion",
-      "Offensive Security",
-      "Python Systems Programming",
+      t.seo.keyword_6,
+      t.seo.keyword_7,
+      t.seo.keyword_8,
+      t.seo.keyword_9,
       "Anthropic",
     ],
     authors: [{ name: "Mohammad Raouf Abedini", url: SITE_URL }],
@@ -89,16 +89,14 @@ export async function generateMetadata({
                 ? "es_ES"
                 : "en_AU",
       url: SITE_URL,
-      title: "Mohammad Raouf Abedini | AI Security Researcher",
-      description:
-        "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
+      title: t.seo.home_title_default,
+      description: t.seo.home_og_description,
       siteName: SITE_NAME,
     },
     twitter: {
       card: "summary_large_image",
-      title: "Mohammad Raouf Abedini | AI Security Researcher",
-      description:
-        "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
+      title: t.seo.home_title_default,
+      description: t.seo.home_og_description,
       creator: "@Raoofr12",
       site: "@Raoofr12",
     },
@@ -179,7 +177,7 @@ export default async function RootLayout({
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan focus:text-black focus:font-mono focus:text-sm"
         >
-          Skip to main content
+          {dictionary.seo.skip_to_content}
         </a>
         <GridBackground />
         <Scanline />

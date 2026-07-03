@@ -34,44 +34,81 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
     return `/${locale}${path}`;
   };
 
+  const statusLabel = (status: string) =>
+    status === "ACTIVE"
+      ? t.about.status_active
+      : status === "ARCHIVED"
+        ? t.about.status_archived
+        : t.about.status_concept;
+
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
 
-      <main className={cn("max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10", isRTL && "text-right")}>
-
+      <main
+        className={cn(
+          "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
+          isRTL && "text-right",
+        )}
+      >
         {/* Back Link */}
         <div className="mb-6">
-          <NeonButton href={getPath("/lab")} variant="outline" className="text-xs px-3 py-1">
-            <ArrowLeft className={cn("w-3 h-3", isRTL ? "ml-2 rotate-180" : "mr-2")} /> {t.lab_detail.exit}
+          <NeonButton
+            href={getPath("/lab")}
+            variant="outline"
+            className="text-xs px-3 py-1"
+          >
+            <ArrowLeft
+              className={cn("w-3 h-3", isRTL ? "ml-2 rotate-180" : "mr-2")}
+            />{" "}
+            {t.lab_detail.exit}
           </NeonButton>
         </div>
 
         {/* Layout Grid */}
         <div className="grid lg:grid-cols-12 gap-8">
-
           {/* Left Column: Info */}
-          <AnimatedSection variants={fadeInLeft} className="lg:col-span-4 space-y-6">
+          <AnimatedSection
+            variants={fadeInLeft}
+            className="lg:col-span-4 space-y-6"
+          >
             <div className="p-6 bg-[#030712]/60 border border-cyan/12 rounded-lg backdrop-blur-sm">
-              <div className="font-mono text-xs text-text-body mb-2">{t.lab_detail.experiment_id}: {exp.id}</div>
-              <h1 className="text-2xl font-bold text-white mb-4">{exp.title}</h1>
+              <div className="font-mono text-xs text-text-body mb-2">
+                {t.lab_detail.experiment_id}: {exp.id}
+              </div>
+              <h1 className="text-2xl font-bold text-white mb-4">
+                {exp.title}
+              </h1>
 
-              <div className={`inline-flex items-center gap-2 px-2 py-1 rounded border text-xs font-mono mb-6 ${
-                exp.status === "ACTIVE" ? "bg-green-500/10 text-green-400 border-green-500/30" :
-                exp.status === "CONCEPT" ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/30" :
-                "bg-cyber-gray text-text-body border-cyan/15"
-              }`}>
+              <div
+                className={`inline-flex items-center gap-2 px-2 py-1 rounded border text-xs font-mono mb-6 ${
+                  exp.status === "ACTIVE"
+                    ? "bg-green-500/10 text-green-400 border-green-500/30"
+                    : exp.status === "CONCEPT"
+                      ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
+                      : "bg-cyber-gray text-text-body border-cyan/15"
+                }`}
+              >
                 <span className="relative flex h-2 w-2">
-                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${exp.status === "ACTIVE" ? "bg-green-400" : "hidden"}`} />
-                  <span className={`relative inline-flex rounded-full h-2 w-2 ${
-                    exp.status === "ACTIVE" ? "bg-green-500" :
-                    exp.status === "CONCEPT" ? "bg-yellow-500" : "bg-text-body"
-                  }`} />
+                  <span
+                    className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${exp.status === "ACTIVE" ? "bg-green-400" : "hidden"}`}
+                  />
+                  <span
+                    className={`relative inline-flex rounded-full h-2 w-2 ${
+                      exp.status === "ACTIVE"
+                        ? "bg-green-500"
+                        : exp.status === "CONCEPT"
+                          ? "bg-yellow-500"
+                          : "bg-text-body"
+                    }`}
+                  />
                 </span>
-                {exp.status}
+                {statusLabel(exp.status)}
               </div>
 
-              <p className="text-text-body text-sm leading-relaxed mb-6">{exp.description}</p>
+              <p className="text-text-body text-sm leading-relaxed mb-6">
+                {exp.description}
+              </p>
 
               <div className="space-y-4">
                 <div>
@@ -83,7 +120,8 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
 
                 <div>
                   <div className="text-xs font-mono text-yellow-500 mb-2 flex items-center gap-2">
-                    <AlertTriangle className="w-3 h-3" /> {t.lab_detail.constraints}
+                    <AlertTriangle className="w-3 h-3" />{" "}
+                    {t.lab_detail.constraints}
                   </div>
                   <p className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10">
                     {exp.constraints}
@@ -93,8 +131,11 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
             </div>
 
             <div className="p-4 border border-dashed border-cyan/15 rounded flex flex-wrap gap-2">
-              {exp.tech.map(tech => (
-                <span key={tech} className="text-xs font-mono px-2 py-1 bg-cyan/5 text-text-body rounded flex items-center gap-1">
+              {exp.tech.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs font-mono px-2 py-1 bg-cyan/5 text-text-body rounded flex items-center gap-1"
+                >
                   <Cpu className="w-3 h-3" /> {tech}
                 </span>
               ))}
@@ -102,9 +143,12 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
           </AnimatedSection>
 
           {/* Right Column: Code Editor */}
-          <AnimatedSection variants={fadeInRight} delay={0.15} className="lg:col-span-8">
+          <AnimatedSection
+            variants={fadeInRight}
+            delay={0.15}
+            className="lg:col-span-8"
+          >
             <div className="bg-[#0d0d0d] border border-cyber-gray rounded-lg overflow-hidden font-mono text-sm shadow-2xl">
-
               {/* Fake Window Header */}
               <div className="bg-cyber-dark border-b border-cyber-gray p-3 flex items-center justify-between">
                 <div className="flex gap-2">
@@ -112,7 +156,9 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                   <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
                   <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
                 </div>
-                <div className="text-text-body text-xs">{editorFilename(exp.tech)}</div>
+                <div className="text-text-body text-xs">
+                  {editorFilename(exp.tech)}
+                </div>
                 <div className="w-10" />
               </div>
 
@@ -121,7 +167,9 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                 <pre className="text-slate-300 leading-relaxed">
                   {exp.codeSnippet.split("\n").map((line, i) => (
                     <div key={i} className="table-row">
-                      <span className="table-cell text-text-meta select-none text-right pr-4">{i + 1}</span>
+                      <span className="table-cell text-text-meta select-none text-right pr-4">
+                        {i + 1}
+                      </span>
                       <span className="table-cell whitespace-pre">{line}</span>
                     </div>
                   ))}
@@ -135,7 +183,6 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
               </div>
             </div>
           </AnimatedSection>
-
         </div>
       </main>
     </div>

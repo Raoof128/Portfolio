@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 export function WriteUpsClient() {
   const { locale, t } = useTranslation();
-  const isRTL = locale === 'fa' || locale === 'ar';
+  const isRTL = locale === "fa" || locale === "ar";
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -33,40 +33,95 @@ export function WriteUpsClient() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection variants={fadeInUp}>
           <div className="mb-12">
-            <div className={cn("flex items-center space-x-2 text-cyan mb-2", isRTL && "space-x-reverse justify-end")}>
+            <div
+              className={cn(
+                "flex items-center space-x-2 text-cyan mb-2",
+                isRTL && "space-x-reverse justify-end",
+              )}
+            >
               <Lock className="w-4 h-4" />
-              <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">{t.writeups_page.classified_archive}</span>
+              <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">
+                {t.writeups_page.classified_archive}
+              </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
               <DecryptedText text={t.writeups_page.title} />
             </h1>
             <p className="text-text-body max-w-2xl">
               {t.writeups_page.description}
-              <br/>
-              <span className="text-xs font-mono text-text-meta"> {t.writeups_page.clearance_level}</span>
+              <br />
+              <span className="text-xs font-mono text-text-meta">
+                {" "}
+                {t.writeups_page.clearance_level}
+              </span>
             </p>
           </div>
         </AnimatedSection>
 
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="space-y-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="space-y-4"
+        >
           {writeups.map((post) => (
             <motion.div key={post.slug} variants={fadeInUp}>
-              <Link href={getPath(`/write-ups/${post.slug}`)} className="block group">
-                <motion.div whileHover={{ x: isRTL ? -4 : 4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}>
+              <Link
+                href={getPath(`/write-ups/${post.slug}`)}
+                className="block group"
+              >
+                <motion.div
+                  whileHover={{ x: isRTL ? -4 : 4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
                   <HUDFrame className="p-6 bg-[#030712]/60 backdrop-blur-md hover:border-cyan/40 hover:bg-cyan/[0.04] transition-all duration-300">
-                    <div className={cn("flex flex-col md:flex-row md:items-center justify-between gap-4", isRTL && "md:flex-row-reverse")}>
+                    <div
+                      className={cn(
+                        "flex flex-col md:flex-row md:items-center justify-between gap-4",
+                        isRTL && "md:flex-row-reverse",
+                      )}
+                    >
                       <div className="space-y-2">
-                        <div className={cn("flex items-center gap-3 text-xs font-mono text-text-meta", isRTL && "flex-row-reverse")}>
+                        <div
+                          className={cn(
+                            "flex items-center gap-3 text-xs font-mono text-text-meta",
+                            isRTL && "flex-row-reverse",
+                          )}
+                        >
                           <span className="text-cyan">{post.date}</span>
                           <span className="text-cyan/30">|</span>
-                          <span className="px-1.5 py-0.5 bg-cyan/5 border border-cyan/10 text-text-meta">{post.tag}</span>
+                          <span className="px-1.5 py-0.5 bg-cyan/5 border border-cyan/10 text-text-meta">
+                            {post.tag}
+                          </span>
                         </div>
-                        <h2 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan transition-colors">{post.title}</h2>
-                        <p className="text-text-body max-w-2xl">{post.takeaway}</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan transition-colors">
+                          {post.title}
+                        </h2>
+                        <p className="text-text-body max-w-2xl">
+                          {post.takeaway}
+                        </p>
                       </div>
-                      <div className={cn("flex items-center text-text-meta group-hover:text-cyan transition-colors", isRTL && "flex-row-reverse")}>
-                        <span className={cn("text-xs font-mono hidden md:inline-block", isRTL ? "ml-2" : "mr-2")}>{t.writeups_page.read_file}</span>
-                        <ArrowRight className={cn("w-4 h-4 transform group-hover:translate-x-1 transition-transform", isRTL && "rotate-180 group-hover:-translate-x-1")} />
+                      <div
+                        className={cn(
+                          "flex items-center text-text-meta group-hover:text-cyan transition-colors",
+                          isRTL && "flex-row-reverse",
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "text-xs font-mono hidden md:inline-block",
+                            isRTL ? "ml-2" : "mr-2",
+                          )}
+                        >
+                          {t.writeups_page.read_file}
+                        </span>
+                        <ArrowRight
+                          className={cn(
+                            "w-4 h-4 transform group-hover:translate-x-1 transition-transform",
+                            isRTL && "rotate-180 group-hover:-translate-x-1",
+                          )}
+                        />
                       </div>
                     </div>
                   </HUDFrame>

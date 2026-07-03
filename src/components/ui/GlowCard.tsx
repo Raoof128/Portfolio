@@ -42,7 +42,7 @@ export function GlowCard({
         "relative border border-cyan/8 bg-[#030712]/60 backdrop-blur-sm transition-all duration-300 hover:bg-cyan/[0.04]",
         colors.border,
         colors.shadow,
-        className
+        className,
       )}
     >
       {/* Border trace beam on hover */}
@@ -50,10 +50,11 @@ export function GlowCard({
         className={cn(
           "absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none",
           "before:absolute before:inset-0 before:bg-gradient-to-r before:animate-border-trace",
-          colors.trace
+          colors.trace,
         )}
         style={{
-          maskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
+          maskImage:
+            "linear-gradient(black, black) content-box, linear-gradient(black, black)",
           maskComposite: "exclude",
           WebkitMaskComposite: "xor",
           padding: "1px",

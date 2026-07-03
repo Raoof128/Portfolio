@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
@@ -7,10 +8,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getDictionary(locale as Locale);
   return {
-    title: "Projects",
-    description:
-      "Deployed tools, research prototypes, and architectural proofs by Mohammad Raouf Abedini.",
+    title: t.seo.projects_title,
+    description: t.seo.projects_description,
     alternates: buildAlternates("/projects", locale),
   };
 }

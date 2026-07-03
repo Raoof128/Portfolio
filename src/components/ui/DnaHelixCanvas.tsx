@@ -45,7 +45,7 @@ export function DnaHelixCanvas() {
       });
 
       // base-pair rungs
-      nodes.forEach(n => {
+      nodes.forEach((n) => {
         const avgZ = (n.zA + n.zB) / 2;
         const op = 0.15 + ((avgZ + HELIX_RADIUS) / (2 * HELIX_RADIUS)) * 0.55;
         const grad = ctx!.createLinearGradient(n.xA, n.yA, n.xB, n.yB);
@@ -60,7 +60,7 @@ export function DnaHelixCanvas() {
       });
 
       // backbone nodes
-      nodes.forEach(n => {
+      nodes.forEach((n) => {
         const rA = 3 + ((n.zA + HELIX_RADIUS) / (2 * HELIX_RADIUS)) * 5;
         const rB = 3 + ((n.zB + HELIX_RADIUS) / (2 * HELIX_RADIUS)) * 5;
         const opA = 0.3 + ((n.zA + HELIX_RADIUS) / (2 * HELIX_RADIUS)) * 0.7;
@@ -111,7 +111,10 @@ export function DnaHelixCanvas() {
   }, [animate]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ background: "#030308" }}>
+    <div
+      className="w-full h-full flex items-center justify-center"
+      style={{ background: "#030308" }}
+    >
       <canvas
         ref={canvasRef}
         width={W}

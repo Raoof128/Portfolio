@@ -1,4 +1,52 @@
 const en = {
+  seo: {
+    skip_to_content: "Skip to main content",
+    home_title_default: "Mohammad Raouf Abedini | AI Security Researcher",
+    home_description:
+      "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — a 12-page IEEE-format security research paper achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
+    home_og_description:
+      "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
+    keyword_1: "AI Security Research",
+    keyword_2: "Vulnerability Research",
+    keyword_3: "Responsible Disclosure",
+    keyword_4: "LLM Security Evaluation",
+    keyword_5: "Cross-Platform Exploit Development",
+    keyword_6: "AI Safety",
+    keyword_7: "Screen Capture Evasion",
+    keyword_8: "Offensive Security",
+    keyword_9: "Python Systems Programming",
+    about_title: "About",
+    about_description:
+      "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development. Anthropic AI model evaluator.",
+    about_og_description:
+      "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development.",
+    contact_title: "Contact | Mohammad Raouf Abedini",
+    contact_description:
+      "Get in touch with Mohammad Raouf Abedini. Open a secure communication channel for cybersecurity consultations, collaborations, or inquiries.",
+    lab_title: "Lab",
+    lab_description:
+      "Experimental code, PoCs, and cybersecurity research snippets.",
+    resume_title: "Resume",
+    resume_description:
+      "Resume of Mohammad Raouf Abedini — AI Security Researcher, Vulnerability Research, Offensive Security, Python & Systems Programming.",
+    resume_og_description:
+      "Resume of Mohammad Raouf Abedini — AI Security Researcher, Vulnerability Research, Offensive Security.",
+    security_policy_title: "Security Policy | Mohammad Raouf Abedini",
+    security_policy_description:
+      "Security vulnerability disclosure policy and responsible disclosure guidelines.",
+    hall_of_fame_title: "Hall of Fame | Mohammad Raouf Abedini",
+    hall_of_fame_description:
+      "Security researchers who have responsibly disclosed vulnerabilities in my projects.",
+    write_ups_title: "Write-ups",
+    write_ups_description:
+      "Security research, CTF walkthroughs, and technical articles.",
+    projects_title: "Projects",
+    projects_description:
+      "Deployed tools, research prototypes, and architectural proofs by Mohammad Raouf Abedini.",
+    not_found_title: "Not Found",
+    project_not_found_title: "Project Not Found",
+    project_not_found_description: "The requested project does not exist.",
+  },
   nav: {
     home: "Home",
     about: "/about",
@@ -7,6 +55,9 @@ const en = {
     writeups: "/write-ups",
     resume: "/resume",
     contact: "Contact",
+    open_menu: "Open navigation menu",
+    close_menu: "Close navigation menu",
+    mobile_nav_label: "Mobile navigation",
   },
   hero: {
     system_online: "System Online · Castle Hill, NSW",
@@ -31,6 +82,12 @@ const en = {
     secure_title: "SECURE",
     secure_body:
       "Defensive applications that reduce real-world risk. Cross-platform exploit development informs better defences — offensive knowledge applied to protective systems.",
+    research_bullet_1: "Vulnerability Research & Disclosure",
+    research_bullet_2: "AI Safety & LLM Evaluation",
+    research_bullet_3: "Dual-Use Risk Assessment",
+    secure_bullet_1: "Cross-Platform Exploit Development",
+    secure_bullet_2: "Responsible Disclosure (OWASP/FIRST/CISA)",
+    secure_bullet_3: "Defensive Applications",
   },
   lab: {
     title: "THE_LAB",
@@ -40,6 +97,38 @@ const en = {
     enter_lab: "ENTER_LAB",
     disclaimer:
       "For defensive research only. No credential capture. No persistence. No deployment guidance.",
+    chip_1: "Vulnerability Research",
+    chip_2: "AI Safety",
+    chip_3: "Exploit Development",
+    chip_4: "Responsible Disclosure",
+  },
+  home: {
+    ticker: [
+      "SYSTEM ONLINE",
+      "AI SECURITY RESEARCH",
+      "VULNERABILITY RESEARCH",
+      "RESPONSIBLE DISCLOSURE",
+      "CROSS-PLATFORM EXPLOIT DEVELOPMENT",
+      "LLM SECURITY EVALUATION",
+      "AI SAFETY",
+      "ANTHROPIC AI EVALUATOR",
+      "PYTHON & SYSTEMS PROGRAMMING",
+      "REDUCING CATASTROPHIC AI RISKS",
+      "THE INVISIBLE WINDOW",
+      "70+ PROJECTS SHIPPED",
+      "OFFENSIVE SECURITY",
+      "DUAL-USE RISK ASSESSMENT",
+      "CASTLE HILL · NSW · AU",
+    ],
+    deployed_systems: "Deployed Systems",
+    ieee_format_paper: "IEEE-FORMAT PAPER",
+    connected_to_invisible_window: "CONNECTED TO INVISIBLE WINDOW",
+    local_first_mcp: "LOCAL-FIRST · MCP AGENT MEMORY",
+    scroll: "Scroll",
+    view_prefix: "View",
+    category_defensive: "DEFENSIVE",
+    category_offensive: "OFFENSIVE",
+    category_engineering: "ENGINEERING",
   },
   writeups: {
     title: "Write-ups",
@@ -95,6 +184,84 @@ const en = {
       "Digital Forensics · Network Security · Cloud Computing · NLP & ML · Offensive Security · Applied Cryptography",
     degree_diploma_desc:
       "Foundations in systems, networking, and software engineering.",
+    spec1_label: "Vulnerability Research & Disclosure",
+    spec1_item1:
+      "Cross-Platform Exploit Development (Win32 API, macOS ScreenCaptureKit)",
+    spec1_item2: "Responsible Disclosure (OWASP/FIRST/CISA Frameworks)",
+    spec1_item3: "IEEE-Format Security Research",
+    spec1_item4: "Penetration Testing & Secure Code Review",
+    spec1_item5: "W3C Screen Capture Specification",
+    spec2_label: "AI Safety & LLM Security",
+    spec2_item1: "LLM Integration & Evaluation (Anthropic)",
+    spec2_item2: "AI-Assisted Vulnerability Research",
+    spec2_item3: "AI Capability Uplift Measurement",
+    spec2_item4: "Dual-Use Risk Assessment",
+    spec2_item5: "Intent-vs-Artefact Safety Boundary Characterisation",
+    spec3_label: "Python & Systems Programming",
+    spec3_item1: "Python (Primary), C, C++, TypeScript, Swift",
+    spec3_item2: "High-Performance C/C++ Systems (1M+ ops/sec)",
+    spec3_item3: "Network Packet Processing (libpcap)",
+    spec3_item4: "Linux (Ubuntu/Kali), CMake, Docker",
+    spec3_item5: "GitHub Actions CI/CD, Google Test",
+    spec4_label: "Offensive Security",
+    spec4_item1: "Threat Modelling (MITRE ATT&CK, OWASP Top 10)",
+    spec4_item2: "Network Intrusion Detection Systems",
+    spec4_item3: "Wireshark, Nmap, Burp Suite",
+    spec4_item4: "NLP-Powered Phishing Simulation",
+    spec4_item5: "NIST Framework & Compliance",
+    skill_group1_label: "Languages",
+    skill_group1_1: "Python (primary)",
+    skill_group1_2: "C",
+    skill_group1_3: "C++",
+    skill_group1_4: "TypeScript",
+    skill_group1_5: "JavaScript",
+    skill_group1_6: "Swift",
+    skill_group1_7: "Kotlin",
+    skill_group1_8: "Bash",
+    skill_group1_9: "SQL",
+    skill_group1_10: "Go (familiar)",
+    skill_group2_label: "Security",
+    skill_group2_1: "Vulnerability Research",
+    skill_group2_2: "Cross-Platform Exploit Development",
+    skill_group2_3: "Threat Modelling",
+    skill_group2_4: "Secure Code Review",
+    skill_group2_5: "Penetration Testing",
+    skill_group2_6: "Responsible Disclosure",
+    skill_group2_7: "Wireshark",
+    skill_group2_8: "Nmap",
+    skill_group2_9: "Burp Suite",
+    skill_group3_label: "AI & ML",
+    skill_group3_1: "LLM Integration & Evaluation",
+    skill_group3_2: "AI-Assisted Vulnerability Research",
+    skill_group3_3: "NLP",
+    skill_group3_4: "Generative AI Tooling",
+    skill_group3_5: "ML Model Evaluation",
+    skill_group3_6: "Dual-Use Risk Assessment",
+    skill_group4_label: "Systems",
+    skill_group4_1: "Linux (Ubuntu/Kali)",
+    skill_group4_2: "CMake",
+    skill_group4_3: "Docker",
+    skill_group4_4: "Git/GitHub",
+    skill_group4_5: "GitHub Actions CI/CD",
+    skill_group4_6: "Google Test",
+    skill_group4_7: "FastAPI",
+    skill_group4_8: "Cloudflare Workers",
+    skill_group4_9: "libpcap",
+    skill_group5_label: "Frameworks",
+    skill_group5_1: "OWASP Top 10",
+    skill_group5_2: "MITRE ATT&CK",
+    skill_group5_3: "NIST",
+    skill_group5_4: "W3C Screen Capture Spec",
+    status_active: "ACTIVE",
+    status_archived: "ARCHIVED",
+    status_concept: "CONCEPT",
+    ops_lab1_title: "AD Attack & Defence Lab",
+    ops_lab2_title: "SOC Automation Platform",
+    ops_lab3_title: "AI Red Team Framework",
+    ops_lab4_title: "ML Anomaly Detection Pipeline",
+    ops_lab5_title: "LEO Satellite Cyber Lab",
+    ops_lab6_title: "Malware Analysis Sandbox",
+    ops_lab7_title: "PQC Migration Auditor",
   },
   contact: {
     title_1: "Open",
@@ -112,6 +279,7 @@ const en = {
     view_analysis: "VIEW_ANALYSIS",
     more_on_github: "View more on GitHub",
     risk_disclaimer: "USE_CODE_AT_OWN_RISK",
+    id_label: "ID:",
   },
   writeups_page: {
     classified_archive: "Classified Archive",
@@ -132,11 +300,111 @@ const en = {
     title: "Resume",
     download: "Download Resume",
   },
+  resume: {
+    tagline:
+      "AI Security Researcher · Vulnerability Research · Offensive Security · Python & Systems Programming",
+    location: "Castle Hill, Sydney, NSW, Australia",
+    linkedin_profile: "LinkedIn Profile",
+    orcid_id: "ORCID iD",
+    s01_heading: "About",
+    s01_bio:
+      "AI security researcher and Cyber Security graduate from Macquarie University, available now, with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored “The Invisible Window” — a 12-page IEEE-format security research paper demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14–26 using documented OS-level APIs. Recent research also includes Project Simurgh privacy-preserving integrity evidence (DOI: 10.5281/zenodo.20549736) and Aion-BibleQA citation-faithfulness evaluation for Bible RAG systems (DOI: 10.5281/zenodo.20522874). Completed AI model evaluation for Anthropic (Claude Code Human Preference), benchmarking LLM code outputs for quality, security, and reliability.",
+    s02_heading: "Security Research",
+    s02_tech_stack: "C, Swift, Python, Win32 API, ScreenCaptureKit, WebRTC",
+    s02_subtitle:
+      "Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+    s02_bullet1:
+      "Discovered and formalised a cross-platform trust boundary violation between the W3C Screen Capture API and the OS compositing pipeline — achieving 100% evasion across all tested platforms with zero visual artefacts over 10,000+ analysed frames",
+    s02_bullet2:
+      "Uncovered a novel empirical finding on macOS 26.3.1: Apple's documented ScreenCaptureKit mitigation (macOS 15) remains ineffective — contradicting prevailing community and vendor assumptions through pixel-level forensic verification",
+    s02_bullet3:
+      "Executed coordinated responsible disclosure to three proctoring vendors (ProctorU, Proctorio, Respondus) and two OS vendors (Microsoft, Apple) following OWASP/FIRST/CISA disclosure frameworks within a 90-day window",
+    s02_bullet4:
+      "Documented measurable AI capability uplift: a single researcher with introductory security knowledge used Claude Opus 4.6 to produce validated cross-platform PoCs in a single research session — the model independently identified the operationally critical distinction between WDA_MONITOR and WDA_EXCLUDEFROMCAPTURE from API documentation",
+    s02_bullet5:
+      "Characterised intent-vs-artefact safety boundary: model correctly distinguished research intent from misuse intent at the prompt level, but resulting artefacts (working PoC code) are transferable regardless of framing — a finding directly relevant to ASL threshold calibration",
+    s03_heading: "Technical Proficiencies",
+    s03_cat1_label: "Languages",
+    s03_cat1_desc:
+      "Python (primary), C, C++, TypeScript, JavaScript, Swift, Kotlin, Bash, SQL, Go (familiar)",
+    s03_cat2_label: "Security & Offensive",
+    s03_cat2_desc:
+      "Vulnerability research, cross-platform exploit development (Win32 API, macOS ScreenCaptureKit), threat modelling, secure code review, penetration testing, responsible disclosure (OWASP/FIRST/CISA), Wireshark, Nmap, Burp Suite",
+    s03_cat3_label: "AI & ML",
+    s03_cat3_desc:
+      "Large Language Model (LLM) integration & evaluation, Retrieval-Augmented Generation (RAG) evaluation, citation-faithfulness benchmarking, AI-assisted vulnerability research, Natural Language Processing (NLP), generative AI tooling, ML model evaluation, dual-use risk assessment",
+    s03_cat4_label: "Systems & Tools",
+    s03_cat4_desc:
+      "Linux (Ubuntu/Kali), CMake, Docker, Git/GitHub, GitHub Actions CI/CD, Google Test, FastAPI, Cloudflare Workers, libpcap",
+    s03_cat5_label: "Frameworks",
+    s03_cat5_desc:
+      "Open Web Application Security Project (OWASP) Top 10, MITRE ATT&CK, National Institute of Standards and Technology (NIST) Framework, W3C Screen Capture Specification",
+    s04_heading: "Education",
+    s04_coursework_label: "Coursework:",
+    s04_coursework:
+      "Digital Forensics, Network Security, Systems Security, Cloud Computing, Natural Language Processing (NLP) & Machine Learning, Privacy-Preserving Data Analysis",
+    s05_heading: "Selected Research & Engineering Projects",
+    proj1_tag: "INTEGRITY",
+    proj1_stack:
+      "Node.js · Express · Browser Telemetry · HMAC Audit Chain · Privacy Engineering",
+    proj1_desc:
+      "Built zero-trust integrity API and published privacy-preserving device-integrity preprint plus Phase C voting-adjacent supplement at Macquarie University — 31 consented sessions, structural ballot-choice exclusion, HMAC-SHA-256 audit chain, and 5/5 collection-closure gates. DOI: 10.5281/zenodo.20549736.",
+    proj2_tag: "BIBLE RAG",
+    proj2_stack:
+      "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
+    proj2_desc:
+      "Built AI-powered Bible companion and authored Aion-BibleQA, an 8-page preprint introducing a 40-question benchmark for citation faithfulness and false-premise robustness — R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.",
+    proj3_tag: "SYSTEMS",
+    proj3_stack: "C++20 · CMake · Google Test",
+    proj3_desc:
+      "Engineered high-performance matching engine processing 1M+ orders/second with sub-microsecond latency — implemented red-black tree price levels, custom memory pool allocator, and comprehensive test suite with p50/p99 latency benchmarks.",
+    proj4_tag: "IDS",
+    proj4_stack: "C++17 · libpcap · CMake · Google Test · Linux",
+    proj4_desc:
+      "Built real-time network packet processing engine parsing 500K+ packets/second — protocol dissection (Ethernet/IPv4/TCP/UDP/ICMP/DNS), signature-based detection engine, and stateful analysis (port scans, SYN floods).",
+    proj5_tag: "FULL-STACK",
+    proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
+    proj5_desc:
+      "Shipped full-stack data platform with AI recommendation engine, event-driven API design, rate limiting, and automated security scanning — end-to-end ownership from database schema to deployment infrastructure.",
+    proj6_tag: "KOTLINCONF",
+    proj6_stack: "Kotlin Multiplatform · Local ML · Android & iOS",
+    proj6_desc:
+      "Built cross-platform offline threat detection tool with local ML-based classification — submitted to KotlinConf global developer conference.",
+    s05_more_projects:
+      "70+ additional public projects on GitHub covering vulnerability research, systems programming, AI/ML tooling, and cloud infrastructure:",
+    s06_heading: "Professional Experience",
+    exp1_title: "Freelance Full-Stack Developer & Security Engineer",
+    exp1_employer: "Self-Employed · Jan 2024 – Present",
+    exp1_bullet1:
+      "Architected production web applications with security-first design for multiple clients using Python, TypeScript, and Cloudflare Workers — serving 1,000+ end users with zero-downtime operation",
+    exp1_bullet2:
+      "Engineered CI/CD pipelines and automated test suites (500+ tests across 35 locales) via GitHub Actions — reducing deployment failures by approximately 40% through systematic quality assurance",
+    exp1_bullet3:
+      "Integrated LLM capabilities into client applications, building AI-powered automation tools that empowered non-technical users to manage content workflows independently",
+    exp2_title: "IT Manager",
+    exp2_employer: "Iran Pharmacy · Aug 2019 – May 2024",
+    exp2_bullet1:
+      "Managed technology infrastructure across a multi-site organisation for 5 years — maintaining 99% system uptime, enforcing role-based access control (RBAC), and automating operational workflows via Python/Bash scripting (~30% reduction in manual tasks)",
+    s07_heading: "AI Safety & Community",
+    s07_bullet1:
+      "Completed AI model evaluation for Anthropic (Claude Code Human Preference) — benchmarked LLM code outputs across multiple codebases for quality, security, correctness, and reliability",
+    s07_bullet2:
+      "Proposed three concrete research directions to Anthropic's Fellows team: systematic uplift measurement across vulnerability classes, intent-vs-artefact safety boundary generalisation testing, and defensive application development — all building on empirical findings from the Invisible Window case study",
+    s07_bullet3:
+      "Mentored peers in cybersecurity, C/C++ programming, and systems-level problem-solving at Macquarie University — collaborative technical guidance across coursework, lab environments, and secure coding practices",
+    s08_heading: "Additional Information",
+    s08_available: "Available now for full-time roles and fellowships",
+    s08_languages:
+      "English (Professional Working) · Persian (Native) · Japanese (Elementary)",
+  },
   not_found: {
     description:
       "The requested signal path could not be resolved. The resource may have been moved, deleted, or classified.",
     return_home: "RETURN_HOME",
     browse_projects: "BROWSE_PROJECTS",
+    error_code: "ERROR_CODE: PAGE_NOT_FOUND",
+    terminal_ping_unknown: "ping: unknown host",
+    terminal_trace_failed: "Trace failed. Destination unreachable.",
   },
   lab_detail: {
     exit: "EXIT_EXPERIMENT",
@@ -162,6 +430,10 @@ const en = {
     papers: "Papers",
     open_record: "Open Record",
     doi_record: "DOI Record",
+    demo: "Demo",
+    read_preprint: "Read the preprint",
+    doi_short: "DOI",
+    cite_this_work: "Cite this work",
   },
   writeups_detail: {
     end_transmission: "END_OF_TRANSMISSION",
@@ -187,6 +459,37 @@ const en = {
     criteria_4: "Not publicly disclose the vulnerability before coordination",
     bounty_note:
       "This is a personal portfolio project. While I deeply appreciate security research efforts, no monetary bounties are offered. Recognition in this Hall of Fame is the primary acknowledgment for valid reports.",
+    note_label: "Note:",
+  },
+  project_card: {
+    module_title: "PROJECT_MODULE",
+    featured_op: "FEATURED_OP",
+    build_tab: "BUILD",
+    secure_tab: "SECURE",
+    tab_details_aria: "Project Details",
+    watch_demo: "WATCH DEMO",
+    repo: "REPO",
+    read_case_study: "READ CASE STUDY",
+  },
+  contact_form: {
+    session_id_label: "SESSION_ID:",
+    status_keylogging: "KEYLOGGING_ACTIVE...",
+    status_encrypting: "PAYLOAD_ENCRYPTING...",
+    status_sent: "TRANSMISSION_COMPLETE ✓",
+    status_error: "VALIDATION_ERROR",
+    status_secure: "CHANNEL_SECURE",
+    name_label: "TARGET_ID (Name)",
+    name_placeholder: "ENTER_IDENTITY",
+    email_label: "RETURN_PATH (Email)",
+    email_placeholder: "secure@gateway.io",
+    message_label: "PAYLOAD (Message)",
+    message_placeholder: "TRANSMITTING_ENCRYPTED_PAYLOAD...",
+    error_required: "All fields are required before transmission.",
+    error_invalid_email: "Please enter a valid email address.",
+    mail_client_note: "* Opens your default mail client to send.",
+    cta_transmit: "TRANSMIT",
+    cta_encrypting: "ENCRYPTING...",
+    cta_sent: "SENT ✓",
   },
   security_policy: {
     title: "Security Policy",

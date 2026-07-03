@@ -20,7 +20,10 @@ export function LanguageSwitcher() {
   // Close when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     }
@@ -57,12 +60,18 @@ export function LanguageSwitcher() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-4 py-2 text-xs font-mono transition-colors hover:bg-cyan/10",
-                    currentLocale === locale ? "text-cyan bg-cyan/5" : "text-text-body hover:text-white"
+                    currentLocale === locale
+                      ? "text-cyan bg-cyan/5"
+                      : "text-text-body hover:text-white",
                   )}
                 >
                   <div className="flex items-center justify-between w-full">
                     <span>{locales[locale].label}</span>
-                    {currentLocale === locale && <span className="text-[8px] opacity-50">{t.common.language_selected}</span>}
+                    {currentLocale === locale && (
+                      <span className="text-[8px] opacity-50">
+                        {t.common.language_selected}
+                      </span>
+                    )}
                   </div>
                 </Link>
               ))}

@@ -325,7 +325,8 @@ export function ProjectDetailClient({
     <>
       {project.links.demo && (
         <NeonButton href={project.links.demo} external>
-          <Play size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Demo
+          <Play size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
+          {dictionary.project_detail.demo}
         </NeonButton>
       )}
       {project.links.repo && (
@@ -336,13 +337,14 @@ export function ProjectDetailClient({
       )}
       {project.links.preprint && !isPS && (
         <NeonButton href={project.links.preprint} external>
-          <BookOpen size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> Read
-          the preprint
+          <BookOpen size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
+          {dictionary.project_detail.read_preprint}
         </NeonButton>
       )}
       {project.links.doi && (
         <NeonButton href={project.links.doi} variant="outline" external>
-          <ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} /> DOI
+          <ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
+          {dictionary.project_detail.doi_short}
         </NeonButton>
       )}
     </>
@@ -1313,7 +1315,7 @@ export function ProjectDetailClient({
                               {paper.year && <span>{paper.year}</span>}
                               {paper.doi && (
                                 <span className="break-all">
-                                  DOI {paper.doi}
+                                  {t.project_detail.doi_short} {paper.doi}
                                 </span>
                               )}
                             </div>
@@ -1409,7 +1411,7 @@ export function ProjectDetailClient({
                         rel="noopener noreferrer"
                         className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}
                       >
-                        Read the preprint{" "}
+                        {t.project_detail.read_preprint}{" "}
                         <BookOpen
                           size={14}
                           className={cn(isRTL && "order-first")}
@@ -1439,7 +1441,7 @@ export function ProjectDetailClient({
                   suppressHydrationWarning
                 >
                   <p className="font-mono text-xs uppercase tracking-widest text-text-body mb-3 flex items-center gap-2">
-                    <Quote size={12} /> Cite this work
+                    <Quote size={12} /> {t.project_detail.cite_this_work}
                   </p>
                   <p className="text-xs text-slate-400 leading-relaxed font-mono break-all">
                     {project.citation}

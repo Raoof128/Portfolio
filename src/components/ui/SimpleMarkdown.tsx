@@ -15,9 +15,20 @@ function renderInline(text: string): React.ReactNode[] {
       parts.push(text.slice(lastIndex, match.index));
     }
     if (match[2]) {
-      parts.push(<strong key={match.index} className="text-white font-semibold">{match[2]}</strong>);
+      parts.push(
+        <strong key={match.index} className="text-white font-semibold">
+          {match[2]}
+        </strong>,
+      );
     } else if (match[4]) {
-      parts.push(<code key={match.index} className="text-cyan bg-cyan/10 px-1.5 py-0.5 rounded text-sm font-mono break-words">{match[4]}</code>);
+      parts.push(
+        <code
+          key={match.index}
+          className="text-cyan bg-cyan/10 px-1.5 py-0.5 rounded text-sm font-mono break-words"
+        >
+          {match[4]}
+        </code>,
+      );
     }
     lastIndex = regex.lastIndex;
   }
@@ -68,7 +79,10 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
       // Skip closing fence
       if (i < lines.length) i++;
       elements.push(
-        <div key={`code-${i}`} className="my-4 border border-cyan/15 bg-[#0a0e17] overflow-hidden">
+        <div
+          key={`code-${i}`}
+          className="my-4 border border-cyan/15 bg-[#0a0e17] overflow-hidden"
+        >
           {lang && (
             <div className="px-3 py-1.5 border-b border-cyan/10 bg-cyan/[0.03] font-mono text-[10px] text-cyan/70 uppercase tracking-widest">
               {lang}
@@ -79,7 +93,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
               <code>{codeLines.join("\n")}</code>
             </pre>
           </div>
-        </div>
+        </div>,
       );
       continue;
     }
@@ -87,7 +101,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     // Horizontal rule: --- or ***
     if (/^-{3,}$/.test(trimmed) || /^\*{3,}$/.test(trimmed)) {
       elements.push(
-        <hr key={`hr-${i}`} className="my-8 border-t border-cyan/15" />
+        <hr key={`hr-${i}`} className="my-8 border-t border-cyan/15" />,
       );
       i++;
       continue;
@@ -112,7 +126,10 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
             <thead className="bg-cyan/5">
               <tr>
                 {headers.map((h, hi) => (
-                  <th key={hi} className="px-3 py-2 text-left font-mono text-xs text-cyan font-semibold border-b border-cyan/15">
+                  <th
+                    key={hi}
+                    className="px-3 py-2 text-left font-mono text-xs text-cyan font-semibold border-b border-cyan/15"
+                  >
                     {renderInline(h)}
                   </th>
                 ))}
@@ -120,7 +137,10 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
             </thead>
             <tbody>
               {rows.map((row, ri) => (
-                <tr key={ri} className="border-b border-cyan/8 hover:bg-cyan/[0.03]">
+                <tr
+                  key={ri}
+                  className="border-b border-cyan/8 hover:bg-cyan/[0.03]"
+                >
                   {row.map((cell, ci) => (
                     <td key={ci} className="px-3 py-2 text-slate-300 align-top">
                       {renderInline(cell)}
@@ -130,7 +150,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
               ))}
             </tbody>
           </table>
-        </div>
+        </div>,
       );
       continue;
     }
@@ -138,9 +158,12 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     // H3: ###
     if (trimmed.startsWith("### ")) {
       elements.push(
-        <h3 key={i} className="text-lg sm:text-xl font-bold text-white mt-8 mb-3 font-mono">
+        <h3
+          key={i}
+          className="text-lg sm:text-xl font-bold text-white mt-8 mb-3 font-mono"
+        >
           {renderInline(trimmed.slice(4))}
-        </h3>
+        </h3>,
       );
       i++;
       continue;
@@ -149,9 +172,12 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     // H2: ##
     if (trimmed.startsWith("## ")) {
       elements.push(
-        <h2 key={i} className="text-xl sm:text-2xl font-bold text-white mt-10 mb-4 font-mono border-b border-cyan/12 pb-2">
+        <h2
+          key={i}
+          className="text-xl sm:text-2xl font-bold text-white mt-10 mb-4 font-mono border-b border-cyan/12 pb-2"
+        >
           {renderInline(trimmed.slice(3))}
-        </h2>
+        </h2>,
       );
       i++;
       continue;
@@ -165,11 +191,16 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
         i++;
       }
       elements.push(
-        <blockquote key={`bq-${i}`} className="my-4 border-l-2 border-cyan/50 pl-4 italic text-text-body">
+        <blockquote
+          key={`bq-${i}`}
+          className="my-4 border-l-2 border-cyan/50 pl-4 italic text-text-body"
+        >
           {quoteLines.map((ql, qi) => (
-            <p key={qi} className="my-1">{renderInline(ql)}</p>
+            <p key={qi} className="my-1">
+              {renderInline(ql)}
+            </p>
           ))}
-        </blockquote>
+        </blockquote>,
       );
       continue;
     }
@@ -182,15 +213,17 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
         items.push(
           <li key={i} className="flex items-start gap-2 text-slate-300">
             <span className="text-cyan mt-1 shrink-0">▹</span>
-            <span className="min-w-0 break-words">{renderInline(itemText)}</span>
-          </li>
+            <span className="min-w-0 break-words">
+              {renderInline(itemText)}
+            </span>
+          </li>,
         );
         i++;
       }
       elements.push(
         <ol key={`ol-${i}`} className="space-y-2 my-4">
           {items}
-        </ol>
+        </ol>,
       );
       continue;
     }
@@ -198,20 +231,25 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     // Unordered list
     if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
       const items: React.ReactNode[] = [];
-      while (i < lines.length && (lines[i].trim().startsWith("* ") || lines[i].trim().startsWith("- "))) {
+      while (
+        i < lines.length &&
+        (lines[i].trim().startsWith("* ") || lines[i].trim().startsWith("- "))
+      ) {
         const itemText = lines[i].trim().slice(2);
         items.push(
           <li key={i} className="flex items-start gap-2 text-slate-300">
             <span className="text-cyan mt-1 shrink-0">▹</span>
-            <span className="min-w-0 break-words">{renderInline(itemText)}</span>
-          </li>
+            <span className="min-w-0 break-words">
+              {renderInline(itemText)}
+            </span>
+          </li>,
         );
         i++;
       }
       elements.push(
         <ul key={`ul-${i}`} className="space-y-2 my-4">
           {items}
-        </ul>
+        </ul>,
       );
       continue;
     }
@@ -220,7 +258,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     elements.push(
       <p key={i} className="text-slate-300 leading-relaxed my-4 break-words">
         {renderInline(trimmed)}
-      </p>
+      </p>,
     );
     i++;
   }

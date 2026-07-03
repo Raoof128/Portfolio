@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AboutClient } from "./AboutClient";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
@@ -8,21 +9,19 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getDictionary(locale as Locale);
   return {
-    title: "About",
-    description:
-      "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development. Anthropic AI model evaluator.",
+    title: t.seo.about_title,
+    description: t.seo.about_description,
     alternates: buildAlternates("/about", locale),
     openGraph: {
       title: "About | Mohammad Raouf Abedini",
-      description:
-        "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development.",
+      description: t.seo.about_og_description,
     },
     twitter: {
       card: "summary",
       title: "About | Mohammad Raouf Abedini",
-      description:
-        "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development.",
+      description: t.seo.about_og_description,
     },
   };
 }

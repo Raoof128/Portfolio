@@ -29,30 +29,40 @@ export default function NotFound() {
       >
         {/* Dramatic 404 scale-in */}
         <motion.div variants={scaleIn} className="relative">
-          <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-zinc-900 absolute top-0 left-1/2 -translate-x-1/2 select-none blur-sm">404</h1>
-          <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-white relative z-10">404</h1>
+          <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-zinc-900 absolute top-0 left-1/2 -translate-x-1/2 select-none blur-sm">
+            404
+          </h1>
+          <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-white relative z-10">
+            404
+          </h1>
           <div className="absolute top-1/2 left-0 w-full h-1 bg-cyan/50 animate-scanline" />
         </motion.div>
 
         <motion.div variants={fadeInUp} className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-xs rounded-sm">
             <AlertTriangle className="w-3 h-3" />
-            <span>ERROR_CODE: PAGE_NOT_FOUND</span>
+            <span>{t.not_found.error_code}</span>
           </div>
 
-          <p className="text-text-body text-lg">
-            {t.not_found.description}
-          </p>
+          <p className="text-text-body text-lg">{t.not_found.description}</p>
 
           <div className="font-mono text-xs text-text-meta bg-black/50 p-4 rounded border border-cyber-gray text-left space-y-1">
-            <p><span className="text-purple">root@portfolio:~$</span> ping target_url</p>
-            <p>ping: unknown host</p>
-            <p><span className="text-purple">root@portfolio:~$</span> trace route</p>
-            <p className="text-red-400">Trace failed. Destination unreachable.</p>
+            <p>
+              <span className="text-purple">root@portfolio:~$</span> ping
+              target_url
+            </p>
+            <p>{t.not_found.terminal_ping_unknown}</p>
+            <p>
+              <span className="text-purple">root@portfolio:~$</span> trace route
+            </p>
+            <p className="text-red-400">{t.not_found.terminal_trace_failed}</p>
           </div>
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        <motion.div
+          variants={fadeInUp}
+          className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+        >
           <NeonButton href={getPath("/")} variant="primary">
             <Home className="w-4 h-4 mr-2" /> {t.not_found.return_home}
           </NeonButton>

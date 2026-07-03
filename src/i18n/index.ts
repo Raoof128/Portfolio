@@ -10,7 +10,8 @@ export const locales: Record<Locale, LocaleConfig> = {
   en: {
     label: "English",
     dir: "ltr",
-    fontFamily: "var(--font-chakra-petch), var(--font-jetbrains-mono), ui-sans-serif, system-ui, sans-serif",
+    fontFamily:
+      "var(--font-chakra-petch), var(--font-jetbrains-mono), ui-sans-serif, system-ui, sans-serif",
   },
   fa: {
     label: "فارسی",
@@ -30,7 +31,8 @@ export const locales: Record<Locale, LocaleConfig> = {
   es: {
     label: "Español",
     dir: "ltr",
-    fontFamily: "var(--font-chakra-petch), var(--font-jetbrains-mono), ui-sans-serif, system-ui, sans-serif",
+    fontFamily:
+      "var(--font-chakra-petch), var(--font-jetbrains-mono), ui-sans-serif, system-ui, sans-serif",
   },
 };
 

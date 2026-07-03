@@ -32,7 +32,12 @@ function usePrefersReducedMotion() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
-export function DecryptedText({ text, className = "", animateOnHover = false, loopInterval = 0 }: DecryptedTextProps) {
+export function DecryptedText({
+  text,
+  className = "",
+  animateOnHover = false,
+  loopInterval = 0,
+}: DecryptedTextProps) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const [displayText, setDisplayText] = useState(text);
   const [trigger, setTrigger] = useState(0);
@@ -43,10 +48,13 @@ export function DecryptedText({ text, className = "", animateOnHover = false, lo
     let iteration = 0;
     const interval = setInterval(() => {
       setDisplayText(() =>
-        text.split("").map((letter, index) => {
-          if (index < iteration) return text[index];
-          return chars[Math.floor(Math.random() * chars.length)];
-        }).join("")
+        text
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) return text[index];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join(""),
       );
 
       if (iteration >= text.length) clearInterval(interval);
@@ -61,7 +69,7 @@ export function DecryptedText({ text, className = "", animateOnHover = false, lo
     if (prefersReducedMotion) return;
     if (loopInterval > 0) {
       const loop = setInterval(() => {
-        setTrigger(prev => prev + 1);
+        setTrigger((prev) => prev + 1);
       }, loopInterval);
       return () => clearInterval(loop);
     }
@@ -72,11 +80,17 @@ export function DecryptedText({ text, className = "", animateOnHover = false, lo
   return (
     <motion.span
       className={`inline-block whitespace-pre-wrap ${className}`}
-      onMouseEnter={() => animateOnHover && !prefersReducedMotion && setTrigger(prev => prev + 1)}
+      onMouseEnter={() =>
+        animateOnHover &&
+        !prefersReducedMotion &&
+        setTrigger((prev) => prev + 1)
+      }
       suppressHydrationWarning
       aria-label={text}
     >
-      <span aria-hidden="true" suppressHydrationWarning>{shown}</span>
+      <span aria-hidden="true" suppressHydrationWarning>
+        {shown}
+      </span>
     </motion.span>
   );
 }

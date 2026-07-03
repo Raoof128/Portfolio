@@ -9,8 +9,12 @@ function subscribe(cb: () => void) {
   m.addEventListener("change", cb);
   return () => m.removeEventListener("change", cb);
 }
-function getSnap() { return window.matchMedia(rmq).matches; }
-function getServer() { return false; }
+function getSnap() {
+  return window.matchMedia(rmq).matches;
+}
+function getServer() {
+  return false;
+}
 
 /* ─── Responsive config ─────────────────────────────────────────────── */
 function getConfig(w: number) {
@@ -25,7 +29,7 @@ function getConfig(w: number) {
     pulseInterval: isMobile ? 1200 : 800,
     pulseTravel: 5,
     starInterval: isMobile ? 2000 : 1200,
-    starLength: isMobile ? [25, 35] as const : [40, 60] as const, // [min, range]
+    starLength: isMobile ? ([25, 35] as const) : ([40, 60] as const), // [min, range]
     trailLength: isMobile ? 6 : 12,
     maxDpr: isMobile ? 1.5 : 2,
   };
@@ -167,7 +171,10 @@ export function ParticleNetwork() {
       if (e.touches.length === 0) return;
       const rect = canvas.getBoundingClientRect();
       const touch = e.touches[0];
-      mouseRef.current = { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+      mouseRef.current = {
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top,
+      };
     };
     const onTouchEnd = () => {
       mouseRef.current = { x: -9999, y: -9999 };
@@ -208,8 +215,11 @@ export function ParticleNetwork() {
           if (toIdx === -1) continue;
 
           pulsesRef.current.push({
-            fromIdx, toIdx, progress: 0,
-            x: particles[fromIdx].x, y: particles[fromIdx].y,
+            fromIdx,
+            toIdx,
+            progress: 0,
+            x: particles[fromIdx].x,
+            y: particles[fromIdx].y,
           });
           particles[fromIdx].pulseAlpha = 1;
         }
@@ -298,10 +308,22 @@ export function ParticleNetwork() {
         }
 
         const margin = 20;
-        if (p.x < -margin) { p.x = w + margin; p.trail = []; }
-        if (p.x > w + margin) { p.x = -margin; p.trail = []; }
-        if (p.y < -margin) { p.y = h + margin; p.trail = []; }
-        if (p.y > h + margin) { p.y = -margin; p.trail = []; }
+        if (p.x < -margin) {
+          p.x = w + margin;
+          p.trail = [];
+        }
+        if (p.x > w + margin) {
+          p.x = -margin;
+          p.trail = [];
+        }
+        if (p.y < -margin) {
+          p.y = h + margin;
+          p.trail = [];
+        }
+        if (p.y > h + margin) {
+          p.y = -margin;
+          p.trail = [];
+        }
 
         if (p.pulseAlpha > 0) p.pulseAlpha *= 0.93;
       }
@@ -326,7 +348,14 @@ export function ParticleNetwork() {
 
       /* ── Mouse/touch glow ──────────────────────────────────────── */
       if (mouse.x > 0 && mouse.y > 0) {
-        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, cfg.mouseRadius);
+        const grad = ctx.createRadialGradient(
+          mouse.x,
+          mouse.y,
+          0,
+          mouse.x,
+          mouse.y,
+          cfg.mouseRadius,
+        );
         grad.addColorStop(0, `rgba(${VIOLET.r},${VIOLET.g},${VIOLET.b},0.06)`);
         grad.addColorStop(1, `rgba(${VIOLET.r},${VIOLET.g},${VIOLET.b},0)`);
         ctx.fillStyle = grad;
@@ -343,10 +372,14 @@ export function ParticleNetwork() {
         if (speed > 0.15 && p.trail.length > 2) {
           const trailCol = p.pulseAlpha > 0.1 ? EMERALD : VIOLET;
           for (let t = 1; t < p.trail.length; t++) {
-            const tailAlpha = (1 - t / p.trail.length) * alpha * 0.4 * (speed / (cfg.driftSpeed * 3));
+            const tailAlpha =
+              (1 - t / p.trail.length) *
+              alpha *
+              0.4 *
+              (speed / (cfg.driftSpeed * 3));
             if (tailAlpha < 0.01) continue;
             ctx.strokeStyle = `rgba(${trailCol.r},${trailCol.g},${trailCol.b},${tailAlpha})`;
-            ctx.lineWidth = p.radius * (1 - t / p.trail.length * 0.7);
+            ctx.lineWidth = p.radius * (1 - (t / p.trail.length) * 0.7);
             ctx.beginPath();
             ctx.moveTo(p.trail[t - 1].x, p.trail[t - 1].y);
             ctx.lineTo(p.trail[t].x, p.trail[t].y);
@@ -357,8 +390,14 @@ export function ParticleNetwork() {
         if (p.pulseAlpha > 0.05) {
           const glowR = p.radius + p.pulseAlpha * 8;
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
-          grad.addColorStop(0, `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},${p.pulseAlpha * 0.5})`);
-          grad.addColorStop(1, `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},0)`);
+          grad.addColorStop(
+            0,
+            `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},${p.pulseAlpha * 0.5})`,
+          );
+          grad.addColorStop(
+            1,
+            `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},0)`,
+          );
           ctx.fillStyle = grad;
           ctx.beginPath();
           ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
@@ -377,12 +416,18 @@ export function ParticleNetwork() {
         const pulse = pulses[i];
         const from = particles[pulse.fromIdx];
         const to = particles[pulse.toIdx];
-        if (!from || !to) { pulses.splice(i, 1); continue; }
+        if (!from || !to) {
+          pulses.splice(i, 1);
+          continue;
+        }
 
         const dx = to.x - from.x;
         const dy = to.y - from.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 1) { pulses.splice(i, 1); continue; }
+        if (dist < 1) {
+          pulses.splice(i, 1);
+          continue;
+        }
 
         pulse.progress += cfg.pulseTravel / dist;
         pulse.x = from.x + dx * pulse.progress;
@@ -395,8 +440,18 @@ export function ParticleNetwork() {
         }
 
         const pulseAlpha = 1 - pulse.progress * 0.4;
-        const grad = ctx.createRadialGradient(pulse.x, pulse.y, 0, pulse.x, pulse.y, 5);
-        grad.addColorStop(0, `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},${pulseAlpha})`);
+        const grad = ctx.createRadialGradient(
+          pulse.x,
+          pulse.y,
+          0,
+          pulse.x,
+          pulse.y,
+          5,
+        );
+        grad.addColorStop(
+          0,
+          `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},${pulseAlpha})`,
+        );
         grad.addColorStop(1, `rgba(${EMERALD.r},${EMERALD.g},${EMERALD.b},0)`);
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -419,16 +474,22 @@ export function ParticleNetwork() {
         star.y += star.vy;
         star.life += 0.012;
 
-        if (star.life >= 1 || star.x < -100 || star.x > w + 100 || star.y > h + 100) {
+        if (
+          star.life >= 1 ||
+          star.x < -100 ||
+          star.x > w + 100 ||
+          star.y > h + 100
+        ) {
           stars.splice(i, 1);
           continue;
         }
 
-        const brightness = star.life < 0.1
-          ? star.life / 0.1
-          : star.life > 0.7
-            ? (1 - star.life) / 0.3
-            : 1;
+        const brightness =
+          star.life < 0.1
+            ? star.life / 0.1
+            : star.life > 0.7
+              ? (1 - star.life) / 0.3
+              : 1;
 
         const c = star.color;
 
@@ -437,7 +498,10 @@ export function ParticleNetwork() {
 
         const grad = ctx.createLinearGradient(tailX, tailY, star.x, star.y);
         grad.addColorStop(0, `rgba(${c.r},${c.g},${c.b},0)`);
-        grad.addColorStop(0.6, `rgba(${c.r},${c.g},${c.b},${brightness * 0.3})`);
+        grad.addColorStop(
+          0.6,
+          `rgba(${c.r},${c.g},${c.b},${brightness * 0.3})`,
+        );
         grad.addColorStop(1, `rgba(${c.r},${c.g},${c.b},${brightness * 0.8})`);
 
         ctx.strokeStyle = grad;
@@ -448,9 +512,19 @@ export function ParticleNetwork() {
         ctx.lineTo(star.x, star.y);
         ctx.stroke();
 
-        const headGrad = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, 3);
+        const headGrad = ctx.createRadialGradient(
+          star.x,
+          star.y,
+          0,
+          star.x,
+          star.y,
+          3,
+        );
         headGrad.addColorStop(0, `rgba(255,255,255,${brightness * 0.9})`);
-        headGrad.addColorStop(0.5, `rgba(${c.r},${c.g},${c.b},${brightness * 0.5})`);
+        headGrad.addColorStop(
+          0.5,
+          `rgba(${c.r},${c.g},${c.b},${brightness * 0.5})`,
+        );
         headGrad.addColorStop(1, `rgba(${c.r},${c.g},${c.b},0)`);
         ctx.fillStyle = headGrad;
         ctx.beginPath();

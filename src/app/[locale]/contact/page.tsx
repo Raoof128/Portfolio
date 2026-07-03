@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
@@ -8,15 +9,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getDictionary(locale as Locale);
   return {
-    title: "Contact | Mohammad Raouf Abedini",
-    description:
-      "Get in touch with Mohammad Raouf Abedini. Open a secure communication channel for cybersecurity consultations, collaborations, or inquiries.",
+    title: t.seo.contact_title,
+    description: t.seo.contact_description,
     alternates: buildAlternates("/contact", locale),
     openGraph: {
-      title: "Contact | Mohammad Raouf Abedini",
-      description:
-        "Get in touch with Mohammad Raouf Abedini. Open a secure communication channel for cybersecurity consultations, collaborations, or inquiries.",
+      title: t.seo.contact_title,
+      description: t.seo.contact_description,
     },
   };
 }

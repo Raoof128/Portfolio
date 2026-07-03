@@ -1,9 +1,9 @@
-import '@testing-library/jest-dom';
-import { vi } from 'vitest';
-import React from 'react';
+import "@testing-library/jest-dom";
+import { vi } from "vitest";
+import React from "react";
 
 // Mock Next.js navigation
-vi.mock('next/navigation', () => ({
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
@@ -12,19 +12,23 @@ vi.mock('next/navigation', () => ({
     forward: vi.fn(),
     prefetch: vi.fn(),
   }),
-  usePathname: () => '/',
+  usePathname: () => "/",
   useSearchParams: () => new URLSearchParams(),
 }));
 
 // Mock Next.js image
-vi.mock('next/image', () => ({
-  default: function ImageMock(props: { src: string; alt: string; [key: string]: unknown }) {
+vi.mock("next/image", () => ({
+  default: function ImageMock(props: {
+    src: string;
+    alt: string;
+    [key: string]: unknown;
+  }) {
     const { src, alt, ...rest } = props;
     delete rest.fill;
     delete rest.priority;
     delete rest.unoptimized;
     delete rest.loader;
-    return React.createElement('img', { src, alt, ...rest });
+    return React.createElement("img", { src, alt, ...rest });
   },
 }));
 
@@ -34,26 +38,34 @@ class MockIntersectionObserver {
   unobserve = vi.fn();
   disconnect = vi.fn();
   root = null;
-  rootMargin = '';
+  rootMargin = "";
   thresholds = [0];
   takeRecords = vi.fn().mockReturnValue([]);
 
   constructor(callback: IntersectionObserverCallback) {
     // Immediately report all observed elements as intersecting
     setTimeout(() => {
-      callback([{ isIntersecting: true, intersectionRatio: 1 } as IntersectionObserverEntry], this);
+      callback(
+        [
+          {
+            isIntersecting: true,
+            intersectionRatio: 1,
+          } as IntersectionObserverEntry,
+        ],
+        this,
+      );
     }, 0);
   }
 }
-Object.defineProperty(window, 'IntersectionObserver', {
+Object.defineProperty(window, "IntersectionObserver", {
   writable: true,
   value: MockIntersectionObserver,
 });
 
 // Mock matchMedia
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: vi.fn().mockImplementation(query => ({
+  value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,

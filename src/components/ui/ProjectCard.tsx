@@ -7,6 +7,7 @@ import { NeonButton } from "./NeonButton";
 import { ArrowUpRight, Github, Lock, Database, Play } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "@/i18n/provider";
 
 export interface ProjectCardProps {
   title: string;
@@ -30,7 +31,16 @@ function toDomId(value: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-export function ProjectCard({ title, description, tags, buildItems, secureItems, links, featured = false }: ProjectCardProps) {
+export function ProjectCard({
+  title,
+  description,
+  tags,
+  buildItems,
+  secureItems,
+  links,
+  featured = false,
+}: ProjectCardProps) {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<"build" | "secure">("build");
   const idBase = toDomId(title) || "project";
   const buildTabId = `${idBase}-tab-build`;
@@ -43,28 +53,49 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
       transition={hoverSpring}
       className="h-full"
     >
-      <HUDFrame className={cn("flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,245,255,0.1)] transition-shadow duration-300", featured ? "lg:col-span-2" : "")} title="PROJECT_MODULE">
+      <HUDFrame
+        className={cn(
+          "flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,245,255,0.1)] transition-shadow duration-300",
+          featured ? "lg:col-span-2" : "",
+        )}
+        title={t.project_card.module_title}
+      >
         <div className="flex-1 space-y-4">
           {/* Header */}
           <div className="flex justify-between items-start">
             <div>
-              <h3 className="text-2xl font-bold font-mono tracking-tight text-white">{title}</h3>
-              <p className="mt-2 text-text-body leading-relaxed max-w-xl">{description}</p>
+              <h3 className="text-2xl font-bold font-mono tracking-tight text-white">
+                {title}
+              </h3>
+              <p className="mt-2 text-text-body leading-relaxed max-w-xl">
+                {description}
+              </p>
             </div>
-            {featured && <div className="hidden sm:block text-xs font-mono text-cyan/70 border border-cyan/30 px-2 py-1">FEATURED_OP</div>}
+            {featured && (
+              <div className="hidden sm:block text-xs font-mono text-cyan/70 border border-cyan/30 px-2 py-1">
+                {t.project_card.featured_op}
+              </div>
+            )}
           </div>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-2">
             {tags.map((tag) => (
-              <span key={tag} className="text-xs font-mono text-text-body bg-[#030712]/60 px-2 py-1 border border-cyan/15">
+              <span
+                key={tag}
+                className="text-xs font-mono text-text-body bg-[#030712]/60 px-2 py-1 border border-cyan/15"
+              >
                 {tag}
               </span>
             ))}
           </div>
 
           {/* Tabs Control */}
-          <div className="mt-6 flex border-b border-cyan/12" role="tablist" aria-label="Project Details">
+          <div
+            className="mt-6 flex border-b border-cyan/12"
+            role="tablist"
+            aria-label={t.project_card.tab_details_aria}
+          >
             <button
               id={buildTabId}
               role="tab"
@@ -76,10 +107,10 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
                 "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2 focus:outline-none focus:ring-2 focus:ring-cyan/50 rounded-t-sm",
                 activeTab === "build"
                   ? "border-cyan text-cyan bg-cyan/5"
-                  : "border-transparent text-text-body hover:text-slate-300"
+                  : "border-transparent text-text-body hover:text-slate-300",
               )}
             >
-              <Database className="w-3 h-3" /> BUILD
+              <Database className="w-3 h-3" /> {t.project_card.build_tab}
             </button>
             <button
               id={secureTabId}
@@ -92,10 +123,10 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
                 "flex items-center gap-2 px-4 py-2 text-sm font-mono transition-colors border-b-2 focus:outline-none focus:ring-2 focus:ring-cyan/50 rounded-t-sm",
                 activeTab === "secure"
                   ? "border-cyan text-cyan bg-cyan/5"
-                  : "border-transparent text-text-body hover:text-slate-300"
+                  : "border-transparent text-text-body hover:text-slate-300",
               )}
             >
-              <Lock className="w-3 h-3" /> SECURE
+              <Lock className="w-3 h-3" /> {t.project_card.secure_tab}
             </button>
           </div>
 
@@ -115,12 +146,17 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
                 transition={{ duration: 0.2 }}
                 className="space-y-2"
               >
-                {(activeTab === "build" ? buildItems : secureItems).map((item, idx) => (
-                  <li key={`${item}-${idx}`} className="flex items-start gap-2 text-sm text-slate-300">
-                    <span className="text-cyan mt-1">&#x25B9;</span>
-                    {item}
-                  </li>
-                ))}
+                {(activeTab === "build" ? buildItems : secureItems).map(
+                  (item, idx) => (
+                    <li
+                      key={`${item}-${idx}`}
+                      className="flex items-start gap-2 text-sm text-slate-300"
+                    >
+                      <span className="text-cyan mt-1">&#x25B9;</span>
+                      {item}
+                    </li>
+                  ),
+                )}
               </motion.ul>
             </AnimatePresence>
           </div>
@@ -129,13 +165,21 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
         {/* Footer Actions */}
         <div className="mt-6 pt-6 border-t border-cyan/10 flex flex-wrap gap-4">
           {links.demo && (
-            <NeonButton href={links.demo} variant="primary" className="text-xs py-2 px-4">
-              <Play className="w-3 h-3 mr-2" /> WATCH DEMO
+            <NeonButton
+              href={links.demo}
+              variant="primary"
+              className="text-xs py-2 px-4"
+            >
+              <Play className="w-3 h-3 mr-2" /> {t.project_card.watch_demo}
             </NeonButton>
           )}
           {links.repo && (
-            <NeonButton href={links.repo} variant="secondary" className="text-xs py-2 px-4">
-              <Github className="w-3 h-3 mr-2" /> REPO
+            <NeonButton
+              href={links.repo}
+              variant="secondary"
+              className="text-xs py-2 px-4"
+            >
+              <Github className="w-3 h-3 mr-2" /> {t.project_card.repo}
             </NeonButton>
           )}
           {links.caseStudy && (
@@ -143,7 +187,8 @@ export function ProjectCard({ title, description, tags, buildItems, secureItems,
               href={links.caseStudy}
               className="flex items-center text-xs font-mono text-text-body hover:text-cyan ml-auto transition-colors"
             >
-              READ CASE STUDY <ArrowUpRight className="w-3 h-3 ml-1" />
+              {t.project_card.read_case_study}{" "}
+              <ArrowUpRight className="w-3 h-3 ml-1" />
             </Link>
           )}
         </div>

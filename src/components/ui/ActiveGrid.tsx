@@ -10,7 +10,7 @@ export function ActiveGrid() {
       // Randomly activate 2-4 cells every cycle
       const count = Math.floor(Math.random() * 3) + 2;
       const newCells = Array.from({ length: count }, () =>
-        Math.floor(Math.random() * 100)
+        Math.floor(Math.random() * 100),
       );
       setActiveCells(newCells);
     }, 2500);
@@ -20,11 +20,11 @@ export function ActiveGrid() {
 
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden select-none pointer-events-none">
-      <div 
+      <div
         className="w-full h-full grid grid-cols-6 md:grid-cols-12 gap-1 opacity-20"
-        style={{ 
+        style={{
           maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
-          perspective: "500px" 
+          perspective: "500px",
         }}
       >
         {Array.from({ length: 120 }).map((_, i) => (
@@ -35,10 +35,10 @@ export function ActiveGrid() {
               ${activeCells.includes(i) ? "bg-cyan/15 shadow-[0_0_18px_rgba(0,245,255,0.35)] border-cyan/40" : "bg-transparent"}
             `}
           >
-             {/* The "Data Packet" Pulse */}
-             {activeCells.includes(i) && (
-                <div className="absolute inset-0 bg-cyan/25 animate-ping" />
-             )}
+            {/* The "Data Packet" Pulse */}
+            {activeCells.includes(i) && (
+              <div className="absolute inset-0 bg-cyan/25 animate-ping" />
+            )}
           </div>
         ))}
       </div>

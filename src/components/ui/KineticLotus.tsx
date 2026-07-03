@@ -6,31 +6,60 @@ export function KineticLotus() {
       <div className="kl-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <path id="kl-gold-leaf"
+            <path
+              id="kl-gold-leaf"
               d="M 100,100 Q 120,55 116,20 C 112,5 88,5 84,20 Q 80,55 100,100 Z"
-              fill="#d6b265" stroke="#1a1000" strokeWidth="3.5" strokeLinejoin="round" />
-            <path id="kl-cream-leaf"
+              fill="#d6b265"
+              stroke="#1a1000"
+              strokeWidth="3.5"
+              strokeLinejoin="round"
+            />
+            <path
+              id="kl-cream-leaf"
               d="M 100,100 Q 112,62 108,32 C 105,20 95,20 92,32 Q 88,62 100,100 Z"
-              fill="#fffdf5" stroke="#1a1000" strokeWidth="3.5" strokeLinejoin="round" />
+              fill="#fffdf5"
+              stroke="#1a1000"
+              strokeWidth="3.5"
+              strokeLinejoin="round"
+            />
           </defs>
 
           {/* Gold petal layer — clockwise */}
           <g className="kl-gold origin-center">
-            {[0,30,60,90,120,150,180,210,240,270,300,330].map(r => (
-              <use key={r} href="#kl-gold-leaf" transform={`rotate(${r} 100 100)`} />
-            ))}
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(
+              (r) => (
+                <use
+                  key={r}
+                  href="#kl-gold-leaf"
+                  transform={`rotate(${r} 100 100)`}
+                />
+              ),
+            )}
           </g>
 
           {/* Cream petal layer — counter-clockwise, offset 15° */}
           <g className="kl-cream origin-center">
-            {[15,45,75,105,135,165,195,225,255,285,315,345].map(r => (
-              <use key={r} href="#kl-cream-leaf" transform={`rotate(${r} 100 100)`} />
-            ))}
+            {[15, 45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345].map(
+              (r) => (
+                <use
+                  key={r}
+                  href="#kl-cream-leaf"
+                  transform={`rotate(${r} 100 100)`}
+                />
+              ),
+            )}
           </g>
 
           {/* Core */}
-          <circle className="kl-core origin-center" cx="100" cy="100" r="16"
-            fill="#505663" stroke="#1a1000" strokeWidth="3.5" />
+          <circle
+            className="kl-core origin-center"
+            cx="100"
+            cy="100"
+            r="16"
+            fill="#505663"
+            stroke="#1a1000"
+            strokeWidth="3.5"
+          />
         </svg>
       </div>
 

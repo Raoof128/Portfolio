@@ -8,7 +8,7 @@ function renderAbout() {
   return render(
     <I18nProvider locale="en" dictionary={en}>
       <AboutClient />
-    </I18nProvider>
+    </I18nProvider>,
   );
 }
 

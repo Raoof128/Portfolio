@@ -23,7 +23,8 @@ export default function ProjectsArchive() {
   const categories = ["ALL", "OFFENSIVE", "DEFENSIVE", "ENGINEERING"];
 
   const filteredProjects = Object.values(projects).filter((p) => {
-    const matchesCategory = filter === "ALL" || p.category?.toUpperCase() === filter;
+    const matchesCategory =
+      filter === "ALL" || p.category?.toUpperCase() === filter;
     const desc = getProjectDescription(p, locale);
     const matchesSearch =
       p.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -45,15 +46,18 @@ export default function ProjectsArchive() {
             <Terminal className="text-cyan w-6 h-6" />
             {t.projects_page.title}
           </h1>
-          <p className="text-text-body font-mono text-sm">{t.projects_page.subtitle}</p>
+          <p className="text-text-body font-mono text-sm">
+            {t.projects_page.subtitle}
+          </p>
 
           {/* CONTROLS */}
           <div className="mt-8 flex flex-col md:flex-row gap-4 justify-between items-end md:items-center">
-
             {/* Faux 'Grep' Search */}
             <div className="relative w-full md:w-96 group">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-text-body font-mono text-xs">&gt; grep</span>
+                <span className="text-text-body font-mono text-xs">
+                  &gt; grep
+                </span>
               </div>
               <input
                 type="text"
@@ -76,10 +80,16 @@ export default function ProjectsArchive() {
                     <motion.div
                       layoutId="filter-indicator"
                       className="absolute inset-0 bg-cyan/10 border border-cyan rounded-sm"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 30,
+                      }}
                     />
                   )}
-                  <span className={`relative z-10 ${filter === cat ? "text-cyan" : ""}`}>
+                  <span
+                    className={`relative z-10 ${filter === cat ? "text-cyan" : ""}`}
+                  >
                     --{cat.toLowerCase()}
                   </span>
                 </button>
@@ -106,7 +116,6 @@ export default function ProjectsArchive() {
                   className="group relative bg-[#030712]/60 border border-cyan/10 hover:border-cyan/30 hover:shadow-[0_4px_20px_rgba(0,245,255,0.1)] p-4 md:p-6 transition-all hover:bg-cyan/[0.04]"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-
                     {/* Title & Tags */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
@@ -118,8 +127,13 @@ export default function ProjectsArchive() {
                         </span>
                       </div>
                       <div className="flex flex-wrap gap-2">
-                        {project.tags.slice(0, 4).map(tag => (
-                          <span key={tag} className="text-xs text-text-body font-mono">#{tag}</span>
+                        {project.tags.slice(0, 4).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs text-text-body font-mono"
+                          >
+                            #{tag}
+                          </span>
                         ))}
                       </div>
                     </div>
@@ -131,7 +145,11 @@ export default function ProjectsArchive() {
 
                     {/* Action */}
                     <div className="shrink-0">
-                      <NeonButton href={getPath(`/projects/${project.slug}`)} variant="outline" className="text-xs h-8 px-4">
+                      <NeonButton
+                        href={getPath(`/projects/${project.slug}`)}
+                        variant="outline"
+                        className="text-xs h-8 px-4"
+                      >
                         {t.projects_page.access_file}
                       </NeonButton>
                     </div>
@@ -147,7 +165,9 @@ export default function ProjectsArchive() {
               exit={{ opacity: 0 }}
               className="py-20 text-center border border-dashed border-cyber-gray rounded-lg"
             >
-              <p className="text-text-body font-mono">{t.projects_page.empty_results}</p>
+              <p className="text-text-body font-mono">
+                {t.projects_page.empty_results}
+              </p>
             </motion.div>
           )}
         </AnimatePresence>

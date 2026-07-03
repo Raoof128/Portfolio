@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { projects } from "@/lib/data";
 import { ORCID_URL, SITE_LAST_MODIFIED, SITE_URL } from "@/lib/constants";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 import { ProjectDetailClient } from "./ProjectDetailClient";
 
 interface PageProps {
@@ -27,16 +28,17 @@ export async function generateMetadata({
 }: MetadataProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const project = projects[slug];
+  const t = await getDictionary(locale as Locale);
 
   if (!project) {
     return {
-      title: "Project Not Found",
-      description: "The requested project does not exist.",
+      title: t.seo.project_not_found_title,
+      description: t.seo.project_not_found_description,
     };
   }
 
   return {
-    title: `${project.title} | Projects`,
+    title: `${project.title} | ${t.seo.projects_title}`,
     description: project.description,
     alternates: buildAlternates(`/projects/${slug}`, locale),
     openGraph: {

@@ -1,17 +1,20 @@
 "use client";
 
-const VOID     = "#06050a";
-const GOLD     = "#f59e0b";
-const RED      = "#dc2626";
-const WHITE    = "#fffdf5";
+const VOID = "#06050a";
+const GOLD = "#f59e0b";
+const RED = "#dc2626";
+const WHITE = "#fffdf5";
 const CHARCOAL = "#1c1a24";
 
 export function WheelsOfEzekiel() {
   return (
     <div className="woe-host" aria-hidden="true">
       <div className="woe-container">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
-          style={{ filter: "drop-shadow(0 15px 35px rgba(0,0,0,0.9))" }}>
+        <svg
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ filter: "drop-shadow(0 15px 35px rgba(0,0,0,0.9))" }}
+        >
           <defs>
             <filter id="woe-glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="3" result="blur" />
@@ -23,13 +26,19 @@ export function WheelsOfEzekiel() {
 
             {/* Watcher eye module */}
             <g id="woe-eye">
-              <path d="M -8,0 Q 0,-6 8,0 Q 0,6 -8,0 Z"
-                fill={WHITE} stroke={VOID} strokeWidth="1.5" />
+              <path
+                d="M -8,0 Q 0,-6 8,0 Q 0,6 -8,0 Z"
+                fill={WHITE}
+                stroke={VOID}
+                strokeWidth="1.5"
+              />
               <circle cx="0" cy="0" r="3" fill={RED} filter="url(#woe-glow)" />
               <circle cx="0" cy="0" r="1.2" fill={GOLD} />
-              <path className="woe-lid"
+              <path
+                className="woe-lid"
                 d="M -8.5,0 Q 0,-7 8.5,0 L 8.5,-7 L -8.5,-7 Z"
-                fill={CHARCOAL} />
+                fill={CHARCOAL}
+              />
             </g>
           </defs>
 
@@ -37,17 +46,39 @@ export function WheelsOfEzekiel() {
           <g stroke="rgba(245,158,11,0.08)" strokeWidth="0.8" fill="none">
             <circle cx="100" cy="100" r="92" />
             <circle cx="100" cy="100" r="75" strokeDasharray="4,3" />
-            <line x1="100" y1="5"   x2="100" y2="195" strokeDasharray="3,6" />
-            <line x1="5"   y1="100" x2="195" y2="100" strokeDasharray="3,6" />
+            <line x1="100" y1="5" x2="100" y2="195" strokeDasharray="3,6" />
+            <line x1="5" y1="100" x2="195" y2="100" strokeDasharray="3,6" />
           </g>
 
           {/* Outer wheel */}
           <g className="woe-outer">
-            <circle cx="100" cy="100" r="70" fill="none" stroke={CHARCOAL} strokeWidth="6" />
-            <circle cx="100" cy="100" r="70" fill="none" stroke={GOLD}     strokeWidth="1.5" />
-            <circle cx="100" cy="100" r="64" fill="none" stroke={RED}      strokeWidth="0.8" strokeDasharray="6,4" />
+            <circle
+              cx="100"
+              cy="100"
+              r="70"
+              fill="none"
+              stroke={CHARCOAL}
+              strokeWidth="6"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="70"
+              fill="none"
+              stroke={GOLD}
+              strokeWidth="1.5"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="64"
+              fill="none"
+              stroke={RED}
+              strokeWidth="0.8"
+              strokeDasharray="6,4"
+            />
             <g transform="translate(100,100)">
-              {[0,45,90,135,180,225,270,315].map((r, i) => (
+              {[0, 45, 90, 135, 180, 225, 270, 315].map((r, i) => (
                 <g key={r} transform={`rotate(${r}) translate(0,-70)`}>
                   <use href="#woe-eye" className={`woe-lid-${(i % 3) + 1}`} />
                 </g>
@@ -57,15 +88,39 @@ export function WheelsOfEzekiel() {
 
           {/* Inner wheel */}
           <g className="woe-inner">
-            <circle cx="100" cy="100" r="54" fill="none" stroke={CHARCOAL} strokeWidth="5" />
-            <circle cx="100" cy="100" r="54" fill="none" stroke={RED}      strokeWidth="1.5" />
-            <circle cx="100" cy="100" r="49" fill="none" stroke={GOLD}     strokeWidth="0.8" strokeDasharray="2,6" />
+            <circle
+              cx="100"
+              cy="100"
+              r="54"
+              fill="none"
+              stroke={CHARCOAL}
+              strokeWidth="5"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="54"
+              fill="none"
+              stroke={RED}
+              strokeWidth="1.5"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="49"
+              fill="none"
+              stroke={GOLD}
+              strokeWidth="0.8"
+              strokeDasharray="2,6"
+            />
             <g transform="translate(100,100)">
-              {[22.5,67.5,112.5,157.5,202.5,247.5,292.5,337.5].map((r, i) => (
-                <g key={r} transform={`rotate(${r}) translate(0,-54)`}>
-                  <use href="#woe-eye" className={`woe-lid-${(i % 3) + 1}`} />
-                </g>
-              ))}
+              {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map(
+                (r, i) => (
+                  <g key={r} transform={`rotate(${r}) translate(0,-54)`}>
+                    <use href="#woe-eye" className={`woe-lid-${(i % 3) + 1}`} />
+                  </g>
+                ),
+              )}
             </g>
           </g>
 
@@ -73,11 +128,20 @@ export function WheelsOfEzekiel() {
           <g className="woe-center">
             <polygon
               points="100,75 107,93 125,100 107,107 100,125 93,107 75,100 93,93"
-              fill={RED} filter="url(#woe-glow)" />
+              fill={RED}
+              filter="url(#woe-glow)"
+            />
             <polygon
               points="100,83 104,96 117,100 104,104 100,117 96,104 83,100 96,96"
-              fill={GOLD} />
-            <circle cx="100" cy="100" r="6"   fill={WHITE} filter="url(#woe-glow)" />
+              fill={GOLD}
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="6"
+              fill={WHITE}
+              filter="url(#woe-glow)"
+            />
             <circle cx="100" cy="100" r="2.5" fill={GOLD} />
           </g>
         </svg>

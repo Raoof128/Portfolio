@@ -4,17 +4,17 @@ import { useEffect, useRef, useCallback } from "react";
 
 const W = 600;
 const H = 500;
-const SCALE = 155;        // lemniscate amplitude
+const SCALE = 155; // lemniscate amplitude
 const PERSPECTIVE = 700;
 const PARTICLE_COUNT = 200;
 const STAR_COUNT = 90;
 const SPEED = 0.006;
-const TRAIL = 0.15;       // background fade alpha — lower = longer trails
+const TRAIL = 0.15; // background fade alpha — lower = longer trails
 
 // Palette anchored to #EDAB18 (Zurvan gold)
-const GOLD  = (op: number) => `rgba(237,171,24,${op})`;
-const GOLDB = (op: number) => `rgba(255,215,122,${op})`;   // bright flash
-const CRIM  = (op: number) => `rgba(220,20,60,${op})`;
+const GOLD = (op: number) => `rgba(237,171,24,${op})`;
+const GOLDB = (op: number) => `rgba(255,215,122,${op})`; // bright flash
+const CRIM = (op: number) => `rgba(220,20,60,${op})`;
 const WHITE = (op: number) => `rgba(255,255,255,${op})`;
 
 const seededUnit = (index: number, salt: number) => {
@@ -23,8 +23,11 @@ const seededUnit = (index: number, salt: number) => {
 };
 
 function project3D(
-  x: number, y: number, z: number,
-  rotX: number, rotY: number
+  x: number,
+  y: number,
+  z: number,
+  rotX: number,
+  rotY: number,
 ): { px: number; py: number; scale: number; z: number } {
   const x1 = x * Math.cos(rotY) - z * Math.sin(rotY);
   const z1 = x * Math.sin(rotY) + z * Math.cos(rotY);
@@ -47,7 +50,7 @@ function lemniPoint(t: number, a: number = SCALE) {
 // Pre-sample the lemniscate at build time (static, reused every frame)
 const LEMN_STEPS = 320;
 const LEMN_PATH = Array.from({ length: LEMN_STEPS }, (_, i) =>
-  lemniPoint((i / LEMN_STEPS) * Math.PI * 2)
+  lemniPoint((i / LEMN_STEPS) * Math.PI * 2),
 );
 
 const STARS = Array.from({ length: STAR_COUNT }, (_, i) => ({
@@ -64,7 +67,9 @@ class Spark {
   radius: number;
   angleOffset: number;
   speedMul: number;
-  x = 0; y = 0; z = 0;
+  x = 0;
+  y = 0;
+  z = 0;
 
   constructor(faction: "Ahura" | "Ahriman") {
     this.faction = faction;
@@ -80,8 +85,12 @@ class Spark {
     const base = lemniPoint(this.t);
     const phase = this.faction === "Ahura" ? 0 : Math.PI;
     const twist = 3.5;
-    this.x = base.x + Math.cos(this.t * twist + phase + this.angleOffset) * this.radius;
-    this.y = base.y + Math.sin(this.t * twist + phase + this.angleOffset) * this.radius;
+    this.x =
+      base.x +
+      Math.cos(this.t * twist + phase + this.angleOffset) * this.radius;
+    this.y =
+      base.y +
+      Math.sin(this.t * twist + phase + this.angleOffset) * this.radius;
     this.z = base.z + Math.cos(this.t * twist * 0.5 + phase) * this.radius;
   }
 }
@@ -103,7 +112,7 @@ export function CosmicLoomCanvas() {
 
     const particles = Array.from(
       { length: PARTICLE_COUNT },
-      (_, i) => new Spark(i % 2 === 0 ? "Ahura" : "Ahriman")
+      (_, i) => new Spark(i % 2 === 0 ? "Ahura" : "Ahriman"),
     );
 
     function drawShamseh(rotX: number, rotY: number) {
@@ -119,7 +128,7 @@ export function CosmicLoomCanvas() {
         ctx.rotate((Math.PI * 2) / rays);
         ctx.beginPath();
         ctx.moveTo(0, 0);
-        ctx.lineTo(maxR * 0.3,  maxR * 0.07);
+        ctx.lineTo(maxR * 0.3, maxR * 0.07);
         ctx.lineTo(maxR, 0);
         ctx.lineTo(maxR * 0.3, -maxR * 0.07);
         ctx.closePath();
@@ -148,14 +157,18 @@ export function CosmicLoomCanvas() {
       ctx.globalCompositeOperation = "lighter";
 
       // Three glow passes: wide haze → medium → crisp core
-      const passes: [number, number][] = [[10, 0.03], [4, 0.09], [1.2, 0.5]];
+      const passes: [number, number][] = [
+        [10, 0.03],
+        [4, 0.09],
+        [1.2, 0.5],
+      ];
       for (const [lw, alpha] of passes) {
         ctx.beginPath();
         for (let i = 0; i <= LEMN_STEPS; i++) {
           const pt = LEMN_PATH[i % LEMN_STEPS];
           const p = project3D(pt.x, pt.y, pt.z, rotX, rotY);
           if (i === 0) ctx.moveTo(p.px, p.py);
-          else         ctx.lineTo(p.px, p.py);
+          else ctx.lineTo(p.px, p.py);
         }
         ctx.closePath();
         ctx.strokeStyle = lw > 3 ? GOLD(alpha) : GOLDB(alpha);
@@ -167,11 +180,14 @@ export function CosmicLoomCanvas() {
     function loop(ts: number) {
       const gap = ts - lastTs;
       lastTs = ts;
-      if (gap > 100) { rafId = requestAnimationFrame(loop); return; }
+      if (gap > 100) {
+        rafId = requestAnimationFrame(loop);
+        return;
+      }
 
       // Gentle auto-oscillation — gives the lemniscate a living tilt
-      const rotY =  Math.sin(frame * 0.008) * 0.35;
-      const rotX =  Math.sin(frame * 0.005) * 0.22 + 0.14;
+      const rotY = Math.sin(frame * 0.008) * 0.35;
+      const rotX = Math.sin(frame * 0.005) * 0.22 + 0.14;
 
       // Trail fade
       ctx.globalCompositeOperation = "source-over";
@@ -186,7 +202,7 @@ export function CosmicLoomCanvas() {
       drawLemniscate(rotX, rotY);
 
       // Project + sort particles
-      const projected = particles.map(p => {
+      const projected = particles.map((p) => {
         p.update();
         const proj = project3D(p.x, p.y, p.z, rotX, rotY);
         return { obj: p, proj };
@@ -206,7 +222,8 @@ export function CosmicLoomCanvas() {
           const dSq = dx * dx + dy * dy;
           if (dSq < 42 * 42) {
             const alpha = (1 - Math.sqrt(dSq) / 42) * 0.2;
-            ctx.strokeStyle = p1.obj.faction === "Ahura" ? GOLD(alpha) : CRIM(alpha);
+            ctx.strokeStyle =
+              p1.obj.faction === "Ahura" ? GOLD(alpha) : CRIM(alpha);
             ctx.lineWidth = 0.5 * p1.proj.scale;
             ctx.beginPath();
             ctx.moveTo(p1.proj.px, p1.proj.py);
@@ -221,13 +238,17 @@ export function CosmicLoomCanvas() {
       const core = project3D(0, 0, 0, rotX, rotY);
       const pulse = 1 + Math.sin(frame * 0.04) * 0.12;
       const cg = ctx.createRadialGradient(
-        core.px, core.py, 0,
-        core.px, core.py, 80 * core.scale * pulse
+        core.px,
+        core.py,
+        0,
+        core.px,
+        core.py,
+        80 * core.scale * pulse,
       );
-      cg.addColorStop(0,    WHITE(0.9));
+      cg.addColorStop(0, WHITE(0.9));
       cg.addColorStop(0.12, GOLDB(0.65));
-      cg.addColorStop(0.4,  GOLD(0.18));
-      cg.addColorStop(1,    "rgba(0,0,0,0)");
+      cg.addColorStop(0.4, GOLD(0.18));
+      cg.addColorStop(1, "rgba(0,0,0,0)");
       ctx.globalCompositeOperation = "screen";
       ctx.fillStyle = cg;
       ctx.beginPath();

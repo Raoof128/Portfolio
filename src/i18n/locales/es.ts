@@ -1,6 +1,55 @@
 import { Dictionary } from "./en";
 
 const es: Dictionary = {
+  seo: {
+    skip_to_content: "Saltar al contenido principal",
+    home_title_default:
+      "Mohammad Raouf Abedini | Investigador de Seguridad de IA",
+    home_description:
+      'Investigador de seguridad de IA con capacidad demostrada para descubrir, validar y divulgar de forma responsable e independiente vulnerabilidades multiplataforma. Autor de "The Invisible Window" — un artículo de investigación de seguridad de 12 páginas en formato IEEE que logró una evasión del 100% en la captura de pantalla. Evaluador de modelos de IA en Anthropic. Motivado por reducir los riesgos catastróficos de la IA avanzada.',
+    home_og_description:
+      'Investigación de vulnerabilidades, divulgación responsable y seguridad de la IA. Autor de "The Invisible Window". Evaluador de IA en Anthropic.',
+    keyword_1: "Investigación de Seguridad de IA",
+    keyword_2: "Investigación de Vulnerabilidades",
+    keyword_3: "Divulgación Responsable",
+    keyword_4: "Evaluación de Seguridad de LLM",
+    keyword_5: "Desarrollo de Exploits Multiplataforma",
+    keyword_6: "Seguridad de la IA",
+    keyword_7: "Evasión de Captura de Pantalla",
+    keyword_8: "Seguridad Ofensiva",
+    keyword_9: "Programación de Sistemas en Python",
+    about_title: "Sobre Mí",
+    about_description:
+      "Investigador de seguridad de IA especializado en investigación de vulnerabilidades, divulgación responsable, seguridad de la IA y desarrollo de exploits multiplataforma. Evaluador de modelos de IA en Anthropic.",
+    about_og_description:
+      "Investigador de seguridad de IA especializado en investigación de vulnerabilidades, divulgación responsable, seguridad de la IA y desarrollo de exploits multiplataforma.",
+    contact_title: "Contacto | Mohammad Raouf Abedini",
+    contact_description:
+      "Ponte en contacto con Mohammad Raouf Abedini. Abre un canal de comunicación seguro para consultas, colaboraciones o preguntas de ciberseguridad.",
+    lab_title: "Lab",
+    lab_description:
+      "Código experimental, pruebas de concepto y fragmentos de investigación en ciberseguridad.",
+    resume_title: "Currículum",
+    resume_description:
+      "Currículum de Mohammad Raouf Abedini — Investigador de Seguridad de IA, Investigación de Vulnerabilidades, Seguridad Ofensiva, Programación en Python y Sistemas.",
+    resume_og_description:
+      "Currículum de Mohammad Raouf Abedini — Investigador de Seguridad de IA, Investigación de Vulnerabilidades, Seguridad Ofensiva.",
+    security_policy_title: "Política de Seguridad | Mohammad Raouf Abedini",
+    security_policy_description:
+      "Política de divulgación de vulnerabilidades de seguridad y directrices de divulgación responsable.",
+    hall_of_fame_title: "Salón de la Fama | Mohammad Raouf Abedini",
+    hall_of_fame_description:
+      "Investigadores de seguridad que han divulgado responsablemente vulnerabilidades en mis proyectos.",
+    write_ups_title: "Artículos",
+    write_ups_description:
+      "Investigación de seguridad, soluciones de CTF y artículos técnicos.",
+    projects_title: "Proyectos",
+    projects_description:
+      "Herramientas desplegadas, prototipos de investigación y pruebas de arquitectura de Mohammad Raouf Abedini.",
+    not_found_title: "No Encontrado",
+    project_not_found_title: "Proyecto No Encontrado",
+    project_not_found_description: "El proyecto solicitado no existe.",
+  },
   nav: {
     home: "Inicio",
     about: "/sobre-mi",
@@ -9,6 +58,9 @@ const es: Dictionary = {
     writeups: "/articulos",
     resume: "/curriculum",
     contact: "Contacto",
+    open_menu: "Abrir menú de navegación",
+    close_menu: "Cerrar menú de navegación",
+    mobile_nav_label: "Navegación móvil",
   },
   hero: {
     system_online: "Sistema en Línea · Castle Hill, NSW",
@@ -33,6 +85,12 @@ const es: Dictionary = {
     secure_title: "SEGURIDAD",
     secure_body:
       "Aplicaciones defensivas que reducen los riesgos del mundo real. El desarrollo de exploits multiplataforma ayuda a crear mejores defensas: conocimiento ofensivo aplicado a sistemas de protección.",
+    research_bullet_1: "Investigación y Divulgación de Vulnerabilidades",
+    research_bullet_2: "Seguridad de la IA y Evaluación de LLM",
+    research_bullet_3: "Evaluación de Riesgos de Doble Uso",
+    secure_bullet_1: "Desarrollo de Exploits Multiplataforma",
+    secure_bullet_2: "Divulgación Responsable (OWASP/FIRST/CISA)",
+    secure_bullet_3: "Aplicaciones Defensivas",
   },
   lab: {
     title: "EL_LAB",
@@ -42,6 +100,38 @@ const es: Dictionary = {
     enter_lab: "ENTRAR_AL_LAB",
     disclaimer:
       "Solo para investigación defensiva. Sin captura de credenciales. Sin persistencia. Sin guía de despliegue.",
+    chip_1: "Investigación de Vulnerabilidades",
+    chip_2: "Seguridad de la IA",
+    chip_3: "Desarrollo de Exploits",
+    chip_4: "Divulgación Responsable",
+  },
+  home: {
+    ticker: [
+      "SISTEMA EN LÍNEA",
+      "INVESTIGACIÓN DE SEGURIDAD DE IA",
+      "INVESTIGACIÓN DE VULNERABILIDADES",
+      "DIVULGACIÓN RESPONSABLE",
+      "DESARROLLO DE EXPLOITS MULTIPLATAFORMA",
+      "EVALUACIÓN DE SEGURIDAD DE LLM",
+      "SEGURIDAD DE LA IA",
+      "EVALUADOR DE IA EN ANTHROPIC",
+      "PROGRAMACIÓN DE SISTEMAS EN PYTHON",
+      "REDUCIENDO RIESGOS CATASTRÓFICOS DE LA IA",
+      "THE INVISIBLE WINDOW",
+      "MÁS DE 70 PROYECTOS PUBLICADOS",
+      "SEGURIDAD OFENSIVA",
+      "EVALUACIÓN DE RIESGOS DE DOBLE USO",
+      "CASTLE HILL · NSW · AU",
+    ],
+    deployed_systems: "Sistemas Desplegados",
+    ieee_format_paper: "ARTÍCULO EN FORMATO IEEE",
+    connected_to_invisible_window: "CONECTADO A INVISIBLE WINDOW",
+    local_first_mcp: "LOCAL-FIRST · MEMORIA DE AGENTE MCP",
+    scroll: "Desplazar",
+    view_prefix: "Ver",
+    category_defensive: "DEFENSIVO",
+    category_offensive: "OFENSIVO",
+    category_engineering: "INGENIERÍA",
   },
   writeups: {
     title: "Artículos",
@@ -97,6 +187,85 @@ const es: Dictionary = {
       "Forense Digital · Seguridad de Redes · Computación en la Nube · NLP y ML · Seguridad Ofensiva · Criptografía Aplicada",
     degree_diploma_desc:
       "Fundamentos en sistemas, redes e ingeniería de software.",
+    spec1_label: "Investigación y Divulgación de Vulnerabilidades",
+    spec1_item1:
+      "Desarrollo de Exploits Multiplataforma (Win32 API, macOS ScreenCaptureKit)",
+    spec1_item2: "Divulgación Responsable (Marcos OWASP/FIRST/CISA)",
+    spec1_item3: "Investigación de Seguridad en Formato IEEE",
+    spec1_item4: "Pruebas de Penetración y Revisión de Código Seguro",
+    spec1_item5: "Especificación W3C Screen Capture",
+    spec2_label: "Seguridad de la IA y Seguridad de LLM",
+    spec2_item1: "Integración y Evaluación de LLM (Anthropic)",
+    spec2_item2: "Investigación de Vulnerabilidades Asistida por IA",
+    spec2_item3: "Medición de Mejora de Capacidades de la IA",
+    spec2_item4: "Evaluación de Riesgos de Doble Uso",
+    spec2_item5:
+      "Caracterización de Límites de Seguridad Intención-vs-Artefacto",
+    spec3_label: "Programación en Python y Sistemas",
+    spec3_item1: "Python (principal), C, C++, TypeScript, Swift",
+    spec3_item2: "Sistemas C/C++ de Alto Rendimiento (más de 1M ops/seg)",
+    spec3_item3: "Procesamiento de Paquetes de Red (libpcap)",
+    spec3_item4: "Linux (Ubuntu/Kali), CMake, Docker",
+    spec3_item5: "GitHub Actions CI/CD, Google Test",
+    spec4_label: "Seguridad Ofensiva",
+    spec4_item1: "Modelado de Amenazas (MITRE ATT&CK, OWASP Top 10)",
+    spec4_item2: "Sistemas de Detección de Intrusiones de Red",
+    spec4_item3: "Wireshark, Nmap, Burp Suite",
+    spec4_item4: "Simulación de Phishing Potenciada por NLP",
+    spec4_item5: "Marco y Cumplimiento de NIST",
+    skill_group1_label: "Lenguajes",
+    skill_group1_1: "Python (principal)",
+    skill_group1_2: "C",
+    skill_group1_3: "C++",
+    skill_group1_4: "TypeScript",
+    skill_group1_5: "JavaScript",
+    skill_group1_6: "Swift",
+    skill_group1_7: "Kotlin",
+    skill_group1_8: "Bash",
+    skill_group1_9: "SQL",
+    skill_group1_10: "Go (familiarizado)",
+    skill_group2_label: "Seguridad",
+    skill_group2_1: "Investigación de Vulnerabilidades",
+    skill_group2_2: "Desarrollo de Exploits Multiplataforma",
+    skill_group2_3: "Modelado de Amenazas",
+    skill_group2_4: "Revisión de Código Seguro",
+    skill_group2_5: "Pruebas de Penetración",
+    skill_group2_6: "Divulgación Responsable",
+    skill_group2_7: "Wireshark",
+    skill_group2_8: "Nmap",
+    skill_group2_9: "Burp Suite",
+    skill_group3_label: "IA y ML",
+    skill_group3_1: "Integración y Evaluación de LLM",
+    skill_group3_2: "Investigación de Vulnerabilidades Asistida por IA",
+    skill_group3_3: "NLP",
+    skill_group3_4: "Herramientas de IA Generativa",
+    skill_group3_5: "Evaluación de Modelos de ML",
+    skill_group3_6: "Evaluación de Riesgos de Doble Uso",
+    skill_group4_label: "Sistemas",
+    skill_group4_1: "Linux (Ubuntu/Kali)",
+    skill_group4_2: "CMake",
+    skill_group4_3: "Docker",
+    skill_group4_4: "Git/GitHub",
+    skill_group4_5: "GitHub Actions CI/CD",
+    skill_group4_6: "Google Test",
+    skill_group4_7: "FastAPI",
+    skill_group4_8: "Cloudflare Workers",
+    skill_group4_9: "libpcap",
+    skill_group5_label: "Marcos",
+    skill_group5_1: "OWASP Top 10",
+    skill_group5_2: "MITRE ATT&CK",
+    skill_group5_3: "NIST",
+    skill_group5_4: "Especificación W3C Screen Capture",
+    status_active: "ACTIVO",
+    status_archived: "ARCHIVADO",
+    status_concept: "CONCEPTO",
+    ops_lab1_title: "Laboratorio de Ataque y Defensa de AD",
+    ops_lab2_title: "Plataforma de Automatización SOC",
+    ops_lab3_title: "Marco de Equipo Rojo de IA",
+    ops_lab4_title: "Pipeline de Detección de Anomalías con ML",
+    ops_lab5_title: "Laboratorio Cibernético de Satélites LEO",
+    ops_lab6_title: "Sandbox de Análisis de Malware",
+    ops_lab7_title: "Auditor de Migración Post-Cuántica",
   },
   contact: {
     title_1: "Abrir",
@@ -114,6 +283,7 @@ const es: Dictionary = {
     view_analysis: "VER_ANÁLISIS",
     more_on_github: "Ver más en GitHub",
     risk_disclaimer: "USAR_CÓDIGO_BAJO_TU_PROPIO_RIESGO",
+    id_label: "ID:",
   },
   writeups_page: {
     classified_archive: "Archivo Clasificado",
@@ -134,11 +304,111 @@ const es: Dictionary = {
     title: "Currículum",
     download: "Descargar Currículum",
   },
+  resume: {
+    tagline:
+      "Investigador de Seguridad de IA · Investigación de Vulnerabilidades · Seguridad Ofensiva · Programación en Python y Sistemas",
+    location: "Castle Hill, Sídney, Nueva Gales del Sur, Australia",
+    linkedin_profile: "Perfil de LinkedIn",
+    orcid_id: "ID de ORCID",
+    s01_heading: "Sobre Mí",
+    s01_bio:
+      'Investigador de seguridad de IA y graduado en Ciberseguridad por la Universidad Macquarie, disponible ahora, con capacidad demostrada para descubrir, validar y divulgar de forma responsable e independiente vulnerabilidades multiplataforma. Autor de "The Invisible Window" — un artículo de investigación de seguridad de 12 páginas en formato IEEE que demuestra una evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14–26 utilizando únicamente APIs documentadas a nivel de SO. Las investigaciones recientes también incluyen las evidencias de integridad que preservan la privacidad de Project Simurgh (DOI: 10.5281/zenodo.20549736) y la evaluación de fidelidad de citas de Aion-BibleQA para sistemas RAG bíblicos (DOI: 10.5281/zenodo.20522874). Completé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code), evaluando las salidas de código de LLM en cuanto a calidad, seguridad y fiabilidad.',
+    s02_heading: "Investigación de Seguridad",
+    s02_tech_stack: "C, Swift, Python, Win32 API, ScreenCaptureKit, WebRTC",
+    s02_subtitle:
+      "Explotando la Afinidad de Visualización a Nivel de SO para Eludir Sistemas de Supervisión de Exámenes WebRTC",
+    s02_bullet1:
+      "Descubrí y formalicé una violación del límite de confianza multiplataforma entre la W3C Screen Capture API y el pipeline de composición del SO — logrando una evasión del 100% en todas las plataformas probadas sin artefactos visuales en más de 10,000 fotogramas analizados",
+    s02_bullet2:
+      "Descubrí un hallazgo empírico novedoso en macOS 26.3.1: la mitigación documentada de ScreenCaptureKit de Apple (macOS 15) sigue siendo ineficaz — contradiciendo las suposiciones predominantes de la comunidad y los proveedores mediante verificación forense a nivel de píxel",
+    s02_bullet3:
+      "Ejecuté una divulgación responsable coordinada a tres proveedores de sistemas de supervisión de exámenes (ProctorU, Proctorio, Respondus) y dos proveedores de SO (Microsoft, Apple) siguiendo los marcos de divulgación OWASP/FIRST/CISA en una ventana de 90 días",
+    s02_bullet4:
+      "Documenté una mejora medible de las capacidades de la IA: un único investigador con conocimientos de seguridad introductorios utilizó Claude Opus 4.6 para producir PoCs multiplataforma validados en una sola sesión de investigación — el modelo identificó de forma independiente la distinción operativamente crítica entre WDA_MONITOR y WDA_EXCLUDEFROMCAPTURE a partir de la documentación de la API",
+    s02_bullet5:
+      "Caractericé el límite de seguridad intención-vs-artefacto: el modelo distinguió correctamente la intención de investigación de la intención de uso indebido a nivel de prompt, pero los artefactos resultantes (código PoC funcional) son transferibles independientemente del planteamiento — un hallazgo directamente relevante para la calibración del umbral ASL",
+    s03_heading: "Competencias Técnicas",
+    s03_cat1_label: "Lenguajes",
+    s03_cat1_desc:
+      "Python (principal), C, C++, TypeScript, JavaScript, Swift, Kotlin, Bash, SQL, Go (familiarizado)",
+    s03_cat2_label: "Seguridad y Ofensiva",
+    s03_cat2_desc:
+      "Investigación de vulnerabilidades, desarrollo de exploits multiplataforma (Win32 API, macOS ScreenCaptureKit), modelado de amenazas, revisión de código seguro, pruebas de penetración, divulgación responsable (OWASP/FIRST/CISA), Wireshark, Nmap, Burp Suite",
+    s03_cat3_label: "IA y ML",
+    s03_cat3_desc:
+      "Integración y evaluación de modelos de lenguaje grande (LLM), evaluación de generación aumentada por recuperación (RAG), evaluación de fidelidad de citas, investigación de vulnerabilidades asistida por IA, procesamiento de lenguaje natural (NLP), herramientas de IA generativa, evaluación de modelos de ML, evaluación de riesgos de doble uso",
+    s03_cat4_label: "Sistemas y Herramientas",
+    s03_cat4_desc:
+      "Linux (Ubuntu/Kali), CMake, Docker, Git/GitHub, GitHub Actions CI/CD, Google Test, FastAPI, Cloudflare Workers, libpcap",
+    s03_cat5_label: "Marcos",
+    s03_cat5_desc:
+      "OWASP Top 10, MITRE ATT&CK, Marco NIST, Especificación W3C Screen Capture",
+    s04_heading: "Educación",
+    s04_coursework_label: "Asignaturas:",
+    s04_coursework:
+      "Informática Forense, Seguridad de Redes, Seguridad de Sistemas, Computación en la Nube, Procesamiento de Lenguaje Natural (NLP) y Aprendizaje Automático, Análisis de Datos que Preserva la Privacidad",
+    s05_heading: "Proyectos Selectos de Investigación e Ingeniería",
+    proj1_tag: "INTEGRIDAD",
+    proj1_stack:
+      "Node.js · Express · Telemetría del Navegador · Cadena de Auditoría HMAC · Ingeniería de Privacidad",
+    proj1_desc:
+      "Construí una API de integridad de confianza cero y publiqué un preprint sobre integridad de dispositivos que preserva la privacidad, además de un suplemento de la Fase C relacionado con votaciones, en la Universidad Macquarie — 31 sesiones consentidas, exclusión estructural de elección de voto, cadena de auditoría HMAC-SHA-256 y 5 de 5 puertas de cierre de recolección. DOI: 10.5281/zenodo.20549736.",
+    proj2_tag: "RAG BÍBLICO",
+    proj2_stack:
+      "React Native · Expo · Supabase · pgvector · Gemini · Embeddings de OpenAI · Tauri v2",
+    proj2_desc:
+      "Construí un compañero bíblico impulsado por IA y redacté Aion-BibleQA, un preprint de 8 páginas que introduce un banco de pruebas de 40 preguntas para la fidelidad de citas y la robustez ante premisas falsas — R@5 = 0.941, soporte medio de citas = 0.978, cero citas sin respaldo y 6 de 6 rechazos de premisas falsas. DOI: 10.5281/zenodo.20522874.",
+    proj3_tag: "SISTEMAS",
+    proj3_stack: "C++20 · CMake · Google Test",
+    proj3_desc:
+      "Diseñé un motor de emparejamiento de alto rendimiento que procesa más de 1M de órdenes por segundo con latencia submicrosegundo — implementando niveles de precio con árbol rojo-negro, un asignador de memoria personalizado y una suite de pruebas exhaustiva con benchmarks de latencia p50/p99.",
+    proj4_tag: "IDS",
+    proj4_stack: "C++17 · libpcap · CMake · Google Test · Linux",
+    proj4_desc:
+      "Construí un motor de procesamiento de paquetes de red en tiempo real que analiza más de 500K paquetes por segundo — disección de protocolos (Ethernet/IPv4/TCP/UDP/ICMP/DNS), motor de detección basado en firmas y análisis con estado (escaneos de puertos, inundaciones SYN).",
+    proj5_tag: "FULL-STACK",
+    proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
+    proj5_desc:
+      "Lancé una plataforma de datos full-stack con motor de recomendaciones impulsado por IA, diseño de API basado en eventos, limitación de tasa y análisis de seguridad automatizado — propiedad de extremo a extremo desde el esquema de la base de datos hasta la infraestructura de despliegue.",
+    proj6_tag: "KOTLINCONF",
+    proj6_stack: "Kotlin Multiplatform · ML Local · Android e iOS",
+    proj6_desc:
+      "Construí una herramienta de detección de amenazas sin conexión y multiplataforma con clasificación basada en ML local — presentada en la conferencia mundial de desarrolladores KotlinConf.",
+    s05_more_projects:
+      "Más de 70 proyectos públicos adicionales en GitHub que cubren investigación de vulnerabilidades, programación de sistemas, herramientas de IA/ML e infraestructura en la nube:",
+    s06_heading: "Experiencia Profesional",
+    exp1_title: "Desarrollador Full-Stack e Ingeniero de Seguridad Freelance",
+    exp1_employer: "Autónomo · Ene 2024 – Presente",
+    exp1_bullet1:
+      "Diseñé aplicaciones web de producción con enfoque en seguridad desde el diseño para múltiples clientes usando Python, TypeScript y Cloudflare Workers — sirviendo a más de 1,000 usuarios finales con operación de cero tiempo de inactividad",
+    exp1_bullet2:
+      "Diseñé pipelines de CI/CD y suites de pruebas automatizadas (más de 500 pruebas en 35 configuraciones regionales) mediante GitHub Actions — reduciendo los fallos de despliegue en aproximadamente un 40% mediante aseguramiento de calidad sistemático",
+    exp1_bullet3:
+      "Integré capacidades de LLM en aplicaciones de clientes, construyendo herramientas de automatización impulsadas por IA que permitieron a usuarios no técnicos gestionar flujos de trabajo de contenido de forma independiente",
+    exp2_title: "Gerente de TI",
+    exp2_employer: "Farmacia Irán · Ago 2019 – May 2024",
+    exp2_bullet1:
+      "Gestioné la infraestructura tecnológica en una organización multisede durante 5 años — manteniendo un 99% de tiempo de actividad del sistema, aplicando control de acceso basado en roles (RBAC) y automatizando flujos de trabajo operativos mediante scripts en Python/Bash (~30% de reducción en tareas manuales)",
+    s07_heading: "Seguridad de la IA y Comunidad",
+    s07_bullet1:
+      "Completé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code) — evaluando salidas de código de LLM en múltiples bases de código en cuanto a calidad, seguridad, corrección y fiabilidad",
+    s07_bullet2:
+      "Propuse tres líneas de investigación concretas al equipo de Fellows de Anthropic: medición sistemática de la mejora de capacidades en clases de vulnerabilidades, pruebas de generalización del límite de seguridad intención-vs-artefacto, y desarrollo de aplicaciones defensivas — todas basadas en hallazgos empíricos del caso de estudio de Invisible Window",
+    s07_bullet3:
+      "Mentoricé a compañeros en ciberseguridad, programación en C/C++ y resolución de problemas a nivel de sistemas en la Universidad Macquarie — orientación técnica colaborativa en asignaturas, entornos de laboratorio y prácticas de codificación segura",
+    s08_heading: "Información Adicional",
+    s08_available: "Disponible ahora para puestos a tiempo completo y becas",
+    s08_languages:
+      "Inglés (Profesional) · Persa (Nativo) · Japonés (Elemental)",
+  },
   not_found: {
     description:
       "La ruta de señal solicitada no pudo resolverse. El recurso puede haber sido movido, eliminado o clasificado.",
     return_home: "VOLVER_INICIO",
     browse_projects: "VER_PROYECTOS",
+    error_code: "CÓDIGO_ERROR: PÁGINA_NO_ENCONTRADA",
+    terminal_ping_unknown: "ping: host desconocido",
+    terminal_trace_failed: "Fallo en el rastreo. Destino inalcanzable.",
   },
   lab_detail: {
     exit: "SALIR_EXPERIMENTO",
@@ -164,6 +434,10 @@ const es: Dictionary = {
     papers: "Artículos",
     open_record: "Abrir Registro",
     doi_record: "Registro DOI",
+    demo: "Demo",
+    read_preprint: "Leer el preprint",
+    doi_short: "DOI",
+    cite_this_work: "Citar este trabajo",
   },
   writeups_detail: {
     end_transmission: "FIN_DE_TRANSMISIÓN",
@@ -192,6 +466,7 @@ const es: Dictionary = {
       "No divulgar públicamente la vulnerabilidad antes de la coordinación",
     bounty_note:
       "Este es un proyecto de portafolio personal. Aunque aprecio profundamente los esfuerzos de los investigadores de seguridad, no se ofrecen recompensas monetarias. El reconocimiento en este Salón de la Fama es el principal agradecimiento por los informes válidos.",
+    note_label: "Nota:",
   },
   security_policy: {
     title: "Política de Seguridad",
@@ -248,6 +523,37 @@ const es: Dictionary = {
     ack_hall_of_fame: "Salón de la Fama de Seguridad",
     ack_note:
       "Nota: Este es un proyecto de portafolio personal. No se ofrecen recompensas monetarias, pero tu contribución será reconocida.",
+  },
+  project_card: {
+    module_title: "MÓDULO_DE_PROYECTO",
+    featured_op: "OPERACIÓN_DESTACADA",
+    build_tab: "CONSTRUCCIÓN",
+    secure_tab: "SEGURIDAD",
+    tab_details_aria: "Detalles del Proyecto",
+    watch_demo: "VER DEMO",
+    repo: "REPO",
+    read_case_study: "LEER CASO DE ESTUDIO",
+  },
+  contact_form: {
+    session_id_label: "ID_SESIÓN:",
+    status_keylogging: "REGISTRO_DE_TECLAS_ACTIVO...",
+    status_encrypting: "CIFRANDO_CARGA_ÚTIL...",
+    status_sent: "TRANSMISIÓN_COMPLETA ✓",
+    status_error: "ERROR_DE_VALIDACIÓN",
+    status_secure: "CANAL_SEGURO",
+    name_label: "ID_OBJETIVO (Nombre)",
+    name_placeholder: "INGRESAR_IDENTIDAD",
+    email_label: "RUTA_DE_RETORNO (Correo)",
+    email_placeholder: "secure@gateway.io",
+    message_label: "CARGA_ÚTIL (Mensaje)",
+    message_placeholder: "TRANSMITIENDO_CARGA_ÚTIL_CIFRADA...",
+    error_required:
+      "Todos los campos son obligatorios antes de la transmisión.",
+    error_invalid_email: "Por favor, introduce una dirección de correo válida.",
+    mail_client_note: "* Abre tu cliente de correo predeterminado para enviar.",
+    cta_transmit: "TRANSMITIR",
+    cta_encrypting: "CIFRANDO...",
+    cta_sent: "ENVIADO ✓",
   },
 };
 

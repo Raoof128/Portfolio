@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { WriteUpsClient } from "./WriteUpsClient";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
@@ -8,20 +9,19 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getDictionary(locale as Locale);
   return {
-    title: "Write-ups",
-    description: "Security research, CTF walkthroughs, and technical articles.",
+    title: t.seo.write_ups_title,
+    description: t.seo.write_ups_description,
     alternates: buildAlternates("/write-ups", locale),
     openGraph: {
       title: "Write-ups | Mohammad Raouf Abedini",
-      description:
-        "Security research, CTF walkthroughs, and technical articles.",
+      description: t.seo.write_ups_description,
     },
     twitter: {
       card: "summary",
       title: "Write-ups | Mohammad Raouf Abedini",
-      description:
-        "Security research, CTF walkthroughs, and technical articles.",
+      description: t.seo.write_ups_description,
     },
   };
 }

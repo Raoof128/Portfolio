@@ -1,6 +1,7 @@
 import { writeups } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { buildAlternates } from "@/lib/seo";
+import { getDictionary, type Locale } from "@/i18n";
 import { WriteupDetailClient } from "./WriteupDetailClient";
 
 export function generateStaticParams() {
@@ -23,10 +24,11 @@ interface MetadataProps {
 export async function generateMetadata({ params }: MetadataProps) {
   const { locale, slug } = await params;
   const post = writeups.find((p) => p.slug === slug);
-  if (!post) return { title: "Not Found" };
+  const t = await getDictionary(locale as Locale);
+  if (!post) return { title: t.seo.not_found_title };
 
   return {
-    title: `${post.title} | Write-ups`,
+    title: `${post.title} | ${t.seo.write_ups_title}`,
     description: post.takeaway,
     alternates: buildAlternates(`/write-ups/${slug}`, locale),
     openGraph: {
