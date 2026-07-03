@@ -339,7 +339,6 @@ const en = {
     s03_cat5_label: "Frameworks",
     s03_cat5_desc:
       "Open Web Application Security Project (OWASP) Top 10, MITRE ATT&CK, National Institute of Standards and Technology (NIST) Framework, W3C Screen Capture Specification",
-    s04_heading: "Education",
     s04_coursework_label: "Coursework:",
     s04_coursework:
       "Digital Forensics, Network Security, Systems Security, Cloud Computing, Natural Language Processing (NLP) & Machine Learning, Privacy-Preserving Data Analysis",
@@ -460,6 +459,10 @@ const en = {
     bounty_note:
       "This is a personal portfolio project. While I deeply appreciate security research efforts, no monetary bounties are offered. Recognition in this Hall of Fame is the primary acknowledgment for valid reports.",
     note_label: "Note:",
+  },
+  terminal_feed: {
+    aria_label:
+      "Animated terminal showing system boot sequence and security monitoring",
   },
   project_card: {
     module_title: "PROJECT_MODULE",

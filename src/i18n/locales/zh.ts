@@ -331,7 +331,6 @@ const zh: Dictionary = {
     s03_cat5_label: "框架",
     s03_cat5_desc:
       "OWASP Top 10、MITRE ATT&CK、NIST 框架、W3C Screen Capture 规范",
-    s04_heading: "教育背景",
     s04_coursework_label: "课程：",
     s04_coursework:
       "数字取证、网络安全、系统安全、云计算、自然语言处理（NLP）与机器学习、隐私保护数据分析",
@@ -496,6 +495,9 @@ const zh: Dictionary = {
     ack_hall_of_fame: "安全荣誉殿堂",
     ack_note:
       "注意：这是一个个人作品集项目。不提供货币奖励，但您的贡献将获得认可。",
+  },
+  terminal_feed: {
+    aria_label: "动态终端，显示系统启动序列与安全监控状态",
   },
   project_card: {
     module_title: "项目模块",

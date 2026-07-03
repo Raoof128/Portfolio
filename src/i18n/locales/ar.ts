@@ -338,7 +338,6 @@ const ar: Dictionary = {
     s03_cat5_label: "الأطر",
     s03_cat5_desc:
       "OWASP Top 10، MITRE ATT&CK، إطار NIST، مواصفات W3C Screen Capture",
-    s04_heading: "التعليم",
     s04_coursework_label: "المقررات:",
     s04_coursework:
       "الجنائيات الرقمية، أمن الشبكات، أمن الأنظمة، الحوسبة السحابية، معالجة اللغة الطبيعية (NLP) والتعلم الآلي، تحليل البيانات الحافظ للخصوصية",
@@ -509,6 +508,9 @@ const ar: Dictionary = {
     ack_hall_of_fame: "قاعة مشاهير الأمن",
     ack_note:
       "ملاحظة: هذا مشروع محفظة شخصي. لا يُقدم أي مكافأة مالية، لكن مساهمتك ستُقدَّر.",
+  },
+  terminal_feed: {
+    aria_label: "طرفية متحركة تعرض تسلسل إقلاع النظام والمراقبة الأمنية",
   },
   project_card: {
     module_title: "وحدة المشروع",

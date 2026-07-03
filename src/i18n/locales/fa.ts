@@ -340,7 +340,6 @@ const fa: Dictionary = {
     s03_cat5_label: "چارچوب‌ها",
     s03_cat5_desc:
       "OWASP Top 10، MITRE ATT&CK، چارچوب NIST، مشخصات W3C Screen Capture",
-    s04_heading: "تحصیلات",
     s04_coursework_label: "دروس:",
     s04_coursework:
       "جرم‌شناسی دیجیتال، امنیت شبکه، امنیت سیستم‌ها، رایانش ابری، پردازش زبان طبیعی (NLP) و یادگیری ماشین، تحلیل داده حافظ حریم خصوصی",
@@ -511,6 +510,10 @@ const fa: Dictionary = {
     ack_hall_of_fame: "تالار افتخار امنیتی",
     ack_note:
       "توجه: این یک پروژه پورتفولیوی شخصی است. هیچ جایزه مالی ارائه نمی‌شود، اما مشارکت شما به رسمیت شناخته خواهد شد.",
+  },
+  terminal_feed: {
+    aria_label:
+      "ترمینال متحرک که توالی راه‌اندازی سیستم و پایش امنیتی را نشان می‌دهد",
   },
   project_card: {
     module_title: "ماژول پروژه",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useTranslation } from "@/i18n/provider";
 
 /* ─── Reduced-motion detection ──────────────────────────────────────── */
 
@@ -175,6 +176,7 @@ interface DisplayLine {
 }
 
 export function TerminalFeed() {
+  const { t } = useTranslation();
   const reducedMotion = useSyncExternalStore(subscribe, getSnap, getServer);
   const [lines, setLines] = useState<DisplayLine[]>([]);
   const [phase, setPhase] = useState<"boot" | "ready" | "ambient">("boot");
@@ -399,7 +401,7 @@ export function TerminalFeed() {
     <div
       className="relative font-mono text-[11px] leading-[1.6] h-[320px] bg-[#0a0a0c] border border-cyan/10 overflow-hidden select-none"
       role="img"
-      aria-label="Animated terminal showing system boot sequence and security monitoring"
+      aria-label={t.terminal_feed.aria_label}
     >
       {/* Scanline overlay */}
       <div

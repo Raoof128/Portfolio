@@ -343,7 +343,6 @@ const es: Dictionary = {
     s03_cat5_label: "Marcos",
     s03_cat5_desc:
       "OWASP Top 10, MITRE ATT&CK, Marco NIST, Especificación W3C Screen Capture",
-    s04_heading: "Educación",
     s04_coursework_label: "Asignaturas:",
     s04_coursework:
       "Informática Forense, Seguridad de Redes, Seguridad de Sistemas, Computación en la Nube, Procesamiento de Lenguaje Natural (NLP) y Aprendizaje Automático, Análisis de Datos que Preserva la Privacidad",
@@ -523,6 +522,10 @@ const es: Dictionary = {
     ack_hall_of_fame: "Salón de la Fama de Seguridad",
     ack_note:
       "Nota: Este es un proyecto de portafolio personal. No se ofrecen recompensas monetarias, pero tu contribución será reconocida.",
+  },
+  terminal_feed: {
+    aria_label:
+      "Terminal animada que muestra la secuencia de arranque del sistema y la supervisión de seguridad",
   },
   project_card: {
     module_title: "MÓDULO_DE_PROYECTO",
