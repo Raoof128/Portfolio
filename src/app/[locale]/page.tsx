@@ -24,10 +24,10 @@ import {
 } from "@/lib/utils";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import dynamic from "next/dynamic";
-const SingularityCanvas = dynamic(
+const HeroVideo = dynamic(
   () =>
-    import("@/components/ui/SingularityCanvas").then((m) => ({
-      default: m.SingularityCanvas,
+    import("@/components/ui/HeroVideo").then((m) => ({
+      default: m.HeroVideo,
     })),
   { ssr: false },
 );
@@ -162,8 +162,8 @@ export default function Home() {
           HERO — Singularity
       ══════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden -mt-16 pt-16">
-        {/* Singularity canvas — accretion disk black hole animation */}
-        <SingularityCanvas />
+        {/* Hero background — cinematic black-hole video loop */}
+        <HeroVideo />
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-28">
@@ -172,6 +172,10 @@ export default function Home() {
               "max-w-2xl space-y-10",
               isRTL && "mr-0 ml-auto text-right",
             )}
+            style={{
+              textShadow:
+                "0 2px 16px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.85)",
+            }}
           >
             {/* Badge */}
             <motion.div
