@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-03 (Australia/Sydney) — Hero singularity: gravitational lensing, Doppler beaming, photon ring, infall flares + perf
+
+- **Scope**: Full audit + creative upgrade of the hero `SingularityCanvas` black-hole animation
+- **Summary**: Audit found no lensing/beaming (flat dot spiral), particles popping at the horizon, the rAF loop running for the whole homepage visit, and `project()` recomputing identical sin/cos ~4k×/frame. Upgraded the physics: screen-space gravitational lensing (`lens()` — far-side light wraps around the shadow into an Einstein-rim pile-up; near-side weakly deflected; background stars bend around the shadow and vanish behind it), relativistic Doppler beaming (approaching limb boosted to white, receding limb dimmed violet), crisp double photon ring (primary + higher-order image), Gargantua-style lensed disk arcs over/under the shadow with a Doppler gradient, time-dilation infall (orbit whips faster / infall freezes / light redshifts to violet and fades at the horizon — kills the respawn pop), and rare infall flares (~every 5–10 s a particle ignites white-amber, streaks in, and detonates an expanding light-echo pulse on the photon ring). Perf: per-frame rotation sin/cos cache for `project()`, and an IntersectionObserver pauses the render loop when the hero scrolls out of view. Reduced-motion static mode, palette, HUD rings/grid/jets, and DOM overlays unchanged.
+- **Files Changed**: `src/components/ui/SingularityCanvas.tsx`, `.claude/launch.json` (new, dev-server preview config), `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `npx prettier --check`: pass; `npm run lint`: pass; `npm run typecheck`: pass; `npm run test:ci`: 68/68; `npm run build`: 155 pages. Live preview (`npm run dev`, desktop + 375px mobile): renders with 0 console errors/warnings; Doppler asymmetry, Einstein rim, photon ring, and amber under-arc all visible.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-06-26 (Australia/Sydney) — Translate research-forward About bio into fa/ar/zh/es
 
 - **Scope**: Align the four non-English About bios with the new English research narrative

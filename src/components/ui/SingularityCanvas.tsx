@@ -43,6 +43,7 @@ interface Particle {
   trail: TrailPoint[];
   trailClock: number;
   tint: string;
+  flare: number;
 }
 
 interface Projected {
@@ -70,13 +71,27 @@ export function SingularityCanvas() {
     let frame = 0;
     let rafId: number | null = null;
     let lastTimestamp = 0;
+    let inView = true;
     let stars: Star[] = [];
     let particles: Particle[] = [];
+    const pulses: { age: number }[] = [];
+    let nextFlare = 360;
 
     let mouseX = 0;
     let mouseY = 0;
     let targetMouseX = 0;
     let targetMouseY = 0;
+
+    // Per-frame rotation cache — project() runs thousands of times a frame,
+    // so the shared sin/cos pairs are computed once in draw().
+    let cosRX = 1;
+    let sinRX = 0;
+    let cosRY = 1;
+    let sinRY = 0;
+    // Screen-space centre + radius of the event-horizon shadow, per frame.
+    let cX = 0;
+    let cY = 0;
+    let hR = CFG.horizonRadius;
 
     function clamp(v: number, lo: number, hi: number) {
       return Math.max(lo, Math.min(hi, v));
@@ -151,13 +166,16 @@ export function SingularityCanvas() {
             : Math.random() > 0.5
               ? PALETTE.cyan
               : PALETTE.violet,
+        flare: 0,
       };
     }
 
     function initParticles() {
       const targetCount = particleCount();
       if (particles.length === 0) {
-        particles = Array.from({ length: targetCount }, () => makeParticle(true));
+        particles = Array.from({ length: targetCount }, () =>
+          makeParticle(true),
+        );
       } else if (particles.length < targetCount) {
         const diff = targetCount - particles.length;
         for (let i = 0; i < diff; i++) {
@@ -168,15 +186,48 @@ export function SingularityCanvas() {
       }
     }
 
-    function project(x: number, y: number, z: number): Projected {
+    function updateRotation() {
       const rotX = CFG.rotX + mouseY * 0.12;
       const rotY = CFG.rotY + Math.sin(frame * 0.002) * 0.028 + mouseX * 0.12;
-      const x1 = x * Math.cos(rotY) - z * Math.sin(rotY);
-      const z1 = x * Math.sin(rotY) + z * Math.cos(rotY);
-      const y2 = y * Math.cos(rotX) - z1 * Math.sin(rotX);
-      const z2 = y * Math.sin(rotX) + z1 * Math.cos(rotX);
+      cosRX = Math.cos(rotX);
+      sinRX = Math.sin(rotX);
+      cosRY = Math.cos(rotY);
+      sinRY = Math.sin(rotY);
+    }
+
+    function project(x: number, y: number, z: number): Projected {
+      const x1 = x * cosRY - z * sinRY;
+      const z1 = x * sinRY + z * cosRY;
+      const y2 = y * cosRX - z1 * sinRX;
+      const z2 = y * sinRX + z1 * cosRX;
       const scale = CFG.perspective / (CFG.perspective + z2);
       return { x: x1 * scale, y: y2 * scale, z: z2, scale };
+    }
+
+    /**
+     * Screen-space gravitational lensing around the shadow.
+     * Light from behind the hole cannot cross the shadow disk: it wraps
+     * around the photon ring instead (Einstein-rim pile-up). Light in
+     * front is only weakly deflected outward.
+     */
+    function lens(px: number, py: number, z: number): { x: number; y: number } {
+      const dx = px - cX;
+      const dy = py - cY;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 0.5 || d > hR * 3.6) return { x: px, y: py };
+      const behind = z > 4;
+      if (behind && d < hR * 1.55) {
+        const t = d / (hR * 1.55);
+        const wrapped = hR * (1.06 + t * t * 0.85);
+        const f = wrapped / d;
+        return { x: cX + dx * f, y: cY + dy * f };
+      }
+      const bend = clamp(
+        ((hR * hR) / (d * d)) * (behind ? 0.5 : 0.06),
+        0,
+        behind ? 0.9 : 0.25,
+      );
+      return { x: cX + dx * (1 + bend), y: cY + dy * (1 + bend) };
     }
 
     function orbitalPoint(
@@ -191,10 +242,16 @@ export function SingularityCanvas() {
     }
 
     function updateParticle(p: Particle, step: number) {
-      p.angle += p.speed * step;
-      p.radius -= 0.38 * step;
+      // Time dilation: infall slows and orbit whips faster near the horizon,
+      // so particles appear to freeze at the edge instead of popping out.
+      const over = p.radius - CFG.horizonRadius;
+      const dilation = clamp(over / (CFG.horizonRadius * 1.1), 0.05, 1);
+      p.angle += p.speed * step * (1 + (1 - dilation) * 2.2);
+      p.radius -=
+        0.38 * step * (0.25 + dilation * 0.75) * (p.flare > 0 ? 5.5 : 1);
       p.yOsc += Math.sin(frame * 0.006 + p.angle) * 0.003 * step;
-      if (p.radius < CFG.horizonRadius + 3) {
+      if (p.radius < CFG.horizonRadius + 1.5) {
+        if (p.flare > 0 && pulses.length < 4) pulses.push({ age: 0 });
         const fresh = makeParticle(false);
         p.radius = fresh.radius;
         p.angle = fresh.angle;
@@ -204,13 +261,14 @@ export function SingularityCanvas() {
         p.trail = [];
         p.trailClock = 0;
         p.tint = fresh.tint;
+        p.flare = 0;
         return;
       }
       p.trailClock += step;
       if (p.trailClock >= 1) {
         p.trailClock %= 1;
         p.trail.push({ r: p.radius, a: p.angle, y: p.yOsc });
-        const maxTrail = width < 700 ? 3 : 6;
+        const maxTrail = p.flare > 0 ? 10 : width < 700 ? 3 : 6;
         if (p.trail.length > maxTrail) p.trail.shift();
       }
     }
@@ -218,47 +276,100 @@ export function SingularityCanvas() {
     function drawParticle(p: Particle, ox: number, oy: number) {
       const head = orbitalPoint(p.radius, p.angle, p.yOsc);
       if (head.scale <= 0) return;
+      const lensedHead = lens(head.x, head.y, head.z);
       const proximity = clamp(
         (p.radius - CFG.horizonRadius) / CFG.diskRadius,
         0,
         1,
       );
-      const alpha = 0.34 + (1 - proximity) * 0.62;
-      const dotSize = Math.max(0.1, p.size * head.scale * (1.15 - proximity * 0.25));
+      // Gravitational redshift: light dims to nothing at the horizon.
+      const fade = clamp(
+        (p.radius - CFG.horizonRadius) / (CFG.horizonRadius * 0.75),
+        0,
+        1,
+      );
+      // Relativistic Doppler beaming: the approaching side of the disk
+      // (cos(angle) < 0, left of screen) is boosted, the receding side dims.
+      const beam = clamp(1 - 0.85 * Math.cos(p.angle), 0.18, 1.85);
+      const flaring = p.flare > 0;
+      const alpha =
+        (0.34 + (1 - proximity) * 0.62) *
+        clamp(beam * 0.75, 0.3, 1.3) *
+        fade *
+        (flaring ? 1.4 : 1);
+      const dotSize =
+        Math.max(0.1, p.size * head.scale * (1.15 - proximity * 0.25)) *
+        (0.85 + beam * 0.18) *
+        (flaring ? 1.9 : 1);
+      let colour = p.tint;
+      if (flaring || (beam > 1.45 && proximity < 0.55)) colour = PALETTE.white;
+      else if (beam < 0.5 || fade < 0.5) colour = PALETTE.violet;
       if (p.trail.length > 1 && proximity < 0.72 && !rmq.matches) {
         ctx.beginPath();
-        ctx.moveTo(ox + head.x, oy + head.y);
+        ctx.moveTo(ox + lensedHead.x, oy + lensedHead.y);
         for (let i = p.trail.length - 1; i >= 0; i--) {
           const t = p.trail[i];
           const pt = orbitalPoint(t.r, t.a, t.y);
-          ctx.lineTo(ox + pt.x, oy + pt.y);
+          const lp = lens(pt.x, pt.y, pt.z);
+          ctx.lineTo(ox + lp.x, oy + lp.y);
         }
-        ctx.strokeStyle = proximity < 0.18 ? "rgba(255,255,255,0.36)" : p.tint;
-        ctx.globalAlpha = alpha * 0.34;
+        ctx.strokeStyle = flaring
+          ? PALETTE.amber
+          : proximity < 0.18
+            ? "rgba(255,255,255,0.36)"
+            : colour;
+        ctx.globalAlpha = clamp(alpha * (flaring ? 0.55 : 0.34), 0, 1);
         ctx.lineWidth = Math.max(0.3, dotSize * 0.72);
         ctx.stroke();
       }
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = proximity < 0.11 ? PALETTE.white : p.tint;
+      if (flaring) {
+        ctx.globalAlpha = clamp(alpha * 0.28, 0, 1);
+        ctx.fillStyle = PALETTE.amber;
+        ctx.beginPath();
+        ctx.arc(
+          ox + lensedHead.x,
+          oy + lensedHead.y,
+          dotSize * 3.1,
+          0,
+          Math.PI * 2,
+        );
+        ctx.fill();
+      }
+      ctx.globalAlpha = clamp(alpha, 0, 1);
+      ctx.fillStyle = colour;
       ctx.beginPath();
-      ctx.arc(ox + head.x, oy + head.y, dotSize, 0, Math.PI * 2);
+      ctx.arc(ox + lensedHead.x, oy + lensedHead.y, dotSize, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalAlpha = 1;
     }
 
-    function drawStars() {
+    function drawStars(
+      centreScreenX: number,
+      centreScreenY: number,
+      shadowR: number,
+    ) {
       ctx.save();
       ctx.globalCompositeOperation = "screen";
       for (const s of stars) {
         const t = rmq.matches
           ? 0.32
           : 0.24 + Math.sin(frame * s.speed + s.twinkle) * 0.18;
+        let sx = s.x + mouseX * s.r * 15;
+        let sy = s.y + mouseY * s.r * 15;
+        // Background stars lens around the shadow — or vanish behind it.
+        const dx = sx - centreScreenX;
+        const dy = sy - centreScreenY;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < shadowR * 1.15) continue;
+        if (d < shadowR * 6) {
+          const bend = clamp(((shadowR * shadowR) / (d * d)) * 0.55, 0, 0.8);
+          sx = centreScreenX + dx * (1 + bend);
+          sy = centreScreenY + dy * (1 + bend);
+        }
         ctx.globalAlpha = Math.max(0.08, t);
         ctx.fillStyle = s.r > 1.3 ? PALETTE.cyan : "#dce6ff";
         ctx.beginPath();
-        const starParallaxX = mouseX * s.r * 15;
-        const starParallaxY = mouseY * s.r * 15;
-        ctx.arc(s.x + starParallaxX, s.y + starParallaxY, s.r, 0, Math.PI * 2);
+        ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
         ctx.fill();
       }
       ctx.restore();
@@ -420,6 +531,45 @@ export function SingularityCanvas() {
       ctx.globalAlpha = 1;
     }
 
+    /**
+     * The lensed image of the disk's far side — light bent over and under
+     * the shadow (the Gargantua arch). Doppler gradient: the approaching
+     * (left) limb burns white-cyan, the receding limb cools to violet.
+     */
+    function drawLensedArcs(x: number, y: number, r: number) {
+      ctx.save();
+      ctx.globalCompositeOperation = "screen";
+      ctx.lineCap = "round";
+      const shimmer = rmq.matches ? 0 : Math.sin(frame * 0.013) * 1.4;
+      const gradient = ctx.createLinearGradient(x - r * 1.7, y, x + r * 1.7, y);
+      gradient.addColorStop(0, "rgba(255,255,255,0.95)");
+      gradient.addColorStop(0.3, "rgba(0,245,255,0.75)");
+      gradient.addColorStop(0.68, "rgba(246,200,95,0.35)");
+      gradient.addColorStop(1, "rgba(139,92,246,0.12)");
+      ctx.strokeStyle = gradient;
+      // Upper arch — far disk bent over the top of the shadow.
+      const arcs: [number, number, number, number][] = [
+        // [radiusX factor, radiusY factor, startAngle, endAngle]
+        [1.5, 1.3, Math.PI * 1.04, Math.PI * 1.96],
+        [1.26, 1.06, Math.PI * 0.1, Math.PI * 0.9],
+      ];
+      for (const [rx, ry, a0, a1] of arcs) {
+        for (const [w, a] of [
+          [7, 0.07],
+          [2.6, 0.16],
+          [1, 0.38],
+        ] as const) {
+          ctx.beginPath();
+          ctx.ellipse(x, y, r * rx + shimmer, r * ry + shimmer, 0, a0, a1);
+          ctx.globalAlpha = a;
+          ctx.lineWidth = w;
+          ctx.stroke();
+        }
+      }
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    }
+
     function drawHorizon(ox: number, oy: number) {
       const p = project(0, 0, 0);
       const r = CFG.horizonRadius * p.scale;
@@ -454,6 +604,8 @@ export function SingularityCanvas() {
       ctx.fill();
       ctx.globalCompositeOperation = "screen";
 
+      drawLensedArcs(x, y, r);
+
       if (!rmq.matches) {
         ctx.save();
         ctx.lineWidth = 7.5;
@@ -465,10 +617,17 @@ export function SingularityCanvas() {
         ctx.restore();
       }
 
+      // Photon ring — crisp primary image at the shadow edge…
       ctx.lineWidth = 2.2;
       ctx.strokeStyle = "rgba(255,255,255,0.88)";
       ctx.beginPath();
       ctx.arc(x, y, r * 1.04, 0, Math.PI * 2);
+      ctx.stroke();
+      // …and the thin higher-order image just inside it.
+      ctx.lineWidth = 0.8;
+      ctx.strokeStyle = "rgba(0,245,255,0.55)";
+      ctx.beginPath();
+      ctx.arc(x, y, r * 0.955, 0, Math.PI * 2);
       ctx.stroke();
 
       if (!rmq.matches) {
@@ -499,7 +658,25 @@ export function SingularityCanvas() {
         Math.PI * 1.38,
       );
       ctx.stroke();
+
+      // Light echoes — flares that crossed the horizon ring outward.
+      for (const pulse of pulses) {
+        const pr = r * (1.06 + pulse.age * 1.1);
+        const pa = Math.pow(1 - pulse.age, 2) * 0.55;
+        ctx.lineWidth = Math.max(0.4, (1 - pulse.age) * 3);
+        ctx.strokeStyle = PALETTE.white;
+        ctx.globalAlpha = pa;
+        ctx.beginPath();
+        ctx.arc(x, y, pr, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.strokeStyle = PALETTE.cyan;
+        ctx.globalAlpha = pa * 0.6;
+        ctx.beginPath();
+        ctx.arc(x, y, pr * 1.06, 0, Math.PI * 2);
+        ctx.stroke();
+      }
       ctx.restore();
+      ctx.globalAlpha = 1;
     }
 
     function draw(timestamp: number) {
@@ -521,11 +698,17 @@ export function SingularityCanvas() {
         mouseY = 0;
       }
 
+      updateRotation();
+      const centre = project(0, 0, 0);
+      cX = centre.x;
+      cY = centre.y;
+      hR = CFG.horizonRadius * centre.scale;
+
       ctx.clearRect(0, 0, width, height);
-      drawStars();
       const ox = width * 0.5;
       const oy = height * 0.5;
       const scale = clamp(Math.min(width, height) / 850, 0.62, 1.08);
+      drawStars(ox + cX * scale, oy + cY * scale, hR * scale);
       ctx.save();
       ctx.translate(ox, oy);
       ctx.scale(scale, scale);
@@ -544,6 +727,23 @@ export function SingularityCanvas() {
       ctx.restore();
       drawHorizon(ox, oy);
       ctx.restore();
+
+      if (physicsStep > 0) {
+        if (frame >= nextFlare) {
+          const candidate =
+            particles[Math.floor(Math.random() * particles.length)];
+          if (candidate && candidate.radius > CFG.diskRadius * 0.45) {
+            candidate.flare = 1;
+            candidate.trail = [];
+          }
+          nextFlare = frame + 260 + Math.random() * 320;
+        }
+        for (let i = pulses.length - 1; i >= 0; i--) {
+          pulses[i].age += 0.016 * physicsStep;
+          if (pulses[i].age >= 1) pulses.splice(i, 1);
+        }
+      }
+
       frame += physicsStep;
       rafId = requestAnimationFrame(draw);
     }
@@ -555,6 +755,7 @@ export function SingularityCanvas() {
     }
 
     function start() {
+      if (document.hidden || !inView) return;
       if (rafId !== null) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(draw);
     }
@@ -575,6 +776,17 @@ export function SingularityCanvas() {
       targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     };
 
+    // Pause the whole render loop once the hero scrolls out of view.
+    const io = new IntersectionObserver(
+      (entries) => {
+        inView = entries[0]?.isIntersecting ?? true;
+        if (inView) start();
+        else stop();
+      },
+      { threshold: 0.02 },
+    );
+    io.observe(canvas);
+
     window.addEventListener("resize", onResize, { passive: true });
     window.addEventListener("mousemove", onMouseMove, { passive: true });
     rmq.addEventListener?.("change", onRmqChange);
@@ -585,6 +797,7 @@ export function SingularityCanvas() {
 
     return () => {
       stop();
+      io.disconnect();
       window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", onMouseMove);
       rmq.removeEventListener?.("change", onRmqChange);
