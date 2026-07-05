@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: revert to original clip at native aspect + CSS starfield fills the bands
+
+- **Scope**: User rejected the padded 16:9 asset (previous entry) and asked for the original video at its natural size, with the empty areas filled creatively ("some sort of stars").
+- **Summary**: Restored the original 1280×548 (2.34:1) mp4/webm/poster via `git restore` — the padded 16:9 versions were never committed. `HeroVideo.tsx`: in landscape the `<video>` element is now aspect-locked to the clip (`aspect-[1280/548]`, vertically centered) so nothing is ever cropped or stretched; portrait keeps full-bleed `object-cover`. The letterbox bands are filled by a pure-CSS starfield behind the video: two repeating radial-gradient star tiles (260px/420px) twinkling out of phase via a new `star-twinkle` keyframe in `globals.css` (covered by the existing global `prefers-reduced-motion` kill-switch), plus a faint blue nebula halo continuing the accretion disk's glow. The video's top/bottom edges are mask-faded (12% ramps) into the starfield so the band boundary never shows as a hard line.
+- **Files Changed**: `public/hero-singularity.{mp4,webm}` + poster (restored), `src/components/ui/HeroVideo.tsx`, `src/app/globals.css`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Playwright screenshots of the served build: 1440×900 (native clip centered, star bands blend seamlessly), 1920×820 (near-native full-bleed), 390×844 (cover, unchanged) — round black hole everywhere, no stretch, no hard band edge.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`. Star density/twinkle speed are easy to tune in the two starfield divs in `HeroVideo.tsx`.
+
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: fix egg distortion — extend the asset to 16:9 (vignette pad) + plain object-cover — **superseded (assets reverted) by the entry above**
+
+- **Scope**: User reported the hero video looked "stretched like an egg" (the known `object-fill` distortion on tall windows). After four CSS attempts (cover/contain/blur/fill) had each been rejected, fixed the asset instead of the CSS.
+- **Summary**: Extended the 2.34:1 clip (1280×548) to 16:9 (1280×720) with ffmpeg: black-padded top/bottom and feathered the starfield into the padding via a `geq` luminance/chroma vignette (200px ramps), so the halo fades naturally with no visible seam (a plain mirror-pad showed a ghost "second black hole" at bright frames and was discarded). Re-encoded mp4 (x264 crf 19, 8.7→3.2 MB) and webm (vp9 crf 34, 4.8→1.4 MB), regenerated the poster. `HeroVideo.tsx` now uses plain `object-cover object-center` on all viewports — no `object-fill`, no orientation variant — so the black hole is never distorted; laptops get only a ~10% side crop.
+- **Files Changed**: `public/hero-singularity.mp4`, `public/hero-singularity.webm`, `public/hero-singularity-poster.jpg`, `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Served `out/` and screenshotted 1440×900, 1920×820, 390×844 via Playwright — round black hole, full-bleed, no stretch/band/blur at all three.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`. If the source render is ever re-exported, prefer a native 16:9 (or taller) render over re-padding.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: stretch-to-fill (drop blurred backdrop; object-fill landscape / object-cover portrait)
 
 - **Scope**: User rejected the blurred backdrop and asked to stretch the video to fill the hero (after researching the best way).

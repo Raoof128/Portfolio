@@ -40,6 +40,22 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: revert to original clip at native aspect + CSS starfield fills the bands
+
+- **Scope**: User rejected the padded 16:9 asset (previous entry) and asked for the original clip at its natural size with the empty areas filled creatively ("some sort of stars").
+- **Summary**: Restored the original 1280×548 assets via `git restore` (the 16:9 versions were never committed). `HeroVideo.tsx`: landscape now aspect-locks the `<video>` element to the clip (`aspect-[1280/548]`, centered) — never cropped, never stretched; portrait keeps `object-cover`. Bands are filled by a pure-CSS starfield: two twinkling star tiles (new `star-twinkle` keyframe in `globals.css`, auto-disabled by the existing reduced-motion rule) + a faint blue nebula halo, with the clip's top/bottom edges mask-faded 12% into the stars so there is no visible seam.
+- **Files Changed**: `public/hero-singularity.{mp4,webm}` + poster (restored), `src/components/ui/HeroVideo.tsx`, `src/app/globals.css`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck` pass; `test:ci` 68/68; `build` 155 pages. Playwright screenshots at 1440×900 / 1920×820 / 390×844: round black hole, seamless star bands, no stretch or hard edges.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: fix egg distortion — extend the asset to 16:9 (vignette pad) + plain object-cover — **superseded (assets reverted) by the entry above**
+
+- **Scope**: User reported the hero video "stretched like an egg" — the documented `object-fill` distortion on tall windows. With all four CSS options previously rejected (cover=zoom, contain=band, blur, fill=egg), the root cause was the asset's 2.34:1 aspect vs a full-height hero, so the asset was fixed instead of the CSS.
+- **Summary**: Extended the clip from 1280×548 to 1280×720 with ffmpeg: black padding top/bottom with the starfield feathered into it via a `geq` vignette (200px luminance+chroma ramps) — seamless, cinematic, matches the page scrim. (A plain mirror-pad was prototyped first and rejected: bright frames produced a ghost "second black hole" in the top band.) Re-encoded both formats (mp4 x264 crf 19: 8.7→3.2 MB; webm vp9 crf 34: 4.8→1.4 MB; same 8.75s/24fps loop) and regenerated the poster from the new frame. `HeroVideo.tsx`: `object-fill` + portrait variant replaced with plain `object-cover object-center`; header comment now warns not to swap in a raw wide clip.
+- **Files Changed**: `public/hero-singularity.mp4`, `public/hero-singularity.webm`, `public/hero-singularity-poster.jpg`, `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages, new assets emitted to `out/`. Playwright screenshots of the served build at 1440×900, 1920×820 and 390×844: black hole perfectly round and full-bleed at all three — no stretch, no letterbox, no blur.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`. If the hero clip is ever replaced, render it natively at 16:9+ or repeat the vignette-pad recipe (see CHANGELOG entry for the filter).
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: stretch-to-fill (drop blurred backdrop; object-fill landscape / object-cover portrait)
 
 - **Scope**: User rejected the blurred-backdrop approach ("blur is really bad") and explicitly asked to stretch the video to fill the whole hero — and asked me to research the best way first.
