@@ -1,3 +1,8 @@
+# Removed PGP key: force stale bookmarks / edge-cached hits to the current
+# security contact instead of the deleted placeholder key (301 also evicts the
+# stale cached asset that a plain deploy leaves at this exact path).
+/pgp-key.txt  /.well-known/security.txt  301
+
 # Redirect public /en/* back to clean English URLs
 /en  /  302
 /en/* /:splat  302
