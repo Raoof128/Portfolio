@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-05 (Australia/Sydney) — CSP: allow Cloudflare Web Analytics beacon (fix blocked beacon.min.js)
+
+- **Scope**: Browser console reported the Cloudflare Insights beacon (`static.cloudflareinsights.com/beacon.min.js`) being blocked by CSP `script-src 'self' 'unsafe-inline'`. Pages auto-injects this beacon when Web Analytics is on.
+- **Summary**: Added the two Cloudflare origins to the CSP in `public/_headers`: `https://static.cloudflareinsights.com` to `script-src` (loads the beacon) and `https://cloudflareinsights.com` to `connect-src` (the beacon POSTs RUM data to `/cdn-cgi/rum`). Everything else stays locked to `'self'`. Updated the header comment to document the one external origin.
+- **Files Changed**: `public/_headers`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Confirmed built `out/_headers` contains `script-src … https://static.cloudflareinsights.com` and `connect-src 'self' https://cloudflareinsights.com`.
+- **Follow-ups**: After deploy, reload with DevTools console open — the CSP violation should be gone and the beacon 200s. If you don't want analytics at all, disable Web Analytics on the Pages project instead and revert this.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: new native 16:9 Luma render; plain object-cover; starfield workaround removed
 
 - **Scope**: User re-generated the black-hole clip at the recommended 1920×1080 (16:9) and asked to remove Luma's moving watermark and make the video fit exactly.

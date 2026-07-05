@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-05 (Australia/Sydney) — CSP: allow Cloudflare Web Analytics beacon (fix blocked beacon.min.js)
+
+- **Scope**: Console CSP violation — Pages-injected Cloudflare Insights beacon (`static.cloudflareinsights.com/beacon.min.js`) blocked by `script-src 'self' 'unsafe-inline'`.
+- **Summary**: In `public/_headers` added `https://static.cloudflareinsights.com` to `script-src` and `https://cloudflareinsights.com` to `connect-src` (beacon reports to `/cdn-cgi/rum`); all other directives unchanged. Header comment now documents this single external origin. This is the only off-`self` origin the site uses.
+- **Files Changed**: `public/_headers`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `lint`/`typecheck` pass; `test:ci` 68/68; `build` 155 pages; built `out/_headers` verified to contain both Cloudflare origins.
+- **Follow-ups**: Reload live site with console open to confirm the violation is gone. To drop analytics entirely, disable Web Analytics on the Pages project and revert.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: new native 16:9 Luma render; plain object-cover; starfield workaround removed
 
 - **Scope**: User re-generated the clip at 1920×1080 (16:9, as recommended) and asked to strip Luma's moving watermark and fit the video exactly.
