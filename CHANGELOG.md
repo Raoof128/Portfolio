@@ -2,7 +2,15 @@
 
 ## [Unreleased]
 
-### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: revert to original clip at native aspect + CSS starfield fills the bands
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: new native 16:9 Luma render; plain object-cover; starfield workaround removed
+
+- **Scope**: User re-generated the black-hole clip at the recommended 1920×1080 (16:9) and asked to remove Luma's moving watermark and make the video fit exactly.
+- **Summary**: Forensic scan of the downloaded file (corner montages over time, 20-frame contact sheet, per-pixel max/range temporal composites, persistence+shape detection for stationary text, zooms of all candidates) found **no watermark baked into the file** — the bouncing "Luma" text the user saw is drawn by Luma's site preview player, not present in the export. Encoded the clip as-is: mp4 x264 crf 21 (6.7 MB) + webm vp9 crf 36 (2.5 MB) + poster, replacing `public/hero-singularity.*`. With a native 16:9 asset the hero needs no tricks: `HeroVideo.tsx` reduced to plain full-bleed `object-cover` (aspect-lock, edge masks and the CSS starfield/nebula layers removed); `star-twinkle` keyframes removed from `globals.css`.
+- **Files Changed**: `public/hero-singularity.{mp4,webm}` + poster, `src/components/ui/HeroVideo.tsx`, `src/app/globals.css`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Playwright screenshots of the served build at 1440×900 / 1920×820 / 390×844: full-bleed, round black hole, no distortion, no watermark visible.
+- **Follow-ups**: Future hero clips: render 16:9 with the subject in the central ~60% (noted in the component header). If the user still sees a watermark on the live site, capture where/when and revisit.
+
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: revert to original clip at native aspect + CSS starfield fills the bands — **superseded by the entry above (16:9 re-render replaced the wide clip)**
 
 - **Scope**: User rejected the padded 16:9 asset (previous entry) and asked for the original video at its natural size, with the empty areas filled creatively ("some sort of stars").
 - **Summary**: Restored the original 1280×548 (2.34:1) mp4/webm/poster via `git restore` — the padded 16:9 versions were never committed. `HeroVideo.tsx`: in landscape the `<video>` element is now aspect-locked to the clip (`aspect-[1280/548]`, vertically centered) so nothing is ever cropped or stretched; portrait keeps full-bleed `object-cover`. The letterbox bands are filled by a pure-CSS starfield behind the video: two repeating radial-gradient star tiles (260px/420px) twinkling out of phase via a new `star-twinkle` keyframe in `globals.css` (covered by the existing global `prefers-reduced-motion` kill-switch), plus a faint blue nebula halo continuing the accretion disk's glow. The video's top/bottom edges are mask-faded (12% ramps) into the starfield so the band boundary never shows as a hard line.

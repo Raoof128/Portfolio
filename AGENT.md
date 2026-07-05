@@ -40,7 +40,15 @@ Before making any code changes, agents MUST:
 
 ---
 
-### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: revert to original clip at native aspect + CSS starfield fills the bands
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: new native 16:9 Luma render; plain object-cover; starfield workaround removed
+
+- **Scope**: User re-generated the clip at 1920×1080 (16:9, as recommended) and asked to strip Luma's moving watermark and fit the video exactly.
+- **Summary**: Deep forensic scan (corner/time montages, full contact sheet, temporal max/range composites, stationary-text persistence detection) found **no watermark in the downloaded file** — the bouncing "Luma" text is an overlay of Luma's web preview player only. Encoded as-is (mp4 x264 crf 21, 6.7 MB; webm vp9 crf 36, 2.5 MB; new poster) into `public/hero-singularity.*`. `HeroVideo.tsx` simplified to plain full-bleed `object-cover` (aspect-lock, edge mask and CSS starfield removed — a 16:9 asset needs none of it); `star-twinkle` keyframes removed from `globals.css`. Component header documents the asset rule: 16:9, subject in central ~60%.
+- **Files Changed**: `public/hero-singularity.{mp4,webm}` + poster, `src/components/ui/HeroVideo.tsx`, `src/app/globals.css`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck` pass; `test:ci` 68/68; `build` 155 pages; Playwright screenshots at 1440×900 / 1920×820 / 390×844 all full-bleed and undistorted.
+- **Follow-ups**: If a watermark is ever visible on the live site, get its position/time and revisit.
+
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: revert to original clip at native aspect + CSS starfield fills the bands — **superseded by the entry above (16:9 re-render replaced the wide clip)**
 
 - **Scope**: User rejected the padded 16:9 asset (previous entry) and asked for the original clip at its natural size with the empty areas filled creatively ("some sort of stars").
 - **Summary**: Restored the original 1280×548 assets via `git restore` (the 16:9 versions were never committed). `HeroVideo.tsx`: landscape now aspect-locks the `<video>` element to the clip (`aspect-[1280/548]`, centered) — never cropped, never stretched; portrait keeps `object-cover`. Bands are filled by a pure-CSS starfield: two twinkling star tiles (new `star-twinkle` keyframe in `globals.css`, auto-disabled by the existing reduced-motion rule) + a faint blue nebula halo, with the clip's top/bottom edges mask-faded 12% into the stars so there is no visible seam.

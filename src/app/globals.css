@@ -687,16 +687,6 @@ body {
   }
 }
 
-@keyframes star-twinkle {
-  0%,
-  100% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 @keyframes border-trace {
   0% {
     background-position: 0% 0%;
