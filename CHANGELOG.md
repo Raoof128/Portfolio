@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: full-bleed via blurred backdrop layer (fill empty band without zooming)
+
+- **Scope**: Follow-up — user wanted the hero to fill the screen (contain left an empty dark band) without re-zooming the black hole.
+- **Summary**: Goals conflict for one layer, so `HeroVideo.tsx` now stacks two copies of the loop: a blurred over-scaled `object-cover` backdrop (`scale-125 blur-2xl opacity-50`) fills the whole hero, and the sharp `object-contain` copy on top keeps the black hole uncropped. Both play off the same cached file, synced by the existing reduced-motion + IntersectionObserver effect (refactored to drive an array of refs). RTL/scrim/scanline unchanged.
+- **Files Changed**: `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Screenshotted at 1440×900 and 390×844 — full-bleed, no empty band, black hole uncropped, text legible.
+- **Follow-ups**: Two decoding videos + blur is a minor perf cost (small clip, offscreen-pause applies); if low-end mobile janks, swap the backdrop `<video>` for the static blurred poster. Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: reduce zoom (object-cover → object-contain)
 
 - **Scope**: User feedback that the hero video reads "too zoomed in".

@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: full-bleed via blurred backdrop layer (fill empty band without zooming)
+
+- **Scope**: Follow-up to the object-contain change — user wanted the hero to fill the screen (the contain letterbox left an empty dark band top/bottom) but *without* re-zooming/cropping the black hole.
+- **Summary**: These two goals conflict for a single layer (a 2.34:1 clip can't fill a full-height hero without cropping or distortion), so `HeroVideo.tsx` now stacks two copies of the same loop: a **blurred, over-scaled `object-cover` backdrop** (`scale-125 blur-2xl opacity-50`) fills the entire hero so there's no empty band, and the existing sharp **`object-contain` copy** sits on top showing the black hole uncropped/un-zoomed. Both play off the same file (second request served from cache) and are driven together by the existing effect, refactored to sync an array of video refs through the same reduced-motion + IntersectionObserver pause logic. The backdrop is `tabIndex={-1}` and the wrapper stays `aria-hidden`. RTL mirror + scrim + scanline layers unchanged; the scrim/text-shadow keep the intro copy legible over the now-filled background.
+- **Files Changed**: `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Screenshotted the build in headless Chrome at 1440×900 and 390×844 — full-bleed with no empty letterbox band, black hole uncropped, soft blurred cosmic fill in the former empty space, text legible at both sizes.
+- **Follow-ups**: Two simultaneously-decoding video elements + a heavy blur is a small extra GPU/perf cost; it's a 1280×548 clip and the reduced-motion/offscreen pause still applies, so it's fine, but if low-end mobile ever shows jank the cheap fallback is to swap the backdrop `<video>` for the static blurred poster image. Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: reduce zoom (object-cover → object-contain)
 
 - **Scope**: User feedback that the new hero video reads "too zoomed in".
