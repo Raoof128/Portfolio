@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Fingerprint, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import {
+  CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
   ORCID_URL,
@@ -33,7 +34,7 @@ export function Footer() {
     { name: "LinkedIn", href: LINKEDIN_URL, icon: Linkedin },
     { name: "Twitter", href: TWITTER_URL, icon: Twitter },
     { name: "ORCID", href: ORCID_URL, icon: Fingerprint },
-    { name: "Email", href: "mailto:raoof.r12@gmail.com", icon: Mail },
+    { name: "Email", href: `mailto:${CONTACT_EMAIL_GMAIL}`, icon: Mail },
   ];
 
   return (

@@ -536,10 +536,6 @@ const en = {
     g3: "Provide sufficient information to reproduce the vulnerability.",
     g4: "Give reasonable time to address the issue before public disclosure.",
     g5: "Act in good faith and avoid privacy violations.",
-    encrypted_title: "Encrypted Communication",
-    encrypted_desc:
-      "For sensitive reports, you can encrypt your message using my PGP key:",
-    pgp_link: "Download PGP Public Key",
     ack_title: "Acknowledgments",
     ack_desc:
       "I appreciate responsible security researchers who help improve the security of my projects. Valid reports may be acknowledged in the",

@@ -1,6 +1,6 @@
 Contact: mailto:raoof.r999@outlook.com
 Expires: 2027-01-01T00:00:00.000Z
 Preferred-Languages: en
-Encryption: https://raoufabedini.dev/pgp-key.txt
+Canonical: https://raoufabedini.dev/.well-known/security.txt
 Policy: https://raoufabedini.dev/security-policy
 Ack: https://raoufabedini.dev/hall-of-fame

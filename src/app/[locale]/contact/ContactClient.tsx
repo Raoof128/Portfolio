@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { fadeInUp } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import { CONTACT_EMAIL_GMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { cn } from "@/lib/utils";
 
@@ -47,13 +47,13 @@ export function ContactClient() {
             )}
           >
             <motion.a
-              href="mailto:raoof.r12@gmail.com"
+              href={`mailto:${CONTACT_EMAIL_GMAIL}`}
               className="flex items-center text-text-body hover:text-cyan transition-colors font-mono text-xs"
               whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <Mail className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} />{" "}
-              raoof.r12@gmail.com
+              {CONTACT_EMAIL_GMAIL}
             </motion.a>
             <motion.a
               href={GITHUB_URL}

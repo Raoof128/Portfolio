@@ -5,14 +5,7 @@ import { HUDFrame } from "@/components/ui/HUDFrame";
 import { DecryptedText } from "@/components/ui/DecryptedText";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import {
-  Shield,
-  AlertTriangle,
-  Mail,
-  Clock,
-  CheckCircle,
-  ExternalLink,
-} from "lucide-react";
+import { Shield, AlertTriangle, Mail, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -300,37 +293,6 @@ export function SecurityPolicyClient() {
                 )}
               >
                 <span className="text-cyan font-mono">05.</span>{" "}
-                {t.security_policy.encrypted_title}
-              </h2>
-              <HUDFrame className="p-6 bg-[#030712]/60">
-                <p className="text-text-body mb-4">
-                  {t.security_policy.encrypted_desc}
-                </p>
-                <Link
-                  href="/pgp-key.txt"
-                  className={cn(
-                    "inline-flex items-center text-cyan hover:underline font-mono text-sm",
-                    isRTL && "flex-row-reverse gap-2",
-                  )}
-                >
-                  <ExternalLink
-                    className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")}
-                  />
-                  {t.security_policy.pgp_link}
-                </Link>
-              </HUDFrame>
-            </section>
-          </AnimatedSection>
-
-          <AnimatedSection variants={fadeInUp}>
-            <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
-                <span className="text-cyan font-mono">06.</span>{" "}
                 {t.security_policy.ack_title}
               </h2>
               <HUDFrame className="p-6 bg-[#030712]/60">

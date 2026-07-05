@@ -1,6 +1,18 @@
-# HTML pages: always revalidate so stale chunk references never occur
+# Security headers — applied to every response.
+# CSP note: this is a static Next.js export, so there is no server to mint
+# per-request nonces; Next inlines its hydration bootstrap as <script> blocks,
+# so script-src must allow 'unsafe-inline'. No external script/style/img/font/
+# connect origins are used (next/font self-hosts, all off-site URLs are plain
+# anchor navigations), so everything else is locked to 'self'.
 /*
   Cache-Control: public, max-age=0, must-revalidate
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
 
 # Immutable static assets (content-hashed filenames, safe to cache forever)
 /_next/static/*

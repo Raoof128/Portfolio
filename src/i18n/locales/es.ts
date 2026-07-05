@@ -512,10 +512,6 @@ const es: Dictionary = {
     g3: "Proporciona información suficiente para reproducir la vulnerabilidad.",
     g4: "Da tiempo razonable para abordar el problema antes de la divulgación pública.",
     g5: "Actúa de buena fe y evita las violaciones de privacidad.",
-    encrypted_title: "Comunicación Cifrada",
-    encrypted_desc:
-      "Para informes sensibles, puedes cifrar tu mensaje usando mi clave PGP:",
-    pgp_link: "Descargar Clave PGP Pública",
     ack_title: "Reconocimientos",
     ack_desc:
       "Aprecio a los investigadores de seguridad responsables que ayudan a mejorar la seguridad de mis proyectos. Los informes válidos pueden ser reconocidos en el",
