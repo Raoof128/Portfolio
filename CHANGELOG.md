@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: reduce zoom (object-cover → object-contain)
+
+- **Scope**: User feedback that the hero video reads "too zoomed in".
+- **Summary**: The clip is a wide 1280×548 (~2.34:1) but the hero is `min-h-screen`, so `object-cover` scaled it up and cropped hard (~1.55× desktop, extreme crop on mobile). Switched `HeroVideo.tsx` to `object-contain object-center` — the whole frame shows un-zoomed, and since the footage is dark-edged and the wrapper is already `bg-[#030712]`, there are no visible letterbox bars. One-line className change; playback/RTL logic untouched.
+- **Files Changed**: `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Screenshotted the build at 1440×900 / 1280×800 / 390×844 — full frame visible, no over-zoom, text legible.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Security hardening: add response-header suite, remove fake PGP key, DRY contact email
 
 - **Scope**: Fix all findings from an authorized red-team of the live site. Static export, no backend/DB, so no critical/data-exposure class exists — findings were defense-in-depth headers plus one broken security control (a placeholder PGP key advertised as real).

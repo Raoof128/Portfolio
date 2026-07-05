@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: reduce zoom (object-cover → object-contain)
+
+- **Scope**: User feedback that the new hero video reads "too zoomed in".
+- **Summary**: Root cause is an aspect-ratio mismatch: the clip is a very wide 1280×548 (~2.34:1) but the hero is `min-h-screen`, so `object-cover object-[68%_center]` scaled the footage up to fill the tall area and cropped hard — ~1.55× on desktop and an extreme center-crop on narrow/mobile viewports. Switched `HeroVideo.tsx` to `object-contain object-center` so the entire frame is shown un-zoomed. No letterbox bars are visible because the clip's periphery is dark space and the video wrapper is already `bg-[#030712]`, so the contained area blends into the page background. Verified the black hole + full accretion disk now render whole at desktop/laptop, and mobile shows the complete frame as a clean cinematic band (previously an over-zoomed crop) with the intro copy still legible over it via the existing scrim + text-shadow. One-line className change; autoplay/reduced-motion/IntersectionObserver/RTL-mirror logic untouched.
+- **Files Changed**: `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Screenshotted the built `out/` in headless Chrome at 1440×900, 1280×800, and 390×844 — full frame visible, no over-zoom, text legible at every size.
+- **Follow-ups**: If the contained band ever feels too sparse on very tall/narrow phones, the alternative is a responsive `object-cover` only above a width breakpoint, but contain reads well here because the footage is dark-edged. Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Security hardening: add response-header suite, remove fake PGP key, DRY contact email
 
 - **Scope**: Fix all findings from an authorized red-team of the live site. Static export, no backend/DB, so no critical/data-exposure class exists — findings were defense-in-depth headers plus one broken security control (a placeholder PGP key advertised as real).

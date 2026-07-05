@@ -72,7 +72,7 @@ export function HeroVideo() {
       >
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
+          className="absolute inset-0 h-full w-full object-contain object-center"
           poster="/hero-singularity-poster.jpg"
           autoPlay
           muted
