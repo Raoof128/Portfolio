@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: stretch-to-fill (drop blurred backdrop; object-fill landscape / object-cover portrait)
+
+- **Scope**: User rejected the blurred-backdrop approach ("blur is really bad") and explicitly asked to stretch the video to fill the whole hero — and asked me to research the best way first.
+- **Summary**: Searched current guidance (Shopify, CSS-Tricks, MDN, Smashing, Wes Bos): the universal recommendation is `object-fit: cover` (fills, preserves aspect, crops) and `fill` (true stretch) is called out as "looks broken". But the user had already rejected cover (too zoomed), contain (empty band) and blur — so with "fill the whole hero, no blur, no empty space" as hard constraints, a stretch is the only remaining path, and I implemented it in the least-ugly form. Removed the second (blurred) `<video>` and reverted to a single video element. Set `object-fill` so it stretches edge-to-edge, with `[@media(orientation:portrait)]:object-cover` so portrait phones fall back to crop (a full stretch there smears the black hole into a tall streak). Key property of this clip: at 2.34:1, wide/short viewports (ultrawide, and typical desktop widths viewed short) sit very close to the video's native aspect, so the stretch is near-invisible and it fills perfectly; the vertical stretch (egg-shaped shadow) only becomes visible on tall browser windows. Reverted the playback effect to the single-ref form; RTL mirror / scrim / scanline unchanged.
+- **Files Changed**: `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier --check`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Screenshotted the build at 1920×820 (near-native, negligible distortion), 1440×900 (fills, ~1.5× vertical stretch visible on the shadow), and 390×844 portrait (cover fallback: full-bleed swirl, no distortion) — the portrait media-variant confirmed compiling/working since mobile crops rather than stretches. All full-bleed, no blur, no empty band.
+- **Follow-ups**: The stretch is aspect-dependent — it's invisible on wide monitors but the shadow goes egg-shaped on tall windows; this is the inherent cost of `object-fill` and was the explicit user choice over cover/contain/blur. If the tall-window distortion ever bothers, the honest options remain the earlier three (cover=crop, contain=letterbox, blurred backdrop) or sourcing a taller/vertical-friendly clip. Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: full-bleed via blurred backdrop layer (fill empty band without zooming)
 
 - **Scope**: Follow-up to the object-contain change — user wanted the hero to fill the screen (the contain letterbox left an empty dark band top/bottom) but *without* re-zooming/cropping the black hole.

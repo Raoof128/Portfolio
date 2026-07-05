@@ -12,11 +12,11 @@ import { useTranslation } from "@/i18n/provider";
  * so browsers that support it use the smaller file; MP4 is the universal
  * fallback.
  *
- * The clip is a wide 2.34:1 loop but the hero is full-height, so two layers
- * are stacked: a blurred, scaled `object-cover` copy fills the whole hero as
- * an ambient backdrop (no empty letterbox band), and a sharp `object-contain`
- * copy on top shows the black hole uncropped / un-zoomed. Both play in sync
- * off the same file (the second request is served from cache).
+ * The clip is a wide 2.34:1 loop and the hero is full-height. To fill the
+ * whole hero edge-to-edge with no letterbox band, the video is stretched
+ * (`object-fill`) on landscape viewports — where the aspect gap is small so
+ * the stretch stays subtle — and falls back to `object-cover` on portrait
+ * phones, where a full stretch would smear the black hole into a tall streak.
  *
  * The hero text column swaps sides for RTL locales (fa/ar) — the video and
  * its darkening gradient are mirrored together via scaleX(-1) so the bright
@@ -26,26 +26,22 @@ export function HeroVideo() {
   const { locale } = useTranslation();
   const isRTL = locale === "fa" || locale === "ar";
   const videoRef = useRef<HTMLVideoElement>(null);
-  const bgRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const videos = [videoRef.current, bgRef.current].filter(
-      (v): v is HTMLVideoElement => v !== null,
-    );
-    if (videos.length === 0) return;
+    const video = videoRef.current;
+    if (!video) return;
 
     const rmq = window.matchMedia("(prefers-reduced-motion: reduce)");
     let inView = true;
 
     function syncPlayback() {
-      for (const video of videos) {
-        if (rmq.matches || !inView) {
-          video.pause();
-        } else {
-          // play() returns a promise that rejects if the browser blocks
-          // autoplay (e.g. before any user interaction) — safe to ignore.
-          void video.play().catch(() => {});
-        }
+      if (!video) return;
+      if (rmq.matches || !inView) {
+        video.pause();
+      } else {
+        // play() returns a promise that rejects if the browser blocks
+        // autoplay (e.g. before any user interaction) — safe to ignore.
+        void video.play().catch(() => {});
       }
     }
 
@@ -58,7 +54,7 @@ export function HeroVideo() {
       },
       { threshold: 0.02 },
     );
-    io.observe(videos[0]);
+    io.observe(video);
 
     const onRmqChange = () => syncPlayback();
     rmq.addEventListener?.("change", onRmqChange);
@@ -80,26 +76,9 @@ export function HeroVideo() {
         className="absolute inset-0"
         style={{ transform: isRTL ? "scaleX(-1)" : undefined }}
       >
-        {/* Ambient backdrop: blurred, over-scaled cover fill so the full-height
-            hero has no empty letterbox band behind the contained clip. */}
-        <video
-          ref={bgRef}
-          className="absolute inset-0 h-full w-full object-cover scale-125 blur-2xl opacity-50"
-          poster="/hero-singularity-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          tabIndex={-1}
-        >
-          <source src="/hero-singularity.webm" type="video/webm" />
-          <source src="/hero-singularity.mp4" type="video/mp4" />
-        </video>
-
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-contain object-center"
+          className="absolute inset-0 h-full w-full object-center object-fill [@media(orientation:portrait)]:object-cover"
           poster="/hero-singularity-poster.jpg"
           autoPlay
           muted

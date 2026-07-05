@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: stretch-to-fill (drop blurred backdrop; object-fill landscape / object-cover portrait)
+
+- **Scope**: User rejected the blurred backdrop and asked to stretch the video to fill the hero (after researching the best way).
+- **Summary**: Web guidance unanimously prefers `object-fit: cover` and calls `fill` "broken", but the user had already rejected cover (zoom), contain (empty band) and blur — so a stretch is the only path left to "fill, no blur, no empty space". Removed the blurred second `<video>`, back to a single element with `object-fill` + `[@media(orientation:portrait)]:object-cover` (portrait falls back to crop so the shadow doesn't smear). Because the clip is 2.34:1, the stretch is near-invisible on wide/short viewports and only shows (egg-shaped shadow) on tall windows.
+- **Files Changed**: `src/components/ui/HeroVideo.tsx`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: `prettier`/`lint`/`typecheck`: pass; `test:ci`: 68/68; `build`: 155 pages. Screenshotted at 1920×820 (near-native), 1440×900 (fills, mild vertical stretch), 390×844 (cover fallback) — all full-bleed, no blur/empty band.
+- **Follow-ups**: Stretch distortion is aspect-dependent (invisible wide, egg-shaped on tall windows) — inherent to `object-fill`, chosen over cover/contain/blur. Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — Hero video: full-bleed via blurred backdrop layer (fill empty band without zooming)
 
 - **Scope**: Follow-up — user wanted the hero to fill the screen (contain left an empty dark band) without re-zooming the black hole.
