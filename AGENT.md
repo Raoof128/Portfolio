@@ -40,6 +40,38 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-17 (Australia/Sydney) — Full repo sweep + 4-locale translation of the new résumé narrative
+
+- **Scope**: Second pass after the EN sync: swept `src` for remaining stale markers and translated all changed strings into fa/ar/es/zh for content parity.
+- **Summary**: EN sweep fixed the `en.ts` seo block (titles/descriptions/OG + keyword_2/keyword_9), `layout.tsx` JSON-LD `knowsAbout` (lead with agent red-teaming + containment attestation), and `constants.ts` `SITE_LAST_MODIFIED` → 2026-07-17. Four parallel agents translated the same ~24 changed keys (seo, home ticker 15→12, footer date, about bio_1..3 + hero_subtitle, full resume section) into `fa/ar/es/zh` — proper nouns/tech terms in Latin, metrics exact, per-locale digit conventions, localised proj1_tag + footer date. All 13 data.ts projects audited (only Simurgh + Syllabus-Sync changed, prior entries).
+- **Files Changed**: `src/i18n/locales/{en,fa,ar,es,zh}.ts`, `src/app/[locale]/layout.tsx`, `src/lib/constants.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: prettier/lint/typecheck pass (all 5 locales, 412 keys each, parity intact); `test:ci` 68/68; `build` 152 pages; built resume.html for all 5 locales carry Simurgh + Airtasker + metrics; old markers gone from EN.
+- **Follow-ups**: Deploy via wrangler (project raoufabedini). Optional: refresh About spec/skill ordering and README counts.
+
+### Raouf: 2026-07-17 (Australia/Sydney) — Sync site content (EN) to the new Frontier Red Team résumé
+
+- **Scope**: Live English résumé page, About bio, home ticker, and footer carried the old vulnerability-research narrative and stale facts, contradicting the uploaded Frontier Red Team résumé.
+- **Summary**: Value-only edits in `src/i18n/locales/en.ts` (no key changes → parity/tests intact). Updated résumé `tagline`/`location`/`s01_bio`/`proj1` (Simurgh → containment attestation)/`exp1` (Airtasker credential)/`s07` (Alignerr, Persian Society, certs)/`s08_available`; About `bio_1..3` reframed; home `ticker` + `hero_subtitle` refreshed; footer date MAY→JUL 2026. English only — fa/ar/es/zh still hold older translated values (flagged for a translation pass).
+- **Files Changed**: `src/i18n/locales/en.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: prettier/lint/typecheck pass; `test:ci` 68/68; `build` succeeded; built `out/en/resume.html` confirmed carrying the new content.
+- **Follow-ups**: Deploy via wrangler. Translate updated strings into the other 4 locales for content parity.
+
+### Raouf: 2026-07-17 (Australia/Sydney) — Syllabus-Sync: mark as accepted into Macquarie University Incubator (formal startup) + swap demo link to production domain
+
+- **Scope**: Syllabus-Sync accepted into the Macquarie University Incubator as a formal startup; portfolio still showed only the Vercel preview URL and no startup status.
+- **Summary**: Updated the `syllabus-sync` entry in `src/lib/data.ts` — incubator/startup status added to `description`, all four localized descriptions, `fullDescription`, and the lead two `proof` items; added `"MQ Incubator Startup"` tag (dropped `"Full-Stack"`); replaced `links.demo` with production domain `https://www.syllabus-sync.app/`. No test changes (not asserted in `data.test.ts`).
+- **Files Changed**: `src/lib/data.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: prettier/lint/typecheck pass; `test:ci` 68/68; `build` succeeded; built `syllabus-sync.html` confirmed to contain the incubator line and the new link.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`. Optional: mirror the credential onto the résumé.
+
+### Raouf: 2026-07-17 (Australia/Sydney) — Project Simurgh: reframe from proctoring integrity API to verifiable containment-attestation framework for agentic AI
+
+- **Scope**: Live `project-simurgh` page carried the stale pre-June-2026 proctoring identity, contradicting the current AGPL-3.0 repo, the résumé, and the Zurvan one-page brief.
+- **Summary**: Reframed the Simurgh entry in `src/lib/data.ts` to lead with the current identity (provider-agnostic verifiable containment-attestation framework for agentic AI) while keeping the honest Invisible Window lineage and **all three real published preprints + links untouched**. Rewrote description, 4 localized descriptions, tags, build, secure, fullDescription, problem, solution, proof — every new claim grounded in the project's own signed evidence (Llama Guard 4 138/138, AgentDojo 9/140→0/140, four boundaries, dishonest-producer model, self-red-team, 5 Lean theorems, OIDC provenance root, 989 tests/44 releases), including the signed non-claim about the June content bypass. Updated the single `description` assertion in `src/lib/data.test.ts`; papers/citation/links assertions unchanged (real data preserved).
+- **Files Changed**: `src/lib/data.ts`, `src/lib/data.test.ts`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: prettier/lint/typecheck pass; `test:ci` 68/68; `build` succeeded; built `project-simurgh.html` confirmed to contain the new framing, `138/138`, `9/140 to 0/140`, and DOIs `20374849` + `20675513`.
+- **Follow-ups**: Deploy via `npm run build && npx wrangler pages deploy out --project-name raoufabedini --branch main`. Sweep `about`/résumé copy for any remaining proctoring-first framing.
+
 ### Raouf: 2026-07-05 (Australia/Sydney) — CSP: allow Cloudflare Web Analytics beacon (fix blocked beacon.min.js)
 
 - **Scope**: Console CSP violation — Pages-injected Cloudflare Insights beacon (`static.cloudflareinsights.com/beacon.min.js`) blocked by `script-src 'self' 'unsafe-inline'`.

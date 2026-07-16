@@ -3,25 +3,26 @@ import { Dictionary } from "./en";
 const zh: Dictionary = {
   seo: {
     skip_to_content: "跳转到主要内容",
-    home_title_default: "Mohammad Raouf Abedini | 人工智能安全研究员",
+    home_title_default:
+      "Mohammad Raouf Abedini | 人工智能安全研究与大语言模型代理红队测试",
     home_description:
-      "人工智能安全研究员，具备独立发现、验证并负责任地披露跨平台漏洞的能力。著有《The Invisible Window》——一篇 12 页 IEEE 格式安全研究论文，实现了 100% 屏幕捕获规避。Anthropic 人工智能模型评估员。致力于降低高级人工智能带来的灾难性风险。",
+      "安全研究员，致力于构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个开源的遏制证明框架，对大语言模型（LLM）代理进行红队测试，并生成经过签名、可离线验证的证据，记录代理在护栏失效后的行为。在 Anthropic 的安全评估项目中评估了 Claude。此外还著有《The Invisible Window》（100% 跨平台屏幕捕获规避，已负责任地披露）。",
     home_og_description:
-      "漏洞研究、负责任披露与人工智能安全。著有《The Invisible Window》。Anthropic 人工智能评估员。",
+      "大语言模型代理红队测试与可验证的遏制证明。Project Simurgh 的创建者。Anthropic 安全评估贡献者。《The Invisible Window》的作者。",
     keyword_1: "人工智能安全研究",
-    keyword_2: "漏洞研究",
+    keyword_2: "大语言模型代理红队测试",
     keyword_3: "负责任披露",
     keyword_4: "大语言模型安全评估",
     keyword_5: "跨平台漏洞开发",
     keyword_6: "人工智能安全",
     keyword_7: "屏幕捕获规避",
     keyword_8: "攻击性安全",
-    keyword_9: "Python 系统编程",
+    keyword_9: "可验证的遏制证明",
     about_title: "关于",
     about_description:
-      "人工智能安全研究员，专注于漏洞研究、负责任披露、人工智能安全及跨平台漏洞开发。Anthropic 人工智能模型评估员。",
+      "安全研究员，专注于测量和遏制前沿人工智能的网络能力：大语言模型代理红队测试、可验证的遏制证明、漏洞研究以及负责任披露。Anthropic 安全评估贡献者。",
     about_og_description:
-      "人工智能安全研究员，专注于漏洞研究、负责任披露、人工智能安全及跨平台漏洞开发。",
+      "人工智能安全研究、大语言模型代理红队测试以及可验证的遏制证明。Project Simurgh 的创建者。",
     contact_title: "联系 | Mohammad Raouf Abedini",
     contact_description:
       "与 Mohammad Raouf Abedini 取得联系。开启安全通信渠道，用于网络安全咨询、合作或问询。",
@@ -29,9 +30,9 @@ const zh: Dictionary = {
     lab_description: "网络安全研究的实验性代码、概念验证及代码片段。",
     resume_title: "简历",
     resume_description:
-      "Mohammad Raouf Abedini 的简历——人工智能安全研究员，漏洞研究，攻击性安全，Python 与系统编程。",
+      "Mohammad Raouf Abedini 的简历——人工智能安全研究、大语言模型代理红队测试、可验证的遏制证明，以及攻击性与防御性安全工程。",
     resume_og_description:
-      "Mohammad Raouf Abedini 的简历——人工智能安全研究员，漏洞研究，攻击性安全。",
+      "Mohammad Raouf Abedini 的简历——人工智能安全研究、大语言模型代理红队测试以及安全工程。",
     security_policy_title: "安全政策 | Mohammad Raouf Abedini",
     security_policy_description: "安全漏洞披露政策及负责任披露指南。",
     hall_of_fame_title: "荣誉殿堂 | Mohammad Raouf Abedini",
@@ -103,19 +104,16 @@ const zh: Dictionary = {
     ticker: [
       "系统在线",
       "人工智能安全研究",
-      "漏洞研究",
+      "大语言模型代理红队测试",
+      "遏制证明",
+      "PROJECT SIMURGH",
+      "ANTHROPIC 安全评估员",
       "负责任披露",
-      "跨平台漏洞开发",
-      "大语言模型安全评估",
-      "人工智能安全",
-      "ANTHROPIC 人工智能评估员",
-      "PYTHON 与系统编程",
-      "降低人工智能灾难性风险",
       "THE INVISIBLE WINDOW",
+      "孵化器支持的初创公司",
+      "降低人工智能灾难性风险",
       "70+ 个已发布项目",
-      "攻击性安全",
-      "双重用途风险评估",
-      "CASTLE HILL · NSW · 澳大利亚",
+      "随时可搬迁 · SAN FRANCISCO",
     ],
     deployed_systems: "已部署系统",
     ieee_format_paper: "IEEE 格式论文",
@@ -134,7 +132,7 @@ const zh: Dictionary = {
   },
   footer: {
     last_index: "最后索引",
-    last_index_value: "2026年5月",
+    last_index_value: "2026年7月",
     status: "状态",
     environment: "环境",
     built_with: "构建工具",
@@ -153,13 +151,13 @@ const zh: Dictionary = {
   about: {
     identity_record: "身份记录",
     hero_title: "Mohammad Raouf Abedini",
-    hero_subtitle: "人工智能安全研究员",
+    hero_subtitle: "人工智能安全研究 · 大语言模型代理红队测试",
     bio_1:
-      "独立人工智能安全研究员，麦觉理大学网络安全专业毕业生，现可入职。研究工作由 Zenodo 上五篇带 DOI 的预印本支撑（已在 ORCID 下编入索引），涵盖攻击性漏洞研究、隐私保护完整性系统以及面向 AI 的引用忠实度评估。",
+      "安全研究员，专注于测量和遏制前沿人工智能的网络能力，现可搬迁。相关工作公开、经过签名且可复现：一个开源的遏制证明框架、五篇带 DOI 存档的 Zenodo 预印本（已在 ORCID 下编入索引），以及在 Anthropic 安全评估项目内的评估工作。",
     bio_2:
-      "《The Invisible Window》的主要作者——一篇 12 页 IEEE 格式论文，仅利用操作系统级的有文档记录的 API，即在 Windows 10/11 与 macOS 14–26 上实现 100% 屏幕捕获规避，并提出新发现：苹果在 macOS 15 中的缓解措施在 macOS 26 上依然无效。相关发现已依据 OWASP/FIRST/CISA 框架负责任地披露。",
+      "Project Simurgh 的创建者——一个与提供方无关的遏制证明框架，在对抗性的、不诚实生产者威胁模型下对大语言模型代理进行红队测试，并生成经 Ed25519 签名、可离线验证的证据，记录代理在护栏失效后的行为：针对真实的 Llama Guard 4 遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将实时代理的攻击成功率从 9/140 降至 0/140，以及五个经机器验证的 Lean 定理。AGPL-3.0，44 个版本中共 989 项测试。",
     bio_3:
-      "在防御方面：《Project Simurgh》的隐私保护设备完整性证明与防篡改审计链（三篇预印本），以及《Aion-BibleQA》面向检索增强大语言模型的引用忠实度基准（R@5 为 0.941，零无依据引用）。完成了 Anthropic 的 AI 模型评估（Claude Code 人类偏好测试），并具备 Python、C/C++、TypeScript 和 Swift 的生产经验。致力于通过测量能力提升、界定安全边界和构建防御性工具来降低高级人工智能带来的灾难性风险。",
+      "同时也是《The Invisible Window》的主要作者（100% 跨平台屏幕捕获规避，已依据 OWASP/FIRST/CISA 指南负责任地披露）以及《Aion-BibleQA》（面向检索增强大语言模型的引用忠实度基准：R@5 为 0.941，零无依据引用）的作者。在 Anthropic 的安全评估项目中（通过 Alignerr，2026 年）评估了 Claude 输出的可利用代码与护栏绕过情况。一家孵化器支持的校园人工智能初创公司的联合创始人。致力于通过测量能力提升、界定安全边界以及交付防御性工具来降低高级人工智能带来的灾难性风险。",
     stats_projects: "项目",
     stats_evasion: "规避率",
     stats_vendors: "已披露厂商",
@@ -295,13 +293,15 @@ const zh: Dictionary = {
     download: "下载简历",
   },
   resume: {
-    tagline: "人工智能安全研究员 · 漏洞研究 · 攻击性安全 · Python 与系统编程",
-    location: "澳大利亚新南威尔士州悉尼卡斯尔希尔",
+    tagline:
+      "人工智能安全研究 · 大语言模型代理红队测试 · 攻击性与防御性安全工程",
+    location:
+      "悉尼卡斯尔希尔 · 现可搬迁至加州 San Francisco · 可随时出差（Washington, DC）",
     linkedin_profile: "领英主页",
     orcid_id: "ORCID 编号",
     s01_heading: "关于",
     s01_bio:
-      "人工智能安全研究员，麦觉理大学网络安全专业毕业生，现可入职，具备独立发现、验证并负责任地披露跨平台漏洞的能力。著有《The Invisible Window》——一篇 12 页 IEEE 格式安全研究论文，仅利用有文档记录的操作系统级 API，在 Windows 10/11 与 macOS 14–26 上实现 100% 屏幕捕获规避。近期研究还包括《Project Simurgh》隐私保护完整性证据（DOI：10.5281/zenodo.20549736）以及《Aion-BibleQA》针对圣经 RAG 系统的引用忠实度评估（DOI：10.5281/zenodo.20522874）。完成了 Anthropic 的人工智能模型评估（Claude Code 人类偏好测试），对大语言模型代码输出的质量、安全性与可靠性进行了基准测试。",
+      "安全研究员，致力于构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个与提供方无关的遏制证明框架，在对抗性的、不诚实生产者威胁模型下对大语言模型代理进行红队测试，并生成经 Ed25519 签名、可离线验证的证据，记录代理在护栏失效后的行为：遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将实时代理的攻击成功率从 9/140 降至 0/140，五个经机器验证的 Lean 定理。在 Anthropic 的安全评估项目中（通过 Alignerr）评估了 Claude 输出的可利用代码与护栏绕过情况。此外还著有《The Invisible Window》（100% 跨平台屏幕捕获规避，已负责任地披露）以及《Aion-BibleQA》（RAG 引用忠实度基准）。一家孵化器支持的校园人工智能初创公司的联合创始人；已发布 70+ 个项目。",
     s02_heading: "安全研究",
     s02_tech_stack: "C、Swift、Python、Win32 API、ScreenCaptureKit、WebRTC",
     s02_subtitle: "利用操作系统级显示关联绕过 WebRTC 监考系统",
@@ -335,10 +335,11 @@ const zh: Dictionary = {
     s04_coursework:
       "数字取证、网络安全、系统安全、云计算、自然语言处理（NLP）与机器学习、隐私保护数据分析",
     s05_heading: "精选研究与工程项目",
-    proj1_tag: "完整性",
-    proj1_stack: "Node.js · Express · 浏览器遥测 · HMAC 审计链 · 隐私工程",
+    proj1_tag: "遏制",
+    proj1_stack:
+      "Node.js · Ed25519 证明 · Lean 4 · AgentDojo · JS↔Python 一致性",
     proj1_desc:
-      "构建了零信任完整性 API，并在麦觉理大学发布了隐私保护设备完整性预印本，及与投票相关的第 C 阶段补充材料——31 次已获同意的会话、结构性排除投票选择、HMAC-SHA-256 审计链，以及 5/5 采集关闭门控。DOI：10.5281/zenodo.20549736。",
+      "面向代理型人工智能的、与提供方无关的可验证遏制证明框架。生成经 Ed25519 签名、可离线复现的证据，记录代理在护栏失效后被允许执行的操作：针对真实的 Llama Guard 4 遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将实时代理的攻击成功率从 9/140 降至 0/140，并以五个经机器验证的 Lean 定理收尾。AGPL-3.0；44 个版本中共 989 项测试。已发布谱系：DOI 10.5281/zenodo.20374849、20549736、20675513。",
     proj2_tag: "圣经 RAG",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · OpenAI 嵌入 · Tauri v2",
@@ -363,28 +364,29 @@ const zh: Dictionary = {
     s05_more_projects:
       "GitHub 上另有 70 多个公开项目，涵盖漏洞研究、系统编程、人工智能/机器学习工具及云基础设施：",
     s06_heading: "职业经历",
-    exp1_title: "自由职业全栈开发者与安全工程师",
+    exp1_title: "自由职业安全工程师与全栈开发者",
     exp1_employer: "自雇 · 2024年1月 – 至今",
     exp1_bullet1:
-      "为多个客户使用 Python、TypeScript 与 Cloudflare Workers 设计安全优先的生产级 Web 应用——服务 1,000 名以上终端用户，实现零停机运行",
+      "在 Supabase 上为生产级、多前端平台架构安全后端：WebAuthn 通行密钥、TOTP/短信多因素认证（MFA）、零信任边缘中间件、分布式速率限制、严格的 Postgres 行级安全（RLS），以及通过 SECURITY DEFINER RPC 实现的防篡改审计日志",
     exp1_bullet2:
-      "通过 GitHub Actions 构建 CI/CD 流水线与自动化测试套件（覆盖 35 个语言环境的 500 多项测试）——通过系统化质量保障将部署失败率降低约 40%",
+      "构建了包含 500 多项自动化安全测试的 CI/CD（GitHub Actions），将部署漏洞减少约 40%；为 1,000 名以上用户交付了以安全为先的应用，采用 OWASP Top 10 控制措施与 OAuth 2.0",
     exp1_bullet3:
-      "将大语言模型能力集成到客户应用中，构建人工智能驱动的自动化工具，使非技术用户能够独立管理内容工作流",
+      "在 Airtasker 上，31 条客户评价与 35 项已完成任务中保持 5.0 星评分（95% 完成率，已通过身份验证），为付费客户提供 Web 开发、Python、API 集成以及 IT/安全工作",
     exp2_title: "IT 经理",
     exp2_employer: "伊朗药房 · 2019年8月 – 2024年5月",
     exp2_bullet1:
       "在一个多站点组织中管理技术基础设施长达 5 年——维持 99% 的系统正常运行时间，实施基于角色的访问控制（RBAC），并通过 Python/Bash 脚本自动化运营工作流（人工任务减少约 30%）",
-    s07_heading: "人工智能安全与社区参与",
+    s07_heading: "人工智能安全、领导力与社区",
     s07_bullet1:
-      "完成了 Anthropic 的人工智能模型评估（Claude Code 人类偏好测试）——在多个代码库中对大语言模型代码输出的质量、安全性、正确性与可靠性进行基准测试",
+      "人工智能安全评估员，Claude（Alignerr，Anthropic 人工智能安全评估项目，2026 年）：评估 Claude 输出的可利用代码，并分析安全护栏如何被绕过，提供结构化、基于评分标准的发现（延续先前 2024 年 Claude Code 评估工作）",
     s07_bullet2:
-      "向 Anthropic 的 Fellows 团队提出了三个具体研究方向：跨漏洞类别的系统化能力提升测量、意图与产物安全边界的泛化性测试，以及防御性应用开发——均基于 Invisible Window 案例研究的实证发现",
+      "联合创始人，Macquarie University 波斯学生协会（2026 年）：创立并协助运营该校的波斯学生社群——活动、同侪支持及文化项目",
     s07_bullet3:
-      "在麦觉理大学为同侪提供网络安全、C/C++ 编程及系统级问题解决方面的指导——在课程、实验环境及安全编码实践中提供协作式技术指导",
+      "认证：Anthropic（Building with the Claude API、Claude Code in Action、Claude Cowork、Claude Platform 101、AI Fluency、Claude Code 101、Claude 101）以及 Macquarie University 网络安全微证书（成绩 93–100%：Security of AI、Applied Cryptography、Digital Forensics、DevSecOps、IAM、GRC I & II 等）",
     s08_heading: "补充信息",
-    s08_available: "现可入职全职岗位及研究员职位",
-    s08_languages: "英语（专业工作水平） · 波斯语（母语） · 日语（初级）",
+    s08_available:
+      "现可搬迁至 San Francisco；可立即入职（最后一个学期已在线完成）。需要签证担保。",
+    s08_languages: "英语（专业工作水平） · 波斯语/Farsi（母语） · 日语（初级）",
   },
   not_found: {
     description: "请求的信号路径无法解析。该资源可能已被移动、删除或归档。",

@@ -1,25 +1,26 @@
 const en = {
   seo: {
     skip_to_content: "Skip to main content",
-    home_title_default: "Mohammad Raouf Abedini | AI Security Researcher",
+    home_title_default:
+      "Mohammad Raouf Abedini | AI Security Research & LLM Agent Red-Teaming",
     home_description:
-      "AI security researcher with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored 'The Invisible Window' — a 12-page IEEE-format security research paper achieving 100% screen capture evasion. Anthropic AI model evaluator. Motivated by reducing catastrophic risks from advanced AI.",
+      "Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, an open-source containment-attestation framework that red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent did after a guardrail miss. Evaluated Claude in Anthropic's safety-evaluation program. Also authored The Invisible Window (100% cross-platform screen-capture evasion, responsibly disclosed).",
     home_og_description:
-      "Vulnerability research, responsible disclosure, and AI safety. Authored 'The Invisible Window'. Anthropic AI evaluator.",
+      "LLM agent red-teaming and verifiable containment attestation. Creator of Project Simurgh. Anthropic safety-evaluation contributor. Author of The Invisible Window.",
     keyword_1: "AI Security Research",
-    keyword_2: "Vulnerability Research",
+    keyword_2: "LLM Agent Red-Teaming",
     keyword_3: "Responsible Disclosure",
     keyword_4: "LLM Security Evaluation",
     keyword_5: "Cross-Platform Exploit Development",
     keyword_6: "AI Safety",
     keyword_7: "Screen Capture Evasion",
     keyword_8: "Offensive Security",
-    keyword_9: "Python Systems Programming",
+    keyword_9: "Verifiable Containment Attestation",
     about_title: "About",
     about_description:
-      "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development. Anthropic AI model evaluator.",
+      "Security researcher focused on measuring and containing the cyber capabilities of frontier AI: LLM agent red-teaming, verifiable containment attestation, vulnerability research, and responsible disclosure. Anthropic safety-evaluation contributor.",
     about_og_description:
-      "AI security researcher specializing in vulnerability research, responsible disclosure, AI safety, and cross-platform exploit development.",
+      "AI security research, LLM agent red-teaming, and verifiable containment attestation. Creator of Project Simurgh.",
     contact_title: "Contact | Mohammad Raouf Abedini",
     contact_description:
       "Get in touch with Mohammad Raouf Abedini. Open a secure communication channel for cybersecurity consultations, collaborations, or inquiries.",
@@ -28,9 +29,9 @@ const en = {
       "Experimental code, PoCs, and cybersecurity research snippets.",
     resume_title: "Resume",
     resume_description:
-      "Resume of Mohammad Raouf Abedini — AI Security Researcher, Vulnerability Research, Offensive Security, Python & Systems Programming.",
+      "Resume of Mohammad Raouf Abedini — AI security research, LLM agent red-teaming, verifiable containment attestation, and offensive & defensive security engineering.",
     resume_og_description:
-      "Resume of Mohammad Raouf Abedini — AI Security Researcher, Vulnerability Research, Offensive Security.",
+      "Resume of Mohammad Raouf Abedini — AI security research, LLM agent red-teaming, and security engineering.",
     security_policy_title: "Security Policy | Mohammad Raouf Abedini",
     security_policy_description:
       "Security vulnerability disclosure policy and responsible disclosure guidelines.",
@@ -106,19 +107,16 @@ const en = {
     ticker: [
       "SYSTEM ONLINE",
       "AI SECURITY RESEARCH",
-      "VULNERABILITY RESEARCH",
+      "LLM AGENT RED-TEAMING",
+      "CONTAINMENT ATTESTATION",
+      "PROJECT SIMURGH",
+      "ANTHROPIC SAFETY EVALUATOR",
       "RESPONSIBLE DISCLOSURE",
-      "CROSS-PLATFORM EXPLOIT DEVELOPMENT",
-      "LLM SECURITY EVALUATION",
-      "AI SAFETY",
-      "ANTHROPIC AI EVALUATOR",
-      "PYTHON & SYSTEMS PROGRAMMING",
-      "REDUCING CATASTROPHIC AI RISKS",
       "THE INVISIBLE WINDOW",
+      "INCUBATOR-BACKED STARTUP",
+      "REDUCING CATASTROPHIC AI RISKS",
       "70+ PROJECTS SHIPPED",
-      "OFFENSIVE SECURITY",
-      "DUAL-USE RISK ASSESSMENT",
-      "CASTLE HILL · NSW · AU",
+      "READY TO RELOCATE · SAN FRANCISCO",
     ],
     deployed_systems: "Deployed Systems",
     ieee_format_paper: "IEEE-FORMAT PAPER",
@@ -137,7 +135,7 @@ const en = {
   },
   footer: {
     last_index: "Last Index",
-    last_index_value: "MAY 2026",
+    last_index_value: "JUL 2026",
     status: "Status",
     environment: "Environment",
     built_with: "Built with",
@@ -156,13 +154,13 @@ const en = {
   about: {
     identity_record: "Identity Record",
     hero_title: "Mohammad Raouf Abedini",
-    hero_subtitle: "AI Security Researcher",
+    hero_subtitle: "AI Security Research · LLM Agent Red-Teaming",
     bio_1:
-      "Independent AI-security researcher and Cyber Security graduate from Macquarie University, available now. The work is backed by five DOI-archived preprints on Zenodo (indexed under ORCID), spanning offensive vulnerability research, privacy-preserving integrity systems, and citation-faithfulness evaluation for AI.",
+      "Security researcher focused on measuring and containing the cyber capabilities of frontier AI, ready to relocate now. The work is public, signed, and reproducible: an open-source containment-attestation framework, five DOI-archived Zenodo preprints (indexed under ORCID), and evaluation work inside Anthropic's safety-evaluation program.",
     bio_2:
-      'Lead author of "The Invisible Window" — a 12-page IEEE-format paper demonstrating 100% screen-capture evasion across Windows 10/11 and macOS 14–26 using only documented OS-level APIs, including the novel finding that Apple\'s macOS 15 mitigation remains ineffective on macOS 26. Findings were disclosed responsibly under OWASP/FIRST/CISA guidance.',
+      "Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained against a real Llama Guard 4, a live agent's attack success cut from 9/140 to 0/140 on AgentDojo, and five machine-checked Lean theorems. AGPL-3.0, 989 tests across 44 releases.",
     bio_3:
-      "On the defensive side: Project Simurgh's privacy-preserving device-integrity proofs and tamper-evident audit chains (three preprints), and Aion-BibleQA's citation-faithfulness benchmark for retrieval-augmented LLMs (R@5 0.941, zero unsupported citations). Completed AI-model evaluation for Anthropic (Claude Code Human Preference), with production code in Python, C/C++, TypeScript, and Swift. Focused on reducing catastrophic risks from advanced AI by measuring capability uplift, characterising safety boundaries, and shipping defensive tooling.",
+      "Also lead author of The Invisible Window (100% cross-platform screen-capture evasion, responsibly disclosed under OWASP/FIRST/CISA guidance) and Aion-BibleQA (a citation-faithfulness benchmark for retrieval-augmented LLMs: R@5 0.941, zero unsupported citations). Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr, 2026). Cofounder of an incubator-backed campus-AI startup. Focused on reducing catastrophic risks from advanced AI by measuring capability uplift, characterising safety boundaries, and shipping defensive tooling.",
     stats_projects: "Projects",
     stats_evasion: "Evasion Rate",
     stats_vendors: "Vendors Disclosed",
@@ -302,13 +300,14 @@ const en = {
   },
   resume: {
     tagline:
-      "AI Security Researcher · Vulnerability Research · Offensive Security · Python & Systems Programming",
-    location: "Castle Hill, Sydney, NSW, Australia",
+      "AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering",
+    location:
+      "Castle Hill, Sydney · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC)",
     linkedin_profile: "LinkedIn Profile",
     orcid_id: "ORCID iD",
     s01_heading: "About",
     s01_bio:
-      "AI security researcher and Cyber Security graduate from Macquarie University, available now, with demonstrated ability to independently discover, validate, and responsibly disclose cross-platform vulnerabilities. Authored “The Invisible Window” — a 12-page IEEE-format security research paper demonstrating 100% screen capture evasion on Windows 10/11 and macOS 14–26 using documented OS-level APIs. Recent research also includes Project Simurgh privacy-preserving integrity evidence (DOI: 10.5281/zenodo.20549736) and Aion-BibleQA citation-faithfulness evaluation for Bible RAG systems (DOI: 10.5281/zenodo.20522874). Completed AI model evaluation for Anthropic (Claude Code Human Preference), benchmarking LLM code outputs for quality, security, and reliability.",
+      "Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut from 9/140 to 0/140 on AgentDojo, five machine-checked Lean theorems. Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr). Also authored The Invisible Window (100% cross-platform screen-capture evasion, responsibly disclosed) and Aion-BibleQA (RAG citation-faithfulness benchmark). Cofounder of an incubator-backed campus-AI startup; 70+ projects shipped.",
     s02_heading: "Security Research",
     s02_tech_stack: "C, Swift, Python, Win32 API, ScreenCaptureKit, WebRTC",
     s02_subtitle:
@@ -343,11 +342,11 @@ const en = {
     s04_coursework:
       "Digital Forensics, Network Security, Systems Security, Cloud Computing, Natural Language Processing (NLP) & Machine Learning, Privacy-Preserving Data Analysis",
     s05_heading: "Selected Research & Engineering Projects",
-    proj1_tag: "INTEGRITY",
+    proj1_tag: "CONTAINMENT",
     proj1_stack:
-      "Node.js · Express · Browser Telemetry · HMAC Audit Chain · Privacy Engineering",
+      "Node.js · Ed25519 attestation · Lean 4 · AgentDojo · JS↔Python parity",
     proj1_desc:
-      "Built zero-trust integrity API and published privacy-preserving device-integrity preprint plus Phase C voting-adjacent supplement at Macquarie University — 31 consented sessions, structural ballot-choice exclusion, HMAC-SHA-256 audit chain, and 5/5 collection-closure gates. DOI: 10.5281/zenodo.20549736.",
+      "Provider-agnostic verifiable containment-attestation framework for agentic AI. Produces Ed25519-signed, offline-reproducible evidence of what an agent was allowed to do after a guardrail miss: contained 138/138 classifier-missed cases against a real Llama Guard 4, cut a live agent's attack success from 9/140 to 0/140 on AgentDojo, and closed with five machine-checked Lean theorems. AGPL-3.0; 989 tests across 44 releases. Published lineage: DOIs 10.5281/zenodo.20374849, 20549736, 20675513.",
     proj2_tag: "BIBLE RAG",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
@@ -372,29 +371,30 @@ const en = {
     s05_more_projects:
       "70+ additional public projects on GitHub covering vulnerability research, systems programming, AI/ML tooling, and cloud infrastructure:",
     s06_heading: "Professional Experience",
-    exp1_title: "Freelance Full-Stack Developer & Security Engineer",
+    exp1_title: "Freelance Security Engineer & Full-Stack Developer",
     exp1_employer: "Self-Employed · Jan 2024 – Present",
     exp1_bullet1:
-      "Architected production web applications with security-first design for multiple clients using Python, TypeScript, and Cloudflare Workers — serving 1,000+ end users with zero-downtime operation",
+      "Architected security backends for production, multi-frontend platforms on Supabase: WebAuthn passkeys, TOTP/SMS MFA, zero-trust edge middleware, distributed rate limiting, strict Postgres Row-Level Security, and tamper-resistant audit logging via SECURITY DEFINER RPCs",
     exp1_bullet2:
-      "Engineered CI/CD pipelines and automated test suites (500+ tests across 35 locales) via GitHub Actions — reducing deployment failures by approximately 40% through systematic quality assurance",
+      "Engineered CI/CD with 500+ automated security tests (GitHub Actions), cutting deployment vulnerabilities ~40%; shipped security-first apps for 1,000+ users with OWASP Top 10 controls and OAuth 2.0",
     exp1_bullet3:
-      "Integrated LLM capabilities into client applications, building AI-powered automation tools that empowered non-technical users to manage content workflows independently",
+      "Sustained a 5.0-star rating across 31 client reviews and 35 completed tasks (95% completion, ID-verified) on Airtasker, delivering web development, Python, API integration, and IT/security work for paying clients",
     exp2_title: "IT Manager",
     exp2_employer: "Iran Pharmacy · Aug 2019 – May 2024",
     exp2_bullet1:
       "Managed technology infrastructure across a multi-site organisation for 5 years — maintaining 99% system uptime, enforcing role-based access control (RBAC), and automating operational workflows via Python/Bash scripting (~30% reduction in manual tasks)",
-    s07_heading: "AI Safety & Community",
+    s07_heading: "AI Safety, Leadership & Community",
     s07_bullet1:
-      "Completed AI model evaluation for Anthropic (Claude Code Human Preference) — benchmarked LLM code outputs across multiple codebases for quality, security, correctness, and reliability",
+      "AI Safety Evaluator, Claude (Alignerr, Anthropic AI safety-evaluation program, 2026): assessed Claude outputs for exploitable code and analysed how safety guardrails can be circumvented, delivering structured, rubric-based findings (continues earlier 2024 Claude Code evaluation work)",
     s07_bullet2:
-      "Proposed three concrete research directions to Anthropic's Fellows team: systematic uplift measurement across vulnerability classes, intent-vs-artefact safety boundary generalisation testing, and defensive application development — all building on empirical findings from the Invisible Window case study",
+      "Cofounder, Macquarie Persian Students Society (2026): founded and help run the university's Persian student community — events, peer support, and cultural programming",
     s07_bullet3:
-      "Mentored peers in cybersecurity, C/C++ programming, and systems-level problem-solving at Macquarie University — collaborative technical guidance across coursework, lab environments, and secure coding practices",
+      "Certifications: Anthropic (Building with the Claude API, Claude Code in Action, Claude Cowork, Claude Platform 101, AI Fluency, Claude Code 101, Claude 101) and Macquarie University cyber-security micro-credentials (grades 93–100%: Security of AI, Applied Cryptography, Digital Forensics, DevSecOps, IAM, GRC I & II, and more)",
     s08_heading: "Additional Information",
-    s08_available: "Available now for full-time roles and fellowships",
+    s08_available:
+      "Ready to relocate now to San Francisco; available to start immediately (final semester completed online). Visa sponsorship required.",
     s08_languages:
-      "English (Professional Working) · Persian (Native) · Japanese (Elementary)",
+      "English (Professional Working) · Persian / Farsi (Native) · Japanese (Elementary)",
   },
   not_found: {
     description:

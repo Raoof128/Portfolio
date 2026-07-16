@@ -4,25 +4,25 @@ const es: Dictionary = {
   seo: {
     skip_to_content: "Saltar al contenido principal",
     home_title_default:
-      "Mohammad Raouf Abedini | Investigador de Seguridad de IA",
+      "Mohammad Raouf Abedini | Investigación de Seguridad de IA y Red-Teaming de Agentes LLM",
     home_description:
-      'Investigador de seguridad de IA con capacidad demostrada para descubrir, validar y divulgar de forma responsable e independiente vulnerabilidades multiplataforma. Autor de "The Invisible Window" — un artículo de investigación de seguridad de 12 páginas en formato IEEE que logró una evasión del 100% en la captura de pantalla. Evaluador de modelos de IA en Anthropic. Motivado por reducir los riesgos catastróficos de la IA avanzada.',
+      "Investigador de seguridad que desarrolla sistemas para medir y contener las capacidades cibernéticas de la IA de frontera. Creador de Project Simurgh, un marco de atestación de contención de código abierto que somete a red-teaming a agentes LLM y produce evidencia firmada y verificable sin conexión de lo que hizo un agente tras un fallo de las barreras de seguridad. Evaluó a Claude en el programa de evaluación de seguridad de Anthropic. También autor de The Invisible Window (evasión de captura de pantalla multiplataforma del 100%, divulgada de forma responsable).",
     home_og_description:
-      'Investigación de vulnerabilidades, divulgación responsable y seguridad de la IA. Autor de "The Invisible Window". Evaluador de IA en Anthropic.',
+      "Red-teaming de agentes LLM y atestación de contención verificable. Creador de Project Simurgh. Contribuidor de la evaluación de seguridad de Anthropic. Autor de The Invisible Window.",
     keyword_1: "Investigación de Seguridad de IA",
-    keyword_2: "Investigación de Vulnerabilidades",
+    keyword_2: "Red-Teaming de Agentes LLM",
     keyword_3: "Divulgación Responsable",
     keyword_4: "Evaluación de Seguridad de LLM",
     keyword_5: "Desarrollo de Exploits Multiplataforma",
     keyword_6: "Seguridad de la IA",
     keyword_7: "Evasión de Captura de Pantalla",
     keyword_8: "Seguridad Ofensiva",
-    keyword_9: "Programación de Sistemas en Python",
+    keyword_9: "Atestación de Contención Verificable",
     about_title: "Sobre Mí",
     about_description:
-      "Investigador de seguridad de IA especializado en investigación de vulnerabilidades, divulgación responsable, seguridad de la IA y desarrollo de exploits multiplataforma. Evaluador de modelos de IA en Anthropic.",
+      "Investigador de seguridad centrado en medir y contener las capacidades cibernéticas de la IA de frontera: red-teaming de agentes LLM, atestación de contención verificable, investigación de vulnerabilidades y divulgación responsable. Contribuidor de la evaluación de seguridad de Anthropic.",
     about_og_description:
-      "Investigador de seguridad de IA especializado en investigación de vulnerabilidades, divulgación responsable, seguridad de la IA y desarrollo de exploits multiplataforma.",
+      "Investigación de seguridad de IA, red-teaming de agentes LLM y atestación de contención verificable. Creador de Project Simurgh.",
     contact_title: "Contacto | Mohammad Raouf Abedini",
     contact_description:
       "Ponte en contacto con Mohammad Raouf Abedini. Abre un canal de comunicación seguro para consultas, colaboraciones o preguntas de ciberseguridad.",
@@ -31,9 +31,9 @@ const es: Dictionary = {
       "Código experimental, pruebas de concepto y fragmentos de investigación en ciberseguridad.",
     resume_title: "Currículum",
     resume_description:
-      "Currículum de Mohammad Raouf Abedini — Investigador de Seguridad de IA, Investigación de Vulnerabilidades, Seguridad Ofensiva, Programación en Python y Sistemas.",
+      "Currículum de Mohammad Raouf Abedini — investigación de seguridad de IA, red-teaming de agentes LLM, atestación de contención verificable e ingeniería de seguridad ofensiva y defensiva.",
     resume_og_description:
-      "Currículum de Mohammad Raouf Abedini — Investigador de Seguridad de IA, Investigación de Vulnerabilidades, Seguridad Ofensiva.",
+      "Currículum de Mohammad Raouf Abedini — investigación de seguridad de IA, red-teaming de agentes LLM e ingeniería de seguridad.",
     security_policy_title: "Política de Seguridad | Mohammad Raouf Abedini",
     security_policy_description:
       "Política de divulgación de vulnerabilidades de seguridad y directrices de divulgación responsable.",
@@ -109,19 +109,16 @@ const es: Dictionary = {
     ticker: [
       "SISTEMA EN LÍNEA",
       "INVESTIGACIÓN DE SEGURIDAD DE IA",
-      "INVESTIGACIÓN DE VULNERABILIDADES",
+      "RED-TEAMING DE AGENTES LLM",
+      "ATESTACIÓN DE CONTENCIÓN",
+      "PROJECT SIMURGH",
+      "EVALUADOR DE SEGURIDAD DE ANTHROPIC",
       "DIVULGACIÓN RESPONSABLE",
-      "DESARROLLO DE EXPLOITS MULTIPLATAFORMA",
-      "EVALUACIÓN DE SEGURIDAD DE LLM",
-      "SEGURIDAD DE LA IA",
-      "EVALUADOR DE IA EN ANTHROPIC",
-      "PROGRAMACIÓN DE SISTEMAS EN PYTHON",
-      "REDUCIENDO RIESGOS CATASTRÓFICOS DE LA IA",
       "THE INVISIBLE WINDOW",
+      "STARTUP RESPALDADA POR INCUBADORA",
+      "REDUCIENDO RIESGOS CATASTRÓFICOS DE LA IA",
       "MÁS DE 70 PROYECTOS PUBLICADOS",
-      "SEGURIDAD OFENSIVA",
-      "EVALUACIÓN DE RIESGOS DE DOBLE USO",
-      "CASTLE HILL · NSW · AU",
+      "LISTO PARA REUBICARME · SAN FRANCISCO",
     ],
     deployed_systems: "Sistemas Desplegados",
     ieee_format_paper: "ARTÍCULO EN FORMATO IEEE",
@@ -140,7 +137,7 @@ const es: Dictionary = {
   },
   footer: {
     last_index: "Último Índice",
-    last_index_value: "MAYO 2026",
+    last_index_value: "JUL 2026",
     status: "Estado",
     environment: "Entorno",
     built_with: "Construido con",
@@ -159,13 +156,14 @@ const es: Dictionary = {
   about: {
     identity_record: "Registro de Identidad",
     hero_title: "Mohammad Raouf Abedini",
-    hero_subtitle: "Investigador de Seguridad de IA",
+    hero_subtitle:
+      "Investigación de Seguridad de IA · Red-Teaming de Agentes LLM",
     bio_1:
-      "Investigador independiente de seguridad de IA y graduado en Ciberseguridad por la Universidad Macquarie, disponible ahora. El trabajo está respaldado por cinco preprints con DOI en Zenodo (indexados bajo ORCID), que abarcan investigación ofensiva de vulnerabilidades, sistemas de integridad que preservan la privacidad y evaluación de fidelidad de citas para IA.",
+      "Investigador de seguridad centrado en medir y contener las capacidades cibernéticas de la IA de frontera, listo para reubicarme ahora. El trabajo es público, firmado y reproducible: un marco de atestación de contención de código abierto, cinco preprints en Zenodo archivados con DOI (indexados bajo ORCID) y trabajo de evaluación dentro del programa de evaluación de seguridad de Anthropic.",
     bio_2:
-      'Autor principal de "The Invisible Window", un artículo de 12 páginas en formato IEEE que demuestra una evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14–26 utilizando únicamente APIs documentadas a nivel de SO, incluido el hallazgo novedoso de que la mitigación de macOS 15 de Apple sigue siendo ineficaz en macOS 26. Los hallazgos se divulgaron de forma responsable conforme a los marcos OWASP/FIRST/CISA.',
+      "Creador de Project Simurgh, un marco de atestación de contención independiente del proveedor que somete a red-teaming a agentes LLM bajo un modelo de amenaza adversario de productor deshonesto y produce evidencia firmada con Ed25519, verificable sin conexión, de lo que hizo un agente tras un fallo de las barreras de seguridad: 138/138 casos no detectados por el clasificador contenidos frente a un Llama Guard 4 real, la tasa de éxito de ataque de un agente en vivo reducida de 9/140 a 0/140 en AgentDojo, y cinco teoremas Lean verificados por máquina. AGPL-3.0, 989 pruebas a lo largo de 44 lanzamientos.",
     bio_3:
-      "En el lado defensivo: las pruebas de integridad de dispositivos que preservan la privacidad y las cadenas de auditoría a prueba de manipulaciones de «Project Simurgh» (tres preprints), y el banco de pruebas de fidelidad de citas de «Aion-BibleQA» para LLM con recuperación aumentada (R@5 de 0,941, cero citas sin respaldo). Completé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code), con experiencia en producción en Python, C/C++, TypeScript y Swift. Centrado en reducir los riesgos catastróficos de la IA avanzada midiendo la mejora de capacidades, caracterizando los límites de seguridad y desarrollando herramientas defensivas.",
+      "También autor principal de The Invisible Window (evasión de captura de pantalla multiplataforma del 100%, divulgada de forma responsable conforme a las directrices OWASP/FIRST/CISA) y de Aion-BibleQA (un banco de pruebas de fidelidad de citas para LLM con recuperación aumentada: R@5 0.941, cero citas sin respaldo). Evaluó las salidas de Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic (a través de Alignerr, 2026). Cofundador de una startup de IA universitaria respaldada por una incubadora. Centrado en reducir los riesgos catastróficos de la IA avanzada midiendo la mejora de capacidades, caracterizando los límites de seguridad y desarrollando herramientas defensivas.",
     stats_projects: "Proyectos",
     stats_evasion: "Tasa de Evasión",
     stats_vendors: "Vendedores Divulgados",
@@ -306,13 +304,14 @@ const es: Dictionary = {
   },
   resume: {
     tagline:
-      "Investigador de Seguridad de IA · Investigación de Vulnerabilidades · Seguridad Ofensiva · Programación en Python y Sistemas",
-    location: "Castle Hill, Sídney, Nueva Gales del Sur, Australia",
+      "Investigación de Seguridad de IA · Red-Teaming de Agentes LLM · Ingeniería de Seguridad Ofensiva y Defensiva",
+    location:
+      "Castle Hill, Sídney · Listo para reubicarme ahora a San Francisco, CA · Disponible para viajar (Washington DC)",
     linkedin_profile: "Perfil de LinkedIn",
     orcid_id: "ID de ORCID",
     s01_heading: "Sobre Mí",
     s01_bio:
-      'Investigador de seguridad de IA y graduado en Ciberseguridad por la Universidad Macquarie, disponible ahora, con capacidad demostrada para descubrir, validar y divulgar de forma responsable e independiente vulnerabilidades multiplataforma. Autor de "The Invisible Window" — un artículo de investigación de seguridad de 12 páginas en formato IEEE que demuestra una evasión del 100% de la captura de pantalla en Windows 10/11 y macOS 14–26 utilizando únicamente APIs documentadas a nivel de SO. Las investigaciones recientes también incluyen las evidencias de integridad que preservan la privacidad de Project Simurgh (DOI: 10.5281/zenodo.20549736) y la evaluación de fidelidad de citas de Aion-BibleQA para sistemas RAG bíblicos (DOI: 10.5281/zenodo.20522874). Completé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code), evaluando las salidas de código de LLM en cuanto a calidad, seguridad y fiabilidad.',
+      "Investigador de seguridad que desarrolla sistemas para medir y contener las capacidades cibernéticas de la IA de frontera. Creador de Project Simurgh, un marco de atestación de contención independiente del proveedor que somete a red-teaming a agentes LLM bajo un modelo de amenaza adversario de productor deshonesto y produce evidencia firmada con Ed25519, verificable sin conexión, de lo que hizo un agente tras un fallo de las barreras de seguridad: 138/138 casos no detectados por el clasificador contenidos, la tasa de éxito de ataque de un agente en vivo reducida de 9/140 a 0/140 en AgentDojo, cinco teoremas Lean verificados por máquina. Evaluó las salidas de Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic (a través de Alignerr). También autor de The Invisible Window (evasión de captura de pantalla multiplataforma del 100%, divulgada de forma responsable) y de Aion-BibleQA (banco de pruebas de fidelidad de citas RAG). Cofundador de una startup de IA universitaria respaldada por una incubadora; más de 70 proyectos publicados.",
     s02_heading: "Investigación de Seguridad",
     s02_tech_stack: "C, Swift, Python, Win32 API, ScreenCaptureKit, WebRTC",
     s02_subtitle:
@@ -347,11 +346,11 @@ const es: Dictionary = {
     s04_coursework:
       "Informática Forense, Seguridad de Redes, Seguridad de Sistemas, Computación en la Nube, Procesamiento de Lenguaje Natural (NLP) y Aprendizaje Automático, Análisis de Datos que Preserva la Privacidad",
     s05_heading: "Proyectos Selectos de Investigación e Ingeniería",
-    proj1_tag: "INTEGRIDAD",
+    proj1_tag: "CONTENCIÓN",
     proj1_stack:
-      "Node.js · Express · Telemetría del Navegador · Cadena de Auditoría HMAC · Ingeniería de Privacidad",
+      "Node.js · Atestación Ed25519 · Lean 4 · AgentDojo · Paridad JS↔Python",
     proj1_desc:
-      "Construí una API de integridad de confianza cero y publiqué un preprint sobre integridad de dispositivos que preserva la privacidad, además de un suplemento de la Fase C relacionado con votaciones, en la Universidad Macquarie — 31 sesiones consentidas, exclusión estructural de elección de voto, cadena de auditoría HMAC-SHA-256 y 5 de 5 puertas de cierre de recolección. DOI: 10.5281/zenodo.20549736.",
+      "Marco de atestación de contención verificable e independiente del proveedor para IA agéntica. Produce evidencia firmada con Ed25519, reproducible sin conexión, de lo que se permitió hacer a un agente tras un fallo de las barreras de seguridad: contuvo 138/138 casos no detectados por el clasificador frente a un Llama Guard 4 real, redujo la tasa de éxito de ataque de un agente en vivo de 9/140 a 0/140 en AgentDojo, y cerró con cinco teoremas Lean verificados por máquina. AGPL-3.0; 989 pruebas a lo largo de 44 lanzamientos. Linaje publicado: DOIs 10.5281/zenodo.20374849, 20549736, 20675513.",
     proj2_tag: "RAG BÍBLICO",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · Embeddings de OpenAI · Tauri v2",
@@ -376,29 +375,30 @@ const es: Dictionary = {
     s05_more_projects:
       "Más de 70 proyectos públicos adicionales en GitHub que cubren investigación de vulnerabilidades, programación de sistemas, herramientas de IA/ML e infraestructura en la nube:",
     s06_heading: "Experiencia Profesional",
-    exp1_title: "Desarrollador Full-Stack e Ingeniero de Seguridad Freelance",
+    exp1_title: "Ingeniero de Seguridad y Desarrollador Full-Stack Freelance",
     exp1_employer: "Autónomo · Ene 2024 – Presente",
     exp1_bullet1:
-      "Diseñé aplicaciones web de producción con enfoque en seguridad desde el diseño para múltiples clientes usando Python, TypeScript y Cloudflare Workers — sirviendo a más de 1,000 usuarios finales con operación de cero tiempo de inactividad",
+      "Diseñé backends de seguridad para plataformas de producción con múltiples frontends sobre Supabase: passkeys WebAuthn, MFA con TOTP/SMS, middleware de borde de confianza cero, limitación de tasa distribuida, seguridad estricta a nivel de fila (Row-Level Security) de Postgres y registro de auditoría resistente a manipulaciones mediante RPCs SECURITY DEFINER",
     exp1_bullet2:
-      "Diseñé pipelines de CI/CD y suites de pruebas automatizadas (más de 500 pruebas en 35 configuraciones regionales) mediante GitHub Actions — reduciendo los fallos de despliegue en aproximadamente un 40% mediante aseguramiento de calidad sistemático",
+      "Desarrollé CI/CD con más de 500 pruebas de seguridad automatizadas (GitHub Actions), reduciendo las vulnerabilidades de despliegue ~40%; publiqué aplicaciones con seguridad prioritaria para más de 1,000 usuarios con controles OWASP Top 10 y OAuth 2.0",
     exp1_bullet3:
-      "Integré capacidades de LLM en aplicaciones de clientes, construyendo herramientas de automatización impulsadas por IA que permitieron a usuarios no técnicos gestionar flujos de trabajo de contenido de forma independiente",
+      "Mantuve una calificación de 5.0 estrellas en 31 reseñas de clientes y 35 tareas completadas (95% de finalización, identidad verificada) en Airtasker, entregando desarrollo web, Python, integración de APIs y trabajo de TI/seguridad para clientes de pago",
     exp2_title: "Gerente de TI",
     exp2_employer: "Farmacia Irán · Ago 2019 – May 2024",
     exp2_bullet1:
       "Gestioné la infraestructura tecnológica en una organización multisede durante 5 años — manteniendo un 99% de tiempo de actividad del sistema, aplicando control de acceso basado en roles (RBAC) y automatizando flujos de trabajo operativos mediante scripts en Python/Bash (~30% de reducción en tareas manuales)",
-    s07_heading: "Seguridad de la IA y Comunidad",
+    s07_heading: "Seguridad de la IA, Liderazgo y Comunidad",
     s07_bullet1:
-      "Completé la evaluación de modelos de IA para Anthropic (Preferencia Humana de Claude Code) — evaluando salidas de código de LLM en múltiples bases de código en cuanto a calidad, seguridad, corrección y fiabilidad",
+      "Evaluador de Seguridad de IA, Claude (Alignerr, programa de evaluación de seguridad de IA de Anthropic, 2026): evalué las salidas de Claude en busca de código explotable y analicé cómo se pueden eludir las barreras de seguridad, entregando hallazgos estructurados basados en rúbricas (continúa el trabajo previo de evaluación de Claude Code de 2024)",
     s07_bullet2:
-      "Propuse tres líneas de investigación concretas al equipo de Fellows de Anthropic: medición sistemática de la mejora de capacidades en clases de vulnerabilidades, pruebas de generalización del límite de seguridad intención-vs-artefacto, y desarrollo de aplicaciones defensivas — todas basadas en hallazgos empíricos del caso de estudio de Invisible Window",
+      "Cofundador, Sociedad de Estudiantes Persas de Macquarie (2026): fundé y ayudo a dirigir la comunidad de estudiantes persas de la universidad — eventos, apoyo entre pares y programación cultural",
     s07_bullet3:
-      "Mentoricé a compañeros en ciberseguridad, programación en C/C++ y resolución de problemas a nivel de sistemas en la Universidad Macquarie — orientación técnica colaborativa en asignaturas, entornos de laboratorio y prácticas de codificación segura",
+      "Certificaciones: Anthropic (Building with the Claude API, Claude Code in Action, Claude Cowork, Claude Platform 101, AI Fluency, Claude Code 101, Claude 101) y microcredenciales de ciberseguridad de la Universidad Macquarie (calificaciones 93–100%: Seguridad de la IA, Criptografía Aplicada, Forense Digital, DevSecOps, IAM, GRC I y II, y más)",
     s08_heading: "Información Adicional",
-    s08_available: "Disponible ahora para puestos a tiempo completo y becas",
+    s08_available:
+      "Listo para reubicarme ahora a San Francisco; disponible para empezar de inmediato (último semestre completado en línea). Requiere patrocinio de visa.",
     s08_languages:
-      "Inglés (Profesional) · Persa (Nativo) · Japonés (Elemental)",
+      "Inglés (Competencia Profesional) · Persa / Farsi (Nativo) · Japonés (Elemental)",
   },
   not_found: {
     description:

@@ -106,7 +106,7 @@ describe("Data Layer", () => {
         "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
       );
       expect(projects["project-simurgh"]?.description).toContain(
-        "connected to The Invisible Window research",
+        "verifiable containment-attestation framework for agentic AI",
       );
     });
 
