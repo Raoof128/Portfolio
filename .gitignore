@@ -46,3 +46,6 @@ src.zip
 
 # local agent context (private, not for the repo)
 CLAUDE.md
+
+# local media-generation artefacts (raw model outputs, masters, review sheets)
+/artifacts/
