@@ -144,3 +144,21 @@ downloaded per viewport; CSP unchanged and satisfied.
   history on `main`; revert the integration commit(s) and redeploy. Old assets
   are removed from `public/` only in the final integration commit, so a single
   `git revert` restores them.
+
+---
+
+## Addendum — Phase 3 tournament result (2026-07-17)
+
+18 candidates generated with `gpt-image-2` (3 families × 3 desktop + 3 portrait;
+native compositions per orientation). Full scoring in
+`artifacts/hero-review/concept-scorecard.md` (local, with contact sheets and all
+raw candidates preserved).
+
+**Winners: A-desktop-3 (80/100) + A-portrait-3 (79/100)** — Verification
+Horizon family: photon ring + equatorial accretion disk built from glyph-like
+evidence fragments and verification-graph filaments; singularity ~72 %/45 %
+(desktop) and ~68 %/30 % (portrait); text-safe regions genuinely dark.
+Runner-up alternates: A-desktop-1 / A-portrait-1. Family B (Invisible Window)
+failed text-safety and physical credibility; Family C (Proof Engine) scored low
+on 2-second impact. Expected winner matched outcome; comparison was scored
+honestly per dimension before selection.
