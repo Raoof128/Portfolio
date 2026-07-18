@@ -63,7 +63,7 @@ const es: Dictionary = {
     mobile_nav_label: "Navegación móvil",
   },
   hero: {
-    system_online: "Sistema en Línea · Castle Hill, NSW",
+    system_online: "Sistema en Línea · Sydney, NSW",
     title_prefix: "IA +",
     title_cyber: "CIBER",
     title_research: "Investigación",
@@ -157,7 +157,7 @@ const es: Dictionary = {
     identity_record: "Registro de Identidad",
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle:
-      "Investigación de Seguridad de IA · Red-Teaming de Agentes LLM",
+      "Investigación de Seguridad de IA · Red-Teaming de Agentes LLM · Ingeniería de Seguridad Ofensiva y Defensiva",
     bio_1:
       "Investigador de seguridad centrado en medir y contener las capacidades cibernéticas de la IA de frontera, listo para reubicarme ahora. El trabajo es público, firmado y reproducible: un marco de atestación de contención de código abierto, cinco preprints en Zenodo archivados con DOI (indexados bajo ORCID) y trabajo de evaluación dentro del programa de evaluación de seguridad de Anthropic.",
     bio_2:
@@ -178,11 +178,11 @@ const es: Dictionary = {
     terminal_subject: "SUJETO: RAOUF ABEDINI",
     terminal_online: "EN LÍNEA",
     terminal_clearance: "ACCESO: AI-SECURITY-RESEARCHER",
-    terminal_location: "UBICACIÓN: CASTLE HILL, NSW",
+    terminal_location: "UBICACIÓN: SYDNEY, NSW",
     degree_bachelor: "Licenciatura en Ciberseguridad",
     degree_diploma: "Diploma de Tecnología de la Información",
     degree_bachelor_courses:
-      "Forense Digital · Seguridad de Redes · Computación en la Nube · NLP y ML · Seguridad Ofensiva · Criptografía Aplicada",
+      "Forense Digital · Seguridad de Redes · Seguridad de Sistemas · NLP y Machine Learning · Análisis de Datos con Preservación de la Privacidad · Cloud Computing",
     degree_diploma_desc:
       "Fundamentos en sistemas, redes e ingeniería de software.",
     spec1_label: "Investigación y Divulgación de Vulnerabilidades",
@@ -306,26 +306,27 @@ const es: Dictionary = {
     tagline:
       "Investigación de Seguridad de IA · Red-Teaming de Agentes LLM · Ingeniería de Seguridad Ofensiva y Defensiva",
     location:
-      "Castle Hill, Sídney · Listo para reubicarme ahora a San Francisco, CA · Disponible para viajar (Washington DC)",
+      "Sídney, Australia · Listo para reubicarme ahora a San Francisco, CA · Disponible para viajar (Washington, DC) · Requiere patrocinio de visa",
     linkedin_profile: "Perfil de LinkedIn",
     orcid_id: "ID de ORCID",
     s01_heading: "Sobre Mí",
     s01_bio:
-      "Investigador de seguridad que desarrolla sistemas para medir y contener las capacidades cibernéticas de la IA de frontera. Creador de Project Simurgh, un marco de atestación de contención independiente del proveedor que somete a red-teaming a agentes LLM bajo un modelo de amenaza adversario de productor deshonesto y produce evidencia firmada con Ed25519, verificable sin conexión, de lo que hizo un agente tras un fallo de las barreras de seguridad: 138/138 casos no detectados por el clasificador contenidos, la tasa de éxito de ataque de un agente en vivo reducida de 9/140 a 0/140 en AgentDojo, cinco teoremas Lean verificados por máquina. Evaluó las salidas de Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic (a través de Alignerr). También autor de The Invisible Window (evasión de captura de pantalla multiplataforma del 100%, divulgada de forma responsable) y de Aion-BibleQA (banco de pruebas de fidelidad de citas RAG). Cofundador de una startup de IA universitaria respaldada por una incubadora; más de 70 proyectos publicados.",
+      "Investigador de seguridad que desarrolla sistemas para medir y contener las capacidades cibernéticas de la IA de frontera. Creador de Project Simurgh, un marco de atestación de contención independiente del proveedor que somete a red-teaming a agentes LLM bajo un modelo de amenaza adversario de productor deshonesto y produce evidencia firmada con Ed25519, verificable sin conexión, de lo que hizo un agente tras un fallo de las barreras de seguridad: 138/138 casos no detectados por el clasificador contenidos, la tasa de éxito de ataque de un agente en vivo reducida de 9/140 a 0/140 en AgentDojo, cinco teoremas Lean verificados por máquina. Evaluó las salidas de Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic (a través de Alignerr). Posicionado como la capa de defensa en profundidad complementaria a los clasificadores en línea: estos gobiernan lo que un modelo puede decir; esto atestigua lo que se permitió hacer a un agente. Entregó detección de extremo a extremo: ML de phishing en el dispositivo con F1 del 87% y detección de intrusiones en tiempo real con más de 500K paquetes/s. Cofundador de una startup de IA universitaria respaldada por una incubadora; más de 70 proyectos publicados.",
     s02_heading: "Investigación de Seguridad",
-    s02_tech_stack: "C, Swift, Python, Win32 API, ScreenCaptureKit, WebRTC",
+    s02_tech_stack:
+      "Node.js · Atestación Ed25519 · Lean 4 · AgentDojo · Llama Guard 4 · Llama-3.3-70B · Paridad JS↔Python",
     s02_subtitle:
-      "Explotando la Afinidad de Visualización a Nivel de SO para Eludir Sistemas de Supervisión de Exámenes WebRTC",
+      "Project Simurgh — Atestación de Contención Verificable para IA Agéntica (Creador · AGPL-3.0)",
     s02_bullet1:
-      "Descubrí y formalicé una violación del límite de confianza multiplataforma entre la W3C Screen Capture API y el pipeline de composición del SO — logrando una evasión del 100% en todas las plataformas probadas sin artefactos visuales en más de 10,000 fotogramas analizados",
+      "Construí un marco independiente del proveedor que produce evidencia firmada con Ed25519 y reproducible sin conexión de lo que hizo un agente de IA tras un fallo de las barreras de seguridad, a través de cuatro límites de contención: firewall de entrada, guardia de procedencia del contexto, compuerta de invocación de herramientas y firewall de fuga de salida — bajo un modelo de amenaza adversario de productor deshonesto",
     s02_bullet2:
-      "Descubrí un hallazgo empírico novedoso en macOS 26.3.1: la mitigación documentada de ScreenCaptureKit de Apple (macOS 15) sigue siendo ineficaz — contradiciendo las suposiciones predominantes de la comunidad y los proveedores mediante verificación forense a nivel de píxel",
+      "Contención de fallos de barreras: capturé un clasificador de entrada Llama Guard 4 (12B) real sobre un conjunto de ejecución de 180 casos y contuve 138/138 casos maliciosos que el clasificador no detectó (120 casos de inyección posterior que un clasificador solo de entrada estructuralmente no puede ver, 18 fallos de entrada directa); éxito de ataque combinado dirigido 0/150, con cero ejecuciones de herramientas ni exportaciones inseguras",
     s02_bullet3:
-      "Ejecuté una divulgación responsable coordinada a tres proveedores de sistemas de supervisión de exámenes (ProctorU, Proctorio, Respondus) y dos proveedores de SO (Microsoft, Apple) siguiendo los marcos de divulgación OWASP/FIRST/CISA en una ventana de 90 días",
+      "Contención de agente en vivo: dirigí un Llama-3.3-70B autoalojado a través de la suite de espacio de trabajo de AgentDojo (140 casos de inyección preregistrados); la compuerta de autoridad de herramientas redujo el éxito de ataque dirigido de 9/140 a 0/140 manteniendo la utilidad benigna",
     s02_bullet4:
-      "Documenté una mejora medible de las capacidades de la IA: un único investigador con conocimientos de seguridad introductorios utilizó Claude Opus 4.6 para producir PoCs multiplataforma validados en una sola sesión de investigación — el modelo identificó de forma independiente la distinción operativamente crítica entre WDA_MONITOR y WDA_EXCLUDEFROMCAPTURE a partir de la documentación de la API",
+      "Posicionado como la capa de defensa en profundidad complementaria al clasificador en línea de Anthropic — el clasificador gobierna lo que un modelo puede decir, la atestación gobierna lo que se permitió hacer a un agente (con las no-afirmaciones firmadas y explícitas, incluido que por sí misma no habría detectado la elusión de generación de contenido de junio de 2026)",
     s02_bullet5:
-      "Caractericé el límite de seguridad intención-vs-artefacto: el modelo distinguió correctamente la intención de investigación de la intención de uso indebido a nivel de prompt, pero los artefactos resultantes (código PoC funcional) son transferibles independientemente del planteamiento — un hallazgo directamente relevante para la calibración del umbral ASL",
+      "Ataqué mi propia prueba (barrido de red-team a través de ocho clases de ataque → detector-v2) y verifiqué formalmente la supervisión con cinco teoremas Lean verificados por máquina; reproducción sin conexión con un solo comando de una escalera de lanzamiento firmada de 12 peldaños; 989 pruebas automatizadas a lo largo de 44 lanzamientos",
     s03_heading: "Competencias Técnicas",
     s03_cat1_label: "Lenguajes",
     s03_cat1_desc:
@@ -346,11 +347,10 @@ const es: Dictionary = {
     s04_coursework:
       "Informática Forense, Seguridad de Redes, Seguridad de Sistemas, Computación en la Nube, Procesamiento de Lenguaje Natural (NLP) y Aprendizaje Automático, Análisis de Datos que Preserva la Privacidad",
     s05_heading: "Proyectos Selectos de Investigación e Ingeniería",
-    proj1_tag: "CONTENCIÓN",
-    proj1_stack:
-      "Node.js · Atestación Ed25519 · Lean 4 · AgentDojo · Paridad JS↔Python",
+    proj1_tag: "DIVULGACIÓN",
+    proj1_stack: "C · Swift · Python · Win32 API · ScreenCaptureKit · WebRTC",
     proj1_desc:
-      "Marco de atestación de contención verificable e independiente del proveedor para IA agéntica. Produce evidencia firmada con Ed25519, reproducible sin conexión, de lo que se permitió hacer a un agente tras un fallo de las barreras de seguridad: contuvo 138/138 casos no detectados por el clasificador frente a un Llama Guard 4 real, redujo la tasa de éxito de ataque de un agente en vivo de 9/140 a 0/140 en AgentDojo, y cerró con cinco teoremas Lean verificados por máquina. AGPL-3.0; 989 pruebas a lo largo de 44 lanzamientos. Linaje publicado: DOIs 10.5281/zenodo.20374849, 20549736, 20675513.",
+      "Investigación de vulnerabilidades en formato IEEE: descubrí de forma independiente y divulgué responsablemente una clase de evasión de captura de pantalla multiplataforma que explota las APIs de afinidad de visualización a nivel de SO (Windows/macOS), la cual derrota la captura basada en navegador y los pipelines de visión por IA — evasión del 100% en todas las plataformas probadas sin artefactos visuales en más de 10,000 fotogramas analizados, con divulgación coordinada a proveedores de SO y de sistemas de supervisión de exámenes. DOI: 10.5281/zenodo.20376495.",
     proj2_tag: "RAG BÍBLICO",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · Embeddings de OpenAI · Tauri v2",
@@ -391,9 +391,11 @@ const es: Dictionary = {
     s07_bullet1:
       "Evaluador de Seguridad de IA, Claude (Alignerr, programa de evaluación de seguridad de IA de Anthropic, 2026): evalué las salidas de Claude en busca de código explotable y analicé cómo se pueden eludir las barreras de seguridad, entregando hallazgos estructurados basados en rúbricas (continúa el trabajo previo de evaluación de Claude Code de 2024)",
     s07_bullet2:
-      "Cofundador, Sociedad de Estudiantes Persas de Macquarie (2026): fundé y ayudo a dirigir la comunidad de estudiantes persas de la universidad — eventos, apoyo entre pares y programación cultural",
-    s07_bullet3:
-      "Certificaciones: Anthropic (Building with the Claude API, Claude Code in Action, Claude Cowork, Claude Platform 101, AI Fluency, Claude Code 101, Claude 101) y microcredenciales de ciberseguridad de la Universidad Macquarie (calificaciones 93–100%: Seguridad de la IA, Criptografía Aplicada, Forense Digital, DevSecOps, IAM, GRC I y II, y más)",
+      "Fundé y ayudo a dirigir la comunidad de estudiantes persas de la universidad: eventos, apoyo entre pares y programación cultural.",
+    certs_heading: "Licencias y certificaciones",
+    certs_issued: "Emitido",
+    certs_credential: "ID de credencial",
+    volunteer_label: "Voluntariado",
     s08_heading: "Información Adicional",
     s08_available:
       "Listo para reubicarme ahora a San Francisco; disponible para empezar de inmediato (último semestre completado en línea). Requiere patrocinio de visa.",

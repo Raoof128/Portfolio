@@ -417,8 +417,9 @@ export const projects: Record<string, Project> = {
       features: [
         "5 Platform Targets (Android, iOS, JVM, JS, Wasm)",
         "Ensemble ML Model (Logistic Regression + Gradient Boosting)",
+        "Brand-impersonation, homograph-attack & malicious-redirect detection",
         "Heuristics Engine (25+ checks)",
-        "Red Team Mode for verification",
+        "Built-in red-team suite (19 curated attack scenarios)",
       ],
     },
     secure: {
@@ -442,6 +443,7 @@ export const projects: Record<string, Project> = {
     proof: [
       "F1 Score: 87% on red team corpus",
       "Performance: <5ms P99 latency",
+      "1,248+ automated tests plus a built-in red-team suite of 19 curated attack scenarios",
       "Privacy: Verified 0 network calls via ./judge/verify_offline.sh",
       "Code Sharing: ~100% shared detection logic",
     ],
@@ -913,6 +915,79 @@ export const projects: Record<string, Project> = {
       "Anonymous auth with zero sign-up friction — Supabase RLS enforced on all tables",
     ],
   },
+  "divan-open-day": {
+    slug: "divan-open-day",
+    title: "Divan — Open Day",
+    category: "ENGINEERING",
+    year: "2026",
+    description:
+      "Bilingual (English/Persian) offline-first Hafez & Rumi poetry experience built for a Persian Society Open Day stall. Visitors pick a poet and receive one reviewed verse with translation, source, and recitation — with no cookies, trackers, or backend.",
+    localizedDescription: {
+      fa: "تجربه‌ی دوزبانه (فارسی/انگلیسی) و آفلاین‌محورِ شعر حافظ و مولوی که برای غرفه‌ی روز باز انجمن ایرانیان ساخته شده است. بازدیدکننده یک شاعر را برمی‌گزیند و یک بیتِ بازبینی‌شده همراه با ترجمه، منبع و صوت دریافت می‌کند — بدون هیچ کوکی، ردیاب یا سرور.",
+      ar: "تجربة شعرية ثنائية اللغة (الإنجليزية/الفارسية) تعمل دون اتصال أولًا لأشعار حافظ ومولوي، صُممت لجناح اليوم المفتوح للجمعية الفارسية. يختار الزائر شاعرًا فيتلقى بيتًا مُراجَعًا مع ترجمته ومصدره وتلاوته — دون أي ملفات تعريف ارتباط أو مُتتبِّعات أو خادم.",
+      zh: "为波斯学生会开放日展位打造的双语（英语/波斯语）、离线优先的哈菲兹与鲁米诗歌体验。访客选择一位诗人，即可获得一句经过审校的诗句及其译文、出处与吟诵——没有任何 cookie、追踪器或后端。",
+      es: "Experiencia de poesía bilingüe (inglés/persa) y offline-first de Hafez y Rumi creada para un stand de la Jornada de Puertas Abiertas de la Sociedad Persa. El visitante elige un poeta y recibe un verso revisado con traducción, fuente y recitación, sin cookies, rastreadores ni backend.",
+    },
+    tags: [
+      "React 19",
+      "Vite",
+      "TypeScript",
+      "Offline-First",
+      "Privacy by Design",
+      "i18n / RTL",
+    ],
+    links: {
+      demo: "https://divan.raoufabedini.dev/",
+      repo: "https://github.com/Raoof128/divan-open-day",
+      caseStudy: "/projects/divan-open-day",
+    },
+    build: {
+      stack: [
+        "Vite",
+        "React 19",
+        "strict TypeScript",
+        "Hand-written service worker",
+        "Web Crypto (shuffle bag)",
+        "Vitest (unit / component / a11y / offline)",
+        "Playwright (Chromium e2e)",
+        "pnpm 10.33 · Node 22.16",
+      ],
+      features: [
+        "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
+        "Fair, unbiased verse selection via a Web Crypto shuffle bag — computed entirely on-device with no server involvement",
+        "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
+        "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterized images)",
+        "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support",
+      ],
+    },
+    secure: {
+      measures: [
+        "Privacy by construction: no cookies, identifiers, trackers, or visitor input; nothing is transmitted",
+        "No backend, database, or analytics infrastructure — a purely static client",
+        "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
+        "Production compiler rejects synthetic/test data before deployment",
+        "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licenses, e.g. CC BY-SA)",
+        "Delivered as a static container behind an outbound tunnel — no inbound surface",
+      ],
+    },
+    fullDescription:
+      "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. It is offline-first and privacy-first by construction — no cookies, trackers, backend, or visitor input — so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
+    problem:
+      "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity — no hallucinated verses, no rasterized calligraphy, no data collection.",
+    solution: [
+      "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
+      "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
+      "Selected verses fairly with a Web Crypto shuffle bag entirely on-device — no server, no record of what anyone drew",
+      "Rendered live Nastaliq typography and per-poet art direction for cultural authenticity instead of flattened images",
+      "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support",
+    ],
+    proof: [
+      "Zero data collection: no cookies, trackers, or backend — only public poem IDs in sessionStorage",
+      "Runs fully offline after first load via the integrity-verified service worker",
+      "A production compiler rejects synthetic test data before deployment, so only the reviewed corpus ever ships",
+      "Tested across unit, component, accessibility, offline, share, performance, and security suites (Vitest) plus Playwright Chromium e2e",
+    ],
+  },
 };
 
 export interface Writeup {
@@ -1065,7 +1140,7 @@ These two requirements are fundamentally incompatible. Any OS that supports (1) 
 |------|--------|
 | January 2026 | Proctoring vendors notified with full technical writeup and PoC |
 | February 2026 | Microsoft and Apple notified |
-| March 2026 | Public disclosure after 90-day window; arXiv preprint published |
+| March 2026 | Public disclosure after 90-day window; Zenodo preprint published (CC BY 4.0) |
 
 The vendors' responses confirmed awareness of the OS-level mechanism. The core challenge — that the vulnerability is in a documented OS feature, not a bug in vendor code — limits what any individual vendor can patch without OS-level cooperation.
 
@@ -1075,7 +1150,7 @@ The vendors' responses confirmed awareness of the OS-level mechanism. The core c
 
 Screen-capture-based exam proctoring on Windows and macOS provides a weaker integrity guarantee than its deployment context requires. The attack surface is a single API call, requires no elevated privileges, leaves no log artifacts, and works across all tested platform versions including the latest macOS release. This is not a novel implementation flaw — it is a systemic design incompatibility between content protection APIs and the integrity assumptions embedded in remote proctoring architecture.
 
-The full 12-page paper, PoC implementations, and disclosure materials are available in the repository.
+The full 13-page paper, PoC implementations, and disclosure materials are available in the repository.
     `,
   },
   {

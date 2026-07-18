@@ -133,9 +133,14 @@ export default async function RootLayout({
         jobTitle: "AI Security Researcher",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Castle Hill",
+          addressLocality: "Sydney",
           addressRegion: "NSW",
           addressCountry: "AU",
+        },
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "Macquarie University",
+          sameAs: "https://www.mq.edu.au/",
         },
         knowsAbout: [
           { "@type": "Thing", name: "LLM Agent Red-Teaming" },

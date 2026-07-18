@@ -136,6 +136,15 @@ describe("Data Layer", () => {
       ]);
     });
 
+    it("should have Divan — Open Day as an ENGINEERING project with a repo link", () => {
+      expect(projects["divan-open-day"]).toBeDefined();
+      expect(projects["divan-open-day"].category).toBe("ENGINEERING");
+      expect(projects["divan-open-day"].links.repo).toBe(
+        "https://github.com/Raoof128/divan-open-day",
+      );
+      expect(projects["divan-open-day"].papers).toBeUndefined();
+    });
+
     it("each project should have valid links structure", () => {
       Object.values(projects).forEach((project: Project) => {
         expect(project.links).toHaveProperty("repo");

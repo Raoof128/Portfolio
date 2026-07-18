@@ -59,7 +59,7 @@ const zh: Dictionary = {
     mobile_nav_label: "移动端导航",
   },
   hero: {
-    system_online: "系统在线 · Castle Hill, NSW",
+    system_online: "系统在线 · Sydney, NSW",
     title_prefix: "人工智能 +",
     title_cyber: "网络安全",
     title_research: "研究",
@@ -151,7 +151,8 @@ const zh: Dictionary = {
   about: {
     identity_record: "身份记录",
     hero_title: "Mohammad Raouf Abedini",
-    hero_subtitle: "人工智能安全研究 · 大语言模型代理红队测试",
+    hero_subtitle:
+      "人工智能安全研究 · 大语言模型代理红队测试 · 攻击性与防御性安全工程",
     bio_1:
       "安全研究员，专注于测量和遏制前沿人工智能的网络能力，现可搬迁。相关工作公开、经过签名且可复现：一个开源的遏制证明框架、五篇带 DOI 存档的 Zenodo 预印本（已在 ORCID 下编入索引），以及在 Anthropic 安全评估项目内的评估工作。",
     bio_2:
@@ -172,11 +173,11 @@ const zh: Dictionary = {
     terminal_subject: "主题：RAOUF ABEDINI",
     terminal_online: "在线",
     terminal_clearance: "权限：AI-SECURITY-RESEARCHER",
-    terminal_location: "位置：NSW 卡斯尔希尔",
+    terminal_location: "位置：NSW 悉尼",
     degree_bachelor: "网络安全学士",
     degree_diploma: "信息技术文凭",
     degree_bachelor_courses:
-      "数字取证 · 网络安全 · 云计算 · NLP与ML · 攻击性安全 · 应用密码学",
+      "数字取证 · 网络安全 · 系统安全 · NLP与机器学习 · 隐私保护数据分析 · 云计算",
     degree_diploma_desc: "系统、网络和软件工程基础。",
     spec1_label: "漏洞研究与披露",
     spec1_item1: "跨平台漏洞开发（Win32 API、macOS ScreenCaptureKit）",
@@ -296,25 +297,27 @@ const zh: Dictionary = {
     tagline:
       "人工智能安全研究 · 大语言模型代理红队测试 · 攻击性与防御性安全工程",
     location:
-      "悉尼卡斯尔希尔 · 现可搬迁至加州 San Francisco · 可随时出差（Washington, DC）",
+      "澳大利亚悉尼 · 现可搬迁至加州 San Francisco · 可随时出差（Washington, DC） · 需要签证担保",
     linkedin_profile: "领英主页",
     orcid_id: "ORCID 编号",
     s01_heading: "关于",
     s01_bio:
-      "安全研究员，致力于构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个与提供方无关的遏制证明框架，在对抗性的、不诚实生产者威胁模型下对大语言模型代理进行红队测试，并生成经 Ed25519 签名、可离线验证的证据，记录代理在护栏失效后的行为：遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将实时代理的攻击成功率从 9/140 降至 0/140，五个经机器验证的 Lean 定理。在 Anthropic 的安全评估项目中（通过 Alignerr）评估了 Claude 输出的可利用代码与护栏绕过情况。此外还著有《The Invisible Window》（100% 跨平台屏幕捕获规避，已负责任地披露）以及《Aion-BibleQA》（RAG 引用忠实度基准）。一家孵化器支持的校园人工智能初创公司的联合创始人；已发布 70+ 个项目。",
+      "安全研究员，致力于构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个与提供方无关的遏制证明框架，在对抗性的、不诚实生产者威胁模型下对大语言模型代理进行红队测试，并生成经 Ed25519 签名、可离线验证的证据，记录代理在护栏失效后的行为：遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将实时代理的攻击成功率从 9/140 降至 0/140，五个经机器验证的 Lean 定理。在 Anthropic 的安全评估项目中（通过 Alignerr）评估了 Claude 输出的可利用代码与护栏绕过情况。定位为与内联分类器互补的纵深防御层：分类器管控模型可以说什么，而本框架则证明代理被允许做什么。端到端交付检测能力：设备端钓鱼检测机器学习模型达到 87% F1，实时入侵检测达到每秒 500K+ 数据包。一家孵化器支持的校园人工智能初创公司的联合创始人；已发布 70+ 个项目。",
     s02_heading: "安全研究",
-    s02_tech_stack: "C、Swift、Python、Win32 API、ScreenCaptureKit、WebRTC",
-    s02_subtitle: "利用操作系统级显示关联绕过 WebRTC 监考系统",
+    s02_tech_stack:
+      "Node.js · Ed25519 证明 · Lean 4 · AgentDojo · Llama Guard 4 · Llama-3.3-70B · JS↔Python 一致性",
+    s02_subtitle:
+      "Project Simurgh —— 面向代理型人工智能的可验证遏制证明（创建者 · AGPL-3.0）",
     s02_bullet1:
-      "发现并形式化了 W3C Screen Capture API 与操作系统合成管线之间的跨平台信任边界违规问题——在全部受测平台上实现 100% 规避，在超过 10,000 帧分析中零视觉伪影",
+      "构建了一个与提供方无关的框架，生成经 Ed25519 签名、可离线复现的证据，记录人工智能代理在护栏失效后的行为，覆盖四个遏制边界：输入防火墙、上下文来源守卫、工具调用门控，以及输出泄露防火墙——均在对抗性的、不诚实生产者威胁模型下进行",
     s02_bullet2:
-      "在 macOS 26.3.1 上发现一项新颖的实证结果：苹果在 ScreenCaptureKit（macOS 15）中记录的缓解措施依然无效——通过像素级取证验证，推翻了业界与厂商的普遍假设",
+      "护栏失效遏制：在一个 180 案例的运行集上捕获了真实的 Llama Guard 4（12B）输入分类器，并遏制了该分类器漏检的 138/138 个恶意案例（其中 120 个是仅检查输入的分类器在结构上无法看到的下游注入案例，18 个是直接输入漏检）；综合目标攻击成功率为 0/150，且零不安全工具执行或数据导出",
     s02_bullet3:
-      "依据 OWASP/FIRST/CISA 披露框架，在 90 天窗口期内向三家监考厂商（ProctorU、Proctorio、Respondus）及两家操作系统厂商（Microsoft、Apple）执行了协调一致的负责任披露",
+      "实时代理遏制：驱动一个自托管的 Llama-3.3-70B 通过 AgentDojo 的工作区套件（140 个预注册注入案例）；工具权限门控将目标攻击成功率从 9/140 降至 0/140，同时保持了良性任务的可用性",
     s02_bullet4:
-      "记录了可量化的人工智能能力提升：一名仅具备入门级安全知识的研究员，借助 Claude Opus 4.6，在单次研究会话中生成了经过验证的跨平台概念验证——该模型独立从 API 文档中识别出 WDA_MONITOR 与 WDA_EXCLUDEFROMCAPTURE 之间具有操作关键意义的区别",
+      "定位为与 Anthropic 内联分类器互补的纵深防御层——分类器管控模型可以说什么，而证明则管控代理被允许做什么（非主张部分经签名并明确说明，包括它本身无法捕获 2026 年 6 月的内容生成绕过）",
     s02_bullet5:
-      "界定了意图与产物的安全边界：模型在提示层面能正确区分研究意图与滥用意图，但由此产生的产物（可用的概念验证代码）无论如何被框定都具有可转移性——这一发现与 ASL 阈值校准直接相关",
+      "对自身的证明发起攻击（覆盖八类攻击的红队扫描 → detector-v2），并以五个经机器验证的 Lean 定理对监督机制进行形式化检验；以单条命令即可离线复现一个 12 级的签名发布阶梯；44 个版本中共 989 项自动化测试",
     s03_heading: "技术能力",
     s03_cat1_label: "编程语言",
     s03_cat1_desc:
@@ -335,11 +338,10 @@ const zh: Dictionary = {
     s04_coursework:
       "数字取证、网络安全、系统安全、云计算、自然语言处理（NLP）与机器学习、隐私保护数据分析",
     s05_heading: "精选研究与工程项目",
-    proj1_tag: "遏制",
-    proj1_stack:
-      "Node.js · Ed25519 证明 · Lean 4 · AgentDojo · JS↔Python 一致性",
+    proj1_tag: "披露",
+    proj1_stack: "C · Swift · Python · Win32 API · ScreenCaptureKit · WebRTC",
     proj1_desc:
-      "面向代理型人工智能的、与提供方无关的可验证遏制证明框架。生成经 Ed25519 签名、可离线复现的证据，记录代理在护栏失效后被允许执行的操作：针对真实的 Llama Guard 4 遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将实时代理的攻击成功率从 9/140 降至 0/140，并以五个经机器验证的 Lean 定理收尾。AGPL-3.0；44 个版本中共 989 项测试。已发布谱系：DOI 10.5281/zenodo.20374849、20549736、20675513。",
+      "IEEE 格式漏洞研究：独立发现并负责任地披露了一类跨平台屏幕捕获规避手法，利用操作系统级的显示关联 API（Windows/macOS）击败了基于浏览器的捕获以及人工智能视觉管线——在全部受测平台上实现 100% 规避，在超过 10,000 帧分析中零视觉伪影，并向操作系统厂商与监考厂商执行了协调一致的披露。DOI：10.5281/zenodo.20376495。",
     proj2_tag: "圣经 RAG",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · OpenAI 嵌入 · Tauri v2",
@@ -379,10 +381,11 @@ const zh: Dictionary = {
     s07_heading: "人工智能安全、领导力与社区",
     s07_bullet1:
       "人工智能安全评估员，Claude（Alignerr，Anthropic 人工智能安全评估项目，2026 年）：评估 Claude 输出的可利用代码，并分析安全护栏如何被绕过，提供结构化、基于评分标准的发现（延续先前 2024 年 Claude Code 评估工作）",
-    s07_bullet2:
-      "联合创始人，Macquarie University 波斯学生协会（2026 年）：创立并协助运营该校的波斯学生社群——活动、同侪支持及文化项目",
-    s07_bullet3:
-      "认证：Anthropic（Building with the Claude API、Claude Code in Action、Claude Cowork、Claude Platform 101、AI Fluency、Claude Code 101、Claude 101）以及 Macquarie University 网络安全微证书（成绩 93–100%：Security of AI、Applied Cryptography、Digital Forensics、DevSecOps、IAM、GRC I & II 等）",
+    s07_bullet2: "创立并协助运营大学的波斯学生社区——活动、同伴支持和文化项目。",
+    certs_heading: "许可证与认证",
+    certs_issued: "颁发日期",
+    certs_credential: "凭证 ID",
+    volunteer_label: "志愿服务",
     s08_heading: "补充信息",
     s08_available:
       "现可搬迁至 San Francisco；可立即入职（最后一个学期已在线完成）。需要签证担保。",

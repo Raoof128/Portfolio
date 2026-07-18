@@ -1,28 +1,37 @@
-# Mohammad Raouf Abedini - Cybersecurity & Software Engineering Portfolio
+# Mohammad Raouf Abedini - AI Security Research Portfolio
 
 ## Identity
 Name: Mohammad Raouf Abedini (Raouf)
-Role: Cybersecurity Specialist, Software Engineer
-Location: Castle Hill, NSW, Australia
-Focus: Privacy-first security tools, full-stack engineering, AI-native platforms, eBPF runtime security.
+Role: AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering
+Location: Sydney, Australia · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC) · Visa sponsorship required
+Focus: Measuring and containing the cyber capabilities of frontier AI; verifiable containment attestation for agentic AI; LLM agent red-teaming; offensive and defensive security engineering.
+
+## Summary
+Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut 9/140 to 0/140 on AgentDojo, five machine-checked Lean theorems. Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr). Shipped detection end to end: on-device phishing ML at 87% F1 and real-time intrusion detection at 500K+ packets/sec. Cofounder of an incubator-backed campus-AI startup; 70+ projects shipped.
 
 ## Core Competencies (Keywords)
-- Offensive Security: Penetration Testing, Red Teaming, Threat Modelling, LLM Red Teaming.
-- Defensive Security: eBPF Runtime Security, Network Forensics, Privacy Engineering, Zero-Trust Architecture.
-- Engineering: Next.js, React, TypeScript, Kotlin Multiplatform, Python, Litestar, Supabase, Docker, Terraform.
+- AI / Agent Security: LLM agent red-teaming, prompt-injection & jailbreak-consequence containment, tool-use authority gating, guardrail & classifier evaluation, adversarial test generation, AgentDojo, Claude Computer Use.
+- Security Research: vulnerability research & responsible disclosure, exploit-chain replay, threat modeling, threat-actor TTP profiling, MITRE ATT&CK, digital forensics, OSINT.
+- Engineering: C/C++17/20, TypeScript, Python, Bash, Docker, Terraform, PostgreSQL, GitHub Actions CI/CD, Linux, Ed25519 attestation.
 
-## Featured Projects (The "Truth" for Retrieval)
-1. Mehr Guard: Privacy-first mobile security app for Android/iOS. Offline QR & URL threat scanning with ensemble ML + 25 heuristics. Kotlin Multiplatform, 5 platform targets.
-2. The Invisible Window: IEEE-format security research paper demonstrating 100% screen-capture evasion on Windows 10/11 and macOS 14-26. DOI: 10.5281/ZENODO.20376495.
-3. Project Simurgh: Zero-trust integrity API connected to The Invisible Window research. Behavioral telemetry, tamper-evident audit chain, privacy-first academic integrity workflow. DOI: 10.5281/ZENODO.20374849.
-4. Project Zurvan: Local-first LLM knowledge engine. Ingests documents (MD, PDF, TXT, images), extracts structured knowledge (claims, concepts, entities, decisions), and exposes a hybrid-search knowledge graph to AI agents via an MCP stdio server. 183 tests, 18 phases. Python 3.10+, SQLite FTS5, Obsidian-compatible.
-5. Syllabus-Sync: AI-native Campus OS for Australian universities. LLM OCR pipeline transforms PDF syllabi into structured data. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files.
-6. GitSwitch: AI-powered Git client for managing multiple identities and generating semantic commits. Electron, React 19, Gemini AI.
-7. Nexus Archive: Cyberpunk-styled personal media vault. React 19 frontend, Litestar API, Supabase PostgreSQL. HttpOnly cookie auth, encrypted takeaways, AI recommendations.
-8. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, Go agent, and React dashboard.
+## Featured Research & Projects (The "Truth" for Retrieval)
+1. Project Simurgh (FLAGSHIP): Provider-agnostic verifiable containment-attestation framework for agentic AI. Ed25519-signed, offline-reproducible evidence across four containment boundaries (input firewall, context-provenance guard, tool-invocation gate, output-leakage firewall) under a dishonest-producer threat model. Contained 138/138 classifier-missed cases against a real Llama Guard 4 (12B); cut a live Llama-3.3-70B agent's attack success from 9/140 to 0/140 on AgentDojo; five machine-checked Lean theorems; 989 tests across 44 releases. AGPL-3.0. DOI: 10.5281/zenodo.20374849.
+2. The Invisible Window: IEEE-format vulnerability research demonstrating 100% cross-platform screen-capture evasion on Windows 10/11 and macOS 14-26 via OS-level display-affinity APIs; responsibly disclosed. DOI: 10.5281/zenodo.20376495.
+3. Aion-BibleQA: RAG citation-faithfulness & adversarial-robustness benchmark (40 questions); R@5 = 0.941, zero unsupported citations, 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.
+4. Project Zurvan: Local-first LLM knowledge engine extracting structured claims, concepts, entities, and decisions from documents, exposed to AI agents via an MCP stdio server. Python, SQLite FTS5 + embeddings, 183 tests.
+5. Syllabus-Sync: Agent-readable campus-AI platform accepted into the Macquarie University startup incubator as a formal startup. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files. Live at syllabus-sync.app.
+6. Mehr Guard: Privacy-first offline phishing & QR/URL threat scanner. Kotlin Multiplatform (5 targets), ensemble ML + 25+ heuristics, 87% F1, sub-5ms latency, 1,248+ tests, and a 19-scenario built-in red-team suite.
+7. SentinelFlow: Real-time C++ intrusion detection system parsing 500K+ packets/sec with signature and stateful detection of port scans, SYN floods, and DNS tunnelling.
+8. NanoMatch: C++20 limit-order-book matching engine at 1M+ orders/sec with O(1) cancellation.
+9. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, a Go agent, and a React dashboard.
+
+## Professional Experience
+- AI Safety Evaluator, Claude — Alignerr (Anthropic AI safety-evaluation program), Jan–Mar 2026.
+- Freelance Security Engineer & Full-Stack Developer — Self-Employed, Jan 2024 – Present.
+- IT Manager & Security Operations — Iran Pharmacy, 2019–2024.
 
 ## Philosophy
-Raouf operates at the intersection of "Build" (Scalable Architecture) and "Secure" (Defensive Design). He advocates for privacy-by-design, local-first processing, and security embedded from design to deployment.
+Raouf operates at the intersection of "Build" (scalable architecture) and "Secure" (defensive design), advocating privacy-by-design, local-first processing, and security embedded from design to deployment — now focused on measuring and containing the cyber capabilities of frontier AI.
 
 ## Contact
 Website: https://raoufabedini.dev

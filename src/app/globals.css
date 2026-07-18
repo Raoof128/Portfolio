@@ -68,6 +68,37 @@
   scrollbar-color: rgba(0, 166, 147, 0.5) #02030a;
 }
 
+/* ── Divan — Open Day: Persian-miniature gold + lapis palette override ── */
+[data-theme="divan"] {
+  --background: #0b1026;
+  --color-cyber-dark: #0a0f22;
+  --color-cyber-gray: #11182d;
+
+  /* cyan → illumination gold */
+  --color-cyan-DEFAULT: #d4a64a;
+  --color-cyan-glow: #e7c777;
+  --color-cyan-dim: rgba(212, 166, 74, 0.16);
+
+  /* purple → lapis blue */
+  --color-purple-DEFAULT: #2e6e9e;
+  --color-purple-glow: #174a7e;
+  --color-purple-dim: rgba(46, 110, 158, 0.16);
+
+  /* amber → turquoise */
+  --color-amber-DEFAULT: #2c8c8a;
+  --color-amber-glow: #9fd8d6;
+  --color-amber-dim: rgba(44, 140, 138, 0.14);
+
+  --text-meta: rgba(212, 166, 74, 0.8);
+
+  --glass-bg: rgba(11, 16, 38, 0.75);
+  --glass-border: rgba(212, 166, 74, 0.12);
+  --surface-1: rgba(212, 166, 74, 0.04);
+  --surface-2: rgba(212, 166, 74, 0.08);
+
+  scrollbar-color: rgba(212, 166, 74, 0.5) #0b1026;
+}
+
 /* ── Nexus Archive: full navy-blue palette override ── */
 [data-theme="nexus-archive"] {
   --background: #000035;

@@ -88,6 +88,13 @@ const CosmicLoomCanvas = dynamic(
     })),
   { ssr: false },
 );
+const BlueButterfly = dynamic(
+  () =>
+    import("@/components/ui/BlueButterfly").then((m) => ({
+      default: m.BlueButterfly,
+    })),
+  { ssr: false },
+);
 import {
   ArrowLeft,
   Github,
@@ -120,6 +127,7 @@ const EC = "ecrsm";
 const SFG = "simurghforge";
 const AI = "aion";
 const ZV = "project-zurvan";
+const DV = "divan-open-day";
 
 export function ProjectDetailClient({
   project,
@@ -142,6 +150,7 @@ export function ProjectDetailClient({
   const isSFG = slug === SFG;
   const isAI = slug === AI;
   const isZV = slug === ZV;
+  const isDV = slug === DV;
   const isRTL = locale === "fa" || locale === "ar";
 
   const getPath = (path: string) => {
@@ -294,17 +303,29 @@ export function ProjectDetailClient({
                               bullet: "text-[#EDAB18]",
                               check: "text-[#FFD77A]",
                             }
-                          : {
-                              accent: "text-cyan",
-                              accentSecond: "text-purple",
-                              border: "border-cyan/12",
-                              borderB: "border-cyan/20",
-                              borderSub: "border-cyan/10",
-                              bg: "bg-cyan/5",
-                              hover: "hover:text-cyan",
-                              bullet: "text-cyan",
-                              check: "text-green-400",
-                            };
+                          : isDV
+                            ? {
+                                accent: "text-[#d4a64a]",
+                                accentSecond: "text-[#2e6e9e]",
+                                border: "border-[#d4a64a]/20",
+                                borderB: "border-[#d4a64a]/30",
+                                borderSub: "border-[#d4a64a]/15",
+                                bg: "bg-[#d4a64a]/5",
+                                hover: "hover:text-[#d4a64a]",
+                                bullet: "text-[#d4a64a]",
+                                check: "text-[#9fd8d6]",
+                              }
+                            : {
+                                accent: "text-cyan",
+                                accentSecond: "text-purple",
+                                border: "border-cyan/12",
+                                borderB: "border-cyan/20",
+                                borderSub: "border-cyan/10",
+                                bg: "bg-cyan/5",
+                                hover: "hover:text-cyan",
+                                bullet: "text-cyan",
+                                check: "text-green-400",
+                              };
 
   const localizedFullDescription = getProjectFullDescription(project, locale);
   const paperEntries =
@@ -369,6 +390,7 @@ export function ProjectDetailClient({
       {isSFG && <ThemeInjector theme="simurghforge" />}
       {isAI && <ThemeInjector theme="aion" />}
       {isZV && <ThemeInjector theme="zurvan" />}
+      {isDV && <ThemeInjector theme="divan" />}
       <div className="flex-1 pb-24">
         {/* Project Hero */}
         <AnimatedSection variants={fadeInUp}>
@@ -1032,6 +1054,61 @@ export function ProjectDetailClient({
                 </div>
               </div>
             </section>
+          ) : isDV ? (
+            /* ── Divan — Open Day: blue-butterfly hero ── */
+            <section
+              className="border-b border-[#d4a64a]/20 overflow-hidden"
+              style={{ background: "#0b1026" }}
+            >
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <Link
+                  href={getPath("/projects")}
+                  className="inline-flex items-center text-sm text-[#d4a64a]/70 hover:text-[#d4a64a] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
+                >
+                  <ArrowLeft
+                    size={14}
+                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
+                  />{" "}
+                  {dictionary.common.back}
+                </Link>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
+                  <div className="space-y-4 md:space-y-6">
+                    <div
+                      className={cn(
+                        "flex flex-wrap gap-2",
+                        isRTL && "justify-end",
+                      )}
+                    >
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs font-mono text-[#d4a64a] border border-[#d4a64a]/40 bg-[#d4a64a]/5 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
+                      {project.title}
+                    </h1>
+                    <p className="text-base md:text-lg text-[#cfe3f5]/70 leading-relaxed">
+                      {localizedFullDescription}
+                    </p>
+                    <div
+                      className={cn(
+                        "flex flex-wrap gap-3",
+                        isRTL && "justify-end",
+                      )}
+                    >
+                      {renderHeroLinks()}
+                    </div>
+                  </div>
+                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
+                    <BlueButterfly />
+                  </div>
+                </div>
+              </div>
+            </section>
           ) : (
             /* ── Default hero ── */
             <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
@@ -1086,7 +1163,7 @@ export function ProjectDetailClient({
 
         <div
           className={cn(
-            `max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : isAI ? "bg-[#06050a]" : isZV ? "bg-[#040301]" : ""}`,
+            `max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : isAI ? "bg-[#06050a]" : isZV ? "bg-[#040301]" : isDV ? "bg-[#070a18]" : ""}`,
             isRTL && "direction-rtl",
           )}
         >

@@ -7,10 +7,10 @@ Production-grade Next.js portfolio website for showcasing cybersecurity engineer
 ## Highlights
 
 - Next.js App Router with static export deployed to Cloudflare Pages.
-- Strict TypeScript, ESLint, and Vitest test suite (63 tests).
+- Strict TypeScript, ESLint, and Vitest test suite (77 tests).
 - Security-first content and disclosure workflow (`security.txt`, Hall of Fame, policy page).
 - Reusable UI system with animation primitives and responsive layouts.
-- 5 featured projects with auto-generated detail pages, search, and filtering.
+- 13 projects with auto-generated detail pages, search, and filtering.
 
 ## Tech Stack
 

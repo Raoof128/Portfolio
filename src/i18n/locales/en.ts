@@ -61,7 +61,7 @@ const en = {
     mobile_nav_label: "Mobile navigation",
   },
   hero: {
-    system_online: "System Online · Castle Hill, NSW",
+    system_online: "System Online · Sydney, NSW",
     title_prefix: "AI +",
     title_cyber: "CYBER",
     title_research: "Research",
@@ -154,7 +154,8 @@ const en = {
   about: {
     identity_record: "Identity Record",
     hero_title: "Mohammad Raouf Abedini",
-    hero_subtitle: "AI Security Research · LLM Agent Red-Teaming",
+    hero_subtitle:
+      "AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering",
     bio_1:
       "Security researcher focused on measuring and containing the cyber capabilities of frontier AI, ready to relocate now. The work is public, signed, and reproducible: an open-source containment-attestation framework, five DOI-archived Zenodo preprints (indexed under ORCID), and evaluation work inside Anthropic's safety-evaluation program.",
     bio_2:
@@ -175,11 +176,11 @@ const en = {
     terminal_subject: "SUBJECT: RAOUF ABEDINI",
     terminal_online: "ONLINE",
     terminal_clearance: "CLEARANCE: AI-SECURITY-RESEARCHER",
-    terminal_location: "LOCATION: CASTLE HILL, NSW",
+    terminal_location: "LOCATION: SYDNEY, NSW",
     degree_bachelor: "Bachelor of Cyber Security",
     degree_diploma: "Diploma of Information Technology",
     degree_bachelor_courses:
-      "Digital Forensics · Network Security · Cloud Computing · NLP & ML · Offensive Security · Applied Cryptography",
+      "Digital Forensics · Network Security · Systems Security · NLP & Machine Learning · Privacy-Preserving Data Analysis · Cloud Computing",
     degree_diploma_desc:
       "Foundations in systems, networking, and software engineering.",
     spec1_label: "Vulnerability Research & Disclosure",
@@ -302,26 +303,27 @@ const en = {
     tagline:
       "AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering",
     location:
-      "Castle Hill, Sydney · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC)",
+      "Sydney, Australia · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC) · Visa sponsorship required",
     linkedin_profile: "LinkedIn Profile",
     orcid_id: "ORCID iD",
     s01_heading: "About",
     s01_bio:
-      "Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut from 9/140 to 0/140 on AgentDojo, five machine-checked Lean theorems. Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr). Also authored The Invisible Window (100% cross-platform screen-capture evasion, responsibly disclosed) and Aion-BibleQA (RAG citation-faithfulness benchmark). Cofounder of an incubator-backed campus-AI startup; 70+ projects shipped.",
+      "Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut from 9/140 to 0/140 on AgentDojo, five machine-checked Lean theorems. Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr). Positioned as the defense-in-depth layer complementary to inline classifiers: they govern what a model may say; this attests what an agent was allowed to do. Shipped detection end to end: on-device phishing ML at 87% F1 and real-time intrusion detection at 500K+ packets/sec. Cofounder of an incubator-backed campus-AI startup; 70+ projects shipped.",
     s02_heading: "Security Research",
-    s02_tech_stack: "C, Swift, Python, Win32 API, ScreenCaptureKit, WebRTC",
+    s02_tech_stack:
+      "Node.js · Ed25519 attestation · Lean 4 · AgentDojo · Llama Guard 4 · Llama-3.3-70B · JS↔Python parity",
     s02_subtitle:
-      "Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+      "Project Simurgh — Verifiable Containment Attestation for Agentic AI (Creator · AGPL-3.0)",
     s02_bullet1:
-      "Discovered and formalised a cross-platform trust boundary violation between the W3C Screen Capture API and the OS compositing pipeline — achieving 100% evasion across all tested platforms with zero visual artefacts over 10,000+ analysed frames",
+      "Built a provider-agnostic framework producing Ed25519-signed, offline-reproducible evidence of what an AI agent did after a guardrail miss, across four containment boundaries: input firewall, context-provenance guard, tool-invocation gate, and output-leakage firewall — under an adversarial, dishonest-producer threat model",
     s02_bullet2:
-      "Uncovered a novel empirical finding on macOS 26.3.1: Apple's documented ScreenCaptureKit mitigation (macOS 15) remains ineffective — contradicting prevailing community and vendor assumptions through pixel-level forensic verification",
+      "Guardrail-miss containment: captured a real Llama Guard 4 (12B) input classifier over a 180-case run-set and contained 138/138 malicious cases the classifier missed (120 downstream-injection cases an input-only classifier structurally cannot see, 18 direct-input misses); combined targeted attack-success 0/150, with zero unsafe tool executions or exports",
     s02_bullet3:
-      "Executed coordinated responsible disclosure to three proctoring vendors (ProctorU, Proctorio, Respondus) and two OS vendors (Microsoft, Apple) following OWASP/FIRST/CISA disclosure frameworks within a 90-day window",
+      "Live-agent containment: drove a self-hosted Llama-3.3-70B through AgentDojo's workspace suite (140 pre-registered injection cases); the tool-authority gate cut targeted attack success from 9/140 to 0/140 with benign utility held",
     s02_bullet4:
-      "Documented measurable AI capability uplift: a single researcher with introductory security knowledge used Claude Opus 4.6 to produce validated cross-platform PoCs in a single research session — the model independently identified the operationally critical distinction between WDA_MONITOR and WDA_EXCLUDEFROMCAPTURE from API documentation",
+      "Positioned as the defense-in-depth layer complementary to Anthropic's inline classifier — the classifier governs what a model may say, the attestation governs what an agent was allowed to do (non-claims signed and explicit, including that it would not have caught the June 2026 content-generation bypass itself)",
     s02_bullet5:
-      "Characterised intent-vs-artefact safety boundary: model correctly distinguished research intent from misuse intent at the prompt level, but resulting artefacts (working PoC code) are transferable regardless of framing — a finding directly relevant to ASL threshold calibration",
+      "Attacked its own proof (red-team sweep across eight attack classes → detector-v2) and formally checked oversight with five machine-checked Lean theorems; one-command offline reproduction of a 12-rung signed release ladder; 989 automated tests across 44 releases",
     s03_heading: "Technical Proficiencies",
     s03_cat1_label: "Languages",
     s03_cat1_desc:
@@ -342,11 +344,10 @@ const en = {
     s04_coursework:
       "Digital Forensics, Network Security, Systems Security, Cloud Computing, Natural Language Processing (NLP) & Machine Learning, Privacy-Preserving Data Analysis",
     s05_heading: "Selected Research & Engineering Projects",
-    proj1_tag: "CONTAINMENT",
-    proj1_stack:
-      "Node.js · Ed25519 attestation · Lean 4 · AgentDojo · JS↔Python parity",
+    proj1_tag: "DISCLOSURE",
+    proj1_stack: "C · Swift · Python · Win32 API · ScreenCaptureKit · WebRTC",
     proj1_desc:
-      "Provider-agnostic verifiable containment-attestation framework for agentic AI. Produces Ed25519-signed, offline-reproducible evidence of what an agent was allowed to do after a guardrail miss: contained 138/138 classifier-missed cases against a real Llama Guard 4, cut a live agent's attack success from 9/140 to 0/140 on AgentDojo, and closed with five machine-checked Lean theorems. AGPL-3.0; 989 tests across 44 releases. Published lineage: DOIs 10.5281/zenodo.20374849, 20549736, 20675513.",
+      "IEEE-format vulnerability research: independently discovered and responsibly disclosed a cross-platform screen-capture evasion class exploiting OS-level display-affinity APIs (Windows/macOS) that defeats browser-based capture and AI-vision pipelines — 100% evasion across all tested platforms with zero visual artefacts over 10,000+ analysed frames, coordinated disclosure to OS and proctoring vendors. DOI: 10.5281/zenodo.20376495.",
     proj2_tag: "BIBLE RAG",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
@@ -387,9 +388,11 @@ const en = {
     s07_bullet1:
       "AI Safety Evaluator, Claude (Alignerr, Anthropic AI safety-evaluation program, 2026): assessed Claude outputs for exploitable code and analysed how safety guardrails can be circumvented, delivering structured, rubric-based findings (continues earlier 2024 Claude Code evaluation work)",
     s07_bullet2:
-      "Cofounder, Macquarie Persian Students Society (2026): founded and help run the university's Persian student community — events, peer support, and cultural programming",
-    s07_bullet3:
-      "Certifications: Anthropic (Building with the Claude API, Claude Code in Action, Claude Cowork, Claude Platform 101, AI Fluency, Claude Code 101, Claude 101) and Macquarie University cyber-security micro-credentials (grades 93–100%: Security of AI, Applied Cryptography, Digital Forensics, DevSecOps, IAM, GRC I & II, and more)",
+      "Founded and help run the university's Persian student community — events, peer support, and cultural programming.",
+    certs_heading: "Licenses & Certifications",
+    certs_issued: "Issued",
+    certs_credential: "Credential ID",
+    volunteer_label: "Volunteering",
     s08_heading: "Additional Information",
     s08_available:
       "Ready to relocate now to San Francisco; available to start immediately (final semester completed online). Visa sponsorship required.",

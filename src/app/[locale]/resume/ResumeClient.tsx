@@ -7,6 +7,7 @@ import {
   MapPin,
   Download,
   Fingerprint,
+  Users,
 } from "lucide-react";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
@@ -23,6 +24,7 @@ import {
   ORCID_URL,
 } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
+import { certifications } from "@/lib/certifications";
 
 export function ResumeClient() {
   const { t } = useTranslation();
@@ -38,7 +40,7 @@ export function ResumeClient() {
               <DecryptedText text={t.resume_page.title} />
             </h1>
             <NeonButton
-              href="/Raouf_Portfolio_Resume.docx"
+              href="/Mohammad_Raouf_Abedini_Resume.pdf"
               download
               variant="outline"
             >
@@ -148,7 +150,7 @@ export function ResumeClient() {
               <div className="group">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
                   <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                    The Invisible Window
+                    Project Simurgh
                   </h4>
                   <span className="text-text-body font-mono text-sm">2026</span>
                 </div>
@@ -305,7 +307,7 @@ export function ResumeClient() {
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
                     <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                      Project Simurgh{" "}
+                      The Invisible Window{" "}
                       <span className="text-cyan font-mono font-normal text-xs ml-2">
                         [{t.resume.proj1_tag}]
                       </span>
@@ -489,15 +491,72 @@ export function ResumeClient() {
                   <span className="text-purple mt-1">&#x25CF;</span>{" "}
                   {t.resume.s07_bullet1}
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple mt-1">&#x25CF;</span>{" "}
-                  {t.resume.s07_bullet2}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-cyan mt-1">&#x25CF;</span>{" "}
-                  {t.resume.s07_bullet3}
-                </li>
               </ul>
+
+              {/* Volunteering — Macquarie Persian Students Society */}
+              <div className="relative pl-6 border-l border-cyber-gray">
+                <span className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-purple border-2 border-background"></span>
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
+                  <h4 className="text-white font-bold text-base flex items-center gap-2">
+                    <Users size={16} className="text-purple shrink-0" />
+                    Co-Founder · Macquarie Persian Students Society
+                  </h4>
+                  <span className="text-text-body font-mono text-sm">
+                    2026 – Present
+                  </span>
+                </div>
+                <div className="text-purple font-mono text-xs mb-2">
+                  {t.resume.volunteer_label} · Education
+                </div>
+                <p className="text-sm text-text-body">{t.resume.s07_bullet2}</p>
+              </div>
+            </section>
+          </AnimatedSection>
+
+          {/* Licenses & Certifications */}
+          <AnimatedSection variants={fadeInUp}>
+            <section className="space-y-4">
+              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
+                <span className="text-cyan font-bold font-mono">08.</span>
+                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                  {t.resume.certs_heading}
+                </h3>
+              </div>
+              {["Anthropic", "Macquarie University"].map((issuer) => {
+                const items = certifications.filter((c) => c.issuer === issuer);
+                if (items.length === 0) return null;
+                return (
+                  <div key={issuer} className="space-y-3">
+                    <h4 className="text-cyan font-mono text-sm font-bold">
+                      &gt; {issuer}{" "}
+                      <span className="text-text-meta">({items.length})</span>
+                    </h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {items.map((c) => (
+                        <div
+                          key={c.credentialId}
+                          className="p-3 border border-cyan/10 bg-cyan/5 rounded-sm hover:border-cyan/30 transition-colors"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <p className="text-sm text-white font-medium leading-snug">
+                              {c.name}
+                            </p>
+                            {c.grade && (
+                              <span className="shrink-0 text-xs font-mono text-cyan border border-cyan/30 bg-cyan/10 px-1.5 py-0.5 rounded-sm">
+                                {c.grade}
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-1 text-xs text-text-meta font-mono">
+                            {t.resume.certs_issued} {c.issued} ·{" "}
+                            {t.resume.certs_credential}: {c.credentialId}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </section>
           </AnimatedSection>
 
@@ -505,7 +564,7 @@ export function ResumeClient() {
           <AnimatedSection variants={fadeInUp}>
             <section className="space-y-4 pb-8">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">08.</span>
+                <span className="text-cyan font-bold font-mono">09.</span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.resume.s08_heading}
                 </h3>
