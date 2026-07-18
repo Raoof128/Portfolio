@@ -25,9 +25,13 @@ import {
 } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { certifications } from "@/lib/certifications";
+import Link from "next/link";
+import { defaultLocale } from "@/i18n";
 
 export function ResumeClient() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const getPath = (path: string) =>
+    locale === defaultLocale ? path : `/${locale}${path}`;
 
   return (
     <div className="relative min-h-screen pt-24 pb-12">
@@ -149,8 +153,13 @@ export function ResumeClient() {
               </div>
               <div className="group">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                  <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                    Project Simurgh
+                  <h4 className="text-white font-bold text-lg">
+                    <Link
+                      href={getPath("/projects/project-simurgh")}
+                      className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                    >
+                      Project Simurgh
+                    </Link>
                   </h4>
                   <span className="text-text-body font-mono text-sm">2026</span>
                 </div>
@@ -306,8 +315,13 @@ export function ResumeClient() {
               <div className="space-y-6">
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                      The Invisible Window{" "}
+                    <h4 className="text-white font-bold text-lg">
+                      <Link
+                        href={getPath("/projects/invisible-window-research")}
+                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                      >
+                        The Invisible Window
+                      </Link>{" "}
                       <span className="text-cyan font-mono font-normal text-xs ml-2">
                         [{t.resume.proj1_tag}]
                       </span>
@@ -325,8 +339,13 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-amber transition-colors">
-                      Aion{" "}
+                    <h4 className="text-white font-bold text-lg">
+                      <Link
+                        href={getPath("/projects/aion")}
+                        className="hover:text-amber hover:underline underline-offset-4 transition-colors"
+                      >
+                        Aion
+                      </Link>{" "}
                       <span className="text-amber font-mono font-normal text-xs ml-2">
                         [{t.resume.proj2_tag}]
                       </span>
@@ -344,8 +363,13 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                      NanoMatch{" "}
+                    <h4 className="text-white font-bold text-lg">
+                      <Link
+                        href={getPath("/projects/nanomatch")}
+                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                      >
+                        NanoMatch
+                      </Link>{" "}
                       <span className="text-purple font-mono font-normal text-xs ml-2">
                         [{t.resume.proj3_tag}]
                       </span>
@@ -363,8 +387,13 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                      SentinelFlow{" "}
+                    <h4 className="text-white font-bold text-lg">
+                      <Link
+                        href={getPath("/projects/sentinelflow")}
+                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                      >
+                        SentinelFlow
+                      </Link>{" "}
                       <span className="text-purple font-mono font-normal text-xs ml-2">
                         [{t.resume.proj4_tag}]
                       </span>
@@ -382,8 +411,13 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-purple transition-colors">
-                      Nexus Archive{" "}
+                    <h4 className="text-white font-bold text-lg">
+                      <Link
+                        href={getPath("/projects/nexus-archive")}
+                        className="hover:text-purple hover:underline underline-offset-4 transition-colors"
+                      >
+                        Nexus Archive
+                      </Link>{" "}
                       <span className="text-purple font-mono font-normal text-xs ml-2">
                         [{t.resume.proj5_tag}]
                       </span>
@@ -401,8 +435,13 @@ export function ResumeClient() {
                 </div>
                 <div className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg group-hover:text-cyan transition-colors">
-                      Mehr Guard{" "}
+                    <h4 className="text-white font-bold text-lg">
+                      <Link
+                        href={getPath("/projects/mehr-guard")}
+                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                      >
+                        Mehr Guard
+                      </Link>{" "}
                       <span className="text-cyan font-mono font-normal text-xs ml-2">
                         [{t.resume.proj6_tag}]
                       </span>

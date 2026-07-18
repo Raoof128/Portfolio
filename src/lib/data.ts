@@ -123,7 +123,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs — SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS — that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
+      "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs, SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS, that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
     problem:
       "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. This assumption is false. Both Windows and macOS provide documented, publicly supported APIs that exclude application windows from all screen capture pipelines without privilege escalation, kernel modification, or detectable side effects. The integrity guarantee offered by capture-based proctoring is structurally broken.",
     solution: [
@@ -240,9 +240,9 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Project Simurgh is a provider-agnostic verifiable containment-attestation framework for agentic AI. It began as the defensive counterpart to The Invisible Window research — a metadata-only integrity layer for high-stakes sessions — and evolved into a general receipt for what a deployed AI agent was allowed to do after its first line of defense fails. Capability evaluations show what a model can do; Simurgh produces signed, offline-reproducible evidence of what a system let it do once it was connected to tools, files, context, and external systems. The classifier governs what a model may say; Simurgh attests what the agent was allowed to do, to a hostile reviewer, with no producer access.",
+      "Project Simurgh is a provider-agnostic verifiable containment-attestation framework for agentic AI. It began as the defensive counterpart to The Invisible Window research, a metadata-only integrity layer for high-stakes sessions, and evolved into a general receipt for what a deployed AI agent was allowed to do after its first line of defense fails. Capability evaluations show what a model can do; Simurgh produces signed, offline-reproducible evidence of what a system let it do once it was connected to tools, files, context, and external systems. The classifier governs what a model may say; Simurgh attests what the agent was allowed to do, to a hostile reviewer, with no producer access.",
     problem:
-      "Most AI defences optimise the first line: stopping the bad input. Anthropic's own Redeploying Fable 5 post concedes classifiers can be jailbroken, safety margins cost false positives, and full robustness is probably impossible. When that line fails — a prompt injection, a jailbreak, a tool-authority slip — there is neither a downstream layer that limits what the failure can do nor an evidence standard that lets an operator prove, to a skeptic, what actually happened. The threat model is a dishonest producer: an operator who wants to look contained.",
+      "Most AI defences optimise the first line: stopping the bad input. Anthropic's own Redeploying Fable 5 post concedes classifiers can be jailbroken, safety margins cost false positives, and full robustness is probably impossible. When that line fails, a prompt injection, a jailbreak, a tool-authority slip, there is neither a downstream layer that limits what the failure can do nor an evidence standard that lets an operator prove, to a skeptic, what actually happened. The threat model is a dishonest producer: an operator who wants to look contained.",
     solution: [
       "Wraps an agent in four containment boundaries and seals each run into an Ed25519-signed, metadata-only evidence pack that re-derives byte-for-byte offline",
       "Assumes the evidence producer lies — decision replay and emission-completeness checks let an outside reviewer confirm a real containment claim and falsify a dishonest one",
@@ -311,9 +311,9 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki — then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
+      "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki, then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
     problem:
-      "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge — which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
+      "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge, which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
     solution: [
       "Built a local document ingestion pipeline (MD, PDF, TXT, images) feeding a SQLite-backed knowledge store",
       "LLM extraction layer produces typed nodes — claims, concepts, entities, decisions — compounded additively across sources as the corpus grows",
@@ -371,11 +371,11 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Gitswitch is a modern, AI-powered Git client designed for developers who manage multiple accounts and repositories. It offers a seamless experience for switching identities and generating semantic commit messages.",
+      "Gitswitch is an AI-powered Git client for developers who juggle multiple accounts and repositories. It switches git identities and writes semantic commit messages.",
     problem:
       "Developers often struggle with managing multiple git identities (personal vs work) and writing consistent commit messages.",
     solution: [
-      "Created a seamless identity switcher for global/local git config",
+      "Built an identity switcher for global and local git config",
       "Integrated Gemini 3 AI for semantic commit generation",
       "Built a secure, modern Electron app with strict isolation",
       "Implemented smart diff viewing for better code review",
@@ -502,7 +502,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite — calendar, map, notifications, and multi-profile management. It has been accepted into the Macquarie University Incubator as a formal startup and runs in production at syllabus-sync.app.",
+      "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite, calendar, map, notifications, and multi-profile management. It has been accepted into the Macquarie University Incubator as a formal startup and runs in production at syllabus-sync.app.",
     problem:
       "Australian universities publish syllabi as unstructured PDFs. Students manually copy assessment dates into calendars, and AI assistants hallucinate deadlines because no machine-readable source of truth exists.",
     solution: [
@@ -518,6 +518,79 @@ export const projects: Record<string, Project> = {
       "Zero-Trust proxy catches misconfiguration by default (validated in production)",
       "Designed to serve ~47,000 MQ students; fork-ready for 1M+ across Australian universities",
       "WebAuthn passkey auth — no shared secrets leave the device",
+    ],
+  },
+  "divan-open-day": {
+    slug: "divan-open-day",
+    title: "Divan — Open Day",
+    category: "ENGINEERING",
+    year: "2026",
+    description:
+      "Bilingual (English/Persian) offline-first Hafez & Rumi poetry experience built for a Persian Society Open Day stall. Visitors pick a poet and receive one reviewed verse with translation, source, and recitation — with no cookies, trackers, or backend.",
+    localizedDescription: {
+      fa: "تجربه‌ی دوزبانه (فارسی/انگلیسی) و آفلاین‌محورِ شعر حافظ و مولوی که برای غرفه‌ی روز باز انجمن ایرانیان ساخته شده است. بازدیدکننده یک شاعر را برمی‌گزیند و یک بیتِ بازبینی‌شده همراه با ترجمه، منبع و صوت دریافت می‌کند — بدون هیچ کوکی، ردیاب یا سرور.",
+      ar: "تجربة شعرية ثنائية اللغة (الإنجليزية/الفارسية) تعمل دون اتصال أولًا لأشعار حافظ ومولوي، صُممت لجناح اليوم المفتوح للجمعية الفارسية. يختار الزائر شاعرًا فيتلقى بيتًا مُراجَعًا مع ترجمته ومصدره وتلاوته — دون أي ملفات تعريف ارتباط أو مُتتبِّعات أو خادم.",
+      zh: "为波斯学生会开放日展位打造的双语（英语/波斯语）、离线优先的哈菲兹与鲁米诗歌体验。访客选择一位诗人，即可获得一句经过审校的诗句及其译文、出处与吟诵——没有任何 cookie、追踪器或后端。",
+      es: "Experiencia de poesía bilingüe (inglés/persa) y offline-first de Hafez y Rumi creada para un stand de la Jornada de Puertas Abiertas de la Sociedad Persa. El visitante elige un poeta y recibe un verso revisado con traducción, fuente y recitación, sin cookies, rastreadores ni backend.",
+    },
+    tags: [
+      "React 19",
+      "Vite",
+      "TypeScript",
+      "Offline-First",
+      "Privacy by Design",
+      "i18n / RTL",
+    ],
+    links: {
+      demo: "https://divan.raoufabedini.dev/",
+      repo: "https://github.com/Raoof128/divan-open-day",
+      caseStudy: "/projects/divan-open-day",
+    },
+    build: {
+      stack: [
+        "Vite",
+        "React 19",
+        "strict TypeScript",
+        "Hand-written service worker",
+        "Web Crypto (shuffle bag)",
+        "Vitest (unit / component / a11y / offline)",
+        "Playwright (Chromium e2e)",
+        "pnpm 10.33 · Node 22.16",
+      ],
+      features: [
+        "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
+        "Fair, unbiased verse selection via a Web Crypto shuffle bag — computed entirely on-device with no server involvement",
+        "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
+        "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterized images)",
+        "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support",
+      ],
+    },
+    secure: {
+      measures: [
+        "Privacy by construction: no cookies, identifiers, trackers, or visitor input; nothing is transmitted",
+        "No backend, database, or analytics infrastructure — a purely static client",
+        "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
+        "Production compiler rejects synthetic/test data before deployment",
+        "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licenses, e.g. CC BY-SA)",
+        "Delivered as a static container behind an outbound tunnel — no inbound surface",
+      ],
+    },
+    fullDescription:
+      "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. It is offline-first and privacy-first by construction, no cookies, trackers, backend, or visitor input, so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
+    problem:
+      "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity, no hallucinated verses, no rasterized calligraphy, no data collection.",
+    solution: [
+      "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
+      "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
+      "Selected verses fairly with a Web Crypto shuffle bag entirely on-device — no server, no record of what anyone drew",
+      "Rendered live Nastaliq typography and per-poet art direction for cultural authenticity instead of flattened images",
+      "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support",
+    ],
+    proof: [
+      "Zero data collection: no cookies, trackers, or backend — only public poem IDs in sessionStorage",
+      "Runs fully offline after first load via the integrity-verified service worker",
+      "A production compiler rejects synthetic test data before deployment, so only the reviewed corpus ever ships",
+      "Tested across unit, component, accessibility, offline, share, performance, and security suites (Vitest) plus Playwright Chromium e2e",
     ],
   },
   "nexus-archive": {
@@ -570,7 +643,7 @@ export const projects: Record<string, Project> = {
     fullDescription:
       "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
     problem:
-      "Existing media trackers are fragmented across platforms with weak security postures. Users need a unified catalog that treats their entertainment library as a curated identity system, not just a checklist — with real security built in.",
+      "Existing media trackers are fragmented across platforms with weak security postures. Users need a unified catalog that treats their entertainment library as a curated identity system, not just a checklist, with real security built in.",
     solution: [
       "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
       "Implemented backend-managed HttpOnly auth cookies replacing frontend-readable Supabase tokens",
@@ -694,7 +767,7 @@ export const projects: Record<string, Project> = {
     fullDescription:
       "SentinelFlow is a real-time network intrusion detection system that captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and exports security alerts to console and CSV formats.",
     problem:
-      "Network intrusion detection requires deep packet inspection at wire speed. Commercial IDS solutions are opaque — building one from scratch reveals how protocol dissection, signature matching, and stateful analysis actually work.",
+      "Network intrusion detection requires deep packet inspection at wire speed. Commercial IDS solutions are opaque; building one from scratch reveals how protocol dissection, signature matching, and stateful analysis actually work.",
     solution: [
       "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
       "Built a Snort-inspired configurable rule engine for flexible signature matching",
@@ -812,7 +885,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "SimurghForge is a universal file converter for macOS built with Tauri v2 (Rust backend + React/TypeScript frontend). It converts files across 49 formats spanning images, documents, audio, video, and structured data using 9 specialised conversion engines — 4 native Rust engines for maximum performance and 5 CLI-bridged engines for format breadth. All processing happens locally with zero cloud dependency.",
+      "SimurghForge is a universal file converter for macOS built with Tauri v2 (Rust backend + React/TypeScript frontend). It converts files across 49 formats spanning images, documents, audio, video, and structured data using 9 specialised conversion engines, 4 native Rust engines for maximum performance and 5 CLI-bridged engines for format breadth. All processing happens locally with zero cloud dependency.",
     problem:
       "File conversion typically requires uploading sensitive documents to cloud services, using multiple specialised tools, or installing bloated Electron apps. Users need a single, fast, privacy-respecting tool that handles all common formats locally.",
     solution: [
@@ -915,79 +988,6 @@ export const projects: Record<string, Project> = {
       "Anonymous auth with zero sign-up friction — Supabase RLS enforced on all tables",
     ],
   },
-  "divan-open-day": {
-    slug: "divan-open-day",
-    title: "Divan — Open Day",
-    category: "ENGINEERING",
-    year: "2026",
-    description:
-      "Bilingual (English/Persian) offline-first Hafez & Rumi poetry experience built for a Persian Society Open Day stall. Visitors pick a poet and receive one reviewed verse with translation, source, and recitation — with no cookies, trackers, or backend.",
-    localizedDescription: {
-      fa: "تجربه‌ی دوزبانه (فارسی/انگلیسی) و آفلاین‌محورِ شعر حافظ و مولوی که برای غرفه‌ی روز باز انجمن ایرانیان ساخته شده است. بازدیدکننده یک شاعر را برمی‌گزیند و یک بیتِ بازبینی‌شده همراه با ترجمه، منبع و صوت دریافت می‌کند — بدون هیچ کوکی، ردیاب یا سرور.",
-      ar: "تجربة شعرية ثنائية اللغة (الإنجليزية/الفارسية) تعمل دون اتصال أولًا لأشعار حافظ ومولوي، صُممت لجناح اليوم المفتوح للجمعية الفارسية. يختار الزائر شاعرًا فيتلقى بيتًا مُراجَعًا مع ترجمته ومصدره وتلاوته — دون أي ملفات تعريف ارتباط أو مُتتبِّعات أو خادم.",
-      zh: "为波斯学生会开放日展位打造的双语（英语/波斯语）、离线优先的哈菲兹与鲁米诗歌体验。访客选择一位诗人，即可获得一句经过审校的诗句及其译文、出处与吟诵——没有任何 cookie、追踪器或后端。",
-      es: "Experiencia de poesía bilingüe (inglés/persa) y offline-first de Hafez y Rumi creada para un stand de la Jornada de Puertas Abiertas de la Sociedad Persa. El visitante elige un poeta y recibe un verso revisado con traducción, fuente y recitación, sin cookies, rastreadores ni backend.",
-    },
-    tags: [
-      "React 19",
-      "Vite",
-      "TypeScript",
-      "Offline-First",
-      "Privacy by Design",
-      "i18n / RTL",
-    ],
-    links: {
-      demo: "https://divan.raoufabedini.dev/",
-      repo: "https://github.com/Raoof128/divan-open-day",
-      caseStudy: "/projects/divan-open-day",
-    },
-    build: {
-      stack: [
-        "Vite",
-        "React 19",
-        "strict TypeScript",
-        "Hand-written service worker",
-        "Web Crypto (shuffle bag)",
-        "Vitest (unit / component / a11y / offline)",
-        "Playwright (Chromium e2e)",
-        "pnpm 10.33 · Node 22.16",
-      ],
-      features: [
-        "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
-        "Fair, unbiased verse selection via a Web Crypto shuffle bag — computed entirely on-device with no server involvement",
-        "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
-        "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterized images)",
-        "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support",
-      ],
-    },
-    secure: {
-      measures: [
-        "Privacy by construction: no cookies, identifiers, trackers, or visitor input; nothing is transmitted",
-        "No backend, database, or analytics infrastructure — a purely static client",
-        "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
-        "Production compiler rejects synthetic/test data before deployment",
-        "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licenses, e.g. CC BY-SA)",
-        "Delivered as a static container behind an outbound tunnel — no inbound surface",
-      ],
-    },
-    fullDescription:
-      "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. It is offline-first and privacy-first by construction — no cookies, trackers, backend, or visitor input — so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
-    problem:
-      "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity — no hallucinated verses, no rasterized calligraphy, no data collection.",
-    solution: [
-      "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
-      "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
-      "Selected verses fairly with a Web Crypto shuffle bag entirely on-device — no server, no record of what anyone drew",
-      "Rendered live Nastaliq typography and per-poet art direction for cultural authenticity instead of flattened images",
-      "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support",
-    ],
-    proof: [
-      "Zero data collection: no cookies, trackers, or backend — only public poem IDs in sessionStorage",
-      "Runs fully offline after first load via the integrity-verified service worker",
-      "A production compiler rejects synthetic test data before deployment, so only the reviewed corpus ever ships",
-      "Tested across unit, component, accessibility, offline, share, performance, and security suites (Vitest) plus Playwright Chromium e2e",
-    ],
-  },
 };
 
 export interface Writeup {
@@ -1001,9 +1001,56 @@ export interface Writeup {
 
 export const writeups: Writeup[] = [
   {
+    slug: "project-simurgh-containment",
+    title: "Attesting What an AI Agent Was Allowed to Do",
+    date: "2026-06-28",
+    tag: "AI Security",
+    takeaway:
+      "Signed, offline-verifiable evidence of an agent's actions after a guardrail miss: 138/138 classifier-missed cases contained, 9/140 to 0/140 on AgentDojo.",
+    content: `
+## The gap inline classifiers leave
+
+An input classifier reads a prompt and decides whether the model may answer. It never sees what the agent does next, which tool it calls, what it reads from a returned web page, what it writes back out. When a jailbreak or an injected instruction slips past the classifier, nothing downstream is obligated to prove the agent stayed inside its authority.
+
+**Project Simurgh** fills that gap. It is not a better classifier; it is a provider-agnostic framework that produces Ed25519-signed, offline-reproducible evidence of what an agent was *allowed* to do after a guardrail miss. The classifier governs what a model may say; the attestation governs what an agent was allowed to do.
+
+### Four containment boundaries
+
+Every agent action crosses one of four gates, and each gate emits a signed record:
+
+| Boundary | Guards against |
+|----------|----------------|
+| **Input firewall** | Direct prompt injection at the entry point |
+| **Context-provenance guard** | Instructions smuggled in through retrieved or tool-returned content |
+| **Tool-invocation gate** | Unauthorised or out-of-policy tool calls |
+| **Output-leakage firewall** | Secrets exfiltrated in the final response |
+
+### A dishonest-producer threat model
+
+Most evidence systems assume the thing writing the logs is honest. Simurgh assumes the opposite: the producer may lie, drop, reorder, or forge records. The answer is decision-replay and emission-completeness checks, a verifier re-derives each decision from the signed inputs and catches a falsified or missing record. The trust root is not "trust the log," it is "re-check the log."
+
+### What the numbers measure
+
+- **Guardrail-miss containment.** Against a real Llama Guard 4 (12B) classifier over a 180-case run-set, Simurgh contained **138/138** malicious cases the classifier missed, 120 of them downstream-injection cases an input-only classifier structurally cannot see, plus 18 direct-input misses. Combined targeted attack-success: **0/150**, with zero unsafe tool executions or exports.
+- **Live-agent containment.** Driving a self-hosted Llama-3.3-70B through AgentDojo's workspace suite (140 pre-registered injection cases), the tool-authority gate cut targeted attack success from **9/140 to 0/140** with benign utility held.
+
+### Attacking its own proof
+
+A containment system that tests only the agent, never itself, is theatre. Simurgh red-teams its attestation core across eight attack classes: tamper, key-swap, canonical-laundering, digest-collision, cross-stage replay, self-proof mutation, and policy drift. The trust root held on all eight; two detector weaknesses surfaced, were versioned into a detector-v2, and re-tested. A producer-independent witness recorded zero false accusations and zero missed lies.
+
+### Machine-checked oversight
+
+Approval-gate friction receipts prove an oversight checkpoint preceded every protected authority crossing, through a two-key pincer that defeats self-approval and backdating. The core invariants, fail-closed, friction precedence, no-silent-exemption, are closed with **five machine-checked Lean theorems**, so they are proofs, not test cases.
+
+### Honest non-claims
+
+The preprints sign their limits. Simurgh would **not** have caught the June 2026 content-generation bypass by itself, that is a model-output problem, not an agent-authority one. It is defence in depth, not a replacement for inline safeguards. Reproduction is one command over a 12-rung signed release ladder; 989 automated tests across 44 releases; AGPL-3.0.
+    `,
+  },
+  {
     slug: "invisible-window-research",
     title:
-      "How I Made Windows Invisible to Screen Capture — and Why Exam Proctoring Is Broken",
+      "How I Made Windows Invisible to Screen Capture, and Why Exam Proctoring Is Broken",
     date: "2026-03-20",
     tag: "Security Research",
     takeaway:
@@ -1017,7 +1064,7 @@ Every major operating system ships a documented API that lets any application ma
 
 ## Background: How Proctoring Works
 
-WebRTC-based remote proctoring systems — the kind deployed by universities worldwide since 2020 — work by capturing the student's screen during an exam session. The browser extension or native client requests a \`getDisplayMedia()\` stream, transmits it to the proctor's server, and flags anomalies: opened windows, visible applications, clipboard activity. The implicit security model is:
+WebRTC-based remote proctoring systems, the kind deployed by universities worldwide since 2020, work by capturing the student's screen during an exam session. The browser extension or native client requests a \`getDisplayMedia()\` stream, transmits it to the proctor's server, and flags anomalies: opened windows, visible applications, clipboard activity. The implicit security model is:
 
 > **If I capture your screen, I can see everything on it.**
 
@@ -1027,7 +1074,7 @@ This assumption is wrong on Windows and macOS.
 
 ## The Windows Side: \`SetWindowDisplayAffinity\`
 
-Microsoft documented this API in the Win32 SDK as a Digital Rights Management mechanism — its intended use case is preventing screen capture of premium video content (think Netflix's desktop app). The function signature is simple:
+Microsoft documented this API in the Win32 SDK as a Digital Rights Management mechanism, its intended use case is preventing screen capture of premium video content (think Netflix's desktop app). The function signature is simple:
 
 \`\`\`c
 BOOL SetWindowDisplayAffinity(HWND hWnd, DWORD dwAffinity);
@@ -1052,7 +1099,7 @@ The window continues to render on the physical display normally. The user sees i
 int main() {
     HWND hwnd = CreateWindowEx(/* ... window params ... */);
 
-    // Single API call — window now invisible to all screen capture
+    // Single API call, window now invisible to all screen capture
     SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
 
     ShowWindow(hwnd, SW_SHOW);
@@ -1084,7 +1131,7 @@ let window = NSWindow(
     defer: false
 )
 
-// Single property assignment — window excluded from all capture
+// Single property assignment, window excluded from all capture
 window.sharingType = .none
 
 window.makeKeyAndOrderFront(nil)
@@ -1109,8 +1156,8 @@ Setting \`sharingType\` to \`.none\` excludes the window from:
 | Windows 11 | No | None |
 | macOS 14 | No | None |
 | macOS 26.3.1 | No | None |
-| Linux (X11) | Yes | N/A — not vulnerable |
-| Linux (Wayland) | Yes | N/A — not vulnerable |
+| Linux (X11) | Yes | N/A, not vulnerable |
+| Linux (Wayland) | Yes | N/A, not vulnerable |
 
 Linux is not vulnerable because neither X11 nor Wayland exposes a per-window capture exclusion API. The absence of this feature is, in this context, a security advantage.
 
@@ -1118,13 +1165,13 @@ Linux is not vulnerable because neither X11 nor Wayland exposes a per-window cap
 
 ## Why This Is Structurally Hard to Fix
 
-The vulnerability is not a bug — it is a design conflict between two legitimate OS features:
+The vulnerability is a design conflict between two legitimate OS features:
 
 1. **DRM / Content Protection**: Media companies need to prevent unauthorized recording of premium content. \`WDA_EXCLUDEFROMCAPTURE\` and \`NSWindow.SharingType.none\` exist to serve this requirement.
 
 2. **Exam Integrity**: Proctoring systems assume that capturing the screen gives a complete view of the user's desktop.
 
-These two requirements are fundamentally incompatible. Any OS that supports (1) — which Windows and macOS do by design — cannot simultaneously guarantee (2) at the screen-capture layer.
+These two requirements are fundamentally incompatible. Any OS that supports (1), which Windows and macOS do by design, cannot simultaneously guarantee (2) at the screen-capture layer.
 
 **The only mitigation paths available to proctoring vendors require moving below the OS API layer:**
 
@@ -1142,13 +1189,13 @@ These two requirements are fundamentally incompatible. Any OS that supports (1) 
 | February 2026 | Microsoft and Apple notified |
 | March 2026 | Public disclosure after 90-day window; Zenodo preprint published (CC BY 4.0) |
 
-The vendors' responses confirmed awareness of the OS-level mechanism. The core challenge — that the vulnerability is in a documented OS feature, not a bug in vendor code — limits what any individual vendor can patch without OS-level cooperation.
+The vendors' responses confirmed awareness of the OS-level mechanism. The core challenge, that the vulnerability is in a documented OS feature, not a bug in vendor code, limits what any individual vendor can patch without OS-level cooperation.
 
 ---
 
 ## Takeaway
 
-Screen-capture-based exam proctoring on Windows and macOS provides a weaker integrity guarantee than its deployment context requires. The attack surface is a single API call, requires no elevated privileges, leaves no log artifacts, and works across all tested platform versions including the latest macOS release. This is not a novel implementation flaw — it is a systemic design incompatibility between content protection APIs and the integrity assumptions embedded in remote proctoring architecture.
+Screen-capture-based exam proctoring on Windows and macOS provides a weaker integrity guarantee than its deployment context requires. The attack surface is a single API call, requires no elevated privileges, leaves no log artifacts, and works across all tested platform versions including the latest macOS release. It is a systemic design incompatibility between content-protection APIs and the integrity assumptions baked into remote-proctoring architecture.
 
 The full 13-page paper, PoC implementations, and disclosure materials are available in the repository.
     `,
@@ -1161,9 +1208,9 @@ The full 13-page paper, PoC implementations, and disclosure materials are availa
     takeaway:
       "How a three-layer data structure design achieves O(1) cancellation and sub-microsecond latency.",
     content: `
-## Why Build a Matching Engine?
+## The system every exchange runs on
 
-Every electronic exchange — NYSE, NASDAQ, CME — runs a matching engine at its core. It is the system that pairs buy orders with sell orders at the best available price. Understanding how one works at the systems level means understanding price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
+Every electronic exchange (NYSE, NASDAQ, CME) runs a matching engine at its center. It pairs buy orders with sell orders at the best available price. Building one at the systems level means learning price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
 
 **NanoMatch** is my from-scratch implementation in modern C++20, processing 1M+ orders per second with sub-microsecond latency.
 
@@ -1177,11 +1224,11 @@ NanoMatch uses three cooperating structures:
 |-------|-----------|---------|
 | **Price levels** | \`std::map<Price, PriceLevel>\` | Sorted by price. \`std::greater\` for bids (highest first), \`std::less\` for asks (lowest first). O(log M) insert, O(1) best via \`begin()\`. |
 | **Order queue** | \`std::list<Order>\` per level | FIFO queue at each price. O(1) append, O(1) erase by iterator. |
-| **Lookup** | \`std::unordered_map<OrderID, Iterator>\` | O(1) cancel — hash lookup yields a list iterator, erase is constant time. |
+| **Lookup** | \`std::unordered_map<OrderID, Iterator>\` | O(1) cancel, hash lookup yields a list iterator, erase is constant time. |
 
 This is the same asymptotic profile used by production exchange engines.
 
-### Integer Prices — Avoiding Floating-Point Traps
+### Integer Prices, Avoiding Floating-Point Traps
 
 Prices are stored as \`int32_t\` in cents (\`$101.50 = 10150\`). Floating-point comparison (\`==\`) is unreliable due to representation error. In a matching engine, this could cause price levels that should merge remaining as separate entries, or orders matching at the wrong price. Integer arithmetic makes comparison exact and deterministic.
 
@@ -1203,9 +1250,9 @@ Four order types with production-grade semantics:
 - **Limit**: Match what crosses, rest the remainder on the book
 - **Market**: Price set to \`MAX/MIN\` to guarantee crossing, never rests
 - **IOC** (Immediate-or-Cancel): Like limit but cancel unfilled remainder
-- **FOK** (Fill-or-Kill): Atomic pre-check via \`can_fill_completely()\` — scans all crossable levels before executing. If insufficient liquidity exists, zero fills occur
+- **FOK** (Fill-or-Kill): Atomic pre-check via \`can_fill_completely()\`, scans all crossable levels before executing. If insufficient liquidity exists, zero fills occur
 
-Modify is implemented as cancel + re-add, which is **correct exchange behavior** — modifications lose time priority, just like on NYSE and NASDAQ.
+Modify is implemented as cancel + re-add, which is **correct exchange behavior**, modifications lose time priority, just like on NYSE and NASDAQ.
 
 ### Latency Profile
 
@@ -1232,24 +1279,24 @@ Commercial intrusion detection systems like Snort and Suricata follow a common a
 
 ### Capture: BPF Filters Run in Kernel Space
 
-SentinelFlow uses libpcap with a polymorphic \`PacketCapture\` interface — \`LiveCapture\` for real-time traffic and \`PcapFileReader\` for offline analysis. The critical optimisation is BPF (Berkeley Packet Filter): a filter expression like \`tcp port 80\` is compiled via \`pcap_compile()\` and runs **inside the kernel**. Packets that don't match are never copied to userspace — orders of magnitude more efficient than filtering in application code.
+SentinelFlow uses libpcap with a polymorphic \`PacketCapture\` interface, \`LiveCapture\` for real-time traffic and \`PcapFileReader\` for offline analysis. The critical optimisation is BPF (Berkeley Packet Filter): a filter expression like \`tcp port 80\` is compiled via \`pcap_compile()\` and runs **inside the kernel**. Packets that don't match are never copied to userspace, which is orders of magnitude more efficient than filtering in application code.
 
 ### Layered Protocol Dissection
 
 Network frames are nested structures. You cannot jump to a fixed byte offset because each layer has variable length:
 
-1. **Ethernet** (14 bytes) — \`ntohs\` on EtherType dispatches to IPv4 (\`0x0800\`) or ARP (\`0x0806\`)
-2. **IPv4** — IHL (Internet Header Length) field tells you where L4 starts. Variable due to IP options.
-3. **TCP** — \`data_offset\` field tells you where the payload begins. Variable due to TCP options.
-4. **UDP** (8 bytes) — Fixed header, but conditionally triggers DNS parsing when port is 53
-5. **DNS** — Walks label-encoded query names (length-prefixed segments)
-6. **ICMP** / **ARP** — Type codes and hardware addresses
+1. **Ethernet** (14 bytes), \`ntohs\` on EtherType dispatches to IPv4 (\`0x0800\`) or ARP (\`0x0806\`)
+2. **IPv4**, IHL (Internet Header Length) field tells you where L4 starts. Variable due to IP options.
+3. **TCP**, \`data_offset\` field tells you where the payload begins. Variable due to TCP options.
+4. **UDP** (8 bytes), Fixed header, but conditionally triggers DNS parsing when port is 53
+5. **DNS**, Walks label-encoded query names (length-prefixed segments)
+6. **ICMP** / **ARP**, Type codes and hardware addresses
 
-Each parser is a stateless free function operating on raw \`const uint8_t*\` — zero copies, zero allocations. The \`ParsedPacket\` struct uses \`std::optional<T>\` for each layer: if a parse fails or the protocol isn't present, the optional stays empty and downstream layers are skipped.
+Each parser is a stateless free function operating on raw \`const uint8_t*\`, zero copies, zero allocations. The \`ParsedPacket\` struct uses \`std::optional<T>\` for each layer: if a parse fails or the protocol isn't present, the optional stays empty and downstream layers are skipped.
 
 ### Snort-Inspired Rule Engine
 
-SentinelFlow implements a subset of the Snort rule language — the de facto standard for signature-based detection:
+SentinelFlow implements a subset of the Snort rule language, the de facto standard for signature-based detection:
 
 \`\`\`
 alert tcp any any -> any 22 (msg:"SSH brute force"; flags:S; threshold:10,60; sid:2001;)
@@ -1261,19 +1308,19 @@ Rules are declarative. The **header** acts as a fast pre-filter (protocol, IP, p
 
 Signature matching catches known-bad patterns in individual packets. But many real attacks are distributed across multiple packets:
 
-- **Port scans** — Only visible when you track the set of destination ports per source IP over time. SentinelFlow maintains a \`std::set<uint16_t>\` per IP pair, firing when 15+ unique ports are hit in 60 seconds.
-- **SYN floods** — Detected by monitoring half-open connection rates. A \`std::deque\` of SYN timestamps per destination IP, pruned lazily on access. Fires at 100+ SYNs in 10 seconds.
-- **DNS tunnelling** — Exfiltration via encoded DNS queries produces anomalously long query names. The detector tracks queries exceeding 50 characters and fires when volume passes threshold.
+- **Port scans**, Only visible when you track the set of destination ports per source IP over time. SentinelFlow maintains a \`std::set<uint16_t>\` per IP pair, firing when 15+ unique ports are hit in 60 seconds.
+- **SYN floods**, Detected by monitoring half-open connection rates. A \`std::deque\` of SYN timestamps per destination IP, pruned lazily on access. Fires at 100+ SYNs in 10 seconds.
+- **DNS tunnelling**, Exfiltration via encoded DNS queries produces anomalously long query names. The detector tracks queries exceeding 50 characters and fires when volume passes threshold.
 
-All stateful detectors use sliding time windows with **lazy pruning** — old entries are removed on the next access rather than by a background thread. This eliminates synchronisation overhead.
+All stateful detectors use sliding time windows with **lazy pruning**, old entries are removed on the next access rather than by a background thread. This eliminates synchronisation overhead.
 
 ### Zero-Copy Parsing Performance
 
-The parsers operate directly on the raw buffer provided by libpcap. No intermediate copies, no dynamic allocation per packet. The \`memcpy\` + \`ntohs/ntohl\` pattern is the standard approach in high-performance packet processing (used in DPDK, PF_RING, and production NIDS). The benchmark proves **500K+ packets/sec** on a single thread — pure parsing throughput measured over synthetic TCP SYN packets.
+The parsers operate directly on the raw buffer provided by libpcap. No intermediate copies, no dynamic allocation per packet. The \`memcpy\` + \`ntohs/ntohl\` pattern is the standard approach in high-performance packet processing (used in DPDK, PF_RING, and production NIDS). The benchmark proves **500K+ packets/sec** on a single thread, pure parsing throughput measured over synthetic TCP SYN packets.
 
 ### Alert Outputs
 
-The alert system uses a strategy pattern — \`AlertManager\` dispatches each alert to all registered outputs:
+The alert system uses a strategy pattern, \`AlertManager\` dispatches each alert to all registered outputs:
 
 - **Console**: ANSI color-coded by severity (green → yellow → red → bold red)
 - **CSV**: RFC 4180-compliant with proper escaping, ready for SIEM ingestion
@@ -1289,21 +1336,43 @@ Adding a new output (syslog, webhook, Kafka) means implementing a single \`emit(
     takeaway:
       "How to build safe, read-only kernel probes for container security.",
     content: `
-## Introduction
+## What eBPF actually gives you
 
-eBPF (Extended Berkeley Packet Filter) has revolutionized Linux kernel observability. It allows us to run sandboxed programs in the kernel without changing kernel source code or loading modules.
+eBPF runs small, verified programs inside the Linux kernel without a kernel module or a patched kernel. Before a program loads, the in-kernel verifier rejects anything that could loop forever, read out of bounds, or touch memory it should not. That property is what makes it safe to attach code to hot paths like the syscall boundary.
 
-In this deep dive, I'll explain how **ECRSM** uses eBPF tracepoints to monitor system calls like \`execve\` and \`connect\` to detect suspicious behavior in real-time.
+**ECRSM** is an educational, read-only runtime monitor built on that boundary: kernel eBPF probes, a Go agent, and a React dashboard. It is a synthetic teaching stack, not a production EDR, the point is to make kernel-level visibility legible.
 
-### The Architecture
+### Where it hooks
 
-1.  **Kernel Space**: C programs attached to tracepoints.
-2.  **User Space**: A Go agent that loads the maps and polls the perf buffer.
-3.  **Visualization**: A React dashboard receiving events via WebSockets.
+ECRSM attaches to kernel tracepoints rather than kprobes, because tracepoints keep a stable ABI across kernel versions:
 
-### Safety First
+| Tracepoint | Signal |
+|------------|--------|
+| \`execve\` | Process execution, the primary lens on reverse shells and suspicious binaries |
+| \`connect\` | Outbound connections, C2 beaconing and exfiltration destinations |
+| \`ptrace\` | Process injection and debugger attach |
+| \`mmap\` | Executable-memory mappings, a signal for shellcode staging |
 
-Writing to the kernel is dangerous. ECRSM strictly uses **read-only** tracepoints. We never modify packet data or syscall arguments, ensuring system stability is never compromised.
+### The data path
+
+1. **Kernel space**, a C eBPF program fires on each tracepoint and copies *metadata only* (PID, UID, \`comm\`, argv sizes, destination address) into a ring buffer. Never payloads, never secrets.
+2. **User space**, a Go agent drains the ring buffer, enriches each event with container and Kubernetes metadata (pod, namespace, image), and evaluates lightweight rules.
+3. **Dashboard**, events stream to a React UI over WebSockets, so a syscall in the kernel becomes a row on screen in real time.
+
+Deployment is a Kubernetes DaemonSet via a Helm chart, so exactly one probe runs per node.
+
+### Safety is the whole design
+
+Writing to the kernel is how you crash a machine. ECRSM never does it:
+
+- **Read-only introspection**, tracepoints observe; they do not modify syscall arguments or packet data.
+- **Metadata only**, no payload bytes, no environment variables, no file contents leave the kernel.
+- **Least privilege**, the agent runs with \`CAP_BPF\` / \`CAP_SYS_ADMIN\` and nothing more.
+- **Synthetic simulations**, the "attacks" it surfaces (reverse shells, process injection, suspicious execs) are safe scripted scenarios, so you learn the detection without a real intrusion.
+
+### What it is not
+
+ECRSM is a learning platform. It ships no signatures, blocks nothing, and makes no claim to catch a determined attacker. Its value is pedagogical: it turns the abstract idea of kernel observability into events you can watch on infrastructure you can tear down.
     `,
   },
   {
@@ -1313,21 +1382,35 @@ Writing to the kernel is dangerous. ECRSM strictly uses **read-only** tracepoint
     tag: "Kotlin",
     takeaway: "Sharing 100% of security logic across Android, iOS, and Web.",
     content: `
-## Why Kotlin Multiplatform?
+## One security core, five platforms
 
-For security tools, consistency is key. If your iOS app uses a different regex for phishing detection than your Android app, you have a security gap.
+For a security tool, drift between platforms is a vulnerability. If the iOS build scores a URL with a different heuristic than the Android build, an attacker only has to find the weaker one. **Mehr Guard** removes that gap by sharing its whole detection core across Android, iOS, JVM, JS, and WebAssembly with Kotlin Multiplatform (KMP).
 
-**MehrGuard** solves this by sharing 100% of its domain logic using Kotlin Multiplatform (KMP).
+### What lives in \`commonMain\`
 
-### What We Share
+The security logic is platform-agnostic and lives once, in shared code:
 
-*   **Heuristics Engine**: The core logic that scores URLs.
-*   **Allow/Deny Lists**: Centralized management of threat intelligence.
-*   **Networking Logic**: (Or lack thereof, since it's offline).
+- **Ensemble ML model**, logistic regression plus gradient boosting, scoring each URL.
+- **Heuristics engine**, 25+ checks: homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
+- **Threat-intelligence lists**, allow/deny sets, versioned centrally.
 
-### The Result
+Only the thin edges are per-platform, expressed through KMP's \`expect\`/\`actual\`: file access, the QR-camera bridge, and UI. Auditing the security core means reading one codebase, not five.
 
-We achieved ~52% code sharing across 5 platforms, meaning a single developer can audit the security core once and deploy fixes everywhere instantly.
+### Offline by construction
+
+Mehr Guard makes zero network calls. Every score is computed on-device, which is both a privacy guarantee (your browsing history never leaves the phone) and a threat-model decision (no server to compromise, no scan to intercept). The privacy claim is verifiable: a check script asserts zero outbound connections.
+
+### The numbers
+
+| Metric | Value |
+|--------|-------|
+| F1 on the red-team corpus | 87% |
+| P99 scan latency | < 5 ms |
+| Automated tests | 1,248+ |
+| Built-in red-team scenarios | 19 curated attacks |
+| Platform targets | 5 (Android, iOS, JVM, JS, Wasm) |
+
+The built-in red-team suite earns its place next to the F1 number: it holds detection quality steady across refactors, so a change that quietly regresses homograph detection fails the build instead of shipping.
     `,
   },
   {
@@ -1337,19 +1420,34 @@ We achieved ~52% code sharing across 5 platforms, meaning a single developer can
     tag: "Electron",
     takeaway: "Handling secrets and IPC securely in modern desktop apps.",
     content: `
-## The Electron Security Problem
+## Why Electron is a sharp tool
 
-Electron apps are essentially web pages with Node.js access. This is a terrifying combination if not sandboxed correctly.
+An Electron app is a browser and a Node.js runtime in one process. If a renderer that loads remote or attacker-influenced content can reach Node, a single XSS becomes remote code execution on the user's machine. Securing Electron is mostly about keeping those two worlds apart. **GitSwitch**, an Electron + React 19 Git client that holds GitHub tokens and a Gemini API key, has to get this right.
 
-### Critical Defenses in GitSwitch
+### The isolation contract
 
-1.  **Context Isolation**: Enabled. This ensures the preload script runs in a separate context.
-2.  **Sandbox**: Enabled. Renderers have no Node.js access.
-3.  **IPC Security**: We use strict \`ipcMain.handle\` and \`ipcRenderer.invoke\` patterns with validated channels.
+| Setting | Value | Why |
+|---------|-------|-----|
+| \`contextIsolation\` | on | Preload and page run in separate JS contexts, so the page cannot tamper with privileged globals |
+| \`sandbox\` | on | Renderers get no direct Node.js, no \`require\`, no \`fs\`, no \`child_process\` |
+| \`nodeIntegration\` | off | The page never sees Node built-ins |
+| Exposed API | \`contextBridge\` allow-list | The preload exposes a small named set of functions, not raw \`ipcRenderer\` |
 
-### Handling Secrets
+### IPC as a trust boundary
 
-Never store secrets in \`localStorage\`. GitSwitch uses the OS native Keychain (via \`keytar\`) to store GitHub Personal Access Tokens, ensuring they are encrypted at rest.
+Every privileged action crosses \`ipcMain.handle\` / \`ipcRenderer.invoke\` on an explicit channel allow-list. The main process treats each message as untrusted input: channels are validated, arguments are sanitised, and long-running calls carry timeouts so a hung git operation cannot wedge the app. There is no "run arbitrary command" bridge; each channel does one narrow thing.
+
+### Handling secrets
+
+Tokens never touch \`localStorage\` or linger in the renderer:
+
+- **At rest**, GitHub personal-access tokens and the Gemini key live in the OS keychain (Keychain on macOS, Credential Manager on Windows, libsecret on Linux), not a plaintext config file.
+- **In use**, keys are redacted from logs and wiped from memory after use, so a crash dump or shared log does not leak them.
+- **In transit**, the Gemini API is the only outbound egress, and the diff sent for commit-message generation is scoped to what the user is committing.
+
+### The takeaway
+
+The defaults that make Electron convenient, Node in the renderer, the legacy \`remote\` module, broad IPC, are the ones that make it dangerous. GitSwitch inverts them: isolation on, sandbox on, a minimal audited bridge, and secrets in the OS keychain. The result is a desktop app with a web UI that cannot be talked into running code it was not built to run.
     `,
   },
 ];

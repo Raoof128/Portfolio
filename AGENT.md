@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-18 (Australia/Sydney) — Résumé project links, Divan reorder, write-up enrichment, stop-slop data audit
+
+- **Scope**: Four tasks in order — clickable résumé projects, Divan reorder, richer write-ups, stop-slop audit.
+- **Summary**: (1) `ResumeClient.tsx` — §02 Simurgh card + all six §05 project cards now link to `/projects/<slug>` (locale-aware via new `getPath`). (2) `data.ts` — moved `divan-open-day` to right after `syllabus-sync`. (3) Rewrote the three thin write-ups (ecrsm/kmp-security/electron-security) to full depth + added a flagship `project-simurgh-containment` write-up (6→7); fixed "MehrGuard"→"Mehr Guard" and a stale 52% figure. (4) Loaded stop-slop; fixed `seamless` ×2, a rhetorical header, two "not X, it is Y" contrasts, and cut em dashes from flowing prose (`data.ts` 138→57, `llms.txt` 4→0), fixing comma-splices; kept em dashes only in terse label–detail spec bullets and legit technical `robust`/`elevated`.
+- **Files Changed**: `src/app/[locale]/resume/ResumeClient.tsx`, `src/lib/data.ts`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`
+- **Verification**: prettier ✓; lint 0; typecheck ✓; `test:ci` 77/77; `build` 157 pages; built output confirms links, project order, and the new write-up page.
+- **Follow-ups**: strict em-dash purge of spec bullets + `en.ts` available on request; deploy via wrangler.
+
 ### Raouf: 2026-07-18 (Australia/Sydney) — Résumé: add full "Licenses & Certifications" section (23 credentials) + structured Volunteering entry
 
 - **Volunteering**: Persian Students Society promoted from a §07 bullet to a structured Volunteering timeline card (Users icon as placeholder mark — no logo supplied; "Co-Founder", "2026 – Present", "Volunteering · Education", description). `s07_bullet2` simplified to the description in all 5 locales; added localized `volunteer_label` key.

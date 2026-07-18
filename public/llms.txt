@@ -26,12 +26,12 @@ Security researcher building systems that measure and contain the cyber capabili
 9. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, a Go agent, and a React dashboard.
 
 ## Professional Experience
-- AI Safety Evaluator, Claude — Alignerr (Anthropic AI safety-evaluation program), Jan–Mar 2026.
-- Freelance Security Engineer & Full-Stack Developer — Self-Employed, Jan 2024 – Present.
-- IT Manager & Security Operations — Iran Pharmacy, 2019–2024.
+- AI Safety Evaluator, Claude, Alignerr (Anthropic AI safety-evaluation program), Jan–Mar 2026.
+- Freelance Security Engineer & Full-Stack Developer, Self-Employed, Jan 2024 – Present.
+- IT Manager & Security Operations, Iran Pharmacy, 2019–2024.
 
 ## Philosophy
-Raouf operates at the intersection of "Build" (scalable architecture) and "Secure" (defensive design), advocating privacy-by-design, local-first processing, and security embedded from design to deployment — now focused on measuring and containing the cyber capabilities of frontier AI.
+Raouf operates at the intersection of "Build" (scalable architecture) and "Secure" (defensive design), advocating privacy-by-design, local-first processing, and security embedded from design to deployment, now focused on measuring and containing the cyber capabilities of frontier AI.
 
 ## Contact
 Website: https://raoufabedini.dev
