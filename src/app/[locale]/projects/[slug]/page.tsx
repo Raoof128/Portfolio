@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects } from "@/lib/data";
+import { projects, getProjectDescription } from "@/lib/data";
 import { ORCID_URL, SITE_LAST_MODIFIED, SITE_URL } from "@/lib/constants";
-import { buildAlternates } from "@/lib/seo";
-import { getDictionary, type Locale } from "@/i18n";
+import {
+  buildAlternates,
+  LOCALE_PREFIX,
+  serializeJsonLd,
+  OG_IMAGES,
+  TWITTER_IMAGE,
+} from "@/lib/seo";
+import { getDictionary, defaultLocale, locales, type Locale } from "@/i18n";
 import { ProjectDetailClient } from "./ProjectDetailClient";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
-}
-
-// Locale is present in params at runtime (parent [locale] segment) for canonical.
-interface MetadataProps {
+  // Locale is present in params at runtime (parent [locale] segment).
   params: Promise<{ locale: string; slug: string }>;
 }
 
@@ -25,7 +27,7 @@ export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
-}: MetadataProps): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const project = projects[slug];
   const t = await getDictionary(locale as Locale);
@@ -37,18 +39,21 @@ export async function generateMetadata({
     };
   }
 
+  const description = getProjectDescription(project, locale as Locale);
   return {
     title: `${project.title} | ${t.seo.projects_title}`,
-    description: project.description,
+    description,
     alternates: buildAlternates(`/projects/${slug}`, locale),
     openGraph: {
       title: `${project.title} | Mohammad Raouf Abedini`,
-      description: project.description,
+      description,
+      images: OG_IMAGES,
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${project.title} | Mohammad Raouf Abedini`,
-      description: project.description,
+      description,
+      images: TWITTER_IMAGE,
     },
   };
 }
@@ -62,11 +67,22 @@ const AUTHOR = {
   sameAs: [ORCID_URL],
 } as const;
 
-function buildProjectJsonLd(project: (typeof projects)[string], slug: string) {
-  const pageUrl = `${SITE_URL}/projects/${slug}`;
+function buildProjectJsonLd(
+  project: (typeof projects)[string],
+  slug: string,
+  locale: string,
+) {
+  const prefix = LOCALE_PREFIX[locale] ?? "";
+  // Locale-aware canonical entity URL — a Persian page identifies itself as the
+  // Persian URL, not the English one.
+  const pageUrl = `${SITE_URL}${prefix}/projects/${slug}`;
+  const description = getProjectDescription(project, locale as Locale);
+  const lang = locale;
+  const projectDateModified = project.updatedAt ?? SITE_LAST_MODIFIED;
 
   // Each paper that carries a DOI becomes a citable ScholarlyArticle keyed on
-  // its DOI — the canonical signal AI answer engines use to attribute research.
+  // its DOI — a stable, language-independent identifier. The PDFs are English,
+  // so the article node keeps inLanguage "en" regardless of page locale.
   const articles = (project.papers ?? [])
     .filter((paper) => Boolean(paper.doi))
     .map((paper) => {
@@ -97,10 +113,10 @@ function buildProjectJsonLd(project: (typeof projects)[string], slug: string) {
     "@type": project.links.repo ? "SoftwareSourceCode" : "CreativeWork",
     "@id": `${pageUrl}#project`,
     name: project.title,
-    description: project.description,
+    description,
     url: pageUrl,
-    inLanguage: "en",
-    dateModified: SITE_LAST_MODIFIED,
+    inLanguage: lang,
+    dateModified: projectDateModified,
     keywords: project.tags.join(", "),
     author: AUTHOR,
     ...(project.links.repo ? { codeRepository: project.links.repo } : {}),
@@ -109,14 +125,15 @@ function buildProjectJsonLd(project: (typeof projects)[string], slug: string) {
       : {}),
   };
 
-  return JSON.stringify({
+  return serializeJsonLd({
     "@context": "https://schema.org",
     "@graph": [projectNode, ...articles],
   });
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { locale: rawLocale, slug } = await params;
+  const locale = (rawLocale in locales ? rawLocale : defaultLocale) as Locale;
   const project = projects[slug];
 
   if (!project) {
@@ -127,7 +144,9 @@ export default async function ProjectPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: buildProjectJsonLd(project, slug) }}
+        dangerouslySetInnerHTML={{
+          __html: buildProjectJsonLd(project, slug, locale),
+        }}
       />
       <ProjectDetailClient project={project} slug={slug} />
     </>

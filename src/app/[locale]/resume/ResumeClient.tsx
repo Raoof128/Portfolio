@@ -17,7 +17,6 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
-  CONTACT_EMAIL,
   CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
@@ -83,13 +82,6 @@ export function ResumeClient() {
                         className="hover:text-cyan transition-colors"
                       >
                         {CONTACT_EMAIL_GMAIL}
-                      </a>
-                      <span className="text-text-meta opacity-40">·</span>
-                      <a
-                        href={`mailto:${CONTACT_EMAIL}`}
-                        className="hover:text-cyan transition-colors"
-                      >
-                        {CONTACT_EMAIL}
                       </a>
                     </div>
                   </div>

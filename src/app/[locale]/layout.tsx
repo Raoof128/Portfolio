@@ -6,7 +6,7 @@ import { Scanline } from "@/components/ui/Scanline";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
-  CONTACT_EMAIL,
+  CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
   ORCID_URL,
@@ -23,7 +23,7 @@ import {
   defaultLocale,
 } from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
-import { buildAlternates } from "@/lib/seo";
+import { buildAlternates, serializeJsonLd, OG_IMAGE } from "@/lib/seo";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
@@ -92,6 +92,7 @@ export async function generateMetadata({
       title: t.seo.home_title_default,
       description: t.seo.home_og_description,
       siteName: SITE_NAME,
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
@@ -99,11 +100,16 @@ export async function generateMetadata({
       description: t.seo.home_og_description,
       creator: "@Raoofr12",
       site: "@Raoofr12",
+      images: ["/og.png"],
     },
     metadataBase: new URL(SITE_URL),
     // Homepage self-canonical (locale-aware: en → "/", fa → "/fa", …). Sub-pages
     // override this with their own canonical via generateMetadata + buildAlternates.
-    alternates: buildAlternates("", locale),
+    // RSS feed advertised site-wide for feed-reader/agent discovery.
+    alternates: {
+      ...buildAlternates("", locale),
+      types: { "application/rss+xml": `${SITE_URL}/feed.xml` },
+    },
   };
 }
 
@@ -119,7 +125,7 @@ export default async function RootLayout({
   const config = getLocaleConfig(locale);
   const dictionary = await getDictionary(locale);
 
-  const jsonLdString = JSON.stringify({
+  const jsonLdString = serializeJsonLd({
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -129,7 +135,9 @@ export default async function RootLayout({
         alternateName: "Raouf",
         url: SITE_URL,
         image: `${SITE_URL}/Raouf_2.jpg`,
-        email: `mailto:${CONTACT_EMAIL}`,
+        // Public professional contact (Gmail). The Outlook address is the
+        // security-reporting contact only (see /.well-known/security.txt).
+        email: `mailto:${CONTACT_EMAIL_GMAIL}`,
         jobTitle: "AI Security Researcher",
         address: {
           "@type": "PostalAddress",

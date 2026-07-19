@@ -38,5 +38,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Agent / machine-reliability audit
+        run: npm run audit:agents
+
       - name: Runtime dependency audit
         run: npm audit --omit=dev --audit-level=high

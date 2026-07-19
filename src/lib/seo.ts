@@ -2,13 +2,43 @@ import type { Metadata } from "next";
 
 // English is served at the clean root path (no `/en` prefix, per public/_redirects);
 // every other locale lives under its own prefix.
-const LOCALE_PREFIX: Record<string, string> = {
+export const LOCALE_PREFIX: Record<string, string> = {
   en: "",
   fa: "/fa",
   ar: "/ar",
   zh: "/zh",
   es: "/es",
 };
+
+// Default social-preview card (1200×630, public/og.png). Any generateMetadata
+// that defines `openGraph` or `twitter` REPLACES the layout's version for that
+// field, so every such page must re-attach these images or the preview is lost.
+export const OG_IMAGE = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "Mohammad Raouf Abedini — AI Security Researcher",
+};
+export const OG_IMAGES = [OG_IMAGE];
+export const TWITTER_IMAGE = ["/og.png"];
+
+/** OpenGraph locale codes keyed by our locale slugs. */
+export const OG_LOCALE: Record<string, string> = {
+  en: "en_AU",
+  fa: "fa_IR",
+  ar: "ar_SA",
+  zh: "zh_CN",
+  es: "es_ES",
+};
+
+/**
+ * Serialize a JSON-LD object for inline injection. All inputs here are trusted
+ * (hardcoded site data, no user input), but we still escape `<` → `<` so a
+ * stray `</script>` in any string can never break out of the <script> element.
+ */
+export function serializeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
 
 /**
  * Per-page canonical + hreflang alternates so every URL declares ITSELF as
@@ -29,6 +59,8 @@ export function buildAlternates(
       ar: `/ar${path}`,
       zh: `/zh${path}`,
       es: `/es${path}`,
+      // Neutral selector for locale-agnostic crawlers → clean English.
+      "x-default": path || "/",
     },
   };
 }

@@ -1,6 +1,9 @@
+# Security policy for raoufabedini.dev — RFC 9116
+# Report vulnerabilities to the security contact below. This is the
+# canonical location; a courtesy copy is mirrored at /security.txt.
 Contact: mailto:raoof.r999@outlook.com
-Expires: 2027-01-01T00:00:00.000Z
-Preferred-Languages: en
+Expires: 2027-07-01T00:00:00.000Z
+Preferred-Languages: en, fa
 Canonical: https://raoufabedini.dev/.well-known/security.txt
 Policy: https://raoufabedini.dev/security-policy
-Ack: https://raoufabedini.dev/hall-of-fame
+Acknowledgments: https://raoufabedini.dev/hall-of-fame

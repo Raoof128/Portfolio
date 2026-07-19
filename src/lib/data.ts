@@ -17,6 +17,10 @@ export interface Project {
   title: string;
   category: "OFFENSIVE" | "DEFENSIVE" | "ENGINEERING";
   year: string;
+  // Optional ISO date of the last meaningful content update for THIS project.
+  // Drives sitemap `lastModified` + JSON-LD `dateModified`; falls back to the
+  // site-level revision date when absent, so builds don't fake per-page freshness.
+  updatedAt?: string;
   description: string;
   localizedDescription?: Partial<Record<Locale, string>>;
   fullDescription: string;

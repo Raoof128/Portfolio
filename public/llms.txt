@@ -1,5 +1,8 @@
 # Mohammad Raouf Abedini - AI Security Research Portfolio
 
+> Last updated: 2026-07-20. Full machine-readable corpus (every project, write-up,
+> lab experiment, paper): https://raoufabedini.dev/llms-full.txt
+
 ## Identity
 Name: Mohammad Raouf Abedini (Raouf)
 Role: AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering
@@ -35,7 +38,25 @@ Raouf operates at the intersection of "Build" (scalable architecture) and "Secur
 
 ## Contact
 Website: https://raoufabedini.dev
+Email (professional): raoof.r12@gmail.com
+Security reports (RFC 9116): raoof.r999@outlook.com · https://raoufabedini.dev/.well-known/security.txt
 GitHub: https://github.com/Raoof128
 LinkedIn: https://linkedin.com/in/mohammad-raouf-abedini-885a9226a
 X (Twitter): https://x.com/Raoofr12
 ORCID: https://orcid.org/0009-0000-6214-258X
+
+## Canonical Links (Markdown)
+- [Homepage](https://raoufabedini.dev/)
+- [Résumé](https://raoufabedini.dev/resume) · [Résumé PDF](https://raoufabedini.dev/Mohammad_Raouf_Abedini_Resume.pdf)
+- [Projects](https://raoufabedini.dev/projects) · [Write-ups](https://raoufabedini.dev/write-ups) · [Lab](https://raoufabedini.dev/lab)
+- [Contact](https://raoufabedini.dev/contact) · [Security Policy](https://raoufabedini.dev/security-policy) · [Hall of Fame](https://raoufabedini.dev/hall-of-fame)
+- [GitHub](https://github.com/Raoof128) · [LinkedIn](https://linkedin.com/in/mohammad-raouf-abedini-885a9226a) · [ORCID](https://orcid.org/0009-0000-6214-258X)
+
+### Flagship projects
+- [Project Simurgh](https://raoufabedini.dev/projects/project-simurgh) · repo https://github.com/Raoof128/Project-Simurgh · DOI [10.5281/zenodo.20374849](https://doi.org/10.5281/zenodo.20374849)
+- [The Invisible Window](https://raoufabedini.dev/projects/invisible-window-research) · DOI [10.5281/zenodo.20376495](https://doi.org/10.5281/zenodo.20376495)
+- [Aion-BibleQA](https://raoufabedini.dev/projects/aion) · DOI [10.5281/zenodo.20522874](https://doi.org/10.5281/zenodo.20522874)
+- [Project Zurvan](https://raoufabedini.dev/projects/project-zurvan)
+
+### Feed
+- [Write-ups RSS feed](https://raoufabedini.dev/feed.xml)

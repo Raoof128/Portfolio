@@ -3,9 +3,10 @@
 # stale cached asset that a plain deploy leaves at this exact path).
 /pgp-key.txt  /.well-known/security.txt  301
 
-# Redirect public /en/* back to clean English URLs
-/en  /  302
-/en/* /:splat  302
+# Redirect public /en/* back to clean English URLs (permanent — English lives
+# on clean root paths, so these aliases 308 to preserve method + path + query).
+/en  /  308
+/en/* /:splat  308
 
 # Non-English locale routes — exact and sub-paths (pass through unchanged)
 /fa    /fa    200

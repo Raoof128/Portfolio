@@ -6,7 +6,7 @@ import {
   BASE_PATH,
   GITHUB_URL,
   LINKEDIN_URL,
-  CONTACT_EMAIL,
+  CONTACT_EMAIL_GMAIL,
   ORCID_URL,
 } from "@/lib/constants";
 import { ActiveGrid } from "@/components/ui/ActiveGrid";
@@ -324,10 +324,10 @@ export function AboutClient() {
                 <Fingerprint className="w-3.5 h-3.5" /> ORCID
               </a>
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={`mailto:${CONTACT_EMAIL_GMAIL}`}
                 className="flex items-center gap-2 px-4 py-2 border border-cyan/12 hover:border-cyan/40 hover:text-cyan hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,245,255,0.15)] text-text-body font-mono text-xs transition-all"
               >
-                <Mail className="w-3.5 h-3.5" /> {CONTACT_EMAIL}
+                <Mail className="w-3.5 h-3.5" /> {CONTACT_EMAIL_GMAIL}
               </a>
             </div>
 

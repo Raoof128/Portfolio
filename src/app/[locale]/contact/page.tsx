@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
-import { buildAlternates } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -17,6 +17,7 @@ export async function generateMetadata({
     openGraph: {
       title: t.seo.contact_title,
       description: t.seo.contact_description,
+      images: OG_IMAGES,
     },
   };
 }

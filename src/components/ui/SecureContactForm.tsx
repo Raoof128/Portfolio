@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { Send, Lock, AlertTriangle } from "lucide-react";
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_EMAIL_GMAIL } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -66,7 +66,7 @@ export function SecureContactForm() {
 
     setTimeout(() => {
       window.location.assign(
-        `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`,
+        `mailto:${CONTACT_EMAIL_GMAIL}?subject=${subject}&body=${body}`,
       );
       setStatus("SENT");
     }, 600);

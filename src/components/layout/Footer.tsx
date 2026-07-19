@@ -114,6 +114,52 @@ export function Footer() {
             </div>
           </div>
         </div>
+
+        {/* Machine-readable discoverability — deliberately understated, kept out
+            of the primary nav. HTML pages are locale-aware; machine files are
+            served from the root and are locale-independent. */}
+        <nav
+          aria-label="Machine-readable resources"
+          className="mt-12 pt-6 border-t border-cyan/5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10px] text-text-meta"
+        >
+          <Link
+            href={getPath("/security-policy")}
+            className="hover:text-cyan transition-colors"
+          >
+            Security Policy
+          </Link>
+          <Link
+            href={getPath("/hall-of-fame")}
+            className="hover:text-cyan transition-colors"
+          >
+            Hall of Fame
+          </Link>
+          <a
+            href="/.well-known/security.txt"
+            className="hover:text-cyan transition-colors"
+          >
+            security.txt
+          </a>
+          <a href="/llms.txt" className="hover:text-cyan transition-colors">
+            llms.txt
+          </a>
+          <a
+            href="/llms-full.txt"
+            className="hover:text-cyan transition-colors"
+          >
+            llms-full.txt
+          </a>
+          <a href="/sitemap.xml" className="hover:text-cyan transition-colors">
+            sitemap.xml
+          </a>
+          <a
+            href="/feed.xml"
+            className="hover:text-cyan transition-colors"
+            type="application/rss+xml"
+          >
+            RSS
+          </a>
+        </nav>
       </div>
     </footer>
   );

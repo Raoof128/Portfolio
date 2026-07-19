@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LabClient } from "./LabClient";
-import { buildAlternates } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES, TWITTER_IMAGE } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -17,11 +17,13 @@ export async function generateMetadata({
     openGraph: {
       title: "Lab | Mohammad Raouf Abedini",
       description: t.seo.lab_description,
+      images: OG_IMAGES,
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: "Lab | Mohammad Raouf Abedini",
       description: t.seo.lab_description,
+      images: TWITTER_IMAGE,
     },
   };
 }
