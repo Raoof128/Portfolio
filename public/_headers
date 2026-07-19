@@ -12,8 +12,14 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
+
+# Serve the write-ups feed as RSS (Pages otherwise labels the .xml file
+# application/xml by extension; the route handler's Content-Type is inert in a
+# static export).
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
 
 # Immutable static assets (content-hashed filenames, safe to cache forever)
 /_next/static/*

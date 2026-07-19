@@ -5,6 +5,7 @@ import {
   buildAlternates,
   LOCALE_PREFIX,
   serializeJsonLd,
+  breadcrumbList,
   OG_IMAGES,
   TWITTER_IMAGE,
 } from "@/lib/seo";
@@ -84,9 +85,15 @@ function buildWriteupJsonLd(post: (typeof writeups)[number], locale: string) {
     isPartOf: { "@id": `${SITE_URL}/#website` },
   };
 
+  const breadcrumb = breadcrumbList([
+    { name: "Home", url: `${SITE_URL}${prefix || "/"}` },
+    { name: "Write-ups", url: `${SITE_URL}${prefix}/write-ups` },
+    { name: post.title, url: pageUrl },
+  ]);
+
   return serializeJsonLd({
     "@context": "https://schema.org",
-    "@graph": [article],
+    "@graph": [article, breadcrumb],
   });
 }
 

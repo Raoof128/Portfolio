@@ -89,7 +89,11 @@ for (const url of sitemapUrls) {
   // title
   const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]?.trim();
   if (!title) fail(`missing <title>: ${url}`);
-  else {
+  else if ((title.match(/Mohammad Raouf Abedini/g) || []).length > 1)
+    fail(
+      `title repeats the brand name (template + inline): "${title}" — ${url}`,
+    );
+  if (title) {
     const seen = titlesByLocale[locale].get(title);
     if (seen && seen !== url)
       fail(`duplicate title within ${locale}: "${title}" (${seen} & ${url})`);
@@ -206,8 +210,7 @@ for (const p of ["security.txt", ".well-known/security.txt"]) {
   if (/^Ack:/im.test(s)) fail(`${p}: uses "Ack" — must be "Acknowledgments"`);
   const exp = (s.match(/^Expires:\s*(\S+)/im) || [])[1];
   if (!exp) fail(`${p}: missing Expires`);
-  else if (new Date(exp) <= new Date("2026-07-20"))
-    fail(`${p}: Expires ${exp} is in the past/too soon`);
+  else if (new Date(exp) <= new Date()) fail(`${p}: Expires ${exp} is expired`);
   const canon = (s.match(/^Canonical:\s*(\S+)/im) || [])[1];
   if (canon && canon !== `${ORIGIN}/.well-known/security.txt`)
     fail(`${p}: Canonical ${canon} ≠ live well-known URL`);

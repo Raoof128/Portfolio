@@ -207,24 +207,27 @@ export default function Home() {
                 Mohammad Raouf Abedini
               </p>
               <div className="space-y-0.5 leading-none">
-                {/* Solid fill */}
-                <h1 className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight text-white">
-                  <DecryptedText
-                    text={t.hero.title_prefix}
-                    loopInterval={12000}
-                  />
-                </h1>
-                {/* Outline — text-stroke effect */}
-                <h1
-                  className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight select-none"
-                  style={
-                    {
-                      WebkitTextStroke: "1.5px rgba(0,245,255,0.7)",
-                      color: "transparent",
-                    } as React.CSSProperties
-                  }
-                >
-                  {t.hero.title_cyber}
+                {/* Single H1 for the two-line headline (one page-topic signal). */}
+                <h1 className="text-[clamp(3.5rem,10vw,6rem)] font-bold tracking-tight leading-none">
+                  {/* Solid fill */}
+                  <span className="block text-white">
+                    <DecryptedText
+                      text={t.hero.title_prefix}
+                      loopInterval={12000}
+                    />
+                  </span>
+                  {/* Outline — text-stroke styling of the second headline word */}
+                  <span
+                    className="block select-none"
+                    style={
+                      {
+                        WebkitTextStroke: "1.5px rgba(0,245,255,0.7)",
+                        color: "transparent",
+                      } as React.CSSProperties
+                    }
+                  >
+                    {t.hero.title_cyber}
+                  </span>
                 </h1>
                 <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-cyan tracking-tight pt-2">
                   {t.hero.title_research}

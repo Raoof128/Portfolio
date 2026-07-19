@@ -6,7 +6,8 @@ interface SimpleMarkdownProps {
 
 function renderInline(text: string): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
-  const regex = /(\*\*(.+?)\*\*)|(`(.+?)`)/g;
+  // 1/2: **bold** · 3/4: `code` · 5/6/7: [text](url)
+  const regex = /(\*\*(.+?)\*\*)|(`(.+?)`)|(\[([^\]]+)\]\(([^)]+)\))/g;
   let lastIndex = 0;
   let match;
 
@@ -28,6 +29,21 @@ function renderInline(text: string): React.ReactNode[] {
         >
           {match[4]}
         </code>,
+      );
+    } else if (match[6]) {
+      const href = match[7];
+      const external = /^https?:\/\//.test(href);
+      parts.push(
+        <a
+          key={match.index}
+          href={href}
+          className="text-cyan underline underline-offset-2 hover:text-cyan/80 break-words"
+          {...(external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
+          {match[6]}
+        </a>,
       );
     }
     lastIndex = regex.lastIndex;

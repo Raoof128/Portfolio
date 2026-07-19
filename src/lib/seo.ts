@@ -41,6 +41,22 @@ export function serializeJsonLd(data: unknown): string {
 }
 
 /**
+ * Build a schema.org BreadcrumbList node from an ordered trail of
+ * {name, url} crumbs (Home › Section › Page). Google-supported rich result.
+ */
+export function breadcrumbList(items: { name: string; url: string }[]) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      item: it.url,
+    })),
+  };
+}
+
+/**
  * Per-page canonical + hreflang alternates so every URL declares ITSELF as
  * canonical (fixes Search Console "user-declared canonical: homepage" on
  * sub-pages). `path` is the locale-agnostic route, e.g. "/about" or "" for home.

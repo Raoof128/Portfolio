@@ -69,7 +69,7 @@ describe("Data Layer", () => {
 
       expect(projectKeys[invisibleWindowIndex + 1]).toBe("project-simurgh");
       expect(projects["project-simurgh"]?.links.repo).toBe(
-        "https://github.com/Raoof128/Project-Simurgh#13-status-license",
+        "https://github.com/Raoof128/Project-Simurgh",
       );
       expect(projects["project-simurgh"]?.links.doi).toBeUndefined();
       expect(projects["project-simurgh"]?.links.preprint).toBe(

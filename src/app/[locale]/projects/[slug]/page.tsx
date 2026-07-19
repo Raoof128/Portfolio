@@ -6,6 +6,7 @@ import {
   buildAlternates,
   LOCALE_PREFIX,
   serializeJsonLd,
+  breadcrumbList,
   OG_IMAGES,
   TWITTER_IMAGE,
 } from "@/lib/seo";
@@ -125,9 +126,15 @@ function buildProjectJsonLd(
       : {}),
   };
 
+  const breadcrumb = breadcrumbList([
+    { name: "Home", url: `${SITE_URL}${prefix || "/"}` },
+    { name: "Projects", url: `${SITE_URL}${prefix}/projects` },
+    { name: project.title, url: pageUrl },
+  ]);
+
   return serializeJsonLd({
     "@context": "https://schema.org",
-    "@graph": [projectNode, ...articles],
+    "@graph": [projectNode, breadcrumb, ...articles],
   });
 }
 

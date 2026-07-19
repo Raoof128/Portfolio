@@ -1227,9 +1227,9 @@ export function ProjectDetailClient({
                     className={`${theme.bg} border ${theme.border} p-6 h-full`}
                   >
                     <div className="mb-4">
-                      <h4 className="text-xs uppercase text-text-body font-mono mb-2">
+                      <p className="text-xs uppercase text-text-body font-mono mb-2">
                         {t.project_detail.tech_stack}
-                      </h4>
+                      </p>
                       <div
                         className={cn(
                           "flex flex-wrap gap-2",

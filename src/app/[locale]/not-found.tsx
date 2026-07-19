@@ -29,9 +29,12 @@ export default function NotFound() {
       >
         {/* Dramatic 404 scale-in */}
         <motion.div variants={scaleIn} className="relative">
-          <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-zinc-900 absolute top-0 left-1/2 -translate-x-1/2 select-none blur-sm">
+          <span
+            aria-hidden="true"
+            className="block text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-zinc-900 absolute top-0 left-1/2 -translate-x-1/2 select-none blur-sm"
+          >
             404
-          </h1>
+          </span>
           <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-mono text-white relative z-10">
             404
           </h1>

@@ -21,7 +21,7 @@ const en = {
       "Security researcher focused on measuring and containing the cyber capabilities of frontier AI: LLM agent red-teaming, verifiable containment attestation, vulnerability research, and responsible disclosure. Anthropic safety-evaluation contributor.",
     about_og_description:
       "AI security research, LLM agent red-teaming, and verifiable containment attestation. Creator of Project Simurgh.",
-    contact_title: "Contact | Mohammad Raouf Abedini",
+    contact_title: "Contact",
     contact_description:
       "Get in touch with Mohammad Raouf Abedini. Open a secure communication channel for cybersecurity consultations, collaborations, or inquiries.",
     lab_title: "Lab",
@@ -32,10 +32,10 @@ const en = {
       "Resume of Mohammad Raouf Abedini — AI security research, LLM agent red-teaming, verifiable containment attestation, and offensive & defensive security engineering.",
     resume_og_description:
       "Resume of Mohammad Raouf Abedini — AI security research, LLM agent red-teaming, and security engineering.",
-    security_policy_title: "Security Policy | Mohammad Raouf Abedini",
+    security_policy_title: "Security Policy",
     security_policy_description:
       "Security vulnerability disclosure policy and responsible disclosure guidelines.",
-    hall_of_fame_title: "Hall of Fame | Mohammad Raouf Abedini",
+    hall_of_fame_title: "Hall of Fame",
     hall_of_fame_description:
       "Security researchers who have responsibly disclosed vulnerabilities in my projects.",
     write_ups_title: "Write-ups",
@@ -141,6 +141,7 @@ const en = {
     built_with: "Built with",
     designed_by: "designed by",
     all_rights_reserved: "All Rights Reserved",
+    machine_resources: "Machine-readable resources",
   },
   common: {
     back: "Back",

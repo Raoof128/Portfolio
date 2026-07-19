@@ -71,9 +71,9 @@ export function Footer() {
 
           {/* Links */}
           <div className="space-y-6">
-            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
+            <h2 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
               {t.nav.home}
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -90,9 +90,9 @@ export function Footer() {
 
           {/* Legal/Metadata */}
           <div className="space-y-6">
-            <h4 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
+            <h2 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
               {t.footer.status}
-            </h4>
+            </h2>
             <div className="space-y-4 font-mono">
               <div className="flex items-center justify-between text-[11px]">
                 <span className="text-text-meta">{t.footer.last_index}:</span>
@@ -119,20 +119,20 @@ export function Footer() {
             of the primary nav. HTML pages are locale-aware; machine files are
             served from the root and are locale-independent. */}
         <nav
-          aria-label="Machine-readable resources"
+          aria-label={t.footer.machine_resources}
           className="mt-12 pt-6 border-t border-cyan/5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10px] text-text-meta"
         >
           <Link
             href={getPath("/security-policy")}
             className="hover:text-cyan transition-colors"
           >
-            Security Policy
+            {t.seo.security_policy_title}
           </Link>
           <Link
             href={getPath("/hall-of-fame")}
             className="hover:text-cyan transition-colors"
           >
-            Hall of Fame
+            {t.seo.hall_of_fame_title}
           </Link>
           <a
             href="/.well-known/security.txt"

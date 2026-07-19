@@ -23,7 +23,7 @@ const es: Dictionary = {
       "Investigador de seguridad centrado en medir y contener las capacidades cibernéticas de la IA de frontera: red-teaming de agentes LLM, atestación de contención verificable, investigación de vulnerabilidades y divulgación responsable. Contribuidor de la evaluación de seguridad de Anthropic.",
     about_og_description:
       "Investigación de seguridad de IA, red-teaming de agentes LLM y atestación de contención verificable. Creador de Project Simurgh.",
-    contact_title: "Contacto | Mohammad Raouf Abedini",
+    contact_title: "Contacto",
     contact_description:
       "Ponte en contacto con Mohammad Raouf Abedini. Abre un canal de comunicación seguro para consultas, colaboraciones o preguntas de ciberseguridad.",
     lab_title: "Lab",
@@ -34,10 +34,10 @@ const es: Dictionary = {
       "Currículum de Mohammad Raouf Abedini — investigación de seguridad de IA, red-teaming de agentes LLM, atestación de contención verificable e ingeniería de seguridad ofensiva y defensiva.",
     resume_og_description:
       "Currículum de Mohammad Raouf Abedini — investigación de seguridad de IA, red-teaming de agentes LLM e ingeniería de seguridad.",
-    security_policy_title: "Política de Seguridad | Mohammad Raouf Abedini",
+    security_policy_title: "Política de Seguridad",
     security_policy_description:
       "Política de divulgación de vulnerabilidades de seguridad y directrices de divulgación responsable.",
-    hall_of_fame_title: "Salón de la Fama | Mohammad Raouf Abedini",
+    hall_of_fame_title: "Salón de la Fama",
     hall_of_fame_description:
       "Investigadores de seguridad que han divulgado responsablemente vulnerabilidades en mis proyectos.",
     write_ups_title: "Artículos",
@@ -143,6 +143,7 @@ const es: Dictionary = {
     built_with: "Construido con",
     designed_by: "diseñado por",
     all_rights_reserved: "Todos los derechos reservados",
+    machine_resources: "Recursos legibles por máquina",
   },
   common: {
     back: "Volver",

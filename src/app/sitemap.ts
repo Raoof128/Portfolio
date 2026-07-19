@@ -58,13 +58,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
       alternates: alternatesFor(path),
     });
-    // One entry per non-English locale (slightly lower priority).
+    // One entry per non-English locale — each carries the SAME full alternate
+    // cluster (Google requires reciprocal, self-inclusive hreflang on every
+    // member of the set, not just the English canonical).
     for (const prefix of LOCALE_PREFIXES) {
       entries.push({
         url: `${SITE_URL}${prefix}${path}`,
         lastModified,
         changeFrequency,
         priority: Math.round(priority * 0.9 * 100) / 100,
+        alternates: alternatesFor(path),
       });
     }
   };

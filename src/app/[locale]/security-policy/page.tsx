@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SecurityPolicyClient } from "./SecurityPolicyClient";
-import { buildAlternates } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES, TWITTER_IMAGE } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -14,6 +14,17 @@ export async function generateMetadata({
     title: t.seo.security_policy_title,
     description: t.seo.security_policy_description,
     alternates: buildAlternates("/security-policy", locale),
+    openGraph: {
+      title: `${t.seo.security_policy_title} | Mohammad Raouf Abedini`,
+      description: t.seo.security_policy_description,
+      images: OG_IMAGES,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t.seo.security_policy_title} | Mohammad Raouf Abedini`,
+      description: t.seo.security_policy_description,
+      images: TWITTER_IMAGE,
+    },
   };
 }
 

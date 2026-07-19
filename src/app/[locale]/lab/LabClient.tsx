@@ -103,9 +103,9 @@ export function LabClient() {
                     {statusLabel(exp.status)}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">
+                <h2 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">
                   {exp.title}
-                </h3>
+                </h2>
                 <p className="text-text-body text-sm leading-relaxed mb-6 flex-grow">
                   {exp.description}
                 </p>

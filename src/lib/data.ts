@@ -171,7 +171,7 @@ export const projects: Record<string, Project> = {
       "AGPL-3.0",
     ],
     links: {
-      repo: "https://github.com/Raoof128/Project-Simurgh#13-status-license",
+      repo: "https://github.com/Raoof128/Project-Simurgh",
       paper: "/Project_Simurgh_Preprint_v1.0.pdf",
       preprint: "https://zenodo.org/records/20374849",
       caseStudy: "/projects/project-simurgh",
@@ -800,7 +800,7 @@ export const projects: Record<string, Project> = {
     },
     tags: ["eBPF", "Go", "React", "Kernel", "Runtime Security"],
     links: {
-      repo: "https://github.com/Raoof128/ECRSM",
+      repo: "https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor",
       caseStudy: "/projects/ecrsm",
     },
     build: {

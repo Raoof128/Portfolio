@@ -23,7 +23,7 @@ const zh: Dictionary = {
       "安全研究员，专注于测量和遏制前沿人工智能的网络能力：大语言模型代理红队测试、可验证的遏制证明、漏洞研究以及负责任披露。Anthropic 安全评估贡献者。",
     about_og_description:
       "人工智能安全研究、大语言模型代理红队测试以及可验证的遏制证明。Project Simurgh 的创建者。",
-    contact_title: "联系 | Mohammad Raouf Abedini",
+    contact_title: "联系",
     contact_description:
       "与 Mohammad Raouf Abedini 取得联系。开启安全通信渠道，用于网络安全咨询、合作或问询。",
     lab_title: "实验室",
@@ -33,9 +33,9 @@ const zh: Dictionary = {
       "Mohammad Raouf Abedini 的简历——人工智能安全研究、大语言模型代理红队测试、可验证的遏制证明，以及攻击性与防御性安全工程。",
     resume_og_description:
       "Mohammad Raouf Abedini 的简历——人工智能安全研究、大语言模型代理红队测试以及安全工程。",
-    security_policy_title: "安全政策 | Mohammad Raouf Abedini",
+    security_policy_title: "安全政策",
     security_policy_description: "安全漏洞披露政策及负责任披露指南。",
-    hall_of_fame_title: "荣誉殿堂 | Mohammad Raouf Abedini",
+    hall_of_fame_title: "荣誉殿堂",
     hall_of_fame_description: "负责任地披露我项目中漏洞的安全研究员。",
     write_ups_title: "文章",
     write_ups_description: "安全研究、CTF 解题报告及技术文章。",
@@ -138,6 +138,7 @@ const zh: Dictionary = {
     built_with: "构建工具",
     designed_by: "设计者",
     all_rights_reserved: "保留所有权利",
+    machine_resources: "机器可读资源",
   },
   common: {
     back: "返回",

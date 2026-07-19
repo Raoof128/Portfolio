@@ -5,10 +5,11 @@ import {
   buildAlternates,
   LOCALE_PREFIX,
   serializeJsonLd,
+  breadcrumbList,
   OG_IMAGES,
   TWITTER_IMAGE,
 } from "@/lib/seo";
-import { ORCID_URL, SITE_URL } from "@/lib/constants";
+import { ORCID_URL, SITE_URL, SITE_LAST_MODIFIED } from "@/lib/constants";
 import { getDictionary, type Locale } from "@/i18n";
 import { LabDetailClient } from "./LabDetailClient";
 
@@ -68,6 +69,8 @@ function buildLabJsonLd(exp: (typeof labExperiments)[number], locale: string) {
     headline: exp.title,
     name: exp.title,
     description: exp.description,
+    datePublished: SITE_LAST_MODIFIED,
+    dateModified: SITE_LAST_MODIFIED,
     inLanguage: locale,
     author: AUTHOR,
     publisher: { "@id": `${SITE_URL}/#person` },
@@ -78,9 +81,15 @@ function buildLabJsonLd(exp: (typeof labExperiments)[number], locale: string) {
     isPartOf: { "@id": `${SITE_URL}/#website` },
   };
 
+  const breadcrumb = breadcrumbList([
+    { name: "Home", url: `${SITE_URL}${prefix || "/"}` },
+    { name: "Lab", url: `${SITE_URL}${prefix}/lab` },
+    { name: exp.title, url: pageUrl },
+  ]);
+
   return serializeJsonLd({
     "@context": "https://schema.org",
-    "@graph": [node],
+    "@graph": [node, breadcrumb],
   });
 }
 

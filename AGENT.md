@@ -40,6 +40,13 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-20 (Australia/Sydney) — Full file-by-file audit (6 parallel auditors vs 2026 docs) + fixes
+
+- **Scope**: Audited all 89 `src` files + config + machine files via 6 parallel domain auditors against current 2026 docs (Next 16, schema.org/Google, RFC 9116, sitemaps/RSS, hreflang, WCAG) and the built `out/` + live endpoints (every link/DOI curled). No blocking discoverability defect found; fixes below.
+- **Fixed**: doubled `<title>` on contact/security-policy/hall-of-fame (bare in 5 locales) + `audit:agents` brand-repeat guard · sitemap hreflang now reciprocal on all 160 URLs (960 `<xhtml:link>`) · added `openGraph`/`twitter` to hall-of-fame/security-policy/projects-index (were generic) · heading semantics (single `<h1>` on home+404; footer `<h4>`→`<h2>`; lab cards `<h3>`→`<h2>`; project metric `<h4>`→`<p>`) · `BreadcrumbList` on project/write-up/lab; lab `datePublished`/`dateModified`; clean `codeRepository` (README anchor removed) · ECRSM repo URL renamed; `audit:agents` expiry check `new Date()` (was frozen) · Footer machine-links localized + `LanguageSwitcher` `lang`/`dir`/`aria-haspopup`; `SimpleMarkdown` link rule · `_headers` feed `application/rss+xml` + `browsing-topics=()` · CI Node 22; deleted 3 unused components; added `Raouf_2.png` fallback.
+- **Accepted/deferred (not defects)**: security.txt unsigned (SHOULD, no key by design); `proxy.ts` inert in export (`_redirects` is prod truth); postcss advisory transitive/non-shipping; ProfilePage skipped (home is a client component). See CHANGELOG for the full list + file map.
+- **Verification**: prettier/lint/typecheck clean; `test:ci` 86/86; `build` 157 pages; `audit:agents` 160/160; fixes confirmed in built HTML. Deployed + live-verified.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Agent-discoverability & machine-reliability remediation (repo pass) + Cloudflare handoff
 
 - **Scope**: Evidence-driven remediation of every agent-discoverability, machine-readability, indexing and reliability issue. Ground truth from current source + built `out/` + fresh production probes + live Cloudflare zone/DNS/Pages state.

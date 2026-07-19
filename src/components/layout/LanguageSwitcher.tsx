@@ -37,10 +37,13 @@ export function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-1.5 border border-cyan/15 hover:border-cyan/40 text-[10px] font-mono uppercase tracking-widest text-text-meta hover:text-cyan transition-all bg-cyber-dark/30 rounded-sm"
         aria-label={t.common.select_language}
+        aria-haspopup="menu"
         aria-expanded={isOpen}
       >
         <Languages className="w-3 h-3" />
-        <span>{locales[currentLocale].label}</span>
+        <span lang={currentLocale} dir={locales[currentLocale].dir}>
+          {locales[currentLocale].label}
+        </span>
       </button>
 
       <AnimatePresence>
@@ -66,7 +69,9 @@ export function LanguageSwitcher() {
                   )}
                 >
                   <div className="flex items-center justify-between w-full">
-                    <span>{locales[locale].label}</span>
+                    <span lang={locale} dir={locales[locale].dir}>
+                      {locales[locale].label}
+                    </span>
                     {currentLocale === locale && (
                       <span className="text-[8px] opacity-50">
                         {t.common.language_selected}
