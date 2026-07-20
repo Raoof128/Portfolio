@@ -144,7 +144,7 @@ export const projects: Record<string, Project> = {
       "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
       "macOS 26.3.1 remains fully vulnerable despite Apple's documented ScreenCaptureKit changes in macOS 15 — contradicting prevailing community assumptions",
       "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
-      "Behavioural detection ineffective — gaze tracking (p = 0.41, n = 8) and mouse dynamics fell within normal exam-behaviour variance",
+      "Behavioural detection showed no significant effect at this sample size — gaze tracking (p = 0.41, n = 8, underpowered) and mouse dynamics fell within normal exam-behaviour variance",
       "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
       "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20376495 — 13 pages, 53 references, IEEE conference format",
     ],
@@ -257,8 +257,9 @@ export const projects: Record<string, Project> = {
     proof: [
       "Real Llama Guard 4 12B input classifier over a 180-case run-set: contained 138/138 malicious cases the classifier missed (120 downstream-injection cases an input-only classifier structurally cannot see, 18 direct-input misses); combined targeted attack-success 0/150; zero unsafe tool executions or exports",
       "Live agent (self-hosted Llama-3.3-70B) on AgentDojo's workspace suite, 140 pre-registered injection cases: authority gate cut targeted attack-success from 9/140 to 0/140 with benign utility held",
+      "AgentDojo full four-suite deterministic run (v2.49.0): benign 97/97, unattacked-utility 949/949, attack-success 0/949",
       "Second independent provenance root signs the release verdict with GitHub's OIDC identity, not the developer's key; the workflow fails closed before signing if reality diverges from the committed verdict by a single byte",
-      "989 automated tests across 44 releases; one-command offline reproduction of the signed release ladder; AGPL-3.0",
+      "3,057 automated tests; one-command offline reproduction of the signed release ladder; AGPL-3.0",
       "Published lineage on Zenodo (CC BY 4.0): the original integrity preprint (DOI 10.5281/zenodo.20374849), a voting-adjacent Phase C pilot, and the Banking Shield absence-claims prototype",
     ],
   },
@@ -268,12 +269,12 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 183 tests passing.",
+      "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 218 tests passing.",
     localizedDescription: {
       fa: "موتور دانش مبتنی بر هوش مصنوعی و محلی‌محور. اسناد را دریافت می‌کند، دانش ساختاریافته استخراج می‌کند و از طریق سرور MCP در اختیار عامل‌های هوش مصنوعی قرار می‌دهد. ۱۸۳ آزمون موفق.",
       ar: "محرك معرفة محلي يعمل بالذكاء الاصطناعي. يستوعب أي مستند، يستخرج المعرفة المنظمة (ادعاءات، مفاهيم، كيانات، قرارات)، ويعرضها لعوامل الذكاء الاصطناعي عبر خادم MCP. ١٨٣ اختباراً ناجحاً.",
-      zh: "本地优先的 LLM 知识引擎。摄取任意文档，提取结构化知识（声明、概念、实体、决策），并通过 MCP stdio 服务器将其暴露给 AI 代理。183 个测试通过。",
-      es: "Motor de conocimiento LLM local. Ingiere cualquier documento, extrae conocimiento estructurado (afirmaciones, conceptos, entidades, decisiones) y lo expone a agentes de IA mediante un servidor MCP stdio. 183 pruebas aprobadas.",
+      zh: "本地优先的 LLM 知识引擎。摄取任意文档，提取结构化知识（声明、概念、实体、决策），并通过 MCP stdio 服务器将其暴露给 AI 代理。218 个测试通过。",
+      es: "Motor de conocimiento LLM local. Ingiere cualquier documento, extrae conocimiento estructurado (afirmaciones, conceptos, entidades, decisiones) y lo expone a agentes de IA mediante un servidor MCP stdio. 218 pruebas aprobadas.",
     },
     tags: [
       "Python",
@@ -302,7 +303,7 @@ export const projects: Record<string, Project> = {
         "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces dense context bundles for agent prompts",
         "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
         "Multi-project federation — cross-vault search, contradiction detection, and policy radar across independent vaults",
-        "183 tests passing across 18 completed phases",
+        "218 tests passing across 18 completed phases",
       ],
     },
     secure: {
@@ -326,7 +327,7 @@ export const projects: Record<string, Project> = {
       "Multi-project federation manages independent vaults with cross-vault search, contradiction detection, and policy drift radar",
     ],
     proof: [
-      "183 tests passing across 18 completed development phases",
+      "218 tests passing across 18 completed development phases",
       "MCP server verified with Claude Code and Cursor client setup guides",
       "Obsidian vault integration with colour-coded 7-type knowledge graph (claims, concepts, entities, decisions, sessions, contradictions, syntheses)",
       "Evidence pack → report → review → publish pipeline runs fully offline",
@@ -441,7 +442,7 @@ export const projects: Record<string, Project> = {
     solution: [
       "Built a 100% offline analysis engine using Kotlin Multiplatform",
       "Implemented an ensemble ML model + 25 heuristics for high accuracy",
-      "Targeted 5 platforms (Android, iOS, Desktop, Web) with ~52% code sharing",
+      "Targeted 5 platforms (Android, iOS, Desktop, Web); ~100% of detection logic shared (~52% of the total codebase)",
       "Achieved <5ms latency for real-time scanning",
     ],
     proof: [
@@ -449,7 +450,7 @@ export const projects: Record<string, Project> = {
       "Performance: <5ms P99 latency",
       "1,248+ automated tests plus a built-in red-team suite of 19 curated attack scenarios",
       "Privacy: Verified 0 network calls via ./judge/verify_offline.sh",
-      "Code Sharing: ~100% shared detection logic",
+      "Code Sharing: ~100% of detection logic (~52% of total codebase)",
     ],
   },
   "syllabus-sync": {
@@ -520,7 +521,7 @@ export const projects: Record<string, Project> = {
       "Live in production at syllabus-sync.app",
       "503 tests across 92 files — all passing in CI",
       "Zero-Trust proxy catches misconfiguration by default (validated in production)",
-      "Designed to serve ~47,000 MQ students; fork-ready for 1M+ across Australian universities",
+      "Designed to serve ~47,000 MQ students; architected to fork for other Australian universities",
       "WebAuthn passkey auth — no shared secrets leave the device",
     ],
   },
@@ -667,7 +668,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "High-performance limit order book and matching engine in C++20. Processing 1M+ orders/second with sub-microsecond latency.",
+      "High-performance limit order book and matching engine in C++20. Single-thread synthetic benchmark: 1M+ orders/second with sub-microsecond cancellation.",
     localizedDescription: {
       fa: "دفتر سفارش محدود و موتور تطبیق با کارایی بالا در C++20. پردازش بیش از ۱ میلیون سفارش در ثانیه با تأخیر زیر میکروثانیه.",
       ar: "دفتر أوامر محدد ومحرك مطابقة عالي الأداء بلغة C++20. معالجة أكثر من مليون أمر في الثانية مع زمن انتقال أقل من ميكروثانية.",
@@ -714,7 +715,7 @@ export const projects: Record<string, Project> = {
       "Added multi-instrument support with independent order books per symbol",
     ],
     proof: [
-      "Throughput: 1M+ orders/second with sub-microsecond latency",
+      "Throughput: 1M+ orders/second (single-thread, synthetic benchmark)",
       "Comprehensive test suite with p50/p99 latency benchmarks",
       "60+ unit tests across 18 test suites — all passing",
       "CI: ASan, UBSan, cppcheck, clang-format on every push",
@@ -726,7 +727,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description:
-      "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second.",
+      "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second (single-thread, pure-parse, synthetic SYN traffic).",
     localizedDescription: {
       fa: "سیستم تشخیص نفوذ شبکه بلادرنگ در C++17. تشریح پروتکل لایه‌ای، موتور قوانین الهام گرفته از Snort و تشخیص تهدید حالت‌دار با پردازش بیش از ۵۰۰ هزار بسته در ثانیه.",
       ar: "نظام كشف التسلل للشبكة في الوقت الفعلي بلغة C++17. تشريح البروتوكولات الطبقية، محرك قواعد مستوحى من Snort، وكشف التهديدات مع تحليل أكثر من ٥٠٠ ألف حزمة في الثانية.",
@@ -776,10 +777,10 @@ export const projects: Record<string, Project> = {
       "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
       "Built a Snort-inspired configurable rule engine for flexible signature matching",
       "Added stateful threat detection for port scans, SYN floods, and DNS tunneling",
-      "Engineered for throughput: 500K+ packets/sec parsing performance",
+      "Engineered for throughput: 500K+ packets/sec (single-thread parse, synthetic SYN)",
     ],
     proof: [
-      "Throughput: 500K+ packets/sec parsing performance",
+      "Throughput: 500K+ packets/sec (single-thread parse, synthetic SYN)",
       "Protocol coverage: 7 protocols across Layers 2-7",
       "27 unit/integration tests — all passing",
       "Supports both live capture and pcap file analysis",
@@ -1050,7 +1051,7 @@ Approval-gate friction receipts prove an oversight checkpoint preceded every pro
 
 ### Honest non-claims
 
-The preprints sign their limits. Simurgh would **not** have caught the June 2026 content-generation bypass by itself, that is a model-output problem, not an agent-authority one. It is defence in depth, not a replacement for inline safeguards. Reproduction is one command over a 12-rung signed release ladder; 989 automated tests across 44 releases; AGPL-3.0.
+The preprints sign their limits. Simurgh would **not** have caught the June 2026 content-generation bypass by itself, that is a model-output problem, not an agent-authority one. It is defence in depth, not a replacement for inline safeguards. Reproduction is one command over a 12-rung signed release ladder; 3,057 automated tests; AGPL-3.0.
     `,
   },
   {
@@ -1220,7 +1221,7 @@ The full 13-page paper, PoC implementations, and disclosure materials are availa
 
 Every electronic exchange (NYSE, NASDAQ, CME) runs a matching engine at its center. It pairs buy orders with sell orders at the best available price. Building one at the systems level means learning price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
 
-**NanoMatch** is my from-scratch implementation in modern C++20, processing 1M+ orders per second with sub-microsecond latency.
+**NanoMatch** is my from-scratch implementation in modern C++20, processing 1M+ orders per second (single-thread, synthetic benchmark) with sub-microsecond latency.
 
 ### The Three-Layer Data Structure
 
@@ -1280,7 +1281,7 @@ The 15x ratio between p50 and p99.9 is realistic. Spikes come from red-black tre
     updatedAt: "2026-07-18",
     tag: "Network Security",
     takeaway:
-      "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 500K+ packets/sec.",
+      "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 500K+ packets/sec (single-thread parse, synthetic SYN).",
     content: `
 ## The IDS Pipeline
 
@@ -1632,7 +1633,7 @@ func main() {
 		}
 	}
 
-	_ = embed(dst, []byte("CLASSIFIED_PAYLOAD"))
+	_ = embed(dst, []byte("HIDDEN_MESSAGE"))
 
 	out, _ := os.Create("stego.png")
 	defer out.Close()

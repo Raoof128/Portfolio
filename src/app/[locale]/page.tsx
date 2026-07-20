@@ -526,6 +526,15 @@ export default function Home() {
                           .toUpperCase()}
                       </a>
                     )}
+                    <a
+                      href="https://github.com/Raoof128/Project-Simurgh/blob/main/scripts/reproduce-vca-chain.sh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 font-mono text-xs text-text-body hover:text-cyan transition-colors relative z-10"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Terminal className="w-3 h-3" /> {t.common.reproduce}
+                    </a>
                     <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
                       {t.common.case_study}{" "}
                       <ArrowRight

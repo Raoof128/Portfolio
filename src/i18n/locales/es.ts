@@ -112,7 +112,7 @@ const es: Dictionary = {
       "RED-TEAMING DE AGENTES LLM",
       "ATESTACIÓN DE CONTENCIÓN",
       "PROJECT SIMURGH",
-      "EVALUADOR DE SEGURIDAD DE ANTHROPIC",
+      "EVALUADOR DE SEGURIDAD DE CLAUDE · ALIGNERR",
       "DIVULGACIÓN RESPONSABLE",
       "THE INVISIBLE WINDOW",
       "STARTUP RESPALDADA POR INCUBADORA",
@@ -150,6 +150,7 @@ const es: Dictionary = {
     loading: "Cargando",
     view_all_projects: "Ver Todos los Proyectos",
     case_study: "Caso de Estudio",
+    reproduce: "Reproducir",
     repo: "Repositorio",
     select_language: "Seleccionar Idioma",
     language_selected: "SELECCIONADO",
@@ -162,7 +163,7 @@ const es: Dictionary = {
     bio_1:
       "Investigador de seguridad centrado en medir y contener las capacidades cibernéticas de la IA de frontera, listo para reubicarme ahora. El trabajo es público, firmado y reproducible: un marco de atestación de contención de código abierto, cinco preprints en Zenodo archivados con DOI (indexados bajo ORCID) y trabajo de evaluación dentro del programa de evaluación de seguridad de Anthropic.",
     bio_2:
-      "Creador de Project Simurgh, un marco de atestación de contención independiente del proveedor que somete a red-teaming a agentes LLM bajo un modelo de amenaza adversario de productor deshonesto y produce evidencia firmada con Ed25519, verificable sin conexión, de lo que hizo un agente tras un fallo de las barreras de seguridad: 138/138 casos no detectados por el clasificador contenidos frente a un Llama Guard 4 real, la tasa de éxito de ataque de un agente en vivo reducida de 9/140 a 0/140 en AgentDojo, y cinco teoremas Lean verificados por máquina. AGPL-3.0, 989 pruebas a lo largo de 44 lanzamientos.",
+      "Creador de Project Simurgh, un marco de atestación de contención independiente del proveedor que somete a red-teaming a agentes LLM bajo un modelo de amenaza adversario de productor deshonesto y produce evidencia firmada con Ed25519, verificable sin conexión, de lo que hizo un agente tras un fallo de las barreras de seguridad: 138/138 casos no detectados por el clasificador contenidos frente a un Llama Guard 4 real, la tasa de éxito de ataque de un agente en vivo reducida de 9/140 a 0/140 en AgentDojo, y cinco teoremas Lean verificados por máquina. AGPL-3.0, 3,057 pruebas.",
     bio_3:
       "También autor principal de The Invisible Window (evasión de captura de pantalla multiplataforma del 100%, divulgada de forma responsable conforme a las directrices OWASP/FIRST/CISA) y de Aion-BibleQA (un banco de pruebas de fidelidad de citas para LLM con recuperación aumentada: R@5 0.941, cero citas sin respaldo). Evaluó las salidas de Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic (a través de Alignerr, 2026). Cofundador de una startup de IA universitaria respaldada por una incubadora. Centrado en reducir los riesgos catastróficos de la IA avanzada midiendo la mejora de capacidades, caracterizando los límites de seguridad y desarrollando herramientas defensivas.",
     stats_projects: "Proyectos",
@@ -178,7 +179,7 @@ const es: Dictionary = {
     retry_photo: "REINTENTAR",
     terminal_subject: "SUJETO: RAOUF ABEDINI",
     terminal_online: "EN LÍNEA",
-    terminal_clearance: "ACCESO: AI-SECURITY-RESEARCHER",
+    terminal_clearance: "PERFIL: AI-SECURITY-RESEARCHER",
     terminal_location: "UBICACIÓN: SYDNEY, NSW",
     degree_bachelor: "Licenciatura en Ciberseguridad",
     degree_diploma: "Diploma de Tecnología de la Información",
@@ -194,7 +195,7 @@ const es: Dictionary = {
     spec1_item4: "Pruebas de Penetración y Revisión de Código Seguro",
     spec1_item5: "Especificación W3C Screen Capture",
     spec2_label: "Seguridad de la IA y Seguridad de LLM",
-    spec2_item1: "Integración y Evaluación de LLM (Anthropic)",
+    spec2_item1: "Integración y Evaluación de LLM (Claude, vía Alignerr)",
     spec2_item2: "Investigación de Vulnerabilidades Asistida por IA",
     spec2_item3: "Medición de Mejora de Capacidades de la IA",
     spec2_item4: "Evaluación de Riesgos de Doble Uso",
@@ -285,10 +286,10 @@ const es: Dictionary = {
     id_label: "ID:",
   },
   writeups_page: {
-    classified_archive: "Archivo Clasificado",
+    classified_archive: "Archivo de Proyectos",
     title: "Artículos",
     description: "Análisis técnicos, soluciones CTF y registros de ingeniería.",
-    clearance_level: "NIVEL_ACCESO: PÚBLICO",
+    clearance_level: "VISIBILIDAD: PÚBLICO",
     read_file: "LEER_ARCHIVO",
   },
   projects_page: {
@@ -327,7 +328,7 @@ const es: Dictionary = {
     s02_bullet4:
       "Posicionado como la capa de defensa en profundidad complementaria al clasificador en línea de Anthropic — el clasificador gobierna lo que un modelo puede decir, la atestación gobierna lo que se permitió hacer a un agente (con las no-afirmaciones firmadas y explícitas, incluido que por sí misma no habría detectado la elusión de generación de contenido de junio de 2026)",
     s02_bullet5:
-      "Ataqué mi propia prueba (barrido de red-team a través de ocho clases de ataque → detector-v2) y verifiqué formalmente la supervisión con cinco teoremas Lean verificados por máquina; reproducción sin conexión con un solo comando de una escalera de lanzamiento firmada de 12 peldaños; 989 pruebas automatizadas a lo largo de 44 lanzamientos",
+      "Ataqué mi propia prueba (barrido de red-team a través de ocho clases de ataque → detector-v2) y verifiqué formalmente la supervisión con cinco teoremas Lean verificados por máquina; reproducción sin conexión con un solo comando de una escalera de lanzamiento firmada de 12 peldaños; 3,057 pruebas automatizadas",
     s03_heading: "Competencias Técnicas",
     s03_cat1_label: "Lenguajes",
     s03_cat1_desc:
@@ -538,17 +539,17 @@ const es: Dictionary = {
   },
   contact_form: {
     session_id_label: "ID_SESIÓN:",
-    status_keylogging: "REGISTRO_DE_TECLAS_ACTIVO...",
-    status_encrypting: "CIFRANDO_CARGA_ÚTIL...",
+    status_keylogging: "ASEGURANDO_CANAL...",
+    status_encrypting: "CIFRANDO...",
     status_sent: "TRANSMISIÓN_COMPLETA ✓",
     status_error: "ERROR_DE_VALIDACIÓN",
     status_secure: "CANAL_SEGURO",
-    name_label: "ID_OBJETIVO (Nombre)",
+    name_label: "Nombre",
     name_placeholder: "INGRESAR_IDENTIDAD",
-    email_label: "RUTA_DE_RETORNO (Correo)",
+    email_label: "Correo",
     email_placeholder: "secure@gateway.io",
-    message_label: "CARGA_ÚTIL (Mensaje)",
-    message_placeholder: "TRANSMITIENDO_CARGA_ÚTIL_CIFRADA...",
+    message_label: "Mensaje",
+    message_placeholder: "Tu mensaje...",
     error_required:
       "Todos los campos son obligatorios antes de la transmisión.",
     error_invalid_email: "Por favor, introduce una dirección de correo válida.",

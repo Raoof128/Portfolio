@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-20 (Australia/Sydney) — Reviewer-readiness pass (Anthropic FRT Cyber): metric sync, credibility hedges, tone, one-click evidence
+
+- **Scope**: Researched what the Frontier Red Team (Cyber) rewards + ran a line-by-line reviewer-readiness audit (every external link/DOI/repo/PDF/demo fetched — **all live, nothing dead**), then remediated. **Verified the audit's "fabricated Fable 5 citation" finding was WRONG** — "Redeploying Fable 5" is a real July-2026 Anthropic post; kept as-is (it's a strength).
+- **Changes**:
+  - **Synced metrics up to live repos** (site was under-selling): Simurgh 989 tests/44 releases → **3,057 tests**; Zurvan 183 → **218**; added full-suite **AgentDojo 97/97 · 949/949 · 0/949 (v2.49.0)** alongside the 9/140→0/140 preregistered run.
+  - **Credibility hedges**: throughput headlines carry "single-thread/synthetic" qualifiers (NanoMatch 1M+ ops, SentinelFlow 500K+ pkts); `p=0.41,n=8` reworded as underpowered (not "ineffective"); Syllabus-Sync "1M+" reach dropped; Mehr Guard 52%-vs-100% contradiction reconciled.
+  - **Alignerr qualifier everywhere**: ticker `ANTHROPIC SAFETY EVALUATOR` → `CLAUDE SAFETY EVALUATOR · ALIGNERR`; spec label `(Anthropic)` → `(Claude, via Alignerr)`.
+  - **Tone / de-LARP**: contact-form `KEYLOGGING_ACTIVE`/`PAYLOAD`/`TRANSMITTING_ENCRYPTED_PAYLOAD` → neutral; field labels → Name/Email/Message; `CLEARANCE`/`Classified Archive`/`CLASSIFIED_PAYLOAD` → PROFILE/Project Archive/HIDDEN_MESSAGE. Kept the cyan HUD aesthetic.
+  - **One-click evidence**: **Reproduce** link (→ verified `scripts/reproduce-vca-chain.sh`) added to the Simurgh homepage card beside repo + DOI; new `common.reproduce` key ×5 locales.
+  - Updated `SecureContactForm.test.tsx` to the new labels/state.
+- **Files Changed**: `src/lib/data.ts`, `src/i18n/locales/{en,fa,ar,zh,es}.ts`, `src/app/[locale]/page.tsx`, `public/llms.txt`, `src/components/ui/SecureContactForm.test.tsx`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: prettier ✓; lint 0; typecheck ✓; `test:ci` **86/86**; clean `build` (161 routes); `audit:agents` **160/160**. Built `out/` confirmed 3,057 + 0/949, 989 gone, Zurvan 218, Reproduce link + CLAUDE SAFETY EVALUATOR · ALIGNERR on home, KEYLOGGING gone.
+- **Follow-ups (résumé PDF, external)**: mirror the numbers (989→3,057, 183→218, add full-suite AgentDojo), fix Invisible Window DOI (`…20195135`→`…20376495`), align email to Gmail.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Hero/philosophy reframe for Anthropic Frontier Red Team (Cyber) application
 
 - **Scope**: File-by-file content audit of the site against a target role (**Lead, Frontier Red Team (Cyber) at Anthropic**) + the owner's tailored résumé, then an **honest, user-approved reframe** of the hero and philosophy copy to lead with the flagship containment work and the role's defender-advantage framing. Strictly no invented capabilities — every claim stays résumé-backed; the JD's autonomous-vuln-finding / purple-team / policy-artifact language was intentionally left out because it is not in the résumé.

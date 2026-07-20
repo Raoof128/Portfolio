@@ -18,14 +18,14 @@ Security researcher building systems that measure and contain the cyber capabili
 - Engineering: C/C++17/20, TypeScript, Python, Bash, Docker, Terraform, PostgreSQL, GitHub Actions CI/CD, Linux, Ed25519 attestation.
 
 ## Featured Research & Projects (The "Truth" for Retrieval)
-1. Project Simurgh (FLAGSHIP): Provider-agnostic verifiable containment-attestation framework for agentic AI. Ed25519-signed, offline-reproducible evidence across four containment boundaries (input firewall, context-provenance guard, tool-invocation gate, output-leakage firewall) under a dishonest-producer threat model. Contained 138/138 classifier-missed cases against a real Llama Guard 4 (12B); cut a live Llama-3.3-70B agent's attack success from 9/140 to 0/140 on AgentDojo; five machine-checked Lean theorems; 989 tests across 44 releases. AGPL-3.0. DOI: 10.5281/zenodo.20374849.
+1. Project Simurgh (FLAGSHIP): Provider-agnostic verifiable containment-attestation framework for agentic AI. Ed25519-signed, offline-reproducible evidence across four containment boundaries (input firewall, context-provenance guard, tool-invocation gate, output-leakage firewall) under a dishonest-producer threat model. Contained 138/138 classifier-missed cases against a real Llama Guard 4 (12B); cut a live Llama-3.3-70B agent's attack success from 9/140 to 0/140 on AgentDojo (0/949 attack-success on the full four-suite deterministic run); five machine-checked Lean theorems; 3,057 tests. AGPL-3.0. DOI: 10.5281/zenodo.20374849.
 2. The Invisible Window: IEEE-format vulnerability research demonstrating 100% cross-platform screen-capture evasion on Windows 10/11 and macOS 14-26 via OS-level display-affinity APIs; responsibly disclosed. DOI: 10.5281/zenodo.20376495.
 3. Aion-BibleQA: RAG citation-faithfulness & adversarial-robustness benchmark (40 questions); R@5 = 0.941, zero unsupported citations, 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.
-4. Project Zurvan: Local-first LLM knowledge engine extracting structured claims, concepts, entities, and decisions from documents, exposed to AI agents via an MCP stdio server. Python, SQLite FTS5 + embeddings, 183 tests.
+4. Project Zurvan: Local-first LLM knowledge engine extracting structured claims, concepts, entities, and decisions from documents, exposed to AI agents via an MCP stdio server. Python, SQLite FTS5 + embeddings, 218 tests.
 5. Syllabus-Sync: Agent-readable campus-AI platform accepted into the Macquarie University startup incubator as a formal startup. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files. Live at syllabus-sync.app.
 6. Mehr Guard: Privacy-first offline phishing & QR/URL threat scanner. Kotlin Multiplatform (5 targets), ensemble ML + 25+ heuristics, 87% F1, sub-5ms latency, 1,248+ tests, and a 19-scenario built-in red-team suite.
-7. SentinelFlow: Real-time C++ intrusion detection system parsing 500K+ packets/sec with signature and stateful detection of port scans, SYN floods, and DNS tunnelling.
-8. NanoMatch: C++20 limit-order-book matching engine at 1M+ orders/sec with O(1) cancellation.
+7. SentinelFlow: Real-time C++ intrusion detection system parsing 500K+ packets/sec (single-thread parse) with signature and stateful detection of port scans, SYN floods, and DNS tunnelling.
+8. NanoMatch: C++20 limit-order-book matching engine at 1M+ orders/sec (single-thread, synthetic benchmark) with O(1) cancellation.
 9. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, a Go agent, and a React dashboard.
 
 ## Professional Experience

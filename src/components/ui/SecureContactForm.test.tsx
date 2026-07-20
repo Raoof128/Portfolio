@@ -16,30 +16,30 @@ describe("SecureContactForm", () => {
   it("renders all required input fields", () => {
     renderForm();
 
-    expect(screen.getByLabelText(/target_id \(name\)/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/return_path \(email\)/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/payload \(message\)/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
   });
 
-  it("shows keylogging state while user is typing", () => {
+  it("shows the securing-channel state while user is typing", () => {
     renderForm();
 
-    fireEvent.keyDown(screen.getByLabelText(/target_id \(name\)/i), {
+    fireEvent.keyDown(screen.getByLabelText(/name/i), {
       key: "A",
     });
-    expect(screen.getByText(/keylogging_active/i)).toBeInTheDocument();
+    expect(screen.getByText(/securing_channel/i)).toBeInTheDocument();
   });
 
   it("shows a validation message for invalid email addresses", () => {
     renderForm();
 
-    fireEvent.change(screen.getByLabelText(/target_id \(name\)/i), {
+    fireEvent.change(screen.getByLabelText(/name/i), {
       target: { value: "Raouf" },
     });
-    fireEvent.change(screen.getByLabelText(/return_path \(email\)/i), {
+    fireEvent.change(screen.getByLabelText(/email/i), {
       target: { value: "invalid-email" },
     });
-    fireEvent.change(screen.getByLabelText(/payload \(message\)/i), {
+    fireEvent.change(screen.getByLabelText(/message/i), {
       target: { value: "Hello from tests" },
     });
 
