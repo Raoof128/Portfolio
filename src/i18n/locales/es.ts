@@ -69,11 +69,11 @@ const es: Dictionary = {
     title_research: "Investigación",
     philosophy_quote: '"Buscad, y hallaréis" — Mateo 7:7',
     intro:
-      'Descubrimiento, validación y divulgación responsable de vulnerabilidades multiplataforma de forma independiente. Autor de "The Invisible Window" — evasión del 100% en la captura de pantalla. Motivado por reducir los riesgos catastróficos de la IA avanzada.',
+      "Construyo sistemas que miden y contienen las capacidades cibernéticas de la IA de frontera. Creador de Project Simurgh, un marco de atestación de contención que hace red-teaming a agentes LLM y produce evidencia firmada y verificable sin conexión de lo que un agente tuvo permitido hacer tras eludir una barrera: 138/138 casos que el clasificador pasó por alto contenidos, y el éxito de ataque de un agente en vivo reducido de 9/140 a 0/140 en AgentDojo. Evaluó las salidas de Claude en el programa de evaluación de seguridad de Anthropic. Trabajando para dar la ventaja a los defensores frente al riesgo cibernético de la IA avanzada.",
     view_projects: "Ver Proyectos",
     view_resume: "Ver Currículum",
-    researcher: "Investigador de Vulnerabilidades",
-    evaluator: "Evaluador de IA en Anthropic",
+    researcher: "Investigador de Seguridad en IA",
+    evaluator: "Evaluador de Seguridad de Claude · Alignerr",
     university: "Universidad Macquarie · Nov 2026",
   },
   philosophy: {
@@ -81,16 +81,16 @@ const es: Dictionary = {
     subtitle: "Principios Operativos",
     research_title: "INVESTIGACIÓN",
     research_body:
-      "Descubrir, validar y divulgar vulnerabilidades de forma responsable e independiente. Medir la mejora de las capacidades de la IA, caracterizar los límites de seguridad y publicar hallazgos reproducibles.",
+      "Hacer red-teaming a agentes LLM y medir la mejora de capacidades cibernéticas de la IA de frontera. Caracterizar los límites de seguridad, contener las elusiones de barreras con evidencia firmada y verificable sin conexión, y publicar hallazgos reproducibles.",
     secure_title: "SEGURIDAD",
     secure_body:
-      "Aplicaciones defensivas que reducen los riesgos del mundo real. El desarrollo de exploits multiplataforma ayuda a crear mejores defensas: conocimiento ofensivo aplicado a sistemas de protección.",
-    research_bullet_1: "Investigación y Divulgación de Vulnerabilidades",
+      "Defensa en profundidad que da la ventaja a los defensores. La investigación ofensiva —clases de exploits y campañas de ataque a agentes— se convierte en contención verificable y herramientas defensivas del mundo real.",
+    research_bullet_1: "Red-Teaming y Contención de Agentes LLM",
     research_bullet_2: "Seguridad de la IA y Evaluación de LLM",
     research_bullet_3: "Evaluación de Riesgos de Doble Uso",
     secure_bullet_1: "Desarrollo de Exploits Multiplataforma",
     secure_bullet_2: "Divulgación Responsable (OWASP/FIRST/CISA)",
-    secure_bullet_3: "Aplicaciones Defensivas",
+    secure_bullet_3: "Atestación de Contención Verificable",
   },
   lab: {
     title: "EL_LAB",

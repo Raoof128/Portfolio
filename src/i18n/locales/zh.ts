@@ -65,11 +65,11 @@ const zh: Dictionary = {
     title_research: "研究",
     philosophy_quote: '"寻找，就寻见" — 马太福音 7:7',
     intro:
-      "独立发现、验证并负责任地披露跨平台漏洞。著有《The Invisible Window》——实现 100% 屏幕捕获规避。致力于降低高级人工智能带来的灾难性风险。",
+      "构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个遏制证明框架，对 LLM 智能体进行红队测试，并生成经签名、可离线验证的证据，记录智能体在越过防护后被允许执行的操作：遏制了分类器漏判的 138/138 个案例，并在 AgentDojo 上将实时智能体的攻击成功率从 9/140 降至 0/140。在 Anthropic 的安全评估项目中评估 Claude 的输出。致力于让防御方在应对前沿 AI 网络风险时占据优势。",
     view_projects: "查看项目",
     view_resume: "查看简历",
-    researcher: "漏洞研究员",
-    evaluator: "Anthropic AI 模型评估员",
+    researcher: "AI 安全研究员",
+    evaluator: "Claude 安全评估员 · Alignerr",
     university: "麦觉理大学 · 2026年11月",
   },
   philosophy: {
@@ -77,16 +77,16 @@ const zh: Dictionary = {
     subtitle: "运作原则",
     research_title: "研究",
     research_body:
-      "独立发现、验证并负责任地披露漏洞。评估人工智能能力提升，界定安全边界，并发布可重现的研究结果。",
+      "对 LLM 智能体进行红队测试，测量前沿人工智能的网络能力提升。界定安全边界，以经签名、可离线验证的证据遏制防护越界，并发布可重现的研究结果。",
     secure_title: "防御",
     secure_body:
-      "开发旨在降低现实世界风险的防御性应用。跨平台漏洞开发为构建更强的防御体系提供参考——将攻击性知识应用于保护系统。",
-    research_bullet_1: "漏洞研究与披露",
+      "赋予防御方优势的纵深防御。将攻击性研究——漏洞类别与针对智能体的攻击行动——转化为可验证的遏制机制和现实世界的防御工具。",
+    research_bullet_1: "LLM 智能体红队测试与遏制",
     research_bullet_2: "人工智能安全与大语言模型评估",
     research_bullet_3: "双重用途风险评估",
     secure_bullet_1: "跨平台漏洞开发",
     secure_bullet_2: "负责任披露（OWASP/FIRST/CISA）",
-    secure_bullet_3: "防御性应用",
+    secure_bullet_3: "可验证的遏制证明",
   },
   lab: {
     title: "实验室",

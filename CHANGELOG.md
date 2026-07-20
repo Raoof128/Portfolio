@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-20 (Australia/Sydney) — Hero/philosophy reframe for Anthropic Frontier Red Team (Cyber) application
+
+- **Scope**: File-by-file content audit of the site against a target role (**Lead, Frontier Red Team (Cyber) at Anthropic**) + the owner's tailored résumé, then an **honest, user-approved reframe** of the hero and philosophy copy to lead with the flagship containment work and the role's defender-advantage framing. Strictly no invented capabilities — every claim stays résumé-backed; the JD's autonomous-vuln-finding / purple-team / policy-artifact language was intentionally left out because it is not in the résumé.
+- **Changes** (`src/i18n/locales/{en,fa,ar,zh,es}.ts`, values only — key parity intact):
+  - `hero.intro` → Simurgh-first: measure & contain frontier-AI cyber capabilities; red-teams LLM agents; signed offline-verifiable containment evidence; 138/138 · 9/140→0/140 on AgentDojo; Claude safety-eval; "give defenders the advantage."
+  - `hero.evaluator` "Anthropic AI Evaluator" → **"Claude Safety Evaluator · Alignerr"** (fixes an overstatement of the Anthropic relationship).
+  - `hero.researcher` "Vulnerability Researcher" → **"AI Security Researcher"**.
+  - `philosophy.research_body` / `secure_body` → LLM-agent red-teaming, capability-uplift measurement, containment with signed evidence, defense-in-depth/defender-advantage.
+  - `research_bullet_1` → "LLM Agent Red-Teaming & Containment"; `secure_bullet_3` → "Verifiable Containment Attestation".
+  - Faithful fa/ar/zh/es translations (metrics in Western digits, proper nouns in Latin).
+- **Audit finding not changed on the site (already correct)**: Invisible Window DOI — the site uses the paper DOI `10.5281/zenodo.20376495` everywhere (verified on Zenodo as the v2.0 paper). The **résumé PDF** prints the software-release DOI `…20195135` on its "IEEE-format paper" line — that mismatch is on the résumé source (external to this repo) and is logged as a follow-up. Email standardized on Gmail site-wide (kept).
+- **Files Changed**: `src/i18n/locales/{en,fa,ar,zh,es}.ts`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: prettier ✓; lint 0; typecheck ✓; `test:ci` **86/86**; clean `build` (161 routes); `audit:agents` **160/160**. `out/en.html` confirmed: Simurgh-first intro live; new badges present; old proctoring-first intro + "Anthropic AI Evaluator" both 0 occurrences.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Re-audit remediation: honest i18n signalling, self-consistent schema, deploy fingerprint + live audit
 
 - **Scope**: An external re-audit flagged 10 remaining issues (machine-truth consistency, multilingual accuracy, dates, breadcrumbs, og:url, WebSite self-contradiction, premature `alumniOf`, nested `<main>`, invalid `<pre>`, no live-deploy audit). Each was **verified against current source first** (file:line evidence) — all real — then fixed. i18n resolution chosen by user: **honest relabel** (declare the English bodies as English) rather than full translation.

@@ -67,11 +67,11 @@ const en = {
     title_research: "Research",
     philosophy_quote: '"Seek, and ye shall find" — Matthew 7:7',
     intro:
-      'Independently discovering, validating, and responsibly disclosing cross-platform vulnerabilities. Authored "The Invisible Window" — 100% screen capture evasion. Motivated by reducing catastrophic risks from advanced AI.',
+      "Building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh — a containment-attestation framework that red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent was allowed to do after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut 9/140 to 0/140 on AgentDojo. Evaluated Claude in Anthropic's safety-evaluation program. Working to give defenders the advantage against advanced-AI cyber risk.",
     view_projects: "View Projects",
     view_resume: "View Resume",
-    researcher: "Vulnerability Researcher",
-    evaluator: "Anthropic AI Evaluator",
+    researcher: "AI Security Researcher",
+    evaluator: "Claude Safety Evaluator · Alignerr",
     university: "Macquarie University · Nov 2026",
   },
   philosophy: {
@@ -79,16 +79,16 @@ const en = {
     subtitle: "Operating Principles",
     research_title: "RESEARCH",
     research_body:
-      "Independently discover, validate, and responsibly disclose vulnerabilities. Measure AI capability uplift, characterise safety boundaries, and publish reproducible findings.",
+      "Red-team LLM agents and measure the cyber-capability uplift of frontier AI. Characterise safety boundaries, contain guardrail misses with signed, offline-verifiable evidence, and publish reproducible findings.",
     secure_title: "SECURE",
     secure_body:
-      "Defensive applications that reduce real-world risk. Cross-platform exploit development informs better defences — offensive knowledge applied to protective systems.",
-    research_bullet_1: "Vulnerability Research & Disclosure",
+      "Defense-in-depth that gives defenders the advantage. Offensive research — exploit classes and agent attack campaigns — becomes verifiable containment and real-world defensive tooling.",
+    research_bullet_1: "LLM Agent Red-Teaming & Containment",
     research_bullet_2: "AI Safety & LLM Evaluation",
     research_bullet_3: "Dual-Use Risk Assessment",
     secure_bullet_1: "Cross-Platform Exploit Development",
     secure_bullet_2: "Responsible Disclosure (OWASP/FIRST/CISA)",
-    secure_bullet_3: "Defensive Applications",
+    secure_bullet_3: "Verifiable Containment Attestation",
   },
   lab: {
     title: "THE_LAB",
