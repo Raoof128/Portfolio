@@ -40,6 +40,12 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-20 (Australia/Sydney) — Served résumé PDF corrected to match the site
+
+- **Scope**: Regenerated `public/Mohammad_Raouf_Abedini_Resume.pdf` from the corrected Word source (in `Job_Projects/`, external; originals backed up) so `/resume.pdf` matches the site (fixes audit 3.1).
+- **Edits mirrored**: Invisible Window DOI `…20195135`→`…20376495`; Simurgh 989/44→**3,057 tests**; Zurvan 183→**218**; added full-suite AgentDojo `0/949`; email→**raoof.r12@gmail.com**. Still 2 pages.
+- **Verification**: PDF text confirms the new values; old DOI/counts/email absent. Redeployed.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Reviewer-readiness pass for Anthropic Frontier Red Team (Cyber): metric sync, credibility hedges, tone, one-click evidence
 
 - **Scope**: Web-researched what the FRT (Cyber) team actually rewards (Mythos/Glasswing, "zero lag between discovery and exploitation," evidence-based measurement, defender advantage; Anthropic hiring: research+engineering integration, engagement with their _specific_ work), then ran a line-by-line reviewer-readiness audit (every external link/DOI/repo/PDF/demo fetched — **all resolve, nothing dead**) and remediated the credibility/consistency/tone gaps. User approved: sync metrics up to repos, professionalize tone, apply full credibility polish.

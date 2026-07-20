@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-20 (Australia/Sydney) — Served résumé PDF corrected to match the site
+
+- **Scope**: Regenerated `public/Mohammad_Raouf_Abedini_Resume.pdf` from the corrected Word source so the résumé the site serves at `/resume.pdf` no longer contradicts the site (fixes audit finding 3.1). Résumé source + submission copies live in `Job_Projects/` (external to this repo); originals backed up there.
+- **Résumé edits mirrored into the PDF**: Invisible Window DOI `…20195135` (software release) → **`…20376495`** (the paper); Simurgh `989 tests / 44 releases` → **3,057 tests**; Zurvan `183` → **218 tests**; added full-suite AgentDojo result (`0/949 on the full four-suite run`); header email → **raoof.r12@gmail.com** (matches the site). Still 2 pages, layout intact.
+- **Files Changed**: `public/Mohammad_Raouf_Abedini_Resume.pdf`, `CHANGELOG.md`.
+- **Verification**: extracted PDF text confirms `zenodo.20376495`, `3,057 automated tests`, `218 tests`, `raoof.r12@gmail.com`, `0/949`; old `20195135` / `989` / `students.mq.edu.au` absent. Redeployed.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Reviewer-readiness pass (Anthropic FRT Cyber): metric sync, credibility hedges, tone, one-click evidence
 
 - **Scope**: Researched what the Frontier Red Team (Cyber) rewards + ran a line-by-line reviewer-readiness audit (every external link/DOI/repo/PDF/demo fetched — **all live, nothing dead**), then remediated. **Verified the audit's "fabricated Fable 5 citation" finding was WRONG** — "Redeploying Fable 5" is a real July-2026 Anthropic post; kept as-is (it's a strength).
