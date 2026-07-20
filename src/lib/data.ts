@@ -997,7 +997,8 @@ export const projects: Record<string, Project> = {
 export interface Writeup {
   slug: string;
   title: string;
-  date: string;
+  date: string; // Original publication date (datePublished).
+  updatedAt?: string; // Last substantive revision (dateModified); falls back to `date`.
   tag: string;
   takeaway: string;
   content: string; // Markdown content
@@ -1008,6 +1009,7 @@ export const writeups: Writeup[] = [
     slug: "project-simurgh-containment",
     title: "Attesting What an AI Agent Was Allowed to Do",
     date: "2026-06-28",
+    updatedAt: "2026-07-18",
     tag: "AI Security",
     takeaway:
       "Signed, offline-verifiable evidence of an agent's actions after a guardrail miss: 138/138 classifier-missed cases contained, 9/140 to 0/140 on AgentDojo.",
@@ -1056,6 +1058,7 @@ The preprints sign their limits. Simurgh would **not** have caught the June 2026
     title:
       "How I Made Windows Invisible to Screen Capture, and Why Exam Proctoring Is Broken",
     date: "2026-03-20",
+    updatedAt: "2026-07-18",
     tag: "Security Research",
     takeaway:
       "Documented OS APIs on Windows and macOS allow any app to hide its window from all screen capture, defeating WebRTC-based exam proctoring with 100% evasion and zero artifacts.",
@@ -1208,6 +1211,7 @@ The full 13-page paper, PoC implementations, and disclosure materials are availa
     slug: "nanomatch-deep-dive",
     title: "Building a Sub-Microsecond Matching Engine in C++20",
     date: "2026-03-10",
+    updatedAt: "2026-07-18",
     tag: "C++",
     takeaway:
       "How a three-layer data structure design achieves O(1) cancellation and sub-microsecond latency.",
@@ -1273,6 +1277,7 @@ The 15x ratio between p50 and p99.9 is realistic. Spikes come from red-black tre
     slug: "sentinelflow-deep-dive",
     title: "Anatomy of a Network Intrusion Detection System",
     date: "2026-03-15",
+    updatedAt: "2026-07-18",
     tag: "Network Security",
     takeaway:
       "Layered protocol dissection, Snort-inspired rules, and stateful threat detection at 500K+ packets/sec.",
@@ -1336,6 +1341,7 @@ Adding a new output (syslog, webhook, Kafka) means implementing a single \`emit(
     slug: "ecrsm-deep-dive",
     title: "Deep Dive: eBPF Runtime Monitoring",
     date: "2025-01-15",
+    updatedAt: "2026-07-18",
     tag: "eBPF",
     takeaway:
       "How to build safe, read-only kernel probes for container security.",
@@ -1383,6 +1389,7 @@ ECRSM is a learning platform. It ships no signatures, blocks nothing, and makes 
     slug: "kmp-security",
     title: "Building Offline-First Security Tools with KMP",
     date: "2025-01-02",
+    updatedAt: "2026-07-18",
     tag: "Kotlin",
     takeaway: "Sharing 100% of security logic across Android, iOS, and Web.",
     content: `
@@ -1421,6 +1428,7 @@ The built-in red-team suite earns its place next to the F1 number: it holds dete
     slug: "electron-security",
     title: "Securing Electron Apps: A Practical Guide",
     date: "2024-12-20",
+    updatedAt: "2026-07-18",
     tag: "Electron",
     takeaway: "Handling secrets and IPC securely in modern desktop apps.",
     content: `

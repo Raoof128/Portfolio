@@ -45,7 +45,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
 
-      <main
+      <div
         className={cn(
           "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
           isRTL && "text-right",
@@ -76,7 +76,10 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
               <div className="font-mono text-xs text-text-body mb-2">
                 {t.lab_detail.experiment_id}: {exp.id}
               </div>
-              <h1 className="text-2xl font-bold text-white mb-4">
+              <h1
+                lang={locale === "en" ? undefined : "en"}
+                className="text-2xl font-bold text-white mb-4"
+              >
                 {exp.title}
               </h1>
 
@@ -106,7 +109,10 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                 {statusLabel(exp.status)}
               </div>
 
-              <p className="text-text-body text-sm leading-relaxed mb-6">
+              <p
+                lang={locale === "en" ? undefined : "en"}
+                className="text-text-body text-sm leading-relaxed mb-6"
+              >
                 {exp.description}
               </p>
 
@@ -115,7 +121,12 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                   <div className="text-xs font-mono text-cyan mb-2 flex items-center gap-2">
                     <Terminal className="w-3 h-3" /> {t.lab_detail.objective}
                   </div>
-                  <p className="text-sm text-slate-300">{exp.objective}</p>
+                  <p
+                    lang={locale === "en" ? undefined : "en"}
+                    className="text-sm text-slate-300"
+                  >
+                    {exp.objective}
+                  </p>
                 </div>
 
                 <div>
@@ -123,7 +134,10 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                     <AlertTriangle className="w-3 h-3" />{" "}
                     {t.lab_detail.constraints}
                   </div>
-                  <p className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10">
+                  <p
+                    lang={locale === "en" ? undefined : "en"}
+                    className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10"
+                  >
                     {exp.constraints}
                   </p>
                 </div>
@@ -162,17 +176,21 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                 <div className="w-10" />
               </div>
 
-              {/* Code Content */}
-              <div className="p-6 overflow-x-auto">
+              {/* Code Content — valid <pre><code> with block-level line spans
+                  (a <div> inside <pre> is invalid HTML). dir=ltr so code never
+                  mirrors on RTL locales. */}
+              <div className="p-6 overflow-x-auto" dir="ltr">
                 <pre className="text-slate-300 leading-relaxed">
-                  {exp.codeSnippet.split("\n").map((line, i) => (
-                    <div key={i} className="table-row">
-                      <span className="table-cell text-text-meta select-none text-right pr-4">
-                        {i + 1}
+                  <code>
+                    {exp.codeSnippet.split("\n").map((line, i) => (
+                      <span key={i} className="grid grid-cols-[2.5rem_1fr]">
+                        <span className="text-text-meta select-none text-right pr-4">
+                          {i + 1}
+                        </span>
+                        <span className="whitespace-pre">{line}</span>
                       </span>
-                      <span className="table-cell whitespace-pre">{line}</span>
-                    </div>
-                  ))}
+                    ))}
+                  </code>
                 </pre>
               </div>
 
@@ -184,7 +202,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
             </div>
           </AnimatedSection>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

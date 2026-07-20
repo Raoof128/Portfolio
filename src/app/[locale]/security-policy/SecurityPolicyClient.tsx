@@ -27,7 +27,7 @@ export function SecurityPolicyClient() {
   return (
     <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
       <ActiveGrid />
-      <main
+      <div
         className={cn(
           "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
           isRTL && "text-right",
@@ -313,7 +313,7 @@ export function SecurityPolicyClient() {
             </section>
           </AnimatedSection>
         </motion.div>
-      </main>
+      </div>
     </div>
   );
 }

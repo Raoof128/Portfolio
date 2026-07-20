@@ -1167,8 +1167,13 @@ export function ProjectDetailClient({
             isRTL && "direction-rtl",
           )}
         >
-          {/* Main Content */}
-          <div className="lg:col-span-8 space-y-16">
+          {/* Main Content — problem/solution/build/secure/proof are authored in
+              English; section headings are localized. Marked lang="en" so screen
+              readers pronounce the English body correctly on non-English routes. */}
+          <div
+            lang={locale === "en" ? undefined : "en"}
+            className="lg:col-span-8 space-y-16"
+          >
             <AnimatedSection variants={fadeInUp}>
               <section className="space-y-4">
                 <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">

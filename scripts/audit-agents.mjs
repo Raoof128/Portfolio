@@ -176,6 +176,20 @@ for (const url of sitemapUrls) {
     if (!existsSync(f)) fail(`og:image file missing (${og}): ${url}`);
   }
   if (!/name="twitter:image"/.test(html)) fail(`missing twitter:image: ${url}`);
+
+  // og:url must be present and agree with the self-canonical (no page may
+  // advertise the English apex — or any other URL — as its own og:url).
+  const ogUrl = (html.match(/property="og:url"[^>]+content="([^"]+)"/) ||
+    html.match(/content="([^"]+)"[^>]+property="og:url"/) ||
+    [])[1];
+  if (!ogUrl) fail(`missing og:url: ${url}`);
+  else if (
+    canonical &&
+    ogUrl.replace(/\/$/, "") !== canonical.replace(/\/$/, "")
+  )
+    fail(
+      `og:url ≠ canonical: ${url} → og:url ${ogUrl}, canonical ${canonical}`,
+    );
 }
 
 // ── Machine-control files ────────────────────────────────────────────────────
@@ -188,6 +202,7 @@ const mustExist = [
   "og.png",
   "security.txt",
   ".well-known/security.txt",
+  "version.json",
 ];
 for (const f of mustExist)
   if (!existsSync(join(OUT, f))) fail(`machine file missing: ${f}`);

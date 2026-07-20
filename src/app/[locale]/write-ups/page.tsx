@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { WriteUpsClient } from "./WriteUpsClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -15,6 +15,7 @@ export async function generateMetadata({
     description: t.seo.write_ups_description,
     alternates: buildAlternates("/write-ups", locale),
     openGraph: {
+      url: ogUrl("/write-ups", locale),
       title: "Write-ups | Mohammad Raouf Abedini",
       description: t.seo.write_ups_description,
       images: OG_IMAGES,

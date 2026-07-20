@@ -12,7 +12,8 @@
     "test:ci": "vitest run",
     "test:coverage": "vitest run --coverage",
     "prepare": "husky",
-    "audit:agents": "node scripts/audit-agents.mjs"
+    "audit:agents": "node scripts/audit-agents.mjs",
+    "audit:production": "node scripts/audit-production.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

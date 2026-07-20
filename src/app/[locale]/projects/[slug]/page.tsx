@@ -41,11 +41,14 @@ export async function generateMetadata({
   }
 
   const description = getProjectDescription(project, locale as Locale);
+  const prefix = LOCALE_PREFIX[locale] ?? "";
+  const pageUrl = `${SITE_URL}${prefix}/projects/${slug}`;
   return {
     title: `${project.title} | ${t.seo.projects_title}`,
     description,
     alternates: buildAlternates(`/projects/${slug}`, locale),
     openGraph: {
+      url: pageUrl,
       title: `${project.title} | Mohammad Raouf Abedini`,
       description,
       images: OG_IMAGES,
@@ -72,6 +75,7 @@ function buildProjectJsonLd(
   project: (typeof projects)[string],
   slug: string,
   locale: string,
+  crumbs: { home: string; section: string },
 ) {
   const prefix = LOCALE_PREFIX[locale] ?? "";
   // Locale-aware canonical entity URL — a Persian page identifies itself as the
@@ -127,8 +131,8 @@ function buildProjectJsonLd(
   };
 
   const breadcrumb = breadcrumbList([
-    { name: "Home", url: `${SITE_URL}${prefix || "/"}` },
-    { name: "Projects", url: `${SITE_URL}${prefix}/projects` },
+    { name: crumbs.home, url: `${SITE_URL}${prefix || "/"}` },
+    { name: crumbs.section, url: `${SITE_URL}${prefix}/projects` },
     { name: project.title, url: pageUrl },
   ]);
 
@@ -147,12 +151,17 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
+  const t = await getDictionary(locale);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: buildProjectJsonLd(project, slug, locale),
+          __html: buildProjectJsonLd(project, slug, locale, {
+            home: t.nav.home,
+            section: t.seo.projects_title,
+          }),
         }}
       />
       <ProjectDetailClient project={project} slug={slug} />

@@ -23,7 +23,12 @@ import {
   defaultLocale,
 } from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
-import { buildAlternates, serializeJsonLd, OG_IMAGE } from "@/lib/seo";
+import {
+  buildAlternates,
+  serializeJsonLd,
+  OG_IMAGE,
+  LOCALE_PREFIX,
+} from "@/lib/seo";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
@@ -88,7 +93,9 @@ export async function generateMetadata({
               : locale === "es"
                 ? "es_ES"
                 : "en_AU",
-      url: SITE_URL,
+      // Locale-aware canonical URL so the Persian homepage advertises its own
+      // /fa URL as og:url, not the English apex.
+      url: `${SITE_URL}${LOCALE_PREFIX[locale] || ""}` || SITE_URL,
       title: t.seo.home_title_default,
       description: t.seo.home_og_description,
       siteName: SITE_NAME,
@@ -145,7 +152,10 @@ export default async function RootLayout({
           addressRegion: "NSW",
           addressCountry: "AU",
         },
-        alumniOf: {
+        // Currently enrolled (degree runs to Nov 2026) → `affiliation`, not
+        // `alumniOf`. Switch to `alumniOf` after graduation so machine facts
+        // never claim a completed degree ahead of time.
+        affiliation: {
           "@type": "CollegeOrUniversity",
           name: "Macquarie University",
           sameAs: "https://www.mq.edu.au/",
@@ -171,7 +181,11 @@ export default async function RootLayout({
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: SITE_NAME,
-        inLanguage: locale,
+        // One WebSite entity available in all five locales. A single shared
+        // @id must not carry a per-locale `inLanguage` (that made the same
+        // entity contradict itself across pages); locale is expressed on each
+        // page's WebPage node instead.
+        inLanguage: Object.keys(locales),
         dateModified: SITE_LAST_MODIFIED,
         publisher: { "@id": `${SITE_URL}/#person` },
       },

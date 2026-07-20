@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HallOfFameClient } from "./HallOfFameClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -15,6 +15,7 @@ export async function generateMetadata({
     description: t.seo.hall_of_fame_description,
     alternates: buildAlternates("/hall-of-fame", locale),
     openGraph: {
+      url: ogUrl("/hall-of-fame", locale),
       title: `${t.seo.hall_of_fame_title} | Mohammad Raouf Abedini`,
       description: t.seo.hall_of_fame_description,
       images: OG_IMAGES,

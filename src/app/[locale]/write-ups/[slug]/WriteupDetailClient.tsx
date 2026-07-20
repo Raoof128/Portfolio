@@ -73,11 +73,15 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+            <h1
+              lang={locale === "en" ? undefined : "en"}
+              className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight"
+            >
               {post.title}
             </h1>
 
             <p
+              lang={locale === "en" ? undefined : "en"}
               className={cn(
                 "text-xl text-text-body font-light italic pl-4",
                 isRTL
@@ -93,10 +97,9 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
         {/* Content */}
         <AnimatedSection variants={fadeInUp} delay={0.2}>
           <div
-            className={cn(
-              "prose prose-invert prose-cyan max-w-none",
-              isRTL && "direction-rtl",
-            )}
+            lang={locale === "en" ? undefined : "en"}
+            dir={locale === "en" ? undefined : "ltr"}
+            className="prose prose-invert prose-cyan max-w-none"
           >
             <SimpleMarkdown content={post.content} />
           </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LabClient } from "./LabClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -15,6 +15,7 @@ export async function generateMetadata({
     description: t.seo.lab_description,
     alternates: buildAlternates("/lab", locale),
     openGraph: {
+      url: ogUrl("/lab", locale),
       title: "Lab | Mohammad Raouf Abedini",
       description: t.seo.lab_description,
       images: OG_IMAGES,

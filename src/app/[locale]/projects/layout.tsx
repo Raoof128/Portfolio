@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE } from "@/lib/seo";
+import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
 import { getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -14,6 +14,7 @@ export async function generateMetadata({
     description: t.seo.projects_description,
     alternates: buildAlternates("/projects", locale),
     openGraph: {
+      url: ogUrl("/projects", locale),
       title: `${t.seo.projects_title} | Mohammad Raouf Abedini`,
       description: t.seo.projects_description,
       images: OG_IMAGES,

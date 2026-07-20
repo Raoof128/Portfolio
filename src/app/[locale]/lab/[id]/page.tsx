@@ -34,11 +34,15 @@ export async function generateMetadata({
   const t = await getDictionary(locale as Locale);
   if (!exp) return { title: t.seo.not_found_title };
 
+  const prefix = LOCALE_PREFIX[locale] ?? "";
+  const pageUrl = `${SITE_URL}${prefix}/lab/${id}`;
+
   return {
     title: `${exp.title} | ${t.seo.lab_title}`,
     description: exp.description,
     alternates: buildAlternates(`/lab/${id}`, locale),
     openGraph: {
+      url: pageUrl,
       title: `${exp.title} | Mohammad Raouf Abedini`,
       description: exp.description,
       images: OG_IMAGES,
@@ -59,7 +63,11 @@ const AUTHOR = {
   sameAs: [ORCID_URL],
 } as const;
 
-function buildLabJsonLd(exp: (typeof labExperiments)[number], locale: string) {
+function buildLabJsonLd(
+  exp: (typeof labExperiments)[number],
+  locale: string,
+  crumbs: { home: string; section: string },
+) {
   const prefix = LOCALE_PREFIX[locale] ?? "";
   const pageUrl = `${SITE_URL}${prefix}/lab/${exp.id}`;
 
@@ -71,25 +79,37 @@ function buildLabJsonLd(exp: (typeof labExperiments)[number], locale: string) {
     description: exp.description,
     datePublished: SITE_LAST_MODIFIED,
     dateModified: SITE_LAST_MODIFIED,
-    inLanguage: locale,
+    // Experiment write-ups are authored in English on every locale route; the
+    // page chrome is translated. Keep the article node honest as "en".
+    inLanguage: "en",
     author: AUTHOR,
     publisher: { "@id": `${SITE_URL}/#person` },
-    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    mainEntityOfPage: { "@id": pageUrl },
     url: pageUrl,
     keywords: exp.tech.join(", "),
     image: `${SITE_URL}/og.png`,
     isPartOf: { "@id": `${SITE_URL}/#website` },
   };
 
+  const webPage = {
+    "@type": "WebPage",
+    "@id": pageUrl,
+    url: pageUrl,
+    inLanguage: locale,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    primaryImageOfPage: `${SITE_URL}/og.png`,
+    mainEntity: { "@id": `${pageUrl}#experiment` },
+  };
+
   const breadcrumb = breadcrumbList([
-    { name: "Home", url: `${SITE_URL}${prefix || "/"}` },
-    { name: "Lab", url: `${SITE_URL}${prefix}/lab` },
+    { name: crumbs.home, url: `${SITE_URL}${prefix || "/"}` },
+    { name: crumbs.section, url: `${SITE_URL}${prefix}/lab` },
     { name: exp.title, url: pageUrl },
   ]);
 
   return serializeJsonLd({
     "@context": "https://schema.org",
-    "@graph": [node, breadcrumb],
+    "@graph": [webPage, node, breadcrumb],
   });
 }
 
@@ -101,11 +121,18 @@ export default async function LabExperimentPage({ params }: PageProps) {
     notFound();
   }
 
+  const t = await getDictionary(locale as Locale);
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: buildLabJsonLd(exp, locale) }}
+        dangerouslySetInnerHTML={{
+          __html: buildLabJsonLd(exp, locale, {
+            home: t.nav.home,
+            section: t.seo.lab_title,
+          }),
+        }}
       />
       <LabDetailClient exp={exp} />
     </>

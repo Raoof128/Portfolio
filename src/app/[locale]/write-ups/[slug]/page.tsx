@@ -34,15 +34,21 @@ export async function generateMetadata({
   const t = await getDictionary(locale as Locale);
   if (!post) return { title: t.seo.not_found_title };
 
+  const prefix = LOCALE_PREFIX[locale] ?? "";
+  const pageUrl = `${SITE_URL}${prefix}/write-ups/${slug}`;
+
   return {
     title: `${post.title} | ${t.seo.write_ups_title}`,
     description: post.takeaway,
     alternates: buildAlternates(`/write-ups/${slug}`, locale),
     openGraph: {
       type: "article",
+      // Locale-aware self URL so og:url matches the page's own canonical.
+      url: pageUrl,
       title: `${post.title} | Mohammad Raouf Abedini`,
       description: post.takeaway,
       publishedTime: post.date,
+      modifiedTime: post.updatedAt ?? post.date,
       images: OG_IMAGES,
     },
     twitter: {
@@ -62,7 +68,11 @@ const AUTHOR = {
   sameAs: [ORCID_URL],
 } as const;
 
-function buildWriteupJsonLd(post: (typeof writeups)[number], locale: string) {
+function buildWriteupJsonLd(
+  post: (typeof writeups)[number],
+  locale: string,
+  crumbs: { home: string; section: string },
+) {
   const prefix = LOCALE_PREFIX[locale] ?? "";
   const pageUrl = `${SITE_URL}${prefix}/write-ups/${post.slug}`;
 
@@ -73,11 +83,14 @@ function buildWriteupJsonLd(post: (typeof writeups)[number], locale: string) {
     name: post.title,
     description: post.takeaway,
     datePublished: post.date,
-    dateModified: post.date,
-    inLanguage: locale,
+    dateModified: post.updatedAt ?? post.date,
+    // The article body is authored in English on every locale route; only the
+    // page chrome is translated. Declaring the article "en" keeps the machine
+    // fact honest — see the locale-carrying WebPage node below.
+    inLanguage: "en",
     author: AUTHOR,
     publisher: { "@id": `${SITE_URL}/#person` },
-    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    mainEntityOfPage: { "@id": pageUrl },
     url: pageUrl,
     keywords: post.tag,
     about: { "@type": "Thing", name: post.tag },
@@ -85,15 +98,28 @@ function buildWriteupJsonLd(post: (typeof writeups)[number], locale: string) {
     isPartOf: { "@id": `${SITE_URL}/#website` },
   };
 
+  // The page (navigation, headings, breadcrumb labels) is genuinely localized,
+  // so the WebPage entity carries the route locale and links to the shared
+  // WebSite. This is where per-page language lives now that WebSite is multilingual.
+  const webPage = {
+    "@type": "WebPage",
+    "@id": pageUrl,
+    url: pageUrl,
+    inLanguage: locale,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    primaryImageOfPage: `${SITE_URL}/og.png`,
+    mainEntity: { "@id": `${pageUrl}#article` },
+  };
+
   const breadcrumb = breadcrumbList([
-    { name: "Home", url: `${SITE_URL}${prefix || "/"}` },
-    { name: "Write-ups", url: `${SITE_URL}${prefix}/write-ups` },
+    { name: crumbs.home, url: `${SITE_URL}${prefix || "/"}` },
+    { name: crumbs.section, url: `${SITE_URL}${prefix}/write-ups` },
     { name: post.title, url: pageUrl },
   ]);
 
   return serializeJsonLd({
     "@context": "https://schema.org",
-    "@graph": [article, breadcrumb],
+    "@graph": [webPage, article, breadcrumb],
   });
 }
 
@@ -105,12 +131,17 @@ export default async function WriteupPage({ params }: PageProps) {
     notFound();
   }
 
+  const t = await getDictionary(locale as Locale);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: buildWriteupJsonLd(post, locale),
+          __html: buildWriteupJsonLd(post, locale, {
+            home: t.nav.home,
+            section: t.seo.write_ups_title,
+          }),
         }}
       />
       <WriteupDetailClient post={post} />

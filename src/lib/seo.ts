@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "./constants";
 
 // English is served at the clean root path (no `/en` prefix, per public/_redirects);
 // every other locale lives under its own prefix.
@@ -30,6 +31,16 @@ export const OG_LOCALE: Record<string, string> = {
   zh: "zh_CN",
   es: "es_ES",
 };
+
+/**
+ * Absolute, locale-aware self URL for a route — the value `og:url` must carry
+ * so a localized page advertises ITS OWN URL, never the English apex. `path` is
+ * the locale-agnostic route ("/about", or "" for home).
+ */
+export function ogUrl(path: string, locale: string): string {
+  const prefix = LOCALE_PREFIX[locale] ?? "";
+  return `${SITE_URL}${prefix}${path}` || SITE_URL;
+}
 
 /**
  * Serialize a JSON-LD object for inline injection. All inputs here are trusted

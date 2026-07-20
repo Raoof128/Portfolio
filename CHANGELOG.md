@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-20 (Australia/Sydney) — Re-audit remediation: honest i18n signalling, self-consistent schema, deploy fingerprint + live audit
+
+- **Scope**: An external re-audit flagged 10 remaining issues (machine-truth consistency, multilingual accuracy, dates, breadcrumbs, og:url, WebSite self-contradiction, premature `alumniOf`, nested `<main>`, invalid `<pre>`, no live-deploy audit). Each was **verified against current source first** (file:line evidence) — all real — then fixed. i18n resolution chosen by user: **honest relabel** (declare the English bodies as English) rather than full translation.
+- **Changes**:
+  - **Honest i18n** — write-up/lab `TechArticle` → `inLanguage:"en"`; added a locale `WebPage` node per detail page (`inLanguage:<locale>`, `isPartOf #website`, `mainEntity → article`) so translated chrome is still declared and the audit's locale rule holds. English DOM bodies marked `lang="en"` (+`dir="ltr"` where RTL) so screen readers pronounce them correctly.
+  - **WebSite** — one `#website` entity now `inLanguage:["en","fa","ar","zh","es"]` instead of a per-locale value that made the same @id contradict itself.
+  - **og:url** — new `ogUrl(path, locale)` helper; homepage + every detail template + 8 static/index pages emit their own locale-aware `og:url`. New `audit:agents` guard requires `og:url == self-canonical` on all 160 pages.
+  - **Dates** — `SITE_LAST_MODIFIED 2026-07-17 → 2026-07-20`; new optional `Writeup.updatedAt` (all 7 set to `2026-07-18`) drives `dateModified` + OG `modifiedTime` so modified ≠ published on rewritten articles.
+  - **Breadcrumbs** — `BreadcrumbList` names localized from the dictionary (e.g. `خانه` on `/fa`) across project/write-up/lab.
+  - **`alumniOf` → `affiliation`** — no longer asserts a completed degree while enrolment runs to Nov 2026.
+  - **A11y/HTML** — removed nested `<main>` (lab-detail, security-policy, hall-of-fame → `<div>`; root layout keeps the sole landmark); lab code viewer → valid `<pre><code>` with block-level line spans.
+  - **Deploy fingerprint + live audit** — new `/version.json` static route (git HEAD/CF/GitHub SHA + `contentRevision` + `builtAt`); new `npm run audit:production` (`scripts/audit-production.mjs`) hits the live origin post-deploy: machine-file 200s, www+/en 308s, per-locale canonical↔og:url↔`html[lang]`, all named AI/search bots → 200, and **version.json commit vs local HEAD** to catch a stale deploy.
+- **Files Changed**: `src/lib/{constants,seo,data}.ts`, `src/app/[locale]/layout.tsx`, `projects/[slug]/{page,ProjectDetailClient}.tsx`, `write-ups/[slug]/{page,WriteupDetailClient}.tsx`, `lab/[id]/{page,LabDetailClient}.tsx`, `{security-policy,hall-of-fame}/*Client.tsx`, `{contact,about,resume,write-ups,lab}/page.tsx`, `projects/layout.tsx`, `{hall-of-fame,security-policy}/page.tsx`, `src/app/version.json/route.ts` (new), `scripts/audit-agents.mjs`, `scripts/audit-production.mjs` (new), `package.json`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: prettier ✓; lint 0; typecheck ✓; `test:ci` **86/86**; clean `build` (161 routes incl. `/version.json`); `audit:agents` **160/160** (now enforcing og:url↔canonical + version.json). `/fa` built output confirmed: WebPage `inLanguage:"fa"` + TechArticle `inLanguage:"en"` + `dateModified:"2026-07-18"`; localized breadcrumb; og:url `/fa/...`; WebSite `inLanguage` array; `affiliation` (0 `alumniOf`); one `<main>` per page; valid `<pre><code>`; `lang="en"` bodies; `version.json` commit = HEAD.
+- **Follow-ups**: `npm run audit:production` after deploy; submit refreshed sitemap to Search Console/Bing; full per-locale translations remain future work.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Full file-by-file audit (6 parallel auditors vs 2026 docs) + fixes
 
 - **Scope**: Audited every one of the 89 `src` TS/TSX files + all config + machine files via 6 parallel domain auditors, each cross-checked against **current 2026 docs** (Next.js 16 Metadata/route-handler, schema.org + Google Rich Results, RFC 9116, sitemaps.org/RSS 2.0, Google hreflang, WCAG) and against the built `out/` + live endpoints (every external link/DOI curled). Verdict: **no blocking discoverability defect** — all content server-rendered, links crawlable, JSON-LD valid, key parity perfect (441/locale), all 13 repos + 5 DOIs + 6 PDFs + 4 demos resolve. Fixes applied for the real findings:

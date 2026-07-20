@@ -14,7 +14,7 @@ export const ORCID_URL = "https://orcid.org/0009-0000-6214-258X";
 // Bump on meaningful content updates — surfaced as schema.org dateModified so
 // AI/answer engines (Perplexity etc.) see the site as recently maintained.
 // Kept static (not `new Date()`) to avoid client/server hydration mismatch.
-export const SITE_LAST_MODIFIED = "2026-07-17";
+export const SITE_LAST_MODIFIED = "2026-07-20";
 
 // Backward-compatible alias used by legacy imports.
 export const basePath = BASE_PATH;
