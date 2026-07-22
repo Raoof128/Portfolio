@@ -1,7 +1,9 @@
 export const BASE_PATH = "";
 export const SITE_ORIGIN = "https://raoufabedini.dev";
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
-export const SITE_NAME = "Mohammad Raouf Abedini — AI Security Researcher";
+// Google site-name guidance favours the concise, commonly recognized identity;
+// the role belongs in page titles/descriptions rather than WebSite.name.
+export const SITE_NAME = "Mohammad Raouf Abedini";
 
 export const CONTACT_EMAIL = "raoof.r999@outlook.com";
 export const CONTACT_EMAIL_GMAIL = "raoof.r12@gmail.com";
@@ -14,7 +16,7 @@ export const ORCID_URL = "https://orcid.org/0009-0000-6214-258X";
 // Bump on meaningful content updates — surfaced as schema.org dateModified so
 // AI/answer engines (Perplexity etc.) see the site as recently maintained.
 // Kept static (not `new Date()`) to avoid client/server hydration mismatch.
-export const SITE_LAST_MODIFIED = "2026-07-20";
+export const SITE_LAST_MODIFIED = "2026-07-22";
 
 // Backward-compatible alias used by legacy imports.
 export const basePath = BASE_PATH;

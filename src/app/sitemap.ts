@@ -91,11 +91,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pushLocalized(`/lab/${exp.id}`, SITE_DATE, "monthly", 0.6);
   }
 
-  // Write-up detail pages (real publication dates).
+  // Write-up detail pages. Use the last substantive edit when present so
+  // crawlers are told about revised research, not only its first publication.
   for (const post of writeups) {
     pushLocalized(
       `/write-ups/${post.slug}`,
-      new Date(post.date),
+      new Date(post.updatedAt ?? post.date),
       "monthly",
       0.7,
     );

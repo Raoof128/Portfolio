@@ -1,6 +1,6 @@
 # Mohammad Raouf Abedini - AI Security Research Portfolio
 
-> Last updated: 2026-07-20. Full machine-readable corpus (every project, write-up,
+> Last updated: 2026-07-22. Full machine-readable corpus (every project, write-up,
 > lab experiment, paper): https://raoufabedini.dev/llms-full.txt
 
 ## Identity

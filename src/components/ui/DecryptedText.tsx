@@ -86,11 +86,11 @@ export function DecryptedText({
         setTrigger((prev) => prev + 1)
       }
       suppressHydrationWarning
-      aria-label={text}
     >
       <span aria-hidden="true" suppressHydrationWarning>
         {shown}
       </span>
+      <span className="sr-only">{text}</span>
     </motion.span>
   );
 }

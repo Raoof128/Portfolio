@@ -77,34 +77,24 @@ const CATEGORY_STYLE: Record<
 /* ─── Bento Card ─────────────────────────────────────────────────────── */
 
 function BentoCard({
-  slug,
   accentHover,
   cornerClass,
   tint,
   className,
   children,
   glowPulse,
-  locale,
 }: {
-  slug: string;
   accentHover: string;
   cornerClass: string;
   tint?: string;
   className?: string;
   children: React.ReactNode;
   glowPulse?: boolean;
-  locale: string;
 }) {
-  const { t } = useTranslation();
-  const getPath = (path: string) => {
-    if (locale === defaultLocale) return path;
-    return `/${locale}${path}`;
-  };
-
   return (
-    <motion.div
+    <motion.article
       variants={fadeInUp}
-      className={`group relative p-6 border border-cyan/10 bg-[#030712]/60 hover:shadow-[0_8px_32px_rgba(0,245,255,0.12)] ${accentHover} ${tint ?? ""} transition-all duration-300 cursor-pointer${className ? ` ${className}` : ""}`}
+      className={`group relative p-6 border border-cyan/10 bg-[#030712]/60 hover:shadow-[0_8px_32px_rgba(0,245,255,0.12)] ${accentHover} ${tint ?? ""} transition-all duration-300${className ? ` ${className}` : ""}`}
       whileHover={{ y: -6 }}
     >
       {children}
@@ -128,12 +118,7 @@ function BentoCard({
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
       )}
-      <Link
-        href={getPath(`/projects/${slug}`)}
-        className="absolute inset-0"
-        aria-label={`${t.home.view_prefix} ${slug} ${t.common.case_study}`}
-      />
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -236,15 +221,10 @@ export default function Home() {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.48 }}
+              initial={false}
               className="text-text-body text-lg max-w-md leading-relaxed"
             >
-              <span
-                className="text-cyan italic text-sm block mb-2"
-                style={{ animation: "text-blink 6s ease-in-out infinite" }}
-              >
+              <span className="text-cyan italic text-sm block mb-2">
                 {t.hero.philosophy_quote}
               </span>
               {t.hero.intro}
@@ -347,7 +327,7 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center gap-4">
               <span
-                className="font-mono text-[9px] text-text-meta tracking-widest opacity-60"
+                className="font-mono text-[9px] text-text-meta tracking-widest"
                 aria-hidden="true"
               >
                 SEC:01.003
@@ -379,13 +359,11 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
                   className="md:col-span-3"
                   glowPulse
-                  locale={locale}
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                     <span
@@ -444,12 +422,16 @@ export default function Home() {
                           .toUpperCase()}
                       </a>
                     )}
-                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors"
+                    >
                       {t.common.case_study}{" "}
                       <ArrowRight
                         className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
                       />
-                    </span>
+                    </Link>
                   </div>
                 </BentoCard>
               );
@@ -462,12 +444,10 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
                   className="md:col-span-3"
-                  locale={locale}
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                     <span
@@ -535,12 +515,16 @@ export default function Home() {
                     >
                       <Terminal className="w-3 h-3" /> {t.common.reproduce}
                     </a>
-                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors"
+                    >
                       {t.common.case_study}{" "}
                       <ArrowRight
                         className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
                       />
-                    </span>
+                    </Link>
                   </div>
                 </BentoCard>
               );
@@ -553,12 +537,10 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
                   className="md:col-span-3"
-                  locale={locale}
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                     <span
@@ -603,12 +585,16 @@ export default function Home() {
                         <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
-                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-purple-400 transition-colors">
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-purple-400 transition-colors"
+                    >
                       {t.common.case_study}{" "}
                       <ArrowRight
                         className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
                       />
-                    </span>
+                    </Link>
                   </div>
                 </BentoCard>
               );
@@ -621,12 +607,10 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
                   className="md:col-span-2"
-                  locale={locale}
                 >
                   <div className="flex items-start justify-between mb-5">
                     <span
@@ -677,12 +661,16 @@ export default function Home() {
                         <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
-                    <span className="ml-auto flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors">
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-cyan transition-colors pointer-events-auto"
+                    >
                       {t.common.case_study}{" "}
                       <ArrowRight
                         className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
                       />
-                    </span>
+                    </Link>
                   </div>
                 </BentoCard>
               );
@@ -695,11 +683,9 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
-                  locale={locale}
                 >
                   <div className="flex items-start justify-between mb-5">
                     <span
@@ -739,6 +725,16 @@ export default function Home() {
                         <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-purple transition-colors"
+                    >
+                      {t.common.case_study}{" "}
+                      <ArrowRight
+                        className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
+                      />
+                    </Link>
                   </div>
                 </BentoCard>
               );
@@ -751,11 +747,9 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
-                  locale={locale}
                 >
                   <div className="flex items-start justify-between mb-5">
                     <span
@@ -783,17 +777,29 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  {p.links.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
-                      onClick={(e) => e.stopPropagation()}
+                  <div className="flex flex-wrap items-center gap-4">
+                    {p.links.repo && (
+                      <a
+                        href={p.links.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 font-mono text-xs text-text-meta hover:text-cyan transition-colors relative z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-3 h-3" /> {t.common.repo}
+                      </a>
+                    )}
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-purple transition-colors"
                     >
-                      <Github className="w-3 h-3" /> {t.common.repo}
-                    </a>
-                  )}
+                      {t.common.case_study}{" "}
+                      <ArrowRight
+                        className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
+                      />
+                    </Link>
+                  </div>
                 </BentoCard>
               );
             })()}
@@ -805,11 +811,9 @@ export default function Home() {
               return (
                 <BentoCard
                   key={p.slug}
-                  slug={p.slug}
                   accentHover={s.hover}
                   cornerClass={s.corner}
                   tint={s.tint}
-                  locale={locale}
                 >
                   <div className="flex items-start justify-between mb-5">
                     <span
@@ -849,6 +853,16 @@ export default function Home() {
                         <Github className="w-3 h-3" /> {t.common.repo}
                       </a>
                     )}
+                    <Link
+                      href={getPath(`/projects/${p.slug}`)}
+                      aria-label={`${t.common.case_study}: ${p.title}`}
+                      className="ml-auto -my-2 py-2 flex items-center gap-1.5 font-mono text-xs text-text-meta group-hover:text-purple transition-colors"
+                    >
+                      {t.common.case_study}{" "}
+                      <ArrowRight
+                        className={cn("w-3 h-3", isRTL ? "rotate-180" : "")}
+                      />
+                    </Link>
                   </div>
                 </BentoCard>
               );
@@ -890,7 +904,7 @@ export default function Home() {
               </h2>
             </div>
             <span
-              className="hidden md:block font-mono text-[9px] text-text-meta tracking-widest opacity-60"
+              className="hidden md:block font-mono text-[9px] text-text-meta tracking-widest"
               aria-hidden="true"
             >
               SEC:02.001
@@ -1070,7 +1084,7 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center gap-4">
               <span
-                className="font-mono text-[9px] text-text-meta tracking-widest opacity-60"
+                className="font-mono text-[9px] text-text-meta tracking-widest"
                 aria-hidden="true"
               >
                 SEC:03.007
@@ -1109,9 +1123,9 @@ export default function Home() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="min-w-0">
-                      <h4 className="text-base font-bold text-slate-300 group-hover:text-white transition-colors truncate">
+                      <h3 className="text-base font-bold text-slate-300 group-hover:text-white transition-colors truncate">
                         {post.title}
-                      </h4>
+                      </h3>
                       <p className="text-sm text-text-body mt-0.5 hidden sm:block">
                         {post.takeaway}
                       </p>

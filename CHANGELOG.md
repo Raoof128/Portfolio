@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-22 (Australia/Sydney) — 2026 SEO, AI-agent visibility, and page-experience hardening
+
+- **Scope**: Current-official-doc audit of the source, 160 canonical routes, built export, live production crawl surface, search snippets, and mobile/desktop rendering. The existing canonical/hreflang/sitemap/robots/JSON-LD foundation remains healthy; changes target the real remaining gaps without redesigning the portfolio.
+- **SEO and entity clarity**: Shortened `WebSite.name` to `Mohammad Raouf Abedini`, added `alternateName` values, added locale-aware Google `ProfilePage` + `Person` JSON-LD to every About page, bumped the controlled site modification date, and made write-up sitemap `lastmod` use `updatedAt` when present.
+- **Crawler and agent visibility**: Preserved open robots and crawlable server-rendered content, refreshed `llms.txt`, added `Claude-User` and `Claude-SearchBot` to production probes, and strengthened `audit:agents` to require `ProfilePage` plus the concise `WebSite` name/aliases. Replaced full-card transparent overlays with visible semantic Case Study links inside `<article>` cards so links remain unambiguous to search crawlers, accessibility trees, and vision-driven agents.
+- **Page experience**: Fixed prohibited/mismatched ARIA, language-menu semantics, homepage heading order, footer contrast/touch targets, and decorative section-code contrast. The hero’s largest paragraph is no longer opacity-animated; decorative video mounts after page load, uses `preload="metadata"`, and no longer requests a duplicate JPG poster over the responsive AVIF/JPG still.
+- **Files Changed**: `src/lib/{constants,machine-reliability.test}.ts`, `src/app/{sitemap,[locale]/layout,[locale]/page,[locale]/about/page}.tsx`, `src/components/layout/{Footer,LanguageSwitcher,Navbar,Navbar.test}.tsx`, `src/components/ui/{DecryptedText,HeroVideo,HeroVideo.test}.tsx`, `scripts/{audit-agents,audit-production}.mjs`, `public/llms.txt`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: prettier ✓; lint 0 errors (one existing `.remember/tmp/last-ndc.ts` warning); typecheck ✓; Vitest **87/87**; production build **168 pages**; `audit:agents` **160/160, 0 warnings**; diff check ✓. Local Lighthouse 13.4.1: mobile **SEO 100 / accessibility 100 / performance 73 / CLS 0**; desktop **SEO 100 / accessibility 100 / performance 95 / LCP 1.6 s / CLS 0**. Mobile + desktop screenshots match the live visual design, with the hero copy now immediately readable. The pre-change production audit passed and matched deployed commit `ce8339f`.
+- **Follow-ups**: Deploy, run `npm run audit:production`, then request Google recrawl/resubmit the sitemap; monitor Search Console query/page/CWV data rather than promising a #1 position. Search-result snippets observed during the audit remain stale until recrawl. A separate measured bundle pass should address the roughly 285 KiB of JavaScript Lighthouse reports as unused on mobile.
+
 ### Raouf: 2026-07-20 (Australia/Sydney) — Served résumé PDF corrected to match the site
 
 - **Scope**: Regenerated `public/Mohammad_Raouf_Abedini_Resume.pdf` from the corrected Word source so the résumé the site serves at `/resume.pdf` no longer contradicts the site (fixes audit finding 3.1). Résumé source + submission copies live in `Job_Projects/` (external to this repo); originals backed up there.

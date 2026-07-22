@@ -82,6 +82,7 @@ export function HeroVideo() {
   const [orientation, setOrientation] = useState<Orientation>(getOrientation);
   // Data-saver / reduced-motion users never mount the video at all.
   const [still, setStill] = useState(prefersStill);
+  const [canLoadVideo, setCanLoadVideo] = useState(false);
   const [videoVisible, setVideoVisible] = useState(false);
 
   /* Track orientation; remount the <video> (via key) on change so the new
@@ -99,14 +100,38 @@ export function HeroVideo() {
   /* Reduced-motion can flip at runtime. */
   useEffect(() => {
     const rmq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const onChange = () => setStill(prefersStill());
+    const onChange = () => {
+      const shouldStayStill = prefersStill();
+      setStill(shouldStayStill);
+      if (shouldStayStill) setCanLoadVideo(false);
+    };
     rmq.addEventListener?.("change", onChange);
     return () => rmq.removeEventListener?.("change", onChange);
   }, []);
 
-  /* Playback control + first-decoded-frame reveal for the current video. */
+  /* The loop is decorative and the poster is visually complete. Wait until
+     the initial document has loaded, then give critical text/fonts a short
+     head start before requesting megabytes of video. */
   useEffect(() => {
     if (still) return;
+
+    let timer: number | undefined;
+    const enableVideo = () => {
+      timer = window.setTimeout(() => setCanLoadVideo(true), 1200);
+    };
+
+    if (document.readyState === "complete") enableVideo();
+    else window.addEventListener("load", enableVideo, { once: true });
+
+    return () => {
+      window.removeEventListener("load", enableVideo);
+      if (timer !== undefined) window.clearTimeout(timer);
+    };
+  }, [still]);
+
+  /* Playback control + first-decoded-frame reveal for the current video. */
+  useEffect(() => {
+    if (still || !canLoadVideo) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -159,7 +184,7 @@ export function HeroVideo() {
       video.removeEventListener("playing", onPlaying);
       video.pause();
     };
-  }, [orientation, still]);
+  }, [canLoadVideo, orientation, still]);
 
   const asset = ASSETS[orientation];
 
@@ -186,18 +211,17 @@ export function HeroVideo() {
           />
         </picture>
 
-        {!still && (
+        {!still && canLoadVideo && (
           <video
             key={orientation}
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700"
             style={{ opacity: videoVisible ? 1 : 0 }}
-            poster={asset.posterJpg}
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
           >
             <source src={asset.webm} type="video/webm" />
             <source src={asset.mp4} type="video/mp4" />

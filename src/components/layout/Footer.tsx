@@ -106,7 +106,7 @@ export function Footer() {
                 <p className="text-[10px] text-text-meta leading-relaxed">
                   © 2026 Mohammad Raouf Abedini. {t.footer.all_rights_reserved}.
                   <br />
-                  <span className="opacity-60">
+                  <span className="text-text-body">
                     {t.footer.built_with} Next.js, {t.footer.designed_by} Raouf.
                   </span>
                 </p>
@@ -124,37 +124,43 @@ export function Footer() {
         >
           <Link
             href={getPath("/security-policy")}
-            className="hover:text-cyan transition-colors"
+            className="py-1.5 hover:text-cyan transition-colors"
           >
             {t.seo.security_policy_title}
           </Link>
           <Link
             href={getPath("/hall-of-fame")}
-            className="hover:text-cyan transition-colors"
+            className="py-1.5 hover:text-cyan transition-colors"
           >
             {t.seo.hall_of_fame_title}
           </Link>
           <a
             href="/.well-known/security.txt"
-            className="hover:text-cyan transition-colors"
+            className="py-1.5 hover:text-cyan transition-colors"
           >
             security.txt
           </a>
-          <a href="/llms.txt" className="hover:text-cyan transition-colors">
+          <a
+            href="/llms.txt"
+            className="py-1.5 hover:text-cyan transition-colors"
+          >
             llms.txt
           </a>
           <a
             href="/llms-full.txt"
-            className="hover:text-cyan transition-colors"
+            className="py-1.5 hover:text-cyan transition-colors"
           >
             llms-full.txt
           </a>
-          <a href="/sitemap.xml" className="hover:text-cyan transition-colors">
+          <a
+            href="/sitemap.xml"
+            className="py-1.5 hover:text-cyan transition-colors"
+          >
             sitemap.xml
           </a>
           <a
             href="/feed.xml"
-            className="hover:text-cyan transition-colors"
+            className="py-1.5 hover:text-cyan transition-colors"
             type="application/rss+xml"
           >
             RSS

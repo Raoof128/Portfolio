@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
-import { render } from "@testing-library/react";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
+import { act, render } from "@testing-library/react";
 import { HeroVideo } from "./HeroVideo";
 import { I18nProvider } from "@/i18n/provider";
 import en from "@/i18n/locales/en";
@@ -30,11 +30,23 @@ function renderHero(locale: "en" | "fa" = "en") {
   );
 }
 
+function enableDeferredVideo() {
+  act(() => {
+    window.dispatchEvent(new Event("load"));
+    vi.advanceTimersByTime(1200);
+  });
+}
+
 afterEach(() => {
   mockMedia({});
+  vi.useRealTimers();
 });
 
 describe("HeroVideo", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
   it("is hidden from assistive technology", () => {
     const { container } = renderHero();
     expect(container.firstElementChild).toHaveAttribute("aria-hidden", "true");
@@ -53,6 +65,7 @@ describe("HeroVideo", () => {
 
   it("selects landscape video sources by default", () => {
     const { container } = renderHero();
+    enableDeferredVideo();
     const video = container.querySelector("video");
     expect(video).not.toBeNull();
     expect(video).toHaveAttribute("playsinline");
@@ -68,6 +81,7 @@ describe("HeroVideo", () => {
   it("selects the native portrait assets in portrait orientation", () => {
     mockMedia({ "(orientation: portrait)": true });
     const { container } = renderHero();
+    enableDeferredVideo();
     expect(
       container.querySelector('video source[type="video/webm"]'),
     ).toHaveAttribute("src", "/hero-verification-mobile.webm");
@@ -78,7 +92,20 @@ describe("HeroVideo", () => {
 
   it("renders only one video element (single download/decoder)", () => {
     const { container } = renderHero();
+    enableDeferredVideo();
     expect(container.querySelectorAll("video")).toHaveLength(1);
+  });
+
+  it("defers decorative video until after the initial load window", () => {
+    const { container } = renderHero();
+    expect(container.querySelector("video")).toBeNull();
+    enableDeferredVideo();
+    expect(container.querySelector("video")).not.toBeNull();
+    expect(container.querySelector("video")).not.toHaveAttribute("poster");
+    expect(container.querySelector("video")).toHaveAttribute(
+      "preload",
+      "metadata",
+    );
   });
 
   it("never mounts the video under prefers-reduced-motion (poster only)", () => {

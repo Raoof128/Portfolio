@@ -181,6 +181,7 @@ export default async function RootLayout({
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: SITE_NAME,
+        alternateName: ["Raouf Abedini", "raoufabedini.dev"],
         // One WebSite entity available in all five locales. A single shared
         // @id must not carry a per-locale `inLanguage` (that made the same
         // entity contradict itself across pages); locale is expressed on each

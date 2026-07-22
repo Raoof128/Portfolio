@@ -21,6 +21,8 @@ const BROWSER_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36";
 const BOTS = [
   "ClaudeBot/1.0",
+  "Claude-User/1.0",
+  "Claude-SearchBot/1.0",
   "GPTBot/1.2",
   "OAI-SearchBot/1.0",
   "ChatGPT-User/1.0",

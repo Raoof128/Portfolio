@@ -36,11 +36,12 @@ export function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-1.5 border border-cyan/15 hover:border-cyan/40 text-[10px] font-mono uppercase tracking-widest text-text-meta hover:text-cyan transition-all bg-cyber-dark/30 rounded-sm"
-        aria-label={t.common.select_language}
+        aria-label={`${locales[currentLocale].label}, ${t.common.select_language}`}
         aria-haspopup="menu"
         aria-expanded={isOpen}
+        aria-controls="language-menu"
       >
-        <Languages className="w-3 h-3" />
+        <Languages className="w-3 h-3" aria-hidden="true" />
         <span lang={currentLocale} dir={locales[currentLocale].dir}>
           {locales[currentLocale].label}
         </span>
@@ -49,6 +50,8 @@ export function LanguageSwitcher() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="language-menu"
+            role="menu"
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -59,6 +62,7 @@ export function LanguageSwitcher() {
               {(Object.keys(locales) as Locale[]).map((locale) => (
                 <Link
                   key={locale}
+                  role="menuitem"
                   href={getLocalizedPath(pathname, locale)}
                   onClick={() => setIsOpen(false)}
                   className={cn(

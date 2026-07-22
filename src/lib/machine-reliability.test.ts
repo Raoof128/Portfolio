@@ -49,12 +49,12 @@ describe("sitemap completeness", () => {
     expect((home!.lastModified as Date).toISOString()).toBe(
       new Date(SITE_LAST_MODIFIED).toISOString(),
     );
-    // Write-ups carry their own publication date.
+    // Write-ups carry their latest substantive revision date when available.
     const wu = entries.find(
       (e) => e.url === `${ORIGIN}/write-ups/${writeups[0].slug}`,
     );
     expect((wu!.lastModified as Date).toISOString()).toBe(
-      new Date(writeups[0].date).toISOString(),
+      new Date(writeups[0].updatedAt ?? writeups[0].date).toISOString(),
     );
   });
 });

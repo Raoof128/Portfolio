@@ -56,13 +56,9 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         {/* Logo / Home */}
-        <Link
-          href={getPath("/")}
-          className="flex items-center space-x-2 group"
-          aria-label={t.nav.home}
-        >
+        <Link href={getPath("/")} className="flex items-center space-x-2 group">
           <div className="p-1 border border-transparent group-hover:border-cyan/50 rounded-sm transition-colors">
-            <Terminal className="w-5 h-5 text-cyan" />
+            <Terminal className="w-5 h-5 text-cyan" aria-hidden="true" />
           </div>
           <span className="font-mono font-bold text-sm md:text-base lg:text-lg tracking-tight text-foreground group-hover:text-cyan transition-colors">
             <span className="sm:hidden">~/raouf</span>

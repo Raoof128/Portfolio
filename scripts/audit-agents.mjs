@@ -159,6 +159,23 @@ for (const url of sitemapUrls) {
     if (!/"TechArticle"|"BlogPosting"/.test(flatTypes))
       fail(`write-up lacks article schema: ${url}`);
   }
+  if (/\/about$/.test(url.replace(ORIGIN, ""))) {
+    if (!/"@type":"ProfilePage"/.test(flatTypes))
+      fail(`about page lacks ProfilePage schema: ${url}`);
+  }
+
+  // The root WebSite entity should use a concise human identity and offer
+  // fallback names, matching Google's site-name guidance.
+  if (url === `${ORIGIN}/`) {
+    if (!/"@type":"WebSite"/.test(flatTypes))
+      fail("home page lacks WebSite schema");
+    if (!/"name":"Mohammad Raouf Abedini"/.test(flatTypes))
+      fail("WebSite.name is not the concise personal name");
+    if (
+      !/"alternateName":\["Raouf Abedini","raoufabedini.dev"\]/.test(flatTypes)
+    )
+      fail("WebSite schema lacks preferred alternate names");
+  }
 
   // inLanguage should match locale on the primary node (allow "en" article
   // sub-nodes such as English PDFs on localized pages)

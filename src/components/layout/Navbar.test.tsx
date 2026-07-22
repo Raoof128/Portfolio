@@ -26,7 +26,7 @@ function renderNavbar() {
 describe("Navbar", () => {
   it("renders logo with home link", () => {
     renderNavbar();
-    const homeLink = screen.getByLabelText(/home/i);
+    const homeLink = screen.getByRole("link", { name: /raouf/i });
     expect(homeLink).toHaveAttribute("href", "/");
     expect(screen.getByText("~/mohammad-raouf-abedini")).toBeInTheDocument();
   });
