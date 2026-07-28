@@ -13,6 +13,66 @@ export interface Certification {
 export const certifications: Certification[] = [
   // ── Anthropic ──
   {
+    name: "AI Fluency for Builders",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "ij57fipeotgk",
+  },
+  {
+    name: "AI Fluency for Small Businesses",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "r9t7u9g2hzdz",
+  },
+  {
+    name: "AI Capabilities and Limitations",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "wrfii6cfuvr4",
+  },
+  {
+    name: "Introduction to Subagents",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "syfjb97quced",
+  },
+  {
+    name: "Introduction to Agent Skills",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "mr27nygqefat",
+  },
+  {
+    name: "AI Fluency for Nonprofits",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "krozkhdehxj4",
+  },
+  {
+    name: "Teaching the AI Fluency Framework",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "7f79pk4xnd5s",
+  },
+  {
+    name: "Claude on Google Cloud",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "m6eh8atm8u8h",
+  },
+  {
+    name: "Claude with Amazon Bedrock",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "r75ff44jh27z",
+  },
+  {
+    name: "Model Context Protocol: Advanced Topics",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    credentialId: "xv3mgwgb4u43",
+  },
+  {
     name: "AI Fluency for Students",
     issuer: "Anthropic",
     issued: "Jul 2026",

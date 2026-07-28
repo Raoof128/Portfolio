@@ -40,6 +40,14 @@ Before making any code changes, agents MUST:
 
 ---
 
+### Raouf: 2026-07-29 (Australia/Sydney) — Ten new Anthropic credentials added to the résumé
+
+- **Scope**: `/resume` section 08 (Licenses & Certifications). Data-only change; no layout, copy, or i18n edits.
+- **Summary**: Appended the ten Anthropic certificates issued Jul 2026 that were missing from the site, keeping the LinkedIn ordering (newest block first) ahead of the existing Anthropic entries: AI Fluency for Builders, AI Fluency for Small Businesses, AI Capabilities and Limitations, Introduction to Subagents, Introduction to Agent Skills, AI Fluency for Nonprofits, Teaching the AI Fluency Framework, Claude on Google Cloud, Claude with Amazon Bedrock, and Model Context Protocol: Advanced Topics — each with its credential ID. Names are title-cased to match existing entries; "Claude with Amazon Bedrock" follows the credential thumbnail rather than the LinkedIn headline. All thirteen Macquarie University certificates in the source list were already present and were left untouched. Anthropic goes 10 → 20, total 23 → 33; the per-issuer count badges in `ResumeClient.tsx` and the total in `llms-full.txt` are derived from the array, so no renderer change was needed.
+- **Files Changed**: `src/lib/certifications.ts`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: prettier ✓; lint 0 errors (one pre-existing `.remember/tmp/last-ndc.ts` warning); typecheck ✓; Vitest **87/87**; build **static export succeeded**. Built `out/en/resume.html` contains all ten new credential IDs and renders the Anthropic badge as `(20)`; `out/llms-full.txt` reports `Certifications (33)`.
+- **Follow-ups**: The served `public/Mohammad_Raouf_Abedini_Resume.pdf` still lists the earlier credential set — regenerate it from the Word source if the PDF should mirror the site. Project Simurgh placement on `/resume` was raised and the user confirmed the current layout is fine; no change made.
+
 ### Raouf: 2026-07-22 (Australia/Sydney) — 2026 SEO, AI-agent visibility, and page-experience hardening
 
 - **Scope**: Re-audited the repository, generated export, current production site, search-result surface, and mobile/desktop rendering against current official 2026 guidance from Google Search Central/web.dev, OpenAI, and Anthropic. The existing 160-URL crawl/index foundation remains sound; the actionable gaps were stale public snippets, an overlong `WebSite.name`, missing `ProfilePage` markup, sitemap modification-date fidelity, semantic/a11y defects, and decorative hero media competing with primary content.

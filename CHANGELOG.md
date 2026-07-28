@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-07-29 (Australia/Sydney) — Ten new Anthropic credentials added to the résumé
+
+- **Scope**: `/resume` section 08 (Licenses & Certifications). Data-only change; no layout, copy, or i18n edits.
+- **Summary**: Appended the ten Anthropic certificates issued Jul 2026 that were missing from the site, keeping the LinkedIn ordering (newest block first) ahead of the existing Anthropic entries: AI Fluency for Builders (`ij57fipeotgk`), AI Fluency for Small Businesses (`r9t7u9g2hzdz`), AI Capabilities and Limitations (`wrfii6cfuvr4`), Introduction to Subagents (`syfjb97quced`), Introduction to Agent Skills (`mr27nygqefat`), AI Fluency for Nonprofits (`krozkhdehxj4`), Teaching the AI Fluency Framework (`7f79pk4xnd5s`), Claude on Google Cloud (`m6eh8atm8u8h`), Claude with Amazon Bedrock (`r75ff44jh27z`), and Model Context Protocol: Advanced Topics (`xv3mgwgb4u43`). Names are title-cased to match the existing entries; "Claude with Amazon Bedrock" follows the credential thumbnail rather than the LinkedIn headline. All thirteen Macquarie University certificates in the source list were already present and were left untouched. Anthropic goes 10 → 20, total 23 → 33; the per-issuer count badges and the `llms-full.txt` total are derived, so both updated on their own.
+- **Files Changed**: `src/lib/certifications.ts`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: prettier ✓; lint 0 errors (one pre-existing `.remember/tmp/last-ndc.ts` warning); typecheck ✓; Vitest **87/87**; build **static export succeeded**. Built `out/en/resume.html` contains all ten new credential IDs and renders the Anthropic badge as `(20)`; `out/llms-full.txt` reports `Certifications (33)`.
+- **Follow-ups**: The served `public/Mohammad_Raouf_Abedini_Resume.pdf` still lists the earlier credential set — regenerate it from the Word source if the PDF should mirror the site. Project Simurgh placement on `/resume` was raised and the user confirmed the current layout is fine; no change made.
+
 ### Raouf: 2026-07-22 (Australia/Sydney) — 2026 SEO, AI-agent visibility, and page-experience hardening
 
 - **Scope**: Current-official-doc audit of the source, 160 canonical routes, built export, live production crawl surface, search snippets, and mobile/desktop rendering. The existing canonical/hreflang/sitemap/robots/JSON-LD foundation remains healthy; changes target the real remaining gaps without redesigning the portfolio.
