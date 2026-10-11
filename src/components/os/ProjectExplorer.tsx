@@ -62,6 +62,9 @@ export function ProjectExplorer({
     ).map((entry) => entry.id),
   );
   const visibleProjects = allProjects.filter((project) => {
+    // Keep the open dossier discoverable when its saved search or category
+    // filter no longer matches the current project.
+    if (project.slug === selectedSlug) return true;
     const matchesCategory = category === "ALL" || project.category === category;
     return matchesCategory && matchingSlugs.has(project.slug);
   });
@@ -210,6 +213,34 @@ export function ProjectExplorer({
             </div>
           </section>
         )}
+        <footer className="os-explorer-footer">
+          <div className="os-explorer-footer-next">
+            <div>
+              <h2>{copy.contactTitle}</h2>
+              <p>{copy.contactDescription}</p>
+            </div>
+            <Link className="os-project-resource" href={getPath("/contact")}>
+              {copy.contact}
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="os-explorer-footer-meta">
+            <nav aria-label={copy.navigation}>
+              <Link href={getPath("/write-ups")}>{copy.research}</Link>
+              <Link href={getPath("/security-policy")}>
+                {copy.securityPolicy}
+              </Link>
+              <a href="/feed.xml">RSS</a>
+            </nav>
+            <span>
+              ©{" "}
+              {formatNumber(new Date().getUTCFullYear(), locale, {
+                useGrouping: false,
+              })}{" "}
+              <bdi lang={copy.nameLocale}>{copy.fullName}</bdi>
+            </span>
+          </div>
+        </footer>
       </div>
     </div>
   );

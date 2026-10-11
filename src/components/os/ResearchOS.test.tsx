@@ -27,8 +27,10 @@ import {
 } from "vitest";
 import type { SearchEntry } from "@/lib/os-search-query";
 import type { Locale } from "@/i18n";
+import { getAtlasCopy } from "./atlas-copy";
 import { getOSCopy } from "./os-copy";
 import { ResearchOS } from "./ResearchOS";
+import { Desktop } from "./Desktop";
 import { getWindowCopy } from "./window-copy";
 import { OSApplicationBridge } from "./OSApplicationBridge";
 import { useContentId, useInitialAppState } from "./application-context";
@@ -658,11 +660,13 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
       within(screen.getByRole("main")).getByRole("button", {
-        name: copy.enter,
+        name: getAtlasCopy("en").journeyExplore,
       }),
     ).toBeVisible();
 
-    fireEvent.click(screen.getByRole("button", { name: copy.enter }));
+    fireEvent.click(
+      screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+    );
     flushFrames();
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
@@ -676,7 +680,7 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
       within(screen.getByRole("main")).getByRole("button", {
-        name: copy.enter,
+        name: getAtlasCopy("en").journeyExplore,
       }),
     ).toBeVisible();
   });
@@ -685,7 +689,6 @@ describe("ResearchOS workspace lifecycle", () => {
     "%s: dock accessible names include every visible label after unlock",
     (locale) => {
       navigation.pathname = locale === "en" ? "/" : `/${locale}`;
-      const localizedCopy = getOSCopy(locale);
       const { container } = render(
         <ResearchOS
           locale={locale}
@@ -700,7 +703,9 @@ describe("ResearchOS workspace lifecycle", () => {
       expect(dock).toHaveAttribute("hidden");
 
       fireEvent.click(
-        screen.getByRole("button", { name: localizedCopy.enter }),
+        screen.getByRole("button", {
+          name: getAtlasCopy(locale).journeyExplore,
+        }),
       );
       flushFrames();
 
@@ -736,7 +741,9 @@ describe("ResearchOS workspace lifecycle", () => {
         within(dock).queryByRole("link", { name: copy.projects }),
       ).toBeNull();
 
-      fireEvent.click(screen.getByRole("button", { name: copy.enter }));
+      fireEvent.click(
+        screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+      );
       flushFrames();
 
       expect(content).not.toHaveAttribute("hidden");
@@ -750,12 +757,66 @@ describe("ResearchOS workspace lifecycle", () => {
     },
   );
 
+  it("keeps Proof Atlas off the lock screen and interactive on the unlocked desktop", async () => {
+    const role = "Independent researcher";
+    const { container } = render(
+      <ResearchOS
+        locale="en"
+        role={role}
+        entries={entries}
+        skipLabel="Skip to main content"
+      >
+        <Desktop locale="en" role={role} />
+      </ResearchOS>,
+    );
+
+    expect(container.querySelector(".os-welcome .proof-atlas")).toBeNull();
+    fireEvent.click(
+      screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+    );
+    flushFrames();
+
+    await waitFor(() => {
+      const atlas = container.querySelector(
+        ".os-content .proof-atlas--desktop",
+      );
+      expect(atlas).toHaveAttribute("data-interactive", "true");
+      expect(atlas?.closest(".os-content")).not.toHaveAttribute("hidden");
+    });
+  });
+
+  it("resets a scrolled welcome viewport before focusing the workspace heading", () => {
+    const originalScrollY = Object.getOwnPropertyDescriptor(window, "scrollY");
+    Object.defineProperty(window, "scrollY", {
+      configurable: true,
+      value: 640,
+    });
+
+    try {
+      render(shell());
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: getAtlasCopy("en").journeyExplore,
+        }),
+      );
+
+      expect(window.scrollTo).toHaveBeenCalledWith({ top: 0 });
+      expect(screen.getByRole("heading", { name: "Workspace" })).toHaveFocus();
+    } finally {
+      if (originalScrollY)
+        Object.defineProperty(window, "scrollY", originalScrollY);
+      else Reflect.deleteProperty(window, "scrollY");
+    }
+  });
+
   it("opens a direct project URL without the intro gate", () => {
     navigation.pathname = "/projects/project-simurgh";
     const { container } = render(shell("Project evidence"));
     const { content, dock } = desktopElements(container);
 
-    expect(screen.queryByRole("button", { name: copy.enter })).toBeNull();
+    expect(
+      screen.queryByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+    ).toBeNull();
     expect(
       screen.getByRole("heading", { name: "Project evidence" }),
     ).toBeVisible();
@@ -778,7 +839,9 @@ describe("ResearchOS workspace lifecycle", () => {
     fireEvent.click(skip);
     flushFrames();
 
-    expect(screen.queryByRole("button", { name: copy.enter })).toBeNull();
+    expect(
+      screen.queryByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+    ).toBeNull();
     expect(content).not.toHaveAttribute("hidden");
     expect(content).not.toHaveAttribute("inert");
     expect(dock).not.toHaveAttribute("hidden");
@@ -794,13 +857,17 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(navigation.push).toHaveBeenCalledWith("/");
     // Navigation is intentionally delayed: no intro exists on the old route.
     flushFrames();
-    expect(screen.queryByRole("button", { name: copy.enter })).toBeNull();
+    expect(
+      screen.queryByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+    ).toBeNull();
 
     navigation.pathname = "/";
     view.rerender(shell());
     flushFrames();
 
-    expect(screen.getByRole("button", { name: copy.enter })).toHaveFocus();
+    expect(
+      screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
+    ).toHaveFocus();
     const { content, dock } = desktopElements(view.container);
     expect(content).toHaveAttribute("hidden");
     expect(dock).toHaveAttribute("inert");
@@ -829,7 +896,9 @@ describe("ResearchOS keyboard and search", () => {
       );
       const { container, rerender } = render(localizedShell(source));
       fireEvent.click(
-        screen.getByRole("button", { name: getOSCopy(source).enter }),
+        screen.getByRole("button", {
+          name: getAtlasCopy(source).journeyExplore,
+        }),
       );
       fireEvent.click(
         container.querySelector(`.os-language a[lang="${destination}"]`)!,

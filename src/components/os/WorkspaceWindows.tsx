@@ -413,7 +413,11 @@ export function WorkspaceWindows({
         aria-hidden={!desktopVisible}
         tabIndex={-1}
       >
-        <Desktop locale={locale} role={role} />
+        <Desktop
+          locale={locale}
+          role={role}
+          interactive={desktopVisible && !locked}
+        />
       </main>
       {state.windows.map((item, index) => {
         const application = applications.get(item.descriptor.id);

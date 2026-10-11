@@ -111,20 +111,19 @@ export const projects: Record<string, Project> = {
         "LaTeX (IEEE conference template, 13 pages, 53 references)",
       ],
       features: [
-        "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+) — excludes the window from tested Windows screen-capture paths with zero visual artefact",
-        "NSWindow.SharingType.none (macOS 14–26) — exclusion demonstrated in tested native capture paths; macOS 26 used CGWindowListCreateImage and screencapture, not browser getDisplayMedia() or a direct ScreenCaptureKit test",
+        "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+): excludes the window from tested Windows screen-capture paths with zero visual artefact",
+        "NSWindow.SharingType.none (macOS 14–26): exclusion was demonstrated in tested native capture paths. macOS 26 used CGWindowListCreateImage and screencapture, not browser getDisplayMedia() or a direct ScreenCaptureKit test",
         "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent",
-        "Empirical contradiction of the community assumption that macOS 15+ mitigated the attack vector",
       ],
     },
     secure: {
       measures: [
         "Discovery and verification (January 2026)",
-        "Microsoft MSRC notified (February 2026) — classified as by-design, not a security vulnerability (April 2026)",
-        "Apple Product Security notified (March 2026) — classified as consistent with documented functionality, not a security issue (March 2026)",
+        "Microsoft MSRC was notified in February 2026 and classified the issue as by-design, not a security vulnerability, in April 2026",
+        "Apple Product Security was notified in March 2026 and classified the issue as consistent with documented functionality, not a security issue, that month",
         "Public release following OS vendor responses (May 2026)",
         "Proof-of-concept source code withheld; available to verified security researchers on request",
-        "Uses only documented, user-level OS APIs — no kernel exploits, no privilege escalation",
+        "Uses documented, user-level OS APIs. No kernel exploits or privilege escalation are involved",
         "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines",
       ],
     },
@@ -134,7 +133,7 @@ export const projects: Record<string, Project> = {
       "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. The research demonstrates a gap in that assumption: documented OS display APIs excluded windows in tested capture paths without privilege escalation or kernel modification. These findings concern controlled, simulated Windows and macOS configurations; they do not establish bypass of every browser or commercial proctoring product.",
     solution: [
       "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
-      "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS) — both documented in official SDK references",
+      "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS); both appear in official SDK references",
       "Built proof-of-concept implementations in Win32 C (Windows) and Swift (macOS) demonstrating full screen-capture evasion",
       "Evaluated simulated proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26; no commercial products were tested, and macOS 26 used native capture rather than browser getDisplayMedia()",
       "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
@@ -146,9 +145,8 @@ export const projects: Record<string, Project> = {
       "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
       "Window exclusion remained effective in tested native capture paths on macOS 26.3.1 despite Apple's documented ScreenCaptureKit changes in macOS 15; no direct ScreenCaptureKit or browser getDisplayMedia() test was performed on macOS 26",
       "Linux (X11/Wayland) was not evaluated; these results apply to the tested Windows and macOS configurations",
-      "Behavioural detection showed no significant effect at this sample size — gaze tracking (p = 0.41, n = 8, underpowered) and mouse dynamics fell within normal exam-behaviour variance; this does not establish that behavioural detection is impossible in all settings",
-      "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
-      "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20376495 — 13 pages, 53 references, IEEE conference format",
+      "Behavioural detection showed no significant effect at this sample size. Gaze tracking (p = 0.41, n = 8) was underpowered, and mouse dynamics fell within normal exam-behaviour variance. This does not establish that behavioural detection is impossible in all settings",
+      "Published as a Zenodo preprint under CC BY 4.0 (DOI 10.5281/zenodo.20376495), with 13 pages, 53 references, and IEEE conference formatting",
     ],
   },
   "project-simurgh": {
@@ -157,7 +155,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description:
-      "Provider-agnostic verifiable containment-attestation framework for agentic AI, evolved from the defensive counterpart to The Invisible Window research. Produces Ed25519-signed, offline-reproducible evidence of what an AI agent was allowed to do after a guardrail miss — contained 138/138 classifier-missed cases and cut a live agent's attack success from 9/140 to 0/140 on AgentDojo.",
+      "Provider-agnostic verifiable containment-attestation framework for agentic AI, evolved from the defensive counterpart to The Invisible Window research. Produces Ed25519-signed, offline-reproducible evidence of what an AI agent was allowed to do after a guardrail miss. Contained 138/138 classifier-missed cases and cut a live agent's attack success on AgentDojo from 9/140 to 0/140.",
     localizedDescription: {
       fa: "چارچوب گواهی مهارِ قابل‌راستی‌آزمایی و مستقل از ارائه‌دهنده برای هوش مصنوعی عامل‌محور، برآمده از همتای دفاعیِ تحقیقات The Invisible Window. شواهد امضاشده با Ed25519 و بازتولیدپذیر به‌صورت آفلاین از آنچه یک عامل هوش مصنوعی پس از عبور از حفاظ مجاز به انجامش بوده تولید می‌کند — ۱۳۸ از ۱۳۸ مورد ازدست‌رفته توسط طبقه‌بند را مهار کرد و نرخ موفقیت حمله یک عامل زنده را در AgentDojo از ۹ از ۱۴۰ به ۰ از ۱۴۰ رساند.",
       ar: "إطار عمل لإثبات الاحتواء القابل للتحقق ومستقل عن المزوّد للذكاء الاصطناعي الوكيلي، تطوّر عن النظير الدفاعي لأبحاث The Invisible Window. يُنتج أدلة موقّعة بـ Ed25519 وقابلة لإعادة الإنتاج دون اتصال حول ما سُمح لوكيل الذكاء الاصطناعي بفعله بعد إخفاق الحاجز — احتوى ١٣٨ من ١٣٨ حالة فاتت المصنّف، وخفّض نجاح هجوم وكيل حي من ٩ من ١٤٠ إلى ٠ من ١٤٠ على AgentDojo.",
@@ -230,7 +228,7 @@ export const projects: Record<string, Project> = {
         "GitHub OIDC second provenance root",
       ],
       features: [
-        "Four containment boundaries — input firewall, context-provenance guard, tool-invocation gate, output-leakage firewall — each emitting signed evidence",
+        "Four containment boundaries: input firewall, context-provenance guard, tool-invocation gate, and output-leakage firewall. Each emits signed evidence",
         "Dishonest-producer threat model: decision-replay and emission-completeness checks catch falsified or dropped evidence, verifiable offline by a hostile reviewer",
         "Multi-class escape taxonomy (containment escape, verifier deception, out-of-scope, gate-boundary evasion) with reproducible adaptive red-team campaigns",
         "Verifiable friction receipts prove an approval checkpoint preceded every protected authority crossing via a distinct-key pincer that defeats self-approval and backdating",
@@ -238,7 +236,7 @@ export const projects: Record<string, Project> = {
     },
     secure: {
       measures: [
-        "Producer-independent verifier trusts only the signer's public key and runs with no network — confirms a real containment claim and falsifies a dishonest one",
+        "The producer-independent verifier trusts only the signer's public key and runs without network access. It confirms valid containment claims and rejects dishonest ones",
         "Self-red-teamed the attestation core across eight attack classes (tamper, key-swap, canonical-laundering, digest-collision, cross-stage replay, self-proof mutation, policy drift); trust root held, two detector weaknesses versioned into detector-v2 and re-tested",
         "Producer-independent witness cross-checks every signed receipt against an independent consequence oracle: zero false accusations, zero missed lies across the fixtures",
         "Five machine-checked Lean theorems (fail-closed, friction precedence, same-key-fails, friction coverage, no-silent-exemption)",
@@ -246,14 +244,14 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Project Simurgh is a provider-agnostic verifiable containment-attestation framework for agentic AI. It began as the defensive counterpart to The Invisible Window research, a metadata-only integrity layer for high-stakes sessions, and evolved into a general receipt for what a deployed AI agent was allowed to do after its first line of defense fails. Capability evaluations show what a model can do; Simurgh produces signed, offline-reproducible evidence of what a system let it do once it was connected to tools, files, context, and external systems. The classifier governs what a model may say; Simurgh attests what the agent was allowed to do, to a hostile reviewer, with no producer access.",
+      "Project Simurgh is a provider-agnostic containment-attestation framework for agentic AI. It grew from The Invisible Window's metadata-only integrity layer for high-stakes sessions into a system that records what a deployed agent was allowed to do after a guardrail failed. Simurgh signs an offline-reproducible record of actions allowed after an agent connects to tools, files, context, and external systems. An independent reviewer can verify that record without access to the evidence producer.",
     problem:
-      "Most AI defences optimise the first line: stopping the bad input. Anthropic's own Redeploying Fable 5 post concedes classifiers can be jailbroken, safety margins cost false positives, and full robustness is probably impossible. When that line fails, a prompt injection, a jailbreak, a tool-authority slip, there is neither a downstream layer that limits what the failure can do nor an evidence standard that lets an operator prove, to a skeptic, what actually happened. The threat model is a dishonest producer: an operator who wants to look contained.",
+      "Input classifiers can miss attacks. When that happens, an agent may still have authority to use tools or access files and external systems. Operators need downstream controls that limit those actions and evidence an independent reviewer can check. Simurgh assumes the evidence producer may try to make a run look contained and designs verification around that risk.",
     solution: [
       "Wraps an agent in four containment boundaries and seals each run into an Ed25519-signed, metadata-only evidence pack that re-derives byte-for-byte offline",
-      "Assumes the evidence producer lies — decision replay and emission-completeness checks let an outside reviewer confirm a real containment claim and falsify a dishonest one",
+      "Assumes the evidence producer may lie. Decision replay and emission-completeness checks let an outside reviewer confirm a containment claim or reject a dishonest one",
       "Publishes a containment-utility Pareto frontier and a 12-rung reproduction ladder that an outsider recomputes with no model and no producer access",
-      "Positions as the defense-in-depth layer complementary to inline classifiers — the agent-authority cell a content classifier never touches — with a signed non-claim that it would not have caught the June 2026 content bypass",
+      "Adds controls at the agent-authority boundary alongside inline classifiers. A signed non-claim records that Simurgh would not have caught the June 2026 content-generation bypass",
       "Preserves its published lineage: the Invisible Window integrity origin and the machine-checked absence-claims work (Banking Shield) both feed the current attestation contract",
     ],
     proof: [
@@ -302,18 +300,18 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "Ingests Markdown, PDF, TXT, and images into a linked, searchable, git-friendly wiki",
-        "LLM extraction layer produces typed knowledge nodes: claims, concepts, entities, and decisions — compounded additively across sources",
+        "The LLM extraction layer produces typed knowledge nodes: claims, concepts, entities, and decisions. The knowledge set grows as sources are added",
         "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces dense context bundles for agent prompts",
         "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
-        "Multi-project federation — cross-vault search, contradiction detection, and policy radar across independent vaults",
+        "Multi-project federation supports cross-vault search, contradiction detection, and policy monitoring across independent vaults",
         "218 tests passing across 18 completed phases",
       ],
     },
     secure: {
       measures: [
-        "Local-first by design — no cloud storage or external transmission of document content",
+        "Document content stays in local storage and is not sent to cloud services",
         "MCP server is read-only by default; write mode requires explicit opt-in flag",
-        "Project paths stored in ~/.zurvan/projects.json — never committed to version control",
+        "Project paths are stored in ~/.zurvan/projects.json and are never committed to version control",
         "Mock LLM provider available for safe dev/test without API key exposure",
         "Agent memory isolated per vault; cross-vault federation requires explicit registration",
       ],
@@ -324,7 +322,7 @@ export const projects: Record<string, Project> = {
       "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge, which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
     solution: [
       "Built a local document ingestion pipeline (MD, PDF, TXT, images) feeding a SQLite-backed knowledge store",
-      "LLM extraction layer produces typed nodes — claims, concepts, entities, decisions — compounded additively across sources as the corpus grows",
+      "The LLM extraction layer produces typed nodes for claims, concepts, entities, and decisions. The knowledge set grows as the corpus grows",
       "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces deep context bundles for agent prompts",
       "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
       "Multi-project federation manages independent vaults with cross-vault search, contradiction detection, and policy drift radar",
@@ -374,8 +372,8 @@ export const projects: Record<string, Project> = {
       measures: [
         "API keys redacted from logs & wiped from memory",
         "Secure OS-keychain storage for secrets",
-        "Enforced timeouts & input sanitization",
-        "Privacy First design",
+        "Enforced timeouts and input sanitisation",
+        "Privacy-first design",
       ],
     },
     fullDescription:
@@ -444,7 +442,7 @@ export const projects: Record<string, Project> = {
       "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
     solution: [
       "Built a 100% offline analysis engine using Kotlin Multiplatform",
-      "Implemented an ensemble ML model + 25 heuristics for high accuracy",
+      "Implemented an ensemble ML model with 25 heuristics for threat detection",
       "Targeted 5 platforms (Android, iOS, Desktop, Web); ~100% of detection logic shared (~52% of the total codebase)",
       "Achieved <5ms latency for real-time scanning",
     ],
@@ -495,14 +493,14 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "LLM OCR pipeline extracting structured JSON from PDF syllabi",
-        "Syllabus-as-Code — assessments and deadlines as version-controlled artefacts",
+        "Syllabus-as-Code: assessments and deadlines are version-controlled artefacts",
         "Full student OS: calendar, reminders, campus map, notifications",
         "503 tests across 92 files with CI/CD quality gates",
       ],
     },
     secure: {
       measures: [
-        "Zero-Trust proxy middleware — every route authenticated by default",
+        "Zero-Trust proxy middleware authenticates every route by default",
         "Supabase Row-Level Security enforced at database layer",
         "WebAuthn/FIDO2 passkey authentication (no passwords stored)",
         "LLM prompt injection mitigation with schema-constrained output and input sanitisation",
@@ -517,15 +515,15 @@ export const projects: Record<string, Project> = {
       "Built an LLM OCR pipeline that extracts structured JSON from PDF syllabi with Zod schema validation",
       "Implemented Syllabus-as-Code where assessments and deadlines are version-controlled, diff-able artefacts",
       "Created a full student OS with calendar, campus navigation (Leaflet + Google Maps), and push notifications",
-      "Architected for fork-ability — any Australian university can adopt by swapping data/ and environment variables",
+      "Designed for other Australian universities to adopt by replacing data/ and setting environment variables",
     ],
     proof: [
       "Accepted into the Macquarie University Incubator as a formal startup (2026)",
       "Live in production at syllabus-sync.app",
-      "503 tests across 92 files — all passing in CI",
+      "All 503 tests across 92 files passed in CI",
       "Zero-Trust proxy catches misconfiguration by default (validated in production)",
       "Designed to serve ~47,000 MQ students; architected to fork for other Australian universities",
-      "WebAuthn passkey auth — no shared secrets leave the device",
+      "WebAuthn passkey authentication keeps shared secrets on the device",
     ],
   },
   "divan-open-day": {
@@ -534,7 +532,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "Bilingual (English/Persian) offline-first Hafez & Rumi poetry experience built for a Persian Society Open Day stall. Visitors pick a poet and receive one reviewed verse with translation, source, and recitation — with no cookies, trackers, or backend.",
+      "Bilingual English and Persian Hafez and Rumi poetry experience built for a Persian Society Open Day stall. Visitors choose a poet and receive one reviewed verse with its translation, source, and recitation. The app works offline and uses no cookies, trackers, or backend.",
     localizedDescription: {
       fa: "تجربه‌ی دوزبانه (فارسی/انگلیسی) و آفلاین‌محورِ شعر حافظ و مولوی که برای غرفه‌ی روز باز انجمن ایرانیان ساخته شده است. بازدیدکننده یک شاعر را برمی‌گزیند و یک بیتِ بازبینی‌شده همراه با ترجمه، منبع و صوت دریافت می‌کند — بدون هیچ کوکی، ردیاب یا سرور.",
       ar: "تجربة شعرية ثنائية اللغة (الإنجليزية/الفارسية) تعمل دون اتصال أولًا لأشعار حافظ ومولوي، صُممت لجناح اليوم المفتوح للجمعية الفارسية. يختار الزائر شاعرًا فيتلقى بيتًا مُراجَعًا مع ترجمته ومصدره وتلاوته — دون أي ملفات تعريف ارتباط أو مُتتبِّعات أو خادم.",
@@ -567,7 +565,7 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
-        "Fair, unbiased verse selection via a Web Crypto shuffle bag — computed entirely on-device with no server involvement",
+        "Verse selection uses a Web Crypto shuffle bag computed on-device, without server involvement",
         "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
         "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterized images)",
         "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support",
@@ -576,26 +574,26 @@ export const projects: Record<string, Project> = {
     secure: {
       measures: [
         "Privacy by construction: no cookies, identifiers, trackers, or visitor input; nothing is transmitted",
-        "No backend, database, or analytics infrastructure — a purely static client",
+        "The client is static and has no backend, database, or analytics infrastructure",
         "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
         "Production compiler rejects synthetic/test data before deployment",
         "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licenses, e.g. CC BY-SA)",
-        "Delivered as a static container behind an outbound tunnel — no inbound surface",
+        "Delivered as a static container behind an outbound tunnel, with no inbound surface",
       ],
     },
     fullDescription:
-      "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. It is offline-first and privacy-first by construction, no cookies, trackers, backend, or visitor input, so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
+      "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. The app works offline after its first load and is privacy-first by construction: no cookies, trackers, backend, or visitor input, so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
     problem:
       "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity, no hallucinated verses, no rasterized calligraphy, no data collection.",
     solution: [
       "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
       "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
-      "Selected verses fairly with a Web Crypto shuffle bag entirely on-device — no server, no record of what anyone drew",
+      "The Web Crypto shuffle bag selects verses on-device; no server records what visitors draw",
       "Rendered live Nastaliq typography and per-poet art direction for cultural authenticity instead of flattened images",
       "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support",
     ],
     proof: [
-      "Zero data collection: no cookies, trackers, or backend — only public poem IDs in sessionStorage",
+      "No cookies, trackers, or backend are used. sessionStorage holds only public poem IDs",
       "Runs fully offline after first load via the integrity-verified service worker",
       "A production compiler rejects synthetic test data before deployment, so only the reviewed corpus ever ships",
       "Tested across unit, component, accessibility, offline, share, performance, and security suites (Vitest) plus Playwright Chromium e2e",
@@ -634,7 +632,7 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "AI-assisted media recommendations via Gemini with graceful degradation",
-        "Real-time chat transcripts with user-scoped sanitization",
+        "Real-time chat transcripts with user-scoped sanitisation",
         "Status tracking, ratings, and reviews for anime, movies, and books",
         "Smart filtering and search across entire media library",
       ],
@@ -651,7 +649,7 @@ export const projects: Record<string, Project> = {
     fullDescription:
       "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
     problem:
-      "Existing media trackers are fragmented across platforms with weak security postures. Users need a unified catalog that treats their entertainment library as a curated identity system, not just a checklist, with real security built in.",
+      "Media trackers split entertainment libraries across platforms and can have weak security controls. Nexus Archive brings titles, ratings, notes, and recommendations into one account with row-level access controls.",
     solution: [
       "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
       "Implemented backend-managed HttpOnly auth cookies replacing frontend-readable Supabase tokens",
@@ -720,7 +718,7 @@ export const projects: Record<string, Project> = {
     proof: [
       "Throughput: 1M+ orders/second (single-thread, synthetic benchmark)",
       "Comprehensive test suite with p50/p99 latency benchmarks",
-      "60+ unit tests across 18 test suites — all passing",
+      "All 60+ unit tests across 18 test suites passed",
       "CI: ASan, UBSan, cppcheck, clang-format on every push",
     ],
   },
@@ -766,7 +764,7 @@ export const projects: Record<string, Project> = {
     },
     secure: {
       measures: [
-        "Color-coded severity-level alerting (LOW → CRITICAL)",
+        "Colour-coded severity-level alerting (LOW → CRITICAL)",
         "27 unit/integration tests covering all protocol layers",
         "CSV export for forensic analysis and SIEM integration",
         "Configurable BPF filters for targeted capture",
@@ -785,7 +783,7 @@ export const projects: Record<string, Project> = {
     proof: [
       "Throughput: 500K+ packets/sec (single-thread parse, synthetic SYN)",
       "Protocol coverage: 7 protocols across Layers 2-7",
-      "27 unit/integration tests — all passing",
+      "All 27 unit and integration tests passed",
       "Supports both live capture and pcap file analysis",
     ],
   },
@@ -852,7 +850,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "Universal file converter for macOS. 49 formats across images, documents, audio, video, and data — powered by 9 conversion engines. Zero cloud, single .app bundle.",
+      "File converter for macOS with 49 formats across images, documents, audio, video, and data. It uses 9 conversion engines, processes files locally, and ships as one .app bundle.",
     localizedDescription: {
       fa: "مبدل فایل جهانی برای macOS. ۴۹ فرمت در تصاویر، اسناد، صدا، ویدئو و داده — مجهز به ۹ موتور تبدیل. بدون ابر، تک فایل .app.",
       ar: "محول ملفات عالمي لنظام macOS. ٤٩ تنسيقاً تشمل الصور والمستندات والصوت والفيديو والبيانات — مدعوم بـ ٩ محركات تحويل. بدون سحابة، حزمة .app واحدة.",
@@ -886,10 +884,10 @@ export const projects: Record<string, Project> = {
     },
     secure: {
       measures: [
-        "100% local processing — zero network calls, no cloud dependency",
+        "100% local processing with no network calls or cloud dependency",
         "MIME-based magic byte detection prevents extension spoofing",
         "Path sanitisation for all file operations",
-        "Single .app bundle — no background services or daemons",
+        "One .app bundle with no background services or daemons",
       ],
     },
     fullDescription:
@@ -906,7 +904,7 @@ export const projects: Record<string, Project> = {
       "49 formats supported across 5 categories (images, documents, audio, video, data)",
       "9 conversion engines with automatic routing based on MIME detection",
       "Batch processing up to 50 files with configurable threading (1-8 threads)",
-      "Zero network calls — fully offline local processing",
+      "No network calls; all processing runs locally and offline",
     ],
   },
   aion: {
@@ -993,7 +991,7 @@ export const projects: Record<string, Project> = {
       "Hybrid RAG retrieval ensures answers are grounded in actual scripture, not hallucinated",
       "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
       "Exact-match response cache eliminates redundant LLM costs",
-      "Anonymous auth with zero sign-up friction — Supabase RLS enforced on all tables",
+      "Anonymous authentication with no sign-up; Supabase RLS applies to all tables",
     ],
   },
 };
@@ -1054,7 +1052,7 @@ Approval-gate friction receipts prove an oversight checkpoint preceded every pro
 
 ### Honest non-claims
 
-The preprints sign their limits. Simurgh would **not** have caught the June 2026 content-generation bypass by itself, that is a model-output problem, not an agent-authority one. It is defence in depth, not a replacement for inline safeguards. Reproduction is one command over a 12-rung signed release ladder; 3,057 automated tests; AGPL-3.0.
+Simurgh would **not** have caught the June 2026 content-generation bypass by itself; that affected model output rather than agent authority. Simurgh adds a defence-in-depth layer alongside inline safeguards. Reproduction takes one command across a 12-rung signed release ladder. The project has 3,057 automated tests and is licensed under AGPL-3.0.
     `,
   },
   {
@@ -1155,7 +1153,7 @@ Setting \`sharingType\` to \`.none\` requests exclusion from capture paths that 
 - \`AVCaptureScreenInput\` (AV Foundation screen recording)
 - WebRTC's \`getDisplayMedia()\` on macOS
 
-**Tested macOS 26.3.1 native captures remained affected.** Despite Apple's documented ScreenCaptureKit changes in macOS 15, the study observed capture exclusion with \`.none\` using native capture tools. It did not test browser-based capture on macOS 26 or establish the behavior of every ScreenCaptureKit client.
+**Tested macOS 26.3.1 native captures remained affected.** Despite Apple's documented ScreenCaptureKit changes in macOS 15, the study observed capture exclusion with \`.none\` using native capture tools. It did not test browser-based capture on macOS 26 or establish the behaviour of every ScreenCaptureKit client.
 
 ---
 
@@ -1170,7 +1168,7 @@ Setting \`sharingType\` to \`.none\` requests exclusion from capture paths that 
 | Linux (X11) | Not tested | Not tested |
 | Linux (Wayland) | Not tested | Not tested |
 
-These results concern simulated proctoring in a controlled laboratory, not commercial products. The macOS 26 evaluation used \`CGWindowListCreateImage\` and the \`screencapture\` utility, not a browser \`getDisplayMedia()\` call. Linux X11 and Wayland were not tested. The behavioral study involved n = 8 consenting research-team members; p = 0.41 does not prove that behavioral detection is impossible. The findings reflect tested software versions as of March 2026; later versions may behave differently.
+These results concern simulated proctoring in a controlled laboratory, not commercial products. The macOS 26 evaluation used \`CGWindowListCreateImage\` and the \`screencapture\` utility, not a browser \`getDisplayMedia()\` call. Linux X11 and Wayland were not tested. The behavioural study involved n = 8 consenting research-team members; p = 0.41 does not prove that behavioural detection is impossible. The findings reflect tested software versions as of March 2026; later versions may behave differently.
 
 ---
 
@@ -1224,13 +1222,13 @@ The full 13-page paper is linked from the project page. Full proof-of-concept so
     content: `
 ## The system every exchange runs on
 
-Every electronic exchange (NYSE, NASDAQ, CME) runs a matching engine at its center. It pairs buy orders with sell orders at the best available price. Building one at the systems level means learning price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
+Every electronic exchange (NYSE, NASDAQ, CME) runs a matching engine at its centre. It pairs buy orders with sell orders at the best available price. Building one at the systems level means learning price-time priority, memory allocation on the hot path, and sub-microsecond latency engineering.
 
 **NanoMatch** is my from-scratch implementation in modern C++20, processing 1M+ orders per second (single-thread, synthetic benchmark) with sub-microsecond latency.
 
 ### The Three-Layer Data Structure
 
-A naive implementation might use a single priority queue. The problem: O(1) best price but O(n) cancellation. On real exchanges, **90%+ of all order activity is cancellations**, so optimising cancel latency matters more than insert.
+A naive implementation might use a single priority queue. It can find the best price in O(1), but cancellation takes O(n). In this implementation, a direct lookup and per-price order queue make cancellation O(1).
 
 NanoMatch uses three cooperating structures:
 
@@ -1239,8 +1237,6 @@ NanoMatch uses three cooperating structures:
 | **Price levels** | \`std::map<Price, PriceLevel>\` | Sorted by price. \`std::greater\` for bids (highest first), \`std::less\` for asks (lowest first). O(log M) insert, O(1) best via \`begin()\`. |
 | **Order queue** | \`std::list<Order>\` per level | FIFO queue at each price. O(1) append, O(1) erase by iterator. |
 | **Lookup** | \`std::unordered_map<OrderID, Iterator>\` | O(1) cancel, hash lookup yields a list iterator, erase is constant time. |
-
-This is the same asymptotic profile used by production exchange engines.
 
 ### Integer Prices, Avoiding Floating-Point Traps
 
@@ -1266,7 +1262,7 @@ Four order types with production-grade semantics:
 - **IOC** (Immediate-or-Cancel): Like limit but cancel unfilled remainder
 - **FOK** (Fill-or-Kill): Atomic pre-check via \`can_fill_completely()\`, scans all crossable levels before executing. If insufficient liquidity exists, zero fills occur
 
-Modify is implemented as cancel + re-add, which is **correct exchange behavior**, modifications lose time priority, just like on NYSE and NASDAQ.
+Modify is implemented as cancel + re-add. The modified order loses its time priority, as it would on NYSE or NASDAQ.
 
 ### Latency Profile
 
@@ -1276,7 +1272,7 @@ Modify is implemented as cancel + re-add, which is **correct exchange behavior**
 | p99 | 625 ns |
 | p99.9 | 1,250 ns |
 
-The 15x ratio between p50 and p99.9 is realistic. Spikes come from red-black tree rebalancing on new price level insertion, orders sweeping multiple levels, and cache misses on cold levels. In production, **tail latency is the metric that differentiates systems**.
+The p99.9 result is about 15 times the p50. In this benchmark, spikes came from red-black tree rebalancing when a new price level was inserted, orders sweeping multiple levels, and cache misses on cold levels.
     `,
   },
   {
@@ -1337,7 +1333,7 @@ The parsers operate directly on the raw buffer provided by libpcap. No intermedi
 
 The alert system uses a strategy pattern, \`AlertManager\` dispatches each alert to all registered outputs:
 
-- **Console**: ANSI color-coded by severity (green → yellow → red → bold red)
+- **Console**: ANSI colour-coded by severity (green → yellow → red → bold red)
 - **CSV**: RFC 4180-compliant with proper escaping, ready for SIEM ingestion
 
 Adding a new output (syslog, webhook, Kafka) means implementing a single \`emit()\` method.

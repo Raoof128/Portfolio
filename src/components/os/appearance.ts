@@ -1,11 +1,15 @@
 export type Appearance = "dark" | "light";
+export const DEFAULT_APPEARANCE: Appearance = "dark";
 const key = "researchos.appearance.v1";
-let fallback: Appearance = "dark";
+let fallback: Appearance = DEFAULT_APPEARANCE;
 
 export function readAppearance(): Appearance {
   try {
     const stored = window.localStorage.getItem(key);
-    return stored === "light" || stored === "dark" ? stored : fallback;
+    // A missing preference is a fresh visit, even after storage was cleared.
+    return stored === "light" || stored === "dark"
+      ? stored
+      : DEFAULT_APPEARANCE;
   } catch {
     return fallback;
   }

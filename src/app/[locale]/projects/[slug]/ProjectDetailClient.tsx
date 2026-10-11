@@ -11,14 +11,48 @@ import type {
   ProjectDiagramCopy,
 } from "@/lib/project-localization";
 import type { ProjectSummary } from "@/lib/project-summaries";
+import type {
+  InvisibleWindowStoryCopy,
+  SimurghEvidenceStoryCopy,
+  ZurvanEvidenceStoryCopy,
+} from "@/lib/project-content/evidence-story-copy";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { formatNumber } from "@/i18n/format";
+import dynamic from "next/dynamic";
 import { CONTACT_EMAIL_GMAIL } from "@/lib/constants";
 import { ProjectExplorer } from "@/components/os/ProjectExplorer";
 import { ProjectDiagram } from "@/components/os/ProjectDiagram";
+import "@/components/os/evidence-story-common.css";
 import { ProjectMotion } from "@/components/os/ProjectMotion";
 import { getOSCopy } from "@/components/os/os-copy";
+
+const SimurghEvidenceStory = dynamic(
+  () =>
+    import("@/components/os/SimurghEvidenceStory").then(
+      (module) => module.SimurghEvidenceStory,
+    ),
+  { ssr: true },
+);
+const InvisibleWindowEvidenceStory = dynamic(
+  () =>
+    import("@/components/os/InvisibleWindowEvidenceStory").then(
+      (module) => module.InvisibleWindowEvidenceStory,
+    ),
+  { ssr: true },
+);
+const ZurvanEvidenceStory = dynamic(
+  () =>
+    import("@/components/os/ZurvanEvidenceStory").then(
+      (module) => module.ZurvanEvidenceStory,
+    ),
+  { ssr: true },
+);
+
+type EvidenceStory =
+  | { kind: "simurgh"; copy: SimurghEvidenceStoryCopy }
+  | { kind: "invisible-window"; copy: InvisibleWindowStoryCopy }
+  | { kind: "zurvan"; copy: ZurvanEvidenceStoryCopy };
 
 function ResourceLink({
   href,
@@ -53,11 +87,13 @@ export function ProjectDetailClient({
   slug,
   summaries,
   diagramCopy,
+  evidenceStory,
 }: {
   project: LocalizedProject;
   slug: string;
   summaries: ProjectSummary[];
   diagramCopy: ProjectDiagramCopy;
+  evidenceStory: EvidenceStory | null;
 }) {
   const { locale, t } = useTranslation();
   const contentId = useContentId();
@@ -206,12 +242,23 @@ export function ProjectDetailClient({
             })}{" "}
             / {copy.overview}
           </p>
-          <ProjectDiagram
-            project={project}
-            slug={slug}
-            copy={diagramCopy}
-            locale={locale}
-          />
+          {evidenceStory?.kind === "simurgh" ? (
+            <SimurghEvidenceStory locale={locale} copy={evidenceStory.copy} />
+          ) : evidenceStory?.kind === "invisible-window" ? (
+            <InvisibleWindowEvidenceStory
+              locale={locale}
+              copy={evidenceStory.copy}
+            />
+          ) : evidenceStory?.kind === "zurvan" ? (
+            <ZurvanEvidenceStory locale={locale} copy={evidenceStory.copy} />
+          ) : (
+            <ProjectDiagram
+              project={project}
+              slug={slug}
+              copy={diagramCopy}
+              locale={locale}
+            />
+          )}
           <h2 id={contentId("overview-heading")}>{t.project_detail.problem}</h2>
           <p>{project.problem}</p>
           <h3>{t.project_detail.solution_overview}</h3>

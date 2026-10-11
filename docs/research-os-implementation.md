@@ -1,5 +1,9 @@
 # ResearchOS implementation
 
+Current implementation and export status is summarized in the
+[12 October Portfolio handover](./portfolio-handover-2026-10-12.md). The
+implementation history and evidence identities below remain unchanged.
+
 ResearchOS now renders one current application window inside the
 existing Next.js portfolio. Each reading view keeps its real, shareable route;
 Next navigation continues to own page metadata and browser history. The welcome

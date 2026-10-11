@@ -53,8 +53,8 @@ describe("research and qualification integrity", () => {
 
   it("states expected education and private source access in the machine corpus", async () => {
     const corpus = await fullCorpus().text();
-    expect(corpus).toContain(
-      "Bachelor of Cyber Security, Macquarie University, Sydney — expected November 2026",
+    expect(corpus).toMatch(
+      /Bachelor of Cyber Security, Macquarie University, Sydney[;—] expected November 2026/,
     );
     expect(corpus).not.toContain("Bachelor of IT (Cyber Security)");
     expect(corpus).toContain(

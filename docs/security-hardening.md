@@ -1,5 +1,9 @@
 # Local security hardening
 
+See the [12 October Portfolio handover](./portfolio-handover-2026-10-12.md)
+for the current local export identity and production-verification limits. The
+security findings and scope below retain their recorded identities.
+
 ResearchOS is a static portfolio. The welcome screen is a presentation control;
 it does not authenticate visitors. Contact opens an email draft. This review
 covers authored routes, client rendering, public export files and CI delivery.

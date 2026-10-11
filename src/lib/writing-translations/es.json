@@ -24,7 +24,7 @@
       "### Supervisión comprobada por máquina",
       "Los recibos de intervención de la puerta de aprobación demuestran que un control de supervisión precedió cada cruce protegido de autoridad, mediante una restricción de dos claves que impide la autoaprobación y la asignación retroactiva de fechas. Los invariantes centrales, cierre ante fallo, precedencia de la intervención y ausencia de exenciones silenciosas, están demostrados con **cinco teoremas de Lean comprobados por máquina**. Son pruebas formales, no casos de prueba.",
       "### Límites declarados con claridad",
-      "Las prepublicaciones también firman sus límites. Simurgh **no** habría detectado por sí solo la evasión de generación de contenido de junio de 2026: es un problema de salida del modelo, no de autoridad del agente. Aporta defensa en profundidad y no sustituye las protecciones de entrada. La reproducción requiere un comando sobre una cadena de publicación firmada de 12 niveles; 3,057 pruebas automatizadas; licencia AGPL-3.0."
+      "Simurgh **no** habría detectado por sí solo la evasión de generación de contenido de junio de 2026; afectaba a la salida del modelo, no a la autoridad del agente. Simurgh añade una capa de defensa en profundidad junto con las protecciones en línea. La reproducción requiere un comando para recorrer una cadena de publicación firmada de 12 niveles. El proyecto tiene 3,057 pruebas automatizadas y licencia AGPL-3.0."
     ]
   },
   "invisible-window-research": {
@@ -96,13 +96,12 @@
       "Toda bolsa electrónica, como NYSE, NASDAQ o CME, tiene un motor de casación en su centro. Empareja órdenes de compra y venta al mejor precio disponible. Construirlo a nivel de sistemas exige comprender la prioridad precio-tiempo, la asignación de memoria en la ruta crítica y la ingeniería de latencia inferior al microsegundo.",
       "**NanoMatch** es mi implementación desde cero en C++20 moderno: procesa 1M+ órdenes por segundo en un benchmark sintético de un solo hilo, con latencia inferior al microsegundo.",
       "### La estructura de datos de tres capas",
-      "Una implementación sencilla podría usar una sola cola de prioridad. El problema es obtener el mejor precio en O(1), pero cancelar en O(n). En las bolsas reales, **90%+ de la actividad de órdenes son cancelaciones**; por ello optimizar su latencia importa más que optimizar la inserción.",
+      "Una implementación sencilla podría usar una sola cola de prioridad. Puede encontrar el mejor precio en O(1), pero cancelar lleva O(n). En esta implementación, un índice de búsqueda directo y una cola de órdenes por nivel de precio permiten cancelar en O(1).",
       "NanoMatch utiliza tres estructuras que cooperan:",
       "| Capa | Estructura | Propósito |",
       "| **Niveles de precio** | `std::map<Price, PriceLevel>` | Ordenados por precio. `std::greater` para compras (mayor primero), `std::less` para ventas (menor primero). Inserción O(log M), mejor precio O(1) mediante `begin()`. |",
       "| **Cola de órdenes** | `std::list<Order>` por nivel | FIFO en cada precio. Añadir O(1), eliminar mediante iterador O(1). |",
       "| **Índice de búsqueda** | `std::unordered_map<OrderID, Iterator>` | Cancelación O(1): la búsqueda hash devuelve un iterador de lista y el borrado es constante. |",
-      "Es el mismo perfil de complejidad asintótica utilizado en motores de bolsas en producción.",
       "### Precios enteros para evitar errores de coma flotante",
       "Los precios se guardan como `int32_t` en céntimos (`$101.50 = 10150`). La comparación en coma flotante (`==`) no es fiable por los errores de representación. En un motor de casación puede mantener separados niveles que deberían fusionarse, o cruzar órdenes al precio incorrecto. La aritmética entera hace exacta y determinista la comparación.",
       "### El asignador de memoria por pool",
@@ -118,13 +117,13 @@
       "- **Market**: fijar el precio en `MAX/MIN` para garantizar el cruce; nunca permanece en el libro",
       "- **IOC** (ejecución inmediata o cancelación): como una orden limitada, pero se cancela el resto no ejecutado",
       "- **FOK** (ejecución total o cancelación): una comprobación atómica con `can_fill_completely()` recorre los niveles cruzables antes de ejecutar. Si falta liquidez, no se ejecuta ninguna parte",
-      "La modificación se implementa cancelando y volviendo a añadir, que es el **comportamiento correcto de una bolsa**: se pierde la prioridad temporal, igual que en NYSE y NASDAQ.",
+      "La modificación se implementa cancelando y volviendo a añadir. La orden modificada pierde su prioridad temporal, como ocurriría en NYSE o NASDAQ.",
       "### Perfil de latencia",
       "| Percentil | Latencia |",
       "| p50 | 84 ns |",
       "| p99 | 625 ns |",
       "| p99.9 | 1,250 ns |",
-      "La relación de 15 veces entre p50 y p99.9 es realista. Los picos proceden del reequilibrado del árbol rojo-negro al insertar niveles de precio, de órdenes que atraviesan varios niveles y de fallos de caché en niveles fríos. En producción, **la latencia de cola es la métrica que distingue los sistemas**."
+      "El resultado p99.9 es unas 15 veces el de p50. En este benchmark, los picos se debieron al reequilibrado del árbol rojo-negro al insertar un nivel de precio, a órdenes que recorren varios niveles y a fallos de caché en niveles fríos."
     ]
   },
   "sentinelflow-deep-dive": {

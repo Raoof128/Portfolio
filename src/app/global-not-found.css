@@ -130,17 +130,6 @@ html[data-global-not-found][data-appearance="light"] {
   --not-found-link: #1d4ed8;
 }
 
-@media (prefers-color-scheme: light) {
-  html[data-global-not-found]:not([data-appearance]) {
-    color-scheme: light;
-    --not-found-background: #f2f7ff;
-    --not-found-surface: #fff;
-    --not-found-text: #13233a;
-    --not-found-secondary: #435a76;
-    --not-found-border: #75859b;
-    --not-found-link: #1d4ed8;
-  }
-}
 @media (forced-colors: active) {
   html[data-global-not-found][data-appearance],
   html[data-global-not-found]:not([data-appearance]) {

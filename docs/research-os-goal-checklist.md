@@ -1,5 +1,11 @@
 # ResearchOS goal: execution and acceptance checklist
 
+**Current local continuation:** `main-proof-atlas-2026-10-11`, export
+`RAlsc85jKQO_lr4A2e_Ie` at `00ce522dc4c247a15a0fcfb42a280c20c1935cf4`.
+See the [12 October Portfolio handover](./portfolio-handover-2026-10-12.md)
+for current local evidence and unresolved field/device/assistive technology/
+remote-CI gates. The build-10 material below remains historical.
+
 The source goal is the user-supplied `pasted-text-1.txt` attachment dated
 9 October 2026. The preceding frontend gauntlet is historical evidence. The
 complete goal requires implemented applications and actual acceptance proof.

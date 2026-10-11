@@ -204,6 +204,23 @@ describe("original project index previews", () => {
     it(`${locale}: keeps previews, titles, links and combined search/category results aligned`, async () => {
       const { element, summaries, copy } = await explorer(locale);
       const { container } = render(element);
+      const footer = container.querySelector<HTMLElement>(
+        ".os-explorer-footer",
+      )!;
+      const prefix = locale === "en" ? "" : `/${locale}`;
+      expect(
+        within(footer).getByRole("link", { name: copy.contact }),
+      ).toHaveAttribute("href", `${prefix}/contact`);
+      expect(
+        within(footer).getByRole("link", { name: copy.research }),
+      ).toHaveAttribute("href", `${prefix}/write-ups`);
+      expect(
+        within(footer).getByRole("link", { name: copy.securityPolicy }),
+      ).toHaveAttribute("href", `${prefix}/security-policy`);
+      expect(
+        within(footer).getByRole("heading", { name: copy.contactTitle }),
+      ).toBeVisible();
+      expect(footer).toHaveTextContent(copy.contactDescription);
       const searchedProject = summaries.find(
         (project) => project.slug === "gitswitch",
       )!;
@@ -407,6 +424,42 @@ describe("original project index previews", () => {
       "data-project-art",
       project.slug,
     );
+  });
+
+  it("keeps the open dossier in the project list when restored filters exclude it", async () => {
+    const { summaries, copy } = await explorer("en");
+    const activeProject = summaries.find(
+      (project) => project.slug === "project-simurgh",
+    )!;
+    const excludedCategory = summaries.find(
+      (project) => project.category !== activeProject.category,
+    )!.category;
+    vi.spyOn(applicationContext, "useInitialAppState").mockReturnValue({
+      projectQuery: "no matching project",
+      projectCategory: excludedCategory,
+    });
+    const { container } = render(
+      <I18nProvider locale="en" dictionary={await getDictionary("en")}>
+        <ProjectExplorer
+          summaries={summaries}
+          selectedSlug={activeProject.slug}
+        >
+          <h1>Open dossier</h1>
+        </ProjectExplorer>
+      </I18nProvider>,
+    );
+
+    const selected = container.querySelector(
+      `.os-explorer-project-link[href="/projects/${activeProject.slug}"]`,
+    );
+    expect(selected).toHaveAttribute("aria-current", "page");
+    expect(selected).toHaveTextContent(activeProject.title);
+    expect(
+      screen.getByRole("searchbox", { name: copy.projectSearch }),
+    ).toHaveValue("no matching project");
+    expect(
+      screen.getByRole("combobox", { name: copy.allCategories }),
+    ).toHaveValue(excludedCategory);
   });
 
   it("rejects an invalid bootstrap category and bounds the captured query", async () => {

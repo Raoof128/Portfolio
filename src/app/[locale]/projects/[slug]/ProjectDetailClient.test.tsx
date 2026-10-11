@@ -35,6 +35,7 @@ describe("project source availability", () => {
             slug={project.slug}
             summaries={[]}
             diagramCopy={getProjectDiagramCopy(locale)}
+            evidenceStory={null}
           />
         </I18nProvider>,
       );
@@ -72,6 +73,7 @@ describe("project source availability", () => {
           slug={project.slug}
           summaries={[]}
           diagramCopy={getProjectDiagramCopy("en")}
+          evidenceStory={null}
         />
       </I18nProvider>,
     );

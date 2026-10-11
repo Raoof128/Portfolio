@@ -1,5 +1,11 @@
 # ResearchOS verification and release handoff
 
+**Current Portfolio status (12 October 2026):** see the
+[Portfolio handover](./portfolio-handover-2026-10-12.md) for the later Proof
+Atlas/lock-screen export and accepted language decision. This document's build
+10 and dependency-integration results remain historical and retain their
+original identities.
+
 Checked 11 October 2026 (Australia/Sydney). The reviewed private development dependency is now installed. Fresh local integration passes ordinary `npm ci`, lint with zero errors and one existing local temporary-file warning, typecheck, 468 application tests in 33 files, three dependency-security tests, six schema tests, 168 generated pages, the 160-route export audit and full/runtime audits with zero advisories. The final frozen-source/export report records the exact handoff identity; historical captures and results keep their original build labels. Publication still requires explicit approval. Field performance, physical-device, screen-reader and remote CI proof remain separate.
 No push, merge, deployment or production mutation has been performed.
 

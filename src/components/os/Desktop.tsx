@@ -1,8 +1,14 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink, FolderOpen } from "lucide-react";
+import dynamic from "next/dynamic";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import type { Locale } from "@/i18n";
 import { getOSCopy } from "./os-copy";
 import { OSIcon, type PortfolioApp } from "./OSIcon";
+
+const ProofAtlas = dynamic(
+  () => import("./ProofAtlas").then((module) => module.ProofAtlas),
+  { ssr: true },
+);
 
 const apps: PortfolioApp[] = [
   "projects",
@@ -19,7 +25,15 @@ const appPaths = {
   contact: "/contact",
 };
 
-export function Desktop({ locale, role }: { locale: Locale; role: string }) {
+export function Desktop({
+  locale,
+  role,
+  interactive,
+}: {
+  locale: Locale;
+  role: string;
+  interactive?: boolean;
+}) {
   const copy = getOSCopy(locale);
   const path = (value: string) =>
     locale === "en" ? value : `/${locale}${value}`;
@@ -30,26 +44,9 @@ export function Desktop({ locale, role }: { locale: Locale; role: string }) {
     resume: copy.appResume,
     contact: copy.appContact,
   };
-  const featured = [
-    {
-      slug: "project-simurgh",
-      title: "Project Simurgh",
-      description: copy.featuredSimurgh,
-    },
-    {
-      slug: "invisible-window-research",
-      title: "Invisible Window",
-      description: copy.featuredInvisible,
-    },
-    {
-      slug: "project-zurvan",
-      title: "Project Zurvan",
-      description: copy.featuredZurvan,
-    },
-  ];
   return (
     <div className="os-desktop">
-      <div className="os-desktop-identity">
+      <div className="os-desktop-identity os-desktop-identity--atlas">
         <section className="os-intro">
           <p className="os-eyebrow">{copy.independentResearch}</p>
           <h1
@@ -76,27 +73,11 @@ export function Desktop({ locale, role }: { locale: Locale; role: string }) {
             </a>
           </div>
         </section>
-        <aside className="os-featured" aria-label={copy.selectedWork}>
-          <div className="os-featured-heading">
-            <FolderOpen aria-hidden="true" />
-            {copy.selectedWork}
-          </div>
-          {featured.map((project) => (
-            <Link
-              key={project.slug}
-              data-project={project.slug}
-              href={path(`/projects/${project.slug}`)}
-            >
-              <span>
-                <strong lang="en" dir="ltr">
-                  {project.title}
-                </strong>
-                <small>{project.description}</small>
-              </span>
-              <ArrowRight aria-hidden="true" />
-            </Link>
-          ))}
-        </aside>
+        <ProofAtlas
+          locale={locale}
+          interactive={interactive}
+          className="proof-atlas--desktop"
+        />
       </div>
       <section className="os-apps" aria-label={copy.appNavigation}>
         <p className="os-section-label">{copy.workspaceHint}</p>

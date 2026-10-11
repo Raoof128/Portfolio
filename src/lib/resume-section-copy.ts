@@ -9,7 +9,7 @@ const labels = {
   en: {
     skills: "Technical Proficiencies",
     experience: "Professional Experience",
-    certifications: "Licenses & Certifications",
+    certifications: "Licences & Certifications",
   },
   fa: {
     skills: "توانمندی‌های فنی",

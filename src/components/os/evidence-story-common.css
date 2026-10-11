@@ -1,0 +1,421 @@
+.os-evidence-story {
+  --story-accent: var(--os-accent);
+  --story-line: color-mix(in srgb, var(--os-accent) 28%, var(--os-line));
+  container: simurgh-story / inline-size;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(17px, 3vw, 24px);
+  border: 1px solid var(--os-line);
+  border-radius: 13px;
+  color: var(--os-text);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--os-accent) 5%, transparent),
+      transparent 48%
+    ),
+    var(--os-bg);
+  text-align: start;
+}
+.os-evidence-story :is(h3, h4, p) {
+  margin-block: 0;
+}
+.os-evidence-story-heading {
+  max-width: 72ch;
+}
+.os-evidence-story-eyebrow,
+.os-evidence-story-section-label {
+  color: var(--story-accent);
+  font: 600 12px / 1.6 var(--os-mono);
+}
+.os-evidence-story-heading h3 {
+  margin-block: 7px 10px;
+  font: 400 clamp(23px, 4cqi, 32px) / 1.3 var(--os-serif);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.os-evidence-story:dir(rtl) .os-evidence-story-heading h3 {
+  font-family: var(--font-vazirmatn), Tahoma, sans-serif;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+.os-evidence-story-heading > p:not(.os-evidence-story-eyebrow),
+.os-evidence-story-note,
+.os-evidence-story-caption p {
+  color: var(--os-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.os-evidence-story-note {
+  display: inline-flex;
+  margin-block-start: 13px;
+  padding: 5px 9px;
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+  color: var(--story-accent);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.os-evidence-story-section-label {
+  margin-block-end: 12px !important;
+}
+.os-evidence-story-caption {
+  display: grid;
+  gap: 14px;
+  margin-block-start: 19px;
+  padding-block-start: 15px;
+  border-block-start: 1px solid var(--os-line);
+}
+.os-evidence-story-caption p {
+  font-size: 14px;
+}
+.os-evidence-story-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.os-evidence-story-links a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 11px;
+  border: 1px solid var(--story-line);
+  border-radius: 8px;
+  color: var(--story-accent);
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+/* Narrow first: if container queries are unsupported, the readable vertical path remains. */
+@media (prefers-reduced-motion: reduce) {
+  .os-evidence-story *,
+  .os-evidence-story *::before,
+  .os-evidence-story *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* Dossier styles load globally and intentionally give section content a baseline.
+   Reassert the story's own instrument semantics at the nearest shared boundary. */
+.os-project-explorer .os-project-section .os-evidence-story h3 {
+  margin: 7px 0 10px;
+  font: 400 clamp(23px, 4cqi, 32px) / 1.3 var(--os-serif);
+  letter-spacing: -0.02em;
+}
+.os-project-explorer .os-project-section .os-evidence-story:dir(rtl) h3 {
+  font-family: var(--font-vazirmatn), Tahoma, sans-serif;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+.os-project-explorer .os-project-section .os-evidence-story p {
+  color: var(--os-muted);
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-evidence-story-eyebrow {
+  color: var(--story-accent);
+  font: 600 12px / 1.6 var(--os-mono);
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-evidence-story-heading
+  > p:not(.os-evidence-story-eyebrow) {
+  margin: 0;
+  color: var(--os-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-evidence-story-caption
+  p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.os-project-explorer .os-project-section .os-evidence-story h4 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-simurgh-instrument-chain,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-simurgh-explanations
+  ol,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger
+  ul,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-zurvan-type-ledger {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-simurgh-instrument-chain
+  > li,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-simurgh-explanations
+  ol
+  > li,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger
+  ul
+  > li,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-zurvan-type-ledger
+  > li {
+  display: grid;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  :is(
+    .os-simurgh-instrument-control,
+    .os-story-platform-picker button,
+    .os-zurvan-type-picker button,
+    .os-evidence-story-links a
+  ):focus-visible {
+  outline: 3px solid var(--story-accent);
+  outline-offset: 3px;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-platform-picker
+  button,
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-zurvan-type-picker
+  button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--os-line);
+  border-radius: 8px;
+  color: var(--os-text);
+  background: var(--os-surface);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-platform-picker
+  button[aria-pressed="true"],
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-zurvan-type-picker
+  button[aria-pressed="true"] {
+  border-color: var(--story-accent);
+  color: var(--story-accent);
+  background: color-mix(in srgb, var(--story-accent) 9%, var(--os-bg));
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger {
+  margin-block-start: 17px;
+  padding: 13px;
+  border-inline-start: 3px solid var(--story-accent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--story-accent) 5%, var(--os-surface));
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger
+  ul {
+  gap: 7px;
+  padding-inline-start: 19px;
+  list-style: disc;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger
+  li {
+  display: list-item;
+  padding: 0;
+  border: 0;
+  color: var(--os-muted);
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger
+  li::marker {
+  color: var(--story-accent);
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-story-scope-ledger
+  > p {
+  margin-block-start: 10px;
+  font-size: 14px;
+}
+.os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  .os-evidence-story-links
+  a {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media (forced-colors: active) {
+  .os-project-explorer
+    .os-project-section
+    .os-evidence-story
+    :is(
+      .os-simurgh-instrument-station[data-selected="true"]
+        > .os-simurgh-instrument-control,
+      .os-story-platform-picker button[aria-pressed="true"],
+      .os-zurvan-typed[aria-pressed="true"]
+    ) {
+    border-color: Highlight;
+  }
+}
+@keyframes evidence-story-cover-in {
+  from {
+    opacity: 0.96;
+    transform: scale(0.99);
+  }
+}
+@keyframes evidence-story-cover-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes evidence-story-heading-in {
+  from {
+    opacity: 0.96;
+    transform: translateY(3px);
+  }
+}
+@keyframes evidence-story-heading-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes evidence-story-nav-in {
+  from {
+    border-color: color-mix(in srgb, var(--os-accent) 10%, var(--os-line));
+  }
+}
+@keyframes evidence-story-nav-in {
+  to {
+    border-color: var(--os-line);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-project-explorer .os-project-section .os-evidence-story {
+    animation: evidence-story-cover-in 150ms ease-out both;
+  }
+}
+/* The dossier owns the cover reveal; keep only the child reading-order
+     choreography so the same cover does not fade/scale twice. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-project-dossier .os-project-section .os-evidence-story {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-project-explorer .os-project-section .os-evidence-story-heading {
+    animation: evidence-story-heading-in 150ms 50ms ease-out both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-project-explorer
+    .os-project-section
+    .os-evidence-story
+    :is(
+      .os-simurgh-explanations > h4,
+      .os-story-scope-ledger > h4,
+      .os-zurvan-type-ledger-section > h4
+    ) {
+    animation: evidence-story-heading-in 150ms 105ms ease-out both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-project-explorer
+    .os-project-section-nav:has(+ .os-project-section .os-evidence-story) {
+    animation: evidence-story-nav-in 160ms 150ms ease-out both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-project-explorer .os-project-section .os-evidence-story:focus-within,
+  .os-project-explorer
+    .os-project-section
+    .os-evidence-story:focus-within
+    .os-evidence-story-heading,
+  .os-project-explorer
+    .os-project-section
+    .os-evidence-story:focus-within
+    :is(
+      .os-simurgh-explanations > h4,
+      .os-story-scope-ledger > h4,
+      .os-zurvan-type-ledger-section > h4
+    ),
+  .os-project-explorer
+    .os-project-section-nav:has(
+      + .os-project-section .os-evidence-story
+    ):focus-within {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .os-project-explorer .os-project-section .os-evidence-story,
+  .os-project-explorer .os-project-section .os-evidence-story-heading,
+  .os-project-explorer
+    .os-project-section-nav:has(+ .os-project-section .os-evidence-story) {
+    animation: none !important;
+  }
+}

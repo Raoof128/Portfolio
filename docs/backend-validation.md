@@ -1,5 +1,10 @@
 # Backend and data validation
 
+Current overall local state and export identity are recorded in the
+[12 October Portfolio handover](./portfolio-handover-2026-10-12.md). The
+backend contracts below retain their own historical scope; the local HTTP audit
+pass does not verify or update production.
+
 ResearchOS exports static files to Cloudflare Pages. Its server components and
 GET route handlers run during the Next.js build. Production routing and response
 headers come from `public/_redirects` and `public/_headers`. Contact creates an

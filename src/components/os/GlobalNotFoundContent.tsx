@@ -10,6 +10,7 @@ import Image from "next/image";
 import type { Locale } from "@/i18n";
 import {
   readAppearance,
+  DEFAULT_APPEARANCE,
   subscribeAppearance,
   type Appearance,
 } from "./appearance";
@@ -40,7 +41,7 @@ function subscribeToPath(callback: () => void) {
 
 const getPathLocale = () => notFoundLocale(window.location.pathname);
 const getServerLocale = (): Locale => "en";
-const getServerAppearance = (): Appearance => "dark";
+const getServerAppearance = (): Appearance => DEFAULT_APPEARANCE;
 
 export function GlobalNotFoundContent({
   copies,

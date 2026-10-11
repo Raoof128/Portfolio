@@ -27,11 +27,11 @@ const en = {
     lab_title: "Lab",
     lab_description:
       "Experimental code, PoCs, and cybersecurity research snippets.",
-    resume_title: "Resume",
+    resume_title: "Résumé",
     resume_description:
-      "Resume of Mohammad Raouf Abedini — AI security research, LLM agent red-teaming, verifiable containment attestation, and offensive & defensive security engineering.",
+      "Résumé of Mohammad Raouf Abedini: AI security research, LLM agent red-teaming, verifiable containment attestation, and security engineering.",
     resume_og_description:
-      "Resume of Mohammad Raouf Abedini — AI security research, LLM agent red-teaming, and security engineering.",
+      "Résumé of Mohammad Raouf Abedini: AI security research, LLM agent red-teaming, and security engineering.",
     security_policy_title: "Security Policy",
     security_policy_description:
       "Security vulnerability disclosure policy and responsible disclosure guidelines.",
@@ -65,11 +65,11 @@ const en = {
     title_prefix: "AI +",
     title_cyber: "CYBER",
     title_research: "Research",
-    philosophy_quote: '"Seek, and ye shall find" — Matthew 7:7',
+    philosophy_quote: '"Seek, and ye shall find" (Matthew 7:7)',
     intro:
-      "Building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh — a containment-attestation framework that red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent was allowed to do after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut 9/140 to 0/140 on AgentDojo. Evaluated Claude in Anthropic's safety-evaluation program. Working to give defenders the advantage against advanced-AI cyber risk.",
+      "I build systems to measure and contain the cyber capabilities of frontier AI. I created Project Simurgh, which red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent was allowed to do after a guardrail miss. It contained 138/138 cases missed by the classifier and reduced a live agent's attack success on AgentDojo from 9/140 to 0/140. I evaluated Claude in Anthropic's safety-evaluation program. My current work focuses on defensive tools for advanced-AI cyber risk.",
     view_projects: "View Projects",
-    view_resume: "View Resume",
+    view_resume: "View résumé",
     researcher: "AI Security Researcher",
     evaluator: "Claude Safety Evaluator · Alignerr",
     university: "Macquarie University · Nov 2026",
@@ -82,7 +82,7 @@ const en = {
       "Red-team LLM agents and measure the cyber-capability uplift of frontier AI. Characterise safety boundaries, contain guardrail misses with signed, offline-verifiable evidence, and publish reproducible findings.",
     secure_title: "SECURE",
     secure_body:
-      "Defense-in-depth that gives defenders the advantage. Offensive research — exploit classes and agent attack campaigns — becomes verifiable containment and real-world defensive tooling.",
+      "Defence in depth connects offensive research, including exploit classes and agent attack campaigns, to verifiable containment and defensive tools.",
     research_bullet_1: "LLM Agent Red-Teaming & Containment",
     research_bullet_2: "AI Safety & LLM Evaluation",
     research_bullet_3: "Dual-Use Risk Assessment",
@@ -159,17 +159,17 @@ const en = {
     hero_subtitle:
       "AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering",
     bio_1:
-      "Security researcher focused on measuring and containing the cyber capabilities of frontier AI, ready to relocate now. The work is public, signed, and reproducible: an open-source containment-attestation framework, five DOI-archived Zenodo preprints (indexed under ORCID), and evaluation work inside Anthropic's safety-evaluation program.",
+      "I research ways to measure and contain the cyber capabilities of frontier AI, and I am ready to relocate. My public work includes an open-source containment-attestation framework and five DOI-archived Zenodo preprints indexed under ORCID. I also evaluated Claude in Anthropic's safety-evaluation program.",
     bio_2:
-      "Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained against a real Llama Guard 4, a live agent's attack success cut from 9/140 to 0/140 on AgentDojo, and five machine-checked Lean theorems. AGPL-3.0, 3,057 tests.",
+      "I created Project Simurgh, a provider-agnostic framework that red-teams LLM agents under a dishonest-producer threat model. It produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss. In reported tests, it contained 138/138 cases missed by Llama Guard 4 and reduced a live agent's attack success on AgentDojo from 9/140 to 0/140. The project includes five machine-checked Lean theorems, is licensed under AGPL-3.0, and has 3,057 tests.",
     bio_3:
-      "Also lead author of The Invisible Window (100% screen-capture evasion in tested Windows/macOS laboratory configurations, responsibly disclosed under OWASP/FIRST/CISA guidance) and Aion-BibleQA (a citation-faithfulness benchmark for retrieval-augmented LLMs: R@5 0.941, zero unsupported citations). Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr, 2026). Cofounder of an incubator-backed campus-AI startup. Focused on reducing catastrophic risks from advanced AI by measuring capability uplift, characterising safety boundaries, and shipping defensive tooling.",
+      "I am also the lead author of The Invisible Window, which found 100% screen-capture evasion in the tested Windows and macOS laboratory configurations and was responsibly disclosed under OWASP/FIRST/CISA guidance. I authored Aion-BibleQA, a citation-faithfulness benchmark for retrieval-augmented LLMs (R@5 0.941; zero unsupported citations). Via Alignerr, I evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program in 2026. I co-founded an incubator-backed campus AI startup and work on measuring capability uplift, characterising safety boundaries, and building defensive tools to reduce advanced AI risks.",
     stats_projects: "Projects",
     stats_evasion: "Evasion Rate",
     stats_vendors: "Vendors notified",
     connect: "Let's Connect",
-    view_resume: "View Resume",
-    specializations: "Specializations",
+    view_resume: "View résumé",
+    specializations: "Specialisations",
     skills: "Skills",
     active_operations: "Current work",
     education: "Education",
@@ -299,8 +299,8 @@ const en = {
     access_file: "Open project",
   },
   resume_page: {
-    title: "Resume",
-    download: "Download Resume",
+    title: "Résumé",
+    download: "Download résumé",
   },
   resume: {
     expected_completion: "Expected completion",
@@ -312,20 +312,20 @@ const en = {
     orcid_id: "ORCID iD",
     s01_heading: "About",
     s01_bio:
-      "Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut from 9/140 to 0/140 on AgentDojo, five machine-checked Lean theorems. Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr). Positioned as the defense-in-depth layer complementary to inline classifiers: they govern what a model may say; this attests what an agent was allowed to do. Shipped detection end to end: on-device phishing ML at 87% F1 and real-time intrusion detection at 500K+ packets/sec. Cofounder of an incubator-backed campus-AI startup; 70+ projects shipped.",
+      "I build systems to measure and contain the cyber capabilities of frontier AI. I created Project Simurgh, a provider-agnostic framework that red-teams LLM agents under a dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence after a guardrail miss. In reported tests, it contained 138/138 classifier-missed cases and reduced AgentDojo attack success from 9/140 to 0/140; five Lean theorems are machine-checked. Via Alignerr, I evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program. Simurgh complements inline classifiers by recording what an agent was allowed to do. My detection work includes on-device phishing ML at 87% F1 and intrusion detection at 500K+ packets/sec. I co-founded an incubator-backed campus AI startup and have shipped 70+ projects.",
     s02_heading: "Security Research",
     s02_tech_stack:
       "Node.js · Ed25519 attestation · Lean 4 · AgentDojo · Llama Guard 4 · Llama-3.3-70B · JS↔Python parity",
     s02_subtitle:
-      "Project Simurgh — Verifiable Containment Attestation for Agentic AI (Creator · AGPL-3.0)",
+      "Project Simurgh: Verifiable Containment Attestation for Agentic AI (Creator · AGPL-3.0)",
     s02_bullet1:
-      "Built a provider-agnostic framework producing Ed25519-signed, offline-reproducible evidence of what an AI agent did after a guardrail miss, across four containment boundaries: input firewall, context-provenance guard, tool-invocation gate, and output-leakage firewall — under an adversarial, dishonest-producer threat model",
+      "Built a provider-agnostic framework that produces Ed25519-signed, offline-reproducible evidence of what an AI agent did after a guardrail miss across four containment boundaries: input firewall, context-provenance guard, tool-invocation gate, and output-leakage firewall. The threat model assumes an adversarial, dishonest producer.",
     s02_bullet2:
       "Guardrail-miss containment: captured a real Llama Guard 4 (12B) input classifier over a 180-case run-set and contained 138/138 malicious cases the classifier missed (120 downstream-injection cases an input-only classifier structurally cannot see, 18 direct-input misses); combined targeted attack-success 0/150, with zero unsafe tool executions or exports",
     s02_bullet3:
       "Live-agent containment: drove a self-hosted Llama-3.3-70B through AgentDojo's workspace suite (140 pre-registered injection cases); the tool-authority gate cut targeted attack success from 9/140 to 0/140 with benign utility held",
     s02_bullet4:
-      "Positioned as the defense-in-depth layer complementary to Anthropic's inline classifier — the classifier governs what a model may say, the attestation governs what an agent was allowed to do (non-claims signed and explicit, including that it would not have caught the June 2026 content-generation bypass itself)",
+      "Complements Anthropic's inline classifier: the classifier governs what a model may say, while the attestation records what an agent was allowed to do. The signed non-claims state that Simurgh would not have caught the June 2026 content-generation bypass itself.",
     s02_bullet5:
       "Attacked its own proof (red-team sweep across eight attack classes → detector-v2) and formally checked oversight with five machine-checked Lean theorems; one-command offline reproduction of a 12-rung signed release ladder; 3,057 automated tests",
     s03_heading: "Technical Proficiencies",
@@ -356,23 +356,23 @@ const en = {
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
     proj2_desc:
-      "Built AI-powered Bible companion and authored Aion-BibleQA, an 8-page preprint introducing a 40-question benchmark for citation faithfulness and false-premise robustness — R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.",
+      "Built an AI-powered Bible companion and authored Aion-BibleQA, an 8-page preprint introducing a 40-question benchmark for citation faithfulness and false-premise robustness. Results: R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.",
     proj3_tag: "SYSTEMS",
     proj3_stack: "C++20 · CMake · Google Test",
     proj3_desc:
-      "Engineered high-performance matching engine processing 1M+ orders/second with sub-microsecond latency — implemented red-black tree price levels, custom memory pool allocator, and comprehensive test suite with p50/p99 latency benchmarks.",
+      "Engineered a matching engine that processed 1M+ orders/second with sub-microsecond latency. Implemented red-black tree price levels, a custom memory-pool allocator, and a test suite with p50/p99 latency benchmarks.",
     proj4_tag: "IDS",
     proj4_stack: "C++17 · libpcap · CMake · Google Test · Linux",
     proj4_desc:
-      "Built real-time network packet processing engine parsing 500K+ packets/second — protocol dissection (Ethernet/IPv4/TCP/UDP/ICMP/DNS), signature-based detection engine, and stateful analysis (port scans, SYN floods).",
+      "Built a real-time network packet-processing engine that parsed 500K+ packets/second. It dissects Ethernet/IPv4/TCP/UDP/ICMP/DNS, detects signature matches, and analyses stateful patterns such as port scans and SYN floods.",
     proj5_tag: "FULL-STACK",
     proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
     proj5_desc:
-      "Shipped full-stack data platform with AI recommendation engine, event-driven API design, rate limiting, and automated security scanning — end-to-end ownership from database schema to deployment infrastructure.",
+      "Built a full-stack data platform with an AI recommendation engine, event-driven APIs, rate limiting, and automated security scanning. I handled the work from database schema through deployment.",
     proj6_tag: "KOTLINCONF",
     proj6_stack: "Kotlin Multiplatform · Local ML · Android & iOS",
     proj6_desc:
-      "Built cross-platform offline threat detection tool with local ML-based classification — submitted to KotlinConf global developer conference.",
+      "Built a cross-platform offline threat-detection tool with local ML classification. Submitted it to the KotlinConf global developer conference.",
     s05_more_projects:
       "70+ additional public projects on GitHub covering vulnerability research, systems programming, AI/ML tooling, and cloud infrastructure:",
     s06_heading: "Professional Experience",
@@ -387,13 +387,13 @@ const en = {
     exp2_title: "IT Manager",
     exp2_employer: "Iran Pharmacy · Aug 2019 – May 2024",
     exp2_bullet1:
-      "Managed technology infrastructure across a multi-site organisation for 5 years — maintaining 99% system uptime, enforcing role-based access control (RBAC), and automating operational workflows via Python/Bash scripting (~30% reduction in manual tasks)",
+      "Managed technology infrastructure across a multi-site organisation for five years. Maintained 99% system uptime, enforced role-based access control (RBAC), and automated workflows with Python and Bash, reducing manual tasks by about 30%.",
     s07_heading: "AI Safety, Leadership & Community",
     s07_bullet1:
       "AI Safety Evaluator, Claude (Alignerr, Anthropic AI safety-evaluation program, 2026): assessed Claude outputs for exploitable code and analysed how safety guardrails can be circumvented, delivering structured, rubric-based findings (continues earlier 2024 Claude Code evaluation work)",
     s07_bullet2:
-      "Founded and help run the university's Persian student community — events, peer support, and cultural programming.",
-    certs_heading: "Licenses & Certifications",
+      "I founded and help run the university's Persian student community, organising events, peer support, and cultural programming.",
+    certs_heading: "Licences & Certifications",
     certs_issued: "Issued",
     certs_credential: "Credential ID",
     volunteer_label: "Volunteering",
@@ -451,15 +451,15 @@ const en = {
     title: "Hall of Fame",
     subtitle: "Recognition",
     description:
-      "Recognizing security researchers who have helped improve the security of my projects through responsible disclosure.",
+      "Recognising security researchers who have improved the security of my projects through responsible disclosure.",
     found_vuln_heading: "Found a Vulnerability?",
-    report_guidance: "Report it responsibly and get recognized here. Check my",
+    report_guidance: "Report it responsibly to be recognised here. See my",
     report_guidance_suffix: "for guidelines.",
     security_policy_link: "security policy",
     report_btn: "Report a vulnerability",
     no_entries_title: "No Entries Yet",
     no_entries_desc:
-      "This page is waiting for its first security researcher. Find a vulnerability, report it responsibly, and become the first to be recognized.",
+      "No researchers have been recognised yet. Report a vulnerability responsibly to be considered for the Hall of Fame.",
     awaiting_badge: "Awaiting the first report",
     criteria_title: "Recognition Criteria",
     criteria_1: "Report a valid, in-scope security vulnerability",
@@ -467,7 +467,7 @@ const en = {
     criteria_3: "Allow reasonable time for the issue to be fixed",
     criteria_4: "Not publicly disclose the vulnerability before coordination",
     bounty_note:
-      "This is a personal portfolio project. While I deeply appreciate security research efforts, no monetary bounties are offered. Recognition in this Hall of Fame is the primary acknowledgment for valid reports.",
+      "This is a personal portfolio project. It offers no monetary bounties; valid reports may be recognised here.",
     note_label: "Note:",
   },
   terminal_feed: {
@@ -554,7 +554,7 @@ const en = {
       "I appreciate responsible security researchers who help improve the security of my projects. Valid reports may be acknowledged in the",
     ack_hall_of_fame: "Security Hall of Fame",
     ack_note:
-      "Note: This is a personal portfolio project. No monetary bounties are offered, but your contribution will be recognized.",
+      "Note: This is a personal portfolio project. No monetary bounties are offered, but valid reports may be recognised here.",
   },
 };
 

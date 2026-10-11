@@ -1,4 +1,5 @@
 .os-project-explorer {
+  container: project-explorer / inline-size;
   display: grid;
   grid-template-columns: 225px minmax(0, 1fr);
   min-height: 620px;
@@ -106,6 +107,8 @@
   box-shadow: inset -3px 0 var(--os-accent);
 }
 .os-project-explorer .os-explorer-content {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   container: project-content / inline-size;
 }
@@ -626,5 +629,264 @@
   }
   .os-project-explorer .os-explorer-controls select {
     grid-row: 4;
+  }
+}
+
+/* App windows can be resized narrower than the browser viewport. Keep the
+   navigator usable at the container's actual width, not only a media query. */
+@container project-explorer (max-width: 760px) {
+  .os-project-explorer > .os-explorer-sidebar,
+  .os-project-explorer > .os-explorer-content {
+    grid-column: 1 / -1;
+  }
+
+  .os-project-explorer > .os-explorer-sidebar {
+    padding: 14px 16px;
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--os-line);
+  }
+
+  .os-project-explorer .os-explorer-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 7px 12px;
+    margin: 12px 7px 16px;
+  }
+
+  .os-project-explorer .os-explorer-controls label {
+    grid-row: 1;
+    margin: 0;
+  }
+
+  .os-project-explorer .os-explorer-search,
+  .os-project-explorer .os-explorer-controls select {
+    grid-row: 2;
+  }
+
+  .os-project-explorer .os-explorer-project-nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 0 2px 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--os-muted) transparent;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline proximity;
+  }
+
+  .os-project-explorer .os-explorer-project-link {
+    flex: 0 0 auto;
+    border: 1px solid var(--os-line);
+    scroll-snap-align: start;
+  }
+
+  .os-project-explorer .os-explorer-project-link small {
+    display: none;
+  }
+
+  .os-project-explorer .os-explorer-content {
+    padding-bottom: 0;
+  }
+}
+
+@container project-explorer (max-width: 440px) {
+  .os-project-explorer > .os-explorer-sidebar {
+    padding-inline: 12px;
+  }
+
+  .os-project-explorer .os-explorer-controls {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    margin-inline: 2px;
+  }
+
+  .os-project-explorer .os-explorer-controls label:first-of-type {
+    grid-row: 1;
+  }
+
+  .os-project-explorer .os-explorer-search {
+    grid-row: 2;
+  }
+
+  .os-project-explorer .os-explorer-controls label:last-of-type {
+    grid-row: 3;
+    margin-top: 4px;
+  }
+
+  .os-project-explorer .os-explorer-controls select {
+    grid-row: 4;
+  }
+}
+
+/* Interface text keeps a 12px floor; long titles and evidence wrap naturally
+   inside the resizable reading pane and in every writing direction. */
+.os-project-explorer .os-explorer-count,
+.os-project-explorer .os-explorer-controls label,
+.os-project-explorer .os-explorer-project-link small,
+.os-project-explorer .os-project-eyebrow,
+.os-project-explorer .os-explorer-results,
+.os-project-explorer .os-project-row-number,
+.os-project-explorer .os-project-row-meta,
+.os-project-explorer .os-project-tags li,
+.os-project-explorer .os-project-paper-heading > span,
+.os-project-explorer .os-project-diagram > p,
+.os-project-explorer .os-diagram-node-number,
+.os-project-explorer .os-diagram-displays > div > strong,
+.os-project-explorer .os-diagram-browser,
+.os-project-explorer .os-diagram-excluded-window small,
+.os-project-explorer .os-diagram-omitted-window small,
+.os-project-explorer .os-diagram-stack .os-diagram-node-number {
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.os-project-explorer .os-explorer-search input,
+.os-project-explorer .os-explorer-controls select,
+.os-project-explorer .os-explorer-project-link,
+.os-project-explorer .os-project-text-link,
+.os-project-explorer .os-project-resource,
+.os-project-explorer .os-project-section-nav a,
+.os-project-explorer .os-project-section > p:not(.os-project-eyebrow),
+.os-project-explorer .os-project-numbered-list,
+.os-project-explorer .os-project-method-list,
+.os-project-explorer .os-project-evidence-list,
+.os-project-explorer .os-project-paper > p,
+.os-project-explorer .os-diagram-node strong,
+.os-project-explorer .os-diagram-flow strong,
+.os-project-explorer .os-diagram-stack strong,
+.os-project-explorer .os-explorer-empty {
+  font-size: 14px;
+}
+
+.os-project-explorer .os-project-row h2 {
+  font-size: clamp(23px, 2.2vw, 28px);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.os-project-explorer .os-project-paper h4,
+.os-project-explorer .os-project-section h3 {
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.os-project-explorer .os-diagram-evidence-path {
+  min-height: 60px;
+  border-color: color-mix(in srgb, var(--os-accent) 65%, var(--os-line));
+  border-inline-start: 4px solid var(--os-accent);
+  border-radius: 8px;
+  color: var(--os-text);
+  background: color-mix(in srgb, var(--os-accent) 10%, var(--os-surface));
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.os-project-explorer .os-diagram-evidence-path svg {
+  color: var(--os-accent);
+}
+
+.os-project-explorer .os-diagram-excluded-window,
+.os-project-explorer .os-diagram-omitted-window {
+  font-size: 12px;
+}
+
+.os-project-explorer .os-explorer-footer-meta {
+  font-size: 12px;
+}
+
+.os-project-explorer .os-explorer-footer {
+  margin-top: auto;
+  padding: 30px 43px;
+  border-top: 1px solid var(--os-line);
+  background: var(--os-bg);
+}
+.os-explorer-footer-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-bottom: 24px;
+}
+.os-explorer-footer-next > div {
+  flex: 1 1 220px;
+}
+.os-project-explorer .os-explorer-footer h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.os-explorer-footer-next p {
+  margin: 0;
+  max-width: 50ch;
+  color: var(--os-muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.os-explorer-footer-meta {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--os-line);
+  color: var(--os-muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.os-explorer-footer-meta nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+.os-explorer-footer-meta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--os-muted);
+  text-decoration: none;
+}
+.os-explorer-footer-meta a:hover {
+  color: var(--os-accent);
+}
+
+/* Route changes use a small content reveal; artwork remains owned by its
+   current page and never mounts a duplicate animated source tree. */
+.os-project-dossier {
+  animation: os-dossier-entry 220ms ease-out both;
+}
+
+@keyframes os-dossier-entry {
+  from {
+    /* Keep the SSR dossier measurable/legible for first paint and LCP. */
+    opacity: 0.96;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-project-dossier {
+    animation: none;
+  }
+}
+@media (max-width: 900px) {
+  .os-project-explorer .os-explorer-footer {
+    padding-inline: 27px;
+  }
+}
+@media (max-width: 700px) {
+  .os-project-explorer .os-explorer-footer {
+    padding: 26px 22px;
+  }
+}
+@media (max-width: 380px) {
+  .os-project-explorer .os-explorer-footer {
+    padding-inline: 17px;
   }
 }

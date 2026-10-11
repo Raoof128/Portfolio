@@ -24,7 +24,6 @@ export const esProjects = {
       "La exclusión siguió funcionando en rutas nativas probadas de macOS 26.3.1 pese a los cambios documentados de ScreenCaptureKit en macOS 15; no se probó directamente ScreenCaptureKit ni getDisplayMedia() del navegador en macOS 26.",
       "Linux con X11/Wayland no se evaluó; los resultados corresponden a las configuraciones probadas de Windows y macOS.",
       "La detección conductual no mostró un efecto significativo con esta muestra: seguimiento de mirada con p = 0.41 y n = 8, con potencia estadística insuficiente; los movimientos del ratón quedaron dentro de la variación normal del examen. Esto no demuestra que la detección conductual sea imposible en todos los contextos.",
-      "La detección por procesos es teóricamente posible, pero ningún sistema actual de supervisión basado en navegador la implementa.",
       "Prepublicación en Zenodo bajo CC BY 4.0, DOI 10.5281/zenodo.20376495; 13 páginas y 53 referencias en formato de conferencia IEEE.",
     ],
     stack: [
@@ -37,7 +36,6 @@ export const esProjects = {
       "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE en Windows 10 v2004+ excluye la ventana de las rutas de captura de Windows probadas sin artefactos visuales.",
       "NSWindow.SharingType.none demostró exclusión en rutas nativas probadas de macOS 14–26; macOS 26 usó CGWindowListCreateImage y screencapture, no getDisplayMedia() del navegador ni una prueba directa de ScreenCaptureKit.",
       "Verificación forense: diferencia de píxeles del 80.27% en el área de captura de Windows; una captura de 1,170,560 píxeles en macOS resultó totalmente transparente.",
-      "Contradicción empírica de la suposición de que macOS 15+ había mitigado el vector de ataque.",
     ],
     measures: [
       "Descubrimiento y verificación en enero de 2026.",
@@ -77,7 +75,7 @@ export const esProjects = {
       "Ejecución determinista completa de las cuatro suites de AgentDojo, v2.49.0: casos benignos 97/97, utilidad sin ataque 949/949, éxito de ataque 0/949.",
       "Una segunda raíz independiente de procedencia firma el dictamen de publicación con la identidad OIDC de GitHub, no con la clave del desarrollador; una diferencia de un solo byte frente al dictamen registrado detiene el flujo antes de firmar.",
       "3,057 pruebas automatizadas; reproducción sin conexión de la escala de publicación firmada con un solo comando; licencia AGPL-3.0.",
-      "Trayectoria publicada en Zenodo bajo CC BY 4.0: prepublicación original de integridad DOI 10.5281/zenodo.20374849, piloto Phase C próximo a una votación y prototipo Banking Shield de afirmaciones de ausencia.",
+      "Trayectoria publicada en Zenodo bajo CC BY 4.0: prepublicación original de integridad DOI 10.5281/zenodo.20374849, piloto Phase C en un contexto relacionado con votaciones y prototipo Banking Shield de afirmaciones de ausencia.",
     ],
     stack: [
       "Pasarela de contención Node.js / JavaScript",
@@ -110,7 +108,7 @@ export const esProjects = {
         label: "Prepublicación complementaria",
         status: "Prepublicación Phase C",
         description:
-          "Piloto de 5 páginas próximo a una votación, con 31 sesiones con consentimiento junto a un acto de una asociación estudiantil de Macquarie; excluye la elección del voto, encadena auditorías HMAC, rechaza campos prohibidos y cumple 5/5 controles de cierre de la recopilación.",
+          "Piloto de 5 páginas en un contexto relacionado con votaciones, con 31 sesiones con consentimiento junto a un acto de una asociación estudiantil de Macquarie; excluye la elección del voto, encadena auditorías HMAC, rechaza campos prohibidos y cumple 5/5 controles de cierre de la recopilación.",
       },
       {
         label: "Prepublicación relacionada con banca",
@@ -180,7 +178,7 @@ export const esProjects = {
     proof: [
       "Integración segura con el llavero del sistema.",
       "Borrado de claves API de la memoria.",
-      "Stack moderno React 19 + Electron 33.",
+      "Tecnologías: React 19 + Electron 33.",
       "Interfaz inspirada en el estilo cyberpunk.",
     ],
     features: [
@@ -284,7 +282,7 @@ export const esProjects = {
       "Sin recopilación: no hay cookies, rastreadores ni servidor; solo identificadores públicos de poemas en sessionStorage.",
       "Funciona completamente sin conexión tras la primera carga con un service worker que verifica la integridad.",
       "El compilador de producción rechaza datos sintéticos de pruebas antes del despliegue; solo se publica el corpus revisado.",
-      "Suites Vitest de unidades, componentes, accesibilidad, modo offline, compartir, rendimiento y seguridad, además de Playwright Chromium de extremo a extremo.",
+      "Suites Vitest de unidades, componentes, accesibilidad, modo sin conexión, compartir, rendimiento y seguridad, además de Playwright Chromium de extremo a extremo.",
     ],
     stack: [
       "Vite",
@@ -420,9 +418,9 @@ export const esProjects = {
   ecrsm: {
     title: "Monitor de seguridad de ejecución en la nube con eBPF",
     description:
-      "Stack sintético de visibilidad en ejecución y de solo lectura con eBPF del kernel, agente Go y panel React; monitor educativo.",
+      "Conjunto sintético y de solo lectura para observar la ejecución, con eBPF del kernel, agente Go y panel React; monitor educativo.",
     fullDescription:
-      "ECRSM es un monitor educativo de seguridad de ejecución en la nube basado en eBPF. Combina eBPF del kernel, un agente Go y un panel React en un stack sintético de solo lectura.",
+      "ECRSM es un monitor educativo de seguridad de ejecución en la nube basado en eBPF. Combina eBPF del kernel, un agente Go y un panel React en un conjunto sintético de solo lectura.",
     problem:
       "La seguridad de ejecución a nivel de kernel es compleja. ECRSM ofrece una plataforma educativa segura para aprender monitorización eBPF.",
     solution: [

@@ -24,6 +24,11 @@ import {
   ChevronDown,
   Copy,
   ExternalLink,
+  BookOpen,
+  FileText,
+  FlaskConical,
+  FolderOpen,
+  Globe,
   Languages,
   LockKeyhole,
   Maximize2,
@@ -46,9 +51,11 @@ import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
 import { Desktop } from "./Desktop";
+import { ProofAtlasVisibilityContext } from "./proof-atlas-context";
 import { ReadingWindowControls } from "./ReadingWindowControls";
 import { useReadingWindow } from "./use-reading-window";
 import { getWindowCopy } from "./window-copy";
+import { getAtlasJourneyCopy } from "./atlas-journey-copy";
 import {
   ApplicationRegistrationContext,
   type RegisteredApplication,
@@ -58,6 +65,7 @@ import { createWorkspaceState, workspaceReducer } from "./workspace-model";
 import { getOSAppDescriptor } from "@/lib/os-app-schema";
 import {
   readAppearance,
+  DEFAULT_APPEARANCE,
   subscribeAppearance,
   writeAppearance,
   type Appearance,
@@ -88,7 +96,14 @@ const appPaths = {
 const emptySubscribe = () => () => {};
 const clientSnapshot = () => true;
 const serverSnapshot = () => false;
-const serverAppearance = (): Appearance => "dark";
+const serverAppearance = (): Appearance => DEFAULT_APPEARANCE;
+const searchIcons = {
+  project: FolderOpen,
+  paper: BookOpen,
+  writing: FileText,
+  experiment: FlaskConical,
+  action: Globe,
+};
 
 function appForPath(path: string): PortfolioApp {
   if (path.startsWith("/projects")) return "projects";
@@ -174,6 +189,7 @@ export function ResearchOS({
     locale === "en" ? pathname : pathname.slice(home.length) || "/";
   const isHome = pathname === home || pathname === `${home}/`;
   const copy = getOSCopy(locale);
+  const atlasJourneyCopy = getAtlasJourneyCopy(locale);
   const hydrated = useSyncExternalStore(
     emptySubscribe,
     clientSnapshot,
@@ -259,6 +275,7 @@ export function ResearchOS({
     (item) => item.descriptor.path === pathname,
   );
   const returnFocus = useRef<HTMLElement | null>(null);
+  const focusAfterUnlock = useRef(false);
   const previousPath = useRef(pathname);
   const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const disposed = useRef(false);
@@ -316,9 +333,18 @@ export function ResearchOS({
 
   function enterWorkspace() {
     clearLanguageNavigation();
+    focusAfterUnlock.current = true;
     setLockedPath(null);
-    requestAnimationFrame(focusContent);
   }
+
+  useLayoutEffect(() => {
+    if (locked || !focusAfterUnlock.current) return;
+    focusAfterUnlock.current = false;
+    // The main content was hidden while the welcome screen was active. Reset
+    // scroll only after it is visible, then move focus without a second jump.
+    if (window.scrollY > 0) window.scrollTo({ top: 0 });
+    focusContent();
+  }, [locked, focusContent]);
 
   const openSearch = useCallback(() => {
     const dialog = searchDialog.current;
@@ -600,10 +626,7 @@ export function ResearchOS({
         >
           {skipLabel}
         </a>
-        <div className="os-wallpaper" aria-hidden="true">
-          <div className="os-orbit" />
-          <div className="os-orbit-line" />
-        </div>
+        <div className="os-wallpaper" aria-hidden="true" />
         <header className="os-topbar">
           <Link className="os-brand" href={home} onClick={enterWorkspace}>
             <OSMark />
@@ -719,15 +742,15 @@ export function ResearchOS({
                 id="os-enter"
                 onClick={enterWorkspace}
               >
-                {copy.enter}
+                {atlasJourneyCopy.explore}
                 <ArrowRight aria-hidden="true" />
               </button>
               <nav className="os-lock-shortcuts" aria-label={copy.selectedWork}>
                 <Link
-                  href={getPath("/projects/project-simurgh")}
+                  href={getPath("/projects")}
                   onClick={() => setLockedPath(null)}
                 >
-                  {copy.selectedWork}
+                  {atlasJourneyCopy.review}
                 </Link>
                 <a
                   href="/Mohammad_Raouf_Abedini_Resume.pdf"
@@ -837,7 +860,7 @@ export function ResearchOS({
                 tabIndex={-1}
                 className="os-main"
               >
-                <Desktop locale={locale} role={role} />
+                <Desktop locale={locale} role={role} interactive={!locked} />
               </main>
               <button
                 ref={minimizedTask}
@@ -962,7 +985,11 @@ export function ResearchOS({
                 className="os-page-content"
                 onScroll={reading.onContentScroll}
               >
-                {children}
+                <ProofAtlasVisibilityContext.Provider
+                  value={isHome && !locked && !workspaceDisplayed}
+                >
+                  {children}
+                </ProofAtlasVisibilityContext.Provider>
               </div>
             </Activity>
             {!isHome && reading.rect && (
@@ -1131,7 +1158,10 @@ export function ResearchOS({
           }}
         >
           <div className="os-search-heading">
-            <h2 id="os-search-title">{copy.search}</h2>
+            <div>
+              <h2 id="os-search-title">{copy.search}</h2>
+              <p>{copy.searchHint}</p>
+            </div>
             <button
               className="os-control"
               onClick={() => searchDialog.current?.close()}
@@ -1183,83 +1213,104 @@ export function ResearchOS({
             )}
           </div>
           <p className="os-search-count" role="status">
-            {query
-              ? `${formatNumber(results.length, locale)} · ${copy.searchResults}`
-              : copy.searchHint}
+            <bdi dir="ltr">
+              {formatNumber(Math.min(results.length, 30), locale)}
+              {results.length > 30 &&
+                ` / ${formatNumber(results.length, locale)}`}
+            </bdi>
+            {` · ${copy.searchResults}`}
           </p>
-          <ul className="os-search-results" id="os-search-results">
-            {results.slice(0, 30).map((entry) => {
-              const external =
-                /^(https?:|mailto:)/.test(entry.href) ||
-                /\.pdf(?:$|\?)/i.test(entry.href);
-              const label = (
-                <>
-                  <span>
-                    <strong
-                      lang={entry.titleLocale ?? locale}
-                      dir={locales[entry.titleLocale ?? locale].dir}
+          <div className="os-search-body">
+            <ul className="os-search-results" id="os-search-results">
+              {results.slice(0, 30).map((entry) => {
+                const ResultIcon = searchIcons[entry.kind];
+                const external =
+                  /^(https?:|mailto:)/.test(entry.href) ||
+                  /\.pdf(?:$|\?)/i.test(entry.href);
+                const label = (
+                  <>
+                    <span
+                      className="os-search-result-icon"
+                      data-kind={entry.kind}
                     >
-                      {entry.title}
-                    </strong>
-                    <small
-                      lang={entry.descriptionLocale ?? locale}
-                      dir={locales[entry.descriptionLocale ?? locale].dir}
-                    >
-                      {entry.description}
-                    </small>
-                  </span>
-                  <span className="os-result-kind">
-                    {scopeLabels[entry.kind]}
-                    <ArrowRight aria-hidden="true" />
-                  </span>
-                </>
-              );
-              return (
-                <li key={entry.id}>
-                  {external ? (
-                    <a
-                      className="os-search-result"
-                      href={entry.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={selectResult}
-                    >
-                      {label}
-                    </a>
-                  ) : (
-                    <Link
-                      className="os-search-result"
-                      href={entry.href}
-                      onClick={selectResult}
-                    >
-                      {label}
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-          {!results.length && (
-            <div className="os-search-empty">
-              <Search aria-hidden="true" />
-              <h3>{copy.noResults}</h3>
-              <p>{query}</p>
-              <button
-                className="os-button"
-                onClick={() => {
-                  setQuery("");
-                  setScope("all");
-                  searchField.current?.focus();
-                }}
-              >
-                {copy.clearSearch}
-              </button>
-            </div>
-          )}
+                      <ResultIcon aria-hidden="true" />
+                    </span>
+                    <span className="os-search-result-copy">
+                      <span className="os-result-kind">
+                        {scopeLabels[entry.kind]}
+                      </span>
+                      <strong
+                        lang={entry.titleLocale ?? locale}
+                        dir={locales[entry.titleLocale ?? locale].dir}
+                      >
+                        {entry.title}
+                      </strong>
+                      <small
+                        lang={entry.descriptionLocale ?? locale}
+                        dir={locales[entry.descriptionLocale ?? locale].dir}
+                      >
+                        {entry.description}
+                      </small>
+                    </span>
+                    <ArrowRight
+                      className="os-search-result-arrow"
+                      aria-hidden="true"
+                    />
+                  </>
+                );
+                return (
+                  <li key={entry.id}>
+                    {external ? (
+                      <a
+                        className="os-search-result"
+                        href={entry.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={selectResult}
+                      >
+                        {label}
+                      </a>
+                    ) : (
+                      <Link
+                        className="os-search-result"
+                        href={entry.href}
+                        onClick={selectResult}
+                      >
+                        {label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+            {!results.length && (
+              <div className="os-search-empty">
+                <Search aria-hidden="true" />
+                <h3>{copy.noResults}</h3>
+                <p>{query}</p>
+                <button
+                  className="os-button"
+                  onClick={() => {
+                    setQuery("");
+                    setScope("all");
+                    searchField.current?.focus();
+                  }}
+                >
+                  {copy.clearSearch}
+                </button>
+              </div>
+            )}
+          </div>
           <div className="os-search-bottom">
-            <span>↑ ↓ &nbsp; {copy.navigation}</span>
-            <span>Enter &nbsp; {copy.open}</span>
-            <span>Esc &nbsp; {copy.close}</span>
+            <span>
+              <kbd>↑ ↓</kbd> {copy.navigation}
+            </span>
+            <span>
+              <kbd>Enter</kbd> {copy.open}
+            </span>
+            <span>
+              <kbd>Esc</kbd> {copy.close}
+            </span>
           </div>
         </dialog>
         <noscript>

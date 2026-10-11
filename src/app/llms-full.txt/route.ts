@@ -16,7 +16,7 @@ export const dynamic = "force-static";
 // Static identity/summary prose (mirrors the résumé; not stored as structured
 // data). Everything below it is generated from the data modules so the corpus
 // stays in sync with the site automatically.
-const HEADER = `# Mohammad Raouf Abedini — Full Machine-Readable Corpus
+const HEADER = `# Mohammad Raouf Abedini: Full Machine-Readable Corpus
 
 > Generated ${SITE_LAST_MODIFIED} from https://raoufabedini.dev
 > Canonical: ${SITE_URL}/llms-full.txt · Concise version: ${SITE_URL}/llms.txt
@@ -24,28 +24,27 @@ const HEADER = `# Mohammad Raouf Abedini — Full Machine-Readable Corpus
 
 ## Identity
 Name: Mohammad Raouf Abedini (Raouf)
-Role: AI Security Researcher · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering
+Role: AI Security Researcher · LLM Agent Red-Teaming · Offensive and Defensive Security Engineering
 Location: Sydney, Australia · ready to relocate to San Francisco, CA · visa sponsorship required
 ORCID: 0009-0000-6214-258X
 
 ## Professional Summary
-Security researcher building systems that measure and contain the cyber capabilities
-of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation
-framework that red-teams LLM agents under an adversarial, dishonest-producer threat model
-and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a
-guardrail miss (138/138 classifier-missed cases contained; live-agent attack success cut
-9/140 to 0/140 on AgentDojo; five machine-checked Lean theorems). Evaluated Claude outputs
-for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program
-(via Alignerr). Shipped detection end to end: on-device phishing ML at 87% F1 and real-time
-intrusion detection at 500K+ packets/sec.
+Raouf builds systems to measure and contain frontier AI's cyber capabilities. He created
+Project Simurgh, a provider-agnostic framework that red-teams LLM agents and produces
+Ed25519-signed, offline-verifiable evidence after a guardrail miss. Reported tests contained
+138/138 cases missed by Llama Guard 4 and reduced a live AgentDojo agent's targeted attack
+success from 9/140 to 0/140; five Lean theorems are machine-checked. He evaluated Claude
+outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation
+program via Alignerr. His detection work includes on-device phishing ML at 87% F1 and
+real-time intrusion detection at 500K+ packets/sec.
 
 ## Experience
-- AI Safety Evaluator (Claude), Alignerr — Anthropic safety-evaluation program, Jan–Mar 2026.
+- AI Safety Evaluator (Claude), Alignerr: Anthropic safety-evaluation program, Jan–Mar 2026.
 - Freelance Security Engineer & Full-Stack Developer, Self-Employed, Jan 2024 – Present.
 - IT Manager & Security Operations, Iran Pharmacy, 2019–2024.
 
 ## Education
-- Bachelor of Cyber Security, Macquarie University, Sydney — expected November 2026.
+- Bachelor of Cyber Security, Macquarie University, Sydney; expected November 2026.
 
 ## Languages available
 Published in 5 languages: English (/), Persian (/fa), Arabic (/ar), Chinese (/zh), Spanish (/es).

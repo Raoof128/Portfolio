@@ -1,23 +1,23 @@
 # Mohammad Raouf Abedini - AI Security Research Portfolio
 
-> Last updated: 2026-10-10. Full machine-readable corpus (every project, write-up,
+> Last updated: 2026-10-11. Full machine-readable corpus (every project, write-up,
 > lab experiment, paper): https://raoufabedini.dev/llms-full.txt
 
 ## Identity
 Name: Mohammad Raouf Abedini (Raouf)
-Role: AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering
+Role: AI Security Researcher · LLM Agent Red-Teaming · Offensive and Defensive Security Engineering
 Location: Sydney, Australia · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC) · Visa sponsorship required
 Focus: Measuring and containing the cyber capabilities of frontier AI; verifiable containment attestation for agentic AI; LLM agent red-teaming; offensive and defensive security engineering.
 
 ## Summary
-Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, a provider-agnostic containment-attestation framework that red-teams LLM agents under an adversarial, dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss: 138/138 classifier-missed cases contained, live-agent attack success cut 9/140 to 0/140 on AgentDojo, five machine-checked Lean theorems. Evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program (via Alignerr). Shipped detection end to end: on-device phishing ML at 87% F1 and real-time intrusion detection at 500K+ packets/sec. Cofounder of an incubator-backed campus-AI startup; 70+ projects shipped.
+Raouf builds systems to measure and contain frontier AI's cyber capabilities. He created Project Simurgh, a provider-agnostic framework that red-teams LLM agents and produces Ed25519-signed, offline-verifiable evidence after a guardrail miss. Reported tests contained 138/138 cases missed by Llama Guard 4 and reduced a live AgentDojo agent's targeted attack success from 9/140 to 0/140. He evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program via Alignerr. His detection work includes on-device phishing ML at 87% F1 and real-time intrusion detection at 500K+ packets/sec. He co-founded an incubator-backed campus AI startup and has shipped 70+ projects.
 
 ## Core Competencies (Keywords)
 - AI / Agent Security: LLM agent red-teaming, prompt-injection & jailbreak-consequence containment, tool-use authority gating, guardrail & classifier evaluation, adversarial test generation, AgentDojo, Claude Computer Use.
-- Security Research: vulnerability research & responsible disclosure, exploit-chain replay, threat modeling, threat-actor TTP profiling, MITRE ATT&CK, digital forensics, OSINT.
+- Security Research: vulnerability research and responsible disclosure, exploit-chain replay, threat modelling, threat-actor TTP profiling, MITRE ATT&CK, digital forensics, OSINT.
 - Engineering: C/C++17/20, TypeScript, Python, Bash, Docker, Terraform, PostgreSQL, GitHub Actions CI/CD, Linux, Ed25519 attestation.
 
-## Featured Research & Projects (The "Truth" for Retrieval)
+## Featured Research & Projects
 1. Project Simurgh (FLAGSHIP): Provider-agnostic verifiable containment-attestation framework for agentic AI. Ed25519-signed, offline-reproducible evidence across four containment boundaries (input firewall, context-provenance guard, tool-invocation gate, output-leakage firewall) under a dishonest-producer threat model. Contained 138/138 classifier-missed cases against a real Llama Guard 4 (12B); cut a live Llama-3.3-70B agent's attack success from 9/140 to 0/140 on AgentDojo (0/949 attack-success on the full four-suite deterministic run); five machine-checked Lean theorems; 3,057 tests. AGPL-3.0. DOI: 10.5281/zenodo.20374849.
 2. The Invisible Window: IEEE-format vulnerability research demonstrating 100% screen-capture evasion in tested Windows 10/11 and macOS 14-26 laboratory configurations using documented display-affinity APIs; responsibly disclosed. Configurations were simulated; commercial proctoring products and Linux were not tested. macOS 26 used native capture tools rather than browser getDisplayMedia(). Findings reflect versions tested as of March 2026. DOI: 10.5281/zenodo.20376495.
 3. Aion-BibleQA: RAG citation-faithfulness & adversarial-robustness benchmark (40 questions); R@5 = 0.941, zero unsupported citations, 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.
@@ -34,7 +34,7 @@ Security researcher building systems that measure and contain the cyber capabili
 - IT Manager & Security Operations, Iran Pharmacy, 2019–2024.
 
 ## Philosophy
-Raouf operates at the intersection of "Build" (scalable architecture) and "Secure" (defensive design), advocating privacy-by-design, local-first processing, and security embedded from design to deployment, now focused on measuring and containing the cyber capabilities of frontier AI.
+Focus: privacy by design, local-first processing, and security from design through deployment. Current work measures and contains the cyber capabilities of frontier AI.
 
 ## Contact
 Website: https://raoufabedini.dev

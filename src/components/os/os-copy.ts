@@ -113,10 +113,10 @@ export type OSCopy = {
 const copy: Readonly<Record<Locale, OSCopy>> = {
   en,
   fa: {
-    fullName: "محمد رئوف عابدینی",
+    fullName: "محمد رؤوف عابدینی",
     givenName: "محمد",
-    familyName: "رئوف عابدینی",
-    displayName: "رئوف",
+    familyName: "رؤوف عابدینی",
+    displayName: "رؤوف",
     nameLocale: "fa",
     selectLanguage: "انتخاب زبان",
     desktop: "میز کار",
@@ -158,7 +158,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     light: "روشن",
     dark: "تیره",
     theme: "ظاهر",
-    navigation: "راهبری فضای کار",
+    navigation: "ناوبری فضای کار",
     timeZone: "سیدنی، استرالیا",
     currentTime: "زمان کنونی سیدنی",
     overview: "نمای کلی",
@@ -192,7 +192,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     openEmail: "باز کردن پیش‌نویس ایمیل",
     emailDraftNote:
       "برنامه ایمیل شما باز می‌شود. می‌توانید پیام را آنجا بررسی و ارسال کنید.",
-    contactElsewhere: "در جاهای دیگر",
+    contactElsewhere: "راه‌های ارتباطی دیگر",
     librarySearch: "جست‌وجوی نوشته‌ها",
     allTopics: "همه موضوع‌ها",
     libraryEmpty: "نوشته‌ای با این جست‌وجو پیدا نشد.",
@@ -200,7 +200,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     results: "نتیجه‌ها",
     libraryTopic: "فیلتر بر اساس موضوع",
     summary:
-      "سیستم‌هایی می‌سازم تا خطرهای هوش مصنوعی عامل‌محور را بشناسیم و مهار کنیم. اینجا فضای کار من برای پژوهش، مهندسی و ایده‌هاست.",
+      "سیستم‌هایی می‌سازم تا خطرهای هوش مصنوعی عامل‌محور را بشناسم و مهار کنم. اینجا فضای کار من برای پژوهش، مهندسی و ایده‌هاست.",
     independentResearch: "پژوهش مستقل · سیدنی",
     personalPortfolio: "مجموعه کارهای من",
     appNavigation: "برنامه‌های مجموعه کارها",

@@ -18,6 +18,11 @@ import {
 } from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { ProjectDetailClient } from "./ProjectDetailClient";
+import {
+  invisibleWindowStoryCopy,
+  simurghEvidenceStoryCopy,
+  zurvanEvidenceStoryCopy,
+} from "@/lib/project-content/evidence-story-copy";
 
 interface PageProps {
   // Locale is present in params at runtime (parent [locale] segment).
@@ -167,6 +172,17 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   const t = await getDictionary(locale);
+  const evidenceStory =
+    slug === "project-simurgh"
+      ? { kind: "simurgh" as const, copy: simurghEvidenceStoryCopy[locale] }
+      : slug === "invisible-window-research"
+        ? {
+            kind: "invisible-window" as const,
+            copy: invisibleWindowStoryCopy[locale],
+          }
+        : slug === "project-zurvan"
+          ? { kind: "zurvan" as const, copy: zurvanEvidenceStoryCopy[locale] }
+          : null;
 
   return (
     <>
@@ -188,6 +204,7 @@ export default async function ProjectPage({ params }: PageProps) {
           slug={slug}
           summaries={buildProjectSummaries(locale)}
           diagramCopy={getProjectDiagramCopy(locale)}
+          evidenceStory={evidenceStory}
         />
       </OSApplicationBridge>
     </>
