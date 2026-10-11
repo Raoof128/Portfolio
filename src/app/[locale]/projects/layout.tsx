@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
-import { getDictionary, type Locale } from "@/i18n";
+import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
+  const locale = resolveLocale(rawLocale);
   const t = await getDictionary(locale as Locale);
   return {
     title: t.seo.projects_title,

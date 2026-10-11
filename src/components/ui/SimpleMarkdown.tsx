@@ -1,7 +1,26 @@
 import React from "react";
+import type { Locale } from "@/i18n";
+import { formatNumber } from "@/i18n/format";
+import { getPageSupportCopy } from "@/lib/page-support-copy";
 
 interface SimpleMarkdownProps {
   content: string;
+  locale?: Locale;
+}
+
+function approvedLink(href: string): boolean {
+  // Article text is authored locally. Keep future imports from introducing
+  // executable schemes or browser-normalized authority paths into links.
+  if (/[\u0000-\u0020\u007f\\]/.test(href)) return false;
+  if (href.startsWith("#")) return true;
+  if (href.startsWith("/")) return !href.startsWith("//");
+  if (!/^https?:\/\//i.test(href)) return false;
+  try {
+    const url = new URL(href);
+    return Boolean(url.hostname) && !url.username && !url.password;
+  } catch {
+    return false;
+  }
 }
 
 function renderInline(text: string): React.ReactNode[] {
@@ -25,19 +44,26 @@ function renderInline(text: string): React.ReactNode[] {
       parts.push(
         <code
           key={match.index}
-          className="text-cyan bg-cyan/10 px-1.5 py-0.5 rounded text-sm font-mono break-words"
+          dir="ltr"
+          lang="en"
+          className="text-cyan bg-cyan/10 px-1.5 py-0.5 rounded text-sm font-mono break-words [unicode-bidi:isolate]"
         >
           {match[4]}
         </code>,
       );
     } else if (match[6]) {
       const href = match[7];
-      const external = /^https?:\/\//.test(href);
+      if (!approvedLink(href)) {
+        parts.push(match[6]);
+        lastIndex = regex.lastIndex;
+        continue;
+      }
+      const external = /^https?:\/\//i.test(href);
       parts.push(
         <a
           key={match.index}
           href={href}
-          className="text-cyan underline underline-offset-2 hover:text-cyan/80 break-words"
+          className="os-inline-link text-cyan underline underline-offset-2 hover:text-cyan/80 break-words"
           {...(external
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
@@ -69,10 +95,16 @@ function splitTableRow(line: string): string[] {
   return t.split("|").map((c) => c.trim());
 }
 
-export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
+export function SimpleMarkdown({
+  content,
+  locale = "en",
+}: SimpleMarkdownProps) {
   const lines = content.split("\n");
+  const copy = getPageSupportCopy(locale);
   const elements: React.ReactNode[] = [];
   let i = 0;
+  let codeBlockCount = 0;
+  let tableCount = 0;
 
   while (i < lines.length) {
     const line = lines[i];
@@ -86,6 +118,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
     // Fenced code block: ```lang ... ```
     if (trimmed.startsWith("```")) {
       const lang = trimmed.slice(3).trim();
+      codeBlockCount++;
       const codeLines: string[] = [];
       i++;
       while (i < lines.length && !lines[i].trim().startsWith("```")) {
@@ -97,15 +130,27 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
       elements.push(
         <div
           key={`code-${i}`}
-          className="my-4 border border-cyan/15 bg-[#0a0e17] overflow-hidden"
+          dir="ltr"
+          lang="en"
+          className="os-code-surface my-4 border border-cyan/15 overflow-hidden"
         >
           {lang && (
             <div className="px-3 py-1.5 border-b border-cyan/10 bg-cyan/[0.03] font-mono text-[10px] text-cyan/70 uppercase tracking-widest">
               {lang}
             </div>
           )}
-          <div className="overflow-x-auto">
-            <pre className="p-4 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 min-w-0">
+          <div
+            className="os-reading-scroll overflow-x-auto"
+            lang={locale}
+            tabIndex={0}
+            role="region"
+            aria-label={`${copy.sourceCode} · ${formatNumber(codeBlockCount, locale)}${lang ? ` · ${lang}` : ""}`}
+          >
+            <pre
+              dir="ltr"
+              lang="en"
+              className="p-4 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 min-w-0"
+            >
               <code>{codeLines.join("\n")}</code>
             </pre>
           </div>
@@ -130,6 +175,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
       isTableSeparator(lines[i + 1])
     ) {
       const headers = splitTableRow(trimmed);
+      tableCount++;
       i += 2; // skip header + separator
       const rows: string[][] = [];
       while (i < lines.length && isTableRow(lines[i])) {
@@ -137,14 +183,20 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
         i++;
       }
       elements.push(
-        <div key={`tbl-${i}`} className="my-6 -mx-4 sm:mx-0 overflow-x-auto">
+        <div
+          key={`tbl-${i}`}
+          className="os-reading-scroll my-6 -mx-4 sm:mx-0 overflow-x-auto"
+          tabIndex={0}
+          role="region"
+          aria-label={`${headers.join(" / ")} · ${formatNumber(tableCount, locale)}`}
+        >
           <table className="w-full min-w-[480px] text-sm border border-cyan/15">
             <thead className="bg-cyan/5">
               <tr>
                 {headers.map((h, hi) => (
                   <th
                     key={hi}
-                    className="px-3 py-2 text-left font-mono text-xs text-cyan font-semibold border-b border-cyan/15"
+                    className="px-3 py-2 text-start font-mono text-xs text-cyan font-semibold border-b border-cyan/15"
                   >
                     {renderInline(h)}
                   </th>
@@ -209,7 +261,7 @@ export function SimpleMarkdown({ content }: SimpleMarkdownProps) {
       elements.push(
         <blockquote
           key={`bq-${i}`}
-          className="my-4 border-l-2 border-cyan/50 pl-4 italic text-text-body"
+          className="my-4 border-s-2 border-cyan/50 ps-4 italic text-text-body"
         >
           {quoteLines.map((ql, qi) => (
             <p key={qi} className="my-1">

@@ -1,136 +1,244 @@
 "use client";
 
-import { ActiveGrid } from "@/components/ui/ActiveGrid";
-import { HUDFrame } from "@/components/ui/HUDFrame";
-import { DecryptedText } from "@/components/ui/DecryptedText";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { writeups } from "@/lib/data";
+import { useContentId } from "@/components/os/application-context";
+
+import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Lock } from "lucide-react";
-import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer } from "@/lib/utils";
+import { ArrowUpRight, FileText, Search } from "lucide-react";
+import type { Writeup } from "@/lib/data";
+import type { PublicationSummary } from "@/lib/publications";
+import { formatDate, formatNumber } from "@/i18n/format";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { cn } from "@/lib/utils";
+import { getOSCopy } from "@/components/os/os-copy";
+import "@/components/os/supporting-apps.css";
 
-export function WriteUpsClient() {
+export function WriteUpsClient({
+  posts,
+  publications,
+  publicationSourceLanguageNote,
+}: {
+  posts: Omit<Writeup, "content">[];
+  publications: PublicationSummary[];
+  publicationSourceLanguageNote: string;
+}) {
+  const topics = [...new Set(posts.map((post) => post.tag))];
   const { locale, t } = useTranslation();
-  const isRTL = locale === "fa" || locale === "ar";
+  const contentId = useContentId();
+  const copy = getOSCopy(locale);
+  const [query, setQuery] = useState("");
+  const [topic, setTopic] = useState("");
+  const filteredWriteups = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase(locale);
+    return posts.filter(
+      (post) =>
+        (!topic || post.tag === topic) &&
+        `${post.title} ${post.takeaway} ${post.tag} ${post.slug}`
+          .toLocaleLowerCase(locale)
+          .includes(normalizedQuery),
+    );
+  }, [posts, query, topic, locale]);
 
-  const getPath = (path: string) => {
-    if (locale === defaultLocale) return path;
-    return `/${locale}${path}`;
-  };
+  const getPath = (path: string) =>
+    locale === defaultLocale ? path : `/${locale}${path}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={cn("relative min-h-screen pt-24 pb-12", isRTL && "text-right")}
-    >
-      <ActiveGrid />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection variants={fadeInUp}>
-          <div className="mb-12">
-            <div
-              className={cn(
-                "flex items-center space-x-2 text-cyan mb-2",
-                isRTL && "space-x-reverse justify-end",
-              )}
-            >
-              <Lock className="w-4 h-4" />
-              <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">
-                {t.writeups_page.classified_archive}
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              <DecryptedText text={t.writeups_page.title} />
-            </h1>
-            <p className="text-text-body max-w-2xl">
-              {t.writeups_page.description}
-              <br />
-              <span className="text-xs font-mono text-text-meta">
-                {" "}
-                {t.writeups_page.clearance_level}
-              </span>
-            </p>
-          </div>
-        </AnimatedSection>
+    <div className="os-library">
+      <header className="os-library-header">
+        <span className="os-support-eyebrow">
+          {t.writeups_page.classified_archive}
+        </span>
+        <h1>{t.writeups_page.title}</h1>
+        <p>{t.writeups_page.description}</p>
+        <nav className="os-support-actions" aria-label={copy.research}>
+          <a
+            className="os-support-link"
+            href={`#${contentId("technical-write-ups")}`}
+          >
+            {copy.writing} · <bdi>{formatNumber(posts.length, locale)}</bdi>
+          </a>
+          <a
+            className="os-support-link"
+            href={`#${contentId("research-publications")}`}
+          >
+            {copy.papers} ·{" "}
+            <bdi>{formatNumber(publications.length, locale)}</bdi>
+          </a>
+        </nav>
+      </header>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="space-y-4"
-        >
-          {writeups.map((post) => (
-            <motion.div key={post.slug} variants={fadeInUp}>
+      <section id={contentId("technical-write-ups")} aria-label={copy.writing}>
+        <div className="os-library-controls">
+          <label className="os-library-search">
+            <Search aria-hidden="true" size={18} />
+            <span className="sr-only">{copy.librarySearch}</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={copy.librarySearch}
+            />
+          </label>
+          <label className="os-library-topic">
+            <span className="sr-only">{copy.libraryTopic}</span>
+            <select
+              value={topic}
+              onChange={(event) => setTopic(event.target.value)}
+            >
+              <option value="">{copy.allTopics}</option>
+              {topics.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </label>
+          <span className="os-library-count" role="status">
+            {copy.results}: {formatNumber(filteredWriteups.length, locale)}
+          </span>
+        </div>
+
+        <div className="os-library-list">
+          {filteredWriteups.map((post) => (
+            <article key={post.slug} className="os-library-entry">
+              <span className="os-library-file" aria-hidden="true">
+                <FileText size={23} strokeWidth={1.3} />
+              </span>
+              <div className="os-library-entry-content">
+                <div className="os-library-entry-meta">
+                  <time dateTime={post.date}>
+                    {formatDate(post.date, locale)}
+                  </time>
+                  <span>{post.tag}</span>
+                </div>
+                <h2>
+                  <Link href={getPath(`/write-ups/${post.slug}`)}>
+                    {post.title}
+                  </Link>
+                </h2>
+                <p>{post.takeaway}</p>
+              </div>
               <Link
                 href={getPath(`/write-ups/${post.slug}`)}
-                className="block group"
+                className="os-library-read"
               >
-                <motion.div
-                  whileHover={{ x: isRTL ? -4 : 4 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                >
-                  <HUDFrame className="p-6 bg-[#030712]/60 backdrop-blur-md hover:border-cyan/40 hover:bg-cyan/[0.04] transition-all duration-300">
-                    <div
-                      className={cn(
-                        "flex flex-col md:flex-row md:items-center justify-between gap-4",
-                        isRTL && "md:flex-row-reverse",
-                      )}
-                    >
-                      <div className="space-y-2">
-                        <div
-                          className={cn(
-                            "flex items-center gap-3 text-xs font-mono text-text-meta",
-                            isRTL && "flex-row-reverse",
-                          )}
-                        >
-                          <span className="text-cyan">{post.date}</span>
-                          <span className="text-cyan/30">|</span>
-                          <span className="px-1.5 py-0.5 bg-cyan/5 border border-cyan/10 text-text-meta">
-                            {post.tag}
-                          </span>
-                        </div>
-                        <h2 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan transition-colors">
-                          {post.title}
-                        </h2>
-                        <p className="text-text-body max-w-2xl">
-                          {post.takeaway}
-                        </p>
-                      </div>
-                      <div
-                        className={cn(
-                          "flex items-center text-text-meta group-hover:text-cyan transition-colors",
-                          isRTL && "flex-row-reverse",
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            "text-xs font-mono hidden md:inline-block",
-                            isRTL ? "ml-2" : "mr-2",
-                          )}
-                        >
-                          {t.writeups_page.read_file}
-                        </span>
-                        <ArrowRight
-                          className={cn(
-                            "w-4 h-4 transform group-hover:translate-x-1 transition-transform",
-                            isRTL && "rotate-180 group-hover:-translate-x-1",
-                          )}
-                        />
-                      </div>
-                    </div>
-                  </HUDFrame>
-                </motion.div>
+                <span>{copy.readWriteup}</span>
+                <ArrowUpRight aria-hidden="true" size={18} />
+                <span className="sr-only">: {post.title}</span>
               </Link>
-            </motion.div>
+            </article>
           ))}
-        </motion.div>
-      </div>
-    </motion.div>
+          {filteredWriteups.length === 0 && (
+            <p className="os-library-empty">{copy.libraryEmpty}</p>
+          )}
+        </div>
+      </section>
+
+      <section
+        id={contentId("research-publications")}
+        aria-labelledby={contentId("research-publications-heading")}
+      >
+        <div className="os-support-section-heading">
+          <h2 id={contentId("research-publications-heading")}>
+            {t.project_detail.research_papers}
+          </h2>
+          <span className="os-library-count">
+            {copy.papers}:{" "}
+            <bdi>{formatNumber(publications.length, locale)}</bdi>
+          </span>
+        </div>
+        <p>{publicationSourceLanguageNote}</p>
+        <div className="os-library-list">
+          {publications.map((publication) => (
+            <article
+              className="os-library-entry"
+              key={publication.id}
+              data-publication={publication.id}
+            >
+              <span className="os-library-file" aria-hidden="true">
+                <FileText size={23} strokeWidth={1.3} />
+              </span>
+              <div className="os-library-entry-content">
+                <div className="os-library-entry-meta">
+                  <span>{publication.label}</span>
+                  {publication.status && <span>{publication.status}</span>}
+                  {publication.venue && (
+                    <span lang="en" dir="ltr">
+                      {publication.venue}
+                    </span>
+                  )}
+                  {publication.year && (
+                    <time dateTime={publication.year}>
+                      {formatNumber(Number(publication.year), locale, {
+                        useGrouping: false,
+                      })}
+                    </time>
+                  )}
+                </div>
+                <h3
+                  lang="en"
+                  dir="ltr"
+                  style={{
+                    fontFamily: "var(--os-serif)",
+                    fontSize: "clamp(18px, 2.2vw, 23px)",
+                    fontWeight: 400,
+                    lineHeight: 1.4,
+                    marginBlockEnd: 10,
+                    overflowWrap: "anywhere",
+                  }}
+                >
+                  <a
+                    className="os-inline-link"
+                    href={publication.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {publication.title}
+                  </a>
+                </h3>
+                {publication.description && (
+                  <p lang={publication.descriptionLocale}>
+                    {publication.description}
+                  </p>
+                )}
+                <div className="os-support-actions">
+                  <Link
+                    className="os-support-link os-inline-link"
+                    href={publication.projectHref}
+                  >
+                    {t.common.case_study}:{" "}
+                    <bdi lang={publication.projectTitleLocale}>
+                      {publication.projectTitle}
+                    </bdi>
+                  </Link>
+                  {publication.doi && (
+                    <a
+                      className="os-support-link os-inline-link"
+                      href={`https://doi.org/${publication.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <bdi lang="en" dir="ltr">
+                        DOI: {publication.doi}
+                      </bdi>
+                    </a>
+                  )}
+                </div>
+              </div>
+              <a
+                className="os-library-read"
+                href={publication.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{copy.readPaper}</span>
+                <ArrowUpRight aria-hidden="true" size={18} />
+                <span className="sr-only">: {publication.title}</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

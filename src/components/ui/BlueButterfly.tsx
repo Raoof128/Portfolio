@@ -1,5 +1,7 @@
 "use client";
 
+import { useId } from "react";
+
 /**
  * Divan — Open Day hero visual: an animated blue-morpho butterfly.
  * Appearance and colours are modelled on the reference blue-butterfly vector
@@ -9,28 +11,39 @@
  * sides flap in perfect symmetry. Pure SVG + CSS; honours reduced-motion.
  */
 export function BlueButterfly() {
+  const artworkId = useId();
   return (
     <div className="bf-host" aria-hidden="true">
       <div className="bf-float">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="bf-upper" cx="64%" cy="46%" r="72%">
+            <radialGradient
+              id={`${artworkId}-bf-upper`}
+              cx="64%"
+              cy="46%"
+              r="72%"
+            >
               <stop offset="0%" stopColor="#49b8f5" />
               <stop offset="42%" stopColor="#2a93e0" />
               <stop offset="76%" stopColor="#175bad" />
               <stop offset="100%" stopColor="#0e2f66" />
             </radialGradient>
-            <radialGradient id="bf-lower" cx="56%" cy="32%" r="82%">
+            <radialGradient
+              id={`${artworkId}-bf-lower`}
+              cx="56%"
+              cy="32%"
+              r="82%"
+            >
               <stop offset="0%" stopColor="#39a8ea" />
               <stop offset="52%" stopColor="#1c69bd" />
               <stop offset="100%" stopColor="#0c2a5c" />
             </radialGradient>
 
-            <g id="bf-wing">
+            <g id={`${artworkId}-bf-wing`}>
               {/* upper wing */}
               <path
                 d="M 99,64 C 103,38 118,20 145,19 C 169,18 190,31 189,58 C 189,81 168,97 146,98 C 124,99 106,92 99,84 Z"
-                fill="url(#bf-upper)"
+                fill={`url(#${artworkId}-bf-upper)`}
                 stroke="#0a0a0a"
                 strokeWidth="3.4"
                 strokeLinejoin="round"
@@ -38,7 +51,7 @@ export function BlueButterfly() {
               {/* lower wing */}
               <path
                 d="M 99,90 C 118,95 145,103 163,124 C 176,139 174,158 154,160 C 132,162 111,147 103,124 C 100,116 99,104 99,90 Z"
-                fill="url(#bf-lower)"
+                fill={`url(#${artworkId}-bf-lower)`}
                 stroke="#0a0a0a"
                 strokeWidth="3.4"
                 strokeLinejoin="round"
@@ -133,10 +146,13 @@ export function BlueButterfly() {
 
           {/* wings — right authored, left mirrored; both flap in sync */}
           <g className="bf-flap-r">
-            <use href="#bf-wing" />
+            <use href={`#${artworkId}-bf-wing`} />
           </g>
           <g className="bf-flap-l">
-            <use href="#bf-wing" transform="matrix(-1,0,0,1,200,0)" />
+            <use
+              href={`#${artworkId}-bf-wing`}
+              transform="matrix(-1,0,0,1,200,0)"
+            />
           </g>
 
           {/* body */}
@@ -230,11 +246,6 @@ export function BlueButterfly() {
         }
         @media (prefers-reduced-motion: reduce) {
           .bf-flap-r, .bf-flap-l, .bf-float { animation: none; }
-          .bf-float { animation: bf-fade 3s ease-in-out infinite; }
-          @keyframes bf-fade {
-            0%, 100% { opacity: 1; }
-            50%      { opacity: 0.6; }
-          }
         }
       `}</style>
     </div>

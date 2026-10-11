@@ -1,14 +1,13 @@
 "use client";
 
-import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowLeft, Calendar, Terminal } from "lucide-react";
 import { SimpleMarkdown } from "@/components/ui/SimpleMarkdown";
-import { fadeInUp } from "@/lib/utils";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { formatDate } from "@/i18n/format";
 
 interface WriteupPost {
   slug: string;
@@ -31,15 +30,13 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
   return (
     <div
       className={cn(
-        "relative min-h-screen pt-24 pb-12 overflow-x-hidden",
+        "os-legacy relative overflow-x-hidden",
         isRTL && "text-right",
       )}
     >
-      <ActiveGrid />
-
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Back Link */}
-        <AnimatedSection variants={fadeInUp}>
+        <AnimatedSection>
           <div className={cn("mb-8 flex", isRTL && "justify-end")}>
             <NeonButton
               href={getPath("/write-ups")}
@@ -55,7 +52,7 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
         </AnimatedSection>
 
         {/* Header */}
-        <AnimatedSection variants={fadeInUp} delay={0.1}>
+        <AnimatedSection>
           <header className="mb-12 border-b border-cyan/12 pb-8">
             <div
               className={cn(
@@ -69,19 +66,17 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
               </span>
               <span className="flex items-center gap-1 text-text-body">
                 <Calendar className="w-3 h-3" />
-                {post.date}
+                <time dateTime={post.date}>
+                  {formatDate(post.date, locale)}
+                </time>
               </span>
             </div>
 
-            <h1
-              lang={locale === "en" ? undefined : "en"}
-              className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight"
-            >
+            <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
               {post.title}
             </h1>
 
             <p
-              lang={locale === "en" ? undefined : "en"}
               className={cn(
                 "text-xl text-text-body font-light italic pl-4",
                 isRTL
@@ -95,18 +90,14 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
         </AnimatedSection>
 
         {/* Content */}
-        <AnimatedSection variants={fadeInUp} delay={0.2}>
-          <div
-            lang={locale === "en" ? undefined : "en"}
-            dir={locale === "en" ? undefined : "ltr"}
-            className="prose prose-invert prose-cyan max-w-none"
-          >
-            <SimpleMarkdown content={post.content} />
+        <AnimatedSection>
+          <div className="prose prose-invert prose-cyan max-w-none">
+            <SimpleMarkdown content={post.content} locale={locale} />
           </div>
         </AnimatedSection>
 
         {/* Footer */}
-        <AnimatedSection variants={fadeInUp} delay={0.3}>
+        <AnimatedSection>
           <div
             className={cn(
               "mt-16 pt-8 border-t border-cyan/12 flex justify-between items-center text-sm text-text-body font-mono",
@@ -115,7 +106,8 @@ export function WriteupDetailClient({ post }: { post: WriteupPost }) {
           >
             <span>{t.writeups_detail.end_transmission}</span>
             <span>
-              {t.lab_page.id_label} {post.slug.toUpperCase()}
+              {t.lab_page.id_label}{" "}
+              <bdi dir="ltr">{post.slug.toUpperCase()}</bdi>
             </span>
           </div>
         </AnimatedSection>

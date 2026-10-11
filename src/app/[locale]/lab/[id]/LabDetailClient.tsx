@@ -1,14 +1,13 @@
 "use client";
 
-import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowLeft, Terminal, AlertTriangle, Cpu } from "lucide-react";
-import { fadeInLeft, fadeInRight } from "@/lib/utils";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { cn } from "@/lib/utils";
 import type { LabExperiment } from "@/lib/data";
+import { getPageSupportCopy } from "@/lib/page-support-copy";
 
 const EXT_MAP: Record<string, string> = {
   rust: "rs",
@@ -28,6 +27,7 @@ function editorFilename(tech: string[]): string {
 export function LabDetailClient({ exp }: { exp: LabExperiment }) {
   const { locale, t } = useTranslation();
   const isRTL = locale === "fa" || locale === "ar";
+  const copy = getPageSupportCopy(locale);
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -42,9 +42,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
         : t.about.status_concept;
 
   return (
-    <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
-      <ActiveGrid />
-
+    <div className="os-legacy relative overflow-x-hidden">
       <div
         className={cn(
           "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
@@ -66,20 +64,14 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
         </div>
 
         {/* Layout Grid */}
-        <div className="grid lg:grid-cols-12 gap-8">
+        <div className="os-lab-detail-grid grid lg:grid-cols-12 gap-8">
           {/* Left Column: Info */}
-          <AnimatedSection
-            variants={fadeInLeft}
-            className="lg:col-span-4 space-y-6"
-          >
+          <AnimatedSection className="os-lab-detail-info lg:col-span-4 space-y-6">
             <div className="p-6 bg-[#030712]/60 border border-cyan/12 rounded-lg backdrop-blur-sm">
               <div className="font-mono text-xs text-text-body mb-2">
-                {t.lab_detail.experiment_id}: {exp.id}
+                {t.lab_detail.experiment_id}: <bdi dir="ltr">{exp.id}</bdi>
               </div>
-              <h1
-                lang={locale === "en" ? undefined : "en"}
-                className="text-2xl font-bold text-white mb-4"
-              >
+              <h1 className="text-2xl font-bold text-white mb-4">
                 {exp.title}
               </h1>
 
@@ -89,7 +81,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                     ? "bg-green-500/10 text-green-400 border-green-500/30"
                     : exp.status === "CONCEPT"
                       ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
-                      : "bg-cyber-gray text-text-body border-cyan/15"
+                      : "os-status-neutral bg-cyber-gray border-cyan/15"
                 }`}
               >
                 <span className="relative flex h-2 w-2">
@@ -109,10 +101,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                 {statusLabel(exp.status)}
               </div>
 
-              <p
-                lang={locale === "en" ? undefined : "en"}
-                className="text-text-body text-sm leading-relaxed mb-6"
-              >
+              <p className="text-text-body text-sm leading-relaxed mb-6">
                 {exp.description}
               </p>
 
@@ -121,12 +110,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                   <div className="text-xs font-mono text-cyan mb-2 flex items-center gap-2">
                     <Terminal className="w-3 h-3" /> {t.lab_detail.objective}
                   </div>
-                  <p
-                    lang={locale === "en" ? undefined : "en"}
-                    className="text-sm text-slate-300"
-                  >
-                    {exp.objective}
-                  </p>
+                  <p className="text-sm text-slate-300">{exp.objective}</p>
                 </div>
 
                 <div>
@@ -134,10 +118,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                     <AlertTriangle className="w-3 h-3" />{" "}
                     {t.lab_detail.constraints}
                   </div>
-                  <p
-                    lang={locale === "en" ? undefined : "en"}
-                    className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10"
-                  >
+                  <p className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10">
                     {exp.constraints}
                   </p>
                 </div>
@@ -157,12 +138,8 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
           </AnimatedSection>
 
           {/* Right Column: Code Editor */}
-          <AnimatedSection
-            variants={fadeInRight}
-            delay={0.15}
-            className="lg:col-span-8"
-          >
-            <div className="bg-[#0d0d0d] border border-cyber-gray rounded-lg overflow-hidden font-mono text-sm shadow-2xl">
+          <AnimatedSection className="lg:col-span-8 min-w-0">
+            <div className="os-code-surface border border-cyber-gray rounded-lg overflow-hidden font-mono text-sm shadow-2xl">
               {/* Fake Window Header */}
               <div className="bg-cyber-dark border-b border-cyber-gray p-3 flex items-center justify-between">
                 <div className="flex gap-2">
@@ -171,7 +148,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                   <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
                 </div>
                 <div className="text-text-body text-xs">
-                  {editorFilename(exp.tech)}
+                  <bdi dir="ltr">{editorFilename(exp.tech)}</bdi>
                 </div>
                 <div className="w-10" />
               </div>
@@ -179,8 +156,22 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
               {/* Code Content — valid <pre><code> with block-level line spans
                   (a <div> inside <pre> is invalid HTML). dir=ltr so code never
                   mirrors on RTL locales. */}
-              <div className="p-6 overflow-x-auto" dir="ltr">
-                <pre className="text-slate-300 leading-relaxed">
+              <p className="px-6 pt-4 text-xs text-text-body">
+                {copy.sourceCode}
+              </p>
+              <div
+                className="os-reading-scroll p-6 overflow-x-auto"
+                dir="ltr"
+                lang={locale}
+                tabIndex={0}
+                role="region"
+                aria-label={copy.sourceCode}
+              >
+                <pre
+                  dir="ltr"
+                  lang="en"
+                  className="text-slate-300 leading-relaxed"
+                >
                   <code>
                     {exp.codeSnippet.split("\n").map((line, i) => (
                       <span key={i} className="grid grid-cols-[2.5rem_1fr]">

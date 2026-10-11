@@ -10,6 +10,10 @@
  */
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import {
+  auditSecurityExpiry,
+  auditDeploymentVersion,
+} from "./lib/production-audit.mjs";
 
 const OUT = "out";
 const ORIGIN = "https://raoufabedini.dev";
@@ -56,6 +60,51 @@ const sitemapUrls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
 );
 if (sitemapUrls.length === 0) fail("sitemap.xml has no <loc> entries");
 
+// A missing full RSC payload makes Next fall back to document navigation and
+// discards retained app state. Test the actual shipped, first-match host rules
+// for every public route, rather than assuming an HTML rewrite covers .txt.
+const redirectsPath = join(OUT, "_redirects");
+const hostRules = existsSync(redirectsPath)
+  ? readFileSync(redirectsPath, "utf8")
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line && !line.startsWith("#"))
+      .map((line) => line.split(/\s+/))
+  : [];
+if (!existsSync(redirectsPath)) fail("_redirects missing");
+for (const url of sitemapUrls) {
+  const route = new URL(url).pathname;
+  const request = route.endsWith("/") ? `${route}index.txt` : `${route}.txt`;
+  let rewritten = request;
+  for (const [source, destination, status] of hostRules) {
+    const prefix = source.endsWith("*") ? source.slice(0, -1) : null;
+    if (request !== source && !(prefix && request.startsWith(prefix))) continue;
+    if (status !== "200") {
+      fail(`${request}: full RSC payload redirects instead of resolving`);
+      rewritten = "";
+      break;
+    }
+    rewritten = destination.replace(
+      ":splat",
+      prefix ? request.slice(prefix.length) : "",
+    );
+    break;
+  }
+  if (!rewritten) continue;
+  const payloadPath = join(OUT, rewritten.slice(1));
+  const expectedPayloadPath = urlToFile(url).replace(/\.html$/, ".txt");
+  if (
+    !rewritten.startsWith("/") ||
+    rewritten.split("/").includes("..") ||
+    !existsSync(payloadPath) ||
+    statSync(payloadPath).size === 0
+  ) {
+    fail(`${request}: full RSC payload missing at ${rewritten}`);
+  } else if (payloadPath !== expectedPayloadPath) {
+    fail(`${request}: full RSC payload maps to another route or locale`);
+  }
+}
+
 // ── Route-count parity vs generated pages (authoritative inventory) ──────────
 const countHtml = (dir) => {
   if (!existsSync(dir)) return 0;
@@ -85,6 +134,18 @@ for (const url of sitemapUrls) {
   }
   const html = readFileSync(file, "utf8");
   const locale = localeOf(url);
+
+  // Portfolio contact links have one recipient. Check the actual attribute,
+  // so an RTL text wrapper accidentally inserted into a URI cannot pass.
+  for (const [, href] of html.matchAll(/<a\b[^>]*\bhref="(mailto:[^"]*)"/gi)) {
+    try {
+      const recipient = decodeURIComponent(href.slice(7).split("?")[0]);
+      if (!/^[^\s@<>{};&"'`]+@[a-z\d.-]+\.[a-z]{2,}$/i.test(recipient))
+        fail(`invalid contact mailto recipient: ${url}`);
+    } catch {
+      fail(`invalid contact mailto encoding: ${url}`);
+    }
+  }
 
   // title
   const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]?.trim();
@@ -159,6 +220,31 @@ for (const url of sitemapUrls) {
     if (!/"TechArticle"|"BlogPosting"/.test(flatTypes))
       fail(`write-up lacks article schema: ${url}`);
   }
+  // Article and lab prose now has complete translations. English publication
+  // sub-nodes may still describe original PDFs; primary articles must match.
+  if (/\/(?:write-ups|lab)\/[^/]+$/.test(url.replace(ORIGIN, ""))) {
+    const nodes = parsed.flatMap((block) => {
+      if (Array.isArray(block)) return block;
+      if (!block || typeof block !== "object") return [];
+      return Array.isArray(block["@graph"]) ? block["@graph"] : [block];
+    });
+    const articles = nodes.filter(
+      (node) =>
+        node &&
+        typeof node === "object" &&
+        [node["@type"]]
+          .flat()
+          .some((type) => ["TechArticle", "BlogPosting"].includes(type)),
+    );
+    if (!articles.length)
+      fail(`detail page lacks primary article schema: ${url}`);
+    for (const article of articles) {
+      if (article.inLanguage !== locale)
+        fail(
+          `primary article language ${article.inLanguage} ≠ ${locale}: ${url}`,
+        );
+    }
+  }
   if (/\/about$/.test(url.replace(ORIGIN, ""))) {
     if (!/"@type":"ProfilePage"/.test(flatTypes))
       fail(`about page lacks ProfilePage schema: ${url}`);
@@ -210,6 +296,29 @@ for (const url of sitemapUrls) {
 }
 
 // ── Machine-control files ────────────────────────────────────────────────────
+// Static hosts serve this complete document for every unmatched URL. The
+// nested locale not-found component alone does not protect exported 404s.
+const notFoundFile = join(OUT, "404.html");
+if (!existsSync(notFoundFile)) fail("global static 404.html missing");
+else {
+  const html = readFileSync(notFoundFile, "utf8");
+  if (!/<html\b[^>]*\blang="en"/i.test(html))
+    fail("global 404 has no English server/no-script language fallback");
+  if (!/<html\b[^>]*\bdata-global-not-found="true"/i.test(html))
+    fail("global 404 does not mount its scoped document styles");
+  if (!/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html))
+    fail("global 404 is missing noindex");
+  if (!/<main\b/.test(html) || !/<h1\b/.test(html))
+    fail("global 404 is missing accessible recovery content");
+  for (const locale of LOCALES) {
+    const path = locale === "en" ? "/" : `/${locale}`;
+    if (!html.includes(`href="${path}"`))
+      fail(`global 404 is missing ordinary ${locale} home recovery link`);
+  }
+  if (!html.includes('href="/projects"'))
+    fail("global 404 is missing project recovery link");
+}
+
 const mustExist = [
   "robots.txt",
   "sitemap.xml",
@@ -223,6 +332,15 @@ const mustExist = [
 ];
 for (const f of mustExist)
   if (!existsSync(join(OUT, f))) fail(`machine file missing: ${f}`);
+
+if (existsSync(join(OUT, "version.json"))) {
+  try {
+    const version = JSON.parse(readFileSync(join(OUT, "version.json"), "utf8"));
+    for (const issue of auditDeploymentVersion(version)) fail(issue);
+  } catch {
+    fail("version.json is not valid JSON");
+  }
+}
 
 // robots.txt (the file we control) must allow crawling, advertise sitemap
 if (existsSync(join(OUT, "robots.txt"))) {
@@ -241,8 +359,8 @@ for (const p of ["security.txt", ".well-known/security.txt"]) {
   if (!/^Contact:\s*\S+/im.test(s)) fail(`${p}: missing Contact`);
   if (/^Ack:/im.test(s)) fail(`${p}: uses "Ack" — must be "Acknowledgments"`);
   const exp = (s.match(/^Expires:\s*(\S+)/im) || [])[1];
-  if (!exp) fail(`${p}: missing Expires`);
-  else if (new Date(exp) <= new Date()) fail(`${p}: Expires ${exp} is expired`);
+  const expiryIssue = auditSecurityExpiry(exp);
+  if (expiryIssue) fail(`${p}: ${expiryIssue}`);
   const canon = (s.match(/^Canonical:\s*(\S+)/im) || [])[1];
   if (canon && canon !== `${ORIGIN}/.well-known/security.txt`)
     fail(`${p}: Canonical ${canon} ≠ live well-known URL`);

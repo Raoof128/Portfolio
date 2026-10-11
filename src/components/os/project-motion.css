@@ -1,0 +1,162 @@
+.os-project-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+  padding-block-end: 28px;
+}
+
+.os-project-intro > .os-project-dossier-header {
+  min-inline-size: 0;
+}
+
+.os-project-intro > .os-project-motion {
+  justify-self: center;
+}
+
+.os-project-motion {
+  min-inline-size: 0;
+  inline-size: 100%;
+  max-inline-size: 320px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--os-line);
+  border-radius: 17px;
+  background: var(--os-surface);
+}
+
+.os-project-motion .os-motion-stage {
+  position: relative;
+  isolation: isolate;
+  block-size: 280px;
+  overflow: hidden;
+}
+
+.os-project-motion
+  .os-motion-stage
+  :is(
+    .dandelion-bloom,
+    .kl-container,
+    .ka-container,
+    .cc-container,
+    .coe-container,
+    .owl-container,
+    .koi-container,
+    .woe-container,
+    .bf-float
+  ) {
+  inline-size: 86%;
+  block-size: auto;
+  max-inline-size: 260px;
+  max-block-size: 260px;
+  aspect-ratio: 1;
+}
+
+.os-project-motion .os-motion-stage svg:not(.os-motion-placeholder) {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.os-project-motion[data-playing="false"] .os-motion-stage * {
+  animation-play-state: paused !important;
+}
+
+.os-project-motion[data-reduced-motion="true"] .os-motion-stage * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.os-project-motion .os-motion-placeholder {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  inline-size: 160px;
+  block-size: 160px;
+  color: #9bc9ce;
+  stroke: currentColor;
+  opacity: 0.28;
+  transform: translate(-50%, -50%);
+}
+
+.os-project-motion figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 8px;
+  min-block-size: 51px;
+  padding-inline: 14px 7px;
+  border-top: 1px solid var(--os-line);
+  color: var(--os-muted);
+  font: 11px / 1.5 var(--os-mono);
+}
+
+.os-project-motion button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding: 8px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--os-text);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--os-motion-quick, 140ms)
+    var(--os-ease-out, ease-out);
+}
+
+.os-project-motion button:hover {
+  background: var(--os-line);
+}
+
+.os-project-motion .os-motion-button-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.os-project-motion .os-motion-preference {
+  padding-block: 14px;
+  color: var(--os-muted);
+  font-size: 10px;
+}
+
+.os-project-motion .os-motion-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  block-size: 100%;
+  padding: 24px;
+  background: var(--os-surface);
+  color: var(--os-muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+.os-project-motion .os-motion-error p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-project-motion .os-motion-stage *,
+  .os-project-motion button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@container project-content (min-width: 820px) {
+  .os-project-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 270px);
+  }
+}

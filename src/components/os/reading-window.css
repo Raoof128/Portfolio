@@ -1,0 +1,185 @@
+/* Free geometry is opt-in on desktop; ordinary deep links keep the document layout. */
+.os-window--floating {
+  position: fixed;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  animation: none;
+  overflow: visible;
+}
+.os-window--floating > .os-windowbar {
+  position: relative;
+  top: 0;
+  flex: 0 0 auto;
+  border-radius: 17px 17px 0 0;
+}
+.os-window--floating > .os-page-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 44px;
+  border-radius: 0 0 17px 17px;
+  scroll-padding-block: 16px;
+}
+.os-window-title--movable {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.os-window-title--movable:active {
+  cursor: grabbing;
+}
+.os-window-controls {
+  position: relative;
+}
+.os-window-controls > summary {
+  list-style: none;
+}
+.os-window-controls > summary::-webkit-details-marker {
+  display: none;
+}
+.os-window-controls[open] > summary {
+  color: var(--os-accent);
+}
+.os-window-controls-panel {
+  position: fixed;
+  z-index: 60;
+  width: 292px;
+  padding: 17px;
+  border: 1px solid var(--os-line);
+  border-radius: 12px;
+  box-shadow: 0 12px 35px #0004;
+  color: var(--os-text);
+  background: var(--os-surface);
+  white-space: normal;
+  text-align: start;
+  max-height: calc(100dvh - 174px);
+  overflow-y: auto;
+}
+.os-window-controls-panel fieldset {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+}
+.os-window-controls-panel legend {
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+.os-window-controls-panel p {
+  margin: 5px 0 9px;
+  color: var(--os-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.os-window-step-controls {
+  display: flex;
+  gap: 5px;
+  direction: ltr;
+}
+.os-window-step-controls button {
+  border: 1px solid var(--os-line);
+  border-radius: 7px;
+  padding-inline: 8px;
+}
+.os-window-step-controls span {
+  font-size: 16px;
+}
+.os-window-controls-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  border-top: 1px solid var(--os-line);
+  padding-top: 9px;
+}
+.os-window-controls-footer .os-control {
+  font-size: 11px;
+  white-space: normal;
+}
+.os-window-controls-footer button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.os-shell .os-window-resize {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 21;
+  width: 44px;
+  height: 44px;
+  cursor: nwse-resize;
+  touch-action: none;
+  border-radius: 10px;
+  background: var(--os-surface);
+}
+.os-window-resize svg {
+  width: 16px;
+  height: 16px;
+}
+.os-minimized-task {
+  position: fixed;
+  z-index: 35;
+  inset-inline-end: 20px;
+  bottom: calc(106px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  max-width: min(360px, calc(100% - 40px));
+  padding: 9px 12px;
+  border: 1px solid var(--os-line);
+  border-radius: 12px;
+  color: var(--os-text);
+  background: var(--os-surface);
+  box-shadow: 0 10px 35px #0003;
+  text-align: start;
+}
+.os-minimized-task > span {
+  display: grid;
+  min-width: 0;
+}
+.os-minimized-task strong {
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.os-minimized-task small {
+  color: var(--os-muted);
+  font-size: 11px;
+}
+.os-dock-app[data-minimized="true"]::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  bottom: 3px;
+  border-radius: 50%;
+  background: var(--os-accent);
+}
+@media (max-width: 1023px), (max-height: 599px) {
+  .os-window-title--movable {
+    cursor: default;
+    touch-action: manipulation;
+  }
+  .os-window-controls,
+  .os-window-resize {
+    display: none;
+  }
+}
+@media (forced-colors: active) {
+  .os-window-controls-panel,
+  .os-minimized-task,
+  .os-window-resize {
+    color: CanvasText;
+    background: Canvas;
+    border: 1px solid ButtonText;
+  }
+  .os-dock-app[data-minimized="true"]::after {
+    background: Highlight;
+  }
+}

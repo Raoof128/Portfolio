@@ -7,6 +7,15 @@ import {
   type Writeup,
   type LabExperiment,
 } from "./data";
+import { SITE_LAST_MODIFIED } from "./constants";
+
+function expectContentDate(value: string): void {
+  expect(value).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  const date = new Date(value);
+  expect(Number.isFinite(date.getTime())).toBe(true);
+  // Date accepts some impossible days by rolling them into the next month.
+  expect(date.toISOString().slice(0, 10)).toBe(value);
+}
 
 describe("Data Layer", () => {
   describe("Projects", () => {
@@ -185,7 +194,13 @@ describe("Data Layer", () => {
 
     it("writeup dates should be valid ISO format", () => {
       writeups.forEach((writeup: Writeup) => {
-        expect(() => new Date(writeup.date)).not.toThrow();
+        expectContentDate(writeup.date);
+        if (writeup.updatedAt) {
+          expectContentDate(writeup.updatedAt);
+          expect(Date.parse(writeup.updatedAt)).toBeGreaterThanOrEqual(
+            Date.parse(writeup.date),
+          );
+        }
       });
     });
   });
@@ -221,5 +236,12 @@ describe("Data Layer", () => {
       expect(keylogger).toBeDefined();
       expect(keylogger?.title).toContain("Keylogger");
     });
+  });
+
+  it("keeps site and project revision dates valid for feed and sitemap generation", () => {
+    expectContentDate(SITE_LAST_MODIFIED);
+    for (const project of Object.values(projects)) {
+      if (project.updatedAt) expectContentDate(project.updatedAt);
+    }
   });
 });

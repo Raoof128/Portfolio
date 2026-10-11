@@ -22,16 +22,24 @@ jobs:
       has_token: ${{ steps.check.outputs.has_token }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: "20"
+          node-version-file: ".nvmrc"
           cache: npm
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Guarded dependency regression tests
+        run: npm run test:dependency-security
+
+      - name: Full dependency audit
+        run: npm audit --audit-level=high
 
       - name: Lint
         run: npm run lint
@@ -42,8 +50,26 @@ jobs:
       - name: Test
         run: npm run test:ci
 
+      - name: Machine-schema regression tests
+        run: npm run test:schemas
+
+      - name: HTTP audit regression tests
+        run: npm run test:audit-http
+
+      - name: Static security regression tests
+        run: npm run test:security
+
       - name: Build static artifact
         run: npm run build
+
+      - name: Static artifact security audit
+        run: npm run audit:security
+
+      - name: Agent / machine-reliability audit
+        run: npm run audit:agents
+
+      - name: Runtime dependency audit
+        run: npm audit --omit=dev --audit-level=high
 
       # Emit only a boolean — the token value is never placed in output/env.
       - name: Check deploy token presence
@@ -51,14 +77,29 @@ jobs:
         run: echo "has_token=${{ secrets.CLOUDFLARE_API_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
       - name: Upload static artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: site
           path: out
           retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
 
-  # Deploy is the only job that holds the Cloudflare token, and it runs no
-  # third-party build code — just artifact download and wrangler.
+      # This verifier uses Node built-ins and runs before deployment credentials
+      # are supplied. It is separate from the public website artifact.
+      - name: Upload artifact security verifier
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: site-verifier
+          path: |
+            scripts/audit-static-security.mjs
+            scripts/lib/static-security.mjs
+            scripts/lib/production-audit.mjs
+          retention-days: 1
+          if-no-files-found: error
+
+  # The token is supplied only to the deployment action. No application install
+  # or build runs here; artifact checks execute first, without credentials.
   deploy:
     needs: build
     # Only main reaches production — blocks workflow_dispatch on arbitrary refs.
@@ -67,14 +108,30 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Download static artifact
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: site
           path: out
 
+      - name: Download artifact security verifier
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: site-verifier
+          path: site-verifier
+
+      - name: Setup verification runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "22.23.3"
+
+      - name: Verify downloaded static artifact
+        run: node site-verifier/audit-static-security.mjs out
+
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.149.0"
+          packageManager: npm
           command: pages deploy out --project-name=raoufabedini --branch=main

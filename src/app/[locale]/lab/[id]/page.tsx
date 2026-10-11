@@ -1,5 +1,7 @@
+import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { labExperiments } from "@/lib/data";
+import { getLocalizedLab } from "@/lib/localized-labs";
 import { notFound } from "next/navigation";
 import {
   buildAlternates,
@@ -10,7 +12,7 @@ import {
   TWITTER_IMAGE,
 } from "@/lib/seo";
 import { ORCID_URL, SITE_URL, SITE_LAST_MODIFIED } from "@/lib/constants";
-import { getDictionary, type Locale } from "@/i18n";
+import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { LabDetailClient } from "./LabDetailClient";
 
 export function generateStaticParams() {
@@ -29,8 +31,12 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale, id } = await params;
-  const exp = labExperiments.find((e) => e.id === id);
+  const { locale: rawLocale, id } = await params;
+  const locale = resolveLocale(rawLocale);
+  const sourceExp = labExperiments.find((e) => e.id === id);
+  const exp = sourceExp
+    ? getLocalizedLab(sourceExp, locale as Locale)
+    : undefined;
   const t = await getDictionary(locale as Locale);
   if (!exp) return { title: t.seo.not_found_title };
 
@@ -79,9 +85,7 @@ function buildLabJsonLd(
     description: exp.description,
     datePublished: SITE_LAST_MODIFIED,
     dateModified: SITE_LAST_MODIFIED,
-    // Experiment write-ups are authored in English on every locale route; the
-    // page chrome is translated. Keep the article node honest as "en".
-    inLanguage: "en",
+    inLanguage: locale,
     author: AUTHOR,
     publisher: { "@id": `${SITE_URL}/#person` },
     mainEntityOfPage: { "@id": pageUrl },
@@ -114,8 +118,12 @@ function buildLabJsonLd(
 }
 
 export default async function LabExperimentPage({ params }: PageProps) {
-  const { locale, id } = await params;
-  const exp = labExperiments.find((e) => e.id === id);
+  const { locale: rawLocale, id } = await params;
+  const locale = resolveLocale(rawLocale);
+  const sourceExp = labExperiments.find((e) => e.id === id);
+  const exp = sourceExp
+    ? getLocalizedLab(sourceExp, locale as Locale)
+    : undefined;
 
   if (!exp) {
     notFound();
@@ -134,7 +142,9 @@ export default async function LabExperimentPage({ params }: PageProps) {
           }),
         }}
       />
-      <LabDetailClient exp={exp} />
+      <OSApplicationBridge locale={locale as Locale} route={`/lab/${id}`}>
+        <LabDetailClient exp={exp} />
+      </OSApplicationBridge>
     </>
   );
 }

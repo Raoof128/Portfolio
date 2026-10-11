@@ -1,0 +1,70 @@
+.os-app-bridge {
+  display: contents;
+}
+.os-workspace-window {
+  container-type: inline-size;
+}
+.os-workspace-window.os-window {
+  /* Reading text stays opaque, and opening never moves the pointer target. */
+  animation: none;
+}
+.os-workspace-window.os-window--floating
+  .os-window-navigation
+  > .os-small-icon {
+  animation: os-workspace-icon-appear var(--os-motion-quick) var(--os-ease-out);
+}
+@keyframes os-workspace-icon-appear {
+  from {
+    transform: scale(0.94);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.os-shell button.os-window-title {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  padding: 0;
+  min-height: 44px;
+  min-width: 44px;
+}
+.os-shell button.os-window-title--movable {
+  touch-action: none;
+}
+.os-workspace-window[data-active="false"] {
+  box-shadow: 0 8px 28px #0004;
+}
+.os-workspace-window[data-active="false"] .os-windowbar {
+  opacity: 0.8;
+}
+/* Retain the still reading surface while pausing background status decorations. */
+.os-workspace-window[data-active="false"] .os-page-content [class*="animate-"] {
+  animation-play-state: paused !important;
+}
+.os-lab-detail-info h1 {
+  overflow-wrap: anywhere;
+}
+/* A reading pane may be much narrower than the browser's viewport. */
+.os-workspace-window .os-lab-detail-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+.os-workspace-window .os-lab-detail-grid > * {
+  grid-column: auto;
+}
+@container (min-width: 880px) {
+  .os-workspace-window .os-lab-detail-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  }
+}
+@media (max-width: 1023px), (max-height: 599px) {
+  .os-workspace-desktop[aria-hidden="true"] {
+    display: none;
+  }
+  .os-workspace-window {
+    /* Reserve the single dock so the final reading link remains reachable. */
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}

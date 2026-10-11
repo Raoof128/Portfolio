@@ -1,0 +1,146 @@
+.os-project-explorer .os-project-row.os-project-row-with-preview {
+  grid-template-columns: 25px 136px minmax(0, 1fr);
+  align-items: start;
+}
+
+.os-project-explorer .os-project-row-summary {
+  min-inline-size: 0;
+}
+
+.os-project-thumbnail {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  /* Intrinsic canvas dimensions must not enlarge the fixed preview track. */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  inline-size: 100%;
+  block-size: 136px;
+  overflow: hidden;
+  border: 1px solid var(--os-line);
+  border-radius: 12px;
+}
+
+.os-project-thumbnail > div {
+  inline-size: 100%;
+  block-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 0;
+}
+
+.os-project-thumbnail
+  :is(
+    .dandelion-bloom,
+    .kl-container,
+    .ka-container,
+    .cc-container,
+    .coe-container,
+    .owl-container,
+    .koi-container,
+    .woe-container,
+    .bf-float
+  ) {
+  /* Size square SVG poses by preview height so wide cards cannot crop them. */
+  inline-size: auto;
+  block-size: 88%;
+  max-inline-size: 200px;
+  max-block-size: 200px;
+  aspect-ratio: 1;
+}
+
+.os-project-thumbnail svg:not(.os-project-thumbnail-placeholder) {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* Index previews remain still regardless of the original CSS animation API. */
+.os-project-thumbnail * {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
+.os-project-thumbnail .os-project-thumbnail-placeholder {
+  color: #9bc9ce;
+  opacity: 0.35;
+}
+
+@media (max-width: 1000px) {
+  .os-project-explorer .os-project-row.os-project-row-with-preview {
+    grid-template-columns: 25px minmax(0, 1fr);
+  }
+
+  .os-project-row-with-preview
+    :is(.os-project-thumbnail, .os-project-row-summary) {
+    grid-column: 2;
+  }
+
+  .os-project-row-with-preview .os-project-thumbnail {
+    max-inline-size: 240px;
+    block-size: 160px;
+  }
+}
+
+@media (max-width: 700px) {
+  .os-project-explorer .os-project-row.os-project-row-with-preview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .os-project-row-with-preview
+    :is(.os-project-thumbnail, .os-project-row-summary) {
+    grid-column: 1;
+  }
+
+  .os-project-row-with-preview .os-project-thumbnail {
+    max-inline-size: 320px;
+    block-size: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-project-thumbnail * {
+    animation: none !important;
+  }
+}
+.os-project-explorer .os-project-index {
+  container-type: inline-size;
+  container-name: project-index;
+}
+
+/* A desktop app can be narrower than its browser viewport after resizing. */
+@container project-index (max-width: 560px) {
+  .os-project-explorer .os-project-row.os-project-row-with-preview {
+    grid-template-columns: 25px minmax(0, 1fr);
+  }
+
+  .os-project-row-with-preview
+    :is(.os-project-thumbnail, .os-project-row-summary) {
+    grid-column: 2;
+  }
+
+  .os-project-row-with-preview .os-project-thumbnail {
+    max-inline-size: 240px;
+    block-size: 160px;
+  }
+}
+
+@container project-index (max-width: 400px) {
+  .os-project-explorer .os-project-row.os-project-row-with-preview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .os-project-row-with-preview .os-project-row-number {
+    display: none;
+  }
+
+  .os-project-row-with-preview
+    :is(.os-project-thumbnail, .os-project-row-summary) {
+    grid-column: 1;
+  }
+
+  .os-project-row-with-preview .os-project-thumbnail {
+    max-inline-size: 320px;
+    block-size: 180px;
+  }
+}

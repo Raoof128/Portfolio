@@ -15,9 +15,10 @@ Please report vulnerabilities privately via email:
 - Contact: `raoof.r999@outlook.com`
 - Subject format: `[SECURITY] <short summary>`
 
-For encrypted reports, use the public key published at:
-
-- `https://raoufabedini.dev/pgp-key.txt`
+The current contact is also published at
+`https://raoufabedini.dev/.well-known/security.txt`.
+No public encryption key is currently offered. For a sensitive report, email a
+brief summary first so we can agree on a suitable way to share the details.
 
 ## What to Include
 

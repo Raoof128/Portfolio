@@ -1,13 +1,16 @@
 "use client";
 
+import { useId } from "react";
+
 export function KineticLotus() {
+  const artworkId = useId();
   return (
     <div className="kl-host" aria-hidden="true">
       <div className="kl-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path
-              id="kl-gold-leaf"
+              id={`${artworkId}-kl-gold-leaf`}
               d="M 100,100 Q 120,55 116,20 C 112,5 88,5 84,20 Q 80,55 100,100 Z"
               fill="#d6b265"
               stroke="#1a1000"
@@ -15,7 +18,7 @@ export function KineticLotus() {
               strokeLinejoin="round"
             />
             <path
-              id="kl-cream-leaf"
+              id={`${artworkId}-kl-cream-leaf`}
               d="M 100,100 Q 112,62 108,32 C 105,20 95,20 92,32 Q 88,62 100,100 Z"
               fill="#fffdf5"
               stroke="#1a1000"
@@ -30,7 +33,7 @@ export function KineticLotus() {
               (r) => (
                 <use
                   key={r}
-                  href="#kl-gold-leaf"
+                  href={`#${artworkId}-kl-gold-leaf`}
                   transform={`rotate(${r} 100 100)`}
                 />
               ),
@@ -43,7 +46,7 @@ export function KineticLotus() {
               (r) => (
                 <use
                   key={r}
-                  href="#kl-cream-leaf"
+                  href={`#${artworkId}-kl-cream-leaf`}
                   transform={`rotate(${r} 100 100)`}
                 />
               ),
@@ -116,11 +119,7 @@ export function KineticLotus() {
         }
         @media (prefers-reduced-motion: reduce) {
           .kl-gold, .kl-cream, .kl-core { animation: none; }
-          .kl-container { animation: kl-fade 2s ease-in-out infinite; }
-          @keyframes kl-fade {
-            0%, 100% { opacity: 1; }
-            50%      { opacity: 0.5; }
-          }
+          .kl-container { animation: none; }
         }
       `}</style>
     </div>

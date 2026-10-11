@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { createCanvasPlayback, type CanvasPlayback } from "./canvas-playback";
 
 const W = 400;
 const H = 500;
@@ -11,8 +12,9 @@ const ROTATION_SPEED = 0.025;
 const CYAN = (op: number) => `rgba(0,243,255,${op})`;
 const MAGENTA = (op: number) => `rgba(255,0,127,${op})`;
 
-export function DnaHelixCanvas() {
+export function DnaHelixCanvas({ active = true }: { active?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const playbackRef = useRef<CanvasPlayback | null>(null);
 
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
@@ -21,13 +23,16 @@ export function DnaHelixCanvas() {
     if (!ctx) return;
 
     let angle = 0;
-    let lastTimestamp = 0;
-    let rafId = 0;
 
-    function loop(ts: number) {
-      const gap = ts - lastTimestamp;
-      lastTimestamp = ts;
-      if (gap <= 100) angle += ROTATION_SPEED;
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas!.width = Math.round(W * dpr);
+      canvas!.height = Math.round(H * dpr);
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function loop(_timestamp: number, step: number) {
+      angle += ROTATION_SPEED * step;
 
       ctx!.clearRect(0, 0, W, H);
 
@@ -82,44 +87,39 @@ export function DnaHelixCanvas() {
 
         ctx!.shadowBlur = 0;
       });
-
-      rafId = requestAnimationFrame(loop);
     }
 
-    function start() {
-      cancelAnimationFrame(rafId);
-      lastTimestamp = performance.now();
-      rafId = requestAnimationFrame(loop);
-    }
-
-    start();
-
-    const handleVisibility = () => {
-      if (document.hidden) cancelAnimationFrame(rafId);
-      else start();
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      document.removeEventListener("visibilitychange", handleVisibility);
-    };
+    return createCanvasPlayback(canvas, loop, resize);
   }, []);
 
   useEffect(() => {
-    return animate();
+    const playback = animate();
+    playbackRef.current = playback ?? null;
+    return () => {
+      playback?.dispose();
+      playbackRef.current = null;
+    };
   }, [animate]);
+
+  useEffect(() => playbackRef.current?.setActive(active), [active]);
 
   return (
     <div
       className="w-full h-full flex items-center justify-center"
       style={{ background: "#030308" }}
+      aria-hidden="true"
     >
       <canvas
         ref={canvasRef}
         width={W}
         height={H}
-        style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+        style={{
+          width: W,
+          height: H,
+          maxHeight: "100%",
+          maxWidth: "100%",
+          objectFit: "contain",
+        }}
       />
     </div>
   );

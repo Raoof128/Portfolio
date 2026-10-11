@@ -29,6 +29,8 @@ export interface Project {
   links: {
     demo?: string;
     repo?: string;
+    // A private source URL identifies the repository without promising public access.
+    repoVisibility?: "public" | "private";
     caseStudy?: string;
     paper?: string;
     doi?: string;
@@ -63,7 +65,7 @@ export const projects: Record<string, Project> = {
     category: "OFFENSIVE",
     year: "2026",
     description:
-      "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion on Windows 10/11 and macOS 14–26 using documented OS display APIs. Responsibly disclosed to vendors.",
+      "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion in tested Windows 10/11 and macOS 14–26 lab configurations using documented OS display APIs. Responsibly disclosed to vendors.",
     localizedDescription: {
       fa: "مقاله تحقیقاتی با فرمت IEEE که آسیب‌پذیری ساختاری در نظارت بر امتحانات مبتنی بر WebRTC را فاش می‌کند. فرار ۱۰۰ درصدی در ویندوز و مک با استفاده از APIهای مستند سیستم‌عامل.",
       ar: "ورقة بحثية بتنسيق IEEE تكشف عن ثغرة أمنية هيكلية في مراقبة الاختبارات القائمة على WebRTC. تهرب بنسبة ١٠٠٪ على نظامي التشغيل Windows و macOS باستخدام واجهات برمجة تطبيقات عرض نظام التشغيل الموثقة.",
@@ -109,8 +111,8 @@ export const projects: Record<string, Project> = {
         "LaTeX (IEEE conference template, 13 pages, 53 references)",
       ],
       features: [
-        "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+) — excludes window from all screen capture APIs with zero visual artefact",
-        "NSWindow.SharingType.none (macOS) — hides window from CGWindowListCreateImage and ScreenCaptureKit-backed capture on macOS 14–26",
+        "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+) — excludes the window from tested Windows screen-capture paths with zero visual artefact",
+        "NSWindow.SharingType.none (macOS 14–26) — exclusion demonstrated in tested native capture paths; macOS 26 used CGWindowListCreateImage and screencapture, not browser getDisplayMedia() or a direct ScreenCaptureKit test",
         "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent",
         "Empirical contradiction of the community assumption that macOS 15+ mitigated the attack vector",
       ],
@@ -127,14 +129,14 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs, SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS, that let any application render its window invisible to screen capture while remaining fully visible on the physical display. Proctoring systems that rely on getDisplayMedia() for integrity enforcement are structurally bypassed. Proof-of-concept implementations achieved 100% evasion across all tested platforms, including macOS 26 where the attack was previously assumed mitigated.",
+      "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs, SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS, that let an application exclude its window from tested screen-capture paths while remaining fully visible on the physical display. This challenges the trust assumption in capture-based proctoring. Proof-of-concept implementations achieved 100% evasion across tested Windows and macOS lab configurations, including macOS 26 where the attack was previously assumed mitigated. Configurations were simulated, not commercial proctoring products; macOS 26 used native CGWindowListCreateImage and screencapture rather than browser getDisplayMedia(), and Linux was not tested. Findings reflect the tested software versions as of March 2026 and may change after patches.",
     problem:
-      "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. This assumption is false. Both Windows and macOS provide documented, publicly supported APIs that exclude application windows from all screen capture pipelines without privilege escalation, kernel modification, or detectable side effects. The integrity guarantee offered by capture-based proctoring is structurally broken.",
+      "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. The research demonstrates a gap in that assumption: documented OS display APIs excluded windows in tested capture paths without privilege escalation or kernel modification. These findings concern controlled, simulated Windows and macOS configurations; they do not establish bypass of every browser or commercial proctoring product.",
     solution: [
       "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
       "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS) — both documented in official SDK references",
       "Built proof-of-concept implementations in Win32 C (Windows) and Swift (macOS) demonstrating full screen-capture evasion",
-      "Evaluated against representative WebRTC proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26",
+      "Evaluated simulated proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26; no commercial products were tested, and macOS 26 used native capture rather than browser getDisplayMedia()",
       "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
       "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
       "Coordinated OS vendor disclosure: Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) both responded with formal classifications",
@@ -142,9 +144,9 @@ export const projects: Record<string, Project> = {
     proof: [
       "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
       "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
-      "macOS 26.3.1 remains fully vulnerable despite Apple's documented ScreenCaptureKit changes in macOS 15 — contradicting prevailing community assumptions",
-      "Linux (X11/Wayland) confirmed not vulnerable — no equivalent display affinity API exists in tested configurations",
-      "Behavioural detection showed no significant effect at this sample size — gaze tracking (p = 0.41, n = 8, underpowered) and mouse dynamics fell within normal exam-behaviour variance",
+      "Window exclusion remained effective in tested native capture paths on macOS 26.3.1 despite Apple's documented ScreenCaptureKit changes in macOS 15; no direct ScreenCaptureKit or browser getDisplayMedia() test was performed on macOS 26",
+      "Linux (X11/Wayland) was not evaluated; these results apply to the tested Windows and macOS configurations",
+      "Behavioural detection showed no significant effect at this sample size — gaze tracking (p = 0.41, n = 8, underpowered) and mouse dynamics fell within normal exam-behaviour variance; this does not establish that behavioural detection is impossible in all settings",
       "Process-level detection theoretically possible but not implemented by any current browser-based proctoring system",
       "Published as Zenodo preprint under CC BY 4.0 — DOI 10.5281/zenodo.20376495 — 13 pages, 53 references, IEEE conference format",
     ],
@@ -271,8 +273,8 @@ export const projects: Record<string, Project> = {
     description:
       "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 218 tests passing.",
     localizedDescription: {
-      fa: "موتور دانش مبتنی بر هوش مصنوعی و محلی‌محور. اسناد را دریافت می‌کند، دانش ساختاریافته استخراج می‌کند و از طریق سرور MCP در اختیار عامل‌های هوش مصنوعی قرار می‌دهد. ۱۸۳ آزمون موفق.",
-      ar: "محرك معرفة محلي يعمل بالذكاء الاصطناعي. يستوعب أي مستند، يستخرج المعرفة المنظمة (ادعاءات، مفاهيم، كيانات، قرارات)، ويعرضها لعوامل الذكاء الاصطناعي عبر خادم MCP. ١٨٣ اختباراً ناجحاً.",
+      fa: "موتور دانش مبتنی بر هوش مصنوعی و محلی‌محور. اسناد را دریافت می‌کند، دانش ساختاریافته استخراج می‌کند و از طریق سرور MCP در اختیار عامل‌های هوش مصنوعی قرار می‌دهد. ۲۱۸ آزمون موفق.",
+      ar: "محرك معرفة محلي يعمل بالذكاء الاصطناعي. يستوعب أي مستند، يستخرج المعرفة المنظمة (ادعاءات، مفاهيم، كيانات، قرارات)، ويعرضها لعوامل الذكاء الاصطناعي عبر خادم MCP. ٢١٨ اختباراً ناجحاً.",
       zh: "本地优先的 LLM 知识引擎。摄取任意文档，提取结构化知识（声明、概念、实体、决策），并通过 MCP stdio 服务器将其暴露给 AI 代理。218 个测试通过。",
       es: "Motor de conocimiento LLM local. Ingiere cualquier documento, extrae conocimiento estructurado (afirmaciones, conceptos, entidades, decisiones) y lo expone a agentes de IA mediante un servidor MCP stdio. 218 pruebas aprobadas.",
     },
@@ -287,6 +289,7 @@ export const projects: Record<string, Project> = {
     ],
     links: {
       repo: "https://github.com/Raoof128/Project-Zurvan",
+      repoVisibility: "private",
       caseStudy: "/projects/project-zurvan",
     },
     build: {
@@ -1059,14 +1062,14 @@ The preprints sign their limits. Simurgh would **not** have caught the June 2026
     title:
       "How I Made Windows Invisible to Screen Capture, and Why Exam Proctoring Is Broken",
     date: "2026-03-20",
-    updatedAt: "2026-07-18",
+    updatedAt: "2026-10-10",
     tag: "Security Research",
     takeaway:
-      "Documented OS APIs on Windows and macOS allow any app to hide its window from all screen capture, defeating WebRTC-based exam proctoring with 100% evasion and zero artifacts.",
+      "Documented window-capture settings achieved 100% evasion without capture artifacts in controlled laboratory simulations on tested Windows and macOS versions. Commercial proctoring products and Linux were not tested.",
     content: `
 ## The Vulnerability in One Sentence
 
-Every major operating system ships a documented API that lets any application make its window invisible to screen capture while remaining perfectly visible on the physical display. Exam proctoring software that relies on screen capture to enforce integrity is structurally defeatable with a single API call.
+Windows and macOS expose documented window-sharing or capture-affinity settings that can keep an application's window visible on the physical display while excluding it from capture paths that honor those settings. The study demonstrates the resulting gap in screen-capture-based proctoring using controlled laboratory simulations.
 
 ---
 
@@ -1088,7 +1091,7 @@ Microsoft documented this API in the Win32 SDK as a Digital Rights Management me
 BOOL SetWindowDisplayAffinity(HWND hWnd, DWORD dwAffinity);
 \`\`\`
 
-Passing \`WDA_EXCLUDEFROMCAPTURE\` as the affinity flag tells Windows to exclude the target window from **all** screen capture paths:
+Passing \`WDA_EXCLUDEFROMCAPTURE\` as the affinity flag tells Windows to exclude the target window from compatible screen capture paths, including:
 
 - \`BitBlt\` / \`PrintWindow\` (legacy GDI)
 - \`IDXGIOutputDuplication\` (Desktop Duplication API)
@@ -1145,29 +1148,29 @@ window.sharingType = .none
 window.makeKeyAndOrderFront(nil)
 \`\`\`
 
-Setting \`sharingType\` to \`.none\` excludes the window from:
+Setting \`sharingType\` to \`.none\` requests exclusion from capture paths that respect the window-sharing flag. Relevant capture interfaces include:
 
 - \`CGWindowListCreateImage\` (legacy Core Graphics capture)
 - \`ScreenCaptureKit\` (\`SCStreamConfiguration\`, Apple's modern capture framework)
 - \`AVCaptureScreenInput\` (AV Foundation screen recording)
 - WebRTC's \`getDisplayMedia()\` on macOS
 
-**macOS 26.3.1 remains vulnerable.** Apple introduced changes to ScreenCaptureKit in macOS 15 that were widely expected to close this gap, but testing confirmed the \`.none\` affinity still produces full capture evasion on macOS 26.3.1.
+**Tested macOS 26.3.1 native captures remained affected.** Despite Apple's documented ScreenCaptureKit changes in macOS 15, the study observed capture exclusion with \`.none\` using native capture tools. It did not test browser-based capture on macOS 26 or establish the behavior of every ScreenCaptureKit client.
 
 ---
 
 ## Test Results
 
-| Platform | Proctoring Capture Visible? | Artifacts in Session Log? |
+| Platform | Laboratory capture outcome | Observed capture artifacts |
 |----------|-----------------------------|---------------------------|
-| Windows 10 | No | None |
-| Windows 11 | No | None |
-| macOS 14 | No | None |
-| macOS 26.3.1 | No | None |
-| Linux (X11) | Yes | N/A, not vulnerable |
-| Linux (Wayland) | Yes | N/A, not vulnerable |
+| Windows 10 | Window excluded | None |
+| Windows 11 | Window excluded | None |
+| macOS 14 | Window excluded | None |
+| macOS 26.3.1 | Excluded in native captures; browser capture not tested | None |
+| Linux (X11) | Not tested | Not tested |
+| Linux (Wayland) | Not tested | Not tested |
 
-Linux is not vulnerable because neither X11 nor Wayland exposes a per-window capture exclusion API. The absence of this feature is, in this context, a security advantage.
+These results concern simulated proctoring in a controlled laboratory, not commercial products. The macOS 26 evaluation used \`CGWindowListCreateImage\` and the \`screencapture\` utility, not a browser \`getDisplayMedia()\` call. Linux X11 and Wayland were not tested. The behavioral study involved n = 8 consenting research-team members; p = 0.41 does not prove that behavioral detection is impossible. The findings reflect tested software versions as of March 2026; later versions may behave differently.
 
 ---
 
@@ -1181,11 +1184,11 @@ The vulnerability is a design conflict between two legitimate OS features:
 
 These two requirements are fundamentally incompatible. Any OS that supports (1), which Windows and macOS do by design, cannot simultaneously guarantee (2) at the screen-capture layer.
 
-**The only mitigation paths available to proctoring vendors require moving below the OS API layer:**
+**Mitigation options have trade-offs and do not establish a universal integrity guarantee:**
 
-- Require a native kernel extension / driver component that intercepts at the display driver level rather than the application API level
+- Native capture-exclusion flag enumeration and window-focus monitoring can provide additional signals, subject to the limitations discussed in the paper
 - Move to hardware-attested environment proofs (TPM, Secure Enclave) rather than screen content analysis
-- Accept that screen-capture-based integrity is not achievable on general-purpose consumer OS platforms
+- Advocate for OS-level capture-integrity APIs and assess residual risks rather than assuming capture alone proves integrity
 
 ---
 
@@ -1193,9 +1196,11 @@ These two requirements are fundamentally incompatible. Any OS that supports (1),
 
 | Date | Action |
 |------|--------|
-| January 2026 | Proctoring vendors notified with full technical writeup and PoC |
-| February 2026 | Microsoft and Apple notified |
-| March 2026 | Public disclosure after 90-day window; Zenodo preprint published (CC BY 4.0) |
+| January 2026 | Discovery and verification in a controlled laboratory on Windows 10 and macOS 14 |
+| February 2026 | Extended native-capture testing to macOS 26.3.1; Microsoft notified |
+| March 2026 | Apple notified and responded |
+| April 2026 | Microsoft responded with its security-boundary classification |
+| May 2026 | Public disclosure following OS vendor responses; preprint published (CC BY 4.0) |
 
 The vendors' responses confirmed awareness of the OS-level mechanism. The core challenge, that the vulnerability is in a documented OS feature, not a bug in vendor code, limits what any individual vendor can patch without OS-level cooperation.
 
@@ -1203,9 +1208,9 @@ The vendors' responses confirmed awareness of the OS-level mechanism. The core c
 
 ## Takeaway
 
-Screen-capture-based exam proctoring on Windows and macOS provides a weaker integrity guarantee than its deployment context requires. The attack surface is a single API call, requires no elevated privileges, leaves no log artifacts, and works across all tested platform versions including the latest macOS release. It is a systemic design incompatibility between content-protection APIs and the integrity assumptions baked into remote-proctoring architecture.
+The tested Windows and macOS capture paths can omit an application window while it remains visible to the user, without elevated privileges or observed capture artifacts. This exposes a mismatch between content-protection features and the assumption that captured pixels fully represent the physical display. The study establishes that gap within its tested laboratory scope; it does not establish that every commercial proctoring product or every capture API can be bypassed.
 
-The full 13-page paper, PoC implementations, and disclosure materials are available in the repository.
+The full 13-page paper is linked from the project page. Full proof-of-concept source code is not publicly released; verified security researchers and proctoring vendors may request it under responsible-use agreements. The illustrative API examples above are retained as part of the article.
     `,
   },
   {

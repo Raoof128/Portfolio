@@ -9,13 +9,9 @@ import {
   Fingerprint,
   Users,
 } from "lucide-react";
-import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { fadeInUp, staggerContainer } from "@/lib/utils";
-import { motion } from "framer-motion";
 import {
   CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
@@ -26,46 +22,79 @@ import { useTranslation } from "@/i18n/provider";
 import { certifications } from "@/lib/certifications";
 import Link from "next/link";
 import { defaultLocale } from "@/i18n";
+import { formatDate, formatNumber } from "@/i18n/format";
+import { getPageSupportCopy } from "@/lib/page-support-copy";
+import { useContentId } from "@/components/os/application-context";
 
 export function ResumeClient() {
   const { t, locale } = useTranslation();
+  const copy = getPageSupportCopy(locale);
+  const contentId = useContentId();
+  // A credential gives only a Gregorian month, not a day. Keep its calendar
+  // instead of inventing a Persian-calendar month from an arbitrary date.
+  const monthYear = (date: string) =>
+    formatDate(date, locale, {
+      month: "long",
+      year: "numeric",
+      calendar: "gregory",
+    });
+  const issuedDate = (issued: string) => {
+    const months: Record<string, string> = {
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12",
+    };
+    const [month, year] = issued.split(" ");
+    return months[month] && /^\d{4}$/.test(year)
+      ? monthYear(`${year}-${months[month]}-01`)
+      : issued;
+  };
   const getPath = (path: string) =>
     locale === defaultLocale ? path : `/${locale}${path}`;
 
   return (
-    <div className="relative min-h-screen pt-24 pb-12">
-      <ActiveGrid />
+    <div className="os-legacy os-resume relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection variants={fadeInUp}>
+        <AnimatedSection>
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
               <span className="text-cyan font-mono mr-2">/</span>
-              <DecryptedText text={t.resume_page.title} />
+              {t.resume_page.title}
             </h1>
-            <NeonButton
-              href="/Mohammad_Raouf_Abedini_Resume.pdf"
-              download
-              variant="outline"
-            >
-              <Download className="w-4 h-4" /> {t.resume_page.download}
-            </NeonButton>
+            <div className="flex flex-col items-start gap-2">
+              <NeonButton
+                href="/Mohammad_Raouf_Abedini_Resume.pdf"
+                download
+                variant="outline"
+              >
+                <Download className="w-4 h-4" /> {t.resume_page.download}
+              </NeonButton>
+              <p className="text-xs text-text-body">
+                {copy.originalEnglishPDF}
+              </p>
+            </div>
           </div>
         </AnimatedSection>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          className="space-y-6"
-        >
+        <div className="space-y-6">
           {/* Header */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <HUDFrame className="p-6 md:p-8 bg-[#030712]/60 backdrop-blur-sm border-l-4 border-l-cyan">
               <div className="flex flex-col md:flex-row justify-between gap-6">
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                    Mohammad Raouf Abedini
+                    <bdi dir="ltr" lang="en">
+                      Mohammad Raouf Abedini
+                    </bdi>
                   </h2>
                   <p className="text-lg text-cyan font-mono mb-4">
                     {t.resume.tagline}
@@ -81,7 +110,7 @@ export function ResumeClient() {
                         href={`mailto:${CONTACT_EMAIL_GMAIL}`}
                         className="hover:text-cyan transition-colors"
                       >
-                        {CONTACT_EMAIL_GMAIL}
+                        <bdi dir="ltr">{CONTACT_EMAIL_GMAIL}</bdi>
                       </a>
                     </div>
                   </div>
@@ -120,10 +149,18 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* About */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-3">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">01.</span>
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(1, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.resume.s01_heading}
                 </h3>
@@ -135,10 +172,18 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* Security Research */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">02.</span>
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(2, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.resume.s02_heading}
                 </h3>
@@ -148,12 +193,16 @@ export function ResumeClient() {
                   <h4 className="text-white font-bold text-lg">
                     <Link
                       href={getPath("/projects/project-simurgh")}
-                      className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                      className="os-inline-link"
                     >
-                      Project Simurgh
+                      <bdi dir="ltr" lang="en">
+                        Project Simurgh
+                      </bdi>
                     </Link>
                   </h4>
-                  <span className="text-text-body font-mono text-sm">2026</span>
+                  <span className="text-text-body font-mono text-sm">
+                    {formatNumber(2026, locale, { useGrouping: false })}
+                  </span>
                 </div>
                 <p className="text-xs text-text-meta font-mono mb-2">
                   {t.resume.s02_tech_stack}
@@ -173,85 +222,88 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* Technical Proficiencies */}
-          <AnimatedSection variants={fadeInUp}>
-            <section className="space-y-4">
+          <AnimatedSection>
+            <section
+              id={contentId("skills")}
+              aria-labelledby={contentId("skills-heading")}
+              tabIndex={-1}
+              className="space-y-4 scroll-mt-24"
+            >
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">03.</span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(3, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
+                <h3
+                  id={contentId("skills-heading")}
+                  className="text-lg font-bold text-white uppercase tracking-wider"
+                >
                   {t.resume.s03_heading}
                 </h3>
               </div>
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="grid md:grid-cols-2 gap-4"
-              >
-                <motion.div
-                  variants={fadeInUp}
-                  className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all"
-                >
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all">
                   <h4 className="text-cyan font-mono text-sm mb-3 font-bold">
                     &gt; {t.resume.s03_cat1_label}
                   </h4>
                   <p className="text-sm text-text-body">
                     {t.resume.s03_cat1_desc}
                   </p>
-                </motion.div>
-                <motion.div
-                  variants={fadeInUp}
-                  className="p-4 bg-amber/5 border border-amber/10 rounded-sm hover:border-amber/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] transition-all"
-                >
+                </div>
+                <div className="p-4 bg-amber/5 border border-amber/10 rounded-sm hover:border-amber/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] transition-all">
                   <h4 className="text-amber font-mono text-sm mb-3 font-bold">
                     &gt; {t.resume.s03_cat2_label}
                   </h4>
                   <p className="text-sm text-text-body">
                     {t.resume.s03_cat2_desc}
                   </p>
-                </motion.div>
-                <motion.div
-                  variants={fadeInUp}
-                  className="p-4 bg-purple/5 border border-purple/10 rounded-sm hover:border-purple/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(139,92,246,0.1)] transition-all"
-                >
+                </div>
+                <div className="p-4 bg-purple/5 border border-purple/10 rounded-sm hover:border-purple/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(139,92,246,0.1)] transition-all">
                   <h4 className="text-purple font-mono text-sm mb-3 font-bold">
                     &gt; {t.resume.s03_cat3_label}
                   </h4>
                   <p className="text-sm text-text-body">
                     {t.resume.s03_cat3_desc}
                   </p>
-                </motion.div>
-                <motion.div
-                  variants={fadeInUp}
-                  className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all"
-                >
+                </div>
+                <div className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all">
                   <h4 className="text-cyan font-mono text-sm mb-3 font-bold">
                     &gt; {t.resume.s03_cat4_label}
                   </h4>
                   <p className="text-sm text-text-body">
                     {t.resume.s03_cat4_desc}
                   </p>
-                </motion.div>
-                <motion.div
-                  variants={fadeInUp}
-                  className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all md:col-span-2"
-                >
+                </div>
+                <div className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all md:col-span-2">
                   <h4 className="text-cyan font-mono text-sm mb-3 font-bold">
                     &gt; {t.resume.s03_cat5_label}
                   </h4>
                   <p className="text-sm text-text-body">
                     {t.resume.s03_cat5_desc}
                   </p>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             </section>
           </AnimatedSection>
 
           {/* Education */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">04.</span>
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(4, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.about.education}
                 </h3>
@@ -264,11 +316,12 @@ export function ResumeClient() {
                       {t.about.degree_bachelor}
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      Macquarie University
+                      {copy.university}
                     </span>
                   </div>
                   <div className="text-cyan font-mono text-sm mb-2">
-                    May 2024 – Nov 2026
+                    {monthYear("2024-05-01")} – {t.resume.expected_completion}:{" "}
+                    {monthYear("2026-11-01")}
                   </div>
                   <div className="text-sm text-text-body">
                     <span className="font-bold text-slate-300">
@@ -284,11 +337,11 @@ export function ResumeClient() {
                       {t.about.degree_diploma}
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      Macquarie University
+                      {copy.university}
                     </span>
                   </div>
                   <div className="text-text-body font-mono text-sm">
-                    Jul 2023 – May 2024
+                    {monthYear("2023-07-01")} – {monthYear("2024-05-01")}
                   </div>
                 </div>
               </div>
@@ -296,10 +349,18 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* Selected Research & Engineering Projects */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">05.</span>
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(5, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.resume.s05_heading}
                 </h3>
@@ -310,16 +371,18 @@ export function ResumeClient() {
                     <h4 className="text-white font-bold text-lg">
                       <Link
                         href={getPath("/projects/invisible-window-research")}
-                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                        className="os-inline-link"
                       >
-                        The Invisible Window
+                        <bdi dir="ltr" lang="en">
+                          The Invisible Window
+                        </bdi>
                       </Link>{" "}
                       <span className="text-cyan font-mono font-normal text-xs ml-2">
                         [{t.resume.proj1_tag}]
                       </span>
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      2026
+                      {formatNumber(2026, locale, { useGrouping: false })}
                     </span>
                   </div>
                   <p className="text-xs text-text-meta font-mono mb-1">
@@ -334,16 +397,18 @@ export function ResumeClient() {
                     <h4 className="text-white font-bold text-lg">
                       <Link
                         href={getPath("/projects/aion")}
-                        className="hover:text-amber hover:underline underline-offset-4 transition-colors"
+                        className="os-inline-link"
                       >
-                        Aion
+                        <bdi dir="ltr" lang="en">
+                          Aion
+                        </bdi>
                       </Link>{" "}
                       <span className="text-amber font-mono font-normal text-xs ml-2">
                         [{t.resume.proj2_tag}]
                       </span>
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      2026
+                      {formatNumber(2026, locale, { useGrouping: false })}
                     </span>
                   </div>
                   <p className="text-xs text-text-meta font-mono mb-1">
@@ -358,16 +423,18 @@ export function ResumeClient() {
                     <h4 className="text-white font-bold text-lg">
                       <Link
                         href={getPath("/projects/nanomatch")}
-                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                        className="os-inline-link"
                       >
-                        NanoMatch
+                        <bdi dir="ltr" lang="en">
+                          NanoMatch
+                        </bdi>
                       </Link>{" "}
                       <span className="text-purple font-mono font-normal text-xs ml-2">
                         [{t.resume.proj3_tag}]
                       </span>
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      2026
+                      {formatNumber(2026, locale, { useGrouping: false })}
                     </span>
                   </div>
                   <p className="text-xs text-text-meta font-mono mb-1">
@@ -382,16 +449,18 @@ export function ResumeClient() {
                     <h4 className="text-white font-bold text-lg">
                       <Link
                         href={getPath("/projects/sentinelflow")}
-                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                        className="os-inline-link"
                       >
-                        SentinelFlow
+                        <bdi dir="ltr" lang="en">
+                          SentinelFlow
+                        </bdi>
                       </Link>{" "}
                       <span className="text-purple font-mono font-normal text-xs ml-2">
                         [{t.resume.proj4_tag}]
                       </span>
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      2026
+                      {formatNumber(2026, locale, { useGrouping: false })}
                     </span>
                   </div>
                   <p className="text-xs text-text-meta font-mono mb-1">
@@ -406,16 +475,18 @@ export function ResumeClient() {
                     <h4 className="text-white font-bold text-lg">
                       <Link
                         href={getPath("/projects/nexus-archive")}
-                        className="hover:text-purple hover:underline underline-offset-4 transition-colors"
+                        className="os-inline-link"
                       >
-                        Nexus Archive
+                        <bdi dir="ltr" lang="en">
+                          Nexus Archive
+                        </bdi>
                       </Link>{" "}
                       <span className="text-purple font-mono font-normal text-xs ml-2">
                         [{t.resume.proj5_tag}]
                       </span>
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      2025
+                      {formatNumber(2025, locale, { useGrouping: false })}
                     </span>
                   </div>
                   <p className="text-xs text-text-meta font-mono mb-1">
@@ -430,16 +501,18 @@ export function ResumeClient() {
                     <h4 className="text-white font-bold text-lg">
                       <Link
                         href={getPath("/projects/mehr-guard")}
-                        className="hover:text-cyan hover:underline underline-offset-4 transition-colors"
+                        className="os-inline-link"
                       >
-                        Mehr Guard
+                        <bdi dir="ltr" lang="en">
+                          Mehr Guard
+                        </bdi>
                       </Link>{" "}
                       <span className="text-cyan font-mono font-normal text-xs ml-2">
                         [{t.resume.proj6_tag}]
                       </span>
                     </h4>
                     <span className="text-text-body font-mono text-sm">
-                      2024
+                      {formatNumber(2024, locale, { useGrouping: false })}
                     </span>
                   </div>
                   <p className="text-xs text-text-meta font-mono mb-1">
@@ -455,7 +528,7 @@ export function ResumeClient() {
                     href={GITHUB_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-cyan hover:underline"
+                    className="os-inline-link"
                   >
                     github.com/Raoof128
                   </a>
@@ -465,11 +538,27 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* Professional Experience */}
-          <AnimatedSection variants={fadeInUp}>
-            <section className="space-y-6">
+          <AnimatedSection>
+            <section
+              id={contentId("experience")}
+              aria-labelledby={contentId("experience-heading")}
+              tabIndex={-1}
+              className="space-y-6 scroll-mt-24"
+            >
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">06.</span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(6, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
+                <h3
+                  id={contentId("experience-heading")}
+                  className="text-lg font-bold text-white uppercase tracking-wider"
+                >
                   {t.resume.s06_heading}
                 </h3>
               </div>
@@ -509,10 +598,18 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* AI Safety & Community */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">07.</span>
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(7, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.resume.s07_heading}
                 </h3>
@@ -530,14 +627,15 @@ export function ResumeClient() {
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                   <h4 className="text-white font-bold text-base flex items-center gap-2">
                     <Users size={16} className="text-purple shrink-0" />
-                    Co-Founder · Macquarie Persian Students Society
+                    {copy.coFounderSociety}
                   </h4>
                   <span className="text-text-body font-mono text-sm">
-                    2026 – Present
+                    {formatNumber(2026, locale, { useGrouping: false })} –{" "}
+                    {copy.present}
                   </span>
                 </div>
                 <div className="text-purple font-mono text-xs mb-2">
-                  {t.resume.volunteer_label} · Education
+                  {t.resume.volunteer_label} · {copy.education}
                 </div>
                 <p className="text-sm text-text-body">{t.resume.s07_bullet2}</p>
               </div>
@@ -545,22 +643,46 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* Licenses & Certifications */}
-          <AnimatedSection variants={fadeInUp}>
-            <section className="space-y-4">
+          <AnimatedSection>
+            <section
+              id={contentId("certifications")}
+              aria-labelledby={contentId("certifications-heading")}
+              tabIndex={-1}
+              className="space-y-4 scroll-mt-24"
+            >
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">08.</span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(8, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
+                <h3
+                  id={contentId("certifications-heading")}
+                  className="text-lg font-bold text-white uppercase tracking-wider"
+                >
                   {t.resume.certs_heading}
                 </h3>
               </div>
+              <p className="text-sm text-text-body">
+                {copy.officialCertificateNames}
+              </p>
               {["Anthropic", "Macquarie University"].map((issuer) => {
                 const items = certifications.filter((c) => c.issuer === issuer);
                 if (items.length === 0) return null;
                 return (
                   <div key={issuer} className="space-y-3">
                     <h4 className="text-cyan font-mono text-sm font-bold">
-                      &gt; {issuer}{" "}
-                      <span className="text-text-meta">({items.length})</span>
+                      &gt;{" "}
+                      {issuer === "Macquarie University"
+                        ? copy.university
+                        : issuer}{" "}
+                      <span className="text-text-meta">
+                        ({formatNumber(items.length, locale)})
+                      </span>
                     </h4>
                     <div className="grid sm:grid-cols-2 gap-3">
                       {items.map((c) => (
@@ -570,17 +692,20 @@ export function ResumeClient() {
                         >
                           <div className="flex items-start justify-between gap-2">
                             <p className="text-sm text-white font-medium leading-snug">
-                              {c.name}
+                              <bdi dir="ltr" lang="en">
+                                {c.name}
+                              </bdi>
                             </p>
                             {c.grade && (
                               <span className="shrink-0 text-xs font-mono text-cyan border border-cyan/30 bg-cyan/10 px-1.5 py-0.5 rounded-sm">
-                                {c.grade}
+                                <bdi dir="ltr">{c.grade}</bdi>
                               </span>
                             )}
                           </div>
                           <p className="mt-1 text-xs text-text-meta font-mono">
-                            {t.resume.certs_issued} {c.issued} ·{" "}
-                            {t.resume.certs_credential}: {c.credentialId}
+                            {t.resume.certs_issued} {issuedDate(c.issued)} ·{" "}
+                            {t.resume.certs_credential}:{" "}
+                            <bdi dir="ltr">{c.credentialId}</bdi>
                           </p>
                         </div>
                       ))}
@@ -592,10 +717,18 @@ export function ResumeClient() {
           </AnimatedSection>
 
           {/* Additional Info */}
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4 pb-8">
               <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">09.</span>
+                <span className="text-cyan font-bold font-mono">
+                  <bdi>
+                    {formatNumber(9, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">
                   {t.resume.s08_heading}
                 </h3>
@@ -612,7 +745,7 @@ export function ResumeClient() {
               </div>
             </section>
           </AnimatedSection>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

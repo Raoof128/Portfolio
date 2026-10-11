@@ -1,13 +1,16 @@
 "use client";
 
+import { useId } from "react";
+
 export function KineticAstrolabe() {
+  const artworkId = useId();
   return (
     <div className="ka-host" aria-hidden="true">
       <div className="ka-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path
-              id="ka-tooth"
+              id={`${artworkId}-ka-tooth`}
               d="M 94,15 L 106,15 L 103,27 L 97,27 Z"
               fill="#4d79ff"
               stroke="#00001a"
@@ -15,7 +18,7 @@ export function KineticAstrolabe() {
               strokeLinejoin="round"
             />
             <path
-              id="ka-crescent"
+              id={`${artworkId}-ka-crescent`}
               d="M -5,-10 A 10 10 0 0 1 -5,10 A 7 7 0 0 0 -5,-10 Z"
               fill="#99bbff"
               stroke="#00001a"
@@ -23,7 +26,7 @@ export function KineticAstrolabe() {
               strokeLinejoin="round"
             />
             <path
-              id="ka-star"
+              id={`${artworkId}-ka-star`}
               d="M 0,-7 L 1.8,-1.8 L 7,0 L 1.8,1.8 L 0,7 L -1.8,1.8 L -7,0 L -1.8,-1.8 Z"
               fill="#4d79ff"
               stroke="#00001a"
@@ -31,7 +34,7 @@ export function KineticAstrolabe() {
               strokeLinejoin="round"
             />
             <path
-              id="ka-ray"
+              id={`${artworkId}-ka-ray`}
               d="M 100,100 C 108,82 93,68 100,50 C 107,68 92,82 100,100 Z"
               fill="#4d79ff"
               stroke="#00001a"
@@ -54,7 +57,7 @@ export function KineticAstrolabe() {
               (r) => (
                 <use
                   key={r}
-                  href="#ka-tooth"
+                  href={`#${artworkId}-ka-tooth`}
                   transform={`rotate(${r} 100 100)`}
                 />
               ),
@@ -82,12 +85,15 @@ export function KineticAstrolabe() {
             <g transform="translate(100,100)">
               {[0, 90, 180, 270].map((r) => (
                 <g key={r} transform={`rotate(${r}) translate(0,-54)`}>
-                  <use href="#ka-crescent" transform={`rotate(${-r})`} />
+                  <use
+                    href={`#${artworkId}-ka-crescent`}
+                    transform={`rotate(${-r})`}
+                  />
                 </g>
               ))}
               {[45, 135, 225, 315].map((r) => (
                 <g key={r} transform={`rotate(${r}) translate(0,-54)`}>
-                  <use href="#ka-star" />
+                  <use href={`#${artworkId}-ka-star`} />
                 </g>
               ))}
             </g>
@@ -96,7 +102,11 @@ export function KineticAstrolabe() {
           {/* Sun core — slow clockwise + breathe */}
           <g className="ka-sun origin-center">
             {[0, 45, 90, 135, 180, 225, 270, 315].map((r) => (
-              <use key={r} href="#ka-ray" transform={`rotate(${r} 100 100)`} />
+              <use
+                key={r}
+                href={`#${artworkId}-ka-ray`}
+                transform={`rotate(${r} 100 100)`}
+              />
             ))}
             <circle
               cx="100"
@@ -158,8 +168,7 @@ export function KineticAstrolabe() {
         }
         @media (prefers-reduced-motion: reduce) {
           .ka-gear, .ka-astral, .ka-sun { animation: none; }
-          .ka-container { animation: ka-fade 2s ease-in-out infinite; }
-          @keyframes ka-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          .ka-container { animation: none; }
         }
       `}</style>
     </div>

@@ -35,7 +35,7 @@ describe("AboutClient", () => {
 
     fireEvent.error(fallbackImage);
 
-    expect(screen.getByText("PHOTO_UNAVAILABLE")).toBeInTheDocument();
+    expect(screen.getByText(en.about.photo_unavailable)).toBeInTheDocument();
     expect(screen.getByText("MRA")).toBeInTheDocument();
   });
 
@@ -46,7 +46,7 @@ describe("AboutClient", () => {
     fireEvent.error(image);
     fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
 
-    fireEvent.click(screen.getByRole("button", { name: "RETRY_PHOTO" }));
+    fireEvent.click(screen.getByRole("button", { name: en.about.retry_photo }));
 
     expect(screen.getByAltText("Mohammad Raouf Abedini")).toHaveAttribute(
       "src",

@@ -48,11 +48,20 @@ const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   es: () => import("./locales/es").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) =>
-  dictionaries[locale] ? dictionaries[locale]() : dictionaries[defaultLocale]();
+/** Route parameters must name an authored locale, not an inherited property. */
+export function isLocale(value: string): value is Locale {
+  return Object.hasOwn(locales, value);
+}
+
+export function resolveLocale(value: string): Locale {
+  return isLocale(value) ? value : defaultLocale;
+}
+
+export const getDictionary = async (locale: string) =>
+  dictionaries[resolveLocale(locale)]();
 
 export function getLocaleConfig(locale: string): LocaleConfig {
-  return locales[locale as Locale] || locales[defaultLocale];
+  return locales[resolveLocale(locale)];
 }
 
 export function isRTL(locale: string): boolean {

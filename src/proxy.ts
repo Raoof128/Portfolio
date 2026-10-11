@@ -15,17 +15,29 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Skip static asset extensions
-  if (/\.(svg|png|jpg|jpeg|pdf|txt|ico|webp|woff2?)$/.test(pathname)) {
+  if (
+    /\.(?:svg|png|jpe?g|pdf|txt|ico|webp|avif|gif|woff2?|mp4|webm|xml|json|wasm)$/i.test(
+      pathname,
+    )
+  ) {
     return NextResponse.next();
   }
 
   // Redirect /en and /en/* back to clean English routes
-  if (pathname === "/en") {
-    return NextResponse.redirect(new URL("/", request.url));
+  // In development, rewritten English routes can re-enter the proxy. Let the
+  // App Router resolve them; the static host owns production /en redirects.
+  if (
+    process.env.NODE_ENV === "development" &&
+    (pathname === "/en" || pathname.startsWith("/en/"))
+  ) {
+    return NextResponse.next();
   }
-  if (pathname.startsWith("/en/")) {
-    const cleanPath = pathname.replace(/^\/en/, "");
-    return NextResponse.redirect(new URL(cleanPath || "/", request.url));
+  if (pathname === "/en" || pathname.startsWith("/en/")) {
+    // Assign a path on the existing URL: reparsing //host as a relative URL
+    // would turn an attacker-controlled path into an external authority.
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.slice(3) || "/";
+    return NextResponse.redirect(url);
   }
 
   // Pass through other locale prefixes (/fa, /ar, /zh, /es) unchanged
@@ -38,6 +50,9 @@ export function proxy(request: NextRequest) {
 
   // Rewrite clean English paths internally: / → /en, /projects → /en/projects
   const url = request.nextUrl.clone();
-  url.pathname = `/${defaultLocale}${pathname}`;
+  // Avoid /en/ for the homepage: slash normalization redirects it to /en,
+  // which redirects to / and otherwise creates a development redirect loop.
+  url.pathname =
+    pathname === "/" ? `/${defaultLocale}` : `/${defaultLocale}${pathname}`;
   return NextResponse.rewrite(url);
 }

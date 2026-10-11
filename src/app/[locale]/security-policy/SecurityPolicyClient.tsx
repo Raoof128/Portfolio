@@ -1,18 +1,15 @@
 "use client";
 
-import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Shield, AlertTriangle, Mail, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { fadeInUp, staggerContainer } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { formatNumber } from "@/i18n/format";
 
 export function SecurityPolicyClient() {
   const { locale, t } = useTranslation();
@@ -25,15 +22,14 @@ export function SecurityPolicyClient() {
   };
 
   return (
-    <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
-      <ActiveGrid />
+    <div className="os-legacy relative overflow-x-hidden">
       <div
         className={cn(
           "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
           isRTL && "text-right",
         )}
       >
-        <AnimatedSection variants={fadeInUp}>
+        <AnimatedSection>
           <div className="mb-12">
             <div
               className={cn(
@@ -47,7 +43,7 @@ export function SecurityPolicyClient() {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              <DecryptedText text={t.security_policy.title} />
+              {t.security_policy.title}
             </h1>
             <p className="text-text-body max-w-2xl">
               {t.security_policy.description}
@@ -55,14 +51,8 @@ export function SecurityPolicyClient() {
           </div>
         </AnimatedSection>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          className="space-y-8"
-        >
-          <AnimatedSection variants={fadeInUp}>
+        <div className="space-y-8">
+          <AnimatedSection>
             <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-l-4 border-l-cyan">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -77,8 +67,8 @@ export function SecurityPolicyClient() {
                   </h2>
                   <p className="text-text-body">
                     {t.security_policy.report_intro}{" "}
-                    <a href={reportLink} className="text-cyan hover:underline">
-                      {CONTACT_EMAIL}
+                    <a href={reportLink} className="os-inline-link">
+                      <bdi dir="ltr">{CONTACT_EMAIL}</bdi>
                     </a>
                   </p>
                 </div>
@@ -90,7 +80,7 @@ export function SecurityPolicyClient() {
             </HUDFrame>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <h2
                 className={cn(
@@ -98,7 +88,15 @@ export function SecurityPolicyClient() {
                   isRTL && "flex-row-reverse",
                 )}
               >
-                <span className="text-cyan font-mono">01.</span>{" "}
+                <span className="text-cyan font-mono">
+                  <bdi>
+                    {formatNumber(1, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>{" "}
                 {t.security_policy.scope_title}
               </h2>
               <HUDFrame className="p-6 bg-[#030712]/60">
@@ -114,8 +112,10 @@ export function SecurityPolicyClient() {
                   >
                     <CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" />
                     <span>
-                      <code className="text-cyan">raoufabedini.dev</code> —{" "}
-                      {t.security_policy.scope_site}
+                      <code className="text-cyan" dir="ltr">
+                        raoufabedini.dev
+                      </code>{" "}
+                      — {t.security_policy.scope_site}
                     </span>
                   </li>
                   <li
@@ -127,7 +127,9 @@ export function SecurityPolicyClient() {
                     <CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" />
                     <span>
                       {t.security_policy.scope_repos}{" "}
-                      <code className="text-cyan">github.com/Raoof128</code>
+                      <code className="text-cyan" dir="ltr">
+                        github.com/Raoof128
+                      </code>
                     </span>
                   </li>
                 </ul>
@@ -135,7 +137,7 @@ export function SecurityPolicyClient() {
             </section>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <h2
                 className={cn(
@@ -143,7 +145,15 @@ export function SecurityPolicyClient() {
                   isRTL && "flex-row-reverse",
                 )}
               >
-                <span className="text-cyan font-mono">02.</span>{" "}
+                <span className="text-cyan font-mono">
+                  <bdi>
+                    {formatNumber(2, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>{" "}
                 {t.security_policy.what_title}
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
@@ -197,7 +207,7 @@ export function SecurityPolicyClient() {
             </section>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <h2
                 className={cn(
@@ -205,7 +215,15 @@ export function SecurityPolicyClient() {
                   isRTL && "flex-row-reverse",
                 )}
               >
-                <span className="text-cyan font-mono">03.</span>{" "}
+                <span className="text-cyan font-mono">
+                  <bdi>
+                    {formatNumber(3, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>{" "}
                 {t.security_policy.timeline_title}
               </h2>
               <HUDFrame className="p-6 bg-[#030712]/60">
@@ -238,7 +256,7 @@ export function SecurityPolicyClient() {
                         <Icon className="w-5 h-5 text-cyan" />
                       </div>
                       <div>
-                        <h4 className="text-white font-bold">{heading}</h4>
+                        <h3 className="text-white font-bold">{heading}</h3>
                         <p className="text-text-body text-sm">{desc}</p>
                       </div>
                     </div>
@@ -248,7 +266,7 @@ export function SecurityPolicyClient() {
             </section>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <h2
                 className={cn(
@@ -256,7 +274,15 @@ export function SecurityPolicyClient() {
                   isRTL && "flex-row-reverse",
                 )}
               >
-                <span className="text-cyan font-mono">04.</span>{" "}
+                <span className="text-cyan font-mono">
+                  <bdi>
+                    {formatNumber(4, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>{" "}
                 {t.security_policy.guidelines_title}
               </h2>
               <HUDFrame className="p-6 bg-[#030712]/60">
@@ -275,7 +301,9 @@ export function SecurityPolicyClient() {
                         isRTL && "flex-row-reverse",
                       )}
                     >
-                      <span className="text-cyan mt-1">{i + 1}.</span>
+                      <span className="text-cyan mt-1">
+                        {formatNumber(i + 1, locale)}.
+                      </span>
                       <span>{guideline}</span>
                     </li>
                   ))}
@@ -284,7 +312,7 @@ export function SecurityPolicyClient() {
             </section>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <h2
                 className={cn(
@@ -292,7 +320,15 @@ export function SecurityPolicyClient() {
                   isRTL && "flex-row-reverse",
                 )}
               >
-                <span className="text-cyan font-mono">05.</span>{" "}
+                <span className="text-cyan font-mono">
+                  <bdi>
+                    {formatNumber(5, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>{" "}
                 {t.security_policy.ack_title}
               </h2>
               <HUDFrame className="p-6 bg-[#030712]/60">
@@ -300,7 +336,7 @@ export function SecurityPolicyClient() {
                   {t.security_policy.ack_desc}{" "}
                   <Link
                     href={getPath("/hall-of-fame")}
-                    className="text-cyan hover:underline"
+                    className="os-inline-link"
                   >
                     {t.security_policy.ack_hall_of_fame}
                   </Link>
@@ -312,7 +348,7 @@ export function SecurityPolicyClient() {
               </HUDFrame>
             </section>
           </AnimatedSection>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

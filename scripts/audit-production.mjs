@@ -11,11 +11,24 @@
  * Exit 1 on any failure. No dependencies.
  */
 import { execFileSync } from "node:child_process";
+import { auditSchemaLanguages } from "./lib/schema-language-audit.mjs";
+import {
+  CANONICAL_ORIGIN,
+  parseAuditOrigin,
+  fetchAuditResponse,
+  auditRedirect,
+  auditSecurityExpiry,
+  auditSecurityHeaders,
+  auditDeploymentVersion,
+} from "./lib/production-audit.mjs";
 
-const ORIGIN = (process.argv[2] || "https://raoufabedini.dev").replace(
-  /\/$/,
-  "",
-);
+let ORIGIN;
+try {
+  ORIGIN = parseAuditOrigin(process.argv[2]);
+} catch (error) {
+  console.error(`✘ ${error.message}`);
+  process.exit(1);
+}
 const LOCALES = ["en", "fa", "ar", "zh", "es"];
 const BROWSER_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36";
@@ -36,11 +49,12 @@ const notes = [];
 const fail = (m) => errors.push(m);
 const note = (m) => notes.push(m);
 
-async function get(path, { ua = BROWSER_UA, redirect = "follow" } = {}) {
-  const url = path.startsWith("http") ? path : `${ORIGIN}${path}`;
-  const res = await fetch(url, { headers: { "user-agent": ua }, redirect });
-  const body = redirect === "follow" ? await res.text() : "";
-  return { res, body, url };
+async function get(
+  path,
+  { ua = BROWSER_UA, redirect = "error", readBody = true } = {},
+) {
+  const url = new URL(path, ORIGIN).href;
+  return fetchAuditResponse(url, { ua, redirect, readBody });
 }
 
 // ── Machine-control files must be 200 with sane content-types ────────────────
@@ -57,11 +71,11 @@ const machineFiles = [
 ];
 for (const [path, ctRe] of machineFiles) {
   try {
-    const { res } = await get(path);
+    const { res } = await get(path, { readBody: false });
     if (res.status !== 200) fail(`${path} → ${res.status} (expected 200)`);
     else {
       const ct = res.headers.get("content-type") || "";
-      if (!ctRe.test(ct)) note(`${path} content-type "${ct}" (wanted ${ctRe})`);
+      if (!ctRe.test(ct)) fail(`${path} content-type "${ct}" (wanted ${ctRe})`);
     }
   } catch (e) {
     fail(`${path} fetch failed: ${e.message}`);
@@ -73,21 +87,35 @@ try {
   const { res, body } = await get("/version.json");
   if (res.status === 200) {
     const v = JSON.parse(body);
+    for (const issue of auditDeploymentVersion(v)) fail(issue);
     let head = "";
     try {
-      head = execFileSync("git", ["rev-parse", "HEAD"]).toString().trim();
+      head = execFileSync("git", ["rev-parse", "HEAD"], {
+        stdio: ["ignore", "pipe", "ignore"],
+        timeout: 2_000,
+        maxBuffer: 4_096,
+      })
+        .toString()
+        .trim();
     } catch {
       /* not in a git checkout — skip comparison */
     }
-    if (head && v.commit && v.commit !== "unknown") {
+    if (
+      typeof v?.commit === "string" &&
+      /^(?:[a-f\d]{40}|[a-f\d]{64})$/i.test(v.commit) &&
+      head
+    ) {
       if (v.commit !== head)
         fail(
           `production is STALE: version.json commit ${v.commit.slice(0, 8)} ≠ local HEAD ${head.slice(0, 8)} — redeploy`,
         );
-      else note(`fresh: version.json commit matches HEAD ${head.slice(0, 8)}`);
+      else
+        note(
+          `commit identity matches HEAD ${head.slice(0, 8)}; exact export bytes need separate validation`,
+        );
     } else {
       note(
-        `version.json commit=${v.commit}, contentRevision=${v.contentRevision}`,
+        `version.json commit=${v?.commit}, contentRevision=${v?.contentRevision}; local HEAD comparison unavailable`,
       );
     }
   }
@@ -96,63 +124,70 @@ try {
 }
 
 // ── Redirects: www → apex 308, /en → clean 308 (path preserved) ──────────────
-async function expectRedirect(path, ua = BROWSER_UA) {
-  const { res } = await get(path, { ua, redirect: "manual" });
-  const loc = res.headers.get("location") || "";
-  if (res.status !== 308)
-    fail(`${path} → ${res.status} (expected 308), Location: ${loc || "—"}`);
-  return loc;
+async function expectRedirect(path, expected) {
+  try {
+    const { res, url } = await get(path, { redirect: "manual" });
+    const issue = auditRedirect(res, url, new URL(expected, ORIGIN).href);
+    if (issue) fail(`${path}: ${issue}`);
+  } catch (error) {
+    fail(`${path} redirect check failed: ${error.message}`);
+  }
 }
-await expectRedirect("https://www.raoufabedini.dev/about");
-await expectRedirect("/en");
-await expectRedirect("/en/about");
+// A staging/loopback audit must never make an unrelated production request.
+if (ORIGIN === CANONICAL_ORIGIN)
+  await expectRedirect("https://www.raoufabedini.dev/about", "/about");
+else note("www → apex check applies only to the production origin");
+await expectRedirect("/en", "/");
+await expectRedirect("/en/about", "/about");
+await expectRedirect("/en/about?audit=1", "/about?audit=1");
 
 // ── Canonical page checks: status, html[lang], canonical↔og:url agreement ────
-// One representative route per locale (project detail — carries the richest schema).
+// One representative of each primary document type in every locale.
 const sampleSlug = "project-simurgh";
 for (const locale of LOCALES) {
-  const prefix = locale === "en" ? "" : `/${locale}`;
-  const path = `${prefix}/projects/${sampleSlug}`;
-  try {
-    const { res, body, url } = await get(path);
-    if (res.status !== 200) {
-      fail(`${path} → ${res.status}`);
-      continue;
-    }
-    const lang = (body.match(/<html[^>]+lang="([^"]+)"/) || [])[1];
-    if (lang !== locale) fail(`${path}: <html lang="${lang}"> ≠ ${locale}`);
+  for (const [kind, suffix] of [
+    ["project", `/projects/${sampleSlug}`],
+    ["article", "/write-ups/project-simurgh-containment"],
+    ["lab", "/lab/001"],
+  ]) {
+    const prefix = locale === "en" ? "" : `/${locale}`;
+    const path = `${prefix}${suffix}`;
+    try {
+      const { res, body, url } = await get(path);
+      if (res.status !== 200) {
+        fail(`${path} → ${res.status}`);
+        continue;
+      }
+      const lang = (body.match(/<html[^>]+lang="([^"]+)"/) || [])[1];
+      if (lang !== locale) fail(`${path}: <html lang="${lang}"> ≠ ${locale}`);
 
-    const canonical = (body.match(
-      /<link[^>]+rel="canonical"[^>]+href="([^"]+)"/,
-    ) || [])[1];
-    const ogUrl = (body.match(/property="og:url"[^>]+content="([^"]+)"/) ||
-      body.match(/content="([^"]+)"[^>]+property="og:url"/) ||
-      [])[1];
-    const want = `${ORIGIN}${path}`;
-    if (!canonical) fail(`${path}: missing canonical`);
-    else if (canonical.replace(/\/$/, "") !== want)
-      fail(`${path}: canonical ${canonical} ≠ ${want}`);
-    if (!ogUrl) fail(`${path}: missing og:url`);
-    else if (ogUrl.replace(/\/$/, "") !== want)
-      fail(`${path}: og:url ${ogUrl} ≠ canonical ${want}`);
+      const canonical = (body.match(
+        /<link[^>]+rel="canonical"[^>]+href="([^"]+)"/,
+      ) || [])[1];
+      const ogUrl = (body.match(/property="og:url"[^>]+content="([^"]+)"/) ||
+        body.match(/content="([^"]+)"[^>]+property="og:url"/) ||
+        [])[1];
+      // A preview still advertises the production canonical identity.
+      const want = `${CANONICAL_ORIGIN}${path}`;
+      if (!canonical) fail(`${path}: missing canonical`);
+      else if (canonical.replace(/\/$/, "") !== want)
+        fail(`${path}: canonical ${canonical} ≠ ${want}`);
+      if (!ogUrl) fail(`${path}: missing og:url`);
+      else if (ogUrl.replace(/\/$/, "") !== want)
+        fail(`${path}: og:url ${ogUrl} ≠ canonical ${want}`);
 
-    // Honest i18n: article/experiment node must NOT claim the locale as its body
-    // language on non-English routes (page WebPage node carries the locale).
-    if (locale !== "en") {
-      const ld = body.match(
-        /<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/,
-      );
-      if (
-        ld &&
-        /"@type":"(TechArticle|ScholarlyArticle)"[^}]*"inLanguage":"(fa|ar|zh|es)"/.test(
-          ld[1],
-        )
-      )
-        note(`${path}: an article node still declares a non-en inLanguage`);
+      for (const issue of auditSchemaLanguages(body, {
+        locale,
+        pageUrl: want,
+        kind,
+      }))
+        fail(`${path}: ${issue}`);
+      for (const issue of auditSecurityHeaders(res.headers))
+        fail(`${path}: ${issue}`);
+      void url;
+    } catch (e) {
+      fail(`${path} fetch failed: ${e.message}`);
     }
-    void url;
-  } catch (e) {
-    fail(`${path} fetch failed: ${e.message}`);
   }
 }
 
@@ -176,6 +211,17 @@ try {
   if (!/sitemap:/i.test(body)) fail("robots.txt does not advertise a Sitemap");
 } catch (e) {
   fail(`robots.txt fetch failed: ${e.message}`);
+}
+
+for (const path of ["/security.txt", "/.well-known/security.txt"]) {
+  try {
+    const { body } = await get(path);
+    const expiry = body.match(/^Expires:\s*(\S+)/im)?.[1];
+    const issue = auditSecurityExpiry(expiry);
+    if (issue) fail(`${path}: ${issue}`);
+  } catch (error) {
+    fail(`${path} expiry check failed: ${error.message}`);
+  }
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

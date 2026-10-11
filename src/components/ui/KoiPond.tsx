@@ -1,11 +1,14 @@
 "use client";
 
+import { useId } from "react";
+
 const CRIMSON = "#d14c3d";
 const OCHRE = "#df9f43";
 const INK = "#242220";
 const WATER = "#56aed7";
 
 export function KoiPond() {
+  const artworkId = useId();
   return (
     <div className="koi-host" aria-hidden="true">
       <div className="koi-container">
@@ -15,7 +18,13 @@ export function KoiPond() {
           style={{ filter: "drop-shadow(0 10px 25px rgba(36,34,32,0.12))" }}
         >
           <defs>
-            <filter id="koi-sumi" x="-20%" y="-20%" width="140%" height="140%">
+            <filter
+              id={`${artworkId}-koi-sumi`}
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
               <feTurbulence
                 type="fractalNoise"
                 baseFrequency="0.05"
@@ -47,7 +56,7 @@ export function KoiPond() {
           {/* ── Koi 1: Crimson ── */}
           <g className="koi-orbit">
             <g transform="translate(100,100) translate(0,-56)">
-              <g style={{ filter: "url(#koi-sumi)" }}>
+              <g style={{ filter: `url(#${artworkId}-koi-sumi)` }}>
                 <path
                   className="koi-fin-l"
                   d="M 15,-8 Q 10,-24 -5,-25 Q 5,-12 15,-8 Z"
@@ -101,7 +110,10 @@ export function KoiPond() {
                   strokeLinecap="round"
                 />
               </g>
-              <g className="koi-s1" style={{ filter: "url(#koi-sumi)" }}>
+              <g
+                className="koi-s1"
+                style={{ filter: `url(#${artworkId}-koi-sumi)` }}
+              >
                 <path
                   d="M 0,-11 C -3,-11 -10,-8 -14,-7 C -10,0 -10,0 -14,7 C -10,8 -3,11 0,11 Z"
                   fill={CRIMSON}
@@ -151,7 +163,7 @@ export function KoiPond() {
               transform="translate(100,100) translate(0,-56)"
               className="koi-fish2"
             >
-              <g style={{ filter: "url(#koi-sumi)" }}>
+              <g style={{ filter: `url(#${artworkId}-koi-sumi)` }}>
                 <path
                   className="koi-fin-l"
                   d="M 15,-8 Q 10,-24 -5,-25 Q 5,-12 15,-8 Z"
@@ -205,7 +217,10 @@ export function KoiPond() {
                   strokeLinecap="round"
                 />
               </g>
-              <g className="koi-s1" style={{ filter: "url(#koi-sumi)" }}>
+              <g
+                className="koi-s1"
+                style={{ filter: `url(#${artworkId}-koi-sumi)` }}
+              >
                 <path
                   d="M 0,-11 C -3,-11 -10,-8 -14,-7 C -10,0 -10,0 -14,7 C -10,8 -3,11 0,11 Z"
                   fill={OCHRE}
@@ -309,8 +324,7 @@ export function KoiPond() {
         @media (prefers-reduced-motion: reduce) {
           .koi-orbit, .koi-s1, .koi-s2, .koi-s3, .koi-tail,
           .koi-fin-l, .koi-fin-r, .koi-barbel, .koi-ripple { animation: none; transform: none; }
-          .koi-container { animation: koi-fade 2.5s ease-in-out infinite; }
-          @keyframes koi-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          .koi-container { animation: none; }
         }
       `}</style>
     </div>

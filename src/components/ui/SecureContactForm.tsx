@@ -11,14 +11,20 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function SecureContactForm() {
   const { t } = useTranslation();
   const [status, setStatus] = useState<
-    "IDLE" | "TYPING" | "ENCRYPTING" | "SENT" | "ERROR"
+    "IDLE" | "TYPING" | "OPENING" | "DRAFT_OPENED" | "ERROR"
   >("IDLE");
   const [error, setError] = useState<string | null>(null);
   const uniqueId = useId();
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const draftTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const traceId = uniqueId.replace(/:/g, "").slice(0, 6).toUpperCase();
 
   const handleTyping = () => {
+    // Editing after submit cancels the pending draft instead of opening stale text.
+    if (draftTimeoutRef.current) {
+      clearTimeout(draftTimeoutRef.current);
+      draftTimeoutRef.current = null;
+    }
     setStatus("TYPING");
     setError(null);
 
@@ -34,11 +40,22 @@ export function SecureContactForm() {
       if (typingTimeoutRef.current) {
         clearTimeout(typingTimeoutRef.current);
       }
+      if (draftTimeoutRef.current) {
+        clearTimeout(draftTimeoutRef.current);
+      }
     };
   }, []);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+      typingTimeoutRef.current = null;
+    }
+    if (draftTimeoutRef.current) {
+      clearTimeout(draftTimeoutRef.current);
+      draftTimeoutRef.current = null;
+    }
     const formData = new FormData(e.currentTarget);
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
@@ -56,19 +73,25 @@ export function SecureContactForm() {
       return;
     }
 
-    setStatus("ENCRYPTING");
+    setStatus("OPENING");
     setError(null);
 
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const subject = encodeURIComponent(`${t.seo.contact_title}: ${name}`);
     const body = encodeURIComponent(
-      `From: ${name}\nEmail: ${email}\n\n${message}`,
+      `${t.contact_form.name_label}: ${name}\n${t.contact_form.email_label}: ${email}\n\n${t.contact_form.message_label}:\n${message}`,
     );
 
-    setTimeout(() => {
-      window.location.assign(
-        `mailto:${CONTACT_EMAIL_GMAIL}?subject=${subject}&body=${body}`,
-      );
-      setStatus("SENT");
+    draftTimeoutRef.current = setTimeout(() => {
+      draftTimeoutRef.current = null;
+      try {
+        window.location.assign(
+          `mailto:${CONTACT_EMAIL_GMAIL}?subject=${subject}&body=${body}`,
+        );
+        setStatus("DRAFT_OPENED");
+      } catch {
+        setStatus("ERROR");
+        setError(t.contact_form.error_open_draft);
+      }
     }, 600);
   };
 
@@ -96,7 +119,7 @@ export function SecureContactForm() {
               ? "text-red-400"
               : status === "ERROR"
                 ? "text-amber-400"
-                : status === "ENCRYPTING"
+                : status === "OPENING"
                   ? "text-cyan"
                   : "text-green-400"
           }`}
@@ -108,9 +131,9 @@ export function SecureContactForm() {
           )}
           {status === "TYPING"
             ? t.contact_form.status_keylogging
-            : status === "ENCRYPTING"
+            : status === "OPENING"
               ? t.contact_form.status_encrypting
-              : status === "SENT"
+              : status === "DRAFT_OPENED"
                 ? t.contact_form.status_sent
                 : status === "ERROR"
                   ? t.contact_form.status_error
@@ -135,7 +158,7 @@ export function SecureContactForm() {
               maxLength={80}
               autoComplete="name"
               placeholder={t.contact_form.name_placeholder}
-              onKeyDown={handleTyping}
+              onChange={handleTyping}
               className="w-full bg-[#030712]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
@@ -154,7 +177,7 @@ export function SecureContactForm() {
               maxLength={120}
               autoComplete="email"
               placeholder={t.contact_form.email_placeholder}
-              onKeyDown={handleTyping}
+              onChange={handleTyping}
               className="w-full bg-[#030712]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             />
           </div>
@@ -174,7 +197,7 @@ export function SecureContactForm() {
             required
             maxLength={2000}
             placeholder={t.contact_form.message_placeholder}
-            onKeyDown={handleTyping}
+            onChange={handleTyping}
             className="w-full bg-[#030712]/60 border border-cyan/15 text-foreground p-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
           />
         </div>
@@ -186,6 +209,15 @@ export function SecureContactForm() {
             className="text-xs font-mono text-amber-400"
           >
             {error}
+            {error === t.contact_form.error_open_draft && (
+              <a
+                href={`mailto:${CONTACT_EMAIL_GMAIL}`}
+                dir="ltr"
+                className="block mt-2 underline underline-offset-2"
+              >
+                {CONTACT_EMAIL_GMAIL}
+              </a>
+            )}
           </p>
         )}
 
@@ -197,12 +229,12 @@ export function SecureContactForm() {
             type="submit"
             variant="primary"
             className="px-6"
-            disabled={status === "ENCRYPTING" || status === "SENT"}
+            disabled={status === "OPENING" || status === "DRAFT_OPENED"}
           >
             <Send className="w-3 h-3 mr-2" />{" "}
-            {status === "ENCRYPTING"
+            {status === "OPENING"
               ? t.contact_form.cta_encrypting
-              : status === "SENT"
+              : status === "DRAFT_OPENED"
                 ? t.contact_form.cta_sent
                 : t.contact_form.cta_transmit}
           </NeonButton>

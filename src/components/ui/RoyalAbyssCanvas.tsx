@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { createCanvasPlayback, type CanvasPlayback } from "./canvas-playback";
 
 /* ── palette ── */
 const C = {
@@ -56,14 +57,22 @@ function makeTentacle(
     angleOffset,
     radius,
     type,
-    segments: Array.from({ length: len }, () => ({ x: 0, y: 0, z: 0 })),
+    // Start in a complete resting pose, including when reduced motion is set.
+    segments: Array.from({ length: len }, (_, index) => ({
+      x: Math.cos(angleOffset) * radius,
+      y:
+        (type === "inner" ? 40 : 20) +
+        index * (type === "inner" ? 5 : CFG.tentacleSpacing),
+      z: Math.sin(angleOffset) * radius,
+    })),
   };
 }
 
-function followSeg(seg: Seg, tx: number, ty: number, tz: number) {
-  seg.x += (tx - seg.x) * 0.15;
-  seg.y += (ty - seg.y) * 0.15;
-  seg.z += (tz - seg.z) * 0.15;
+function followSeg(seg: Seg, tx: number, ty: number, tz: number, step: number) {
+  const follow = 1 - Math.pow(1 - 0.15, step);
+  seg.x += (tx - seg.x) * follow;
+  seg.y += (ty - seg.y) * follow;
+  seg.z += (tz - seg.z) * follow;
 }
 
 function updateTentacle(
@@ -73,6 +82,7 @@ function updateTentacle(
   headZ: number,
   pulse: number,
   frame: number,
+  step: number,
 ) {
   const r = t.radius * (1 + pulse * (t.type === "inner" ? 0.05 : 0.2));
   followSeg(
@@ -80,17 +90,18 @@ function updateTentacle(
     headX + Math.cos(t.angleOffset) * r,
     headY + (t.type === "inner" ? 40 : 20),
     headZ + Math.sin(t.angleOffset) * r,
+    step,
   );
   const spacing = t.type === "inner" ? 5 : CFG.tentacleSpacing;
   for (let i = 1; i < t.segments.length; i++) {
     const prev = t.segments[i - 1];
-    followSeg(t.segments[i], prev.x, prev.y + spacing, prev.z);
+    followSeg(t.segments[i], prev.x, prev.y + spacing, prev.z, step);
   }
   const tip = t.segments[t.segments.length - 1];
   const ds = t.type === "inner" ? 0.1 : 0.05;
   const dm = t.type === "inner" ? 2 : 0.5;
-  tip.x += Math.sin(frame * ds + t.angleOffset) * dm;
-  tip.z += Math.cos(frame * ds + t.angleOffset) * dm;
+  tip.x += Math.sin(frame * ds + t.angleOffset) * dm * step;
+  tip.z += Math.cos(frame * ds + t.angleOffset) * dm * step;
 }
 
 function drawTentacle(
@@ -99,6 +110,7 @@ function drawTentacle(
   project: ProjectFn,
   rx: number,
   ry: number,
+  step: number,
 ) {
   ctx.beginPath();
   let first = true;
@@ -113,7 +125,7 @@ function drawTentacle(
   ctx.globalAlpha = t.type === "inner" ? 0.8 : 0.5;
   ctx.strokeStyle = t.type === "inner" ? C.blueStrong : C.greenModerate;
   ctx.shadowBlur = 0;
-  if (Math.random() > 0.995) {
+  if (Math.random() > Math.pow(0.995, step)) {
     ctx.shadowColor = C.redVividPurplish;
     ctx.shadowBlur = 25;
     ctx.strokeStyle = C.pinkDeep;
@@ -145,8 +157,15 @@ function makeParticle(): Par {
 }
 
 /* ── component ── */
-export function RoyalAbyssCanvas() {
+export function RoyalAbyssCanvas({
+  active = true,
+  preview = false,
+}: {
+  active?: boolean;
+  preview?: boolean;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const playbackRef = useRef<CanvasPlayback | null>(null);
 
   const run = useCallback(() => {
     if (!canvasRef.current) return;
@@ -158,8 +177,6 @@ export function RoyalAbyssCanvas() {
     let width = 0,
       height = 0,
       frame = 0;
-    let rafId: number | null = null;
-    let lastTimestamp = 0;
 
     const dpr = () => Math.min(window.devicePixelRatio || 1, 2);
 
@@ -173,8 +190,6 @@ export function RoyalAbyssCanvas() {
       height = canvas.offsetHeight || window.innerHeight;
       canvas.width = Math.floor(width * d);
       canvas.height = Math.floor(height * d);
-      canvas.style.width = width + "px";
-      canvas.style.height = height + "px";
       ctx.setTransform(d, 0, 0, d, 0, 0);
     }
 
@@ -224,15 +239,13 @@ export function RoyalAbyssCanvas() {
     }
 
     /* main draw */
-    function draw(timestamp: number) {
-      const skipPhysics = lastTimestamp > 0 && timestamp - lastTimestamp > 100;
-      lastTimestamp = timestamp;
-
+    function draw(_timestamp: number, step: number) {
       const rotX = Math.sin(frame * 0.007) * 0.12;
       const rotY = Math.sin(frame * 0.004) * 0.3;
 
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "#05020a33";
+      const trailAlpha = step > 0 ? 1 - Math.pow(0.8, step) : 1;
+      ctx.fillStyle = `rgba(5,2,10,${trailAlpha})`;
       ctx.fillRect(0, 0, width, height);
 
       ctx.globalCompositeOperation = "screen";
@@ -240,18 +253,25 @@ export function RoyalAbyssCanvas() {
       ctx.globalCompositeOperation = "source-over";
 
       ctx.save();
-      ctx.translate(width / 2, height / 2 - 40);
+      if (preview) {
+        // Fit the whole resting silhouette, including its long tentacles.
+        ctx.translate(width / 2, height * 0.36);
+        const scale = Math.min(width / 240, height / 300);
+        ctx.scale(scale, scale);
+      } else ctx.translate(width / 2, height / 2 - 40);
 
       const pulse = Math.sin(frame * CFG.pulseSpeed);
       const headY = Math.sin(frame * CFG.swimSpeed) * 25;
       const expn = pulse * 0.2;
 
-      if (!skipPhysics)
-        tentacles.forEach((t) => updateTentacle(t, 0, headY, 0, pulse, frame));
+      if (step > 0)
+        tentacles.forEach((t) =>
+          updateTentacle(t, 0, headY, 0, pulse, frame, step),
+        );
 
       tentacles.forEach((t) => {
         if (Math.cos(t.angleOffset + rotY) < 0)
-          drawTentacle(t, ctx, project, rotX, rotY);
+          drawTentacle(t, ctx, project, rotX, rotY, step);
       });
 
       /* core */
@@ -317,13 +337,13 @@ export function RoyalAbyssCanvas() {
       ctx.globalCompositeOperation = "source-over";
       tentacles.forEach((t) => {
         if (Math.cos(t.angleOffset + rotY) >= 0)
-          drawTentacle(t, ctx, project, rotX, rotY);
+          drawTentacle(t, ctx, project, rotX, rotY, step);
       });
 
       particles.forEach((p) => {
-        if (!skipPhysics) {
-          p.y += p.vy;
-          p.life -= 0.003;
+        if (step > 0) {
+          p.y += p.vy * step;
+          p.life -= 0.003 * step;
           if (p.life <= 0) Object.assign(p, makeParticle());
         }
         const pp = project(p, rotX, rotY);
@@ -336,41 +356,22 @@ export function RoyalAbyssCanvas() {
       });
 
       ctx.restore();
-      if (!skipPhysics) frame += 1;
-      rafId = requestAnimationFrame(draw);
+      frame += step;
     }
 
-    function stop() {
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      rafId = null;
-      lastTimestamp = 0;
-    }
-    function start() {
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(draw);
-    }
-
-    const onResize = () => resize();
-    const onVisibility = () => {
-      if (document.hidden) stop();
-      else start();
-    };
-    window.addEventListener("resize", onResize, { passive: true });
-    document.addEventListener("visibilitychange", onVisibility);
-    resize();
-    start();
-
-    return () => {
-      stop();
-      window.removeEventListener("resize", onResize);
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
-  }, []);
+    return createCanvasPlayback(canvas, draw, resize);
+  }, [preview]);
 
   useEffect(() => {
-    const cleanup = run();
-    return cleanup;
+    const playback = run();
+    playbackRef.current = playback ?? null;
+    return () => {
+      playback?.dispose();
+      playbackRef.current = null;
+    };
   }, [run]);
+
+  useEffect(() => playbackRef.current?.setActive(active), [active]);
 
   return (
     <div

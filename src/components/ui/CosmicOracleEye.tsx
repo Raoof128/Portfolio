@@ -1,5 +1,7 @@
 "use client";
 
+import { useId } from "react";
+
 const BG = "#11150c";
 const PAGE = "#b2d270";
 const DECK = "#6b8e23";
@@ -7,13 +9,14 @@ const LINE = "#080a05";
 const SPINE = "#485f18";
 
 export function CosmicOracleEye() {
+  const artworkId = useId();
   return (
     <div className="coe-host" aria-hidden="true">
       <div className="coe-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path
-              id="coe-lash"
+              id={`${artworkId}-coe-lash`}
               d="M 100,95 Q 112,65 107,35 Q 97,55 100,95 Z"
               fill={DECK}
               stroke={LINE}
@@ -21,7 +24,7 @@ export function CosmicOracleEye() {
               strokeLinejoin="round"
             />
             <path
-              id="coe-tooth"
+              id={`${artworkId}-coe-tooth`}
               d="M 96,62 L 104,62 L 102,70 L 98,70 Z"
               fill={SPINE}
               stroke={LINE}
@@ -29,7 +32,7 @@ export function CosmicOracleEye() {
               strokeLinejoin="round"
             />
             <path
-              id="coe-star"
+              id={`${artworkId}-coe-star`}
               d="M 0,-8 L 2,-2 L 8,0 L 2,2 L 0,8 L -2,2 L -8,0 L -2,-2 Z"
               fill={PAGE}
               stroke={LINE}
@@ -82,7 +85,7 @@ export function CosmicOracleEye() {
               (r) => (
                 <use
                   key={r}
-                  href="#coe-lash"
+                  href={`#${artworkId}-coe-lash`}
                   transform={`rotate(${r} 100 95)`}
                 />
               ),
@@ -123,7 +126,7 @@ export function CosmicOracleEye() {
             {[0, 45, 90, 135, 180, 225, 270, 315].map((r) => (
               <use
                 key={r}
-                href="#coe-tooth"
+                href={`#${artworkId}-coe-tooth`}
                 transform={`rotate(${r} 100 95)`}
               />
             ))}
@@ -139,7 +142,10 @@ export function CosmicOracleEye() {
               stroke={LINE}
               strokeWidth="3"
             />
-            <use href="#coe-star" transform="translate(100,95)" />
+            <use
+              href={`#${artworkId}-coe-star`}
+              transform="translate(100,95)"
+            />
           </g>
 
           {/* Tear accent dots */}
@@ -190,8 +196,7 @@ export function CosmicOracleEye() {
 
         @media (prefers-reduced-motion: reduce) {
           .coe-lashes, .coe-iris, .coe-pupil, .coe-pendulum { animation: none; }
-          .coe-container { animation: coe-fade 2.5s ease-in-out infinite; }
-          @keyframes coe-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          .coe-container { animation: none; }
         }
       `}</style>
     </div>

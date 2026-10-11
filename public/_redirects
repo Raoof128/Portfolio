@@ -3,10 +3,27 @@
 # stale cached asset that a plain deploy leaves at this exact path).
 /pgp-key.txt  /.well-known/security.txt  301
 
-# Redirect public /en/* back to clean English URLs (permanent — English lives
-# on clean root paths, so these aliases 308 to preserve method + path + query).
+# Redirect authored English aliases with a fixed destination prefix. A generic
+# /en/* -> /:splat rule can put //host at the beginning of Location.
+# Unpublished root aliases fall through to 404. Queries remain preserved.
 /en  /  308
-/en/* /:splat  308
+/en/ /  308
+/en/about /about 308
+/en/about/* /about/:splat 308
+/en/contact /contact 308
+/en/contact/* /contact/:splat 308
+/en/resume /resume 308
+/en/resume/* /resume/:splat 308
+/en/projects /projects 308
+/en/projects/* /projects/:splat 308
+/en/lab /lab 308
+/en/lab/* /lab/:splat 308
+/en/write-ups /write-ups 308
+/en/write-ups/* /write-ups/:splat 308
+/en/hall-of-fame /hall-of-fame 308
+/en/hall-of-fame/* /hall-of-fame/:splat 308
+/en/security-policy /security-policy 308
+/en/security-policy/* /security-policy/:splat 308
 
 # Non-English locale routes — exact and sub-paths (pass through unchanged)
 /fa    /fa    200
@@ -25,6 +42,18 @@
 /__next._index.txt                   /en/__next._index.txt                   200
 /__next.$d$locale.__PAGE__.txt       /en/__next.$d$locale.__PAGE__.txt       200
 /__next.$d$locale.txt                /en/__next.$d$locale.txt                200
+
+# Full RSC fallback requests use .txt URLs when segment prefetch is unavailable.
+# These exact collection names do not match the slash-prefixed wildcards below.
+/index.txt            /en.txt                    200
+/about.txt            /en/about.txt              200
+/contact.txt          /en/contact.txt            200
+/resume.txt           /en/resume.txt             200
+/projects.txt         /en/projects.txt           200
+/lab.txt              /en/lab.txt                200
+/write-ups.txt        /en/write-ups.txt          200
+/hall-of-fame.txt     /en/hall-of-fame.txt       200
+/security-policy.txt  /en/security-policy.txt    200
 
 # English routes — exact match + sub-path wildcard
 # The /* rule covers RSC prefetch files (__next._tree.txt etc.) and slugs

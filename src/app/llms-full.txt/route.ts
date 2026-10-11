@@ -45,7 +45,7 @@ intrusion detection at 500K+ packets/sec.
 - IT Manager & Security Operations, Iran Pharmacy, 2019–2024.
 
 ## Education
-- Bachelor of IT (Cyber Security), Macquarie University, Sydney.
+- Bachelor of Cyber Security, Macquarie University, Sydney — expected November 2026.
 
 ## Languages available
 Published in 5 languages: English (/), Persian (/fa), Arabic (/ar), Chinese (/zh), Spanish (/es).
@@ -58,7 +58,12 @@ function projectBlock(slug: string, p: (typeof projects)[string]): string {
   lines.push(p.description);
   if (p.tags?.length) lines.push(`Tags: ${p.tags.join(", ")}`);
   const links: string[] = [];
-  if (p.links.repo) links.push(`Repo: ${p.links.repo}`);
+  if (p.links.repo)
+    links.push(
+      p.links.repoVisibility === "private"
+        ? `Repo (private; contact the author to request access): ${p.links.repo}`
+        : `Repo: ${p.links.repo}`,
+    );
   if (p.links.demo) links.push(`Demo: ${p.links.demo}`);
   if (links.length) lines.push(links.join(" · "));
   for (const paper of p.papers ?? []) {

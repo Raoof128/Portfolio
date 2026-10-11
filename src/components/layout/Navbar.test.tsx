@@ -33,9 +33,16 @@ describe("Navbar", () => {
 
   it("renders all navigation items", () => {
     renderNavbar();
-    const navItems = ["/about", "/projects", "/lab", "/write-ups", "/resume"];
+    const navItems = [
+      { name: /about/i, path: "/about" },
+      { name: /projects/i, path: "/projects" },
+      { name: /lab/i, path: "/lab" },
+      { name: /writing/i, path: "/write-ups" },
+      { name: /résumé/i, path: "/resume" },
+    ];
     navItems.forEach((item) => {
-      expect(screen.getAllByText(item)[0]).toBeInTheDocument();
+      const links = screen.getAllByRole("link", { name: item.name });
+      links.forEach((link) => expect(link).toHaveAttribute("href", item.path));
     });
   });
 

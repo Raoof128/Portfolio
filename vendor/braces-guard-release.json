@@ -1,0 +1,83 @@
+{
+  "name": "@researchos/braces-guard",
+  "version": "0.1.0",
+  "sourceDirectory": "braces-guard",
+  "tarball": "researchos-braces-guard-0.1.0.tgz",
+  "tarballSha256": "8417f40092f67c05d2182e871eaed041c4891e46bfd424ded3a0741e5aa55fa6",
+  "sourceFiles": [
+    {
+      "path": "LICENSE",
+      "sha256": "35bdd8a44339719441900fb50fbefc5e2dca1ca662cbaed7a687de842c8b70f2",
+      "bytes": 1091
+    },
+    {
+      "path": "PROVENANCE.json",
+      "sha256": "c462d4412e705404a878fdf8f08ffdb8a3fc36fd531e53da30b3831527971c67",
+      "bytes": 2070
+    },
+    {
+      "path": "README.md",
+      "sha256": "78028e0eb2c13c8fd9de78159e4807cf9e089637ff6dc3da0628977253d4f111",
+      "bytes": 21821
+    },
+    {
+      "path": "SECURITY_PATCH.md",
+      "sha256": "ee9ffc39d0a47b95ca9440a5e561a8ae13e5f344c0bb3947593eca7b90ed84c3",
+      "bytes": 3704
+    },
+    {
+      "path": "UPSTREAM_PACKAGE.json",
+      "sha256": "56f08b888a4f30dc7cf8a7dbb36ffe92b737912ba36abe9d069d32167c957ac7",
+      "bytes": 1647
+    },
+    {
+      "path": "index.js",
+      "sha256": "3eb9d9a769c9fbd93cce92df47fe3febe661ddff776f4070456522f84a2f2daf",
+      "bytes": 4768
+    },
+    {
+      "path": "lib/compile.js",
+      "sha256": "89217d26fe49fa2d91ac29886fcefc49f1f52e126f58fea37427bee4fb205a4d",
+      "bytes": 1710
+    },
+    {
+      "path": "lib/constants.js",
+      "sha256": "c18ac5adb57308f1ce42a28552da3a31f5d83709743ebd9a636336813a744d4b",
+      "bytes": 1589
+    },
+    {
+      "path": "lib/expand.js",
+      "sha256": "7795444133d3123fccef2f5842014b98aa5e831571caccd6a3496b58413a695a",
+      "bytes": 3442
+    },
+    {
+      "path": "lib/guards.js",
+      "sha256": "c1e96f75f63394795dbfd7648e05de26a780f91ae09efc1c6083ae59f6d8bfde",
+      "bytes": 7988
+    },
+    {
+      "path": "lib/parse.js",
+      "sha256": "1e9e291d1677215ed500b25447cd1ca2a44f996985bc05171c835738716d46d9",
+      "bytes": 7273
+    },
+    {
+      "path": "lib/stringify.js",
+      "sha256": "58bf5af3d420e2d6f2dbf746c4b19db9064a739b5b7ecdc3c1dda7848425c667",
+      "bytes": 836
+    },
+    {
+      "path": "lib/utils.js",
+      "sha256": "55efe27b687fbb79203c227a9bfa714f07efe39fa2b08422840c0b73e59c59e9",
+      "bytes": 2577
+    },
+    {
+      "path": "package.json",
+      "sha256": "8005a8ad1568f446f63019074d7e253d54aed89e34bf26a2a5ca05cfeeab5fc5",
+      "bytes": 1632
+    }
+  ],
+  "excludedHistoricalEvidence": [
+    "pack-proof.json"
+  ],
+  "auditQualification": "npm audit matches registry package identity; it does not audit private fork source"
+}

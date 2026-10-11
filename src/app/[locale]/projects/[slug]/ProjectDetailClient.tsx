@@ -1,1539 +1,344 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { NeonButton } from "@/components/ui/NeonButton";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ThemeInjector } from "@/components/ui/ThemeInjector";
+import { useContentId } from "@/components/os/application-context";
 
-// All canvas/SVG animations use ssr:false to prevent hydration mismatches
-// caused by inline <style> tags rendering differently on server vs client.
-const RoyalAbyssCanvas = dynamic(
-  () =>
-    import("@/components/ui/RoyalAbyssCanvas").then((m) => ({
-      default: m.RoyalAbyssCanvas,
-    })),
-  { ssr: false },
-);
-const FireShieldCanvas = dynamic(
-  () =>
-    import("@/components/ui/FireShieldCanvas").then((m) => ({
-      default: m.FireShieldCanvas,
-    })),
-  { ssr: false },
-);
-const DandelionSpinner = dynamic(
-  () =>
-    import("@/components/ui/DandelionSpinner").then((m) => ({
-      default: m.DandelionSpinner,
-    })),
-  { ssr: false },
-);
-const DnaHelixCanvas = dynamic(
-  () =>
-    import("@/components/ui/DnaHelixCanvas").then((m) => ({
-      default: m.DnaHelixCanvas,
-    })),
-  { ssr: false },
-);
-const KineticLotus = dynamic(
-  () =>
-    import("@/components/ui/KineticLotus").then((m) => ({
-      default: m.KineticLotus,
-    })),
-  { ssr: false },
-);
-const KineticAstrolabe = dynamic(
-  () =>
-    import("@/components/ui/KineticAstrolabe").then((m) => ({
-      default: m.KineticAstrolabe,
-    })),
-  { ssr: false },
-);
-const CelestialCatcher = dynamic(
-  () =>
-    import("@/components/ui/CelestialCatcher").then((m) => ({
-      default: m.CelestialCatcher,
-    })),
-  { ssr: false },
-);
-const CosmicOracleEye = dynamic(
-  () =>
-    import("@/components/ui/CosmicOracleEye").then((m) => ({
-      default: m.CosmicOracleEye,
-    })),
-  { ssr: false },
-);
-const ConstellationOwl = dynamic(
-  () =>
-    import("@/components/ui/ConstellationOwl").then((m) => ({
-      default: m.ConstellationOwl,
-    })),
-  { ssr: false },
-);
-const KoiPond = dynamic(
-  () => import("@/components/ui/KoiPond").then((m) => ({ default: m.KoiPond })),
-  { ssr: false },
-);
-const WheelsOfEzekiel = dynamic(
-  () =>
-    import("@/components/ui/WheelsOfEzekiel").then((m) => ({
-      default: m.WheelsOfEzekiel,
-    })),
-  { ssr: false },
-);
-const CosmicLoomCanvas = dynamic(
-  () =>
-    import("@/components/ui/CosmicLoomCanvas").then((m) => ({
-      default: m.CosmicLoomCanvas,
-    })),
-  { ssr: false },
-);
-const BlueButterfly = dynamic(
-  () =>
-    import("@/components/ui/BlueButterfly").then((m) => ({
-      default: m.BlueButterfly,
-    })),
-  { ssr: false },
-);
-import {
-  ArrowLeft,
-  Github,
-  Play,
-  Shield,
-  Code,
-  CheckCircle,
-  ArrowRight,
-  FileText,
-  ExternalLink,
-  BookOpen,
-  Quote,
-} from "lucide-react";
+import type { ReactNode } from "react";
 import Link from "next/link";
-import { fadeInUp, fadeInRight, fadeInLeft } from "@/lib/utils";
-import { Project, getProjectFullDescription } from "@/lib/data";
+import { ArrowUpRight, Download, FileText } from "lucide-react";
+import type { ProjectPaper } from "@/lib/data";
+import type {
+  LocalizedProject,
+  ProjectDiagramCopy,
+} from "@/lib/project-localization";
+import type { ProjectSummary } from "@/lib/project-summaries";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { cn } from "@/lib/utils";
+import { formatNumber } from "@/i18n/format";
+import { CONTACT_EMAIL_GMAIL } from "@/lib/constants";
+import { ProjectExplorer } from "@/components/os/ProjectExplorer";
+import { ProjectDiagram } from "@/components/os/ProjectDiagram";
+import { ProjectMotion } from "@/components/os/ProjectMotion";
+import { getOSCopy } from "@/components/os/os-copy";
 
-const IW = "invisible-window-research";
-const PS = "project-simurgh";
-const GS = "gitswitch";
-const MG = "mehr-guard";
-const SS = "syllabus-sync";
-const NA = "nexus-archive";
-const NM = "nanomatch";
-const SF = "sentinelflow";
-const EC = "ecrsm";
-const SFG = "simurghforge";
-const AI = "aion";
-const ZV = "project-zurvan";
-const DV = "divan-open-day";
+function ResourceLink({
+  href,
+  children,
+  download = false,
+}: {
+  href: string;
+  children: ReactNode;
+  download?: boolean;
+}) {
+  const external = /^https?:\/\//.test(href);
+  return (
+    <a
+      className="os-project-resource"
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      download={download || undefined}
+    >
+      {children}
+      {download ? (
+        <Download size={15} aria-hidden="true" />
+      ) : (
+        <ArrowUpRight size={15} aria-hidden="true" />
+      )}
+    </a>
+  );
+}
 
 export function ProjectDetailClient({
   project,
   slug,
+  summaries,
+  diagramCopy,
 }: {
-  project: Project;
+  project: LocalizedProject;
   slug: string;
+  summaries: ProjectSummary[];
+  diagramCopy: ProjectDiagramCopy;
 }) {
   const { locale, t } = useTranslation();
-  const dictionary = t;
-  const isIW = slug === IW;
-  const isPS = slug === PS;
-  const isGS = slug === GS;
-  const isMG = slug === MG;
-  const isSS = slug === SS;
-  const isNA = slug === NA;
-  const isNM = slug === NM;
-  const isSF = slug === SF;
-  const isEC = slug === EC;
-  const isSFG = slug === SFG;
-  const isAI = slug === AI;
-  const isZV = slug === ZV;
-  const isDV = slug === DV;
-  const isRTL = locale === "fa" || locale === "ar";
-
-  const getPath = (path: string) => {
-    if (locale === defaultLocale) return path;
-    return `/${locale}${path}`;
+  const contentId = useContentId();
+  const copy = getOSCopy(locale);
+  const getPath = (path: string) =>
+    locale === defaultLocale ? path : `/${locale}${path}`;
+  const categoryLabels = {
+    ENGINEERING: copy.categoryEngineering,
+    DEFENSIVE: copy.categoryDefensive,
+    OFFENSIVE: copy.categoryOffensive,
   };
-
-  // Per-page accent theme — content body sections
-  const theme = isPS
-    ? {
-        accent: "text-orange-400",
-        accentSecond: "text-orange-300",
-        border: "border-orange-500/20",
-        borderB: "border-orange-500/30",
-        borderSub: "border-orange-500/15",
-        bg: "bg-orange-500/5",
-        hover: "hover:text-orange-400",
-        bullet: "text-orange-400",
-        check: "text-orange-300",
-      }
-    : isIW
-      ? {
-          accent: "text-[#00A693]",
-          accentSecond: "text-[#317873]",
-          border: "border-[#00A693]/20",
-          borderB: "border-[#00A693]/30",
-          borderSub: "border-[#00A693]/15",
-          bg: "bg-[#00A693]/5",
-          hover: "hover:text-[#00A693]",
-          bullet: "text-[#00A693]",
-          check: "text-[#6ffdf2]",
-        }
-      : isGS
-        ? {
-            accent: "text-[#FF4D4D]",
-            accentSecond: "text-[#FFD1D1]",
-            border: "border-[#FF4D4D]/20",
-            borderB: "border-[#FF4D4D]/30",
-            borderSub: "border-[#FF4D4D]/15",
-            bg: "bg-[#FF4D4D]/5",
-            hover: "hover:text-[#FF4D4D]",
-            bullet: "text-[#FF4D4D]",
-            check: "text-[#FFD1D1]",
-          }
-        : isMG
-          ? {
-              accent: "text-[#FF007F]",
-              accentSecond: "text-[#ff66b2]",
-              border: "border-[#FF007F]/20",
-              borderB: "border-[#FF007F]/30",
-              borderSub: "border-[#FF007F]/15",
-              bg: "bg-[#FF007F]/5",
-              hover: "hover:text-[#FF007F]",
-              bullet: "text-[#FF007F]",
-              check: "text-[#ff66b2]",
-            }
-          : isSS
-            ? {
-                accent: "text-[#d6b265]",
-                accentSecond: "text-[#f0c87a]",
-                border: "border-[#d6b265]/20",
-                borderB: "border-[#d6b265]/30",
-                borderSub: "border-[#d6b265]/15",
-                bg: "bg-[#d6b265]/5",
-                hover: "hover:text-[#d6b265]",
-                bullet: "text-[#d6b265]",
-                check: "text-[#f0c87a]",
-              }
-            : isAI
-              ? {
-                  accent: "text-[#dc2626]",
-                  accentSecond: "text-[#f59e0b]",
-                  border: "border-[#dc2626]/20",
-                  borderB: "border-[#f59e0b]/30",
-                  borderSub: "border-[#dc2626]/15",
-                  bg: "bg-[#dc2626]/5",
-                  hover: "hover:text-[#dc2626]",
-                  bullet: "text-[#f59e0b]",
-                  check: "text-[#f59e0b]",
-                }
-              : isSFG
-                ? {
-                    accent: "text-[#1a80b4]",
-                    accentSecond: "text-[#0e5a80]",
-                    border: "border-[#1a80b4]/25",
-                    borderB: "border-[#1a80b4]/40",
-                    borderSub: "border-[#1a80b4]/15",
-                    bg: "bg-[#1a80b4]/8",
-                    hover: "hover:text-[#1a80b4]",
-                    bullet: "text-[#1a80b4]",
-                    check: "text-[#0e5a80]",
-                  }
-                : isEC
-                  ? {
-                      accent: "text-[#d946ef]",
-                      accentSecond: "text-[#39ff14]",
-                      border: "border-[#d946ef]/20",
-                      borderB: "border-[#d946ef]/30",
-                      borderSub: "border-[#39ff14]/15",
-                      bg: "bg-[#d946ef]/5",
-                      hover: "hover:text-[#d946ef]",
-                      bullet: "text-[#39ff14]",
-                      check: "text-[#d946ef]",
-                    }
-                  : isSF
-                    ? {
-                        accent: "text-[#6b8e23]",
-                        accentSecond: "text-[#b2d270]",
-                        border: "border-[#6b8e23]/20",
-                        borderB: "border-[#6b8e23]/30",
-                        borderSub: "border-[#6b8e23]/15",
-                        bg: "bg-[#6b8e23]/5",
-                        hover: "hover:text-[#6b8e23]",
-                        bullet: "text-[#6b8e23]",
-                        check: "text-[#b2d270]",
-                      }
-                    : isNM
-                      ? {
-                          accent: "text-[#cc1b5d]",
-                          accentSecond: "text-[#ff6b9d]",
-                          border: "border-[#cc1b5d]/20",
-                          borderB: "border-[#cc1b5d]/30",
-                          borderSub: "border-[#cc1b5d]/15",
-                          bg: "bg-[#cc1b5d]/5",
-                          hover: "hover:text-[#cc1b5d]",
-                          bullet: "text-[#cc1b5d]",
-                          check: "text-[#ff6b9d]",
-                        }
-                      : isNA
-                        ? {
-                            accent: "text-[#4d79ff]",
-                            accentSecond: "text-[#99bbff]",
-                            border: "border-[#4d79ff]/20",
-                            borderB: "border-[#4d79ff]/30",
-                            borderSub: "border-[#4d79ff]/15",
-                            bg: "bg-[#4d79ff]/5",
-                            hover: "hover:text-[#4d79ff]",
-                            bullet: "text-[#4d79ff]",
-                            check: "text-[#99bbff]",
-                          }
-                        : isZV
-                          ? {
-                              accent: "text-[#EDAB18]",
-                              accentSecond: "text-[#FFD77A]",
-                              border: "border-[#EDAB18]/20",
-                              borderB: "border-[#EDAB18]/30",
-                              borderSub: "border-[#EDAB18]/15",
-                              bg: "bg-[#EDAB18]/5",
-                              hover: "hover:text-[#EDAB18]",
-                              bullet: "text-[#EDAB18]",
-                              check: "text-[#FFD77A]",
-                            }
-                          : isDV
-                            ? {
-                                accent: "text-[#d4a64a]",
-                                accentSecond: "text-[#2e6e9e]",
-                                border: "border-[#d4a64a]/20",
-                                borderB: "border-[#d4a64a]/30",
-                                borderSub: "border-[#d4a64a]/15",
-                                bg: "bg-[#d4a64a]/5",
-                                hover: "hover:text-[#d4a64a]",
-                                bullet: "text-[#d4a64a]",
-                                check: "text-[#9fd8d6]",
-                              }
-                            : {
-                                accent: "text-cyan",
-                                accentSecond: "text-purple",
-                                border: "border-cyan/12",
-                                borderB: "border-cyan/20",
-                                borderSub: "border-cyan/10",
-                                bg: "bg-cyan/5",
-                                hover: "hover:text-cyan",
-                                bullet: "text-cyan",
-                                check: "text-green-400",
-                              };
-
-  const localizedFullDescription = getProjectFullDescription(project, locale);
-  const paperEntries =
+  const descriptionLocale = project.contentLocale;
+  const paperEntries: ProjectPaper[] =
     project.papers ??
     (project.links.paper
       ? [
           {
             title: project.title,
-            label: "Paper",
+            label: t.project_detail.paper,
             href: project.links.paper,
-            kind: "download" as const,
+            kind: "download",
           },
         ]
       : []);
-  const hasPaperLibrary = paperEntries.length > 0;
-
-  const renderHeroLinks = () => (
-    <>
-      {project.links.demo && (
-        <NeonButton href={project.links.demo} external>
-          <Play size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
-          {dictionary.project_detail.demo}
-        </NeonButton>
-      )}
-      {project.links.repo && (
-        <NeonButton href={project.links.repo} variant="secondary" external>
-          <Github size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
-          {dictionary.common.repo}
-        </NeonButton>
-      )}
-      {project.links.preprint && !isPS && (
-        <NeonButton href={project.links.preprint} external>
-          <BookOpen size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
-          {dictionary.project_detail.read_preprint}
-        </NeonButton>
-      )}
-      {project.links.doi && (
-        <NeonButton href={project.links.doi} variant="outline" external>
-          <ExternalLink size={16} className={cn(isRTL ? "ml-2" : "mr-2")} />{" "}
-          {dictionary.project_detail.doi_short}
-        </NeonButton>
-      )}
-    </>
-  );
 
   return (
-    <div
-      className={cn(
-        "min-h-screen bg-background flex flex-col",
-        isRTL && "text-right",
-      )}
-    >
-      {isPS && <ThemeInjector theme="simurgh" />}
-      {isIW && <ThemeInjector theme="invisible-window" />}
-      {isGS && <ThemeInjector theme="gitswitch" />}
-      {isMG && <ThemeInjector theme="mehr-guard" />}
-      {isSS && <ThemeInjector theme="syllabus-sync" />}
-      {isNA && <ThemeInjector theme="nexus-archive" />}
-      {isNM && <ThemeInjector theme="nanomatch" />}
-      {isSF && <ThemeInjector theme="sentinelflow" />}
-      {isEC && <ThemeInjector theme="ecrsm" />}
-      {isSFG && <ThemeInjector theme="simurghforge" />}
-      {isAI && <ThemeInjector theme="aion" />}
-      {isZV && <ThemeInjector theme="zurvan" />}
-      {isDV && <ThemeInjector theme="divan" />}
-      <div className="flex-1 pb-24">
-        {/* Project Hero */}
-        <AnimatedSection variants={fadeInUp}>
-          {isPS ? (
-            /* ── Project Simurgh: fire-shield hero ── */
-            <section
-              className="border-b border-orange-900/30 overflow-hidden"
-              style={{ background: "#010101" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-orange-400/70 hover:text-orange-400 pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-orange-400 border border-orange-500/40 bg-orange-500/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-orange-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <FireShieldCanvas />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isIW ? (
-            /* ── Invisible Window: jellyfish hero ── */
-            <section
-              className="border-b border-blue-900/30 overflow-hidden"
-              style={{ background: "#05020a" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#91A3B0] hover:text-[#00A693] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#00A693] border border-[#00A693]/40 bg-[#00A693]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-[#91A3B0] leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <RoyalAbyssCanvas />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isGS ? (
-            /* ── GitSwitch: dandelion hero ── */
-            <section
-              className="border-b border-red-900/30 overflow-hidden"
-              style={{ background: "#0c0303" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#FF4D4D]/70 hover:text-[#FF4D4D] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#FF4D4D] border border-[#FF4D4D]/40 bg-[#FF4D4D]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-red-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <DandelionSpinner />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isMG ? (
-            /* ── Mehr Guard: DNA helix hero ── */
-            <section
-              className="border-b border-pink-900/30 overflow-hidden"
-              style={{ background: "#030308" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#FF007F]/70 hover:text-[#FF007F] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#FF007F] border border-[#FF007F]/40 bg-[#FF007F]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-pink-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden rounded-sm">
-                    <DnaHelixCanvas />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isSS ? (
-            /* ── Syllabus-Sync: kinetic lotus hero ── */
-            <section
-              className="border-b border-yellow-900/30 overflow-hidden"
-              style={{ background: "#080600" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#d6b265]/70 hover:text-[#d6b265] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#d6b265] border border-[#d6b265]/40 bg-[#d6b265]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-yellow-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <KineticLotus />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isAI ? (
-            /* ── Aion: wheels of ezekiel hero ── */
-            <section
-              className="border-b border-red-900/30 overflow-hidden"
-              style={{ background: "#06050a" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#dc2626]/70 hover:text-[#dc2626] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag, i) => (
-                        <span
-                          key={tag}
-                          className={`text-xs font-mono px-2 py-1 border ${i % 2 === 0 ? "text-[#f59e0b] border-[#f59e0b]/40 bg-[#f59e0b]/5" : "text-[#dc2626] border-[#dc2626]/40 bg-[#dc2626]/5"}`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-orange-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <WheelsOfEzekiel />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isSFG ? (
-            /* ── SimurghForge: koi pond hero ── */
-            <section
-              className="border-b border-sky-300/50 overflow-hidden"
-              style={{ background: "#cbe3f0" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#1a80b4]/70 hover:text-[#1a80b4] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#0e5a80] border border-[#1a80b4]/40 bg-[#1a80b4]/10 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-[#0a1e2c] leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-[#1a3a50]/80 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden rounded-sm">
-                    <KoiPond />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isEC ? (
-            /* ── ECRSM: constellation owl hero ── */
-            <section
-              className="border-b border-fuchsia-900/30 overflow-hidden"
-              style={{ background: "#07030e" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#d946ef]/70 hover:text-[#d946ef] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag, i) => (
-                        <span
-                          key={tag}
-                          className={`text-xs font-mono px-2 py-1 border ${i % 2 === 0 ? "text-[#d946ef] border-[#d946ef]/40 bg-[#d946ef]/5" : "text-[#39ff14] border-[#39ff14]/40 bg-[#39ff14]/5"}`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-fuchsia-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <ConstellationOwl />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isSF ? (
-            /* ── SentinelFlow: cosmic oracle eye hero ── */
-            <section
-              className="border-b border-lime-900/30 overflow-hidden"
-              style={{ background: "#11150c" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#6b8e23]/70 hover:text-[#6b8e23] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#6b8e23] border border-[#6b8e23]/40 bg-[#6b8e23]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-lime-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <CosmicOracleEye />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isNM ? (
-            /* ── NanoMatch: celestial catcher hero ── */
-            <section
-              className="border-b border-rose-900/30 overflow-hidden"
-              style={{ background: "#161115" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#cc1b5d]/70 hover:text-[#cc1b5d] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#cc1b5d] border border-[#cc1b5d]/40 bg-[#cc1b5d]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-rose-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <CelestialCatcher />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isNA ? (
-            /* ── Nexus Archive: astrolabe hero ── */
-            <section
-              className="border-b border-blue-900/30 overflow-hidden"
-              style={{ background: "#000035" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#4d79ff]/70 hover:text-[#4d79ff] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#4d79ff] border border-[#4d79ff]/40 bg-[#4d79ff]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-blue-200/60 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <KineticAstrolabe />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isZV ? (
-            /* ── Project Zurvan: cosmic loom hero ── */
-            <section
-              className="border-b border-[#EDAB18]/30 overflow-hidden"
-              style={{ background: "#020103" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#EDAB18]/70 hover:text-[#EDAB18] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#EDAB18] border border-[#EDAB18]/40 bg-[#EDAB18]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-[#FFE4A3]/65 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <CosmicLoomCanvas />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : isDV ? (
-            /* ── Divan — Open Day: blue-butterfly hero ── */
-            <section
-              className="border-b border-[#d4a64a]/20 overflow-hidden"
-              style={{ background: "#0b1026" }}
-            >
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-[#d4a64a]/70 hover:text-[#d4a64a] pt-6 md:pt-10 mb-6 md:mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center pb-10 md:pb-16">
-                  <div className="space-y-4 md:space-y-6">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-[#d4a64a] border border-[#d4a64a]/40 bg-[#d4a64a]/5 px-2 py-1"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-white leading-tight">
-                      {project.title}
-                    </h1>
-                    <p className="text-base md:text-lg text-[#cfe3f5]/70 leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-3",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {renderHeroLinks()}
-                    </div>
-                  </div>
-                  <div className="relative h-[260px] sm:h-[340px] md:h-[480px] overflow-hidden">
-                    <BlueButterfly />
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : (
-            /* ── Default hero ── */
-            <section className="border-b border-cyan/12 bg-cyan/5 py-12 md:py-20">
-              <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <Link
-                  href={getPath("/projects")}
-                  className="inline-flex items-center text-sm text-text-body hover:text-cyan mb-8 transition-colors font-mono"
-                >
-                  <ArrowLeft
-                    size={14}
-                    className={cn(isRTL ? "ml-2 rotate-180" : "mr-2")}
-                  />{" "}
-                  {dictionary.common.back}
-                </Link>
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                  <div className="space-y-4 max-w-3xl">
-                    <div
-                      className={cn(
-                        "flex flex-wrap gap-2 mb-4",
-                        isRTL && "justify-end",
-                      )}
-                    >
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono text-cyan border border-cyan/30 px-2 py-1 bg-cyan/5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-mono font-bold text-white">
-                      {project.title}
-                    </h1>
-                    <p className="text-xl text-text-body leading-relaxed">
-                      {localizedFullDescription}
-                    </p>
-                  </div>
-                  <div
-                    className={cn(
-                      "flex flex-wrap gap-3 md:gap-4 shrink-0",
-                      isRTL && "justify-end",
-                    )}
-                  >
-                    {renderHeroLinks()}
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-        </AnimatedSection>
-
-        <div
-          className={cn(
-            `max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 ${isPS ? "bg-[#060200]" : isIW ? "bg-[#02030a]" : isGS ? "bg-[#0a0202]" : isMG ? "bg-[#030308]" : isSS ? "bg-[#080600]" : isNA ? "bg-[#000035]" : isNM ? "bg-[#161115]" : isSF ? "bg-[#11150c]" : isEC ? "bg-[#07030e]" : isSFG ? "bg-[#cbe3f0]" : isAI ? "bg-[#06050a]" : isZV ? "bg-[#040301]" : isDV ? "bg-[#070a18]" : ""}`,
-            isRTL && "direction-rtl",
-          )}
-        >
-          {/* Main Content — problem/solution/build/secure/proof are authored in
-              English; section headings are localized. Marked lang="en" so screen
-              readers pronounce the English body correctly on non-English routes. */}
-          <div
-            lang={locale === "en" ? undefined : "en"}
-            className="lg:col-span-8 space-y-16"
-          >
-            <AnimatedSection variants={fadeInUp}>
-              <section className="space-y-4">
-                <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className={theme.accent}>01.</span>{" "}
-                  {t.project_detail.problem}
-                </h2>
-                <div
-                  className={cn(
-                    `prose prose-invert max-w-none text-text-body border-l-2 ${theme.border} pl-6`,
-                    isRTL && "border-l-0 border-r-2 pr-6 pl-0",
-                  )}
-                >
-                  <p>{project.problem}</p>
-                </div>
-              </section>
-            </AnimatedSection>
-
-            <AnimatedSection variants={fadeInUp} delay={0.1}>
-              <section className="space-y-4">
-                <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className={theme.accent}>02.</span>{" "}
-                  {t.project_detail.solution_overview}
-                </h2>
-                <div
-                  className={`bg-black/40 border ${theme.border} p-6 rounded-sm`}
-                >
-                  <ul className="grid gap-3">
-                    {project.solution.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-slate-300"
-                      >
-                        <ArrowRight
-                          size={16}
-                          className={cn(
-                            `mt-1 ${theme.bullet} shrink-0`,
-                            isRTL && "rotate-180",
-                          )}
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </section>
-            </AnimatedSection>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <AnimatedSection variants={fadeInLeft}>
-                <section className="space-y-4">
-                  <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                    <Code size={20} className={theme.accent} />{" "}
-                    {t.project_detail.build}
-                  </h2>
-                  <div
-                    className={`${theme.bg} border ${theme.border} p-6 h-full`}
-                  >
-                    <div className="mb-4">
-                      <p className="text-xs uppercase text-text-body font-mono mb-2">
-                        {t.project_detail.tech_stack}
-                      </p>
-                      <div
-                        className={cn(
-                          "flex flex-wrap gap-2",
-                          isRTL && "justify-end",
-                        )}
-                      >
-                        {project.build?.stack.map((tech) => (
-                          <span
-                            key={tech}
-                            className={`text-xs border ${theme.borderB} px-2 py-1 text-slate-300 ${theme.bg}`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <ul className="space-y-2">
-                      {project.build?.features.map((feat, i) => (
-                        <li
-                          key={i}
-                          className="text-sm text-text-body flex gap-2"
-                        >
-                          <span className={theme.bullet}>&bull;</span> {feat}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </section>
-              </AnimatedSection>
-
-              <AnimatedSection variants={fadeInRight} delay={0.1}>
-                <section className="space-y-4">
-                  <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                    <Shield size={20} className={theme.accentSecond} />{" "}
-                    {t.project_detail.secure}
-                  </h2>
-                  <div
-                    className={`${theme.bg} border ${theme.border} p-6 h-full`}
-                  >
-                    <ul className="space-y-3">
-                      {project.secure?.measures.map((measure, i) => (
-                        <li
-                          key={i}
-                          className="text-sm text-text-body flex gap-2"
-                        >
-                          <CheckCircle
-                            size={14}
-                            className={cn(
-                              `mt-1 ${theme.check} shrink-0`,
-                              isRTL && "order-last ml-2",
-                            )}
-                          />
-                          {measure}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </section>
-              </AnimatedSection>
+    <ProjectExplorer selectedSlug={slug} summaries={summaries}>
+      <article
+        className="os-project-dossier"
+        lang={project.contentLocale}
+        dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}
+      >
+        <div className="os-project-intro">
+          <header className="os-project-dossier-header">
+            <div className="os-project-row-meta">
+              <span>{categoryLabels[project.category]}</span>
+              <time dateTime={project.year}>
+                {formatNumber(Number(project.year), locale, {
+                  useGrouping: false,
+                })}
+              </time>
             </div>
-
-            <AnimatedSection variants={fadeInUp} delay={0.15}>
-              <section className="space-y-4">
-                <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                  <span className={theme.accent}>03.</span>{" "}
-                  {t.project_detail.proof}
-                </h2>
-                <div
-                  className={`border ${theme.borderB} ${theme.bg} p-6 space-y-4`}
+            <h1
+              lang={project.titleLocale}
+              dir={project.titleLocale === "en" ? "ltr" : undefined}
+            >
+              {project.title}
+            </h1>
+            <p
+              className="os-project-lead"
+              lang={descriptionLocale}
+              dir={
+                descriptionLocale === "fa" || descriptionLocale === "ar"
+                  ? "rtl"
+                  : "ltr"
+              }
+            >
+              {project.fullDescription}
+            </p>
+            <ul className="os-project-tags">
+              {project.tags.map((tag) => (
+                <li key={tag}>
+                  <bdi>{tag}</bdi>
+                </li>
+              ))}
+            </ul>
+            <div
+              className="os-project-resources"
+              role="group"
+              aria-label={t.project_detail.project_links}
+            >
+              {project.links.repo && (
+                <ResourceLink
+                  href={
+                    project.links.repoVisibility === "private"
+                      ? `mailto:${CONTACT_EMAIL_GMAIL}?subject=${encodeURIComponent(`${t.project_detail.request_source}: ${project.title}`)}`
+                      : project.links.repo
+                  }
                 >
-                  <p
-                    className={`font-mono text-sm ${theme.accent} mb-4 uppercase tracking-widest border-b ${theme.borderB} pb-2 inline-block`}
-                  >
-                    {t.project_detail.verified_claims}
-                  </p>
-                  <ul className="space-y-3">
-                    {project.proof.map((proof, i) => (
-                      <li
-                        key={i}
-                        className="font-mono text-sm text-slate-300 flex items-start gap-3"
-                      >
-                        <span
-                          className={cn(
-                            `${theme.bullet} mt-1`,
-                            isRTL && "rotate-180",
-                          )}
-                        >
-                          &gt;
-                        </span>
-                        {proof}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </section>
-            </AnimatedSection>
-
-            {hasPaperLibrary && (
-              <AnimatedSection variants={fadeInUp} delay={0.2}>
-                <section
-                  id="research-papers"
-                  className="space-y-4 scroll-mt-24"
+                  {project.links.repoVisibility === "private"
+                    ? t.project_detail.request_source
+                    : t.project_detail.source_code}
+                </ResourceLink>
+              )}
+              {project.links.demo && (
+                <ResourceLink href={project.links.demo}>
+                  {t.project_detail.demo}
+                </ResourceLink>
+              )}
+              {project.links.paper && (
+                <ResourceLink href={project.links.paper} download>
+                  {t.project_detail.download_paper}
+                </ResourceLink>
+              )}
+              {project.links.preprint && (
+                <ResourceLink href={project.links.preprint}>
+                  {t.project_detail.read_preprint}
+                </ResourceLink>
+              )}
+              {project.links.doi && (
+                <ResourceLink href={project.links.doi}>
+                  {t.project_detail.doi_record}
+                </ResourceLink>
+              )}
+              {slug === "project-simurgh" && (
+                <ResourceLink href="https://github.com/Raoof128/Project-Simurgh/blob/main/scripts/reproduce-vca-chain.sh">
+                  {t.common.reproduce}
+                </ResourceLink>
+              )}
+              {project.links.caseStudy && (
+                <Link
+                  className="os-project-resource"
+                  href={getPath(project.links.caseStudy)}
                 >
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                    <h2 className="text-2xl font-mono font-bold text-white flex items-center gap-2">
-                      <FileText size={20} className={theme.accent} />
-                      <span>{t.project_detail.research_papers}</span>
-                    </h2>
-                    <p
-                      className={`font-mono text-xs uppercase tracking-widest ${theme.accent}`}
-                    >
-                      {paperEntries.length}{" "}
-                      {paperEntries.length === 1
-                        ? t.project_detail.paper
-                        : t.project_detail.papers}
-                    </p>
-                  </div>
-                  <div className="grid gap-4">
-                    {paperEntries.map((paper) => (
-                      <article
-                        key={`${paper.href}-${paper.title}`}
-                        className={`border ${theme.border} ${theme.bg} p-5 sm:p-6`}
-                      >
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                          <div className="min-w-0 space-y-3">
-                            <div
-                              className={cn(
-                                "flex flex-wrap gap-2",
-                                isRTL && "justify-end",
-                              )}
-                            >
-                              {paper.label && (
-                                <span
-                                  className={`text-xs font-mono uppercase tracking-widest ${theme.accent} border ${theme.borderB} px-2 py-1`}
-                                >
-                                  {paper.label}
-                                </span>
-                              )}
-                              {paper.status && (
-                                <span className="text-xs font-mono uppercase tracking-widest text-slate-400 border border-white/10 px-2 py-1">
-                                  {paper.status}
-                                </span>
-                              )}
-                            </div>
-                            <h3 className="text-lg sm:text-xl font-mono font-bold text-white leading-snug break-words">
-                              {paper.title}
-                            </h3>
-                            {paper.description && (
-                              <p className="text-sm text-text-body leading-relaxed">
-                                {paper.description}
-                              </p>
-                            )}
-                            <div
-                              className={cn(
-                                "flex flex-wrap gap-x-4 gap-y-2 text-xs font-mono text-slate-400",
-                                isRTL && "justify-end",
-                              )}
-                            >
-                              {paper.venue && <span>{paper.venue}</span>}
-                              {paper.year && <span>{paper.year}</span>}
-                              {paper.doi && (
-                                <span className="break-all">
-                                  {t.project_detail.doi_short} {paper.doi}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                          <a
-                            href={paper.href}
-                            target={
-                              paper.kind === "external" ? "_blank" : undefined
-                            }
-                            rel={
-                              paper.kind === "external"
-                                ? "noopener noreferrer"
-                                : undefined
-                            }
-                            download={paper.kind === "download"}
-                            className={`inline-flex shrink-0 items-center justify-center gap-2 border ${theme.borderB} px-4 py-2 font-mono text-sm ${theme.hover} text-slate-200 transition-colors`}
-                          >
-                            {paper.kind === "download"
-                              ? t.project_detail.download_paper
-                              : t.project_detail.open_record}
-                            {paper.kind === "download" ? (
-                              <FileText size={14} />
-                            ) : (
-                              <ExternalLink size={14} />
-                            )}
-                          </a>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </section>
-              </AnimatedSection>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <AnimatedSection
-            variants={fadeInRight}
-            delay={0.2}
-            className="lg:col-span-4"
-          >
-            <div className="space-y-8">
-              <div className="sticky top-24">
-                <div className={`border ${theme.border} p-6 bg-black/20`}>
-                  <h3 className="font-mono font-bold text-white mb-4">
-                    {t.project_detail.project_links}
-                  </h3>
-                  <div className="space-y-3">
-                    {project.links.demo && (
-                      <a
-                        href={project.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}
-                      >
-                        {t.project_detail.watch_demo}{" "}
-                        <Play
-                          size={14}
-                          className={cn(isRTL && "order-first")}
-                        />
-                      </a>
-                    )}
-                    {project.links.repo && (
-                      <a
-                        href={project.links.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}
-                      >
-                        {t.project_detail.source_code}{" "}
-                        <Github
-                          size={14}
-                          className={cn(isRTL && "order-first")}
-                        />
-                      </a>
-                    )}
-                    {hasPaperLibrary && (
-                      <a
-                        href="#research-papers"
-                        className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}
-                      >
-                        {t.project_detail.research_papers}{" "}
-                        <FileText
-                          size={14}
-                          className={cn(isRTL && "order-first")}
-                        />
-                      </a>
-                    )}
-                    {project.links.preprint && (
-                      <a
-                        href={project.links.preprint}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}
-                      >
-                        {t.project_detail.read_preprint}{" "}
-                        <BookOpen
-                          size={14}
-                          className={cn(isRTL && "order-first")}
-                        />
-                      </a>
-                    )}
-                    {project.links.doi && (
-                      <a
-                        href={project.links.doi}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center justify-between text-sm text-text-body ${theme.hover} transition-colors border-b ${theme.borderSub} pb-2`}
-                      >
-                        {t.project_detail.doi_record}{" "}
-                        <ExternalLink
-                          size={14}
-                          className={cn(isRTL && "order-first")}
-                        />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-              {project.citation && (
-                <div
-                  className="border border-white/10 p-4 bg-black/20"
-                  suppressHydrationWarning
-                >
-                  <p className="font-mono text-xs uppercase tracking-widest text-text-body mb-3 flex items-center gap-2">
-                    <Quote size={12} /> {t.project_detail.cite_this_work}
-                  </p>
-                  <p className="text-xs text-slate-400 leading-relaxed font-mono break-all">
-                    {project.citation}
-                  </p>
-                </div>
+                  {t.common.case_study}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </Link>
               )}
             </div>
-          </AnimatedSection>
+            {project.links.repoVisibility === "private" && (
+              <p>{t.project_detail.private_source_note}</p>
+            )}
+          </header>
+          <ProjectMotion slug={slug} locale={locale} />
         </div>
-      </div>
-    </div>
+
+        {/* Anchors keep all evidence available to readers and crawlers without JavaScript. */}
+        <nav
+          className="os-project-section-nav"
+          aria-label={copy.projectArchitecture}
+        >
+          <a href={`#${contentId("overview")}`}>{copy.overview}</a>
+          <a href={`#${contentId("evidence")}`}>{copy.evidence}</a>
+          <a href={`#${contentId("methods")}`}>{copy.methods}</a>
+        </nav>
+
+        <section
+          id={contentId("overview")}
+          className="os-project-section"
+          aria-labelledby={contentId("overview-heading")}
+        >
+          <p className="os-project-eyebrow">
+            {formatNumber(1, locale, {
+              minimumIntegerDigits: 2,
+              useGrouping: false,
+            })}{" "}
+            / {copy.overview}
+          </p>
+          <ProjectDiagram
+            project={project}
+            slug={slug}
+            copy={diagramCopy}
+            locale={locale}
+          />
+          <h2 id={contentId("overview-heading")}>{t.project_detail.problem}</h2>
+          <p>{project.problem}</p>
+          <h3>{t.project_detail.solution_overview}</h3>
+          <ol className="os-project-numbered-list">
+            {project.solution.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ol>
+        </section>
+
+        <section
+          id={contentId("evidence")}
+          className="os-project-section"
+          aria-labelledby={contentId("evidence-heading")}
+        >
+          <p className="os-project-eyebrow">
+            {formatNumber(2, locale, {
+              minimumIntegerDigits: 2,
+              useGrouping: false,
+            })}{" "}
+            / {copy.evidence}
+          </p>
+          <h2 id={contentId("evidence-heading")}>{t.project_detail.proof}</h2>
+          <ul className="os-project-evidence-list">
+            {project.proof.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+          {paperEntries.length > 0 && (
+            <div
+              id={contentId("research-papers")}
+              className="os-project-paper-library"
+            >
+              <div className="os-project-paper-heading">
+                <h3>{t.project_detail.research_papers}</h3>
+                <span>
+                  {t.project_detail.papers}:{" "}
+                  <bdi>{formatNumber(paperEntries.length, locale)}</bdi>
+                </span>
+              </div>
+              {paperEntries.map((paper) => (
+                <article key={paper.href} className="os-project-paper">
+                  <div className="os-project-row-meta">
+                    <span>{paper.label}</span>
+                    {paper.status && <span>{paper.status}</span>}
+                  </div>
+                  <h4 lang="en" dir="ltr">
+                    {paper.title}
+                  </h4>
+                  {paper.description && <p>{paper.description}</p>}
+                  <div className="os-project-row-meta" lang="en" dir="ltr">
+                    {paper.venue && <span>{paper.venue}</span>}
+                    {paper.year && (
+                      <time dateTime={paper.year}>{paper.year}</time>
+                    )}
+                    {paper.doi && (
+                      <a
+                        href={`https://doi.org/${paper.doi}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {paper.doi}
+                      </a>
+                    )}
+                  </div>
+                  <ResourceLink
+                    href={paper.href}
+                    download={paper.kind === "download"}
+                  >
+                    <FileText size={15} aria-hidden="true" />
+                    {paper.kind === "download"
+                      ? t.project_detail.download_paper
+                      : t.project_detail.open_record}
+                  </ResourceLink>
+                </article>
+              ))}
+            </div>
+          )}
+          {project.citation && (
+            <aside
+              className="os-project-citation"
+              aria-labelledby={contentId("citation-heading")}
+            >
+              <h3 id={contentId("citation-heading")}>
+                {t.project_detail.cite_this_work}
+              </h3>
+              <p lang="en" dir="ltr">
+                {project.citation}
+              </p>
+            </aside>
+          )}
+        </section>
+
+        <section
+          id={contentId("methods")}
+          className="os-project-section"
+          aria-labelledby={contentId("methods-heading")}
+        >
+          <p className="os-project-eyebrow">
+            {formatNumber(3, locale, {
+              minimumIntegerDigits: 2,
+              useGrouping: false,
+            })}{" "}
+            / {copy.methods}
+          </p>
+          <h2 id={contentId("methods-heading")}>{t.project_detail.build}</h2>
+          <h3>{t.project_detail.tech_stack}</h3>
+          <ul className="os-project-stack-list">
+            {project.build.stack.map((technology) => (
+              <li key={technology}>
+                <bdi>{technology}</bdi>
+              </li>
+            ))}
+          </ul>
+          <ul className="os-project-method-list">
+            {project.build.features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
+          <h3>{t.project_detail.secure}</h3>
+          <ul className="os-project-method-list">
+            {project.secure.measures.map((measure, index) => (
+              <li key={index}>{measure}</li>
+            ))}
+          </ul>
+        </section>
+      </article>
+    </ProjectExplorer>
   );
 }

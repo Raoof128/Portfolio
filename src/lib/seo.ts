@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "./constants";
+import { resolveLocale } from "@/i18n";
 
 // English is served at the clean root path (no `/en` prefix, per public/_redirects);
 // every other locale lives under its own prefix.
@@ -38,7 +39,7 @@ export const OG_LOCALE: Record<string, string> = {
  * the locale-agnostic route ("/about", or "" for home).
  */
 export function ogUrl(path: string, locale: string): string {
-  const prefix = LOCALE_PREFIX[locale] ?? "";
+  const prefix = LOCALE_PREFIX[resolveLocale(locale)];
   return `${SITE_URL}${prefix}${path}` || SITE_URL;
 }
 
@@ -77,7 +78,7 @@ export function buildAlternates(
   path: string,
   locale: string,
 ): Metadata["alternates"] {
-  const prefix = LOCALE_PREFIX[locale] ?? "";
+  const prefix = LOCALE_PREFIX[resolveLocale(locale)];
   return {
     canonical: `${prefix}${path}` || "/",
     languages: {

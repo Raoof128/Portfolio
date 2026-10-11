@@ -1,0 +1,15 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="#67dbff"
+  role="img"
+  aria-labelledby="raouf-mark-title"
+>
+  <title id="raouf-mark-title">Raouf monogram</title>
+  <rect width="24" height="24" rx="5" fill="#080d19" />
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M4 3.5h8.35c4.48 0 7.15 2.3 7.15 6.05 0 2.63-1.4 4.58-3.82 5.5L20.5 20.5h-4.34l-4.27-5.16H7.5v5.16H4V3.5Z M7.5 6.75v5.3h4.65c2.38 0 3.85-.88 3.85-2.65s-1.47-2.65-3.85-2.65H7.5Z M7.5 14.15l2.75-2.1h1.9l-3.45 3.29H7.5v-1.19Z"
+  />
+</svg>

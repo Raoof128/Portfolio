@@ -1,6 +1,12 @@
+import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects, getProjectDescription } from "@/lib/data";
+import { projects } from "@/lib/data";
+import { buildProjectSummaries } from "@/lib/project-summaries";
+import {
+  getLocalizedProject,
+  getProjectDiagramCopy,
+} from "@/lib/project-localization";
 import { ORCID_URL, SITE_LAST_MODIFIED, SITE_URL } from "@/lib/constants";
 import {
   buildAlternates,
@@ -10,7 +16,7 @@ import {
   OG_IMAGES,
   TWITTER_IMAGE,
 } from "@/lib/seo";
-import { getDictionary, defaultLocale, locales, type Locale } from "@/i18n";
+import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { ProjectDetailClient } from "./ProjectDetailClient";
 
 interface PageProps {
@@ -29,8 +35,9 @@ export const dynamicParams = false;
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const project = projects[slug];
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const project = Object.hasOwn(projects, slug) ? projects[slug] : undefined;
   const t = await getDictionary(locale as Locale);
 
   if (!project) {
@@ -40,22 +47,23 @@ export async function generateMetadata({
     };
   }
 
-  const description = getProjectDescription(project, locale as Locale);
+  const localizedProject = getLocalizedProject(project, locale as Locale);
+  const description = localizedProject.description;
   const prefix = LOCALE_PREFIX[locale] ?? "";
   const pageUrl = `${SITE_URL}${prefix}/projects/${slug}`;
   return {
-    title: `${project.title} | ${t.seo.projects_title}`,
+    title: `${localizedProject.title} | ${t.seo.projects_title}`,
     description,
     alternates: buildAlternates(`/projects/${slug}`, locale),
     openGraph: {
       url: pageUrl,
-      title: `${project.title} | Mohammad Raouf Abedini`,
+      title: `${localizedProject.title} | Mohammad Raouf Abedini`,
       description,
       images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Mohammad Raouf Abedini`,
+      title: `${localizedProject.title} | Mohammad Raouf Abedini`,
       description,
       images: TWITTER_IMAGE,
     },
@@ -81,7 +89,8 @@ function buildProjectJsonLd(
   // Locale-aware canonical entity URL — a Persian page identifies itself as the
   // Persian URL, not the English one.
   const pageUrl = `${SITE_URL}${prefix}/projects/${slug}`;
-  const description = getProjectDescription(project, locale as Locale);
+  const localizedProject = getLocalizedProject(project, locale as Locale);
+  const description = localizedProject.description;
   const lang = locale;
   const projectDateModified = project.updatedAt ?? SITE_LAST_MODIFIED;
 
@@ -99,7 +108,7 @@ function buildProjectJsonLd(
         name: paper.title,
         ...(paper.description ? { abstract: paper.description } : {}),
         ...(paper.year ? { datePublished: paper.year } : {}),
-        dateModified: SITE_LAST_MODIFIED,
+        // A website revision does not establish that the original DOI paper changed.
         inLanguage: "en",
         author: AUTHOR,
         publisher: { "@type": "Organization", name: paper.venue ?? "Zenodo" },
@@ -117,14 +126,20 @@ function buildProjectJsonLd(
   const projectNode = {
     "@type": project.links.repo ? "SoftwareSourceCode" : "CreativeWork",
     "@id": `${pageUrl}#project`,
-    name: project.title,
+    name: localizedProject.title,
     description,
     url: pageUrl,
     inLanguage: lang,
     dateModified: projectDateModified,
-    keywords: project.tags.join(", "),
+    keywords: localizedProject.tags.join(", "),
     author: AUTHOR,
     ...(project.links.repo ? { codeRepository: project.links.repo } : {}),
+    ...(project.links.repoVisibility === "private"
+      ? {
+          conditionsOfAccess:
+            "Private source repository; access may be requested from the author.",
+        }
+      : {}),
     ...(articles.length
       ? { subjectOf: articles.map((a) => ({ "@id": a["@id"] })) }
       : {}),
@@ -133,7 +148,7 @@ function buildProjectJsonLd(
   const breadcrumb = breadcrumbList([
     { name: crumbs.home, url: `${SITE_URL}${prefix || "/"}` },
     { name: crumbs.section, url: `${SITE_URL}${prefix}/projects` },
-    { name: project.title, url: pageUrl },
+    { name: localizedProject.title, url: pageUrl },
   ]);
 
   return serializeJsonLd({
@@ -144,8 +159,8 @@ function buildProjectJsonLd(
 
 export default async function ProjectPage({ params }: PageProps) {
   const { locale: rawLocale, slug } = await params;
-  const locale = (rawLocale in locales ? rawLocale : defaultLocale) as Locale;
-  const project = projects[slug];
+  const locale = resolveLocale(rawLocale);
+  const project = Object.hasOwn(projects, slug) ? projects[slug] : undefined;
 
   if (!project) {
     notFound();
@@ -164,7 +179,17 @@ export default async function ProjectPage({ params }: PageProps) {
           }),
         }}
       />
-      <ProjectDetailClient project={project} slug={slug} />
+      <OSApplicationBridge
+        locale={locale as Locale}
+        route={`/projects/${slug}`}
+      >
+        <ProjectDetailClient
+          project={getLocalizedProject(project, locale)}
+          slug={slug}
+          summaries={buildProjectSummaries(locale)}
+          diagramCopy={getProjectDiagramCopy(locale)}
+        />
+      </OSApplicationBridge>
     </>
   );
 }

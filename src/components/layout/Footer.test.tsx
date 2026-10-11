@@ -43,11 +43,11 @@ describe("Footer", () => {
 
   it("renders navigation links", () => {
     renderFooter();
-    expect(screen.getByText("/projects").closest("a")).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Projects" })).toHaveAttribute(
       "href",
       "/projects",
     );
-    expect(screen.getByText("/resume").closest("a")).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Résumé" })).toHaveAttribute(
       "href",
       "/resume",
     );

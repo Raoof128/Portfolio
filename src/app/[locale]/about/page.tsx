@@ -1,3 +1,4 @@
+import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { AboutClient } from "./AboutClient";
 import {
@@ -7,7 +8,7 @@ import {
   ogUrl,
   serializeJsonLd,
 } from "@/lib/seo";
-import { getDictionary, type Locale } from "@/i18n";
+import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import {
   GITHUB_URL,
   LINKEDIN_URL,
@@ -22,7 +23,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
+  const locale = resolveLocale(rawLocale);
   const t = await getDictionary(locale as Locale);
   return {
     title: t.seo.about_title,
@@ -30,13 +32,13 @@ export async function generateMetadata({
     alternates: buildAlternates("/about", locale),
     openGraph: {
       url: ogUrl("/about", locale),
-      title: "About | Mohammad Raouf Abedini",
+      title: t.seo.about_title,
       description: t.seo.about_og_description,
       images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
-      title: "About | Mohammad Raouf Abedini",
+      title: t.seo.about_title,
       description: t.seo.about_og_description,
       images: TWITTER_IMAGE,
     },
@@ -48,7 +50,8 @@ export default async function AboutPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
+  const locale = resolveLocale(rawLocale);
   const t = await getDictionary(locale as Locale);
   const pageUrl = ogUrl("/about", locale);
   const profilePageJsonLd = serializeJsonLd({
@@ -76,7 +79,9 @@ export default async function AboutPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: profilePageJsonLd }}
       />
-      <AboutClient />
+      <OSApplicationBridge locale={locale as Locale} route="/about">
+        <AboutClient />
+      </OSApplicationBridge>
     </>
   );
 }

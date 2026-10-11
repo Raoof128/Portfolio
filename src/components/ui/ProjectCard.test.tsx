@@ -46,10 +46,10 @@ describe("ProjectCard", () => {
     });
   });
 
-  it("switches to secure tab when clicked", async () => {
+  it("switches to the Security tab when clicked", async () => {
     renderCard(mockProject);
 
-    const secureTab = screen.getByRole("tab", { name: /secure/i });
+    const secureTab = screen.getByRole("tab", { name: "Security" });
     fireEvent.click(secureTab);
 
     await waitFor(() => {
@@ -71,7 +71,7 @@ describe("ProjectCard", () => {
     renderCard(mockProject);
 
     const buildTab = screen.getByRole("tab", { name: /build/i });
-    const secureTab = screen.getByRole("tab", { name: /secure/i });
+    const secureTab = screen.getByRole("tab", { name: "Security" });
     const panel = screen.getByRole("tabpanel");
 
     expect(buildTab).toHaveAttribute("aria-controls", panel.getAttribute("id"));
@@ -104,12 +104,12 @@ describe("ProjectCard", () => {
 
   it("shows featured badge when featured prop is true", () => {
     renderCard({ ...mockProject, featured: true });
-    expect(screen.getByText("FEATURED_OP")).toBeInTheDocument();
+    expect(screen.getByText("Featured project")).toBeInTheDocument();
   });
 
   it("does not show featured badge when featured prop is false", () => {
     renderCard({ ...mockProject, featured: false });
-    expect(screen.queryByText("FEATURED_OP")).not.toBeInTheDocument();
+    expect(screen.queryByText("Featured project")).not.toBeInTheDocument();
   });
 
   it("handles project without demo link", () => {

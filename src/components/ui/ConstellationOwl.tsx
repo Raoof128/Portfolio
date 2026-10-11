@@ -1,5 +1,7 @@
 "use client";
 
+import { useId } from "react";
+
 const BG = "#07030e";
 const MAGENTA = "#d946ef";
 const LIME = "#39ff14";
@@ -7,13 +9,14 @@ const FAINT = "rgba(57,255,20,0.1)";
 const STAR = "#ffffff";
 
 export function ConstellationOwl() {
+  const artworkId = useId();
   return (
     <div className="owl-host" aria-hidden="true">
       <div className="owl-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter
-              id="owl-glow-m"
+              id={`${artworkId}-owl-glow-m`}
               x="-50%"
               y="-50%"
               width="200%"
@@ -26,7 +29,7 @@ export function ConstellationOwl() {
               </feMerge>
             </filter>
             <filter
-              id="owl-glow-l"
+              id={`${artworkId}-owl-glow-l`}
               x="-50%"
               y="-50%"
               width="200%"
@@ -95,21 +98,21 @@ export function ConstellationOwl() {
               cy="175"
               r="2.5"
               fill={STAR}
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle
               cx="115"
               cy="175"
               r="2.5"
               fill={STAR}
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle
               cx="100"
               cy="182"
               r="3.5"
               fill={STAR}
-              filter="url(#owl-glow-m)"
+              filter={`url(#${artworkId}-owl-glow-m)`}
             />
           </g>
 
@@ -123,14 +126,14 @@ export function ConstellationOwl() {
               cy="110"
               r="2"
               fill={STAR}
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle
               cx="15"
               cy="135"
               r="3"
               fill={STAR}
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle cx="45" cy="130" r="2" fill={STAR} />
           </g>
@@ -145,14 +148,14 @@ export function ConstellationOwl() {
               cy="110"
               r="2"
               fill={STAR}
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle
               cx="185"
               cy="135"
               r="3"
               fill={STAR}
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle cx="155" cy="130" r="2" fill={STAR} />
           </g>
@@ -184,7 +187,7 @@ export function ConstellationOwl() {
               cy="142"
               r="3"
               fill={STAR}
-              filter="url(#owl-glow-m)"
+              filter={`url(#${artworkId}-owl-glow-m)`}
             />
           </g>
 
@@ -206,14 +209,14 @@ export function ConstellationOwl() {
             cy="32"
             r="2.5"
             fill={STAR}
-            filter="url(#owl-glow-m)"
+            filter={`url(#${artworkId}-owl-glow-m)`}
           />
           <circle
             cx="150"
             cy="32"
             r="2.5"
             fill={STAR}
-            filter="url(#owl-glow-m)"
+            filter={`url(#${artworkId}-owl-glow-m)`}
           />
 
           {/* Beak */}
@@ -244,7 +247,7 @@ export function ConstellationOwl() {
               cy="120"
               r="2.5"
               fill={STAR}
-              filter="url(#owl-glow-m)"
+              filter={`url(#${artworkId}-owl-glow-m)`}
             />
           </g>
 
@@ -263,7 +266,7 @@ export function ConstellationOwl() {
               cy="68"
               r="6"
               fill="rgba(57,255,20,0.2)"
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle cx="82" cy="68" r="2" fill={STAR} />
           </g>
@@ -283,7 +286,7 @@ export function ConstellationOwl() {
               cy="68"
               r="6"
               fill="rgba(57,255,20,0.2)"
-              filter="url(#owl-glow-l)"
+              filter={`url(#${artworkId}-owl-glow-l)`}
             />
             <circle cx="118" cy="68" r="2" fill={STAR} />
           </g>
@@ -324,8 +327,7 @@ export function ConstellationOwl() {
 
         @media (prefers-reduced-motion: reduce) {
           .owl-tail, .owl-wing-l, .owl-wing-r, .owl-ring1, .owl-ring2, .owl-eye { animation: none; }
-          .owl-container { animation: owl-fade 2.5s ease-in-out infinite; }
-          @keyframes owl-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          .owl-container { animation: none; }
         }
       `}</style>
     </div>

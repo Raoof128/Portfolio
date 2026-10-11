@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
-import { motion } from "framer-motion";
 
 interface NeonButtonProps extends Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -26,7 +25,7 @@ export function NeonButton({
   ...props
 }: NeonButtonProps) {
   const baseStyles =
-    "relative inline-flex items-center justify-center px-6 py-3 font-mono text-sm font-medium tracking-wide transition-all duration-300 group overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan/60 focus:ring-offset-2 focus:ring-offset-[#030712]";
+    "os-document-button relative inline-flex items-center justify-center px-6 py-3 font-mono text-sm font-medium tracking-wide transition-colors duration-150 group overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan/60 focus:ring-offset-2 focus:ring-offset-[#030712]";
 
   const variants = {
     primary:
@@ -49,18 +48,15 @@ export function NeonButton({
   if (href) {
     if (external || download) {
       return (
-        <motion.a
+        <a
           href={href}
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
           download={download}
           className={cn(baseStyles, variants[variant], className)}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           {content}
-        </motion.a>
+        </a>
       );
     }
     return (
@@ -68,28 +64,14 @@ export function NeonButton({
         href={href}
         className={cn(baseStyles, variants[variant], className)}
       >
-        {/* Wrap inner content in motion span for spring effect - Link doesn't support motion props */}
-        <motion.span
-          className="flex items-center gap-2 w-full h-full"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          {content}
-        </motion.span>
+        <span className="flex items-center gap-2 w-full h-full">{content}</span>
       </Link>
     );
   }
 
   return (
-    <motion.button
-      className={cn(baseStyles, variants[variant], className)}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      {...props}
-    >
+    <button className={cn(baseStyles, variants[variant], className)} {...props}>
       {content}
-    </motion.button>
+    </button>
   );
 }

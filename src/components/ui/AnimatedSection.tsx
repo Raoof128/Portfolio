@@ -1,40 +1,13 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
-import { fadeInUp } from "@/lib/utils";
+import type { ReactNode } from "react";
 
 interface AnimatedSectionProps {
-  children: React.ReactNode;
-  variants?: Variants;
-  delay?: number;
-  once?: boolean;
-  amount?: number;
+  children: ReactNode;
   className?: string;
 }
 
-export function AnimatedSection({
-  children,
-  variants = fadeInUp,
-  delay = 0,
-  once = true,
-  amount = 0.2,
-  className,
-}: AnimatedSectionProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={false}
-      animate={isInView ? "visible" : undefined}
-      variants={variants}
-      transition={{ delay }}
-      className={className}
-      style={{ willChange: "transform, opacity" }}
-    >
-      {children}
-    </motion.div>
-  );
+export function AnimatedSection({ children, className }: AnimatedSectionProps) {
+  // ResearchOS reading surfaces are always visible. Their old motion was
+  // already disabled by CSS; avoid downloading a runtime and observing each
+  // paragraph for an effect the approved design does not display.
+  return <div className={className}>{children}</div>;
 }

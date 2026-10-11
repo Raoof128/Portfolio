@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { createCanvasPlayback, type CanvasPlayback } from "./canvas-playback";
 
 const W = 600;
 const H = 500;
@@ -77,10 +78,11 @@ class Spark {
     this.radius = 5 + Math.random() * 18;
     this.angleOffset = Math.random() * Math.PI * 2;
     this.speedMul = 0.75 + Math.random() * 0.5;
+    this.update(0);
   }
 
-  update() {
-    this.t += SPEED * this.speedMul;
+  update(step = 1) {
+    this.t += SPEED * this.speedMul * step;
     if (this.t > Math.PI * 2) this.t -= Math.PI * 2;
     const base = lemniPoint(this.t);
     const phase = this.faction === "Ahura" ? 0 : Math.PI;
@@ -95,8 +97,9 @@ class Spark {
   }
 }
 
-export function CosmicLoomCanvas() {
+export function CosmicLoomCanvas({ active = true }: { active?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const playbackRef = useRef<CanvasPlayback | null>(null);
 
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
@@ -107,8 +110,13 @@ export function CosmicLoomCanvas() {
     const ctx: CanvasRenderingContext2D = ctxRaw;
 
     let frame = 0;
-    let lastTs = 0;
-    let rafId = 0;
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas!.width = Math.round(W * dpr);
+      canvas!.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
 
     const particles = Array.from(
       { length: PARTICLE_COUNT },
@@ -177,21 +185,15 @@ export function CosmicLoomCanvas() {
       }
     }
 
-    function loop(ts: number) {
-      const gap = ts - lastTs;
-      lastTs = ts;
-      if (gap > 100) {
-        rafId = requestAnimationFrame(loop);
-        return;
-      }
-
+    function loop(_timestamp: number, step: number) {
       // Gentle auto-oscillation — gives the lemniscate a living tilt
       const rotY = Math.sin(frame * 0.008) * 0.35;
       const rotX = Math.sin(frame * 0.005) * 0.22 + 0.14;
 
       // Trail fade
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = `rgba(2,1,4,${TRAIL})`;
+      const trailAlpha = step > 0 ? 1 - Math.pow(1 - TRAIL, step) : 1;
+      ctx.fillStyle = `rgba(2,1,4,${trailAlpha})`;
       ctx.fillRect(0, 0, W, H);
 
       ctx.save();
@@ -203,7 +205,7 @@ export function CosmicLoomCanvas() {
 
       // Project + sort particles
       const projected = particles.map((p) => {
-        p.update();
+        p.update(step);
         const proj = project3D(p.x, p.y, p.z, rotX, rotY);
         return { obj: p, proj };
       });
@@ -275,43 +277,40 @@ export function CosmicLoomCanvas() {
       });
 
       ctx.restore();
-      frame++;
-      rafId = requestAnimationFrame(loop);
+      frame += step;
     }
 
-    function start() {
-      cancelAnimationFrame(rafId);
-      lastTs = performance.now();
-      rafId = requestAnimationFrame(loop);
-    }
-
-    start();
-
-    const onVis = () => {
-      if (document.hidden) cancelAnimationFrame(rafId);
-      else start();
-    };
-    document.addEventListener("visibilitychange", onVis);
-    return () => {
-      cancelAnimationFrame(rafId);
-      document.removeEventListener("visibilitychange", onVis);
-    };
+    return createCanvasPlayback(canvas, loop, resize);
   }, []);
 
   useEffect(() => {
-    return animate();
+    const playback = animate();
+    playbackRef.current = playback ?? null;
+    return () => {
+      playback?.dispose();
+      playbackRef.current = null;
+    };
   }, [animate]);
+
+  useEffect(() => playbackRef.current?.setActive(active), [active]);
 
   return (
     <div
       className="w-full h-full flex items-center justify-center"
       style={{ background: "#020103" }}
+      aria-hidden="true"
     >
       <canvas
         ref={canvasRef}
         width={W}
         height={H}
-        style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+        style={{
+          width: W,
+          height: H,
+          maxHeight: "100%",
+          maxWidth: "100%",
+          objectFit: "contain",
+        }}
       />
     </div>
   );

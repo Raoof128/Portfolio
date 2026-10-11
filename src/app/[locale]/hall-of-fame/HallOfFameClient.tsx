@@ -1,18 +1,15 @@
 "use client";
 
-import { ActiveGrid } from "@/components/ui/ActiveGrid";
 import { HUDFrame } from "@/components/ui/HUDFrame";
-import { DecryptedText } from "@/components/ui/DecryptedText";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Trophy, Shield, Mail, Users } from "lucide-react";
 import Link from "next/link";
-import { fadeInUp, staggerContainer } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { formatNumber } from "@/i18n/format";
 
 export function HallOfFameClient() {
   const { locale, t } = useTranslation();
@@ -24,15 +21,14 @@ export function HallOfFameClient() {
   };
 
   return (
-    <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
-      <ActiveGrid />
+    <div className="os-legacy relative overflow-x-hidden">
       <div
         className={cn(
           "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
           isRTL && "text-right",
         )}
       >
-        <AnimatedSection variants={fadeInUp}>
+        <AnimatedSection>
           <div className="mb-12">
             <div
               className={cn(
@@ -46,7 +42,7 @@ export function HallOfFameClient() {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              <DecryptedText text={t.hall_of_fame.title} />
+              {t.hall_of_fame.title}
             </h1>
             <p className="text-text-body max-w-2xl">
               {t.hall_of_fame.description}
@@ -54,14 +50,8 @@ export function HallOfFameClient() {
           </div>
         </AnimatedSection>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          className="space-y-8"
-        >
-          <AnimatedSection variants={fadeInUp}>
+        <div className="space-y-8">
+          <AnimatedSection>
             <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-l-4 border-l-cyan">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -71,14 +61,19 @@ export function HallOfFameClient() {
                       isRTL && "flex-row-reverse",
                     )}
                   >
-                    <Shield className="w-5 h-5 text-cyan" />{" "}
-                    {t.hall_of_fame.found_vuln_heading}
+                    <Shield
+                      className="w-5 h-5 shrink-0 text-cyan"
+                      aria-hidden="true"
+                    />
+                    <span className="min-w-0 [overflow-wrap:anywhere]">
+                      {t.hall_of_fame.found_vuln_heading}
+                    </span>
                   </h2>
                   <p className="text-text-body">
                     {t.hall_of_fame.report_guidance}{" "}
                     <Link
                       href={getPath("/security-policy")}
-                      className="text-cyan hover:underline"
+                      className="os-inline-link"
                     >
                       {t.hall_of_fame.security_policy_link}
                     </Link>{" "}
@@ -93,7 +88,7 @@ export function HallOfFameClient() {
             </HUDFrame>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <HUDFrame className="p-12 bg-[#030712]/60 text-center">
                 <div className="flex flex-col items-center justify-center space-y-4">
@@ -118,7 +113,7 @@ export function HallOfFameClient() {
             </section>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <h2
                 className={cn(
@@ -126,7 +121,15 @@ export function HallOfFameClient() {
                   isRTL && "flex-row-reverse",
                 )}
               >
-                <span className="text-cyan font-mono">01.</span>{" "}
+                <span className="text-cyan font-mono">
+                  <bdi>
+                    {formatNumber(1, locale, {
+                      minimumIntegerDigits: 2,
+                      useGrouping: false,
+                    })}
+                    .
+                  </bdi>
+                </span>{" "}
                 {t.hall_of_fame.criteria_title}
               </h2>
               <HUDFrame className="p-6 bg-[#030712]/60">
@@ -144,7 +147,9 @@ export function HallOfFameClient() {
                         isRTL && "flex-row-reverse",
                       )}
                     >
-                      <span className="text-cyan mt-0.5">{i + 1}.</span>
+                      <span className="text-cyan mt-0.5">
+                        {formatNumber(i + 1, locale)}.
+                      </span>
                       <span>{criterion}</span>
                     </li>
                   ))}
@@ -153,7 +158,7 @@ export function HallOfFameClient() {
             </section>
           </AnimatedSection>
 
-          <AnimatedSection variants={fadeInUp}>
+          <AnimatedSection>
             <section className="space-y-4">
               <HUDFrame className="p-6 bg-[#030712]/60 border-l-4 border-l-amber">
                 <p className="text-text-body text-sm">
@@ -165,7 +170,7 @@ export function HallOfFameClient() {
               </HUDFrame>
             </section>
           </AnimatedSection>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

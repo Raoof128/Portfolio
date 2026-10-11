@@ -1,5 +1,7 @@
 "use client";
 
+import { useId } from "react";
+
 const BG = "#161115";
 const PAGE = "#ff6b9d";
 const DECK = "#cc1b5d";
@@ -7,13 +9,14 @@ const LINE = "#0d0509";
 const SPINE = "#5c4d56";
 
 export function CelestialCatcher() {
+  const artworkId = useId();
   return (
     <div className="cc-host" aria-hidden="true">
       <div className="cc-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path
-              id="cc-tooth"
+              id={`${artworkId}-cc-tooth`}
               d="M 95,78 L 105,78 L 103,88 L 97,88 Z"
               fill={DECK}
               stroke={LINE}
@@ -21,7 +24,7 @@ export function CelestialCatcher() {
               strokeLinejoin="round"
             />
             <path
-              id="cc-star"
+              id={`${artworkId}-cc-star`}
               d="M 0,-6 L 1.5,-1.5 L 6,0 L 1.5,1.5 L 0,6 L -1.5,1.5 L -6,0 L -1.5,-1.5 Z"
               fill={PAGE}
               stroke={LINE}
@@ -165,7 +168,7 @@ export function CelestialCatcher() {
               {[0, 45, 90, 135, 180, 225, 270, 315].map((r) => (
                 <use
                   key={r}
-                  href="#cc-tooth"
+                  href={`#${artworkId}-cc-tooth`}
                   transform={`rotate(${r} 100 105)`}
                 />
               ))}
@@ -183,10 +186,10 @@ export function CelestialCatcher() {
             {/* Floating stars */}
             <g transform="translate(100,105)">
               <g transform="rotate(30) translate(0,-50)">
-                <use href="#cc-star" />
+                <use href={`#${artworkId}-cc-star`} />
               </g>
               <g transform="rotate(150) translate(0,-50)">
-                <use href="#cc-star" transform="scale(0.8)" />
+                <use href={`#${artworkId}-cc-star`} transform="scale(0.8)" />
               </g>
             </g>
           </g>
@@ -244,8 +247,7 @@ export function CelestialCatcher() {
 
         @media (prefers-reduced-motion: reduce) {
           .cc-moon, .cc-pendulum, .cc-gear-p, .cc-gear-s, .cc-cloud-l, .cc-cloud-r { animation: none; }
-          .cc-container { animation: cc-fade 2.5s ease-in-out infinite; }
-          @keyframes cc-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          .cc-container { animation: none; }
         }
       `}</style>
     </div>

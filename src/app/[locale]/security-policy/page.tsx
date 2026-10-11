@@ -1,14 +1,16 @@
+import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { SecurityPolicyClient } from "./SecurityPolicyClient";
 import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
-import { getDictionary, type Locale } from "@/i18n";
+import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
+  const locale = resolveLocale(rawLocale);
   const t = await getDictionary(locale as Locale);
   return {
     title: t.seo.security_policy_title,
@@ -29,6 +31,16 @@ export async function generateMetadata({
   };
 }
 
-export default function SecurityPolicyPage() {
-  return <SecurityPolicyClient />;
+export default async function SecurityPolicyPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: rawLocale } = await params;
+  const locale = resolveLocale(rawLocale);
+  return (
+    <OSApplicationBridge locale={locale as Locale} route="/security-policy">
+      <SecurityPolicyClient />
+    </OSApplicationBridge>
+  );
 }

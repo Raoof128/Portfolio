@@ -1,5 +1,7 @@
 "use client";
 
+import { useId } from "react";
+
 const VOID = "#06050a";
 const GOLD = "#f59e0b";
 const RED = "#dc2626";
@@ -7,6 +9,7 @@ const WHITE = "#fffdf5";
 const CHARCOAL = "#1c1a24";
 
 export function WheelsOfEzekiel() {
+  const artworkId = useId();
   return (
     <div className="woe-host" aria-hidden="true">
       <div className="woe-container">
@@ -16,7 +19,13 @@ export function WheelsOfEzekiel() {
           style={{ filter: "drop-shadow(0 15px 35px rgba(0,0,0,0.9))" }}
         >
           <defs>
-            <filter id="woe-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <filter
+              id={`${artworkId}-woe-glow`}
+              x="-50%"
+              y="-50%"
+              width="200%"
+              height="200%"
+            >
               <feGaussianBlur stdDeviation="3" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
@@ -25,14 +34,20 @@ export function WheelsOfEzekiel() {
             </filter>
 
             {/* Watcher eye module */}
-            <g id="woe-eye">
+            <g id={`${artworkId}-woe-eye`}>
               <path
                 d="M -8,0 Q 0,-6 8,0 Q 0,6 -8,0 Z"
                 fill={WHITE}
                 stroke={VOID}
                 strokeWidth="1.5"
               />
-              <circle cx="0" cy="0" r="3" fill={RED} filter="url(#woe-glow)" />
+              <circle
+                cx="0"
+                cy="0"
+                r="3"
+                fill={RED}
+                filter={`url(#${artworkId}-woe-glow)`}
+              />
               <circle cx="0" cy="0" r="1.2" fill={GOLD} />
               <path
                 className="woe-lid"
@@ -80,7 +95,10 @@ export function WheelsOfEzekiel() {
             <g transform="translate(100,100)">
               {[0, 45, 90, 135, 180, 225, 270, 315].map((r, i) => (
                 <g key={r} transform={`rotate(${r}) translate(0,-70)`}>
-                  <use href="#woe-eye" className={`woe-lid-${(i % 3) + 1}`} />
+                  <use
+                    href={`#${artworkId}-woe-eye`}
+                    className={`woe-lid-${(i % 3) + 1}`}
+                  />
                 </g>
               ))}
             </g>
@@ -117,7 +135,10 @@ export function WheelsOfEzekiel() {
               {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map(
                 (r, i) => (
                   <g key={r} transform={`rotate(${r}) translate(0,-54)`}>
-                    <use href="#woe-eye" className={`woe-lid-${(i % 3) + 1}`} />
+                    <use
+                      href={`#${artworkId}-woe-eye`}
+                      className={`woe-lid-${(i % 3) + 1}`}
+                    />
                   </g>
                 ),
               )}
@@ -129,7 +150,7 @@ export function WheelsOfEzekiel() {
             <polygon
               points="100,75 107,93 125,100 107,107 100,125 93,107 75,100 93,93"
               fill={RED}
-              filter="url(#woe-glow)"
+              filter={`url(#${artworkId}-woe-glow)`}
             />
             <polygon
               points="100,83 104,96 117,100 104,104 100,117 96,104 83,100 96,96"
@@ -140,7 +161,7 @@ export function WheelsOfEzekiel() {
               cy="100"
               r="6"
               fill={WHITE}
-              filter="url(#woe-glow)"
+              filter={`url(#${artworkId}-woe-glow)`}
             />
             <circle cx="100" cy="100" r="2.5" fill={GOLD} />
           </g>
@@ -203,8 +224,7 @@ export function WheelsOfEzekiel() {
 
         @media (prefers-reduced-motion: reduce) {
           .woe-outer, .woe-inner, .woe-center, .woe-lid { animation: none; transform: none; }
-          .woe-container { animation: woe-fade 3s ease-in-out infinite; }
-          @keyframes woe-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+          .woe-container { animation: none; }
         }
       `}</style>
     </div>

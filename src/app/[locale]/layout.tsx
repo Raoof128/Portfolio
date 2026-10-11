@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Chakra_Petch, JetBrains_Mono, Vazirmatn } from "next/font/google";
 import "../globals.css";
-import { GridBackground } from "@/components/ui/GridBackground";
-import { Scanline } from "@/components/ui/Scanline";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import {
   CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
@@ -15,14 +11,10 @@ import {
   SITE_URL,
   TWITTER_URL,
 } from "@/lib/constants";
-import {
-  Locale,
-  getLocaleConfig,
-  locales,
-  getDictionary,
-  defaultLocale,
-} from "@/i18n";
+import { resolveLocale, getLocaleConfig, locales, getDictionary } from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
+import { ResearchOS } from "@/components/os/ResearchOS";
+import { buildSearchEntries } from "@/lib/os-search";
 import {
   buildAlternates,
   serializeJsonLd,
@@ -34,6 +26,7 @@ const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -45,6 +38,8 @@ const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
   subsets: ["arabic"],
   weight: ["300", "400", "500", "600", "700"],
+  // Arabic/Persian glyph use loads this locally; LTR pages need only the mono preload.
+  preload: false,
 });
 
 export async function generateStaticParams() {
@@ -57,7 +52,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale = (rawLocale in locales ? rawLocale : defaultLocale) as Locale;
+  const locale = resolveLocale(rawLocale);
   const t = await getDictionary(locale);
 
   return {
@@ -128,7 +123,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale: rawLocale } = await params;
-  const locale = (rawLocale in locales ? rawLocale : defaultLocale) as Locale;
+  const locale = resolveLocale(rawLocale);
   const config = getLocaleConfig(locale);
   const dictionary = await getDictionary(locale);
 
@@ -204,20 +199,16 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString }}
         />
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan focus:text-black focus:font-mono focus:text-sm"
-        >
-          {dictionary.seo.skip_to_content}
-        </a>
-        <GridBackground />
-        <Scanline />
         <I18nProvider locale={locale} dictionary={dictionary}>
-          <Navbar />
-          <main id="main-content" className="min-h-screen pt-16 flex flex-col">
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </main>
+          <ResearchOS
+            key={locale}
+            locale={locale}
+            role={dictionary.hero.researcher}
+            entries={buildSearchEntries(locale)}
+            skipLabel={dictionary.seo.skip_to_content}
+          >
+            {children}
+          </ResearchOS>
         </I18nProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { createCanvasPlayback, type CanvasPlayback } from "./canvas-playback";
 
 const CFG = {
   scaleFactor: 0.35, // shield = 35% of min(width, height)
@@ -82,11 +83,11 @@ function makeSpark(frame: number, scale: number): Spark {
   };
 }
 
-function updateSpark(s: Spark, frame: number, scale: number) {
-  s.x += s.vx;
-  s.y += s.vy;
-  s.z += s.vz;
-  s.life -= s.decay;
+function updateSpark(s: Spark, frame: number, scale: number, step: number) {
+  s.x += s.vx * step;
+  s.y += s.vy * step;
+  s.z += s.vz * step;
+  s.life -= s.decay * step;
   if (s.life <= 0) Object.assign(s, makeSpark(frame, scale));
 }
 
@@ -104,8 +105,15 @@ function drawSpark(
 }
 
 /* ── component ── */
-export function FireShieldCanvas() {
+export function FireShieldCanvas({
+  active = true,
+  preview = false,
+}: {
+  active?: boolean;
+  preview?: boolean;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const playbackRef = useRef<CanvasPlayback | null>(null);
 
   const run = useCallback(() => {
     if (!canvasRef.current) return;
@@ -118,14 +126,14 @@ export function FireShieldCanvas() {
       height = 0,
       frame = 0,
       currentScale = BASE_SCALE;
-    let rafId: number | null = null;
-    let lastTimestamp = 0;
 
     const sparks: Spark[] = Array.from({ length: CFG.sparkCount }, () =>
       makeSpark(0, BASE_SCALE),
     );
 
     function computeScale() {
+      // Small index cards need proportional framing without the dossier's floor.
+      if (preview) return Math.min(width, height) * 0.3;
       return Math.max(60, Math.min(width, height) * CFG.scaleFactor);
     }
 
@@ -135,8 +143,6 @@ export function FireShieldCanvas() {
       height = canvas.offsetHeight || window.innerHeight;
       canvas.width = Math.floor(width * d);
       canvas.height = Math.floor(height * d);
-      canvas.style.width = width + "px";
-      canvas.style.height = height + "px";
       ctx.setTransform(d, 0, 0, d, 0, 0);
       // reinit sparks when scale changes significantly
       const newScale = computeScale();
@@ -157,10 +163,7 @@ export function FireShieldCanvas() {
       return { x: x1 * s, y: y2 * s, scale: s };
     }
 
-    function draw(timestamp: number) {
-      const skipPhysics = lastTimestamp > 0 && timestamp - lastTimestamp > 100;
-      lastTimestamp = timestamp;
-
+    function draw(_timestamp: number, step: number) {
       currentScale = computeScale();
       const ss = currentScale / BASE_SCALE; // size ratio vs. reference
 
@@ -168,11 +171,12 @@ export function FireShieldCanvas() {
       const rotY = Math.sin(frame * 0.004) * 0.25;
 
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(1, 1, 1, 0.25)";
+      const trailAlpha = step > 0 ? 1 - Math.pow(0.75, step) : 1;
+      ctx.fillStyle = `rgba(1,1,1,${trailAlpha})`;
       ctx.fillRect(0, 0, width, height);
 
       ctx.save();
-      ctx.translate(width / 2, height / 2);
+      ctx.translate(width / 2, height * (preview ? 0.46 : 0.5));
 
       /* shield mesh */
       const uSteps = 16,
@@ -241,46 +245,27 @@ export function FireShieldCanvas() {
 
       /* sparks */
       for (const s of sparks) {
-        if (!skipPhysics) updateSpark(s, frame, currentScale);
+        if (step > 0) updateSpark(s, frame, currentScale, step);
         drawSpark(s, ctx, project, rotX, rotY);
       }
 
       ctx.restore();
-      if (!skipPhysics) frame += 1;
-      rafId = requestAnimationFrame(draw);
+      frame += step;
     }
 
-    function stop() {
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      rafId = null;
-      lastTimestamp = 0;
-    }
-    function start() {
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(draw);
-    }
-
-    const onResize = () => resize();
-    const onVisibility = () => {
-      if (document.hidden) stop();
-      else start();
-    };
-    window.addEventListener("resize", onResize, { passive: true });
-    document.addEventListener("visibilitychange", onVisibility);
-    resize();
-    start();
-
-    return () => {
-      stop();
-      window.removeEventListener("resize", onResize);
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
-  }, []);
+    return createCanvasPlayback(canvas, draw, resize);
+  }, [preview]);
 
   useEffect(() => {
-    const cleanup = run();
-    return cleanup;
+    const playback = run();
+    playbackRef.current = playback ?? null;
+    return () => {
+      playback?.dispose();
+      playbackRef.current = null;
+    };
   }, [run]);
+
+  useEffect(() => playbackRef.current?.setActive(active), [active]);
 
   return (
     <div

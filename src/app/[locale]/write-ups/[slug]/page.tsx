@@ -1,5 +1,7 @@
+import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { writeups } from "@/lib/data";
+import { getLocalizedWriteup } from "@/lib/localized-writing";
 import { notFound } from "next/navigation";
 import {
   buildAlternates,
@@ -10,7 +12,7 @@ import {
   TWITTER_IMAGE,
 } from "@/lib/seo";
 import { ORCID_URL, SITE_URL } from "@/lib/constants";
-import { getDictionary, type Locale } from "@/i18n";
+import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { WriteupDetailClient } from "./WriteupDetailClient";
 
 export function generateStaticParams() {
@@ -29,8 +31,12 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const post = writeups.find((p) => p.slug === slug);
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const sourcePost = writeups.find((p) => p.slug === slug);
+  const post = sourcePost
+    ? getLocalizedWriteup(sourcePost, locale as Locale)
+    : undefined;
   const t = await getDictionary(locale as Locale);
   if (!post) return { title: t.seo.not_found_title };
 
@@ -84,10 +90,8 @@ function buildWriteupJsonLd(
     description: post.takeaway,
     datePublished: post.date,
     dateModified: post.updatedAt ?? post.date,
-    // The article body is authored in English on every locale route; only the
-    // page chrome is translated. Declaring the article "en" keeps the machine
-    // fact honest — see the locale-carrying WebPage node below.
-    inLanguage: "en",
+    // The visible article is resolved in this route's locale on the server.
+    inLanguage: locale,
     author: AUTHOR,
     publisher: { "@id": `${SITE_URL}/#person` },
     mainEntityOfPage: { "@id": pageUrl },
@@ -124,8 +128,12 @@ function buildWriteupJsonLd(
 }
 
 export default async function WriteupPage({ params }: PageProps) {
-  const { locale, slug } = await params;
-  const post = writeups.find((p) => p.slug === slug);
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const sourcePost = writeups.find((p) => p.slug === slug);
+  const post = sourcePost
+    ? getLocalizedWriteup(sourcePost, locale as Locale)
+    : undefined;
 
   if (!post) {
     notFound();
@@ -144,7 +152,12 @@ export default async function WriteupPage({ params }: PageProps) {
           }),
         }}
       />
-      <WriteupDetailClient post={post} />
+      <OSApplicationBridge
+        locale={locale as Locale}
+        route={`/write-ups/${slug}`}
+      >
+        <WriteupDetailClient post={post} />
+      </OSApplicationBridge>
     </>
   );
 }
