@@ -31,6 +31,14 @@ Before making any code changes, agents MUST:
 - **Verification**: [Test results]
 - **Follow-ups**: [Next steps]
 
+### Raouf: 2026-10-14 (Australia/Sydney) — Ignore generated Next.js AGENTS.md
+
+- **Scope**: Keep the working tree clean after starting the dev server.
+- **Summary**: `next dev` writes a root `AGENTS.md` (Next.js agent rules). Ignore it alongside the existing private `CLAUDE.md` entry instead of committing generated context. `AGENT.md` remains the governance file.
+- **Files Changed**: .gitignore; AGENT.md; CHANGELOG.md.
+- **Verification**: Dev server ran at localhost:3000 (`GET /` 200, homepage rendered in headless Chromium); `git status` clean after the ignore rule. No application code, tests or build changed.
+- **Follow-ups**: None. Set `agentRules: false` in `next.config.ts` if the file should stop being generated at all.
+
 ### Raouf: 2026-10-12 (Australia/Sydney) — Validate and prepare branch commit
 
 - **Scope**: Commit and push all approved Portfolio changes on `main-proof-atlas-2026-10-11`, as requested by the owner.
