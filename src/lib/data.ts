@@ -1,5 +1,3 @@
-import { Locale } from "@/i18n";
-
 export interface ProjectPaper {
   title: string;
   label: string;
@@ -22,9 +20,7 @@ export interface Project {
   // site-level revision date when absent, so builds don't fake per-page freshness.
   updatedAt?: string;
   description: string;
-  localizedDescription?: Partial<Record<Locale, string>>;
   fullDescription: string;
-  localizedFullDescription?: Partial<Record<Locale, string>>;
   tags: string[];
   links: {
     demo?: string;
@@ -50,14 +46,6 @@ export interface Project {
   proof: string[];
 }
 
-export function getProjectDescription(p: Project, locale: Locale): string {
-  return p.localizedDescription?.[locale] || p.description;
-}
-
-export function getProjectFullDescription(p: Project, locale: Locale): string {
-  return p.localizedFullDescription?.[locale] || p.fullDescription;
-}
-
 export const projects: Record<string, Project> = {
   "invisible-window-research": {
     slug: "invisible-window-research",
@@ -66,12 +54,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion in tested Windows 10/11 and macOS 14–26 lab configurations using documented OS display APIs. Responsibly disclosed to vendors.",
-    localizedDescription: {
-      fa: "مقاله تحقیقاتی با فرمت IEEE که آسیب‌پذیری ساختاری در نظارت بر امتحانات مبتنی بر WebRTC را فاش می‌کند. فرار ۱۰۰ درصدی در ویندوز و مک با استفاده از APIهای مستند سیستم‌عامل.",
-      ar: "ورقة بحثية بتنسيق IEEE تكشف عن ثغرة أمنية هيكلية في مراقبة الاختبارات القائمة على WebRTC. تهرب بنسبة ١٠٠٪ على نظامي التشغيل Windows و macOS باستخدام واجهات برمجة تطبيقات عرض نظام التشغيل الموثقة.",
-      zh: "IEEE 格式的研究论文，揭示了基于 WebRTC 的在线监考系统中的结构性漏洞。利用记录在案的 OS 显示 API，在 Windows 和 macOS 上实现 100% 规避。",
-      es: "Artículo de investigación en formato IEEE que expone una vulnerabilidad estructural en la supervisión de exámenes basada en WebRTC. Evasión del 100% en Windows y macOS utilizando APIs de pantalla documentadas del SO.",
-    },
     tags: [
       "Security Research",
       "Windows",
@@ -138,7 +120,7 @@ export const projects: Record<string, Project> = {
       "Evaluated simulated proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26; no commercial products were tested, and macOS 26 used native capture rather than browser getDisplayMedia()",
       "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
       "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
-      "Coordinated OS vendor disclosure: Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) both responded with formal classifications",
+      "Coordinated OS vendor disclosure: Microsoft MSRC (notified Feb 2026, classified Apr 2026) and Apple Product Security (notified and classified Mar 2026) both issued formal classifications",
     ],
     proof: [
       "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
@@ -156,12 +138,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "Provider-agnostic verifiable containment-attestation framework for agentic AI, evolved from the defensive counterpart to The Invisible Window research. Produces Ed25519-signed, offline-reproducible evidence of what an AI agent was allowed to do after a guardrail miss. Contained 138/138 classifier-missed cases and cut a live agent's attack success on AgentDojo from 9/140 to 0/140.",
-    localizedDescription: {
-      fa: "چارچوب گواهی مهارِ قابل‌راستی‌آزمایی و مستقل از ارائه‌دهنده برای هوش مصنوعی عامل‌محور، برآمده از همتای دفاعیِ تحقیقات The Invisible Window. شواهد امضاشده با Ed25519 و بازتولیدپذیر به‌صورت آفلاین از آنچه یک عامل هوش مصنوعی پس از عبور از حفاظ مجاز به انجامش بوده تولید می‌کند — ۱۳۸ از ۱۳۸ مورد ازدست‌رفته توسط طبقه‌بند را مهار کرد و نرخ موفقیت حمله یک عامل زنده را در AgentDojo از ۹ از ۱۴۰ به ۰ از ۱۴۰ رساند.",
-      ar: "إطار عمل لإثبات الاحتواء القابل للتحقق ومستقل عن المزوّد للذكاء الاصطناعي الوكيلي، تطوّر عن النظير الدفاعي لأبحاث The Invisible Window. يُنتج أدلة موقّعة بـ Ed25519 وقابلة لإعادة الإنتاج دون اتصال حول ما سُمح لوكيل الذكاء الاصطناعي بفعله بعد إخفاق الحاجز — احتوى ١٣٨ من ١٣٨ حالة فاتت المصنّف، وخفّض نجاح هجوم وكيل حي من ٩ من ١٤٠ إلى ٠ من ١٤٠ على AgentDojo.",
-      zh: "面向智能体 AI 的、与提供方无关的可验证遏制证明框架，由《The Invisible Window》研究的防御性对应项演进而来。生成 Ed25519 签名、可离线复现的证据，记录在防护失效后 AI 智能体被允许做了什么——遏制了分类器漏掉的 138/138 个案例，并在 AgentDojo 上将一个实时智能体的攻击成功率从 9/140 降至 0/140。",
-      es: "Marco de atestación de contención verificable e independiente del proveedor para IA agéntica, evolucionado desde la contraparte defensiva de la investigación The Invisible Window. Produce evidencia firmada con Ed25519 y reproducible sin conexión de lo que se permitió hacer a un agente de IA tras un fallo de la barrera de seguridad: contuvo 138/138 casos que el clasificador pasó por alto y redujo el éxito de ataque de un agente en vivo de 9/140 a 0/140 en AgentDojo.",
-    },
     tags: [
       "Containment Attestation",
       "Agentic AI Safety",
@@ -270,12 +246,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 218 tests passing.",
-    localizedDescription: {
-      fa: "موتور دانش مبتنی بر هوش مصنوعی و محلی‌محور. اسناد را دریافت می‌کند، دانش ساختاریافته استخراج می‌کند و از طریق سرور MCP در اختیار عامل‌های هوش مصنوعی قرار می‌دهد. ۲۱۸ آزمون موفق.",
-      ar: "محرك معرفة محلي يعمل بالذكاء الاصطناعي. يستوعب أي مستند، يستخرج المعرفة المنظمة (ادعاءات، مفاهيم، كيانات، قرارات)، ويعرضها لعوامل الذكاء الاصطناعي عبر خادم MCP. ٢١٨ اختباراً ناجحاً.",
-      zh: "本地优先的 LLM 知识引擎。摄取任意文档，提取结构化知识（声明、概念、实体、决策），并通过 MCP stdio 服务器将其暴露给 AI 代理。218 个测试通过。",
-      es: "Motor de conocimiento LLM local. Ingiere cualquier documento, extrae conocimiento estructurado (afirmaciones, conceptos, entidades, decisiones) y lo expone a agentes de IA mediante un servidor MCP stdio. 218 pruebas aprobadas.",
-    },
     tags: [
       "Python",
       "LLM",
@@ -319,7 +289,7 @@ export const projects: Record<string, Project> = {
     fullDescription:
       "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki, then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
     problem:
-      "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge, which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
+      "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge: which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
     solution: [
       "Built a local document ingestion pipeline (MD, PDF, TXT, images) feeding a SQLite-backed knowledge store",
       "The LLM extraction layer produces typed nodes for claims, concepts, entities, and decisions. The knowledge set grows as the corpus grows",
@@ -342,12 +312,6 @@ export const projects: Record<string, Project> = {
     year: "2024",
     description:
       "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
-    localizedDescription: {
-      fa: "کلاینت گیت مجهز به هوش مصنوعی برای مدیریت چندین هویت و ایجاد کامیت‌های معنایی. ساخته شده با Electron و React.",
-      ar: "عميل Git مدعوم بالذكاء الاصطناعي لإدارة هويات متعددة وإنشاء تعهدات (commits) دلالية. تم بناؤه باستخدام Electron و React.",
-      zh: "人工智能驱动的 Git 客户端，用于管理多个身份并生成语义化提交。使用 Electron 和 React 构建。",
-      es: "Cliente Git potenciado por IA para gestionar múltiples identidades y generar commits semánticos. Construido con Electron y React.",
-    },
     tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
     links: {
       repo: "https://github.com/Raoof128/GitSwitch",
@@ -400,12 +364,6 @@ export const projects: Record<string, Project> = {
     year: "2024",
     description:
       "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
-    localizedDescription: {
-      fa: "اسکنر امنیتی QR و URL آفلاین با اولویت حریم خصوصی که با Kotlin Multiplatform ساخته شده است. آنالیز ۱۰۰٪ آفلاین با ۵ پلتفرم هدف.",
-      ar: "ماسح ضوئي أمني لرموز QR وعناوين URL يعمل بدون اتصال بالإنترنت مع إعطاء الأولوية للخصوصية، تم بناؤه باستخدام Kotlin Multiplatform. تحليل بنسبة ١٠٠٪ بدون اتصال بالإنترنت مع استهداف ٥ منصات.",
-      zh: "优先考虑隐私的离线 QR 和 URL 安全扫描器，使用 Kotlin Multiplatform 构建。100% 离线分析，支持 5 个目标平台。",
-      es: "Escáner de seguridad de QR y URL offline que prioriza la privacidad, construido con Kotlin Multiplatform. Análisis 100% offline con 5 plataformas de destino.",
-    },
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
@@ -442,8 +400,8 @@ export const projects: Record<string, Project> = {
       "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
     solution: [
       "Built a 100% offline analysis engine using Kotlin Multiplatform",
-      "Implemented an ensemble ML model with 25 heuristics for threat detection",
-      "Targeted 5 platforms (Android, iOS, Desktop, Web); ~100% of detection logic shared (~52% of the total codebase)",
+      "Implemented an ensemble ML model with 25+ heuristic checks for threat detection",
+      "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); ~100% of detection logic shared (~52% of the total codebase)",
       "Achieved <5ms latency for real-time scanning",
     ],
     proof: [
@@ -461,12 +419,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Accepted into the Macquarie University Incubator as a formal startup. Full student operations suite with 503 tests across 92 files, live at syllabus-sync.app.",
-    localizedDescription: {
-      fa: "سیستم‌عامل دانشگاهی بومی هوش مصنوعی که سرفصل‌های PDF دانشگاه را به داده‌های ساختاریافته و قابل خواندن توسط عامل تبدیل می‌کند. پذیرفته‌شده در مرکز رشد دانشگاه مک‌کواری به‌عنوان یک استارتاپ رسمی. مجموعه کامل عملیات دانشجویی با ۵۰۳ تست.",
-      ar: "نظام تشغيل جامعي يعتمد على الذكاء الاصطناعي يحول المناهج الدراسية بتنسيق PDF إلى بيانات منظمة قابلة للقراءة من قبل الوكلاء. مقبول في حاضنة جامعة ماكواري كشركة ناشئة رسمية. حزمة كاملة لعمليات الطلاب مع ٥٠٣ اختبارات.",
-      zh: "人工智能原生的校园操作系统，将大学 PDF 教学大纲转化为结构化的、代理可读的数据。已被麦考瑞大学孵化器录取为正式创业公司。包含全套学生操作套件，涵盖 92 个文件中的 503 个测试。",
-      es: "Campus OS nativo de IA que transforma los programas universitarios en PDF en datos estructurados y legibles por agentes. Aceptado en la Incubadora de la Universidad Macquarie como startup formal. Suite completa de operaciones estudiantiles con 503 pruebas en 92 archivos.",
-    },
     tags: [
       "MQ Incubator Startup",
       "Next.js 16",
@@ -508,7 +460,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite, calendar, map, notifications, and multi-profile management. It has been accepted into the Macquarie University Incubator as a formal startup and runs in production at syllabus-sync.app.",
+      "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite: calendar, map, notifications, and multi-profile management. It has been accepted into the Macquarie University Incubator as a formal startup and runs in production at syllabus-sync.app.",
     problem:
       "Australian universities publish syllabi as unstructured PDFs. Students manually copy assessment dates into calendars, and AI assistants hallucinate deadlines because no machine-readable source of truth exists.",
     solution: [
@@ -533,12 +485,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "Bilingual English and Persian Hafez and Rumi poetry experience built for a Persian Society Open Day stall. Visitors choose a poet and receive one reviewed verse with its translation, source, and recitation. The app works offline and uses no cookies, trackers, or backend.",
-    localizedDescription: {
-      fa: "تجربه‌ی دوزبانه (فارسی/انگلیسی) و آفلاین‌محورِ شعر حافظ و مولوی که برای غرفه‌ی روز باز انجمن ایرانیان ساخته شده است. بازدیدکننده یک شاعر را برمی‌گزیند و یک بیتِ بازبینی‌شده همراه با ترجمه، منبع و صوت دریافت می‌کند — بدون هیچ کوکی، ردیاب یا سرور.",
-      ar: "تجربة شعرية ثنائية اللغة (الإنجليزية/الفارسية) تعمل دون اتصال أولًا لأشعار حافظ ومولوي، صُممت لجناح اليوم المفتوح للجمعية الفارسية. يختار الزائر شاعرًا فيتلقى بيتًا مُراجَعًا مع ترجمته ومصدره وتلاوته — دون أي ملفات تعريف ارتباط أو مُتتبِّعات أو خادم.",
-      zh: "为波斯学生会开放日展位打造的双语（英语/波斯语）、离线优先的哈菲兹与鲁米诗歌体验。访客选择一位诗人，即可获得一句经过审校的诗句及其译文、出处与吟诵——没有任何 cookie、追踪器或后端。",
-      es: "Experiencia de poesía bilingüe (inglés/persa) y offline-first de Hafez y Rumi creada para un stand de la Jornada de Puertas Abiertas de la Sociedad Persa. El visitante elige un poeta y recibe un verso revisado con traducción, fuente y recitación, sin cookies, rastreadores ni backend.",
-    },
     tags: [
       "React 19",
       "Vite",
@@ -567,7 +513,7 @@ export const projects: Record<string, Project> = {
         "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
         "Verse selection uses a Web Crypto shuffle bag computed on-device, without server involvement",
         "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
-        "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterized images)",
+        "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterised images)",
         "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support",
       ],
     },
@@ -577,14 +523,14 @@ export const projects: Record<string, Project> = {
         "The client is static and has no backend, database, or analytics infrastructure",
         "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
         "Production compiler rejects synthetic/test data before deployment",
-        "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licenses, e.g. CC BY-SA)",
+        "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licences, e.g. CC BY-SA)",
         "Delivered as a static container behind an outbound tunnel, with no inbound surface",
       ],
     },
     fullDescription:
       "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. The app works offline after its first load and is privacy-first by construction: no cookies, trackers, backend, or visitor input, so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
     problem:
-      "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity, no hallucinated verses, no rasterized calligraphy, no data collection.",
+      "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity: no hallucinated verses, no rasterised calligraphy, no data collection.",
     solution: [
       "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
       "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
@@ -606,12 +552,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
-    localizedDescription: {
-      fa: "مخزن رسانه‌ای شخصی با سبک سایبرپانک با فرانت‌اند React، ای‌پی‌آی Litestar و احراز هویت Supabase. توصیه‌های مجهز به هوش مصنوعی و احراز هویت سخت‌گیرانه مبتنی بر کوکی.",
-      ar: "خزنة وسائط شخصية بأسلوب السايبربانك مع واجهة أمامية React وواجهة برمجة تطبيقات Litestar ومصادقة Supabase. توصيات مدعومة بالذكاء الاصطناعي ومصادقة قوية تعتمد على ملفات تعريف الارتباط.",
-      zh: "赛博朋克风个人媒体库，使用 React 前端、Litestar API 和 Supabase 身份验证。人工智能辅助推荐、加密记录和增强的基于 cookie 的身份验证。",
-      es: "Bóveda de medios personales de estilo cyberpunk con frontend de React, API de Litestar y autenticación de Supabase. Recomendaciones asistidas por IA y autenticación reforzada basada en cookies.",
-    },
     tags: ["React", "Python", "Litestar", "Supabase", "AI", "Full-Stack"],
     links: {
       demo: "https://home-notes-app.uk/",
@@ -670,12 +610,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "High-performance limit order book and matching engine in C++20. Single-thread synthetic benchmark: 1M+ orders/second with sub-microsecond cancellation.",
-    localizedDescription: {
-      fa: "دفتر سفارش محدود و موتور تطبیق با کارایی بالا در C++20. پردازش بیش از ۱ میلیون سفارش در ثانیه با تأخیر زیر میکروثانیه.",
-      ar: "دفتر أوامر محدد ومحرك مطابقة عالي الأداء بلغة C++20. معالجة أكثر من مليون أمر في الثانية مع زمن انتقال أقل من ميكروثانية.",
-      zh: "使用 C++20 编写的高性能限价订单簿和匹配引擎。每秒处理超过 100 万个订单，延迟在亚微秒级。",
-      es: "Libro de órdenes limitadas y motor de emparejamiento de alto rendimiento en C++20. Procesa más de 1 millón de órdenes por segundo con latencia de submilisegundos.",
-    },
     tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/NanoMatch",
@@ -729,12 +663,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second (single-thread, pure-parse, synthetic SYN traffic).",
-    localizedDescription: {
-      fa: "سیستم تشخیص نفوذ شبکه بلادرنگ در C++17. تشریح پروتکل لایه‌ای، موتور قوانین الهام گرفته از Snort و تشخیص تهدید حالت‌دار با پردازش بیش از ۵۰۰ هزار بسته در ثانیه.",
-      ar: "نظام كشف التسلل للشبكة في الوقت الفعلي بلغة C++17. تشريح البروتوكولات الطبقية، محرك قواعد مستوحى من Snort، وكشف التهديدات مع تحليل أكثر من ٥٠٠ ألف حزمة في الثانية.",
-      zh: "使用 C++17 编写的实时网络入侵检测系统。分层协议解析、受 Snort 启发的规则引擎以及状态威胁检测，每秒解析超过 50 万个数据包。",
-      es: "Sistema de detección de intrusiones en red en tiempo real en C++17. Disección de protocolos por capas, motor de reglas inspirado en Snort y detección de amenazas con estado que analiza más de 500k paquetes por segundo.",
-    },
     tags: [
       "C++17",
       "libpcap",
@@ -759,7 +687,7 @@ export const projects: Record<string, Project> = {
         "Live network capture via libpcap with configurable BPF filters",
         "Layered protocol dissection: Ethernet, IPv4, TCP, UDP, ICMP, DNS, ARP",
         "Snort-inspired configurable rule engine with signature matching",
-        "Stateful threat detection (port scans, SYN floods, DNS tunneling)",
+        "Stateful threat detection (port scans, SYN floods, DNS tunnelling)",
       ],
     },
     secure: {
@@ -777,7 +705,7 @@ export const projects: Record<string, Project> = {
     solution: [
       "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
       "Built a Snort-inspired configurable rule engine for flexible signature matching",
-      "Added stateful threat detection for port scans, SYN floods, and DNS tunneling",
+      "Added stateful threat detection for port scans, SYN floods, and DNS tunnelling",
       "Engineered for throughput: 500K+ packets/sec (single-thread parse, synthetic SYN)",
     ],
     proof: [
@@ -794,12 +722,6 @@ export const projects: Record<string, Project> = {
     year: "2025",
     description:
       "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
-    localizedDescription: {
-      fa: "پشته مشاهده‌پذیری زمان اجرا فقط خواندنی که ترکیبی از eBPF هسته، عامل Go و داشبورد React است. مانیتور زمان اجرای آموزشی.",
-      ar: "مجموعة أدوات الرؤية وقت التشغيل للقراءة فقط، تجمع بين eBPF للنواة ووكيل بلغة Go ولوحة تحكم React. مراقب وقت تشغيل تعليمي.",
-      zh: "合成的只读运行时可视化堆栈，结合了内核 eBPF、Go 代理和 React 仪表板。教学用运行时监控器。",
-      es: "Stack de visibilidad en tiempo de ejecución sintético y de solo lectura que combina eBPF del kernel, agente Go y panel de React. Monitor de tiempo de ejecución educativo.",
-    },
     tags: ["eBPF", "Go", "React", "Kernel", "Runtime Security"],
     links: {
       repo: "https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor",
@@ -834,7 +756,7 @@ export const projects: Record<string, Project> = {
     solution: [
       "Implemented eBPF hooks for safe syscall tracepoints",
       "Built a Go agent to collect and enrich metadata",
-      "Created a real-time React dashboard for visualization",
+      "Created a real-time React dashboard for visualisation",
       "Designed safe synthetic attack simulations",
     ],
     proof: [
@@ -851,12 +773,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "File converter for macOS with 49 formats across images, documents, audio, video, and data. It uses 9 conversion engines, processes files locally, and ships as one .app bundle.",
-    localizedDescription: {
-      fa: "مبدل فایل جهانی برای macOS. ۴۹ فرمت در تصاویر، اسناد، صدا، ویدئو و داده — مجهز به ۹ موتور تبدیل. بدون ابر، تک فایل .app.",
-      ar: "محول ملفات عالمي لنظام macOS. ٤٩ تنسيقاً تشمل الصور والمستندات والصوت والفيديو والبيانات — مدعوم بـ ٩ محركات تحويل. بدون سحابة، حزمة .app واحدة.",
-      zh: "适用于 macOS 的通用文件转换器。支持 49 种格式，涵盖图像、文档、音频、视频和数据——由 9 个转换引擎驱动。零云端，单文件 .app 包。",
-      es: "Convertidor de archivos universal para macOS. 49 formatos en imágenes, documentos, audio, video y datos, potenciado por 9 motores de conversión. Sin nube, un solo paquete .app.",
-    },
     tags: ["Tauri v2", "Rust", "React", "TypeScript", "FFmpeg", "macOS"],
     links: {
       repo: "https://github.com/Raoof128/SimurghForge",
@@ -914,12 +830,6 @@ export const projects: Record<string, Project> = {
     year: "2026",
     description:
       "AI-powered Bible companion using Hybrid RAG. Keyword + semantic vector search (pgvector), real-time SSE streaming via Gemini, and cross-platform support with Tauri v2.",
-    localizedDescription: {
-      fa: "همراه کتاب مقدس مجهز به هوش مصنوعی با استفاده از Hybrid RAG. جستجوی کلمات کلیدی + بردار معنایی (pgvector)، پخش بلادرنگ SSE از طریق Gemini.",
-      ar: "رفيق الكتاب المقدس المدعوم بالذكاء الاصطناعي باستخدام Hybrid RAG. بحث بالكلمات الرئيسية + البحث المتجه الدلالي (pgvector)، وبث SSE في الوقت الفعلي عبر Gemini.",
-      zh: "人工智能驱动的圣经伙伴，使用混合 RAG。关键词 + 语义向量搜索 (pgvector)，通过 Gemini 实现实时 SSE 流式传输。",
-      es: "Compañero bíblico potenciado por IA que utiliza Hybrid RAG. Búsqueda por palabras clave + vectores semánticos (pgvector), transmisión SSE en tiempo real a través de Gemini.",
-    },
     tags: [
       "React Native",
       "Expo",
@@ -1035,7 +945,7 @@ Every agent action crosses one of four gates, and each gate emits a signed recor
 
 ### A dishonest-producer threat model
 
-Most evidence systems assume the thing writing the logs is honest. Simurgh assumes the opposite: the producer may lie, drop, reorder, or forge records. The answer is decision-replay and emission-completeness checks, a verifier re-derives each decision from the signed inputs and catches a falsified or missing record. The trust root is not "trust the log," it is "re-check the log."
+Most evidence systems assume the thing writing the logs is honest. Simurgh assumes the opposite: the producer may lie, drop, reorder, or forge records. The answer is decision-replay and emission-completeness checks: a verifier re-derives each decision from the signed inputs and catches a falsified or missing record. The trust root is not "trust the log," it is "re-check the log."
 
 ### What the numbers measure
 
@@ -1048,7 +958,7 @@ A containment system that tests only the agent, never itself, is theatre. Simurg
 
 ### Machine-checked oversight
 
-Approval-gate friction receipts prove an oversight checkpoint preceded every protected authority crossing, through a two-key pincer that defeats self-approval and backdating. The core invariants, fail-closed, friction precedence, no-silent-exemption, are closed with **five machine-checked Lean theorems**, so they are proofs, not test cases.
+Approval-gate friction receipts prove an oversight checkpoint preceded every protected authority crossing, through a two-key pincer that defeats self-approval and backdating. The core invariants (fail-closed, friction precedence, no-silent-exemption) are closed with **five machine-checked Lean theorems**, so they are proofs, not test cases.
 
 ### Honest non-claims
 
@@ -1063,11 +973,11 @@ Simurgh would **not** have caught the June 2026 content-generation bypass by its
     updatedAt: "2026-10-10",
     tag: "Security Research",
     takeaway:
-      "Documented window-capture settings achieved 100% evasion without capture artifacts in controlled laboratory simulations on tested Windows and macOS versions. Commercial proctoring products and Linux were not tested.",
+      "Documented window-capture settings achieved 100% evasion without capture artefacts in controlled laboratory simulations on tested Windows and macOS versions. Commercial proctoring products and Linux were not tested.",
     content: `
 ## The Vulnerability in One Sentence
 
-Windows and macOS expose documented window-sharing or capture-affinity settings that can keep an application's window visible on the physical display while excluding it from capture paths that honor those settings. The study demonstrates the resulting gap in screen-capture-based proctoring using controlled laboratory simulations.
+Windows and macOS expose documented window-sharing or capture-affinity settings that can keep an application's window visible on the physical display while excluding it from capture paths that honour those settings. The study demonstrates the resulting gap in screen-capture-based proctoring using controlled laboratory simulations.
 
 ---
 
@@ -1083,7 +993,7 @@ This assumption is wrong on Windows and macOS.
 
 ## The Windows Side: \`SetWindowDisplayAffinity\`
 
-Microsoft documented this API in the Win32 SDK as a Digital Rights Management mechanism, its intended use case is preventing screen capture of premium video content (think Netflix's desktop app). The function signature is simple:
+Microsoft documented this API in the Win32 SDK as a Digital Rights Management mechanism; its intended use case is preventing screen capture of premium video content (think Netflix's desktop app). The function signature is simple:
 
 \`\`\`c
 BOOL SetWindowDisplayAffinity(HWND hWnd, DWORD dwAffinity);
@@ -1159,7 +1069,7 @@ Setting \`sharingType\` to \`.none\` requests exclusion from capture paths that 
 
 ## Test Results
 
-| Platform | Laboratory capture outcome | Observed capture artifacts |
+| Platform | Laboratory capture outcome | Observed capture artefacts |
 |----------|-----------------------------|---------------------------|
 | Windows 10 | Window excluded | None |
 | Windows 11 | Window excluded | None |
@@ -1176,7 +1086,7 @@ These results concern simulated proctoring in a controlled laboratory, not comme
 
 The vulnerability is a design conflict between two legitimate OS features:
 
-1. **DRM / Content Protection**: Media companies need to prevent unauthorized recording of premium content. \`WDA_EXCLUDEFROMCAPTURE\` and \`NSWindow.SharingType.none\` exist to serve this requirement.
+1. **DRM / Content Protection**: Media companies need to prevent unauthorised recording of premium content. \`WDA_EXCLUDEFROMCAPTURE\` and \`NSWindow.SharingType.none\` exist to serve this requirement.
 
 2. **Exam Integrity**: Proctoring systems assume that capturing the screen gives a complete view of the user's desktop.
 
@@ -1206,7 +1116,7 @@ The vendors' responses confirmed awareness of the OS-level mechanism. The core c
 
 ## Takeaway
 
-The tested Windows and macOS capture paths can omit an application window while it remains visible to the user, without elevated privileges or observed capture artifacts. This exposes a mismatch between content-protection features and the assumption that captured pixels fully represent the physical display. The study establishes that gap within its tested laboratory scope; it does not establish that every commercial proctoring product or every capture API can be bypassed.
+The tested Windows and macOS capture paths can omit an application window while it remains visible to the user, without elevated privileges or observed capture artefacts. This exposes a mismatch between content-protection features and the assumption that captured pixels fully represent the physical display. The study establishes that gap within its tested laboratory scope; it does not establish that every commercial proctoring product or every capture API can be bypassed.
 
 The full 13-page paper is linked from the project page. Full proof-of-concept source code is not publicly released; verified security researchers and proctoring vendors may request it under responsible-use agreements. The illustrative API examples above are retained as part of the article.
     `,
@@ -1296,12 +1206,12 @@ SentinelFlow uses libpcap with a polymorphic \`PacketCapture\` interface, \`Live
 
 Network frames are nested structures. You cannot jump to a fixed byte offset because each layer has variable length:
 
-1. **Ethernet** (14 bytes), \`ntohs\` on EtherType dispatches to IPv4 (\`0x0800\`) or ARP (\`0x0806\`)
-2. **IPv4**, IHL (Internet Header Length) field tells you where L4 starts. Variable due to IP options.
-3. **TCP**, \`data_offset\` field tells you where the payload begins. Variable due to TCP options.
-4. **UDP** (8 bytes), Fixed header, but conditionally triggers DNS parsing when port is 53
-5. **DNS**, Walks label-encoded query names (length-prefixed segments)
-6. **ICMP** / **ARP**, Type codes and hardware addresses
+1. **Ethernet** (14 bytes): \`ntohs\` on EtherType dispatches to IPv4 (\`0x0800\`) or ARP (\`0x0806\`)
+2. **IPv4**: the IHL (Internet Header Length) field tells you where L4 starts. Variable due to IP options.
+3. **TCP**: the \`data_offset\` field tells you where the payload begins. Variable due to TCP options.
+4. **UDP** (8 bytes): fixed header, but conditionally triggers DNS parsing when port is 53
+5. **DNS**: walks label-encoded query names (length-prefixed segments)
+6. **ICMP** / **ARP**: type codes and hardware addresses
 
 Each parser is a stateless free function operating on raw \`const uint8_t*\`, zero copies, zero allocations. The \`ParsedPacket\` struct uses \`std::optional<T>\` for each layer: if a parse fails or the protocol isn't present, the optional stays empty and downstream layers are skipped.
 
@@ -1319,11 +1229,11 @@ Rules are declarative. The **header** acts as a fast pre-filter (protocol, IP, p
 
 Signature matching catches known-bad patterns in individual packets. But many real attacks are distributed across multiple packets:
 
-- **Port scans**, Only visible when you track the set of destination ports per source IP over time. SentinelFlow maintains a \`std::set<uint16_t>\` per IP pair, firing when 15+ unique ports are hit in 60 seconds.
-- **SYN floods**, Detected by monitoring half-open connection rates. A \`std::deque\` of SYN timestamps per destination IP, pruned lazily on access. Fires at 100+ SYNs in 10 seconds.
-- **DNS tunnelling**, Exfiltration via encoded DNS queries produces anomalously long query names. The detector tracks queries exceeding 50 characters and fires when volume passes threshold.
+- **Port scans**: only visible when you track the set of destination ports per source IP over time. SentinelFlow maintains a \`std::set<uint16_t>\` per IP pair, firing when 15+ unique ports are hit in 60 seconds.
+- **SYN floods**: detected by monitoring half-open connection rates. A \`std::deque\` of SYN timestamps per destination IP, pruned lazily on access. Fires at 100+ SYNs in 10 seconds.
+- **DNS tunnelling**: exfiltration via encoded DNS queries produces anomalously long query names. The detector tracks queries exceeding 50 characters and fires when volume passes threshold.
 
-All stateful detectors use sliding time windows with **lazy pruning**, old entries are removed on the next access rather than by a background thread. This eliminates synchronisation overhead.
+All stateful detectors use sliding time windows with **lazy pruning**: old entries are removed on the next access rather than by a background thread. This eliminates synchronisation overhead.
 
 ### Zero-Copy Parsing Performance
 
@@ -1352,7 +1262,7 @@ Adding a new output (syslog, webhook, Kafka) means implementing a single \`emit(
 
 eBPF runs small, verified programs inside the Linux kernel without a kernel module or a patched kernel. Before a program loads, the in-kernel verifier rejects anything that could loop forever, read out of bounds, or touch memory it should not. That property is what makes it safe to attach code to hot paths like the syscall boundary.
 
-**ECRSM** is an educational, read-only runtime monitor built on that boundary: kernel eBPF probes, a Go agent, and a React dashboard. It is a synthetic teaching stack, not a production EDR, the point is to make kernel-level visibility legible.
+**ECRSM** is an educational, read-only runtime monitor built on that boundary: kernel eBPF probes, a Go agent, and a React dashboard. It is a synthetic teaching stack, not a production EDR; the point is to make kernel-level visibility legible.
 
 ### Where it hooks
 
@@ -1367,9 +1277,9 @@ ECRSM attaches to kernel tracepoints rather than kprobes, because tracepoints ke
 
 ### The data path
 
-1. **Kernel space**, a C eBPF program fires on each tracepoint and copies *metadata only* (PID, UID, \`comm\`, argv sizes, destination address) into a ring buffer. Never payloads, never secrets.
-2. **User space**, a Go agent drains the ring buffer, enriches each event with container and Kubernetes metadata (pod, namespace, image), and evaluates lightweight rules.
-3. **Dashboard**, events stream to a React UI over WebSockets, so a syscall in the kernel becomes a row on screen in real time.
+1. **Kernel space**: a C eBPF program fires on each tracepoint and copies *metadata only* (PID, UID, \`comm\`, argv sizes, destination address) into a ring buffer. Never payloads, never secrets.
+2. **User space**: a Go agent drains the ring buffer, enriches each event with container and Kubernetes metadata (pod, namespace, image), and evaluates lightweight rules.
+3. **Dashboard**: events stream to a React UI over WebSockets, so a syscall in the kernel becomes a row on screen in real time.
 
 Deployment is a Kubernetes DaemonSet via a Helm chart, so exactly one probe runs per node.
 
@@ -1377,10 +1287,10 @@ Deployment is a Kubernetes DaemonSet via a Helm chart, so exactly one probe runs
 
 Writing to the kernel is how you crash a machine. ECRSM never does it:
 
-- **Read-only introspection**, tracepoints observe; they do not modify syscall arguments or packet data.
-- **Metadata only**, no payload bytes, no environment variables, no file contents leave the kernel.
-- **Least privilege**, the agent runs with \`CAP_BPF\` / \`CAP_SYS_ADMIN\` and nothing more.
-- **Synthetic simulations**, the "attacks" it surfaces (reverse shells, process injection, suspicious execs) are safe scripted scenarios, so you learn the detection without a real intrusion.
+- **Read-only introspection**: tracepoints observe; they do not modify syscall arguments or packet data.
+- **Metadata only**: no payload bytes, no environment variables, no file contents leave the kernel.
+- **Least privilege**: the agent runs with \`CAP_BPF\` / \`CAP_SYS_ADMIN\` and nothing more.
+- **Synthetic simulations**: the "attacks" it surfaces (reverse shells, process injection, suspicious execs) are safe scripted scenarios, so you learn the detection without a real intrusion.
 
 ### What it is not
 
@@ -1403,9 +1313,9 @@ For a security tool, drift between platforms is a vulnerability. If the iOS buil
 
 The security logic is platform-agnostic and lives once, in shared code:
 
-- **Ensemble ML model**, logistic regression plus gradient boosting, scoring each URL.
-- **Heuristics engine**, 25+ checks: homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
-- **Threat-intelligence lists**, allow/deny sets, versioned centrally.
+- **Ensemble ML model**: logistic regression plus gradient boosting, scoring each URL.
+- **Heuristics engine**: 25+ checks, including homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
+- **Threat-intelligence lists**: allow/deny sets, versioned centrally.
 
 Only the thin edges are per-platform, expressed through KMP's \`expect\`/\`actual\`: file access, the QR-camera bridge, and UI. Auditing the security core means reading one codebase, not five.
 
@@ -1455,13 +1365,13 @@ Every privileged action crosses \`ipcMain.handle\` / \`ipcRenderer.invoke\` on a
 
 Tokens never touch \`localStorage\` or linger in the renderer:
 
-- **At rest**, GitHub personal-access tokens and the Gemini key live in the OS keychain (Keychain on macOS, Credential Manager on Windows, libsecret on Linux), not a plaintext config file.
-- **In use**, keys are redacted from logs and wiped from memory after use, so a crash dump or shared log does not leak them.
-- **In transit**, the Gemini API is the only outbound egress, and the diff sent for commit-message generation is scoped to what the user is committing.
+- **At rest**: GitHub personal-access tokens and the Gemini key live in the OS keychain (Keychain on macOS, Credential Manager on Windows, libsecret on Linux), not a plaintext config file.
+- **In use**: keys are redacted from logs and wiped from memory after use, so a crash dump or shared log does not leak them.
+- **In transit**: the Gemini API is the only outbound egress, and the diff sent for commit-message generation is scoped to what the user is committing.
 
 ### The takeaway
 
-The defaults that make Electron convenient, Node in the renderer, the legacy \`remote\` module, broad IPC, are the ones that make it dangerous. GitSwitch inverts them: isolation on, sandbox on, a minimal audited bridge, and secrets in the OS keychain. The result is a desktop app with a web UI that cannot be talked into running code it was not built to run.
+The defaults that make Electron convenient (Node in the renderer, the legacy \`remote\` module, broad IPC) are the ones that make it dangerous. GitSwitch inverts them: isolation on, sandbox on, a minimal audited bridge, and secrets in the OS keychain. The result is a desktop app with a web UI that cannot be talked into running code it was not built to run.
     `,
   },
 ];
@@ -1533,7 +1443,7 @@ fn main() {
     title: "Raw Socket Packet Sniffer",
     status: "ACTIVE",
     description:
-      "Python script utilizing raw sockets to capture and parse TCP/IP headers manually. Implements basic SYN-scan detection without relying on libpcap.",
+      "Python script using raw sockets to capture and parse TCP/IP headers manually. Prints TCP SYN packets as the starting point for scan detection, without relying on libpcap.",
     tech: ["Python", "Networking", "Raw Sockets"],
     objective:
       "Manually parse IP/TCP headers to understand protocol structures and detect scanning patterns without relying on Wireshark.",
@@ -1557,7 +1467,6 @@ def parse_tcp(raw: bytes, offset: int) -> tuple[int, int, int]:
     tcph = struct.unpack("!HHLLBBHHH", raw[offset:offset + 20])
     flags = tcph[5]
     syn = (flags & 0x02) >> 1
-    fin = flags & 0x01
     return tcph[0], tcph[1], syn
 
 def sniff() -> None:
@@ -1588,7 +1497,7 @@ if __name__ == "__main__":
     objective:
       "Implement a covert channel by modifying the least significant bits of image pixel data, then verify extraction round-trips cleanly.",
     constraints:
-      "Payload size limited to (width × height) / 8 bytes. Not robust against JPEG re-encoding or image resizing.",
+      "Payload size limited to (width × height) / 8 bytes minus the 4-byte length header. Not robust against JPEG re-encoding or image resizing.",
     codeSnippet: `package main
 
 import (
@@ -1618,6 +1527,9 @@ func embed(img *image.NRGBA, payload []byte) error {
 			img.SetNRGBA(x, y, color.NRGBA{R: c.R, G: c.G, B: c.B, A: c.A})
 			idx++
 		}
+	}
+	if idx == len(bits)*8 {
+		return nil // The payload filled the image exactly.
 	}
 	return fmt.Errorf("image too small for payload")
 }

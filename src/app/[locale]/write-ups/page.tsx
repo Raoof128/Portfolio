@@ -1,7 +1,13 @@
 import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { WriteUpsClient } from "./WriteUpsClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
+import {
+  buildAlternates,
+  OG_IMAGES,
+  TWITTER_IMAGE,
+  ogBase,
+  ogUrl,
+} from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { getLocalizedWriteups } from "@/lib/localized-writing";
 import {
@@ -22,14 +28,15 @@ export async function generateMetadata({
     description: t.seo.write_ups_description,
     alternates: buildAlternates("/write-ups", locale),
     openGraph: {
+      ...ogBase(locale),
       url: ogUrl("/write-ups", locale),
-      title: t.seo.write_ups_title,
+      title: `${t.seo.write_ups_title} | Mohammad Raouf Abedini`,
       description: t.seo.write_ups_description,
       images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
-      title: t.seo.write_ups_title,
+      title: `${t.seo.write_ups_title} | Mohammad Raouf Abedini`,
       description: t.seo.write_ups_description,
       images: TWITTER_IMAGE,
     },

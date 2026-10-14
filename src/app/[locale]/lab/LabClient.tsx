@@ -7,7 +7,6 @@ import type { LabExperiment } from "@/lib/data";
 import { AlertTriangle, Beaker, GitBranch, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { cn } from "@/lib/utils";
 
 export function LabClient({
   experiments,
@@ -15,7 +14,6 @@ export function LabClient({
   experiments: Omit<LabExperiment, "codeSnippet">[];
 }) {
   const { locale, t } = useTranslation();
-  const isRTL = locale === "fa" || locale === "ar";
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -30,16 +28,11 @@ export function LabClient({
         : t.about.status_concept;
 
   return (
-    <div className={cn("os-legacy relative", isRTL && "text-right")}>
+    <div className="os-legacy relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection>
           <div className="mb-12">
-            <div
-              className={cn(
-                "flex items-center space-x-2 text-cyan mb-2",
-                isRTL && "space-x-reverse justify-end",
-              )}
-            >
+            <div className="flex items-center space-x-2 text-cyan mb-2">
               <Beaker className="w-4 h-4" />
               <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">
                 {t.lab_page.experimental_division}
@@ -50,7 +43,7 @@ export function LabClient({
             </h1>
             <p className="text-text-body max-w-2xl">
               {t.lab_page.description_1}{" "}
-              <span className="text-cyan">{t.lab_page.description_2}</span>,{" "}
+              <span className="text-cyan">{t.lab_page.description_2}</span>
               {t.lab_page.description_3}
             </p>
           </div>
@@ -69,12 +62,7 @@ export function LabClient({
                 }
                 className="p-6 group hover:bg-cyber-gray/50 h-full flex flex-col"
               >
-                <div
-                  className={cn(
-                    "flex justify-between items-start mb-4",
-                    isRTL && "flex-row-reverse",
-                  )}
-                >
+                <div className="flex justify-between items-start mb-4">
                   <div className="font-mono text-xs text-text-meta">
                     {t.lab_page.id_label} <bdi dir="ltr">{exp.id}</bdi>
                   </div>
@@ -97,12 +85,7 @@ export function LabClient({
                   {exp.description}
                 </p>
                 <div className="space-y-4">
-                  <div
-                    className={cn(
-                      "flex flex-wrap gap-2",
-                      isRTL && "justify-end",
-                    )}
-                  >
+                  <div className="flex flex-wrap gap-2">
                     {exp.tech.map((tech) => (
                       <span
                         key={tech}
@@ -114,16 +97,11 @@ export function LabClient({
                   </div>
                   <Link
                     href={getPath(`/lab/${exp.id}`)}
-                    className={cn(
-                      "flex items-center text-xs font-mono text-cyan hover:underline decoration-dotted",
-                      isRTL && "justify-end",
-                    )}
+                    className="flex items-center text-xs font-mono text-cyan hover:underline decoration-dotted"
                   >
-                    {isRTL ? (
-                      <ArrowUpRight className="w-3 h-3 mr-1 rotate-180" />
-                    ) : null}
                     {t.lab_page.view_analysis}
-                    {!isRTL ? <ArrowUpRight className="w-3 h-3 ml-1" /> : null}
+                    {/* Forward arrow: up-right in LTR, mirrored to up-left in RTL. */}
+                    <ArrowUpRight className="w-3 h-3 ms-1 rtl:-scale-x-100" />
                   </Link>
                 </div>
               </GlowCard>

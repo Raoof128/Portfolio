@@ -16,12 +16,12 @@ export const locales: Record<Locale, LocaleConfig> = {
   fa: {
     label: "فارسی",
     dir: "rtl",
-    fontFamily: "Vazirmatn, Tahoma, Arial, sans-serif",
+    fontFamily: "var(--font-vazirmatn), Tahoma, Arial, sans-serif",
   },
   ar: {
     label: "العربية",
     dir: "rtl",
-    fontFamily: "Vazirmatn, Tahoma, Arial, sans-serif",
+    fontFamily: "var(--font-vazirmatn), Tahoma, Arial, sans-serif",
   },
   zh: {
     label: "中文",

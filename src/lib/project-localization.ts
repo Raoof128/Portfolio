@@ -27,8 +27,6 @@ export function getLocalizedProject(
   if (locale === "en")
     return {
       ...project,
-      localizedDescription: undefined,
-      localizedFullDescription: undefined,
       contentLocale: "en",
       titleLocale: "en",
     };
@@ -45,8 +43,6 @@ export function getLocalizedProject(
     contentLocale: locale,
     description: content.description,
     fullDescription: content.fullDescription,
-    localizedDescription: undefined,
-    localizedFullDescription: undefined,
     tags: project.tags.map((term) => localizeProjectTerm(term, locale)),
     problem: content.problem,
     solution: content.solution,
@@ -61,13 +57,6 @@ export function getLocalizedProject(
       ...content.papers?.[index],
     })),
   };
-}
-
-export function getLocalizedProjectTitle(
-  project: Project,
-  locale: Locale,
-): string {
-  return getLocalizedProject(project, locale).title;
 }
 
 export function getProjectDiagramCopy(locale: Locale) {

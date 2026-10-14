@@ -18,7 +18,7 @@ export const dynamic = "force-static";
 // stays in sync with the site automatically.
 const HEADER = `# Mohammad Raouf Abedini: Full Machine-Readable Corpus
 
-> Generated ${SITE_LAST_MODIFIED} from https://raoufabedini.dev
+> Generated ${SITE_LAST_MODIFIED} from ${SITE_URL}
 > Canonical: ${SITE_URL}/llms-full.txt · Concise version: ${SITE_URL}/llms.txt
 > This is plain UTF-8 text for AI agents, search systems, and retrieval.
 

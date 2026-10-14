@@ -8,12 +8,10 @@ import Link from "next/link";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { cn } from "@/lib/utils";
 import { formatNumber } from "@/i18n/format";
 
 export function SecurityPolicyClient() {
   const { locale, t } = useTranslation();
-  const isRTL = locale === "fa" || locale === "ar";
   const reportLink = `mailto:${CONTACT_EMAIL}`;
 
   const getPath = (path: string) => {
@@ -23,20 +21,10 @@ export function SecurityPolicyClient() {
 
   return (
     <div className="os-legacy relative overflow-x-hidden">
-      <div
-        className={cn(
-          "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
-          isRTL && "text-right",
-        )}
-      >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection>
           <div className="mb-12">
-            <div
-              className={cn(
-                "flex items-center space-x-2 text-cyan mb-2",
-                isRTL && "flex-row-reverse space-x-reverse",
-              )}
-            >
+            <div className="flex items-center space-x-2 text-cyan mb-2">
               <Shield className="w-4 h-4" />
               <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">
                 {t.security_policy.subtitle}
@@ -53,15 +41,10 @@ export function SecurityPolicyClient() {
 
         <div className="space-y-8">
           <AnimatedSection>
-            <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-l-4 border-l-cyan">
+            <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-s-4 border-s-cyan">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h2
-                    className={cn(
-                      "text-xl font-bold text-white mb-2 flex items-center gap-2",
-                      isRTL && "flex-row-reverse",
-                    )}
-                  >
+                  <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
                     <Mail className="w-5 h-5 text-cyan" />{" "}
                     {t.security_policy.report_heading}
                   </h2>
@@ -73,7 +56,7 @@ export function SecurityPolicyClient() {
                   </p>
                 </div>
                 <NeonButton href={reportLink} variant="primary">
-                  <Mail className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} />{" "}
+                  <Mail className="w-4 h-4 me-2" />{" "}
                   {t.security_policy.send_report}
                 </NeonButton>
               </div>
@@ -82,12 +65,7 @@ export function SecurityPolicyClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 <span className="text-cyan font-mono">
                   <bdi>
                     {formatNumber(1, locale, {
@@ -104,12 +82,7 @@ export function SecurityPolicyClient() {
                   {t.security_policy.scope_desc}
                 </p>
                 <ul className="space-y-2 text-slate-300">
-                  <li
-                    className={cn(
-                      "flex items-start gap-2",
-                      isRTL && "flex-row-reverse",
-                    )}
-                  >
+                  <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" />
                     <span>
                       <code className="text-cyan" dir="ltr">
@@ -118,12 +91,7 @@ export function SecurityPolicyClient() {
                       — {t.security_policy.scope_site}
                     </span>
                   </li>
-                  <li
-                    className={cn(
-                      "flex items-start gap-2",
-                      isRTL && "flex-row-reverse",
-                    )}
-                  >
+                  <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400 mt-1 shrink-0" />
                     <span>
                       {t.security_policy.scope_repos}{" "}
@@ -139,12 +107,7 @@ export function SecurityPolicyClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 <span className="text-cyan font-mono">
                   <bdi>
                     {formatNumber(2, locale, {
@@ -158,12 +121,7 @@ export function SecurityPolicyClient() {
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <HUDFrame className="p-6 bg-[#030712]/60">
-                  <h3
-                    className={cn(
-                      "text-lg font-bold text-white mb-3 flex items-center gap-2",
-                      isRTL && "flex-row-reverse",
-                    )}
-                  >
+                  <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-green-400" />{" "}
                     {t.security_policy.in_scope}
                   </h3>
@@ -181,12 +139,7 @@ export function SecurityPolicyClient() {
                   </ul>
                 </HUDFrame>
                 <HUDFrame className="p-6 bg-[#030712]/60">
-                  <h3
-                    className={cn(
-                      "text-lg font-bold text-white mb-3 flex items-center gap-2",
-                      isRTL && "flex-row-reverse",
-                    )}
-                  >
+                  <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-yellow-400" />{" "}
                     {t.security_policy.out_of_scope}
                   </h3>
@@ -209,12 +162,7 @@ export function SecurityPolicyClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 <span className="text-cyan font-mono">
                   <bdi>
                     {formatNumber(3, locale, {
@@ -245,13 +193,7 @@ export function SecurityPolicyClient() {
                       desc: t.security_policy.t3_desc,
                     },
                   ].map(({ icon: Icon, heading, desc }, i) => (
-                    <div
-                      key={i}
-                      className={cn(
-                        "flex items-start gap-4",
-                        isRTL && "flex-row-reverse",
-                      )}
-                    >
+                    <div key={i} className="flex items-start gap-4">
                       <div className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan/10 border border-cyan/30 shrink-0">
                         <Icon className="w-5 h-5 text-cyan" />
                       </div>
@@ -268,12 +210,7 @@ export function SecurityPolicyClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 <span className="text-cyan font-mono">
                   <bdi>
                     {formatNumber(4, locale, {
@@ -294,13 +231,7 @@ export function SecurityPolicyClient() {
                     t.security_policy.g4,
                     t.security_policy.g5,
                   ].map((guideline, i) => (
-                    <li
-                      key={i}
-                      className={cn(
-                        "flex items-start gap-2",
-                        isRTL && "flex-row-reverse",
-                      )}
-                    >
+                    <li key={i} className="flex items-start gap-2">
                       <span className="text-cyan mt-1">
                         {formatNumber(i + 1, locale)}.
                       </span>
@@ -314,12 +245,7 @@ export function SecurityPolicyClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 <span className="text-cyan font-mono">
                   <bdi>
                     {formatNumber(5, locale, {
@@ -340,7 +266,7 @@ export function SecurityPolicyClient() {
                   >
                     {t.security_policy.ack_hall_of_fame}
                   </Link>
-                  .
+                  {t.security_policy.ack_desc_suffix}
                 </p>
                 <p className="text-text-body text-sm font-mono">
                   {t.security_policy.ack_note}

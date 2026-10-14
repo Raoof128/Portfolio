@@ -9,6 +9,7 @@ interface PageSupportCopy {
   originalEnglishPDF: string;
   officialCertificateNames: string;
   sourceCode: string;
+  opensInNewTab: string;
   aboutLabTags: Record<string, string[]>;
 }
 
@@ -23,14 +24,15 @@ const copy: Record<Locale, PageSupportCopy> = {
     officialCertificateNames:
       "Certificate titles are shown in their original English for verification.",
     sourceCode: "Source code · original language",
+    opensInNewTab: "(opens in a new tab)",
     aboutLabTags: {
-      "001": ["Purple Team", "Kerberoasting", "DC-Sync"],
-      "002": ["SOAR", "KQL", "E8 Maturity"],
-      "003": ["LLM", "Jailbreak", "Adversarial"],
-      "004": ["Zeek", "Suricata", "Isolation Forest"],
-      "005": ["Uplink Jamming", "Spoofing", "Telemetry"],
-      "006": ["RE", "YARA", "API Hooking"],
-      "007": ["Post-Quantum", "Crypto Inventory"],
+      "OPS-01": ["Purple Team", "Kerberoasting", "DC-Sync"],
+      "OPS-02": ["SOAR", "KQL", "E8 Maturity"],
+      "OPS-03": ["LLM", "Jailbreak", "Adversarial"],
+      "OPS-04": ["Zeek", "Suricata", "Isolation Forest"],
+      "OPS-05": ["Uplink Jamming", "Spoofing", "Telemetry"],
+      "OPS-06": ["RE", "YARA", "API Hooking"],
+      "OPS-07": ["Post-Quantum", "Crypto Inventory"],
     },
   },
   fa: {
@@ -43,14 +45,15 @@ const copy: Record<Locale, PageSupportCopy> = {
     officialCertificateNames:
       "عنوان گواهی‌ها برای امکان راستی‌آزمایی به زبان اصلی انگلیسی نمایش داده می‌شود.",
     sourceCode: "کد منبع · زبان اصلی",
+    opensInNewTab: "(در زبانهٔ جدید باز می‌شود)",
     aboutLabTags: {
-      "001": ["تیم بنفش", "Kerberoasting", "DC-Sync"],
-      "002": ["SOAR", "KQL", "بلوغ Essential Eight"],
-      "003": ["مدل زبانی بزرگ", "جیلبریک", "آزمون خصمانه"],
-      "004": ["Zeek", "Suricata", "جنگل جداسازی"],
-      "005": ["اخلال پیوند بالارونده", "جعل هویت", "دور‌سنجی"],
-      "006": ["مهندسی معکوس", "YARA", "هوک‌گذاری API"],
-      "007": ["رمزنگاری پساکوانتومی", "فهرست دارایی‌های رمزنگاری"],
+      "OPS-01": ["تیم بنفش", "Kerberoasting", "DC-Sync"],
+      "OPS-02": ["SOAR", "KQL", "بلوغ Essential Eight"],
+      "OPS-03": ["مدل زبانی بزرگ", "جیلبریک", "آزمون خصمانه"],
+      "OPS-04": ["Zeek", "Suricata", "جنگل جداسازی"],
+      "OPS-05": ["اخلال پیوند بالارونده", "جعل هویت", "دور‌سنجی"],
+      "OPS-06": ["مهندسی معکوس", "YARA", "هوک‌گذاری API"],
+      "OPS-07": ["رمزنگاری پساکوانتومی", "فهرست دارایی‌های رمزنگاری"],
     },
   },
   ar: {
@@ -63,14 +66,15 @@ const copy: Record<Locale, PageSupportCopy> = {
     officialCertificateNames:
       "تُعرض عناوين الشهادات بلغتها الإنجليزية الأصلية لتسهيل التحقق منها.",
     sourceCode: "الكود المصدري · اللغة الأصلية",
+    opensInNewTab: "(يُفتح في تبويب جديد)",
     aboutLabTags: {
-      "001": ["الفريق البنفسجي", "Kerberoasting", "DC-Sync"],
-      "002": ["SOAR", "KQL", "نضج Essential Eight"],
-      "003": ["نماذج اللغة الكبيرة", "تجاوز الحماية", "اختبارات خصومية"],
-      "004": ["Zeek", "Suricata", "غابة العزل"],
-      "005": ["تشويش الوصلة الصاعدة", "انتحال الهوية", "القياس عن بُعد"],
-      "006": ["الهندسة العكسية", "YARA", "خطافات API"],
-      "007": ["تشفير ما بعد الكم", "حصر أصول التشفير"],
+      "OPS-01": ["الفريق البنفسجي", "Kerberoasting", "DC-Sync"],
+      "OPS-02": ["SOAR", "KQL", "نضج Essential Eight"],
+      "OPS-03": ["نماذج اللغة الكبيرة", "تجاوز الحماية", "اختبارات خصومية"],
+      "OPS-04": ["Zeek", "Suricata", "غابة العزل"],
+      "OPS-05": ["تشويش الوصلة الصاعدة", "انتحال الهوية", "القياس عن بُعد"],
+      "OPS-06": ["الهندسة العكسية", "YARA", "خطافات API"],
+      "OPS-07": ["تشفير ما بعد الكم", "حصر أصول التشفير"],
     },
   },
   zh: {
@@ -82,14 +86,15 @@ const copy: Record<Locale, PageSupportCopy> = {
     originalEnglishPDF: "原始简历 · 英文 PDF",
     officialCertificateNames: "证书名称保留原始英文，便于核验。",
     sourceCode: "源代码 · 原始语言",
+    opensInNewTab: "（在新标签页中打开）",
     aboutLabTags: {
-      "001": ["紫队", "Kerberoasting", "DC-Sync"],
-      "002": ["SOAR", "KQL", "Essential Eight 成熟度"],
-      "003": ["大语言模型", "越狱", "对抗测试"],
-      "004": ["Zeek", "Suricata", "孤立森林"],
-      "005": ["上行链路干扰", "欺骗", "遥测"],
-      "006": ["逆向工程", "YARA", "API 钩子"],
-      "007": ["后量子密码学", "密码资产清单"],
+      "OPS-01": ["紫队", "Kerberoasting", "DC-Sync"],
+      "OPS-02": ["SOAR", "KQL", "Essential Eight 成熟度"],
+      "OPS-03": ["大语言模型", "越狱", "对抗测试"],
+      "OPS-04": ["Zeek", "Suricata", "孤立森林"],
+      "OPS-05": ["上行链路干扰", "欺骗", "遥测"],
+      "OPS-06": ["逆向工程", "YARA", "API 钩子"],
+      "OPS-07": ["后量子密码学", "密码资产清单"],
     },
   },
   es: {
@@ -103,18 +108,19 @@ const copy: Record<Locale, PageSupportCopy> = {
     officialCertificateNames:
       "Los títulos de los certificados conservan el inglés original para facilitar su verificación.",
     sourceCode: "Código fuente · idioma original",
+    opensInNewTab: "(se abre en una pestaña nueva)",
     aboutLabTags: {
-      "001": ["Equipo morado", "Kerberoasting", "DC-Sync"],
-      "002": ["SOAR", "KQL", "Madurez de Essential Eight"],
-      "003": ["Modelos de lenguaje", "Jailbreak", "Pruebas adversariales"],
-      "004": ["Zeek", "Suricata", "Bosque de aislamiento"],
-      "005": [
+      "OPS-01": ["Equipo morado", "Kerberoasting", "DC-Sync"],
+      "OPS-02": ["SOAR", "KQL", "Madurez de Essential Eight"],
+      "OPS-03": ["Modelos de lenguaje", "Jailbreak", "Pruebas adversariales"],
+      "OPS-04": ["Zeek", "Suricata", "Bosque de aislamiento"],
+      "OPS-05": [
         "Interferencia de enlace ascendente",
         "Suplantación",
         "Telemetría",
       ],
-      "006": ["Ingeniería inversa", "YARA", "Hooks de API"],
-      "007": ["Criptografía poscuántica", "Inventario criptográfico"],
+      "OPS-06": ["Ingeniería inversa", "YARA", "Hooks de API"],
+      "OPS-07": ["Criptografía poscuántica", "Inventario criptográfico"],
     },
   },
 };

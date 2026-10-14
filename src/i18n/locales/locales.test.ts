@@ -32,8 +32,6 @@ function normalizeDigits(value: string): string {
 // Product names, language names and source-code identifiers retain their spelling.
 // These are the only dictionary paths whose entire value may match English.
 const sourceIdentifiers = new Set([
-  "home.ticker.4",
-  "home.ticker.7",
   "about.hero_title",
   "about.spec3_item4",
   "about.spec3_item5",
@@ -55,8 +53,9 @@ const sourceIdentifiers = new Set([
   "resume.proj4_stack",
   "resume.proj5_stack",
   "resume.proj6_tag",
-  "project_detail.doi_short",
   "contact_form.email_placeholder",
+  // Sentence-closing punctuation; identical in several scripts.
+  "security_policy.ack_desc_suffix",
 ]);
 
 describe("translation contracts", () => {

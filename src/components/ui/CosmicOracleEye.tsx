@@ -186,7 +186,8 @@ export function CosmicOracleEye() {
         .coe-lashes  { transform-origin: 100px 95px;  animation: coe-cw  25s linear     infinite; }
         .coe-iris    { transform-origin: 100px 95px;  animation: coe-ccw 12s linear     infinite; }
         .coe-pupil   { transform-origin: 100px 95px;  animation: coe-cw  8s  linear     infinite,
-                                                                  coe-breathe 3s ease-in-out infinite alternate; }
+                                                                  coe-breathe 3s ease-in-out infinite alternate;
+                       animation-composition: replace, add; }
         .coe-pendulum { transform-origin: 100px 130px; animation: coe-swing 3s ease-in-out infinite alternate; }
 
         @keyframes coe-cw      { from { transform: rotate(0deg); }    to { transform: rotate(360deg); } }

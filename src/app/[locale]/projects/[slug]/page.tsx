@@ -15,6 +15,7 @@ import {
   breadcrumbList,
   OG_IMAGES,
   TWITTER_IMAGE,
+  ogBase,
 } from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { ProjectDetailClient } from "./ProjectDetailClient";
@@ -61,6 +62,7 @@ export async function generateMetadata({
     description,
     alternates: buildAlternates(`/projects/${slug}`, locale),
     openGraph: {
+      ...ogBase(locale),
       url: pageUrl,
       title: `${localizedProject.title} | Mohammad Raouf Abedini`,
       description,
@@ -88,7 +90,7 @@ function buildProjectJsonLd(
   project: (typeof projects)[string],
   slug: string,
   locale: string,
-  crumbs: { home: string; section: string },
+  crumbs: { home: string; section: string; conditionsOfAccess: string },
 ) {
   const prefix = LOCALE_PREFIX[locale] ?? "";
   // Locale-aware canonical entity URL — a Persian page identifies itself as the
@@ -140,10 +142,7 @@ function buildProjectJsonLd(
     author: AUTHOR,
     ...(project.links.repo ? { codeRepository: project.links.repo } : {}),
     ...(project.links.repoVisibility === "private"
-      ? {
-          conditionsOfAccess:
-            "Private source repository; access may be requested from the author.",
-        }
+      ? { conditionsOfAccess: crumbs.conditionsOfAccess }
       : {}),
     ...(articles.length
       ? { subjectOf: articles.map((a) => ({ "@id": a["@id"] })) }
@@ -192,6 +191,8 @@ export default async function ProjectPage({ params }: PageProps) {
           __html: buildProjectJsonLd(project, slug, locale, {
             home: t.nav.home,
             section: t.seo.projects_title,
+            // Localised alongside the node's `inLanguage`, not fixed English.
+            conditionsOfAccess: t.seo.conditions_of_access,
           }),
         }}
       />

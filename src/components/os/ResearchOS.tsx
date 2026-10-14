@@ -54,6 +54,7 @@ import { Desktop } from "./Desktop";
 import { ProofAtlasVisibilityContext } from "./proof-atlas-context";
 import { ReadingWindowControls } from "./ReadingWindowControls";
 import { useReadingWindow } from "./use-reading-window";
+import { useCopyrightYear } from "./use-copyright-year";
 import { getWindowCopy } from "./window-copy";
 import { getAtlasJourneyCopy } from "./atlas-journey-copy";
 import {
@@ -214,6 +215,7 @@ export function ResearchOS({
   const minimizedTask = useRef<HTMLButtonElement>(null);
   const pendingWorkspacePath = useRef<string | null>(null);
   const reading = useReadingWindow(pathname, content);
+  const copyrightYear = useCopyrightYear();
   const windowCopy = getWindowCopy(locale);
   const [workspace, setWorkspace] = useState(() => ({
     initialized: false,
@@ -378,13 +380,13 @@ export function ResearchOS({
       model: workspaceReducer(value.model, { type: "restore", id }),
     }));
     const href = destination ?? application.descriptor.path;
-    if (
-      (pathname !== application.descriptor.path ||
-        (href.includes("#") &&
-          location.hash !== href.slice(href.indexOf("#")))) &&
-      pendingWorkspacePath.current !== href
-    ) {
-      pendingWorkspacePath.current = href;
+    const pathChange = pathname !== application.descriptor.path;
+    const hashChange =
+      href.includes("#") && location.hash !== href.slice(href.indexOf("#"));
+    // A fragment on the current page never re-registers the application, so the
+    // pending path cannot de-duplicate it; only a page change is pending.
+    if (pathChange ? pendingWorkspacePath.current !== href : hashChange) {
+      if (pathChange) pendingWorkspacePath.current = href;
       router.push(href);
     }
   }
@@ -693,7 +695,7 @@ export function ResearchOS({
                 <span lang={locale}>{locales[locale].label}</span>
                 <ChevronDown aria-hidden="true" />
               </summary>
-              <nav aria-label={copy.navigation}>
+              <nav aria-label={copy.selectLanguage}>
                 {(Object.keys(locales) as Locale[]).map((language) => (
                   <Link
                     key={language}
@@ -870,10 +872,15 @@ export function ResearchOS({
               >
                 <OSIcon app={activeApp} />
                 <span>
-                  <strong>{windowTitle}</strong>
-                  <small>
-                    {windowCopy.minimized} · {windowCopy.restoreWindow}
-                  </small>
+                  <strong>
+                    <bdi
+                      lang={pageEntry?.titleLocale ?? locale}
+                      dir={locales[pageEntry?.titleLocale ?? locale].dir}
+                    >
+                      {windowTitle}
+                    </bdi>
+                  </strong>
+                  <small>{windowCopy.minimized}</small>
                 </span>
               </button>
             </>
@@ -975,11 +982,13 @@ export function ResearchOS({
                 </div>
               </div>
             )}
-            {shareStatus && (
-              <p className="os-share-status" role="status">
-                {shareStatus}
-              </p>
-            )}
+            {/* The live region stays mounted so assistive tech announces updates. */}
+            <p
+              className={shareStatus ? "os-share-status" : "sr-only"}
+              role="status"
+            >
+              {shareStatus}
+            </p>
             <Activity mode={reading.minimized ? "hidden" : "visible"}>
               <div
                 className="os-page-content"
@@ -1052,9 +1061,7 @@ export function ResearchOS({
                 <a href="/feed.xml">RSS</a>
                 <span>
                   ©{" "}
-                  {formatNumber(new Date().getUTCFullYear(), locale, {
-                    useGrouping: false,
-                  })}{" "}
+                  {formatNumber(copyrightYear, locale, { useGrouping: false })}{" "}
                   <bdi lang={copy.nameLocale}>{copy.familyName}</bdi>
                 </span>
               </footer>
@@ -1116,14 +1123,20 @@ export function ResearchOS({
                     !event.shiftKey &&
                     !event.altKey
                   ) {
-                    const window = [...workspace.model.windows]
+                    const openWindow = [...workspace.model.windows]
                       .reverse()
                       .find(
                         (item) => appForDescriptor(item.descriptor) === app,
                       );
-                    if (window) {
+                    // Restore a minimised page or refocus the app root; a dossier
+                    // still lets the link reach the list it advertises.
+                    if (
+                      openWindow &&
+                      (openWindow.minimized ||
+                        openWindow.descriptor.path === getPath(appPaths[app]))
+                    ) {
                       event.preventDefault();
-                      focusWorkspaceWindow(window.descriptor.id);
+                      focusWorkspaceWindow(openWindow.descriptor.id);
                       return;
                     }
                   }
@@ -1198,7 +1211,7 @@ export function ResearchOS({
           <div
             className="os-search-scopes"
             role="group"
-            aria-label={copy.searchResults}
+            aria-label={copy.searchScopes}
           >
             {(Object.keys(scopeLabels) as (SearchEntry["kind"] | "all")[]).map(
               (kind) => (

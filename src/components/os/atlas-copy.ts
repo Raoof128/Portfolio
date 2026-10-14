@@ -1,12 +1,13 @@
 import type { Locale } from "@/i18n";
 
 export type AtlasProject =
-  "project-simurgh" | "invisible-window-research" | "project-zurvan";
+  | "project-simurgh"
+  | "invisible-window-research"
+  | "project-zurvan";
 
 type AtlasCopy = {
   eyebrow: string;
   heading: string;
-  summary: string;
   selectProject: string;
   openEvidence: string;
   welcomeCaption: string;
@@ -22,7 +23,6 @@ const copy: Record<Locale, AtlasCopy> = {
   en: {
     eyebrow: "PROOF ATLAS · SELECTED RESEARCH",
     heading: "Where the evidence connects",
-    summary: "A map of the boundaries, methods, and sources behind this work.",
     selectProject: "Select a research map",
     openEvidence: "Open project evidence",
     welcomeCaption:
@@ -50,7 +50,7 @@ const copy: Record<Locale, AtlasCopy> = {
       decision: "Decision",
       vault: "Local store",
       search: "Search",
-      neighbors: "Neighbors",
+      neighbors: "Neighbours",
       mcp: "MCP tools",
     },
     projects: {
@@ -84,13 +84,12 @@ const copy: Record<Locale, AtlasCopy> = {
       "invisible-window-research":
         "Controlled simulated configurations only; no commercial proctoring products were tested. macOS 26 used native capture paths.",
       "project-zurvan":
-        "This is an illustrative map of documented architecture, not a visualization of a private corpus.",
+        "This is an illustrative map of documented architecture, not a visualisation of a private corpus.",
     },
   },
   fa: {
     eyebrow: "اطلس شواهد · پژوهش منتخب",
     heading: "پیوند میان شواهد",
-    summary: "نقشه‌ای از مرزها، روش‌ها و منابع این پژوهش.",
     selectProject: "انتخاب نقشه پژوهش",
     openEvidence: "مشاهده شواهد پروژه",
     welcomeCaption: "سه مسیر پژوهشی؛ هر خط یک رابطه مستند را نشان می‌دهد.",
@@ -157,7 +156,6 @@ const copy: Record<Locale, AtlasCopy> = {
   ar: {
     eyebrow: "أطلس الأدلة · أبحاث مختارة",
     heading: "روابط الأدلة",
-    summary: "خريطة للحدود والأساليب والمصادر التي تقوم عليها هذه الأبحاث.",
     selectProject: "اختر خريطة بحثية",
     openEvidence: "افتح أدلة المشروع",
     welcomeCaption: "ثلاثة مسارات بحثية؛ يمثّل كل خط علاقة موثقة.",
@@ -224,7 +222,6 @@ const copy: Record<Locale, AtlasCopy> = {
   es: {
     eyebrow: "ATLAS DE PRUEBAS · INVESTIGACIÓN",
     heading: "Conexiones entre evidencias",
-    summary: "Un mapa de los límites, métodos y fuentes de este trabajo.",
     selectProject: "Elige un mapa de investigación",
     openEvidence: "Abrir evidencias del proyecto",
     welcomeCaption:
@@ -292,7 +289,6 @@ const copy: Record<Locale, AtlasCopy> = {
   zh: {
     eyebrow: "证据图谱 · 精选研究",
     heading: "证据之间的联系",
-    summary: "展示这项研究所依据的边界、方法与来源。",
     selectProject: "选择研究图谱",
     openEvidence: "查看项目证据",
     welcomeCaption: "三条研究路径；每条连线都对应有文档依据的关系。",

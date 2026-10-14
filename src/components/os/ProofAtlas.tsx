@@ -150,7 +150,7 @@ const maps: Record<AtlasProject, AtlasMap> = {
       { id: "decision", label: "Decision", x: 154, y: 198 },
       { id: "vault", label: "Local vault", x: 288, y: 125 },
       { id: "search", label: "Hybrid search", x: 407, y: 82 },
-      { id: "neighbors", label: "Graph neighbors", x: 407, y: 168 },
+      { id: "neighbors", label: "Graph neighbours", x: 407, y: 168 },
       { id: "mcp", label: "MCP tools", x: 516, y: 125, kind: "evidence" },
     ],
     edges: [
@@ -229,12 +229,11 @@ export function ProofAtlas({
   const href = `${locale === "en" ? "" : `/${locale}`}/projects/${selected}`;
 
   function moveWithPointer(event: PointerEvent<SVGSVGElement>) {
+    // motionEnabled already reflects reduced motion and pointer capability.
     if (
       !isInteractive ||
       !motionEnabled ||
       event.pointerType !== "mouse" ||
-      !window.matchMedia("(hover: hover) and (pointer: fine)").matches ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       frameRequest.current !== null
     )
       return;
@@ -294,9 +293,8 @@ export function ProofAtlas({
         viewBox="0 0 552 320"
         direction="ltr"
         role={isDecorative ? undefined : "img"}
-        aria-labelledby={
-          isDecorative ? undefined : `${svgTitleId} ${descriptionId}`
-        }
+        aria-labelledby={isDecorative ? undefined : svgTitleId}
+        aria-describedby={isDecorative ? undefined : descriptionId}
         aria-hidden={isDecorative || undefined}
         style={{ "--atlas-gradient": `url(#${gradientId})` } as CSSProperties}
         onPointerMove={isInteractive ? moveWithPointer : undefined}

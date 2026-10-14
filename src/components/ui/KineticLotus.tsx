@@ -28,7 +28,7 @@ export function KineticLotus() {
           </defs>
 
           {/* Gold petal layer — clockwise */}
-          <g className="kl-gold origin-center">
+          <g className="kl-gold kl-origin">
             {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(
               (r) => (
                 <use
@@ -41,7 +41,7 @@ export function KineticLotus() {
           </g>
 
           {/* Cream petal layer — counter-clockwise, offset 15° */}
-          <g className="kl-cream origin-center">
+          <g className="kl-cream kl-origin">
             {[15, 45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345].map(
               (r) => (
                 <use
@@ -55,7 +55,7 @@ export function KineticLotus() {
 
           {/* Core */}
           <circle
-            className="kl-core origin-center"
+            className="kl-core kl-origin"
             cx="100"
             cy="100"
             r="16"
@@ -81,18 +81,20 @@ export function KineticLotus() {
           max-width: 320px;
           max-height: 320px;
         }
-        .origin-center {
+        .kl-origin {
           transform-origin: 100px 100px;
         }
         .kl-gold {
           animation:
             kl-cw 12s linear infinite,
             kl-breathe-gold 4s ease-in-out infinite;
+          animation-composition: replace, add;
         }
         .kl-cream {
           animation:
             kl-ccw 9s linear infinite,
             kl-breathe-cream 4s ease-in-out infinite;
+          animation-composition: replace, add;
         }
         .kl-core {
           animation: kl-pulse 2s ease-in-out infinite alternate;

@@ -85,6 +85,8 @@ function ApplicationWindow({
     initialFloating: true,
     initialReadingOffset: initial.readingOffset,
     placement,
+    // A plain click on the title keeps the expanded state; movement ends it.
+    onGesture: () => setExpanded(false),
   });
   const app = appForDescriptor(descriptor);
   const entry = entries.find((item) => item.href === descriptor.path);
@@ -253,15 +255,13 @@ function ApplicationWindow({
           <button
             type="button"
             onClick={() => actions.focus(descriptor.id)}
-            aria-label={`${commands.restoreWindow}: ${title}`}
+            // The title names the landmark; the drag affordance is advisory.
+            title={reading.desktop ? commands.moveWindow : undefined}
             id={`${controlId}-title`}
             className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
             lang={titleLocale}
             dir={locales[titleLocale].dir}
-            onPointerDown={(event) => {
-              setExpanded(false);
-              reading.beginPointer(event, "move");
-            }}
+            onPointerDown={(event) => reading.beginPointer(event, "move")}
             {...reading.pointerHandlers}
           >
             {title}
@@ -334,11 +334,10 @@ function ApplicationWindow({
           </button>
         </div>
       </div>
-      {shareStatus && (
-        <p className="os-share-status" role="status">
-          {shareStatus}
-        </p>
-      )}
+      {/* The live region stays mounted so assistive tech announces updates. */}
+      <p className={shareStatus ? "os-share-status" : "sr-only"} role="status">
+        {shareStatus}
+      </p>
       <Activity mode={hidden ? "hidden" : "visible"}>
         <ApplicationStateContext.Provider value={initial}>
           <ApplicationVisibilityContext.Provider
@@ -364,10 +363,7 @@ function ApplicationWindow({
             className="os-control os-window-resize"
             aria-label={commands.resizeWindow}
             aria-describedby={`${controlId}-resize`}
-            onPointerDown={(event) => {
-              setExpanded(false);
-              reading.beginPointer(event, "resize");
-            }}
+            onPointerDown={(event) => reading.beginPointer(event, "resize")}
             {...reading.pointerHandlers}
             onKeyDown={resizeKeys}
           >
@@ -376,6 +372,44 @@ function ApplicationWindow({
         </>
       )}
     </section>
+  );
+}
+
+function MinimizedTask({
+  current,
+  entries,
+  locale,
+  onRestore,
+}: {
+  current: WorkspaceState["windows"][number];
+  entries: SearchEntry[];
+  locale: Locale;
+  onRestore: () => void;
+}) {
+  const commands = getWindowCopy(locale);
+  const copy = getOSCopy(locale);
+  const entry = entries.find((item) => item.href === current.descriptor.path);
+  const title = entry?.title ?? copy[appForDescriptor(current.descriptor)];
+  const titleLocale = entry?.titleLocale ?? locale;
+  return (
+    <button
+      className="os-minimized-task"
+      data-window-id={current.descriptor.id}
+      type="button"
+      aria-label={`${commands.restoreWindow}: ${title}`}
+      aria-describedby={`current-minimized-${locale}`}
+      onClick={onRestore}
+    >
+      <OSIcon app={appForDescriptor(current.descriptor)} />
+      <span>
+        <strong>
+          <bdi lang={titleLocale} dir={locales[titleLocale].dir}>
+            {title}
+          </bdi>
+        </strong>
+        <small id={`current-minimized-${locale}`}>{commands.minimized}</small>
+      </span>
+    </button>
   );
 }
 
@@ -398,8 +432,6 @@ export function WorkspaceWindows({
   actions: WindowActions;
   locked: boolean;
 }) {
-  const commands = getWindowCopy(locale);
-  const copy = getOSCopy(locale);
   const current = state.windows.find(
     (item) => item.descriptor.path === pathname,
   );
@@ -437,27 +469,12 @@ export function WorkspaceWindows({
         );
       })}
       {current?.minimized && (
-        <button
-          className="os-minimized-task"
-          data-window-id={current.descriptor.id}
-          type="button"
-          aria-label={`${commands.restoreWindow}: ${entries.find((entry) => entry.href === current.descriptor.path)?.title ?? copy[appForDescriptor(current.descriptor)]}`}
-          aria-describedby={`current-minimized-${locale}`}
-          onClick={() => actions.restore(current.descriptor.id)}
-        >
-          <OSIcon app={appForDescriptor(current.descriptor)} />
-          <span>
-            <strong>
-              <bdi>
-                {entries.find((entry) => entry.href === current.descriptor.path)
-                  ?.title ?? copy[appForDescriptor(current.descriptor)]}
-              </bdi>
-            </strong>
-            <small id={`current-minimized-${locale}`}>
-              {commands.minimized} · {commands.restoreWindow}
-            </small>
-          </span>
-        </button>
+        <MinimizedTask
+          current={current}
+          entries={entries}
+          locale={locale}
+          onRestore={() => actions.restore(current.descriptor.id)}
+        />
       )}
     </div>
   );

@@ -1,14 +1,14 @@
 import type { Locale } from "@/i18n";
 
 const en = {
-  minimize: "Minimize",
+  minimize: "Minimise",
   restoreWindow: "Restore window",
   moveWindow: "Move window",
   resizeWindow: "Resize window",
   // The retained API key resets both geometry dimensions and the reading layout.
   resetPosition: "Reset window layout",
   windowControls: "Window controls",
-  minimized: "Minimized",
+  minimized: "Minimised",
   moveLeft: "Move left",
   moveRight: "Move right",
   moveUp: "Move up",
@@ -22,7 +22,6 @@ const en = {
     "Use the arrow keys to move. Hold Shift for larger steps. Press Escape to finish.",
   resizeHint:
     "Use the arrow keys to resize. Hold Shift for larger steps. Press Escape to finish.",
-  readingWindow: "Reading window",
 } as const;
 
 /** Keep window commands complete in every supported language. */
@@ -53,7 +52,6 @@ const copy: Readonly<Record<Locale, WindowCopy>> = {
       "با کلیدهای جهت‌دار پنجره را جابه‌جا کنید. برای گام‌های بزرگ‌تر Shift را نگه دارید. برای پایان، Escape را بزنید.",
     resizeHint:
       "با کلیدهای جهت‌دار اندازهٔ پنجره را تغییر دهید. برای گام‌های بزرگ‌تر Shift را نگه دارید. برای پایان، Escape را بزنید.",
-    readingWindow: "پنجرهٔ مطالعه",
   },
   ar: {
     minimize: "تصغير",
@@ -76,7 +74,6 @@ const copy: Readonly<Record<Locale, WindowCopy>> = {
       "استخدم مفاتيح الأسهم لتحريك النافذة. اضغط باستمرار على Shift لخطوات أكبر. اضغط Escape للإنهاء.",
     resizeHint:
       "استخدم مفاتيح الأسهم لتغيير حجم النافذة. اضغط باستمرار على Shift لخطوات أكبر. اضغط Escape للإنهاء.",
-    readingWindow: "نافذة القراءة",
   },
   zh: {
     minimize: "最小化",
@@ -98,7 +95,6 @@ const copy: Readonly<Record<Locale, WindowCopy>> = {
     moveHint: "使用方向键移动窗口。按住 Shift 可增大移动步幅，按 Escape 完成。",
     resizeHint:
       "使用方向键调整窗口大小。按住 Shift 可增大调整幅度，按 Escape 完成。",
-    readingWindow: "阅读窗口",
   },
   es: {
     minimize: "Minimizar",
@@ -121,7 +117,6 @@ const copy: Readonly<Record<Locale, WindowCopy>> = {
       "Usa las flechas para mover la ventana. Mantén pulsada Shift para desplazamientos mayores. Pulsa Escape para terminar.",
     resizeHint:
       "Usa las flechas para cambiar el tamaño. Mantén pulsada Shift para ajustes mayores. Pulsa Escape para terminar.",
-    readingWindow: "Ventana de lectura",
   },
 };
 

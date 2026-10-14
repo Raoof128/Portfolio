@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { NeonButton } from "./NeonButton";
 
 describe("NeonButton", () => {
@@ -59,6 +59,39 @@ describe("NeonButton", () => {
     );
     const link = screen.getByRole("link", { name: /custom/i });
     expect(link).toHaveClass("custom-class");
+  });
+
+  it("forwards shared attributes to the link renderings", () => {
+    const onClick = vi.fn((event: React.MouseEvent) => event.preventDefault());
+    const { unmount } = render(
+      <NeonButton
+        href="/test"
+        aria-label="Open test"
+        title="Test title"
+        onClick={onClick}
+      >
+        Internal
+      </NeonButton>,
+    );
+    const internal = screen.getByRole("link", { name: "Open test" });
+    expect(internal).toHaveAttribute("title", "Test title");
+    fireEvent.click(internal);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    unmount();
+
+    render(
+      <NeonButton
+        href="https://example.com"
+        external
+        aria-label="Open external"
+        onClick={onClick}
+      >
+        External
+      </NeonButton>,
+    );
+    const external = screen.getByRole("link", { name: "Open external" });
+    fireEvent.click(external);
+    expect(onClick).toHaveBeenCalledTimes(2);
   });
 
   it("renders children correctly", () => {

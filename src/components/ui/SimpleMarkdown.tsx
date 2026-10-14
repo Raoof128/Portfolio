@@ -23,10 +23,12 @@ function approvedLink(href: string): boolean {
   }
 }
 
-function renderInline(text: string): React.ReactNode[] {
+function renderInline(text: string, newTabHint?: string): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
-  // 1/2: **bold** · 3/4: `code` · 5/6/7: [text](url)
-  const regex = /(\*\*(.+?)\*\*)|(`(.+?)`)|(\[([^\]]+)\]\(([^)]+)\))/g;
+  // 1/2: **bold** · 3/4: *italic* · 5/6: `code` · 7/8/9: [text](url)
+  // Bold is listed first so a leading ** never parses as italic.
+  const regex =
+    /(\*\*(.+?)\*\*)|(\*([^*\s][^*]*?)\*)|(`(.+?)`)|(\[([^\]]+)\]\(([^)]+)\))/g;
   let lastIndex = 0;
   let match;
 
@@ -42,19 +44,25 @@ function renderInline(text: string): React.ReactNode[] {
       );
     } else if (match[4]) {
       parts.push(
+        <em key={match.index} className="italic">
+          {match[4]}
+        </em>,
+      );
+    } else if (match[6]) {
+      parts.push(
         <code
           key={match.index}
           dir="ltr"
           lang="en"
           className="text-cyan bg-cyan/10 px-1.5 py-0.5 rounded text-sm font-mono break-words [unicode-bidi:isolate]"
         >
-          {match[4]}
+          {match[6]}
         </code>,
       );
-    } else if (match[6]) {
-      const href = match[7];
+    } else if (match[8]) {
+      const href = match[9];
       if (!approvedLink(href)) {
-        parts.push(match[6]);
+        parts.push(match[8]);
         lastIndex = regex.lastIndex;
         continue;
       }
@@ -68,7 +76,13 @@ function renderInline(text: string): React.ReactNode[] {
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
         >
-          {match[6]}
+          {match[8]}
+          {external && newTabHint && (
+            <>
+              {" "}
+              <span className="sr-only">{newTabHint}</span>
+            </>
+          )}
         </a>,
       );
     }
@@ -198,7 +212,7 @@ export function SimpleMarkdown({
                     key={hi}
                     className="px-3 py-2 text-start font-mono text-xs text-cyan font-semibold border-b border-cyan/15"
                   >
-                    {renderInline(h)}
+                    {renderInline(h, copy.opensInNewTab)}
                   </th>
                 ))}
               </tr>
@@ -211,7 +225,7 @@ export function SimpleMarkdown({
                 >
                   {row.map((cell, ci) => (
                     <td key={ci} className="px-3 py-2 text-slate-300 align-top">
-                      {renderInline(cell)}
+                      {renderInline(cell, copy.opensInNewTab)}
                     </td>
                   ))}
                 </tr>
@@ -230,7 +244,7 @@ export function SimpleMarkdown({
           key={i}
           className="text-lg sm:text-xl font-bold text-white mt-8 mb-3 font-mono"
         >
-          {renderInline(trimmed.slice(4))}
+          {renderInline(trimmed.slice(4), copy.opensInNewTab)}
         </h3>,
       );
       i++;
@@ -244,7 +258,7 @@ export function SimpleMarkdown({
           key={i}
           className="text-xl sm:text-2xl font-bold text-white mt-10 mb-4 font-mono border-b border-cyan/12 pb-2"
         >
-          {renderInline(trimmed.slice(3))}
+          {renderInline(trimmed.slice(3), copy.opensInNewTab)}
         </h2>,
       );
       i++;
@@ -265,7 +279,7 @@ export function SimpleMarkdown({
         >
           {quoteLines.map((ql, qi) => (
             <p key={qi} className="my-1">
-              {renderInline(ql)}
+              {renderInline(ql, copy.opensInNewTab)}
             </p>
           ))}
         </blockquote>,
@@ -275,21 +289,23 @@ export function SimpleMarkdown({
 
     // Ordered list
     if (/^\d+\.\s+/.test(trimmed)) {
+      const firstNumber = Number.parseInt(trimmed, 10);
       const items: React.ReactNode[] = [];
       while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
         const itemText = lines[i].trim().replace(/^\d+\.\s+/, "");
         items.push(
-          <li key={i} className="flex items-start gap-2 text-slate-300">
-            <span className="text-cyan mt-1 shrink-0">▹</span>
-            <span className="min-w-0 break-words">
-              {renderInline(itemText)}
-            </span>
+          <li key={i} className="text-slate-300 break-words">
+            {renderInline(itemText, copy.opensInNewTab)}
           </li>,
         );
         i++;
       }
       elements.push(
-        <ol key={`ol-${i}`} className="space-y-2 my-4">
+        <ol
+          key={`ol-${i}`}
+          className="list-decimal ps-6 space-y-2 my-4"
+          start={Number.isNaN(firstNumber) ? undefined : firstNumber}
+        >
           {items}
         </ol>,
       );
@@ -306,16 +322,18 @@ export function SimpleMarkdown({
         const itemText = lines[i].trim().slice(2);
         items.push(
           <li key={i} className="flex items-start gap-2 text-slate-300">
-            <span className="text-cyan mt-1 shrink-0">▹</span>
+            <span className="text-cyan mt-1 shrink-0" aria-hidden="true">
+              ▹
+            </span>
             <span className="min-w-0 break-words">
-              {renderInline(itemText)}
+              {renderInline(itemText, copy.opensInNewTab)}
             </span>
           </li>,
         );
         i++;
       }
       elements.push(
-        <ul key={`ul-${i}`} className="space-y-2 my-4">
+        <ul key={`ul-${i}`} role="list" className="space-y-2 my-4">
           {items}
         </ul>,
       );
@@ -325,7 +343,7 @@ export function SimpleMarkdown({
     // Regular paragraph
     elements.push(
       <p key={i} className="text-slate-300 leading-relaxed my-4 break-words">
-        {renderInline(trimmed)}
+        {renderInline(trimmed, copy.opensInNewTab)}
       </p>,
     );
     i++;

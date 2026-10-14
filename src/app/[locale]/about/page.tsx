@@ -5,6 +5,7 @@ import {
   buildAlternates,
   OG_IMAGES,
   TWITTER_IMAGE,
+  ogBase,
   ogUrl,
   serializeJsonLd,
 } from "@/lib/seo";
@@ -31,14 +32,15 @@ export async function generateMetadata({
     description: t.seo.about_description,
     alternates: buildAlternates("/about", locale),
     openGraph: {
+      ...ogBase(locale),
       url: ogUrl("/about", locale),
-      title: t.seo.about_title,
+      title: `${t.seo.about_title} | Mohammad Raouf Abedini`,
       description: t.seo.about_og_description,
       images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
-      title: t.seo.about_title,
+      title: `${t.seo.about_title} | Mohammad Raouf Abedini`,
       description: t.seo.about_og_description,
       images: TWITTER_IMAGE,
     },

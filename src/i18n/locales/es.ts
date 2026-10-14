@@ -24,8 +24,6 @@ const es: Dictionary = {
     about_og_description:
       "Investigación de seguridad de IA, red-teaming de agentes LLM y atestación de contención verificable. Creador de Project Simurgh.",
     contact_title: "Contacto",
-    contact_description:
-      "Contacta con Mohammad Raouf Abedini para colaboraciones de investigación, ingeniería de seguridad u oportunidades profesionales. Abre un borrador en tu aplicación de correo.",
     lab_title: "Laboratorio",
     lab_description:
       "Código experimental, pruebas de concepto y fragmentos de investigación en ciberseguridad.",
@@ -49,6 +47,8 @@ const es: Dictionary = {
     not_found_title: "Página no encontrada",
     project_not_found_title: "Proyecto no encontrado",
     project_not_found_description: "El proyecto solicitado no existe.",
+    conditions_of_access:
+      "Repositorio de código fuente privado; el acceso puede solicitarse al autor.",
   },
   nav: {
     home: "Inicio",
@@ -63,77 +63,12 @@ const es: Dictionary = {
     mobile_nav_label: "Navegación móvil",
   },
   hero: {
-    system_online: "En línea · Sídney, NSW",
-    title_prefix: "IA +",
-    title_cyber: "CIBER",
-    title_research: "Investigación",
-    philosophy_quote: '"Buscad, y hallaréis" — Mateo 7:7',
     intro:
       "Construyo sistemas que miden y contienen las capacidades cibernéticas de la IA de frontera. Creador de Project Simurgh, un marco de atestación de contención que somete a agentes LLM a pruebas de equipo rojo y produce evidencia firmada y verificable sin conexión de lo que un agente tuvo permitido hacer tras eludir una barrera: 138/138 casos que el clasificador pasó por alto contenidos, y el éxito de ataque de un agente en vivo reducido de 9/140 a 0/140 en AgentDojo. Evaluó las salidas de Claude en el programa de evaluación de seguridad de Anthropic. Trabajando para dar la ventaja a los defensores frente al riesgo cibernético de la IA avanzada.",
-    view_projects: "Ver proyectos",
-    view_resume: "Ver currículum",
     researcher: "Investigador de seguridad de IA",
-    evaluator: "Evaluador de seguridad de Claude · Alignerr",
-    university: "Universidad Macquarie · noviembre de 2026",
-  },
-  philosophy: {
-    title: "Filosofía",
-    subtitle: "Principios de trabajo",
-    research_title: "Investigación",
-    research_body:
-      "Someter a agentes LLM a pruebas de equipo rojo y medir la mejora de capacidades cibernéticas de la IA de frontera. Caracterizar los límites de seguridad, contener las elusiones de barreras con evidencia firmada y verificable sin conexión, y publicar hallazgos reproducibles.",
-    secure_title: "Seguridad",
-    secure_body:
-      "Defensa en profundidad que da la ventaja a los defensores. La investigación ofensiva —clases de exploits y campañas de ataque a agentes— se convierte en contención verificable y herramientas defensivas del mundo real.",
-    research_bullet_1: "Pruebas de adversario y contención de agentes LLM",
-    research_bullet_2: "Seguridad de la IA y evaluación de LLM",
-    research_bullet_3: "Evaluación de riesgos de doble uso",
-    secure_bullet_1: "Desarrollo de exploits multiplataforma",
-    secure_bullet_2: "Divulgación responsable (OWASP/FIRST/CISA)",
-    secure_bullet_3: "Atestación de contención verificable",
   },
   lab: {
-    title: "Laboratorio",
-    subtitle: "Investigación en curso",
-    description:
-      "Investigación práctica de vulnerabilidades y experimentación en seguridad de la IA. Trabajo actual: desarrollo de exploits multiplataforma, medición de la mejora de capacidades de la IA y caracterización de límites de seguridad.",
     enter_lab: "Explorar el laboratorio",
-    disclaimer:
-      "Solo para investigación defensiva. Sin captura de credenciales. Sin persistencia. Sin guía de despliegue.",
-    chip_1: "Investigación de vulnerabilidades",
-    chip_2: "Seguridad de la IA",
-    chip_3: "Desarrollo de exploits",
-    chip_4: "Divulgación responsable",
-  },
-  home: {
-    ticker: [
-      "SISTEMA EN LÍNEA",
-      "INVESTIGACIÓN DE SEGURIDAD DE IA",
-      "RED-TEAMING DE AGENTES LLM",
-      "ATESTACIÓN DE CONTENCIÓN",
-      "PROJECT SIMURGH",
-      "EVALUADOR DE SEGURIDAD DE CLAUDE · ALIGNERR",
-      "DIVULGACIÓN RESPONSABLE",
-      "THE INVISIBLE WINDOW",
-      "STARTUP RESPALDADA POR INCUBADORA",
-      "REDUCIENDO RIESGOS CATASTRÓFICOS DE LA IA",
-      "MÁS DE 70 PROYECTOS PUBLICADOS",
-      "LISTO PARA REUBICARME · SAN FRANCISCO",
-    ],
-    deployed_systems: "Sistemas desplegados",
-    ieee_format_paper: "ARTÍCULO EN FORMATO IEEE",
-    connected_to_invisible_window: "CONECTADO A INVISIBLE WINDOW",
-    local_first_mcp: "Procesamiento local · Memoria de agentes MCP",
-    scroll: "Desplazar",
-    view_prefix: "Ver",
-    category_defensive: "DEFENSIVO",
-    category_offensive: "OFENSIVO",
-    category_engineering: "INGENIERÍA",
-  },
-  writeups: {
-    title: "Artículos",
-    subtitle: "Artículos técnicos",
-    view_all: "Ver todos",
   },
   footer: {
     last_index: "Última actualización",
@@ -147,11 +82,8 @@ const es: Dictionary = {
   },
   common: {
     back: "Volver",
-    loading: "Cargando",
-    view_all_projects: "Ver todos los proyectos",
     case_study: "Estudio de caso",
     reproduce: "Reproducir",
-    repo: "Repositorio",
     select_language: "Seleccionar idioma",
     language_selected: "Seleccionado",
   },
@@ -178,7 +110,6 @@ const es: Dictionary = {
     photo_unavailable: "Foto no disponible",
     retry_photo: "Reintentar",
     terminal_subject: "Nombre: Raouf Abedini",
-    terminal_online: "En línea",
     terminal_clearance: "Perfil: investigador de seguridad de IA",
     terminal_location: "Ubicación: Sídney, NSW",
     degree_bachelor: "Licenciatura en ciberseguridad",
@@ -270,18 +201,11 @@ const es: Dictionary = {
     ops_lab6_title: "Entorno aislado de análisis de malware",
     ops_lab7_title: "Auditor de migración poscuántica",
   },
-  contact: {
-    title_1: "Ponte",
-    title_2: "en contacto",
-    subtitle_1:
-      "Para colaboraciones de investigación, ingeniería de seguridad u oportunidades profesionales.",
-    subtitle_2: "Abre un borrador de correo para ponerte en contacto.",
-  },
   lab_page: {
     experimental_division: "Investigación experimental",
     title: "El laboratorio",
     description_1: "Una colección de",
-    description_2: "pruebas de concepto",
+    description_2: "pruebas de concepto, ",
     description_3:
       "fragmentos e investigaciones sin terminar. El código aquí es volátil y se proporciona «tal cual» con fines educativos.",
     view_analysis: "Ver análisis",
@@ -293,16 +217,10 @@ const es: Dictionary = {
     classified_archive: "Investigación y artículos",
     title: "Artículos",
     description: "Análisis técnicos, soluciones CTF y registros de ingeniería.",
-    clearance_level: "Artículos públicos",
-    read_file: "Leer artículo",
   },
   projects_page: {
-    title: "Proyectos",
     subtitle:
       "Índice de herramientas desplegadas, prototipos de investigación y pruebas de arquitectura.",
-    search_placeholder: "Buscar proyectos",
-    empty_results: "La consulta no devolvió resultados.",
-    access_file: "Abrir proyecto",
   },
   resume_page: {
     title: "Currículum",
@@ -416,8 +334,6 @@ const es: Dictionary = {
     return_home: "Volver al inicio",
     browse_projects: "Explorar proyectos",
     error_code: "Página no encontrada",
-    terminal_ping_unknown: "ping: host desconocido",
-    terminal_trace_failed: "Fallo en el rastreo. Destino inalcanzable.",
   },
   lab_detail: {
     exit: "Volver a los experimentos",
@@ -436,9 +352,7 @@ const es: Dictionary = {
     tech_stack: "Tecnologías",
     secure: "Seguro",
     proof: "Pruebas y verificación",
-    verified_claims: "Afirmaciones verificadas",
     project_links: "Enlaces del proyecto",
-    watch_demo: "Ver demostración",
     source_code: "Código fuente",
     download_paper: "Descargar publicación",
     research_papers: "Publicaciones de investigación",
@@ -448,7 +362,6 @@ const es: Dictionary = {
     doi_record: "Registro DOI",
     demo: "Demostración",
     read_preprint: "Leer prepublicación",
-    doi_short: "DOI",
     cite_this_work: "Citar este trabajo",
   },
   writeups_detail: {
@@ -529,12 +442,9 @@ const es: Dictionary = {
     ack_desc:
       "Aprecio a los investigadores de seguridad responsables que ayudan a mejorar la seguridad de mis proyectos. Los informes válidos pueden ser reconocidos en el",
     ack_hall_of_fame: "Reconocimientos de seguridad",
+    ack_desc_suffix: ".",
     ack_note:
       "Nota: Este es un proyecto de portafolio personal. No se ofrecen recompensas monetarias, pero tu contribución será reconocida.",
-  },
-  terminal_feed: {
-    aria_label:
-      "Terminal animada que muestra la secuencia de arranque del sistema y la supervisión de seguridad",
   },
   project_card: {
     module_title: "Proyecto",

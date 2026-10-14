@@ -75,6 +75,8 @@ export function createCanvasPlayback(
   intersection?.observe(canvas);
   if (resizeObserver) resizeObserver.observe(canvas.parentElement ?? canvas);
   if (resize) window.addEventListener("resize", onResize, { passive: true });
+  // A restored 2D context comes back blank at default scale; rebuild it.
+  canvas.addEventListener("contextrestored", onResize);
   document.addEventListener("visibilitychange", sync);
   reducedMotion?.addEventListener("change", sync);
   onResize();
@@ -90,6 +92,7 @@ export function createCanvasPlayback(
       intersection?.disconnect();
       resizeObserver?.disconnect();
       window.removeEventListener("resize", onResize);
+      canvas.removeEventListener("contextrestored", onResize);
       document.removeEventListener("visibilitychange", sync);
       reducedMotion?.removeEventListener("change", sync);
     },

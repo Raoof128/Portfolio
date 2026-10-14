@@ -1,12 +1,22 @@
 "use client";
 
-import { useId } from "react";
+import { useId, type CSSProperties } from "react";
 
 const VOID = "#06050a";
 const GOLD = "#f59e0b";
 const RED = "#dc2626";
 const WHITE = "#fffdf5";
 const CHARCOAL = "#1c1a24";
+
+// Three staggered blink groups. Class selectors cannot reach into a <use>
+// shadow copy, but a custom property set on the <use> inherits into it.
+const BLINK_DELAYS = ["1.2s", "2.7s", "3.9s"] as const;
+
+function blinkStyle(index: number): CSSProperties {
+  return {
+    "--woe-blink-delay": BLINK_DELAYS[index % BLINK_DELAYS.length],
+  } as CSSProperties;
+}
 
 export function WheelsOfEzekiel() {
   const artworkId = useId();
@@ -95,10 +105,7 @@ export function WheelsOfEzekiel() {
             <g transform="translate(100,100)">
               {[0, 45, 90, 135, 180, 225, 270, 315].map((r, i) => (
                 <g key={r} transform={`rotate(${r}) translate(0,-70)`}>
-                  <use
-                    href={`#${artworkId}-woe-eye`}
-                    className={`woe-lid-${(i % 3) + 1}`}
-                  />
+                  <use href={`#${artworkId}-woe-eye`} style={blinkStyle(i)} />
                 </g>
               ))}
             </g>
@@ -135,10 +142,7 @@ export function WheelsOfEzekiel() {
               {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map(
                 (r, i) => (
                   <g key={r} transform={`rotate(${r}) translate(0,-54)`}>
-                    <use
-                      href={`#${artworkId}-woe-eye`}
-                      className={`woe-lid-${(i % 3) + 1}`}
-                    />
+                    <use href={`#${artworkId}-woe-eye`} style={blinkStyle(i)} />
                   </g>
                 ),
               )}
@@ -194,16 +198,11 @@ export function WheelsOfEzekiel() {
         .woe-inner  { transform-origin: 100px 100px; animation: woe-spin-inner 12s linear infinite; }
         .woe-center { transform-origin: 100px 100px; animation: woe-divine 3s ease-in-out infinite alternate; }
 
-        /* Eyelid blink — three staggered groups */
-        .woe-lid, use.woe-lid-1 ~ g .woe-lid,
-        use.woe-lid-1 .woe-lid { animation: woe-blink 5s ease-in-out infinite; }
-        use.woe-lid-2 .woe-lid { animation: woe-blink 5s ease-in-out infinite; animation-delay: 1.5s; }
-        use.woe-lid-3 .woe-lid { animation: woe-blink 5s ease-in-out infinite; animation-delay: 3.1s; }
-
-        /* Blink on all eyes via parent class */
-        .woe-lid-1 .woe-lid { animation: woe-blink 5s ease-in-out 1.2s infinite; }
-        .woe-lid-2 .woe-lid { animation: woe-blink 5s ease-in-out 2.7s infinite; }
-        .woe-lid-3 .woe-lid { animation: woe-blink 5s ease-in-out 3.9s infinite; }
+        /* Eyelid blink — stagger comes from --woe-blink-delay on each <use> */
+        .woe-lid {
+          animation: woe-blink 5s ease-in-out infinite;
+          animation-delay: var(--woe-blink-delay, 0s);
+        }
 
         @keyframes woe-spin-outer {
           0%   { transform: rotateX(35deg) rotateY(15deg) rotateZ(0deg); }

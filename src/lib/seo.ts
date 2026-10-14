@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "./constants";
-import { resolveLocale } from "@/i18n";
+import { SITE_NAME, SITE_URL } from "./constants";
+import { resolveLocale, type Locale } from "@/i18n";
 
 // English is served at the clean root path (no `/en` prefix, per public/_redirects);
 // every other locale lives under its own prefix.
@@ -10,7 +10,7 @@ export const LOCALE_PREFIX: Record<string, string> = {
   ar: "/ar",
   zh: "/zh",
   es: "/es",
-};
+} satisfies Record<Locale, string>;
 
 // Default social-preview card (1200×630, public/og.png). Any generateMetadata
 // that defines `openGraph` or `twitter` REPLACES the layout's version for that
@@ -31,7 +31,21 @@ export const OG_LOCALE: Record<string, string> = {
   ar: "ar_SA",
   zh: "zh_CN",
   es: "es_ES",
-};
+} satisfies Record<Locale, string>;
+
+/**
+ * Shared OpenGraph base for every page. Next does not deep-merge a child
+ * segment's `openGraph` with the layout's, so each sub-page spreads this first
+ * (and may override `type`, e.g. "article" for write-ups) to keep og:type,
+ * og:site_name and og:locale present on every route.
+ */
+export function ogBase(locale: string) {
+  return {
+    type: "website" as const,
+    siteName: SITE_NAME,
+    locale: OG_LOCALE[resolveLocale(locale)],
+  };
+}
 
 /**
  * Absolute, locale-aware self URL for a route — the value `og:url` must carry
@@ -40,7 +54,7 @@ export const OG_LOCALE: Record<string, string> = {
  */
 export function ogUrl(path: string, locale: string): string {
   const prefix = LOCALE_PREFIX[resolveLocale(locale)];
-  return `${SITE_URL}${prefix}${path}` || SITE_URL;
+  return `${SITE_URL}${prefix}${path}`;
 }
 
 /**
@@ -73,6 +87,7 @@ export function breadcrumbList(items: { name: string; url: string }[]) {
  * canonical (fixes Search Console "user-declared canonical: homepage" on
  * sub-pages). `path` is the locale-agnostic route, e.g. "/about" or "" for home.
  * Resolved against `metadataBase` (SITE_URL) set in the root layout.
+ * The RSS feed is advertised on every page for feed-reader/agent discovery.
  */
 export function buildAlternates(
   path: string,
@@ -90,5 +105,6 @@ export function buildAlternates(
       // Neutral selector for locale-agnostic crawlers → clean English.
       "x-default": path || "/",
     },
+    types: { "application/rss+xml": `${SITE_URL}/feed.xml` },
   };
 }

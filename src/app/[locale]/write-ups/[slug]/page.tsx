@@ -10,6 +10,7 @@ import {
   breadcrumbList,
   OG_IMAGES,
   TWITTER_IMAGE,
+  ogBase,
 } from "@/lib/seo";
 import { ORCID_URL, SITE_URL } from "@/lib/constants";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
@@ -48,6 +49,8 @@ export async function generateMetadata({
     description: post.takeaway,
     alternates: buildAlternates(`/write-ups/${slug}`, locale),
     openGraph: {
+      ...ogBase(locale),
+      // Overrides the "website" type from ogBase; must stay after the spread.
       type: "article",
       // Locale-aware self URL so og:url matches the page's own canonical.
       url: pageUrl,

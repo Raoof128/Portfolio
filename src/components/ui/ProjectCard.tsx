@@ -152,7 +152,9 @@ export function ProjectCard({
                       key={`${item}-${idx}`}
                       className="flex items-start gap-2 text-sm text-slate-300"
                     >
-                      <span className="text-cyan mt-1">&#x25B9;</span>
+                      <span className="text-cyan mt-1" aria-hidden="true">
+                        &#x25B9;
+                      </span>
                       {item}
                     </li>
                   ),

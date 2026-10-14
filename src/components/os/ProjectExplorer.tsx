@@ -11,6 +11,7 @@ import { searchEntries } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
 import { ProjectThumbnail } from "./ProjectThumbnail";
 import { useInitialAppState } from "./application-context";
+import { useCopyrightYear } from "./use-copyright-year";
 import "./project-explorer.css";
 
 type ProjectCategory = "ALL" | ProjectSummary["category"];
@@ -27,6 +28,7 @@ export function ProjectExplorer({
   const { locale, t } = useTranslation();
   const copy = getOSCopy(locale);
   const fieldId = useId();
+  const copyrightYear = useCopyrightYear();
   const initial = useInitialAppState();
   const categoryLabels = {
     ALL: copy.allCategories,
@@ -97,7 +99,7 @@ export function ProjectExplorer({
               autoComplete="off"
             />
           </div>
-          <label htmlFor={`${fieldId}-category`}>{copy.allCategories}</label>
+          <label htmlFor={`${fieldId}-category`}>{copy.category}</label>
           <select
             id={`${fieldId}-category`}
             value={category}
@@ -233,10 +235,7 @@ export function ProjectExplorer({
               <a href="/feed.xml">RSS</a>
             </nav>
             <span>
-              ©{" "}
-              {formatNumber(new Date().getUTCFullYear(), locale, {
-                useGrouping: false,
-              })}{" "}
+              © {formatNumber(copyrightYear, locale, { useGrouping: false })}{" "}
               <bdi lang={copy.nameLocale}>{copy.fullName}</bdi>
             </span>
           </div>

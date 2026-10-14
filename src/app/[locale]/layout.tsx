@@ -18,8 +18,10 @@ import { buildSearchEntries } from "@/lib/os-search";
 import {
   buildAlternates,
   serializeJsonLd,
+  ogUrl,
   OG_IMAGE,
-  LOCALE_PREFIX,
+  OG_LOCALE,
+  TWITTER_IMAGE,
 } from "@/lib/seo";
 
 const chakraPetch = Chakra_Petch({
@@ -78,19 +80,10 @@ export async function generateMetadata({
     creator: "Mohammad Raouf Abedini",
     openGraph: {
       type: "website",
-      locale:
-        locale === "fa"
-          ? "fa_IR"
-          : locale === "ar"
-            ? "ar_SA"
-            : locale === "zh"
-              ? "zh_CN"
-              : locale === "es"
-                ? "es_ES"
-                : "en_AU",
+      locale: OG_LOCALE[locale],
       // Locale-aware canonical URL so the Persian homepage advertises its own
       // /fa URL as og:url, not the English apex.
-      url: `${SITE_URL}${LOCALE_PREFIX[locale] || ""}` || SITE_URL,
+      url: ogUrl("", locale),
       title: t.seo.home_title_default,
       description: t.seo.home_og_description,
       siteName: SITE_NAME,
@@ -102,16 +95,13 @@ export async function generateMetadata({
       description: t.seo.home_og_description,
       creator: "@Raoofr12",
       site: "@Raoofr12",
-      images: ["/og.png"],
+      images: TWITTER_IMAGE,
     },
     metadataBase: new URL(SITE_URL),
     // Homepage self-canonical (locale-aware: en → "/", fa → "/fa", …). Sub-pages
-    // override this with their own canonical via generateMetadata + buildAlternates.
-    // RSS feed advertised site-wide for feed-reader/agent discovery.
-    alternates: {
-      ...buildAlternates("", locale),
-      types: { "application/rss+xml": `${SITE_URL}/feed.xml` },
-    },
+    // override this with their own canonical via generateMetadata + buildAlternates,
+    // which also advertises the RSS feed site-wide.
+    alternates: buildAlternates("", locale),
   };
 }
 

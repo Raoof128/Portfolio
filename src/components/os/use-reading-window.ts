@@ -46,6 +46,7 @@ type Gesture = {
   start: WindowRect;
   x: number;
   y: number;
+  moved: boolean;
 };
 
 function readReadingOffset(document: HTMLElement | null, floating: boolean) {
@@ -69,9 +70,15 @@ export function useReadingWindow(
     readonly initialFloating?: boolean;
     readonly initialReadingOffset?: number;
     readonly placement?: number;
+    /** Runs once a pointer gesture actually moves; a plain press never fires it. */
+    readonly onGesture?: () => void;
   } = {},
 ) {
   const active = options.active ?? true;
+  const onGesture = useRef(options.onGesture);
+  useEffect(() => {
+    onGesture.current = options.onGesture;
+  });
   const [state, setState] = useState<WindowState>({
     path,
     minimized: false,
@@ -283,7 +290,6 @@ export function useReadingWindow(
       // The pointer ended before capture; keyboard and step controls still work.
       return;
     }
-    preMaximizeRect.current = null;
     event.preventDefault();
     gesture.current = {
       pointerId: event.pointerId,
@@ -292,6 +298,7 @@ export function useReadingWindow(
       start,
       x: event.clientX,
       y: event.clientY,
+      moved: false,
     };
     setState({ path, minimized: false, rect: start });
   }
@@ -299,13 +306,17 @@ export function useReadingWindow(
   function updatePointer(event: PointerEvent<HTMLElement>) {
     const active = gesture.current;
     if (!active || event.pointerId !== active.pointerId) return;
+    const delta = { x: event.clientX - active.x, y: event.clientY - active.y };
+    if (!active.moved) {
+      // A press without movement is a click: keep the saved normal bounds.
+      if (delta.x === 0 && delta.y === 0) return;
+      active.moved = true;
+      preMaximizeRect.current = null;
+      onGesture.current?.();
+    }
     pending.current = (
       active.operation === "move" ? moveWindowRect : resizeWindowRect
-    )(
-      active.start,
-      { x: event.clientX - active.x, y: event.clientY - active.y },
-      viewport(),
-    );
+    )(active.start, delta, viewport());
     if (frame.current !== null) return;
     frame.current = requestAnimationFrame(() => {
       frame.current = null;

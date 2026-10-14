@@ -16,10 +16,10 @@ export const esProjects = {
       "Evaluación de configuraciones simuladas en un laboratorio controlado con Windows 10/11 y macOS 14–26; no se probaron productos comerciales, y macOS 26 usó captura nativa en lugar de getDisplayMedia() del navegador.",
       "Análisis de las capacidades y limitaciones del seguimiento de la mirada, los movimientos del ratón y la enumeración de procesos.",
       "Propuesta y evaluación de cinco contramedidas, desde enumerar indicadores hasta la atestación de hardware a largo plazo.",
-      "Divulgación coordinada con Microsoft MSRC en febrero de 2026 y Apple Product Security en marzo de 2026; ambos emitieron clasificaciones formales.",
+      "Divulgación coordinada con los fabricantes: Microsoft MSRC (notificado en febrero de 2026, clasificado en abril de 2026) y Apple Product Security (notificado y clasificado en marzo de 2026); ambos emitieron clasificaciones formales.",
     ],
     proof: [
-      "Evasión del 100% en Windows 10/11 y macOS 14–26, medida sobre más de 10,000 fotogramas por configuración.",
+      "Evasión del 100% en Windows 10/11 y macOS 14–26, medida sobre más de 10 000 fotogramas por configuración.",
       "Sin artefactos visuales en las capturas: ni rectángulos negros, errores de composición ni parpadeo.",
       "La exclusión siguió funcionando en rutas nativas probadas de macOS 26.3.1 pese a los cambios documentados de ScreenCaptureKit en macOS 15; no se probó directamente ScreenCaptureKit ni getDisplayMedia() del navegador en macOS 26.",
       "Linux con X11/Wayland no se evaluó; los resultados corresponden a las configuraciones probadas de Windows y macOS.",
@@ -35,7 +35,7 @@ export const esProjects = {
     features: [
       "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE en Windows 10 v2004+ excluye la ventana de las rutas de captura de Windows probadas sin artefactos visuales.",
       "NSWindow.SharingType.none demostró exclusión en rutas nativas probadas de macOS 14–26; macOS 26 usó CGWindowListCreateImage y screencapture, no getDisplayMedia() del navegador ni una prueba directa de ScreenCaptureKit.",
-      "Verificación forense: diferencia de píxeles del 80.27% en el área de captura de Windows; una captura de 1,170,560 píxeles en macOS resultó totalmente transparente.",
+      "Verificación forense: diferencia de píxeles del 80,27 % en el área de captura de Windows; una captura de 1 170 560 píxeles en macOS resultó totalmente transparente.",
     ],
     measures: [
       "Descubrimiento y verificación en enero de 2026.",
@@ -59,9 +59,9 @@ export const esProjects = {
     description:
       "Marco de atestación de contención verificable para agentes de IA, independiente del proveedor y derivado de la vertiente defensiva de The Invisible Window. Produce pruebas firmadas con Ed25519 y reproducibles sin conexión sobre las acciones permitidas tras un fallo de seguridad; contuvo 138/138 casos omitidos por el clasificador y redujo el éxito de ataque de un agente en vivo en AgentDojo de 9/140 a 0/140.",
     fullDescription:
-      "Project Simurgh es un marco de atestación de contención verificable para agentes de IA, independiente del proveedor. Comenzó como la vertiente defensiva de The Invisible Window, una capa de integridad basada solo en metadatos para sesiones de alto riesgo, y evolucionó hacia un registro general de las acciones permitidas a un agente desplegado cuando falla la primera defensa. Las evaluaciones de capacidad muestran lo que puede hacer un modelo; Simurgh aporta pruebas firmadas y reproducibles sin conexión de lo que el sistema le permitió hacer al conectarlo con herramientas, archivos, contexto y sistemas externos. El clasificador regula lo que puede decir el modelo; Simurgh acredita las acciones autorizadas ante un revisor adversarial, sin acceso al productor.",
+      "Project Simurgh es un marco de atestación de contención para IA agéntica, independiente del proveedor. Nació de la capa de integridad basada solo en metadatos de The Invisible Window para sesiones de alto riesgo y evolucionó hacia un sistema que registra lo que un agente desplegado tuvo permitido hacer después de fallar una salvaguarda. Simurgh firma un registro reproducible sin conexión de las acciones permitidas tras conectar el agente con herramientas, archivos, contexto y sistemas externos. Un revisor independiente puede verificar ese registro sin acceso al productor de las pruebas.",
     problem:
-      "La mayoría de las defensas de IA intentan bloquear la entrada maliciosa. El artículo Redeploying Fable 5 de Anthropic reconoce que los clasificadores pueden eludirse, que los márgenes de seguridad generan falsos positivos y que la robustez total probablemente es imposible. Si esa defensa falla por una inyección de instrucciones, un jailbreak o un error de autoridad de una herramienta, falta tanto una capa posterior que limite el daño como un estándar de pruebas para demostrar a un escéptico qué ocurrió. El modelo de amenaza es un productor deshonesto que quiere aparentar contención.",
+      "Los clasificadores de entrada pueden pasar por alto ataques. Cuando ocurre, el agente puede conservar autoridad para usar herramientas o acceder a archivos y sistemas externos. Los operadores necesitan controles posteriores que limiten esas acciones y pruebas que un revisor independiente pueda comprobar. Simurgh asume que el productor de las pruebas puede intentar que una ejecución parezca contenida y diseña la verificación en torno a ese riesgo.",
     solution: [
       "Rodea al agente con cuatro límites de contención y sella cada ejecución en un paquete de metadatos firmado con Ed25519, reconstruible byte a byte sin conexión.",
       "Asume que el productor miente: la reproducción de decisiones y la comprobación de integridad de la emisión permiten confirmar una contención real y refutar una falsa.",
@@ -74,7 +74,7 @@ export const esProjects = {
       "Agente en vivo con Llama-3.3-70B autoalojado en la suite de espacio de trabajo de AgentDojo y 140 inyecciones preregistradas: la puerta de autoridad redujo el éxito de 9/140 a 0/140 conservando la utilidad benigna.",
       "Ejecución determinista completa de las cuatro suites de AgentDojo, v2.49.0: casos benignos 97/97, utilidad sin ataque 949/949, éxito de ataque 0/949.",
       "Una segunda raíz independiente de procedencia firma el dictamen de publicación con la identidad OIDC de GitHub, no con la clave del desarrollador; una diferencia de un solo byte frente al dictamen registrado detiene el flujo antes de firmar.",
-      "3,057 pruebas automatizadas; reproducción sin conexión de la escala de publicación firmada con un solo comando; licencia AGPL-3.0.",
+      "3057 pruebas automatizadas; reproducción sin conexión de la escala de publicación firmada con un solo comando; licencia AGPL-3.0.",
       "Trayectoria publicada en Zenodo bajo CC BY 4.0: prepublicación original de integridad DOI 10.5281/zenodo.20374849, piloto Phase C en un contexto relacionado con votaciones y prototipo Banking Shield de afirmaciones de ausencia.",
     ],
     stack: [
@@ -203,14 +203,14 @@ export const esProjects = {
       "Los QR son una vía frecuente de phishing, pero muchos escáneres suben datos a la nube. Hace falta verificar URL sin filtrar el historial de navegación.",
     solution: [
       "Motor de análisis 100% sin conexión con Kotlin Multiplatform.",
-      "Modelo de aprendizaje automático combinado con 25 heurísticas para mejorar la precisión.",
-      "5 plataformas, que abarcan Android, iOS, Desktop y Web; ~100% de lógica de detección compartida, ~52% del código total.",
+      "Modelo de aprendizaje automático combinado con más de 25 comprobaciones heurísticas para la detección de amenazas.",
+      "5 plataformas, que abarcan Android, iOS, JVM, JS y Wasm; ~100% de lógica de detección compartida, ~52% del código total.",
       "Latencia <5ms para escaneo en tiempo real.",
     ],
     proof: [
       "F1 del 87% en el corpus de equipo rojo.",
       "Rendimiento: latencia P99 <5ms.",
-      "1,248+ pruebas automatizadas y suite de equipo rojo con 19 ataques seleccionados.",
+      "1248+ pruebas automatizadas y suite de equipo rojo con 19 ataques seleccionados.",
       "Privacidad: 0 llamadas de red verificadas mediante ./judge/verify_offline.sh.",
       "Código compartido: ~100% de la lógica de detección, ~52% del código total.",
     ],
@@ -246,7 +246,7 @@ export const esProjects = {
       "Activo en producción en syllabus-sync.app.",
       "503 pruebas en 92 archivos, todas superadas en CI.",
       "El proxy de confianza cero detecta errores de configuración por defecto, validado en producción.",
-      "Diseñado para ~47,000 estudiantes de MQ y preparado para otras universidades australianas.",
+      "Diseñado para ~47 000 estudiantes de MQ y preparado para otras universidades australianas.",
       "Autenticación con claves de acceso WebAuthn; ningún secreto compartido sale del dispositivo.",
     ],
     features: [
@@ -274,7 +274,7 @@ export const esProjects = {
     solution: [
       "Selección exacta de 60 versos de Hafez + 60 de Rumi, 120 en total, vinculados a ediciones inmutables con procedencia verificable.",
       "Aplicación preparada para funcionar sin conexión mediante un service worker escrito a mano.",
-      "Selección justa con una colección en orden aleatorio (shuffle bag) de Web Crypto en el dispositivo, sin servidor ni registro de elecciones.",
+      "La colección en orden aleatorio (shuffle bag) de Web Crypto selecciona los versos en el dispositivo; ningún servidor registra lo que obtienen los visitantes.",
       "Tipografía Nastaliq viva y dirección artística propia de cada poeta, en lugar de imágenes planas.",
       "Accesibilidad desde el principio: marcado bilingüe y RTL, aislamiento bidireccional, regiones vivas, colores forzados y movimiento reducido.",
     ],
@@ -296,7 +296,7 @@ export const esProjects = {
     ],
     features: [
       "Corpus bilingüe revisado: 60 Hafez + 60 Rumi = 120 versos, ligados a ediciones inmutables con procedencia documentada.",
-      "Selección justa y sin sesgo mediante una colección en orden aleatorio (shuffle bag) de Web Crypto, completamente en el dispositivo.",
+      "La selección de versos usa una colección en orden aleatorio (shuffle bag) de Web Crypto calculada en el dispositivo, sin intervención del servidor.",
       "Service worker manual con verificación de integridad para funcionar sin conexión en redes inestables.",
       "Dirección cultural por poeta con tipografía Nastaliq renderizada como texto, texto persa real y nunca imágenes rasterizadas.",
       "Marcado bilingüe con dirección, aislamiento bidireccional, regiones vivas, colores forzados y movimiento reducido.",
@@ -316,7 +316,7 @@ export const esProjects = {
     fullDescription:
       "Nexus Archive combina una interfaz React, una API Litestar y autenticación y persistencia Supabase en una bóveda de estilo cyberpunk. Permite gestionar libros, películas, anime, valoraciones, notas, chats y recomendaciones de IA en un panel único.",
     problem:
-      "Los gestores de medios están fragmentados entre plataformas y tienen una seguridad débil. Hace falta un catálogo unificado y seguro que trate la colección como una selección personal, no solo una lista de tareas.",
+      "Los gestores de medios fragmentan las colecciones de entretenimiento entre plataformas y pueden tener controles de seguridad débiles. Nexus Archive reúne títulos, valoraciones, notas y recomendaciones en una sola cuenta con controles de acceso a nivel de fila.",
     solution: [
       "Bóveda full-stack con React 19, Litestar y Supabase PostgreSQL con seguridad por filas.",
       "Cookies HttpOnly gestionadas por el servidor en lugar de tokens Supabase legibles desde la interfaz.",

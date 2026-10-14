@@ -62,9 +62,8 @@ function BrowserPopulatedLeaf() {
   const container = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const element = container.current!;
-    const query = element.querySelector<HTMLInputElement>(
-      "input[type=search]",
-    )!;
+    const query =
+      element.querySelector<HTMLInputElement>("input[type=search]")!;
     const category = element.querySelector<HTMLSelectElement>("select")!;
     const subject = element.querySelector<HTMLInputElement>(
       "input[name=subject]",
@@ -79,9 +78,8 @@ function BrowserPopulatedLeaf() {
     query.focus();
     query.setSelectionRange(2, 9);
     const page = element.closest<HTMLElement>(".os-page-content")!;
-    const toolbar = page.parentElement!.querySelector<HTMLElement>(
-      ".os-windowbar",
-    )!;
+    const toolbar =
+      page.parentElement!.querySelector<HTMLElement>(".os-windowbar")!;
     vi.spyOn(page, "getBoundingClientRect").mockReturnValue(
       DOMRect.fromRect({ x: 0, y: -300, width: 1000, height: 2000 }),
     );
@@ -94,7 +92,11 @@ function BrowserPopulatedLeaf() {
       <h1>Project fixture</h1>
       <div className="os-explorer-controls">
         <div className="os-explorer-search">
-          <input type="search" name="project-query" aria-label="Project search" />
+          <input
+            type="search"
+            name="project-query"
+            aria-label="Project search"
+          />
         </div>
         <select aria-label="Project category" defaultValue="ALL">
           <option value="ALL">All</option>
@@ -152,7 +154,9 @@ describe("OSApplicationBridge handover contract", () => {
     expect(publication.view).toBe(leaf);
     expect((publication.view as ReactElement).type).toBe(ConcreteLeaf);
     expect(leaf.props).toEqual({ title: "Independent app" });
-    expect(screen.getByRole("heading", { name: "Independent app" })).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Independent app" }),
+    ).toBeVisible();
   });
 
   it("captures simulated browser values, caret and reading point before handover", () => {
@@ -287,7 +291,9 @@ describe("OSApplicationBridge handover contract", () => {
       ),
     );
     expect(register).not.toHaveBeenCalled();
-    expect(screen.getByRole("heading", { name: "Safe fallback" })).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Safe fallback" }),
+    ).toBeVisible();
   });
 });
 
@@ -350,7 +356,10 @@ describe("same-locale retained content namespaces", () => {
           const input = root.querySelector("input")!;
           expect(region.id).toBe(`${prefix}overview`);
           expect(region.getAttribute("aria-labelledby")).toBe(heading.id);
-          expect(root.querySelector("a")).toHaveAttribute("href", `#${region.id}`);
+          expect(root.querySelector("a")).toHaveAttribute(
+            "href",
+            `#${region.id}`,
+          );
           expect(root.querySelector("label")).toHaveAttribute("for", input.id);
         }
       };

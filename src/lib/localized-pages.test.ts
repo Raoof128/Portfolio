@@ -33,7 +33,10 @@ function inlineCode(body: string): string[] {
 }
 
 function numericEvidence(body: string): string[] {
-  return (body.match(/\d+(?:[.,]\d+)*/g) ?? []).sort();
+  // Display grouping differs by locale (1,250 vs 1250 vs 1 250); compare digits.
+  return (body.match(/\d+(?:[., ]\d+)*/g) ?? [])
+    .map((value) => value.replace(/[., ]/g, ""))
+    .sort();
 }
 
 describe("complete localized page content", () => {

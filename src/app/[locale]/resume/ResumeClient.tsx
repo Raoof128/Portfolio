@@ -67,7 +67,7 @@ export function ResumeClient() {
         <AnimatedSection>
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-              <span className="text-cyan font-mono mr-2">/</span>
+              <span className="text-cyan font-mono me-2">/</span>
               {t.resume_page.title}
             </h1>
             <div className="flex flex-col items-start gap-2">
@@ -88,7 +88,7 @@ export function ResumeClient() {
         <div className="space-y-6">
           {/* Header */}
           <AnimatedSection>
-            <HUDFrame className="p-6 md:p-8 bg-[#030712]/60 backdrop-blur-sm border-l-4 border-l-cyan">
+            <HUDFrame className="p-6 md:p-8 bg-[#030712]/60 backdrop-blur-sm border-s-4 border-s-cyan">
               <div className="flex flex-col md:flex-row justify-between gap-6">
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
@@ -309,8 +309,8 @@ export function ResumeClient() {
                 </h3>
               </div>
               <div className="space-y-6">
-                <div className="relative pl-6 border-l border-cyber-gray">
-                  <span className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-cyan border-2 border-background"></span>
+                <div className="relative ps-6 border-s border-cyber-gray">
+                  <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-cyan border-2 border-background"></span>
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                     <h4 className="text-white font-bold text-lg">
                       {t.about.degree_bachelor}
@@ -330,8 +330,8 @@ export function ResumeClient() {
                     {t.resume.s04_coursework}
                   </div>
                 </div>
-                <div className="relative pl-6 border-l border-cyber-gray">
-                  <span className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-amber border-2 border-background"></span>
+                <div className="relative ps-6 border-s border-cyber-gray">
+                  <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-amber border-2 border-background"></span>
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                     <h4 className="text-white font-bold text-lg">
                       {t.about.degree_diploma}
@@ -377,7 +377,7 @@ export function ResumeClient() {
                           The Invisible Window
                         </bdi>
                       </Link>{" "}
-                      <span className="text-cyan font-mono font-normal text-xs ml-2">
+                      <span className="text-cyan font-mono font-normal text-xs ms-2">
                         [{t.resume.proj1_tag}]
                       </span>
                     </h4>
@@ -403,7 +403,7 @@ export function ResumeClient() {
                           Aion
                         </bdi>
                       </Link>{" "}
-                      <span className="text-amber font-mono font-normal text-xs ml-2">
+                      <span className="text-amber font-mono font-normal text-xs ms-2">
                         [{t.resume.proj2_tag}]
                       </span>
                     </h4>
@@ -429,7 +429,7 @@ export function ResumeClient() {
                           NanoMatch
                         </bdi>
                       </Link>{" "}
-                      <span className="text-purple font-mono font-normal text-xs ml-2">
+                      <span className="text-purple font-mono font-normal text-xs ms-2">
                         [{t.resume.proj3_tag}]
                       </span>
                     </h4>
@@ -455,7 +455,7 @@ export function ResumeClient() {
                           SentinelFlow
                         </bdi>
                       </Link>{" "}
-                      <span className="text-purple font-mono font-normal text-xs ml-2">
+                      <span className="text-purple font-mono font-normal text-xs ms-2">
                         [{t.resume.proj4_tag}]
                       </span>
                     </h4>
@@ -481,7 +481,7 @@ export function ResumeClient() {
                           Nexus Archive
                         </bdi>
                       </Link>{" "}
-                      <span className="text-purple font-mono font-normal text-xs ml-2">
+                      <span className="text-purple font-mono font-normal text-xs ms-2">
                         [{t.resume.proj5_tag}]
                       </span>
                     </h4>
@@ -507,7 +507,7 @@ export function ResumeClient() {
                           Mehr Guard
                         </bdi>
                       </Link>{" "}
-                      <span className="text-cyan font-mono font-normal text-xs ml-2">
+                      <span className="text-cyan font-mono font-normal text-xs ms-2">
                         [{t.resume.proj6_tag}]
                       </span>
                     </h4>
@@ -563,8 +563,8 @@ export function ResumeClient() {
                 </h3>
               </div>
 
-              <div className="relative pl-6 border-l border-cyber-gray">
-                <span className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-cyan border-2 border-background"></span>
+              <div className="relative ps-6 border-s border-cyber-gray">
+                <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-cyan border-2 border-background"></span>
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                   <h4 className="text-white font-bold text-lg">
                     {t.resume.exp1_title}
@@ -580,8 +580,8 @@ export function ResumeClient() {
                 </ul>
               </div>
 
-              <div className="relative pl-6 border-l border-cyber-gray">
-                <span className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-amber border-2 border-background"></span>
+              <div className="relative ps-6 border-s border-cyber-gray">
+                <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-amber border-2 border-background"></span>
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                   <h4 className="text-white font-bold text-lg">
                     {t.resume.exp2_title}
@@ -622,8 +622,8 @@ export function ResumeClient() {
               </ul>
 
               {/* Volunteering — Macquarie Persian Students Society */}
-              <div className="relative pl-6 border-l border-cyber-gray">
-                <span className="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-purple border-2 border-background"></span>
+              <div className="relative ps-6 border-s border-cyber-gray">
+                <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-purple border-2 border-background"></span>
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                   <h4 className="text-white font-bold text-base flex items-center gap-2">
                     <Users size={16} className="text-purple shrink-0" />

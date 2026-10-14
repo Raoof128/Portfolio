@@ -135,8 +135,13 @@ describe("Proof Atlas", () => {
   it("exposes the localized diagram description through the SVG accessible name", () => {
     const { container } = render(<ProofAtlas locale="fa" interactive />);
     const svg = screen.getByRole("img");
-    const labelledBy = svg.getAttribute("aria-labelledby")!.split(" ");
-    const description = document.getElementById(labelledBy[1]);
+    const labelledBy = svg.getAttribute("aria-labelledby")!;
+    expect(document.getElementById(labelledBy)?.tagName.toLowerCase()).toBe(
+      "title",
+    );
+    const description = document.getElementById(
+      svg.getAttribute("aria-describedby")!,
+    );
 
     expect(description?.tagName.toLowerCase()).toBe("desc");
     expect(description).toHaveTextContent(
@@ -159,14 +164,14 @@ describe("Proof Atlas", () => {
     const document = parser.parseFromString(markup, "text/html");
     const atlas = document.querySelector(".proof-atlas");
     const svg = document.querySelector("svg");
-    const labelledBy = svg?.getAttribute("aria-labelledby")?.split(" ") ?? [];
+    const describedBy = svg?.getAttribute("aria-describedby") ?? "";
 
     expect(atlas?.getAttribute("lang")).toBe(locale);
     expect(atlas?.getAttribute("dir")).toBe(dir);
     expect(atlas?.getAttribute("data-motion-enabled")).toBe("false");
     expect(atlas?.getAttribute("data-project")).toBe("project-simurgh");
     expect(svg?.querySelectorAll(".proof-atlas-edge")).toHaveLength(8);
-    expect(document.getElementById(labelledBy[1] ?? "")?.textContent).toBe(
+    expect(document.getElementById(describedBy)?.textContent).toBe(
       getAtlasCopy(locale).diagramDescription["project-simurgh"],
     );
   });

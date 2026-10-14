@@ -15,6 +15,37 @@ interface NeonButtonProps extends Omit<
   children: React.ReactNode;
 }
 
+/** Attributes shared by the button and anchor renderings (aria-*, onClick, title…). */
+type AnchorRestProps = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  "href" | "target" | "rel" | "download" | "className" | "children"
+>;
+
+type ButtonRestProps = Omit<
+  NeonButtonProps,
+  "href" | "variant" | "external" | "download" | "className" | "children"
+>;
+
+// Button-only fields have no anchor equivalent and would be invalid on <a>.
+const BUTTON_ONLY_PROPS = [
+  "type",
+  "disabled",
+  "form",
+  "formAction",
+  "formEncType",
+  "formMethod",
+  "formNoValidate",
+  "formTarget",
+  "name",
+  "value",
+] as const satisfies readonly (keyof ButtonRestProps)[];
+
+function toAnchorProps(props: ButtonRestProps): AnchorRestProps {
+  const rest: Record<string, unknown> = { ...props };
+  for (const key of BUTTON_ONLY_PROPS) delete rest[key];
+  return rest as AnchorRestProps;
+}
+
 export function NeonButton({
   href,
   variant = "primary",
@@ -40,15 +71,19 @@ export function NeonButton({
     <>
       <span className="relative z-10 flex items-center gap-2">{children}</span>
       {variant === "primary" && (
-        <span className="absolute inset-x-0 bottom-0 h-[2px] bg-cyan/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+        <span className="absolute inset-x-0 bottom-0 h-[2px] bg-cyan/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rtl:origin-right" />
       )}
     </>
   );
 
   if (href) {
+    // Everything the two elements share (aria-*, onClick, title, id…) is forwarded.
+    const linkProps = toAnchorProps(props);
+
     if (external || download) {
       return (
         <a
+          {...linkProps}
           href={href}
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
@@ -61,6 +96,7 @@ export function NeonButton({
     }
     return (
       <Link
+        {...linkProps}
         href={href}
         className={cn(baseStyles, variants[variant], className)}
       >

@@ -1,7 +1,13 @@
 import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { ResumeClient } from "./ResumeClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
+import {
+  buildAlternates,
+  OG_IMAGES,
+  TWITTER_IMAGE,
+  ogBase,
+  ogUrl,
+} from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -17,14 +23,15 @@ export async function generateMetadata({
     description: t.seo.resume_description,
     alternates: buildAlternates("/resume", locale),
     openGraph: {
+      ...ogBase(locale),
       url: ogUrl("/resume", locale),
-      title: t.seo.resume_title,
+      title: `${t.seo.resume_title} | Mohammad Raouf Abedini`,
       description: t.seo.resume_og_description,
       images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
-      title: t.seo.resume_title,
+      title: `${t.seo.resume_title} | Mohammad Raouf Abedini`,
       description: t.seo.resume_og_description,
       images: TWITTER_IMAGE,
     },

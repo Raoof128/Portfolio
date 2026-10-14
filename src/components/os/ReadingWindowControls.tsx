@@ -63,6 +63,8 @@ export function ReadingWindowControls({
   };
 
   useEffect(() => {
+    // Outside-click and reposition listeners are only needed while open.
+    if (!open) return;
     const outside = (event: PointerEvent) => {
       if (
         event.target instanceof Node &&
@@ -82,7 +84,7 @@ export function ReadingWindowControls({
       window.removeEventListener("resize", onViewportChange);
       window.removeEventListener("scroll", onViewportChange, true);
     };
-  }, [positionPanel]);
+  }, [open, positionPanel]);
 
   function keys(
     event: KeyboardEvent<HTMLElement>,

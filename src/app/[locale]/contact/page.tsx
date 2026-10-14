@@ -1,7 +1,13 @@
 import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
-import { buildAlternates, OG_IMAGES, ogUrl } from "@/lib/seo";
+import {
+  buildAlternates,
+  OG_IMAGES,
+  TWITTER_IMAGE,
+  ogBase,
+  ogUrl,
+} from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { getOSCopy } from "@/components/os/os-copy";
 
@@ -20,10 +26,17 @@ export async function generateMetadata({
     description,
     alternates: buildAlternates("/contact", locale),
     openGraph: {
+      ...ogBase(locale),
       url: ogUrl("/contact", locale),
-      title: t.seo.contact_title,
+      title: `${t.seo.contact_title} | Mohammad Raouf Abedini`,
       description,
       images: OG_IMAGES,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t.seo.contact_title} | Mohammad Raouf Abedini`,
+      description,
+      images: TWITTER_IMAGE,
     },
   };
 }

@@ -83,12 +83,14 @@ const invariantTokens = [
 
 function numericValues(text: string): string[] {
   // Numeric evidence remains Western digits. Ignore letters in a11y/e2e, and
-  // punctuation used for display grouping; version/API fidelity is checked below.
+  // punctuation used for display grouping (including the Spanish decimal comma
+  // and narrow no-break space); version/API fidelity is checked below.
   return [
     ...new Set(
       (
-        text.match(/\b\d+(?:[.,]\d+)*(?:\/\d+(?:[.,]\d+)*)?(?:%|\+)?/g) ?? []
-      ).map((value) => value.replace(/[,+%]/g, "")),
+        text.match(/\b\d+(?:[., ]\d+)*(?:\/\d+(?:[., ]\d+)*)?(?: ?%|\+)?/g) ??
+        []
+      ).map((value) => value.replace(/[.,+%  ]/g, "")),
     ),
   ];
 }
@@ -123,8 +125,6 @@ describe("Complete project localization", () => {
         expect(result.problem, `${locale}/${source.slug}/problem`).not.toBe(
           source.problem,
         );
-        expect(result.localizedDescription).toBeUndefined();
-        expect(result.localizedFullDescription).toBeUndefined();
         for (const [field, originals, translated] of [
           ["solution", source.solution, result.solution],
           ["proof", source.proof, result.proof],
@@ -244,7 +244,6 @@ describe("Complete project localization", () => {
       summaries.forEach((summary) => {
         expect(summary.descriptionLocale).toBe(locale);
         expect(summary).not.toHaveProperty("proof");
-        expect(summary).not.toHaveProperty("localizedDescription");
       });
       const diagram = getProjectDiagramCopy(locale);
       expect(diagram.boundaries).toHaveLength(4);
@@ -263,8 +262,6 @@ describe("Complete project localization", () => {
     for (const source of Object.values(projects)) {
       expect(getLocalizedProject(source, "en")).toEqual({
         ...source,
-        localizedDescription: undefined,
-        localizedFullDescription: undefined,
         contentLocale: "en",
         titleLocale: "en",
       });

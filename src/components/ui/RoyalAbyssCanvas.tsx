@@ -166,6 +166,7 @@ export function RoyalAbyssCanvas({
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const playbackRef = useRef<CanvasPlayback | null>(null);
+  const activeRef = useRef(active);
 
   const run = useCallback(() => {
     if (!canvasRef.current) return;
@@ -365,13 +366,18 @@ export function RoyalAbyssCanvas({
   useEffect(() => {
     const playback = run();
     playbackRef.current = playback ?? null;
+    // A rebuilt playback (e.g. preview change) must inherit the current state.
+    playback?.setActive(activeRef.current);
     return () => {
       playback?.dispose();
       playbackRef.current = null;
     };
   }, [run]);
 
-  useEffect(() => playbackRef.current?.setActive(active), [active]);
+  useEffect(() => {
+    activeRef.current = active;
+    playbackRef.current?.setActive(active);
+  }, [active]);
 
   return (
     <div

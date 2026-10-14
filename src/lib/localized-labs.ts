@@ -20,7 +20,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     "002": {
       title: "شنود بسته با سوکت خام",
       description:
-        "اسکریپت Python با سوکت خام برای دریافت و تجزیه دستی سرآیندهای TCP/IP؛ تشخیص مقدماتی اسکن SYN بدون وابستگی به libpcap.",
+        "اسکریپت Python با سوکت خام برای دریافت و تجزیهٔ دستی سرآیندهای TCP/IP؛ بسته‌های TCP SYN را به‌عنوان نقطهٔ شروع تشخیص اسکن چاپ می‌کند، بدون وابستگی به libpcap.",
       objective:
         "تجزیه دستی سرآیندهای IP/TCP برای شناخت ساختار پروتکل و تشخیص الگوهای اسکن بدون اتکا به Wireshark.",
       constraints:
@@ -33,7 +33,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
       objective:
         "پیاده‌سازی کانال پنهان با تغییر کم‌ارزش‌ترین بیت داده پیکسل‌ها و سپس بررسی بازیابی دقیق داده اصلی.",
       constraints:
-        "ظرفیت داده حداکثر (عرض × ارتفاع) / 8 بایت است. در برابر تبدیل دوباره به JPEG یا تغییر اندازه تصویر مقاوم نیست.",
+        "ظرفیت داده حداکثر (عرض × ارتفاع) / 8 بایت منهای سرآیند طول 4 بایتی است. در برابر تبدیل دوباره به JPEG یا تغییر اندازه تصویر مقاوم نیست.",
     },
   },
   ar: {
@@ -49,7 +49,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     "002": {
       title: "التقاط الحزم باستخدام المقابس الخام",
       description:
-        "برنامج Python يستخدم مقابس خام لالتقاط ترويسات TCP/IP وتحليلها يدويًا، مع كشف أولي لمسح SYN دون الاعتماد على libpcap.",
+        "برنامج Python يستخدم مقابس خام لالتقاط ترويسات TCP/IP وتحليلها يدويًا؛ يطبع حزم TCP SYN كنقطة انطلاق لكشف المسح، دون الاعتماد على libpcap.",
       objective:
         "تحليل ترويسات IP/TCP يدويًا لفهم بنية البروتوكولات وكشف أنماط المسح دون الاعتماد على Wireshark.",
       constraints:
@@ -62,7 +62,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
       objective:
         "إنشاء قناة خفية بتعديل أقل بتات بيانات البكسلات أهمية، ثم التحقق من استعادة البيانات الأصلية دون تغيير.",
       constraints:
-        "حجم الحمولة محدود بـ (العرض × الارتفاع) / 8 بايت. لا يقاوم إعادة الترميز بصيغة JPEG أو تغيير حجم الصورة.",
+        "حجم الحمولة محدود بـ (العرض × الارتفاع) / 8 بايت ناقص ترويسة الطول البالغة 4 بايت. لا يقاوم إعادة الترميز بصيغة JPEG أو تغيير حجم الصورة.",
     },
   },
   zh: {
@@ -77,7 +77,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     "002": {
       title: "原始套接字抓包工具",
       description:
-        "通过原始套接字捕获并手动解析 TCP/IP 首部的 Python 脚本，实现不依赖 libpcap 的基础 SYN 扫描检测。",
+        "通过原始套接字捕获并手动解析 TCP/IP 首部的 Python 脚本；打印 TCP SYN 数据包作为扫描检测的起点，不依赖 libpcap。",
       objective:
         "手动解析 IP/TCP 首部，以理解协议结构并在不依赖 Wireshark 的情况下检测扫描模式。",
       constraints:
@@ -90,7 +90,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
       objective:
         "通过修改像素数据的最低有效位实现隐蔽信道，并核验提取结果与原始载荷完全一致。",
       constraints:
-        "载荷大小限于（宽度 × 高度）/ 8 字节。不能抵抗 JPEG 重新编码或图像缩放。",
+        "载荷大小限于（宽度 × 高度）/ 8 字节减去 4 字节长度头。不能抵抗 JPEG 重新编码或图像缩放。",
     },
   },
   es: {
@@ -106,7 +106,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     "002": {
       title: "Capturador de paquetes con sockets sin procesar",
       description:
-        "Script de Python que captura y analiza manualmente cabeceras TCP/IP mediante sockets sin procesar. Detecta escaneos SYN básicos sin depender de libpcap.",
+        "Script de Python que captura y analiza manualmente cabeceras TCP/IP mediante sockets sin procesar. Imprime los paquetes TCP SYN como punto de partida para detectar escaneos, sin depender de libpcap.",
       objective:
         "Analizar manualmente cabeceras IP/TCP para comprender los protocolos y detectar patrones de escaneo sin depender de Wireshark.",
       constraints:
@@ -119,7 +119,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
       objective:
         "Implementar un canal oculto modificando los bits menos significativos de los píxeles y comprobar la recuperación exacta de la carga original.",
       constraints:
-        "La carga se limita a (ancho × alto) / 8 bytes. No resiste la recodificación JPEG ni los cambios de tamaño de la imagen.",
+        "La carga se limita a (ancho × alto) / 8 bytes menos la cabecera de longitud de 4 bytes. No resiste la recodificación JPEG ni los cambios de tamaño de la imagen.",
     },
   },
 };

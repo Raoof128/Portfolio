@@ -11,7 +11,7 @@
 .os-shell[data-appearance="light"] .proof-atlas {
   --atlas-blue: #386fba;
   --atlas-teal: #287a72;
-  --atlas-gold: #95723a;
+  --atlas-gold: #85652e;
   --atlas-ink: #18283b;
   --atlas-muted: #53657a;
 }
@@ -154,7 +154,6 @@
 
 .proof-atlas-edge {
   fill: none;
-  stroke: var(--atlas-blue);
   stroke: var(--atlas-gradient, var(--atlas-blue));
   stroke-width: 1.6;
   stroke-linecap: round;

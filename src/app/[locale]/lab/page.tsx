@@ -1,7 +1,13 @@
 import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { LabClient } from "./LabClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
+import {
+  buildAlternates,
+  OG_IMAGES,
+  TWITTER_IMAGE,
+  ogBase,
+  ogUrl,
+} from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 import { getLocalizedLabs } from "@/lib/localized-labs";
 
@@ -18,14 +24,15 @@ export async function generateMetadata({
     description: t.seo.lab_description,
     alternates: buildAlternates("/lab", locale),
     openGraph: {
+      ...ogBase(locale),
       url: ogUrl("/lab", locale),
-      title: t.seo.lab_title,
+      title: `${t.seo.lab_title} | Mohammad Raouf Abedini`,
       description: t.seo.lab_description,
       images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
-      title: t.seo.lab_title,
+      title: `${t.seo.lab_title} | Mohammad Raouf Abedini`,
       description: t.seo.lab_description,
       images: TWITTER_IMAGE,
     },

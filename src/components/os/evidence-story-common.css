@@ -210,7 +210,6 @@
   :is(
     .os-simurgh-instrument-control,
     .os-story-platform-picker button,
-    .os-zurvan-type-picker button,
     .os-evidence-story-links a
   ):focus-visible {
   outline: 3px solid var(--story-accent);
@@ -220,11 +219,6 @@
   .os-project-section
   .os-evidence-story
   .os-story-platform-picker
-  button,
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-picker
   button {
   min-width: 44px;
   min-height: 44px;
@@ -241,11 +235,6 @@
   .os-project-section
   .os-evidence-story
   .os-story-platform-picker
-  button[aria-pressed="true"],
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-picker
   button[aria-pressed="true"] {
   border-color: var(--story-accent);
   color: var(--story-accent);
@@ -326,8 +315,6 @@
     opacity: 0.96;
     transform: scale(0.99);
   }
-}
-@keyframes evidence-story-cover-in {
   to {
     opacity: 1;
     transform: scale(1);
@@ -338,8 +325,6 @@
     opacity: 0.96;
     transform: translateY(3px);
   }
-}
-@keyframes evidence-story-heading-in {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -349,8 +334,6 @@
   from {
     border-color: color-mix(in srgb, var(--os-accent) 10%, var(--os-line));
   }
-}
-@keyframes evidence-story-nav-in {
   to {
     border-color: var(--os-line);
   }

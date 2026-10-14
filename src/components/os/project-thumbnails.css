@@ -62,7 +62,7 @@
 }
 
 .os-project-thumbnail .os-project-thumbnail-placeholder {
-  color: #9bc9ce;
+  color: var(--os-muted);
   opacity: 0.35;
 }
 
@@ -108,20 +108,24 @@
   container-name: project-index;
 }
 
-/* A desktop app can be narrower than its browser viewport after resizing. */
-@container project-index (max-width: 560px) {
-  .os-project-explorer .os-project-row.os-project-row-with-preview {
-    grid-template-columns: 25px minmax(0, 1fr);
-  }
+/* A desktop app can be narrower than its browser viewport after resizing.
+   Below 701px the viewport rules above already hide the number column, so
+   the 25px track must not come back as an empty indent. */
+@media (min-width: 701px) {
+  @container project-index (max-width: 560px) {
+    .os-project-explorer .os-project-row.os-project-row-with-preview {
+      grid-template-columns: 25px minmax(0, 1fr);
+    }
 
-  .os-project-row-with-preview
-    :is(.os-project-thumbnail, .os-project-row-summary) {
-    grid-column: 2;
-  }
+    .os-project-row-with-preview
+      :is(.os-project-thumbnail, .os-project-row-summary) {
+      grid-column: 2;
+    }
 
-  .os-project-row-with-preview .os-project-thumbnail {
-    max-inline-size: 240px;
-    block-size: 160px;
+    .os-project-row-with-preview .os-project-thumbnail {
+      max-inline-size: 240px;
+      block-size: 160px;
+    }
   }
 }
 

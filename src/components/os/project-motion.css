@@ -72,7 +72,7 @@
   inset: 50% auto auto 50%;
   inline-size: 160px;
   block-size: 160px;
-  color: #9bc9ce;
+  color: var(--os-muted);
   stroke: currentColor;
   opacity: 0.28;
   transform: translate(-50%, -50%);
@@ -88,7 +88,7 @@
   padding-inline: 14px 7px;
   border-top: 1px solid var(--os-line);
   color: var(--os-muted);
-  font: 11px / 1.5 var(--os-mono);
+  font: 12px / 1.5 var(--os-mono);
 }
 
 .os-project-motion button {
@@ -113,6 +113,13 @@
   background: var(--os-line);
 }
 
+/* The figure clips overflow, so the focus ring sits inside the button. The
+   compound selectors outrank the explorer-wide `:is(a, button, …)` rule. */
+.os-project-motion figcaption button:focus-visible,
+.os-project-motion .os-motion-error button:focus-visible {
+  outline-offset: -2px;
+}
+
 .os-project-motion .os-motion-button-label {
   position: absolute;
   inline-size: 1px;
@@ -126,7 +133,7 @@
 .os-project-motion .os-motion-preference {
   padding-block: 14px;
   color: var(--os-muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .os-project-motion .os-motion-error {

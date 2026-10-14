@@ -1,9 +1,9 @@
 {
-  "project-simurgh-containment": "54ca0ee9851030869bca7b6176ae4293eb6ed12db649b56add2e4bc477c66f98",
-  "invisible-window-research": "e95963f24fa5d9864884a918109232e1c69b7ede4d6af2a4d08502af93b682f6",
+  "project-simurgh-containment": "c7151c39ff0af284bf47580fdea4c60f1df43c2f67fe475606b765360933db22",
+  "invisible-window-research": "661645b525ea0bbd6b3c1242c704b9a220ffc6c4eab4d24dfdfc7cd517b4734c",
   "nanomatch-deep-dive": "f2d00e850f3d41d189f590bcd8ada7131621a48552d0728096e1528d25d513ef",
-  "sentinelflow-deep-dive": "63e183861f78d662ce9fac53f1df243342b0921f3fa65b7f04f5ad1837c49cb6",
-  "ecrsm-deep-dive": "2d4414aa662cb2a5fd9ccae793b50216cb7d9407db76d6650170d0218400dd9a",
-  "kmp-security": "75161c9512a97457a9cdd93d808126cfb04ae249f81490a6e4885dd606d3f5dd",
-  "electron-security": "222c7551dfaf95ff74632b523ab4e1b334f6b5f59eb4abb7cb4ffa31d050e7c3"
+  "sentinelflow-deep-dive": "6356df8283e686ae4d44ffd3ec9cba46805c88cfbea889fc9fb18de60b62806d",
+  "ecrsm-deep-dive": "a65a5943be331cb9fd599a5c5457b449c5882a6606978cbc7834f4dc577eb489",
+  "kmp-security": "be682e8e853134da6ca5f1319f5cf3caa676fee0ff46ed4088449a2d6ae6eefe",
+  "electron-security": "48918a393f6cb14cd32e405c7088ec9b2f98736a447e8424b2b095de6a491cb5"
 }

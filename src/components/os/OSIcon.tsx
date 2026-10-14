@@ -1,7 +1,11 @@
 import { BookOpen, FileText, FolderOpen, Mail, UserRound } from "lucide-react";
 
 export type PortfolioApp =
-  "projects" | "research" | "about" | "resume" | "contact";
+  | "projects"
+  | "research"
+  | "about"
+  | "resume"
+  | "contact";
 
 const icons = {
   projects: FolderOpen,

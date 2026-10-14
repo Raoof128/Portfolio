@@ -238,12 +238,12 @@ describe("current application window", () => {
     fireEvent.change(within(pane).getByRole("textbox", { name: "Draft" }), {
       target: { value: "Current draft" },
     });
-    fireEvent.click(within(pane).getByRole("button", { name: "Minimize" }));
+    fireEvent.click(within(pane).getByRole("button", { name: "Minimise" }));
     flushFrames();
     const restore =
       view.container.querySelector<HTMLButtonElement>(".os-minimized-task")!;
     expect(restore).toHaveFocus();
-    expect(restore).toHaveAccessibleDescription(/Minimized/);
+    expect(restore).toHaveAccessibleDescription(/Minimised/);
     expect(pane).not.toBeVisible();
     fireEvent.click(restore);
     expect(pane).toBeVisible();
@@ -304,7 +304,7 @@ describe("current application window", () => {
     const pane = view.container.querySelector<HTMLElement>(
       '[data-window-path="/projects/project-simurgh"]',
     )!;
-    fireEvent.click(within(pane).getByRole("button", { name: "Minimize" }));
+    fireEvent.click(within(pane).getByRole("button", { name: "Minimise" }));
     expect(pane).not.toBeVisible();
     const projectsDock = view.container.querySelector(
       '.os-dock [data-app="projects"]',
@@ -607,6 +607,16 @@ describe("ResearchOS workspace lifecycle", () => {
     ).toHaveFocus();
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(navigation.push).not.toHaveBeenCalled();
+  });
+
+  it("lets the dock link reach the project list while a dossier is open", () => {
+    navigation.pathname = "/projects/project-simurgh";
+    const { container } = render(
+      registeredShell("/projects/project-simurgh", "Simurgh evidence"),
+    );
+    const dock = container.querySelector<HTMLElement>(".os-dock")!;
+    fireEvent.click(within(dock).getByRole("link", { name: copy.projects }));
+    expect(navigation.push).toHaveBeenCalledWith("/projects");
   });
 
   it("restores a minimized current-URL desktop launcher and ignores Escape on its desktop", () => {

@@ -10,6 +10,7 @@ import {
   breadcrumbList,
   OG_IMAGES,
   TWITTER_IMAGE,
+  ogBase,
 } from "@/lib/seo";
 import { ORCID_URL, SITE_URL, SITE_LAST_MODIFIED } from "@/lib/constants";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
@@ -48,6 +49,7 @@ export async function generateMetadata({
     description: exp.description,
     alternates: buildAlternates(`/lab/${id}`, locale),
     openGraph: {
+      ...ogBase(locale),
       url: pageUrl,
       title: `${exp.title} | Mohammad Raouf Abedini`,
       description: exp.description,

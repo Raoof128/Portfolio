@@ -54,14 +54,9 @@
   .os-zurvan-edge::after {
   display: block;
   color: var(--story-accent);
-  content: "↓";
+  /* Decorative arrow: empty alternative text keeps it out of the a11y tree. */
+  content: "↓" / "";
   font: 18px / 1.2 var(--os-mono);
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-edge-retrieval::after {
-  content: "↓";
 }
 .os-project-explorer
   .os-project-section

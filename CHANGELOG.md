@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-14 (Australia/Sydney) — Full front-end audit and fixes
+
+- **Scope**: Audit every front-end source file and stylesheet, then fix each verified defect.
+- **Summary**: Complete OpenGraph metadata and titles on every sub-page, a hydration-safe footer year, dock and fragment navigation fixes, correct landmark names and live regions, RTL layouts driven by `dir` and logical utilities, composed SVG artwork animations, separate koi orbits, markdown italics and numbered lists, phone-safe 16px inputs, merged story keyframes, landscape-phone chrome, light-mode document background, dead theme palettes and selectors removed, Australian spellings, consistent disclosure and Mehr Guard facts, Spanish numerals, and fa/ar/zh/es project fields re-aligned with the current English. About "Current work" ids are now `OPS-01`–`OPS-07`. Unused dictionary keys, dead localisation maps, unused motion variants and five unmounted components are removed.
+- **Files Changed**: 94 files across `src/app`, `src/i18n`, `src/components/os`, `src/components/ui`, `src/lib`, the stylesheets, AGENT.md and CHANGELOG.md.
+- **Verification**: lint (zero errors, zero warnings), typecheck, Prettier, 579 tests in 43 files, production export build, static security audit (1,094 files), agent audit (160 URLs, zero warnings) and schema tests pass. Export metadata re-read; 1280px headless screenshots of four pages reviewed. No phone-width, live-production, physical-device, screen-reader or remote-CI verification is claimed.
+- **Follow-ups**: Native-speaker review of the rewritten fa/ar/zh/es fields; light-mode first-paint flash; legacy unmounted components; deferred CSS consolidation; unexpanded "VCA"; unreferenced hero-verification assets.
+
 ### Raouf: 2026-10-14 (Australia/Sydney) — Ignore generated Next.js AGENTS.md
 
 - **Scope**: Keep the working tree clean after starting the dev server.

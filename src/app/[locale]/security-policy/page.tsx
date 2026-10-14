@@ -1,7 +1,13 @@
 import { OSApplicationBridge } from "@/components/os/OSApplicationBridge";
 import type { Metadata } from "next";
 import { SecurityPolicyClient } from "./SecurityPolicyClient";
-import { buildAlternates, OG_IMAGES, TWITTER_IMAGE, ogUrl } from "@/lib/seo";
+import {
+  buildAlternates,
+  OG_IMAGES,
+  TWITTER_IMAGE,
+  ogBase,
+  ogUrl,
+} from "@/lib/seo";
 import { resolveLocale, getDictionary, type Locale } from "@/i18n";
 
 export async function generateMetadata({
@@ -17,6 +23,7 @@ export async function generateMetadata({
     description: t.seo.security_policy_description,
     alternates: buildAlternates("/security-policy", locale),
     openGraph: {
+      ...ogBase(locale),
       url: ogUrl("/security-policy", locale),
       title: `${t.seo.security_policy_title} | Mohammad Raouf Abedini`,
       description: t.seo.security_policy_description,

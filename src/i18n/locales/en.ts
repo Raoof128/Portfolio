@@ -22,8 +22,6 @@ const en = {
     about_og_description:
       "AI security research, LLM agent red-teaming, and verifiable containment attestation. Creator of Project Simurgh.",
     contact_title: "Contact",
-    contact_description:
-      "Contact Mohammad Raouf Abedini about security engineering, research collaboration or professional opportunities. Open a draft in your email app.",
     lab_title: "Lab",
     lab_description:
       "Experimental code, PoCs, and cybersecurity research snippets.",
@@ -47,6 +45,8 @@ const en = {
     not_found_title: "Not Found",
     project_not_found_title: "Project Not Found",
     project_not_found_description: "The requested project does not exist.",
+    conditions_of_access:
+      "Private source repository; access may be requested from the author.",
   },
   nav: {
     home: "Home",
@@ -61,77 +61,12 @@ const en = {
     mobile_nav_label: "Mobile navigation",
   },
   hero: {
-    system_online: "System Online · Sydney, NSW",
-    title_prefix: "AI +",
-    title_cyber: "CYBER",
-    title_research: "Research",
-    philosophy_quote: '"Seek, and ye shall find" (Matthew 7:7)',
     intro:
       "I build systems to measure and contain the cyber capabilities of frontier AI. I created Project Simurgh, which red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent was allowed to do after a guardrail miss. It contained 138/138 cases missed by the classifier and reduced a live agent's attack success on AgentDojo from 9/140 to 0/140. I evaluated Claude in Anthropic's safety-evaluation program. My current work focuses on defensive tools for advanced-AI cyber risk.",
-    view_projects: "View Projects",
-    view_resume: "View résumé",
     researcher: "AI Security Researcher",
-    evaluator: "Claude Safety Evaluator · Alignerr",
-    university: "Macquarie University · Nov 2026",
-  },
-  philosophy: {
-    title: "Philosophy",
-    subtitle: "Operating Principles",
-    research_title: "RESEARCH",
-    research_body:
-      "Red-team LLM agents and measure the cyber-capability uplift of frontier AI. Characterise safety boundaries, contain guardrail misses with signed, offline-verifiable evidence, and publish reproducible findings.",
-    secure_title: "SECURE",
-    secure_body:
-      "Defence in depth connects offensive research, including exploit classes and agent attack campaigns, to verifiable containment and defensive tools.",
-    research_bullet_1: "LLM Agent Red-Teaming & Containment",
-    research_bullet_2: "AI Safety & LLM Evaluation",
-    research_bullet_3: "Dual-Use Risk Assessment",
-    secure_bullet_1: "Cross-Platform Exploit Development",
-    secure_bullet_2: "Responsible Disclosure (OWASP/FIRST/CISA)",
-    secure_bullet_3: "Verifiable Containment Attestation",
   },
   lab: {
-    title: "Lab",
-    subtitle: "Research in progress",
-    description:
-      "Hands-on vulnerability research and AI safety experimentation. Current work: cross-platform exploit development, AI capability uplift measurement, and safety boundary characterisation.",
     enter_lab: "Explore the lab",
-    disclaimer:
-      "For defensive research only. No credential capture. No persistence. No deployment guidance.",
-    chip_1: "Vulnerability Research",
-    chip_2: "AI Safety",
-    chip_3: "Exploit Development",
-    chip_4: "Responsible Disclosure",
-  },
-  home: {
-    ticker: [
-      "SYSTEM ONLINE",
-      "AI SECURITY RESEARCH",
-      "LLM AGENT RED-TEAMING",
-      "CONTAINMENT ATTESTATION",
-      "PROJECT SIMURGH",
-      "CLAUDE SAFETY EVALUATOR · ALIGNERR",
-      "RESPONSIBLE DISCLOSURE",
-      "THE INVISIBLE WINDOW",
-      "INCUBATOR-BACKED STARTUP",
-      "REDUCING CATASTROPHIC AI RISKS",
-      "70+ PROJECTS SHIPPED",
-      "READY TO RELOCATE · SAN FRANCISCO",
-    ],
-    deployed_systems: "Deployed Systems",
-    ieee_format_paper: "IEEE-FORMAT PAPER",
-    connected_to_invisible_window: "CONNECTED TO INVISIBLE WINDOW",
-    local_first_mcp: "LOCAL-FIRST · MCP AGENT MEMORY",
-    scroll: "Scroll",
-    view_prefix: "View",
-    category_defensive: "DEFENSIVE",
-    category_offensive: "OFFENSIVE",
-    category_engineering: "ENGINEERING",
-  },
-  writeups: {
-    title: "Write-ups",
-    subtitle: "Technical Writing",
-    view_all: "View All",
   },
   footer: {
     last_index: "Last Index",
@@ -145,11 +80,8 @@ const en = {
   },
   common: {
     back: "Back",
-    loading: "Loading",
-    view_all_projects: "View All Projects",
     case_study: "Case Study",
     reproduce: "Reproduce",
-    repo: "Repo",
     select_language: "Select Language",
     language_selected: "SELECTED",
   },
@@ -176,7 +108,6 @@ const en = {
     photo_unavailable: "Photo unavailable",
     retry_photo: "Try again",
     terminal_subject: "Name: Raouf Abedini",
-    terminal_online: "ONLINE",
     terminal_clearance: "Profile: AI security researcher",
     terminal_location: "LOCATION: SYDNEY, NSW",
     degree_bachelor: "Bachelor of Cyber Security",
@@ -264,18 +195,11 @@ const en = {
     ops_lab6_title: "Malware Analysis Sandbox",
     ops_lab7_title: "PQC Migration Auditor",
   },
-  contact: {
-    title_1: "Let’s",
-    title_2: "talk",
-    subtitle_1:
-      "For research collaboration, security engineering or professional opportunities.",
-    subtitle_2: "Open an email draft to get in touch.",
-  },
   lab_page: {
     experimental_division: "Experimental research",
     title: "The Lab",
     description_1: "A collection of",
-    description_2: "proofs of concept",
+    description_2: "proofs of concept, ",
     description_3:
       'snippets, and unfinished research. Code here is volatile and provided "as is" for educational purposes.',
     view_analysis: "View analysis",
@@ -287,16 +211,10 @@ const en = {
     classified_archive: "Research and writing",
     title: "Write-ups",
     description: "Technical analysis, CTF solutions, and engineering logs.",
-    clearance_level: "Public articles",
-    read_file: "Read article",
   },
   projects_page: {
-    title: "Projects",
     subtitle:
       "Index of deployed tools, research prototypes, and architectural proofs.",
-    search_placeholder: "Search projects",
-    empty_results: "No projects match this search.",
-    access_file: "Open project",
   },
   resume_page: {
     title: "Résumé",
@@ -409,8 +327,6 @@ const en = {
     return_home: "Return home",
     browse_projects: "Browse projects",
     error_code: "Page not found",
-    terminal_ping_unknown: "ping: unknown host",
-    terminal_trace_failed: "Trace failed. Destination unreachable.",
   },
   lab_detail: {
     exit: "Back to experiments",
@@ -429,9 +345,7 @@ const en = {
     tech_stack: "Tech Stack",
     secure: "Secure",
     proof: "Proof & Verification",
-    verified_claims: "Verified Claims",
     project_links: "Project Links",
-    watch_demo: "Watch Demo",
     source_code: "Source Code",
     download_paper: "Download Paper",
     research_papers: "Research Papers",
@@ -441,7 +355,6 @@ const en = {
     doi_record: "DOI Record",
     demo: "Demo",
     read_preprint: "Read the preprint",
-    doi_short: "DOI",
     cite_this_work: "Cite this work",
   },
   writeups_detail: {
@@ -469,10 +382,6 @@ const en = {
     bounty_note:
       "This is a personal portfolio project. It offers no monetary bounties; valid reports may be recognised here.",
     note_label: "Note:",
-  },
-  terminal_feed: {
-    aria_label:
-      "Animated terminal showing system boot sequence and security monitoring",
   },
   project_card: {
     module_title: "Project",
@@ -526,7 +435,7 @@ const en = {
     in_2: "Cross-Site Request Forgery (CSRF)",
     in_3: "Security misconfigurations",
     in_4: "Information disclosure",
-    in_5: "Authentication/authorization flaws",
+    in_5: "Authentication/authorisation flaws",
     in_6: "Injection vulnerabilities",
     out_1: "Social engineering attacks",
     out_2: "Physical security issues",
@@ -549,10 +458,11 @@ const en = {
     g3: "Provide sufficient information to reproduce the vulnerability.",
     g4: "Give reasonable time to address the issue before public disclosure.",
     g5: "Act in good faith and avoid privacy violations.",
-    ack_title: "Acknowledgments",
+    ack_title: "Acknowledgements",
     ack_desc:
       "I appreciate responsible security researchers who help improve the security of my projects. Valid reports may be acknowledged in the",
     ack_hall_of_fame: "Security Hall of Fame",
+    ack_desc_suffix: ".",
     ack_note:
       "Note: This is a personal portfolio project. No monetary bounties are offered, but valid reports may be recognised here.",
   },

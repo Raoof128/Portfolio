@@ -201,11 +201,8 @@ describe("canvas playback lifecycle", () => {
   it("restores a paused still after resize and disconnects every subscription", () => {
     const draw = vi.fn();
     const resize = vi.fn();
-    const playback = createCanvasPlayback(
-      document.createElement("canvas"),
-      draw,
-      resize,
-    );
+    const canvas = document.createElement("canvas");
+    const playback = createCanvasPlayback(canvas, draw, resize);
     SizeObserver.instances[0].report();
     expect(draw).toHaveBeenCalledTimes(2);
     expect(draw).toHaveBeenLastCalledWith(expect.any(Number), 0);
@@ -216,10 +213,25 @@ describe("canvas playback lifecycle", () => {
     expect(preferenceCallbacks.size).toBe(0);
     window.dispatchEvent(new Event("resize"));
     SizeObserver.instances[0].report();
+    canvas.dispatchEvent(new Event("contextrestored"));
     document.dispatchEvent(new Event("visibilitychange"));
     playback.setActive(true);
     expect(draw).toHaveBeenCalledTimes(2);
     expect(frames.size).toBe(0);
+  });
+
+  it("rescales and redraws a still after the context is restored", () => {
+    const draw = vi.fn();
+    const resize = vi.fn();
+    const canvas = document.createElement("canvas");
+    const playback = createCanvasPlayback(canvas, draw, resize);
+    expect(resize).toHaveBeenCalledOnce();
+    canvas.dispatchEvent(new Event("contextrestored"));
+    expect(resize).toHaveBeenCalledTimes(2);
+    expect(draw).toHaveBeenCalledTimes(2);
+    expect(draw).toHaveBeenLastCalledWith(expect.any(Number), 0);
+    expect(frames.size).toBe(0);
+    playback.dispose();
   });
 });
 

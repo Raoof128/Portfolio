@@ -15,6 +15,7 @@ const MAGENTA = (op: number) => `rgba(255,0,127,${op})`;
 export function DnaHelixCanvas({ active = true }: { active?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const playbackRef = useRef<CanvasPlayback | null>(null);
+  const activeRef = useRef(active);
 
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
@@ -95,13 +96,18 @@ export function DnaHelixCanvas({ active = true }: { active?: boolean }) {
   useEffect(() => {
     const playback = animate();
     playbackRef.current = playback ?? null;
+    // A rebuilt playback must inherit the current state.
+    playback?.setActive(activeRef.current);
     return () => {
       playback?.dispose();
       playbackRef.current = null;
     };
   }, [animate]);
 
-  useEffect(() => playbackRef.current?.setActive(active), [active]);
+  useEffect(() => {
+    activeRef.current = active;
+    playbackRef.current?.setActive(active);
+  }, [active]);
 
   return (
     <div

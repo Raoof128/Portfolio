@@ -158,109 +158,111 @@ export function KoiPond() {
           </g>
 
           {/* ── Koi 2: Ochre (180° offset) ── */}
-          <g className="koi-orbit" transform="rotate(180 100 100)">
-            <g
-              transform="translate(100,100) translate(0,-56)"
-              className="koi-fish2"
-            >
-              <g style={{ filter: `url(#${artworkId}-koi-sumi)` }}>
-                <path
-                  className="koi-fin-l"
-                  d="M 15,-8 Q 10,-24 -5,-25 Q 5,-12 15,-8 Z"
-                  fill={OCHRE}
-                  opacity="0.65"
-                  stroke={INK}
-                  strokeWidth="0.8"
-                />
-                <path
-                  className="koi-fin-r"
-                  d="M 15,8 Q 10,24 -5,25 Q 5,12 15,8 Z"
-                  fill={OCHRE}
-                  opacity="0.65"
-                  stroke={INK}
-                  strokeWidth="0.8"
-                />
-                <path
-                  d="M 28,0 C 26,-7 14,-11 0,-11 C -4,-11 -8,-6 -10,0 C -8,6 -4,11 0,11 C 14,11 26,7 28,0 Z"
-                  fill={OCHRE}
-                  stroke={INK}
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M 14,-6 Q 8,-4 6,-7"
-                  fill="none"
-                  stroke={INK}
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M 16,5 Q 10,3 8,6"
-                  fill="none"
-                  stroke={INK}
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                />
-                <path
-                  className="koi-barbel"
-                  d="M 28,-1 Q 38,-4 42,-1"
-                  fill="none"
-                  stroke={INK}
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                />
-                <path
-                  className="koi-barbel"
-                  d="M 28,1 Q 38,4 42,1"
-                  fill="none"
-                  stroke={INK}
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                />
-              </g>
+          <g transform="rotate(180 100 100)">
+            <g className="koi-orbit">
               <g
-                className="koi-s1"
-                style={{ filter: `url(#${artworkId}-koi-sumi)` }}
+                transform="translate(100,100) translate(0,-56)"
+                className="koi-fish2"
               >
-                <path
-                  d="M 0,-11 C -3,-11 -10,-8 -14,-7 C -10,0 -10,0 -14,7 C -10,8 -3,11 0,11 Z"
-                  fill={OCHRE}
-                  stroke={INK}
-                  strokeWidth="1.5"
-                />
-                <path d="M -3,-5 Q -6,3 -10,1 Z" fill={INK} opacity="0.9" />
-                <g className="koi-s2">
+                <g style={{ filter: `url(#${artworkId}-koi-sumi)` }}>
                   <path
-                    d="M -14,-7 C -16,-6 -22,-4 -26,-3 C -24,0 -24,0 -26,3 C -22,4 -16,6 -14,7 Z"
+                    className="koi-fin-l"
+                    d="M 15,-8 Q 10,-24 -5,-25 Q 5,-12 15,-8 Z"
+                    fill={OCHRE}
+                    opacity="0.65"
+                    stroke={INK}
+                    strokeWidth="0.8"
+                  />
+                  <path
+                    className="koi-fin-r"
+                    d="M 15,8 Q 10,24 -5,25 Q 5,12 15,8 Z"
+                    fill={OCHRE}
+                    opacity="0.65"
+                    stroke={INK}
+                    strokeWidth="0.8"
+                  />
+                  <path
+                    d="M 28,0 C 26,-7 14,-11 0,-11 C -4,-11 -8,-6 -10,0 C -8,6 -4,11 0,11 C 14,11 26,7 28,0 Z"
                     fill={OCHRE}
                     stroke={INK}
                     strokeWidth="1.5"
                   />
                   <path
-                    d="M -18,-4 Q -22,-1 -24,-3 Z"
-                    fill={INK}
-                    opacity="0.95"
+                    d="M 14,-6 Q 8,-4 6,-7"
+                    fill="none"
+                    stroke={INK}
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
                   />
-                  <g className="koi-s3">
+                  <path
+                    d="M 16,5 Q 10,3 8,6"
+                    fill="none"
+                    stroke={INK}
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    className="koi-barbel"
+                    d="M 28,-1 Q 38,-4 42,-1"
+                    fill="none"
+                    stroke={INK}
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    className="koi-barbel"
+                    d="M 28,1 Q 38,4 42,1"
+                    fill="none"
+                    stroke={INK}
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                  />
+                </g>
+                <g
+                  className="koi-s1"
+                  style={{ filter: `url(#${artworkId}-koi-sumi)` }}
+                >
+                  <path
+                    d="M 0,-11 C -3,-11 -10,-8 -14,-7 C -10,0 -10,0 -14,7 C -10,8 -3,11 0,11 Z"
+                    fill={OCHRE}
+                    stroke={INK}
+                    strokeWidth="1.5"
+                  />
+                  <path d="M -3,-5 Q -6,3 -10,1 Z" fill={INK} opacity="0.9" />
+                  <g className="koi-s2">
                     <path
-                      d="M -26,-3 C -28,-2 -32,-1 -35,-0.5 C -34,0 -34,0 -35,0.5 C -32,1 -28,2 -26,3 Z"
+                      d="M -14,-7 C -16,-6 -22,-4 -26,-3 C -24,0 -24,0 -26,3 C -22,4 -16,6 -14,7 Z"
                       fill={OCHRE}
                       stroke={INK}
-                      strokeWidth="1.2"
-                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                     />
-                    <g className="koi-tail">
+                    <path
+                      d="M -18,-4 Q -22,-1 -24,-3 Z"
+                      fill={INK}
+                      opacity="0.95"
+                    />
+                    <g className="koi-s3">
                       <path
-                        d="M -35,0 Q -45,-12 -62,-16 Q -50,0 -66,0 Q -50,0 -62,16 Q -45,12 -35,0 Z"
+                        d="M -26,-3 C -28,-2 -32,-1 -35,-0.5 C -34,0 -34,0 -35,0.5 C -32,1 -28,2 -26,3 Z"
                         fill={OCHRE}
-                        opacity="0.45"
                         stroke={INK}
-                        strokeWidth="0.8"
+                        strokeWidth="1.2"
+                        strokeLinejoin="round"
                       />
-                      <path
-                        d="M -35,0 Q -42,-7 -54,-8 Q -45,0 -58,0 Q -45,0 -54,8 Q -42,7 -35,0 Z"
-                        fill={INK}
-                        opacity="0.8"
-                      />
+                      <g className="koi-tail">
+                        <path
+                          d="M -35,0 Q -45,-12 -62,-16 Q -50,0 -66,0 Q -50,0 -62,16 Q -45,12 -35,0 Z"
+                          fill={OCHRE}
+                          opacity="0.45"
+                          stroke={INK}
+                          strokeWidth="0.8"
+                        />
+                        <path
+                          d="M -35,0 Q -42,-7 -54,-8 Q -45,0 -58,0 Q -45,0 -54,8 Q -42,7 -35,0 Z"
+                          fill={INK}
+                          opacity="0.8"
+                        />
+                      </g>
                     </g>
                   </g>
                 </g>

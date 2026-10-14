@@ -28,14 +28,57 @@ describe("markdown link boundary", () => {
     ["#references", false],
   ])("preserves approved destination %s", (href, external) => {
     render(<SimpleMarkdown content={`[Read article](${href})`} />);
-    const link = screen.getByRole("link", { name: "Read article" });
+    const link = screen.getByRole("link", { name: /^Read article/ });
     expect(link).toHaveAttribute("href", href);
     if (external) {
       expect(link).toHaveAttribute("target", "_blank");
       expect(link).toHaveAttribute("rel", "noopener noreferrer");
+      // Screen readers hear that the link leaves the page.
+      expect(link).toHaveAccessibleName("Read article (opens in a new tab)");
     } else {
       expect(link).not.toHaveAttribute("target");
+      expect(link).toHaveAccessibleName("Read article");
     }
+  });
+});
+
+describe("inline emphasis", () => {
+  it("renders single-asterisk italic as <em> and keeps double-asterisk bold as <strong>", () => {
+    const { container } = render(
+      <SimpleMarkdown content={"Access is *allowed* when **bold** applies."} />,
+    );
+    const em = container.querySelector("em");
+    const strong = container.querySelector("strong");
+    expect(em).toHaveTextContent("allowed");
+    expect(strong).toHaveTextContent("bold");
+    expect(container.textContent).not.toContain("*");
+  });
+});
+
+describe("lists", () => {
+  it("renders ordered lists as a real <ol> without decorative markers", () => {
+    const { container } = render(<SimpleMarkdown content={"1. a\n2. b"} />);
+    const ol = container.querySelector("ol");
+    expect(ol).toBeInTheDocument();
+    expect(ol?.querySelectorAll("li")).toHaveLength(2);
+    expect(ol).toHaveTextContent("a");
+    expect(ol).toHaveTextContent("b");
+    expect(container.textContent).not.toContain("▹");
+  });
+
+  it("starts an ordered list at its first number", () => {
+    const { container } = render(<SimpleMarkdown content={"3. c\n4. d"} />);
+    expect(container.querySelector("ol")).toHaveAttribute("start", "3");
+  });
+
+  it("keeps unordered list semantics with a hidden decorative marker", () => {
+    const { container } = render(<SimpleMarkdown content={"- a\n- b"} />);
+    const ul = screen.getByRole("list");
+    expect(ul.tagName).toBe("UL");
+    expect(ul.querySelectorAll("li")).toHaveLength(2);
+    expect(container.querySelector("[aria-hidden='true']")).toHaveTextContent(
+      "▹",
+    );
   });
 });
 

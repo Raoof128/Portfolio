@@ -8,12 +8,10 @@ import Link from "next/link";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { cn } from "@/lib/utils";
 import { formatNumber } from "@/i18n/format";
 
 export function HallOfFameClient() {
   const { locale, t } = useTranslation();
-  const isRTL = locale === "fa" || locale === "ar";
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -22,20 +20,10 @@ export function HallOfFameClient() {
 
   return (
     <div className="os-legacy relative overflow-x-hidden">
-      <div
-        className={cn(
-          "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
-          isRTL && "text-right",
-        )}
-      >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection>
           <div className="mb-12">
-            <div
-              className={cn(
-                "flex items-center space-x-2 text-cyan mb-2",
-                isRTL && "flex-row-reverse space-x-reverse",
-              )}
-            >
+            <div className="flex items-center space-x-2 text-cyan mb-2">
               <Trophy className="w-4 h-4" />
               <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">
                 {t.hall_of_fame.subtitle}
@@ -52,15 +40,10 @@ export function HallOfFameClient() {
 
         <div className="space-y-8">
           <AnimatedSection>
-            <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-l-4 border-l-cyan">
+            <HUDFrame className="p-6 md:p-8 bg-cyan/5 border-s-4 border-s-cyan">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h2
-                    className={cn(
-                      "text-xl font-bold text-white mb-2 flex items-center gap-2",
-                      isRTL && "flex-row-reverse",
-                    )}
-                  >
+                  <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
                     <Shield
                       className="w-5 h-5 shrink-0 text-cyan"
                       aria-hidden="true"
@@ -81,8 +64,7 @@ export function HallOfFameClient() {
                   </p>
                 </div>
                 <NeonButton href={`mailto:${CONTACT_EMAIL}`} variant="primary">
-                  <Mail className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} />{" "}
-                  {t.hall_of_fame.report_btn}
+                  <Mail className="w-4 h-4 me-2" /> {t.hall_of_fame.report_btn}
                 </NeonButton>
               </div>
             </HUDFrame>
@@ -96,9 +78,9 @@ export function HallOfFameClient() {
                     <Users className="w-8 h-8 text-text-meta" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">
+                    <h2 className="text-xl font-bold text-white mb-2">
                       {t.hall_of_fame.no_entries_title}
-                    </h3>
+                    </h2>
                     <p className="text-text-body max-w-md mx-auto">
                       {t.hall_of_fame.no_entries_desc}
                     </p>
@@ -115,12 +97,7 @@ export function HallOfFameClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <h2
-                className={cn(
-                  "text-2xl font-bold text-white flex items-center gap-2",
-                  isRTL && "flex-row-reverse",
-                )}
-              >
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 <span className="text-cyan font-mono">
                   <bdi>
                     {formatNumber(1, locale, {
@@ -140,13 +117,7 @@ export function HallOfFameClient() {
                     t.hall_of_fame.criteria_3,
                     t.hall_of_fame.criteria_4,
                   ].map((criterion, i) => (
-                    <li
-                      key={i}
-                      className={cn(
-                        "flex items-start gap-2",
-                        isRTL && "flex-row-reverse",
-                      )}
-                    >
+                    <li key={i} className="flex items-start gap-2">
                       <span className="text-cyan mt-0.5">
                         {formatNumber(i + 1, locale)}.
                       </span>
@@ -160,7 +131,7 @@ export function HallOfFameClient() {
 
           <AnimatedSection>
             <section className="space-y-4">
-              <HUDFrame className="p-6 bg-[#030712]/60 border-l-4 border-l-amber">
+              <HUDFrame className="p-6 bg-[#030712]/60 border-s-4 border-s-amber">
                 <p className="text-text-body text-sm">
                   <span className="text-amber font-bold">
                     {t.hall_of_fame.note_label}

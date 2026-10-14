@@ -21,7 +21,7 @@
 :where(.os-about, .os-contact, .os-library) .os-support-eyebrow {
   color: var(--os-muted);
   font-family: var(--os-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.075em;
   line-height: 1.5;
   text-transform: uppercase;
@@ -139,7 +139,7 @@
   display: flex;
   flex-direction: column;
   font-family: var(--os-mono);
-  font-size: 11px;
+  font-size: 12px;
   gap: 12px;
   inset: 0;
   justify-content: center;
@@ -157,7 +157,7 @@
   color: var(--os-muted);
   display: grid;
   font-family: var(--os-mono);
-  font-size: 9px;
+  font-size: 12px;
   gap: 6px;
   line-height: 1.6;
   margin: 15px 0 20px;
@@ -173,7 +173,7 @@
   border-block-start: 1px solid var(--os-line);
   color: var(--os-muted);
   display: flex;
-  font-size: 11px;
+  font-size: 12px;
   gap: 8px;
   min-block-size: 44px;
   padding: 10px 0;
@@ -292,7 +292,7 @@
 .os-about-skills dt {
   color: var(--os-muted);
   font-family: var(--os-mono);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 2.5;
 }
 
@@ -308,7 +308,7 @@
   border: 1px solid var(--os-line);
   border-radius: 5px;
   color: var(--os-muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   padding: 6px 9px;
 }
@@ -338,7 +338,7 @@
 .os-about-lab-id {
   color: var(--os-muted);
   font-family: var(--os-mono);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .os-about-labs h3 {
@@ -352,7 +352,7 @@
 .os-about-labs p {
   color: var(--os-muted);
   font-family: var(--os-mono);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.7;
 }
 
@@ -361,7 +361,7 @@
   border-radius: 5px;
   color: var(--os-muted);
   font-family: var(--os-mono);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.5;
   padding: 5px 7px;
 }
@@ -439,7 +439,7 @@
 
 .os-contact-note {
   color: var(--os-muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.7;
   margin-block-start: 14px !important;
   max-inline-size: 370px;
@@ -502,7 +502,7 @@
   align-items: center;
   color: var(--os-muted);
   display: inline-flex;
-  font-size: 11px;
+  font-size: 12px;
   gap: 8px;
   justify-content: center;
   line-height: 1.7;
@@ -592,7 +592,7 @@
 .os-library-count {
   color: var(--os-muted);
   font-family: var(--os-mono);
-  font-size: 10px;
+  font-size: 12px;
   margin-inline-start: auto;
 }
 
@@ -622,7 +622,7 @@
   display: flex;
   flex-wrap: wrap;
   font-family: var(--os-mono);
-  font-size: 10px;
+  font-size: 12px;
   gap: 12px;
   line-height: 1.7;
   margin-block-end: 9px;
@@ -664,7 +664,7 @@
   align-items: center;
   color: var(--os-muted);
   display: inline-flex;
-  font-size: 11px;
+  font-size: 12px;
   gap: 8px;
   line-height: 1.7;
   min-block-size: 44px;
@@ -732,12 +732,12 @@
   }
 
   .os-about-location {
-    font-size: 8px;
+    font-size: 12px;
     margin: 0 0 6px;
   }
 
   .os-about-socials a {
-    font-size: 10px;
+    font-size: 12px;
     min-block-size: 44px;
     padding-block: 8px;
   }
@@ -756,7 +756,7 @@
   }
 
   .os-about-stats dt {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.5;
   }
 

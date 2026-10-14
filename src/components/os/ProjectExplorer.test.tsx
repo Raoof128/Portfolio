@@ -265,10 +265,9 @@ describe("original project index previews", () => {
       const otherCategory = summaries.find(
         (project) => project.category !== searchedProject.category,
       )!.category;
-      fireEvent.change(
-        screen.getByRole("combobox", { name: copy.allCategories }),
-        { target: { value: otherCategory } },
-      );
+      fireEvent.change(screen.getByRole("combobox", { name: copy.category }), {
+        target: { value: otherCategory },
+      });
       expect(screen.queryAllByRole("article")).toHaveLength(0);
       expect(container.querySelectorAll("[data-project-art]")).toHaveLength(0);
       expect(
@@ -416,9 +415,9 @@ describe("original project index previews", () => {
     expect(
       screen.getByRole("searchbox", { name: copy.projectSearch }),
     ).toHaveValue(project.searchTitle ?? project.title);
-    expect(
-      screen.getByRole("combobox", { name: copy.allCategories }),
-    ).toHaveValue(project.category);
+    expect(screen.getByRole("combobox", { name: copy.category })).toHaveValue(
+      project.category,
+    );
     expect(screen.getAllByRole("article")).toHaveLength(1);
     expect(container.querySelector("[data-project-art]")).toHaveAttribute(
       "data-project-art",
@@ -457,9 +456,9 @@ describe("original project index previews", () => {
     expect(
       screen.getByRole("searchbox", { name: copy.projectSearch }),
     ).toHaveValue("no matching project");
-    expect(
-      screen.getByRole("combobox", { name: copy.allCategories }),
-    ).toHaveValue(excludedCategory);
+    expect(screen.getByRole("combobox", { name: copy.category })).toHaveValue(
+      excludedCategory,
+    );
   });
 
   it("rejects an invalid bootstrap category and bounds the captured query", async () => {
@@ -472,9 +471,9 @@ describe("original project index previews", () => {
     expect(
       screen.getByRole("searchbox", { name: copy.projectSearch }),
     ).toHaveValue("x".repeat(100));
-    expect(
-      screen.getByRole("combobox", { name: copy.allCategories }),
-    ).toHaveValue("ALL");
+    expect(screen.getByRole("combobox", { name: copy.category })).toHaveValue(
+      "ALL",
+    );
     expect(screen.queryAllByRole("article")).toHaveLength(0);
   });
 

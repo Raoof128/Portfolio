@@ -1,5 +1,9 @@
 import { writeups } from "@/lib/data";
-import { SITE_URL, SITE_LAST_MODIFIED } from "@/lib/constants";
+import {
+  CONTACT_EMAIL_GMAIL,
+  SITE_URL,
+  SITE_LAST_MODIFIED,
+} from "@/lib/constants";
 
 export const dynamic = "force-static";
 
@@ -41,8 +45,8 @@ export function GET(): Response {
     <link>${SITE_URL}/write-ups</link>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Technical write-ups on AI security research, LLM agent red-teaming, and verifiable containment.</description>
-    <language>en</language>
-    <managingEditor>raoof.r12@gmail.com (${esc(AUTHOR)})</managingEditor>
+    <language>en-AU</language>
+    <managingEditor>${CONTACT_EMAIL_GMAIL} (${esc(AUTHOR)})</managingEditor>
     <lastBuildDate>${new Date(SITE_LAST_MODIFIED).toUTCString()}</lastBuildDate>
 ${items}
   </channel>

@@ -2,10 +2,14 @@
 /* The viewport scrollbar belongs to html, outside the themed shell. */
 html:has(.os-shell) {
   color-scheme: dark;
+  /* The document canvas must match the shell so overscroll and the area
+     behind body never flash the unthemed global background. */
+  background-color: #080d19;
   scrollbar-color: #a9bdd0 #080d19;
 }
 html:has(.os-shell[data-appearance="light"]) {
   color-scheme: light;
+  background-color: #f2f7ff;
   scrollbar-color: #536781 #f2f7ff;
 }
 .os-shell {
@@ -191,7 +195,9 @@ html:has(.os-shell[data-appearance="light"]) {
   align-items: center;
   gap: 9px;
 }
-.os-control {
+/* Scoped to the shell so the default beats the `.os-shell button` reset
+   without `!important`, while open/hover accents in later rules still win. */
+.os-shell .os-control {
   min-width: 44px;
   min-height: 44px;
   display: inline-flex;
@@ -199,11 +205,11 @@ html:has(.os-shell[data-appearance="light"]) {
   justify-content: center;
   gap: 7px;
   padding: 5px 9px;
-  font-size: 12px !important;
+  font-size: 12px;
   border: 0;
   border-radius: 10px;
   background: transparent;
-  color: var(--os-text) !important;
+  color: var(--os-text);
   transition:
     background-color var(--os-motion-quick),
     color var(--os-motion-quick),
@@ -212,7 +218,6 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-control:hover,
 .os-control:focus-visible {
   background: var(--os-line);
-  color: var(--os-text) !important;
 }
 .os-control:active {
   transform: scale(0.96);
@@ -319,7 +324,7 @@ html:has(.os-shell[data-appearance="light"]) {
 }
 .os-eyebrow {
   font-family: var(--os-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   color: var(--os-accent);
   margin: 0 0 20px;
@@ -376,7 +381,7 @@ html:has(.os-shell[data-appearance="light"]) {
   font-size: 13px;
   margin: 17px 0 25px;
 }
-.os-enter {
+.os-shell .os-enter {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -386,8 +391,8 @@ html:has(.os-shell[data-appearance="light"]) {
   border: 1px solid #ffffff35;
   padding: 12px 24px;
   background: linear-gradient(135deg, var(--os-action), var(--os-action-hover));
-  color: var(--os-on-action) !important;
-  font-size: 14px !important;
+  color: var(--os-on-action);
+  font-size: 14px;
   box-shadow:
     inset 0 1px 0 #ffffff30,
     0 6px 24px #2563eb30;
@@ -427,7 +432,7 @@ html:has(.os-shell[data-appearance="light"]) {
   height: 13px;
 }
 .os-lock-caption {
-  font: 9px var(--os-mono);
+  font: 12px var(--os-mono);
   color: var(--os-muted);
   letter-spacing: 0.12em;
   margin: 0;
@@ -501,11 +506,14 @@ html:has(.os-shell[data-appearance="light"]) {
   background: var(--os-surface);
   color: var(--os-text);
   border-radius: 10px;
-  font-size: 13px !important;
   transition:
     border-color var(--os-motion-quick),
     background-color var(--os-motion-quick),
     transform var(--os-motion-quick) var(--os-ease-out);
+}
+/* Outranks the `.os-shell button { font: inherit }` reset without `!important`. */
+.os-shell .os-button {
+  font-size: 13px;
 }
 .os-button:hover {
   border-color: var(--os-accent);
@@ -605,7 +613,8 @@ html:has(.os-shell[data-appearance="light"]) {
   opacity: 1;
 }
 .os-app-icon--projects {
-  border-radius: 9px 12px 12px;
+  border-radius: 12px;
+  border-start-start-radius: 9px;
 }
 .os-app-icon--projects::before {
   content: "";
@@ -632,7 +641,8 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-app-icon--resume {
   --icon-start: var(--os-resume-start);
   --icon-end: var(--os-resume-end);
-  border-radius: 11px 20px 11px 11px;
+  border-radius: 11px;
+  border-start-end-radius: 20px;
 }
 .os-app-icon--contact {
   --icon-start: var(--os-contact-start);
@@ -861,7 +871,7 @@ html:has(.os-shell[data-appearance="light"]) {
   gap: 4px;
 }
 .os-window-close span {
-  font-size: 10px;
+  font-size: 12px;
 }
 .os-page-content {
   min-width: 0;
@@ -1083,7 +1093,7 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-result-kind {
   display: block;
   margin-bottom: 3px;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--os-accent);
 }
@@ -1122,7 +1132,7 @@ html:has(.os-shell[data-appearance="light"]) {
   gap: 8px 20px;
   border-top: 1px solid var(--os-line);
   padding: 12px 24px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--os-muted);
   background: var(--os-bg);
   flex-shrink: 0;
@@ -1244,17 +1254,14 @@ html:has(.os-shell[data-appearance="light"]) {
   line-height: 1.85;
 }
 .os-legacy .text-white,
-.os-legacy .text-slate-300,
-.os-legacy .text-slate-200 {
+.os-legacy .text-slate-300 {
   color: var(--os-text);
 }
-.os-legacy .text-text-body,
-.os-legacy .text-slate-400,
-.os-legacy .text-slate-500 {
+.os-legacy .text-text-body {
   color: var(--os-muted);
 }
 /* Legacy prose uses the same readable semantic roles in either appearance. */
-.os-legacy :is(.text-green-400, .text-green-500) {
+.os-legacy .text-green-400 {
   color: var(--os-success);
 }
 .os-legacy :is(.text-amber, .text-yellow-400, .text-yellow-500) {
@@ -1445,7 +1452,7 @@ html:has(.os-shell[data-appearance="light"]) {
   .os-language summary {
     padding: 5px 7px;
     gap: 5px;
-    font-size: 10px;
+    font-size: 12px;
     min-width: 44px;
   }
   .os-language summary > svg:first-child {
@@ -1475,7 +1482,7 @@ html:has(.os-shell[data-appearance="light"]) {
     line-height: 1.8;
   }
   .os-lock-caption {
-    font-size: 8px;
+    font-size: 12px;
     line-height: 2;
   }
   .os-lock-caption span {
@@ -1497,7 +1504,7 @@ html:has(.os-shell[data-appearance="light"]) {
     font-size: 13px;
   }
   .os-eyebrow {
-    font-size: 9px;
+    font-size: 12px;
   }
   .os-apps {
     margin-top: 28px;
@@ -1575,7 +1582,7 @@ html:has(.os-shell[data-appearance="light"]) {
     gap: 8px;
   }
   .os-window-title {
-    font-size: 11px;
+    font-size: 12px;
   }
   .os-window-navigation > .os-small-icon {
     display: none;
@@ -1656,7 +1663,7 @@ html:has(.os-shell[data-appearance="light"]) {
   .os-search-bottom {
     padding: 10px 16px;
     gap: 8px 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .os-search-bottom > span:first-child {
     display: none;
@@ -1763,9 +1770,10 @@ html:has(.os-shell[data-appearance="light"]) {
   }
 }
 
-/* At high browser zoom, fixed navigation can consume the whole reading area.
+/* At high browser zoom and on landscape phones (≈390px tall), the sticky
+   topbar, windowbar and fixed dock would consume half the reading area.
    Keep every control in document flow so scrolling exposes text and controls. */
-@media (max-height: 320px) {
+@media (max-height: 480px) {
   .os-shell .os-topbar,
   .os-shell .os-windowbar {
     position: static;
@@ -1842,4 +1850,11 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-dock-app > span:last-child {
   font-size: 10px;
   line-height: 1.3;
+}
+
+/* 44px-wide dock buttons with nowrap localized labels need the compact size. */
+@media (max-width: 360px) {
+  .os-dock-app > span:last-child {
+    font-size: 8px;
+  }
 }

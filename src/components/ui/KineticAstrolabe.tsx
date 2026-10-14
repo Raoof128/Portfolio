@@ -44,7 +44,7 @@ export function KineticAstrolabe() {
           </defs>
 
           {/* Outer gear — clockwise */}
-          <g className="ka-gear origin-center">
+          <g className="ka-gear ka-origin">
             <circle
               cx="100"
               cy="100"
@@ -73,7 +73,7 @@ export function KineticAstrolabe() {
           </g>
 
           {/* Astral ring — counter-clockwise */}
-          <g className="ka-astral origin-center">
+          <g className="ka-astral ka-origin">
             <circle
               cx="100"
               cy="100"
@@ -100,7 +100,7 @@ export function KineticAstrolabe() {
           </g>
 
           {/* Sun core — slow clockwise + breathe */}
-          <g className="ka-sun origin-center">
+          <g className="ka-sun ka-origin">
             {[0, 45, 90, 135, 180, 225, 270, 315].map((r) => (
               <use
                 key={r}
@@ -156,10 +156,13 @@ export function KineticAstrolabe() {
           max-width: 340px;
           max-height: 340px;
         }
-        .origin-center { transform-origin: 100px 100px; }
+        .ka-origin { transform-origin: 100px 100px; }
         .ka-gear   { animation: ka-cw 24s linear infinite; }
         .ka-astral { animation: ka-ccw 16s linear infinite; }
-        .ka-sun    { animation: ka-cw 32s linear infinite, ka-breathe 5s ease-in-out infinite alternate; }
+        .ka-sun    {
+          animation: ka-cw 32s linear infinite, ka-breathe 5s ease-in-out infinite alternate;
+          animation-composition: replace, add;
+        }
         @keyframes ka-cw  { from { transform: rotate(0deg); }    to { transform: rotate(360deg); } }
         @keyframes ka-ccw { from { transform: rotate(0deg); }    to { transform: rotate(-360deg); } }
         @keyframes ka-breathe {

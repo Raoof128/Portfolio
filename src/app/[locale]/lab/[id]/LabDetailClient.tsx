@@ -5,7 +5,6 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowLeft, Terminal, AlertTriangle, Cpu } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { cn } from "@/lib/utils";
 import type { LabExperiment } from "@/lib/data";
 import { getPageSupportCopy } from "@/lib/page-support-copy";
 
@@ -26,7 +25,6 @@ function editorFilename(tech: string[]): string {
 
 export function LabDetailClient({ exp }: { exp: LabExperiment }) {
   const { locale, t } = useTranslation();
-  const isRTL = locale === "fa" || locale === "ar";
   const copy = getPageSupportCopy(locale);
 
   const getPath = (path: string) => {
@@ -43,12 +41,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
 
   return (
     <div className="os-legacy relative overflow-x-hidden">
-      <div
-        className={cn(
-          "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
-          isRTL && "text-right",
-        )}
-      >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Back Link */}
         <div className="mb-6">
           <NeonButton
@@ -56,9 +49,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
             variant="outline"
             className="text-xs px-3 py-1"
           >
-            <ArrowLeft
-              className={cn("w-3 h-3", isRTL ? "ml-2 rotate-180" : "mr-2")}
-            />{" "}
+            <ArrowLeft className="w-3 h-3 me-2 rtl:-scale-x-100" />{" "}
             {t.lab_detail.exit}
           </NeonButton>
         </div>
@@ -107,17 +98,17 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
 
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs font-mono text-cyan mb-2 flex items-center gap-2">
+                  <h2 className="text-xs font-mono text-cyan mb-2 flex items-center gap-2">
                     <Terminal className="w-3 h-3" /> {t.lab_detail.objective}
-                  </div>
+                  </h2>
                   <p className="text-sm text-slate-300">{exp.objective}</p>
                 </div>
 
                 <div>
-                  <div className="text-xs font-mono text-yellow-500 mb-2 flex items-center gap-2">
+                  <h2 className="text-xs font-mono text-yellow-500 mb-2 flex items-center gap-2">
                     <AlertTriangle className="w-3 h-3" />{" "}
                     {t.lab_detail.constraints}
-                  </div>
+                  </h2>
                   <p className="text-xs text-text-body font-mono bg-black/30 p-2 rounded border border-yellow-500/10">
                     {exp.constraints}
                   </p>
@@ -175,7 +166,7 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
                   <code>
                     {exp.codeSnippet.split("\n").map((line, i) => (
                       <span key={i} className="grid grid-cols-[2.5rem_1fr]">
-                        <span className="text-text-meta select-none text-right pr-4">
+                        <span className="text-text-meta select-none text-end pe-4">
                           {i + 1}
                         </span>
                         <span className="whitespace-pre">{line}</span>

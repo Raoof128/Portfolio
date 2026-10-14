@@ -96,7 +96,7 @@ export function Desktop({
           ))}
         </div>
       </section>
-      <nav className="os-desktop-footer" aria-label={copy.research}>
+      <nav className="os-desktop-footer" aria-label={copy.navigation}>
         <Link href={path("/lab")}>
           {copy.experiments}
           <ArrowRight aria-hidden="true" />

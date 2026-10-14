@@ -162,14 +162,16 @@ export function AboutClient() {
         ? t.about.status_archived
         : t.about.status_concept;
 
+  // "OPS-" prefix keeps these work-stream labels distinct from the real
+  // /lab/001... experiment IDs, which they previously appeared to reference.
   const activeLabs = [
-    { id: "001", status: "ACTIVE", title: t.about.ops_lab1_title },
-    { id: "002", status: "ACTIVE", title: t.about.ops_lab2_title },
-    { id: "003", status: "ACTIVE", title: t.about.ops_lab3_title },
-    { id: "004", status: "ACTIVE", title: t.about.ops_lab4_title },
-    { id: "005", status: "ARCHIVED", title: t.about.ops_lab5_title },
-    { id: "006", status: "ARCHIVED", title: t.about.ops_lab6_title },
-    { id: "007", status: "CONCEPT", title: t.about.ops_lab7_title },
+    { id: "OPS-01", status: "ACTIVE", title: t.about.ops_lab1_title },
+    { id: "OPS-02", status: "ACTIVE", title: t.about.ops_lab2_title },
+    { id: "OPS-03", status: "ACTIVE", title: t.about.ops_lab3_title },
+    { id: "OPS-04", status: "ACTIVE", title: t.about.ops_lab4_title },
+    { id: "OPS-05", status: "ARCHIVED", title: t.about.ops_lab5_title },
+    { id: "OPS-06", status: "ARCHIVED", title: t.about.ops_lab6_title },
+    { id: "OPS-07", status: "CONCEPT", title: t.about.ops_lab7_title },
   ].map((lab) => ({ ...lab, tags: copy.aboutLabTags[lab.id] }));
 
   const getPath = (path: string) => {

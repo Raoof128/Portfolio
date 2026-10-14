@@ -297,7 +297,7 @@ export const invisibleWindowStoryCopy: Record<
     macPathLabel: "macOS capture path",
     windowsApi: "Windows · SetWindowDisplayAffinity / WDA_EXCLUDEFROMCAPTURE",
     windowsScope:
-      "The study reports exclusion in tested Windows 10/11 capture paths that honor the setting.",
+      "The study reports exclusion in tested Windows 10/11 capture paths that honour the setting.",
     macApi: "macOS · NSWindow.SharingType.none",
     macScope:
       "The study reports exclusion in tested native capture paths across macOS 14–26.",

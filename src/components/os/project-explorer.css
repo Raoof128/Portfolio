@@ -91,6 +91,11 @@
   color: var(--os-muted);
   font-size: 10px;
 }
+/* The compact nav scrolls horizontally with no top padding; an inset ring
+   stays visible instead of being clipped by `overflow-x: auto`. */
+.os-project-explorer .os-explorer-project-link:focus-visible {
+  outline-offset: -2px;
+}
 .os-project-explorer
   :is(.os-explorer-project-link, .os-explorer-index-link):hover {
   background: var(--os-surface);
@@ -499,7 +504,8 @@
 .os-project-explorer
   :is(.os-diagram-excluded-window, .os-diagram-omitted-window) {
   position: absolute;
-  inset: 64px 9px 10px 38px;
+  inset-block: 64px 10px;
+  inset-inline: 38px 9px;
   padding: 9px;
   border: 1px solid var(--os-accent);
   border-radius: 4px;
@@ -756,6 +762,15 @@
 .os-project-explorer .os-diagram-stack strong,
 .os-project-explorer .os-explorer-empty {
   font-size: 14px;
+}
+
+/* A 16px control face avoids focus zoom in mobile Safari; this must follow
+   the 14px floor above so it is not overridden. */
+@media (max-width: 700px) {
+  .os-project-explorer .os-explorer-search input,
+  .os-project-explorer .os-explorer-controls select {
+    font-size: 16px;
+  }
 }
 
 .os-project-explorer .os-project-row h2 {
