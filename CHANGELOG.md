@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-15 (Australia/Sydney) — Shared pill style for action buttons
+
+- **Scope**: Owner request: restyle every action button like Uiverse "stale-rattlesnake-87" by cssbuttons-io (MIT), excluding the lock screen; then match the hover colour to the site rather than the original green.
+- **Summary**: New `action-buttons.css` (imported by `ResearchOS`) applies a white 45px pill with uppercase 2.5px-tracked 12px text, a soft shadow, and a hover/focus state that turns the site action blue (`--os-action`, `--os-on-action`, blue glow) and lifts 7px. It covers `.os-button` (desktop, search dialog, in-app 404), `.os-support-primary`/`.os-support-link` (About, Contact, Write-ups section and paper links), `.os-project-resource` (project and paper resources), `.os-document-button` (`NeonButton` on résumé, lab, write-up, security and hall-of-fame pages; its neon underline is hidden) and the Contact social links. `:is()` selectors outrank component rules without `!important`. Persian, Arabic and Chinese drop the tracking and uppercase (tracking breaks joined script). Reduced motion removes the lift. The standalone global 404 actions get the same style with `#2363d1`, keeping its forced-colours block. Excluded: the welcome screen (`:not(.os-welcome *)`), the skip link, project-list rows, Simurgh instrument tabs and icon-only window controls.
+- **Files Changed**: src/components/os/action-buttons.css (new); src/components/os/ResearchOS.tsx; src/app/global-not-found.css; AGENT.md; CHANGELOG.md.
+- **Verification**: lint 0 errors (existing `.remember/tmp` warning), typecheck, Prettier, 585 tests / 44 files, build 168 pages, agent audit 160 URLs 0 warnings, static security audit 1,094 files. Chromium on `next dev`: computed 45px radius and white background for every targeted control on project, write-ups, about, contact, résumé, security, hall-of-fame and lab pages; hover shows `--os-action` blue with a 7px lift (screenshot); long DOI buttons fit without overflow; Persian project buttons have normal tracking and no uppercase; welcome screen controls unchanged.
+- **Follow-ups**: Not deployed at time of entry.
+
 ### Raouf: 2026-10-15 (Australia/Sydney) — Enter button turns into the loader on click
 
 - **Scope**: Owner correction: the loader must play after the Enter button is pressed, not on arrival.

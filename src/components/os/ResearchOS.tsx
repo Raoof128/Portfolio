@@ -50,6 +50,7 @@ import { formatDate, formatNumber } from "@/i18n/format";
 import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
 import { WelcomeEnter } from "./WelcomeEnter";
+import "./action-buttons.css";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
 import { Desktop } from "./Desktop";
 import { ProofAtlasVisibilityContext } from "./proof-atlas-context";
