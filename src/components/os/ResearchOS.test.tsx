@@ -28,6 +28,7 @@ import {
 import type { SearchEntry } from "@/lib/os-search-query";
 import type { Locale } from "@/i18n";
 import { getAtlasCopy } from "./atlas-copy";
+import { setWelcomeLoaderDuration } from "./WelcomeEnter";
 import { getOSCopy } from "./os-copy";
 import { ResearchOS } from "./ResearchOS";
 import { Desktop } from "./Desktop";
@@ -118,6 +119,8 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  // Enter opens the workspace at once; WelcomeEnter.test covers the loader.
+  setWelcomeLoaderDuration(0);
   navigation.pathname = "/";
   navigation.push.mockClear();
   window.localStorage.clear();

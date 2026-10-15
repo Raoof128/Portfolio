@@ -748,15 +748,9 @@ export function ResearchOS({
               </h1>
               <p className="os-role">{role}</p>
               <p className="os-lock-intro">{copy.intro}</p>
-              <WelcomeEnter>
-                <button
-                  className="os-enter"
-                  id="os-enter"
-                  onClick={enterWorkspace}
-                >
-                  {atlasJourneyCopy.explore}
-                  <ArrowRight aria-hidden="true" />
-                </button>
+              <WelcomeEnter onEnter={enterWorkspace}>
+                {atlasJourneyCopy.explore}
+                <ArrowRight aria-hidden="true" />
               </WelcomeEnter>
               <nav className="os-lock-shortcuts" aria-label={copy.selectedWork}>
                 <Link

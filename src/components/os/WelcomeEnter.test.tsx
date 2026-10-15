@@ -1,23 +1,33 @@
-import { act, cleanup, render, screen } from "@testing-library/react";
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
-  resetWelcomeLoader,
+  setWelcomeLoaderDuration,
   WELCOME_LOADER_MS,
   WelcomeEnter,
 } from "./WelcomeEnter";
 
-function stage() {
-  return render(
-    <WelcomeEnter>
-      <button type="button">Explore the lab</button>
-    </WelcomeEnter>,
-  ).container.querySelector<HTMLElement>(".os-enter-stage")!;
+function renderEnter(onEnter = vi.fn()) {
+  const view = render(
+    <WelcomeEnter onEnter={onEnter}>Explore the lab</WelcomeEnter>,
+  );
+  return {
+    onEnter,
+    stage: view.container.querySelector<HTMLElement>(".os-enter-stage")!,
+    button: screen.getByRole("button", { name: "Explore the lab" }),
+    unmount: view.unmount,
+  };
 }
 
 describe("WelcomeEnter", () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    resetWelcomeLoader();
+    setWelcomeLoaderDuration(WELCOME_LOADER_MS);
   });
 
   afterEach(() => {
@@ -25,36 +35,45 @@ describe("WelcomeEnter", () => {
     vi.useRealTimers();
   });
 
-  it("plays the loader for three seconds, then reveals the button", () => {
-    const element = stage();
-    expect(element).toHaveAttribute("data-loading");
+  it("shows the button, not the loader, on arrival", () => {
+    const { stage, button } = renderEnter();
+    expect(stage).not.toHaveAttribute("data-loading");
+    expect(button).not.toHaveAttribute("aria-busy");
+    act(() => vi.advanceTimersByTime(WELCOME_LOADER_MS * 2));
+    expect(stage).not.toHaveAttribute("data-loading");
+  });
+
+  it("turns into the loader on click and enters after three seconds", () => {
+    const { stage, button, onEnter } = renderEnter();
+    fireEvent.click(button);
+    expect(stage).toHaveAttribute("data-loading");
+    expect(button).toHaveAttribute("aria-busy", "true");
     act(() => vi.advanceTimersByTime(WELCOME_LOADER_MS - 1));
-    expect(element).toHaveAttribute("data-loading");
+    expect(onEnter).not.toHaveBeenCalled();
     act(() => vi.advanceTimersByTime(1));
-    expect(element).not.toHaveAttribute("data-loading");
+    expect(onEnter).toHaveBeenCalledTimes(1);
+    expect(stage).not.toHaveAttribute("data-loading");
   });
 
-  it("keeps the button reachable while the loader plays", () => {
-    stage();
-    expect(
-      screen.getByRole("button", { name: "Explore the lab" }),
-    ).toBeEnabled();
-    expect(document.querySelector(".os-welcome-loader")).toHaveAttribute(
-      "aria-hidden",
-      "true",
-    );
-  });
-
-  it("plays once per page load", () => {
-    stage();
+  it("ignores repeated clicks while loading", () => {
+    const { button, onEnter } = renderEnter();
+    fireEvent.click(button);
+    fireEvent.click(button);
     act(() => vi.advanceTimersByTime(WELCOME_LOADER_MS));
-    cleanup();
-    expect(stage()).not.toHaveAttribute("data-loading");
+    expect(onEnter).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not enter after unmounting mid-load", () => {
+    const { button, onEnter, unmount } = renderEnter();
+    fireEvent.click(button);
+    unmount();
+    act(() => vi.advanceTimersByTime(WELCOME_LOADER_MS));
+    expect(onEnter).not.toHaveBeenCalled();
   });
 
   it("gives each loader its own mask", () => {
-    stage();
-    stage();
+    render(<WelcomeEnter onEnter={vi.fn()}>One</WelcomeEnter>);
+    render(<WelcomeEnter onEnter={vi.fn()}>Two</WelcomeEnter>);
     const masks = Array.from(document.querySelectorAll("mask")).map(
       (mask) => mask.id,
     );

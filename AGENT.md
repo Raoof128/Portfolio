@@ -31,6 +31,14 @@ Before making any code changes, agents MUST:
 - **Verification**: [Test results]
 - **Follow-ups**: [Next steps]
 
+### Raouf: 2026-10-15 (Australia/Sydney) — Enter button turns into the loader on click
+
+- **Scope**: Owner correction: the loader must play after the Enter button is pressed, not on arrival.
+- **Summary**: `WelcomeEnter` now owns the Enter button. On arrival only the button shows. Pressing it sets `data-loading`: the button fades and shrinks into the young-walrus-64 loader, and after 3 s the workspace opens through the existing `enterWorkspace` (focus moves to the desktop heading as before). Repeat presses during loading are ignored, the pending entry is cancelled if the welcome screen unmounts, and the button carries `aria-busy`/`aria-disabled` while loading. The once-per-load arrival logic and the focus-reveal exception were removed. `setWelcomeLoaderDuration(0)` lets `ResearchOS` tests enter immediately; `WelcomeEnter.test` covers the timing.
+- **Files Changed**: src/components/os/WelcomeEnter.tsx; src/components/os/WelcomeEnter.test.tsx; src/components/os/welcome-enter.css; src/components/os/ResearchOS.tsx; src/components/os/ResearchOS.test.tsx; AGENT.md; CHANGELOG.md.
+- **Verification**: lint 0 errors (existing `.remember/tmp` warning), typecheck, Prettier, 585 tests / 44 files, build and audits (see deploy entry). Chromium on `next dev`: arrival shows the button (opacity 1, no loading state); 0.7 s after a click the button is at opacity 0 and the loader at opacity 1 (screenshot); after 3 s the welcome screen is gone and focus is on the desktop heading.
+- **Follow-ups**: Skip link and "Review my research" still bypass the loader by design.
+
 ### Raouf: 2026-10-15 (Australia/Sydney) — Deploy 88f34f7 to production
 
 - **Scope**: Owner-approved deploy of the window-retention fix, welcome arrival loader and gradient Enter button; fast-forward `main`.

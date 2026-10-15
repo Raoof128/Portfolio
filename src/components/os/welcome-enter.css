@@ -19,7 +19,7 @@
   border-radius: 50%;
   pointer-events: none;
   translate: -50% -50%;
-  scale: 0.62;
+  scale: 0.2;
   box-shadow:
     0 0 25px 0 var(--loader-three),
     0 20px 50px 0 var(--loader-four);
@@ -95,29 +95,27 @@
   animation-delay: calc(var(--loader-time) / -1.5);
 }
 
-/* While loading, the blob holds the button's place. */
+/* Pressing Enter turns the button into the loader. */
 .os-enter-stage[data-loading] .os-welcome-loader {
   opacity: 1;
+  scale: 0.62;
   visibility: visible;
-  transition: none;
+  transition:
+    opacity 420ms var(--os-ease-out) 120ms,
+    scale 420ms var(--os-ease-out) 120ms;
 }
 .os-shell .os-enter-stage .os-enter {
   transition:
-    opacity 420ms var(--os-ease-out) 120ms,
-    scale 420ms var(--os-ease-out) 120ms,
-    filter 420ms var(--os-ease-out) 120ms,
+    opacity 420ms var(--os-ease-out),
+    scale 420ms var(--os-ease-out),
+    filter 420ms var(--os-ease-out),
     transform var(--os-motion-control) var(--os-ease-out);
 }
-.os-shell .os-enter-stage[data-loading] .os-enter:not(:focus-visible) {
+.os-shell .os-enter-stage[data-loading] .os-enter {
   opacity: 0;
   scale: 0.4;
   filter: blur(8px);
   pointer-events: none;
-}
-/* Keyboard focus never waits on the animation. */
-.os-enter-stage[data-loading]:has(.os-enter:focus-visible) .os-welcome-loader {
-  opacity: 0;
-  visibility: hidden;
 }
 
 @keyframes os-loader-rotation {
@@ -162,6 +160,7 @@
     animation: none;
   }
   .os-welcome-loader,
+  .os-enter-stage[data-loading] .os-welcome-loader,
   .os-shell .os-enter-stage .os-enter {
     transition: none;
   }

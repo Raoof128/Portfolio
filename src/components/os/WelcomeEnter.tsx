@@ -1,39 +1,66 @@
 "use client";
 
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import "./welcome-enter.css";
 
-/** How long the arrival loader plays before it turns into the Enter button. */
+/** How long the loader plays after Enter is pressed, before the workspace opens. */
 export const WELCOME_LOADER_MS = 3000;
 
-// Once per page load: returning to the welcome screen shows the button at once.
-let loaderPlayed = false;
+let loaderMs = WELCOME_LOADER_MS;
 
-/** Test hook: replay the arrival loader as on a fresh page load. */
-export function resetWelcomeLoader() {
-  loaderPlayed = false;
+/** Test hook: change the loader duration; 0 enters immediately. */
+export function setWelcomeLoaderDuration(ms: number) {
+  loaderMs = ms;
 }
 
 /**
- * Plays the arrival loader, then reveals the Enter button in its place. The
- * button stays mounted and reachable throughout; only its appearance waits, and
- * keyboard focus reveals it immediately.
+ * The welcome Enter button. Pressing it turns the button into the loader, then
+ * opens the workspace once the loader has played.
  */
-export function WelcomeEnter({ children }: { children: ReactNode }) {
-  const [loading, setLoading] = useState(() => !loaderPlayed);
+export function WelcomeEnter({
+  onEnter,
+  children,
+}: {
+  onEnter: () => void;
+  children: ReactNode;
+}) {
+  const [loading, setLoading] = useState(false);
+  const timer = useRef<number | null>(null);
   const maskId = `welcome-loader-${useId().replace(/:/g, "")}`;
 
-  useEffect(() => {
-    if (!loading) return;
-    const timer = window.setTimeout(() => {
-      loaderPlayed = true;
+  useEffect(
+    () => () => {
+      if (timer.current !== null) window.clearTimeout(timer.current);
+    },
+    [],
+  );
+
+  function enter() {
+    if (loading) return;
+    if (loaderMs <= 0) {
+      onEnter();
+      return;
+    }
+    setLoading(true);
+    timer.current = window.setTimeout(() => {
+      timer.current = null;
       setLoading(false);
-    }, WELCOME_LOADER_MS);
-    return () => window.clearTimeout(timer);
-  }, [loading]);
+      onEnter();
+    }, loaderMs);
+  }
 
   return (
     <div className="os-enter-stage" data-loading={loading || undefined}>
+      <button
+        className="os-enter"
+        id="os-enter"
+        type="button"
+        aria-busy={loading || undefined}
+        aria-disabled={loading || undefined}
+        onClick={enter}
+      >
+        {children}
+      </button>
       {/* Loader after "young-walrus-64" by andrew-manzyk, Uiverse.io (MIT). */}
       <div className="os-welcome-loader" aria-hidden="true">
         <svg width="100" height="100" viewBox="0 0 100 100">
@@ -54,7 +81,6 @@ export function WelcomeEnter({ children }: { children: ReactNode }) {
           style={{ mask: `url(#${maskId})`, WebkitMask: `url(#${maskId})` }}
         />
       </div>
-      {children}
     </div>
   );
 }
