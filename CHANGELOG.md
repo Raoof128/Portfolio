@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-15 (Australia/Sydney) — Gradient Enter button
+
+- **Scope**: Owner request: restyle the welcome "Enter workspace" button as Uiverse "selfish-kangaroo-64" by kirzin (MIT).
+- **Summary**: `.os-enter` is now the gradient pill (blue → pink → yellow, 300% background, 5px gradient halo `::before` that blurs to 20px while the gradient flows on hover). Adaptations: auto width with a 9em minimum so every locale fits, keyboard focus gets the same effect as hover, a text shadow keeps the white label legible, and the existing RTL arrow flip, reduced-motion overrides and arrival-loader reveal still apply. Source taken from the official uiverse-io/galaxy mirror because uiverse.io blocks scripted fetches.
+- **Files Changed**: src/components/os/research-os.css; src/components/os/welcome-enter.css; AGENT.md; CHANGELOG.md.
+- **Verification**: lint 0 errors (existing `.remember/tmp` warning), typecheck, Prettier, 584 tests / 44 files, build 168 pages, static security audit. Chromium on `next dev`: English and Persian welcome screens render the pill (Persian arrow mirrored), hover runs `os-enter-flow` with a 20px halo blur.
+- **Follow-ups**: Not deployed. White text over the light-blue and yellow parts of the gradient is below WCAG AA contrast at 14px; the text shadow mitigates it but does not meet the standard.
+
 ### Raouf: 2026-10-15 (Australia/Sydney) — Keep one window across project navigation; welcome arrival loader
 
 - **Scope**: Owner-reported bug: moving between projects closed and reopened the window and reset its size and position. Owner request: a 3-second arrival loader on the welcome screen that turns into the Enter button, using Uiverse "young-walrus-64" by andrew-manzyk (MIT).

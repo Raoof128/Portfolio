@@ -106,8 +106,7 @@
     opacity 420ms var(--os-ease-out) 120ms,
     scale 420ms var(--os-ease-out) 120ms,
     filter 420ms var(--os-ease-out) 120ms,
-    transform var(--os-motion-control) var(--os-ease-out),
-    border-color var(--os-motion-quick);
+    transform var(--os-motion-control) var(--os-ease-out);
 }
 .os-shell .os-enter-stage[data-loading] .os-enter:not(:focus-visible) {
   opacity: 0;
