@@ -294,3 +294,84 @@
   outline: 2px solid var(--os-focus);
   outline-offset: -2px;
 }
+
+/* Window open (dockwin lane). The frame's open is a transition from @starting-style, not
+   the os-window-in keyframe, so research-os.css gives up its animation here. The close
+   keyframe (data-state="closing") is not touched. Transform origin is the dock item's x
+   (spotlight.ts), with a centred fallback. */
+.os-shell .os-window[data-opening]:not([hidden]) {
+  animation-name: none;
+}
+.os-shell .os-window {
+  transition:
+    opacity var(--motion-window) var(--ease-spring-window),
+    transform var(--motion-window) var(--ease-spring-window);
+  transform-origin: var(--dock-origin-x, 50%) 100%;
+}
+/* Only a user-initiated show (data-opening) starts from the faded state. Windows open at
+   load never take it, so the first paint and a deep link's LCP are not delayed. */
+@supports (transition-behavior: allow-discrete) {
+  @starting-style {
+    .os-shell .os-window[data-opening="true"] {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+  }
+}
+
+/* Search dialog entrance (dockwin lane). @starting-style replaces the os-dialog-arrive
+   keyframe. The scrim is unchanged, and there is no spotlight. The dialog gets the
+   static rim only. */
+.os-shell .os-search-dialog {
+  transition:
+    opacity var(--motion-window) var(--ease-spring-window),
+    transform var(--motion-window) var(--ease-spring-window);
+}
+.os-shell .os-search-dialog[open] {
+  animation-name: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  @starting-style {
+    .os-shell .os-search-dialog[open] {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+}
+.os-shell .os-search-dialog[open]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--os-rim-gradient);
+  pointer-events: none;
+  opacity: var(--os-rim-opacity);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+@media (prefers-contrast: more) {
+  .os-shell .os-search-dialog[open]::after {
+    background: var(--os-rim-solid);
+    opacity: 1;
+  }
+}
+@media (forced-colors: active) {
+  .os-shell .os-search-dialog[open]::after {
+    display: none;
+  }
+}
+
+/* Reduced motion: windows and the dialog appear at once. Their transitions run for 0ms,
+   which overrides the shared colour-and-opacity fade in research-os.css. */
+@media (prefers-reduced-motion: reduce) {
+  .os-shell .os-window,
+  .os-shell .os-search-dialog {
+    transition-duration: 0ms !important;
+  }
+}

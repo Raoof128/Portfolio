@@ -1,11 +1,14 @@
 /* "Signal lost" vortex after "ordinary-mouse-17" by NlghtM4re, Uiverse.io (MIT).
-   Restyled to the ResearchOS accent: each ring is --os-accent at a stepped alpha
-   (opacity), with no hue shift and no glow. The rings rise at most 24px. */
+   Restyled to the ResearchOS showstopper palette: each ring takes one stop of the
+   glow gradient by index, at a stepped alpha (opacity), with no glow. The rings rise
+   at most 24px, twice, and then stop. */
 .signal-vortex {
   --vortex: var(--os-accent);
-  /* Local loop timing: one rise per period, each ring starting one step after the last. */
-  --vortex-period: 3s;
-  --vortex-step: 0.08s;
+  /* Finite motion (WCAG 2.2.2): each ring rises twice, then stops at rest. The markup
+     renders 21 rings (--i 0 to 20), so the last ring starts at 1.2s and ends at
+     1.2s + 2 x 1.9s = 5.0s, the limit. Each ring starts one step after the last. */
+  --vortex-period: 1.9s;
+  --vortex-step: 0.06s;
   position: relative;
   display: flex;
   align-items: center;
@@ -33,11 +36,26 @@
   transform-style: preserve-3d;
   transform: rotateX(70deg) translateZ(30px);
 }
-/* The loop runs only when the reader allows motion; otherwise the rings stay still. */
+/* Rings take the signature gradient by index (blue, violet, pink, orange). The
+   fallback keeps the accent if the ResearchOS tokens are missing. */
+.signal-vortex span:nth-child(4n + 1) {
+  --vortex: var(--os-glow-blue, var(--os-accent));
+}
+.signal-vortex span:nth-child(4n + 2) {
+  --vortex: var(--os-glow-violet, var(--os-accent));
+}
+.signal-vortex span:nth-child(4n + 3) {
+  --vortex: var(--os-glow-pink, var(--os-accent));
+}
+.signal-vortex span:nth-child(4n) {
+  --vortex: var(--os-glow-orange, var(--os-accent));
+}
+/* The rise runs only when the reader allows motion, and it stops at rest: the
+   0% and 100% frames match the static transform, so no fill mode is needed. */
 @media (prefers-reduced-motion: no-preference) {
   .signal-vortex span {
     animation: signal-vortex-rise var(--vortex-period) var(--ease-standard)
-      calc(var(--i) * var(--vortex-step)) infinite;
+      calc(var(--i) * var(--vortex-step)) 2;
   }
 }
 @keyframes signal-vortex-rise {

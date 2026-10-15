@@ -28,11 +28,49 @@ html[data-global-not-found] body {
   background: var(--os-bg);
   color: var(--os-text);
 }
+/* The card: a solid surface with a hairline and a static rim. Padding keeps the text
+   and the vortex clear of the rim. The rim is painted on the ::after layer (RIM
+   RECIPE), so it adds no layout and no motion. */
 .global-not-found {
+  position: relative;
   width: min(100%, 38rem);
+  padding: var(--space-6);
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  background: var(--os-surface);
   /* Re-resolved here, not inherited from <html>: inherited font-family is computed on
      the root, so the locale tokens below would otherwise never reach the descendants. */
   font-family: var(--os-font-ui);
+}
+.global-not-found::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--os-rim-gradient);
+  pointer-events: none;
+  opacity: var(--os-rim-opacity);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+/* Increased contrast: the rim steps up to the solid boundary at full opacity. */
+@media (prefers-contrast: more) {
+  .global-not-found::after {
+    background: var(--os-rim-solid);
+    opacity: 1;
+  }
+}
+/* Forced colours ignore the rim paint, so it is removed rather than left as a mask. */
+@media (forced-colors: active) {
+  .global-not-found::after {
+    display: none;
+  }
 }
 /* Persian and Arabic: Vazirmatn for UI and display type. Redefining the tokens on this
    element lets the heading, copy, labels, select and os-button all pick them up. */

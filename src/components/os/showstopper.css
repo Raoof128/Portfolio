@@ -1,0 +1,124 @@
+/* Showstopper layer (v2.0): shared keyframes, the rim recipe and the global resets.
+   Tokens live in research-os.css. Lanes load this file before their own stylesheets,
+   so every rule here uses the .os-shell prefix to win over the base rules.
+   Only transform and opacity animate, except the one-shot name sweep, which moves
+   background-position. Nothing repeats (WCAG 2.2.2). */
+
+@keyframes os-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes os-rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* One-shot sweep for the gradient name. The band layer is the first background
+   image; the glow gradient sits underneath and stays put. Dark theme only. */
+@keyframes os-name-sweep {
+  from {
+    background-position:
+      120% 0,
+      0 0;
+  }
+  to {
+    background-position:
+      -20% 0,
+      0 0;
+  }
+}
+
+/* Rim recipe. Lanes use the class os-rim on an element that is already positioned
+   (relative or absolute), so the rim can sit on its ::after without moving layout.
+   The ring is the border box minus the content box: a 1px masked gradient edge
+   that is painted once, with no blur and no filter.
+
+   .os-shell .os-rim::after {
+     content: "";
+     position: absolute;
+     inset: 0;
+     border-radius: inherit;
+     padding: 1px;
+     background: var(--os-rim-gradient);
+     pointer-events: none;
+     opacity: var(--os-rim-opacity);
+     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+     -webkit-mask-composite: xor;
+     mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+   }
+*/
+.os-shell .os-rim::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--os-rim-gradient);
+  pointer-events: none;
+  opacity: var(--os-rim-opacity);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+/* Forced colours: gradient text falls back to the system text colour, and rims are
+   removed because forced colours ignore their paint. Every background-clip: text
+   selector in the shell must be listed here. */
+@media (forced-colors: active) {
+  .os-shell #os-lock-name,
+  .os-shell .os-intro h1 span,
+  .os-shell .os-app-stat-figure {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: CanvasText;
+  }
+  .os-shell .os-rim::after,
+  .os-shell .os-dock::before {
+    display: none;
+  }
+}
+
+/* Increased contrast: rims step up to the solid boundary token at full opacity. */
+@media (prefers-contrast: more) {
+  .os-shell .os-rim::after,
+  .os-shell .os-dock::before {
+    background: var(--os-rim-solid);
+    opacity: 1;
+  }
+}
+
+/* Reduced motion: every animation is off, and the still frame is the final state.
+   Transitions drop to 0ms so windows and dialogs appear at once. Tiles and the
+   atlas hairline are shown in full, and the spotlight fields are hidden. */
+@media (prefers-reduced-motion: reduce) {
+  .os-shell *,
+  .os-shell *::before,
+  .os-shell *::after {
+    animation: none !important;
+    transition-duration: 0ms !important;
+  }
+  .os-shell .os-app,
+  .os-shell .proof-atlas--desktop::before {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .os-shell .os-desktop::before,
+  .os-shell .os-app[data-spotlight]::before {
+    display: none;
+  }
+}

@@ -82,3 +82,82 @@
     background: Highlight;
   }
 }
+
+/* Enter face (v2.0). A static titanium face with a masked 3px ring in the glow gradient
+   and a violet glow. The ring sits outside the face, so the face is not tinted. Nothing
+   here animates: the loader fill and the status line keep the progress meaning, and the
+   glow is never read as progress. The containing block stays the button in every state,
+   so the ring does not jump to the stage frame when the button is disabled. The
+   :not(:disabled) guard keeps the enabled face rules off the disabled state, which
+   research-os.css styles. */
+.os-shell .os-enter {
+  position: relative;
+  isolation: isolate;
+}
+.os-shell .os-enter:not(:disabled) {
+  background: linear-gradient(
+    180deg,
+    var(--os-titanium-top),
+    var(--os-titanium-bottom)
+  );
+  color: var(--os-titanium-ink);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    0 0 18px rgb(180 156 255 / 22%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    0 0 18px color-mix(in srgb, var(--os-glow-violet) 22%, transparent);
+}
+.os-shell .os-enter::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: calc(var(--radius-s) + 3px);
+  padding: 3px;
+  background: var(--os-glow-gradient);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity var(--motion-quick) var(--ease-standard);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+/* Hover and keyboard focus light the ring fully and lift the face one step. Press
+   darkens the top stop. These are more specific than the accent fills in
+   research-os.css, so they win without relying on source order. The background-image
+   swap is instant; background-image is not in the transition list. */
+.os-shell .os-enter:not(:disabled):is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+.os-shell .os-enter:not(:disabled):is(:hover, :focus-visible) {
+  background: linear-gradient(
+    180deg,
+    var(--os-titanium-top),
+    color-mix(in srgb, var(--os-titanium-bottom) 90%, var(--os-titanium-top))
+  );
+}
+.os-shell .os-enter:not(:disabled):active {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--os-titanium-top) 90%, var(--os-titanium-bottom)),
+    var(--os-titanium-bottom)
+  );
+}
+/* Disabled (the wait is running): no ring and no glow, so the face reads as inactive
+   rather than as progress. The disabled colours from research-os.css still apply. */
+.os-shell .os-enter:disabled {
+  box-shadow: none;
+}
+.os-shell .os-enter:disabled::before {
+  opacity: 0;
+}
+@media (forced-colors: active) {
+  .os-shell .os-enter::before {
+    display: none;
+  }
+}

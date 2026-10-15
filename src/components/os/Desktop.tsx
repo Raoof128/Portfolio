@@ -2,6 +2,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import type { Locale } from "@/i18n";
+import { projects, type Project } from "@/lib/data";
 import { getOSCopy } from "./os-copy";
 import { OSIcon, type PortfolioApp } from "./OSIcon";
 
@@ -25,6 +26,16 @@ const appPaths = {
   contact: "/contact",
 };
 
+// Build-time stat callout for the Projects tile: the total and the count per category.
+const projectList = Object.values(projects);
+const projectCounts = projectList.reduce<Record<Project["category"], number>>(
+  (counts, project) => ({
+    ...counts,
+    [project.category]: counts[project.category] + 1,
+  }),
+  { OFFENSIVE: 0, DEFENSIVE: 0, ENGINEERING: 0 },
+);
+
 export function Desktop({
   locale,
   role,
@@ -45,7 +56,7 @@ export function Desktop({
     contact: copy.appContact,
   };
   return (
-    <div className="os-desktop">
+    <div className="os-desktop" data-spotlight-field="">
       <div className="os-desktop-identity os-desktop-identity--atlas">
         <section className="os-intro">
           <p className="os-eyebrow">{copy.independentResearch}</p>
@@ -85,14 +96,33 @@ export function Desktop({
         <div className="os-app-grid">
           {apps.map((app) => (
             <Link
-              className="os-app"
+              className="os-app os-rim"
               key={app}
               data-app={app}
+              data-spotlight=""
               href={path(appPaths[app])}
             >
               <OSIcon app={app} tile />
               <strong>{copy[app]}</strong>
               <small>{hints[app]}</small>
+              {app === "projects" && (
+                <span className="os-app-stat">
+                  <span className="os-app-stat-figure">
+                    {projectList.length}
+                  </span>
+                  <span className="os-app-stat-breakdown">
+                    <span>
+                      {copy.categoryOffensive} {projectCounts.OFFENSIVE}
+                    </span>
+                    <span>
+                      {copy.categoryDefensive} {projectCounts.DEFENSIVE}
+                    </span>
+                    <span>
+                      {copy.categoryEngineering} {projectCounts.ENGINEERING}
+                    </span>
+                  </span>
+                </span>
+              )}
             </Link>
           ))}
         </div>

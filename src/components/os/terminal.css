@@ -4,6 +4,7 @@
    terminal styling has been retired, so nothing here needs to override it. */
 
 .os-shell .os-terminal {
+  position: relative;
   display: grid;
   gap: var(--space-3);
   min-width: 0;
@@ -17,6 +18,32 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   text-align: start;
+}
+
+/* Static rim (v2.0, RIM RECIPE in showstopper.css): a 1px edge painted once on ::after.
+   It takes no glow and no animation, and the code text keeps its solid surface. */
+.os-shell .os-terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--os-rim-gradient);
+  pointer-events: none;
+  opacity: var(--os-rim-opacity);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+@media (prefers-contrast: more) {
+  .os-shell .os-terminal::after {
+    background: var(--os-rim-solid);
+    opacity: 1;
+  }
 }
 
 .os-shell .os-terminal-head {
@@ -104,5 +131,8 @@
   }
   .os-shell .os-terminal-body code::before {
     color: CanvasText;
+  }
+  .os-shell .os-terminal::after {
+    display: none;
   }
 }

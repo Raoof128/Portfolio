@@ -1502,3 +1502,198 @@
     gap: var(--space-1);
   }
 }
+
+/* ===== Showstopper layer (v2.0) =====
+   Reading text stays solid. The glow gradient appears only on the page-level h1
+   (24px or larger), on the section dividers, and on the rims of cards on hover.
+   Nothing here repeats or moves (WCAG 2.2.2), and there is no backdrop filter. The
+   rules sit after the base rules above, so the same source order wins. */
+
+/* Display headings. The solid colour is the fallback. The gradient needs background-clip
+   text, so it is set only inside @supports. Padding and margin shift by 0.08em, so the
+   box and the spacing around it do not change. */
+.os-about h1,
+.os-contact h1,
+.os-page-intro h1,
+.os-library-header h1,
+.os-lab-header h1,
+.os-writeup > header h1,
+.os-resume-header h1,
+.os-lab-detail-info h1 {
+  color: var(--os-text);
+  letter-spacing: 0;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .os-about h1,
+  .os-contact h1,
+  .os-page-intro h1,
+  .os-library-header h1,
+  .os-lab-header h1,
+  .os-writeup > header h1 {
+    background-image: var(--os-glow-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-block: 0.08em;
+    margin-block: calc(var(--space-2) - 0.08em) calc(var(--space-4) - 0.08em);
+  }
+  .os-resume-header h1,
+  .os-lab-detail-info h1 {
+    background-image: var(--os-glow-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-block: 0.08em;
+    margin-block: -0.08em;
+  }
+  /* Persian and Arabic: the lifted line box keeps the diacritics inside the clip. */
+  .os-about h1:is(:lang(fa), :lang(ar)),
+  .os-contact h1:is(:lang(fa), :lang(ar)),
+  .os-page-intro h1:is(:lang(fa), :lang(ar)),
+  .os-library-header h1:is(:lang(fa), :lang(ar)),
+  .os-lab-header h1:is(:lang(fa), :lang(ar)),
+  .os-writeup > header h1:is(:lang(fa), :lang(ar)) {
+    line-height: 1.25;
+    padding-block-start: 0.14em;
+    margin-block-start: calc(var(--space-2) - 0.14em);
+  }
+  .os-resume-header h1:is(:lang(fa), :lang(ar)),
+  .os-lab-detail-info h1:is(:lang(fa), :lang(ar)) {
+    line-height: 1.25;
+    padding-block-start: 0.14em;
+    margin-block-start: -0.14em;
+  }
+}
+/* Forced colours and increased contrast: the gradient is removed, and the text takes
+   the system colour. */
+@media (forced-colors: active) {
+  .os-about h1,
+  .os-contact h1,
+  .os-page-intro h1,
+  .os-library-header h1,
+  .os-lab-header h1,
+  .os-writeup > header h1,
+  .os-resume-header h1,
+  .os-lab-detail-info h1 {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: CanvasText;
+  }
+}
+
+/* Luminous dividers. Each one is a 1px glow line at half opacity, in the gap above a
+   section. Sections have a 48px top margin (32px on the contact socials), so the line
+   sits in the middle of that gap. The footers already have a rule, so theirs replaces
+   it at the top edge. */
+.os-about-section,
+.os-resume-section,
+.os-policy-section,
+.os-contact-socials,
+.os-library > section + section,
+.os-lab-footnote,
+.os-writeup-footer {
+  position: relative;
+}
+.os-lab-footnote,
+.os-writeup-footer {
+  border-block-start-color: transparent;
+}
+.os-about-section::before,
+.os-resume-section::before,
+.os-policy-section::before,
+.os-contact-socials::before,
+.os-library > section + section::before,
+.os-lab-footnote::before,
+.os-writeup-footer::before {
+  background: var(--os-glow-gradient);
+  block-size: 1px;
+  content: "";
+  inset-block-start: calc(var(--space-12) / -2);
+  inset-inline: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+}
+.os-contact-socials::before {
+  inset-block-start: calc(var(--space-8) / -2);
+}
+.os-lab-footnote::before,
+.os-writeup-footer::before {
+  inset-block-start: 0;
+}
+@media (forced-colors: active) {
+  .os-about-section::before,
+  .os-resume-section::before,
+  .os-policy-section::before,
+  .os-contact-socials::before,
+  .os-library > section + section::before,
+  .os-lab-footnote::before,
+  .os-writeup-footer::before {
+    display: none;
+  }
+}
+
+/* Premium cards: the rim recipe on hover only, with no lift. The surface stays solid.
+   The custom properties let increased contrast step the rim up to the solid boundary. */
+.os-support {
+  --os-card-rim: var(--os-rim-gradient);
+  --os-card-rim-opacity: var(--os-rim-opacity);
+}
+@media (prefers-contrast: more) {
+  .os-support {
+    --os-card-rim: var(--os-rim-solid);
+    --os-card-rim-opacity: 1;
+  }
+}
+.os-about-spec,
+.os-about-education article,
+.os-resume-card,
+.os-contact-email,
+.os-contact-socials a,
+.os-hall .os-callout,
+.os-policy .os-callout {
+  position: relative;
+}
+.os-about-spec::after,
+.os-about-education article::after,
+.os-resume-card::after,
+.os-contact-email::after,
+.os-contact-socials a::after,
+.os-hall .os-callout::after,
+.os-policy .os-callout::after {
+  background: var(--os-card-rim);
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  opacity: 0;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+.os-about-spec:hover::after,
+.os-about-education article:hover::after,
+.os-resume-card:hover::after,
+.os-contact-email:hover::after,
+.os-contact-socials a:hover::after,
+.os-hall .os-callout:hover::after,
+.os-policy .os-callout:hover::after {
+  opacity: var(--os-card-rim-opacity);
+}
+@media (forced-colors: active) {
+  .os-about-spec::after,
+  .os-about-education article::after,
+  .os-resume-card::after,
+  .os-contact-email::after,
+  .os-contact-socials a::after,
+  .os-hall .os-callout::after,
+  .os-policy .os-callout::after {
+    display: none;
+  }
+}

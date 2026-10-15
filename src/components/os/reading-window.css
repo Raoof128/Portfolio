@@ -302,3 +302,58 @@
     }
   }
 }
+
+/* Title bar edge (dockwin lane): a static 1px glow line on the bar's block-end edge, at
+   half strength. Logical edges only, so it mirrors in RTL. No blur is added here. */
+.os-shell .os-workspace-window > .os-windowbar::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  height: 1px;
+  background: var(--os-glow-gradient);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Focus rim (dockwin lane): the focused desktop frame gets the shared rim, faded in over
+   180ms. It is drawn on ::after, which is free on the window frame. Phone frames have no
+   border or radius, so they keep none. */
+.os-shell .os-workspace-window.os-window--floating::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--os-rim-gradient);
+  pointer-events: none;
+  opacity: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  transition: opacity var(--motion-control) var(--ease-standard);
+}
+.os-shell .os-workspace-window.os-window--floating:focus-within::after {
+  opacity: 1;
+}
+@media (prefers-contrast: more) {
+  .os-shell .os-workspace-window.os-window--floating::after {
+    background: var(--os-rim-solid);
+  }
+}
+@media (forced-colors: active) {
+  .os-shell .os-workspace-window > .os-windowbar::after,
+  .os-shell .os-workspace-window.os-window--floating::after {
+    display: none;
+  }
+}
+/* Reduced motion: the rim appears at once, with no fade. */
+@media (prefers-reduced-motion: reduce) {
+  .os-shell .os-workspace-window.os-window--floating::after {
+    transition-duration: 0ms !important;
+  }
+}

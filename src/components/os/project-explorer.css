@@ -229,7 +229,7 @@
   background: var(--os-surface);
   transition: border-color var(--motion-quick) var(--ease-standard);
 }
-/* Hover sharpens the hairline only: no background or lift on index cards. */
+/* Hover sharpens the hairline and shows the static rim below: no background or lift. */
 .os-shell .os-project-explorer .os-project-row:hover {
   border-color: var(--os-control-line);
 }
@@ -835,5 +835,65 @@
     )[aria-current="page"] {
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+}
+
+/* Static rims (v2.0, RIM RECIPE in showstopper.css). An index row shows its rim on
+   hover or while focus is inside it; a paper card shows its rim on hover only. The
+   rim is painted once on ::after and never moves: no transition, no glow, no lift.
+   Thumbnails and links get no rim. Scoped to the explorer, so .ui-card--interactive
+   on reading pages is untouched. */
+.os-shell .os-project-explorer .os-project-paper-library .os-project-paper {
+  position: relative;
+}
+.os-shell
+  .os-project-explorer
+  :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--os-rim-gradient);
+  pointer-events: none;
+  opacity: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+.os-shell .os-project-explorer .os-project-row:is(:hover, :focus-within)::after,
+.os-shell
+  .os-project-explorer
+  .os-project-paper-library
+  .os-project-paper:hover::after {
+  opacity: var(--os-rim-opacity);
+}
+/* Increased contrast: the rim steps up to the solid boundary token at full strength. */
+@media (prefers-contrast: more) {
+  .os-shell
+    .os-project-explorer
+    :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
+    background: var(--os-rim-solid);
+  }
+  .os-shell
+    .os-project-explorer
+    .os-project-row:is(:hover, :focus-within)::after,
+  .os-shell
+    .os-project-explorer
+    .os-project-paper-library
+    .os-project-paper:hover::after {
+    opacity: 1;
+  }
+}
+/* Forced colours ignore the gradient paint, so the rim is removed. */
+@media (forced-colors: active) {
+  .os-shell
+    .os-project-explorer
+    :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
+    display: none;
   }
 }

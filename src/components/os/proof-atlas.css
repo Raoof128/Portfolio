@@ -18,10 +18,49 @@
 /* Desktop panel: solid surface, hairline and the window radius. */
 .proof-atlas--desktop {
   position: relative;
+  /* Clips the top rail to the rounded corners. Clip, not hidden: a scroll container
+     here would detach the rail's view() timeline from the page scroll. */
+  overflow: clip;
   padding: var(--space-4) var(--space-6) var(--space-6);
   border: 1px solid var(--os-line);
   border-radius: var(--radius-m);
   background: var(--os-surface);
+}
+
+/* Showstopper rail (v2.0): a 2px glow hairline across the top edge. It is static at full
+   width. Under view() it draws in once, scaled from the start edge, over the first 40%
+   of the panel's entry. Unsupported browsers keep the static rail. */
+.proof-atlas--desktop::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 2px;
+  background: var(--os-glow-gradient);
+  pointer-events: none;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .proof-atlas--desktop::before {
+      transform-origin: left;
+      animation: os-rail-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    .proof-atlas--desktop:dir(rtl)::before {
+      transform-origin: right;
+    }
+  }
+}
+
+/* Luminous nodes (v2.0): a static accent halo on the desktop variant only. Evidence
+   receipts keep their solid surface fill. */
+@media (prefers-reduced-transparency: no-preference) {
+  .proof-atlas--desktop
+    .proof-atlas-node:not(.proof-atlas-node--evidence)
+    .proof-atlas-node-halo {
+    fill: color-mix(in srgb, var(--os-glow-blue) 22%, transparent);
+  }
 }
 
 .proof-atlas-heading {

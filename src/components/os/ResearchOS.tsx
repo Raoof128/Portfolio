@@ -75,6 +75,11 @@ import {
 import "./research-os.css";
 import "./liquid-glass.css";
 import "./reading-window.css";
+import "./showstopper.css";
+import "./welcome-show.css";
+import "./desktop-show.css";
+import "./dock-show.css";
+import { mountSpotlight } from "./spotlight";
 import {
   readMinuteClock,
   serverMinuteClock,
@@ -266,6 +271,7 @@ export function ResearchOS({
   const [lockedPath, setLockedPath] = useState<string | null>(
     isHome ? pathname : null,
   );
+  useEffect(() => mountSpotlight(), []);
   const [expanded, setExpanded] = useState(false);
   const [query, setQuery] = useState("");
   const [scope, setScope] = useState<SearchEntry["kind"] | "all">("all");

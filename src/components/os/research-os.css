@@ -56,6 +56,50 @@ html:has(.os-shell[data-theme-switching]) {
   --os-code-surface: #0a1120;
   --os-code-text: #dfeaf7;
 
+  /* Showstopper layer (v2.0): brand glow stops, rims, aurora and titanium face.
+     Flat declarations only, so the token reader can parse the block. */
+  --os-glow-blue: #6fa8ff;
+  --os-glow-violet: #b49cff;
+  --os-glow-pink: #ff8fd0;
+  --os-glow-orange: #ffb36b;
+  --os-glow-gradient: linear-gradient(
+    100deg,
+    var(--os-glow-blue) 0%,
+    var(--os-glow-violet) 35%,
+    var(--os-glow-pink) 65%,
+    var(--os-glow-orange) 100%
+  );
+  --os-glow-conic: conic-gradient(
+    from 0deg,
+    var(--os-glow-blue),
+    var(--os-glow-violet),
+    var(--os-glow-pink),
+    var(--os-glow-orange),
+    var(--os-glow-blue)
+  );
+  --os-rim-gradient: conic-gradient(
+    from 200deg,
+    var(--os-glow-blue),
+    var(--os-glow-violet),
+    var(--os-glow-pink),
+    var(--os-glow-orange),
+    var(--os-glow-blue)
+  );
+  --os-rim-solid: #7892b2;
+  --os-rim-opacity: 0.5;
+  --os-dock-rim-opacity: 0.6;
+  --os-aurora-alpha: 22%;
+  --os-halo-alpha: 28%;
+  --os-spotlight-alpha: 12%;
+  --os-titanium-top: #e9eef6;
+  --os-titanium-bottom: #aab6c8;
+  --os-titanium-ink: #080d19;
+  --os-sweep-band: rgb(255 255 255 / 35%);
+  --os-name-font: var(--os-font-ui);
+  --text-showstopper-name: clamp(2.75rem, 1.8rem + 3.6vw, 5rem);
+  --text-showstopper-figure: clamp(3.5rem, 2.8rem + 3vw, 5rem);
+  --motion-sweep: 1600ms;
+
   /* Type. Persian and Arabic override the two families below, see :lang rules.
      Sizes follow section 3.4 except --text-display, which is noted below. */
   --os-font-ui:
@@ -242,6 +286,44 @@ html:has(.os-shell[data-theme-switching]) {
   --os-code-text: #14203a;
   --shadow-window: 0 20px 40px -16px rgb(24 55 104 / 22%);
   --shadow-dock: 0 8px 20px rgb(24 55 104 / 14%);
+  /* Showstopper layer, light: the glow stops are darkened so each one clears 4.5:1
+     on the light surfaces. The gradient and conic tokens are redefined from them. */
+  --os-glow-blue: #1d5fd6;
+  --os-glow-violet: #6a3fd6;
+  --os-glow-pink: #b8236f;
+  --os-glow-orange: #a84a06;
+  --os-glow-gradient: linear-gradient(
+    100deg,
+    var(--os-glow-blue) 0%,
+    var(--os-glow-violet) 35%,
+    var(--os-glow-pink) 65%,
+    var(--os-glow-orange) 100%
+  );
+  --os-glow-conic: conic-gradient(
+    from 0deg,
+    var(--os-glow-blue),
+    var(--os-glow-violet),
+    var(--os-glow-pink),
+    var(--os-glow-orange),
+    var(--os-glow-blue)
+  );
+  --os-rim-gradient: conic-gradient(
+    from 200deg,
+    var(--os-glow-blue),
+    var(--os-glow-violet),
+    var(--os-glow-pink),
+    var(--os-glow-orange),
+    var(--os-glow-blue)
+  );
+  --os-rim-solid: #6f8399;
+  --os-rim-opacity: 0.35;
+  --os-dock-rim-opacity: 0.35;
+  --os-aurora-alpha: 11%;
+  --os-halo-alpha: 14%;
+  --os-spotlight-alpha: 8%;
+  --os-titanium-top: #ffffff;
+  --os-titanium-bottom: #d6dfec;
+  --os-titanium-ink: #18243b;
   color-scheme: light;
 }
 .os-shell *,
@@ -285,6 +367,11 @@ html:has(.os-shell[data-theme-switching]) {
 /* Programmatic focus targets (headings, the main region, the reading window) take no
    ring after a pointer click, but keep the shared focus ring for keyboard focus. */
 .os-shell :is(h1, .os-main, .os-window):focus:not(:focus-visible) {
+  outline: none;
+}
+/* A heading that only receives focus from script is not a control (WCAG 2.4.7 covers
+   components), so it never draws a box, even after the keyboard opened the desk. */
+.os-shell :is(h1, h2, .os-main)[tabindex="-1"]:focus {
   outline: none;
 }
 .os-shell a,

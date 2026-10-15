@@ -375,3 +375,124 @@ Under @media (prefers-reduced-motion: reduce):
 - Verify the Lighthouse reduced-motion and accessibility audits.
 - Run lint, typecheck, test:ci and build. Recheck any colour pinned by a shipped test; do not change content assertions.
 - Dark tokens are authored, not inverted. Light values are not generated from dark ones.
+
+## 9. Showstopper layer (v2.0, owner decision 2026-10-16)
+
+### 9.1 Decision and scope
+
+- Owner feedback: the v1.x restrained design is too plain. The target is the apple.com marketing register: a cinematic dark stage, large confident type, a multi-hue glow (blue, violet, pink, orange), luminous edges, depth, spring motion and cursor-reactive light. It must stop someone on first paint and still read as premium.
+- v2.0 supersedes the v1.0 rules "no gradients, no glow, no loops" for the brand layer only: the welcome stage, the desktop hero, the Proof Atlas rail, the app tiles, the dock and window accents, and the 404. Reading content (body text, paper titles, résumé text, forms, citations) stays on solid surfaces and passes 4.5:1 in both themes.
+- Base: Concept 1 (Intelligence Glow), with the grafts listed in the brief. The palette is this brand's own choice. It is not attributed to Apple, whose overview CSS does not supply it.
+- Out of bounds: no edits to src/i18n locale strings, public/, or src/lib/data.ts; no new copy; no images, fonts or libraries; no git commit, push or deploy.
+- Verified in this pass (2026-10-16): token values and contrast were computed with a script over the real research-os.css tokens. DOM facts were checked in ResearchOS.tsx, Desktop.tsx, welcome-enter.css, signal-vortex.css and data.ts (13 category lines: OFFENSIVE 2, DEFENSIVE 3, ENGINEERING 8).
+
+### 9.2 Resolved conflicts (read before implementing)
+
+1. Loops. Concept 1 proposed a 14s halo spin and a 24s aurora drift. The grafted rule "no infinite animation, WCAG 2.2.2 by construction" wins for v2.0. Result: zero infinite animations in the welcome, the desktop and the 404. The halo and the aurora are static. No pause control is added, so the top bar keeps its button count. Bringing a loop back needs a separate owner decision and a visible pause control.
+2. Portrait halo. .os-lock-profile is a flex column that wraps the portrait img and h1#os-lock-name (and more). It is not an 84px square, so Concept 1's ::before halo on that box is wrong. The ring is painted on the img itself: a conic background, 3px padding, border-box sizing at 84px, and a box-shadow glow. The outer box stays 84px, so nothing moves and CLS stays 0. The portrait is shown 78px inside the ring.
+3. Enter face. A static titanium face replaces accent or stop-coloured fills. The four glow stops appear only as a masked 3px outer ring and a box-shadow.
+4. Light sweep. None. The one-shot name sweep is dark only.
+5. Light text. The brief's assumed light values are replaced by the real tokens in research-os.css: --os-text #18243b (14.42:1 on #f2f7ff, 15.51:1 on #ffffff) and --os-muted #3d5470 (7.23:1 on #f2f7ff). The assumed #0b1626 is dropped.
+6. Aurora estimate. The brief's estimate (#0f1d36, muted 8.7:1) is wrong. A 22% blue composite over #080d19 is #1f2f4c, with muted text at 6.93:1. A single pink layer at 35% gives muted 4.89:1, and stacked radials can fall lower, so the aurora must be measured on rendered pixels.
+7. Proof Atlas. Light pulses along the paths are cut, because they would animate stroke-dashoffset, which the transform and opacity rule forbids. The glow behind the figure is omitted in v2.0. The atlas keeps the scroll-linked hairline and static luminous nodes.
+8. 404 vortex. signal-vortex.css line 40 is infinite. It becomes finite: iteration-count 2, period at most 2.2s, with the longest ring finishing within 5s. Finite motion of 5s or less is outside WCAG 2.2.2, so the lint rule needs no allowlist.
+9. Name font. --os-font-display is Charter today. v2.0 uses the system sans through one token (--os-name-font: var(--os-font-ui)) because the brief asks for a confident sans. The owner must confirm this. Setting the token back to var(--os-font-display) reverts it.
+10. Name size and short windows. --text-display was measured against the shipped clamp. v2.0 applies clamp(2.75rem, 1.8rem + 3.6vw, 5rem) to the welcome name only, capped at 3.5rem below 740px tall and at 4rem below 800px tall. Re-measure at 1440x700, 1920x1080 and 390x844.
+11. Stat labels. The labels reuse the existing os-copy keys categoryOffensive, categoryDefensive and categoryEngineering. The counts come from a build-time reduce over data.ts in Desktop.tsx (13 total; OFFENSIVE 2; DEFENSIVE 3; ENGINEERING 8).
+12. Spotlight and dock origin. Both live in src/components/os/spotlight.ts as two listeners behind one mount function. The spotlight is gated to fine hover pointers. The dock-origin capture always runs, because it causes no motion.
+
+### 9.3 Signature palette (tokens, flat at the top of each shell block)
+
+Dark (.os-shell, default):
+
+- Base and tiers (existing): bg #080d19, surface #111b2b, elevated #18243a, inset #1d2c46.
+- Text #f1f7ff; muted #a9bdd0.
+- Glow stops: blue #6fa8ff, violet #b49cff, pink #ff8fd0, orange #ffb36b.
+- --os-glow-gradient: linear-gradient(100deg, blue 0%, violet 35%, pink 65%, orange 100%).
+- --os-glow-conic: conic-gradient(from 0deg, blue, violet, pink, orange, blue).
+- --os-rim-gradient: conic-gradient(from 200deg, blue, violet, pink, orange, blue).
+- --os-rim-solid #7892b2 (prefers-contrast: more); --os-rim-opacity .5; --os-dock-rim-opacity .6.
+- --os-aurora-alpha 22%; --os-halo-alpha 28%; --os-spotlight-alpha 12%.
+- --os-titanium-top #e9eef6; --os-titanium-bottom #aab6c8; --os-titanium-ink #080d19.
+- --os-sweep-band rgb(255 255 255 / 35%).
+- --os-name-font var(--os-font-ui); --text-showstopper-name clamp(2.75rem, 1.8rem + 3.6vw, 5rem); --text-showstopper-figure clamp(3.5rem, 2.8rem + 3vw, 5rem); --motion-sweep 1600ms.
+
+Light (.os-shell[data-appearance="light"]):
+
+- Glow stops: blue #1d5fd6, violet #6a3fd6, pink #b8236f, orange #a84a06. The gradient and conic tokens are redefined from these stops.
+- --os-rim-solid #6f8399; --os-rim-opacity .35; --os-dock-rim-opacity .35.
+- --os-aurora-alpha 11%; --os-halo-alpha 14%; --os-spotlight-alpha 8%.
+- --os-titanium-top #ffffff; --os-titanium-bottom #d6dfec; --os-titanium-ink #18243b.
+
+Contrast, computed in WCAG relative luminance:
+
+- Dark stops on bg / surface / elevated / inset: blue 8.06 / 7.17 / 6.45 / 5.81; violet 8.45 / 7.52 / 6.76 / 6.09; pink 9.33 / 8.30 / 7.46 / 6.72; orange 11.01 / 9.80 / 8.81 / 7.94. Every stop clears 4.5:1 as text.
+- Dark text on bg / surface / elevated / inset: 18.01 / 16.03 / 14.41 / 12.98. Muted: 10.05 / 8.95 / 8.04 / 7.25.
+- Light stops on page #f2f7ff / white / inset #eaf1fb: blue 5.33 / 5.74 / 5.05; violet 5.93 / 6.37 / 5.61; pink 5.57 / 5.99 / 5.27; orange 5.35 / 5.76 / 5.07.
+- Light text #18243b: 14.42 on page, 15.51 on white, 13.64 on inset. Muted #3d5470: 7.23, 7.78, 6.84.
+- Enter label: #080d19 on the dark titanium face is 9.46:1 at the bottom stop (higher at the top). #18243b on the light face is 11.54:1 at the bottom stop.
+- Aurora composites, dark 22%: blue #1f2f4c (muted 6.93, each stop 5.56 or better); violet #2e2c4c (muted 6.88); pink #3e2a41 (muted 6.75). The 35% variant is measured only at the single-layer level (pink gives muted 4.89) and must be re-measured with the stacked layers.
+- Aurora composites, light 11%: blue #dbe6fa (ink 12.34, muted 6.19); violet #e3e3fa (ink 12.28, muted 6.16); pink #ece0ef (ink 12.16, muted 6.10).
+- Spotlight composites, dark 12%: over bg #132635 (muted 8.02); over surface #1b3244 (muted 6.86); over elevated #213a52 (muted 6.07). Light 8% over white #ebf3fa (ink 13.83, muted 6.94).
+- Silver sweep band (dark only): white at 35% over each stop raises the text luminance and gives at least 11.13:1 on bg.
+- Gradient text rule: use it at 24px or larger only, where every stop clears 3:1 on the composite it sits on. The gradient is never used on body copy.
+
+### 9.4 Effects per surface
+
+- Welcome (section.os-welcome): static aurora as radial gradients in ::before, masked to the top half, no filter. Portrait: static conic ring plus box-shadow glow. Name (h1#os-lock-name): gradient text with a solid var(--os-text) fallback, one-shot sweep in dark only. Enter: static titanium face with a masked 3px outer ring and a violet glow. The loader and its 3s timing are unchanged. The clock is unchanged.
+- Desktop hero: the familyName span in .os-intro h1 takes the gradient (solid fallback). The givenName keeps the solid colour. An aurora sits behind the heading band only (.os-desktop-identity--atlas::before, masked so the summary and links sit on the solid surface). The desktop spotlight field is a 520px radial in ::before on .os-desktop, transform-only, at 12% accent.
+- Bento (.os-app-grid): four columns; Projects spans 2x2; the other four fill the 2x2 block to its right. Below 700px, one column with 1x1 tiles. Each tile is a solid var(--os-surface) with a 1px var(--os-line) border, a static rim on ::after, and a per-tile spotlight on ::before (solid tiles only, never glass). Tile accents: Projects blue, Research violet, About pink, Résumé orange, Contact blue. The Projects tile carries the stat callout: a gradient 80px figure "13" and the three category counts.
+- Proof Atlas: a 2px full-width hairline on section.proof-atlas--desktop::before, static by default and scaleX-drawn by view() where supported. Luminous nodes as static halo fills on the desktop variant only.
+- Dock: a static 1px conic rim on .os-dock::before (masked, opacity .6 dark and .35 light); the liquid-glass blur is untouched. Each item has its own --app-glow, shown as a static box-shadow on hover; the current item gets a 2px gradient bar on a::before, with the existing ::after dot kept.
+- Windows: a focused-window rim on ::after (inset -1px) fades in over 180ms. The open animation is @starting-style with transform-origin from the dock item's x position. Dense chrome keeps the existing blur 7px. No new backdrop-filter anywhere.
+- Search dialog: @starting-style entrance; no spotlight; static rim only.
+- Projects index: a static rim on the row under focus-within. Thumbnails stay lazy and un-animated.
+- Project detail and papers: solid surfaces; a static rim on paper cards on hover only; download and DOI links unchanged.
+- Research and write-ups: no decoration.
+- About and résumé: solid --os-surface text. Only the gradient display heading (on the page h1, at 24px or above) is allowed.
+- 404: a static rim on the card, and the vortex is finite (see 9.2).
+
+### 9.5 Motion choreography (exact timings)
+
+- Welcome first paint: t=0 nothing animates. The portrait is never faded (it is the LCP element). Name sweep: starts at 200ms, lasts 1600ms, ease var(--ease-standard), one shot with backwards fill; dark only. Clock, role and intro may use a staged 240ms opacity and translate entrance with delays of 0, 60 and 120ms, provided they are not LCP candidates; measure first.
+- Enter: hover and press use the existing 120ms and 160ms transitions. The 3s fill is unchanged.
+- Desktop tiles: scroll-linked rise (translate 24px to 0, opacity 0 to 1) over animation-range entry 0% to entry 40%, animation-fill-mode backwards so hover transforms work after the reveal.
+- Atlas hairline: scaleX 0 to 1 over animation-range entry 0% to entry 40%, under @supports and no-preference.
+- Dock: hover magnification at 180ms (var(--ease-standard)) only on fine pointers, with the neighbours at 1.12 and the hovered item at 1.25. Icon glow box-shadow 180ms.
+- Windows: @starting-style, 240ms var(--ease-spring-window) when supported, otherwise var(--ease-standard). Close keeps the existing os-window-out.
+- Search dialog: @starting-style, 240ms.
+- Focus rim: opacity 0 to 1 over 180ms.
+- Spotlight: per-frame transform via requestAnimationFrame, no transition.
+
+### 9.6 Reduced-motion stills
+
+- Under prefers-reduced-motion: reduce, no animation runs. Stills: the static conic ring, the static aurora, the gradient name (no sweep), all tiles visible at opacity 1 with no transform, the atlas hairline full width, no dock magnification, no spotlight, and windows and dialogs appear without transition (0ms).
+- There is no tilt and no parallax anywhere in v2.0.
+
+### 9.7 Performance budget and fallbacks
+
+- Added CSS is about 6 KB raw. Added JavaScript is under 1.5 KB (spotlight.ts). Zero images, fonts or libraries.
+- No filter blur anywhere in v2.0, so the old 10px blur risk is removed. Glows are box-shadow or gradient, painted once.
+- Only transform and opacity are animated. No loops, no width, height, top, left, box-shadow or background-position transitions, except the one-shot name sweep (background-position on h1, once, dark only).
+- CLS is 0: every layer is absolutely positioned with pointer-events none, and the portrait box stays 84px.
+- LCP is unchanged: the portrait on the welcome and the hero h1 on the desktop. Measure before and after with web-perf at 1440x700, 1920x1080 and 390x844.
+- Fallbacks: color-mix() is used for alpha with an opaque fallback first where cheap. The view() rules and @starting-style rules are behind @supports, so unsupported browsers keep the static state. Gradient text keeps a solid fallback. Forced-colors and prefers-contrast resets apply to every gradient-text element.
+- Glass rules: no mix-blend-mode and no opacity below 1 on any glass ancestor.
+
+### 9.8 Verification gates
+
+- Token edits: run quiet-depth-contrast.test.ts and reading-contrast.test.ts after each edit.
+- New tests: showstopper-motion.test.ts (fails on 'infinite' in the os, ui and global CSS files in scope); showstopper-contrast.test.ts (every stop against bg, surface, elevated, inset and the composites above, in both themes); showstopper-forced-colors.test.ts (each background-clip:text selector has the forced-colors reset); spotlight.test.ts (fine pointer only, pointerType mouse only, no listener under reduced motion).
+- Screenshots: the aurora at 22% and at 35% (static) in both themes, judged for loudness. The 35% variant is adopted only if the muted composite stays at 4.5:1 or higher.
+- Fonts: check Vazirmatn (fa, ar) and the Arabic display strings for clipping of diacritics; check zh letter-spacing.
+- Browser: confirm the view() timeline in Chrome; live-test Firefox and Safari before claiming support (Firefox 161 per caniuse; Safari 26 per caniuse, 19 per WWDC25). Do not claim support before a live test.
+
+### 9.9 Owner decisions and risks
+
+- Restraint risk: the owner asked for shock on first paint. Without loops the first paint depends on the gradient name, the halo and the sweep. A louder variant (aurora 35%, full bleed) is a token change, decided after the screenshot.
+- Loops: reinstating the halo spin (14s) or the aurora drift (24s) is a separate decision that also needs the visible pause control.
+- Font: sans (default) or Charter (keep). One token.
+- Enter face: titanium (default) or accent fill.
+- Atlas pulses: cut in v2.0.
+- Stat callout accessibility name: the link name gains the figures. Accepted if the ResearchOS and OSApplicationBridge tests pass; otherwise add the text as an sr-only sibling.
+- Attribution: the palette is this brand's own. It is not attributed to Apple.

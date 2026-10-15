@@ -314,11 +314,12 @@ function ApplicationWindow({
       data-window-path={descriptor.path}
       data-active={active}
       data-opening={opening ? "true" : undefined}
-      onAnimationEnd={(event) => {
-        // Only the frame's own open animation ends the state; child animations bubble.
+      onTransitionEnd={(event) => {
+        // The open is the frame's opacity transition now (workspace-windows.css). Only its
+        // own end clears the state; child transitions bubble.
         if (
           event.target === event.currentTarget &&
-          event.animationName === "os-window-in"
+          event.propertyName === "opacity"
         )
           setVisibility((value) => ({ ...value, opening: false }));
       }}
