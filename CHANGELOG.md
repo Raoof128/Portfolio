@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-15 (Australia/Sydney) — Back up live site and deploy ResearchOS + Proof Atlas to production
+
+- **Scope**: Owner-requested backup of the live site, then replace production with the current branch `main-proof-atlas-2026-10-11` (`0947c1e`).
+- **Summary**: Before deploy, production was still the July build (`version.json` commit `50ad6ac`, content revision `2026-07-22`, built `2026-07-28T23:43:21Z`); the ResearchOS and Proof Atlas work had never been deployed. Took a full mirror of that live site (160 sitemap pages, JS/CSS chunks, fonts, images, hero video, PDFs, 796 RSC payloads; 1,063 files, 56 MB) with a README and per-file SHA-256 manifest, packed as `raoufabedini.dev-live-backup-2026-10-15_1530-AEDT.tar.gz` (25 MB) and uploaded via rclone to the owner's Google Drive `Portfolio-Backups/` (rclone check: 0 differences; file and folder owner-only). Fast-forwarded the branch to `origin` (`4d8219a`, `0947c1e`), applied Prettier to four files from `0947c1e` that failed `prettier --check` (formatting only), rebuilt and deployed `out/` to Cloudflare Pages project `raoufabedini`, branch `main` (deployment `2933d222`).
+- **Files Changed**: src/components/os/OSApplicationBridge.tsx, src/components/os/OSIcon.tsx, src/components/os/atlas-copy.ts, src/lib/os-search.ts (Prettier only); AGENT.md; CHANGELOG.md.
+- **Verification**: Node 24.21.0: lint 0 errors (1 existing `.remember/tmp/last-ndc.ts` warning), typecheck, 579 tests / 43 files, Prettier check on changed files, build 168 pages (1,094 files), agent audit 160 URLs 0 warnings, static security audit pass. Wrangler upload 1,034 new + 58 existing files. Live `https://raoufabedini.dev/version.json` reports commit `0947c1efe648cff0489dda248c58298adec14822`, content revision `2026-10-11`, built `2026-10-15T04:46:33.411Z`. Live spot checks: `/`, `/fa`, `/projects/project-simurgh`, Simurgh PDF, `robots.txt`, `security.txt`, `sitemap.xml` 200; `/en*` 308 to unprefixed English by design; unknown path 404; `www` 308 to apex; project title suffix and `og:locale` present.
+- **Follow-ups**: Rollback = redeploy the backup or promote the previous Pages deployment. Merge `main-proof-atlas-2026-10-11` into `main` so `main` matches production. Native-speaker review of fa/ar/zh/es copy, physical-device and screen-reader checks remain open from the 2026-10-14 entry.
+
 ### Raouf: 2026-10-14 (Australia/Sydney) — Full front-end audit and fixes
 
 - **Scope**: Audit every front-end source file and stylesheet, then fix each verified defect.

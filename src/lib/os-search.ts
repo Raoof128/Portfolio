@@ -49,30 +49,26 @@ export function buildSearchEntries(locale: Locale): SearchEntry[] {
   }
 
   entries.push(
-    ...getLocalizedWriteups(locale).map(
-      (writeup, index): SearchEntry => ({
-        id: `writing:${writeup.slug}`,
-        title: writeup.title,
-        description: writeup.takeaway,
-        href: path(`/write-ups/${writeup.slug}`),
-        kind: "writing",
-        titleLocale: locale,
-        descriptionLocale: locale,
-        ...(locale !== "en" ? { aliases: [writeups[index].title] } : {}),
-      }),
-    ),
-    ...getLocalizedLabs(locale).map(
-      (experiment, index): SearchEntry => ({
-        id: `experiment:${experiment.id}`,
-        title: experiment.title,
-        description: experiment.description,
-        href: path(`/lab/${experiment.id}`),
-        kind: "experiment",
-        titleLocale: locale,
-        descriptionLocale: locale,
-        ...(locale !== "en" ? { aliases: [labExperiments[index].title] } : {}),
-      }),
-    ),
+    ...getLocalizedWriteups(locale).map((writeup, index): SearchEntry => ({
+      id: `writing:${writeup.slug}`,
+      title: writeup.title,
+      description: writeup.takeaway,
+      href: path(`/write-ups/${writeup.slug}`),
+      kind: "writing",
+      titleLocale: locale,
+      descriptionLocale: locale,
+      ...(locale !== "en" ? { aliases: [writeups[index].title] } : {}),
+    })),
+    ...getLocalizedLabs(locale).map((experiment, index): SearchEntry => ({
+      id: `experiment:${experiment.id}`,
+      title: experiment.title,
+      description: experiment.description,
+      href: path(`/lab/${experiment.id}`),
+      kind: "experiment",
+      titleLocale: locale,
+      descriptionLocale: locale,
+      ...(locale !== "en" ? { aliases: [labExperiments[index].title] } : {}),
+    })),
   );
 
   const actions = [
@@ -116,20 +112,18 @@ export function buildSearchEntries(locale: Locale): SearchEntry[] {
     ],
   ];
   entries.push(
-    ...actions.map(
-      ([id, title, description, href]): SearchEntry => ({
-        id: `action:${id}`,
-        title,
-        description,
-        href,
-        kind: "action",
-        titleLocale: locale,
-        descriptionLocale: locale,
-        ...(id === "publications"
-          ? { aliases: ["Research publications", "Publications"] }
-          : {}),
-      }),
-    ),
+    ...actions.map(([id, title, description, href]): SearchEntry => ({
+      id: `action:${id}`,
+      title,
+      description,
+      href,
+      kind: "action",
+      titleLocale: locale,
+      descriptionLocale: locale,
+      ...(id === "publications"
+        ? { aliases: ["Research publications", "Publications"] }
+        : {}),
+    })),
   );
   return entries;
 }

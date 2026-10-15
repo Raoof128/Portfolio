@@ -1,9 +1,7 @@
 import type { Locale } from "@/i18n";
 
 export type AtlasProject =
-  | "project-simurgh"
-  | "invisible-window-research"
-  | "project-zurvan";
+  "project-simurgh" | "invisible-window-research" | "project-zurvan";
 
 type AtlasCopy = {
   eyebrow: string;

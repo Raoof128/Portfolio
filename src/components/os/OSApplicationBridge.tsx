@@ -32,9 +32,9 @@ export function OSApplicationBridge({
     const fields: Record<string, string> = {};
     // Browser autofill or typing before hydration must survive the initial handover.
     element
-      ?.querySelectorAll<
-        HTMLInputElement | HTMLTextAreaElement
-      >("input[name], textarea[name]")
+      ?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+        "input[name], textarea[name]",
+      )
       .forEach((field) => {
         fields[field.name] = field.value.slice(0, 10000);
       });
