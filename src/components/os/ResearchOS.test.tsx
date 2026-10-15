@@ -233,6 +233,21 @@ describe("current application window", () => {
     );
   });
 
+  it("switches appearance with a power switch that is on in dark mode", () => {
+    render(shell());
+    const toggle = screen.getByRole("switch", {
+      name: `${copy.theme}: ${copy.dark}`,
+    });
+    const shellElement = document.querySelector(".os-shell")!;
+    expect(shellElement).toHaveAttribute("data-appearance", "dark");
+    expect(toggle).toHaveAttribute("aria-checked", "true");
+    fireEvent.click(toggle);
+    expect(shellElement).toHaveAttribute("data-appearance", "light");
+    expect(toggle).toHaveAttribute("aria-checked", "false");
+    fireEvent.click(toggle);
+    expect(shellElement).toHaveAttribute("data-appearance", "dark");
+  });
+
   it("keeps one window open with its bounds when moving between projects", () => {
     desktop();
     navigation.pathname = "/projects/project-simurgh";

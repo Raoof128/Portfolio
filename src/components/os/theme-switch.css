@@ -1,0 +1,66 @@
+/* Power switch after "quick-moth-22" by vinodjangid07, Uiverse.io (MIT):
+   on (glowing) is dark mode, off is light mode. Scaled from 70px to fit the
+   top bar. */
+.os-shell .os-theme-switch {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: 5px;
+  padding: 0;
+  border: 2px solid rgb(126 126 126);
+  border-radius: 50%;
+  background-color: rgb(99 99 99);
+  box-shadow: 0 0 3px rgb(2 2 2) inset;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.os-shell .os-theme-switch::before {
+  /* A 44px hit area around the 34px switch. */
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+}
+.os-shell .os-theme-switch svg {
+  width: 15px;
+  height: 15px;
+}
+.os-shell .os-theme-switch path {
+  fill: rgb(48 48 48);
+  transition: fill 0.3s;
+}
+.os-shell .os-theme-switch[aria-checked="true"] {
+  border-color: rgb(255 255 255);
+  background-color: rgb(146 180 184);
+  box-shadow:
+    0 0 1px rgb(151 243 255) inset,
+    0 0 2px rgb(151 243 255) inset,
+    0 0 10px rgb(151 243 255) inset,
+    0 0 20px rgb(151 243 255),
+    0 0 50px rgb(151 243 255 / 60%),
+    0 0 5px rgb(151 243 255);
+}
+.os-shell .os-theme-switch[aria-checked="true"] svg {
+  filter: drop-shadow(0 0 5px rgb(151 243 255));
+}
+.os-shell .os-theme-switch[aria-checked="true"] path {
+  fill: rgb(255 255 255);
+}
+.os-shell .os-theme-switch:focus-visible {
+  outline: 2px solid var(--os-accent);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .os-shell .os-theme-switch,
+  .os-shell .os-theme-switch path {
+    transition: none;
+  }
+}

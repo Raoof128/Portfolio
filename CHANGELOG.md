@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-15 (Australia/Sydney) — Power-switch theme toggle and welcome rain background
+
+- **Scope**: Owner requests: (1) use Uiverse "quick-moth-22" by vinodjangid07 (MIT) for the appearance control, on = dark mode, off = light mode; (2) use Uiverse "sweet-dolphin-36" by SelfMadeSystem (MIT) as the lock-screen background, in the site's colours. The owner's third item arrived empty.
+- **Summary**: The top-bar Sun/Moon button is now a `role="switch"` power button (`aria-checked` = dark mode, name "Appearance: Dark", localised), scaled from 70px to 34px with a 44px hit area, grey when off and glowing cyan when on; the unused `Sun`/`Moon` imports were removed. New `lock-rain.css` adds an `aria-hidden` `.os-lock-rain` layer behind the welcome content with the original 36-gradient rain geometry, 150 s animation and dot-screen `backdrop-filter`. Colours follow the theme: dark uses `--os-accent` rain over a base at 17% of `--os-bg` (the 6× glow would otherwise light the whole navy surface); light uses `--os-action` rain on `--os-bg` with no brightening. Reduced motion stops the rain; reduced transparency drops the backdrop filter.
+- **Files Changed**: src/components/os/ResearchOS.tsx; src/components/os/theme-switch.css (new); src/components/os/lock-rain.css (new); src/components/os/ResearchOS.test.tsx (switch test); AGENT.md; CHANGELOG.md.
+- **Verification**: lint 0 errors (existing `.remember/tmp` warning), typecheck, Prettier, 586 tests / 44 files, build 168 pages, agent audit 160 URLs 0 warnings, static security audit 1,095 files. Chromium on `next dev`: a real click toggles dark ↔ light and `aria-checked`; the dark welcome screen shows cyan rain through the dot screen on navy with legible text; light shows faint blue rain; at the 500 px minimum width the 34px switch fits a 55px top bar with no horizontal overflow (screenshots).
+- **Follow-ups**: Not deployed at time of entry. The full-screen animated background plus `backdrop-filter` costs paint time on low-end devices; not measured.
+
 ### Raouf: 2026-10-15 (Australia/Sydney) — Shared pill style for action buttons
 
 - **Scope**: Owner request: restyle every action button like Uiverse "stale-rattlesnake-87" by cssbuttons-io (MIT), excluding the lock screen; then match the hover colour to the site rather than the original green.
