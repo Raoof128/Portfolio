@@ -51,6 +51,7 @@ import { WelcomeEnter } from "./WelcomeEnter";
 import "./action-buttons.css";
 import "./lock-rain.css";
 import "./theme-switch.css";
+import "./showcase.css";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
 import { Desktop } from "./Desktop";
 import { ProofAtlasVisibilityContext } from "./proof-atlas-context";
@@ -677,7 +678,6 @@ export function ResearchOS({
               className="os-theme-switch"
               aria-checked={appearance === "dark"}
               aria-label={`${copy.theme}: ${copy.dark}`}
-              title={`${copy.theme}: ${appearance === "dark" ? copy.dark : copy.light}`}
               onClick={() =>
                 writeAppearance(appearance === "dark" ? "light" : "dark")
               }

@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n";
 import type { SimurghEvidenceStoryCopy } from "@/lib/project-content/evidence-story-copy";
 import { formatNumber } from "@/i18n/format";
 import "./evidence-story-simurgh.css";
+import { TerminalCommand } from "./TerminalCommand";
 
 const simurghRepository = "https://github.com/Raoof128/Project-Simurgh";
 const simurghReproduction =
@@ -139,6 +140,15 @@ export function SimurghEvidenceStory({
             {copy.reproduceLink}
           </a>
         </div>
+        {/* Run from the repository root with every release tag present, as the script requires. */}
+        <TerminalCommand
+          locale={locale}
+          commands={[
+            `git clone ${simurghRepository}`,
+            "cd Project-Simurgh && git fetch --tags",
+            "bash scripts/reproduce-vca-chain.sh",
+          ]}
+        />
       </figcaption>
     </figure>
   );

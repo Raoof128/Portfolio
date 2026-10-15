@@ -14,6 +14,7 @@ import {
   subscribeAppearance,
   type Appearance,
 } from "./appearance";
+import { SignalVortex } from "./SignalVortex";
 
 export interface NotFoundCopy {
   title: string;
@@ -97,6 +98,7 @@ export function GlobalNotFoundContent({
         {/* The approved mark remains decorative; the heading supplies the page name. */}
         <Image src="/brand/raouf-mark.svg" width={36} height={36} alt="" />
       </span>
+      <SignalVortex />
       <p className="global-not-found-code" dir="ltr">
         404
       </p>

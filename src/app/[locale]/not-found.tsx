@@ -4,6 +4,7 @@ import { FolderOpen, Home } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
+import { SignalVortex } from "@/components/os/SignalVortex";
 
 export default function NotFound() {
   const { locale, t } = useTranslation();
@@ -15,6 +16,7 @@ export default function NotFound() {
 
   return (
     <section className="os-not-found" aria-labelledby="os-not-found-title">
+      <SignalVortex />
       <p className="os-not-found-code" dir="ltr">
         404
       </p>

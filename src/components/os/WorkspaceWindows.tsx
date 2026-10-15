@@ -7,6 +7,7 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  type CSSProperties,
   type KeyboardEvent,
 } from "react";
 import Link from "next/link";
@@ -36,6 +37,8 @@ import {
 import type { WorkspaceState } from "./workspace-model";
 import "./workspace-windows.css";
 
+const SCAN_BLOCKS = Array.from({ length: 24 }, (_, index) => index);
+
 export function appForDescriptor(descriptor: OSAppDescriptor): PortfolioApp {
   if (descriptor.route.startsWith("/projects")) return "projects";
   if (
@@ -64,6 +67,7 @@ function ApplicationWindow({
   entries,
   actions,
   locked,
+  loading = false,
 }: {
   application: RegisteredApplication;
   active: boolean;
@@ -73,6 +77,8 @@ function ApplicationWindow({
   entries: SearchEntry[];
   actions: WindowActions;
   locked: boolean;
+  /** The next page is still loading into this frame. */
+  loading?: boolean;
 }) {
   const { descriptor, view, initial } = application;
   const pane = useRef<HTMLElement>(null);
@@ -110,6 +116,10 @@ function ApplicationWindow({
     : home;
   const [shareStatus, setShareStatus] = useState("");
   const [expanded, setExpanded] = useState(false);
+  // The URL only changes once the next page is ready, so a followed link marks
+  // the gap between the click and the new document.
+  const [pendingFrom, setPendingFrom] = useState<string | null>(null);
+  const pending = pendingFrom === descriptor.id;
   const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const disposed = useRef(false);
   const previousActive = useRef(active);
@@ -165,6 +175,12 @@ function ApplicationWindow({
     firstFocus.current = false;
     previousActive.current = true;
   }, [active, minimized, locked, initial, descriptor.id]);
+
+  useEffect(() => {
+    if (!pending) return;
+    const timer = setTimeout(() => setPendingFrom(null), 8000);
+    return () => clearTimeout(timer);
+  }, [pending]);
 
   useEffect(() => {
     disposed.current = false;
@@ -245,11 +261,38 @@ function ApplicationWindow({
             }
           : undefined
       }
+      onClickCapture={(event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        )
+          return;
+        const link = (event.target as Element).closest?.("a[href]");
+        if (!(link instanceof HTMLAnchorElement) || link.target) return;
+        const url = new URL(link.href, location.href);
+        if (url.origin !== location.origin || url.pathname === descriptor.path)
+          return;
+        if (link.hasAttribute("download") || /\.[a-z0-9]+$/i.test(url.pathname))
+          return;
+        setPendingFrom(descriptor.id);
+      }}
       onPointerDownCapture={() => {
         if (!active) actions.focus(descriptor.id);
       }}
     >
       <div className="os-windowbar">
+        {(loading || pending) && (
+          // Scan bar after "tasty-puma-74" by NlghtM4re, Uiverse.io (MIT).
+          <div className="os-window-scan" aria-hidden="true">
+            {SCAN_BLOCKS.map((index) => (
+              <span key={index} style={{ "--i": index } as CSSProperties} />
+            ))}
+          </div>
+        )}
         <div className="os-window-navigation">
           <Link
             className="os-window-back"
@@ -481,6 +524,7 @@ export function WorkspaceWindows({
             entries={entries}
             actions={actions}
             locked={locked}
+            loading={navigating}
           />
         );
       })}

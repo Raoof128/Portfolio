@@ -290,6 +290,36 @@ describe("current application window", () => {
     );
   });
 
+  it("shows the scan bar from a followed link until the next page arrives", () => {
+    desktop();
+    navigation.pathname = "/projects/project-simurgh";
+    const appWithLink = (route: string) => (
+      <ResearchOS
+        locale="en"
+        role="Researcher"
+        entries={entries}
+        skipLabel="Skip"
+      >
+        <OSApplicationBridge locale="en" route={route}>
+          <h1>{route}</h1>
+          <Link
+            href="/projects/project-zurvan"
+            onClick={(event) => event.preventDefault()}
+          >
+            Next project
+          </Link>
+        </OSApplicationBridge>
+      </ResearchOS>
+    );
+    const view = render(appWithLink("/projects/project-simurgh"));
+    expect(view.container.querySelector(".os-window-scan")).toBeNull();
+    fireEvent.click(screen.getByRole("link", { name: "Next project" }));
+    expect(view.container.querySelector(".os-window-scan")).not.toBeNull();
+    navigation.pathname = "/projects/project-zurvan";
+    view.rerender(appWithLink("/projects/project-zurvan"));
+    expect(view.container.querySelector(".os-window-scan")).toBeNull();
+  });
+
   it("keeps only the current minimized page and focuses its restore control", () => {
     desktop();
     navigation.pathname = "/about";
