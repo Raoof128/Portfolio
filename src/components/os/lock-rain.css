@@ -95,6 +95,20 @@
     300px 210px,
     300px 210px;
   animation: os-lock-rain 150s linear infinite;
+  /* Keep the text legible: dim the effect and clear it behind the content. */
+  opacity: var(--rain-strength, 0.45);
+  -webkit-mask-image: radial-gradient(
+    ellipse 42% 58% at 50% 50%,
+    #0000 0%,
+    #0000 35%,
+    #000 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 42% 58% at 50% 50%,
+    #0000 0%,
+    #0000 35%,
+    #000 100%
+  );
 }
 /* A fine dot screen over a blurred, brightened copy turns the drops into glow. */
 .os-lock-rain::after {
@@ -117,6 +131,7 @@
   --rain: var(--os-action);
   --rain-base: var(--os-bg);
   --rain-glow: 1;
+  --rain-strength: 0.6;
 }
 
 @keyframes os-lock-rain {
