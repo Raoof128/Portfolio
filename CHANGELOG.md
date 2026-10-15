@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-15 (Australia/Sydney) — Deploy 88f34f7 to production
+
+- **Scope**: Owner-approved deploy of the window-retention fix, welcome arrival loader and gradient Enter button; fast-forward `main`.
+- **Summary**: `main` fast-forwarded to `88f34f7`. The first deploy attempt failed with wrangler `Authentication error [code: 10000]`; the Cloudflare API reported `9109 Cannot use the access token from location: 43.252.113.144`, meaning the `.env` token is IP-restricted and the network had changed. The owner updated access, the token then reached the Pages project, and `out/` (rebuilt from committed `88f34f7`) deployed to Pages project `raoufabedini`, branch `main` (deployment `d314c187`). Separately, the GitHub `deploy.yml` run on `main` failed because `npx` could not install `wrangler@4.151.0` (digest-mismatch), not because of credentials; it did not affect production and is not fixed here.
+- **Files Changed**: AGENT.md; CHANGELOG.md.
+- **Verification**: Pre-deploy: build 168 pages, agent audit 160 URLs 0 warnings, static security audit 1,094 files (tests and lint from the preceding entries on the same source). Live `version.json` reports `88f34f799cbc8e5ebbe9ac6168271601eb49d53a`; `/`, `/fa`, two project pages, Simurgh PDF, `robots.txt`, `security.txt` and `sitemap.xml` 200, unknown path 404; served HTML contains `os-enter-stage` and served CSS contains `os-enter-flow` and `os-loader-colorize`. Chromium on production: maximized Simurgh window → Zurvan keeps the same node, 0 frames without a visible window, identical bounds.
+- **Follow-ups**: Fix the GitHub deploy workflow's wrangler install, or remove the workflow if manual deploys stay the norm. Rollback target: Pages deployment `2933d222` (`0947c1e`) or the Drive backup of `50ad6ac`.
+
 ### Raouf: 2026-10-15 (Australia/Sydney) — Gradient Enter button
 
 - **Scope**: Owner request: restyle the welcome "Enter workspace" button as Uiverse "selfish-kangaroo-64" by kirzin (MIT).
