@@ -60,7 +60,7 @@ export function Navbar() {
           <div className="p-1 border border-transparent group-hover:border-cyan/50 rounded-sm transition-colors">
             <Terminal className="w-5 h-5 text-cyan" aria-hidden="true" />
           </div>
-          <span className="font-mono font-bold text-sm md:text-base lg:text-lg tracking-tight text-foreground group-hover:text-cyan transition-colors">
+          <span className="font-mono font-bold text-sm md:text-base lg:text-lg text-foreground group-hover:text-cyan transition-colors">
             <span className="sm:hidden">~/raouf</span>
             <span className="hidden sm:inline">~/mohammad-raouf-abedini</span>
           </span>
@@ -75,27 +75,20 @@ export function Navbar() {
                 key={item.path}
                 href={getPath(item.path)}
                 className={cn(
-                  "font-mono text-sm tracking-wide transition-all duration-200 relative py-1 focus:outline-none focus:text-cyan",
+                  "font-mono text-sm transition-all duration-200 relative py-1 focus:text-cyan",
                   isActive ? "text-cyan" : "text-text-body hover:text-cyan",
                 )}
               >
                 <span className="relative z-10">
                   {isActive && (
-                    <span
-                      className={cn(
-                        locale === "fa" || locale === "ar" ? "ml-2" : "mr-2",
-                        "text-cyan/50",
-                      )}
-                    >
-                      &gt;
-                    </span>
+                    <span className={cn("me-2", "text-cyan/50")}>&gt;</span>
                   )}
                   {item.name}
                 </span>
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan shadow-[0_0_8px_var(--color-cyan-dim)]"
+                    className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -105,7 +98,7 @@ export function Navbar() {
 
           <Link
             href={getPath("/contact")}
-            className="px-4 py-1.5 border border-cyan/15 hover:border-cyan text-xs font-mono uppercase tracking-widest hover:text-cyan hover:shadow-[0_0_15px_var(--color-cyan-dim)] transition-all bg-cyber-dark/50"
+            className="px-4 py-1.5 border border-cyan/15 hover:border-cyan text-xs font-mono hover:text-cyan transition-all bg-cyber-dark/50"
           >
             {t.nav.contact}
           </Link>
@@ -155,12 +148,7 @@ export function Navbar() {
                 className={cn(
                   "block font-mono text-base py-3 px-3 hover:bg-cyan/5",
                   isPathActive(item.path)
-                    ? cn(
-                        "text-cyan bg-cyan/5",
-                        locale === "fa" || locale === "ar"
-                          ? "border-r-2 border-cyan"
-                          : "border-l-2 border-cyan",
-                      )
+                    ? cn("text-cyan bg-cyan/5", "border-s-2 border-cyan")
                     : "text-text-body",
                 )}
               >
@@ -172,7 +160,7 @@ export function Navbar() {
               onClick={() => setMobileOpen(false)}
               className="block w-full text-center py-3 border border-cyan/20 text-cyan font-mono text-sm hover:bg-cyan/5 transition-colors"
             >
-              {t.nav.contact.toUpperCase()}
+              {t.nav.contact}
             </Link>
           </motion.div>
         )}

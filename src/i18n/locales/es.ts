@@ -99,7 +99,7 @@ const es: Dictionary = {
     bio_3:
       "También autor principal de The Invisible Window, que mostró una evasión de captura del 100% en configuraciones de laboratorio probadas con Windows/macOS, divulgada de forma responsable conforme a OWASP/FIRST/CISA. Autor de Aion-BibleQA, un banco de pruebas de fidelidad de citas para LLM con recuperación aumentada: R@5 0.941, cero citas sin respaldo. Evaluó las salidas de Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic, a través de Alignerr en 2026. Cofundador de una startup de IA universitaria respaldada por una incubadora. Centrado en reducir los riesgos catastróficos de la IA avanzada mediante la medición de capacidades, la caracterización de los límites de seguridad y el desarrollo de herramientas defensivas.",
     stats_projects: "Proyectos",
-    stats_evasion: "Tasa de evasión",
+    stats_evasion: "Evasión en configuraciones de laboratorio probadas",
     stats_vendors: "Proveedores notificados",
     connect: "Conectemos",
     view_resume: "Ver currículum",
@@ -293,7 +293,7 @@ const es: Dictionary = {
     proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
     proj5_desc:
       "Lancé una plataforma de datos full-stack con motor de recomendaciones impulsado por IA, diseño de API basado en eventos, limitación de tasa y análisis de seguridad automatizado — propiedad de extremo a extremo desde el esquema de la base de datos hasta la infraestructura de despliegue.",
-    proj6_tag: "KOTLINCONF",
+    proj6_tag: "KotlinConf",
     proj6_stack:
       "Kotlin Multiplatform · Aprendizaje automático local · Android e iOS",
     proj6_desc:

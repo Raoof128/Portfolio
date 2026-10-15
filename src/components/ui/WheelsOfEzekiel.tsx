@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, type CSSProperties } from "react";
+import { useId, useRef, type CSSProperties } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
 const VOID = "#06050a";
 const GOLD = "#f59e0b";
@@ -18,10 +19,12 @@ function blinkStyle(index: number): CSSProperties {
   } as CSSProperties;
 }
 
-export function WheelsOfEzekiel() {
+export function WheelsOfEzekiel({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="woe-host" aria-hidden="true">
+    <div ref={hostRef} className="woe-host ui-art" aria-hidden="true">
       <div className="woe-container">
         <svg
           viewBox="0 0 200 200"

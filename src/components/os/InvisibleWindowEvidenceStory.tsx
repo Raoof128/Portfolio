@@ -33,7 +33,8 @@ export function InvisibleWindowEvidenceStory({
     >
       <header className="os-evidence-story-heading">
         <p className="os-evidence-story-eyebrow">{copy.eyebrow}</p>
-        <h3 id={`${id}-title`}>{copy.title}</h3>
+        {/* h2: the story sits under the dossier's Overview; its sub-heads are h3. */}
+        <h2 id={`${id}-title`}>{copy.title}</h2>
         <p id={`${id}-description`}>{copy.introduction}</p>
         <span className="os-evidence-story-note">{copy.illustrationLabel}</span>
       </header>
@@ -56,18 +57,17 @@ export function InvisibleWindowEvidenceStory({
         </button>
       </fieldset>
 
-      <div className="os-capture-observability" aria-live="polite">
+      <div className="os-capture-observability">
         <section
           className="os-capture-panel"
           aria-labelledby={`${id}-physical`}
         >
-          <h4 id={`${id}-physical`}>{copy.physicalLabel}</h4>
+          <h3 id={`${id}-physical`}>{copy.physicalLabel}</h3>
           <div
             className="os-capture-schematic os-capture-display"
             aria-hidden="true"
           >
-            <span>{copy.physicalLabel}</span>
-            <div className="os-capture-window">{copy.physicalDetail}</div>
+            <div className="os-capture-window" />
           </div>
           <p>{copy.physicalDetail}</p>
         </section>
@@ -76,7 +76,7 @@ export function InvisibleWindowEvidenceStory({
           data-platform={platform}
           aria-labelledby={`${id}-capture`}
         >
-          <h4 id={`${id}-capture`}>{copy.captureLabel}</h4>
+          <h3 id={`${id}-capture`}>{copy.captureLabel}</h3>
           <span className="os-capture-platform-tag">
             {platform === "windows" ? copy.windowsPathLabel : copy.macPathLabel}
           </span>
@@ -84,12 +84,9 @@ export function InvisibleWindowEvidenceStory({
             className="os-capture-schematic os-capture-frame"
             aria-hidden="true"
           >
-            <span>{copy.captureLabel}</span>
-            <div className="os-capture-window os-capture-window-omitted">
-              {copy.captureScopeLabel}
-            </div>
+            <div className="os-capture-window os-capture-window-omitted" />
           </div>
-          <p className="os-capture-api">
+          <p className="os-capture-api" aria-live="polite">
             {apiLabel} · <bdi dir="ltr">{apiIdentifiers.join(" · ")}</bdi>
           </p>
           <p>{scope}</p>
@@ -100,7 +97,7 @@ export function InvisibleWindowEvidenceStory({
         className="os-story-scope-ledger"
         aria-labelledby={`${id}-limits`}
       >
-        <h4 id={`${id}-limits`}>{copy.limitationsTitle}</h4>
+        <h3 id={`${id}-limits`}>{copy.limitationsTitle}</h3>
         <ul>
           <li>{copy.windowsLimits}</li>
           <li>{copy.macLimits}</li>

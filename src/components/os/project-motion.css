@@ -1,38 +1,41 @@
-.os-project-intro {
+/* Dossier hero (design system, sections 4 and 5). The project artwork is the
+   poster: a still pose unless it is on screen and motion is allowed. Its panel
+   is a solid card, and its controls use the shared control primitive where
+   they are buttons. */
+
+.os-shell .os-project-intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: 28px;
-  padding-block-end: 28px;
+  gap: var(--space-8);
+  padding-block-end: var(--space-8);
 }
 
-.os-project-intro > .os-project-dossier-header {
+.os-shell .os-project-intro > .os-project-dossier-header {
   min-inline-size: 0;
 }
 
-.os-project-intro > .os-project-motion {
+.os-shell .os-project-motion {
   justify-self: center;
-}
-
-.os-project-motion {
   min-inline-size: 0;
   inline-size: 100%;
   max-inline-size: 320px;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--os-line);
-  border-radius: 17px;
+  border-radius: var(--radius-m);
   background: var(--os-surface);
 }
 
-.os-project-motion .os-motion-stage {
+.os-shell .os-project-motion .os-motion-stage {
   position: relative;
   isolation: isolate;
   block-size: 280px;
   overflow: hidden;
 }
 
-.os-project-motion
+.os-shell
+  .os-project-motion
   .os-motion-stage
   :is(
     .dandelion-bloom,
@@ -52,22 +55,23 @@
   aspect-ratio: 1;
 }
 
-.os-project-motion .os-motion-stage svg:not(.os-motion-placeholder) {
+.os-shell .os-project-motion .os-motion-stage svg:not(.os-motion-placeholder) {
   display: block;
   inline-size: 100%;
   block-size: 100%;
 }
 
-.os-project-motion[data-playing="false"] .os-motion-stage * {
+/* Paused or reduced: the current pose stays put. */
+.os-shell .os-project-motion[data-playing="false"] .os-motion-stage * {
   animation-play-state: paused !important;
 }
 
-.os-project-motion[data-reduced-motion="true"] .os-motion-stage * {
+.os-shell .os-project-motion[data-reduced-motion="true"] .os-motion-stage * {
   animation: none !important;
   transition: none !important;
 }
 
-.os-project-motion .os-motion-placeholder {
+.os-shell .os-project-motion .os-motion-placeholder {
   position: absolute;
   inset: 50% auto auto 50%;
   inline-size: 160px;
@@ -78,92 +82,107 @@
   transform: translate(-50%, -50%);
 }
 
-.os-project-motion figcaption {
+.os-shell .os-project-motion figcaption {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0 8px;
-  min-block-size: 51px;
-  padding-inline: 14px 7px;
+  gap: var(--space-1) var(--space-2);
+  min-block-size: 48px;
+  padding-inline: var(--space-4) var(--space-2);
   border-top: 1px solid var(--os-line);
   color: var(--os-muted);
-  font: 12px / 1.5 var(--os-mono);
+  font-size: var(--text-s);
+  line-height: 1.5;
 }
 
-.os-project-motion button {
+/* The pause control is an icon with a visible text label (WCAG 2.5.3). */
+.os-shell .os-project-motion figcaption > button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: var(--space-2);
   min-inline-size: 44px;
   min-block-size: 44px;
-  padding: 8px;
+  padding: 0 var(--space-3);
   border: 0;
-  border-radius: 9px;
+  border-radius: var(--radius-s);
   background: transparent;
   color: var(--os-text);
   font: inherit;
+  font-size: var(--text-s);
   cursor: pointer;
-  transition: background var(--os-motion-quick, 140ms)
-    var(--os-ease-out, ease-out);
+  transition: background-color var(--motion-quick) var(--ease-standard);
 }
 
-.os-project-motion button:hover {
-  background: var(--os-line);
+.os-shell .os-project-motion figcaption > button:hover {
+  background: var(--os-accent-tint);
 }
 
-/* The figure clips overflow, so the focus ring sits inside the button. The
-   compound selectors outrank the explorer-wide `:is(a, button, …)` rule. */
-.os-project-motion figcaption button:focus-visible,
-.os-project-motion .os-motion-error button:focus-visible {
-  outline-offset: -2px;
-}
-
-.os-project-motion .os-motion-button-label {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.os-project-motion .os-motion-preference {
-  padding-block: 14px;
+.os-shell .os-project-motion .os-motion-preference {
+  padding-block: var(--space-3);
   color: var(--os-muted);
-  font-size: 12px;
+  font-size: var(--text-s);
 }
 
-.os-project-motion .os-motion-error {
+/* Failed artwork: a solid panel with the retry as a secondary control. */
+.os-shell .os-project-motion .os-motion-error {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: var(--space-3);
   block-size: 100%;
-  padding: 24px;
+  padding: var(--space-6);
   background: var(--os-surface);
   color: var(--os-muted);
   text-align: center;
-  font-size: 13px;
+  font-size: var(--text-s);
 }
 
-.os-project-motion .os-motion-error p {
+.os-shell .os-project-motion .os-motion-error p {
   margin: 0;
 }
 
+.os-shell .os-project-motion .os-motion-error button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--os-text);
+  font: inherit;
+  font-size: var(--text-ui);
+  cursor: pointer;
+}
+
+.os-shell .os-project-motion .os-motion-error button:hover {
+  background: var(--os-accent-tint);
+}
+
+@media (pointer: coarse) {
+  .os-shell .os-project-motion .os-motion-error button {
+    min-height: 44px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .os-project-motion .os-motion-stage *,
-  .os-project-motion button {
+  .os-shell .os-project-motion .os-motion-stage *,
+  .os-shell .os-project-motion button {
     animation: none !important;
     transition: none !important;
   }
 }
 
-@container project-content (min-width: 820px) {
-  .os-project-intro {
-    grid-template-columns: minmax(0, 1fr) minmax(230px, 270px);
+@container project-content (min-width: 821px) {
+  .os-shell .os-project-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+  }
+  .os-shell .os-project-motion {
+    justify-self: end;
+    max-inline-size: 340px;
   }
 }

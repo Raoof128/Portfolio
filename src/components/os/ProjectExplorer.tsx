@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Folder, Search } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
@@ -71,175 +71,192 @@ export function ProjectExplorer({
     return matchesCategory && matchingSlugs.has(project.slug);
   });
 
+  const resultsLabel = `${copy.allProjects} · ${formatNumber(visibleProjects.length, locale)} / ${formatNumber(allProjects.length, locale)}`;
+  // Screen readers hear the count once typing pauses, not on every keystroke.
+  const [announcedResults, setAnnouncedResults] = useState(resultsLabel);
+  useEffect(() => {
+    const timer = window.setTimeout(
+      () => setAnnouncedResults(resultsLabel),
+      500,
+    );
+    return () => window.clearTimeout(timer);
+  }, [resultsLabel]);
+
   return (
     <div className="os-project-explorer">
-      <aside className="os-explorer-sidebar">
-        <Link
-          className="os-explorer-index-link"
-          href={getPath("/projects")}
-          aria-current={!selectedSlug ? "page" : undefined}
-        >
-          <Folder size={17} aria-hidden="true" />
-          <span>{copy.allProjects}</span>
-          <span className="os-explorer-count">
-            {formatNumber(allProjects.length, locale)}
-          </span>
-        </Link>
-        <div className="os-explorer-controls">
-          <label htmlFor={`${fieldId}-search`}>{copy.projectSearch}</label>
-          <div className="os-explorer-search">
-            <Search size={15} aria-hidden="true" />
-            <input
-              id={`${fieldId}-search`}
-              type="search"
-              value={query}
-              maxLength={100}
-              placeholder={copy.projectSearch}
-              onChange={(event) => setQuery(event.target.value)}
-              autoComplete="off"
-            />
-          </div>
-          <label htmlFor={`${fieldId}-category`}>{copy.category}</label>
-          <select
-            id={`${fieldId}-category`}
-            value={category}
-            onChange={(event) => {
-              const value = event.target.value;
-              if (Object.hasOwn(categoryLabels, value))
-                setCategory(value as ProjectCategory);
-            }}
+      <div className="os-explorer-layout">
+        <aside className="os-explorer-sidebar">
+          <Link
+            className="os-explorer-index-link"
+            href={getPath("/projects")}
+            aria-current={!selectedSlug ? "page" : undefined}
           >
-            {Object.entries(categoryLabels).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <nav className="os-explorer-project-nav" aria-label={copy.allProjects}>
-          {visibleProjects.map((project) => (
-            <Link
-              key={project.slug}
-              href={getPath(`/projects/${project.slug}`)}
-              className="os-explorer-project-link"
-              aria-current={selectedSlug === project.slug ? "page" : undefined}
-            >
-              <span
-                lang={project.titleLocale}
-                dir={project.titleLocale === "en" ? "ltr" : undefined}
-              >
-                {project.title}
-              </span>
-              <small>{categoryLabels[project.category]}</small>
-            </Link>
-          ))}
-          {visibleProjects.length === 0 && (
-            <p className="os-explorer-empty">{copy.noProjects}</p>
-          )}
-        </nav>
-      </aside>
-      <div className="os-explorer-content">
-        {children ?? (
-          <section className="os-project-index">
-            <header className="os-project-index-header">
-              <p className="os-project-eyebrow">{copy.selectedWork}</p>
-              <h1>{copy.projects}</h1>
-              <p>{t.projects_page.subtitle}</p>
-            </header>
-            <p className="os-explorer-results" role="status">
-              {copy.allProjects} ·{" "}
-              {formatNumber(visibleProjects.length, locale)} /{" "}
+            <Folder size={17} aria-hidden="true" />
+            <span>{copy.allProjects}</span>
+            <span className="os-explorer-count">
               {formatNumber(allProjects.length, locale)}
-            </p>
-            <div className="os-project-rows">
-              {visibleProjects.map((project, index) => (
-                <article
-                  className="os-project-row os-project-row-with-preview"
-                  key={project.slug}
-                >
-                  <span className="os-project-row-number" aria-hidden="true">
-                    {formatNumber(index + 1, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                  </span>
-                  <ProjectThumbnail slug={project.slug} />
-                  <div className="os-project-row-summary">
-                    <div className="os-project-row-meta">
-                      <span>{categoryLabels[project.category]}</span>
-                      <time dateTime={project.year}>
-                        {formatNumber(Number(project.year), locale, {
-                          useGrouping: false,
-                        })}
-                      </time>
-                    </div>
-                    <h2>
-                      <Link href={getPath(`/projects/${project.slug}`)}>
-                        <span
-                          lang={project.titleLocale}
-                          dir={project.titleLocale === "en" ? "ltr" : undefined}
-                        >
-                          {project.title}
-                        </span>
-                        <ArrowUpRight size={18} aria-hidden="true" />
-                      </Link>
-                    </h2>
-                    <p
-                      lang={project.descriptionLocale}
-                      dir={
-                        project.descriptionLocale === locale ? undefined : "ltr"
-                      }
-                    >
-                      {project.description}
-                    </p>
-                    <ul className="os-project-tags">
-                      {project.tags.map((tag) => (
-                        <li key={tag}>
-                          <bdi>{tag}</bdi>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      className="os-project-text-link"
-                      href={getPath(`/projects/${project.slug}`)}
-                    >
-                      {t.common.case_study}
-                      <ArrowUpRight size={14} aria-hidden="true" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-              {visibleProjects.length === 0 && (
-                <p className="os-explorer-empty">{copy.noProjects}</p>
-              )}
-            </div>
-          </section>
-        )}
-        <footer className="os-explorer-footer">
-          <div className="os-explorer-footer-next">
-            <div>
-              <h2>{copy.contactTitle}</h2>
-              <p>{copy.contactDescription}</p>
-            </div>
-            <Link className="os-project-resource" href={getPath("/contact")}>
-              {copy.contact}
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="os-explorer-footer-meta">
-            <nav aria-label={copy.navigation}>
-              <Link href={getPath("/write-ups")}>{copy.research}</Link>
-              <Link href={getPath("/security-policy")}>
-                {copy.securityPolicy}
-              </Link>
-              <a href="/feed.xml">RSS</a>
-            </nav>
-            <span>
-              © {formatNumber(copyrightYear, locale, { useGrouping: false })}{" "}
-              <bdi lang={copy.nameLocale}>{copy.fullName}</bdi>
             </span>
+          </Link>
+          <div className="os-explorer-controls">
+            <label htmlFor={`${fieldId}-search`}>{copy.projectSearch}</label>
+            <div className="os-explorer-search">
+              <Search size={15} aria-hidden="true" />
+              <input
+                id={`${fieldId}-search`}
+                type="search"
+                value={query}
+                maxLength={100}
+                placeholder={copy.projectSearch}
+                onChange={(event) => setQuery(event.target.value)}
+                autoComplete="off"
+              />
+            </div>
+            <label htmlFor={`${fieldId}-category`}>{copy.category}</label>
+            <select
+              id={`${fieldId}-category`}
+              value={category}
+              onChange={(event) => {
+                const value = event.target.value;
+                if (Object.hasOwn(categoryLabels, value))
+                  setCategory(value as ProjectCategory);
+              }}
+            >
+              {Object.entries(categoryLabels).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+            <p className="sr-only" role="status">
+              {announcedResults}
+            </p>
           </div>
-        </footer>
+          <nav
+            className="os-explorer-project-nav"
+            aria-label={copy.allProjects}
+          >
+            {visibleProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={getPath(`/projects/${project.slug}`)}
+                className="os-explorer-project-link"
+                aria-current={
+                  selectedSlug === project.slug ? "page" : undefined
+                }
+              >
+                <span
+                  lang={project.titleLocale}
+                  dir={project.titleLocale === "en" ? "ltr" : undefined}
+                >
+                  {project.title}
+                </span>
+                <small>{categoryLabels[project.category]}</small>
+              </Link>
+            ))}
+            {visibleProjects.length === 0 && (
+              <p className="os-explorer-empty">{copy.noProjects}</p>
+            )}
+          </nav>
+        </aside>
+        <div className="os-explorer-content">
+          {children ?? (
+            <section className="os-project-index">
+              <header className="os-project-index-header">
+                <p className="os-project-eyebrow">{copy.selectedWork}</p>
+                <h1>{copy.projects}</h1>
+                <p>{t.projects_page.subtitle}</p>
+              </header>
+              <p className="os-explorer-results">{resultsLabel}</p>
+              <div className="os-project-rows">
+                {visibleProjects.map((project) => (
+                  <article
+                    className="os-project-row os-project-row-with-preview"
+                    key={project.slug}
+                  >
+                    <ProjectThumbnail slug={project.slug} />
+                    <div className="os-project-row-summary">
+                      <div className="os-project-row-meta">
+                        <span>{categoryLabels[project.category]}</span>
+                        <time dateTime={project.year}>
+                          {formatNumber(Number(project.year), locale, {
+                            useGrouping: false,
+                          })}
+                        </time>
+                      </div>
+                      <h2>
+                        {/* The single link stretches over the whole card (see CSS). */}
+                        <Link href={getPath(`/projects/${project.slug}`)}>
+                          <span
+                            lang={project.titleLocale}
+                            dir={
+                              project.titleLocale === "en" ? "ltr" : undefined
+                            }
+                          >
+                            {project.title}
+                          </span>
+                          <ArrowUpRight
+                            className="os-icon-flip"
+                            size={18}
+                            aria-hidden="true"
+                          />
+                        </Link>
+                      </h2>
+                      <p
+                        lang={project.descriptionLocale}
+                        dir={
+                          project.descriptionLocale === locale
+                            ? undefined
+                            : "ltr"
+                        }
+                      >
+                        {project.description}
+                      </p>
+                      <ul className="os-project-tags">
+                        {project.tags.map((tag) => (
+                          <li key={tag}>
+                            <bdi>{tag}</bdi>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+                {visibleProjects.length === 0 && (
+                  <p className="os-explorer-empty">{copy.noProjects}</p>
+                )}
+              </div>
+            </section>
+          )}
+          <footer className="os-explorer-footer">
+            <div className="os-explorer-footer-next">
+              <div>
+                <h2>{copy.contactTitle}</h2>
+                <p>{copy.contactDescription}</p>
+              </div>
+              <Link className="os-project-resource" href={getPath("/contact")}>
+                {copy.contact}
+                <ArrowUpRight
+                  className="os-icon-flip"
+                  size={16}
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
+            <div className="os-explorer-footer-meta">
+              <nav aria-label={copy.navigation}>
+                <Link href={getPath("/write-ups")}>{copy.research}</Link>
+                <Link href={getPath("/security-policy")}>
+                  {copy.securityPolicy}
+                </Link>
+                <a href="/feed.xml">RSS</a>
+              </nav>
+              <span>
+                © {formatNumber(copyrightYear, locale, { useGrouping: false })}{" "}
+                <bdi lang={copy.nameLocale}>{copy.fullName}</bdi>
+              </span>
+            </div>
+          </footer>
+        </div>
       </div>
     </div>
   );

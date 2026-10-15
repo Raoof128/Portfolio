@@ -56,9 +56,9 @@ const en = {
     writeups: "Writing",
     resume: "Résumé",
     contact: "Contact",
-    open_menu: "Open navigation menu",
-    close_menu: "Close navigation menu",
-    mobile_nav_label: "Mobile navigation",
+    open_menu: "Open Navigation Menu",
+    close_menu: "Close Navigation Menu",
+    mobile_nav_label: "Mobile Navigation",
   },
   hero: {
     intro:
@@ -66,11 +66,11 @@ const en = {
     researcher: "AI Security Researcher",
   },
   lab: {
-    enter_lab: "Explore the lab",
+    enter_lab: "Explore the Lab",
   },
   footer: {
     last_index: "Last Index",
-    last_index_value: "JUL 2026",
+    last_index_value: "Jul 2026",
     status: "Status",
     environment: "Environment",
     built_with: "Built with",
@@ -83,7 +83,7 @@ const en = {
     case_study: "Case Study",
     reproduce: "Reproduce",
     select_language: "Select Language",
-    language_selected: "SELECTED",
+    language_selected: "Selected",
   },
   about: {
     identity_record: "Profile",
@@ -97,19 +97,19 @@ const en = {
     bio_3:
       "I am also the lead author of The Invisible Window, which found 100% screen-capture evasion in the tested Windows and macOS laboratory configurations and was responsibly disclosed under OWASP/FIRST/CISA guidance. I authored Aion-BibleQA, a citation-faithfulness benchmark for retrieval-augmented LLMs (R@5 0.941; zero unsupported citations). Via Alignerr, I evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program in 2026. I co-founded an incubator-backed campus AI startup and work on measuring capability uplift, characterising safety boundaries, and building defensive tools to reduce advanced AI risks.",
     stats_projects: "Projects",
-    stats_evasion: "Evasion Rate",
+    stats_evasion: "Evasion in Tested Lab Configurations",
     stats_vendors: "Vendors notified",
     connect: "Let's Connect",
-    view_resume: "View résumé",
+    view_resume: "View Résumé",
     specializations: "Specialisations",
     skills: "Skills",
     active_operations: "Current work",
     education: "Education",
     photo_unavailable: "Photo unavailable",
-    retry_photo: "Try again",
+    retry_photo: "Try Again",
     terminal_subject: "Name: Raouf Abedini",
     terminal_clearance: "Profile: AI security researcher",
-    terminal_location: "LOCATION: SYDNEY, NSW",
+    terminal_location: "Location: Sydney, NSW",
     degree_bachelor: "Bachelor of Cyber Security",
     degree_diploma: "Diploma of Information Technology",
     degree_bachelor_courses:
@@ -184,9 +184,9 @@ const en = {
     skill_group5_2: "MITRE ATT&CK",
     skill_group5_3: "NIST",
     skill_group5_4: "W3C Screen Capture Spec",
-    status_active: "ACTIVE",
-    status_archived: "ARCHIVED",
-    status_concept: "CONCEPT",
+    status_active: "Active",
+    status_archived: "Archived",
+    status_concept: "Concept",
     ops_lab1_title: "AD Attack & Defence Lab",
     ops_lab2_title: "SOC Automation Platform",
     ops_lab3_title: "AI Red Team Framework",
@@ -202,8 +202,8 @@ const en = {
     description_2: "proofs of concept, ",
     description_3:
       'snippets, and unfinished research. Code here is volatile and provided "as is" for educational purposes.',
-    view_analysis: "View analysis",
-    more_on_github: "View more on GitHub",
+    view_analysis: "View Analysis",
+    more_on_github: "View More on GitHub",
     risk_disclaimer: "Experimental code; use at your own risk.",
     id_label: "ID:",
   },
@@ -218,7 +218,7 @@ const en = {
   },
   resume_page: {
     title: "Résumé",
-    download: "Download résumé",
+    download: "Download Résumé",
   },
   resume: {
     expected_completion: "Expected completion",
@@ -266,16 +266,16 @@ const en = {
     s04_coursework:
       "Digital Forensics, Network Security, Systems Security, Cloud Computing, Natural Language Processing (NLP) & Machine Learning, Privacy-Preserving Data Analysis",
     s05_heading: "Selected Research & Engineering Projects",
-    proj1_tag: "DISCLOSURE",
+    proj1_tag: "Disclosure",
     proj1_stack: "C · Swift · Python · Win32 API · ScreenCaptureKit · WebRTC",
     proj1_desc:
       "IEEE-format vulnerability research: independently discovered and responsibly disclosed a screen-capture evasion class using documented Windows/macOS display APIs. Achieved 100% evasion in tested laboratory configurations with zero visual artefacts over 10,000+ analysed frames. Commercial proctoring products and Linux were not tested; macOS 26 used native capture tools rather than browser getDisplayMedia(). Findings reflect software versions tested as of March 2026. Coordinated disclosure to OS vendors. DOI: 10.5281/zenodo.20376495.",
-    proj2_tag: "BIBLE RAG",
+    proj2_tag: "Bible RAG",
     proj2_stack:
       "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
     proj2_desc:
       "Built an AI-powered Bible companion and authored Aion-BibleQA, an 8-page preprint introducing a 40-question benchmark for citation faithfulness and false-premise robustness. Results: R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.",
-    proj3_tag: "SYSTEMS",
+    proj3_tag: "Systems",
     proj3_stack: "C++20 · CMake · Google Test",
     proj3_desc:
       "Engineered a matching engine that processed 1M+ orders/second with sub-microsecond latency. Implemented red-black tree price levels, a custom memory-pool allocator, and a test suite with p50/p99 latency benchmarks.",
@@ -283,11 +283,11 @@ const en = {
     proj4_stack: "C++17 · libpcap · CMake · Google Test · Linux",
     proj4_desc:
       "Built a real-time network packet-processing engine that parsed 500K+ packets/second. It dissects Ethernet/IPv4/TCP/UDP/ICMP/DNS, detects signature matches, and analyses stateful patterns such as port scans and SYN floods.",
-    proj5_tag: "FULL-STACK",
+    proj5_tag: "Full-Stack",
     proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
     proj5_desc:
       "Built a full-stack data platform with an AI recommendation engine, event-driven APIs, rate limiting, and automated security scanning. I handled the work from database schema through deployment.",
-    proj6_tag: "KOTLINCONF",
+    proj6_tag: "KotlinConf",
     proj6_stack: "Kotlin Multiplatform · Local ML · Android & iOS",
     proj6_desc:
       "Built a cross-platform offline threat-detection tool with local ML classification. Submitted it to the KotlinConf global developer conference.",
@@ -324,19 +324,19 @@ const en = {
   not_found: {
     description:
       "This page could not be found. It may have moved, or the address may be incorrect.",
-    return_home: "Return home",
-    browse_projects: "Browse projects",
+    return_home: "Return Home",
+    browse_projects: "Browse Projects",
     error_code: "Page not found",
   },
   lab_detail: {
-    exit: "Back to experiments",
+    exit: "Back to Experiments",
     experiment_id: "Experiment",
     objective: "Objective",
     constraints: "Constraints",
     read_only: "Read-only code",
   },
   project_detail: {
-    request_source: "Request source access",
+    request_source: "Request Source Access",
     private_source_note:
       "The source repository is private. Contact me to request access.",
     problem: "Problem",
@@ -354,8 +354,8 @@ const en = {
     open_record: "Open Record",
     doi_record: "DOI Record",
     demo: "Demo",
-    read_preprint: "Read the preprint",
-    cite_this_work: "Cite this work",
+    read_preprint: "Read the Preprint",
+    cite_this_work: "Cite This Work",
   },
   writeups_detail: {
     end_transmission: "End of article",
@@ -369,11 +369,11 @@ const en = {
     report_guidance: "Report it responsibly to be recognised here. See my",
     report_guidance_suffix: "for guidelines.",
     security_policy_link: "security policy",
-    report_btn: "Report a vulnerability",
+    report_btn: "Report a Vulnerability",
     no_entries_title: "No Entries Yet",
     no_entries_desc:
       "No researchers have been recognised yet. Report a vulnerability responsibly to be considered for the Hall of Fame.",
-    awaiting_badge: "Awaiting the first report",
+    awaiting_badge: "Awaiting the First Report",
     criteria_title: "Recognition Criteria",
     criteria_1: "Report a valid, in-scope security vulnerability",
     criteria_2: "Follow responsible disclosure guidelines",
@@ -385,13 +385,13 @@ const en = {
   },
   project_card: {
     module_title: "Project",
-    featured_op: "Featured project",
+    featured_op: "Featured Project",
     build_tab: "Build",
     secure_tab: "Security",
     tab_details_aria: "Project Details",
-    watch_demo: "Watch demo",
+    watch_demo: "Watch Demo",
     repo: "Repository",
-    read_case_study: "Read case study",
+    read_case_study: "Read Case Study",
   },
   contact_form: {
     error_open_draft:
@@ -412,9 +412,9 @@ const en = {
     error_invalid_email: "Please enter a valid email address.",
     mail_client_note:
       "Opens your email app. Review and send the message there.",
-    cta_transmit: "Open email draft",
+    cta_transmit: "Open Email Draft",
     cta_encrypting: "Opening email app…",
-    cta_sent: "Draft opened",
+    cta_sent: "Draft Opened",
   },
   security_policy: {
     title: "Security Policy",
@@ -423,7 +423,7 @@ const en = {
       "Responsible disclosure guidelines for reporting security vulnerabilities.",
     report_heading: "Report a Vulnerability",
     report_intro: "Found a security issue? Contact me directly at",
-    send_report: "Open report draft",
+    send_report: "Open Report Draft",
     scope_title: "Scope",
     scope_desc: "This security policy applies to the following assets:",
     scope_site: "This portfolio website",

@@ -1,139 +1,168 @@
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-story-platform-picker {
+/* Invisible-window evidence story: platform picker, paired capture panels and
+   the API line. Panels are solid cards on the story surface; schematics are
+   flat drawings with one accent for the captured window. */
+
+.os-shell .os-project-explorer .os-project-section .os-story-platform-picker {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-2);
   min-width: 0;
-  margin: 20px 0 14px;
+  margin: var(--space-4) 0 var(--space-3);
   padding: 0;
   border: 0;
 }
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-story-platform-picker
   legend {
   width: 100%;
-  margin-block-end: 5px;
+  margin-block-end: var(--space-2);
   color: var(--os-muted);
-  font-size: 14px;
+  font-size: var(--text-s);
 }
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
-  .os-capture-observability {
-  display: grid;
-  gap: 12px;
+  .os-story-platform-picker
+  button {
+  min-width: 44px;
+  min-height: 40px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
+  color: var(--os-text);
+  background: transparent;
+  font: inherit;
+  font-size: var(--text-ui);
+  font-weight: 500;
+  cursor: pointer;
 }
-.os-project-explorer .os-project-section .os-evidence-story .os-capture-panel {
+
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button:hover {
+  background: var(--os-accent-tint);
+}
+
+/* Selected platform: one accent ring on a tint (evidence-story selection rule). The
+   selected state is colour-only visually; aria-pressed carries it for assistive tech. */
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button[aria-pressed="true"] {
+  border-color: var(--os-accent);
+  color: var(--os-text);
+  background: var(--os-accent-tint);
+}
+
+.os-shell .os-project-explorer .os-project-section .os-capture-observability {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.os-shell .os-project-explorer .os-project-section .os-capture-panel {
   min-width: 0;
-  padding: 14px;
+  padding: var(--space-4);
   border: 1px solid var(--os-line);
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   background: var(--os-surface);
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-capture-panel
-  h4 {
-  margin-block-end: 10px;
+
+.os-shell .os-project-explorer .os-project-section .os-capture-panel h3 {
+  margin: 0 0 var(--space-3);
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-capture-platform-tag {
+
+.os-shell .os-project-explorer .os-project-section .os-capture-platform-tag {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  margin-block-end: 9px;
-  padding: 4px 9px;
-  border: 1px solid var(--story-accent);
-  border-radius: 999px;
-  color: var(--story-accent);
-  background: color-mix(in srgb, var(--story-accent) 8%, var(--os-bg));
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.5;
+  min-height: 28px;
+  margin-block-end: var(--space-2);
+  padding: 2px var(--space-3);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-pill);
+  color: var(--os-text);
+  font-size: var(--text-s);
+  font-weight: 500;
+  line-height: 1.4;
 }
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-capture-panel[data-platform="macos"]
   .os-capture-platform-tag {
   border-style: dashed;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-capture-schematic {
+
+/* Schematics are flat drawings: no pattern, no gradient. */
+.os-shell .os-project-explorer .os-project-section .os-capture-schematic {
   display: grid;
   place-items: center;
-  min-height: 112px;
-  padding: 12px;
+  min-height: 96px;
+  padding: var(--space-3);
   border: 1px solid var(--os-line);
-  border-radius: 8px;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 8px,
-      color-mix(in srgb, var(--story-accent) 5%, transparent) 8px 9px
-    ),
-    var(--os-bg);
-  text-align: center;
+  border-radius: var(--radius-xs);
+  background: var(--os-surface);
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-capture-schematic
-  > span {
-  color: var(--os-muted);
-  font: 11px / 1.5 var(--os-mono);
-}
-.os-project-explorer .os-project-section .os-evidence-story .os-capture-window {
-  display: grid;
-  place-items: center;
+
+.os-shell .os-project-explorer .os-project-section .os-capture-window {
   min-width: 55%;
-  min-height: 46px;
-  padding: 7px 11px;
-  border: 1px solid var(--story-accent);
-  border-radius: 7px;
-  color: var(--os-text);
-  background: color-mix(in srgb, var(--story-accent) 13%, var(--os-surface));
-  font-size: 14px;
-  line-height: 1.45;
+  min-height: 40px;
+  border: 1px solid var(--os-accent);
+  border-radius: var(--radius-xs);
+  background: var(--os-accent-tint);
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-capture-window-omitted {
+
+.os-shell .os-project-explorer .os-project-section .os-capture-window-omitted {
   border-style: dashed;
-  color: var(--os-muted);
+  border-color: var(--os-control-line);
   background: transparent;
 }
-.os-project-explorer .os-project-section .os-evidence-story .os-capture-api {
-  margin-block: 10px 4px;
-  color: var(--story-accent);
-  font: 12px / 1.6 var(--os-mono);
+
+/* The API line: the label in the UI face, identifiers isolated in mono. */
+.os-shell .os-project-explorer .os-project-section .os-capture-api {
+  margin: var(--space-3) 0 var(--space-1);
+  color: var(--os-text);
+  font-size: var(--text-s);
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
-.os-project-explorer
+
+.os-shell .os-project-explorer .os-project-section .os-capture-api bdi {
+  font-family: var(--os-font-mono);
+  font-size: var(--text-s);
+}
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-capture-panel
   > p:not(.os-capture-api) {
-  margin-block-start: 6px;
-  font-size: 14px;
+  margin-block-start: var(--space-2);
+  color: var(--os-muted);
+  font-size: var(--text-s);
   line-height: 1.65;
 }
-@container simurgh-story (min-width: 500px) {
-  .os-project-explorer
-    .os-project-section
-    .os-evidence-story
-    .os-capture-observability {
+
+@container evidence-story (min-width: 521px) {
+  .os-shell .os-project-explorer .os-project-section .os-capture-observability {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
+  }
+}
+
+@media (pointer: coarse) {
+  .os-shell
+    .os-project-explorer
+    .os-project-section
+    .os-story-platform-picker
+    button {
+    min-height: 44px;
   }
 }

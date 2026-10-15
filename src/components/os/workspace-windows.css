@@ -21,28 +21,196 @@
     transform: scale(1);
   }
 }
+
+/* Title: a centred, single-line label in the title bar. It is the drag handle on desktop. */
 .os-shell button.os-window-title {
+  /* Grows to fill the bar on phones (flex) and centres; the grid on desktop sizes it. */
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0 8px;
   border: 0;
   background: transparent;
   color: inherit;
   font: inherit;
-  text-align: start;
-  padding: 0;
-  min-height: 44px;
-  min-width: 44px;
+  font-size: var(--text-s);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .os-shell button.os-window-title--movable {
+  cursor: grab;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
-.os-workspace-window[data-active="false"] {
-  box-shadow: 0 8px 28px #0004;
+.os-shell button.os-window-title--movable:active {
+  cursor: grabbing;
 }
+
+/* Back: a visible word beside the direction-aware chevron (research-os.css flips the chevron in RTL). */
+.os-shell .os-window-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding-inline: 4px 10px;
+  color: var(--os-text);
+  font-size: var(--text-s);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Navigation progress: one 2px accent hairline under the title bar while the next
+   page loads. It grows by transform only, and a reduced-motion user sees it still. */
+.os-shell .os-window-scan {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  z-index: 5;
+  height: 2px;
+  background: var(--os-accent);
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  /* Only slow loads show it: the line stays at zero width for the first 150ms. */
+  animation: os-window-progress 1.6s var(--ease-standard) 0.15s both;
+}
+.os-shell .os-window-scan:dir(rtl) {
+  transform-origin: right;
+}
+@keyframes os-window-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(0.9);
+  }
+}
+
+/* Control tooltips (design system, section 4): the spec tooltip for each icon-only window
+   control and the resize grip. Elevated surface, hairline, 13px label, --radius-s radius
+   (10px; the spec's 8px is off the section 3.5 scale and needs amending with this) and
+   6px 10px padding. It shows after 400ms on keyboard focus (:focus-visible) and, where a
+   pointer can hover, on hover. It stays while the pointer is over the control or the
+   tooltip itself (see the hover block below). The label is the control's aria-label, so
+   only labelled controls get a tooltip.
+   Placement: the tooltip's inline-end edge sits on the control's inline-end edge and it
+   grows toward inline-start. Every window control sits at the window's end edge, so the
+   tooltip stays inside the window in both directions: document-flow windows clip at their
+   edge (overflow: clip), and RTL mirrors the bar. The grip also sits on the inline-end
+   edge, so its tooltip opens upward with the same anchoring.
+   Escape: this stylesheet cannot read keys. The component sets data-tooltip-dismissed="true"
+   on the control when Escape dismisses its tooltip (see the dismissal rules below). Until it
+   does, a tooltip is dismissed by moving focus or the pointer. In this shell Escape also
+   leaves the window, so the component must decide which Escape wins.
+   :where() keeps the base selector at low specificity so the grip override and the
+   reduced-motion rules can win. */
+.os-shell .os-window-actions .os-control {
+  position: relative;
+}
+.os-shell
+  :where(.os-window-actions .os-control, .os-window-resize)[aria-label]::after {
+  content: attr(aria-label);
+  position: absolute;
+  inset-block-start: calc(100% + 6px);
+  inset-inline-end: 0;
+  z-index: 60;
+  padding: 6px 10px;
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-s);
+  background: var(--os-elevated);
+  color: var(--os-text);
+  font-family: var(--os-font-ui);
+  font-size: var(--text-s);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--motion-control) var(--ease-standard);
+}
+/* The grip sits on the inline-end bottom corner (reading-window.css), so its tooltip opens
+   upward and uses the same inline-end anchoring as the other controls. */
+.os-shell .os-window-resize[aria-label]::after {
+  inset-block-start: auto;
+  inset-block-end: calc(100% + 6px);
+}
+.os-shell
+  :where(
+    .os-window-actions .os-control,
+    .os-window-resize
+  )[aria-label]:focus-visible::after {
+  opacity: 1;
+  transition-delay: 400ms;
+}
+/* Hoverable (WCAG 1.4.13): while a control is hovered, its tooltip takes the pointer, so
+   the pointer can move onto the tooltip without it closing. A transparent 6px bridge
+   covers the gap between control and tooltip. Both are hit-testable only while hovered,
+   so they never intercept clicks on the page underneath at other times. */
+@media (hover: hover) {
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label]:hover::after {
+    opacity: 1;
+    transition-delay: 400ms;
+    pointer-events: auto;
+  }
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label]:hover::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    height: 6px;
+    pointer-events: auto;
+  }
+  .os-shell .os-window-resize[aria-label]:hover::before {
+    inset-block-start: auto;
+    inset-block-end: 100%;
+  }
+}
+/* Escape dismissal (WCAG 1.4.13). The component sets data-tooltip-dismissed="true" on a
+   control when Escape dismisses its tooltip, and clears it on blur and pointer leave. While
+   set, the tooltip and its hover bridge are hidden and inert even while the control is
+   focused or hovered, so it stays dismissed until focus or the pointer leaves and returns.
+   Declared after the focus and hover rules so it wins at equal specificity. */
+.os-shell
+  :where(
+    .os-window-actions .os-control,
+    .os-window-resize
+  )[aria-label][data-tooltip-dismissed="true"]::after {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0s;
+}
+.os-shell
+  :where(
+    .os-window-actions .os-control,
+    .os-window-resize
+  )[aria-label][data-tooltip-dismissed="true"]::before {
+  pointer-events: none;
+}
+
 .os-workspace-window[data-active="false"] .os-windowbar {
   opacity: 0.8;
 }
-/* Retain the still reading surface while pausing background status decorations. */
+/* Retain the still reading surface while pausing background status decorations.
+   The four-class selector outranks the utility classes without !important. */
 .os-workspace-window[data-active="false"] .os-page-content [class*="animate-"] {
-  animation-play-state: paused !important;
+  animation-play-state: paused;
 }
 .os-lab-detail-info h1 {
   overflow-wrap: anywhere;
@@ -65,6 +233,80 @@
   }
   .os-workspace-window {
     /* Reserve the single dock so the final reading link remains reachable. */
-    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
   }
+}
+/* On short landscape phones research-os.css makes the title bar static. The progress
+   hairline is positioned from it, so keep it as the containing block. */
+@media (max-height: 480px) {
+  .os-shell .os-workspace-window > .os-windowbar {
+    position: relative;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .os-workspace-window.os-window--floating
+    .os-window-navigation
+    > .os-small-icon,
+  .os-shell .os-window-scan {
+    animation: none;
+  }
+  .os-shell .os-window-scan {
+    transform: none;
+  }
+  /* The shell-wide reset sets transition: none !important. Tooltips keep their 400ms
+     show delay (timing, not movement) and fade in 1ms, so they stay visible without
+     any transition. Hover and focus share the delay; the !important values beat the reset. */
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label]::after {
+    transition: opacity 1ms linear !important;
+  }
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label]:focus-visible::after {
+    transition-delay: 400ms !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) {
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label]:hover::after {
+    transition-delay: 400ms !important;
+  }
+}
+/* The !important delays above would hold a dismissed tooltip for 400ms. Escape clears it at once. */
+@media (prefers-reduced-motion: reduce) {
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label][data-tooltip-dismissed="true"]::after {
+    transition-delay: 0s !important;
+  }
+}
+@media (forced-colors: active) {
+  .os-shell .os-window-scan {
+    background: Highlight;
+  }
+  /* System colours keep the tooltip legible, so it is not hidden in forced colours. */
+  .os-shell
+    :where(
+      .os-window-actions .os-control,
+      .os-window-resize
+    )[aria-label]::after {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+}
+/* The window frame takes focus after Escape from its controls. Keep that visible. */
+.os-shell .os-workspace-window:focus-visible {
+  outline: 2px solid var(--os-focus);
+  outline-offset: -2px;
 }

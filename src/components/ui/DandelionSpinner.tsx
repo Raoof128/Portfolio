@@ -1,11 +1,14 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
-export function DandelionSpinner() {
+export function DandelionSpinner({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="dandelion-host" aria-hidden="true">
+    <div ref={hostRef} className="dandelion-host ui-art" aria-hidden="true">
       <div className="dandelion-bloom">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <defs>

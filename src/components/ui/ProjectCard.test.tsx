@@ -104,12 +104,13 @@ describe("ProjectCard", () => {
 
   it("shows featured badge when featured prop is true", () => {
     renderCard({ ...mockProject, featured: true });
-    expect(screen.getByText("Featured project")).toBeInTheDocument();
+    // Title case per the ResearchOS design system (en featured_op changed).
+    expect(screen.getByText("Featured Project")).toBeInTheDocument();
   });
 
   it("does not show featured badge when featured prop is false", () => {
     renderCard({ ...mockProject, featured: false });
-    expect(screen.queryByText("Featured project")).not.toBeInTheDocument();
+    expect(screen.queryByText("Featured Project")).not.toBeInTheDocument();
   });
 
   it("handles project without demo link", () => {

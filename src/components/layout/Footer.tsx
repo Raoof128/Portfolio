@@ -45,10 +45,10 @@ export function Footer() {
           <div className="md:col-span-2 space-y-6">
             <Link
               href={getPath("/")}
-              className="font-mono font-bold text-lg tracking-tight text-white group"
+              className="font-mono font-bold text-lg text-white group"
             >
               ~/mohammad-raouf-abedini
-              <span className="text-cyan animate-pulse">_</span>
+              <span className="text-cyan">_</span>
             </Link>
             <p className="text-text-body text-sm max-w-sm leading-relaxed">
               {t.hero.intro}
@@ -71,9 +71,7 @@ export function Footer() {
 
           {/* Links */}
           <div className="space-y-6">
-            <h2 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
-              {t.nav.home}
-            </h2>
+            <h2 className="font-mono text-xs text-text-meta">{t.nav.home}</h2>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -90,20 +88,20 @@ export function Footer() {
 
           {/* Legal/Metadata */}
           <div className="space-y-6">
-            <h2 className="font-mono text-[10px] text-text-meta tracking-[0.3em] uppercase">
+            <h2 className="font-mono text-xs text-text-meta">
               {t.footer.status}
             </h2>
             <div className="space-y-4 font-mono">
-              <div className="flex items-center justify-between text-[11px]">
+              <div className="flex items-center justify-between text-xs">
                 <span className="text-text-meta">{t.footer.last_index}:</span>
                 <span className="text-cyan">{t.footer.last_index_value}</span>
               </div>
-              <div className="flex items-center justify-between text-[11px]">
+              <div className="flex items-center justify-between text-xs">
                 <span className="text-text-meta">{t.footer.environment}:</span>
-                <span className="text-purple uppercase">PROD-SYD</span>
+                <span className="text-purple">PROD-SYD</span>
               </div>
               <div className="pt-4 border-t border-cyan/5">
-                <p className="text-[10px] text-text-meta leading-relaxed">
+                <p className="text-xs text-text-meta leading-relaxed">
                   © 2026 Mohammad Raouf Abedini. {t.footer.all_rights_reserved}.
                   <br />
                   <span className="text-text-body">
@@ -120,7 +118,7 @@ export function Footer() {
             served from the root and are locale-independent. */}
         <nav
           aria-label={t.footer.machine_resources}
-          className="mt-12 pt-6 border-t border-cyan/5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10px] text-text-meta"
+          className="mt-12 pt-6 border-t border-cyan/5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-text-meta"
         >
           <Link
             href={getPath("/security-policy")}

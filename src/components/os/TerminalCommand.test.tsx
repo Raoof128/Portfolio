@@ -21,10 +21,14 @@ describe("TerminalCommand", () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, { clipboard: { writeText } });
     render(<TerminalCommand locale="en" commands={commands} />);
+    expect(
+      screen.getByRole("region", { name: "Reproduction commands" }),
+    ).toHaveTextContent(commands[0]);
     expect(screen.getByText(commands[0])).toBeInTheDocument();
     expect(screen.getByText(commands[1])).toBeInTheDocument();
     await act(async () => {
-      fireEvent.click(screen.getByRole("button", { name: "Copy commands" }));
+      // The English label is title case per the ResearchOS spec, so the name changed.
+      fireEvent.click(screen.getByRole("button", { name: "Copy Commands" }));
     });
     expect(writeText).toHaveBeenCalledWith(commands.join("\n"));
     expect(screen.getByRole("status")).toHaveTextContent("Commands copied");

@@ -48,10 +48,8 @@ import { formatDate, formatNumber } from "@/i18n/format";
 import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
 import { WelcomeEnter } from "./WelcomeEnter";
-import "./action-buttons.css";
-import "./lock-rain.css";
+import "./controls.css";
 import "./theme-switch.css";
-import "./showcase.css";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
 import { Desktop } from "./Desktop";
 import { ProofAtlasVisibilityContext } from "./proof-atlas-context";
@@ -68,8 +66,8 @@ import { WorkspaceWindows, appForDescriptor } from "./WorkspaceWindows";
 import { createWorkspaceState, workspaceReducer } from "./workspace-model";
 import { getOSAppDescriptor } from "@/lib/os-app-schema";
 import {
-  readAppearance,
   DEFAULT_APPEARANCE,
+  readStoredAppearance,
   subscribeAppearance,
   writeAppearance,
   type Appearance,
@@ -101,6 +99,31 @@ const emptySubscribe = () => () => {};
 const clientSnapshot = () => true;
 const serverSnapshot = () => false;
 const serverAppearance = (): Appearance => DEFAULT_APPEARANCE;
+function systemColorScheme(): MediaQueryList | null {
+  return typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
+}
+
+function subscribeSystemAppearance(callback: () => void) {
+  const query = systemColorScheme();
+  query?.addEventListener?.("change", callback);
+  return () => query?.removeEventListener?.("change", callback);
+}
+
+/** A first visit follows `prefers-color-scheme`; without it the shell stays dark. */
+function readSystemAppearance(): Appearance {
+  return systemColorScheme()?.matches === false ? "light" : "dark";
+}
+
+/** Platform-correct shortcut: ⌘K on Apple platforms, Ctrl K elsewhere. */
+function readApplePlatform(): boolean {
+  const nav = navigator as Navigator & {
+    userAgentData?: { platform?: string };
+  };
+  const platform = nav.userAgentData?.platform ?? nav.platform ?? "";
+  return /mac|iphone|ipad|ipod/i.test(platform);
+}
 const searchIcons = {
   project: FolderOpen,
   paper: BookOpen,
@@ -116,6 +139,32 @@ function appForPath(path: string): PortfolioApp {
   if (path.startsWith("/resume")) return "resume";
   if (path.startsWith("/contact")) return "contact";
   return "about";
+}
+
+const sydneyDateOptions: Intl.DateTimeFormatOptions = {
+  timeZone: "Australia/Sydney",
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+};
+
+/**
+ * Long welcome date. Intl gives fa-IR a Latin comma and the weekday last; the
+ * Persian pattern is weekday first with the Persian comma (U+060C). ar already
+ * formats that way, so both share one path. Other locales keep formatDate output.
+ */
+function formatSydneyDate(now: Date, locale: Locale): string {
+  if (locale !== "fa" && locale !== "ar") {
+    return formatDate(now, locale, sydneyDateOptions);
+  }
+  const parts = new Intl.DateTimeFormat(
+    locale === "fa" ? "fa-IR" : "ar-u-nu-arab",
+    sydneyDateOptions,
+  ).formatToParts(now);
+  const part = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((item) => item.type === type)?.value ?? "";
+  return `${part("weekday")}، ${part("day")} ${part("month")} ${part("year")}`;
 }
 
 function SydneyClock({
@@ -141,15 +190,7 @@ function SydneyClock({
         hour12: false,
       })
     : "—:—";
-  const date = now
-    ? formatDate(now, locale, {
-        ...options,
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
-    : undefined;
+  const date = now ? formatSydneyDate(now, locale) : undefined;
   return welcome ? (
     <div className="os-lock-clock">
       <p className="os-eyebrow">{copy.timeZone}</p>
@@ -199,11 +240,29 @@ export function ResearchOS({
     clientSnapshot,
     serverSnapshot,
   );
-  const appearance = useSyncExternalStore(
+  const storedAppearance = useSyncExternalStore(
     subscribeAppearance,
-    readAppearance,
+    readStoredAppearance,
+    () => null,
+  );
+  const systemAppearance = useSyncExternalStore(
+    subscribeSystemAppearance,
+    readSystemAppearance,
     serverAppearance,
   );
+  // An explicit choice persists; a first visit follows the system colour scheme.
+  // The session value keeps a toggle working when storage cannot be written.
+  const [sessionAppearance, setSessionAppearance] = useState<Appearance | null>(
+    null,
+  );
+  const appearance = sessionAppearance ?? storedAppearance ?? systemAppearance;
+  const applePlatform = useSyncExternalStore(
+    emptySubscribe,
+    readApplePlatform,
+    serverSnapshot,
+  );
+  const shortcutText = applePlatform ? "⌘ K" : "Ctrl K";
+  const shortcutKeys = applePlatform ? "Meta+K" : "Control+K";
   const [lockedPath, setLockedPath] = useState<string | null>(
     isHome ? pathname : null,
   );
@@ -312,6 +371,16 @@ export function ResearchOS({
     () => searchEntries(entries, query, scope),
     [entries, query, scope],
   );
+  const resultCountText = `${formatNumber(Math.min(results.length, 30), locale)}${results.length > 30 ? ` / ${formatNumber(results.length, locale)}` : ""} · ${copy.searchResults}`;
+  const [announcedCount, setAnnouncedCount] = useState("");
+  useEffect(() => {
+    // Announce the count once typing pauses for 500ms, not on every keystroke.
+    const timer = window.setTimeout(
+      () => setAnnouncedCount(resultCountText),
+      500,
+    );
+    return () => window.clearTimeout(timer);
+  }, [resultCountText]);
   const pageEntry = entries.find((entry) => entry.href === pathname);
   const windowTitle =
     pageEntry?.title ??
@@ -655,11 +724,12 @@ export function ResearchOS({
             <button
               className="os-control"
               onClick={openSearch}
-              aria-label={`${copy.search} (Ctrl / ⌘ K)`}
+              aria-label={copy.search}
+              aria-keyshortcuts={shortcutKeys}
             >
               <Search aria-hidden="true" />
               <span>{copy.search}</span>
-              <kbd>⌘ K</kbd>
+              <kbd aria-hidden="true">{shortcutText}</kbd>
             </button>
             {!locked && (
               <button
@@ -677,15 +747,21 @@ export function ResearchOS({
               role="switch"
               className="os-theme-switch"
               aria-checked={appearance === "dark"}
-              aria-label={`${copy.theme}: ${copy.dark}`}
-              onClick={() =>
-                writeAppearance(appearance === "dark" ? "light" : "dark")
-              }
+              aria-label={copy.darkAppearance}
+              onClick={() => {
+                const next = appearance === "dark" ? "light" : "dark";
+                writeAppearance(next);
+                setSessionAppearance(next);
+              }}
             >
               <svg viewBox="0 0 512 512" aria-hidden="true">
                 <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" />
               </svg>
             </button>
+            {/* Visible state beside the switch on wide screens; the name stays static. */}
+            <span className="os-theme-state" aria-hidden="true">
+              {appearance === "dark" ? copy.dark : copy.light}
+            </span>
             <details
               ref={languageMenu}
               className="os-language"
@@ -732,7 +808,6 @@ export function ResearchOS({
             role="main"
             aria-labelledby="os-lock-name"
           >
-            <div className="os-lock-rain" aria-hidden="true" />
             <SydneyClock locale={locale} welcome />
             <div className="os-lock-profile">
               <Image
@@ -752,24 +827,32 @@ export function ResearchOS({
               </h1>
               <p className="os-role">{role}</p>
               <p className="os-lock-intro">{copy.intro}</p>
-              <WelcomeEnter onEnter={enterWorkspace}>
+              <WelcomeEnter
+                onEnter={enterWorkspace}
+                status={copy.welcomeStatus}
+              >
                 {atlasJourneyCopy.explore}
                 <ArrowRight aria-hidden="true" />
               </WelcomeEnter>
               <nav className="os-lock-shortcuts" aria-label={copy.selectedWork}>
                 <Link
+                  className="os-text-link"
                   href={getPath("/projects")}
                   onClick={() => setLockedPath(null)}
                 >
                   {atlasJourneyCopy.review}
                 </Link>
                 <a
+                  className="os-text-link"
                   href="/Mohammad_Raouf_Abedini_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {copy.viewResume}
-                  <ExternalLink aria-hidden="true" />
+                  <ExternalLink
+                    className="os-external-icon"
+                    aria-hidden="true"
+                  />
                 </a>
               </nav>
             </div>
@@ -918,29 +1001,29 @@ export function ResearchOS({
             }
           >
             {!workspaceDisplayed && !isHome && (
-              <div className="os-windowbar">
+              <div className="os-windowbar os-windowbar--route">
                 <div className="os-window-navigation">
+                  {/* The name stays "Back" on phones, where the visible word is hidden. */}
                   <Link
                     className="os-window-back"
                     href={parentPath}
                     aria-label={copy.back}
                   >
                     <ArrowLeft aria-hidden="true" />
+                    <span>{copy.back}</span>
                   </Link>
                   <OSIcon app={activeApp} />
-                  <span
-                    className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
-                    id="os-window-title"
-                    lang={pageEntry?.titleLocale ?? locale}
-                    dir={locales[pageEntry?.titleLocale ?? locale].dir}
-                    onPointerDown={(event) =>
-                      reading.beginPointer(event, "move")
-                    }
-                    {...reading.pointerHandlers}
-                  >
-                    {windowTitle}
-                  </span>
                 </div>
+                <span
+                  className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
+                  id="os-window-title"
+                  lang={pageEntry?.titleLocale ?? locale}
+                  dir={locales[pageEntry?.titleLocale ?? locale].dir}
+                  onPointerDown={(event) => reading.beginPointer(event, "move")}
+                  {...reading.pointerHandlers}
+                >
+                  {windowTitle}
+                </span>
                 <div className="os-window-actions">
                   {reading.desktop && !reading.minimized && !locked && (
                     <ReadingWindowControls
@@ -971,7 +1054,8 @@ export function ResearchOS({
                       reading.reset();
                       setExpanded((value) => !value);
                     }}
-                    aria-label={expanded ? copy.restore : copy.expand}
+                    // The name is constant; aria-pressed carries the expanded state.
+                    aria-label={windowCopy.fullSize}
                     aria-pressed={expanded}
                   >
                     {expanded ? (
@@ -984,7 +1068,8 @@ export function ResearchOS({
                     className="os-control os-window-close"
                     href={home}
                     onClick={enterWorkspace}
-                    aria-label={copy.close}
+                    // The name contains the visible word "Desktop" (WCAG 2.5.3).
+                    aria-label={`${copy.close}: ${copy.desktop}`}
                   >
                     <X aria-hidden="true" />
                     <span>{copy.desktop}</span>
@@ -1235,13 +1320,17 @@ export function ResearchOS({
               ),
             )}
           </div>
-          <p className="os-search-count" role="status">
+          <p className="os-search-count">
             <bdi dir="ltr">
               {formatNumber(Math.min(results.length, 30), locale)}
               {results.length > 30 &&
                 ` / ${formatNumber(results.length, locale)}`}
             </bdi>
             {` · ${copy.searchResults}`}
+          </p>
+          {/* Announced once after typing pauses, not on every keystroke. */}
+          <p className="sr-only" role="status">
+            {announcedCount}
           </p>
           <div className="os-search-body">
             <ul className="os-search-results" id="os-search-results">
@@ -1312,7 +1401,7 @@ export function ResearchOS({
                 <h3>{copy.noResults}</h3>
                 <p>{query}</p>
                 <button
-                  className="os-button"
+                  className="os-button os-button--secondary"
                   onClick={() => {
                     setQuery("");
                     setScope("all");

@@ -1,43 +1,20 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import "./ui-surfaces.css";
 
 interface GlowCardProps {
   children: React.ReactNode;
+  /** Retired: every card uses the single accent, so a hue choice is not drawn. */
   glowColor?: "cyan" | "amber" | "purple";
   className?: string;
 }
 
-const glowColors = {
-  cyan: {
-    border: "hover:border-cyan/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(0,245,255,0.2)]",
-  },
-  amber: {
-    border: "hover:border-amber/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(245,158,11,0.2)]",
-  },
-  purple: {
-    border: "hover:border-purple/40",
-    shadow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]",
-  },
-};
-
-export function GlowCard({
-  children,
-  glowColor = "cyan",
-  className,
-}: GlowCardProps) {
-  const colors = glowColors[glowColor];
-
+/** A solid card. Hover changes only the hairline border; there is no glow or glass. */
+export function GlowCard({ children, className }: GlowCardProps) {
   return (
     <div
-      className={cn(
-        "os-reading-card relative border border-cyan/8 bg-[#030712]/60 backdrop-blur-sm transition-[border-color,box-shadow,transform,opacity] duration-150 hover:bg-cyan/[0.04]",
-        colors.border,
-        colors.shadow,
-        className,
-      )}
+      className={cn("os-reading-card ui-card ui-card--interactive", className)}
     >
       {children}
     </div>

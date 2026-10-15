@@ -54,17 +54,14 @@ export function ProjectCard({
       className="h-full"
     >
       <HUDFrame
-        className={cn(
-          "flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,245,255,0.1)] transition-shadow duration-300",
-          featured ? "lg:col-span-2" : "",
-        )}
+        className={cn("flex flex-col h-full", featured ? "lg:col-span-2" : "")}
         title={t.project_card.module_title}
       >
         <div className="flex-1 space-y-4">
           {/* Header */}
           <div className="flex justify-between items-start">
             <div>
-              <h3 className="text-2xl font-bold font-mono tracking-tight text-white">
+              <h3 className="text-2xl font-bold font-mono text-white">
                 {title}
               </h3>
               <p className="mt-2 text-text-body leading-relaxed max-w-xl">
@@ -132,7 +129,7 @@ export function ProjectCard({
 
           {/* Tab Content with AnimatePresence */}
           <div
-            className="h-40 overflow-y-auto pr-2 custom-scrollbar pt-4"
+            className="h-40 overflow-y-auto pe-2 custom-scrollbar pt-4"
             role="tabpanel"
             id={panelId}
             aria-labelledby={activeTab === "build" ? buildTabId : secureTabId}
@@ -172,7 +169,7 @@ export function ProjectCard({
               variant="primary"
               className="text-xs py-2 px-4"
             >
-              <Play className="w-3 h-3 mr-2" /> {t.project_card.watch_demo}
+              <Play className="w-3 h-3 me-2" /> {t.project_card.watch_demo}
             </NeonButton>
           )}
           {links.repo && (
@@ -181,16 +178,16 @@ export function ProjectCard({
               variant="secondary"
               className="text-xs py-2 px-4"
             >
-              <Github className="w-3 h-3 mr-2" /> {t.project_card.repo}
+              <Github className="w-3 h-3 me-2" /> {t.project_card.repo}
             </NeonButton>
           )}
           {links.caseStudy && (
             <Link
               href={links.caseStudy}
-              className="flex items-center text-xs font-mono text-text-body hover:text-cyan ml-auto transition-colors"
+              className="flex items-center text-xs font-mono text-text-body hover:text-cyan ms-auto transition-colors"
             >
               {t.project_card.read_case_study}{" "}
-              <ArrowUpRight className="w-3 h-3 ml-1" />
+              <ArrowUpRight className="w-3 h-3 ms-1 rtl:-scale-x-100" />
             </Link>
           )}
         </div>

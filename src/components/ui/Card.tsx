@@ -1,9 +1,11 @@
 import { cn } from "@/lib/utils";
+import "./ui-surfaces.css";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   hoverEffect?: boolean;
 }
 
+/** A solid token card. Hover changes only the hairline border. */
 export function Card({
   className,
   children,
@@ -13,9 +15,8 @@ export function Card({
   return (
     <div
       className={cn(
-        "bg-cyan/5 border border-cyan/12 p-6 overflow-hidden relative",
-        hoverEffect &&
-          "transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_15px_rgba(0,245,255,0.1)]",
+        "ui-card",
+        hoverEffect && "ui-card--interactive",
         className,
       )}
       {...props}

@@ -1,65 +1,50 @@
 @import "tailwindcss";
 @source not "../../vendor";
 
+/* Document fallbacks. Inside .os-shell the tokens in research-os.css take over.
+   The neon palette is retired; Tailwind colour names used by components resolve
+   through the shell aliases in research-os.css. */
 :root {
-  /* Base — near-black navy: research console */
-  --background: #030712;
-  --foreground: #eaf6ff;
-
-  --color-cyber-black: #010409;
-  --color-cyber-dark: #07111f;
-  --color-cyber-gray: #0f1f35;
-
-  /* Accent - Primary: singularity cyan */
-  --color-cyan-DEFAULT: #00f5ff;
-  --color-cyan-glow: #7ff9ff;
-  --color-cyan-dim: rgba(0, 245, 255, 0.18);
-
-  /* Accent - Secondary: royal violet */
-  --color-purple-DEFAULT: #8b5cf6;
-  --color-purple-glow: #a78bfa;
-  --color-purple-dim: rgba(139, 92, 246, 0.16);
-
-  /* Accent - Highlight: warm gold */
-  --color-amber-DEFAULT: #f6c85f;
-  --color-amber-glow: #fde68a;
-  --color-amber-dim: rgba(246, 200, 95, 0.12);
-
-  /* Typography */
-  --text-body: #8ea3b8;
-  --text-meta: rgba(0, 245, 255, 0.75);
-
-  /* Glass / Surface — cyan-tinted */
-  --glass-bg: rgba(3, 7, 18, 0.75);
-  --glass-border: rgba(0, 245, 255, 0.12);
-  --surface-1: rgba(0, 245, 255, 0.04);
-  --surface-2: rgba(0, 245, 255, 0.08);
-
-  --radius: 0rem;
+  --background: #080d19;
+  --foreground: #f1f7ff;
+  --scrollbar-thumb: #5b7593;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-cyber-black: var(--color-cyber-black);
-  --color-cyber-dark: var(--color-cyber-dark);
-  --color-cyber-gray: var(--color-cyber-gray);
+  --color-cyber-dark: var(--os-surface);
   --color-cyan: var(--color-cyan-DEFAULT);
-  --color-cyan-glow: var(--color-cyan-glow);
-  --color-amber: var(--color-amber-DEFAULT);
-  --color-amber-glow: var(--color-amber-glow);
   --color-purple: var(--color-purple-DEFAULT);
-  --color-purple-glow: var(--color-purple-glow);
   --color-text-body: var(--text-body);
   --color-text-meta: var(--text-meta);
 
-  --font-sans: var(--font-chakra-petch);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
+    Arial, sans-serif;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, Menlo, Consolas, monospace;
 }
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 245, 255, 0.5) #010409;
+  scrollbar-color: var(--scrollbar-thumb) var(--background);
+}
+
+/* Calm scrollbars: a thin, flat thumb in the control-line token, no glow. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 3px solid var(--background);
+  border-radius: 999px;
 }
 
 body {
@@ -70,44 +55,44 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Utilities */
-@layer utilities {
-  /* Glass utility classes */
-  .glass {
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
+/* Glass recipe for the menus that still use it (Navbar and LanguageSwitcher). The tokens and the recipe follow liquid-glass.css (section 3.3). The base sits in the components layer so the utilities on those menus (border-b, border-cyan/10, shadow-2xl) still override its defaults. The fallbacks sit outside every layer so they win over both. */
+@layer components {
   .glass-strong {
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--os-glass);
+    border: 1px solid var(--os-glass-rim);
+    box-shadow: inset 0 1px 0 var(--os-glass-highlight);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
   }
-
-  /* Custom Scrollbar — HUD-integrated */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+}
+/* Solid fallback: reduced transparency, increased contrast, and browsers without backdrop-filter. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .glass-strong {
+    background: var(--os-surface);
+    border-color: var(--os-control-line);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-
-  ::-webkit-scrollbar-track {
-    background: var(--color-cyber-black);
-    border-left: 1px solid var(--color-cyan-dim);
+}
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass-strong {
+    background: var(--os-surface);
+    border-color: var(--os-control-line);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-cyan);
-    border-radius: 0px;
-    box-shadow: 0 0 8px var(--color-cyan-dim);
-    transition: background 0.3s ease;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-cyan);
-    box-shadow: 0 0 14px var(--color-cyan-dim);
+}
+@media (forced-colors: active) {
+  .glass-strong {
+    background: Canvas;
+    border: 1px solid CanvasText;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 

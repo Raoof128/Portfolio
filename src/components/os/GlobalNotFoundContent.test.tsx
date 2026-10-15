@@ -134,6 +134,16 @@ describe("global static 404 recovery", () => {
     document.documentElement.removeAttribute("data-appearance");
   });
 
+  it("draws the mark inline so it takes the theme text colour, not an img", async () => {
+    const copies = await recoveryCopy();
+    const { container } = render(<GlobalNotFoundContent copies={copies} />);
+    const mark = container.querySelector(".global-not-found-mark");
+    expect(mark).not.toBeNull();
+    expect(mark?.querySelector("img")).toBeNull();
+    expect(mark?.querySelector("svg")).toHaveAttribute("fill", "currentColor");
+    expect(mark?.querySelector("svg path")).not.toBeNull();
+  });
+
   it("validates the locale as a whole path segment", () => {
     expect(notFoundLocale("/farsi/missing")).toBe("en");
     expect(notFoundLocale("/projects/fa")).toBe("en");

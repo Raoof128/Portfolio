@@ -13,11 +13,10 @@ import {
   simurghEvidenceStoryCopy,
   zurvanEvidenceStoryCopy,
 } from "@/lib/project-content/evidence-story-copy";
-import {
-  InvisibleWindowEvidenceStory,
-  SimurghEvidenceStory,
-  ZurvanEvidenceStory,
-} from "./EvidenceStory";
+// The three story modules replace the retired EvidenceStory barrel (one import path each).
+import { InvisibleWindowEvidenceStory } from "./InvisibleWindowEvidenceStory";
+import { SimurghEvidenceStory } from "./SimurghEvidenceStory";
+import { ZurvanEvidenceStory } from "./ZurvanEvidenceStory";
 
 afterEach(cleanup);
 

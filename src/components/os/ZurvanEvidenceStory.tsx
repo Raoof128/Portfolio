@@ -25,7 +25,8 @@ export function ZurvanEvidenceStory({
     >
       <header className="os-evidence-story-heading">
         <p className="os-evidence-story-eyebrow">{copy.eyebrow}</p>
-        <h3 id={`${id}-title`}>{copy.title}</h3>
+        {/* h2: the story sits under the dossier's Overview; its sub-heads are h3. */}
+        <h2 id={`${id}-title`}>{copy.title}</h2>
         <p id={`${id}-description`}>{copy.introduction}</p>
         <span className="os-evidence-story-note">{copy.illustrationLabel}</span>
       </header>
@@ -73,12 +74,6 @@ export function ZurvanEvidenceStory({
           <strong>{copy.retrievalNode}</strong>
           <small>{copy.retrievalDetail}</small>
         </div>
-        <span
-          className="os-zurvan-edge os-zurvan-edge-context"
-          aria-hidden="true"
-        >
-          ↓
-        </span>
         <div className="os-zurvan-graph-node os-zurvan-consumer">
           <strong>{copy.consumerNode}</strong>
           <small>{copy.consumerDetail}</small>
@@ -89,7 +84,7 @@ export function ZurvanEvidenceStory({
         className="os-zurvan-type-ledger-section"
         aria-labelledby={`${id}-types`}
       >
-        <h4 id={`${id}-types`}>{copy.detailsTitle}</h4>
+        <h3 id={`${id}-types`}>{copy.detailsTitle}</h3>
         <ol className="os-zurvan-type-ledger">
           {copy.nodeTypes.map((node, index) => (
             <li

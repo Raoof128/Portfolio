@@ -91,14 +91,9 @@ describe("opaque reading contrast", () => {
   ] as const)(
     "keeps small prose and status labels readable in %s",
     (_, tokens) => {
-      for (const foreground of [
-        "--os-text",
-        "--os-muted",
-        "--os-accent",
-        "--os-success",
-        "--os-warning",
-        "--os-resume-accent",
-      ]) {
+      // --os-success, --os-warning and --os-resume-accent are retired by the
+      // Apple 2026 spec (status is text plus accent or muted), so they are no longer checked.
+      for (const foreground of ["--os-text", "--os-muted", "--os-accent"]) {
         for (const background of ["--os-bg", "--os-surface"]) {
           expect(
             contrast(color(tokens, foreground), color(tokens, background)),
@@ -174,4 +169,29 @@ describe("welcome wallpaper contrast", () => {
       );
     }
   });
+});
+
+describe("control contrast", () => {
+  // Apple 2026 review: control boundaries, focus rings and button labels on
+  // the supporting pages must keep WCAG 1.4.11 and 1.4.3 minimums in both themes.
+  it.each([
+    ["dark", dark],
+    ["light", light],
+  ] as const)(
+    "keeps control boundaries, focus and button labels in %s",
+    (_, tokens) => {
+      expect(
+        contrast(
+          color(tokens, "--os-control-line"),
+          color(tokens, "--os-surface"),
+        ),
+      ).toBeGreaterThanOrEqual(3);
+      expect(
+        contrast(color(tokens, "--os-focus"), color(tokens, "--os-surface")),
+      ).toBeGreaterThanOrEqual(3);
+      expect(
+        contrast(color(tokens, "--os-on-accent"), color(tokens, "--os-accent")),
+      ).toBeGreaterThanOrEqual(4.5);
+    },
+  );
 });

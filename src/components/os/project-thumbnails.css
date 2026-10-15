@@ -1,13 +1,13 @@
-.os-project-explorer .os-project-row.os-project-row-with-preview {
-  grid-template-columns: 25px 136px minmax(0, 1fr);
+/* Index thumbnails (design system, section 4): a fixed preview track beside each
+   card's text. Artwork stays still in index previews (the animation is paused
+   here and the component renders a still pose). */
+
+.os-shell .os-project-explorer .os-project-row.os-project-row-with-preview {
+  grid-template-columns: 136px minmax(0, 1fr);
   align-items: start;
 }
 
-.os-project-explorer .os-project-row-summary {
-  min-inline-size: 0;
-}
-
-.os-project-thumbnail {
+.os-shell .os-project-thumbnail {
   position: relative;
   isolation: isolate;
   display: grid;
@@ -19,17 +19,18 @@
   block-size: 136px;
   overflow: hidden;
   border: 1px solid var(--os-line);
-  border-radius: 12px;
+  border-radius: var(--radius-s);
 }
 
-.os-project-thumbnail > div {
+.os-shell .os-project-thumbnail > div {
   inline-size: 100%;
   block-size: 100%;
   min-inline-size: 0;
   min-block-size: 0;
 }
 
-.os-project-thumbnail
+.os-shell
+  .os-project-thumbnail
   :is(
     .dandelion-bloom,
     .kl-container,
@@ -49,102 +50,41 @@
   aspect-ratio: 1;
 }
 
-.os-project-thumbnail svg:not(.os-project-thumbnail-placeholder) {
+.os-shell .os-project-thumbnail svg:not(.os-project-thumbnail-placeholder) {
   display: block;
   inline-size: 100%;
   block-size: 100%;
 }
 
-/* Index previews remain still regardless of the original CSS animation API. */
-.os-project-thumbnail * {
+/* Index previews stay still regardless of the original CSS animation API. */
+.os-shell .os-project-thumbnail * {
   animation-play-state: paused !important;
   transition: none !important;
 }
 
-.os-project-thumbnail .os-project-thumbnail-placeholder {
+.os-shell .os-project-thumbnail .os-project-thumbnail-placeholder {
   color: var(--os-muted);
   opacity: 0.35;
 }
 
-@media (max-width: 1000px) {
-  .os-project-explorer .os-project-row.os-project-row-with-preview {
-    grid-template-columns: 25px minmax(0, 1fr);
+/* Narrow panes stack the preview above the text, at the card's full width. */
+@container project-index (max-width: 560px) {
+  .os-shell .os-project-explorer .os-project-row.os-project-row-with-preview {
+    grid-template-columns: minmax(0, 1fr);
   }
-
-  .os-project-row-with-preview
-    :is(.os-project-thumbnail, .os-project-row-summary) {
-    grid-column: 2;
-  }
-
-  .os-project-row-with-preview .os-project-thumbnail {
-    max-inline-size: 240px;
+  .os-shell .os-project-row-with-preview .os-project-thumbnail {
+    max-inline-size: 320px;
     block-size: 160px;
   }
 }
 
-@media (max-width: 700px) {
-  .os-project-explorer .os-project-row.os-project-row-with-preview {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .os-project-row-with-preview
-    :is(.os-project-thumbnail, .os-project-row-summary) {
-    grid-column: 1;
-  }
-
-  .os-project-row-with-preview .os-project-thumbnail {
-    max-inline-size: 320px;
-    block-size: 180px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .os-project-thumbnail * {
-    animation: none !important;
-  }
-}
-.os-project-explorer .os-project-index {
+.os-shell .os-project-explorer .os-project-index {
   container-type: inline-size;
   container-name: project-index;
 }
 
-/* A desktop app can be narrower than its browser viewport after resizing.
-   Below 701px the viewport rules above already hide the number column, so
-   the 25px track must not come back as an empty indent. */
-@media (min-width: 701px) {
-  @container project-index (max-width: 560px) {
-    .os-project-explorer .os-project-row.os-project-row-with-preview {
-      grid-template-columns: 25px minmax(0, 1fr);
-    }
-
-    .os-project-row-with-preview
-      :is(.os-project-thumbnail, .os-project-row-summary) {
-      grid-column: 2;
-    }
-
-    .os-project-row-with-preview .os-project-thumbnail {
-      max-inline-size: 240px;
-      block-size: 160px;
-    }
-  }
-}
-
-@container project-index (max-width: 400px) {
-  .os-project-explorer .os-project-row.os-project-row-with-preview {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .os-project-row-with-preview .os-project-row-number {
-    display: none;
-  }
-
-  .os-project-row-with-preview
-    :is(.os-project-thumbnail, .os-project-row-summary) {
-    grid-column: 1;
-  }
-
-  .os-project-row-with-preview .os-project-thumbnail {
-    max-inline-size: 320px;
-    block-size: 180px;
+@media (prefers-reduced-motion: reduce) {
+  .os-shell .os-project-thumbnail * {
+    animation: none !important;
   }
 }

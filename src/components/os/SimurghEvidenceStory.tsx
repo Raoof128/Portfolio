@@ -32,7 +32,8 @@ export function SimurghEvidenceStory({
     >
       <header className="os-evidence-story-heading">
         <p className="os-evidence-story-eyebrow">{copy.eyebrow}</p>
-        <h3 id={`${id}-title`}>{copy.title}</h3>
+        {/* h2: the story sits under the dossier's Overview; its sub-heads are h3. */}
+        <h2 id={`${id}-title`}>{copy.title}</h2>
         <p id={`${id}-description`}>{copy.introduction}</p>
         <span className="os-evidence-story-note">{copy.illustrationLabel}</span>
       </header>
@@ -77,7 +78,7 @@ export function SimurghEvidenceStory({
             data-path-active="true"
           >
             <span className="os-simurgh-instrument-point" aria-hidden="true">
-              {formatNumber(5, locale, {
+              {formatNumber(copy.boundaries.length + 1, locale, {
                 minimumIntegerDigits: 2,
                 useGrouping: false,
               })}
@@ -90,7 +91,7 @@ export function SimurghEvidenceStory({
             data-path-active="true"
           >
             <span className="os-simurgh-instrument-point" aria-hidden="true">
-              {formatNumber(6, locale, {
+              {formatNumber(copy.boundaries.length + 2, locale, {
                 minimumIntegerDigits: 2,
                 useGrouping: false,
               })}
@@ -105,7 +106,7 @@ export function SimurghEvidenceStory({
         className="os-simurgh-explanations"
         aria-labelledby={`${id}-details-title`}
       >
-        <h4 id={`${id}-details-title`}>{copy.detailsTitle}</h4>
+        <h3 id={`${id}-details-title`}>{copy.detailsTitle}</h3>
         <ol>
           {copy.boundaries.map((boundary, index) => (
             <li
@@ -126,8 +127,7 @@ export function SimurghEvidenceStory({
         </ol>
       </section>
 
-      <figcaption className="os-evidence-story-caption">
-        <p>{copy.sourceNote}</p>
+      <div className="os-evidence-story-reproduce">
         <div className="os-evidence-story-links">
           <a href={simurghRepository} target="_blank" rel="noopener noreferrer">
             {copy.repositoryLink}
@@ -149,6 +149,11 @@ export function SimurghEvidenceStory({
             "bash scripts/reproduce-vca-chain.sh",
           ]}
         />
+      </div>
+
+      {/* figcaption must be the figure's first or last child; it closes the story. */}
+      <figcaption className="os-evidence-story-caption">
+        <p>{copy.sourceNote}</p>
       </figcaption>
     </figure>
   );

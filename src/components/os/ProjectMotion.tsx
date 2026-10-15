@@ -13,15 +13,16 @@ import {
   type ProjectArtworkSlug as ArtworkSlug,
 } from "./project-artwork";
 import { useApplicationActive } from "./application-context";
+import { useStageVisibility } from "./use-stage-visibility";
 
 const motionCopy = {
   en: {
-    identity: "Project identity",
-    pause: "Pause animation",
-    play: "Play animation",
+    identity: "Project Identity",
+    pause: "Pause Animation",
+    play: "Play Animation",
     reduced: "Still",
     failed: "Artwork could not load.",
-    retry: "Try again",
+    retry: "Try Again",
   },
   fa: {
     identity: "هویت بصری پروژه",
@@ -77,8 +78,8 @@ function subscribeToMotion(callback: () => void) {
 function ArtworkPanel({ slug, locale }: { slug: ArtworkSlug; locale: Locale }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const appActive = useApplicationActive();
-  const [nearby, setNearby] = useState(false);
-  const [visible, setVisible] = useState(false);
+  // Sticky: once requested, the selected project's artwork stays mounted.
+  const { nearby, visible } = useStageVisibility(stageRef, { sticky: true });
   const [paused, setPaused] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const [artwork, setArtwork] = useState<{
@@ -98,87 +99,6 @@ function ArtworkPanel({ slug, locale }: { slug: ArtworkSlug; locale: Locale }) {
     appActive && visible && !paused && !reduced && motion.startsWith("visible");
   const copy = motionCopy[locale];
   const Artwork = artwork.component;
-
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    if (typeof IntersectionObserver === "undefined") {
-      // Scroll events from retained reading panes also reach this capture listener.
-      const reading = stage.closest<HTMLElement>(".os-page-content");
-      let frame: number | null = null;
-      const check = () => {
-        frame = null;
-        const bounds = stage.getBoundingClientRect();
-        const clip = reading?.getBoundingClientRect();
-        const top = Math.max(0, clip?.top ?? 0);
-        const bottom = Math.min(
-          window.innerHeight,
-          clip?.bottom ?? window.innerHeight,
-        );
-        const left = Math.max(0, clip?.left ?? 0);
-        const right = Math.min(
-          window.innerWidth,
-          clip?.right ?? window.innerWidth,
-        );
-        const hasArea =
-          bounds.width > 0 && bounds.height > 0 && bottom > top && right > left;
-        const horizontal = bounds.right > left && bounds.left < right;
-        if (
-          hasArea &&
-          horizontal &&
-          bounds.bottom > top - 160 &&
-          bounds.top < bottom + 160
-        )
-          setNearby(true);
-        setVisible(
-          hasArea && horizontal && bounds.bottom > top && bounds.top < bottom,
-        );
-      };
-      const schedule = () => {
-        if (frame === null) frame = requestAnimationFrame(check);
-      };
-      const resize =
-        typeof ResizeObserver === "undefined"
-          ? null
-          : new ResizeObserver(schedule);
-      resize?.observe(stage);
-      if (reading) resize?.observe(reading);
-      schedule();
-      window.addEventListener("scroll", schedule, {
-        passive: true,
-        capture: true,
-      });
-      window.addEventListener("resize", schedule, { passive: true });
-      return () => {
-        if (frame !== null) cancelAnimationFrame(frame);
-        resize?.disconnect();
-        window.removeEventListener("scroll", schedule, true);
-        window.removeEventListener("resize", schedule);
-      };
-    }
-    // Only the selected project is requested, shortly before its stage appears.
-    const loadObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setNearby(true);
-          loadObserver.disconnect();
-        }
-      },
-      { rootMargin: "160px 0px", threshold: 0 },
-    );
-    const visibilityObserver = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(Boolean(entry?.isIntersecting));
-      },
-      { threshold: 0 },
-    );
-    loadObserver.observe(stage);
-    visibilityObserver.observe(stage);
-    return () => {
-      loadObserver.disconnect();
-      visibilityObserver.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     if (!nearby) return;

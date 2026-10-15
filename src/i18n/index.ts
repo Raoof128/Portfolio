@@ -11,28 +11,29 @@ export const locales: Record<Locale, LocaleConfig> = {
     label: "English",
     dir: "ltr",
     fontFamily:
-      "var(--font-chakra-petch), var(--font-jetbrains-mono), ui-sans-serif, system-ui, sans-serif",
+      'ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif',
   },
   fa: {
     label: "فارسی",
     dir: "rtl",
-    fontFamily: "var(--font-vazirmatn), Tahoma, Arial, sans-serif",
+    fontFamily: 'var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif',
   },
   ar: {
     label: "العربية",
     dir: "rtl",
-    fontFamily: "var(--font-vazirmatn), Tahoma, Arial, sans-serif",
+    fontFamily: 'var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif',
   },
   zh: {
     label: "中文",
     dir: "ltr",
-    fontFamily: "ui-sans-serif, system-ui, sans-serif",
+    fontFamily:
+      '"PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif',
   },
   es: {
     label: "Español",
     dir: "ltr",
     fontFamily:
-      "var(--font-chakra-petch), var(--font-jetbrains-mono), ui-sans-serif, system-ui, sans-serif",
+      'ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif',
   },
 };
 

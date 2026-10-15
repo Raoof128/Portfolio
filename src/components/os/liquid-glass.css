@@ -1,47 +1,32 @@
-/* Paint the dock itself as one surface. Separate background planes and inset
-   bevels can look like stacked plates even when there is only one blur pass. */
+/* ResearchOS glass: the single source of glass and dock tokens, and the one glass
+   recipe with its fallbacks. Glass belongs to navigation and window chrome only;
+   reading surfaces stay opaque (design system, sections 2 and 3.3). */
 .os-shell {
-  --os-glass: rgb(17 27 43 / 84%);
-  --os-glass-rim: rgb(190 222 255 / 27%);
-  --os-glass-highlight: rgb(231 246 255 / 25%);
-  --os-glass-shade: rgb(0 0 0 / 22%);
-  --os-glass-sheen: rgb(117 199 255 / 9%);
-  --os-glass-muted: #a9bdd0;
-  --os-dock-glass: rgb(17 27 43 / 68%);
-  --os-dock-selection: rgb(8 13 25 / 30%);
-  --os-dock-projects-accent: #91caff;
-  --os-dock-research-accent: #71efd2;
-  --os-dock-about-accent: #ffd67a;
-  --os-dock-resume-accent: #d2baff;
-  --os-dock-contact-accent: #ffb2a6;
+  --os-glass: rgb(17 27 43 / 88%);
+  --os-glass-rim: rgb(190 222 255 / 22%);
+  --os-glass-highlight: rgb(231 246 255 / 18%);
+  --os-dock-selection: rgb(255 255 255 / 10%);
 }
 .os-shell[data-appearance="light"] {
-  --os-glass: rgb(255 255 255 / 86%);
-  --os-glass-rim: rgb(255 255 255 / 88%);
+  --os-glass: rgb(255 255 255 / 90%);
+  --os-glass-rim: rgb(36 75 124 / 14%);
   --os-glass-highlight: rgb(255 255 255 / 95%);
-  --os-glass-shade: rgb(24 55 104 / 15%);
-  --os-glass-sheen: rgb(255 255 255 / 34%);
-  --os-glass-muted: #445974;
-  --os-dock-glass: rgb(255 255 255 / 76%);
-  --os-dock-selection: rgb(37 99 235 / 9%);
-  --os-dock-projects-accent: #1d4ed8;
-  --os-dock-research-accent: #006b61;
-  --os-dock-about-accent: #854900;
-  --os-dock-resume-accent: #6d28d9;
-  --os-dock-contact-accent: #be123c;
+  --os-dock-selection: rgb(0 105 187 / 9%);
 }
 .os-brand > span,
 .os-top-clock,
 .os-language {
-  color: var(--os-glass-muted);
+  color: var(--os-muted);
 }
+
+/* The one glass recipe: translucent fill, blurred backdrop, hairline rim, inset top edge. */
 .os-topbar,
-.os-windowbar {
-  background:
-    linear-gradient(155deg, var(--os-glass-sheen), transparent 55%),
-    var(--os-glass);
-  -webkit-backdrop-filter: blur(16px) saturate(1.35);
-  backdrop-filter: blur(16px) saturate(1.35);
+.os-windowbar,
+.os-dock {
+  background: var(--os-glass);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--os-glass-rim);
   box-shadow: inset 0 1px 0 var(--os-glass-highlight);
 }
 .os-brand svg {
@@ -55,44 +40,28 @@
 .os-dock {
   /* Native backdrop filtering affects the page behind the nav, not its icons.
      Keep overflow visible so keyboard focus can extend beyond this surface. */
-  background: var(--os-dock-glass);
-  border-color: var(--os-glass-rim);
-  -webkit-backdrop-filter: blur(18px) saturate(1.45);
-  backdrop-filter: blur(18px) saturate(1.45);
-  box-shadow: 0 8px 24px var(--os-glass-shade);
-}
-.os-dock a[aria-current="page"] {
-  background: transparent;
-  box-shadow: none;
+  box-shadow:
+    inset 0 1px 0 var(--os-glass-highlight),
+    var(--shadow-dock);
 }
 .os-dock a:hover,
 .os-dock a:focus-visible {
   background: var(--os-dock-selection);
   box-shadow: none;
 }
-.os-dock [data-app="projects"] {
-  --os-app-accent: var(--os-dock-projects-accent);
-}
-.os-dock [data-app="research"] {
-  --os-app-accent: var(--os-dock-research-accent);
-}
-.os-dock [data-app="about"] {
-  --os-app-accent: var(--os-dock-about-accent);
-}
-.os-dock [data-app="resume"] {
-  --os-app-accent: var(--os-dock-resume-accent);
-}
-.os-dock [data-app="contact"] {
-  --os-app-accent: var(--os-dock-contact-accent);
+.os-dock a[aria-current="page"] {
+  background: var(--os-accent-tint);
+  box-shadow: none;
 }
 .os-dock-app > span:last-child {
   color: var(--os-text);
 }
+
+/* Fallbacks: a solid surface wherever glass is unavailable or unwanted. */
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .os-shell,
   .os-shell[data-appearance="light"] {
     --os-glass: var(--os-surface);
-    --os-dock-glass: var(--os-surface);
   }
   .os-topbar,
   .os-windowbar,
@@ -100,30 +69,24 @@
     background: var(--os-surface);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-  }
-  .os-dock {
-    border-color: var(--os-line);
+    border-color: var(--os-control-line);
     box-shadow: none;
-  }
-}
-@media (prefers-contrast: more) {
-  .os-shell,
-  .os-shell[data-appearance="light"] {
-    --os-glass-muted: var(--os-text);
   }
 }
 @supports not (
   (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
 ) {
+  .os-shell,
+  .os-shell[data-appearance="light"] {
+    --os-glass: var(--os-surface);
+  }
   .os-topbar,
   .os-windowbar,
   .os-dock {
     background: var(--os-surface);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-  }
-  .os-dock {
-    border-color: var(--os-line);
+    border-color: var(--os-control-line);
     box-shadow: none;
   }
 }

@@ -11,22 +11,22 @@ const icons = {
   contact: Mail,
 };
 
+/**
+ * Monochrome Lucide glyph. Every app shares one glyph colour (`--os-text` or
+ * `--os-muted`), so the icon carries no per-app hue: the design system keeps the
+ * accent for the current item only.
+ */
 export function OSIcon({
   app,
-  dimensional = false,
+  tile = false,
 }: {
   app: PortfolioApp;
-  dimensional?: boolean;
+  /** Desktop home tile: flat surface and hairline around the glyph. */
+  tile?: boolean;
 }) {
   const Icon = icons[app];
   return (
-    <span
-      className={
-        dimensional
-          ? `os-app-icon os-app-icon--${app}`
-          : `os-small-icon os-small-icon--${app}`
-      }
-    >
+    <span className={tile ? "os-app-icon" : "os-small-icon"}>
       <Icon aria-hidden="true" strokeWidth={1.5} />
     </span>
   );

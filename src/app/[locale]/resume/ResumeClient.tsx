@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  Mail,
-  Github,
-  Linkedin,
-  MapPin,
-  Download,
-  Fingerprint,
-  Users,
-} from "lucide-react";
-import { HUDFrame } from "@/components/ui/HUDFrame";
-import { NeonButton } from "@/components/ui/NeonButton";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { Mail, Download, MapPin, Users } from "lucide-react";
 import {
   CONTACT_EMAIL_GMAIL,
   GITHUB_URL,
@@ -25,6 +14,41 @@ import { defaultLocale } from "@/i18n";
 import { formatDate, formatNumber } from "@/i18n/format";
 import { getPageSupportCopy } from "@/lib/page-support-copy";
 import { useContentId } from "@/components/os/application-context";
+import "@/components/os/supporting-apps.css";
+
+function ProjectEntry({
+  href,
+  name,
+  tag,
+  year,
+  stack,
+  description,
+}: {
+  href: string;
+  name: string;
+  tag: string;
+  year: string;
+  stack: string;
+  description: string;
+}) {
+  return (
+    <div className="os-resume-item">
+      <div className="os-resume-entry-head">
+        <h4>
+          <Link href={href} className="os-inline-link">
+            <bdi dir="ltr" lang="en">
+              {name}
+            </bdi>
+          </Link>
+          <span className="os-resume-tag">{tag}</span>
+        </h4>
+        <span className="os-resume-period">{year}</span>
+      </div>
+      <p className="os-resume-meta">{stack}</p>
+      <p>{description}</p>
+    </div>
+  );
+}
 
 export function ResumeClient() {
   const { t, locale } = useTranslation();
@@ -60,693 +84,363 @@ export function ResumeClient() {
   };
   const getPath = (path: string) =>
     locale === defaultLocale ? path : `/${locale}${path}`;
+  const year = (value: number) =>
+    formatNumber(value, locale, { useGrouping: false });
 
   return (
-    <div className="os-legacy os-resume relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection>
-          <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-              <span className="text-cyan font-mono me-2">/</span>
-              {t.resume_page.title}
-            </h1>
-            <div className="flex flex-col items-start gap-2">
-              <NeonButton
-                href="/Mohammad_Raouf_Abedini_Resume.pdf"
-                download
-                variant="outline"
-              >
-                <Download className="w-4 h-4" /> {t.resume_page.download}
-              </NeonButton>
-              <p className="text-xs text-text-body">
-                {copy.originalEnglishPDF}
-              </p>
-            </div>
-          </div>
-        </AnimatedSection>
-
-        <div className="space-y-6">
-          {/* Header */}
-          <AnimatedSection>
-            <HUDFrame className="p-6 md:p-8 bg-[#030712]/60 backdrop-blur-sm border-s-4 border-s-cyan">
-              <div className="flex flex-col md:flex-row justify-between gap-6">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                    <bdi dir="ltr" lang="en">
-                      Mohammad Raouf Abedini
-                    </bdi>
-                  </h2>
-                  <p className="text-lg text-cyan font-mono mb-4">
-                    {t.resume.tagline}
-                  </p>
-                  <div className="flex flex-col gap-2 text-text-body text-sm font-mono">
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-text-body" />{" "}
-                      {t.resume.location}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-text-body shrink-0" />
-                      <a
-                        href={`mailto:${CONTACT_EMAIL_GMAIL}`}
-                        className="hover:text-cyan transition-colors"
-                      >
-                        <bdi dir="ltr">{CONTACT_EMAIL_GMAIL}</bdi>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-3 justify-center md:items-end">
-                  <a
-                    href={GITHUB_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-text-body hover:text-cyan transition-colors text-sm font-mono group"
-                  >
-                    <span>github.com/Raoof128</span>{" "}
-                    <Github className="w-4 h-4 group-hover:animate-pulse" />
-                  </a>
-                  <a
-                    href={LINKEDIN_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-text-body hover:text-cyan transition-colors text-sm font-mono group"
-                  >
-                    <span>{t.resume.linkedin_profile}</span>{" "}
-                    <Linkedin className="w-4 h-4 group-hover:animate-pulse" />
-                  </a>
-                  <a
-                    href={ORCID_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-text-body hover:text-cyan transition-colors text-sm font-mono group"
-                  >
-                    <span>{t.resume.orcid_id}</span>{" "}
-                    <Fingerprint className="w-4 h-4 group-hover:animate-pulse" />
-                  </a>
-                </div>
-              </div>
-            </HUDFrame>
-          </AnimatedSection>
-
-          {/* About */}
-          <AnimatedSection>
-            <section className="space-y-3">
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(1, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-                  {t.resume.s01_heading}
-                </h3>
-              </div>
-              <p className="text-text-body leading-relaxed max-w-3xl">
-                {t.resume.s01_bio}
-              </p>
-            </section>
-          </AnimatedSection>
-
-          {/* Security Research */}
-          <AnimatedSection>
-            <section className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(2, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-                  {t.resume.s02_heading}
-                </h3>
-              </div>
-              <div className="group">
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                  <h4 className="text-white font-bold text-lg">
-                    <Link
-                      href={getPath("/projects/project-simurgh")}
-                      className="os-inline-link"
-                    >
-                      <bdi dir="ltr" lang="en">
-                        Project Simurgh
-                      </bdi>
-                    </Link>
-                  </h4>
-                  <span className="text-text-body font-mono text-sm">
-                    {formatNumber(2026, locale, { useGrouping: false })}
-                  </span>
-                </div>
-                <p className="text-xs text-text-meta font-mono mb-2">
-                  {t.resume.s02_tech_stack}
-                </p>
-                <p className="text-sm text-text-body italic mb-3">
-                  {t.resume.s02_subtitle}
-                </p>
-                <ul className="space-y-2 text-sm text-text-body list-disc list-inside marker:text-text-meta">
-                  <li>{t.resume.s02_bullet1}</li>
-                  <li>{t.resume.s02_bullet2}</li>
-                  <li>{t.resume.s02_bullet3}</li>
-                  <li>{t.resume.s02_bullet4}</li>
-                  <li>{t.resume.s02_bullet5}</li>
-                </ul>
-              </div>
-            </section>
-          </AnimatedSection>
-
-          {/* Technical Proficiencies */}
-          <AnimatedSection>
-            <section
-              id={contentId("skills")}
-              aria-labelledby={contentId("skills-heading")}
-              tabIndex={-1}
-              className="space-y-4 scroll-mt-24"
-            >
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(3, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3
-                  id={contentId("skills-heading")}
-                  className="text-lg font-bold text-white uppercase tracking-wider"
-                >
-                  {t.resume.s03_heading}
-                </h3>
-              </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all">
-                  <h4 className="text-cyan font-mono text-sm mb-3 font-bold">
-                    &gt; {t.resume.s03_cat1_label}
-                  </h4>
-                  <p className="text-sm text-text-body">
-                    {t.resume.s03_cat1_desc}
-                  </p>
-                </div>
-                <div className="p-4 bg-amber/5 border border-amber/10 rounded-sm hover:border-amber/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] transition-all">
-                  <h4 className="text-amber font-mono text-sm mb-3 font-bold">
-                    &gt; {t.resume.s03_cat2_label}
-                  </h4>
-                  <p className="text-sm text-text-body">
-                    {t.resume.s03_cat2_desc}
-                  </p>
-                </div>
-                <div className="p-4 bg-purple/5 border border-purple/10 rounded-sm hover:border-purple/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(139,92,246,0.1)] transition-all">
-                  <h4 className="text-purple font-mono text-sm mb-3 font-bold">
-                    &gt; {t.resume.s03_cat3_label}
-                  </h4>
-                  <p className="text-sm text-text-body">
-                    {t.resume.s03_cat3_desc}
-                  </p>
-                </div>
-                <div className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all">
-                  <h4 className="text-cyan font-mono text-sm mb-3 font-bold">
-                    &gt; {t.resume.s03_cat4_label}
-                  </h4>
-                  <p className="text-sm text-text-body">
-                    {t.resume.s03_cat4_desc}
-                  </p>
-                </div>
-                <div className="p-4 bg-cyan/5 border border-cyan/10 rounded-sm hover:border-cyan/30 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,245,255,0.1)] transition-all md:col-span-2">
-                  <h4 className="text-cyan font-mono text-sm mb-3 font-bold">
-                    &gt; {t.resume.s03_cat5_label}
-                  </h4>
-                  <p className="text-sm text-text-body">
-                    {t.resume.s03_cat5_desc}
-                  </p>
-                </div>
-              </div>
-            </section>
-          </AnimatedSection>
-
-          {/* Education */}
-          <AnimatedSection>
-            <section className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(4, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-                  {t.about.education}
-                </h3>
-              </div>
-              <div className="space-y-6">
-                <div className="relative ps-6 border-s border-cyber-gray">
-                  <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-cyan border-2 border-background"></span>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
-                    <h4 className="text-white font-bold text-lg">
-                      {t.about.degree_bachelor}
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {copy.university}
-                    </span>
-                  </div>
-                  <div className="text-cyan font-mono text-sm mb-2">
-                    {monthYear("2024-05-01")} – {t.resume.expected_completion}:{" "}
-                    {monthYear("2026-11-01")}
-                  </div>
-                  <div className="text-sm text-text-body">
-                    <span className="font-bold text-slate-300">
-                      {t.resume.s04_coursework_label}
-                    </span>{" "}
-                    {t.resume.s04_coursework}
-                  </div>
-                </div>
-                <div className="relative ps-6 border-s border-cyber-gray">
-                  <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-amber border-2 border-background"></span>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
-                    <h4 className="text-white font-bold text-lg">
-                      {t.about.degree_diploma}
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {copy.university}
-                    </span>
-                  </div>
-                  <div className="text-text-body font-mono text-sm">
-                    {monthYear("2023-07-01")} – {monthYear("2024-05-01")}
-                  </div>
-                </div>
-              </div>
-            </section>
-          </AnimatedSection>
-
-          {/* Selected Research & Engineering Projects */}
-          <AnimatedSection>
-            <section className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(5, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-                  {t.resume.s05_heading}
-                </h3>
-              </div>
-              <div className="space-y-6">
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg">
-                      <Link
-                        href={getPath("/projects/invisible-window-research")}
-                        className="os-inline-link"
-                      >
-                        <bdi dir="ltr" lang="en">
-                          The Invisible Window
-                        </bdi>
-                      </Link>{" "}
-                      <span className="text-cyan font-mono font-normal text-xs ms-2">
-                        [{t.resume.proj1_tag}]
-                      </span>
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {formatNumber(2026, locale, { useGrouping: false })}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-meta font-mono mb-1">
-                    {t.resume.proj1_stack}
-                  </p>
-                  <p className="text-sm text-text-body">
-                    {t.resume.proj1_desc}
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg">
-                      <Link
-                        href={getPath("/projects/aion")}
-                        className="os-inline-link"
-                      >
-                        <bdi dir="ltr" lang="en">
-                          Aion
-                        </bdi>
-                      </Link>{" "}
-                      <span className="text-amber font-mono font-normal text-xs ms-2">
-                        [{t.resume.proj2_tag}]
-                      </span>
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {formatNumber(2026, locale, { useGrouping: false })}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-meta font-mono mb-1">
-                    {t.resume.proj2_stack}
-                  </p>
-                  <p className="text-sm text-text-body">
-                    {t.resume.proj2_desc}
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg">
-                      <Link
-                        href={getPath("/projects/nanomatch")}
-                        className="os-inline-link"
-                      >
-                        <bdi dir="ltr" lang="en">
-                          NanoMatch
-                        </bdi>
-                      </Link>{" "}
-                      <span className="text-purple font-mono font-normal text-xs ms-2">
-                        [{t.resume.proj3_tag}]
-                      </span>
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {formatNumber(2026, locale, { useGrouping: false })}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-meta font-mono mb-1">
-                    {t.resume.proj3_stack}
-                  </p>
-                  <p className="text-sm text-text-body">
-                    {t.resume.proj3_desc}
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg">
-                      <Link
-                        href={getPath("/projects/sentinelflow")}
-                        className="os-inline-link"
-                      >
-                        <bdi dir="ltr" lang="en">
-                          SentinelFlow
-                        </bdi>
-                      </Link>{" "}
-                      <span className="text-purple font-mono font-normal text-xs ms-2">
-                        [{t.resume.proj4_tag}]
-                      </span>
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {formatNumber(2026, locale, { useGrouping: false })}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-meta font-mono mb-1">
-                    {t.resume.proj4_stack}
-                  </p>
-                  <p className="text-sm text-text-body">
-                    {t.resume.proj4_desc}
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg">
-                      <Link
-                        href={getPath("/projects/nexus-archive")}
-                        className="os-inline-link"
-                      >
-                        <bdi dir="ltr" lang="en">
-                          Nexus Archive
-                        </bdi>
-                      </Link>{" "}
-                      <span className="text-purple font-mono font-normal text-xs ms-2">
-                        [{t.resume.proj5_tag}]
-                      </span>
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {formatNumber(2025, locale, { useGrouping: false })}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-meta font-mono mb-1">
-                    {t.resume.proj5_stack}
-                  </p>
-                  <p className="text-sm text-text-body">
-                    {t.resume.proj5_desc}
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-                    <h4 className="text-white font-bold text-lg">
-                      <Link
-                        href={getPath("/projects/mehr-guard")}
-                        className="os-inline-link"
-                      >
-                        <bdi dir="ltr" lang="en">
-                          Mehr Guard
-                        </bdi>
-                      </Link>{" "}
-                      <span className="text-cyan font-mono font-normal text-xs ms-2">
-                        [{t.resume.proj6_tag}]
-                      </span>
-                    </h4>
-                    <span className="text-text-body font-mono text-sm">
-                      {formatNumber(2024, locale, { useGrouping: false })}
-                    </span>
-                  </div>
-                  <p className="text-xs text-text-meta font-mono mb-1">
-                    {t.resume.proj6_stack}
-                  </p>
-                  <p className="text-sm text-text-body">
-                    {t.resume.proj6_desc}
-                  </p>
-                </div>
-                <div className="p-3 border border-cyan/10 bg-cyan/5 rounded-sm text-sm text-text-body font-mono">
-                  {t.resume.s05_more_projects}{" "}
-                  <a
-                    href={GITHUB_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="os-inline-link"
-                  >
-                    github.com/Raoof128
-                  </a>
-                </div>
-              </div>
-            </section>
-          </AnimatedSection>
-
-          {/* Professional Experience */}
-          <AnimatedSection>
-            <section
-              id={contentId("experience")}
-              aria-labelledby={contentId("experience-heading")}
-              tabIndex={-1}
-              className="space-y-6 scroll-mt-24"
-            >
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(6, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3
-                  id={contentId("experience-heading")}
-                  className="text-lg font-bold text-white uppercase tracking-wider"
-                >
-                  {t.resume.s06_heading}
-                </h3>
-              </div>
-
-              <div className="relative ps-6 border-s border-cyber-gray">
-                <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-cyan border-2 border-background"></span>
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
-                  <h4 className="text-white font-bold text-lg">
-                    {t.resume.exp1_title}
-                  </h4>
-                  <span className="text-text-body font-mono text-sm">
-                    {t.resume.exp1_employer}
-                  </span>
-                </div>
-                <ul className="mt-2 space-y-1 text-sm text-text-body list-disc list-inside marker:text-text-meta">
-                  <li>{t.resume.exp1_bullet1}</li>
-                  <li>{t.resume.exp1_bullet2}</li>
-                  <li>{t.resume.exp1_bullet3}</li>
-                </ul>
-              </div>
-
-              <div className="relative ps-6 border-s border-cyber-gray">
-                <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-amber border-2 border-background"></span>
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
-                  <h4 className="text-white font-bold text-lg">
-                    {t.resume.exp2_title}
-                  </h4>
-                  <span className="text-text-body font-mono text-sm">
-                    {t.resume.exp2_employer}
-                  </span>
-                </div>
-                <ul className="mt-2 space-y-1 text-sm text-text-body list-disc list-inside marker:text-text-meta">
-                  <li>{t.resume.exp2_bullet1}</li>
-                </ul>
-              </div>
-            </section>
-          </AnimatedSection>
-
-          {/* AI Safety & Community */}
-          <AnimatedSection>
-            <section className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(7, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-                  {t.resume.s07_heading}
-                </h3>
-              </div>
-              <ul className="space-y-2 text-sm text-text-body">
-                <li className="flex items-start gap-2">
-                  <span className="text-purple mt-1">&#x25CF;</span>{" "}
-                  {t.resume.s07_bullet1}
-                </li>
-              </ul>
-
-              {/* Volunteering — Macquarie Persian Students Society */}
-              <div className="relative ps-6 border-s border-cyber-gray">
-                <span className="absolute start-[-5px] top-1 h-2.5 w-2.5 rounded-full bg-purple border-2 border-background"></span>
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
-                  <h4 className="text-white font-bold text-base flex items-center gap-2">
-                    <Users size={16} className="text-purple shrink-0" />
-                    {copy.coFounderSociety}
-                  </h4>
-                  <span className="text-text-body font-mono text-sm">
-                    {formatNumber(2026, locale, { useGrouping: false })} –{" "}
-                    {copy.present}
-                  </span>
-                </div>
-                <div className="text-purple font-mono text-xs mb-2">
-                  {t.resume.volunteer_label} · {copy.education}
-                </div>
-                <p className="text-sm text-text-body">{t.resume.s07_bullet2}</p>
-              </div>
-            </section>
-          </AnimatedSection>
-
-          {/* Licenses & Certifications */}
-          <AnimatedSection>
-            <section
-              id={contentId("certifications")}
-              aria-labelledby={contentId("certifications-heading")}
-              tabIndex={-1}
-              className="space-y-4 scroll-mt-24"
-            >
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(8, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3
-                  id={contentId("certifications-heading")}
-                  className="text-lg font-bold text-white uppercase tracking-wider"
-                >
-                  {t.resume.certs_heading}
-                </h3>
-              </div>
-              <p className="text-sm text-text-body">
-                {copy.officialCertificateNames}
-              </p>
-              {["Anthropic", "Macquarie University"].map((issuer) => {
-                const items = certifications.filter((c) => c.issuer === issuer);
-                if (items.length === 0) return null;
-                return (
-                  <div key={issuer} className="space-y-3">
-                    <h4 className="text-cyan font-mono text-sm font-bold">
-                      &gt;{" "}
-                      {issuer === "Macquarie University"
-                        ? copy.university
-                        : issuer}{" "}
-                      <span className="text-text-meta">
-                        ({formatNumber(items.length, locale)})
-                      </span>
-                    </h4>
-                    <div className="grid sm:grid-cols-2 gap-3">
-                      {items.map((c) => (
-                        <div
-                          key={c.credentialId}
-                          className="p-3 border border-cyan/10 bg-cyan/5 rounded-sm hover:border-cyan/30 transition-colors"
-                        >
-                          <div className="flex items-start justify-between gap-2">
-                            <p className="text-sm text-white font-medium leading-snug">
-                              <bdi dir="ltr" lang="en">
-                                {c.name}
-                              </bdi>
-                            </p>
-                            {c.grade && (
-                              <span className="shrink-0 text-xs font-mono text-cyan border border-cyan/30 bg-cyan/10 px-1.5 py-0.5 rounded-sm">
-                                <bdi dir="ltr">{c.grade}</bdi>
-                              </span>
-                            )}
-                          </div>
-                          <p className="mt-1 text-xs text-text-meta font-mono">
-                            {t.resume.certs_issued} {issuedDate(c.issued)} ·{" "}
-                            {t.resume.certs_credential}:{" "}
-                            <bdi dir="ltr">{c.credentialId}</bdi>
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </section>
-          </AnimatedSection>
-
-          {/* Additional Info */}
-          <AnimatedSection>
-            <section className="space-y-4 pb-8">
-              <div className="flex items-center gap-2 border-b border-cyan/12 pb-2">
-                <span className="text-cyan font-bold font-mono">
-                  <bdi>
-                    {formatNumber(9, locale, {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false,
-                    })}
-                    .
-                  </bdi>
-                </span>
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-                  {t.resume.s08_heading}
-                </h3>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4 text-sm text-text-body">
-                <div className="flex items-start gap-2">
-                  <span className="text-cyan mt-1">&#x25CF;</span>{" "}
-                  {t.resume.s08_available}
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-purple mt-1">&#x25CF;</span>{" "}
-                  {t.resume.s08_languages}
-                </div>
-              </div>
-            </section>
-          </AnimatedSection>
+    <div className="os-support os-resume">
+      <div className="os-resume-header">
+        <h1>{t.resume_page.title}</h1>
+        <div className="os-resume-download">
+          <a
+            className="os-button"
+            href="/Mohammad_Raouf_Abedini_Resume.pdf"
+            download
+          >
+            <Download aria-hidden="true" size={16} />
+            {t.resume_page.download}
+          </a>
+          <p className="os-support-note">{copy.originalEnglishPDF}</p>
         </div>
       </div>
+
+      {/* Identity */}
+      <div className="os-callout os-resume-identity">
+        <div>
+          <h2>
+            <bdi dir="ltr" lang="en">
+              Mohammad Raouf Abedini
+            </bdi>
+          </h2>
+          <p className="os-resume-tagline">{t.resume.tagline}</p>
+          <ul className="os-resume-contact">
+            <li>
+              <MapPin aria-hidden="true" size={16} />
+              {t.resume.location}
+            </li>
+            <li>
+              <Mail aria-hidden="true" size={16} />
+              <a
+                href={`mailto:${CONTACT_EMAIL_GMAIL}`}
+                className="os-text-link"
+              >
+                <bdi dir="ltr">{CONTACT_EMAIL_GMAIL}</bdi>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="os-resume-links">
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="os-text-link"
+          >
+            <span>github.com/Raoof128</span>
+            <span className="sr-only">{copy.opensInNewTab}</span>
+          </a>
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="os-text-link"
+          >
+            <span>{t.resume.linkedin_profile}</span>
+            <span className="sr-only">{copy.opensInNewTab}</span>
+          </a>
+          <a
+            href={ORCID_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="os-text-link"
+          >
+            <span>{t.resume.orcid_id}</span>
+            <span className="sr-only">{copy.opensInNewTab}</span>
+          </a>
+        </div>
+      </div>
+
+      {/* About */}
+      <section className="os-resume-section">
+        <h3 className="os-resume-heading">{t.resume.s01_heading}</h3>
+        <p className="os-resume-bio">{t.resume.s01_bio}</p>
+      </section>
+
+      {/* Security Research */}
+      <section className="os-resume-section">
+        <h3 className="os-resume-heading">{t.resume.s02_heading}</h3>
+        <div className="os-resume-item">
+          <div className="os-resume-entry-head">
+            <h4>
+              <Link
+                href={getPath("/projects/project-simurgh")}
+                className="os-inline-link"
+              >
+                <bdi dir="ltr" lang="en">
+                  Project Simurgh
+                </bdi>
+              </Link>
+            </h4>
+            <span className="os-resume-period">{year(2026)}</span>
+          </div>
+          <p className="os-resume-meta">{t.resume.s02_tech_stack}</p>
+          <p>{t.resume.s02_subtitle}</p>
+          <ul className="os-bullet-list">
+            <li>{t.resume.s02_bullet1}</li>
+            <li>{t.resume.s02_bullet2}</li>
+            <li>{t.resume.s02_bullet3}</li>
+            <li>{t.resume.s02_bullet4}</li>
+            <li>{t.resume.s02_bullet5}</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Technical Proficiencies */}
+      <section
+        id={contentId("skills")}
+        aria-labelledby={contentId("skills-heading")}
+        tabIndex={-1}
+        className="os-resume-section"
+      >
+        <h3 id={contentId("skills-heading")} className="os-resume-heading">
+          {t.resume.s03_heading}
+        </h3>
+        <div className="os-resume-grid">
+          <div className="os-resume-card">
+            <h4>{t.resume.s03_cat1_label}</h4>
+            <p>{t.resume.s03_cat1_desc}</p>
+          </div>
+          <div className="os-resume-card">
+            <h4>{t.resume.s03_cat2_label}</h4>
+            <p>{t.resume.s03_cat2_desc}</p>
+          </div>
+          <div className="os-resume-card">
+            <h4>{t.resume.s03_cat3_label}</h4>
+            <p>{t.resume.s03_cat3_desc}</p>
+          </div>
+          <div className="os-resume-card">
+            <h4>{t.resume.s03_cat4_label}</h4>
+            <p>{t.resume.s03_cat4_desc}</p>
+          </div>
+          <div className="os-resume-card os-resume-card--wide">
+            <h4>{t.resume.s03_cat5_label}</h4>
+            <p>{t.resume.s03_cat5_desc}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="os-resume-section">
+        <h3 className="os-resume-heading">{t.about.education}</h3>
+        <div className="os-resume-item os-resume-timeline">
+          <div className="os-resume-entry-head">
+            <h4>{t.about.degree_bachelor}</h4>
+            <span className="os-resume-meta">{copy.university}</span>
+          </div>
+          <div className="os-resume-period">
+            {monthYear("2024-05-01")} – {t.resume.expected_completion}:{" "}
+            {monthYear("2026-11-01")}
+          </div>
+          <p className="os-resume-meta">
+            <span className="os-resume-label">
+              {t.resume.s04_coursework_label}
+            </span>{" "}
+            {t.resume.s04_coursework}
+          </p>
+        </div>
+        <div className="os-resume-item os-resume-timeline">
+          <div className="os-resume-entry-head">
+            <h4>{t.about.degree_diploma}</h4>
+            <span className="os-resume-meta">{copy.university}</span>
+          </div>
+          <div className="os-resume-period">
+            {monthYear("2023-07-01")} – {monthYear("2024-05-01")}
+          </div>
+        </div>
+      </section>
+
+      {/* Selected Research & Engineering Projects */}
+      <section className="os-resume-section">
+        <h3 className="os-resume-heading">{t.resume.s05_heading}</h3>
+        <ProjectEntry
+          href={getPath("/projects/invisible-window-research")}
+          name="The Invisible Window"
+          tag={t.resume.proj1_tag}
+          year={year(2026)}
+          stack={t.resume.proj1_stack}
+          description={t.resume.proj1_desc}
+        />
+        <ProjectEntry
+          href={getPath("/projects/aion")}
+          name="Aion"
+          tag={t.resume.proj2_tag}
+          year={year(2026)}
+          stack={t.resume.proj2_stack}
+          description={t.resume.proj2_desc}
+        />
+        <ProjectEntry
+          href={getPath("/projects/nanomatch")}
+          name="NanoMatch"
+          tag={t.resume.proj3_tag}
+          year={year(2026)}
+          stack={t.resume.proj3_stack}
+          description={t.resume.proj3_desc}
+        />
+        <ProjectEntry
+          href={getPath("/projects/sentinelflow")}
+          name="SentinelFlow"
+          tag={t.resume.proj4_tag}
+          year={year(2026)}
+          stack={t.resume.proj4_stack}
+          description={t.resume.proj4_desc}
+        />
+        <ProjectEntry
+          href={getPath("/projects/nexus-archive")}
+          name="Nexus Archive"
+          tag={t.resume.proj5_tag}
+          year={year(2025)}
+          stack={t.resume.proj5_stack}
+          description={t.resume.proj5_desc}
+        />
+        <ProjectEntry
+          href={getPath("/projects/mehr-guard")}
+          name="Mehr Guard"
+          tag={t.resume.proj6_tag}
+          year={year(2024)}
+          stack={t.resume.proj6_stack}
+          description={t.resume.proj6_desc}
+        />
+        <div className="os-callout os-resume-more">
+          <p>
+            {t.resume.s05_more_projects}{" "}
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="os-text-link"
+            >
+              github.com/Raoof128
+              <span className="sr-only">{copy.opensInNewTab}</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* Professional Experience */}
+      <section
+        id={contentId("experience")}
+        aria-labelledby={contentId("experience-heading")}
+        tabIndex={-1}
+        className="os-resume-section"
+      >
+        <h3 id={contentId("experience-heading")} className="os-resume-heading">
+          {t.resume.s06_heading}
+        </h3>
+        <div className="os-resume-item os-resume-timeline">
+          <div className="os-resume-entry-head">
+            <h4>{t.resume.exp1_title}</h4>
+            <span className="os-resume-meta">{t.resume.exp1_employer}</span>
+          </div>
+          <ul className="os-bullet-list">
+            <li>{t.resume.exp1_bullet1}</li>
+            <li>{t.resume.exp1_bullet2}</li>
+            <li>{t.resume.exp1_bullet3}</li>
+          </ul>
+        </div>
+        <div className="os-resume-item os-resume-timeline">
+          <div className="os-resume-entry-head">
+            <h4>{t.resume.exp2_title}</h4>
+            <span className="os-resume-meta">{t.resume.exp2_employer}</span>
+          </div>
+          <ul className="os-bullet-list">
+            <li>{t.resume.exp2_bullet1}</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* AI Safety & Community */}
+      <section className="os-resume-section">
+        <h3 className="os-resume-heading">{t.resume.s07_heading}</h3>
+        <ul className="os-bullet-list">
+          <li>{t.resume.s07_bullet1}</li>
+        </ul>
+        {/* Volunteering: Macquarie Persian Students Society */}
+        <div className="os-resume-item os-resume-timeline os-resume-volunteer">
+          <div className="os-resume-entry-head">
+            <h4>
+              <Users aria-hidden="true" size={16} />
+              {copy.coFounderSociety}
+            </h4>
+            <span className="os-resume-period">
+              {year(2026)} – {copy.present}
+            </span>
+          </div>
+          <p className="os-resume-meta">
+            {t.resume.volunteer_label} · {copy.education}
+          </p>
+          <p>{t.resume.s07_bullet2}</p>
+        </div>
+      </section>
+
+      {/* Licenses & Certifications */}
+      <section
+        id={contentId("certifications")}
+        aria-labelledby={contentId("certifications-heading")}
+        tabIndex={-1}
+        className="os-resume-section"
+      >
+        <h3
+          id={contentId("certifications-heading")}
+          className="os-resume-heading"
+        >
+          {t.resume.certs_heading}
+        </h3>
+        <p className="os-prose">{copy.officialCertificateNames}</p>
+        {["Anthropic", "Macquarie University"].map((issuer) => {
+          const items = certifications.filter((c) => c.issuer === issuer);
+          if (items.length === 0) return null;
+          return (
+            <div key={issuer} className="os-resume-item">
+              <h4 className="os-resume-cert-issuer">
+                {issuer === "Macquarie University" ? copy.university : issuer}{" "}
+                <span>({formatNumber(items.length, locale)})</span>
+              </h4>
+              <div className="os-resume-grid">
+                {items.map((c) => (
+                  <div key={c.credentialId} className="os-resume-card">
+                    <div className="os-resume-card-head">
+                      <p>
+                        <bdi dir="ltr" lang="en">
+                          {c.name}
+                        </bdi>
+                      </p>
+                      {c.grade && (
+                        <span className="os-resume-grade">
+                          <bdi dir="ltr">{c.grade}</bdi>
+                        </span>
+                      )}
+                    </div>
+                    <p className="os-resume-card-meta">
+                      {t.resume.certs_issued} {issuedDate(c.issued)} ·{" "}
+                      {t.resume.certs_credential}:{" "}
+                      <bdi dir="ltr">{c.credentialId}</bdi>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* Additional Info */}
+      <section className="os-resume-section">
+        <h3 className="os-resume-heading">{t.resume.s08_heading}</h3>
+        <ul className="os-resume-plain">
+          <li>{t.resume.s08_available}</li>
+          <li>{t.resume.s08_languages}</li>
+        </ul>
+      </section>
     </div>
   );
 }

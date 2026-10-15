@@ -173,9 +173,10 @@ describe("project artwork loading and controls", () => {
     );
     const artwork = await revealArtwork(container, "shield");
     expect(artwork).toHaveAttribute("data-active", "true");
-    fireEvent.click(screen.getByRole("button", { name: "Pause animation" }));
+    // English button labels are title case per the ResearchOS spec, so names changed.
+    fireEvent.click(screen.getByRole("button", { name: "Pause Animation" }));
     expect(artwork).toHaveAttribute("data-active", "false");
-    fireEvent.click(screen.getByRole("button", { name: "Play animation" }));
+    fireEvent.click(screen.getByRole("button", { name: "Play Animation" }));
     expect(artwork).toHaveAttribute("data-active", "true");
     expect(container.querySelector("[data-artwork]")).toBe(artwork);
   });
@@ -311,7 +312,8 @@ describe("project artwork loading and controls", () => {
     expect(
       screen.getByRole("heading", { name: "GitSwitch dossier" }),
     ).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Try again" }));
+    // Title case for the English retry label, per the ResearchOS spec.
+    fireEvent.click(screen.getByRole("button", { name: "Try Again" }));
     await waitFor(() =>
       expect(
         container.querySelector('[data-artwork="dandelion"]'),

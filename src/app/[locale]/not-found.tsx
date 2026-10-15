@@ -27,7 +27,10 @@ export default function NotFound() {
           <Home aria-hidden="true" />
           {t.not_found.return_home}
         </Link>
-        <Link className="os-button" href={getPath("/projects")}>
+        <Link
+          className="os-button os-button--secondary"
+          href={getPath("/projects")}
+        >
           <FolderOpen aria-hidden="true" />
           {t.not_found.browse_projects}
         </Link>

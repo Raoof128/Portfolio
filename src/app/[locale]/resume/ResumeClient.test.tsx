@@ -123,8 +123,9 @@ describe("expected qualification status", () => {
       render(provider(<ResumeClient />));
       const dates = screen.getByText(
         (_, element) =>
+          // The Apple 2026 redesign replaced Tailwind class strings with os-resume-* classes.
           element?.tagName === "DIV" &&
-          element.className === "text-cyan font-mono text-sm mb-2" &&
+          element.classList.contains("os-resume-period") &&
           element.textContent?.includes(
             dictionary.resume.expected_completion,
           ) === true,

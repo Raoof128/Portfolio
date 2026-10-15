@@ -1,32 +1,36 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import "./welcome-enter.css";
 
-/** How long the loader plays after Enter is pressed, before the workspace opens. */
+/** How long the Enter wait runs before the workspace opens. */
 export const WELCOME_LOADER_MS = 3000;
 
 let loaderMs = WELCOME_LOADER_MS;
 
-/** Test hook: change the loader duration; 0 enters immediately. */
+/** Test hook: change the wait duration; 0 enters immediately. */
 export function setWelcomeLoaderDuration(ms: number) {
   loaderMs = ms;
 }
 
 /**
- * The welcome Enter button. Pressing it turns the button into the loader, then
- * opens the workspace once the loader has played.
+ * The welcome Enter button. Pressing it disables the button, moves focus to a
+ * polite status line and fills a 2px accent hairline, then opens the workspace
+ * once the wait has played.
  */
 export function WelcomeEnter({
   onEnter,
+  status,
   children,
 }: {
   onEnter: () => void;
+  /** Localised status line announced while the wait runs. */
+  status: string;
   children: ReactNode;
 }) {
   const [loading, setLoading] = useState(false);
   const timer = useRef<number | null>(null);
-  const maskId = `welcome-loader-${useId().replace(/:/g, "")}`;
+  const statusLine = useRef<HTMLParagraphElement>(null);
 
   useEffect(
     () => () => {
@@ -34,6 +38,11 @@ export function WelcomeEnter({
     },
     [],
   );
+
+  useEffect(() => {
+    // A disabled button drops focus, so the status line takes it while the wait runs.
+    if (loading) statusLine.current?.focus({ preventScroll: true });
+  }, [loading]);
 
   function enter() {
     if (loading) return;
@@ -55,32 +64,25 @@ export function WelcomeEnter({
         className="os-enter"
         id="os-enter"
         type="button"
+        disabled={loading}
         aria-busy={loading || undefined}
-        aria-disabled={loading || undefined}
         onClick={enter}
       >
         {children}
       </button>
-      {/* Loader after "young-walrus-64" by andrew-manzyk, Uiverse.io (MIT). */}
-      <div className="os-welcome-loader" aria-hidden="true">
-        <svg width="100" height="100" viewBox="0 0 100 100">
-          <defs>
-            <mask id={maskId}>
-              <polygon points="0,0 100,0 100,100 0,100" fill="black" />
-              <polygon points="25,25 75,25 50,75" fill="white" />
-              <polygon points="50,25 75,75 25,75" fill="white" />
-              <polygon points="35,35 65,35 50,65" fill="white" />
-              <polygon points="35,35 65,35 50,65" fill="white" />
-              <polygon points="35,35 65,35 50,65" fill="white" />
-              <polygon points="35,35 65,35 50,65" fill="white" />
-            </mask>
-          </defs>
-        </svg>
-        <div
-          className="os-welcome-loader-box"
-          style={{ mask: `url(#${maskId})`, WebkitMask: `url(#${maskId})` }}
-        />
+      <div className="os-enter-progress" aria-hidden="true">
+        {/* The duration sits on the animated span; animation-duration does not inherit. */}
+        <span style={{ animationDuration: `${WELCOME_LOADER_MS}ms` }} />
       </div>
+      {/* The status region stays mounted so the first message is announced. */}
+      <p
+        ref={statusLine}
+        className="os-enter-status"
+        role="status"
+        tabIndex={-1}
+      >
+        {loading ? status : ""}
+      </p>
     </div>
   );
 }

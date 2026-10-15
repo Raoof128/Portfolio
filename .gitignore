@@ -51,3 +51,4 @@ AGENTS.md
 
 # local media-generation artefacts (raw model outputs, masters, review sheets)
 /artifacts/
+.wrangler/

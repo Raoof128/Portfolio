@@ -1,11 +1,14 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
-export function KineticLotus() {
+export function KineticLotus({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="kl-host" aria-hidden="true">
+    <div ref={hostRef} className="kl-host ui-art" aria-hidden="true">
       <div className="kl-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>

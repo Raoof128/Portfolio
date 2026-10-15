@@ -2,6 +2,7 @@ import React from "react";
 import type { Locale } from "@/i18n";
 import { formatNumber } from "@/i18n/format";
 import { getPageSupportCopy } from "@/lib/page-support-copy";
+import "./ui-surfaces.css";
 
 interface SimpleMarkdownProps {
   content: string;
@@ -38,7 +39,7 @@ function renderInline(text: string, newTabHint?: string): React.ReactNode[] {
     }
     if (match[2]) {
       parts.push(
-        <strong key={match.index} className="text-white font-semibold">
+        <strong key={match.index} className="font-semibold">
           {match[2]}
         </strong>,
       );
@@ -54,7 +55,7 @@ function renderInline(text: string, newTabHint?: string): React.ReactNode[] {
           key={match.index}
           dir="ltr"
           lang="en"
-          className="text-cyan bg-cyan/10 px-1.5 py-0.5 rounded text-sm font-mono break-words [unicode-bidi:isolate]"
+          className="px-1.5 py-0.5 rounded break-words [unicode-bidi:isolate]"
         >
           {match[6]}
         </code>,
@@ -71,7 +72,7 @@ function renderInline(text: string, newTabHint?: string): React.ReactNode[] {
         <a
           key={match.index}
           href={href}
-          className="os-inline-link text-cyan underline underline-offset-2 hover:text-cyan/80 break-words"
+          className="os-inline-link os-text-link break-words"
           {...(external
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
@@ -146,13 +147,9 @@ export function SimpleMarkdown({
           key={`code-${i}`}
           dir="ltr"
           lang="en"
-          className="os-code-surface my-4 border border-cyan/15 overflow-hidden"
+          className="ui-code os-code-surface my-4 overflow-hidden"
         >
-          {lang && (
-            <div className="px-3 py-1.5 border-b border-cyan/10 bg-cyan/[0.03] font-mono text-[10px] text-cyan/70 uppercase tracking-widest">
-              {lang}
-            </div>
-          )}
+          {lang && <div className="ui-code-label px-3 py-1.5">{lang}</div>}
           <div
             className="os-reading-scroll overflow-x-auto"
             lang={locale}
@@ -160,11 +157,7 @@ export function SimpleMarkdown({
             role="region"
             aria-label={`${copy.sourceCode} · ${formatNumber(codeBlockCount, locale)}${lang ? ` · ${lang}` : ""}`}
           >
-            <pre
-              dir="ltr"
-              lang="en"
-              className="p-4 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 min-w-0"
-            >
+            <pre dir="ltr" lang="en" className="p-4 min-w-0">
               <code>{codeLines.join("\n")}</code>
             </pre>
           </div>
@@ -175,9 +168,7 @@ export function SimpleMarkdown({
 
     // Horizontal rule: --- or ***
     if (/^-{3,}$/.test(trimmed) || /^\*{3,}$/.test(trimmed)) {
-      elements.push(
-        <hr key={`hr-${i}`} className="my-8 border-t border-cyan/15" />,
-      );
+      elements.push(<hr key={`hr-${i}`} className="my-8" />);
       i++;
       continue;
     }
@@ -204,14 +195,11 @@ export function SimpleMarkdown({
           role="region"
           aria-label={`${headers.join(" / ")} · ${formatNumber(tableCount, locale)}`}
         >
-          <table className="w-full min-w-[480px] text-sm border border-cyan/15">
-            <thead className="bg-cyan/5">
+          <table className="w-full min-w-[480px] text-sm">
+            <thead>
               <tr>
                 {headers.map((h, hi) => (
-                  <th
-                    key={hi}
-                    className="px-3 py-2 text-start font-mono text-xs text-cyan font-semibold border-b border-cyan/15"
-                  >
+                  <th key={hi} className="px-3 py-2 text-start font-semibold">
                     {renderInline(h, copy.opensInNewTab)}
                   </th>
                 ))}
@@ -219,12 +207,9 @@ export function SimpleMarkdown({
             </thead>
             <tbody>
               {rows.map((row, ri) => (
-                <tr
-                  key={ri}
-                  className="border-b border-cyan/8 hover:bg-cyan/[0.03]"
-                >
+                <tr key={ri}>
                   {row.map((cell, ci) => (
-                    <td key={ci} className="px-3 py-2 text-slate-300 align-top">
+                    <td key={ci} className="px-3 py-2 align-top">
                       {renderInline(cell, copy.opensInNewTab)}
                     </td>
                   ))}
@@ -240,12 +225,7 @@ export function SimpleMarkdown({
     // H3: ###
     if (trimmed.startsWith("### ")) {
       elements.push(
-        <h3
-          key={i}
-          className="text-lg sm:text-xl font-bold text-white mt-8 mb-3 font-mono"
-        >
-          {renderInline(trimmed.slice(4), copy.opensInNewTab)}
-        </h3>,
+        <h3 key={i}>{renderInline(trimmed.slice(4), copy.opensInNewTab)}</h3>,
       );
       i++;
       continue;
@@ -254,12 +234,7 @@ export function SimpleMarkdown({
     // H2: ##
     if (trimmed.startsWith("## ")) {
       elements.push(
-        <h2
-          key={i}
-          className="text-xl sm:text-2xl font-bold text-white mt-10 mb-4 font-mono border-b border-cyan/12 pb-2"
-        >
-          {renderInline(trimmed.slice(3), copy.opensInNewTab)}
-        </h2>,
+        <h2 key={i}>{renderInline(trimmed.slice(3), copy.opensInNewTab)}</h2>,
       );
       i++;
       continue;
@@ -273,10 +248,7 @@ export function SimpleMarkdown({
         i++;
       }
       elements.push(
-        <blockquote
-          key={`bq-${i}`}
-          className="my-4 border-s-2 border-cyan/50 ps-4 italic text-text-body"
-        >
+        <blockquote key={`bq-${i}`} className="my-4 border-s-2 ps-4 italic">
           {quoteLines.map((ql, qi) => (
             <p key={qi} className="my-1">
               {renderInline(ql, copy.opensInNewTab)}
@@ -294,7 +266,7 @@ export function SimpleMarkdown({
       while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
         const itemText = lines[i].trim().replace(/^\d+\.\s+/, "");
         items.push(
-          <li key={i} className="text-slate-300 break-words">
+          <li key={i} className="break-words">
             {renderInline(itemText, copy.opensInNewTab)}
           </li>,
         );
@@ -321,8 +293,8 @@ export function SimpleMarkdown({
       ) {
         const itemText = lines[i].trim().slice(2);
         items.push(
-          <li key={i} className="flex items-start gap-2 text-slate-300">
-            <span className="text-cyan mt-1 shrink-0" aria-hidden="true">
+          <li key={i} className="flex items-start gap-2">
+            <span className="ui-marker mt-1 shrink-0" aria-hidden="true">
               ▹
             </span>
             <span className="min-w-0 break-words">
@@ -342,12 +314,12 @@ export function SimpleMarkdown({
 
     // Regular paragraph
     elements.push(
-      <p key={i} className="text-slate-300 leading-relaxed my-4 break-words">
+      <p key={i} className="my-4 break-words">
         {renderInline(trimmed, copy.opensInNewTab)}
       </p>,
     );
     i++;
   }
 
-  return <div>{elements}</div>;
+  return <div className="ui-markdown">{elements}</div>;
 }

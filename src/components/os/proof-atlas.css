@@ -1,47 +1,27 @@
+/* Proof Atlas: a solid panel with single-accent strokes (design system, section 4).
+   Colour comes from the shell tokens. Accent marks the active path and evidence
+   receipts; everything else is text, muted text or a control hairline. */
 .proof-atlas {
-  --atlas-blue: #78b8ff;
-  --atlas-teal: #70d2c3;
-  --atlas-gold: #d9bb78;
-  --atlas-ink: #dbe7f5;
-  --atlas-muted: #9caec3;
-  color: var(--atlas-ink);
   min-width: 0;
-}
-
-.os-shell[data-appearance="light"] .proof-atlas {
-  --atlas-blue: #386fba;
-  --atlas-teal: #287a72;
-  --atlas-gold: #85652e;
-  --atlas-ink: #18283b;
-  --atlas-muted: #53657a;
+  color: var(--os-text);
 }
 
 .proof-atlas-caption {
-  max-width: 40em;
-  margin: 0.25rem auto 0;
-  color: var(--atlas-muted);
-  font: 13px/1.55 var(--os-mono);
-  letter-spacing: 0;
+  max-width: 44ch;
+  margin: var(--space-1) auto 0;
+  font-size: var(--text-s);
+  line-height: 1.55;
+  color: var(--os-muted);
   text-align: center;
 }
 
+/* Desktop panel: solid surface, hairline and the window radius. */
 .proof-atlas--desktop {
   position: relative;
-  padding: 16px 18px 17px;
-  border-inline-start: 1px solid
-    color-mix(in srgb, var(--atlas-gold) 35%, transparent);
-  background:
-    linear-gradient(
-      115deg,
-      transparent 0 36%,
-      color-mix(in srgb, var(--atlas-blue) 5%, transparent) 58%,
-      transparent 84%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--os-surface) 70%, transparent),
-      transparent
-    );
+  padding: var(--space-4) var(--space-6) var(--space-6);
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  background: var(--os-surface);
 }
 
 .proof-atlas-heading {
@@ -49,32 +29,25 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 4px 16px;
-  margin: 0 0 5px;
+  gap: var(--space-1) var(--space-4);
+  margin: 0 0 var(--space-2);
 }
 
 .proof-atlas-eyebrow {
   margin: 0;
-  color: var(--atlas-gold);
-  font: 11px/1.5 var(--os-mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: var(--text-s);
+  line-height: 1.5;
+  color: var(--os-muted);
 }
 
 .proof-atlas-heading h2 {
   flex: 1 0 100%;
   margin: 0;
-  color: var(--atlas-ink);
-  font-family: var(--os-serif);
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.os-shell:dir(rtl) .proof-atlas-heading h2 {
-  letter-spacing: 0;
-  text-align: start;
+  font-family: var(--os-font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--os-text);
 }
 
 .proof-atlas-figure {
@@ -90,62 +63,58 @@
 }
 
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-figure {
-  transition: transform 180ms ease-out;
+  transition: transform var(--motion-control) var(--ease-standard);
 }
 
 .proof-atlas-axis {
   fill: none;
-  stroke: color-mix(in srgb, var(--atlas-ink) 16%, transparent);
+  stroke: var(--os-line);
   stroke-width: 0.75;
 }
 
 .proof-atlas-boundary-plate {
-  fill: color-mix(in srgb, var(--os-surface) 84%, var(--atlas-blue) 16%);
-  stroke: color-mix(in srgb, var(--atlas-gold) 64%, var(--atlas-blue));
+  fill: var(--os-surface);
+  stroke: var(--os-control-line);
   stroke-width: 1.3;
 }
 
 .proof-atlas-boundary-glyph {
   fill: none;
-  stroke: var(--atlas-gradient, var(--atlas-blue));
+  stroke: var(--os-accent);
   stroke-width: 1.65;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .proof-atlas-node--boundary text {
-  fill: var(--atlas-ink);
+  fill: var(--os-text);
   font-size: 14px;
 }
 
 .proof-atlas-receipt {
-  fill: color-mix(in srgb, var(--os-surface) 76%, var(--atlas-gold) 24%);
-  stroke: var(--atlas-gold);
+  fill: var(--os-surface);
+  stroke: var(--os-accent);
   stroke-width: 1.15;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .proof-atlas-receipt-seal {
-  fill: var(--atlas-gold);
+  fill: var(--os-accent);
 }
 
 .proof-atlas-evidence-collection {
   fill: none;
-  stroke: color-mix(in srgb, var(--atlas-gold) 80%, var(--atlas-teal));
+  stroke: var(--os-accent);
   stroke-width: 1.15;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .proof-atlas-evidence-collection rect {
-  fill: color-mix(in srgb, var(--os-surface) 76%, var(--atlas-gold) 24%);
-  stroke: var(--atlas-gold);
+  fill: var(--os-surface);
+  stroke: var(--os-accent);
   stroke-width: 1.3;
-}
-
-.proof-atlas-evidence-collection path {
-  stroke: color-mix(in srgb, var(--atlas-gold) 78%, var(--atlas-ink));
 }
 
 .proof-atlas[data-project="invisible-window-research"] .proof-atlas-axis {
@@ -154,56 +123,56 @@
 
 .proof-atlas-edge {
   fill: none;
-  stroke: var(--atlas-gradient, var(--atlas-blue));
+  stroke: var(--os-muted);
   stroke-width: 1.6;
   stroke-linecap: round;
   opacity: 0.7;
 }
 
 .proof-atlas-edge--evidence {
-  stroke: var(--atlas-gold);
+  stroke: var(--os-accent);
   stroke-width: 2;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
 }
 
 .proof-atlas-capture rect {
-  fill: color-mix(in srgb, var(--atlas-blue) 4%, transparent);
-  stroke: color-mix(in srgb, var(--atlas-gold) 60%, transparent);
+  fill: var(--os-accent-tint);
+  stroke: var(--os-control-line);
   stroke-width: 1;
   stroke-dasharray: 3 5;
 }
 
 .proof-atlas-capture .proof-atlas-plane {
-  fill: color-mix(in srgb, var(--atlas-blue) 3%, transparent);
-  stroke: color-mix(in srgb, var(--atlas-ink) 25%, transparent);
+  fill: var(--os-surface);
+  stroke: var(--os-control-line);
   stroke-width: 1;
   stroke-dasharray: none;
 }
 
 .proof-atlas-capture .proof-atlas-visible-window {
-  fill: color-mix(in srgb, var(--atlas-teal) 18%, transparent);
-  stroke: var(--atlas-teal);
+  fill: var(--os-accent-tint);
+  stroke: var(--os-accent);
   stroke-width: 1.4;
 }
 
 .proof-atlas-capture .proof-atlas-excluded-window {
   fill: transparent;
-  stroke: color-mix(in srgb, var(--atlas-gold) 72%, transparent);
+  stroke: var(--os-muted);
   stroke-width: 1.4;
   stroke-dasharray: 4 5;
 }
 
 .proof-atlas-capture .proof-atlas-plane-grid {
   fill: none;
-  stroke: color-mix(in srgb, var(--atlas-ink) 11%, transparent);
+  stroke: var(--os-line);
   stroke-width: 0.8;
   stroke-dasharray: none;
 }
 
 .proof-atlas-capture .proof-atlas-window-light {
   fill: none;
-  stroke: color-mix(in srgb, var(--atlas-teal) 65%, transparent);
+  stroke: var(--os-accent);
   stroke-width: 1;
   stroke-dasharray: none;
 }
@@ -211,14 +180,14 @@
 .proof-atlas-capture .proof-atlas-absence,
 .proof-atlas-capture .proof-atlas-comparison-arrow {
   fill: none;
-  stroke: var(--atlas-gold);
+  stroke: var(--os-accent);
   stroke-width: 1.25;
   stroke-dasharray: none;
 }
 
 .proof-atlas-capture .proof-atlas-plane-label {
-  fill: var(--atlas-muted);
-  font: 15px var(--os-mono);
+  fill: var(--os-muted);
+  font: 15px var(--os-font-ui);
 }
 
 .proof-atlas-lines--comparison,
@@ -228,7 +197,7 @@
 
 .proof-atlas-capture path {
   fill: none;
-  stroke: color-mix(in srgb, var(--atlas-ink) 12%, transparent);
+  stroke: var(--os-line);
   stroke-width: 0.75;
 }
 
@@ -238,14 +207,15 @@
 }
 
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-node {
-  transition: transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 560ms var(--ease-standard);
 }
 
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-edge {
   transition:
-    opacity 320ms ease,
+    opacity var(--motion-window) ease,
     stroke-dashoffset 500ms ease;
-  animation: proof-atlas-line-arrive 420ms ease-out both;
+  animation: proof-atlas-line-arrive var(--motion-window) var(--ease-standard)
+    both;
 }
 
 @keyframes proof-atlas-line-arrive {
@@ -258,67 +228,71 @@
 }
 
 .proof-atlas-node-halo {
-  fill: color-mix(in srgb, var(--atlas-blue) 10%, transparent);
-  stroke: color-mix(in srgb, var(--atlas-blue) 45%, transparent);
+  fill: var(--os-accent-tint);
+  stroke: var(--os-accent);
   stroke-width: 0.8;
 }
 
 .proof-atlas-node--evidence .proof-atlas-node-halo {
-  fill: color-mix(in srgb, var(--atlas-gold) 13%, transparent);
-  stroke: color-mix(in srgb, var(--atlas-gold) 68%, transparent);
+  fill: var(--os-surface);
+  stroke: var(--os-accent);
 }
 
 .proof-atlas-node-core {
-  fill: var(--atlas-blue);
-  filter: drop-shadow(
-    0 0 6px color-mix(in srgb, var(--atlas-blue) 45%, transparent)
-  );
+  fill: var(--os-accent);
 }
 
 .proof-atlas-node--evidence .proof-atlas-node-core {
-  fill: var(--atlas-gold);
-  filter: drop-shadow(
-    0 0 7px color-mix(in srgb, var(--atlas-gold) 55%, transparent)
-  );
+  fill: var(--os-accent);
 }
 
 .proof-atlas-node-ring {
   fill: none;
-  stroke: color-mix(in srgb, var(--atlas-teal) 60%, transparent);
+  stroke: var(--os-control-line);
   stroke-width: 0.8;
   stroke-dasharray: 1 4;
 }
 
+/* Labels sit below their nodes, where an evidence connector drops past them.
+   The surface halo is painted before the glyph fill, so a connector behind a
+   label is cut away around the text instead of striking through it. */
 .proof-atlas-node text {
-  fill: var(--atlas-muted);
-  font: 15px var(--os-mono);
-  letter-spacing: 0;
+  fill: var(--os-muted);
+  font: 15px var(--os-font-ui);
+  paint-order: stroke fill;
+  stroke: var(--os-surface);
+  stroke-width: 8px;
+  stroke-linejoin: round;
 }
 
 .proof-atlas-controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 9px;
-  margin-top: -1px;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .proof-atlas-options {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
+  gap: var(--space-2);
   min-width: 0;
 }
 
+/* Project selectors use the control primitive (design system section 4): 44px
+   minimum (coarse-pointer size), --radius-s, --text-ui at weight 500. The pressed
+   one takes the accent tint and text. */
 .proof-atlas-option {
   min-width: 0;
-  min-height: 48px;
-  padding: 7px 8px;
-  border: 1px solid color-mix(in srgb, var(--atlas-ink) 17%, transparent);
-  border-radius: 999px;
-  color: var(--atlas-muted);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
   background: transparent;
+  color: var(--os-text);
   font-family: inherit;
-  font-size: 13px;
+  font-size: var(--text-ui);
+  font-weight: 500;
   line-height: 1.25;
   overflow-wrap: anywhere;
   cursor: pointer;
@@ -326,49 +300,59 @@
 
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-option {
   transition:
-    color 140ms ease,
-    border-color 140ms ease,
-    background-color 140ms ease;
+    color var(--motion-quick) ease,
+    border-color var(--motion-quick) ease,
+    background-color var(--motion-quick) ease;
 }
 
-.proof-atlas-option:hover,
+.proof-atlas-option:is(:hover, :focus-visible),
 .proof-atlas-option[aria-pressed="true"] {
-  border-color: color-mix(in srgb, var(--atlas-gold) 60%, transparent);
-  color: var(--atlas-ink);
-  background: color-mix(in srgb, var(--atlas-gold) 9%, transparent);
+  border-color: var(--os-accent);
+  background: var(--os-accent-tint);
+}
+
+.proof-atlas-option[aria-pressed="true"] {
+  color: var(--os-accent);
 }
 
 .proof-atlas-summary {
   grid-column: 1;
   min-height: 2.8em;
   margin: 0;
-  color: var(--atlas-muted);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: var(--text-ui);
+  line-height: 1.6;
+  color: var(--os-muted);
 }
 
 .proof-atlas-qualifier {
-  margin: 5px 0 0;
-  color: var(--atlas-muted);
-  font-size: 12px;
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-s);
   line-height: 1.55;
+  color: var(--os-muted);
 }
 
+/* The evidence link is a text link: accent and underlined. Its arrow mirrors in RTL. */
+.proof-atlas-link-arrow {
+  display: inline-block;
+}
+.proof-atlas-link:dir(rtl) .proof-atlas-link-arrow {
+  transform: scaleX(-1);
+}
 .proof-atlas-link {
   display: inline-flex;
   min-height: 44px;
   grid-column: 1;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-block: 5px;
-  border-top: 1px solid color-mix(in srgb, var(--atlas-ink) 14%, transparent);
-  color: var(--atlas-gold);
-  font-size: 12px;
+  justify-content: flex-start;
+  gap: var(--space-2);
+  color: var(--os-accent);
+  font-size: var(--text-s);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 
 .proof-atlas-link span {
-  font-size: 14px;
+  font-size: var(--text-ui);
 }
 
 .os-desktop .os-desktop-identity--atlas {
@@ -377,13 +361,13 @@
 }
 
 .os-shell:dir(rtl) .proof-atlas-node text {
-  font-family: var(--font-vazirmatn), Tahoma, sans-serif;
+  font-family: var(--os-font-ui);
 }
 
 @media (max-width: 960px) {
   .os-desktop .os-desktop-identity--atlas {
     grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
-    gap: 24px;
+    gap: var(--space-6);
   }
 }
 
@@ -394,46 +378,47 @@
   }
 
   .proof-atlas-caption {
-    max-width: 32em;
-    font-size: 12px;
+    max-width: 36ch;
+    font-size: var(--text-xs);
   }
 
   .os-desktop .os-desktop-identity--atlas {
     grid-template-columns: minmax(0, 1fr);
-    gap: 25px;
+    gap: var(--space-6);
   }
 
   .proof-atlas--desktop {
-    padding: 14px 0 15px;
-    border-inline-start: 0;
-    border-block-start: 1px solid
-      color-mix(in srgb, var(--atlas-gold) 35%, transparent);
+    padding: var(--space-3) var(--space-4) var(--space-4);
   }
 
   .proof-atlas--desktop .proof-atlas-figure {
     max-height: 180px;
   }
 
-  .proof-atlas-controls {
+  .proof-atlas-options {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
+/* The gated motion rules above are scoped under [data-motion-enabled] (0,3,0). The
+   scoped selectors here match that specificity and come later in the file, so the
+   reduced-motion block still wins if the JS gate ever reports "true". The bare
+   selectors stay for markup that has no motion attribute. */
 @media (prefers-reduced-motion: reduce) {
   .proof-atlas-figure,
   .proof-atlas-node,
   .proof-atlas-edge,
-  .proof-atlas-option {
-    transition: none !important;
-    animation: none !important;
+  .proof-atlas-option,
+  .proof-atlas[data-motion-enabled] .proof-atlas-figure,
+  .proof-atlas[data-motion-enabled] .proof-atlas-node,
+  .proof-atlas[data-motion-enabled] .proof-atlas-edge,
+  .proof-atlas[data-motion-enabled] .proof-atlas-option {
+    transition: none;
+    animation: none;
   }
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .proof-atlas--desktop {
-    background: var(--os-surface);
-  }
-
   .proof-atlas-node-halo,
   .proof-atlas-plane,
   .proof-atlas-visible-window,
@@ -442,18 +427,17 @@
   .proof-atlas-receipt,
   .proof-atlas-evidence-collection rect {
     fill: var(--os-surface);
-    stroke: var(--atlas-ink);
+    stroke: var(--os-text);
   }
 
   .proof-atlas-boundary-glyph,
   .proof-atlas-evidence-collection path {
-    stroke: var(--atlas-ink);
+    stroke: var(--os-text);
   }
 
   .proof-atlas-node-core,
   .proof-atlas-absence,
   .proof-atlas-comparison-arrow {
-    filter: none;
     opacity: 1;
   }
 }
@@ -477,5 +461,21 @@
   .proof-atlas-boundary-glyph,
   .proof-atlas-evidence-collection path {
     stroke: currentColor;
+  }
+}
+
+/* Forced colours only: the label halo must stay background-coloured, and a
+   currentColor stroke would bold the text. Outside forced colours the halo keeps
+   --os-surface so it matches the panel (Canvas is a different colour in dark mode). */
+@media (forced-colors: active) {
+  .proof-atlas-node text {
+    stroke: Canvas;
+  }
+
+  /* Forced colours drop the accent tint and text colour, so the pressed project
+     selector gets a heavier border as its non-colour state cue (design system: never
+     colour alone). */
+  .proof-atlas-option[aria-pressed="true"] {
+    border-width: 2px;
   }
 }

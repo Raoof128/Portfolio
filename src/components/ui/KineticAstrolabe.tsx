@@ -1,11 +1,14 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
-export function KineticAstrolabe() {
+export function KineticAstrolabe({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="ka-host" aria-hidden="true">
+    <div ref={hostRef} className="ka-host ui-art" aria-hidden="true">
       <div className="ka-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>

@@ -15,9 +15,9 @@ describe("Card", () => {
   it("applies default styling", () => {
     const { container } = render(<Card>Content</Card>);
     const card = container.firstChild;
-    expect(card).toHaveClass("border");
-    expect(card).toHaveClass("border-cyan/12");
-    expect(card).toHaveClass("bg-cyan/5");
+    // Colour moved from cyan utilities to the solid surface class; the glow-free hover stays interactive.
+    expect(card).toHaveClass("ui-card");
+    expect(card).toHaveClass("ui-card--interactive");
   });
 
   it("applies custom className", () => {

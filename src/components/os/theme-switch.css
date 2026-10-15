@@ -1,66 +1,60 @@
-/* Power switch after "quick-moth-22" by vinodjangid07, Uiverse.io (MIT):
-   on (glowing) is dark mode, off is light mode. Scaled from 70px to fit the
-   top bar. */
+/* Power switch, retokenised (design system, section 4). Dark is on, light is off.
+   The 44px hit area wraps a 36px round control with an 18px power glyph. The glyph
+   path is from "quick-moth-22" by vinodjangid07, Uiverse.io (MIT). No glow. */
 .os-shell .os-theme-switch {
   position: relative;
-  z-index: 1;
   display: inline-flex;
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  margin: 5px;
+  width: 44px;
+  height: 44px;
+  margin: 0;
   padding: 0;
-  border: 2px solid rgb(126 126 126);
-  border-radius: 50%;
-  background-color: rgb(99 99 99);
-  box-shadow: 0 0 3px rgb(2 2 2) inset;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--os-muted);
   cursor: pointer;
-  transition:
-    background-color 0.3s,
-    border-color 0.3s,
-    box-shadow 0.3s;
 }
 .os-shell .os-theme-switch::before {
-  /* A 44px hit area around the 34px switch. */
   content: "";
   position: absolute;
-  inset: -7px;
-  border-radius: 50%;
+  inset: 4px;
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-pill);
+  background: var(--os-surface);
+  transition:
+    background-color var(--motion-control) var(--ease-standard),
+    border-color var(--motion-control) var(--ease-standard);
 }
 .os-shell .os-theme-switch svg {
-  width: 15px;
-  height: 15px;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  color: var(--os-muted);
+  transition: color var(--motion-control) var(--ease-standard);
 }
 .os-shell .os-theme-switch path {
-  fill: rgb(48 48 48);
-  transition: fill 0.3s;
+  fill: currentColor;
 }
-.os-shell .os-theme-switch[aria-checked="true"] {
-  border-color: rgb(255 255 255);
-  background-color: rgb(146 180 184);
-  box-shadow:
-    0 0 1px rgb(151 243 255) inset,
-    0 0 2px rgb(151 243 255) inset,
-    0 0 10px rgb(151 243 255) inset,
-    0 0 20px rgb(151 243 255),
-    0 0 50px rgb(151 243 255 / 60%),
-    0 0 5px rgb(151 243 255);
+.os-shell .os-theme-switch:hover::before {
+  border-color: var(--os-accent);
+}
+.os-shell .os-theme-switch[aria-checked="true"]::before {
+  border-color: var(--os-accent);
+  background: var(--os-accent);
 }
 .os-shell .os-theme-switch[aria-checked="true"] svg {
-  filter: drop-shadow(0 0 5px rgb(151 243 255));
-}
-.os-shell .os-theme-switch[aria-checked="true"] path {
-  fill: rgb(255 255 255);
+  color: var(--os-on-accent);
 }
 .os-shell .os-theme-switch:focus-visible {
-  outline: 2px solid var(--os-accent);
-  outline-offset: 3px;
+  outline: 2px solid var(--os-focus);
+  outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
-  .os-shell .os-theme-switch,
-  .os-shell .os-theme-switch path {
+  .os-shell .os-theme-switch::before,
+  .os-shell .os-theme-switch svg {
     transition: none;
   }
 }

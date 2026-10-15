@@ -1,6 +1,7 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
 /**
  * Divan — Open Day hero visual: an animated blue-morpho butterfly.
@@ -10,10 +11,12 @@ import { useId } from "react";
  * The right wing is authored once (#bf-wing) and mirrored for the left, so both
  * sides flap in perfect symmetry. Pure SVG + CSS; honours reduced-motion.
  */
-export function BlueButterfly() {
+export function BlueButterfly({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="bf-host" aria-hidden="true">
+    <div ref={hostRef} className="bf-host ui-art" aria-hidden="true">
       <div className="bf-float">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>

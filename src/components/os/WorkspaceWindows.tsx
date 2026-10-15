@@ -7,7 +7,6 @@ import {
   useLayoutEffect,
   useRef,
   useState,
-  type CSSProperties,
   type KeyboardEvent,
 } from "react";
 import Link from "next/link";
@@ -36,8 +35,6 @@ import {
 } from "./application-context";
 import type { WorkspaceState } from "./workspace-model";
 import "./workspace-windows.css";
-
-const SCAN_BLOCKS = Array.from({ length: 24 }, (_, index) => index);
 
 export function appForDescriptor(descriptor: OSAppDescriptor): PortfolioApp {
   if (descriptor.route.startsWith("/projects")) return "projects";
@@ -119,6 +116,14 @@ function ApplicationWindow({
   // The URL only changes once the next page is ready, so a followed link marks
   // the gap between the click and the new document.
   const [pendingFrom, setPendingFrom] = useState<string | null>(null);
+  // When the frame's document changes, the wait for the previous one has ended.
+  // Clearing during render (not in an effect) stops a stale id from showing the
+  // loading hairline again on a later return to the same page.
+  const [settledDocument, setSettledDocument] = useState(descriptor.id);
+  if (settledDocument !== descriptor.id) {
+    setSettledDocument(descriptor.id);
+    setPendingFrom(null);
+  }
   const pending = pendingFrom === descriptor.id;
   const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const disposed = useRef(false);
@@ -286,38 +291,36 @@ function ApplicationWindow({
     >
       <div className="os-windowbar">
         {(loading || pending) && (
-          // Scan bar after "tasty-puma-74" by NlghtM4re, Uiverse.io (MIT).
-          <div className="os-window-scan" aria-hidden="true">
-            {SCAN_BLOCKS.map((index) => (
-              <span key={index} style={{ "--i": index } as CSSProperties} />
-            ))}
-          </div>
+          // One 2px accent hairline while the next page loads. The class name
+          // stays so the existing pending-state test keeps its hook.
+          <div className="os-window-scan" aria-hidden="true" />
         )}
         <div className="os-window-navigation">
+          {/* The visible word is part of the name, so the name matches what sighted users read. */}
           <Link
             className="os-window-back"
             href={parentPath}
-            aria-label={copy.back}
             tabIndex={active ? 0 : -1}
           >
             <ArrowLeft aria-hidden="true" />
+            <span>{copy.back}</span>
           </Link>
           <OSIcon app={app} />
-          <button
-            type="button"
-            onClick={() => actions.focus(descriptor.id)}
-            // The title names the landmark; the drag affordance is advisory.
-            title={reading.desktop ? commands.moveWindow : undefined}
-            id={`${controlId}-title`}
-            className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
-            lang={titleLocale}
-            dir={locales[titleLocale].dir}
-            onPointerDown={(event) => reading.beginPointer(event, "move")}
-            {...reading.pointerHandlers}
-          >
-            {title}
-          </button>
         </div>
+        <button
+          type="button"
+          onClick={() => actions.focus(descriptor.id)}
+          // The title names the landmark; the drag affordance is advisory.
+          title={reading.desktop ? commands.moveWindow : undefined}
+          id={`${controlId}-title`}
+          className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
+          lang={titleLocale}
+          dir={locales[titleLocale].dir}
+          onPointerDown={(event) => reading.beginPointer(event, "move")}
+          {...reading.pointerHandlers}
+        >
+          {title}
+        </button>
         <div className="os-window-actions">
           {active && reading.desktop && !hidden && (
             <ReadingWindowControls
@@ -364,7 +367,8 @@ function ApplicationWindow({
                 else reading.maximize();
                 setExpanded((value) => !value);
               }}
-              aria-label={expanded ? copy.restore : copy.expand}
+              // The name is constant; aria-pressed carries the expanded state.
+              aria-label={commands.fullSize}
               aria-pressed={expanded}
               tabIndex={active ? 0 : -1}
             >

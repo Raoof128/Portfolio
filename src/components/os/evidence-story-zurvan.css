@@ -1,228 +1,138 @@
-.os-project-explorer .os-project-section .os-evidence-story .os-zurvan-graph {
+/* Zurvan evidence story: a typed-node graph and its ledger. Solid nodes on a
+   quiet surface; the selected node type takes the single accent ring. */
+
+/* The panel stays on --os-bg as an inset well, so the --os-surface nodes read as cards. */
+.os-shell .os-project-explorer .os-project-section .os-zurvan-graph {
   display: grid;
   justify-items: center;
-  gap: 7px;
-  margin-block-start: 20px;
-  padding: 14px;
+  gap: var(--space-2);
+  margin-block-start: var(--space-4);
+  padding: var(--space-4);
   border: 1px solid var(--os-line);
-  border-radius: 10px;
-  background: var(--os-surface);
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-graph-node {
-  display: grid;
-  gap: 4px;
-  width: min(100%, 420px);
-  padding: 11px 13px;
-  border: 1px solid var(--story-line);
-  border-radius: 9px;
-  color: var(--os-text);
+  border-radius: var(--radius-m);
   background: var(--os-bg);
+}
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-graph-node {
+  display: grid;
+  gap: 2px;
+  width: min(100%, 420px);
+  padding: var(--space-3);
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  color: var(--os-text);
+  background: var(--os-surface);
   text-align: center;
 }
-.os-project-explorer .os-project-section .os-evidence-story .os-zurvan-source {
-  position: relative;
-}
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-zurvan-graph-node
   strong {
-  font-size: 15px;
+  font-size: var(--text-ui);
+  font-weight: 600;
+  line-height: 1.4;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-graph-node
-  small {
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-graph-node small {
   color: var(--os-muted);
-  font-size: 14px;
+  font-size: var(--text-s);
   line-height: 1.55;
 }
-.os-project-explorer .os-project-section .os-evidence-story .os-zurvan-edge {
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-edge {
   max-width: 45ch;
+  margin: 0;
   color: var(--os-muted);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: var(--text-s);
+  line-height: 1.55;
   text-align: center;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-edge::after {
-  display: block;
-  color: var(--story-accent);
-  /* Decorative arrow: empty alternative text keeps it out of the a11y tree. */
-  content: "↓" / "";
-  font: 18px / 1.2 var(--os-mono);
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-edge-context {
-  display: none;
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-branches {
-  position: relative;
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-type-branches {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
+  gap: var(--space-2);
   width: 100%;
-  padding-inline-start: 18px;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-branches::before {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 7px;
-  width: 2px;
-  background: var(--story-line);
-  content: "";
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-graph-node.os-zurvan-typed {
-  position: relative;
+
+/* Type buttons share the node class but are controls, so they keep --radius-s here (this rule wins on source order). */
+.os-shell .os-project-explorer .os-project-section .os-zurvan-typed {
   width: 100%;
   min-width: 0;
-  min-height: 48px;
-  margin-inline-start: 0;
-  padding: 8px 10px;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
   color: var(--os-text);
+  background: var(--os-surface);
   font: inherit;
+  font-size: var(--text-ui);
   text-align: center;
   cursor: pointer;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-typed::before {
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: -12px;
-  width: 12px;
-  height: 2px;
-  background: var(--story-line);
-  content: "";
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-typed:hover {
+  background: var(--os-accent-tint);
 }
-.os-project-explorer
+
+/* The selected type is the single ring: accent border on the tint. */
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-zurvan-typed[data-selected="true"] {
-  border-color: var(--story-accent);
-  background: color-mix(in srgb, var(--story-accent) 9%, var(--os-bg));
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--story-accent) 12%, transparent);
+  border-color: var(--os-accent);
+  background: var(--os-accent-tint);
 }
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
-  .os-zurvan-typed[data-selected="true"]::before {
-  background: var(--story-accent);
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-edge-retrieval[data-selected-type]::after {
-  color: var(--story-accent);
-}
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
   .os-zurvan-type-ledger-section {
-  margin-block-start: 18px;
+  margin-block-start: var(--space-6);
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-ledger {
-  margin-block-start: 10px;
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-type-ledger {
+  margin-block-start: var(--space-2);
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-ledger
-  li {
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-type-ledger li {
+  display: grid;
   grid-template-columns: minmax(90px, 0.28fr) minmax(0, 1fr);
-  gap: 10px;
-  padding: 9px;
-  border-inline-start: 2px solid transparent;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-s);
   color: var(--os-muted);
 }
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-zurvan-type-ledger
   li[data-selected="true"] {
-  border-inline-start-color: var(--story-accent);
   color: var(--os-text);
-  background: color-mix(in srgb, var(--story-accent) 7%, var(--os-bg));
+  background: var(--os-accent-tint);
 }
-.os-project-explorer
+
+.os-shell
+  .os-project-explorer
   .os-project-section
-  .os-evidence-story
   .os-zurvan-type-ledger
   strong {
-  font-size: 14px;
+  color: var(--os-text);
+  font-size: var(--text-s);
+  font-weight: 600;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-type-ledger
-  p {
+
+.os-shell .os-project-explorer .os-project-section .os-zurvan-type-ledger p {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: var(--text-s);
+  line-height: 1.6;
 }
-.os-project-explorer
-  .os-project-section
-  .os-evidence-story
-  .os-zurvan-graph-node.os-zurvan-typed:focus-visible {
-  outline: 3px solid var(--story-accent);
-  outline-offset: 3px;
-}
-@container simurgh-story (min-width: 560px) {
-  .os-project-explorer
-    .os-project-section
-    .os-evidence-story
-    .os-zurvan-type-branches {
+
+@container evidence-story (min-width: 561px) {
+  .os-shell .os-project-explorer .os-project-section .os-zurvan-type-branches {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 9px;
-    padding: 13px 0 0;
-  }
-}
-@container simurgh-story (min-width: 560px) {
-  .os-project-explorer
-    .os-project-section
-    .os-evidence-story
-    .os-zurvan-type-branches::before {
-    inset-block-start: 0;
-    inset-block-end: auto;
-    inset-inline-start: 12.5%;
-    width: 75%;
-    height: 2px;
-  }
-}
-@container simurgh-story (min-width: 560px) {
-  .os-project-explorer .os-project-section .os-evidence-story .os-zurvan-typed {
-    min-height: 56px;
-  }
-}
-@container simurgh-story (min-width: 560px) {
-  .os-project-explorer
-    .os-project-section
-    .os-evidence-story
-    .os-zurvan-typed::before {
-    inset-block-start: -14px;
-    inset-inline-start: 50%;
-    width: 2px;
-    height: 14px;
   }
 }

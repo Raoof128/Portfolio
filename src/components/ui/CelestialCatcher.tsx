@@ -1,6 +1,7 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
 const BG = "#161115";
 const PAGE = "#ff6b9d";
@@ -8,10 +9,12 @@ const DECK = "#cc1b5d";
 const LINE = "#0d0509";
 const SPINE = "#5c4d56";
 
-export function CelestialCatcher() {
+export function CelestialCatcher({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="cc-host" aria-hidden="true">
+    <div ref={hostRef} className="cc-host ui-art" aria-hidden="true">
       <div className="cc-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>

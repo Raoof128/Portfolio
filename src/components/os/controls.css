@@ -1,0 +1,286 @@
+/* ResearchOS controls: one primitive for buttons and button-like links (design
+   system, section 4). Primary fills with the accent; secondary is a hairline
+   outline. Nothing uppercase, tracked, lifted or glowing. The `.os-shell` prefix
+   and :is() lists outrank the component rules in research-os.css without
+   `!important`, and the secondary rules follow the primary ones on purpose. */
+
+/* Geometry shared by every control. */
+.os-shell
+  :is(
+    .os-button,
+    .os-button--secondary,
+    .os-direct-links .os-button,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button
+  ):not(.os-welcome *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-s);
+  box-shadow: none;
+  font-family: var(--os-font-ui);
+  font-size: var(--text-ui);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-quick) var(--ease-standard),
+    border-color var(--motion-quick) var(--ease-standard),
+    color var(--motion-quick) var(--ease-standard),
+    transform var(--motion-quick) var(--ease-standard);
+}
+.os-shell
+  :is(
+    .os-button,
+    .os-button--secondary,
+    .os-direct-links .os-button,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button
+  )
+  svg {
+  flex: none;
+  color: currentColor;
+}
+
+/* Primary: accent fill, on-accent text. */
+.os-shell
+  :is(
+    .os-button,
+    .os-direct-links .os-button,
+    .os-document-button[data-variant="primary"]
+  ):not(.os-welcome *) {
+  background: var(--os-accent);
+  color: var(--os-on-accent);
+}
+.os-shell
+  :is(
+    .os-button,
+    .os-direct-links .os-button,
+    .os-document-button[data-variant="primary"]
+  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(:hover) {
+  background: var(--os-accent-hover);
+}
+.os-shell
+  :is(
+    .os-button,
+    .os-direct-links .os-button,
+    .os-document-button[data-variant="primary"]
+  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):active {
+  background: var(--os-accent-pressed);
+}
+
+/* Secondary: hairline outline, primary text. Declared after primary so it wins ties. */
+.os-shell
+  :is(
+    .os-button--secondary,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button:not([data-variant="primary"])
+  ):not(.os-welcome *) {
+  background: transparent;
+  border-color: var(--os-control-line);
+  color: var(--os-text);
+}
+.os-shell
+  :is(
+    .os-button--secondary,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button:not([data-variant="primary"])
+  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+    :hover,
+    :active
+  ) {
+  background: var(--os-accent-tint);
+}
+
+/* Press feedback: a small scale only, no lift. */
+.os-shell
+  :is(
+    .os-button,
+    .os-button--secondary,
+    .os-direct-links .os-button,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button
+  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):active {
+  transform: scale(0.98);
+}
+
+/* Disabled: muted text on a hairline fill, so the state reads without opacity. */
+.os-shell
+  :is(
+    .os-button,
+    .os-button--secondary,
+    .os-direct-links .os-button,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button
+  ):not(.os-welcome *):is([aria-disabled="true"], :disabled) {
+  background: var(--os-line);
+  border-color: transparent;
+  color: var(--os-muted);
+  cursor: default;
+}
+
+/* Document buttons keep only their first label span visible. */
+.os-shell .os-document-button > span:not(:first-child) {
+  display: none;
+}
+.os-shell .os-document-button > span:first-child {
+  color: inherit;
+}
+
+/* Text link: accent, underlined, for reading contexts. */
+.os-shell .os-text-link {
+  color: var(--os-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Global focus ring: 2px solid accent with a 2px offset (design system, section 4).
+   The :not() list keeps h1 and the main and window containers on their own focus
+   handling. Specificity is (0,2,0), equal to the shell-wide rule in research-os.css,
+   which loads after this file. That lets the deliberate negative-offset exceptions in
+   research-os.css (.os-reading-scroll, .os-search-result) win: their ring sits inside
+   clipped surfaces, and a higher-specificity 2px offset here would push it outside. */
+:where(.os-shell) :focus-visible:not(h1, .os-main, .os-window) {
+  outline: 2px solid var(--os-focus);
+  outline-offset: 2px;
+}
+.os-shell :is(:focus, :focus-visible) {
+  /* Focus is never hidden behind the sticky top bar or the dock (WCAG 2.4.11). */
+  scroll-margin-block: 120px;
+}
+@media (prefers-contrast: more) {
+  :where(.os-shell) :focus-visible:not(h1, .os-main, .os-window) {
+    outline-width: 3px;
+  }
+}
+@media (forced-colors: active) {
+  .os-shell :focus-visible:not(h1, .os-main, .os-window) {
+    outline-color: Highlight;
+  }
+}
+
+/* Forced colours: the system palette supplies every fill, text and border, so
+   a control keeps a visible edge when author colours are removed. Primary uses
+   the Highlight fill; secondary uses ButtonFace with a ButtonText border. The
+   disabled rule comes last and outranks both, so disabled reads as GrayText. */
+@media (forced-colors: active) {
+  .os-shell
+    :is(
+      .os-button,
+      .os-button--secondary,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button
+    ):not(.os-welcome *) {
+    background: ButtonFace;
+    border-color: ButtonText;
+    box-shadow: none;
+    color: ButtonText;
+  }
+  .os-shell
+    :is(
+      .os-button,
+      .os-direct-links .os-button,
+      .os-document-button[data-variant="primary"]
+    ):not(.os-welcome *) {
+    background: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
+  }
+  .os-shell
+    :is(
+      .os-button,
+      .os-button--secondary,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button
+    ):not(.os-welcome *):is([aria-disabled="true"], :disabled) {
+    background: ButtonFace;
+    border-color: GrayText;
+    color: GrayText;
+  }
+  /* Hover and pressed fills are author colours, which forced colours replace with
+     Canvas. That would leave HighlightText on Canvas, so the system pair is restated
+     here with the same selectors as the colour states and declared after them. */
+  .os-shell
+    :is(
+      .os-button,
+      .os-direct-links .os-button,
+      .os-document-button[data-variant="primary"]
+    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+      :hover,
+      :active
+    ) {
+    background: Highlight;
+  }
+  .os-shell
+    :is(
+      .os-button--secondary,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button:not([data-variant="primary"])
+    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+      :hover,
+      :active
+    ) {
+    background: ButtonFace;
+  }
+}
+
+/* Touch targets are 44px on coarse pointers. */
+@media (pointer: coarse) {
+  .os-shell
+    :is(
+      .os-button,
+      .os-button--secondary,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button
+    ):not(.os-welcome *) {
+    min-height: 44px;
+  }
+}
+
+/* Reduced motion: transitions become instant and press feedback is removed. */
+@media (prefers-reduced-motion: reduce) {
+  .os-shell
+    :is(
+      .os-button,
+      .os-button--secondary,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button
+    ):not(.os-welcome *) {
+    transition-duration: 1ms;
+  }
+  .os-shell
+    :is(
+      .os-button,
+      .os-button--secondary,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button
+    ):not(.os-welcome *):active {
+    transform: none;
+  }
+}

@@ -1,12 +1,20 @@
-/* "Signal lost" vortex after "ordinary-mouse-17" by NlghtM4re, Uiverse.io (MIT). */
+/* "Signal lost" vortex after "ordinary-mouse-17" by NlghtM4re, Uiverse.io (MIT).
+   Restyled to the ResearchOS accent: each ring is --os-accent at a stepped alpha
+   (opacity), with no hue shift and no glow. The rings rise at most 24px. */
 .signal-vortex {
-  --vortex: var(--os-accent, #00c8ff);
+  --vortex: var(--os-accent);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Tall enough that the rings stay clear of the heading below them. */
   width: min(100%, 320px);
-  height: 190px;
+  min-height: 200px;
+  /* Keeps the outermost ring (it rises a few px at peak) clear of the mark tile above
+     it on the global 404. The locale 404 has no tile, so it gets the same 32px gap
+     above its "404" line; this is a deliberate visual change there. */
+  margin-block-start: var(--space-8);
+  margin-block-end: 0;
   margin-inline: auto;
   perspective: 600px;
   pointer-events: none;
@@ -18,26 +26,22 @@
   aspect-ratio: 1;
   border: 3px solid var(--vortex);
   border-radius: 50%;
+  opacity: calc(1 - var(--i) * 0.04);
   transform-style: preserve-3d;
   transform: rotateX(70deg) translateZ(30px);
-  box-shadow:
-    0 0 12px color-mix(in srgb, var(--vortex) 45%, transparent),
-    inset 0 0 12px color-mix(in srgb, var(--vortex) 45%, transparent);
-  animation: signal-vortex-rise 3s ease-in-out calc(var(--i) * 0.08s) infinite;
+}
+/* The loop runs only when the reader allows motion; otherwise the rings stay still. */
+@media (prefers-reduced-motion: no-preference) {
+  .signal-vortex span {
+    animation: signal-vortex-rise 3s ease-in-out calc(var(--i) * 0.08s) infinite;
+  }
 }
 @keyframes signal-vortex-rise {
   0%,
   100% {
     transform: rotateX(70deg) translateZ(30px) translateY(0);
-    filter: hue-rotate(0deg);
   }
   50% {
-    transform: rotateX(70deg) translateZ(30px) translateY(-120px);
-    filter: hue-rotate(60deg);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .signal-vortex span {
-    animation: none;
+    transform: rotateX(70deg) translateZ(30px) translateY(-24px);
   }
 }

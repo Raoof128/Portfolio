@@ -1,12 +1,13 @@
-html[data-global-not-found] {
-  color-scheme: dark;
-  --not-found-background: #080d19;
-  --not-found-surface: #111b2b;
-  --not-found-text: #f4f8ff;
-  --not-found-secondary: #b9c8dc;
-  --not-found-border: #536883;
-  --not-found-link: #91caff;
-}
+/* Global 404: a standalone document with no locale layout. The <html> element
+   carries the .os-shell class, so the ResearchOS tokens (research-os.css) and the
+   control primitive (controls.css), both imported in global-not-found.tsx, supply
+   colour, radius, focus and the Latin type stack. The server render is
+   <html lang="en">; GlobalNotFoundContent sets html lang, dir and data-appearance to
+   the path locale after hydration, so the .os-shell:lang() overrides in
+   research-os.css also match on <html> at runtime. The locale type tokens are
+   repeated on the <main lang> element below so that the scope changes in the same
+   render as the language select, before the effect has updated <html>. This file
+   lays the page out and carries that locale type scope. */
 
 html[data-global-not-found] * {
   box-sizing: border-box;
@@ -16,115 +17,133 @@ html[data-global-not-found] body {
   min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: max(24px, env(safe-area-inset-top))
-    max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
-    max(16px, env(safe-area-inset-left));
-  background: var(--not-found-background);
-  color: var(--not-found-text);
-  font-family: system-ui, Tahoma, Arial, sans-serif;
+  padding-block: max(24px, env(safe-area-inset-top))
+    max(24px, env(safe-area-inset-bottom));
+  /* Both inline edges take the larger inset: the start edge is right in RTL. */
+  padding-inline: max(
+    16px,
+    env(safe-area-inset-left),
+    env(safe-area-inset-right)
+  );
+  background: var(--os-bg);
+  color: var(--os-text);
 }
 .global-not-found {
   width: min(100%, 38rem);
+  /* Re-resolved here, not inherited from <html>: inherited font-family is computed on
+     the root, so the locale tokens below would otherwise never reach the descendants. */
+  font-family: var(--os-font-ui);
 }
+/* Persian and Arabic: Vazirmatn for UI and display type. Redefining the tokens on this
+   element lets the heading, copy, labels, select and os-button all pick them up. */
+.global-not-found:is(:lang(fa), :lang(ar)) {
+  --os-font-ui: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
+  --os-font-display: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
+}
+/* Chinese: the PingFang-first stack for UI and display type. */
+.global-not-found:lang(zh) {
+  --os-font-ui:
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
+    system-ui, sans-serif;
+  --os-font-display:
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
+    system-ui, sans-serif;
+}
+/* Solid tile in --os-surface; the glyph takes --os-text through currentColor, so it
+   contrasts with the tile in both themes and in forced-colours mode. */
 .global-not-found-mark {
   display: inline-grid;
   place-items: center;
   width: 60px;
   height: 60px;
-  border-radius: 18px;
-  background: #e5f1ff;
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  background: var(--os-surface);
+  color: var(--os-text);
+}
+.global-not-found-glyph {
+  display: block;
+  width: 36px;
+  height: 36px;
+  flex: none;
+}
+/* The text column reads from the start edge, so the vortex shares that edge rather
+   than floating centred above it. Rings run from --i 0 to 20 (14px steps), so the
+   widest is 280px and the box is that width: the outer ring sits on the start edge,
+   with only its perspective bulge (a few px) beyond it. The base rule in
+   signal-vortex.css centres the box (margin-inline auto); this override pins the
+   inline-start edge, and restates the block margins so the override is complete on
+   its own. The locale 404 keeps its own centred vortex through the base rule. */
+.global-not-found .signal-vortex {
+  width: min(100%, 280px);
+  margin-block-start: var(--space-8);
+  margin-block-end: 0;
+  margin-inline: 0 auto;
 }
 .global-not-found-code {
-  margin: 32px 0 12px;
-  color: var(--not-found-link);
-  font-family: ui-monospace, monospace;
+  /* Digits stay LTR, but the block takes only its own width so it sits on the column's
+     start edge in RTL too; a full-width LTR block would put "404" left of the heading. */
+  width: fit-content;
+  margin: var(--space-8) 0 var(--space-3);
+  color: var(--os-accent);
+  font-family: var(--os-font-mono);
+  font-size: var(--text-s);
 }
 .global-not-found h1 {
   margin: 0;
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1.2;
+  color: var(--os-text);
+  font-family: var(--os-font-display);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: 1.15;
   overflow-wrap: anywhere;
 }
 .global-not-found-description {
   max-width: 36rem;
-  margin: 20px 0 28px;
-  color: var(--not-found-secondary);
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  margin: var(--space-6) 0 var(--space-8);
+  color: var(--os-muted);
+  font-size: var(--text-reading);
+  line-height: 1.75;
+}
+.global-not-found-description:lang(zh) {
+  line-height: 1.8;
+}
+.global-not-found-description:is(:lang(fa), :lang(ar)) {
+  line-height: 1.95;
 }
 .global-not-found-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-}
-/* Action buttons after "stale-rattlesnake-87" by cssbuttons-io, Uiverse.io (MIT). */
-.global-not-found-actions a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 1.3em 3em;
-  border: none;
-  border-radius: 45px;
-  color: #000;
-  background: #fff;
-  box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  line-height: 1.3;
-  transition: all 0.3s ease 0s;
-}
-.global-not-found-actions a:is(:hover, :focus-visible) {
-  background: #2363d1;
-  box-shadow: 0 15px 20px rgb(35 99 209 / 40%);
-  color: #fff;
-  transform: translateY(-7px);
-}
-.global-not-found-actions a:active {
-  transform: translateY(-1px);
-}
-.global-not-found-actions a:is(:lang(fa), :lang(ar), :lang(zh)) {
-  letter-spacing: normal;
-  text-transform: none;
-  font-size: 13px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .global-not-found-actions a {
-    transition: none;
-  }
-  .global-not-found-actions a:is(:hover, :focus-visible, :active) {
-    transform: none;
-  }
+  gap: var(--space-3);
 }
 .global-not-found-language {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block-start: var(--space-8);
 }
 .global-not-found-language label {
-  color: var(--not-found-secondary);
+  color: var(--os-muted);
+  font-size: var(--text-s);
 }
 .global-not-found-language select {
-  max-width: 100%;
+  max-inline-size: 100%;
   min-height: 44px;
-  border: 1px solid var(--not-found-border);
-  border-radius: 10px;
-  padding: 8px 12px;
-  color: var(--not-found-text);
-  background: var(--not-found-surface);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
+  background: var(--os-surface);
+  color: var(--os-text);
   font: inherit;
-  font-size: 16px;
+  /* 16px stops iOS zooming the page when the select is focused. */
+  font-size: 1rem;
 }
 .global-not-found-locales {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 12px;
-  margin-top: 20px;
+  gap: 4px var(--space-3);
+  margin-block-start: var(--space-4);
 }
 .global-not-found-locales a {
   display: inline-flex;
@@ -132,41 +151,4 @@ html[data-global-not-found] body {
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  color: var(--not-found-link);
-  text-underline-offset: 4px;
-}
-.global-not-found :is(a, select):focus-visible {
-  outline: 3px solid var(--not-found-link);
-  outline-offset: 4px;
-}
-.global-not-found a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-html[data-global-not-found][data-appearance="light"] {
-  color-scheme: light;
-  --not-found-background: #f2f7ff;
-  --not-found-surface: #fff;
-  --not-found-text: #13233a;
-  --not-found-secondary: #435a76;
-  --not-found-border: #75859b;
-  --not-found-link: #1d4ed8;
-}
-
-@media (forced-colors: active) {
-  html[data-global-not-found][data-appearance],
-  html[data-global-not-found]:not([data-appearance]) {
-    --not-found-background: Canvas;
-    --not-found-surface: Canvas;
-    --not-found-text: CanvasText;
-    --not-found-secondary: CanvasText;
-    --not-found-border: ButtonText;
-    --not-found-link: LinkText;
-  }
-  .global-not-found-actions a:first-child {
-    border-color: ButtonText;
-    background: ButtonFace;
-    color: ButtonText;
-  }
 }

@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
     <div className="relative" ref={containerRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 border border-cyan/15 hover:border-cyan/40 text-[10px] font-mono uppercase tracking-widest text-text-meta hover:text-cyan transition-all bg-cyber-dark/30 rounded-sm"
+        className="flex items-center gap-2 px-3 py-1.5 border border-cyan/15 hover:border-cyan/40 text-xs font-mono text-text-meta hover:text-cyan transition-all bg-cyber-dark/30 rounded-sm"
         aria-label={`${locales[currentLocale].label}, ${t.common.select_language}`}
         aria-haspopup="menu"
         aria-expanded={isOpen}
@@ -77,7 +77,7 @@ export function LanguageSwitcher() {
                       {locales[locale].label}
                     </span>
                     {currentLocale === locale && (
-                      <span className="text-[8px] opacity-50">
+                      <span className="text-xs opacity-50">
                         {t.common.language_selected}
                       </span>
                     )}

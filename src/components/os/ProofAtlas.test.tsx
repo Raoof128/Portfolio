@@ -132,6 +132,31 @@ describe("Proof Atlas", () => {
     );
   });
 
+  it("paints every node label after the connector layer so its halo masks crossings", () => {
+    // New guard for the label halo: a label painted before the connectors would be struck through.
+    const { container } = render(<ProofAtlas locale="en" interactive />);
+    const svg = container.querySelector("svg")!;
+    const connectors = svg.querySelector(".proof-atlas-lines")!;
+    const labels = svg.querySelectorAll(".proof-atlas-node text");
+    expect(labels.length).toBeGreaterThan(0);
+    for (const label of labels) {
+      expect(
+        connectors.compareDocumentPosition(label) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+    }
+  });
+
+  it("keeps the Spanish Tool gate label above its plate so the Output plate cannot cover it", () => {
+    // Spanish "Puerta de herramientas" is about 157 units wide; below the node it runs under the Output plate at x 500.
+    const { container } = render(<ProofAtlas locale="es" interactive />);
+    const label = Array.from(container.querySelectorAll("svg text")).find(
+      (text) => text.textContent === "Puerta de herramientas",
+    );
+    expect(label).toBeDefined();
+    expect(Number(label!.getAttribute("y"))).toBeLessThan(0);
+  });
+
   it("exposes the localized diagram description through the SVG accessible name", () => {
     const { container } = render(<ProofAtlas locale="fa" interactive />);
     const svg = screen.getByRole("img");

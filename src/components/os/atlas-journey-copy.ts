@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n";
 
 const journeyCopy: Record<Locale, { explore: string; review: string }> = {
-  en: { explore: "Explore the lab", review: "Review my research" },
+  en: { explore: "Explore the Lab", review: "Review My Research" },
   fa: { explore: "کاوش در آزمایشگاه", review: "مرور پژوهش‌ها" },
   ar: { explore: "استكشف المختبر", review: "راجع أبحاثي" },
   es: {

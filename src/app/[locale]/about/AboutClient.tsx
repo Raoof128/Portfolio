@@ -193,7 +193,7 @@ export function AboutClient() {
   };
 
   return (
-    <div className="os-about">
+    <div className="os-support os-about">
       <section
         className="os-about-profile"
         aria-labelledby={contentId("about-heading")}
@@ -208,13 +208,13 @@ export function AboutClient() {
             <p>{t.about.bio_3}</p>
           </div>
           <div className="os-support-actions">
-            <Link href={getPath("/contact")} className="os-support-primary">
+            <Link href={getPath("/contact")} className="os-button">
               {t.about.connect}
-              <ArrowUpRight aria-hidden="true" size={16} />
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />
             </Link>
-            <Link href={getPath("/resume")} className="os-support-link">
+            <Link href={getPath("/resume")} className="os-button--secondary">
               {t.about.view_resume}
-              <ArrowUpRight aria-hidden="true" size={16} />
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />
             </Link>
           </div>
         </div>
@@ -238,7 +238,7 @@ export function AboutClient() {
                 <p>{t.about.photo_unavailable}</p>
                 <button
                   type="button"
-                  className="os-support-link"
+                  className="os-button--secondary"
                   onClick={handlePhotoRetry}
                 >
                   {t.about.retry_photo}
@@ -255,22 +255,25 @@ export function AboutClient() {
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
               <Github aria-hidden="true" size={17} />
               <span>github.com/Raoof128</span>
-              <ArrowUpRight aria-hidden="true" size={14} />
+              <span className="sr-only">{copy.opensInNewTab}</span>
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={14} />
             </a>
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
               <Linkedin aria-hidden="true" size={17} />
               <span>LinkedIn</span>
-              <ArrowUpRight aria-hidden="true" size={14} />
+              <span className="sr-only">{copy.opensInNewTab}</span>
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={14} />
             </a>
             <a href={ORCID_URL} target="_blank" rel="noopener noreferrer">
               <Fingerprint aria-hidden="true" size={17} />
               <span>ORCID</span>
-              <ArrowUpRight aria-hidden="true" size={14} />
+              <span className="sr-only">{copy.opensInNewTab}</span>
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={14} />
             </a>
             <a href={`mailto:${CONTACT_EMAIL_GMAIL}`}>
               <Mail aria-hidden="true" size={17} />
               <span dir="ltr">{CONTACT_EMAIL_GMAIL}</span>
-              <ArrowUpRight aria-hidden="true" size={14} />
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={14} />
             </a>
           </div>
         </aside>
@@ -340,9 +343,9 @@ export function AboutClient() {
           <h2 id={contentId("about-operations")}>
             {t.about.active_operations}
           </h2>
-          <Link href={getPath("/lab")} className="os-support-link">
+          <Link href={getPath("/lab")} className="os-button--secondary">
             {t.lab.enter_lab}
-            <ArrowUpRight aria-hidden="true" size={16} />
+            <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />
           </Link>
         </div>
         <div className="os-about-labs">
@@ -355,7 +358,10 @@ export function AboutClient() {
                 <h3>{lab.title}</h3>
                 <p>{lab.tags.join(" · ")}</p>
               </div>
-              <span className="os-about-status" data-status={lab.status}>
+              <span
+                className="os-status"
+                data-state={lab.status === "ACTIVE" ? "active" : "inactive"}
+              >
                 {statusLabel(lab.status)}
               </span>
             </article>

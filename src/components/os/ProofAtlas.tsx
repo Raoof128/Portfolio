@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
-  type CSSProperties,
   type PointerEvent,
 } from "react";
 import type { Locale } from "@/i18n";
@@ -49,6 +48,8 @@ type AtlasNode = Point & {
   id: string;
   label: string;
   kind?: "boundary" | "evidence";
+  /** Baseline of the label relative to the node. Defaults to below the node. */
+  labelY?: number;
 };
 type AtlasEdge = { id: string; from: string; to: string; kind?: "evidence" };
 type AtlasMap = { nodes: AtlasNode[]; edges: AtlasEdge[] };
@@ -65,7 +66,15 @@ const maps: Record<AtlasProject, AtlasMap> = {
         y: 54,
         kind: "boundary",
       },
-      { id: "tool", label: "Tool gate", x: 407, y: 75, kind: "boundary" },
+      {
+        id: "tool",
+        label: "Tool gate",
+        x: 407,
+        y: 75,
+        kind: "boundary",
+        // Above the plate: below it, the longer Spanish label runs under the Output plate at x 500.
+        labelY: -36,
+      },
       {
         id: "output",
         label: "Output firewall",
@@ -220,7 +229,6 @@ export function ProofAtlas({
   const titleId = useId();
   const svgTitleId = useId();
   const descriptionId = useId();
-  const gradientId = useId();
   const frameRef = useRef<SVGSVGElement>(null);
   const frameRequest = useRef<number | null>(null);
   const atlas = maps[selected];
@@ -296,7 +304,6 @@ export function ProofAtlas({
         aria-labelledby={isDecorative ? undefined : svgTitleId}
         aria-describedby={isDecorative ? undefined : descriptionId}
         aria-hidden={isDecorative || undefined}
-        style={{ "--atlas-gradient": `url(#${gradientId})` } as CSSProperties}
         onPointerMove={isInteractive ? moveWithPointer : undefined}
         onPointerLeave={isInteractive ? resetPointer : undefined}
       >
@@ -306,13 +313,6 @@ export function ProofAtlas({
             <desc id={descriptionId}>{copy.diagramDescription[selected]}</desc>
           </>
         )}
-        <defs>
-          <linearGradient id={gradientId} x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stopColor="var(--atlas-blue)" />
-            <stop offset="0.55" stopColor="var(--atlas-teal)" />
-            <stop offset="1" stopColor="var(--atlas-gold)" />
-          </linearGradient>
-        </defs>
         <g
           className={`proof-atlas-lines${selected === "invisible-window-research" ? " proof-atlas-lines--comparison" : ""}`}
           aria-hidden="true"
@@ -426,7 +426,7 @@ export function ProofAtlas({
                   />
                   <text
                     x="0"
-                    y="43"
+                    y={node.labelY ?? 43}
                     textAnchor="middle"
                     direction={
                       locale === "fa" || locale === "ar" ? "rtl" : "ltr"
@@ -515,7 +515,9 @@ export function ProofAtlas({
           </div>
           <Link className="proof-atlas-link" href={href}>
             {copy.openEvidence}
-            <span aria-hidden="true">↗</span>
+            <span className="proof-atlas-link-arrow" aria-hidden="true">
+              ↗
+            </span>
           </Link>
         </div>
       ) : (

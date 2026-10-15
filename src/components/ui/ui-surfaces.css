@@ -1,0 +1,158 @@
+/* Shared UI surfaces (design system, sections 3.5 and 4). Solid, token-coloured
+   panels: no glass, glow, corner brackets, coloured shadows or hover lift. Every
+   colour comes from the .os-shell tokens in research-os.css. */
+
+.ui-panel {
+  position: relative;
+  padding: var(--space-6);
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  background: var(--os-surface);
+  color: var(--os-text);
+}
+.ui-panel-title {
+  display: block;
+  margin-block-end: var(--space-3);
+  color: var(--os-muted);
+  font-size: var(--text-s);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.ui-card {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6);
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  background: var(--os-surface);
+  color: var(--os-text);
+}
+/* Interactive cards change only their hairline, never lift or glow. */
+.ui-card--interactive {
+  transition: border-color var(--motion-quick) var(--ease-standard);
+}
+.ui-card--interactive:hover {
+  border-color: var(--os-control-line);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ui-card--interactive {
+    transition-duration: 1ms;
+  }
+}
+
+/* Reading typography for rendered markdown. Rules are scoped under .os-shell so
+   they outrank the legacy element rules in research-os.css. */
+.os-shell .ui-markdown {
+  color: var(--os-text);
+  font-family: var(--os-font-ui);
+  font-size: var(--text-reading);
+  line-height: 1.75;
+}
+.os-shell .ui-markdown:lang(zh) {
+  line-height: 1.8;
+}
+.os-shell .ui-markdown:is(:lang(fa), :lang(ar)) {
+  line-height: 1.95;
+}
+.os-shell .ui-markdown p,
+.os-shell .ui-markdown li {
+  color: var(--os-text);
+  line-height: inherit;
+}
+.os-shell .ui-markdown strong {
+  color: var(--os-text);
+}
+.os-shell .ui-markdown h2 {
+  margin-block: var(--space-12) var(--space-4);
+  padding-block-end: var(--space-2);
+  border-bottom: 1px solid var(--os-line);
+  color: var(--os-text);
+  font-family: var(--os-font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.os-shell .ui-markdown h3 {
+  margin-block: var(--space-8) var(--space-3);
+  color: var(--os-text);
+  font-family: var(--os-font-ui);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.os-shell .ui-markdown code {
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+  background: var(--os-code-surface);
+  color: var(--os-code-text);
+  font-family: var(--os-font-mono);
+  font-size: 0.9em;
+}
+.os-shell .ui-markdown pre {
+  margin: 0;
+  padding: var(--space-4);
+  color: var(--os-code-text);
+  font-family: var(--os-font-mono);
+  font-size: var(--text-s);
+  line-height: 1.6;
+}
+.os-shell .ui-markdown pre code {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+}
+.os-shell .ui-markdown blockquote {
+  border-inline-start-color: var(--os-control-line);
+  color: var(--os-muted);
+}
+.os-shell .ui-markdown hr {
+  border: 0;
+  border-top: 1px solid var(--os-line);
+}
+.os-shell .ui-markdown th,
+.os-shell .ui-markdown td {
+  border-bottom: 1px solid var(--os-line);
+  color: var(--os-text);
+}
+.os-shell .ui-markdown th {
+  background: var(--os-elevated);
+  font-family: var(--os-font-ui);
+  font-size: var(--text-s);
+  font-weight: 600;
+}
+.os-shell .ui-markdown table {
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-xs);
+  border-collapse: collapse;
+}
+.os-shell .ui-markdown .ui-code {
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  background: var(--os-code-surface);
+  color: var(--os-code-text);
+  overflow: hidden;
+}
+.os-shell .ui-markdown .ui-code-label {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--os-line);
+  color: var(--os-muted);
+  font-family: var(--os-font-mono);
+  font-size: var(--text-s);
+}
+.os-shell .ui-markdown .ui-marker {
+  color: var(--os-muted);
+}
+/* The bullet is a directional glyph, so it mirrors in right-to-left text. */
+.os-shell .ui-markdown .ui-marker:dir(rtl) {
+  transform: scaleX(-1);
+}
+
+/* Artwork pauses its CSS animations while it is off-screen or inactive. The
+   attribute is set by artwork-pause.ts; reduced motion is handled per artwork. */
+.ui-art[data-art-paused="true"],
+.ui-art[data-art-paused="true"] * {
+  animation-play-state: paused;
+}

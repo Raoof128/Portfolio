@@ -101,7 +101,7 @@ export function SecureContactForm() {
       <div
         className={`absolute top-0 left-0 w-full h-1 transition-colors duration-300 ${
           status === "TYPING"
-            ? "bg-red-500 animate-pulse"
+            ? "bg-red-500"
             : status === "ERROR"
               ? "bg-amber-500"
               : "bg-cyan/50"
@@ -231,7 +231,7 @@ export function SecureContactForm() {
             className="px-6"
             disabled={status === "OPENING" || status === "DRAFT_OPENED"}
           >
-            <Send className="w-3 h-3 mr-2" />{" "}
+            <Send className="w-3 h-3 me-2" />{" "}
             {status === "OPENING"
               ? t.contact_form.cta_encrypting
               : status === "DRAFT_OPENED"

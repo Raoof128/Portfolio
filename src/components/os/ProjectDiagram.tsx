@@ -1,8 +1,30 @@
+import type { ReactNode } from "react";
 import { ArrowRight, FileText, GitBranch, ShieldCheck } from "lucide-react";
 import type { Project } from "@/lib/data";
 import type { Locale } from "@/i18n";
 import { formatNumber } from "@/i18n/format";
 import type { ProjectDiagramCopy } from "@/lib/project-content/types";
+
+/** A schematic screen with a browser window; its bars are decorative. */
+function DisplayMock({
+  desktop,
+  children,
+}: {
+  desktop: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="os-diagram-screen">
+      <div className="os-diagram-browser">
+        <span>{desktop}</span>
+        <i aria-hidden="true" />
+        <i aria-hidden="true" />
+        <i aria-hidden="true" />
+      </div>
+      {children}
+    </div>
+  );
+}
 
 /** These diagrams explain documented components; they are not measured traces. */
 export function ProjectDiagram({
@@ -65,19 +87,13 @@ export function ProjectDiagram({
         </figcaption>
         <div className="os-diagram-displays">
           <div>
-            <div className="os-diagram-screen">
-              <div className="os-diagram-browser">
-                <span>{copy.desktop}</span>
-                <i />
-                <i />
-                <i />
-              </div>
+            <DisplayMock desktop={copy.desktop}>
               <div className="os-diagram-excluded-window">
                 {copy.excludedWindow}
                 <br />
                 <small>{copy.visibleToPerson}</small>
               </div>
-            </div>
+            </DisplayMock>
             <strong>{copy.physicalDisplay}</strong>
           </div>
           <ArrowRight
@@ -86,19 +102,13 @@ export function ProjectDiagram({
             aria-hidden="true"
           />
           <div>
-            <div className="os-diagram-screen">
-              <div className="os-diagram-browser">
-                <span>{copy.desktop}</span>
-                <i />
-                <i />
-                <i />
-              </div>
+            <DisplayMock desktop={copy.desktop}>
               <div className="os-diagram-omitted-window">
                 {copy.omittedWindow}
                 <br />
                 <small>{copy.capturePipeline}</small>
               </div>
-            </div>
+            </DisplayMock>
             <strong>{copy.capturedFrame}</strong>
           </div>
         </div>

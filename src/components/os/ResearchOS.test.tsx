@@ -235,8 +235,9 @@ describe("current application window", () => {
 
   it("switches appearance with a power switch that is on in dark mode", () => {
     render(shell());
+    // The switch name is static and localised; its state is aria-checked and visible text.
     const toggle = screen.getByRole("switch", {
-      name: `${copy.theme}: ${copy.dark}`,
+      name: copy.darkAppearance,
     });
     const shellElement = document.querySelector(".os-shell")!;
     expect(shellElement).toHaveAttribute("data-appearance", "dark");
@@ -527,7 +528,8 @@ function desktopElements(container: HTMLElement) {
 }
 
 function openSearch() {
-  const launcher = screen.getByRole("button", { name: /^Search \(Ctrl/ });
+  // The name is the visible label; the platform shortcut lives in aria-keyshortcuts.
+  const launcher = screen.getByRole("button", { name: copy.search });
   launcher.focus();
   fireEvent.click(launcher);
   const dialog = screen.getByRole("dialog", { name: copy.search });
@@ -633,7 +635,8 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(
       screen.queryByRole("button", { name: getWindowCopy("en").moveLeft }),
     ).toBeNull();
-    fireEvent.click(screen.getByRole("button", { name: /^Restore window:/ }));
+    // Title case per the design system (en restoreWindow changed to "Restore Window").
+    fireEvent.click(screen.getByRole("button", { name: /^Restore Window:/ }));
     flushFrames();
     expect(
       screen.queryByRole("button", { name: getWindowCopy("en").moveLeft }),
@@ -680,7 +683,7 @@ describe("ResearchOS workspace lifecycle", () => {
       screen.getByRole("button", { name: getWindowCopy("en").minimize }),
     );
     flushFrames();
-    const task = screen.getByRole("button", { name: /^Restore window:/ });
+    const task = screen.getByRole("button", { name: /^Restore Window:/ });
     expect(task).toHaveFocus();
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(screen.queryByRole("textbox", { name: "Draft" })).toBeNull();
@@ -753,7 +756,7 @@ describe("ResearchOS workspace lifecycle", () => {
     flushFrames();
     expect(screen.getByRole("heading", { name: "Contact" })).toBeVisible();
     expect(
-      screen.queryByRole("button", { name: /^Restore window:/ }),
+      screen.queryByRole("button", { name: /^Restore Window:/ }),
     ).toBeNull();
   });
 

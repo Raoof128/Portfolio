@@ -1,0 +1,108 @@
+/* Terminal card (design system, section 4). A flat code surface with hairline
+   edges: no blur, no typewriter, no glow. Every selector carries the `.os-shell`
+   prefix so it outranks the shared control and page rules. The legacy showcase.css
+   terminal styling has been retired, so nothing here needs to override it. */
+
+.os-shell .os-terminal {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--os-line);
+  border-radius: var(--radius-m);
+  color: var(--os-code-text);
+  background: var(--os-code-surface);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  text-align: start;
+}
+
+.os-shell .os-terminal-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-3);
+}
+
+.os-shell .os-terminal-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  color: var(--os-code-text);
+  font-family: var(--os-font-ui);
+  font-size: var(--text-s);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.os-shell .os-terminal-title svg {
+  flex: none;
+  color: var(--os-muted);
+}
+
+/* The copy button is the shared secondary control; desktop uses the compact
+   32px height, coarse pointers keep the shared 44px touch target. */
+.os-shell .os-terminal .os-terminal-copy {
+  gap: var(--space-2);
+  padding-inline: var(--space-3);
+  font-size: var(--text-s);
+}
+
+@media (pointer: fine) {
+  .os-shell .os-terminal .os-terminal-copy {
+    min-height: 32px;
+  }
+}
+
+.os-shell .os-terminal-body {
+  margin: 0;
+  padding: var(--space-3) 0 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  white-space: pre;
+  color: var(--os-code-text);
+  background: transparent;
+  font-family: var(--os-font-mono);
+  font-size: var(--text-s);
+  line-height: 1.7;
+  scrollbar-width: thin;
+  scrollbar-color: var(--os-muted) transparent;
+}
+
+.os-shell .os-terminal-body code {
+  display: block;
+  font: inherit;
+  white-space: pre;
+}
+
+.os-shell .os-terminal-body code + code {
+  margin-block-start: var(--space-1);
+}
+
+.os-shell .os-terminal-body code::before {
+  content: "$ ";
+  color: var(--os-muted);
+  user-select: none;
+}
+
+.os-shell .os-terminal-body:focus-visible {
+  outline: 2px solid var(--os-focus);
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .os-shell .os-terminal {
+    border-color: CanvasText;
+    color: CanvasText;
+    background: Canvas;
+  }
+  .os-shell .os-terminal-body code::before {
+    color: CanvasText;
+  }
+}

@@ -94,7 +94,7 @@ const zh: Dictionary = {
     bio_3:
       "也是 The Invisible Window 的主要作者：在受测 Windows/macOS 实验室配置中实现 100% 屏幕捕获规避，并依据 OWASP/FIRST/CISA 指南负责任地披露。还著有 Aion-BibleQA，一项检索增强 LLM 的引用忠实度基准：R@5 为 0.941，零无依据引用。在 Anthropic 安全评估项目中，通过 Alignerr 于 2026 年评估 Claude 输出的可利用代码与防护绕过情况。是一家孵化器支持的校园 AI 初创公司的联合创始人，专注于通过测量能力提升、界定安全边界和构建防御工具，降低先进 AI 的灾难性风险。",
     stats_projects: "项目",
-    stats_evasion: "规避率",
+    stats_evasion: "测试实验室配置中的规避率",
     stats_vendors: "已通知的厂商",
     connect: "联系我",
     view_resume: "查看简历",
@@ -281,7 +281,7 @@ const zh: Dictionary = {
     proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
     proj5_desc:
       "上线了一个全栈数据平台，配备人工智能推荐引擎、事件驱动的 API 设计、速率限制及自动化安全扫描——从数据库架构到部署基础设施的端到端负责。",
-    proj6_tag: "KOTLINCONF",
+    proj6_tag: "KotlinConf",
     proj6_stack: "Kotlin Multiplatform · 本地机器学习 · Android 与 iOS",
     proj6_desc:
       "构建了具备本地机器学习分类能力的跨平台离线威胁检测工具——已提交至 KotlinConf 全球开发者大会。",

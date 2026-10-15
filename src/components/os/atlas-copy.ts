@@ -19,14 +19,14 @@ type AtlasCopy = {
 
 const copy: Record<Locale, AtlasCopy> = {
   en: {
-    eyebrow: "PROOF ATLAS · SELECTED RESEARCH",
+    eyebrow: "Proof Atlas · Selected research",
     heading: "Where the evidence connects",
-    selectProject: "Select a research map",
-    openEvidence: "Open project evidence",
+    selectProject: "Select a Research Map",
+    openEvidence: "Open Project Evidence",
     welcomeCaption:
       "Three research paths. Each line follows a documented relationship.",
-    journeyExplore: "Explore the lab",
-    journeyReview: "Review my research",
+    journeyExplore: "Explore the Lab",
+    journeyReview: "Review My Research",
     nodeLabels: {
       agent: "Agent",
       input: "Input",
@@ -218,7 +218,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
   },
   es: {
-    eyebrow: "ATLAS DE PRUEBAS · INVESTIGACIÓN",
+    eyebrow: "Atlas de pruebas · Investigación",
     heading: "Conexiones entre evidencias",
     selectProject: "Elige un mapa de investigación",
     openEvidence: "Abrir evidencias del proyecto",

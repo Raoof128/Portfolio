@@ -3,6 +3,7 @@
 import {
   useCallback,
   useEffect,
+  useId,
   useLayoutEffect,
   useRef,
   useState,
@@ -38,6 +39,9 @@ export function ReadingWindowControls({
   floating: boolean;
 }) {
   const copy = getWindowCopy(locale);
+  // Per-instance ids: two reading windows can mount at once.
+  const moveHintId = useId();
+  const resizeHintId = useId();
   const menu = useRef<HTMLDetailsElement>(null);
   const summary = useRef<HTMLElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -171,93 +175,94 @@ export function ReadingWindowControls({
         portalHost &&
         createPortal(
           <div className="os-window-controls-panel" ref={panel}>
+            {/* Step buttons show their words, so the visible text is also the
+                accessible name (WCAG 2.5.3). The legend names the group. */}
             <fieldset
-              aria-describedby="os-move-hint"
+              aria-describedby={moveHintId}
               onKeyDown={(event) => keys(event, "move")}
             >
               <legend>{copy.moveWindow}</legend>
-              <p id="os-move-hint">{copy.moveHint}</p>
-              <div
-                className="os-window-step-controls"
-                aria-describedby="os-move-hint"
-              >
+              <p id={moveHintId}>{copy.moveHint}</p>
+              <div className="os-window-step-controls">
                 <button
-                  className="os-control"
-                  aria-label={copy.moveLeft}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: -24, y: 0 })}
                 >
                   <ArrowLeft aria-hidden="true" />
+                  <span>{copy.moveLeft}</span>
                 </button>
                 <button
-                  className="os-control"
-                  aria-label={copy.moveUp}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: 0, y: -24 })}
                 >
                   <ArrowUp aria-hidden="true" />
+                  <span>{copy.moveUp}</span>
                 </button>
                 <button
-                  className="os-control"
-                  aria-label={copy.moveDown}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: 0, y: 24 })}
                 >
                   <ArrowDown aria-hidden="true" />
+                  <span>{copy.moveDown}</span>
                 </button>
                 <button
-                  className="os-control"
-                  aria-label={copy.moveRight}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: 24, y: 0 })}
                 >
                   <ArrowRight aria-hidden="true" />
+                  <span>{copy.moveRight}</span>
                 </button>
               </div>
             </fieldset>
             <fieldset
-              aria-describedby="os-resize-hint"
+              aria-describedby={resizeHintId}
               onKeyDown={(event) => keys(event, "resize")}
             >
               <legend>{copy.resizeWindow}</legend>
-              <p id="os-resize-hint">{copy.resizeHint}</p>
-              <div
-                className="os-window-step-controls"
-                aria-describedby="os-resize-hint"
-              >
+              <p id={resizeHintId}>{copy.resizeHint}</p>
+              <div className="os-window-step-controls">
                 <button
-                  className="os-control"
-                  aria-label={copy.narrower}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: -24, y: 0 })}
                 >
                   <ChevronsLeftRight aria-hidden="true" />
-                  <span>−</span>
+                  <span>{copy.narrower}</span>
                 </button>
                 <button
-                  className="os-control"
-                  aria-label={copy.wider}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: 24, y: 0 })}
                 >
                   <ChevronsLeftRight aria-hidden="true" />
-                  <span>+</span>
+                  <span>{copy.wider}</span>
                 </button>
                 <button
-                  className="os-control"
-                  aria-label={copy.shorter}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: 0, y: -24 })}
                 >
                   <ChevronsUpDown aria-hidden="true" />
-                  <span>−</span>
+                  <span>{copy.shorter}</span>
                 </button>
                 <button
-                  className="os-control"
-                  aria-label={copy.taller}
+                  type="button"
+                  className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: 0, y: 24 })}
                 >
                   <ChevronsUpDown aria-hidden="true" />
-                  <span>+</span>
+                  <span>{copy.taller}</span>
                 </button>
               </div>
             </fieldset>
             <div className="os-window-controls-footer">
               <button
-                className="os-control"
+                type="button"
+                className="os-button os-button--secondary"
                 disabled={!floating}
                 onClick={() => {
                   close();
@@ -267,7 +272,11 @@ export function ReadingWindowControls({
                 <RotateCcw aria-hidden="true" />
                 <span>{copy.resetPosition}</span>
               </button>
-              <button className="os-control" onClick={() => close()}>
+              <button
+                type="button"
+                className="os-button"
+                onClick={() => close()}
+              >
                 <Check aria-hidden="true" />
                 <span>{copy.done}</span>
               </button>

@@ -5,6 +5,8 @@ import {
   GlobalNotFoundContent,
   type NotFoundCopy,
 } from "@/components/os/GlobalNotFoundContent";
+import "@/components/os/controls.css";
+import "@/components/os/research-os.css";
 import "./global-not-found.css";
 
 export const metadata: Metadata = {
@@ -35,7 +37,7 @@ export default async function GlobalNotFound() {
 
   // Global 404s bypass the dynamic locale layout and require their own complete document.
   return (
-    <html lang="en" dir="ltr" data-global-not-found="true">
+    <html lang="en" dir="ltr" className="os-shell" data-global-not-found="true">
       <body>
         <GlobalNotFoundContent copies={copies} />
       </body>

@@ -1,7 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_APPEARANCE,
+  appearanceStorageKey,
   readAppearance,
+  readStoredAppearance,
   writeAppearance,
 } from "./appearance";
 
@@ -39,5 +41,22 @@ describe("workspace appearance", () => {
     writeAppearance("light");
     expect(readAppearance()).toBe("light");
     writeAppearance("dark");
+  });
+
+  it("exports the storage key that the shell reads through readStoredAppearance", () => {
+    // The shell must not keep its own copy of the key; the literal is pinned here once.
+    expect(appearanceStorageKey).toBe("researchos.appearance.v1");
+    expect(readStoredAppearance()).toBeNull();
+    window.localStorage.setItem(appearanceStorageKey, "light");
+    expect(readStoredAppearance()).toBe("light");
+    window.localStorage.setItem(appearanceStorageKey, "system");
+    expect(readStoredAppearance()).toBeNull();
+  });
+
+  it("reports no stored choice when storage cannot be read", () => {
+    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+      throw new DOMException("Storage unavailable", "SecurityError");
+    });
+    expect(readStoredAppearance()).toBeNull();
   });
 });

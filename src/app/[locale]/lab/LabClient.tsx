@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { GlowCard } from "@/components/ui/GlowCard";
 import type { LabExperiment } from "@/lib/data";
 import { AlertTriangle, Beaker, GitBranch, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
+import { getPageSupportCopy } from "@/lib/page-support-copy";
+import "@/components/os/supporting-apps.css";
 
 export function LabClient({
   experiments,
@@ -14,6 +14,7 @@ export function LabClient({
   experiments: Omit<LabExperiment, "codeSnippet">[];
 }) {
   const { locale, t } = useTranslation();
+  const copy = getPageSupportCopy(locale);
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -28,107 +29,68 @@ export function LabClient({
         : t.about.status_concept;
 
   return (
-    <div className="os-legacy relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection>
-          <div className="mb-12">
-            <div className="flex items-center space-x-2 text-cyan mb-2">
-              <Beaker className="w-4 h-4" />
-              <span className="font-mono text-xs tracking-widest uppercase text-cyan/70">
-                {t.lab_page.experimental_division}
+    <div className="os-support os-lab">
+      <div className="os-lab-header">
+        <span className="os-eyebrow-row">
+          <Beaker aria-hidden="true" size={16} />
+          {t.lab_page.experimental_division}
+        </span>
+        <h1>{t.lab_page.title}</h1>
+        <p className="os-prose">
+          {t.lab_page.description_1} <strong>{t.lab_page.description_2}</strong>
+          {t.lab_page.description_3}
+        </p>
+      </div>
+
+      <div className="os-lab-grid">
+        {experiments.map((exp) => (
+          <article key={exp.id} className="os-lab-card">
+            <div className="os-lab-card-head">
+              <span className="os-lab-id">
+                {t.lab_page.id_label} <bdi dir="ltr">{exp.id}</bdi>
+              </span>
+              <span
+                className="os-status"
+                data-state={exp.status === "ACTIVE" ? "active" : "inactive"}
+              >
+                {statusLabel(exp.status)}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              {t.lab_page.title}
-            </h1>
-            <p className="text-text-body max-w-2xl">
-              {t.lab_page.description_1}{" "}
-              <span className="text-cyan">{t.lab_page.description_2}</span>
-              {t.lab_page.description_3}
-            </p>
-          </div>
-        </AnimatedSection>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {experiments.map((exp) => (
-            <div key={exp.id}>
-              <GlowCard
-                glowColor={
-                  exp.status === "ACTIVE"
-                    ? "cyan"
-                    : exp.status === "CONCEPT"
-                      ? "amber"
-                      : "purple"
-                }
-                className="p-6 group hover:bg-cyber-gray/50 h-full flex flex-col"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="font-mono text-xs text-text-meta">
-                    {t.lab_page.id_label} <bdi dir="ltr">{exp.id}</bdi>
-                  </div>
-                  <div
-                    className={`px-2 py-0.5 rounded text-[10px] font-mono tracking-wider border ${
-                      exp.status === "ACTIVE"
-                        ? "bg-green-500/10 text-green-400 border-green-500/30"
-                        : exp.status === "CONCEPT"
-                          ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
-                          : "os-status-neutral bg-cyber-gray border-cyan/15"
-                    }`}
-                  >
-                    {statusLabel(exp.status)}
-                  </div>
-                </div>
-                <h2 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">
-                  {exp.title}
-                </h2>
-                <p className="text-text-body text-sm leading-relaxed mb-6 flex-grow">
-                  {exp.description}
-                </p>
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[10px] font-mono px-1.5 py-0.5 bg-cyan/5 text-text-body rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    href={getPath(`/lab/${exp.id}`)}
-                    className="flex items-center text-xs font-mono text-cyan hover:underline decoration-dotted"
-                  >
-                    {t.lab_page.view_analysis}
-                    {/* Forward arrow: up-right in LTR, mirrored to up-left in RTL. */}
-                    <ArrowUpRight className="w-3 h-3 ms-1 rtl:-scale-x-100" />
-                  </Link>
-                </div>
-              </GlowCard>
-            </div>
-          ))}
-
-          <div>
-            <a
-              href="https://github.com/Raoof128"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="os-reading-card border border-dashed border-cyber-gray rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-cyan/30 transition-[border-color,box-shadow,transform,opacity] duration-150 h-full group cursor-pointer block"
+            <h2>{exp.title}</h2>
+            <p>{exp.description}</p>
+            <ul className="os-lab-tech">
+              {exp.tech.map((tech) => (
+                <li key={tech} className="os-chip">
+                  {tech}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={getPath(`/lab/${exp.id}`)}
+              className="os-text-link os-lab-analysis"
             >
-              <div className="w-10 h-10 rounded-full bg-cyber-gray group-hover:bg-cyan/10 flex items-center justify-center mb-3 transition-colors">
-                <GitBranch className="w-5 h-5 text-text-body group-hover:text-cyan transition-colors" />
-              </div>
-              <p className="text-sm text-text-body font-mono group-hover:text-cyan transition-colors">
-                {t.lab_page.more_on_github}
-              </p>
-            </a>
-          </div>
-        </div>
+              {t.lab_page.view_analysis}
+              {/* Forward arrow: up-right in LTR, mirrored to up-left in RTL. */}
+              <ArrowUpRight className="os-flip" aria-hidden="true" size={14} />
+            </Link>
+          </article>
+        ))}
 
-        <div className="mt-16 border-t border-cyan/10 pt-8 flex items-center justify-center gap-2 text-xs text-text-meta font-mono">
-          <AlertTriangle className="w-3 h-3 text-yellow-600/50" />
-          <span>{t.lab_page.risk_disclaimer}</span>
-        </div>
+        <a
+          href="https://github.com/Raoof128"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="os-lab-card os-lab-card--link"
+        >
+          <GitBranch aria-hidden="true" size={20} />
+          <p>{t.lab_page.more_on_github}</p>
+          <span className="sr-only">{copy.opensInNewTab}</span>
+        </a>
+      </div>
+
+      <div className="os-lab-footnote">
+        <AlertTriangle aria-hidden="true" size={16} />
+        <p>{t.lab_page.risk_disclaimer}</p>
       </div>
     </div>
   );

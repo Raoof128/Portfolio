@@ -54,19 +54,22 @@ type EvidenceStory =
   | { kind: "invisible-window"; copy: InvisibleWindowStoryCopy }
   | { kind: "zurvan"; copy: ZurvanEvidenceStoryCopy };
 
+/** One primary action per dossier header; every other resource stays secondary. */
 function ResourceLink({
   href,
   children,
   download = false,
+  primary = false,
 }: {
   href: string;
   children: ReactNode;
   download?: boolean;
+  primary?: boolean;
 }) {
   const external = /^https?:\/\//.test(href);
   return (
     <a
-      className="os-project-resource"
+      className={primary ? "os-button" : "os-project-resource"}
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
@@ -76,7 +79,7 @@ function ResourceLink({
       {download ? (
         <Download size={15} aria-hidden="true" />
       ) : (
-        <ArrowUpRight size={15} aria-hidden="true" />
+        <ArrowUpRight className="os-icon-flip" size={15} aria-hidden="true" />
       )}
     </a>
   );
@@ -165,8 +168,14 @@ export function ProjectDetailClient({
               role="group"
               aria-label={t.project_detail.project_links}
             >
+              {project.links.paper && (
+                <ResourceLink href={project.links.paper} download primary>
+                  {t.project_detail.download_paper}
+                </ResourceLink>
+              )}
               {project.links.repo && (
                 <ResourceLink
+                  primary={!project.links.paper}
                   href={
                     project.links.repoVisibility === "private"
                       ? `mailto:${CONTACT_EMAIL_GMAIL}?subject=${encodeURIComponent(`${t.project_detail.request_source}: ${project.title}`)}`
@@ -183,11 +192,6 @@ export function ProjectDetailClient({
                   {t.project_detail.demo}
                 </ResourceLink>
               )}
-              {project.links.paper && (
-                <ResourceLink href={project.links.paper} download>
-                  {t.project_detail.download_paper}
-                </ResourceLink>
-              )}
               {project.links.preprint && (
                 <ResourceLink href={project.links.preprint}>
                   {t.project_detail.read_preprint}
@@ -198,18 +202,17 @@ export function ProjectDetailClient({
                   {t.project_detail.doi_record}
                 </ResourceLink>
               )}
-              {slug === "project-simurgh" && (
-                <ResourceLink href="https://github.com/Raoof128/Project-Simurgh/blob/main/scripts/reproduce-vca-chain.sh">
-                  {t.common.reproduce}
-                </ResourceLink>
-              )}
               {project.links.caseStudy && (
                 <Link
                   className="os-project-resource"
                   href={getPath(project.links.caseStudy)}
                 >
                   {t.common.case_study}
-                  <ArrowUpRight size={15} aria-hidden="true" />
+                  <ArrowUpRight
+                    className="os-icon-flip"
+                    size={15}
+                    aria-hidden="true"
+                  />
                 </Link>
               )}
             </div>
@@ -299,8 +302,11 @@ export function ProjectDetailClient({
                   <bdi>{formatNumber(paperEntries.length, locale)}</bdi>
                 </span>
               </div>
-              {paperEntries.map((paper) => (
-                <article key={paper.href} className="os-project-paper">
+              {paperEntries.map((paper, index) => (
+                <article
+                  key={`${index}-${paper.href}`}
+                  className="os-project-paper"
+                >
                   <div className="os-project-row-meta">
                     <span>{paper.label}</span>
                     {paper.status && <span>{paper.status}</span>}

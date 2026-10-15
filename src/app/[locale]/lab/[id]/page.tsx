@@ -85,7 +85,8 @@ function buildLabJsonLd(
     headline: exp.title,
     name: exp.title,
     description: exp.description,
-    datePublished: SITE_LAST_MODIFIED,
+    // No per-experiment publish date exists, so datePublished is omitted
+    // rather than reusing the site-wide modification date.
     dateModified: SITE_LAST_MODIFIED,
     inLanguage: locale,
     author: AUTHOR,

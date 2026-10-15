@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Chakra_Petch, JetBrains_Mono, Vazirmatn } from "next/font/google";
+import { JetBrains_Mono, Vazirmatn } from "next/font/google";
 import "../globals.css";
 import {
   CONTACT_EMAIL_GMAIL,
@@ -24,13 +24,6 @@ import {
   TWITTER_IMAGE,
 } from "@/lib/seo";
 
-const chakraPetch = Chakra_Petch({
-  variable: "--font-chakra-petch",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  preload: false,
-});
-
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
@@ -38,9 +31,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
-  subsets: ["arabic"],
+  // Latin is included so Latin words and digits in fa and ar text stay in Vazirmatn.
+  subsets: ["arabic", "latin"],
   weight: ["300", "400", "500", "600", "700"],
-  // Arabic/Persian glyph use loads this locally; LTR pages need only the mono preload.
+  // Persian and Arabic load this locally; LTR pages need only the mono preload.
   preload: false,
 });
 
@@ -181,7 +175,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={config.dir}>
       <body
-        className={`${chakraPetch.variable} ${jetbrainsMono.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}
+        className={`${jetbrainsMono.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}
         style={{ fontFamily: config.fontFamily } as React.CSSProperties}
         suppressHydrationWarning
       >

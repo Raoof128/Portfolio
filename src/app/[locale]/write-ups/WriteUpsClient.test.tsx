@@ -6,6 +6,7 @@ import { getDictionary, type Locale } from "@/i18n";
 import { formatDate, formatNumber } from "@/i18n/format";
 import { getLocalizedWriteups } from "@/lib/localized-writing";
 import { getOSCopy } from "@/components/os/os-copy";
+import { getPageSupportCopy } from "@/lib/page-support-copy";
 import { WriteUpsClient } from "./WriteUpsClient";
 import {
   getPublicationSourceLanguageNote,
@@ -88,6 +89,10 @@ describe("localized writing library", () => {
         });
         expect(titleLink).toHaveAttribute("href", publication.href);
         expect(titleLink).toHaveAttribute("rel", "noopener noreferrer");
+        // The new-tab cue is a description, so the accessible name stays the bare title.
+        expect(titleLink).toHaveAccessibleDescription(
+          getPageSupportCopy(locale).opensInNewTab,
+        );
         expect(
           within(card).getByRole("link", {
             name: `${dictionary.common.case_study}: ${publication.projectTitle}`,

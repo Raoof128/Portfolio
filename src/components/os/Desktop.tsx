@@ -64,12 +64,13 @@ export function Desktop({
               <ArrowRight aria-hidden="true" />
             </Link>
             <a
+              className="os-button os-button--secondary"
               href="/Mohammad_Raouf_Abedini_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
               {copy.viewResume}
-              <ExternalLink aria-hidden="true" />
+              <ExternalLink className="os-external-icon" aria-hidden="true" />
             </a>
           </div>
         </section>
@@ -89,7 +90,7 @@ export function Desktop({
               data-app={app}
               href={path(appPaths[app])}
             >
-              <OSIcon app={app} dimensional />
+              <OSIcon app={app} tile />
               <strong>{copy[app]}</strong>
               <small>{hints[app]}</small>
             </Link>

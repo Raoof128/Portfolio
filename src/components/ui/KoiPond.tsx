@@ -1,16 +1,19 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
 const CRIMSON = "#d14c3d";
 const OCHRE = "#df9f43";
 const INK = "#242220";
 const WATER = "#56aed7";
 
-export function KoiPond() {
+export function KoiPond({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="koi-host" aria-hidden="true">
+    <div ref={hostRef} className="koi-host ui-art" aria-hidden="true">
       <div className="koi-container">
         <svg
           viewBox="0 0 200 200"

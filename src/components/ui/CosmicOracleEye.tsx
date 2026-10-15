@@ -1,6 +1,7 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { useArtworkPause, type ArtworkProps } from "./artwork-pause";
 
 const BG = "#11150c";
 const PAGE = "#b2d270";
@@ -8,10 +9,12 @@ const DECK = "#6b8e23";
 const LINE = "#080a05";
 const SPINE = "#485f18";
 
-export function CosmicOracleEye() {
+export function CosmicOracleEye({ active = true }: ArtworkProps = {}) {
   const artworkId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
+  useArtworkPause(hostRef, active);
   return (
-    <div className="coe-host" aria-hidden="true">
+    <div ref={hostRef} className="coe-host ui-art" aria-hidden="true">
       <div className="coe-container">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
