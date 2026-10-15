@@ -206,14 +206,15 @@
   transform-origin: 0 0;
 }
 
+/* Nodes move by transform only, on the shared window timing. */
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-node {
-  transition: transform 560ms var(--ease-standard);
+  transition: transform var(--motion-window) var(--ease-standard);
 }
 
+/* Edges fade by opacity only. Stroke-dash changes are not transitioned, so the
+   connector never animates a layout-adjacent property. */
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-edge {
-  transition:
-    opacity var(--motion-window) ease,
-    stroke-dashoffset 500ms ease;
+  transition: opacity var(--motion-window) var(--ease-standard);
   animation: proof-atlas-line-arrive var(--motion-window) var(--ease-standard)
     both;
 }
@@ -300,9 +301,9 @@
 
 .proof-atlas[data-motion-enabled="true"] .proof-atlas-option {
   transition:
-    color var(--motion-quick) ease,
-    border-color var(--motion-quick) ease,
-    background-color var(--motion-quick) ease;
+    color var(--motion-quick) var(--ease-standard),
+    border-color var(--motion-quick) var(--ease-standard),
+    background-color var(--motion-quick) var(--ease-standard);
 }
 
 .proof-atlas-option:is(:hover, :focus-visible),
@@ -311,8 +312,10 @@
   background: var(--os-accent-tint);
 }
 
+/* The pressed selector is one accent ring on the tint. Its label stays text
+   colour: accent text is reserved for the base and surface tiers, not tints. */
 .proof-atlas-option[aria-pressed="true"] {
-  color: var(--os-accent);
+  color: var(--os-text);
 }
 
 .proof-atlas-summary {
@@ -408,13 +411,20 @@
   .proof-atlas-figure,
   .proof-atlas-node,
   .proof-atlas-edge,
-  .proof-atlas-option,
   .proof-atlas[data-motion-enabled] .proof-atlas-figure,
   .proof-atlas[data-motion-enabled] .proof-atlas-node,
-  .proof-atlas[data-motion-enabled] .proof-atlas-edge,
-  .proof-atlas[data-motion-enabled] .proof-atlas-option {
+  .proof-atlas[data-motion-enabled] .proof-atlas-edge {
     transition: none;
     animation: none;
+  }
+
+  /* Colour changes stay, as quick colour-only transitions. No transform. */
+  .proof-atlas-option,
+  .proof-atlas[data-motion-enabled] .proof-atlas-option {
+    transition:
+      color var(--motion-quick) var(--ease-standard),
+      border-color var(--motion-quick) var(--ease-standard),
+      background-color var(--motion-quick) var(--ease-standard);
   }
 }
 

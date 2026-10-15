@@ -3,12 +3,15 @@
    reading surfaces stay opaque (design system, sections 2 and 3.3). */
 .os-shell {
   --os-glass: rgb(17 27 43 / 88%);
+  /* Dense glass sits behind text-bearing bars only (top bar and window bar). */
+  --os-glass-dense: rgb(17 27 43 / 92%);
   --os-glass-rim: rgb(190 222 255 / 22%);
   --os-glass-highlight: rgb(231 246 255 / 18%);
   --os-dock-selection: rgb(255 255 255 / 10%);
 }
 .os-shell[data-appearance="light"] {
   --os-glass: rgb(255 255 255 / 90%);
+  --os-glass-dense: rgb(255 255 255 / 94%);
   --os-glass-rim: rgb(36 75 124 / 14%);
   --os-glass-highlight: rgb(255 255 255 / 95%);
   --os-dock-selection: rgb(0 105 187 / 9%);
@@ -28,6 +31,12 @@
   backdrop-filter: blur(20px) saturate(1.2);
   border: 1px solid var(--os-glass-rim);
   box-shadow: inset 0 1px 0 var(--os-glass-highlight);
+}
+/* Dense glass for the text-bearing bars. Placed after the shared recipe so it wins the
+   background; the dock keeps the thin --os-glass because it holds glyphs only. */
+.os-topbar,
+.os-windowbar {
+  background: var(--os-glass-dense);
 }
 .os-brand svg {
   width: 26px;
@@ -62,6 +71,7 @@
   .os-shell,
   .os-shell[data-appearance="light"] {
     --os-glass: var(--os-surface);
+    --os-glass-dense: var(--os-surface);
   }
   .os-topbar,
   .os-windowbar,
@@ -79,6 +89,7 @@
   .os-shell,
   .os-shell[data-appearance="light"] {
     --os-glass: var(--os-surface);
+    --os-glass-dense: var(--os-surface);
   }
   .os-topbar,
   .os-windowbar,

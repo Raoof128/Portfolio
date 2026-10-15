@@ -265,6 +265,10 @@
   flex: 1;
   overflow-wrap: anywhere;
 }
+/* Hover changes colour only, at the quick duration; no transform or lift. */
+.os-about-socials a {
+  transition: color var(--motion-quick) var(--ease-standard);
+}
 .os-about-socials a:hover {
   color: var(--os-accent);
 }
@@ -478,6 +482,11 @@
   padding: var(--space-3) var(--space-4);
   text-decoration: none;
 }
+.os-contact-socials a {
+  transition:
+    background-color var(--motion-quick) var(--ease-standard),
+    color var(--motion-quick) var(--ease-standard);
+}
 .os-contact-socials a:hover {
   background: var(--os-accent-tint);
   color: var(--os-text);
@@ -621,6 +630,9 @@
 .os-library-entry h3 a {
   color: var(--os-text);
   text-decoration: none;
+}
+.os-library-entry h3 a {
+  transition: color var(--motion-quick) var(--ease-standard);
 }
 .os-library-entry h3 a:hover {
   color: var(--os-accent);
@@ -907,6 +919,9 @@
   min-inline-size: 0;
   padding: var(--space-6);
   text-decoration: none;
+}
+.os-lab-card {
+  transition: border-color var(--motion-quick) var(--ease-standard);
 }
 .os-lab-card:hover {
   border-color: var(--os-control-line);

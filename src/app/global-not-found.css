@@ -37,8 +37,8 @@ html[data-global-not-found] body {
 /* Persian and Arabic: Vazirmatn for UI and display type. Redefining the tokens on this
    element lets the heading, copy, labels, select and os-button all pick them up. */
 .global-not-found:is(:lang(fa), :lang(ar)) {
-  --os-font-ui: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
-  --os-font-display: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
+  --os-font-ui: var(--font-vazirmatn, Tahoma), "Segoe UI", sans-serif;
+  --os-font-display: var(--font-vazirmatn, Tahoma), "Segoe UI", sans-serif;
 }
 /* Chinese: the PingFang-first stack for UI and display type. */
 .global-not-found:lang(zh) {

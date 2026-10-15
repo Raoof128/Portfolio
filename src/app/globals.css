@@ -96,13 +96,16 @@ body {
   }
 }
 
-/* Respect reduced motion preferences */
+/* Respect reduced motion preferences: no animation, and colour and opacity fade only.
+   :root has no motion tokens, so the duration is the quick literal (120ms). */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-property:
+      background-color, border-color, color, opacity !important;
+    transition-duration: 120ms !important;
   }
 }

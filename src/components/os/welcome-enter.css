@@ -1,6 +1,7 @@
 /* Enter on the welcome screen. While the three-second wait runs, the button is
-   disabled, a 2px accent hairline fills left to right (transform only) and a polite
-   status line names what is opening. Reduced motion shows the hairline full at once. */
+   disabled, a 2px accent hairline fills in reading direction (transform only) and
+   a polite status line names what is opening. Reduced motion shows the hairline
+   full at once. */
 .os-enter-stage {
   display: grid;
   justify-items: center;
@@ -10,7 +11,7 @@
   transition:
     background-color var(--motion-quick) var(--ease-standard),
     color var(--motion-quick) var(--ease-standard),
-    transform var(--motion-quick) var(--ease-standard);
+    transform var(--motion-press-out) var(--ease-standard);
 }
 
 .os-enter-progress {
@@ -38,7 +39,7 @@
 }
 /* The duration is set inline from WELCOME_LOADER_MS, so the wait and the fill agree. */
 .os-enter-stage[data-loading] .os-enter-progress span {
-  animation: os-enter-fill linear both;
+  animation: os-enter-fill var(--ease-standard) both;
 }
 @keyframes os-enter-fill {
   from {

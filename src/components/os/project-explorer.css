@@ -52,17 +52,36 @@
   line-height: 1.35;
   text-decoration: none;
   overflow-wrap: anywhere;
+  transition:
+    background-color var(--motion-quick) var(--ease-standard),
+    color var(--motion-quick) var(--ease-standard);
 }
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link):hover {
   background: var(--os-bg);
 }
+/* Selected: the tint, the accent text (the sidebar sits on --os-surface, so the
+   accent passes), and a 1px accent indicator on the inline-start edge. */
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link)[aria-current="page"] {
+  position: relative;
   color: var(--os-accent);
   background: var(--os-accent-tint);
+}
+.os-shell
+  .os-project-explorer
+  :is(
+    .os-explorer-index-link,
+    .os-explorer-project-link
+  )[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  inset-block: var(--space-2);
+  inset-inline-start: 0;
+  inline-size: 1px;
+  background: var(--os-accent);
 }
 .os-shell .os-project-explorer .os-explorer-count {
   margin-inline-start: auto;
@@ -210,6 +229,7 @@
   background: var(--os-surface);
   transition: border-color var(--motion-quick) var(--ease-standard);
 }
+/* Hover sharpens the hairline only: no background or lift on index cards. */
 .os-shell .os-project-explorer .os-project-row:hover {
   border-color: var(--os-control-line);
 }
@@ -802,12 +822,6 @@
   .os-shell .os-project-explorer .os-explorer-search input,
   .os-shell .os-project-explorer .os-explorer-controls select {
     font-size: 16px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .os-shell .os-project-explorer .os-project-row {
-    transition: none;
   }
 }
 

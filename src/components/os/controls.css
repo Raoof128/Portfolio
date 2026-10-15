@@ -37,7 +37,7 @@
     background-color var(--motion-quick) var(--ease-standard),
     border-color var(--motion-quick) var(--ease-standard),
     color var(--motion-quick) var(--ease-standard),
-    transform var(--motion-quick) var(--ease-standard);
+    transform var(--motion-press-out) var(--ease-standard);
 }
 .os-shell
   :is(
@@ -105,17 +105,34 @@
   background: var(--os-accent-tint);
 }
 
-/* Press feedback: a small scale only, no lift. */
+/* Press feedback: one shared scale for every control, card, tile and dock item. The
+   press enters in 90ms; release eases back over the 160ms base transition. Disabled
+   controls are excluded, and the theme thumb takes the same scale. No lift or glow. */
 .os-shell
   :is(
+    .os-control,
     .os-button,
     .os-button--secondary,
+    .os-document-button,
     .os-direct-links .os-button,
     .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button
-  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):active {
+    .os-app-icon,
+    .ui-card--interactive,
+    .os-dock a,
+    .os-enter
+  ):not(:disabled, [aria-disabled="true"]):active,
+.os-shell .os-theme-switch:not(:disabled):active::before {
   transform: scale(0.98);
+  transition-duration: var(--motion-press-in);
+}
+/* Base state for the same list, so the release and colour changes share one timing. */
+.os-shell
+  :is(.os-control, .os-app-icon, .ui-card--interactive, .os-dock a, .os-enter) {
+  transition:
+    background-color var(--motion-quick) var(--ease-standard),
+    border-color var(--motion-quick) var(--ease-standard),
+    color var(--motion-quick) var(--ease-standard),
+    transform var(--motion-press-out) var(--ease-standard);
 }
 
 /* Disabled: muted text on a hairline fill, so the state reads without opacity. */
@@ -256,31 +273,5 @@
       .os-document-button
     ):not(.os-welcome *) {
     min-height: 44px;
-  }
-}
-
-/* Reduced motion: transitions become instant and press feedback is removed. */
-@media (prefers-reduced-motion: reduce) {
-  .os-shell
-    :is(
-      .os-button,
-      .os-button--secondary,
-      .os-direct-links .os-button,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button
-    ):not(.os-welcome *) {
-    transition-duration: 1ms;
-  }
-  .os-shell
-    :is(
-      .os-button,
-      .os-button--secondary,
-      .os-direct-links .os-button,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button
-    ):not(.os-welcome *):active {
-    transform: none;
   }
 }

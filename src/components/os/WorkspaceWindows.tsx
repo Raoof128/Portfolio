@@ -55,6 +55,9 @@ type WindowActions = {
   close: (id: string) => void;
 };
 
+/** Set once any WorkspaceWindows has committed. Later window mounts are user opens. */
+let workspaceCommitted = false;
+
 function ApplicationWindow({
   application,
   active,
@@ -65,6 +68,7 @@ function ApplicationWindow({
   actions,
   locked,
   loading = false,
+  introduced = false,
 }: {
   application: RegisteredApplication;
   active: boolean;
@@ -76,6 +80,8 @@ function ApplicationWindow({
   locked: boolean;
   /** The next page is still loading into this frame. */
   loading?: boolean;
+  /** The workspace had already rendered when this window mounted (a user open). */
+  introduced?: boolean;
 }) {
   const { descriptor, view, initial } = application;
   const pane = useRef<HTMLElement>(null);
@@ -130,6 +136,9 @@ function ApplicationWindow({
   const previousActive = useRef(active);
   const firstFocus = useRef(true);
   const focusedDocument = useRef(descriptor.id);
+  // The element that had focus when this window opened. Focus returns there when the
+  // window is minimised or closed, so it never stays on a control that is hidden.
+  const opener = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
     if (minimized !== reading.minimized) {
@@ -137,6 +146,21 @@ function ApplicationWindow({
       else reading.restore();
     }
   }, [minimized, reading]);
+
+  useLayoutEffect(() => {
+    if (!active || minimized || locked) {
+      opener.current = null;
+      return;
+    }
+    if (opener.current) return;
+    const focused = document.activeElement;
+    if (
+      focused instanceof HTMLElement &&
+      focused !== document.body &&
+      !pane.current?.contains(focused)
+    )
+      opener.current = focused;
+  }, [active, minimized, locked]);
 
   useLayoutEffect(() => {
     // A new document in the retained frame takes focus like a newly opened one.
@@ -195,6 +219,23 @@ function ApplicationWindow({
     };
   }, []);
 
+  // Moves focus off the window before it hides: the opener if it is still reachable,
+  // otherwise the dock item for the current app, then the dock home link.
+  function returnFocus() {
+    const target = [
+      opener.current,
+      document.querySelector<HTMLElement>(".os-dock a[aria-current='page']"),
+      document.querySelector<HTMLElement>(".os-dock-home"),
+    ].find(
+      (item): item is HTMLElement =>
+        !!item &&
+        item.isConnected &&
+        !item.closest("[inert], [hidden]") &&
+        !pane.current?.contains(item),
+    );
+    target?.focus({ preventScroll: true });
+  }
+
   async function copyLink() {
     try {
       const hash =
@@ -244,6 +285,24 @@ function ApplicationWindow({
   }
 
   const hidden = minimized || locked || (!reading.desktop && !active);
+  // A user-initiated show runs the one-shot open animation (research-os.css). Windows
+  // already open at load never set it, so the first paint is not delayed by an
+  // opacity-zero window. A window that mounts after load was opened by the user, so it
+  // animates in on its first show. Derived while rendering (not in an effect), so the
+  // attribute lands in the same commit.
+  const [visibility, setVisibility] = useState(() => ({
+    hidden,
+    hiddenBefore: hidden || introduced,
+    opening: !hidden && introduced,
+  }));
+  if (visibility.hidden !== hidden) {
+    setVisibility({
+      hidden,
+      hiddenBefore: visibility.hiddenBefore || hidden,
+      opening: !hidden && visibility.hiddenBefore,
+    });
+  }
+  const opening = visibility.opening;
   return (
     <section
       ref={pane}
@@ -254,6 +313,15 @@ function ApplicationWindow({
       className={`os-window os-workspace-window ${reading.rect ? "os-window--floating" : ""}`}
       data-window-path={descriptor.path}
       data-active={active}
+      data-opening={opening ? "true" : undefined}
+      onAnimationEnd={(event) => {
+        // Only the frame's own open animation ends the state; child animations bubble.
+        if (
+          event.target === event.currentTarget &&
+          event.animationName === "os-window-in"
+        )
+          setVisibility((value) => ({ ...value, opening: false }));
+      }}
       hidden={hidden}
       style={
         reading.rect
@@ -351,6 +419,7 @@ function ApplicationWindow({
           <button
             className="os-control"
             onClick={() => {
+              returnFocus();
               reading.minimize();
               actions.minimize(descriptor.id);
             }}
@@ -381,7 +450,10 @@ function ApplicationWindow({
           )}
           <button
             className="os-control os-window-close"
-            onClick={() => actions.close(descriptor.id)}
+            onClick={() => {
+              returnFocus();
+              actions.close(descriptor.id);
+            }}
             aria-label={copy.close}
             tabIndex={active ? 0 : -1}
           >
@@ -492,6 +564,12 @@ export function WorkspaceWindows({
   /** The route moved to another window page that has not registered yet. */
   navigating?: boolean;
 }) {
+  // Windows mounted before the first commit were restored at load; later mounts are
+  // opened by the user and run the window open animation.
+  useEffect(() => {
+    workspaceCommitted = true;
+  }, []);
+  const introduced = workspaceCommitted;
   // While the next page loads, the open window stays current instead of
   // revealing the desktop for a frame.
   const current =
@@ -529,6 +607,7 @@ export function WorkspaceWindows({
             actions={actions}
             locked={locked}
             loading={navigating}
+            introduced={introduced}
           />
         );
       })}

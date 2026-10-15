@@ -4,14 +4,12 @@
 .os-workspace-window {
   container-type: inline-size;
 }
-.os-workspace-window.os-window {
-  /* Reading text stays opaque, and opening never moves the pointer target. */
-  animation: none;
-}
+/* The window open animation is driven by data-opening (research-os.css), so the
+   frame itself sets none here. Reading text stays opaque throughout. */
 .os-workspace-window.os-window--floating
   .os-window-navigation
   > .os-small-icon {
-  animation: os-workspace-icon-appear var(--os-motion-quick) var(--os-ease-out);
+  animation: os-workspace-icon-appear var(--motion-quick) var(--ease-standard);
 }
 @keyframes os-workspace-icon-appear {
   from {
@@ -67,7 +65,8 @@
 }
 
 /* Navigation progress: one 2px accent hairline under the title bar while the next
-   page loads. It grows by transform only, and a reduced-motion user sees it still. */
+   page loads. research-os.css grows it once (os-scan-grow); a reduced-motion user
+   sees it full and still. */
 .os-shell .os-window-scan {
   position: absolute;
   inset-inline: 0;
@@ -78,19 +77,9 @@
   pointer-events: none;
   transform: scaleX(0);
   transform-origin: left;
-  /* Only slow loads show it: the line stays at zero width for the first 150ms. */
-  animation: os-window-progress 1.6s var(--ease-standard) 0.15s both;
 }
 .os-shell .os-window-scan:dir(rtl) {
   transform-origin: right;
-}
-@keyframes os-window-progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(0.9);
-  }
 }
 
 /* Control tooltips (design system, section 4): the spec tooltip for each icon-only window
@@ -149,7 +138,7 @@
     .os-window-resize
   )[aria-label]:focus-visible::after {
   opacity: 1;
-  transition-delay: 400ms;
+  transition-delay: var(--motion-tooltip-delay);
 }
 /* Hoverable (WCAG 1.4.13): while a control is hovered, its tooltip takes the pointer, so
    the pointer can move onto the tooltip without it closing. A transparent 6px bridge
@@ -162,7 +151,7 @@
       .os-window-resize
     )[aria-label]:hover::after {
     opacity: 1;
-    transition-delay: 400ms;
+    transition-delay: var(--motion-tooltip-delay);
     pointer-events: auto;
   }
   .os-shell
@@ -253,22 +242,17 @@
   .os-shell .os-window-scan {
     transform: none;
   }
-  /* The shell-wide reset sets transition: none !important. Tooltips keep their 400ms
-     show delay (timing, not movement) and fade in 1ms, so they stay visible without
-     any transition. Hover and focus share the delay; the !important values beat the reset. */
-  .os-shell
-    :where(
-      .os-window-actions .os-control,
-      .os-window-resize
-    )[aria-label]::after {
-    transition: opacity 1ms linear !important;
-  }
+}
+/* Under reduced motion the shared rule in research-os.css limits transitions to colour
+   and opacity, so tooltips still fade. They keep --motion-tooltip-delay as their show
+   delay (timing, not movement). Hover and focus share that delay. */
+@media (prefers-reduced-motion: reduce) {
   .os-shell
     :where(
       .os-window-actions .os-control,
       .os-window-resize
     )[aria-label]:focus-visible::after {
-    transition-delay: 400ms !important;
+    transition-delay: var(--motion-tooltip-delay);
   }
 }
 @media (prefers-reduced-motion: reduce) and (hover: hover) {
@@ -277,10 +261,10 @@
       .os-window-actions .os-control,
       .os-window-resize
     )[aria-label]:hover::after {
-    transition-delay: 400ms !important;
+    transition-delay: var(--motion-tooltip-delay);
   }
 }
-/* The !important delays above would hold a dismissed tooltip for 400ms. Escape clears it at once. */
+/* A dismissed tooltip must not wait out its show delay. Escape clears it at once. */
 @media (prefers-reduced-motion: reduce) {
   .os-shell
     :where(

@@ -47,6 +47,9 @@ export function WelcomeEnter({
   function enter() {
     if (loading) return;
     if (loaderMs <= 0) {
+      statusLine.current
+        ?.closest(".os-shell")
+        ?.setAttribute("data-arriving", "");
       onEnter();
       return;
     }
@@ -54,6 +57,9 @@ export function WelcomeEnter({
     timer.current = window.setTimeout(() => {
       timer.current = null;
       setLoading(false);
+      statusLine.current
+        ?.closest(".os-shell")
+        ?.setAttribute("data-arriving", "");
       onEnter();
     }, loaderMs);
   }

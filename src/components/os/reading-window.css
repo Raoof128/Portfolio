@@ -11,7 +11,6 @@
   max-width: none;
   min-height: 0;
   margin: 0;
-  animation: none;
   overflow: visible;
 }
 .os-window--floating > .os-windowbar {
@@ -274,5 +273,32 @@
   .os-window-controls,
   .os-window-resize {
     display: none;
+  }
+}
+
+/* Body stagger: after a user-initiated open (data-opening), the first three children of
+   the page's root element fade and rise in turn. The page root is the only child of the
+   reading wrapper (.os-page-content, WorkspaceWindows.tsx). Nothing else in the body
+   animates, and first load never runs this because data-opening is not set then. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-window[data-opening] .os-page-content > * > :nth-child(-n + 3) {
+    animation: os-body-stagger-in var(--motion-quick) var(--ease-standard)
+      backwards;
+  }
+  .os-window[data-opening] .os-page-content > * > :nth-child(2) {
+    animation-delay: 16ms;
+  }
+  .os-window[data-opening] .os-page-content > * > :nth-child(3) {
+    animation-delay: 32ms;
+  }
+  @keyframes os-body-stagger-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }

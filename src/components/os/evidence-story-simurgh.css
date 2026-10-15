@@ -147,14 +147,20 @@
   .os-project-explorer
   .os-project-section
   .os-simurgh-instrument-station[data-path-active="true"]
-  .os-simurgh-instrument-point,
+  .os-simurgh-instrument-point {
+  border-color: var(--os-accent);
+  color: var(--os-accent);
+}
+
+/* On the selected tint the marker keeps its accent ring but takes text colour:
+   accent text stays off tinted rows. Declared after the path rule so it wins. */
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-simurgh-instrument-station[data-selected="true"]
   .os-simurgh-instrument-point {
   border-color: var(--os-accent);
-  color: var(--os-accent);
+  color: var(--os-text);
 }
 
 .os-shell .os-project-explorer .os-project-section .os-simurgh-explanations {
@@ -201,7 +207,7 @@
   li[data-selected="true"]
   .os-simurgh-explanation-index {
   border-color: var(--os-accent);
-  color: var(--os-accent);
+  color: var(--os-text);
 }
 
 /* Wide story: six stages in one row, markers above their titles. */

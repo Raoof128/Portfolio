@@ -12,6 +12,27 @@ html:has(.os-shell[data-appearance="light"]) {
   background-color: #f2f7ff;
   scrollbar-color: #3d5470 #f2f7ff;
 }
+/* Theme switch: JS sets data-theme-switching for one 240ms window, so only the flip
+   cross-fades. Reduced motion never sets the attribute, so the flip is instant there.
+   html and the view-transition pseudo-elements sit outside .os-shell, so these rules
+   use literal values rather than the shell tokens. */
+.os-shell[data-theme-switching] *,
+.os-shell[data-theme-switching] *::before,
+.os-shell[data-theme-switching] *::after {
+  transition-property:
+    background-color, border-color, color, fill, stroke !important;
+  transition-duration: var(--motion-window) !important;
+  transition-timing-function: var(--ease-standard) !important;
+}
+html:has(.os-shell[data-theme-switching]) {
+  transition: background-color 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* Dormant: the View Transitions path is off until a frame-cost trace clears it. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 .os-shell {
   /* Colour, dark (default). Values follow the design system, section 3.1. */
   --os-bg: #080d19;
@@ -27,7 +48,10 @@ html:has(.os-shell[data-appearance="light"]) {
   --os-focus: #67dbff;
   /* Hex with alpha (12% of #b8d6ff) so the reading-contrast suite can blend it. */
   --os-line: #b8d6ff1f;
+  --os-inset: #1d2c46;
   --os-control-line: #5b7593;
+  /* Boundary for controls on elevated and inset tiers, where #5b7593 falls below 3:1. */
+  --os-control-line-inset: #7892b2;
   --os-scrim: rgb(8 13 25 / 56%);
   --os-code-surface: #0a1120;
   --os-code-text: #dfeaf7;
@@ -69,11 +93,20 @@ html:has(.os-shell[data-appearance="light"]) {
   --radius-pill: 999px;
   --shadow-window: 0 24px 48px -12px rgb(0 0 0 / 45%);
   --shadow-dock: 0 8px 24px rgb(0 0 0 / 28%);
+  --motion-press-in: 90ms;
+  --motion-press-out: 160ms;
   --motion-quick: 120ms;
   --motion-control: 180ms;
   --motion-window: 240ms;
+  --motion-stagger: 16ms;
+  --motion-tooltip-delay: 400ms;
   --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  /* Springs: the standard curve is the fallback, declared first. */
+  --ease-spring-window: var(--ease-standard);
+  --ease-spring-soft: var(--ease-standard);
+  /* Direction sign for dock travel and mirrored motion, flipped under RTL below. */
+  --dir-sign: 1;
   /* Content under the fixed dock: 16px dock offset, 56px dock, 24px air, safe area. */
   --os-dock-clearance: calc(96px + env(safe-area-inset-bottom, 0px));
 
@@ -108,6 +141,71 @@ html:has(.os-shell[data-appearance="light"]) {
   color-scheme: dark;
   scrollbar-color: var(--os-muted) var(--os-bg);
 }
+/* Spring curves are linear() approximations, used only where the browser parses them.
+   They stay on .os-shell, never :root, so the fallback above is always valid. */
+@supports (animation-timing-function: linear(0, 1)) {
+  .os-shell {
+    /* zeta 1, omega 8.46, bounce 0: windows and dialogs settle with no overshoot. */
+    --ease-spring-window: linear(
+      0,
+      0.0493,
+      0.1576,
+      0.2855,
+      0.4117,
+      0.526,
+      0.6244,
+      0.7061,
+      0.7724,
+      0.8253,
+      0.8668,
+      0.8991,
+      0.924,
+      0.9429,
+      0.9574,
+      0.9683,
+      0.9764,
+      0.9826,
+      0.9871,
+      0.9905,
+      0.993,
+      0.9949,
+      0.9963,
+      0.9973,
+      1
+    );
+    /* zeta 0.8, omega 9.0, peak 1.52% at t 0.58: the dock arrival only. */
+    --ease-spring-soft: linear(
+      0,
+      0.0575,
+      0.1875,
+      0.3438,
+      0.4982,
+      0.6354,
+      0.7488,
+      0.8372,
+      0.9028,
+      0.949,
+      0.9796,
+      0.9986,
+      1.0091,
+      1.014,
+      1.0152,
+      1.0142,
+      1.0122,
+      1.0099,
+      1.0075,
+      1.0055,
+      1.0038,
+      1.0024,
+      1.0014,
+      1.0008,
+      1
+    );
+  }
+}
+.os-shell:dir(rtl) {
+  --dir-sign: -1;
+}
 .os-shell:lang(fa),
 .os-shell:lang(ar) {
   --os-font-ui: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
@@ -136,7 +234,9 @@ html:has(.os-shell[data-appearance="light"]) {
   --os-accent-tint: rgb(0 105 187 / 10%);
   --os-focus: #0069bb;
   --os-line: #244b7c1f;
+  --os-inset: #eaf1fb;
   --os-control-line: #6f8399;
+  --os-control-line-inset: #6f8399;
   --os-scrim: rgb(18 36 61 / 36%);
   --os-code-surface: #eef3fa;
   --os-code-text: #14203a;
@@ -209,13 +309,72 @@ html:has(.os-shell[data-appearance="light"]) {
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
-  background:
-    radial-gradient(
-      60% 46% at 50% 38%,
-      color-mix(in srgb, var(--os-accent) 8%, transparent),
-      transparent 72%
-    ),
-    var(--os-bg);
+  background: var(--os-bg);
+}
+/* One static radial accent wash at 8%, one layer per appearance. Each layer only
+   changes opacity, so the switch cross-fades with no loops. The colour is the accent
+   of its own appearance (sRGB, since the wash is decorative). */
+.os-wallpaper::before,
+.os-wallpaper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: opacity var(--motion-window) var(--ease-standard);
+}
+.os-wallpaper::before {
+  background: radial-gradient(
+    60% 46% at 50% 38%,
+    color-mix(in srgb, #67dbff 8%, transparent),
+    transparent 72%
+  );
+  opacity: 1;
+}
+.os-wallpaper::after {
+  background: radial-gradient(
+    60% 46% at 50% 38%,
+    color-mix(in srgb, #0069bb 8%, transparent),
+    transparent 72%
+  );
+  opacity: 0;
+}
+.os-shell[data-appearance="light"] .os-wallpaper::before {
+  opacity: 0;
+}
+.os-shell[data-appearance="light"] .os-wallpaper::after {
+  opacity: 1;
+}
+
+/* Scroll progress: a 2px accent rail on the viewport edge, driven by scroll position on
+   the compositor, so no JS runs per frame. html sits outside .os-shell, so the colour is
+   literal (the accent of each appearance) rather than a shell token. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html:has(.os-shell)::after {
+      content: "";
+      position: fixed;
+      inset-block: 0;
+      inset-inline-end: 0;
+      z-index: 40;
+      width: 2px;
+      background: #67dbff;
+      transform-origin: top;
+      transform: scaleY(0);
+      animation: os-rail-grow linear both;
+      animation-timeline: scroll(root block);
+      pointer-events: none;
+    }
+    html:has(.os-shell[data-appearance="light"])::after {
+      background: #0069bb;
+    }
+  }
+}
+@keyframes os-rail-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
 }
 
 /* Top bar: 44px glass navigation, flush with the viewport edges. */
@@ -284,14 +443,12 @@ html:has(.os-shell[data-appearance="light"]) {
   line-height: 1.2;
   transition:
     background-color var(--motion-quick) var(--ease-standard),
+    border-color var(--motion-quick) var(--ease-standard),
     color var(--motion-quick) var(--ease-standard),
-    transform var(--motion-quick) var(--ease-standard);
+    transform var(--motion-press-out) var(--ease-standard);
 }
 .os-shell .os-control:is(:hover, :focus-visible) {
   background: var(--os-accent-tint);
-}
-.os-shell .os-control:active {
-  transform: scale(0.98);
 }
 .os-control svg {
   width: 18px;
@@ -369,7 +526,7 @@ html:has(.os-shell[data-appearance="light"]) {
   transform-origin: top center;
 }
 .os-language[open] nav {
-  animation: os-menu-arrive var(--motion-quick) var(--ease-standard);
+  animation: os-menu-arrive var(--motion-quick) var(--ease-standard) backwards;
 }
 .os-language nav a {
   min-height: 44px;
@@ -657,7 +814,6 @@ html:has(.os-shell[data-appearance="light"]) {
   gap: 4px;
   padding: 6px;
   border-radius: var(--radius-pill);
-  animation: os-dock-arrive var(--motion-control) var(--ease-standard);
 }
 .os-dock a {
   position: relative;
@@ -740,8 +896,6 @@ html:has(.os-shell[data-appearance="light"]) {
   box-shadow: var(--shadow-window);
   overflow: clip;
   scroll-margin-top: 72px;
-  /* Match the settled window position before its persistent-workspace handoff. */
-  animation: none;
 }
 .os-window--expanded {
   max-width: calc(100% - 32px);
@@ -877,7 +1031,11 @@ html:has(.os-shell[data-appearance="light"]) {
   box-shadow: var(--shadow-dock);
   font-size: var(--text-s);
   color: var(--os-text);
-  animation: os-menu-arrive var(--motion-quick) var(--ease-standard);
+  animation: os-menu-arrive var(--motion-quick) var(--ease-standard) backwards;
+}
+/* Popover menus (Window Controls): the same quick, no-overshoot entrance. */
+.os-menu-popover {
+  animation: os-menu-arrive var(--motion-quick) var(--ease-standard) backwards;
 }
 
 /* Navigation progress: one 2px accent hairline under the title bar while the next
@@ -891,7 +1049,7 @@ html:has(.os-shell[data-appearance="light"]) {
   pointer-events: none;
   background: var(--os-accent);
   transform-origin: left center;
-  animation: os-scan-grow 3000ms var(--ease-standard) 150ms both;
+  animation: os-scan-grow var(--motion-control) var(--ease-standard) both;
 }
 .os-shell:dir(rtl) .os-window-scan {
   transform-origin: right center;
@@ -922,10 +1080,18 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-search-dialog[open] {
   display: flex;
   flex-direction: column;
-  animation: os-dialog-arrive var(--motion-control) var(--ease-standard);
+  animation: os-dialog-arrive var(--motion-window) var(--ease-spring-window)
+    backwards;
+}
+/* Dialog close is instant. The scrim fades in, with no blur. */
+.os-search-dialog:not([open]) {
+  pointer-events: none;
 }
 .os-search-dialog::backdrop {
   background: var(--os-scrim);
+}
+.os-search-dialog[open]::backdrop {
+  animation: os-scrim-in var(--motion-control) var(--ease-standard) backwards;
 }
 .os-search-heading {
   display: flex;
@@ -1165,43 +1331,32 @@ html:has(.os-shell[data-appearance="light"]) {
   font: 11px / 1.5 var(--os-font-mono);
   color: var(--os-text);
 }
-/* Native top-layer transitions where supported; basic dialog animation remains a fallback. */
-@supports (transition-behavior: allow-discrete) and (overlay: auto) {
-  .os-search-dialog {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.985);
-    transition:
-      opacity var(--motion-control) var(--ease-standard),
-      transform var(--motion-control) var(--ease-standard),
-      display var(--motion-control) allow-discrete,
-      overlay var(--motion-control) allow-discrete;
+/* Results: the first six rows rise in with a 16ms stagger, then the rest appear at once.
+   CSS only, and only where motion is allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-search-results > li {
+    animation: os-row-in var(--motion-quick) var(--ease-standard) backwards;
   }
-  .os-search-dialog[open] {
-    opacity: 1;
-    transform: none;
+  .os-search-results > li:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  .os-search-results > li:nth-child(2) {
+    animation-delay: calc(var(--motion-stagger) * 1);
+  }
+  .os-search-results > li:nth-child(3) {
+    animation-delay: calc(var(--motion-stagger) * 2);
+  }
+  .os-search-results > li:nth-child(4) {
+    animation-delay: calc(var(--motion-stagger) * 3);
+  }
+  .os-search-results > li:nth-child(5) {
+    animation-delay: calc(var(--motion-stagger) * 4);
+  }
+  .os-search-results > li:nth-child(6) {
+    animation-delay: calc(var(--motion-stagger) * 5);
+  }
+  .os-search-results > li:nth-child(n + 7) {
     animation: none;
-  }
-  .os-search-dialog:not([open]) {
-    pointer-events: none;
-  }
-  .os-search-dialog::backdrop {
-    opacity: 0;
-    transition:
-      opacity var(--motion-control) var(--ease-standard),
-      display var(--motion-control) allow-discrete,
-      overlay var(--motion-control) allow-discrete;
-  }
-  .os-search-dialog[open]::backdrop {
-    opacity: 1;
-  }
-  @starting-style {
-    .os-search-dialog[open] {
-      opacity: 0;
-      transform: translateY(-6px) scale(0.985);
-    }
-    .os-search-dialog[open]::backdrop {
-      opacity: 0;
-    }
   }
 }
 
@@ -1274,9 +1429,10 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-reading-scroll:focus-visible {
   outline-offset: -2px;
 }
-.os-reading-card,
-.os-reading-card * {
-  transition-property: border-color, box-shadow, transform, opacity;
+.os-reading-card {
+  transition-property: border-color, background-color, color;
+  transition-duration: var(--motion-control);
+  transition-timing-function: var(--ease-standard);
 }
 
 /* Anchors and focus: the top bar and window bar sit above targets, so scroll
@@ -1335,6 +1491,61 @@ html:has(.os-shell[data-appearance="light"]) {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+@keyframes os-window-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes os-window-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+@keyframes os-scrim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes os-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* One-shot entrances. Windows run only after a user-initiated show (data-opening) or
+   a close (data-state='closing'), never on first load. The dock arrives once, when the
+   welcome Enter sets data-arriving. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-window[data-opening]:not([hidden]) {
+    animation: os-window-in var(--motion-window) var(--ease-spring-window)
+      backwards;
+  }
+  .os-window[data-state="closing"] {
+    animation: os-window-out var(--motion-control) var(--ease-exit) forwards;
+    pointer-events: none;
+  }
+  .os-shell[data-arriving] .os-dock {
+    animation: os-dock-arrive var(--motion-window) var(--ease-spring-soft)
+      backwards;
   }
 }
 .os-shell:dir(rtl)
@@ -1454,6 +1665,10 @@ html:has(.os-shell[data-appearance="light"]) {
     justify-content: space-between;
     gap: 2px;
     padding: 6px 4px;
+    animation: none;
+  }
+  /* The arrival travels by half the dock width, so phones keep the dock still. */
+  .os-shell[data-arriving] .os-dock {
     animation: none;
   }
   .os-dock a {
@@ -1626,27 +1841,46 @@ html:has(.os-shell[data-appearance="light"]) {
   }
 }
 
+/* Reduced motion: no animation, no transforms and no loops. Colour and opacity fade at
+   the quick duration, so state still changes visibly (fade or nothing). Tooltips keep
+   their --motion-tooltip-delay, which this rule does not override. */
 @media (prefers-reduced-motion: reduce) {
+  .os-shell,
   .os-shell *,
   .os-shell *::before,
   .os-shell *::after {
     animation: none !important;
-    transition: none !important;
+    transition-property:
+      background-color, border-color, color, opacity !important;
+    transition-duration: var(--motion-quick) !important;
     scroll-behavior: auto !important;
   }
-  .os-window-scan {
-    transform: none;
+  .os-shell
+    :is(
+      .os-control,
+      .os-button,
+      .os-button--secondary,
+      .os-document-button,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-app-icon,
+      .ui-card--interactive,
+      .os-dock a,
+      .os-enter
+    ):not(:disabled, [aria-disabled="true"]):active,
+  .os-shell .os-theme-switch:active::before {
+    transform: none !important;
   }
-  /* The scrim is a pseudo-element of the dialog, which the universal selector above does not reach. */
+  /* The scrim is a pseudo-element of the dialog, which the universal selector does not reach. */
   .os-shell .os-search-dialog::backdrop {
-    transition: none !important;
+    animation: none !important;
   }
-  .os-app:is(:hover, :focus-visible, :active) .os-app-icon,
-  .os-dock a:is(:hover, :focus-visible, :active) .os-small-icon,
-  .os-enter:is(:hover, :active),
-  .os-button:active,
-  .os-control:active,
-  .os-document-button:active {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .os-window-scan {
     transform: none;
   }
 }
@@ -1661,20 +1895,44 @@ html:has(.os-shell[data-appearance="light"]) {
     background: var(--os-surface);
   }
 }
+/* Wide-gamut accent: dark only, and only on displays that can show Display P3. The sRGB
+   #67dbff in the base block stays the fallback. Hover and pressed stay sRGB, and the
+   accent never carries meaning on its own. The light theme is never widened. Placed
+   before the increased-contrast block so that block wins. */
+@supports (color: color(display-p3 0 0 0)) {
+  @media (color-gamut: p3) {
+    .os-shell:not([data-appearance="light"]) {
+      --os-accent: color(display-p3 0.44 0.87 1);
+    }
+  }
+}
+/* Increased contrast: the accent and the boundaries step up together, surfaces do not.
+   Glass fallbacks live in liquid-glass.css. The selector list keeps the welcome rule
+   that reading-contrast.test.ts reads. */
 @media (prefers-contrast: more) {
-  /* Increased contrast: muted text becomes primary text, hairlines and control
-     boundaries step up (section 3.2). Glass fallbacks live in liquid-glass.css. */
   .os-shell {
     --os-line: #b8d6ff66;
-    --os-muted: var(--os-text);
+  }
+  .os-shell:not([data-appearance="light"]) {
+    --os-accent: #a6ecff;
+    --os-accent-hover: #c4f2ff;
+    --os-accent-pressed: #8be6ff;
+    --os-focus: #a6ecff;
+    --os-on-accent: #080d19;
     --os-control-line: #8aa2bd;
+    --os-control-line-inset: #8aa2bd;
+    --os-muted: var(--os-text);
   }
   .os-shell[data-appearance="light"] {
     --os-line: #244b7c66;
-    --os-muted: var(--os-text);
+    --os-accent: #00528f;
+    --os-accent-hover: #00457a;
+    --os-accent-pressed: #003866;
+    --os-focus: #00528f;
     --os-control-line: #4a6280;
+    --os-control-line-inset: #4a6280;
+    --os-muted: var(--os-text);
   }
-  /* Matches the shell rule above (section 3.2). The selector stays because reading-contrast.test.ts reads it. */
   .os-shell[data-appearance="light"] .os-welcome {
     --os-muted: var(--os-text);
   }
@@ -1686,8 +1944,9 @@ html:has(.os-shell[data-appearance="light"]) {
   .os-search-heading {
     background: var(--os-surface);
   }
+  /* The focus ring is 3px under this query. */
   .os-shell :focus-visible {
-    outline-width: 3px;
+    outline: 3px solid var(--os-focus);
   }
 }
 @supports not (
@@ -1711,12 +1970,23 @@ html:has(.os-shell[data-appearance="light"]) {
   .os-dock a[aria-current="page"]::after {
     forced-color-adjust: none;
     background: CanvasText;
+    border: 1px solid CanvasText;
   }
   .os-dock a[aria-current="page"],
   .os-search-scopes button[aria-pressed="true"],
   .os-language nav a[aria-current="true"] {
     text-decoration: underline;
     text-underline-offset: 0.25em;
+  }
+  /* Selection and segmented markers get an outline. The :not(:focus-visible) guard keeps
+     the focus ring, which stays 2px Highlight, when a selected control is also focused. */
+  .os-dock a[aria-current="page"]:not(:focus-visible),
+  .os-search-scopes button[aria-pressed="true"]:not(:focus-visible),
+  .os-language nav a[aria-current="true"]:not(:focus-visible) {
+    outline: 1px solid Highlight;
+  }
+  .os-shell :focus-visible {
+    outline: 2px solid Highlight;
   }
 }
 
@@ -1735,6 +2005,9 @@ html:has(.os-shell[data-appearance="light"]) {
     transform: none;
     width: max-content;
     margin: 12px auto calc(12px + env(safe-area-inset-bottom, 0px));
+    animation: none;
+  }
+  .os-shell[data-arriving] .os-dock {
     animation: none;
   }
   .os-shell .os-minimized-task {
@@ -1807,7 +2080,6 @@ html:has(.os-shell[data-appearance="light"]) {
 }
 .os-shell .os-enter:active {
   background: var(--os-accent-pressed);
-  transform: scale(0.98);
 }
 .os-shell .os-enter:disabled {
   background: var(--os-line);

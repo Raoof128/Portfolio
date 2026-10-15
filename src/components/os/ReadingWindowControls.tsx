@@ -174,7 +174,7 @@ export function ReadingWindowControls({
       {open &&
         portalHost &&
         createPortal(
-          <div className="os-window-controls-panel" ref={panel}>
+          <div className="os-window-controls-panel os-menu-popover" ref={panel}>
             {/* Step buttons show their words, so the visible text is also the
                 accessible name (WCAG 2.5.3). The legend names the group. */}
             <fieldset

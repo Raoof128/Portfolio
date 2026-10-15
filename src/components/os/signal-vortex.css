@@ -3,6 +3,9 @@
    (opacity), with no hue shift and no glow. The rings rise at most 24px. */
 .signal-vortex {
   --vortex: var(--os-accent);
+  /* Local loop timing: one rise per period, each ring starting one step after the last. */
+  --vortex-period: 3s;
+  --vortex-step: 0.08s;
   position: relative;
   display: flex;
   align-items: center;
@@ -33,7 +36,8 @@
 /* The loop runs only when the reader allows motion; otherwise the rings stay still. */
 @media (prefers-reduced-motion: no-preference) {
   .signal-vortex span {
-    animation: signal-vortex-rise 3s ease-in-out calc(var(--i) * 0.08s) infinite;
+    animation: signal-vortex-rise var(--vortex-period) var(--ease-standard)
+      calc(var(--i) * var(--vortex-step)) infinite;
   }
 }
 @keyframes signal-vortex-rise {

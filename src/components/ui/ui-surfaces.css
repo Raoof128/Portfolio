@@ -28,16 +28,21 @@
   background: var(--os-surface);
   color: var(--os-text);
 }
-/* Interactive cards change only their hairline, never lift or glow. */
+/* Interactive cards step one luminance tier and sharpen their hairline. They never
+   lift, glow or wash with the accent. The press scale is in research-os.css. */
 .ui-card--interactive {
-  transition: border-color var(--motion-quick) var(--ease-standard);
+  transition:
+    background-color var(--motion-quick) var(--ease-standard),
+    border-color var(--motion-quick) var(--ease-standard);
 }
 .ui-card--interactive:hover {
-  border-color: var(--os-control-line);
+  background: var(--os-inset);
+  border-color: var(--os-control-line-inset);
 }
+/* Reduced motion keeps the colour change and drops nothing else. */
 @media (prefers-reduced-motion: reduce) {
   .ui-card--interactive {
-    transition-duration: 1ms;
+    transition-duration: var(--motion-quick);
   }
 }
 
