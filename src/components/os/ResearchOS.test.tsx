@@ -204,12 +204,12 @@ describe("current application window", () => {
     const first = view.container.querySelector<HTMLElement>(
       '[data-window-path="/projects"]',
     )!;
-    fireEvent.change(within(first).getByRole("textbox", { name: "Draft" }), {
-      target: { value: "Old draft" },
-    });
+    const firstDraft = within(first).getByRole("textbox", { name: "Draft" });
+    fireEvent.change(firstDraft, { target: { value: "Old draft" } });
     navigation.pathname = "/about";
     view.rerender(registeredShell("/about", "About Raouf"));
-    expect(first.isConnected).toBe(false);
+    // The window frame persists; the previous document and its draft do not.
+    expect(firstDraft.isConnected).toBe(false);
     expect(
       view.container.querySelectorAll(".os-workspace-window"),
     ).toHaveLength(1);
@@ -219,12 +219,56 @@ describe("current application window", () => {
     const current = view.container.querySelector<HTMLElement>(
       '[data-window-path="/projects"]',
     )!;
-    expect(current).not.toBe(first);
+    expect(within(current).getByRole("textbox", { name: "Draft" })).not.toBe(
+      firstDraft,
+    );
     expect(within(current).getByRole("textbox", { name: "Draft" })).toHaveValue(
       "",
     );
     expect(view.container.querySelectorAll('[id="main-content"]')).toHaveLength(
       1,
+    );
+  });
+
+  it("keeps one window open with its bounds when moving between projects", () => {
+    desktop();
+    navigation.pathname = "/projects/project-simurgh";
+    const view = render(
+      registeredShell("/projects/project-simurgh", "Project Simurgh"),
+    );
+    const frame = view.container.querySelector<HTMLElement>(
+      ".os-workspace-window",
+    )!;
+    fireEvent.keyDown(
+      within(frame).getByRole("button", {
+        name: getWindowCopy("en").resizeWindow,
+      }),
+      { key: "ArrowRight", shiftKey: true },
+    );
+    const bounds = frame.getAttribute("style");
+    const draft = within(frame).getByRole("textbox", { name: "Draft" });
+    fireEvent.change(draft, { target: { value: "Simurgh note" } });
+
+    navigation.pathname = "/projects/project-zurvan";
+    view.rerender(
+      registeredShell("/projects/project-zurvan", "Project Zurvan"),
+    );
+
+    const windows = view.container.querySelectorAll(".os-workspace-window");
+    expect(windows).toHaveLength(1);
+    expect(windows[0]).toBe(frame);
+    expect(frame).toHaveAttribute(
+      "data-window-path",
+      "/projects/project-zurvan",
+    );
+    expect(frame).not.toHaveAttribute("hidden");
+    expect(frame.getAttribute("style")).toBe(bounds);
+    expect(
+      within(frame).getByRole("heading", { level: 1, name: "Project Zurvan" }),
+    ).toBeInTheDocument();
+    expect(draft.isConnected).toBe(false);
+    expect(within(frame).getByRole("textbox", { name: "Draft" })).toHaveValue(
+      "",
     );
   });
 

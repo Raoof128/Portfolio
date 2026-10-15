@@ -49,6 +49,7 @@ import {
 import { formatDate, formatNumber } from "@/i18n/format";
 import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
+import { WelcomeEnter } from "./WelcomeEnter";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
 import { Desktop } from "./Desktop";
 import { ProofAtlasVisibilityContext } from "./proof-atlas-context";
@@ -228,23 +229,27 @@ export function ResearchOS({
     workspaceReady && (isHome || !!getOSAppDescriptor(pathname, locale));
   if (workspace.lastPath !== pathname) {
     const descriptor = getOSAppDescriptor(pathname, locale);
-    setWorkspace({
-      ...workspace,
-      lastPath: pathname,
-      model:
-        descriptor && workspace.applications.has(descriptor.id)
+    const retained = descriptor && workspace.applications.has(descriptor.id);
+    // Moving between window pages keeps the open window until the next page
+    // registers and replaces its document; resetting here closed and reopened it.
+    if (descriptor && !retained && workspace.model.windows.length > 0)
+      setWorkspace({ ...workspace, lastPath: pathname });
+    else
+      setWorkspace({
+        ...workspace,
+        lastPath: pathname,
+        model: retained
           ? workspaceReducer(workspace.model, {
               type: "focus",
               id: descriptor.id,
             })
           : createWorkspaceState(locale),
-      applications:
-        descriptor && workspace.applications.has(descriptor.id)
+        applications: retained
           ? new Map([
               [descriptor.id, workspace.applications.get(descriptor.id)!],
             ])
           : new Map(),
-    });
+      });
   }
   const registerApplication = useCallback(
     (application: RegisteredApplication) => {
@@ -276,6 +281,10 @@ export function ResearchOS({
   const currentWorkspaceWindow = workspace.model.windows.find(
     (item) => item.descriptor.path === pathname,
   );
+  const workspaceNavigating =
+    !currentWorkspaceWindow &&
+    workspace.model.windows.length > 0 &&
+    !!getOSAppDescriptor(pathname, locale);
   const returnFocus = useRef<HTMLElement | null>(null);
   const focusAfterUnlock = useRef(false);
   const previousPath = useRef(pathname);
@@ -739,14 +748,16 @@ export function ResearchOS({
               </h1>
               <p className="os-role">{role}</p>
               <p className="os-lock-intro">{copy.intro}</p>
-              <button
-                className="os-enter"
-                id="os-enter"
-                onClick={enterWorkspace}
-              >
-                {atlasJourneyCopy.explore}
-                <ArrowRight aria-hidden="true" />
-              </button>
+              <WelcomeEnter>
+                <button
+                  className="os-enter"
+                  id="os-enter"
+                  onClick={enterWorkspace}
+                >
+                  {atlasJourneyCopy.explore}
+                  <ArrowRight aria-hidden="true" />
+                </button>
+              </WelcomeEnter>
               <nav className="os-lock-shortcuts" aria-label={copy.selectedWork}>
                 <Link
                   href={getPath("/projects")}
@@ -828,6 +839,7 @@ export function ResearchOS({
                 role={role}
                 entries={entries}
                 locked={locked || !workspaceDisplayed}
+                navigating={workspaceNavigating}
                 actions={{
                   focus: focusWorkspaceWindow,
                   restore: focusWorkspaceWindow,

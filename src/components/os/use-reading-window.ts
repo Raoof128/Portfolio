@@ -72,9 +72,15 @@ export function useReadingWindow(
     readonly placement?: number;
     /** Runs once a pointer gesture actually moves; a plain press never fires it. */
     readonly onGesture?: () => void;
+    /**
+     * Keep the frame's bounds when the same window shows another document, as a
+     * workspace window does when moving between pages. Route-owned callers reset.
+     */
+    readonly retainGeometry?: boolean;
   } = {},
 ) {
   const active = options.active ?? true;
+  const retainGeometry = options.retainGeometry ?? false;
   const onGesture = useRef(options.onGesture);
   useEffect(() => {
     onGesture.current = options.onGesture;
@@ -85,10 +91,15 @@ export function useReadingWindow(
     rect: null,
   });
   // Route children are a live Next.js outlet, not immutable app snapshots.
-  // Never apply the previous document's hidden state or geometry to a new route.
-  if (state.path !== path) setState({ path, minimized: false, rect: null });
-  const current =
-    state.path === path ? state : { path, minimized: false, rect: null };
+  // Never apply the previous document's hidden state to a new route, and its
+  // geometry only when the caller keeps one frame across documents.
+  const next: WindowState = {
+    path,
+    minimized: false,
+    rect: retainGeometry ? state.rect : null,
+  };
+  if (state.path !== path) setState(next);
+  const current = state.path === path ? state : next;
   const desktop = useSyncExternalStore(
     subscribeDesktop,
     readDesktop,
@@ -112,8 +123,11 @@ export function useReadingWindow(
   useEffect(() => {
     // A route-owned hook may be reused for another document. Its saved normal
     // bounds belong only to the previous document, unlike a retained app hook.
-    if (preMaximizeRect.current?.path !== path) preMaximizeRect.current = null;
-  }, [path]);
+    const saved = preMaximizeRect.current;
+    if (!saved || saved.path === path) return;
+    // A retained frame stays maximized, so its normal bounds follow it.
+    preMaximizeRect.current = retainGeometry ? { ...saved, path } : null;
+  }, [path, retainGeometry]);
 
   function rememberOffset() {
     const offset = readReadingOffset(content.current, floating);

@@ -87,6 +87,8 @@ function ApplicationWindow({
     placement,
     // A plain click on the title keeps the expanded state; movement ends it.
     onGesture: () => setExpanded(false),
+    // Moving to another page swaps the document, not the window around it.
+    retainGeometry: true,
   });
   const app = appForDescriptor(descriptor);
   const entry = entries.find((item) => item.href === descriptor.path);
@@ -112,6 +114,7 @@ function ApplicationWindow({
   const disposed = useRef(false);
   const previousActive = useRef(active);
   const firstFocus = useRef(true);
+  const focusedDocument = useRef(descriptor.id);
 
   useLayoutEffect(() => {
     if (minimized !== reading.minimized) {
@@ -121,6 +124,11 @@ function ApplicationWindow({
   }, [minimized, reading]);
 
   useLayoutEffect(() => {
+    // A new document in the retained frame takes focus like a newly opened one.
+    if (focusedDocument.current !== descriptor.id) {
+      focusedDocument.current = descriptor.id;
+      previousActive.current = false;
+    }
     if (!active || minimized || locked) {
       previousActive.current = false;
       return;
@@ -156,7 +164,7 @@ function ApplicationWindow({
     }
     firstFocus.current = false;
     previousActive.current = true;
-  }, [active, minimized, locked, initial]);
+  }, [active, minimized, locked, initial, descriptor.id]);
 
   useEffect(() => {
     disposed.current = false;
@@ -344,6 +352,8 @@ function ApplicationWindow({
             value={{ active: active && !hidden, namespace }}
           >
             <div
+              // Each document starts with fresh state and scroll position.
+              key={descriptor.id}
               ref={content}
               className="os-page-content"
               inert={!active}
@@ -422,6 +432,7 @@ export function WorkspaceWindows({
   entries,
   actions,
   locked,
+  navigating = false,
 }: {
   state: WorkspaceState;
   applications: ReadonlyMap<string, RegisteredApplication>;
@@ -431,10 +442,14 @@ export function WorkspaceWindows({
   entries: SearchEntry[];
   actions: WindowActions;
   locked: boolean;
+  /** The route moved to another window page that has not registered yet. */
+  navigating?: boolean;
 }) {
-  const current = state.windows.find(
-    (item) => item.descriptor.path === pathname,
-  );
+  // While the next page loads, the open window stays current instead of
+  // revealing the desktop for a frame.
+  const current =
+    state.windows.find((item) => item.descriptor.path === pathname) ??
+    (navigating ? state.windows[0] : undefined);
   const desktopVisible = !current || current.minimized;
   return (
     <div className="os-workspace">
@@ -456,7 +471,8 @@ export function WorkspaceWindows({
         if (!application) return null;
         return (
           <ApplicationWindow
-            key={item.descriptor.id}
+            // One window frame persists across pages; only its document changes.
+            key={index}
             application={application}
             active={state.activeId === item.descriptor.id && !desktopVisible}
             minimized={item.minimized}
