@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-10-16 (Australia/Sydney) — GitHub Actions deploy fixed; branch clean-up
+
+- **Scope**: Owner requests: merge if needed and remove the extra branches, then fix CI/CD.
+- **Summary**: Every local and remote branch was already contained in `main`, so no merge was needed. Deleted remote `feat/verification-horizon-hero`, `main-proof-atlas-2026-10-11`, `main-research-os-polish-2026-10-11`, `redesign/win7` and their local copies plus `main-frontend-gauntlet-2026-10-10` and `redesign/apple-2026` (the glow edition stays reachable at `de1e5ad`). `main` is the only branch. The `Deploy to Cloudflare Pages` workflow had failed on every push since 15 October with `Authentication error [code: 10000]` / `Invalid access token [code: 9109]`: the `CLOUDFLARE_API_TOKEN` secret held the IP-restricted `portfolio-pages` token, which GitHub's runner IPs cannot use (wrangler 4.149.0 itself installed fine). A dedicated token `portfolio-github-actions-pages-deploy` was created through the Cloudflare API with Pages Write on this account only, no IP filter and an expiry of 2027-10-16, and piped straight into the GitHub secret without being printed. No workflow file changed.
+- **Files Changed**: AGENT.md; CHANGELOG.md. (GitHub secret `CLOUDFLARE_API_TOKEN` and a new Cloudflare API token; private CLAUDE.md deploy notes updated.)
+- **Verification**: the new token read the `raoufabedini` Pages project before it was stored; the re-run of run 38850346170 passed both jobs (build: all audits; deploy: artifact verifier and `pages deploy`, preview `cf59adee.raoufabedini.pages.dev`); live `version.json` reports `e5cbf06`. CI workflow was already green.
+- **Follow-ups**: Rotate the deploy token before 2027-10-16. The old `portfolio-pages` token (IP-restricted) is still active for local deploys; revoke it if it is no longer needed.
+
 ### Raouf: 2026-10-16 (Australia/Sydney) — Windows 7 Aero edition (7.css) and production deploy
 
 - **Scope**: Owner-directed frontend redesign, decided in stages on 16 October: Apple 2026 research and a "Research Desk" redesign, a Quiet Depth colour and motion pass and an Intelligence Glow layer (owner: still "too plain"), then the shipped direction, a Windows 7 Aero edition built on 7.css (MIT, khang-nd, `7.css@0.21.1` pinned), with a full layout and polish pass using the 7.css site as the reference. Owner approved commit, push and redeploy.
