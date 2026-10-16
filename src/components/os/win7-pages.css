@@ -1,10 +1,11 @@
 /* Win7 Aero layer, pages lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css.
    Reading pages sit in white window bodies in both themes, so the --os-* roles are
-   re-pointed to the light body tokens here. The base reading rules live in
-   supporting-apps.css; everything here is scoped under .win7. */
+   re-pointed to the body tokens here. The base reading rules live in
+   supporting-apps.css; everything here is scoped under .win7. The Aero Night body
+   tokens belong to win7-theme.css, which keeps the body white in both themes. */
 
-/* White window bodies: text, lines, surfaces and links use the light roles in both
-   themes, so reading contrast stays high in Aero Night. */
+/* White window bodies: text, lines, surfaces and links use the body roles in both themes,
+   and the hairline is the Light value. */
 .win7 .window-body,
 .win7 .os-support,
 .win7 .os-not-found {
@@ -41,21 +42,34 @@
   color: var(--win7-body-text);
 }
 
-/* Reading text: 16px body (set in supporting-apps.css), black on white. */
+/* Reading text: 16px body with a 15px floor (line height 1.6 is set in supporting-apps.css).
+   Text takes the body token, so it is black on the white reading surface in both themes. */
+.win7 .os-support {
+  font-size: max(15px, var(--win7-body-size));
+}
 .win7 .os-writeup-body,
 .win7 .os-report {
   font-size: var(--win7-body-size);
   color: var(--win7-body-text);
 }
 
-/* Section headings become Win7 headings: 20px, regular weight, hairline rule. */
+/* Reading headings use the Win7 UI sans, not the display serif (D-14). The per-locale
+   UI face keeps fa and ar on their own type. */
+.win7 .os-support :is(h1, h2, h3, h4),
+.win7 .os-about-photo-fallback strong {
+  font-family: var(--os-font-ui);
+}
+
+/* Section headings become Win7 headings: 20px, regular weight, hairline rule. The rule
+   reads --os-line, so the base hard-coded light hairline is replaced in both themes. */
+.win7 .os-support h2,
 .win7 .os-report h2,
 .win7 .os-writeup-body h2,
 .win7 .os-policy-section > h2 {
   font-size: 20px;
   font-weight: 400;
   padding-block-end: 4px;
-  border-block-end: 1px solid #d5dfe5;
+  border-block-end: 1px solid var(--os-line);
 }
 
 /* Section cards become groupboxes: hairline, 3px radius, 14px padding. A plain div
@@ -68,7 +82,7 @@
     .os-about-labs article,
     .os-about-education article
   ) {
-  border: 1px solid #d5dfe5;
+  border: 1px solid var(--os-line);
   border-radius: 3px;
   padding: 14px;
   background: var(--win7-body-bg);
@@ -92,6 +106,43 @@
   text-align: start;
 }
 
+/* Write-ups search: one border and one icon. The .os-library-search label carries the
+   border and the lucide magnifier. 7.css's [type=search] box border, its white fill and
+   its trailing blue magnifier are switched off on the input. The label takes the focus
+   ring, and the input's own ring is switched off below, because the shell's
+   :focus-visible rule would otherwise draw a second ring inside the label. Every section
+   on the library starts 24px below the one above it. */
+.win7 .os-library-search input[type="search"] {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--os-text);
+  font: inherit;
+  min-inline-size: 0;
+  padding: 0;
+}
+.win7 .os-library-search:focus-within {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px #98d1ef;
+}
+.win7 .os-library-search input:is(:focus, :focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* 7.css gives [role=tabpanel] its own tab surface (--w7-tab-bg). Inside a reading body the
+   panel takes the body surface and text, so it matches the rest of the page. */
+.win7 :is(.window-body, .os-support) [role="tabpanel"] {
+  background: var(--os-surface);
+  color: var(--os-text);
+}
+.win7 .os-library > section {
+  padding-block-start: 24px;
+}
+
 /* Search and select fields on reading pages shrink to the pane, not to 7.css's
    187px minimum. */
 .win7 .os-support :is(input, select, textarea) {
@@ -99,34 +150,142 @@
   max-inline-size: 100%;
 }
 
-/* Win7 push buttons on the locale 404 (the global 404 has its own copy). */
-.win7 .os-not-found-actions .os-button {
+/* Push buttons on the reading pages and the locale 404: the 7.css look for links and
+   buttons. Desktop targets are 24px tall and touch targets 44px. Every rule carries the
+   same selector weight, (0,5,1) or more, so it beats controls.css, which sets the accent
+   fill and a 40px height. Hover and press use the 7.css overlays, drawn on ::before and
+   ::after with opacity, so no colour, size or position animates. The primary action is
+   the 7.css default button: a blue face with a #5586a3 border. */
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):not(
+    :is([aria-disabled="true"], :disabled)
+  ) {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  box-sizing: border-box;
   min-inline-size: 75px;
-  min-block-size: 23px;
+  min-block-size: 24px;
   padding: 0 12px;
   border: 1px solid var(--w7-el-bd, #8e8f8f);
-  border-radius: 3px;
-  background: var(--w7-el-grad, linear-gradient(#f2f2f2, #dbdbdb));
+  border-radius: var(--w7-el-bdr, 3px);
+  background: var(
+    --w7-el-grad,
+    linear-gradient(#f2f2f2 45%, #ebebeb 0, #cfcfcf)
+  );
+  box-shadow: var(--w7-el-sd, inset 0 0 0 1px #fffc);
   color: #222222;
+  font-family: var(--os-font-ui);
   font-size: var(--win7-ui-size);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
   text-decoration: none;
 }
-.win7 .os-not-found-actions .os-button:not(.os-button--secondary) {
-  border-color: #3c7fb1;
-}
-.win7 .os-not-found-actions .os-button:hover {
-  border-color: #3c7fb1;
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):not(
+    .os-button--secondary
+  ):not(:is([aria-disabled="true"], :disabled)) {
+  border-color: #5586a3;
   background: var(
     --w7-el-grad-h,
     linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
   );
 }
-
-/* Locale 404: a window in the shell, with the 404 in the title bar. */
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary)::before,
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary)::before {
+  background: var(
+    --w7-el-grad-h,
+    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
+  );
+  transition: opacity 0.3s;
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary)::after {
+  background: var(
+    --w7-el-grad-a,
+    linear-gradient(#e5f4fc, #c4e5f6 30% 50%, #98d1ef 50%, #68b3db)
+  );
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):not(
+    :is([aria-disabled="true"], :disabled)
+  ):is(:hover)::before {
+  opacity: 1;
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):not(
+    :is([aria-disabled="true"], :disabled)
+  ):is(:hover, :active) {
+  border-color: #3c7fb1;
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):not(
+    :is([aria-disabled="true"], :disabled)
+  ):is(:active)::after {
+  opacity: 1;
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):not(
+    :is([aria-disabled="true"], :disabled)
+  ):is(:active) {
+  border-color: #6d91ab;
+}
+/* Focus: the 7.css dotted line inside a 2px blue ring. Static, with no pulse. */
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px var(--win7-focus-ring, #98d1ef);
+}
+/* 7.css runs an infinite box-shadow pulse (pulse-anim) on every focused button, and the
+   About retry control is a button, not a link. The reading and 404 buttons take the
+   static ring above instead, so no loop runs while they hold focus. */
+.os-shell.win7 :is(.os-support, .os-not-found) button {
+  animation: none;
+}
+.os-shell.win7
+  :is(.os-support, .os-not-found)
+  :is(a, button):is(.os-button, .os-button--secondary):is(
+    [aria-disabled="true"],
+    :disabled
+  ) {
+  border-color: #adb2b5;
+  background: #f4f4f4;
+  box-shadow: none;
+  color: #838383;
+  cursor: default;
+}
+/* Locale 404: a 7.css message box in the shell. The 404 code sits in the glass title bar,
+   and the body holds the error icon, the message and the buttons. The default button
+   comes first and the buttons align to the end, as in a Win7 dialog. The rings of the
+   signal vortex sit behind the message as a faint backdrop. */
 .win7 .os-not-found {
   display: block;
   inline-size: min(100%, 36rem);
@@ -143,34 +302,129 @@
   text-shadow: var(--win7-text-shadow);
 }
 .win7 .os-not-found .window-body {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 18px 20px 20px;
 }
 .win7 .os-not-found .signal-vortex {
-  min-block-size: 160px;
-  margin-block: 0 8px;
-  margin-inline: 0 auto;
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: -1;
+  width: 100%;
+  height: 60%;
+  min-block-size: 0;
+  margin: 0;
+  opacity: 0.2;
+}
+.win7 .os-not-found-message {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.win7 .os-not-found-icon {
+  flex: none;
+  display: block;
+  inline-size: 32px;
+  block-size: 32px;
+  color: var(--win7-danger);
+}
+.win7 .os-not-found-icon svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+.win7 .os-not-found-icon .os-not-found-cross {
+  fill: #ffffff;
+}
+.win7 .os-not-found-text {
+  min-inline-size: 0;
 }
 .win7 .os-not-found h1 {
   max-inline-size: none;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   color: var(--win7-body-text);
-  font-size: clamp(28px, 4.2vw, 40px);
-  font-weight: 300;
+  font-family: var(--os-font-ui);
+  font-size: clamp(22px, 3vw, 26px);
+  font-weight: 400;
+  line-height: 1.25;
 }
 .win7 .os-not-found p:not(.os-not-found-code) {
   max-inline-size: none;
+  margin: 0;
   color: var(--win7-body-muted);
   font-size: var(--win7-body-size);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 .win7 .os-not-found-actions {
-  justify-content: flex-start;
-  margin-block-start: 18px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 8px;
+  margin-block-start: 20px;
 }
 
-/* Phones: the reading pane keeps 16px gutters, and the 404 buttons take the full
-   width and 44px targets. */
+/* Fields on the reading pages: the 7.css sunken border and a 24px target. The write-up
+   search keeps the ring on its label (above), so the field rules skip it. Focus takes the
+   7.css blue border and the dotted black line, which holds 3:1 on white. */
+.os-shell.win7
+  .os-support
+  :is(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    select,
+    textarea
+  ):not(.os-library-search *) {
+  min-block-size: 24px;
+  font-family: var(--os-font-ui);
+  font-size: var(--win7-ui-size);
+}
+.os-shell.win7
+  .os-support
+  :is(input, select, textarea):not(.os-library-search *):focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  border-color: #3d7bad #a4c9e3 #b7d9ed #b5cfe7;
+  box-shadow: none;
+}
+
+/* Find Me Elsewhere: the tiles take the 7.css face and border, and the hover is the 7.css
+   blue face. Each tile keeps a 44px target. */
+.os-shell.win7 .os-contact-socials a {
+  border: 1px solid var(--w7-el-bd, #8e8f8f);
+  border-radius: var(--w7-el-bdr, 3px);
+  background: var(
+    --w7-el-grad,
+    linear-gradient(#f2f2f2 45%, #ebebeb 0, #cfcfcf)
+  );
+  box-shadow: var(--w7-el-sd, inset 0 0 0 1px #fffc);
+  color: #222222;
+  min-block-size: 44px;
+}
+.os-shell.win7 .os-contact-socials a:hover {
+  border-color: #3c7fb1;
+  background: var(
+    --w7-el-grad-h,
+    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
+  );
+  color: #222222;
+}
+
+/* Headings on the reading pages: the document header is 26px at most, and the group
+   header is 16px semibold. The sizes stay in the Win7 range from the rulebook. */
+.win7 .os-support h1 {
+  font-size: clamp(24px, 2.6vw + 8px, 32px);
+  line-height: 1.2;
+}
+.win7 .os-support h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Phones: the reading pane keeps 16px gutters, and the buttons, fields and search take
+   44px targets. Coarse pointers get the same sizes on any width. */
 @media (max-width: 700px) {
   .win7 .os-support {
     padding-inline: 16px;
@@ -180,6 +434,23 @@
   }
   .win7 .os-not-found-actions .os-button {
     flex: 1 1 100%;
+  }
+}
+@media (pointer: coarse), (max-width: 700px) {
+  .os-shell.win7
+    :is(.os-support, .os-not-found)
+    :is(a, button):is(.os-button, .os-button--secondary) {
+    min-block-size: 44px;
+  }
+  .os-shell.win7
+    .os-support
+    :is(
+      input:not([type="checkbox"], [type="radio"], [type="range"]),
+      select
+    ):not(.os-library-search *) {
+    min-block-size: 44px;
+  }
+  .os-shell.win7 .os-support .os-library-search {
     min-block-size: 44px;
   }
 }

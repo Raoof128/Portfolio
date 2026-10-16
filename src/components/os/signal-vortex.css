@@ -60,6 +60,23 @@
       calc(var(--i) * var(--vortex-step)) 2;
   }
 }
+/* Reduced motion: the rings stay at rest. The rule above is the only motion, and this
+   rule states the reduced case explicitly, so the guard does not depend on the query's
+   form. The wallpaper-layer opacity and colour are unchanged. */
+@media (prefers-reduced-motion: reduce) {
+  .signal-vortex span {
+    animation: none;
+  }
+}
+/* Once focus is inside the window that holds the vortex, the decorative rise stops and the
+   rings rest at their static transform. Focus moves to the controls, so the motion would
+   only compete with them. */
+.window:focus-within .signal-vortex span,
+.global-not-found:has(.global-not-found-dialog:focus-within)
+  .signal-vortex
+  span {
+  animation: none;
+}
 @keyframes signal-vortex-rise {
   0%,
   100% {

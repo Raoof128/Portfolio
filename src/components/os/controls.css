@@ -53,15 +53,16 @@
   color: currentColor;
 }
 
-/* Primary: accent fill, on-accent text. */
+/* Primary: the Aero primary pair from win7-theme.css (one fill and one label in both
+   themes, 6.3:1 at rest). The accent tokens are the fallback outside the Win7 shell. */
 .os-shell
   :is(
     .os-button,
     .os-direct-links .os-button,
     .os-document-button[data-variant="primary"]
   ):not(.os-welcome *) {
-  background: var(--os-accent);
-  color: var(--os-on-accent);
+  background: var(--win7-primary-fill, var(--os-accent));
+  color: var(--win7-on-primary, var(--os-on-accent));
 }
 .os-shell
   :is(
@@ -69,7 +70,7 @@
     .os-direct-links .os-button,
     .os-document-button[data-variant="primary"]
   ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(:hover) {
-  background: var(--os-accent-hover);
+  background: var(--win7-primary-fill-hover, var(--os-accent-hover));
 }
 .os-shell
   :is(
@@ -77,7 +78,26 @@
     .os-direct-links .os-button,
     .os-document-button[data-variant="primary"]
   ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):active {
-  background: var(--os-accent-pressed);
+  background: var(--win7-primary-fill-pressed, var(--os-accent-pressed));
+}
+/* Project resource links: the primary download and source links read the same pair, so
+   their label never drops below 4.5:1 in either theme. */
+.os-shell
+  .os-project-resources
+  a.os-button:not(:is([aria-disabled="true"], :disabled)) {
+  background: var(--win7-primary-fill, var(--os-accent));
+  border-color: transparent;
+  color: var(--win7-on-primary, var(--os-on-accent));
+}
+.os-shell
+  .os-project-resources
+  a.os-button:not(:is([aria-disabled="true"], :disabled)):is(:hover) {
+  background: var(--win7-primary-fill-hover, var(--os-accent-hover));
+}
+.os-shell
+  .os-project-resources
+  a.os-button:not(:is([aria-disabled="true"], :disabled)):active {
+  background: var(--win7-primary-fill-pressed, var(--os-accent-pressed));
 }
 
 /* Secondary: hairline outline, primary text. Declared after primary so it wins ties. */
@@ -189,6 +209,33 @@
   .os-shell :focus-visible:not(h1, .os-main, .os-window) {
     outline-color: Highlight;
   }
+}
+
+/* Win7 focus for every control in this file. 7.css draws a 1px dotted rectangle inside the
+   control and a 2px blue inset ring (#98d1ef). Both are kept here. The dotted line is black, about
+   19:1 on the light 7.css gradients. On the primary fill (#005fb8) the blue ring still gives about
+   3.8:1 against the fill, which meets the 3:1 focus-indicator rule (WCAG 2.2 2.4.11 and 1.4.11).
+   The 7.css gradient replaces the primary fill on most buttons, so the dotted line stays black. */
+.os-shell.win7
+  :is(
+    .os-button,
+    .os-button--secondary,
+    .os-direct-links .os-button,
+    .os-project-explorer .os-project-resource,
+    .os-project-explorer .os-project-paper .os-project-resource,
+    .os-document-button
+  ):focus-visible {
+  outline: 1px dotted var(--win7-focus-inner);
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px var(--win7-focus-ring);
+}
+/* 7.css runs an infinite pulse-anim on button:focus and on its default and focused states.
+   That loop breaks the no-infinite-loop rule, so focus gets the static ring above instead. */
+.os-shell.win7 button:focus,
+.os-shell.win7 button.default,
+.os-shell.win7 button.focused,
+.os-shell.win7 [role="button"]:focus {
+  animation: none;
 }
 
 /* Forced colours: the system palette supplies every fill, text and border, so

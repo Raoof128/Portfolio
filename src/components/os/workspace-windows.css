@@ -4,7 +4,7 @@
 .os-workspace-window {
   container-type: inline-size;
 }
-/* The window open animation is driven by data-opening (research-os.css), so the
+/* The window open animation is driven by data-opening and runs from win7-windows.css, so the
    frame itself sets none here. Reading text stays opaque throughout. */
 .os-workspace-window.os-window--floating
   .os-window-navigation
@@ -292,31 +292,13 @@
   outline-offset: -2px;
 }
 
-/* Window open (dockwin lane). The frame's open is a transition from @starting-style, not
-   the os-window-in keyframe, so research-os.css gives up its animation here. The close
-   keyframe (data-state="closing") is not touched. Transform origin is the dock item's x
-   (spotlight.ts), with a centred fallback. */
-.os-shell .os-window[data-opening]:not([hidden]) {
-  animation-name: none;
-}
+/* The frame transition is shared by every window. The open, close and minimise keyframes are
+   in win7-windows.css, which loads last and owns the Aero frame. */
 .os-shell .os-window {
   transition:
     opacity var(--motion-window) var(--ease-spring-window),
     transform var(--motion-window) var(--ease-spring-window);
   transform-origin: var(--dock-origin-x, 50%) 100%;
-}
-/* Only a user-initiated show (data-opening) starts from the faded state. Windows open at
-   load never take it, so the first paint and a deep link's LCP are not delayed. */
-/* The open is motion, so reduced-motion users get the window at once (no starting style). */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (transition-behavior: allow-discrete) {
-    @starting-style {
-      .os-shell .os-window[data-opening="true"] {
-        opacity: 0;
-        transform: scale(0.94);
-      }
-    }
-  }
 }
 
 /* Search dialog entrance (dockwin lane). @starting-style replaces the os-dialog-arrive

@@ -69,17 +69,55 @@ html[data-global-not-found] body {
 }
 
 /* The dialog: a 7.css glass window. Its own stacking context keeps the glass blur
-   layer (z-index -10) above the window background and below the body. */
-.global-not-found-dialog {
+   layer (z-index -10) above the window background and below the body. 7.css sets the
+   .win7 .window frame (0,2,0) and the .win7 .window-body.has-space padding (0,3,0), so
+   these selectors carry extra classes and win without relying on source order. */
+.global-not-found .global-not-found-dialog.window {
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   inline-size: min(100%, 36rem);
   margin: 0;
+  /* The same Aero frame as the reading windows (win7-windows.css). The shell rules need
+     .os-shell.win7 on one element, and this dialog sits under main.win7, so the frame is
+     restated here from the same tokens. */
+  padding: 0 4px 4px;
+  border: 1px solid rgb(255 255 255 / 0.55);
+  border-radius: 8px 8px 4px 4px;
+  background: var(--win7-title-bg);
+  box-shadow:
+    0 0 0 1px var(--win7-frame-border),
+    var(--win7-frame-shadow);
+  color: var(--win7-text-glass);
 }
-.global-not-found-dialog > .window-body {
+.global-not-found .global-not-found-dialog.window > .title-bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-block-size: var(--win7-title-h);
+  margin: 0;
+  padding-block: 0;
+  padding-inline: 6px 4px;
+  border: 0;
+  border-radius: 7px 7px 0 0;
+  background: var(--win7-title-bg);
+  box-shadow: inset 0 1px 0 var(--win7-glass-edge);
+  text-shadow: var(--win7-text-shadow);
+}
+/* The body is the white reading surface with a hairline edge, so the 404 reads like every
+   other reading window. The body token stays white in both themes (win7-theme.css). */
+.global-not-found .global-not-found-dialog.window > .window-body {
+  box-sizing: border-box;
+  margin: 0;
   padding: 18px 20px 20px;
+  border: 1px solid rgb(16 48 92 / 0.45);
+  border-radius: 0 0 2px 2px;
+  background: var(--win7-body-bg);
+  box-shadow: none;
+  color: var(--win7-body-text);
+  font-size: var(--win7-body-size);
+  line-height: 1.6;
 }
-
 .global-not-found-code {
   /* The code sits in the title bar. Digits stay LTR. */
   margin: 0;
@@ -90,33 +128,42 @@ html[data-global-not-found] body {
   text-shadow: var(--win7-text-shadow);
 }
 
-/* The R glyph: a glossy white tile with a red fill (the danger token). The attribute
-   fill="currentColor" stays in the markup; this rule takes precedence over it. */
+/* The message-box row: the 32px error icon on the start edge, the message beside it. The
+   icon is a red circle with a white cross, the Win7 error mark. The attribute
+   fill="currentColor" stays in the markup, and the danger token is the circle colour. */
+.global-not-found-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.global-not-found-text {
+  min-inline-size: 0;
+}
 .global-not-found-mark {
-  display: inline-grid;
-  place-items: center;
-  inline-size: 56px;
-  block-size: 56px;
-  margin-block-end: 14px;
-  border: 1px solid var(--w7-el-bd, #8e8f8f);
-  border-radius: 3px;
-  background: linear-gradient(180deg, #ffffff 0%, #e8e8e8 60%, #d4d4d4 100%);
+  display: block;
+  flex: none;
+  inline-size: 32px;
+  block-size: 32px;
+  color: var(--win7-danger);
 }
 .global-not-found-glyph {
   display: block;
-  inline-size: 34px;
-  block-size: 34px;
-  flex: none;
-  fill: var(--win7-danger);
+  inline-size: 100%;
+  block-size: 100%;
+  fill: currentColor;
+}
+.global-not-found-cross {
+  fill: #ffffff;
 }
 
+/* The message title sits in the Win7 UI sans, not the display serif. */
 .global-not-found h1 {
-  margin: 0;
+  margin: 0 0 8px;
   color: var(--win7-body-text);
-  font-family: var(--os-font-display, var(--win7-font));
-  font-size: clamp(28px, 4.2vw, 40px);
-  font-weight: 300;
-  line-height: 1.15;
+  font-family: var(--win7-font);
+  font-size: clamp(22px, 3vw, 26px);
+  font-weight: 400;
+  line-height: 1.25;
   overflow-wrap: anywhere;
 }
 .global-not-found-description {
@@ -133,23 +180,39 @@ html[data-global-not-found] body {
   line-height: 1.9;
 }
 
-/* Win7 push buttons, drawn on a link element with the 7.css button values. */
+/* The buttons align to the end, the start of the row in RTL, as in a Win7 dialog. */
 .global-not-found-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 8px;
 }
-.global-not-found-actions a.os-button {
+
+/* Win7 push buttons on the message box: the 7.css face, a 75px minimum width and a 24px
+   height (44px on touch). The selectors are prefixed with html[data-global-not-found], so
+   they beat controls.css, which sets the accent fill and hover colours. Hover and press
+   use the 7.css overlays, which fade with opacity on ::before and ::after. The primary
+   action, the first button, is the 7.css default: a blue face with a #5586a3 border. */
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   min-inline-size: 75px;
-  min-block-size: 23px;
+  min-block-size: 24px;
   padding: 0 12px;
   border: 1px solid var(--w7-el-bd, #8e8f8f);
   border-radius: 3px;
-  background: var(--w7-el-grad, linear-gradient(#f2f2f2, #dbdbdb));
+  background: var(
+    --w7-el-grad,
+    linear-gradient(#f2f2f2 45%, #ebebeb 0, #cfcfcf)
+  );
   box-shadow: var(--w7-el-sd, inset 0 0 0 1px #fffc);
   color: #222222;
   font: inherit;
@@ -157,25 +220,95 @@ html[data-global-not-found] body {
   line-height: 1.2;
   text-decoration: none;
 }
-/* The primary action carries the 7.css default border. It is a link, not a form
-   default, so it has no extra behaviour. */
-.global-not-found-actions a.os-button:not(.os-button--secondary) {
-  border-color: #3c7fb1;
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button::before,
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
 }
-.global-not-found-actions a.os-button:hover {
-  border-color: #3c7fb1;
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button::before {
   background: var(
     --w7-el-grad-h,
     linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
   );
+  transition: opacity 0.3s;
 }
-.global-not-found-actions a.os-button:active {
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button::after {
   background: var(
     --w7-el-grad-a,
     linear-gradient(#e5f4fc, #c4e5f6 30% 50%, #98d1ef 50%, #68b3db)
   );
 }
-.global-not-found-actions a.os-button:focus-visible,
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button:not(.os-button--secondary) {
+  border-color: #5586a3;
+  background: var(
+    --w7-el-grad-h,
+    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
+  );
+}
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button:is(:hover, :active) {
+  border-color: #3c7fb1;
+}
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button:is(:hover)::before {
+  opacity: 1;
+}
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button:is(:active) {
+  border-color: #6d91ab;
+}
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button:is(:active)::after {
+  opacity: 1;
+}
+/* Focus: the 7.css dotted line inside a 2px blue ring. Static, with no pulse. */
+html[data-global-not-found]
+  .global-not-found
+  .global-not-found-dialog
+  .global-not-found-actions
+  a.os-button:focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px var(--win7-focus-ring, #98d1ef);
+}
+/* The locale links and the language select keep the 2px ring on the light body. */
 .global-not-found-locales a:focus-visible,
 .global-not-found-language select:focus-visible {
   /* --win7-focus is not a token; the inner ring is black, and every focus target
@@ -225,7 +358,11 @@ html[data-global-not-found] body {
 /* Phones: buttons and the select take 44px targets, and the dialog stays inside the
    gutters. */
 @media (max-width: 700px) {
-  .global-not-found-actions a.os-button {
+  html[data-global-not-found]
+    .global-not-found
+    .global-not-found-dialog
+    .global-not-found-actions
+    a.os-button {
     min-block-size: 44px;
     flex: 1 1 100%;
   }
@@ -233,7 +370,7 @@ html[data-global-not-found] body {
     font-size: var(--win7-body-size);
     min-block-size: 44px;
   }
-  .global-not-found-dialog > .window-body {
+  .global-not-found .global-not-found-dialog.window > .window-body {
     padding: 16px;
   }
 }
@@ -248,7 +385,7 @@ html[data-global-not-found] body {
 /* Forced colours: gradients, shadows and text-shadow are dropped. The focus outline
    is kept, and the frame keeps a system border. */
 @media (forced-colors: active) {
-  .global-not-found-dialog {
+  .global-not-found .global-not-found-dialog.window {
     border: 1px solid CanvasText;
   }
   .global-not-found-mark,

@@ -1,68 +1,17 @@
 /* Win7 polish layer (orchestrator pass). Loaded last, after every win7 lane file.
    Fixes found in the browser review: the shell's own surface hid the wallpaper, text
    plates read as black boxes, title bars were opaque, and the heading focus ring drew a
-   box. The wallpaper is deep enough that white text with a shadow clears 4.5:1 without
-   plates. */
+   box.
 
-/* Aero (light): a deep blue field with two soft light swoops kept away from the centre
-   column, so white text never sits on the brightest part. Darkest white-text pair is
-   about 5:1 on #1a68b8. Aero Night keeps the navy wallpaper from win7-theme.css. */
-.win7 {
-  --win7-wallpaper:
-    radial-gradient(
-      60% 45% at 85% 12%,
-      rgb(120 200 255 / 0.32),
-      transparent 70%
-    ),
-    radial-gradient(70% 50% at 8% 95%, rgb(90 210 255 / 0.28), transparent 70%),
-    conic-gradient(
-      from 210deg at 70% 120%,
-      transparent 0deg,
-      rgb(255 255 255 / 0.1) 18deg,
-      transparent 36deg,
-      rgb(255 255 255 / 0.06) 52deg,
-      transparent 70deg
-    ),
-    linear-gradient(160deg, #0b3f80 0%, #135aa6 40%, #1a68b8 62%, #0d4689 100%);
-  --win7-plate: transparent;
-  --win7-text-shadow: 0 1px 3px rgb(0 0 0 / 0.75), 0 0 10px rgb(0 0 0 / 0.35);
-  /* Translucent Aero glass for frames and title bars: the wallpaper shows through. */
-  --win7-title-base: rgb(190 220 245 / 0.72);
-  --win7-text-glass: #000000;
-}
-.win7[data-appearance="dark"],
-[data-appearance="dark"] .win7 {
-  --win7-title-base: rgb(24 52 92 / 0.78);
-  --win7-text-glass: #ffffff;
-  --win7-plate: transparent;
-  /* Aero Night: navy with luminous blue swoops, still dark enough for white text
-     everywhere (the brightest field under text is about #1d4f8f, near 8:1). */
-  --win7-wallpaper:
-    radial-gradient(55% 40% at 82% 10%, rgb(70 160 255 / 0.3), transparent 70%),
-    radial-gradient(
-      65% 45% at 10% 100%,
-      rgb(40 190 255 / 0.26),
-      transparent 70%
-    ),
-    conic-gradient(
-      from 215deg at 72% 125%,
-      transparent 0deg,
-      rgb(120 200 255 / 0.12) 16deg,
-      transparent 32deg,
-      rgb(120 200 255 / 0.07) 48deg,
-      transparent 66deg
-    ),
-    linear-gradient(160deg, #04102a 0%, #0a2550 45%, #0e2f63 62%, #061634 100%);
-}
+   Theme lane, round 1. The wallpaper stack, the Aero glass tokens (title base, rim, glow,
+   inactive grey), the surfaces and the primary pair are defined once in win7-theme.css. This
+   layer consumes them and does not redefine them. */
 
 /* The shell becomes its own stacking context, so the fixed wallpaper at z-index -1
    paints above the shell background instead of behind it. */
 .os-shell.win7 {
   isolation: isolate;
   background: transparent;
-}
-.os-shell.win7 .os-wallpaper {
-  background: var(--win7-wallpaper);
 }
 
 /* No dark band behind the logon column: the wallpaper alone carries the stage. */
@@ -125,14 +74,4 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  .win7 {
-    --win7-title-base: #bcdcf5;
-  }
-  .win7[data-appearance="dark"],
-  [data-appearance="dark"] .win7 {
-    --win7-title-base: #17335e;
-  }
 }

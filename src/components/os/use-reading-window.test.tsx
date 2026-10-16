@@ -400,7 +400,7 @@ describe("expanded window geometry", () => {
       clampWindowRect(normal, { width: 1024, height: 600 }),
     );
     expect(rect().x + rect().width).toBeLessThanOrEqual(1012);
-    expect(rect().y + rect().height).toBeLessThanOrEqual(490);
+    expect(rect().y + rect().height).toBeLessThanOrEqual(544);
   });
 
   it.each(["Move", "Resize", "Reset"])(

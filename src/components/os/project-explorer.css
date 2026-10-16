@@ -20,6 +20,55 @@
   --os-accent: var(--win7-link);
   --os-accent-tint: #e5f3fc;
   --os-focus: var(--win7-link);
+  /* Explorer surface tokens. Light values are the Win7 white body; the Aero Night
+     block below swaps every one of them, so no rule in this sheet names a light
+     colour directly. Text pairs are checked in each theme: the selected row, chip,
+     badge and tab text stay at 4.5:1 or better. */
+  --explorer-keyline: #d5dfe5;
+  --explorer-row-line: #e5e5e5;
+  --explorer-hover: #e5f3fc;
+  --explorer-select: var(--win7-select-bg);
+  --explorer-select-text: #000000;
+  --explorer-select-muted: #3d3d3d;
+  --explorer-select-line: var(--win7-select-border);
+  --explorer-pane-head: linear-gradient(180deg, #ffffff, #eef3f8);
+  --explorer-badge-bg: linear-gradient(180deg, #ffffff, #e6eef6);
+  --explorer-badge-line: #9bb3c9;
+  --explorer-badge-text: #000000;
+  --explorer-field-bg: #ffffff;
+  --explorer-field-line: #abadb3;
+  /* The 7.css select arrow is a black glyph. Its colour follows the field, so it
+     stays visible on the Aero Night field, and the hover face takes its own text pair. */
+  --explorer-select-arrow: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6Z' fill='%23000'/%3E%3C/svg%3E");
+  --explorer-field-hover: linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5);
+  --explorer-field-hover-fg: #000000;
+  --explorer-chip-bg: linear-gradient(180deg, #ffffff, #eef4fa);
+  --explorer-chip-fg: #000000;
+  --explorer-chip-line: #aabbcc;
+  --explorer-tab-bg: linear-gradient(
+    180deg,
+    #f2f2f2 0%,
+    #ebebeb 50%,
+    #dddddd 100%
+  );
+  --explorer-tab-fg: #000000;
+  --explorer-tab-muted: #3d3d3d;
+  --explorer-tab-hover-bg: linear-gradient(180deg, #eaf6fd 0%, #bee6fd 100%);
+  --explorer-tab-hover-fg: #000000;
+  --explorer-tab-selected-bg: #ffffff;
+  --explorer-footer-bg: var(--w7-surface);
+  --explorer-commandbar-bg: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f4f7fb 58%,
+    #e6edf5 100%
+  );
+  --explorer-commandbar-line: #c0c1cd;
+  --explorer-control-edge: #8e8f8f;
+  /* One content column: the dossier, the index and the footer share this inset,
+     so every child starts on the same left edge. Gaps between sections use one token. */
+  --explorer-column-inset: var(--space-6);
+  --explorer-gap: var(--space-6);
   container: explorer-frame / inline-size;
   color: var(--os-text);
   background: var(--os-bg);
@@ -29,7 +78,11 @@
 .os-shell .os-project-explorer > .os-explorer-layout {
   display: grid;
   grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  align-items: start;
   min-block-size: 620px;
+  /* No extra block padding: the frame's own bottom padding is the window padding,
+     so no blank strip shows below the footer card. */
+  padding-block-end: 0;
 }
 .os-shell:lang(zh) .os-project-explorer {
   --reading-leading: 1.8;
@@ -37,6 +90,45 @@
 .os-shell:lang(fa) .os-project-explorer,
 .os-shell:lang(ar) .os-project-explorer {
   --reading-leading: 1.95;
+}
+
+/* Aero Night: the explorer surfaces take the night tokens. Each light/dark pair
+   is set once above, so selection, chips, tabs and fields change together. The
+   selected text is white on the blue select gradient, and the muted text on the
+   tab strip is about 6.7:1 on the darkest tab face. */
+.os-shell[data-appearance="dark"] .os-project-explorer {
+  --os-line: #2b4466;
+  --os-control-line: #6f8fb4;
+  --os-accent-tint: #1b3d66;
+  --explorer-keyline: #2b4466;
+  --explorer-row-line: #2b4466;
+  --explorer-hover: #173a63;
+  --explorer-select: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
+  --explorer-select-text: #ffffff;
+  --explorer-select-muted: #ffffff;
+  --explorer-select-line: #6fb8ec;
+  --explorer-pane-head: linear-gradient(180deg, #1b3a62, #132c50);
+  --explorer-badge-bg: linear-gradient(180deg, #1b3a62, #132c50);
+  --explorer-badge-line: #4d6f96;
+  --explorer-badge-text: #f1f7ff;
+  --explorer-field-bg: #0a1a33;
+  --explorer-field-line: #4d6f96;
+  --explorer-select-arrow: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6Z' fill='%23f1f7ff'/%3E%3C/svg%3E");
+  --explorer-field-hover: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
+  --explorer-field-hover-fg: #ffffff;
+  --explorer-chip-bg: linear-gradient(180deg, #1b3a62, #15304f);
+  --explorer-chip-fg: #f1f7ff;
+  --explorer-chip-line: #4d6f96;
+  --explorer-tab-bg: linear-gradient(180deg, #1d3a60 0%, #15294a 100%);
+  --explorer-tab-fg: #f1f7ff;
+  --explorer-tab-muted: #b4c6da;
+  --explorer-tab-hover-bg: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
+  --explorer-tab-hover-fg: #ffffff;
+  --explorer-tab-selected-bg: #0d1b2e;
+  --explorer-footer-bg: #132c50;
+  --explorer-commandbar-bg: linear-gradient(180deg, #1b3a62 0%, #132c50 100%);
+  --explorer-commandbar-line: #2b4466;
+  --explorer-control-edge: #6f8fb4;
 }
 
 /* Sidebar */
@@ -47,7 +139,7 @@
   min-width: 0;
   align-self: start;
   padding: 8px 0;
-  border-inline-end: 1px solid #d5dfe5;
+  border-inline-end: 1px solid var(--explorer-keyline);
   background: var(--win7-body-bg);
 }
 /* Navigation rows are tree rows: 13px, a 24px row, and a Win7 selection. The
@@ -72,18 +164,25 @@
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link):hover {
-  background: #e5f3fc;
+  background: var(--explorer-hover);
 }
 .os-shell .os-project-explorer .os-explorer-project-link {
   padding-inline-start: 20px;
 }
-/* Selected: the Win7 select gradient on a light-blue border. */
+/* Selected: the Win7 select gradient on a blue border. The text pair is a token,
+   so the night gradient keeps white text at 4.5:1 or better. */
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link)[aria-current="page"] {
-  color: var(--win7-body-text);
-  background: var(--win7-select-bg);
-  border-color: var(--win7-select-border);
+  color: var(--explorer-select-text);
+  background: var(--explorer-select);
+  border-color: var(--explorer-select-line);
+}
+.os-shell
+  .os-project-explorer
+  .os-explorer-project-link[aria-current="page"]
+  small {
+  color: var(--explorer-select-muted);
 }
 /* Counts are small Win7 badges. */
 .os-shell .os-project-explorer .os-explorer-count {
@@ -93,10 +192,10 @@
   min-inline-size: 22px;
   margin-inline-start: auto;
   padding-inline: 6px;
-  border: 1px solid #9bb3c9;
+  border: 1px solid var(--explorer-badge-line);
   border-radius: 9px;
-  color: #000000;
-  background: linear-gradient(180deg, #ffffff, #e6eef6);
+  color: var(--explorer-badge-text);
+  background: var(--explorer-badge-bg);
   font-size: 12px;
   line-height: 18px;
   font-variant-numeric: tabular-nums;
@@ -133,11 +232,11 @@
   min-width: 0;
   min-height: 26px;
   padding-inline: 6px;
-  border: 1px solid #abadb3;
+  border: 1px solid var(--explorer-field-line);
   border-radius: 2px;
   box-shadow: inset 1px 1px 0 rgb(0 0 0 / 0.08);
   color: var(--os-muted);
-  background: #ffffff;
+  background: var(--explorer-field-bg);
 }
 .os-shell .os-project-explorer .os-explorer-search input {
   flex: 1 1 auto;
@@ -166,15 +265,30 @@
 .os-shell .os-project-explorer .os-explorer-search:focus-within input {
   outline: 0;
 }
-/* The select keeps the 7.css drop-down face, including its arrow. */
+/* The select keeps the 7.css drop-down shape and focus ring. 7.css paints the rest,
+   hover and pressed faces, and the black arrow, as background images, so those
+   layers are set here per appearance. The hover and pressed face takes its own
+   text pair, so the label stays readable on the blue face in Aero Night. */
 .os-shell .os-project-explorer .os-explorer-controls select {
   width: 100%;
   min-width: 0;
   min-height: 26px;
   padding-inline: 6px;
+  border-color: var(--explorer-field-line);
   color: var(--os-text);
+  background-color: var(--explorer-field-bg);
+  background-image:
+    var(--explorer-select-arrow),
+    linear-gradient(var(--explorer-field-bg), var(--explorer-field-bg));
   font: inherit;
   font-size: 13px;
+}
+.os-shell
+  .os-project-explorer
+  .os-explorer-controls
+  select:not(:disabled):is(:hover, :active) {
+  color: var(--explorer-field-hover-fg);
+  background-image: var(--explorer-select-arrow), var(--explorer-field-hover);
 }
 .os-shell .os-project-explorer .os-explorer-project-nav {
   display: grid;
@@ -195,7 +309,31 @@
   container: project-content / inline-size;
 }
 .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
-  padding: 20px 24px 24px;
+  padding: 20px var(--explorer-column-inset) 24px;
+}
+/* Choosing a project fades the content region in over 180ms (opacity and a 6px
+   translate, transform only). ProjectExplorer keys this region on the selected
+   slug, so the fade runs on every project switch, not only on first load. */
+.os-shell .os-project-explorer .os-explorer-view {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell .os-project-explorer .os-explorer-view {
+    animation: os-explorer-view-in 180ms ease-out both;
+  }
+}
+@keyframes os-explorer-view-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .os-shell .os-project-explorer .os-project-eyebrow {
   margin: 0;
@@ -239,18 +377,21 @@
   display: flex;
   flex-direction: column;
   margin-block-start: 8px;
-  border: 1px solid #c0c1cd;
+  border: 1px solid var(--explorer-keyline);
   background: var(--win7-body-bg);
 }
+/* Details rows: a 1px separator between rows, as a Win7 list has, and a 24px
+   minimum row height so the target stays readable. */
 .os-shell .os-project-explorer .os-project-row {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   min-width: 0;
+  min-height: 24px;
   padding: 10px 12px;
   border: 0;
-  border-block-end: 1px solid #e5e5e5;
+  border-block-end: 1px solid var(--explorer-row-line);
   border-radius: 0;
   background: var(--win7-body-bg);
 }
@@ -259,10 +400,17 @@
 }
 /* Hover is the Win7 list highlight; keyboard focus inside a row uses the select gradient. */
 .os-shell .os-project-explorer .os-project-row:hover {
-  background: #e5f3fc;
+  background: var(--explorer-hover);
 }
 .os-shell .os-project-explorer .os-project-row:focus-within {
-  background: var(--win7-select-bg);
+  background: var(--explorer-select);
+  color: var(--explorer-select-text);
+}
+.os-shell .os-project-explorer .os-project-row:focus-within h2 a {
+  color: var(--explorer-select-text);
+}
+.os-shell .os-project-explorer .os-project-row:focus-within p {
+  color: var(--explorer-select-muted);
 }
 .os-shell .os-project-explorer .os-project-row-meta {
   display: flex;
@@ -329,17 +477,17 @@
   :is(.os-project-tags, .os-project-stack-list)
   li {
   padding: 2px 8px;
-  border: 1px solid #aabbcc;
+  border: 1px solid var(--explorer-chip-line);
   border-radius: 2px 12px;
-  color: var(--win7-body-text);
-  background: linear-gradient(180deg, #ffffff, #eef4fa);
+  color: var(--explorer-chip-fg);
+  background: var(--explorer-chip-bg);
   font-size: 12px;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
 .os-shell .os-project-explorer .os-project-stack-list li {
   padding: 2px 8px;
-  color: var(--os-text);
+  color: var(--explorer-chip-fg);
   font-size: 12px;
 }
 
@@ -357,6 +505,66 @@
   color: var(--os-muted);
   font-size: var(--text-s);
 }
+/* Dossier switcher (after hydration): a Win7 tab strip. The active tab is raised
+   over the white pane below, and the strip stays at the top of the window body
+   while the pane scrolls. Before hydration the same row is plain anchors. */
+.os-shell .os-project-explorer .os-project-tablist {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2px;
+  margin-block: var(--explorer-gap) 0;
+  padding: 4px 4px 0;
+  border-block-end: 1px solid #8e8f8f;
+  background: var(--win7-body-bg);
+}
+.os-shell .os-project-explorer .os-project-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-block-end: -1px;
+  padding: 4px 14px;
+  border: 1px solid #8e8f8f;
+  border-radius: 3px 3px 0 0;
+  color: var(--explorer-tab-muted);
+  background: var(--explorer-tab-bg);
+  font-family: var(--win7-font);
+  font-size: var(--text-ui);
+  font-weight: 500;
+  line-height: 1.3;
+  cursor: pointer;
+}
+.os-shell .os-project-explorer .os-project-tab:hover {
+  background: var(--explorer-tab-hover-bg);
+  border-color: #3c7fb1;
+  color: var(--explorer-tab-hover-fg);
+}
+.os-shell .os-project-explorer .os-project-tab:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px #98d1ef;
+}
+/* The selected tab is the pane colour, joins the pane, and is set in a heavier
+   weight. Its text is the body text token (black in Light, white in Aero Night). */
+.os-shell .os-project-explorer .os-project-tab[aria-selected="true"] {
+  z-index: 1;
+  padding-block-end: 6px;
+  border-color: #8e8f8f;
+  border-block-end-color: var(--explorer-tab-selected-bg);
+  color: var(--explorer-tab-fg);
+  background: var(--explorer-tab-selected-bg);
+  font-weight: 600;
+}
+@media (pointer: coarse) {
+  .os-shell .os-project-explorer .os-project-tab {
+    min-height: 44px;
+  }
+}
+
 /* Section navigation */
 .os-shell .os-project-explorer .os-project-section-nav {
   display: flex;
@@ -382,9 +590,9 @@
 /* Sections and dossier headings. The outline runs h1, then h2 sections, then h3
    sub-sections; evidence stories use their own heading styles. */
 .os-shell .os-project-explorer .os-project-section {
-  margin-block: 14px;
+  margin-block: var(--explorer-gap);
   padding: 16px;
-  border: 1px solid #d5dfe5;
+  border: 1px solid var(--explorer-keyline);
   border-radius: 3px;
   background: var(--win7-body-bg);
   scroll-margin-top: 120px;
@@ -394,7 +602,8 @@
 .os-shell .os-project-explorer .os-project-section > h2 {
   display: inline-block;
   max-inline-size: 100%;
-  margin: 0 0 12px;
+  margin-block: 0 12px;
+  margin-inline: -6px 0;
   padding-inline: 6px;
   background: var(--win7-body-bg);
   color: var(--win7-body-text);
@@ -404,8 +613,12 @@
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
+/* A sub-heading that follows its section heading takes the heading's 12px gap, not a second gap. */
+.os-shell .os-project-explorer .os-project-section > h2 + h3 {
+  margin-block-start: 0;
+}
 .os-shell .os-project-explorer .os-project-dossier h3 {
-  margin: var(--space-8) 0 var(--space-3);
+  margin: var(--explorer-gap) 0 var(--space-3);
   color: var(--os-text);
   font-size: var(--text-reading);
   font-weight: 600;
@@ -430,6 +643,15 @@
   .os-project-explorer
   :is(.os-project-numbered-list, .os-project-method-list) {
   padding-inline-start: var(--space-6);
+  list-style-position: outside;
+}
+/* Preflight removes list markers, so the lists name their own: numbers for the
+   ordered solution steps, discs for the feature and measure lists. */
+.os-shell .os-project-explorer .os-project-numbered-list {
+  list-style-type: decimal;
+}
+.os-shell .os-project-explorer .os-project-method-list {
+  list-style-type: disc;
 }
 .os-shell
   .os-project-explorer
@@ -455,8 +677,11 @@
 
 /* Papers: solid cards. */
 .os-shell .os-project-explorer .os-project-paper-library {
-  margin-block-start: var(--space-8);
+  margin-block-start: var(--explorer-gap);
   scroll-margin-top: 120px;
+}
+.os-shell .os-project-explorer .os-project-paper-heading > h3 {
+  margin: 0;
 }
 .os-shell .os-project-explorer .os-project-paper-heading {
   display: flex;
@@ -503,7 +728,7 @@
 
 /* Citation: a solid panel, no side stripe. */
 .os-shell .os-project-explorer .os-project-citation {
-  margin: var(--space-6) 0 0;
+  margin: var(--explorer-gap) 0 0;
   padding: var(--space-4);
   border: 1px solid var(--os-line);
   border-radius: var(--radius-m);
@@ -708,9 +933,11 @@
   > .os-explorer-content
   > .os-explorer-footer {
   margin-block-start: auto;
+  margin-block-end: 0;
+  margin-inline: var(--explorer-column-inset);
   padding: 10px 12px;
-  border-block-start: 1px solid #d5dfe5;
-  background: var(--w7-surface);
+  border-block-start: 1px solid var(--explorer-keyline);
+  background: var(--explorer-footer-bg);
   color: var(--win7-body-text);
   font-family: var(--win7-font);
 }
@@ -747,7 +974,7 @@
   justify-content: space-between;
   gap: 4px 12px;
   padding-block-start: 8px;
-  border-block-start: 1px solid #d5dfe5;
+  border-block-start: 1px solid var(--explorer-keyline);
   color: var(--win7-body-muted);
   font-size: 12px;
   line-height: 1.6;
@@ -778,26 +1005,35 @@
 /* Wide explorers: the sidebar stays in view while the dossier scrolls. The grid
    row is the sticky containing block; the scroll container is the window body
    (.os-page-content) in a reading window, or the page on a standalone route.
-   max-block-size is viewport-based because a percentage resolves against the
-   grid row (the dossier height), which does not clamp the sidebar. Narrow
+   A percentage resolves against the grid row (the dossier height), and the
+   viewport is taller than the window body, so ProjectExplorer measures the scroll
+   container and sets --explorer-scroll-h on the explorer root. The pane then
+   scrolls inside itself and keeps its heading and category in view. Narrow
    explorers keep the sidebar in flow. */
 @container explorer-frame (min-width: 701px) {
+  /* The pane is its own scroll port: it is no taller than the window body, every
+     link sits inside it, and a keyline closes the port at the bottom edge. The
+     scrollbar gutter is reserved so the rows do not shift when it appears. */
   .os-shell .os-project-explorer > .os-explorer-layout > .os-explorer-sidebar {
     position: sticky;
     inset-block-start: 0;
-    max-block-size: 100vh;
-    max-block-size: 100dvh;
+    max-block-size: var(--explorer-scroll-h, 100dvh);
     overflow-y: auto;
     overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-block-end: 8px;
+    border-block-end: 1px solid var(--explorer-keyline);
   }
 }
 
 @container project-content (max-width: 560px) {
-  .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
-    padding: var(--space-6) var(--space-4) var(--space-8);
+  .os-shell
+    .os-project-explorer
+    :is(.os-project-index, .os-project-dossier, .os-explorer-footer) {
+    --explorer-column-inset: var(--space-4);
   }
-  .os-shell .os-project-explorer .os-explorer-footer {
-    padding-inline: var(--space-4);
+  .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
+    padding-block: var(--space-6) var(--space-8);
   }
   .os-shell
     .os-project-explorer
@@ -833,7 +1069,7 @@
   .os-shell .os-project-explorer > .os-explorer-layout > .os-explorer-sidebar {
     padding: 8px 0;
     border-inline-end: 0;
-    border-block-end: 1px solid #d5dfe5;
+    border-block-end: 1px solid var(--explorer-keyline);
     max-block-size: 40dvh;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -852,15 +1088,13 @@
   .os-shell .os-project-explorer .os-project-row-with-preview {
     grid-template-columns: minmax(0, 1fr);
   }
-  .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
-    padding: var(--space-6) var(--space-4) var(--space-8);
-  }
   .os-shell
     .os-project-explorer
-    > .os-explorer-layout
-    > .os-explorer-content
-    > .os-explorer-footer {
-    padding-inline: var(--space-4);
+    :is(.os-project-index, .os-project-dossier, .os-explorer-footer) {
+    --explorer-column-inset: var(--space-4);
+  }
+  .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
+    padding-block: var(--space-6) var(--space-8);
   }
   /* A 16px control face avoids focus zoom in mobile Safari. */
   .os-shell .os-project-explorer .os-explorer-search input,

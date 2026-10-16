@@ -14,7 +14,8 @@ const icons = {
 /**
  * Monochrome Lucide glyph. Every app shares one glyph colour (`--os-text` or
  * `--os-muted`), so the icon carries no per-app hue: the design system keeps the
- * accent for the current item only.
+ * accent for the current item only. The glyph is decorative: the label beside it
+ * names the app, so the whole icon is hidden from assistive technology.
  */
 export function OSIcon({
   app,
@@ -26,7 +27,7 @@ export function OSIcon({
 }) {
   const Icon = icons[app];
   return (
-    <span className={tile ? "os-app-icon" : "os-small-icon"}>
+    <span className={tile ? "os-app-icon" : "os-small-icon"} aria-hidden="true">
       <Icon aria-hidden="true" strokeWidth={1.5} />
     </span>
   );

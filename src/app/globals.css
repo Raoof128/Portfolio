@@ -25,10 +25,9 @@
     var(--font-jetbrains-mono), ui-monospace, Menlo, Consolas, monospace;
 }
 
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--background);
-}
+/* No scrollbar-width or scrollbar-color here. Both are inherited, and a value other than
+   auto makes Chromium drop ::-webkit-scrollbar, so the Win7 window-body scrollbars in
+   research-os.css would collapse to a 2px track. The root and shell scrollers set their own. */
 
 /* Calm scrollbars: a thin, flat thumb in the control-line token, no glow. */
 ::-webkit-scrollbar {
@@ -95,16 +94,26 @@ body {
   }
 }
 
-/* Respect reduced motion preferences: no animation, and colour and opacity fade only.
-   :root has no motion tokens, so the duration is the quick literal (120ms). */
+/* Reduced motion, one global guard for every route. Animation and transition durations drop
+   to near zero, so transform and opacity changes land at once, and no loop keeps running
+   (the busy spinner stays static). Transitions are limited to colour and opacity, so no
+   transform moves. Entrance keyframes on windows, the dock and menus are removed outright,
+   so each surface is simply there at rest. The shell's own guard in win7-theme.css
+   repeats this for the Aero layer. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-property:
       background-color, border-color, color, opacity !important;
-    transition-duration: 120ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .os-shell :is(.window, .os-dock, .os-menu, [role="dialog"], [role="menu"]) {
+    animation: none !important;
   }
 }

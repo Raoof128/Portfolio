@@ -1,11 +1,164 @@
 /* Enter wait state on the Win7 logon. The Aero face, halo and logon layout are in
-   win7-logon.css, which loads later. This file holds the wait mechanics: the progress
-   bar, the status plate, the visually hidden label, and the reduced-motion and
-   forced-colour fallbacks. The three-second timer is in WelcomeEnter.tsx. */
+   win7-logon.css, which loads later. This file holds the wait mechanics: the busy dots,
+   the status row, the visually hidden label, the focus ring, the logon-to-desktop
+   hand-off, and the reduced-motion and forced-colour fallbacks. The three-second timer
+   is in WelcomeEnter.tsx. */
 .os-enter-stage {
   display: grid;
   justify-items: center;
-  gap: 12px;
+  /* The same gap token as the logon stack, so the loader spaces like the rest. */
+  gap: var(--os-logon-gap, 12px);
+}
+
+/* Focus ring on the Enter orb: a 2px white outline, which clears 3:1 on the wallpaper.
+   The 7.css inset ring stays inside the glossy face (win7-logon.css). */
+.os-shell .os-welcome .os-enter:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Busy indicator. A Win7 dot sequence: five white dots on a dark plate, each pulsing in
+   turn. It is the only infinite animation on the logon, and it runs only while the wait
+   runs (data-loading). The plate stays hidden until then, so the row takes its space
+   without showing. Only opacity and transform move. */
+.os-enter-progress {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  min-width: 56px;
+  padding: 0 10px;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 3px;
+  background: rgb(0 22 46 / 0.45);
+  opacity: 0;
+  transition: opacity var(--motion-control) var(--ease-standard);
+}
+.os-enter-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.os-enter-track i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.35),
+    0 1px 2px rgb(0 0 0 / 0.4);
+  opacity: 0.35;
+}
+.os-enter-stage[data-loading] .os-enter-progress {
+  opacity: 1;
+}
+/* The dots share the 3s cycle set on the track. Each dot pulses 0.6s after the one before
+   it, over the first 10 percent of the cycle. A negative delay offsets each dot inside the
+   cycle, so the sequence repeats every cycle with no restart. */
+.os-enter-stage[data-loading] .os-enter-track i {
+  animation-name: os-enter-dot;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: inherit;
+}
+.os-enter-track i:nth-child(1) {
+  animation-delay: -3s;
+}
+.os-enter-track i:nth-child(2) {
+  animation-delay: -2.4s;
+}
+.os-enter-track i:nth-child(3) {
+  animation-delay: -1.8s;
+}
+.os-enter-track i:nth-child(4) {
+  animation-delay: -1.2s;
+}
+.os-enter-track i:nth-child(5) {
+  animation-delay: -0.6s;
+}
+@keyframes os-enter-dot {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  10%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
+/* Status line: white text on the wallpaper. The plate token is transparent in both themes,
+   so the text shadow carries the contrast. Sampled in Chromium, the brightest wallpaper pixel
+   under the row gives a worst case of about 7.5:1 on the light phone and 8:1 on the light
+   desktop, so the 4.5:1 text minimum holds. The row has a fixed 28px height whether or not
+   it holds text, so the loader never shifts the links. */
+.os-enter-status {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 8px;
+  border-radius: 3px;
+  background: var(--win7-plate);
+  color: #ffffff;
+  font-size: var(--win7-ui-size);
+  line-height: 1.5;
+}
+.os-enter-status:empty {
+  padding: 0;
+  background: none;
+}
+
+/* Hand-off from logon to desktop. Enter marks the logon as leaving for the last 180ms of
+   the wait. The fade runs to opacity 0 and the logon unmounts only after it has finished
+   (WelcomeEnter.tsx waits on the animation), so the logon never drops out part way. Only
+   opacity and transform move, and reduced motion removes both. The desktop arrives over
+   the same wallpaper with backwards fill, so no transform is left behind once it settles. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell .os-welcome[data-leaving] {
+    animation: os-logon-leave 180ms var(--ease-exit, ease-in) forwards;
+    pointer-events: none;
+  }
+  .os-shell[data-arriving] .os-content {
+    animation: os-desktop-arrive 180ms var(--ease-standard, ease-out) backwards;
+  }
+}
+@keyframes os-logon-leave {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+@keyframes os-desktop-arrive {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-enter-progress {
+    transition: none;
+  }
+  /* Static dots show the wait without motion. The timer still runs. */
+  .os-enter-stage[data-loading] .os-enter-track i {
+    animation: none;
+    opacity: 0.7;
+  }
 }
 
 /* The label keeps the accessible name; the Aero face shows the arrow alone. */
@@ -20,106 +173,18 @@
   padding: 0;
 }
 
-/* Win7 progress bar: a white track with a grey edge. A green segment, about 30 percent
-   wide, crosses it once over the wait. */
-.os-enter-progress {
-  position: relative;
-  box-sizing: border-box;
-  width: 180px;
-  max-width: 100%;
-  height: 14px;
-  overflow: hidden;
-  border: 1px solid #6b6b6b;
-  border-radius: 2px;
-  background: #ffffff;
-  opacity: 0;
-  transition: opacity var(--motion-control) var(--ease-standard);
-}
-/* The lightest stop is #36a455 rather than #3fb35f: it keeps the segment at 3:1 or
-   more against the white track (about 3.2:1). */
-.os-enter-progress span {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 30%;
-  background: linear-gradient(90deg, #36a455, var(--win7-progress-fill));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45);
-}
-.os-enter-stage:dir(rtl) .os-enter-progress span {
-  left: auto;
-  right: 0;
-}
-.os-enter-stage[data-loading] .os-enter-progress {
-  opacity: 1;
-}
-/* The duration is set inline from WELCOME_LOADER_MS, so the wait and the segment agree. */
-.os-enter-stage[data-loading] .os-enter-progress span {
-  animation: os-enter-fill linear both;
-}
-.os-enter-stage[data-loading]:dir(rtl) .os-enter-progress span {
-  animation-name: os-enter-fill-rtl;
-}
-@keyframes os-enter-fill {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(333.333%);
-  }
-}
-@keyframes os-enter-fill-rtl {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-333.333%);
-  }
-}
-
-/* Status line on a dark plate, so the white text clears 4.5:1 over the wallpaper. */
-.os-enter-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 20px;
-  margin: 0;
-  padding: 2px 8px;
-  border-radius: 3px;
-  background: var(--win7-plate);
-  color: #ffffff;
-  font-size: var(--win7-ui-size);
-  line-height: 1.5;
-}
-.os-enter-status:empty {
-  padding: 0;
-  background: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .os-enter-progress {
-    transition: none;
-  }
-  /* A static 40 percent segment shows the wait without motion. The timer still runs. */
-  .os-enter-stage[data-loading] .os-enter-progress span {
-    animation: none;
-    transform: none;
-    width: 40%;
-  }
-}
-
-/* Forced colours reset author backgrounds. Opt out for this bar and use system colours;
+/* Forced colours reset author backgrounds. Opt out for the dots and use system colours;
    the status line still carries the meaning. */
 @media (forced-colors: active) {
   .os-enter-progress,
-  .os-enter-progress span {
+  .os-enter-track i {
     forced-color-adjust: none;
   }
   .os-enter-progress {
     background: Canvas;
     border-color: CanvasText;
   }
-  .os-enter-progress span {
+  .os-enter-track i {
     background: Highlight;
     box-shadow: none;
   }

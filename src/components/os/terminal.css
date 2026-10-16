@@ -10,7 +10,7 @@
   gap: 0;
   min-width: 0;
   margin: 0;
-  padding: 0 4px 4px;
+  padding: 4px;
   border: 1px solid var(--win7-frame-border);
   border-radius: var(--win7-radius);
   color: var(--win7-text-glass);
@@ -34,7 +34,7 @@
   justify-content: space-between;
   gap: 6px;
   min-height: var(--win7-title-h);
-  padding-inline: 4px;
+  padding-inline: 6px;
 }
 
 .os-shell .os-terminal-title {
@@ -58,11 +58,12 @@
   color: currentColor;
 }
 
-/* The copy button is the 7.css button. Desktop keeps the 7.css 23px height; coarse
-   pointers take the 44px touch target. */
+/* The copy button sits inside the title strip, on the same row as the title. It is
+   the 7.css button at 24px on desktop; coarse pointers take the 44px target. */
 .os-shell .os-terminal .os-terminal-copy {
+  flex: none;
   gap: 6px;
-  min-height: 23px;
+  min-height: 24px;
   padding-inline: 10px;
   font-size: var(--win7-small-size);
 }
@@ -81,6 +82,9 @@
   border: 0;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
+  box-shadow:
+    inset 1px 1px 0 #000000,
+    inset -1px -1px 0 #3a3a3a;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   color: #cccccc;

@@ -15,8 +15,9 @@
   min-inline-size: 0;
 }
 
+/* The figure starts on the column edge, with the text it illustrates. */
 .os-shell .os-project-motion {
-  justify-self: center;
+  justify-self: start;
   min-inline-size: 0;
   inline-size: 100%;
   max-inline-size: 320px;

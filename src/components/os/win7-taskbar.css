@@ -3,14 +3,41 @@
    clock. Logical properties throughout, so RTL mirrors. */
 
 .os-shell.win7 {
+  /* The bar is 52px on every width, so the 44px pins sit inside it with room for the
+     focus ring and the running line. Phones already use 52px in the foundations layer.
+     Window and dialog clearance read this token, so they follow the same height. */
+  --win7-taskbar-h: 52px;
+  --win7-pin-h: 44px;
+  /* Glass for the bar and the running line. The light values are the Aero day bar; the
+     night values are set on the dark shell below. */
+  --win7-taskbar-glass: linear-gradient(
+    180deg,
+    rgb(240 250 255 / 0.8) 0%,
+    rgb(196 228 249 / 0.6) 46%,
+    rgb(120 178 228 / 0.7) 100%
+  );
+  --win7-run-line: #1f7fd6;
+  --win7-run-glow: rgb(120 200 255 / 0.9);
   /* Tray widths on phones, sized to the chips that remain. From 480px the clock keeps its
      time; below 480px the tray keeps only the chips. */
   --win7-tray-phone-w: 248px;
   --win7-tray-xs-w: 192px;
 }
+.os-shell.win7[data-appearance="dark"] {
+  --win7-taskbar-glass: linear-gradient(
+    180deg,
+    rgb(104 142 190 / 0.62) 0%,
+    rgb(40 72 116 / 0.64) 46%,
+    rgb(14 34 66 / 0.74) 100%
+  );
+  --win7-run-line: #9bdcff;
+  --win7-run-glow: rgb(140 210 255 / 0.85);
+}
 
-/* Taskbar: one full-width glass strip. The end padding keeps pinned apps clear of the
-   tray. The strip scrolls sideways when pins overflow, and the orb sticks to the start. */
+/* Taskbar: one full-width glass strip. The end padding is the tray's width, and the pins
+   scroll sideways inside .os-dock-strip, which ends where that padding begins. So a pin
+   that overflows is clipped at the tray's edge and never runs under the tray chips. The
+   orb and divider stay fixed at the start. */
 .os-shell.win7 .os-dock {
   position: fixed;
   inset-inline-start: 0;
@@ -30,29 +57,58 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
+  overflow: hidden;
   border: 0;
   border-block-start: 1px solid var(--win7-frame-border);
   border-radius: 0;
-  background: var(--win7-taskbar-bg);
+  /* Translucent Aero glass: a gradient fill, a blurred backdrop and a 1px bright top edge. */
+  background: var(--win7-taskbar-glass);
   box-shadow:
-    inset 0 1px 0 var(--win7-glass-edge),
-    0 -4px 16px rgb(0 0 0 / 0.25);
-  -webkit-backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
-  backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    0 -4px 16px rgb(0 0 0 / 0.22);
+  -webkit-backdrop-filter: blur(var(--win7-glass-blur)) saturate(150%);
+  backdrop-filter: blur(var(--win7-glass-blur)) saturate(150%);
   color: var(--win7-text-glass);
   text-shadow: var(--win7-text-shadow);
 }
-.os-shell.win7 .os-dock::-webkit-scrollbar {
-  display: none;
+.os-shell.win7[data-appearance="dark"] .os-dock {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    0 -4px 16px rgb(0 0 0 / 0.4);
 }
-.os-shell.win7 .os-dock > * {
+/* Reduced transparency: the bar is one solid colour, with no blur. */
+@media (prefers-reduced-transparency: reduce) {
+  .os-shell.win7 .os-dock {
+    background: var(--win7-taskbar-solid);
+  }
+}
+/* The pin strip takes the room between the orb and the tray, and scrolls when the pins
+   are wider than that room. Its padding keeps the focus rings of the first and last pins
+   inside the scroll box. */
+.os-shell.win7 .os-dock > :not(.os-dock-strip) {
   flex: none;
 }
+.os-shell.win7 .os-dock .os-dock-strip {
+  box-sizing: border-box;
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-block: 4px;
+  padding-inline: 2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.os-shell.win7 .os-dock .os-dock-strip::-webkit-scrollbar {
+  display: none;
+}
 
-/* Start orb: the R monogram in a glossy round button. */
+/* Start orb: a glossy sphere. The body is a radial gradient lit from above with a
+   reflected glow at the foot, a dark lower rim, and a bright crescent of gloss across
+   the top half. The R monogram sits above the gloss. No logo or Microsoft imagery. */
 .os-shell.win7 .os-dock .os-dock-home {
   position: sticky;
   inset-inline-start: 4px;
@@ -67,30 +123,56 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(0 0 0 / 0.45);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgb(0 22 56 / 0.8);
   border-radius: 50%;
-  background: var(--win7-orb-grad);
+  /* The gloss is a layer of the orb's own background, not a pseudo-element, so no pseudo
+     rule can switch it off. Three layers: the top gloss, the foot reflection, the body. */
+  background:
+    radial-gradient(
+      ellipse 72% 46% at 50% 16%,
+      rgb(255 255 255 / 0.95) 0,
+      rgb(255 255 255 / 0.5) 52%,
+      rgb(255 255 255 / 0) 100%
+    ),
+    radial-gradient(
+      circle at 50% 120%,
+      rgb(170 236 255 / 0.85) 0,
+      transparent 46%
+    ),
+    var(--win7-orb-grad);
+  /* Inner rim: a white edge above and a dark lower rim. Outer: a dark hairline and a
+     soft drop shadow, so the orb reads as a sphere sitting on the bar. */
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.9),
-    0 2px 6px rgb(0 0 0 / 0.4);
+    inset 0 -4px 7px rgb(0 36 98 / 0.5),
+    inset 0 0 0 1px rgb(255 255 255 / 0.45),
+    0 0 0 1px rgb(255 255 255 / 0.5),
+    0 2px 6px rgb(0 0 0 / 0.5);
   color: #ffffff;
 }
 .os-shell.win7 .os-dock .os-dock-home svg {
+  position: relative;
+  z-index: 1;
   width: 22px;
   height: 22px;
   color: #ffffff;
   fill: currentColor;
-  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5));
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.55));
 }
 .os-shell.win7 .os-dock .os-dock-home:hover {
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    inset 0 -4px 7px rgb(0 36 98 / 0.5),
+    inset 0 0 0 1px rgb(255 255 255 / 0.45),
+    0 0 0 1px rgb(255 255 255 / 0.5),
     0 0 8px rgb(140 210 255 / 0.9);
 }
+/* Pressed: the lower rim darkens and the orb sinks, as a held Aero button does. */
 .os-shell.win7 .os-dock .os-dock-home[aria-current="page"] {
+  filter: brightness(0.9);
   box-shadow:
-    inset 0 2px 4px rgb(0 0 0 / 0.45),
-    0 1px 0 rgb(255 255 255 / 0.6);
+    inset 0 2px 5px rgb(0 0 0 / 0.5),
+    0 0 0 1px rgb(255 255 255 / 0.3);
 }
 .os-shell.win7 .os-dock .os-dock-home:focus-visible {
   outline: 2px solid var(--win7-focus-inner);
@@ -107,15 +189,16 @@
   box-shadow: 1px 0 0 rgb(255 255 255 / 0.5);
 }
 
-/* Pinned apps: 36px glass buttons (44px on phones), icon and label. */
+/* Pinned apps: 44px glass buttons on every width, icon and label. Running apps carry a
+   glowing line along the foot; the pressed look is the current page only. */
 .os-shell.win7 .os-dock .os-dock-app {
   position: relative;
   box-sizing: border-box;
   height: var(--win7-pin-h);
-  min-width: 40px;
+  min-width: 44px;
   min-height: 0;
   margin: 0;
-  padding: 0 8px;
+  padding: 0 10px 3px;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -133,8 +216,20 @@
   color: inherit;
 }
 .os-shell.win7 .os-dock .os-small-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+}
+/* Running: a 3px glowing line along the foot of the pin, inset from the edges. */
+.os-shell.win7 .os-dock .os-dock-app.is-running::before {
+  content: "";
+  position: absolute;
+  inset-inline: 10px;
+  inset-block-end: 2px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--win7-run-line);
+  box-shadow: 0 0 6px var(--win7-run-glow);
+  pointer-events: none;
 }
 .os-shell.win7 .os-dock .os-dock-app > span:last-child {
   max-width: 14em;
@@ -163,20 +258,23 @@
   border-color: rgb(0 0 0 / 0.35);
   box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.25);
 }
-/* The current-page dot from research-os.css is retired; a minimised app keeps its dot. */
+/* The current-page dot from research-os.css is retired. A minimised app shows a small
+   dot at the top of its pin: its window is hidden, so it is neither current nor pressed. */
 .os-shell.win7 .os-dock a[aria-current="page"]::after {
   content: none;
 }
+.os-shell.win7 .os-dock .os-dock-app.is-minimized::after,
 .os-shell.win7 .os-dock .os-dock-app[data-minimized="true"]::after {
   content: "";
   position: absolute;
-  inset-block-end: 2px;
+  inset-block-start: 3px;
   inset-inline: 0;
   width: 4px;
   height: 4px;
   margin-inline: auto;
   border-radius: 50%;
   background: var(--win7-text-glass);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.6);
 }
 
 /* Brand chip and the visually hidden text beside it. The text stays focusable and
@@ -227,7 +325,9 @@
   white-space: nowrap;
 }
 
-/* Tray: a transparent strip on the taskbar's end, above the dock. */
+/* Tray: a transparent strip on the taskbar's end, above the dock. It carries no fill of its
+   own, so the bar stays one continuous glass band at every width. Its 1px inline-start
+   highlight is the only divider. The 8px inline-end padding is the inset from the edge. */
 .os-shell.win7 .os-topbar {
   position: fixed;
   inset-inline-start: auto;
@@ -242,12 +342,13 @@
   min-height: 0;
   margin: 0;
   padding: 0;
-  padding-inline: 4px;
+  padding-inline: 4px 8px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 2px;
   border: 0;
+  border-inline-start: 1px solid rgb(255 255 255 / 0.55);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
@@ -264,13 +365,15 @@
   min-width: 0;
 }
 
-/* Chips: 28px icon buttons (44px on phones). The keyboard hint stays out of the tray. */
+/* Chips: 24px tall, rounded like a Start-menu pill rather than a bordered square. A coarse
+   pointer gets a 44px target through the pointer query below. The keyboard hint stays out
+   of the tray. */
 .os-shell.win7 .os-topbar .os-control {
   box-sizing: border-box;
   width: 28px;
-  height: 28px;
+  height: 24px;
   min-width: 28px;
-  min-height: 28px;
+  min-height: 24px;
   margin: 0;
   padding: 0;
   gap: 0;
@@ -278,7 +381,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 12px;
   background: transparent;
   box-shadow: none;
   color: var(--win7-text-glass);
@@ -301,9 +404,10 @@
   box-shadow: 0 0 0 2px var(--win7-focus-inner);
 }
 
-/* Theme switch: a 40 by 24px pill (44px hit area on phones). Off is plain glass with the
-   knob at the start; on is blue with the knob at the end. The track is drawn on ::after
-   so the knob (::before, from theme-switch.css) and the power glyph keep their layers. */
+/* Theme switch: a 40 by 24px inset track with a white thumb. The thumb carries the glyph
+   for the current theme (a sun in light, a moon in dark), so the control reads as a
+   live switch and not a disabled pill. The track is drawn on ::after so the thumb
+   (::before) and the glyph (svg) keep their layers. The visible state label sits beside it. */
 .os-shell.win7 .os-topbar .os-theme-switch {
   --sw-pad: 0px;
   isolation: isolate;
@@ -314,10 +418,10 @@
   min-width: 40px;
   min-height: 24px;
   margin: 0 2px;
-  padding: 0 4px;
+  padding: 0;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -328,43 +432,65 @@
   content: "";
   position: absolute;
   z-index: -1;
+  /* 7.css gives button pseudo-elements 100% width and height, so both are reset here
+     and the insets alone set the track. */
   inset-block: var(--sw-pad);
   inset-inline: 0;
+  width: auto;
+  height: auto;
   box-sizing: border-box;
-  border: 1px solid rgb(0 0 0 / 0.45);
+  border: 1px solid rgb(0 0 0 / 0.6);
   border-radius: 12px;
-  background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.12));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
+  /* 7.css fades every button pseudo-element to 0 until hover, so the track and thumb
+     set their own opacity. */
+  opacity: 1;
+  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(190 214 236 / 0.85));
+  box-shadow:
+    inset 0 1px 2px rgb(0 0 0 / 0.3),
+    inset 0 0 0 1px rgb(255 255 255 / 0.35);
 }
 .os-shell.win7 .os-topbar .os-theme-switch::before {
   inset: auto;
-  inset-block-start: calc(var(--sw-pad) + 4px);
-  inset-inline-start: 3px;
+  inset-block-start: calc(var(--sw-pad) + 3px);
+  inset-inline-start: 2px;
   inset-inline-end: auto;
-  width: 16px;
-  height: 16px;
-  border: 0;
+  z-index: 1;
+  opacity: 1;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgb(0 0 0 / 0.45);
   border-radius: 50%;
-  background: #ffffff;
+  background: linear-gradient(#ffffff, #dde8f3);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
 }
+/* The glyph sits in the thumb: 12px, centred on the 18px knob. */
 .os-shell.win7 .os-topbar .os-theme-switch svg {
-  z-index: 1;
+  position: absolute;
+  z-index: 2;
+  inset-block-start: calc(var(--sw-pad) + 6px);
+  inset-inline-start: 5px;
+  inset-inline-end: auto;
   width: 12px;
   height: 12px;
-  color: var(--win7-text-glass);
+  color: #6b4a00;
+  stroke-width: 2.4;
+  pointer-events: none;
+}
+.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"] svg {
+  inset-inline-start: auto;
+  inset-inline-end: 5px;
+  color: #0c4c97;
 }
 .os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"] {
-  justify-content: flex-start;
+  justify-content: center;
 }
 .os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::after {
   background: linear-gradient(#8fd3f8, #2f8fe0);
-  border-color: rgb(0 0 0 / 0.6);
+  border-color: rgb(0 0 0 / 0.7);
 }
 .os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::before {
   inset-inline-start: auto;
-  inset-inline-end: 3px;
-  background: #ffffff;
+  inset-inline-end: 2px;
 }
 .os-shell.win7 .os-topbar .os-theme-switch:focus-visible {
   outline: 2px solid var(--win7-focus-inner);
@@ -410,6 +536,11 @@
 .os-shell.win7 .os-language summary::-webkit-details-marker {
   display: none;
 }
+/* 7.css draws a disclosure triangle on every details summary. The language menu is
+   labelled by its code and globe, so the triangle goes. */
+.os-shell.win7 .os-language summary::before {
+  content: none;
+}
 .os-shell.win7 .os-language summary::after {
   content: attr(data-locale-code);
   order: 0;
@@ -421,12 +552,6 @@
 .os-shell.win7 .os-language summary > svg:first-of-type {
   width: 16px;
   height: 16px;
-  color: var(--win7-text-glass);
-}
-.os-shell.win7 .os-language summary > svg:last-of-type {
-  order: 1;
-  width: 12px;
-  height: 12px;
   color: var(--win7-text-glass);
 }
 .os-shell.win7 .os-language summary:is(:hover, :focus-visible),
@@ -512,7 +637,8 @@
   color: var(--win7-text-glass);
 }
 .os-shell.win7 .os-top-date {
-  font-size: var(--win7-small-size);
+  /* Never below 12px, the tray's minimum readable size, whatever the small-size token says. */
+  font-size: max(12px, var(--win7-small-size));
   color: var(--win7-text-glass);
   white-space: nowrap;
 }
@@ -525,6 +651,8 @@
   height: auto;
   padding-inline: 0;
   background: transparent;
+  /* The corner strip has no taskbar divider, so the tray highlight goes too. */
+  border-inline-start: 0;
 }
 
 /* Start menu: the search dialog opens above the orb. The left pane is white in both
@@ -542,12 +670,12 @@
   --os-accent-tint: #cce8fc;
   --os-focus: #0066cc;
   position: fixed;
-  inset-inline-start: 0;
+  inset-inline-start: 4px;
   inset-inline-end: auto;
   inset-block-start: auto;
-  inset-block-end: calc(var(--win7-taskbar-h) + 4px);
+  inset-block-end: calc(var(--win7-taskbar-h) + 6px);
   box-sizing: border-box;
-  width: min(560px, 100vw);
+  width: min(560px, 100vw - 8px);
   max-width: 100vw;
   height: auto;
   max-height: min(600px, calc(100dvh - var(--win7-taskbar-h) - 16px));
@@ -560,6 +688,8 @@
   box-shadow: var(--win7-frame-shadow);
   overflow: hidden;
   font-size: var(--win7-ui-size);
+  /* Opacity only, 120ms: the Start menu fades in and never scales or moves. */
+  transition: opacity 120ms ease-out;
 }
 .os-shell.win7 .os-search-dialog[open] {
   display: grid;
@@ -570,6 +700,16 @@
 .os-shell.win7 .os-search-dialog::backdrop {
   background: transparent;
   animation: none;
+}
+/* The windows layer starts the dialog at scale 0.96 over 300ms. This layer keeps the
+   opacity-only fade, so the starting state drops the scale. */
+@supports (transition-behavior: allow-discrete) {
+  @starting-style {
+    .os-shell.win7 .os-search-dialog[open] {
+      opacity: 0;
+      transform: none;
+    }
+  }
 }
 .os-shell.win7 .os-search-heading {
   grid-column: 1;
@@ -700,9 +840,15 @@
   overflow-y: auto;
   overflow-x: hidden;
   border: 0;
+  border-inline-start: 1px solid rgb(255 255 255 / 0.8);
   border-radius: 0;
-  background: var(--win7-start-right);
-  color: #ffffff;
+  /* Light translucent pane, as the Start menu's right column: dark text on a pale wash. */
+  background: linear-gradient(
+    180deg,
+    rgb(246 251 255 / 0.9),
+    rgb(214 232 248 / 0.86)
+  );
+  color: #000000;
 }
 .os-shell.win7 .os-search-scopes button {
   box-sizing: border-box;
@@ -719,20 +865,20 @@
   border-radius: 3px;
   background: transparent;
   box-shadow: none;
-  color: #ffffff;
+  color: #000000;
   font-size: var(--win7-ui-size);
   font-weight: 400;
   text-align: start;
-  text-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
+  text-shadow: none;
 }
 .os-shell.win7 .os-search-scopes button:hover {
-  background: rgb(255 255 255 / 0.12);
-  border-color: rgb(255 255 255 / 0.35);
-  color: #ffffff;
+  background: linear-gradient(rgb(255 255 255 / 0.9), rgb(190 224 248 / 0.9));
+  border-color: var(--win7-select-border);
+  color: #000000;
 }
 .os-shell.win7 .os-search-scopes button[aria-pressed="true"] {
-  background: rgb(255 255 255 / 0.2);
-  border-color: rgb(255 255 255 / 0.6);
+  background: var(--win7-select-bg);
+  border-color: var(--win7-select-border);
   font-weight: 600;
 }
 /* Result rows on the white pane. */
@@ -781,22 +927,21 @@
   padding: 10px;
   border: 0;
   background: transparent;
-  color: #ffffff;
+  color: #000000;
   font-size: var(--win7-small-size);
-  text-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
 }
 .os-shell.win7 .os-search-bottom > span {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #ffffff;
+  color: #000000;
 }
 .os-shell.win7 .os-search-bottom kbd {
   padding: 1px 5px;
-  border: 1px solid rgb(255 255 255 / 0.6);
+  border: 1px solid rgb(0 0 0 / 0.35);
   border-radius: 3px;
-  background: rgb(0 0 0 / 0.2);
-  color: #ffffff;
+  background: rgb(255 255 255 / 0.7);
+  color: #000000;
   font-size: var(--win7-small-size);
 }
 
@@ -819,8 +964,9 @@
   .os-shell.win7 .os-top-date {
     display: none;
   }
+  /* The tray is exactly the width the pins leave clear, so pins never run under it. */
   .os-shell.win7 .os-topbar {
-    width: auto;
+    width: var(--win7-tray-phone-w);
     max-width: 100%;
     padding-inline: 0 4px;
   }
@@ -831,15 +977,11 @@
     min-width: 44px;
     min-height: 44px;
   }
-  /* The code, the Languages glyph and the chevron need about 60px, so on phones the
-     chevron goes and the summary keeps its 44px target. */
+  /* The code and the Languages glyph fit in 44px, so the summary keeps its target. */
   .os-shell.win7 .os-language summary {
     justify-content: center;
     padding: 0;
     gap: 2px;
-  }
-  .os-shell.win7 .os-language summary > svg:last-of-type {
-    display: none;
   }
   .os-shell.win7 .os-topbar .os-theme-switch {
     --sw-pad: 10px;
@@ -848,7 +990,7 @@
     min-width: 44px;
     min-height: 44px;
     margin: 0;
-    padding: 0 10px;
+    padding: 0;
   }
   .os-shell.win7 .os-topbar .os-theme-switch::after {
     inset-block: var(--sw-pad);
@@ -924,6 +1066,9 @@
   .os-shell.win7 .os-top-clock {
     display: none;
   }
+  .os-shell.win7 .os-topbar {
+    width: var(--win7-tray-xs-w);
+  }
   .os-shell.win7 .os-dock .os-dock-app > span:last-child {
     position: absolute;
     inline-size: 1px;
@@ -934,6 +1079,31 @@
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+  }
+}
+
+/* Dock motion: pins and the orb animate only transform and opacity, over 180ms. Layout
+   and paint properties (width, top, background) change at once, so the bar never
+   reflows during a transition. Reduced motion removes the transition entirely. */
+.os-shell.win7 .os-dock .os-dock-app,
+.os-shell.win7 .os-dock .os-dock-home {
+  transition-property: transform, opacity;
+  transition-duration: 180ms;
+  transition-timing-function: ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .os-shell.win7 .os-dock .os-dock-app,
+  .os-shell.win7 .os-dock .os-dock-home,
+  .os-shell.win7 .os-search-dialog {
+    transition: none;
+  }
+}
+
+/* Touch: chips grow to the 44px target. The glyph stays centred, so the bar keeps its look. */
+@media (pointer: coarse) {
+  .os-shell.win7 .os-topbar .os-control {
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 

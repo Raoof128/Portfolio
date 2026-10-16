@@ -10,7 +10,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import Link from "next/link";
-import { ArrowLeft, Copy } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { locales, type Locale } from "@/i18n";
 import type { SearchEntry } from "@/lib/os-search-query";
 import type { OSAppDescriptor } from "@/lib/os-app-schema";
@@ -26,6 +26,7 @@ import {
   type RegisteredApplication,
 } from "./application-context";
 import type { WorkspaceState } from "./workspace-model";
+import { createFlipTransform, type WindowRect } from "./window-geometry";
 import "./workspace-windows.css";
 
 export function appForDescriptor(descriptor: OSAppDescriptor): PortfolioApp {
@@ -49,6 +50,30 @@ type WindowActions = {
 
 /** Set once any WorkspaceWindows has committed. Later window mounts are user opens. */
 let workspaceCommitted = false;
+
+/** A minimise or close keeps the frame mounted this long so its exit can play. */
+const LEAVE_MS = 180;
+/**
+ * The pathname the page was loaded at. A window already on that path was restored at
+ * load and does not animate. A window on any other path was opened by the user, even when
+ * the workspace mounts in the same commit as the window (a dock click on a fresh desktop).
+ */
+const initialPathname =
+  typeof window === "undefined"
+    ? ""
+    : window.location.pathname.replace(/\/+$/, "");
+/** Keyframes for the window frame, all defined in win7-windows.css. */
+const OPEN_ANIMATION = "os-win7-window-open";
+const CLOSE_ANIMATION = "os-win7-window-close";
+const MINIMIZE_ANIMATION = "os-win7-window-minimize";
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
 
 function ApplicationWindow({
   application,
@@ -117,10 +142,14 @@ function ApplicationWindow({
   // When the frame's document changes, the wait for the previous one has ended.
   // Clearing during render (not in an effect) stops a stale id from showing the
   // loading hairline again on a later return to the same page.
+  // The exit before a minimise or close: the frame stays mounted for LEAVE_MS.
+  const [leaving, setLeaving] = useState<"minimizing" | "closing" | null>(null);
   const [settledDocument, setSettledDocument] = useState(descriptor.id);
   if (settledDocument !== descriptor.id) {
     setSettledDocument(descriptor.id);
     setPendingFrom(null);
+    // A frame reused for another window must not keep the previous window's exit.
+    setLeaving(null);
   }
   const pending = pendingFrom === descriptor.id;
   const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -131,6 +160,11 @@ function ApplicationWindow({
   // The element that had focus when this window opened. Focus returns there when the
   // window is minimised or closed, so it never stays on a control that is hidden.
   const opener = useRef<HTMLElement | null>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // The minimise or close that runs once the exit ends (animationend or the fallback timer).
+  const leaveDone = useRef<(() => void) | null>(null);
+  // The frame's box before a maximise or restore; the next commit animates from it (FLIP).
+  const flipFrom = useRef<WindowRect | null>(null);
 
   useLayoutEffect(() => {
     if (minimized !== reading.minimized) {
@@ -187,11 +221,12 @@ function ApplicationWindow({
         }
       }
     } else if (!previousActive.current) {
+      // Activation (a taskbar button or a click) moves focus into the window body.
       const heading = pane.current?.querySelector<HTMLElement>("h1");
       if (heading) {
         heading.tabIndex = -1;
         heading.focus({ preventScroll: true });
-      }
+      } else pane.current?.focus({ preventScroll: true });
     }
     firstFocus.current = false;
     previousActive.current = true;
@@ -208,8 +243,61 @@ function ApplicationWindow({
     return () => {
       disposed.current = true;
       if (shareTimer.current) clearTimeout(shareTimer.current);
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
     };
   }, []);
+
+  // Runs the pending minimise or close. It runs on animationend, or on the fallback timer if
+  // the animation never reports. The frame stays mounted with data-state until then.
+  function finishLeave() {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    leaveTimer.current = null;
+    const done = leaveDone.current;
+    leaveDone.current = null;
+    done?.();
+  }
+
+  // Starts the exit. Reduced motion skips it and runs the change at once.
+  function leave(kind: "minimizing" | "closing", done: () => void) {
+    if (prefersReducedMotion()) {
+      done();
+      return;
+    }
+    setLeaving(kind);
+    leaveDone.current = done;
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    leaveTimer.current = setTimeout(finishLeave, LEAVE_MS + 60);
+  }
+
+  // FLIP: after a maximise or restore commits, animate transform from the old box to the new one.
+  // Only transform runs; width and height change at once. Reduced motion skips it.
+  useLayoutEffect(() => {
+    const from = flipFrom.current;
+    const element = pane.current;
+    flipFrom.current = null;
+    if (
+      !from ||
+      !element ||
+      prefersReducedMotion() ||
+      typeof element.animate !== "function"
+    )
+      return;
+    const box = element.getBoundingClientRect();
+    const transform = createFlipTransform(from, {
+      x: box.x,
+      y: box.y,
+      width: box.width,
+      height: box.height,
+    });
+    if (!transform) return;
+    element.animate(
+      [
+        { transformOrigin: "0 0", transform },
+        { transformOrigin: "0 0", transform: "none" },
+      ],
+      { duration: 180, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+    );
+  });
 
   // Moves focus off the window before it hides: the opener if it is still reachable,
   // otherwise the dock item for the current app, then the dock home link.
@@ -307,14 +395,19 @@ function ApplicationWindow({
       data-window-path={descriptor.path}
       data-active={active}
       data-opening={opening ? "true" : undefined}
-      onTransitionEnd={(event) => {
-        // The open is the frame's opacity transition now (workspace-windows.css). Only its
-        // own end clears the state; child transitions bubble.
-        if (
-          event.target === event.currentTarget &&
-          event.propertyName === "opacity"
-        )
+      data-state={leaving ?? undefined}
+      data-expanded={expanded ? "true" : undefined}
+      onAnimationEnd={(event) => {
+        // Animations on children bubble up to the frame, so only the frame's own count.
+        if (event.target !== event.currentTarget) return;
+        if (event.animationName === OPEN_ANIMATION)
           setVisibility((value) => ({ ...value, opening: false }));
+        else if (
+          leaveDone.current &&
+          (event.animationName === CLOSE_ANIMATION ||
+            event.animationName === MINIMIZE_ANIMATION)
+        )
+          finishLeave();
       }}
       hidden={hidden}
       style={
@@ -358,17 +451,6 @@ function ApplicationWindow({
           <div className="os-window-scan" aria-hidden="true" />
         )}
         <div className="os-window-navigation">
-          {/* The visible word is part of the name, so the name matches what sighted users read. */}
-          {/* The name is kept on phones, where research-os.css hides the visible word. */}
-          <Link
-            className="os-window-back"
-            href={parentPath}
-            aria-label={copy.back}
-            tabIndex={active ? 0 : -1}
-          >
-            <ArrowLeft aria-hidden="true" />
-            <span>{copy.back}</span>
-          </Link>
           <OSIcon app={app} />
         </div>
         <button
@@ -385,68 +467,93 @@ function ApplicationWindow({
         >
           {title}
         </button>
+        {/* Caption glyphs come from 7.css (is-minimize, is-maximize, is-restore, is-close).
+            Every window carries the same three controls, in Win7 order. */}
         <div className="os-window-actions title-bar-controls">
-          {active && reading.desktop && !hidden && (
-            <ReadingWindowControls
-              locale={locale}
-              onMove={(delta) => {
-                setExpanded(false);
-                reading.move(delta);
-              }}
-              onResize={(delta) => {
-                setExpanded(false);
-                reading.resize(delta);
-              }}
-              onReset={() => {
-                setExpanded(false);
-                reading.reset();
-              }}
-              floating={!!reading.rect}
-            />
-          )}
           <button
-            className="os-control"
-            onClick={copyLink}
-            aria-label={copy.copyLink}
-            tabIndex={active ? 0 : -1}
-          >
-            <Copy aria-hidden="true" />
-          </button>
-          {/* Caption glyphs come from 7.css (is-minimize, is-maximize, is-restore, is-close). */}
-          <button
+            type="button"
             className="os-control is-minimize"
             onClick={() => {
               returnFocus();
-              reading.minimize();
-              actions.minimize(descriptor.id);
+              leave("minimizing", () => {
+                setLeaving(null);
+                reading.minimize();
+                actions.minimize(descriptor.id);
+              });
             }}
             aria-label={commands.minimize}
             tabIndex={active ? 0 : -1}
           />
-          {reading.desktop && (
-            <button
-              className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
-              onClick={() => {
-                if (expanded) reading.restoreSize();
-                else reading.maximize();
-                setExpanded((value) => !value);
-              }}
-              // The name is constant; aria-pressed carries the expanded state.
-              aria-label={commands.fullSize}
-              aria-pressed={expanded}
-              tabIndex={active ? 0 : -1}
-            />
-          )}
           <button
+            type="button"
+            className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
+            onClick={() => {
+              const box = pane.current?.getBoundingClientRect();
+              flipFrom.current = box
+                ? { x: box.x, y: box.y, width: box.width, height: box.height }
+                : null;
+              if (expanded) reading.restoreSize();
+              else reading.maximize();
+              setExpanded((value) => !value);
+            }}
+            // The name is constant; aria-pressed carries the expanded state.
+            aria-label={commands.fullSize}
+            aria-pressed={expanded}
+            // Phones already run every window full width, so there is nothing to expand.
+            disabled={!reading.desktop}
+            tabIndex={active ? 0 : -1}
+          />
+          <button
+            type="button"
             className="os-control os-window-close is-close"
             onClick={() => {
               returnFocus();
-              actions.close(descriptor.id);
+              leave("closing", () => actions.close(descriptor.id));
             }}
             aria-label={copy.close}
             tabIndex={active ? 0 : -1}
           />
         </div>
+      </div>
+      {/* The command toolbar sits under the title bar: Back, Copy Link and the Window
+          Controls disclosure (desktop only). */}
+      <div className="os-window-toolbar">
+        <Link
+          className="os-window-back"
+          href={parentPath}
+          aria-label={copy.back}
+          tabIndex={active ? 0 : -1}
+        >
+          <ArrowLeft aria-hidden="true" />
+          <span>{copy.back}</span>
+        </Link>
+        <button
+          type="button"
+          className="os-control os-window-copy"
+          onClick={copyLink}
+          aria-label={copy.copyLink}
+          tabIndex={active ? 0 : -1}
+        >
+          {copy.copyLink}
+        </button>
+        {active && reading.desktop && !hidden && (
+          <ReadingWindowControls
+            locale={locale}
+            onMove={(delta) => {
+              setExpanded(false);
+              reading.move(delta);
+            }}
+            onResize={(delta) => {
+              setExpanded(false);
+              reading.resize(delta);
+            }}
+            onReset={() => {
+              setExpanded(false);
+              reading.reset();
+            }}
+            floating={!!reading.rect}
+          />
+        )}
       </div>
       {/* The live region stays mounted so assistive tech announces updates. */}
       <p className={shareStatus ? "os-share-status" : "sr-only"} role="status">
@@ -592,7 +699,9 @@ export function WorkspaceWindows({
             actions={actions}
             locked={locked}
             loading={navigating}
-            introduced={introduced}
+            introduced={
+              introduced || !initialPathname.endsWith(item.descriptor.path)
+            }
           />
         );
       })}

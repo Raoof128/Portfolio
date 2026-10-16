@@ -41,21 +41,33 @@ export function InvisibleWindowEvidenceStory({
 
       <fieldset className="os-story-platform-picker">
         <legend>{copy.platformLabel}</legend>
-        <button
-          type="button"
-          aria-pressed={platform === "windows"}
-          onClick={() => setPlatform("windows")}
-        >
-          Windows 10/11
-        </button>
-        <button
-          type="button"
-          aria-pressed={platform === "macos"}
-          onClick={() => setPlatform("macos")}
-        >
-          macOS 14–26
-        </button>
+        {/* The segments sit in their own row: a fieldset wraps its children in an anonymous box, so flex on the fieldset itself does not reach the buttons. */}
+        <div className="os-story-platform-options">
+          <button
+            type="button"
+            aria-pressed={platform === "windows"}
+            onClick={() => setPlatform("windows")}
+          >
+            Windows 10/11
+          </button>
+          <button
+            type="button"
+            aria-pressed={platform === "macos"}
+            onClick={() => setPlatform("macos")}
+          >
+            macOS 14–26
+          </button>
+        </div>
       </fieldset>
+
+      {/* A three-step reading of the diagram: what the person sees, where capture
+          stops, and what the capture holds. It repeats the panel headings, so it is
+          hidden from assistive tech. The labels are existing copy keys. */}
+      <ol className="os-capture-flow" aria-hidden="true">
+        <li className="os-capture-step">{copy.physicalLabel}</li>
+        <li className="os-capture-step">{copy.captureScopeLabel}</li>
+        <li className="os-capture-step">{copy.captureLabel}</li>
+      </ol>
 
       <div className="os-capture-observability">
         <section
@@ -67,7 +79,11 @@ export function InvisibleWindowEvidenceStory({
             className="os-capture-schematic os-capture-display"
             aria-hidden="true"
           >
-            <div className="os-capture-window" />
+            <div className="os-capture-window">
+              <span className="os-capture-chip">
+                {platform === "windows" ? "Windows 10/11" : "macOS 14–26"}
+              </span>
+            </div>
           </div>
           <p>{copy.physicalDetail}</p>
         </section>
@@ -80,11 +96,16 @@ export function InvisibleWindowEvidenceStory({
           <span className="os-capture-platform-tag">
             {platform === "windows" ? copy.windowsPathLabel : copy.macPathLabel}
           </span>
+          <p className="os-capture-scope-label">{copy.captureScopeLabel}</p>
           <div
             className="os-capture-schematic os-capture-frame"
             aria-hidden="true"
           >
-            <div className="os-capture-window os-capture-window-omitted" />
+            <div className="os-capture-window os-capture-window-omitted">
+              <span className="os-capture-chip">
+                <bdi dir="ltr">{apiIdentifiers.join(" · ")}</bdi>
+              </span>
+            </div>
           </div>
           <p className="os-capture-api" aria-live="polite">
             {apiLabel} · <bdi dir="ltr">{apiIdentifiers.join(" · ")}</bdi>

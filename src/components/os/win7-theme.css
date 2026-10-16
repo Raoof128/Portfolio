@@ -1,38 +1,149 @@
-/* Win7 Aero layer, foundations lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css. */
+/* Win7 Aero layer, foundations lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css.
+
+   Theme lane, round 1. This file owns the shared tokens of the Aero layer, and each one is
+   defined here once: the wallpaper stack, the Aero glass set, the primary control pair, the
+   non-grey surface set and the reduced-motion guard. The other win7-* files consume these
+   tokens and must not redefine them. */
 
 /* Tokens. Aero (light) is the default on .win7. Aero Night overrides it on the shell
    (data-appearance on the same element) and on the 404 wrapper (data-appearance on html).
    Every 7.css rule is scoped under .win7, so the unscoped sheet is never loaded. */
 .win7 {
-  --win7-wallpaper:
-    radial-gradient(120% 55% at 20% 108%, #d8f1ff 0%, transparent 60%),
+  /* Scrim: a soft dark pool behind the centre column. Both wallpaper stacks read it through
+     this token, so white text on the brightest band still clears 4.5:1 with its shadow. */
+  --win7-scrim: radial-gradient(
+    40% 34% at 50% 46%,
+    rgb(4 30 72 / 0.3),
+    transparent 100%
+  );
+
+  /* Wallpaper, day (Aero light). One layered stack, top layer first: the edge vignette, the
+     scrim, soft light rays from the top right, a glass sheen across the top third, two hills
+     on the lower edge, a pale horizon band behind them, a cool glow on the left, and the blue
+     base. The night stack below is painted on .os-wallpaper::after and fades in on switch. */
+  --win7-wallpaper-day:
     radial-gradient(
-      70% 38% at 88% 2%,
-      rgb(255 255 255 / 0.75),
-      transparent 62%
+      150% 110% at 50% 46%,
+      rgb(0 28 70 / 0) 56%,
+      rgb(0 24 62 / 0.42) 100%
+    ),
+    var(--win7-scrim),
+    conic-gradient(
+      from 196deg at 84% -6%,
+      transparent 0deg,
+      rgb(255 255 255 / 0.05) 7deg,
+      transparent 15deg,
+      rgb(255 255 255 / 0.04) 24deg,
+      transparent 34deg,
+      rgb(255 255 255 / 0.05) 44deg,
+      transparent 58deg
+    ),
+    radial-gradient(
+      120% 38% at 50% -6%,
+      rgb(255 255 255 / 0.28),
+      transparent 100%
     ),
     linear-gradient(
-      118deg,
-      transparent 38%,
-      rgb(255 255 255 / 0.22) 46%,
-      transparent 54%
+      112deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.05) 44%,
+      transparent 58%
     ),
-    linear-gradient(180deg, #1c63ad 0%, #3a8fd6 45%, #6cb8ec 74%, #2a78c0 100%);
-  --win7-glass-tint: rgb(196 228 250 / 0.42);
+    radial-gradient(44% 22% at 22% 100%, #2f7a5c 0 98%, transparent 100%),
+    radial-gradient(56% 16% at 74% 100%, #3a7559 0 98%, transparent 100%),
+    radial-gradient(
+      70% 12% at 50% 80%,
+      rgb(200 240 255 / 0.5),
+      transparent 100%
+    ),
+    radial-gradient(
+      90% 46% at 12% 104%,
+      rgb(120 215 255 / 0.3),
+      transparent 70%
+    ),
+    linear-gradient(170deg, #0a3c7a 0%, #145ea8 40%, #1b6cb8 62%, #0c437f 100%);
+  /* Wallpaper, night (Aero Night), the same layer order in deep blue. Its stops run from
+     about 0.03 relative luminance at the base to about 0.08 on the lightest band, so it
+     reads as a lit night sky, not a black void. The lower hill is #3a7559 in day, which
+     keeps the white footer labels at about 5.4:1. */
+  --win7-wallpaper-night:
+    radial-gradient(
+      150% 110% at 50% 46%,
+      rgb(0 10 30 / 0) 54%,
+      rgb(0 10 30 / 0.55) 100%
+    ),
+    var(--win7-scrim),
+    conic-gradient(
+      from 200deg at 84% -6%,
+      transparent 0deg,
+      rgb(120 180 255 / 0.06) 8deg,
+      transparent 16deg,
+      rgb(120 180 255 / 0.04) 26deg,
+      transparent 38deg
+    ),
+    radial-gradient(
+      120% 36% at 50% -6%,
+      rgb(190 220 255 / 0.14),
+      transparent 100%
+    ),
+    linear-gradient(
+      112deg,
+      transparent 32%,
+      rgb(170 210 255 / 0.05) 46%,
+      transparent 60%
+    ),
+    radial-gradient(44% 22% at 22% 100%, #1d4a52 0 98%, transparent 100%),
+    radial-gradient(56% 16% at 74% 100%, #2a5e66 0 98%, transparent 100%),
+    radial-gradient(
+      70% 12% at 50% 80%,
+      rgb(90 150 220 / 0.3),
+      transparent 100%
+    ),
+    radial-gradient(
+      80% 42% at 14% 108%,
+      rgb(40 110 200 / 0.38),
+      transparent 70%
+    ),
+    linear-gradient(172deg, #0b2d62 0%, #134585 46%, #1a5296 64%, #0a2c5f 100%);
+  --win7-wallpaper: var(--win7-wallpaper-day);
+
+  /* Shared token set, defined once for both appearances. The taskbar, window frames,
+     Explorer and pages consume these. The older win7 names below alias them, so the two
+     sets cannot drift apart. The surface is never grey: chrome is a cool tint in day and
+     a steel navy in night, with text that follows it, so no half-dark window appears. */
+  --aero-glass: rgb(196 228 250 / 0.42);
+  --aero-rim: rgb(255 255 255 / 0.55);
+  --aero-sheen: rgb(255 255 255 / 0.6);
+  --chrome-bg: #eef3f9;
+  --chrome-text: #000000;
+  --body-bg: #ffffff;
+  --win7-focus-ring: #98d1ef;
+
+  /* Aero glass: one set for frames, title bars, the taskbar and the Start panel. */
+  --win7-glass-tint: var(--aero-glass);
   --win7-glass-tint-solid: #bcdcf5;
   --win7-glass-blur: 14px;
   --win7-glass-edge: rgb(255 255 255 / 0.85);
+  --win7-glass-rim: var(--aero-rim);
+  --win7-glass-glow: 0 0 12px rgb(150 210 255 / 0.45);
   --win7-frame-border: rgb(16 48 92 / 0.8);
   --win7-frame-shadow:
     0 8px 24px rgb(0 0 0 / 0.35), inset 0 1px 0 var(--win7-glass-edge);
-  --win7-title-base: #5b93cc;
+  --win7-title-radius: 6px 6px 0 0;
+  --win7-title-stop-top: var(--aero-sheen);
+  --win7-title-stop-mid: rgb(255 255 255 / 0.08);
+  --win7-title-stop-low: rgb(255 255 255 / 0.14);
+  --win7-title-base: rgb(190 220 245 / 0.72);
+  /* Light fallback only. win7-windows.css sets the light inactive gradient on .os-shell.win7,
+     which outranks this token, so the grey below applies only where that rule is absent. */
+  --win7-title-inactive: rgb(176 186 198 / 0.78);
   --win7-title-bg:
     linear-gradient(
       180deg,
-      rgb(255 255 255 / 0.6) 0%,
-      rgb(255 255 255 / 0.08) 50%,
+      var(--win7-title-stop-top) 0%,
+      var(--win7-title-stop-mid) 50%,
       transparent 52%,
-      rgb(255 255 255 / 0.14) 100%
+      var(--win7-title-stop-low) 100%
     ),
     var(--win7-title-base);
   --win7-taskbar-bg: linear-gradient(
@@ -41,10 +152,12 @@
     rgb(120 180 230 / 0.62)
   );
   --win7-taskbar-solid: #cfe9fa;
-  --win7-text-glass: #000000;
-  --win7-text-shadow: 0 0 6px rgb(255 255 255 / 0.85);
-  --win7-plate: rgb(0 22 46 / 0.55);
-  --win7-body-bg: #ffffff;
+  --win7-text-glass: var(--chrome-text);
+  /* Text on the light wallpaper is white, so the shadow is dark. */
+  --win7-text-shadow: 0 1px 3px rgb(0 0 0 / 0.75), 0 0 10px rgb(0 0 0 / 0.35);
+  /* Plates are transparent: text sits on the wallpaper, never on a black box. */
+  --win7-plate: transparent;
+  --win7-body-bg: var(--body-bg);
   --win7-body-text: #000000;
   --win7-body-muted: #3d3d3d;
   --win7-link: #0066cc;
@@ -54,9 +167,20 @@
     rgb(144 205 245 / 0.9)
   );
   --win7-select-border: #6fb8ec;
-  /* Focus is a two-tone ring: a black inner ring and a white outer ring. Each side of
-     the pair meets 3:1 on the light window bodies, the Aero wallpaper and the navy
-     wallpaper, so the ring stays visible in both themes. */
+
+  /* Surfaces, none of them grey. The 7.css chrome colour (#f0f0f0) is mapped away at the
+     bottom of this block, so it cannot reach the desktop or the taskbar.
+     - desktop: transparent, so the wallpaper shows edge to edge;
+     - chrome: a cool tint for window chrome and the 7.css body surface (--w7-surface);
+     - body: white, for reading text (--w7-tab-bg and every reading window). */
+  --win7-surface-desktop: transparent;
+  --win7-surface-chrome: var(--chrome-bg);
+  --win7-surface-body: var(--body-bg);
+
+  /* Focus is a two-tone ring: a black inner ring and a white outer ring. On the light
+     window bodies the black ring carries the contrast (about 19:1). On the navy wallpaper
+     and the Aero Night bodies the white ring carries it (about 13:1 on the navy), so each
+     surface has one side of the pair above 3:1 and the ring stays visible in both themes. */
   --win7-focus-inner: #000000;
   --win7-focus-outer: #ffffff;
   --win7-orb-grad: radial-gradient(
@@ -74,6 +198,15 @@
   );
   --win7-progress-fill: #0e7a2e;
   --win7-danger: #c42b1c;
+
+  /* Primary control pair, one definition for both themes. #005fb8 under #ffffff is about
+     6.3:1, and the hover and pressed fills keep the same label above 4.5:1. controls.css
+     reads these for every primary button and for the project resource links. */
+  --win7-primary-fill: #005fb8;
+  --win7-primary-fill-hover: #004f99;
+  --win7-primary-fill-pressed: #003f7a;
+  --win7-on-primary: #ffffff;
+
   --win7-font:
     ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial,
     "Noto Sans", sans-serif;
@@ -88,10 +221,12 @@
   --win7-caption-w: 30px;
   --win7-radius: 6px;
 
-  /* Mapping onto the 7.css variables. The buttons keep the 7.css element defaults. */
+  /* Mapping onto the 7.css variables. The buttons keep the 7.css element defaults. The
+     window body takes the chrome tint instead of the 7.css grey, and the desktop route
+     sets its own transparent surface further down. */
   --w7-font: var(--win7-font);
-  --w7-surface: #f0f0f0;
-  --w7-tab-bg: #ffffff;
+  --w7-surface: var(--win7-surface-chrome);
+  --w7-tab-bg: var(--win7-surface-body);
   --w7-w-bg: var(--win7-title-base);
   --w7-w-glass: var(--win7-title-bg);
   --w7-w-bd: rgb(0 0 0 / 0.7);
@@ -101,31 +236,39 @@
   --w7-pg-bg: var(--win7-progress-fill);
 }
 
-/* Aero Night. The shell carries data-appearance, and the 404 wrapper sits under html. */
+/* Aero Night. The shell carries data-appearance, and the 404 wrapper sits under html. The
+   primary pair and the surfaces are shared with the light theme, so they are not repeated. */
 .win7[data-appearance="dark"],
 [data-appearance="dark"] .win7 {
-  --win7-wallpaper:
-    radial-gradient(120% 55% at 22% 110%, #1f4f8a 0%, transparent 60%),
-    radial-gradient(
-      80% 40% at 90% 0%,
-      rgb(120 170 230 / 0.18),
-      transparent 60%
-    ),
-    linear-gradient(180deg, #030813 0%, #0a1d3a 48%, #040a16 100%);
-  --win7-glass-tint: rgb(14 36 72 / 0.62);
+  --win7-scrim: radial-gradient(
+    40% 34% at 50% 46%,
+    rgb(0 10 30 / 0.35),
+    transparent 100%
+  );
+  --aero-glass: rgb(14 36 72 / 0.62);
+  --aero-rim: rgb(190 220 255 / 0.3);
+  --aero-sheen: rgb(255 255 255 / 0.22);
+  --chrome-bg: #1d2f4d;
+  --chrome-text: #ffffff;
+  --body-bg: #ffffff;
+  --win7-wallpaper: var(--win7-wallpaper-night);
+  --win7-glass-tint: var(--aero-glass);
   --win7-glass-tint-solid: #17335e;
   --win7-glass-edge: rgb(255 255 255 / 0.22);
+  --win7-glass-rim: var(--aero-rim);
+  --win7-glass-glow: 0 0 12px rgb(60 130 220 / 0.4);
   --win7-frame-border: rgb(0 0 0 / 0.85);
-  --win7-title-base: #1d3c68;
+  --win7-title-base: rgb(24 52 92 / 0.78);
+  --win7-title-inactive: rgb(58 70 88 / 0.8);
   --win7-taskbar-bg: linear-gradient(
     180deg,
     rgb(40 78 130 / 0.72),
     rgb(10 26 52 / 0.82)
   );
   --win7-taskbar-solid: #15294a;
-  --win7-text-glass: #ffffff;
+  --win7-text-glass: var(--chrome-text);
   --win7-text-shadow: 0 1px 2px rgb(0 0 0 / 0.85);
-  --win7-plate: rgb(0 0 0 / 0.5);
+  --win7-plate: transparent;
   --win7-orb-grad: radial-gradient(
     circle at 50% 32%,
     #f1fbff 0%,
@@ -136,6 +279,14 @@
   --win7-tile-bg: #24558f;
   /* White title text on the navy title base, about 11:1. */
   --w7-title-c: #ffffff;
+}
+
+/* Aero Night inactive title bars. win7-windows.css declares its light grey inactive gradient
+   on .os-shell.win7, which outranks the block above, so white title text would sit on a
+   near-white bar. This higher-specificity rule keeps the dark value on the shell in Aero
+   Night. White text on it is about 9:1. The windows lane should drop its copy of the token. */
+.os-shell.win7[data-appearance="dark"] {
+  --win7-title-inactive: rgb(58 70 88 / 0.8);
 }
 
 /* Fonts. Vazirmatn for Persian and Arabic, and the research zh stack for Chinese.
@@ -167,20 +318,33 @@
     var(--win7-taskbar-h) + 24px + env(safe-area-inset-bottom, 0px)
   );
 }
+/* The wallpaper, painted in two layers. The day stack is the element's own background. The
+   night stack sits on ::after at opacity 0 and fades to 1 when the shell carries
+   data-appearance="dark", so the switch cross-fades over 250ms with no JS and no extra
+   element. Reduced motion removes the transition in the guard below, so the swap is
+   instant there. The shared accent wash on ::before stays off. */
 .os-shell.win7 .os-wallpaper {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: var(--win7-wallpaper);
+  background: var(--win7-wallpaper-day);
 }
 .os-shell.win7 .os-wallpaper > * {
   display: none;
 }
-/* The shared wallpaper paints an accent wash on ::before and ::after. The Aero
-   wallpaper stays pure gradient, so both pseudo-elements are removed here. */
-.os-shell.win7 .os-wallpaper::before,
-.os-shell.win7 .os-wallpaper::after {
+.os-shell.win7 .os-wallpaper::before {
   content: none;
+}
+.os-shell.win7 .os-wallpaper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--win7-wallpaper-night);
+  opacity: 0;
+  transition: opacity 250ms var(--ease-standard, ease-in-out);
+}
+.os-shell.win7[data-appearance="dark"] .os-wallpaper::after {
+  opacity: 1;
 }
 .os-shell.win7 [hidden] {
   display: none !important;
@@ -208,6 +372,16 @@
   content: none;
 }
 
+/* Home route: ResearchOS renders the page content inside main.os-main, so this rule keeps
+   the 7.css frame, border and grey off the wallpaper there. Reading windows sit inside
+   main.os-window and workspace windows sit outside os-main, so neither is matched. */
+.os-shell.win7 .os-main .os-page-content.window-body {
+  background: var(--win7-surface-desktop);
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
 /* Phones (700px and below): the taskbar, the orb, the pins and the caption buttons grow
    to 44px-class targets, and the glass blur is lighter. */
 @media (max-width: 700px) {
@@ -220,28 +394,44 @@
   }
 }
 
-/* Reduced motion: no animation or transition, including the 7.css pulses. State changes
-   are instant. The welcome timer still runs, and its bar and spinner stay static. */
+/* Reduced motion, one global guard for the whole site shell. No animation, transition or
+   loop runs anywhere, including the 7.css pulses, the research keyframes and the theme
+   switch, and state changes are instant. The welcome timer still runs; its bar and spinner
+   stay static. The press scale is a transform, so it is removed here as well. */
 @media (prefers-reduced-motion: reduce) {
-  .win7,
-  .win7 *,
-  .win7 *::before,
-  .win7 *::after,
-  .os-shell.win7,
-  .os-shell.win7 *,
-  .os-shell.win7 *::before,
-  .os-shell.win7 *::after {
+  *,
+  *::before,
+  *::after,
+  *::backdrop {
     animation: none !important;
     transition: none !important;
+    scroll-behavior: auto !important;
   }
-  /* The shell selectors above sit at (0,2,0), level with the theme-switch rules in
-     research-os.css, and come later, so they win for the switch as well. */
-  html:has(.os-shell.win7[data-theme-switching]) {
-    transition: none !important;
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .os-shell
+    :is(
+      .os-control,
+      .os-button,
+      .os-button--secondary,
+      .os-document-button,
+      .os-direct-links .os-button,
+      .os-project-explorer .os-project-resource,
+      .os-app-icon,
+      .ui-card--interactive,
+      .os-dock a,
+      .os-enter
+    ):not(:disabled, [aria-disabled="true"]):active,
+  .os-shell .os-theme-switch:active::before {
+    transform: none !important;
   }
 }
 
-/* Reduced transparency: no backdrop blur, and the glass tokens use the solid variants. */
+/* Reduced transparency: no backdrop blur, and the glass tokens use the solid variants. The
+   title base takes the solid glass tint, so the title bars stay opaque as well. */
 @media (prefers-reduced-transparency: reduce) {
   .win7,
   .win7[data-appearance="dark"],
@@ -249,6 +439,7 @@
     --win7-glass-tint: var(--win7-glass-tint-solid);
     --win7-taskbar-bg: var(--win7-taskbar-solid);
     --win7-glass-blur: 0px;
+    --win7-title-base: var(--win7-glass-tint-solid);
   }
   .win7 * {
     backdrop-filter: none !important;

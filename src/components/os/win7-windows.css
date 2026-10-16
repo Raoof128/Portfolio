@@ -1,23 +1,26 @@
 /* Win7 Aero layer, windows lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css,
    liquid-glass.css, reading-window.css and workspace-windows.css. It covers the glass frame, the
-   title bar, the caption group, the Back button, the resize grip, the white body, the Window
-   Controls popover, the status-bar footer and the phone geometry. Tokens come from win7-theme.css.
+   title bar, the caption group (Minimise, Maximise, Close), the command toolbar under the title
+   bar (Back, Copy Link, Window Controls), the resize grip, the white body, the Window Controls
+   popover, the status-bar footer and the phone geometry. Tokens come from win7-theme.css.
    Specificity: the frame and title selectors carry the .window.glass pair so they beat the
    reading-window.css and workspace-windows.css skin, and the caption rules run through the
    .title-bar > .title-bar-controls chain so they beat the 7.css caption rules. */
 
-/* Frame: a 4px glass edge around the white body. The 7.css ::before is removed in
-   win7-theme.css, so this background is the visible frame. The frame carries no backdrop
-   filter: a backdrop filter on an ancestor re-anchors every position: fixed descendant
-   (the .os-share-status toast, research-os.css) to the window box. The glass blur sits on
-   the title bar instead (below). */
+/* Frame: a 4px glass edge around the white body, with an 8px top radius and a 1px
+   translucent edge (the Aero glass rim). The 7.css ::before is removed in win7-theme.css, so
+   this background is the visible frame. The frame carries no backdrop filter: a backdrop
+   filter on an ancestor re-anchors every position: fixed descendant (the .os-share-status
+   toast, research-os.css) to the window box. The glass blur sits on the title bar instead. */
 .os-shell.win7 .window.glass {
   box-sizing: border-box;
   padding: 0 4px 4px;
-  border: 1px solid var(--win7-frame-border);
-  border-radius: var(--win7-radius);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  border-radius: 8px 8px 4px 4px;
   background: var(--win7-title-bg);
-  box-shadow: var(--win7-frame-shadow);
+  box-shadow:
+    0 0 0 1px var(--win7-frame-border),
+    var(--win7-frame-shadow);
   color: var(--win7-text-glass);
 }
 /* 7.css paints a blurred layer behind every glass window. Both blur layers are off. */
@@ -48,10 +51,40 @@
   max-width: none;
   margin-inline: 0;
 }
+/* Maximise: the frame fills the viewport edge to edge, stopping above the taskbar and the desktop
+   shortcut row (48px plus a 16px gap, as FOOTER_RESERVE in window-geometry.ts). It has no radius
+   or shadow. The stored normal rectangle is untouched, so Restore size returns to it. */
+.os-shell.win7 .os-workspace-window.os-window--floating[data-expanded="true"] {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: calc(100% - var(--win7-taskbar-h) - 64px) !important;
+  border-radius: 0;
+  box-shadow: none;
+}
 
-/* Inactive frames: the title keeps its colours, but the frame loses saturation. */
+/* Active and inactive frames. The active window keeps the Aero title gradient. The inactive
+   window swaps it for a grey gradient and a quieter edge, so the focused window reads first. */
+.os-shell.win7 {
+  --win7-title-inactive: linear-gradient(
+    180deg,
+    #f4f7fa 0%,
+    #dfe6ee 52%,
+    #cbd5e0 100%
+  );
+}
+.os-shell.win7 .window.glass:not(.active) {
+  border-color: rgb(255 255 255 / 0.35);
+  background: var(--win7-title-inactive);
+  box-shadow:
+    0 0 0 1px rgb(16 48 92 / 0.45),
+    0 4px 12px rgb(0 0 0 / 0.22);
+}
 .os-shell.win7 .window.glass:not(.active) > .title-bar {
-  filter: saturate(0.6);
+  background: var(--win7-title-inactive);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 /* Inactive windows no longer fade their title bar (workspace-windows.css). */
 .os-shell.win7 .os-workspace-window[data-active="false"] > .os-windowbar {
@@ -73,8 +106,7 @@
   padding-block: 0;
   padding-inline: 6px 4px;
   border: 0;
-  border-radius: calc(var(--win7-radius) - 2px) calc(var(--win7-radius) - 2px) 0
-    0;
+  border-radius: 7px 7px 0 0;
   background: var(--win7-title-bg);
   box-shadow: inset 0 1px 0 var(--win7-glass-edge);
   color: var(--win7-text-glass);
@@ -101,8 +133,14 @@
   box-shadow: none;
   color: inherit;
   font: inherit;
-  font-size: var(--win7-ui-size);
-  font-weight: 600;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 700;
   line-height: var(--win7-title-h);
   text-align: start;
   text-shadow: var(--win7-text-shadow);
@@ -124,19 +162,77 @@
   cursor: move;
 }
 
-/* Back: an Explorer-style command button on the glass bar. The arrow mirrors in RTL. */
-.os-shell.win7 .window.glass > .title-bar .os-window-back {
+/* Icon: the app glyph sits at the start of the title bar, a flex sibling of the title, so the
+   title never runs under it. */
+.os-shell.win7 .window.glass > .title-bar > .os-window-navigation {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-width: 0;
+  gap: 0;
+}
+.os-shell.win7 .window.glass > .title-bar > .os-window-navigation > * {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+.os-shell.win7 .window.glass > .title-bar > .os-window-navigation svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Command toolbar: a white-to-grey Explorer strip under the title bar. It holds Back, Copy Link
+   and the Window Controls disclosure. Every control is at least 24px, and 44px on phones. */
+.os-shell.win7 .window.glass > .os-window-toolbar {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  min-height: 34px;
+  margin: 0;
+  padding: 3px 4px;
+  border: 1px solid rgb(16 48 92 / 0.45);
+  border-block-end-width: 0;
+  background: var(--win7-chrome-bg);
+  color: var(--win7-command-ink);
+  font-size: var(--win7-ui-size);
+}
+/* Command bar fills. The light bar is the Explorer white-to-grey strip; the night bar takes the
+   same dark surface as the window body, so the chrome never reads as a leftover light strip. */
+.os-shell.win7 {
+  --win7-chrome-bg: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f1f5f9 58%,
+    #e3eaf2 100%
+  );
+  --win7-command-ink: #000000;
+}
+.os-shell.win7[data-appearance="dark"] {
+  --win7-chrome-bg: var(--os-surface, #111b2b);
+  --win7-command-ink: var(--os-text, #f1f7ff);
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back,
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary {
   box-sizing: border-box;
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  height: 26px;
-  min-width: 26px;
-  min-height: 0;
-  padding-block: 0;
-  padding-inline: 8px;
-  border: 1px solid rgb(0 0 0 / 0.4);
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0;
+  padding: 0 8px;
+  border: 1px solid rgb(0 0 0 / 0.3);
   border-radius: 3px;
   background: var(--w7-el-grad);
   box-shadow: var(--w7-el-sd);
@@ -145,20 +241,67 @@
   font-weight: 400;
   text-decoration: none;
   text-shadow: none;
+  cursor: pointer;
 }
-.os-shell.win7 .window.glass > .title-bar .os-window-back:hover {
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy {
+  padding: 0 8px;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover,
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:hover,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:hover {
   background: var(--w7-el-grad-h);
   border-color: var(--w7-el-bd-h);
 }
-.os-shell.win7 .window.glass > .title-bar .os-window-back:active {
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:active,
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:active,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:active {
   background: var(--w7-el-grad-a);
 }
-.os-shell.win7 .window.glass > .title-bar .os-window-back svg {
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back svg,
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy svg,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary
+  svg {
   width: 16px;
   height: 16px;
 }
-:dir(rtl) .os-shell.win7 .window.glass > .title-bar .os-window-back svg {
+.os-shell.win7 .window.glass > .os-window-toolbar > :focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 1px var(--win7-focus-outer);
+}
+:dir(rtl)
+  .os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-back
+  svg {
   transform: scaleX(-1);
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-controls {
+  display: block;
+  flex: 0 0 auto;
+}
+/* 7.css draws a disclosure triangle beside every details summary, outside its box. Here it
+   would sit on the end of Copy Link, so the Window Controls summary drops it. */
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary::before {
+  content: none;
+  display: none;
 }
 
 /* Caption fill and ink. The 7.css caption glyphs are dark strokes (#535666), so they cannot
@@ -198,7 +341,7 @@
   align-items: center;
   justify-content: center;
   min-width: var(--win7-caption-w);
-  min-height: 22px;
+  min-height: 24px;
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -216,56 +359,6 @@
   z-index: 1;
   width: 16px;
   height: 16px;
-}
-
-/* Move: the Window Controls disclosure is a summary, not a button, so it takes the same cell
-   with its own hover and pressed fills. */
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > .os-window-controls {
-  display: block;
-  flex: 0 0 auto;
-  min-width: var(--win7-caption-w);
-  height: auto;
-  border-inline-end: 1px solid var(--w7-wct-bd);
-}
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > .os-window-controls
-  > summary {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  min-width: var(--win7-caption-w);
-  min-height: 22px;
-  margin: 0;
-  padding: 0;
-  color: var(--win7-caption-ink);
-  cursor: pointer;
-}
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > .os-window-controls
-  > summary:hover {
-  background: var(--w7-el-grad-h);
-}
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > .os-window-controls[open]
-  > summary {
-  background: var(--w7-el-grad-a);
-  color: var(--win7-caption-ink);
 }
 
 /* Close (route): the Link is styled by hand, so it takes the 7.css danger hover fill. */
@@ -388,21 +481,32 @@
   font-size: var(--win7-small-size);
 }
 
-/* Minimised task: a glass chip above the taskbar. Its name is the Restore label. */
+/* Minimised task: a glass chip anchored above the taskbar. Its name is the Restore label. The
+   taskbar's app button (data-minimized) is the other way back. Above 700px it clears the desktop
+   shortcut row (48px plus a 16px gap), which stays visible behind the windows. */
 .os-shell.win7 .os-minimized-task {
-  bottom: calc(var(--win7-taskbar-h) + 12px + env(safe-area-inset-bottom, 0px));
-  inset-inline-end: 12px;
-  max-width: min(360px, calc(100% - 24px));
+  /* 7.css sets position: relative on every .win7 button. The chip is a button, so it must
+     name fixed again, or it drops into the page flow instead of hugging the taskbar. */
+  position: fixed;
+  bottom: var(--win7-taskbar-h);
+  inset-inline-end: 8px;
+  max-width: min(360px, calc(100% - 16px));
   padding-block: 6px;
   padding-inline: 8px 12px;
   border: 1px solid var(--win7-frame-border);
-  border-radius: var(--win7-radius);
+  border-block-end: 0;
+  border-radius: 6px 6px 0 0;
   background: var(--win7-title-bg);
-  box-shadow: var(--win7-frame-shadow);
+  box-shadow: none;
   color: var(--win7-text-glass);
   text-shadow: var(--win7-text-shadow);
   -webkit-backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
   backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
+}
+@media (min-width: 701px) {
+  .os-shell.win7 .os-minimized-task {
+    bottom: calc(var(--win7-taskbar-h) + 64px);
+  }
 }
 .os-shell.win7 .os-minimized-task strong {
   font-size: var(--win7-ui-size);
@@ -436,21 +540,101 @@
     line-height: var(--win7-caption-w);
   }
   .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button,
-  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > a,
-  .os-shell.win7
-    .window.glass
-    > .title-bar
-    .title-bar-controls
-    > .os-window-controls
-    > summary {
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > a {
     min-height: 44px;
     min-width: 44px;
   }
-  .os-shell.win7 .window.glass > .title-bar .os-window-back {
+  .os-shell.win7 .window.glass > .os-window-toolbar {
+    min-height: 44px;
+    gap: 6px;
+  }
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back,
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy,
+  .os-shell.win7
+    .window.glass
+    > .os-window-toolbar
+    > .os-window-controls
+    > summary {
     min-width: 44px;
     min-height: 44px;
+  }
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back {
+    max-width: 100%;
+    padding-inline: 8px 12px;
   }
   .os-shell.win7 .window.glass > .window-body {
     padding-block-end: var(--os-dock-clearance);
+  }
+}
+
+/* Window frame layout. A floating window is a column: the title bar and command bar keep their
+   height, and the page body takes the rest and scrolls inside the frame, so the bottom frame and
+   the last controls are never clipped. Hidden frames stay hidden (the display rule is scoped). */
+.os-shell.win7 .os-workspace-window.os-window--floating:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.os-shell.win7
+  .os-workspace-window.os-window--floating:not([hidden])
+  > .window-body {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* Frame animation (one set, Aero edition). A window opens from 0.95 with a fade, over 180ms, and
+   its transform origin is the pressed dock item's x (spotlight.ts), so it grows out of the dock.
+   Close is the mirror. Minimise drops toward the taskbar. Only transform and opacity animate, and
+   reduced motion gets none of this. The desktop identity windows open with the same keyframe. */
+.os-shell.win7 .os-window {
+  transform-origin: var(--dock-origin-x, 50%) 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell.win7 .os-window[data-opening="true"]:not([hidden]) {
+    animation: os-win7-window-open 180ms cubic-bezier(0.2, 0.8, 0.2, 1)
+      backwards;
+  }
+  .os-shell.win7 .os-window[data-state="closing"] {
+    animation: os-win7-window-close 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+    pointer-events: none;
+  }
+  .os-shell.win7 .os-window[data-state="minimizing"] {
+    animation: os-win7-window-minimize 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+    pointer-events: none;
+  }
+  .os-shell.win7 .os-desktop-identity > .window {
+    animation: os-win7-window-open 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+@keyframes os-win7-window-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes os-win7-window-close {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+@keyframes os-win7-window-minimize {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.6);
   }
 }

@@ -2,10 +2,12 @@
    the API line. Panels are solid cards on the story surface; schematics are
    flat drawings with one accent for the captured window. */
 
+/* Platform picker: a Win7 segmented control. The buttons form one joined strip
+   with a shared edge; the selected segment sits on the pressed Win7 gradient and
+   is set in a heavier weight, so the choice reads without colour alone. The
+   buttons keep aria-pressed, which carries the state for assistive technology. */
 .os-shell .os-project-explorer .os-project-section .os-story-platform-picker {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+  display: block;
   min-width: 0;
   margin: var(--space-4) 0 var(--space-3);
   padding: 0;
@@ -23,21 +25,33 @@
   font-size: var(--text-s);
 }
 
+.os-shell .os-project-explorer .os-project-section .os-story-platform-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-story-platform-picker
   button {
-  min-width: 44px;
-  min-height: 40px;
+  flex: 1 1 160px;
+  min-width: 0;
+  min-height: 36px;
+  margin-inline-start: -1px;
   padding: 0 var(--space-3);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
-  color: var(--os-text);
-  background: transparent;
+  border: 1px solid #8e8f8f;
+  border-radius: 0;
+  /* The segment face is light in both appearances (7.css grey), so its text is black
+     in both. The Aero Night text token would be white on that face. */
+  color: #000000;
+  background: linear-gradient(180deg, #f2f2f2 0%, #ebebeb 50%, #dddddd 100%);
   font: inherit;
+  font-family: var(--win7-font);
   font-size: var(--text-ui);
   font-weight: 500;
+  line-height: 1.25;
   cursor: pointer;
 }
 
@@ -45,20 +59,142 @@
   .os-project-explorer
   .os-project-section
   .os-story-platform-picker
-  button:hover {
-  background: var(--os-accent-tint);
+  button:first-of-type {
+  margin-inline-start: 0;
+  border-start-start-radius: 3px;
+  border-end-start-radius: 3px;
 }
 
-/* Selected platform: one accent ring on a tint (evidence-story selection rule). The
-   selected state is colour-only visually; aria-pressed carries it for assistive tech. */
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button:last-of-type {
+  border-start-end-radius: 3px;
+  border-end-end-radius: 3px;
+}
+
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button:hover {
+  border-color: #3c7fb1;
+  color: #000000;
+  background: linear-gradient(180deg, #eaf6fd 0%, #bee6fd 100%);
+}
+
+/* Selected platform: the pressed Win7 gradient, a blue edge and a heavier label. */
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-story-platform-picker
   button[aria-pressed="true"] {
-  border-color: var(--os-accent);
+  z-index: 1;
+  border-color: #6d91ab;
+  color: #000000;
+  background: linear-gradient(
+    180deg,
+    #e5f4fc 0%,
+    #c4e5f6 50%,
+    #98d1ef 50%,
+    #bee6fd 100%
+  );
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6);
+  font-weight: 600;
+}
+
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button:focus-visible {
+  z-index: 2;
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px #98d1ef;
+}
+
+/* Capture schematic labels: the scope line sits above the frame it describes,
+   and the API identifier is printed inside the omitted window. */
+.os-shell .os-project-explorer .os-project-section .os-capture-scope-label {
+  margin: 0 0 var(--space-2);
   color: var(--os-text);
-  background: var(--os-accent-tint);
+  font-size: var(--text-s);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.os-shell .os-project-explorer .os-project-section .os-capture-chip {
+  display: inline-flex;
+  max-inline-size: 100%;
+  padding: 2px var(--space-2);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-pill);
+  color: var(--os-text);
+  background: var(--os-bg);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.os-shell .os-project-explorer .os-project-section .os-capture-chip bdi {
+  font-family: var(--os-font-mono);
+}
+
+.os-shell .os-project-explorer .os-project-section .os-capture-window-omitted {
+  display: grid;
+  place-items: center;
+  min-height: 56px;
+}
+
+/* The three-step reading of the capture diagram: display, capture boundary, captured
+   frame. Each step is a solid chip; arrows point in the reading direction, so they
+   mirror in right-to-left text. */
+.os-shell .os-project-explorer .os-project-section .os-capture-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+.os-shell .os-project-explorer .os-project-section .os-capture-step {
+  position: relative;
+  flex: 1 1 160px;
+  min-width: 0;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
+  background: var(--os-surface);
+  color: var(--os-text);
+  font-size: var(--text-s);
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-capture-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  inset-inline-end: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--os-muted);
+  font-size: var(--text-ui);
+}
+.os-shell
+  .os-project-explorer
+  .os-capture-flow:dir(rtl)
+  .os-capture-step:not(:last-child)::after {
+  content: "←";
 }
 
 .os-shell .os-project-explorer .os-project-section .os-capture-observability {

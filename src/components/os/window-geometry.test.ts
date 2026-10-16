@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   canFloatWindows,
+  CASCADE_STEP,
   clampWindowRect,
+  createCascadedWindowRect,
   createDefaultWindowRect,
+  createFlipTransform,
   getWorkspaceBounds,
   moveWindowRect,
   resizeWindowRect,
@@ -49,28 +52,70 @@ describe("window geometry", () => {
     },
   );
 
-  it("reserves the header, dock and horizontal safety inset", () => {
+  it("reserves the header, taskbar and horizontal safety inset", () => {
     expect(getWorkspaceBounds(desktop)).toEqual({
       left: 12,
       top: 64,
       right: 1908,
-      bottom: 970,
+      bottom: 960,
       width: 1896,
-      height: 906,
+      height: 896,
     });
     expect(createDefaultWindowRect(desktop)).toEqual({
       x: 365,
-      y: 157,
+      y: 152,
       width: 1190,
       height: 720,
     });
+  });
+
+  it("keeps every window above the taskbar at a short desktop", () => {
+    const short = { width: 1024, height: 768 };
+    const bounds = getWorkspaceBounds(short);
+    expect(bounds.bottom).toBe(648);
+    expect(bounds.bottom).toBeLessThanOrEqual(short.height - 44);
+    const rect = clampWindowRect(
+      { x: 500, y: 600, width: 900, height: 900 },
+      short,
+    );
+    expect(rect.y + rect.height).toBeLessThanOrEqual(bounds.bottom);
+  });
+
+  it("cascades each window from the icon column edge without covering it", () => {
+    const edge = 250;
+    const first = createCascadedWindowRect(desktop, 0, edge);
+    const second = createCascadedWindowRect(desktop, 1, edge);
+    expect(first.x).toBeGreaterThanOrEqual(edge + 24);
+    expect(second.x - first.x).toBe(CASCADE_STEP);
+    expect(second.y - first.y).toBe(CASCADE_STEP);
+    expectContained(second, desktop);
+  });
+
+  it("caps the first placement so a 1024 desktop keeps clear of the icons", () => {
+    const narrow = { width: 1024, height: 768 };
+    const rect = createCascadedWindowRect(narrow, 0, 250);
+    expect(rect.x).toBeGreaterThanOrEqual(274);
+    expect(rect.x + rect.width).toBeLessThanOrEqual(1012);
+    expect(rect.width).toBeGreaterThanOrEqual(WINDOW_MIN_WIDTH);
+    expectContained(rect, narrow);
+  });
+
+  it("builds a FLIP transform from the old box and nothing when it is unchanged", () => {
+    expect(
+      createFlipTransform(
+        { x: 100, y: 50, width: 800, height: 400 },
+        { x: 12, y: 64, width: 1000, height: 600 },
+      ),
+    ).toBe(`translate(88px, -14px) scale(0.8, ${400 / 600})`);
+    expect(createFlipTransform(initial, { ...initial })).toBeNull();
+    expect(createFlipTransform(initial, { ...initial, width: 0 })).toBeNull();
   });
 
   it("clamps a previously large panel after shrinking the viewport", () => {
     const viewport = { width: 1024, height: 600 };
     expect(
       clampWindowRect({ x: 1400, y: 900, width: 1190, height: 720 }, viewport),
-    ).toEqual({ x: 12, y: 64, width: 1000, height: 426 });
+    ).toEqual({ x: 12, y: 64, width: 1000, height: 416 });
   });
 
   it("keeps dragging away from both chrome edges", () => {
@@ -84,7 +129,7 @@ describe("window geometry", () => {
     expect(moveWindowRect(initial, { x: 10_000, y: 10_000 }, desktop)).toEqual({
       ...initial,
       x: 1108,
-      y: 570,
+      y: 560,
     });
   });
 
@@ -106,14 +151,14 @@ describe("window geometry", () => {
       x: 200,
       y: 180,
       width: 1708,
-      height: 790,
+      height: 780,
     });
     expect(
       resizeWindowRect(initial, { x: -10_000, y: -10_000 }, desktop),
     ).toEqual({
       x: 200,
       y: 180,
-      width: 760,
+      width: 720,
       height: 240,
     });
   });
@@ -140,7 +185,7 @@ describe("window geometry", () => {
         { x: Number.MAX_VALUE, y: Number.MAX_VALUE },
         desktop,
       ),
-    ).toEqual({ ...initial, x: 1108, y: 570 });
+    ).toEqual({ ...initial, x: 1108, y: 560 });
     expectContained(
       resizeWindowRect(
         initial,

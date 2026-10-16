@@ -1,39 +1,111 @@
 /* Win7 Aero layer, desktop lane. Loaded from ResearchOS.tsx after 7.scoped.css,
-   research-os.css, liquid-glass.css and win7-theme.css. The desktop home: the Getting
-   Started window, the Proof Atlas window, the desktop icons and the shortcut row. */
+   research-os.css, liquid-glass.css and win7-theme.css. The desktop home is the Aero
+   wallpaper edge to edge: the app icons in a column on the start edge (filling top to
+   bottom, then wrapping to a second column), the Getting Started window and the Proof
+   Atlas window cascaded to their right, and the shortcut row above the taskbar.
+
+   win7-polish.css loads last and sets the desktop labels to bare white text. Every
+   rule here that styles a label carries the `.os-desktop` scope, which lifts it above
+   the polish selectors. */
+
+/* The route wrapper is a 7.css window body (grey #f0f0f0, a hairline and a 6px margin).
+   On the desktop it must stay transparent so the wallpaper shows. The :has() guard
+   leaves reading pages, which share the same wrapper, untouched. */
+.os-shell.win7 .os-page-content.window-body:has(> .os-desktop) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
 
 /* Desktop grid. Narrow screens stack in DOM order: the windows, the icons, then the
-   shortcut row. From 1024px the icons take column 1 and the windows column 2. */
+   shortcut row. From 1024px the icons take column 1 and the windows column 2.
+
+   Shared tokens. --os-desktop-gutter is the inline-start edge of the icon column.
+   --os-desktop-cell-inset is the tile's 1px border plus 4px padding, so the shortcut row
+   (footer) starts on the same line as the icon labels. --os-footer-h is the shortcut row
+   height, and --os-cascade-step is the CASCADE_STEP of window-geometry.ts (28px). Labels
+   are white 13px text with a 1px dark shadow: no plates, so the wallpaper reads through. */
 .os-shell.win7 .os-desktop {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 24px var(--os-dock-clearance);
+  --os-desktop-gutter: 24px;
+  --os-desktop-cell-inset: 5px;
+  --os-footer-h: 48px;
+  --os-cascade-step: 28px;
+  --win7-desk-label-shadow: 0 1px 2px rgb(0 0 0 / 0.85);
+  --win7-desk-selected: rgb(51 153 255 / 0.4);
+  --win7-desk-selected-edge: rgb(170 221 250 / 0.9);
+  position: relative;
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: none;
+  min-block-size: calc(100dvh - var(--win7-taskbar-h));
+  margin: 0;
+  padding: 24px var(--os-desktop-gutter)
+    calc(var(--win7-taskbar-h) + 16px + env(safe-area-inset-bottom, 0px));
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  align-content: start;
   gap: 24px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #ffffff;
+}
+
+/* Anything the markup hides (a minimised or closed window) stays hidden, even where a
+   window rule sets its own display. */
+.os-shell.win7 .os-desktop [hidden] {
+  display: none !important;
 }
 
 .os-shell.win7 .os-desktop-identity--atlas {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
+  inline-size: 100%;
+  max-inline-size: 1280px;
   min-width: 0;
+  justify-self: start;
 }
 
 .os-shell.win7 .os-apps {
   min-width: 0;
-  margin-top: 0;
+  margin: 0;
+  align-self: start;
 }
 
 .os-shell.win7 .os-desktop-footer {
-  margin-top: 0;
+  margin: 0;
+}
+
+/* Glass window frames: a 6px blue frame around a white body, as on Windows 7 (the
+   window frame rulebook). The `.os-desktop` ancestor is needed: win7-windows.css loads
+   after this file and sets a 4px frame at the same specificity, which left the 6px
+   title bar overhanging the frame by 2px on each side. The frame and title bar stay
+   translucent, so the wallpaper reads through. */
+.os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window {
+  min-width: 0;
+  margin: 0;
+  padding: 0 6px 6px;
+  border: 1px solid var(--win7-frame-border);
+  border-radius: var(--win7-radius);
+  background: var(--win7-title-bg);
+  box-shadow:
+    2px 2px 10px 1px rgb(0 0 0 / 0.5),
+    inset 0 0 0 1px rgb(255 255 255 / 0.45);
+  color: var(--win7-body-text);
 }
 
 @media (min-width: 1024px) {
   .os-shell.win7 .os-desktop {
-    grid-template-columns: minmax(0, 448px) minmax(0, 1fr);
-    align-items: start;
+    grid-template-columns: max-content minmax(0, 1fr);
+    /* The footer takes the leftover height, so it sits above the taskbar clearance. */
+    grid-template-rows: minmax(0, 1fr) auto;
+    /* The windows start one 24px step after the icon column. */
+    column-gap: 24px;
   }
   .os-shell.win7 .os-apps {
     grid-column: 1;
@@ -41,33 +113,62 @@
   }
   .os-shell.win7 .os-desktop-identity--atlas {
     grid-column: 2;
-    grid-row: 1 / span 2;
+    grid-row: 1;
   }
   .os-shell.win7 .os-desktop-footer {
     grid-column: 1 / -1;
-    grid-row: 3;
+    grid-row: 2;
   }
 }
 
-/* Glass window frames: a 4px glass edge (the title gradient) around a white body. The
-   selector beats the 7.css .window rules, which sit at (0,2,0). */
-.os-shell.win7 :is(.os-intro, .proof-atlas--desktop).window {
-  min-width: 0;
-  margin: 0;
-  padding: 0 4px 4px;
-  border: 1px solid var(--win7-frame-border);
-  border-radius: var(--win7-radius);
-  background: var(--win7-title-bg);
-  box-shadow: var(--win7-frame-shadow);
-  color: var(--win7-body-text);
+/* Wide desktops: the two windows sit side by side, the Proof Atlas one cascade step
+   lower and to the right of the Getting Started window. At 1280px each window is about
+   470px, so the Atlas labels stay near the 12px floor. */
+@media (min-width: 1280px) {
+  .os-shell.win7 .os-desktop-identity--atlas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop {
+    margin-block-start: var(--os-cascade-step);
+    margin-inline-start: var(--os-cascade-step);
+  }
 }
 
-/* Getting Started window. The eyebrow is the title text. */
-.os-shell.win7 .os-intro.window.glass > .title-bar {
+/* Medium desktops: one column, the Proof Atlas window cascades one step in from the
+   start and one step down. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop {
+    margin-block-start: var(--os-cascade-step);
+    margin-inline-start: var(--os-cascade-step);
+  }
+}
+
+/* A maximised window takes the full row of the windows area. */
+.os-shell.win7 .os-desktop-identity--atlas > .is-expanded {
+  grid-column: 1 / -1;
+}
+
+/* Title bars of the two desktop windows. They use the same 7.css title bar as the
+   reading windows: a 30px glass bar on a solid base, flush with the frame. The caption
+   group (Minimise, Maximise, Close) sits on the end edge. The title text is black on the
+   light base with no shadow, so its edges stay crisp. */
+.os-shell.win7 .os-desktop .os-intro.window.glass > .title-bar,
+.os-shell.win7
+  .os-desktop
+  .proof-atlas--desktop.window.glass
+  > .proof-atlas-heading.title-bar {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  gap: 8px;
   min-height: var(--win7-title-h);
-  padding: 6px 8px;
+  height: auto;
+  /* One row: the title ends in an ellipsis and the caption group keeps its size, so the
+     divider never wraps onto a line of its own. */
+  flex-wrap: nowrap;
+  margin: 0 -6px;
+  padding: 6px 6px 6px 8px;
   border: 0;
   /* The frame is 6px with a 1px border, so the title bar follows its inner 5px radius.
      Square corners would poke past the rounded frame edge. */
@@ -78,17 +179,42 @@
     linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 50%),
     var(--win7-title-base);
   box-shadow: none;
+  color: var(--win7-text-glass);
 }
 
-.os-shell.win7 .os-intro.window.glass > .title-bar .title-bar-text.os-eyebrow {
+.os-shell.win7 .os-desktop .title-bar-controls {
+  margin-inline-start: auto;
+  flex: none;
+}
+
+.os-shell.win7 .os-intro.window.glass > .title-bar .title-bar-text.os-eyebrow,
+.os-shell.win7
+  .os-desktop
+  .proof-atlas--desktop
+  .proof-atlas-heading
+  > .proof-atlas-eyebrow,
+.os-shell.win7 .os-desktop .proof-atlas--desktop .proof-atlas-heading > h2 {
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 0;
   margin: 0;
   padding: 0;
+  align-self: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: var(--win7-font);
   font-size: var(--win7-ui-size);
   font-weight: 600;
   line-height: 18px;
-  color: var(--w7-title-c);
-  text-shadow: var(--win7-text-shadow);
+  color: inherit;
+  text-shadow: none;
+}
+
+/* The subtitle is the lighter second line of the title: the same size, with a regular
+   weight, so it reads as the window's subject after the eyebrow. */
+.os-shell.win7 .os-desktop .proof-atlas--desktop .proof-atlas-heading > h2 {
+  font-weight: 400;
 }
 
 .os-shell.win7 .os-intro .window-body.has-space {
@@ -104,7 +230,7 @@
 .os-shell.win7 .os-intro h1 {
   margin: 0 0 16px;
   font-family: var(--win7-font);
-  font-size: clamp(28px, 4.2vw, 40px);
+  font-size: clamp(28px, 2.8vw, 40px);
   font-weight: 300;
   line-height: 1.15;
   color: var(--win7-body-text);
@@ -132,8 +258,10 @@
 }
 
 /* Win7 push buttons for the Getting Started links. Links keep the 7.css gradients and
-   black text, and the caption rules stay out of the way. */
-.os-shell.win7 .os-intro .os-direct-links .os-button {
+   black text. The `.os-desktop` ancestor lifts these rules above the controls.css
+   secondary hover, which sets a translucent accent tint. In Aero Night that tint is
+   dark, so black text on it fell to about 1.6:1. */
+.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button {
   min-width: 75px;
   min-height: 23px;
   padding: 0 12px;
@@ -153,226 +281,316 @@
   cursor: pointer;
 }
 
-.os-shell.win7 .os-intro .os-direct-links .os-button:hover {
+.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button:hover {
   border-color: var(--w7-el-bd-h);
   background: var(--w7-el-grad-h);
   color: var(--w7-el-c);
 }
 
-.os-shell.win7 .os-intro .os-direct-links .os-button:active {
+.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button:active {
   border-color: var(--w7-el-bd-a);
   background: var(--w7-el-grad-a);
   box-shadow: var(--w7-el-sd-a);
 }
 
-/* Desktop icons. Each app is a glossy tile with a label plate. The per-app hues are
-   retired: every tile shares the same gloss. */
-.os-shell.win7 .os-apps .os-section-label {
+/* Desktop labels. The section hint and the category caption sit on the wallpaper with no
+   plate; the shadow keeps white text readable on the lighter parts of the wallpaper. */
+.os-shell.win7 .os-desktop .os-apps .os-section-label {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 4px 12px;
   margin: 0 0 16px;
-  padding: 2px 6px;
-  border-radius: 3px;
-  background: var(--win7-plate);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   color: #ffffff;
   font-size: var(--win7-ui-size);
   line-height: 1.5;
+  text-shadow: var(--win7-desk-label-shadow);
 }
 
-.os-shell.win7 .os-apps .os-section-label::after {
+.os-shell.win7 .os-desktop .os-apps .os-section-label::after {
   content: none;
 }
 
-.os-shell.win7 .os-app-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 104px);
-  gap: 8px;
-  justify-content: start;
+.os-shell.win7 .os-desktop .os-apps .os-section-label .os-app-stat {
+  margin: 0;
+  padding: 0;
+  font-size: var(--win7-small-size);
+  color: #ffffff;
+  text-shadow: var(--win7-desk-label-shadow);
 }
 
-.os-shell.win7 .os-apps .os-app {
+/* Icon column. The icons run top to bottom and wrap to the next column when the column
+   is full. From 1024px the grid has a definite height, so the auto-filled rows count
+   follows the viewport: about five rows at 900px tall, which is one column for the five
+   apps. The base app grid sets five fixed columns, so they are cleared here; the
+   implicit 120px columns then apply. The 200px is the space the section label, the
+   shortcut row, the top padding and the taskbar clearance take. */
+.os-shell.win7 .os-desktop .os-app-grid {
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(auto-fill, minmax(124px, auto));
+  grid-auto-columns: 120px;
+  gap: 4px;
+  justify-content: start;
+  align-content: start;
+}
+
+@media (min-width: 1024px) {
+  .os-shell.win7 .os-desktop .os-app-grid {
+    block-size: calc(100dvh - 200px);
+  }
+}
+
+.os-shell.win7 .os-desktop .os-apps .os-app {
   position: relative;
+  min-width: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   padding: 6px 4px;
   border: 1px solid transparent;
   border-radius: 3px;
+  background: transparent;
   color: #ffffff;
   text-align: center;
   text-decoration: none;
 }
 
-.os-shell.win7 .os-apps .os-app strong,
-.os-shell.win7 .os-apps .os-app small {
+.os-shell.win7 .os-desktop .os-apps .os-app strong,
+.os-shell.win7 .os-desktop .os-apps .os-app small {
   display: block;
   max-inline-size: 100%;
   margin: 0;
-  padding: 1px 4px;
+  padding: 1px 2px;
   border-radius: 3px;
-  background: var(--win7-plate);
+  background: transparent;
   color: #ffffff;
   text-align: center;
+  text-shadow: var(--win7-desk-label-shadow);
   overflow-wrap: anywhere;
+  opacity: 1;
 }
 
-.os-shell.win7 .os-apps .os-app strong {
+.os-shell.win7 .os-desktop .os-apps .os-app strong {
   font-size: var(--win7-ui-size);
   font-weight: 400;
   line-height: 1.3;
 }
 
-.os-shell.win7 .os-apps .os-app small {
+.os-shell.win7 .os-desktop .os-apps .os-app small {
   font-size: var(--win7-small-size);
   line-height: 1.35;
 }
 
-/* Glossy tile: a 40% white gloss that fades out by 30%, so the 24px glyph sits on the
-   plain tile colour and keeps its contrast. */
-.os-shell.win7 .os-apps .os-app-icon {
+/* Glossy 48px tile in the 7.css style: a white gloss fading out over the top half, a
+   1px dark rim and a light inner edge. The glyph is decorative and sits on the tile. */
+.os-shell.win7 .os-desktop .os-apps .os-app-icon {
   display: grid;
   place-items: center;
   flex: none;
-  inline-size: 52px;
-  block-size: 52px;
-  border: 1px solid rgb(0 0 0 / 0.35);
+  inline-size: 48px;
+  block-size: 48px;
+  border: 1px solid rgb(0 0 0 / 0.45);
   border-radius: 6px;
   background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.4), transparent 30%),
+    linear-gradient(180deg, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0) 50%),
     var(--win7-tile-bg);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    0 1px 2px rgb(0 0 0 / 0.35);
   color: #ffffff;
 }
 
-.os-shell.win7 .os-apps .os-app-icon svg {
-  inline-size: 24px;
-  block-size: 24px;
+.os-shell.win7 .os-desktop .os-apps .os-app-icon svg {
+  inline-size: 26px;
+  block-size: 26px;
   color: #ffffff;
   stroke: #ffffff;
   filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5));
 }
 
-.os-shell.win7 .os-apps .os-app:hover {
-  background: rgb(255 255 255 / 0.12);
-  outline: 1px dotted rgb(255 255 255 / 0.6);
-  outline-offset: -1px;
-}
-
-/* Selected (keyboard focus or pressed): the Win7 blue selection, with black labels. */
-.os-shell.win7 .os-apps .os-app:is(:focus-visible, :active) {
-  background: var(--win7-select-bg);
-  border-color: var(--win7-select-border);
-  color: #000000;
-}
-
-.os-shell.win7 .os-apps .os-app:is(:focus-visible, :active) :is(strong, small),
+/* Win7 selection: a translucent blue rounded box on hover, while pressed, when selected
+   with one click, and on keyboard focus. The focus ring is a dotted white rectangle inset
+   in the box, so it shows on both the blue and the wallpaper. */
 .os-shell.win7
+  .os-desktop
   .os-apps
-  .os-app:is(:focus-visible, :active)
-  .os-app-stat-breakdown
-  > span {
-  background: transparent;
-  color: #000000;
-}
-
-/* Count badge: white on #1f5fa8 (6.9:1). The breakdown lines sit on the plate. */
-.os-shell.win7 .os-apps .os-app-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  max-inline-size: 100%;
-}
-
-.os-shell.win7 .os-apps .os-app-stat-figure {
-  min-inline-size: 26px;
-  padding: 0 6px;
-  border: 1px solid rgb(255 255 255 / 0.6);
-  border-radius: 9px;
-  background: #1f5fa8;
-  color: #ffffff;
-  font-size: var(--win7-ui-size);
-  font-weight: 600;
-  line-height: 1.6;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-
-.os-shell.win7 .os-apps .os-app-stat-breakdown {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  max-inline-size: 100%;
-}
-
-.os-shell.win7 .os-apps .os-app-stat-breakdown > span {
-  max-inline-size: 100%;
-  padding: 0 4px;
+  .os-app:is(:hover, :active, :focus-visible, [data-selected="true"]) {
+  background: var(--win7-desk-selected);
+  border-color: var(--win7-desk-selected-edge);
   border-radius: 3px;
-  background: var(--win7-plate);
   color: #ffffff;
-  font-size: var(--win7-small-size);
-  line-height: 1.35;
-  overflow-wrap: anywhere;
 }
 
-/* Shortcut row: desktop labels on the plate, spanning both columns. */
-.os-shell.win7 .os-desktop-footer {
+.os-shell.win7 .os-desktop .os-apps .os-app:focus-visible {
+  outline: 1px dotted #ffffff;
+  outline-offset: -4px;
+}
+
+/* Shortcut row: the labels sit on the wallpaper at the same inline-start edge as the icon
+   labels, and the row stacks above the windows (the bottom edge they reserve is
+   --os-footer-h). Its links are white text, with the same translucent box on hover and
+   focus. */
+.os-shell.win7 .os-desktop .os-desktop-footer {
+  position: relative;
+  z-index: 50;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px 16px;
+  min-block-size: var(--os-footer-h);
+  padding-inline-start: var(--os-desktop-cell-inset);
   font-size: var(--win7-ui-size);
   color: #ffffff;
+  text-shadow: var(--win7-desk-label-shadow);
 }
 
-.os-shell.win7 .os-desktop-footer > div {
+.os-shell.win7 .os-desktop .os-desktop-footer > div {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.os-shell.win7 .os-desktop-footer a {
+.os-shell.win7 .os-desktop .os-desktop-footer a {
   min-height: 30px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 2px 8px;
+  padding: 2px 6px;
+  border: 1px solid transparent;
   border-radius: 3px;
-  background: var(--win7-plate);
+  background: transparent;
   color: #ffffff;
   text-decoration: none;
 }
 
-.os-shell.win7 .os-desktop-footer a:is(:hover, :focus-visible) {
+.os-shell.win7 .os-desktop .os-desktop-footer a:is(:hover, :focus-visible) {
+  background: var(--win7-desk-selected);
+  border-color: var(--win7-desk-selected-edge);
   color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* Phones: the windows run full width with no radius, the icons sit in four columns,
-   and the touch targets reach 44px. */
+.os-shell.win7 .os-desktop .os-desktop-footer a:focus-visible {
+  outline: 1px dotted #ffffff;
+  outline-offset: -4px;
+}
+
+/* Restore row: one 7.css push button per minimised or closed desktop window. */
+.os-shell.win7 .os-desktop .os-desktop-restore {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.os-shell.win7 .os-desktop .os-desktop-restore-button {
+  min-width: 75px;
+  min-height: 24px;
+  padding: 0 12px;
+  border: 1px solid var(--w7-el-bd);
+  border-radius: var(--w7-el-bdr);
+  background: var(--w7-el-grad);
+  box-shadow: var(--w7-el-sd);
+  color: var(--w7-el-c);
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  line-height: 1.2;
+  text-shadow: none;
+  cursor: pointer;
+}
+
+.os-shell.win7 .os-desktop .os-desktop-restore-button:hover {
+  border-color: var(--w7-el-bd-h);
+  background: var(--w7-el-grad-h);
+}
+
+.os-shell.win7 .os-desktop .os-desktop-restore-button:active {
+  border-color: var(--w7-el-bd-a);
+  background: var(--w7-el-grad-a);
+  box-shadow: var(--w7-el-sd-a);
+}
+
+.os-shell.win7 .os-desktop .os-desktop-restore-button:focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  box-shadow:
+    var(--w7-el-sd),
+    inset 0 0 0 2px #98d1ef;
+}
+
+/* Window open: scale 0.95 to 1 with a fade over 180ms, transform and opacity only.
+   The Proof Atlas follows 40ms later. Reduced motion gets no animation at all. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell.win7 .os-desktop-identity--atlas > .window {
+    animation: os-win7-window-open 180ms var(--ease-standard, ease-out) both;
+  }
+  .os-shell.win7 .os-desktop-identity--atlas > .proof-atlas--desktop {
+    animation-delay: 40ms;
+  }
+}
+
+@keyframes os-win7-window-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Phones (700px and below): the windows run full width with no radius, the icons sit
+   in three columns, and the touch targets reach 44px. */
 @media (max-width: 700px) {
   .os-shell.win7 .os-desktop {
+    --os-desktop-gutter: 0px;
+    min-block-size: 0;
     gap: 16px;
-    padding: 16px 0 var(--os-dock-clearance);
+    padding: 16px 0
+      calc(var(--win7-taskbar-h) + 16px + env(safe-area-inset-bottom, 0px));
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
   }
 
   .os-shell.win7 .os-desktop-identity--atlas {
     gap: 16px;
+    max-inline-size: none;
+    justify-self: stretch;
   }
 
-  .os-shell.win7 :is(.os-intro, .proof-atlas--desktop).window {
+  .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop {
+    margin-block-start: 0;
+    margin-inline-start: 0;
+  }
+
+  /* The windows lane gives phone windows a full-viewport minimum height. The desktop
+     windows are content-height, so that minimum is lifted here (the windows lane uses
+     !important, so this rule does too). */
+  .os-shell.win7 .os-desktop-identity--atlas > .window.glass {
+    min-height: 0 !important;
+  }
+
+  .os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window {
     border-inline: 0;
     border-radius: 0;
   }
 
-  .os-shell.win7 .os-intro.window.glass > .title-bar {
+  .os-shell.win7 .os-intro.window.glass > .title-bar,
+  .os-shell.win7
+    .os-desktop
+    .proof-atlas--desktop.window.glass
+    > .proof-atlas-heading.title-bar {
     border-radius: 0;
+    padding-inline: 8px 6px;
   }
 
   .os-shell.win7 .os-intro .window-body.has-space {
@@ -380,35 +598,66 @@
     border-radius: 0;
   }
 
-  .os-shell.win7 .os-intro .os-direct-links .os-button {
+  .os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button {
     min-height: 44px;
     flex: 1 1 auto;
   }
 
-  .os-shell.win7 .os-apps,
-  .os-shell.win7 .os-desktop-footer {
+  .os-shell.win7 .os-desktop .os-apps,
+  .os-shell.win7 .os-desktop .os-desktop-footer {
     padding-inline: 16px;
   }
 
-  .os-shell.win7 .os-app-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px 4px;
+  .os-shell.win7 .os-desktop .os-desktop-footer {
+    padding-inline-start: 16px;
   }
 
-  .os-shell.win7 .os-apps .os-app {
-    min-inline-size: 0;
+  /* Three columns, so a label such as "conversation" keeps its word at 320px. The
+     Projects tile spans two, which gives its caption room. */
+  .os-shell.win7 .os-desktop .os-app-grid {
+    block-size: auto;
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-columns: auto;
+    gap: 12px 6px;
   }
 
-  .os-shell.win7 .os-apps .os-app small {
-    font-size: var(--win7-small-size);
+  .os-shell.win7 .os-desktop .os-apps .os-app {
+    inline-size: auto;
   }
 
-  .os-shell.win7 .os-desktop-footer {
+  .os-shell.win7 .os-desktop .os-apps .os-app-icon {
+    inline-size: 32px;
+    block-size: 32px;
+  }
+
+  .os-shell.win7 .os-desktop .os-apps .os-app-icon svg {
+    inline-size: 18px;
+    block-size: 18px;
+  }
+
+  .os-shell.win7 .os-desktop .os-desktop-footer {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .os-shell.win7 .os-desktop-footer a {
+  .os-shell.win7 .os-desktop .os-desktop-footer a,
+  .os-shell.win7 .os-desktop .os-desktop-restore-button {
     min-height: 44px;
+  }
+}
+
+/* Reduced motion: the desktop is static. No window open, no tile or row entrance, and no
+   hover or focus transition. The rules sit at the shell's specificity or above, so they
+   win over the entrance animations in research-os.css and the polish layer. */
+@media (prefers-reduced-motion: reduce) {
+  .os-shell.win7 .os-desktop,
+  .os-shell.win7 .os-desktop *,
+  .os-shell.win7 .os-desktop *::before,
+  .os-shell.win7 .os-desktop *::after,
+  .os-shell.win7 .os-desktop-identity--atlas > .window {
+    animation: none !important;
+    transition: none !important;
   }
 }

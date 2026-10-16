@@ -1,8 +1,9 @@
 /* Win7 Aero layer, explorer lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css.
 
-   The projects explorer is a glass window in the Explorer layout: a title bar, an
-   address bar, a navigation pane and a white list. Selectors carry .win7 so they
-   outrank the layout rules in project-explorer.css, which are written with the
+   The projects explorer is a glass window in the Explorer layout: the window title
+   above it is the only title, then a command bar with the Win7 address bar, a
+   navigation pane with its header row, and a white list. Selectors carry .win7 so
+   they outrank the layout rules in project-explorer.css, which are written with the
    .os-shell prefix only. Layout is by logical properties, so the navigation pane
    sits on the inline-start edge in LTR and the inline-end edge in RTL. */
 
@@ -19,31 +20,34 @@
   box-shadow: var(--win7-frame-shadow);
 }
 
-/* Title bar: the glass caption strip above the address bar. */
-.os-shell.win7 .os-project-explorer > .os-explorer-titlebar {
-  display: flex;
-  align-items: center;
-  min-height: var(--win7-title-h);
-  padding-inline: 8px;
-  color: var(--win7-text-glass);
-  font-family: var(--win7-font);
-  font-size: var(--win7-ui-size);
-  font-weight: 600;
-  line-height: 1.3;
-  text-shadow: var(--win7-text-shadow);
-  overflow-wrap: anywhere;
-}
-
-/* Address bar: a white field with the Win7 control edge, decorative only. */
-.os-shell.win7 .os-project-explorer > .os-explorer-address {
+/* Command bar: the Explorer strip above the panes. It carries the address bar and
+   sits on the Win7 toolbar gradient, with a hairline that separates it from the panes. */
+.os-shell.win7 .os-project-explorer > .os-explorer-commandbar {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-height: 36px;
+  padding: 5px 6px;
+  border-block-end: 1px solid var(--explorer-commandbar-line);
+  background: var(--explorer-commandbar-bg);
+}
+
+/* Address bar: a white field with the Win7 control edge and an inset highlight.
+   Decorative only (aria-hidden on the command bar), it shows the path as crumbs. */
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-commandbar
+  > .os-explorer-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
   height: 26px;
-  margin-block: 4px;
   padding-inline: 6px;
-  border: 1px solid #7a7a7a;
+  border: 1px solid var(--explorer-control-edge);
   border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 0.08);
   color: var(--win7-body-text);
   background: var(--win7-body-bg);
   font-family: var(--win7-font);
@@ -52,20 +56,82 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.os-shell.win7 .os-project-explorer > .os-explorer-address > svg {
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-commandbar
+  > .os-explorer-address
+  > svg {
   flex: none;
   color: var(--win7-body-muted);
 }
-.os-shell.win7 .os-project-explorer > .os-explorer-address > span {
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-commandbar
+  > .os-explorer-address
+  > .os-explorer-crumb {
+  flex: none;
+  color: var(--win7-body-muted);
+}
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-commandbar
+  > .os-explorer-address
+  > span {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* Navigation pane header: the All Projects row is the pane's header. It is bold,
+   sits on a light gradient and has a rule beneath it, like a Win7 pane heading. */
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-layout
+  > .os-explorer-sidebar
+  > .os-explorer-index-link:not([aria-current="page"]) {
+  min-height: 28px;
+  margin-block-end: 4px;
+  border-block-end: 1px solid var(--explorer-keyline);
+  background: var(--explorer-pane-head);
+  font-weight: 600;
+}
+
+/* Navigation pane tree. The selected row is a rounded 7.css select gradient (the
+   token pair in project-explorer.css sets its text). Project rows hang from the
+   All Projects header on a 1px guide, the way a Win7 nav-pane tree draws its
+   connectors. The guide is a keyline token, so it reads in both appearances. */
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-layout
+  > .os-explorer-sidebar
+  :is(.os-explorer-index-link, .os-explorer-project-link)[aria-current="page"] {
+  border-radius: 3px;
+}
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-layout
+  > .os-explorer-sidebar
+  .os-explorer-project-link {
+  position: relative;
+}
+.os-shell.win7
+  .os-project-explorer
+  > .os-explorer-layout
+  > .os-explorer-sidebar
+  .os-explorer-project-link::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 12px;
+  inline-size: 1px;
+  background: var(--explorer-keyline);
+  pointer-events: none;
+}
+
 /* The white body sits under the glass frame, with the hairline Win7 uses. */
 .os-shell.win7 .os-project-explorer > .os-explorer-layout {
   background: var(--win7-body-bg);
-  border: 1px solid #c0c1cd;
+  border: 1px solid var(--explorer-keyline);
 }
 
 /* Phones: the frame keeps its glass edge but loses the outer shadow. */
@@ -73,7 +139,10 @@
   .os-shell.win7 .os-project-explorer {
     box-shadow: none;
   }
-  .os-shell.win7 .os-project-explorer > .os-explorer-address {
+  .os-shell.win7
+    .os-project-explorer
+    > .os-explorer-commandbar
+    > .os-explorer-address {
     height: 32px;
   }
 }
@@ -84,11 +153,14 @@
     background: Canvas;
     box-shadow: none;
   }
-  .os-shell.win7 .os-project-explorer > .os-explorer-titlebar {
-    color: CanvasText;
-    text-shadow: none;
+  .os-shell.win7 .os-project-explorer > .os-explorer-commandbar {
+    border-color: CanvasText;
+    background: Canvas;
   }
-  .os-shell.win7 .os-project-explorer > .os-explorer-address {
+  .os-shell.win7
+    .os-project-explorer
+    > .os-explorer-commandbar
+    > .os-explorer-address {
     border-color: CanvasText;
     background: Canvas;
     color: CanvasText;

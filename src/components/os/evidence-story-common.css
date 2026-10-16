@@ -47,7 +47,7 @@
 
 /* Aero: the story is a group box, so it takes the Win7 white body and a hairline edge. */
 .os-shell .os-project-explorer .os-project-section .os-evidence-story {
-  border-color: #d5dfe5;
+  border-color: var(--os-line);
   border-radius: 3px;
   background: var(--win7-body-bg);
 }
@@ -295,18 +295,21 @@
   }
 }
 
-/* Evidence reveal (concept 3 graft): a story card eases up 12px as it enters the
-   scroll view. Opacity and transform only. It is scroll-linked, not one-shot: it
-   eases back if the reader scrolls up past it. Gated on no-preference, with no fill
-   mode, so the card is visible by default and wherever scroll timelines are absent. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .os-shell .os-project-explorer .os-project-section .os-evidence-story {
-      animation: os-evidence-reveal linear;
-      animation-fill-mode: none;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
+/* Evidence reveal: a story card eases up 12px and fades in over 200ms, once.
+   Opacity and transform only. The run is capped at 200ms, so the heading and lede
+   are fully opaque shortly after they scroll in. No fill mode is used, so the card
+   is visible by default. Reduced motion removes the animation, and the card renders
+   at full opacity at once. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell .os-project-explorer .os-project-section .os-evidence-story {
+    animation: os-evidence-reveal 200ms ease-out;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .os-shell .os-project-explorer .os-project-section .os-evidence-story {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -321,17 +324,21 @@
   }
 }
 
-/* Aero pressed controls take the Win7 select gradient. The platform picker is a
-   joined segmented strip; the Zurvan and Simurgh controls stay separate. Roles and
-   aria-pressed are unchanged. */
+/* Aero pressed controls take the Win7 select gradient, and the text pair comes from the
+   explorer tokens (black on the light face, white on the navy face in Aero Night). The
+   rule covers the Simurgh and Zurvan controls only: the platform picker is a joined
+   segmented strip and styles its own pressed state in evidence-story-invisible.css. */
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-evidence-story
-  button[aria-pressed="true"]:not(:disabled) {
-  color: var(--win7-body-text);
-  background: var(--win7-select-bg);
-  border-color: var(--win7-select-border);
+  :is(
+    .os-simurgh-instrument-control,
+    .os-zurvan-typed
+  )[aria-pressed="true"]:not(:disabled) {
+  color: var(--explorer-select-text);
+  background: var(--explorer-select);
+  border-color: var(--explorer-select-line);
 }
 .os-shell .os-project-explorer .os-project-section .os-story-platform-picker {
   gap: 0;

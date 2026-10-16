@@ -1,6 +1,5 @@
 "use client";
 
-import { FolderOpen, Home } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
@@ -14,7 +13,8 @@ export default function NotFound() {
     return `/${locale}${path === "/" ? "" : path}`;
   };
 
-  // A Win7-style window inside the shell: the 404 code sits in the glass title bar.
+  // A Win7 message box inside the shell: the 404 code sits in the glass title bar, the
+  // error icon and the message share the body, and the default button comes first.
   return (
     <section
       className="os-not-found window glass active"
@@ -27,18 +27,29 @@ export default function NotFound() {
       </div>
       <div className="window-body has-space">
         <SignalVortex />
-        <h1 id="os-not-found-title">{t.not_found.error_code}</h1>
-        <p>{t.not_found.description}</p>
+        <div className="os-not-found-message">
+          <span className="os-not-found-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false">
+              <circle cx="12" cy="12" r="11" />
+              <path
+                className="os-not-found-cross"
+                d="M8.1 6.7 12 10.6l3.9-3.9 1.4 1.4-3.9 3.9 3.9 3.9-1.4 1.4-3.9-3.9-3.9 3.9-1.4-1.4 3.9-3.9-3.9-3.9z"
+              />
+            </svg>
+          </span>
+          <div className="os-not-found-text">
+            <h1 id="os-not-found-title">{t.not_found.error_code}</h1>
+            <p>{t.not_found.description}</p>
+          </div>
+        </div>
         <div className="os-not-found-actions">
           <Link className="os-button" href={getPath("/")}>
-            <Home aria-hidden="true" />
             {t.not_found.return_home}
           </Link>
           <Link
             className="os-button os-button--secondary"
             href={getPath("/projects")}
           >
-            <FolderOpen aria-hidden="true" />
             {t.not_found.browse_projects}
           </Link>
         </div>

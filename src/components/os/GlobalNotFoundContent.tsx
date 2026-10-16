@@ -94,7 +94,8 @@ export function GlobalNotFoundContent({
     <main className="global-not-found win7" lang={locale} dir={copy.dir}>
       <title>{`${copy.title} | Mohammad Raouf Abedini`}</title>
       <SignalVortex />
-      {/* A Win7-style error dialog: the 404 code sits in the glass title bar. */}
+      {/* A Win7 message box: the error icon, the message and the buttons share one dialog,
+          and the 404 code sits in the glass title bar. The icon is decorative. */}
       <div className="window glass active global-not-found-dialog">
         <div className="title-bar">
           <p className="global-not-found-code" dir="ltr">
@@ -102,26 +103,27 @@ export function GlobalNotFoundContent({
           </p>
         </div>
         <div className="window-body has-space">
-          <span className="global-not-found-mark" aria-hidden="true">
-            {/* The approved mark stays decorative; the heading supplies the page name.
-                It is drawn inline with the same geometry as /brand/raouf-mark.svg: an
-                <img> cannot inherit currentColor and paints black on the dark tile. */}
-            <svg
-              className="global-not-found-glyph"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              focusable="false"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M4 3.5h8.35c4.48 0 7.15 2.3 7.15 6.05 0 2.63-1.4 4.58-3.82 5.5L20.5 20.5h-4.34l-4.27-5.16H7.5v5.16H4V3.5Z M7.5 6.75v5.3h4.65c2.38 0 3.85-.88 3.85-2.65s-1.47-2.65-3.85-2.65H7.5Z M7.5 14.15l2.75-2.1h1.9l-3.45 3.29H7.5v-1.19Z"
-              />
-            </svg>
-          </span>
-          <h1>{copy.title}</h1>
-          <p className="global-not-found-description">{copy.description}</p>
+          <div className="global-not-found-message">
+            <span className="global-not-found-mark" aria-hidden="true">
+              <svg
+                className="global-not-found-glyph"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                focusable="false"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="11" />
+                <path
+                  className="global-not-found-cross"
+                  d="M8.1 6.7 12 10.6l3.9-3.9 1.4 1.4-3.9 3.9 3.9 3.9-1.4 1.4-3.9-3.9-3.9 3.9-1.4-1.4 3.9-3.9-3.9-3.9z"
+                />
+              </svg>
+            </span>
+            <div className="global-not-found-text">
+              <h1>{copy.title}</h1>
+              <p className="global-not-found-description">{copy.description}</p>
+            </div>
+          </div>
           <div className="global-not-found-actions">
             <a className="os-button" href={prefix || "/"}>
               {copy.home}

@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
     <div className="relative" ref={containerRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 border border-cyan/15 hover:border-cyan/40 text-xs font-mono text-text-meta hover:text-cyan transition-all bg-cyber-dark/30 rounded-sm"
+        className="flex items-center gap-2 px-3 py-1.5 min-h-6 min-w-6 pointer-coarse:min-h-11 pointer-coarse:min-w-11 border border-cyan/15 hover:border-cyan/40 text-xs font-mono text-text-meta hover:text-cyan transition-all bg-cyber-dark/30 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
         aria-label={`${locales[currentLocale].label}, ${t.common.select_language}`}
         aria-haspopup="menu"
         aria-expanded={isOpen}

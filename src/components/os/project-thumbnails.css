@@ -18,9 +18,11 @@
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr);
   place-items: center;
+  /* The box is reserved at its final 3:2 shape before any artwork arrives. */
   inline-size: 96px;
   max-inline-size: 100%;
   block-size: 64px;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   border: 1px solid #8e8f8f;
   border-radius: 3px;
@@ -63,7 +65,7 @@
   aspect-ratio: 1;
 }
 
-.os-shell .os-project-thumbnail svg:not(.os-project-thumbnail-placeholder) {
+.os-shell .os-project-thumbnail svg {
   display: block;
   inline-size: 100%;
   block-size: 100%;
@@ -77,9 +79,34 @@
   transition-duration: var(--motion-quick);
 }
 
-.os-shell .os-project-thumbnail .os-project-thumbnail-placeholder {
-  color: var(--os-muted);
-  opacity: 0.35;
+/* Before the artwork loads, the frame is a neutral light surface with no glyph, so the
+   list keeps its light rhythm and no grey placeholder flashes in and out. The frame keeps
+   its fixed box, so nothing reflows when the artwork arrives. */
+.os-shell .os-project-thumbnail.os-project-thumbnail-pending {
+  background: #eceff3;
+}
+
+/* Aero Night: the pending frame is a dark panel, so the list does not flash a light box. */
+.os-shell[data-appearance="dark"]
+  .os-project-thumbnail.os-project-thumbnail-pending,
+[data-appearance="dark"]
+  .os-shell
+  .os-project-thumbnail.os-project-thumbnail-pending {
+  background: #1b2a3d;
+}
+
+/* The artwork fades in over 180ms once it mounts. @starting-style supplies the opacity 0
+   start state, and the transition is opacity only. Browsers without @starting-style show
+   the artwork at once, which is the same end state. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell .os-project-thumbnail > div {
+    transition: opacity 180ms ease-out;
+  }
+  @starting-style {
+    .os-shell .os-project-thumbnail > div {
+      opacity: 0;
+    }
+  }
 }
 
 /* Narrow panes stack the preview above the text, at the card's full width. */

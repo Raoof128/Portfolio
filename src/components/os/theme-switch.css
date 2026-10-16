@@ -52,6 +52,119 @@
   outline: 2px solid var(--os-focus);
   outline-offset: 2px;
 }
+/* Logon corner. The switch is a filled 24px track, 40px wide, so the corner row shares one
+   height with the language chip. A filled track reads as a live switch in both themes: the
+   light theme is a white track with a dark sun, and the dark theme is a blue track with a
+   dark-blue moon. The taskbar draws its track on ::after and its thumb on ::before; both
+   are removed here, and the track is the button's own background. The 44px hit area on
+   phones uses a transparent padded box, so the visible track stays 40 by 24px inside it. */
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch {
+  box-sizing: border-box;
+  width: 40px;
+  height: 24px;
+  min-width: 40px;
+  min-height: 24px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.75);
+  border-radius: 12px;
+  background: rgb(0 22 46 / 0.45);
+  box-shadow: none;
+  color: #ffffff;
+}
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch::before,
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch::after {
+  content: none;
+  display: none;
+}
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch svg {
+  position: relative;
+  inset: auto;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: #ffffff;
+  stroke-width: 2.2;
+  pointer-events: none;
+}
+/* Light theme (aria-checked false): a white track with a dark sun. It reads as on. */
+.os-shell.win7:has(> .os-welcome)
+  > header.os-topbar
+  .os-theme-switch[aria-checked="false"] {
+  background: linear-gradient(#ffffff, #dde8f3);
+  border-color: rgb(0 0 0 / 0.55);
+  color: #0b3c73;
+}
+.os-shell.win7:has(> .os-welcome)
+  > header.os-topbar
+  .os-theme-switch[aria-checked="false"]
+  svg {
+  color: #0b3c73;
+}
+/* Dark theme (aria-checked true): a blue track with a dark-blue moon. */
+.os-shell.win7:has(> .os-welcome)
+  > header.os-topbar
+  .os-theme-switch[aria-checked="true"] {
+  background: linear-gradient(#8fd3f8, #2f8fe0);
+  border-color: rgb(0 0 0 / 0.6);
+  color: #052f5f;
+}
+.os-shell.win7:has(> .os-welcome)
+  > header.os-topbar
+  .os-theme-switch[aria-checked="true"]
+  svg {
+  color: #052f5f;
+}
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch:hover {
+  border-color: #ffffff;
+}
+.os-shell.win7:has(> .os-welcome)
+  > header.os-topbar
+  .os-theme-switch:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+/* Visible state word beside the switch: "Light" or "Dark" from the existing copy. The
+   polish layer clips this word for the desktop tray, where it collided with the language
+   control. On the logon there is room, so it is shown in full. */
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-state {
+  position: static;
+  inline-size: auto;
+  block-size: auto;
+  overflow: visible;
+  clip-path: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--win7-small-size);
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: var(--win7-text-shadow);
+}
+@media (max-width: 700px), (pointer: coarse) {
+  /* Phones and touch screens: the visible track stays 40 by 24px. A transparent
+     pseudo-element extends the hit area to 44 by 44px, so the switch is a 44px touch target
+     without a bigger track.
+     The pseudo-element is the only ::before the logon uses, and the glyph sits above it. */
+  .os-shell.win7:has(> .os-welcome)
+    > header.os-topbar
+    .os-theme-switch::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: -10px -2px;
+    border: 0;
+    background: transparent;
+  }
+  .os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch svg {
+    width: 16px;
+    height: 16px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .os-shell .os-theme-switch::before,
   .os-shell .os-theme-switch svg {

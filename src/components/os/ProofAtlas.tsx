@@ -10,6 +10,7 @@ import {
   useState,
   useSyncExternalStore,
   type PointerEvent,
+  type ReactNode,
 } from "react";
 import type { Locale } from "@/i18n";
 import { getAtlasCopy, type AtlasProject } from "./atlas-copy";
@@ -200,6 +201,8 @@ export function ProofAtlas({
   interactive,
   decorative = false,
   className = "",
+  controls,
+  hidden = false,
 }: {
   locale: Locale;
   /** False for desktops rendered behind the welcome screen or a reading window. */
@@ -207,6 +210,10 @@ export function ProofAtlas({
   /** Use a silent static drawing when the nearby HTML already supplies its meaning. */
   decorative?: boolean;
   className?: string;
+  /** Caption buttons for the desktop window, placed at the end of its title bar. */
+  controls?: ReactNode;
+  /** The desktop window is minimised or closed. The atlas stays mounted. */
+  hidden?: boolean;
 }) {
   const copy = getAtlasCopy(locale);
   const inheritedInteractive = useContext(ProofAtlasVisibilityContext);
@@ -279,6 +286,8 @@ export function ProofAtlas({
   }, [isInteractive, motionEnabled, resetPointer]);
 
   const isDecorative = decorative || !isInteractive;
+  // A desktop window carries the `window` class; its heading becomes the 7.css title bar.
+  const isWindow = className.split(/\s+/).includes("window");
 
   return (
     <section
@@ -290,10 +299,18 @@ export function ProofAtlas({
       data-motion-enabled={motionEnabled ? "true" : "false"}
       aria-labelledby={isDecorative ? undefined : titleId}
       aria-hidden={decorative || undefined}
+      hidden={hidden || undefined}
     >
-      <div className="proof-atlas-heading">
-        <p className="proof-atlas-eyebrow">{copy.eyebrow}</p>
-        <h2 id={titleId}>{copy.heading}</h2>
+      <div className={`proof-atlas-heading${isWindow ? " title-bar" : ""}`}>
+        {/* The eyebrow and the subtitle are two spans, split by a 1px divider on the window. */}
+        <span className="proof-atlas-eyebrow title-bar-text">
+          {copy.eyebrow}
+        </span>
+        <span className="proof-atlas-divider" aria-hidden="true" />
+        <h2 id={titleId} tabIndex={isWindow ? -1 : undefined}>
+          {copy.heading}
+        </h2>
+        {controls}
       </div>
       {/* White window body. The figure and its controls share one surface. */}
       <div className="proof-atlas-body">

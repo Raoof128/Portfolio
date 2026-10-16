@@ -18,7 +18,6 @@ import {
   Check,
   ChevronsLeftRight,
   ChevronsUpDown,
-  Grip,
   RotateCcw,
 } from "lucide-react";
 import type { Locale } from "@/i18n";
@@ -167,7 +166,7 @@ export function ReadingWindowControls({
         aria-label={copy.windowControls}
         ref={summary}
       >
-        <Grip aria-hidden="true" />
+        {copy.windowControls}
       </summary>
       {/* The glass titlebar establishes a fixed containing block. Keep this
           panel in the themed shell so viewport bounds and clipping stay valid. */}

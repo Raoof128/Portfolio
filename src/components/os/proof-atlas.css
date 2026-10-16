@@ -51,6 +51,10 @@
   color: var(--os-muted);
 }
 
+.proof-atlas-divider {
+  display: none;
+}
+
 .proof-atlas-heading h2 {
   flex: 1 0 100%;
   margin: 0;
@@ -488,7 +492,8 @@
   gap: 0 8px;
   justify-content: flex-start;
   min-height: var(--win7-title-h);
-  margin: 0;
+  /* The frame carries a 6px inset on the sides, so the title bar runs flush to it. */
+  margin: 0 -6px;
   padding: 6px 8px;
   /* Top corners follow the 5px inner radius of the 6px frame. */
   border-radius: 5px 5px 0 0;
@@ -497,7 +502,8 @@
     linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 50%),
     var(--win7-title-base);
   color: var(--win7-text-glass);
-  text-shadow: var(--win7-text-shadow);
+  /* The title is set on the solid title base with no shadow, so its edges stay crisp. */
+  text-shadow: none;
 }
 
 .proof-atlas--desktop .proof-atlas-eyebrow,
@@ -514,6 +520,16 @@
   flex: 0 1 auto;
 }
 
+/* The 1px divider between the eyebrow and the subtitle, in the title text colour. */
+.proof-atlas--desktop .proof-atlas-divider {
+  display: inline-block;
+  flex: none;
+  inline-size: 1px;
+  block-size: 14px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
 /* White body: the figure, the controls and the caption share one surface. */
 .proof-atlas--desktop .proof-atlas-figure {
   box-sizing: border-box;
@@ -525,6 +541,19 @@
 .proof-atlas--desktop .proof-atlas-controls {
   margin-top: 0;
   padding: 0 12px 12px;
+}
+
+/* Node labels sit on the body, so they are pinned to black on white (about 21:1) on the
+   window itself. The halo is the same white, so a connector behind a label is cut away
+   around the text. Aero Night swaps both for the dark body values below. */
+.proof-atlas--desktop {
+  --atlas-label-ink: #000000;
+  --atlas-label-halo: #ffffff;
+}
+
+.proof-atlas--desktop .proof-atlas-node text {
+  fill: var(--atlas-label-ink);
+  stroke: var(--atlas-label-halo);
 }
 
 /* Body copy sits at the 15px reading minimum, not the 13px UI size. */
@@ -575,13 +604,25 @@
   color: var(--os-accent);
 }
 
-/* Aero Night: the accent deepens and the tint turns blue. The body stays white. */
+/* Aero Night: the atlas body takes the same dark reading tokens as the reading windows
+   (win7-pages.css), so the body is the dark panel, not a white one. The link accent
+   turns light for the dark body, and the node labels take the light ink with a dark halo.
+   Contrast matches the reading bodies: text about 16:1, muted about 9.9:1. */
 .win7[data-appearance="dark"] .proof-atlas,
 [data-appearance="dark"] .win7 .proof-atlas {
-  --os-accent: #00479a;
-  --os-accent-tint: #c9e0f7;
-  --os-line: #6f8399;
+  --win7-body-bg: #0d1b2e;
+  --win7-body-text: #f1f7ff;
+  --win7-body-muted: #b4c6da;
+  --win7-link: #8fd6ff;
+  --os-surface: #0d1b2e;
+  --os-text: #f1f7ff;
+  --os-muted: #b4c6da;
+  --os-accent: #8fd6ff;
+  --os-accent-tint: #1e3a5f;
+  --os-line: #2b4466;
   --os-control-line: #4f5b68;
+  --atlas-label-ink: #f1f7ff;
+  --atlas-label-halo: #0d1b2e;
 }
 
 @media (max-width: 700px) {

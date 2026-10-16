@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Folder, Search } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Folder, Search } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { formatNumber } from "@/i18n/format";
@@ -15,6 +15,13 @@ import { useCopyrightYear } from "./use-copyright-year";
 import "./project-explorer.css";
 
 type ProjectCategory = "ALL" | ProjectSummary["category"];
+
+/** A project link was chosen. The explorer that mounts next moves focus to its heading. */
+let pendingHeadingFocusAt = 0;
+const HEADING_FOCUS_WINDOW_MS = 2000;
+function markProjectNavigation() {
+  pendingHeadingFocusAt = Date.now();
+}
 
 export function ProjectExplorer({
   summaries,
@@ -82,15 +89,60 @@ export function ProjectExplorer({
     return () => window.clearTimeout(timer);
   }, [resultsLabel]);
 
+  const rootRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // The sticky navigation pane may be no taller than the window body that scrolls
+  // it. Measure that body (or the viewport on a standalone page) into a custom
+  // property, so the pane keeps its title and category visible at any window size.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const scroller = root.closest<HTMLElement>(".os-page-content");
+    const measure = () => {
+      const height = scroller ? scroller.clientHeight : window.innerHeight;
+      root.style.setProperty("--explorer-scroll-h", `${Math.floor(height)}px`);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    const observer =
+      typeof ResizeObserver === "undefined" || !scroller
+        ? null
+        : new ResizeObserver(measure);
+    if (scroller) observer?.observe(scroller);
+    return () => {
+      window.removeEventListener("resize", measure);
+      observer?.disconnect();
+    };
+  }, []);
+
+  // Choosing a project swaps the dossier. Focus moves to its heading so screen
+  // reader and keyboard users hear the new page, and the fade is pure CSS.
+  const mountedSlug = useRef(selectedSlug);
+  useEffect(() => {
+    const navigated =
+      Date.now() - pendingHeadingFocusAt <= HEADING_FOCUS_WINDOW_MS;
+    const changed = mountedSlug.current !== selectedSlug;
+    mountedSlug.current = selectedSlug;
+    if (!navigated && !changed) return;
+    pendingHeadingFocusAt = 0;
+    contentRef.current?.querySelector<HTMLElement>("h1")?.focus();
+  }, [selectedSlug]);
+
   return (
-    <div className="os-project-explorer">
-      {/* Aero chrome only: the title and address bars repeat existing copy and are hidden from assistive tech. */}
-      <div className="os-explorer-titlebar" aria-hidden="true">
-        <span>{copy.projects}</span>
-      </div>
-      <div className="os-explorer-address" aria-hidden="true">
-        <Folder size={15} aria-hidden="true" />
-        <span>{copy.allProjects}</span>
+    <div className="os-project-explorer" ref={rootRef}>
+      {/* The window title is the only title above the content. The address bar repeats the path for sighted users, so it is hidden from assistive tech. */}
+      <div className="os-explorer-commandbar" aria-hidden="true">
+        <div className="os-explorer-address">
+          <Folder size={15} aria-hidden="true" />
+          <span>{copy.projects}</span>
+          <ChevronRight
+            className="os-icon-flip os-explorer-crumb"
+            size={12}
+            aria-hidden="true"
+          />
+          <span>{copy.allProjects}</span>
+        </div>
       </div>
       <div className="os-explorer-layout">
         <aside className="os-explorer-sidebar">
@@ -151,6 +203,7 @@ export function ProjectExplorer({
                 aria-current={
                   selectedSlug === project.slug ? "page" : undefined
                 }
+                onClick={markProjectNavigation}
               >
                 <span
                   lang={project.titleLocale}
@@ -166,75 +219,84 @@ export function ProjectExplorer({
             )}
           </nav>
         </aside>
-        <div className="os-explorer-content">
-          {children ?? (
-            <section className="os-project-index">
-              <header className="os-project-index-header">
-                <p className="os-project-eyebrow">{copy.selectedWork}</p>
-                <h1>{copy.projects}</h1>
-                <p>{t.projects_page.subtitle}</p>
-              </header>
-              <p className="os-explorer-results">{resultsLabel}</p>
-              <div className="os-project-rows">
-                {visibleProjects.map((project) => (
-                  <article
-                    className="os-project-row os-project-row-with-preview"
-                    key={project.slug}
-                  >
-                    <ProjectThumbnail slug={project.slug} />
-                    <div className="os-project-row-summary">
-                      <div className="os-project-row-meta">
-                        <span>{categoryLabels[project.category]}</span>
-                        <time dateTime={project.year}>
-                          {formatNumber(Number(project.year), locale, {
-                            useGrouping: false,
-                          })}
-                        </time>
-                      </div>
-                      <h2>
-                        {/* The single link stretches over the whole card (see CSS). */}
-                        <Link href={getPath(`/projects/${project.slug}`)}>
-                          <span
-                            lang={project.titleLocale}
-                            dir={
-                              project.titleLocale === "en" ? "ltr" : undefined
-                            }
+        <div className="os-explorer-content" ref={contentRef}>
+          <div key={selectedSlug ?? "index"} className="os-explorer-view">
+            {children ?? (
+              <section className="os-project-index">
+                <header className="os-project-index-header">
+                  <p className="os-project-eyebrow">{copy.selectedWork}</p>
+                  {/* The caption and the breadcrumb already name the view, so the
+                      heading is kept for structure and screen readers only. */}
+                  <h1 tabIndex={-1} className="sr-only">
+                    {copy.projects}
+                  </h1>
+                  <p>{t.projects_page.subtitle}</p>
+                </header>
+                <p className="os-explorer-results">{resultsLabel}</p>
+                <div className="os-project-rows">
+                  {visibleProjects.map((project) => (
+                    <article
+                      className="os-project-row os-project-row-with-preview"
+                      key={project.slug}
+                    >
+                      <ProjectThumbnail slug={project.slug} />
+                      <div className="os-project-row-summary">
+                        <div className="os-project-row-meta">
+                          <span>{categoryLabels[project.category]}</span>
+                          <time dateTime={project.year}>
+                            {formatNumber(Number(project.year), locale, {
+                              useGrouping: false,
+                            })}
+                          </time>
+                        </div>
+                        <h2>
+                          {/* The single link stretches over the whole card (see CSS). */}
+                          <Link
+                            href={getPath(`/projects/${project.slug}`)}
+                            onClick={markProjectNavigation}
                           >
-                            {project.title}
-                          </span>
-                          <ArrowUpRight
-                            className="os-icon-flip"
-                            size={18}
-                            aria-hidden="true"
-                          />
-                        </Link>
-                      </h2>
-                      <p
-                        lang={project.descriptionLocale}
-                        dir={
-                          project.descriptionLocale === locale
-                            ? undefined
-                            : "ltr"
-                        }
-                      >
-                        {project.description}
-                      </p>
-                      <ul className="os-project-tags">
-                        {project.tags.map((tag) => (
-                          <li key={tag}>
-                            <bdi>{tag}</bdi>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                ))}
-                {visibleProjects.length === 0 && (
-                  <p className="os-explorer-empty">{copy.noProjects}</p>
-                )}
-              </div>
-            </section>
-          )}
+                            <span
+                              lang={project.titleLocale}
+                              dir={
+                                project.titleLocale === "en" ? "ltr" : undefined
+                              }
+                            >
+                              {project.title}
+                            </span>
+                            <ArrowUpRight
+                              className="os-icon-flip"
+                              size={18}
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        </h2>
+                        <p
+                          lang={project.descriptionLocale}
+                          dir={
+                            project.descriptionLocale === locale
+                              ? undefined
+                              : "ltr"
+                          }
+                        >
+                          {project.description}
+                        </p>
+                        <ul className="os-project-tags">
+                          {project.tags.map((tag) => (
+                            <li key={tag}>
+                              <bdi>{tag}</bdi>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </article>
+                  ))}
+                  {visibleProjects.length === 0 && (
+                    <p className="os-explorer-empty">{copy.noProjects}</p>
+                  )}
+                </div>
+              </section>
+            )}
+          </div>
           <footer className="os-explorer-footer">
             <div className="os-explorer-footer-next">
               <div>

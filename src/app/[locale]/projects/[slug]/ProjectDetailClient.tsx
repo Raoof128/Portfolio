@@ -2,7 +2,14 @@
 
 import { useContentId } from "@/components/os/application-context";
 
-import type { ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import Link from "next/link";
 import { ArrowUpRight, Download, FileText } from "lucide-react";
 import type { ProjectPaper } from "@/lib/data";
@@ -48,6 +55,10 @@ const ZurvanEvidenceStory = dynamic(
     ),
   { ssr: true },
 );
+
+type DossierSection = "overview" | "evidence" | "methods";
+const SECTION_KEYS: DossierSection[] = ["overview", "evidence", "methods"];
+const subscribeNothing = () => () => {};
 
 type EvidenceStory =
   | { kind: "simurgh"; copy: SimurghEvidenceStoryCopy }
@@ -109,6 +120,70 @@ export function ProjectDetailClient({
     OFFENSIVE: copy.categoryOffensive,
   };
   const descriptionLocale = project.contentLocale;
+  // The section switcher is a tab list only after hydration. Until then it is
+  // plain anchors and every section is visible, so readers without JavaScript
+  // and crawlers still reach the whole dossier.
+  const mounted = useSyncExternalStore(
+    subscribeNothing,
+    () => true,
+    () => false,
+  );
+  const [activeSection, setActiveSection] =
+    useState<DossierSection>("overview");
+  const tabRefs = useRef<Partial<Record<DossierSection, HTMLButtonElement>>>(
+    {},
+  );
+  const sectionLabels: Record<DossierSection, string> = {
+    overview: copy.overview,
+    evidence: copy.evidence,
+    methods: copy.methods,
+  };
+  const rtl = locale === "fa" || locale === "ar";
+  // Arrow keys, Home and End move between tabs (APG tabs pattern); RTL swaps the arrows.
+  const onTabKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const index = SECTION_KEYS.indexOf(activeSection);
+    let next: number | null = null;
+    if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
+      next = (index + 1) % SECTION_KEYS.length;
+    } else if (event.key === (rtl ? "ArrowRight" : "ArrowLeft")) {
+      next = (index - 1 + SECTION_KEYS.length) % SECTION_KEYS.length;
+    } else if (event.key === "Home") {
+      next = 0;
+    } else if (event.key === "End") {
+      next = SECTION_KEYS.length - 1;
+    }
+    if (next === null) return;
+    event.preventDefault();
+    const key = SECTION_KEYS[next];
+    setActiveSection(key);
+    tabRefs.current[key]?.focus();
+  };
+  // A link to a section the switcher hides (for example #evidence, or #research-papers
+  // inside Evidence) opens that section's tab, so the target is not left display:none.
+  useEffect(() => {
+    const revealHashTarget = () => {
+      let id = "";
+      try {
+        id = decodeURIComponent(window.location.hash.slice(1));
+      } catch {
+        return;
+      }
+      if (!id) return;
+      const target = document.getElementById(id);
+      const panel = target?.closest<HTMLElement>("[data-dossier-section]");
+      const key = SECTION_KEYS.find(
+        (section) => section === panel?.dataset.dossierSection,
+      );
+      if (!key) return;
+      setActiveSection(key);
+      window.requestAnimationFrame(() =>
+        target?.scrollIntoView({ block: "start" }),
+      );
+    };
+    revealHashTarget();
+    window.addEventListener("hashchange", revealHashTarget);
+    return () => window.removeEventListener("hashchange", revealHashTarget);
+  }, []);
   const paperEntries: ProjectPaper[] =
     project.papers ??
     (project.links.paper
@@ -140,6 +215,7 @@ export function ProjectDetailClient({
               </time>
             </div>
             <h1
+              tabIndex={-1}
               lang={project.titleLocale}
               dir={project.titleLocale === "en" ? "ltr" : undefined}
             >
@@ -224,19 +300,52 @@ export function ProjectDetailClient({
         </div>
 
         {/* Anchors keep all evidence available to readers and crawlers without JavaScript. */}
-        <nav
-          className="os-project-section-nav"
-          aria-label={copy.projectArchitecture}
-        >
-          <a href={`#${contentId("overview")}`}>{copy.overview}</a>
-          <a href={`#${contentId("evidence")}`}>{copy.evidence}</a>
-          <a href={`#${contentId("methods")}`}>{copy.methods}</a>
-        </nav>
+        {mounted ? (
+          <div
+            role="tablist"
+            aria-label={copy.projectArchitecture}
+            className="os-project-tablist"
+            onKeyDown={onTabKeyDown}
+          >
+            {SECTION_KEYS.map((key) => (
+              <button
+                key={key}
+                ref={(node) => {
+                  if (node) tabRefs.current[key] = node;
+                }}
+                type="button"
+                role="tab"
+                id={contentId(`tab-${key}`)}
+                aria-selected={activeSection === key}
+                aria-controls={contentId(key)}
+                tabIndex={activeSection === key ? 0 : -1}
+                className="os-project-tab"
+                onClick={() => setActiveSection(key)}
+              >
+                {sectionLabels[key]}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <nav
+            className="os-project-section-nav"
+            aria-label={copy.projectArchitecture}
+          >
+            <a href={`#${contentId("overview")}`}>{copy.overview}</a>
+            <a href={`#${contentId("evidence")}`}>{copy.evidence}</a>
+            <a href={`#${contentId("methods")}`}>{copy.methods}</a>
+          </nav>
+        )}
 
         <section
           id={contentId("overview")}
+          data-dossier-section="overview"
           className="os-project-section"
-          aria-labelledby={contentId("overview-heading")}
+          role={mounted ? "tabpanel" : undefined}
+          hidden={mounted && activeSection !== "overview"}
+          aria-labelledby={
+            mounted ? contentId("tab-overview") : contentId("overview-heading")
+          }
         >
           <p className="os-project-eyebrow">
             {formatNumber(1, locale, {
@@ -274,8 +383,13 @@ export function ProjectDetailClient({
 
         <section
           id={contentId("evidence")}
+          data-dossier-section="evidence"
           className="os-project-section"
-          aria-labelledby={contentId("evidence-heading")}
+          role={mounted ? "tabpanel" : undefined}
+          hidden={mounted && activeSection !== "evidence"}
+          aria-labelledby={
+            mounted ? contentId("tab-evidence") : contentId("evidence-heading")
+          }
         >
           <p className="os-project-eyebrow">
             {formatNumber(2, locale, {
@@ -360,8 +474,13 @@ export function ProjectDetailClient({
 
         <section
           id={contentId("methods")}
+          data-dossier-section="methods"
           className="os-project-section"
-          aria-labelledby={contentId("methods-heading")}
+          role={mounted ? "tabpanel" : undefined}
+          hidden={mounted && activeSection !== "methods"}
+          aria-labelledby={
+            mounted ? contentId("tab-methods") : contentId("methods-heading")
+          }
         >
           <p className="os-project-eyebrow">
             {formatNumber(3, locale, {

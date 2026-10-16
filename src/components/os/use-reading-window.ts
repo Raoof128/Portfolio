@@ -13,8 +13,10 @@ import {
 import {
   canFloatWindows,
   clampWindowRect,
+  createCascadedWindowRect,
   createDefaultWindowRect,
   getWorkspaceBounds,
+  ICON_COLUMN_EDGE_FALLBACK,
   moveWindowRect,
   resizeWindowRect,
   type WindowDelta,
@@ -49,16 +51,52 @@ type Gesture = {
   moved: boolean;
 };
 
+/** The title bar and the command toolbar below it: the chrome above the reading body. */
+function chromeElements(document: HTMLElement | null) {
+  const bar = document?.querySelector<HTMLElement>(".os-windowbar") ?? null;
+  const toolbar =
+    document?.querySelector<HTMLElement>(".os-window-toolbar") ?? null;
+  return { bar, bottom: toolbar ?? bar };
+}
+
 function readReadingOffset(document: HTMLElement | null, floating: boolean) {
   const page = document?.querySelector<HTMLElement>(".os-page-content");
-  const bar = document?.querySelector<HTMLElement>(".os-windowbar");
-  if (!page || !bar) return null;
+  const { bottom } = chromeElements(document);
+  if (!page || !bottom) return null;
   return floating
     ? page.scrollTop
     : Math.max(
         0,
-        bar.getBoundingClientRect().bottom - page.getBoundingClientRect().top,
+        bottom.getBoundingClientRect().bottom -
+          page.getBoundingClientRect().top,
       );
+}
+
+/**
+ * The desktop icon column's right edge. The shared token wins when a stylesheet sets
+ * --win7-icon-column-edge; otherwise the rightmost desktop icon is measured, so the first
+ * placement clears the icons at any width. The fallback applies only when neither reads.
+ */
+function readIconColumnEdge(): number {
+  try {
+    const shell =
+      document.querySelector<HTMLElement>(".os-shell") ??
+      document.documentElement;
+    const value = parseFloat(
+      getComputedStyle(shell).getPropertyValue("--win7-icon-column-edge"),
+    );
+    if (Number.isFinite(value)) return value;
+    let edge = Number.NaN;
+    document
+      .querySelectorAll<HTMLElement>(".os-desktop .os-app")
+      .forEach((icon) => {
+        const box = icon.getBoundingClientRect();
+        if (box.width > 0 && !(edge >= box.right)) edge = box.right;
+      });
+    return Number.isFinite(edge) ? edge : ICON_COLUMN_EDGE_FALLBACK;
+  } catch {
+    return ICON_COLUMN_EDGE_FALLBACK;
+  }
 }
 
 /** Keep a reading document mounted during minimization; geometry is session-only. */
@@ -157,10 +195,12 @@ export function useReadingWindow(
     ) {
       if (floating) page.scrollTop = readingOffset.current;
       else {
+        const { bar, bottom } = chromeElements(content.current);
         const barHeight =
-          content.current
-            ?.querySelector<HTMLElement>(".os-windowbar")
-            ?.getBoundingClientRect().height ?? 57;
+          bar && bottom
+            ? bottom.getBoundingClientRect().bottom -
+              bar.getBoundingClientRect().top
+            : 57;
         window.scrollTo({
           top: Math.max(
             0,
@@ -182,22 +222,13 @@ export function useReadingWindow(
   }, [path, floating, current.minimized, content, active]);
 
   if (options.initialFloating && desktop && !current.rect) {
-    const area = viewport();
-    const base = createDefaultWindowRect(area);
-    const offset = ((options.placement ?? 0) % 5) * 20;
-    const width = Math.min(1000, base.width);
-    const height = Math.max(240, base.height - 32);
     setState({
       path,
       minimized: current.minimized,
-      rect: clampWindowRect(
-        {
-          x: (area.width - width) / 2 + offset,
-          y: base.y + 16 + offset,
-          width,
-          height,
-        },
-        area,
+      rect: createCascadedWindowRect(
+        viewport(),
+        options.placement ?? 0,
+        readIconColumnEdge(),
       ),
     });
   }
@@ -232,11 +263,10 @@ export function useReadingWindow(
   useEffect(() => {
     const onResize = () => {
       stopGesture();
-      setState((value) =>
-        value.rect
-          ? { ...value, rect: clampWindowRect(value.rect, viewport()) }
-          : value,
-      );
+      // The stored rectangle is not rewritten here. A transient viewport (a full-page
+      // capture, a devtools resize) must not shrink the saved size; the returned rect
+      // is clamped to the live viewport on every read instead.
+      setState((value) => (value.rect ? { ...value } : value));
     };
     const onBlur = () => stopGesture();
     const onKey = (event: globalThis.KeyboardEvent) => {
@@ -355,7 +385,10 @@ export function useReadingWindow(
 
   return {
     minimized: current.minimized,
-    rect: desktop ? current.rect : null,
+    rect:
+      desktop && current.rect
+        ? clampWindowRect(current.rect, viewport())
+        : null,
     desktop,
     minimize: () => {
       rememberOffset();

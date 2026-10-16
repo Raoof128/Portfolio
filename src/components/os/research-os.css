@@ -1530,18 +1530,98 @@ html:has(.os-shell[data-theme-switching]) {
 .os-shell :is(a, button, input, select, summary, [tabindex]):focus-visible {
   scroll-margin-block: 120px;
 }
-.os-shell ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+/* Window bodies carry Win7 scrollbars: a 17px track, arrow buttons, and a light gradient
+   thumb with a grey edge, turning Aero blue on hover and press. These are the 7.css
+   scrollbar values, drawn here with inline arrows and no image sprites. Other shell
+   scrollers keep the root scrollbar from globals.css. Chromium ignores these pseudo-elements
+   once scrollbar-color is set, so the standard properties are limited to Firefox below. */
+/* scrollbar-color and scrollbar-width are inherited. Any value other than auto switches Chromium
+   to the standard scrollbar and drops the pseudo-elements below, so the window body resets both.
+   globals.css no longer sets either on html, and this reset keeps the 17px track working. */
+.os-shell .os-page-content.window-body.has-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
 }
-.os-shell ::-webkit-scrollbar-track {
-  background: transparent;
-  border: 0;
+.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar {
+  width: 17px;
+  height: 17px;
 }
-.os-shell ::-webkit-scrollbar-thumb {
-  background: var(--os-muted);
-  border-radius: 10px;
-  box-shadow: none;
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-track:vertical {
+  background: linear-gradient(to right, #e5e5e5, #f0f0f0 20%);
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-track:horizontal {
+  background: linear-gradient(to bottom, #e5e5e5, #f0f0f0 20%);
+}
+.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb {
+  border: 1px solid #8e8f8f;
+  border-radius: 3px;
+  background: linear-gradient(to right, #f2f2f2, #e6e6e6);
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:vertical {
+  background: linear-gradient(to right, #f2f2f2, #e6e6e6);
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:horizontal {
+  background: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:hover {
+  border-color: #3c7fb1;
+  background: linear-gradient(to right, #eaf6fd, #bee6fd);
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:active {
+  border-color: #6d91ab;
+  background: linear-gradient(to right, #c4e5f6, #98d1ef);
+}
+.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button {
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #8e8f8f;
+  border-radius: 3px;
+  background-color: #f2f2f2;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:hover {
+  border-color: #3c7fb1;
+  background-color: #eaf6fd;
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:active {
+  border-color: #6d91ab;
+  background-color: #c4e5f6;
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:vertical:start {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M4 11h8L8 6z' fill='%23333'/%3E%3C/svg%3E");
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:vertical:end {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M4 6h8l-4 5z' fill='%23333'/%3E%3C/svg%3E");
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:horizontal:start {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M11 4.5v8L6 8.5z' fill='%23333'/%3E%3C/svg%3E");
+}
+.os-shell
+  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:horizontal:end {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M5 4.5v8l5-4z' fill='%23333'/%3E%3C/svg%3E");
+}
+.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-corner {
+  background: #f2f2f2;
+}
+/* Firefox has no pseudo-element scrollbars. It gets the same light thumb and track. */
+@supports not selector(::-webkit-scrollbar) {
+  .os-shell .os-page-content.window-body.has-scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: #f2f2f2 #e5e5e5;
+  }
 }
 @keyframes os-arrive {
   from {
@@ -1579,16 +1659,6 @@ html:has(.os-shell[data-theme-switching]) {
     transform: translateX(-50%);
   }
 }
-@keyframes os-window-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
 @keyframes os-window-out {
   from {
     opacity: 1;
@@ -1617,14 +1687,11 @@ html:has(.os-shell[data-theme-switching]) {
     transform: none;
   }
 }
-/* One-shot entrances. Windows run only after a user-initiated show (data-opening) or
-   a close (data-state='closing'), never on first load. The dock arrives once, when the
-   welcome Enter sets data-arriving. */
+/* One-shot exits and entrances. The window open is no longer a keyframe here: the Aero frame
+   opens with os-win7-window-open from win7-windows.css when data-opening is set, so this file
+   keeps only the close, which runs once on data-state='closing', and the dock arrival, which
+   runs once when the welcome Enter sets data-arriving. Nothing runs on first load. */
 @media (prefers-reduced-motion: no-preference) {
-  .os-window[data-opening]:not([hidden]) {
-    animation: os-window-in var(--motion-window) var(--ease-spring-window)
-      backwards;
-  }
   .os-window[data-state="closing"] {
     animation: os-window-out var(--motion-control) var(--ease-exit) forwards;
     pointer-events: none;
@@ -1927,49 +1994,8 @@ html:has(.os-shell[data-theme-switching]) {
   }
 }
 
-/* Reduced motion: no animation, no transforms and no loops. Colour and opacity fade at
-   the quick duration, so state still changes visibly (fade or nothing). Tooltips keep
-   their --motion-tooltip-delay, which this rule does not override. */
-@media (prefers-reduced-motion: reduce) {
-  .os-shell,
-  .os-shell *,
-  .os-shell *::before,
-  .os-shell *::after {
-    animation: none !important;
-    transition-property:
-      background-color, border-color, color, opacity !important;
-    transition-duration: var(--motion-quick) !important;
-    scroll-behavior: auto !important;
-  }
-  .os-shell
-    :is(
-      .os-control,
-      .os-button,
-      .os-button--secondary,
-      .os-document-button,
-      .os-direct-links .os-button,
-      .os-project-explorer .os-project-resource,
-      .os-app-icon,
-      .ui-card--interactive,
-      .os-dock a,
-      .os-enter
-    ):not(:disabled, [aria-disabled="true"]):active,
-  .os-shell .os-theme-switch:active::before {
-    transform: none !important;
-  }
-  /* The scrim is a pseudo-element of the dialog, which the universal selector does not reach. */
-  .os-shell .os-search-dialog::backdrop {
-    animation: none !important;
-  }
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
-  .os-window-scan {
-    transform: none;
-  }
-}
+/* Reduced motion is owned by the one global guard in win7-theme.css, which removes every
+   animation, transition and press transform. Nothing is repeated here. */
 @media (prefers-reduced-transparency: reduce) {
   /* The solid glass fallback itself lives in liquid-glass.css. */
   .os-search-heading,

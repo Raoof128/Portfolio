@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Folder } from "lucide-react";
 import {
   isProjectArtworkSlug,
   loadProjectArtwork,
@@ -37,28 +36,32 @@ function ArtworkThumbnail({ slug }: { slug: ProjectArtworkSlug }) {
     };
   }, [nearby, slug, Artwork]);
 
+  // The artwork's own background paints only once the artwork has loaded. Before that
+  // the frame is a neutral light surface, so the list does not open on black boxes.
+  const artworkLoaded = Artwork !== null;
+
   return (
     <div
       ref={stageRef}
-      className="os-project-thumbnail"
+      className={`os-project-thumbnail${artworkLoaded ? "" : " os-project-thumbnail-pending"}`}
       data-project-art={slug}
       data-preview-state={
         artwork.failed ? "failed" : Artwork && visible ? "still" : "pending"
       }
       aria-hidden="true"
-      style={{ background: projectArtworkRegistry[slug].background }}
+      style={
+        artworkLoaded
+          ? { background: projectArtworkRegistry[slug].background }
+          : undefined
+      }
     >
+      {/* Until the artwork is ready the frame is the neutral surface alone: no folder glyph
+          flashes in and out. The artwork fades in on mount (see project-thumbnails.css). */}
       {Artwork && visible ? (
         // Both CSS and canvas renderers retain a complete original still pose.
         // Offscreen unmounting also releases their resize/visibility observers.
         <Artwork active={false} preview />
-      ) : (
-        <Folder
-          className="os-project-thumbnail-placeholder"
-          size={30}
-          strokeWidth={1}
-        />
-      )}
+      ) : null}
     </div>
   );
 }

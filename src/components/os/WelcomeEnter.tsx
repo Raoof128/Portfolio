@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  Children,
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-  type ReactNode,
-} from "react";
+import { Children, useEffect, useRef, useState, type ReactNode } from "react";
 import "./welcome-enter.css";
 
 /** How long the Enter wait runs before the workspace opens. */
 export const WELCOME_LOADER_MS = 3000;
+
+/** The logon fades over this many milliseconds at the end of the wait (the hand-off). */
+const HANDOFF_MS = 180;
 
 let loaderMs = WELCOME_LOADER_MS;
 
@@ -20,33 +16,40 @@ export function setWelcomeLoaderDuration(ms: number) {
   loaderMs = ms;
 }
 
-const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
-
-/** Follows the reduced-motion preference. Without matchMedia (jsdom) it never changes. */
-function subscribeMotion(listener: () => void) {
-  if (typeof window.matchMedia !== "function") return () => {};
-  const query = window.matchMedia(reducedMotionQuery);
-  query.addEventListener("change", listener);
-  return () => query.removeEventListener("change", listener);
-}
-
-/** The spinner animates unless reduced motion is requested. */
-function readCanAnimate() {
-  return (
-    typeof window.matchMedia !== "function" ||
-    !window.matchMedia(reducedMotionQuery).matches
+/**
+ * Runs `done` once the logon has finished its fade. The fade uses forwards fill, so a
+ * finished animation still lists here and settles at once. With no running animation
+ * (reduced motion, jsdom, engines without the Web Animations API) `done` runs
+ * synchronously. A cap stops a stuck animation from holding the hand-off.
+ */
+function afterLogonFade(
+  logon: HTMLElement | null | undefined,
+  done: () => void,
+) {
+  const animations = logon?.getAnimations?.() ?? [];
+  if (animations.length === 0) {
+    done();
+    return;
+  }
+  const settled = Promise.all(
+    animations.map((animation) => animation.finished.catch(() => undefined)),
   );
-}
-
-/** The server render carries no animation; the client decides after hydration. */
-function serverCanAnimate() {
-  return false;
+  const cap = new Promise<void>((resolve) =>
+    window.setTimeout(resolve, HANDOFF_MS + 200),
+  );
+  void Promise.race([settled, cap]).then(() => {
+    // Two frames: the last fade frame paints before the desktop mounts.
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(done);
+    });
+  });
 }
 
 /**
  * The welcome Enter button. Pressing it disables the button, moves focus to a
- * polite status line and fills a Win7 progress bar, then opens the workspace
- * once the wait has played.
+ * polite status line, makes the rest of the user tile inert and shows a dot-sequence
+ * busy indicator. The logon fades over the last 180ms of the wait; the desktop mounts
+ * only after that fade has painted its last frame, so the logon never pops out early.
  */
 export function WelcomeEnter({
   onEnter,
@@ -60,24 +63,45 @@ export function WelcomeEnter({
 }) {
   const [loading, setLoading] = useState(false);
   const timer = useRef<number | null>(null);
+  const handoffTimer = useRef<number | null>(null);
+  const cancelled = useRef(false);
   const statusLine = useRef<HTMLParagraphElement>(null);
-  const canAnimate = useSyncExternalStore(
-    subscribeMotion,
-    readCanAnimate,
-    serverCanAnimate,
-  );
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    cancelled.current = false;
+    return () => {
+      cancelled.current = true;
       if (timer.current !== null) window.clearTimeout(timer.current);
-    },
-    [],
-  );
+      if (handoffTimer.current !== null)
+        window.clearTimeout(handoffTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     // A disabled button drops focus, so the status line takes it while the wait runs.
     if (loading) statusLine.current?.focus({ preventScroll: true });
   }, [loading]);
+
+  useEffect(() => {
+    // The status line sits inside the user tile, so the tile's other children are made
+    // inert for the wait: the shortcuts and the portrait cannot take focus or clicks.
+    // The stage stays live because it holds the status line, which keeps focus.
+    const profile =
+      statusLine.current?.closest<HTMLElement>(".os-lock-profile");
+    if (!profile) return;
+    for (const child of Array.from(profile.children)) {
+      if (child.classList.contains("os-enter-stage")) continue;
+      if (loading) child.setAttribute("inert", "");
+      else child.removeAttribute("inert");
+    }
+  }, [loading]);
+
+  function arrive() {
+    if (cancelled.current) return;
+    setLoading(false);
+    statusLine.current?.closest(".os-shell")?.setAttribute("data-arriving", "");
+    onEnter();
+  }
 
   function enter() {
     if (loading) return;
@@ -89,13 +113,17 @@ export function WelcomeEnter({
       return;
     }
     setLoading(true);
+    const logon = statusLine.current?.closest<HTMLElement>(".os-welcome");
+    handoffTimer.current = window.setTimeout(
+      () => {
+        handoffTimer.current = null;
+        logon?.setAttribute("data-leaving", "");
+      },
+      Math.max(0, loaderMs - HANDOFF_MS),
+    );
     timer.current = window.setTimeout(() => {
       timer.current = null;
-      setLoading(false);
-      statusLine.current
-        ?.closest(".os-shell")
-        ?.setAttribute("data-arriving", "");
-      onEnter();
+      afterLogonFade(logon, arrive);
     }, loaderMs);
   }
 
@@ -120,8 +148,18 @@ export function WelcomeEnter({
         )}
       </button>
       <div className="os-enter-progress" aria-hidden="true">
-        {/* The duration sits on the animated span; animation-duration does not inherit. */}
-        <span style={{ animationDuration: `${WELCOME_LOADER_MS}ms` }} />
+        {/* The track carries the wait duration; the five dots inherit it, since
+            animation-duration does not inherit by default. */}
+        <span
+          className="os-enter-track"
+          style={{ animationDuration: `${WELCOME_LOADER_MS}ms` }}
+        >
+          <i />
+          <i />
+          <i />
+          <i />
+          <i />
+        </span>
       </div>
       {/* The status region stays mounted so the first message is announced. */}
       <p
@@ -130,12 +168,6 @@ export function WelcomeEnter({
         role="status"
         tabIndex={-1}
       >
-        {loading && (
-          <span
-            className={canAnimate ? "spinner animate" : "spinner"}
-            aria-hidden="true"
-          />
-        )}
         {loading ? status : ""}
       </p>
     </div>
