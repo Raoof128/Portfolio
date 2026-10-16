@@ -58,37 +58,44 @@ export function Desktop({
   return (
     <div className="os-desktop" data-spotlight-field="">
       <div className="os-desktop-identity os-desktop-identity--atlas">
-        <section className="os-intro">
-          <p className="os-eyebrow">{copy.independentResearch}</p>
-          <h1
-            tabIndex={-1}
-            lang={copy.nameLocale}
-            dir={copy.nameLocale === "en" ? "ltr" : "rtl"}
-          >
-            {copy.givenName} <span>{copy.familyName}.</span>
-          </h1>
-          <p className="os-role">{role}</p>
-          <p className="os-desktop-summary">{copy.summary}</p>
-          <div className="os-direct-links">
-            <Link className="os-button" href={path("/projects")}>
-              {copy.explore}
-              <ArrowRight aria-hidden="true" />
-            </Link>
-            <a
-              className="os-button os-button--secondary"
-              href="/Mohammad_Raouf_Abedini_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+        {/* Getting Started window: the eyebrow is the title bar, the rest is the body. */}
+        <section className="os-intro window glass active">
+          <div className="title-bar">
+            <p className="os-eyebrow title-bar-text">
+              {copy.independentResearch}
+            </p>
+          </div>
+          <div className="window-body has-space">
+            <h1
+              tabIndex={-1}
+              lang={copy.nameLocale}
+              dir={copy.nameLocale === "en" ? "ltr" : "rtl"}
             >
-              {copy.viewResume}
-              <ExternalLink className="os-external-icon" aria-hidden="true" />
-            </a>
+              {copy.givenName} <span>{copy.familyName}.</span>
+            </h1>
+            <p className="os-role">{role}</p>
+            <p className="os-desktop-summary">{copy.summary}</p>
+            <div className="os-direct-links">
+              <Link className="os-button" href={path("/projects")}>
+                {copy.explore}
+                <ArrowRight aria-hidden="true" />
+              </Link>
+              <a
+                className="os-button os-button--secondary"
+                href="/Mohammad_Raouf_Abedini_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.viewResume}
+                <ExternalLink className="os-external-icon" aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </section>
         <ProofAtlas
           locale={locale}
           interactive={interactive}
-          className="proof-atlas--desktop"
+          className="proof-atlas--desktop window glass active"
         />
       </div>
       <section className="os-apps" aria-label={copy.appNavigation}>

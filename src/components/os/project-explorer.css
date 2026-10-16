@@ -7,11 +7,23 @@
    outrank the older component rules in research-os.css and showcase.css
    without `!important`. Buttons and resource links use controls.css. */
 
+/* Aero: the explorer's surfaces are white window bodies. The --os-* roles are
+   re-pointed here, so every rule below inherits the Win7 values. */
 .os-shell .os-project-explorer {
   --reading-leading: 1.75;
+  --os-bg: var(--win7-body-bg);
+  --os-surface: var(--win7-body-bg);
+  --os-line: #d5dfe5;
+  --os-control-line: #7a7a7a;
+  --os-text: var(--win7-body-text);
+  --os-muted: var(--win7-body-muted);
+  --os-accent: var(--win7-link);
+  --os-accent-tint: #e5f3fc;
+  --os-focus: var(--win7-link);
   container: explorer-frame / inline-size;
   color: var(--os-text);
   background: var(--os-bg);
+  font-family: var(--win7-font);
   text-align: start;
 }
 .os-shell .os-project-explorer > .os-explorer-layout {
@@ -34,59 +46,59 @@
   gap: var(--space-2);
   min-width: 0;
   align-self: start;
-  padding: var(--space-4) var(--space-3);
-  border-inline-end: 1px solid var(--os-line);
-  background: var(--os-surface);
+  padding: 8px 0;
+  border-inline-end: 1px solid #d5dfe5;
+  background: var(--win7-body-bg);
 }
+/* Navigation rows are tree rows: 13px, a 24px row, and a Win7 selection. The
+   project rows indent under the index row. */
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link) {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: 44px;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-s);
-  color: var(--os-text);
-  font-size: var(--text-ui);
+  gap: 6px;
+  min-height: 24px;
+  padding: 2px 6px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--win7-body-text);
+  font-family: var(--win7-font);
+  font-size: 13px;
   line-height: 1.35;
   text-decoration: none;
   overflow-wrap: anywhere;
-  transition:
-    background-color var(--motion-quick) var(--ease-standard),
-    color var(--motion-quick) var(--ease-standard);
 }
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link):hover {
-  background: var(--os-bg);
+  background: #e5f3fc;
 }
-/* Selected: the tint, the accent text (the sidebar sits on --os-surface, so the
-   accent passes), and a 1px accent indicator on the inline-start edge. */
+.os-shell .os-project-explorer .os-explorer-project-link {
+  padding-inline-start: 20px;
+}
+/* Selected: the Win7 select gradient on a light-blue border. */
 .os-shell
   .os-project-explorer
   :is(.os-explorer-index-link, .os-explorer-project-link)[aria-current="page"] {
-  position: relative;
-  color: var(--os-accent);
-  background: var(--os-accent-tint);
+  color: var(--win7-body-text);
+  background: var(--win7-select-bg);
+  border-color: var(--win7-select-border);
 }
-.os-shell
-  .os-project-explorer
-  :is(
-    .os-explorer-index-link,
-    .os-explorer-project-link
-  )[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  inset-block: var(--space-2);
-  inset-inline-start: 0;
-  inline-size: 1px;
-  background: var(--os-accent);
-}
+/* Counts are small Win7 badges. */
 .os-shell .os-project-explorer .os-explorer-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 22px;
   margin-inline-start: auto;
-  color: var(--os-muted);
-  font-size: var(--text-s);
+  padding-inline: 6px;
+  border: 1px solid #9bb3c9;
+  border-radius: 9px;
+  color: #000000;
+  background: linear-gradient(180deg, #ffffff, #e6eef6);
+  font-size: 12px;
+  line-height: 18px;
   font-variant-numeric: tabular-nums;
 }
 .os-shell .os-project-explorer .os-explorer-project-link {
@@ -95,8 +107,8 @@
   gap: 0;
 }
 .os-shell .os-project-explorer .os-explorer-project-link small {
-  color: var(--os-muted);
-  font-size: var(--text-s);
+  color: var(--win7-body-muted);
+  font-size: 12px;
 }
 
 /* Filter field and category select: solid, with the control boundary colour. */
@@ -111,27 +123,39 @@
   color: var(--os-muted);
   font-size: var(--text-s);
 }
+/* The search field keeps the 7.css text-field face: white, the Win7 edge and an
+   inset shadow. The icon sits inside it. */
 .os-shell .os-project-explorer .os-explorer-search {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: 44px;
-  padding-inline: var(--space-3);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  min-height: 26px;
+  padding-inline: 6px;
+  border: 1px solid #abadb3;
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 0.08);
   color: var(--os-muted);
-  background: var(--os-bg);
+  background: #ffffff;
 }
 .os-shell .os-project-explorer .os-explorer-search input {
   flex: 1 1 auto;
   width: 100%;
   min-width: 0;
-  min-height: 42px;
+  min-height: 24px;
+  padding: 0;
   border: 0;
   color: var(--os-text);
   background: transparent;
+  box-shadow: none;
   font: inherit;
-  font-size: var(--text-ui);
+  font-size: 13px;
+}
+/* Placeholder text: the browser default grey fails contrast on white. */
+.os-shell .os-project-explorer .os-explorer-search input::placeholder {
+  color: var(--win7-body-muted);
+  opacity: 1;
 }
 /* One ring per field: the field draws it while its input has focus, and the
    input's own outline is removed only in that state. */
@@ -142,26 +166,25 @@
 .os-shell .os-project-explorer .os-explorer-search:focus-within input {
   outline: 0;
 }
+/* The select keeps the 7.css drop-down face, including its arrow. */
 .os-shell .os-project-explorer .os-explorer-controls select {
   width: 100%;
-  min-height: 44px;
-  padding-inline: var(--space-3);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
+  min-width: 0;
+  min-height: 26px;
+  padding-inline: 6px;
   color: var(--os-text);
-  background: var(--os-bg);
   font: inherit;
-  font-size: var(--text-ui);
+  font-size: 13px;
 }
 .os-shell .os-project-explorer .os-explorer-project-nav {
   display: grid;
-  gap: var(--space-1);
+  gap: 0;
 }
 .os-shell .os-project-explorer .os-explorer-empty {
   margin: 0;
-  padding: var(--space-3);
+  padding: 6px;
   color: var(--os-muted);
-  font-size: var(--text-s);
+  font-size: 12px;
 }
 
 /* Content column */
@@ -172,12 +195,12 @@
   container: project-content / inline-size;
 }
 .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
-  padding: var(--space-8) var(--space-12) var(--space-12);
+  padding: 20px 24px 24px;
 }
 .os-shell .os-project-explorer .os-project-eyebrow {
   margin: 0;
   color: var(--os-muted);
-  font-size: var(--text-s);
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.5;
 }
@@ -185,12 +208,12 @@
   .os-project-explorer
   :is(.os-project-index-header, .os-project-dossier-header)
   h1 {
-  margin: var(--space-2) 0 var(--space-4);
+  margin: 8px 0 12px;
   color: var(--os-text);
-  font-family: var(--os-font-display);
-  font-size: var(--text-h1);
-  font-weight: 600;
-  line-height: 1.12;
+  font-family: var(--win7-font);
+  font-size: clamp(22px, 3.2vw, 28px);
+  font-weight: 300;
+  line-height: 1.2;
   letter-spacing: 0;
   overflow-wrap: anywhere;
 }
@@ -198,66 +221,78 @@
   .os-project-explorer
   :is(.os-project-index-header > p:not(.os-project-eyebrow), .os-project-lead) {
   max-width: 66ch;
-  margin: var(--space-4) 0;
+  margin: 12px 0;
   color: var(--os-muted);
-  font-size: var(--text-reading);
-  line-height: var(--reading-leading);
+  font-size: 16px;
+  line-height: 1.55;
 }
 .os-shell .os-project-explorer .os-explorer-results {
-  margin: var(--space-6) 0 0;
+  margin: 16px 0 0;
   color: var(--os-muted);
-  font-size: var(--text-s);
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
-/* Index cards: solid surface, hairline, hover border only. The title link
-   stretches over the whole card, so one link is the only interactive target. */
+/* Listview: one white list with hairline rows, as a Win7 details view. The title
+   link stretches over the whole row, so one link is the only interactive target. */
 .os-shell .os-project-explorer .os-project-rows {
-  display: grid;
-  gap: var(--space-4);
-  margin-block-start: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 8px;
+  border: 1px solid #c0c1cd;
+  background: var(--win7-body-bg);
 }
 .os-shell .os-project-explorer .os-project-row {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-4);
+  gap: 12px;
   min-width: 0;
-  padding: var(--space-6);
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
-  background: var(--os-surface);
-  transition: border-color var(--motion-quick) var(--ease-standard);
+  padding: 10px 12px;
+  border: 0;
+  border-block-end: 1px solid #e5e5e5;
+  border-radius: 0;
+  background: var(--win7-body-bg);
 }
-/* Hover sharpens the hairline and shows the static rim below: no background or lift. */
+.os-shell .os-project-explorer .os-project-row:last-child {
+  border-block-end: 0;
+}
+/* Hover is the Win7 list highlight; keyboard focus inside a row uses the select gradient. */
 .os-shell .os-project-explorer .os-project-row:hover {
-  border-color: var(--os-control-line);
+  background: #e5f3fc;
+}
+.os-shell .os-project-explorer .os-project-row:focus-within {
+  background: var(--win7-select-bg);
 }
 .os-shell .os-project-explorer .os-project-row-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-1) var(--space-3);
+  gap: 4px 12px;
   color: var(--os-muted);
-  font-size: var(--text-s);
+  font-size: 12px;
   line-height: 1.5;
 }
 .os-shell .os-project-explorer .os-project-row h2 {
-  margin: var(--space-1) 0 var(--space-2);
-  color: var(--os-text);
-  font-family: var(--os-font-display);
-  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  margin: 2px 0 4px;
+  color: var(--win7-link);
+  font-family: var(--win7-font);
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.35;
   overflow-wrap: anywhere;
 }
 .os-shell .os-project-explorer .os-project-row h2 a {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: 44px;
+  gap: 6px;
+  min-height: 24px;
   color: inherit;
   text-decoration: none;
+}
+.os-shell .os-project-explorer .os-project-row h2 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 .os-shell .os-project-explorer .os-project-row h2 a::after {
   position: absolute;
@@ -268,19 +303,24 @@
 .os-shell .os-project-explorer .os-project-row p {
   margin: 0;
   color: var(--os-muted);
-  font-size: var(--text-ui);
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.55;
 }
 .os-shell .os-project-explorer .os-project-row-summary {
   min-width: 0;
+}
+/* A details row: the 96px preview column sits beside the text. */
+.os-shell .os-project-explorer .os-project-row-with-preview {
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: start;
 }
 
 /* Tags and stack items: identifiers in a quiet outline. */
 .os-shell .os-project-explorer :is(.os-project-tags, .os-project-stack-list) {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: var(--space-4) 0;
+  gap: 6px;
+  margin: 8px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -288,18 +328,19 @@
   .os-project-explorer
   :is(.os-project-tags, .os-project-stack-list)
   li {
-  padding: 2px var(--space-2);
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
-  color: var(--os-muted);
-  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border: 1px solid #aabbcc;
+  border-radius: 2px 12px;
+  color: var(--win7-body-text);
+  background: linear-gradient(180deg, #ffffff, #eef4fa);
+  font-size: 12px;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
 .os-shell .os-project-explorer .os-project-stack-list li {
-  padding: var(--space-1) var(--space-3);
+  padding: 2px 8px;
   color: var(--os-text);
-  font-size: var(--text-s);
+  font-size: 12px;
 }
 
 /* Dossier header */
@@ -341,19 +382,26 @@
 /* Sections and dossier headings. The outline runs h1, then h2 sections, then h3
    sub-sections; evidence stories use their own heading styles. */
 .os-shell .os-project-explorer .os-project-section {
-  padding-block: var(--space-12);
+  margin-block: 14px;
+  padding: 16px;
+  border: 1px solid #d5dfe5;
+  border-radius: 3px;
+  background: var(--win7-body-bg);
   scroll-margin-top: 120px;
 }
-.os-shell .os-project-explorer .os-project-section + .os-project-section {
-  border-top: 1px solid var(--os-line);
-}
+/* Each section is a Win7 group box. Its heading is a static legend on the top
+   edge (no absolute position, so it never overlaps at 320px). */
 .os-shell .os-project-explorer .os-project-section > h2 {
-  margin: var(--space-2) 0 var(--space-4);
-  color: var(--os-text);
-  font-family: var(--os-font-display);
-  font-size: var(--text-h2);
+  display: inline-block;
+  max-inline-size: 100%;
+  margin: 0 0 12px;
+  padding-inline: 6px;
+  background: var(--win7-body-bg);
+  color: var(--win7-body-text);
+  font-family: var(--win7-font);
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
   overflow-wrap: anywhere;
 }
 .os-shell .os-project-explorer .os-project-dossier h3 {
@@ -653,71 +701,73 @@
   border-color: var(--os-control-line);
 }
 
-/* Footer */
+/* Footer: a Win7 status bar on the standard surface, with 12px and 13px text. */
 .os-shell
   .os-project-explorer
   > .os-explorer-layout
   > .os-explorer-content
   > .os-explorer-footer {
   margin-block-start: auto;
-  padding: var(--space-8) var(--space-12);
-  border-block-start: 1px solid var(--os-line);
-  background: var(--os-bg);
+  padding: 10px 12px;
+  border-block-start: 1px solid #d5dfe5;
+  background: var(--w7-surface);
+  color: var(--win7-body-text);
+  font-family: var(--win7-font);
 }
 .os-shell .os-project-explorer .os-explorer-footer-next {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding-block-end: var(--space-6);
+  gap: 8px 12px;
+  padding-block-end: 8px;
 }
 .os-shell .os-project-explorer .os-explorer-footer-next > div {
   flex: 1 1 220px;
 }
 .os-shell .os-project-explorer .os-explorer-footer h2 {
-  margin: 0 0 var(--space-2);
-  color: var(--os-text);
-  font-family: var(--os-font-display);
-  font-size: var(--text-h3);
+  margin: 0 0 2px;
+  color: var(--win7-body-text);
+  font-family: var(--win7-font);
+  font-size: 13px;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 .os-shell .os-project-explorer .os-explorer-footer-next p {
   margin: 0;
-  max-width: 50ch;
-  color: var(--os-muted);
-  font-size: var(--text-s);
-  line-height: 1.7;
+  max-width: 60ch;
+  color: var(--win7-body-muted);
+  font-size: 13px;
+  line-height: 1.55;
 }
 .os-shell .os-project-explorer .os-explorer-footer-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2) var(--space-6);
-  padding-block-start: var(--space-4);
-  border-block-start: 1px solid var(--os-line);
-  color: var(--os-muted);
-  font-size: var(--text-s);
+  gap: 4px 12px;
+  padding-block-start: 8px;
+  border-block-start: 1px solid #d5dfe5;
+  color: var(--win7-body-muted);
+  font-size: 12px;
   line-height: 1.6;
 }
 .os-shell .os-project-explorer .os-explorer-footer-meta nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 var(--space-4);
+  gap: 0 12px;
 }
 .os-shell .os-project-explorer .os-explorer-footer-meta a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  color: var(--os-muted);
+  min-height: 24px;
+  color: var(--win7-link);
   text-decoration: none;
 }
 .os-shell .os-project-explorer .os-explorer-footer-meta a:hover {
-  color: var(--os-text);
+  color: var(--win7-link-hover);
   text-decoration: underline;
-  text-underline-offset: 0.25em;
+  text-underline-offset: 0.2em;
 }
 
 /* Directional icons mirror in right-to-left text; logos and checks do not. */
@@ -778,10 +828,15 @@
   .os-shell .os-project-explorer > .os-explorer-layout {
     grid-template-columns: minmax(0, 1fr);
   }
+  /* The pane stacks above the list and scrolls inside itself at 40% of the
+     viewport, so a long project list never pushes the dossier off the screen. */
   .os-shell .os-project-explorer > .os-explorer-layout > .os-explorer-sidebar {
-    padding: var(--space-4);
+    padding: 8px 0;
     border-inline-end: 0;
-    border-block-end: 1px solid var(--os-line);
+    border-block-end: 1px solid #d5dfe5;
+    max-block-size: 40dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .os-shell .os-project-explorer .os-explorer-controls {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -791,22 +846,11 @@
     padding-inline: 0;
   }
   .os-shell .os-project-explorer .os-explorer-project-nav {
-    display: flex;
-    gap: var(--space-2);
-    overflow-x: auto;
-    /* Room inside the scroll box for the 2px focus ring (2px offset). */
-    padding: var(--space-1);
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline proximity;
+    display: grid;
+    gap: 0;
   }
-  .os-shell .os-project-explorer .os-explorer-project-link {
-    flex: 0 0 auto;
-    border: 1px solid var(--os-line);
-    white-space: nowrap;
-    scroll-snap-align: start;
-  }
-  .os-shell .os-project-explorer .os-explorer-project-link small {
-    display: none;
+  .os-shell .os-project-explorer .os-project-row-with-preview {
+    grid-template-columns: minmax(0, 1fr);
   }
   .os-shell .os-project-explorer :is(.os-project-index, .os-project-dossier) {
     padding: var(--space-6) var(--space-4) var(--space-8);
@@ -825,6 +869,21 @@
   }
 }
 
+/* Touch: navigation rows and the search field take the 44px target. */
+@media (pointer: coarse) {
+  .os-shell
+    .os-project-explorer
+    :is(.os-explorer-index-link, .os-explorer-project-link) {
+    min-height: 44px;
+  }
+  .os-shell .os-project-explorer .os-explorer-search {
+    min-height: 44px;
+  }
+  .os-shell .os-project-explorer .os-explorer-controls select {
+    min-height: 44px;
+  }
+}
+
 /* Forced colours drop the accent tint, so the selected row needs a border-like ring. */
 @media (forced-colors: active) {
   .os-shell
@@ -838,7 +897,7 @@
   }
 }
 
-/* Static rims (v2.0, RIM RECIPE in showstopper.css). An index row shows its rim on
+/* Static rims (v2.0 rim recipe; the Intelligence Glow layer is retired). An index row shows its rim on
    hover or while focus is inside it; a paper card shows its rim on hover only. The
    rim is painted once on ::after and never moves: no transition, no glow, no lift.
    Thumbnails and links get no rim. Scoped to the explorer, so .ui-card--interactive
@@ -857,6 +916,8 @@
   background: var(--os-rim-gradient);
   pointer-events: none;
   opacity: 0;
+  /* Aero rows show a Win7 highlight instead of the rim. */
+  display: none;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);

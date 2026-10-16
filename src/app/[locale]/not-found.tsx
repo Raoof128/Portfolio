@@ -14,26 +14,34 @@ export default function NotFound() {
     return `/${locale}${path === "/" ? "" : path}`;
   };
 
+  // A Win7-style window inside the shell: the 404 code sits in the glass title bar.
   return (
-    <section className="os-not-found" aria-labelledby="os-not-found-title">
-      <SignalVortex />
-      <p className="os-not-found-code" dir="ltr">
-        404
-      </p>
-      <h1 id="os-not-found-title">{t.not_found.error_code}</h1>
-      <p>{t.not_found.description}</p>
-      <div className="os-not-found-actions">
-        <Link className="os-button" href={getPath("/")}>
-          <Home aria-hidden="true" />
-          {t.not_found.return_home}
-        </Link>
-        <Link
-          className="os-button os-button--secondary"
-          href={getPath("/projects")}
-        >
-          <FolderOpen aria-hidden="true" />
-          {t.not_found.browse_projects}
-        </Link>
+    <section
+      className="os-not-found window glass active"
+      aria-labelledby="os-not-found-title"
+    >
+      <div className="title-bar">
+        <p className="os-not-found-code" dir="ltr">
+          404
+        </p>
+      </div>
+      <div className="window-body has-space">
+        <SignalVortex />
+        <h1 id="os-not-found-title">{t.not_found.error_code}</h1>
+        <p>{t.not_found.description}</p>
+        <div className="os-not-found-actions">
+          <Link className="os-button" href={getPath("/")}>
+            <Home aria-hidden="true" />
+            {t.not_found.return_home}
+          </Link>
+          <Link
+            className="os-button os-button--secondary"
+            href={getPath("/projects")}
+          >
+            <FolderOpen aria-hidden="true" />
+            {t.not_found.browse_projects}
+          </Link>
+        </div>
       </div>
     </section>
   );

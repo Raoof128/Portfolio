@@ -39,10 +39,10 @@
   background: var(--os-inset);
   border-color: var(--os-control-line-inset);
 }
-/* Reduced motion keeps the colour change and drops nothing else. */
+/* Reduced motion removes the colour fade too: the hover state changes instantly. */
 @media (prefers-reduced-motion: reduce) {
   .ui-card--interactive {
-    transition-duration: var(--motion-quick);
+    transition: none;
   }
 }
 

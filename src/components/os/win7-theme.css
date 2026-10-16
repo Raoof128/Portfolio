@@ -1,0 +1,297 @@
+/* Win7 Aero layer, foundations lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css. */
+
+/* Tokens. Aero (light) is the default on .win7. Aero Night overrides it on the shell
+   (data-appearance on the same element) and on the 404 wrapper (data-appearance on html).
+   Every 7.css rule is scoped under .win7, so the unscoped sheet is never loaded. */
+.win7 {
+  --win7-wallpaper:
+    radial-gradient(120% 55% at 20% 108%, #d8f1ff 0%, transparent 60%),
+    radial-gradient(
+      70% 38% at 88% 2%,
+      rgb(255 255 255 / 0.75),
+      transparent 62%
+    ),
+    linear-gradient(
+      118deg,
+      transparent 38%,
+      rgb(255 255 255 / 0.22) 46%,
+      transparent 54%
+    ),
+    linear-gradient(180deg, #1c63ad 0%, #3a8fd6 45%, #6cb8ec 74%, #2a78c0 100%);
+  --win7-glass-tint: rgb(196 228 250 / 0.42);
+  --win7-glass-tint-solid: #bcdcf5;
+  --win7-glass-blur: 14px;
+  --win7-glass-edge: rgb(255 255 255 / 0.85);
+  --win7-frame-border: rgb(16 48 92 / 0.8);
+  --win7-frame-shadow:
+    0 8px 24px rgb(0 0 0 / 0.35), inset 0 1px 0 var(--win7-glass-edge);
+  --win7-title-base: #5b93cc;
+  --win7-title-bg:
+    linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.6) 0%,
+      rgb(255 255 255 / 0.08) 50%,
+      transparent 52%,
+      rgb(255 255 255 / 0.14) 100%
+    ),
+    var(--win7-title-base);
+  --win7-taskbar-bg: linear-gradient(
+    180deg,
+    rgb(214 238 252 / 0.72),
+    rgb(120 180 230 / 0.62)
+  );
+  --win7-taskbar-solid: #cfe9fa;
+  --win7-text-glass: #000000;
+  --win7-text-shadow: 0 0 6px rgb(255 255 255 / 0.85);
+  --win7-plate: rgb(0 22 46 / 0.55);
+  --win7-body-bg: #ffffff;
+  --win7-body-text: #000000;
+  --win7-body-muted: #3d3d3d;
+  --win7-link: #0066cc;
+  --win7-link-hover: #003d99;
+  --win7-select-bg: linear-gradient(
+    rgb(204 236 252 / 0.95),
+    rgb(144 205 245 / 0.9)
+  );
+  --win7-select-border: #6fb8ec;
+  /* Focus is a two-tone ring: a black inner ring and a white outer ring. Each side of
+     the pair meets 3:1 on the light window bodies, the Aero wallpaper and the navy
+     wallpaper, so the ring stays visible in both themes. */
+  --win7-focus-inner: #000000;
+  --win7-focus-outer: #ffffff;
+  --win7-orb-grad: radial-gradient(
+    circle at 50% 32%,
+    #f1fbff 0%,
+    #9bdcff 18%,
+    #2f8fe0 58%,
+    #0c4c97 100%
+  );
+  --win7-tile-bg: #3b8bd4;
+  --win7-start-right: linear-gradient(
+    180deg,
+    rgb(30 72 122 / 0.94),
+    rgb(12 30 58 / 0.96)
+  );
+  --win7-progress-fill: #0e7a2e;
+  --win7-danger: #c42b1c;
+  --win7-font:
+    ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+  --win7-ui-size: 13px;
+  --win7-small-size: 12px;
+  --win7-body-size: 16px;
+  --win7-taskbar-h: 44px;
+  --win7-orb-size: 40px;
+  --win7-pin-h: 36px;
+  --win7-tray-w: 340px;
+  --win7-title-h: 30px;
+  --win7-caption-w: 30px;
+  --win7-radius: 6px;
+
+  /* Mapping onto the 7.css variables. The buttons keep the 7.css element defaults. */
+  --w7-font: var(--win7-font);
+  --w7-surface: #f0f0f0;
+  --w7-tab-bg: #ffffff;
+  --w7-w-bg: var(--win7-title-base);
+  --w7-w-glass: var(--win7-title-bg);
+  --w7-w-bd: rgb(0 0 0 / 0.7);
+  --w7-link-c: var(--win7-link);
+  --w7-link-c-h: var(--win7-link-hover);
+  --w7-title-c: #000000;
+  --w7-pg-bg: var(--win7-progress-fill);
+}
+
+/* Aero Night. The shell carries data-appearance, and the 404 wrapper sits under html. */
+.win7[data-appearance="dark"],
+[data-appearance="dark"] .win7 {
+  --win7-wallpaper:
+    radial-gradient(120% 55% at 22% 110%, #1f4f8a 0%, transparent 60%),
+    radial-gradient(
+      80% 40% at 90% 0%,
+      rgb(120 170 230 / 0.18),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #030813 0%, #0a1d3a 48%, #040a16 100%);
+  --win7-glass-tint: rgb(14 36 72 / 0.62);
+  --win7-glass-tint-solid: #17335e;
+  --win7-glass-edge: rgb(255 255 255 / 0.22);
+  --win7-frame-border: rgb(0 0 0 / 0.85);
+  --win7-title-base: #1d3c68;
+  --win7-taskbar-bg: linear-gradient(
+    180deg,
+    rgb(40 78 130 / 0.72),
+    rgb(10 26 52 / 0.82)
+  );
+  --win7-taskbar-solid: #15294a;
+  --win7-text-glass: #ffffff;
+  --win7-text-shadow: 0 1px 2px rgb(0 0 0 / 0.85);
+  --win7-plate: rgb(0 0 0 / 0.5);
+  --win7-orb-grad: radial-gradient(
+    circle at 50% 32%,
+    #f1fbff 0%,
+    #9bdcff 18%,
+    #2f8fe0 58%,
+    #0a3570 100%
+  );
+  --win7-tile-bg: #24558f;
+  /* White title text on the navy title base, about 11:1. */
+  --w7-title-c: #ffffff;
+}
+
+/* Fonts. Vazirmatn for Persian and Arabic, and the research zh stack for Chinese.
+   Segoe UI is never named. */
+.win7:lang(fa),
+.win7:lang(ar) {
+  --win7-font: var(--font-vazirmatn), system-ui, sans-serif;
+}
+.win7:lang(zh) {
+  --win7-font:
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", system-ui, sans-serif;
+}
+
+/* Night title text. 7.css sets the title colour and glow directly, not through a token. */
+.win7[data-appearance="dark"] .title-bar-text,
+[data-appearance="dark"] .win7 .title-bar-text {
+  color: var(--w7-title-c);
+  text-shadow: var(--win7-text-shadow);
+}
+
+/* Baseline shell. */
+.os-shell.win7 {
+  min-height: 100dvh;
+  position: relative;
+  font-family: var(--w7-font);
+  font-size: var(--win7-ui-size);
+  color: var(--win7-text-glass);
+  --os-dock-clearance: calc(
+    var(--win7-taskbar-h) + 24px + env(safe-area-inset-bottom, 0px)
+  );
+}
+.os-shell.win7 .os-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--win7-wallpaper);
+}
+.os-shell.win7 .os-wallpaper > * {
+  display: none;
+}
+/* The shared wallpaper paints an accent wash on ::before and ::after. The Aero
+   wallpaper stays pure gradient, so both pseudo-elements are removed here. */
+.os-shell.win7 .os-wallpaper::before,
+.os-shell.win7 .os-wallpaper::after {
+  content: none;
+}
+.os-shell.win7 [hidden] {
+  display: none !important;
+}
+.os-shell.win7 a {
+  color: var(--win7-link);
+}
+.os-shell.win7 a:hover,
+.os-shell.win7 a:focus-visible {
+  color: var(--win7-link-hover);
+}
+.os-shell.win7 :focus-visible {
+  outline: 2px solid var(--win7-focus-outer);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--win7-focus-inner);
+}
+/* Icon-only controls inherit the 7.css button sizing (75px minimum, 12px padding). */
+.os-shell.win7 .os-control,
+.os-shell.win7 .os-theme-switch {
+  min-width: 0;
+  min-height: 0;
+}
+/* The 7.css glass pseudo-element is replaced by the frame edge in the window layer. */
+.os-shell.win7 .window.glass::before {
+  content: none;
+}
+
+/* Phones (700px and below): the taskbar, the orb, the pins and the caption buttons grow
+   to 44px-class targets, and the glass blur is lighter. */
+@media (max-width: 700px) {
+  .win7 {
+    --win7-taskbar-h: 52px;
+    --win7-orb-size: 44px;
+    --win7-pin-h: 44px;
+    --win7-caption-w: 44px;
+    --win7-glass-blur: 8px;
+  }
+}
+
+/* Reduced motion: no animation or transition, including the 7.css pulses. State changes
+   are instant. The welcome timer still runs, and its bar and spinner stay static. */
+@media (prefers-reduced-motion: reduce) {
+  .win7,
+  .win7 *,
+  .win7 *::before,
+  .win7 *::after,
+  .os-shell.win7,
+  .os-shell.win7 *,
+  .os-shell.win7 *::before,
+  .os-shell.win7 *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  /* The shell selectors above sit at (0,2,0), level with the theme-switch rules in
+     research-os.css, and come later, so they win for the switch as well. */
+  html:has(.os-shell.win7[data-theme-switching]) {
+    transition: none !important;
+  }
+}
+
+/* Reduced transparency: no backdrop blur, and the glass tokens use the solid variants. */
+@media (prefers-reduced-transparency: reduce) {
+  .win7,
+  .win7[data-appearance="dark"],
+  [data-appearance="dark"] .win7 {
+    --win7-glass-tint: var(--win7-glass-tint-solid);
+    --win7-taskbar-bg: var(--win7-taskbar-solid);
+    --win7-glass-blur: 0px;
+  }
+  .win7 * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Forced colours: gradients, shadows and glows drop out, and system colours carry the
+   main surfaces. Focus outlines are kept. */
+@media (forced-colors: active) {
+  .win7 *,
+  .win7 *::before,
+  .win7 *::after {
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .os-shell.win7,
+  .os-shell.win7 .os-wallpaper,
+  .os-shell.win7 .window,
+  .os-shell.win7 .window-body {
+    background: Canvas;
+    color: CanvasText;
+  }
+  .os-shell.win7 .os-dock,
+  .os-shell.win7 .title-bar {
+    background: ButtonFace;
+    color: ButtonText;
+  }
+  .os-shell.win7 .title-bar-text {
+    color: ButtonText;
+  }
+  .os-shell.win7 button {
+    background: ButtonFace;
+    color: ButtonText;
+  }
+  .os-shell.win7 a {
+    color: LinkText;
+  }
+  .os-shell.win7 [aria-selected="true"],
+  .os-shell.win7 [aria-current="page"],
+  .os-shell.win7 [aria-pressed="true"] {
+    background: Highlight;
+    color: HighlightText;
+  }
+}

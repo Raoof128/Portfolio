@@ -10,15 +10,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import Link from "next/link";
-import {
-  ArrowDownRight,
-  ArrowLeft,
-  Copy,
-  Maximize2,
-  Minimize2,
-  Minus,
-  X,
-} from "lucide-react";
+import { ArrowLeft, Copy } from "lucide-react";
 import { locales, type Locale } from "@/i18n";
 import type { SearchEntry } from "@/lib/os-search-query";
 import type { OSAppDescriptor } from "@/lib/os-app-schema";
@@ -310,7 +302,8 @@ function ApplicationWindow({
       role={active && !hidden ? "main" : "region"}
       aria-labelledby={`${controlId}-title`}
       tabIndex={-1}
-      className={`os-window os-workspace-window ${reading.rect ? "os-window--floating" : ""}`}
+      // 7.css reads `window`, `glass` and `active` for the Aero frame (win7-windows.css).
+      className={`os-window os-workspace-window window glass${active ? " active" : ""}${reading.rect ? " os-window--floating" : ""}`}
       data-window-path={descriptor.path}
       data-active={active}
       data-opening={opening ? "true" : undefined}
@@ -358,7 +351,7 @@ function ApplicationWindow({
         if (!active) actions.focus(descriptor.id);
       }}
     >
-      <div className="os-windowbar">
+      <div className="os-windowbar title-bar">
         {(loading || pending) && (
           // One 2px accent hairline while the next page loads. The class name
           // stays so the existing pending-state test keeps its hook.
@@ -366,9 +359,11 @@ function ApplicationWindow({
         )}
         <div className="os-window-navigation">
           {/* The visible word is part of the name, so the name matches what sighted users read. */}
+          {/* The name is kept on phones, where research-os.css hides the visible word. */}
           <Link
             className="os-window-back"
             href={parentPath}
+            aria-label={copy.back}
             tabIndex={active ? 0 : -1}
           >
             <ArrowLeft aria-hidden="true" />
@@ -382,7 +377,7 @@ function ApplicationWindow({
           // The title names the landmark; the drag affordance is advisory.
           title={reading.desktop ? commands.moveWindow : undefined}
           id={`${controlId}-title`}
-          className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
+          className={`os-window-title title-bar-text ${reading.desktop ? "os-window-title--movable" : ""}`}
           lang={titleLocale}
           dir={locales[titleLocale].dir}
           onPointerDown={(event) => reading.beginPointer(event, "move")}
@@ -390,7 +385,7 @@ function ApplicationWindow({
         >
           {title}
         </button>
-        <div className="os-window-actions">
+        <div className="os-window-actions title-bar-controls">
           {active && reading.desktop && !hidden && (
             <ReadingWindowControls
               locale={locale}
@@ -417,8 +412,9 @@ function ApplicationWindow({
           >
             <Copy aria-hidden="true" />
           </button>
+          {/* Caption glyphs come from 7.css (is-minimize, is-maximize, is-restore, is-close). */}
           <button
-            className="os-control"
+            className="os-control is-minimize"
             onClick={() => {
               returnFocus();
               reading.minimize();
@@ -426,12 +422,10 @@ function ApplicationWindow({
             }}
             aria-label={commands.minimize}
             tabIndex={active ? 0 : -1}
-          >
-            <Minus aria-hidden="true" />
-          </button>
+          />
           {reading.desktop && (
             <button
-              className="os-control os-expand"
+              className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
               onClick={() => {
                 if (expanded) reading.restoreSize();
                 else reading.maximize();
@@ -441,25 +435,17 @@ function ApplicationWindow({
               aria-label={commands.fullSize}
               aria-pressed={expanded}
               tabIndex={active ? 0 : -1}
-            >
-              {expanded ? (
-                <Minimize2 aria-hidden="true" />
-              ) : (
-                <Maximize2 aria-hidden="true" />
-              )}
-            </button>
+            />
           )}
           <button
-            className="os-control os-window-close"
+            className="os-control os-window-close is-close"
             onClick={() => {
               returnFocus();
               actions.close(descriptor.id);
             }}
             aria-label={copy.close}
             tabIndex={active ? 0 : -1}
-          >
-            <X aria-hidden="true" />
-          </button>
+          />
         </div>
       </div>
       {/* The live region stays mounted so assistive tech announces updates. */}
@@ -475,7 +461,7 @@ function ApplicationWindow({
               // Each document starts with fresh state and scroll position.
               key={descriptor.id}
               ref={content}
-              className="os-page-content"
+              className="os-page-content window-body has-scrollbar"
               inert={!active}
               onScroll={reading.onContentScroll}
             >
@@ -496,9 +482,7 @@ function ApplicationWindow({
             onPointerDown={(event) => reading.beginPointer(event, "resize")}
             {...reading.pointerHandlers}
             onKeyDown={resizeKeys}
-          >
-            <ArrowDownRight aria-hidden="true" />
-          </button>
+          />
         </>
       )}
     </section>

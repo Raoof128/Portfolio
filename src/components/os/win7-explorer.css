@@ -1,0 +1,96 @@
+/* Win7 Aero layer, explorer lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css.
+
+   The projects explorer is a glass window in the Explorer layout: a title bar, an
+   address bar, a navigation pane and a white list. Selectors carry .win7 so they
+   outrank the layout rules in project-explorer.css, which are written with the
+   .os-shell prefix only. Layout is by logical properties, so the navigation pane
+   sits on the inline-start edge in LTR and the inline-end edge in RTL. */
+
+/* Frame: a 4px glass edge around the white body. */
+.os-shell.win7 .os-project-explorer {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0 4px 4px;
+  border: 1px solid var(--win7-frame-border);
+  border-radius: var(--win7-radius);
+  color: var(--win7-body-text);
+  background: var(--win7-title-bg);
+  box-shadow: var(--win7-frame-shadow);
+}
+
+/* Title bar: the glass caption strip above the address bar. */
+.os-shell.win7 .os-project-explorer > .os-explorer-titlebar {
+  display: flex;
+  align-items: center;
+  min-height: var(--win7-title-h);
+  padding-inline: 8px;
+  color: var(--win7-text-glass);
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  font-weight: 600;
+  line-height: 1.3;
+  text-shadow: var(--win7-text-shadow);
+  overflow-wrap: anywhere;
+}
+
+/* Address bar: a white field with the Win7 control edge, decorative only. */
+.os-shell.win7 .os-project-explorer > .os-explorer-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  margin-block: 4px;
+  padding-inline: 6px;
+  border: 1px solid #7a7a7a;
+  border-radius: 2px;
+  color: var(--win7-body-text);
+  background: var(--win7-body-bg);
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.os-shell.win7 .os-project-explorer > .os-explorer-address > svg {
+  flex: none;
+  color: var(--win7-body-muted);
+}
+.os-shell.win7 .os-project-explorer > .os-explorer-address > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The white body sits under the glass frame, with the hairline Win7 uses. */
+.os-shell.win7 .os-project-explorer > .os-explorer-layout {
+  background: var(--win7-body-bg);
+  border: 1px solid #c0c1cd;
+}
+
+/* Phones: the frame keeps its glass edge but loses the outer shadow. */
+@media (max-width: 700px) {
+  .os-shell.win7 .os-project-explorer {
+    box-shadow: none;
+  }
+  .os-shell.win7 .os-project-explorer > .os-explorer-address {
+    height: 32px;
+  }
+}
+
+@media (forced-colors: active) {
+  .os-shell.win7 .os-project-explorer {
+    border-color: CanvasText;
+    background: Canvas;
+    box-shadow: none;
+  }
+  .os-shell.win7 .os-project-explorer > .os-explorer-titlebar {
+    color: CanvasText;
+    text-shadow: none;
+  }
+  .os-shell.win7 .os-project-explorer > .os-explorer-address {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+}

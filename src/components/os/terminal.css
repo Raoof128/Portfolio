@@ -1,126 +1,124 @@
-/* Terminal card (design system, section 4). A flat code surface with hairline
-   edges: no blur, no typewriter, no glow. Every selector carries the `.os-shell`
-   prefix so it outranks the shared control and page rules. The legacy showcase.css
-   terminal styling has been retired, so nothing here needs to override it. */
+/* Terminal card (Aero layer, section 10): a command prompt window. The glass frame
+   carries a title bar, and the console is a black pane with light grey mono text.
+   Every selector carries the `.os-shell` prefix so it outranks the shared control
+   and page rules. The console colours are fixed, not tokens, so the card reads the
+   same on the light and the night wallpapers and inside the explorer's white body. */
 
 .os-shell .os-terminal {
   position: relative;
   display: grid;
-  gap: var(--space-3);
+  gap: 0;
   min-width: 0;
   margin: 0;
-  padding: var(--space-4);
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
-  color: var(--os-code-text);
-  background: var(--os-code-surface);
-  box-shadow: none;
+  padding: 0 4px 4px;
+  border: 1px solid var(--win7-frame-border);
+  border-radius: var(--win7-radius);
+  color: var(--win7-text-glass);
+  background: var(--win7-title-bg);
+  box-shadow: var(--win7-frame-shadow);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   text-align: start;
 }
 
-/* Static rim (v2.0, RIM RECIPE in showstopper.css): a 1px edge painted once on ::after.
-   It takes no glow and no animation, and the code text keeps its solid surface. */
+/* The Aero rim is retired: the glass frame carries the edge. */
 .os-shell .os-terminal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: var(--os-rim-gradient);
-  pointer-events: none;
-  opacity: var(--os-rim-opacity);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-}
-@media (prefers-contrast: more) {
-  .os-shell .os-terminal::after {
-    background: var(--os-rim-solid);
-    opacity: 1;
-  }
+  display: none;
 }
 
+/* Title bar: the glass caption strip, a fixed 30px high. */
 .os-shell .os-terminal-head {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2) var(--space-3);
+  gap: 6px;
+  min-height: var(--win7-title-h);
+  padding-inline: 4px;
 }
 
 .os-shell .os-terminal-title {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 6px;
+  min-width: 0;
   margin: 0;
-  color: var(--os-code-text);
-  font-family: var(--os-font-ui);
-  font-size: var(--text-s);
-  font-weight: 500;
-  line-height: 1.4;
+  color: var(--win7-text-glass);
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  font-weight: 600;
+  line-height: 1.3;
   letter-spacing: 0;
   text-transform: none;
+  text-shadow: var(--win7-text-shadow);
 }
 
 .os-shell .os-terminal-title svg {
   flex: none;
-  color: var(--os-muted);
+  color: currentColor;
 }
 
-/* The copy button is the shared secondary control; desktop uses the compact
-   32px height, coarse pointers keep the shared 44px touch target. */
+/* The copy button is the 7.css button. Desktop keeps the 7.css 23px height; coarse
+   pointers take the 44px touch target. */
 .os-shell .os-terminal .os-terminal-copy {
-  gap: var(--space-2);
-  padding-inline: var(--space-3);
-  font-size: var(--text-s);
+  gap: 6px;
+  min-height: 23px;
+  padding-inline: 10px;
+  font-size: var(--win7-small-size);
 }
 
-@media (pointer: fine) {
+@media (pointer: coarse) {
   .os-shell .os-terminal .os-terminal-copy {
-    min-height: 32px;
+    min-height: 44px;
   }
 }
 
+/* The console: black, light grey, a 14px mono face. Its focus ring is light blue,
+   which keeps 3:1 on the black pane. */
 .os-shell .os-terminal-body {
   margin: 0;
-  padding: var(--space-3) 0 0;
+  padding: 12px;
+  border: 0;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  white-space: pre;
-  color: var(--os-code-text);
-  background: transparent;
-  font-family: var(--os-font-mono);
-  font-size: var(--text-s);
-  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #cccccc;
+  background: #0c0c0c;
+  font-family:
+    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.6;
   scrollbar-width: thin;
-  scrollbar-color: var(--os-muted) transparent;
+  scrollbar-color: #6b6b6b #0c0c0c;
 }
 
 .os-shell .os-terminal-body code {
   display: block;
   font: inherit;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #f2f2f2;
 }
 
 .os-shell .os-terminal-body code + code {
-  margin-block-start: var(--space-1);
+  margin-block-start: 4px;
 }
 
+/* The prompt is drawn by CSS, so copied text is only the commands. */
 .os-shell .os-terminal-body code::before {
   content: "$ ";
-  color: var(--os-muted);
+  color: #9a9a9a;
   user-select: none;
 }
 
+.os-shell .os-terminal-body .os-terminal-typed {
+  color: #f2f2f2;
+}
+
 .os-shell .os-terminal-body:focus-visible {
-  outline: 2px solid var(--os-focus);
-  outline-offset: 2px;
+  outline: 2px solid #9fd4ff;
+  outline-offset: -2px;
 }
 
 @media (forced-colors: active) {
@@ -128,11 +126,14 @@
     border-color: CanvasText;
     color: CanvasText;
     background: Canvas;
+    box-shadow: none;
+  }
+  .os-shell .os-terminal-body {
+    border: 1px solid CanvasText;
+    color: CanvasText;
+    background: Canvas;
   }
   .os-shell .os-terminal-body code::before {
     color: CanvasText;
-  }
-  .os-shell .os-terminal::after {
-    display: none;
   }
 }

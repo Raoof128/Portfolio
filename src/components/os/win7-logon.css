@@ -1,0 +1,260 @@
+/* Win7 Aero layer, logon lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css.
+   The welcome screen is the Win7 logon: a centred column on the Aero wallpaper, with a
+   framed user tile, the name, a glossy round Enter arrow and two shortcuts. Every rule
+   is scoped to the welcome section, so the desktop and reading windows are untouched. The Enter
+   wait mechanics (bar, status line, reduced motion) are in welcome-enter.css. */
+
+/* The logon column. The plate is a soft darkening behind the column, not a glass panel,
+   so there is no backdrop blur. The bottom padding keeps the caption clear of the taskbar. */
+.os-shell.win7 .os-welcome {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  min-height: 100svh;
+  margin-inline: auto;
+  padding: 24px 16px var(--os-dock-clearance);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: center;
+  color: #ffffff;
+  /* Stronger than the first pass (0.42 and 0.12): the light Aero wallpaper behind the
+     white text measured 2.7 to 3.6:1 at the shortcuts. A top scrim covers the clock,
+     where the diagonal light streak sits. Together they hold 4.5:1 across the column. */
+  background:
+    linear-gradient(180deg, rgb(0 22 46 / 0.35) 0%, rgb(0 22 46 / 0) 32%),
+    radial-gradient(
+      ellipse at center,
+      rgb(0 22 46 / 0.55),
+      rgb(0 22 46 / 0.36) 70%
+    );
+}
+
+/* Clock. The eyebrow sits on the plate so it clears 4.5:1 over the lighter wallpaper. */
+.os-shell.win7 .os-welcome .os-lock-clock {
+  gap: 4px;
+}
+.os-shell.win7 .os-welcome .os-lock-clock .os-eyebrow {
+  margin: 0 0 4px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--win7-plate);
+  color: #ffffff;
+  font-size: var(--win7-small-size);
+  font-weight: 500;
+}
+.os-shell.win7 .os-welcome .os-lock-date {
+  font-size: var(--win7-body-size);
+  font-weight: 400;
+  color: #ffffff;
+}
+.os-shell.win7 .os-welcome .os-lock-time {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.6);
+}
+
+/* User tile. The portrait sits in a white frame: 84px image, 6px padding, 1px edge. */
+.os-shell.win7 .os-welcome .os-lock-profile {
+  width: 100%;
+  max-width: 100%;
+  align-items: center;
+}
+.os-shell.win7 .os-welcome .os-lock-portrait {
+  box-sizing: content-box;
+  width: 84px;
+  height: 84px;
+  margin: 0 0 12px;
+  padding: 6px;
+  border: 1px solid rgb(0 0 0 / 0.45);
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.45);
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Name. Light weight at 32px with a soft shadow. Persian and Arabic names run wider,
+   so they step down to 30px, and the narrowest phones take 28px. */
+.os-shell.win7 .os-welcome .os-lock-profile h1 {
+  max-width: 100%;
+  margin: 0 0 8px;
+  font-family: var(--win7-font);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.7);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+.os-shell.win7 .os-welcome .os-lock-profile h1:lang(fa),
+.os-shell.win7 .os-welcome .os-lock-profile h1:lang(ar) {
+  font-size: 30px;
+  line-height: 1.4;
+}
+.os-shell.win7 .os-welcome .os-role,
+.os-shell.win7 .os-welcome .os-lock-intro {
+  max-width: 36ch;
+  font-size: var(--win7-body-size);
+  line-height: 1.55;
+  color: #ffffff;
+  overflow-wrap: break-word;
+}
+.os-shell.win7 .os-welcome .os-role {
+  margin: 0;
+}
+.os-shell.win7 .os-welcome .os-lock-intro {
+  margin: 8px 0 12px;
+}
+
+/* Enter. A 56px glossy round button: a white-to-blue face, a 4px halo and a soft shadow.
+   The arrow is 24px in deep blue. The text lives in .os-enter-label, visually hidden. */
+.os-shell.win7 .os-welcome .os-enter {
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(0 0 0 / 0.45);
+  border-radius: 50%;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.85) 0%, transparent 50%),
+    radial-gradient(circle, #cfeaff, #3b8bd4 70%);
+  color: #0b3c73;
+  box-shadow:
+    0 0 0 4px rgb(255 255 255 / 0.25),
+    0 6px 14px rgb(0 0 0 / 0.4);
+  cursor: pointer;
+  /* 7.css pulses the focused button; the glossy face and the focus ring carry focus instead. */
+  animation: none;
+}
+/* 7.css paints a hover and pressed overlay on button::before and ::after. The face does
+   not use either, so both are removed. */
+.os-shell.win7 .os-welcome .os-enter::before,
+.os-shell.win7 .os-welcome .os-enter::after {
+  content: none;
+}
+.os-shell.win7 .os-welcome .os-enter svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: #0b3c73;
+}
+.os-shell.win7 .os-welcome .os-enter:not(:disabled):hover {
+  border-color: rgb(0 0 0 / 0.45);
+  box-shadow:
+    0 0 0 4px rgb(120 200 255 / 0.6),
+    0 0 18px rgb(120 200 255 / 0.8);
+}
+.os-shell.win7 .os-welcome .os-enter:not(:disabled):active {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.6) 0%, transparent 50%),
+    radial-gradient(circle, #a9dbff, #2f7bc4 70%);
+}
+/* Keyboard focus keeps the 7.css inset ring and adds a white outline, which clears 3:1
+   on the plate. It follows hover, so the focus treatment wins when both apply. */
+.os-shell.win7 .os-welcome .os-enter:not(:disabled):focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow:
+    inset 0 0 0 2px #98d1ef,
+    0 0 0 4px rgb(255 255 255 / 0.25),
+    0 6px 14px rgb(0 0 0 / 0.4);
+}
+/* While the wait runs the face keeps full visibility and the cursor reads as busy. */
+.os-shell.win7 .os-welcome .os-enter:disabled {
+  cursor: progress;
+  opacity: 1;
+  color: #0b3c73;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.85) 0%, transparent 50%),
+    radial-gradient(circle, #cfeaff, #3b8bd4 70%);
+  box-shadow:
+    0 0 0 4px rgb(255 255 255 / 0.25),
+    0 6px 14px rgb(0 0 0 / 0.4);
+}
+
+/* Shortcuts. White underlined links on the plate, 44px tall for touch. */
+.os-shell.win7 .os-welcome .os-lock-shortcuts {
+  margin: 0;
+  gap: 8px 24px;
+}
+.os-shell.win7 .os-welcome .os-lock-shortcuts a.os-text-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: var(--win7-plate);
+  color: #ffffff;
+  font-size: var(--win7-body-size);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.os-shell.win7 .os-welcome .os-lock-shortcuts a.os-text-link:hover {
+  color: #cfeaff;
+}
+.os-shell.win7 .os-welcome .os-lock-shortcuts a.os-text-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+.os-shell.win7 .os-welcome .os-external-icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+/* Caption. Small text on the plate, centred under the shortcuts. */
+.os-shell.win7 .os-welcome .os-lock-caption {
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: var(--win7-plate);
+  color: #ffffff;
+  font-size: var(--win7-ui-size);
+  line-height: 1.6;
+}
+
+/* Phones. The column keeps 16px gutters and the name steps down on the narrowest screens,
+   so the whole column fits 320px with no horizontal scroll. */
+@media (max-width: 700px) {
+  .os-shell.win7 .os-welcome {
+    gap: 12px;
+    padding-top: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .os-shell.win7 .os-welcome .os-lock-profile h1 {
+    font-size: 28px;
+  }
+  .os-shell.win7 .os-welcome .os-lock-profile h1:lang(fa),
+  .os-shell.win7 .os-welcome .os-lock-profile h1:lang(ar) {
+    font-size: 26px;
+  }
+}
+
+/* Forced colours: the glossy face gives way to system colours, and the focus outline stays. */
+@media (forced-colors: active) {
+  .os-shell.win7 .os-welcome .os-enter {
+    background: ButtonFace;
+    color: ButtonText;
+    box-shadow: none;
+  }
+  .os-shell.win7 .os-welcome .os-enter svg {
+    color: ButtonText;
+  }
+}

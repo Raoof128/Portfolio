@@ -193,9 +193,6 @@
   pointer-events: none;
 }
 
-.os-workspace-window[data-active="false"] .os-windowbar {
-  opacity: 0.8;
-}
 /* Retain the still reading surface while pausing background status decorations.
    The four-class selector outranks the utility classes without !important. */
 .os-workspace-window[data-active="false"] .os-page-content [class*="animate-"] {
@@ -310,11 +307,14 @@
 }
 /* Only a user-initiated show (data-opening) starts from the faded state. Windows open at
    load never take it, so the first paint and a deep link's LCP are not delayed. */
-@supports (transition-behavior: allow-discrete) {
-  @starting-style {
-    .os-shell .os-window[data-opening="true"] {
-      opacity: 0;
-      transform: scale(0.94);
+/* The open is motion, so reduced-motion users get the window at once (no starting style). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (transition-behavior: allow-discrete) {
+    @starting-style {
+      .os-shell .os-window[data-opening="true"] {
+        opacity: 0;
+        transform: scale(0.94);
+      }
     }
   }
 }

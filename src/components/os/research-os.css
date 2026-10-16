@@ -103,8 +103,7 @@ html:has(.os-shell[data-theme-switching]) {
   /* Type. Persian and Arabic override the two families below, see :lang rules.
      Sizes follow section 3.4 except --text-display, which is noted below. */
   --os-font-ui:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
-    Arial, sans-serif;
+    ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   --os-font-display:
     Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
   --os-font-mono:
@@ -252,8 +251,8 @@ html:has(.os-shell[data-theme-switching]) {
 }
 .os-shell:lang(fa),
 .os-shell:lang(ar) {
-  --os-font-ui: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
-  --os-font-display: var(--font-vazirmatn), Tahoma, "Segoe UI", sans-serif;
+  --os-font-ui: var(--font-vazirmatn), sans-serif;
+  --os-font-display: var(--font-vazirmatn), Tahoma, sans-serif;
   letter-spacing: 0;
 }
 .os-shell:lang(zh) {

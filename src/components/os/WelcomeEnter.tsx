@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  Children,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import "./welcome-enter.css";
 
 /** How long the Enter wait runs before the workspace opens. */
@@ -13,9 +20,32 @@ export function setWelcomeLoaderDuration(ms: number) {
   loaderMs = ms;
 }
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+
+/** Follows the reduced-motion preference. Without matchMedia (jsdom) it never changes. */
+function subscribeMotion(listener: () => void) {
+  if (typeof window.matchMedia !== "function") return () => {};
+  const query = window.matchMedia(reducedMotionQuery);
+  query.addEventListener("change", listener);
+  return () => query.removeEventListener("change", listener);
+}
+
+/** The spinner animates unless reduced motion is requested. */
+function readCanAnimate() {
+  return (
+    typeof window.matchMedia !== "function" ||
+    !window.matchMedia(reducedMotionQuery).matches
+  );
+}
+
+/** The server render carries no animation; the client decides after hydration. */
+function serverCanAnimate() {
+  return false;
+}
+
 /**
  * The welcome Enter button. Pressing it disables the button, moves focus to a
- * polite status line and fills a 2px accent hairline, then opens the workspace
+ * polite status line and fills a Win7 progress bar, then opens the workspace
  * once the wait has played.
  */
 export function WelcomeEnter({
@@ -31,6 +61,11 @@ export function WelcomeEnter({
   const [loading, setLoading] = useState(false);
   const timer = useRef<number | null>(null);
   const statusLine = useRef<HTMLParagraphElement>(null);
+  const canAnimate = useSyncExternalStore(
+    subscribeMotion,
+    readCanAnimate,
+    serverCanAnimate,
+  );
 
   useEffect(
     () => () => {
@@ -74,7 +109,15 @@ export function WelcomeEnter({
         aria-busy={loading || undefined}
         onClick={enter}
       >
-        {children}
+        {/* The text keeps the accessible name but is visually hidden, so the
+            Aero face shows the arrow alone. */}
+        {Children.map(children, (child) =>
+          typeof child === "string" || typeof child === "number" ? (
+            <span className="os-enter-label">{child}</span>
+          ) : (
+            child
+          ),
+        )}
       </button>
       <div className="os-enter-progress" aria-hidden="true">
         {/* The duration sits on the animated span; animation-duration does not inherit. */}
@@ -87,6 +130,12 @@ export function WelcomeEnter({
         role="status"
         tabIndex={-1}
       >
+        {loading && (
+          <span
+            className={canAnimate ? "spinner animate" : "spinner"}
+            aria-hidden="true"
+          />
+        )}
         {loading ? status : ""}
       </p>
     </div>

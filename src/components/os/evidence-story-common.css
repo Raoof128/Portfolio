@@ -45,11 +45,18 @@
   line-height: 1.5;
 }
 
+/* Aero: the story is a group box, so it takes the Win7 white body and a hairline edge. */
+.os-shell .os-project-explorer .os-project-section .os-evidence-story {
+  border-color: #d5dfe5;
+  border-radius: 3px;
+  background: var(--win7-body-bg);
+}
+
 /* Story title is h2 (under the dossier's Overview); sub-heads are h3. */
 .os-shell .os-project-explorer .os-project-section .os-evidence-story h2 {
   margin: 0 0 var(--space-2);
   color: var(--os-text);
-  font-family: var(--os-font-display);
+  font-family: var(--win7-font);
   font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
   font-weight: 600;
   line-height: 1.25;
@@ -251,7 +258,7 @@
   }
 }
 
-/* Static rim on the evidence figure frame (v2.0, RIM RECIPE in showstopper.css). The
+/* Static rim on the evidence figure frame (v2.0 rim recipe; the Intelligence Glow layer is retired). The
    frame keeps its solid surface and hairline; the rim is a 1px edge painted once on
    ::after and never animates. Text and links carry no gradient. */
 .os-shell .os-project-explorer .os-project-section .os-evidence-story {
@@ -266,6 +273,8 @@
   background: var(--os-rim-gradient);
   pointer-events: none;
   opacity: var(--os-rim-opacity);
+  /* Aero stories use the group-box edge instead of the rim. */
+  display: none;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -310,4 +319,45 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* Aero pressed controls take the Win7 select gradient. The platform picker is a
+   joined segmented strip; the Zurvan and Simurgh controls stay separate. Roles and
+   aria-pressed are unchanged. */
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-evidence-story
+  button[aria-pressed="true"]:not(:disabled) {
+  color: var(--win7-body-text);
+  background: var(--win7-select-bg);
+  border-color: var(--win7-select-border);
+}
+.os-shell .os-project-explorer .os-project-section .os-story-platform-picker {
+  gap: 0;
+}
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button {
+  border-radius: 0;
+  margin-inline-start: -1px;
+}
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button:first-of-type {
+  margin-inline-start: 0;
+  border-start-start-radius: 3px;
+  border-end-start-radius: 3px;
+}
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-story-platform-picker
+  button:last-of-type {
+  border-start-end-radius: 3px;
+  border-end-end-radius: 3px;
 }

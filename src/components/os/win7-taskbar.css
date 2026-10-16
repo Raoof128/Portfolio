@@ -1,0 +1,957 @@
+/* Win7 Aero layer, taskbar lane. Loaded from ResearchOS.tsx after win7-theme.css. Covers the
+   bottom taskbar (dock and tray), the Start orb, the Start menu (search dialog) and the
+   clock. Logical properties throughout, so RTL mirrors. */
+
+.os-shell.win7 {
+  /* Tray widths on phones, sized to the chips that remain. From 480px the clock keeps its
+     time; below 480px the tray keeps only the chips. */
+  --win7-tray-phone-w: 248px;
+  --win7-tray-xs-w: 192px;
+}
+
+/* Taskbar: one full-width glass strip. The end padding keeps pinned apps clear of the
+   tray. The strip scrolls sideways when pins overflow, and the orb sticks to the start. */
+.os-shell.win7 .os-dock {
+  position: fixed;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  inset-block-start: auto;
+  inset-block-end: 0;
+  z-index: 40;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: var(--win7-taskbar-h);
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  padding-inline: 4px var(--win7-tray-w);
+  transform: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  border: 0;
+  border-block-start: 1px solid var(--win7-frame-border);
+  border-radius: 0;
+  background: var(--win7-taskbar-bg);
+  box-shadow:
+    inset 0 1px 0 var(--win7-glass-edge),
+    0 -4px 16px rgb(0 0 0 / 0.25);
+  -webkit-backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
+  color: var(--win7-text-glass);
+  text-shadow: var(--win7-text-shadow);
+}
+.os-shell.win7 .os-dock::-webkit-scrollbar {
+  display: none;
+}
+.os-shell.win7 .os-dock > * {
+  flex: none;
+}
+
+/* Start orb: the R monogram in a glossy round button. */
+.os-shell.win7 .os-dock .os-dock-home {
+  position: sticky;
+  inset-inline-start: 4px;
+  z-index: 1;
+  box-sizing: border-box;
+  width: var(--win7-orb-size);
+  height: var(--win7-orb-size);
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(0 0 0 / 0.45);
+  border-radius: 50%;
+  background: var(--win7-orb-grad);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    0 2px 6px rgb(0 0 0 / 0.4);
+  color: #ffffff;
+}
+.os-shell.win7 .os-dock .os-dock-home svg {
+  width: 22px;
+  height: 22px;
+  color: #ffffff;
+  fill: currentColor;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5));
+}
+.os-shell.win7 .os-dock .os-dock-home:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    0 0 8px rgb(140 210 255 / 0.9);
+}
+.os-shell.win7 .os-dock .os-dock-home[aria-current="page"] {
+  box-shadow:
+    inset 0 2px 4px rgb(0 0 0 / 0.45),
+    0 1px 0 rgb(255 255 255 / 0.6);
+}
+.os-shell.win7 .os-dock .os-dock-home:focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--win7-focus-outer);
+}
+
+/* Divider between the orb and the pins. */
+.os-shell.win7 .os-dock .os-dock-divider {
+  width: 1px;
+  height: 28px;
+  margin-inline: 4px;
+  background: rgb(0 0 0 / 0.25);
+  box-shadow: 1px 0 0 rgb(255 255 255 / 0.5);
+}
+
+/* Pinned apps: 36px glass buttons (44px on phones), icon and label. */
+.os-shell.win7 .os-dock .os-dock-app {
+  position: relative;
+  box-sizing: border-box;
+  height: var(--win7-pin-h);
+  min-width: 40px;
+  min-height: 0;
+  margin: 0;
+  padding: 0 8px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: none;
+  color: var(--win7-text-glass);
+  text-shadow: var(--win7-text-shadow);
+  white-space: nowrap;
+}
+.os-shell.win7 .os-dock .os-small-icon {
+  display: inline-flex;
+  color: inherit;
+}
+.os-shell.win7 .os-dock .os-small-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.os-shell.win7 .os-dock .os-dock-app > span:last-child {
+  max-width: 14em;
+  font-size: var(--win7-ui-size);
+  line-height: 1.2;
+  color: var(--win7-text-glass);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.os-shell.win7 .os-dock .os-dock-app:is(:hover, :focus-visible) {
+  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  border-color: rgb(255 255 255 / 0.7);
+  box-shadow: 0 0 8px rgb(140 210 255 / 0.9);
+}
+/* Keyboard focus keeps the dark inner ring of the two-tone pair, since the glow above
+   would otherwise replace it. */
+.os-shell.win7 .os-dock .os-dock-app:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--win7-focus-inner),
+    0 0 8px rgb(140 210 255 / 0.9);
+}
+/* Active page: a pressed Aero button. Placed after hover so it wins while both apply. */
+.os-shell.win7 .os-dock .os-dock-app[aria-current="page"] {
+  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.65));
+  border-color: rgb(0 0 0 / 0.35);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.25);
+}
+/* The current-page dot from research-os.css is retired; a minimised app keeps its dot. */
+.os-shell.win7 .os-dock a[aria-current="page"]::after {
+  content: none;
+}
+.os-shell.win7 .os-dock .os-dock-app[data-minimized="true"]::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 2px;
+  inset-inline: 0;
+  width: 4px;
+  height: 4px;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: var(--win7-text-glass);
+}
+
+/* Brand chip and the visually hidden text beside it. The text stays focusable and
+   announced; only the sight of it goes. */
+.os-shell.win7 .os-brand {
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-brand svg {
+  width: 16px;
+  height: 16px;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-brand:hover {
+  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  border-color: rgb(255 255 255 / 0.7);
+}
+.os-shell.win7 .os-brand:focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--win7-focus-outer);
+}
+.os-shell.win7 .os-brand strong,
+.os-shell.win7 .os-brand > span,
+.os-shell.win7 .os-topbar .os-control > span,
+.os-shell.win7 .os-language summary > span {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Tray: a transparent strip on the taskbar's end, above the dock. */
+.os-shell.win7 .os-topbar {
+  position: fixed;
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  inset-block-start: auto;
+  inset-block-end: 0;
+  top: auto;
+  z-index: 41;
+  box-sizing: border-box;
+  width: var(--win7-tray-w);
+  height: var(--win7-taskbar-h);
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  padding-inline: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  color: var(--win7-text-glass);
+  text-shadow: var(--win7-text-shadow);
+}
+.os-shell.win7 .os-top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* Chips: 28px icon buttons (44px on phones). The keyboard hint stays out of the tray. */
+.os-shell.win7 .os-topbar .os-control {
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--win7-text-glass);
+  font-size: var(--win7-ui-size);
+}
+.os-shell.win7 .os-topbar .os-control svg {
+  width: 16px;
+  height: 16px;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-topbar .os-control kbd {
+  display: none;
+}
+.os-shell.win7 .os-topbar .os-control:hover {
+  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  border-color: rgb(255 255 255 / 0.7);
+  box-shadow: 0 0 8px rgb(140 210 255 / 0.9);
+}
+.os-shell.win7 .os-topbar .os-control:focus-visible {
+  box-shadow: 0 0 0 2px var(--win7-focus-inner);
+}
+
+/* Theme switch: a 40 by 24px pill (44px hit area on phones). Off is plain glass with the
+   knob at the start; on is blue with the knob at the end. The track is drawn on ::after
+   so the knob (::before, from theme-switch.css) and the power glyph keep their layers. */
+.os-shell.win7 .os-topbar .os-theme-switch {
+  --sw-pad: 0px;
+  isolation: isolate;
+  box-sizing: border-box;
+  position: relative;
+  width: 40px;
+  height: 24px;
+  min-width: 40px;
+  min-height: 24px;
+  margin: 0 2px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-topbar .os-theme-switch::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: var(--sw-pad);
+  inset-inline: 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(0 0 0 / 0.45);
+  border-radius: 12px;
+  background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.12));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+.os-shell.win7 .os-topbar .os-theme-switch::before {
+  inset: auto;
+  inset-block-start: calc(var(--sw-pad) + 4px);
+  inset-inline-start: 3px;
+  inset-inline-end: auto;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+}
+.os-shell.win7 .os-topbar .os-theme-switch svg {
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"] {
+  justify-content: flex-start;
+}
+.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::after {
+  background: linear-gradient(#8fd3f8, #2f8fe0);
+  border-color: rgb(0 0 0 / 0.6);
+}
+.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::before {
+  inset-inline-start: auto;
+  inset-inline-end: 3px;
+  background: #ffffff;
+}
+.os-shell.win7 .os-topbar .os-theme-switch:focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--win7-focus-outer);
+}
+
+/* Theme state: a visible 12px label beside the switch on desktop. */
+.os-shell.win7 .os-theme-state {
+  display: inline-flex;
+  margin-inline-end: 4px;
+  font-size: var(--win7-small-size);
+  line-height: 1.2;
+  color: var(--win7-text-glass);
+  white-space: nowrap;
+}
+
+/* Language: a short code on the summary, with a Win7 menu below it. */
+.os-shell.win7 .os-language {
+  position: relative;
+  flex: none;
+  font-size: var(--win7-ui-size);
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-language summary {
+  box-sizing: border-box;
+  min-width: 28px;
+  height: 28px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--win7-text-glass);
+  list-style: none;
+  cursor: pointer;
+}
+.os-shell.win7 .os-language summary::-webkit-details-marker {
+  display: none;
+}
+.os-shell.win7 .os-language summary::after {
+  content: attr(data-locale-code);
+  order: 0;
+  font-size: var(--win7-small-size);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.os-shell.win7 .os-language summary > svg:first-of-type {
+  width: 16px;
+  height: 16px;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-language summary > svg:last-of-type {
+  order: 1;
+  width: 12px;
+  height: 12px;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-language summary:is(:hover, :focus-visible),
+.os-shell.win7 .os-language[open] summary {
+  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  border-color: rgb(255 255 255 / 0.7);
+}
+.os-shell.win7 .os-language summary:focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--win7-focus-outer);
+}
+.os-shell.win7 .os-language nav {
+  position: absolute;
+  inset-block-start: auto;
+  inset-block-end: calc(100% + 6px);
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  top: auto;
+  z-index: 60;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 180px;
+  display: grid;
+  gap: 0;
+  padding: 2px;
+  border: 1px solid var(--win7-frame-border);
+  border-radius: 3px;
+  background: var(--win7-body-bg);
+  color: var(--win7-body-text);
+  box-shadow: var(--win7-frame-shadow);
+  transform-origin: bottom center;
+  text-shadow: none;
+}
+.os-shell.win7 .os-language[open] nav {
+  animation: none;
+}
+.os-shell.win7 .os-language nav a {
+  box-sizing: border-box;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--win7-body-text);
+  font-size: var(--win7-ui-size);
+  text-shadow: none;
+}
+.os-shell.win7 .os-language nav a svg {
+  width: 14px;
+  height: 14px;
+  color: var(--win7-body-text);
+}
+.os-shell.win7 .os-language nav a:is(:hover, :focus-visible),
+.os-shell.win7 .os-language nav a[aria-current="true"] {
+  background: var(--win7-select-bg);
+  border-color: var(--win7-select-border);
+  color: #000000;
+}
+
+/* Clock: time over a short date, centred. The date is a span, so the clock keeps one
+   time element per variant. */
+.os-shell.win7 .os-top-clock {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-width: 0;
+  margin-inline: 4px 2px;
+  padding-inline: 2px;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--win7-text-glass);
+  font-size: var(--win7-ui-size);
+}
+.os-shell.win7 .os-top-clock time {
+  font-size: var(--win7-ui-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--win7-text-glass);
+}
+.os-shell.win7 .os-top-date {
+  font-size: var(--win7-small-size);
+  color: var(--win7-text-glass);
+  white-space: nowrap;
+}
+
+/* Locked state: the tray becomes a strip in the top-right corner with no bar. */
+.os-shell.win7:has(> .os-welcome) > .os-topbar {
+  inset-block-start: 12px;
+  inset-block-end: auto;
+  width: auto;
+  height: auto;
+  padding-inline: 0;
+  background: transparent;
+}
+
+/* Start menu: the search dialog opens above the orb. The left pane is white in both
+   themes, and the right column is dark glass with the scopes and key hints. The pane
+   takes light --os-* tokens here, so the existing rules read white-on-light. */
+.os-shell.win7 .os-search-dialog {
+  --os-text: #000000;
+  --os-muted: #3d3d3d;
+  --os-line: #c0c1cd;
+  --os-control-line: #7a7a7a;
+  --os-surface: #ffffff;
+  --os-elevated: #ffffff;
+  --os-glass: #ffffff;
+  --os-accent: #0066cc;
+  --os-accent-tint: #cce8fc;
+  --os-focus: #0066cc;
+  position: fixed;
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  inset-block-start: auto;
+  inset-block-end: calc(var(--win7-taskbar-h) + 4px);
+  box-sizing: border-box;
+  width: min(560px, 100vw);
+  max-width: 100vw;
+  height: auto;
+  max-height: min(600px, calc(100dvh - var(--win7-taskbar-h) - 16px));
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--win7-frame-border);
+  border-radius: 6px 6px 0 0;
+  background: var(--win7-body-bg);
+  color: var(--win7-body-text);
+  box-shadow: var(--win7-frame-shadow);
+  overflow: hidden;
+  font-size: var(--win7-ui-size);
+}
+.os-shell.win7 .os-search-dialog[open] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  animation: none;
+}
+.os-shell.win7 .os-search-dialog::backdrop {
+  background: transparent;
+  animation: none;
+}
+.os-shell.win7 .os-search-heading {
+  grid-column: 1;
+  grid-row: 1;
+  box-sizing: border-box;
+  padding: 10px 12px 8px;
+  background: #ffffff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-block-end: 1px solid #c0c1cd;
+}
+.os-shell.win7 .os-search-heading h2 {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+}
+.os-shell.win7 .os-search-heading p {
+  color: #3d3d3d;
+  font-size: var(--win7-ui-size);
+}
+.os-shell.win7 .os-search-count {
+  grid-column: 1;
+  grid-row: 2;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  background: #ffffff;
+  border-block-end: 1px solid #e3e3e3;
+  color: #3d3d3d;
+  font-size: var(--win7-small-size);
+}
+.os-shell.win7 .os-search-body {
+  grid-column: 1;
+  grid-row: 3;
+  min-height: 0;
+  background: #ffffff;
+  overflow-y: auto;
+}
+.os-shell.win7 .os-search-field {
+  grid-column: 1;
+  grid-row: 4;
+  box-sizing: border-box;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 10px;
+  gap: 8px;
+  border: 0;
+  border-block-start: 1px solid #c0c1cd;
+  border-radius: 0;
+  background: #ffffff;
+}
+.os-shell.win7 .os-search-field > svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: #3d3d3d;
+}
+.os-shell.win7 .os-search-field:focus-within {
+  outline: 2px solid #0066cc;
+  outline-offset: -2px;
+}
+.os-shell.win7 .os-search-field input {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  height: 26px;
+  margin: 0;
+  padding: 0 6px;
+  border: 1px solid #7a7a7a;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
+  font-size: var(--win7-ui-size);
+}
+.os-shell.win7
+  .os-search-dialog
+  .os-search-field
+  input:is(:focus, :focus-visible) {
+  outline: none;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
+}
+.os-shell.win7 .os-search-field input::placeholder {
+  color: #5a5a5a;
+  opacity: 1;
+}
+.os-shell.win7 .os-search-dialog .os-control {
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  color: #000000;
+}
+.os-shell.win7 .os-search-dialog .os-control svg {
+  width: 16px;
+  height: 16px;
+  color: #000000;
+}
+.os-shell.win7 .os-search-dialog .os-control:hover {
+  background: var(--win7-select-bg);
+  border-color: var(--win7-select-border);
+}
+.os-shell.win7 .os-search-heading .os-control {
+  flex: none;
+}
+/* Scope buttons: a vertical list in the dark column. */
+.os-shell.win7 .os-search-scopes {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+  gap: 4px;
+  min-height: 0;
+  margin: 0;
+  padding: 12px 10px 92px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--win7-start-right);
+  color: #ffffff;
+}
+.os-shell.win7 .os-search-scopes button {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 30px;
+  margin: 0;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  color: #ffffff;
+  font-size: var(--win7-ui-size);
+  font-weight: 400;
+  text-align: start;
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
+}
+.os-shell.win7 .os-search-scopes button:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: rgb(255 255 255 / 0.35);
+  color: #ffffff;
+}
+.os-shell.win7 .os-search-scopes button[aria-pressed="true"] {
+  background: rgb(255 255 255 / 0.2);
+  border-color: rgb(255 255 255 / 0.6);
+  font-weight: 600;
+}
+/* Result rows on the white pane. */
+.os-shell.win7 .os-search-results {
+  padding: 4px 6px;
+}
+.os-shell.win7 .os-search-results li + li {
+  border-block-start: 1px solid #e3e3e3;
+}
+.os-shell.win7 .os-search-result {
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  color: #000000;
+}
+.os-shell.win7 .os-search-result:is(:hover, :focus-visible) {
+  background: var(--win7-select-bg);
+  box-shadow: inset 0 0 0 1px var(--win7-select-border);
+}
+/* The white outline from the base focus rule would vanish on the white pane, so focus
+   gets a blue ring (5.6:1 on white). */
+.os-shell.win7 .os-search-result:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: -2px;
+}
+.os-shell.win7 .os-search-result-icon {
+  border-color: #c0c1cd;
+  color: #3d3d3d;
+}
+.os-shell.win7 .os-search-result small,
+.os-shell.win7 .os-result-kind {
+  color: #3d3d3d;
+}
+/* Key hints: bottom of the dark column. */
+.os-shell.win7 .os-search-bottom {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  inset-inline-start: auto;
+  box-sizing: border-box;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: var(--win7-small-size);
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
+}
+.os-shell.win7 .os-search-bottom > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+}
+.os-shell.win7 .os-search-bottom kbd {
+  padding: 1px 5px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 3px;
+  background: rgb(0 0 0 / 0.2);
+  color: #ffffff;
+  font-size: var(--win7-small-size);
+}
+
+/* Phones (700px and below): the taskbar keeps the orb, a scrolling pin row and the tray
+   chips. The clock shows time only, and the Start menu is full width with a wrapping
+   scope row above the results. */
+@media (max-width: 700px) {
+  .os-shell.win7 .os-dock {
+    padding-inline: 4px var(--win7-tray-phone-w);
+    gap: 2px;
+  }
+  .os-shell.win7 .os-dock .os-dock-app {
+    min-width: 44px;
+  }
+  .os-shell.win7 .os-dock .os-dock-divider {
+    margin-inline: 2px;
+  }
+  .os-shell.win7 .os-brand,
+  .os-shell.win7 .os-theme-state,
+  .os-shell.win7 .os-top-date {
+    display: none;
+  }
+  .os-shell.win7 .os-topbar {
+    width: auto;
+    max-width: 100%;
+    padding-inline: 0 4px;
+  }
+  .os-shell.win7 .os-topbar .os-control,
+  .os-shell.win7 .os-language summary {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  /* The code, the Languages glyph and the chevron need about 60px, so on phones the
+     chevron goes and the summary keeps its 44px target. */
+  .os-shell.win7 .os-language summary {
+    justify-content: center;
+    padding: 0;
+    gap: 2px;
+  }
+  .os-shell.win7 .os-language summary > svg:last-of-type {
+    display: none;
+  }
+  .os-shell.win7 .os-topbar .os-theme-switch {
+    --sw-pad: 10px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 10px;
+  }
+  .os-shell.win7 .os-topbar .os-theme-switch::after {
+    inset-block: var(--sw-pad);
+  }
+  .os-shell.win7 .os-language nav a {
+    min-height: 44px;
+  }
+  .os-shell.win7 .os-top-clock {
+    margin-inline: 2px 0;
+  }
+  .os-shell.win7 .os-search-dialog {
+    width: 100vw;
+    border-inline: 0;
+    border-radius: 0;
+  }
+  .os-shell.win7 .os-search-dialog[open] {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  }
+  .os-shell.win7 .os-search-heading,
+  .os-shell.win7 .os-search-count,
+  .os-shell.win7 .os-search-body,
+  .os-shell.win7 .os-search-field {
+    grid-column: 1;
+  }
+  .os-shell.win7 .os-search-heading {
+    grid-row: 1;
+  }
+  .os-shell.win7 .os-search-scopes {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px 10px;
+    border-block-end: 1px solid #c0c1cd;
+    background: #ffffff;
+    color: #000000;
+  }
+  .os-shell.win7 .os-search-scopes button {
+    width: auto;
+    min-height: 44px;
+    padding: 0 12px;
+    border-color: #7a7a7a;
+    background: #ffffff;
+    color: #000000;
+    text-shadow: none;
+  }
+  .os-shell.win7 .os-search-scopes button[aria-pressed="true"] {
+    background: var(--win7-select-bg);
+    border-color: var(--win7-select-border);
+    color: #000000;
+  }
+  .os-shell.win7 .os-search-count {
+    grid-row: 3;
+  }
+  .os-shell.win7 .os-search-body {
+    grid-row: 4;
+  }
+  .os-shell.win7 .os-search-field {
+    grid-row: 5;
+  }
+  .os-shell.win7 .os-search-bottom {
+    display: none;
+  }
+}
+
+/* Narrow phones (below 480px): the tray keeps only the chips, and the pin labels are
+   visually hidden, leaving icon buttons with 44px targets. */
+@media (max-width: 479px) {
+  .os-shell.win7 .os-dock {
+    padding-inline: 4px var(--win7-tray-xs-w);
+  }
+  .os-shell.win7 .os-top-clock {
+    display: none;
+  }
+  .os-shell.win7 .os-dock .os-dock-app > span:last-child {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Forced colours: gradients and glows drop out, so the orb, pins and switch take system
+   colours with a visible edge. Focus outlines stay. */
+@media (forced-colors: active) {
+  .os-shell.win7 .os-dock .os-dock-home,
+  .os-shell.win7 .os-topbar .os-theme-switch::after {
+    background: ButtonFace;
+    border: 1px solid ButtonText;
+  }
+  .os-shell.win7 .os-dock .os-dock-app[aria-current="page"],
+  .os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::after {
+    background: Highlight;
+    color: HighlightText;
+  }
+  .os-shell.win7 .os-search-scopes button[aria-pressed="true"] {
+    background: Highlight;
+    color: HighlightText;
+  }
+}

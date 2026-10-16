@@ -169,11 +169,20 @@
   }
 }
 
+/* Reduced motion: every animation and transition stops, and state changes are
+   instant. The poster pose and the explorer and terminal surfaces stay static. */
 @media (prefers-reduced-motion: reduce) {
-  .os-shell .os-project-motion .os-motion-stage *,
-  .os-shell .os-project-motion button {
+  .os-shell .os-project-motion,
+  .os-shell .os-project-motion *,
+  .os-shell .os-project-motion *::before,
+  .os-shell .os-project-motion *::after,
+  .os-shell .os-project-explorer,
+  .os-shell .os-project-explorer *,
+  .os-shell .os-terminal,
+  .os-shell .os-terminal * {
     animation: none !important;
     transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
 

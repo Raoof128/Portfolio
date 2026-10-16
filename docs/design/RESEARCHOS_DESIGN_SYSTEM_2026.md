@@ -496,3 +496,130 @@ Contrast, computed in WCAG relative luminance:
 - Atlas pulses: cut in v2.0.
 - Stat callout accessibility name: the link name gains the figures. Accepted if the ResearchOS and OSApplicationBridge tests pass; otherwise add the text as an sr-only sibling.
 - Attribution: the palette is this brand's own. It is not attributed to Apple.
+
+## 10. Windows 7 Aero edition (v3.0, owner decision 2026-10-16)
+
+### Decision
+
+The owner asked for the whole ResearchOS interface to be restyled in a Windows 7 Aero look, built on 7.css v0.21.1 (MIT, khang-nd.github.io/7.css). Rules:
+
+- Only dist/7.scoped.css is loaded, imported from ResearchOS.tsx and global-not-found.tsx. Every 7.css rule is prefixed .win7, so the unscoped sheet is never loaded.
+- The shell root is div.os-shell.win7. The global 404 wrapper is main.global-not-found.win7. Nothing else is wrapped.
+- Two themes: Aero (light, sky-blue wallpaper) and Aero Night (dark, navy wallpaper, darker glass). Window bodies are white in both, so reading contrast stays high.
+- The Aero layer is a set of CSS files loaded after research-os.css and liquid-glass.css. Those two files stay as the source of the --os-* roles that the contrast tests read.
+
+### Trademark and copy boundaries
+
+- No Microsoft or Windows logo, flag, wallpaper image or Segoe UI font file. The word Windows does not appear in UI text, i18n strings, class names or attributes. Code comments say Aero or Win7.
+- Wallpapers are CSS gradients only. The Start orb is the existing R monogram (OSMark) in a glossy orb. Icons stay Lucide inside glossy tiles.
+- Font stacks do not name Segoe UI. The research flagged the name and the owner rule bans it; macOS falls through to system-ui anyway. Vazirmatn stays for fa and ar, JetBrains Mono stays for code.
+- No new webfonts, images or libraries beyond 7.css.
+- Not edited: src/i18n, src/lib/data.ts, public/, os-copy.ts, window-copy.ts. Accessible names come from those files and stay exact.
+
+### Component mapping
+
+- Welcome screen becomes the logon: section.os-welcome on the wallpaper. The portrait sits in a white user-tile frame, h1#os-lock-name is the name, Enter is a round glossy arrow button. The 3-second wait shows a progress bar and a busy spinner beside the existing status line.
+- Top bar and dock become one bottom glass taskbar. The Start orb is a.os-dock-home (the R home link). Pinned apps are a.os-dock-app. The tray on the right holds the brand (icon only, sr-only text), search, lock, theme switch (role=switch), language (details, shown as a short code) and the clock with the date.
+- Search dialog becomes the Start menu above the orb: white left pane (heading, count, results, search field at the bottom), dark glass right column (scope buttons, key hints).
+- Reading windows become .window.glass with .title-bar (back button, title, caption controls) and .window-body.has-scrollbar. Caption buttons: Minimise (is-minimize), Maximise or Restore (is-maximize or is-restore, from aria-pressed), Close (is-close). Copy link and move/resize sit in the caption group.
+- Desktop hero becomes a Getting Started window (section.os-intro, eyebrow moved into the title bar).
+- Proof Atlas becomes a window; its heading acts as the title bar.
+- App tiles become desktop icons (a.os-app): uniform glossy tiles, label plates, Win7 selection. Hues are retired.
+- Project explorer becomes Windows Explorer style in the sense of layout only: address bar (div.os-explorer-address, aria-hidden), navigation pane (aside.os-explorer-sidebar) as a tree, listview rows (.os-project-rows), status bar (.os-explorer-footer).
+- Project dossier becomes a properties page with groupbox-style sections.
+- Terminal card becomes a command prompt window: black console (pre.os-terminal-body) with a glass title bar.
+- 404 (global and locale) becomes a Win7 error dialog: title bar with the 404 code, the existing inline error svg, Win7 buttons.
+- Contact and language groups become fieldset/legend groupboxes with 7.css inputs.
+
+### Tokens
+
+Declared on .win7 in win7-theme.css. Light (Aero) is the default. Night overrides with the selectors .win7[data-appearance=dark] and [data-appearance=dark] .win7 (both needed: the shell carries both, the 404 wrapper sits under html).
+
+- --win7-wallpaper: light radial-gradient(120% 55% at 20% 108%, #d8f1ff 0%, transparent 60%), radial-gradient(70% 38% at 88% 2%, rgba(255,255,255,.75), transparent 62%), a faint diagonal streak, linear-gradient(180deg, #1c63ad 0%, #3a8fd6 45%, #6cb8ec 74%, #2a78c0 100%). Night: radial-gradient(120% 55% at 22% 110%, #1f4f8a 0%, transparent 60%), radial-gradient(80% 40% at 90% 0%, rgba(120,170,230,.18), transparent 60%), linear-gradient(180deg, #030813 0%, #0a1d3a 48%, #040a16 100%).
+- --win7-glass-tint: light rgba(196,228,250,.42) | night rgba(14,36,72,.62).
+- --win7-glass-tint-solid (reduced transparency): light #bcdcf5 | night #17335e.
+- --win7-glass-blur: 14px (8px on phones; 0 under reduced transparency).
+- --win7-glass-edge (inner white highlight): light rgba(255,255,255,.85) | night rgba(255,255,255,.22).
+- --win7-frame-border: light rgba(16,48,92,.8) | night rgba(0,0,0,.85).
+- --win7-frame-shadow: 0 8px 24px rgba(0,0,0,.35) plus inset 0 1px 0 var(--win7-glass-edge).
+- --win7-title-base (also --w7-w-bg): light #5b93cc | night #1d3c68.
+- --win7-title-bg (also --w7-w-glass): linear-gradient(180deg, rgba(255,255,255,.6) 0%, rgba(255,255,255,.08) 50%, transparent 52%, rgba(255,255,255,.14) 100%) over var(--win7-title-base).
+- --win7-taskbar-bg: light linear-gradient(180deg, rgba(214,238,252,.72), rgba(120,180,230,.62)) | night linear-gradient(180deg, rgba(40,78,130,.72), rgba(10,26,52,.82)).
+- --win7-taskbar-solid: light #cfe9fa | night #15294a.
+- --win7-text-glass (text on glass and taskbar): light #000000 | night #ffffff.
+- --win7-text-shadow: light 0 0 6px rgba(255,255,255,.85) | night 0 1px 2px rgba(0,0,0,.85).
+- --win7-plate (dark translucent plate behind labels and logon text): light rgba(0,22,46,.55) | night rgba(0,0,0,.5). Text on a plate is #ffffff.
+- --win7-body-bg #ffffff (both). --win7-body-text #000000 (both). --win7-body-muted #3d3d3d (both).
+- --win7-link #0066cc (both, 5.56:1 on white). --win7-link-hover #003d99 (both, about 9.9:1).
+- --win7-select-bg: linear-gradient(rgba(204,236,252,.95), rgba(144,205,245,.9)) with black text. --win7-select-border #6fb8ec.
+- --win7-focus: light #0066cc | night #9fd4ff.
+- --win7-orb-grad: radial-gradient(circle at 50% 32%, #f1fbff 0%, #9bdcff 18%, #2f8fe0 58%, #0c4c97 100%) (night outer stop #0a3570).
+- --win7-tile-bg: light #3b8bd4 | night #24558f.
+- --win7-start-right (Start panel right column, both themes): linear-gradient(180deg, rgba(30,72,122,.94), rgba(12,30,58,.96)), text #ffffff.
+- --win7-progress-fill #0e7a2e (both). --win7-danger #c42b1c (both).
+- --win7-font: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif. fa and ar override --win7-font to var(--font-vazirmatn), system-ui, sans-serif. zh keeps the research-os zh stack.
+- --w7-font: var(--win7-font). --w7-surface #f0f0f0. --w7-tab-bg #ffffff. --w7-link-c var(--win7-link). --w7-link-c-h var(--win7-link-hover). --w7-title-c #000000.
+- Sizes: --win7-ui-size 13px; --win7-small-size 12px (minimum); --win7-body-size 16px.
+- Geometry: --win7-taskbar-h 44px (52px on phones); --win7-orb-size 40px (44px phones); --win7-pin-h 36px (44px phones); --win7-tray-w 340px; --win7-title-h 30px; --win7-caption-w 30px (44px phones); --win7-radius 6px (windows), 3px (controls).
+
+### Contrast (WCAG 2.2 AA, estimates from flat colours)
+
+- Body #000 on #fff about 21:1. Muted #3d3d3d on #fff about 10.8:1. Link #0066cc about 5.56:1. Link hover #003d99 about 9.9:1.
+- Black title text on #5b93cc about 6.5:1. White on night title base #1d3c68 about 11.7:1.
+- Plain white text on the light wallpaper mid-blue is about 3.3:1, which fails for small text. Desktop labels, logon text and captions therefore sit on --win7-plate (about 6:1 estimated). Text-shadow does not count toward contrast.
+- Taskbar text on the composite glass is estimated above 10:1.
+- Progress fill #0e7a2e: about 5.5:1 on white and about 4.0:1 on a #ddd track (passes the 3:1 non-text rule). The 7.css default #0bd82c is about 1.4:1 and must not be used.
+- Focus rings #0066cc (light) and #9fd4ff (night).
+- Glass areas must be checked with a real screenshot and a contrast tool before sign-off.
+
+### Typography
+
+- UI labels 13px. Small text 12px minimum. Reading body 16px, line-height 1.55. Headline (h1 on the hero and logon) clamp(28px, 4.2vw, 40px), weight 300.
+- Nothing below 12px. Buttons, tree and list rows use 13px.
+
+### Geometry
+
+- Taskbar 44px on desktop, 52px at 700px and below.
+- Orb 40px desktop, 44px phones. Pinned buttons 36px desktop, 44px phones (44px minimum target on phones).
+- Tray 340px on desktop. Tray chips 28px desktop, 44px phones.
+- Start panel: width min(560px, 100vw), height min(600px, 100dvh minus taskbar minus 16px), bottom edge 4px above the taskbar.
+- Window title bar 30px. Caption buttons 30 by 22px desktop, 44 by 44px phones. Frame: 4px glass border around a white body, radius 6px.
+- Desktop icon cell 104px wide; glossy tile 52px.
+- --os-dock-clearance = taskbar height plus 24px plus env(safe-area-inset-bottom).
+
+### Window anatomy
+
+Glass frame (title gradient, 4px edge) > .title-bar (back button, title text, caption group) > .window-body (white, has-scrollbar) > optional footer styled as a status bar (--w7-surface) > resize grip at the inline-end bottom corner.
+
+### RTL
+
+All new CSS uses logical properties (inset-inline, margin-inline, padding-inline, border-inline-end). The taskbar, tray, caption group and Explorer pane mirror through dir on html. Only the back-arrow icon is flipped, with :dir(rtl). fa and ar use Vazirmatn.
+
+### Phones (700px and below)
+
+- Taskbar 52px. The pinned-app row scrolls inside the bar (its own scroller, not the page). Pin labels are visually hidden and the icon keeps a 44px target. The tray keeps language, theme, search and time.
+- Windows are full width and full height above the taskbar, with no radius. The override uses !important to beat the inline rect.
+- Desktop icons in a 4-column grid. Windows stack.
+- Nothing wider than the viewport at 320px. No page-level horizontal scroll.
+
+### Motion, transparency and forced colours
+
+- prefers-reduced-motion: no animation or transition, including the 7.css pulses and the progress motion. State changes are instant. The 3-second welcome timer stays, but the bar shows a static 40 percent fill and the spinner is static.
+- prefers-reduced-transparency: backdrop-filter removed; glass tokens switch to the solid variants.
+- forced-colors: gradients and shadows removed, system colours used, focus outline kept.
+
+### Retired
+
+- showstopper.css (Intelligence Glow), welcome-show.css, desktop-show.css, dock-show.css.
+- Pointer light (--mx, --my) in spotlight.ts. The dock-origin handler stays only while the window open animation reads it.
+- Per-app hue palette, dock neighbour magnification, floating top bar, the Quiet Depth shell skin. research-os.css and liquid-glass.css stay as token sources for the contrast tests.
+
+### Risks and follow-ups
+
+- package.json and package-lock.json are modified in the working tree (7.css 0.21.1 pin). Mention this to the owner before any commit.
+- The Raouf Change Protocol requires AGENT.md and CHANGELOG.md entries before a commit. The lanes do not write them.
+- The lanes do not commit, push or deploy.
+- ResearchOS.tsx is edited by three lanes: foundations first, then taskbar and windows. Each re-reads the file before every Edit and touches only its own blocks.
+- Firefox does not show 7.css styled scrollbars. Accepted.
+- Open: src/i18n/index.ts still names "Segoe UI" in its fontFamily strings (en, es, zh and the rest). The locale layout applies that string inline, so the font rule is not yet met at the page body. The file is outside this run's edit list and the owner decides whether to change it. src/app/globals.css no longer names it.
+- Open: InvisibleWindowEvidenceStory.tsx labels one platform button "Windows 10/11". It is research content, not chrome, and the file is outside this run's edit list. The owner decides whether that label stays or becomes a copy change.

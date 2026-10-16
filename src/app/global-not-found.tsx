@@ -7,6 +7,8 @@ import {
 } from "@/components/os/GlobalNotFoundContent";
 import "@/components/os/controls.css";
 import "@/components/os/research-os.css";
+import "7.css/dist/7.scoped.css";
+import "@/components/os/win7-theme.css";
 import "./global-not-found.css";
 
 export const metadata: Metadata = {

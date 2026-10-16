@@ -1,0 +1,138 @@
+/* Win7 polish layer (orchestrator pass). Loaded last, after every win7 lane file.
+   Fixes found in the browser review: the shell's own surface hid the wallpaper, text
+   plates read as black boxes, title bars were opaque, and the heading focus ring drew a
+   box. The wallpaper is deep enough that white text with a shadow clears 4.5:1 without
+   plates. */
+
+/* Aero (light): a deep blue field with two soft light swoops kept away from the centre
+   column, so white text never sits on the brightest part. Darkest white-text pair is
+   about 5:1 on #1a68b8. Aero Night keeps the navy wallpaper from win7-theme.css. */
+.win7 {
+  --win7-wallpaper:
+    radial-gradient(
+      60% 45% at 85% 12%,
+      rgb(120 200 255 / 0.32),
+      transparent 70%
+    ),
+    radial-gradient(70% 50% at 8% 95%, rgb(90 210 255 / 0.28), transparent 70%),
+    conic-gradient(
+      from 210deg at 70% 120%,
+      transparent 0deg,
+      rgb(255 255 255 / 0.1) 18deg,
+      transparent 36deg,
+      rgb(255 255 255 / 0.06) 52deg,
+      transparent 70deg
+    ),
+    linear-gradient(160deg, #0b3f80 0%, #135aa6 40%, #1a68b8 62%, #0d4689 100%);
+  --win7-plate: transparent;
+  --win7-text-shadow: 0 1px 3px rgb(0 0 0 / 0.75), 0 0 10px rgb(0 0 0 / 0.35);
+  /* Translucent Aero glass for frames and title bars: the wallpaper shows through. */
+  --win7-title-base: rgb(190 220 245 / 0.72);
+  --win7-text-glass: #000000;
+}
+.win7[data-appearance="dark"],
+[data-appearance="dark"] .win7 {
+  --win7-title-base: rgb(24 52 92 / 0.78);
+  --win7-text-glass: #ffffff;
+  --win7-plate: transparent;
+  /* Aero Night: navy with luminous blue swoops, still dark enough for white text
+     everywhere (the brightest field under text is about #1d4f8f, near 8:1). */
+  --win7-wallpaper:
+    radial-gradient(55% 40% at 82% 10%, rgb(70 160 255 / 0.3), transparent 70%),
+    radial-gradient(
+      65% 45% at 10% 100%,
+      rgb(40 190 255 / 0.26),
+      transparent 70%
+    ),
+    conic-gradient(
+      from 215deg at 72% 125%,
+      transparent 0deg,
+      rgb(120 200 255 / 0.12) 16deg,
+      transparent 32deg,
+      rgb(120 200 255 / 0.07) 48deg,
+      transparent 66deg
+    ),
+    linear-gradient(160deg, #04102a 0%, #0a2550 45%, #0e2f63 62%, #061634 100%);
+}
+
+/* The shell becomes its own stacking context, so the fixed wallpaper at z-index -1
+   paints above the shell background instead of behind it. */
+.os-shell.win7 {
+  isolation: isolate;
+  background: transparent;
+}
+.os-shell.win7 .os-wallpaper {
+  background: var(--win7-wallpaper);
+}
+
+/* No dark band behind the logon column: the wallpaper alone carries the stage. */
+.os-shell.win7 .os-welcome {
+  background: none;
+  max-width: 560px;
+}
+.os-shell.win7 .os-welcome,
+.os-shell.win7 .os-welcome :is(h1, p, time, span, a) {
+  text-shadow: var(--win7-text-shadow);
+}
+.os-shell.win7 .os-welcome a {
+  color: #ffffff;
+}
+.os-shell.win7 .os-welcome #os-lock-name {
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Desktop text sits straight on the wallpaper, white with a shadow, as desktop icon
+   labels do. */
+.os-shell.win7 .os-apps .os-section-label,
+.os-shell.win7 .os-apps .os-app strong,
+.os-shell.win7 .os-apps .os-app small {
+  background: none;
+  color: #ffffff;
+  text-shadow: var(--win7-text-shadow);
+}
+.os-shell.win7 .os-apps .os-app small {
+  opacity: 0.92;
+}
+/* Desktop icon hover and selection: the translucent blue box. */
+.os-shell.win7 .os-apps .os-app:hover {
+  border-color: rgb(140 200 255 / 0.55);
+  background: linear-gradient(rgb(160 210 255 / 0.28), rgb(110 180 245 / 0.18));
+}
+.os-shell.win7 .os-apps .os-app:focus-visible {
+  border-color: rgb(170 220 255 / 0.9);
+  background: linear-gradient(rgb(160 210 255 / 0.4), rgb(110 180 245 / 0.28));
+}
+
+/* Script-focused headings never draw a ring or a box (they are not controls). */
+.os-shell.win7 :is(h1, h2, .os-main)[tabindex="-1"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* The tray repeats neither the brand mark (the Start orb is the home button) nor the
+   theme state word, which collided with the language control. The switch keeps its
+   accessible name. */
+.os-shell.win7 .os-topbar .os-brand {
+  display: none;
+}
+.os-shell.win7 .os-topbar .os-theme-label,
+.os-shell.win7 .os-topbar .os-theme-state {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .win7 {
+    --win7-title-base: #bcdcf5;
+  }
+  .win7[data-appearance="dark"],
+  [data-appearance="dark"] .win7 {
+    --win7-title-base: #17335e;
+  }
+}

@@ -1,0 +1,212 @@
+/* Win7 Aero layer, pages lane. Loaded from ResearchOS.tsx after 7.scoped.css, research-os.css and liquid-glass.css.
+   Reading pages sit in white window bodies in both themes, so the --os-* roles are
+   re-pointed to the light body tokens here. The base reading rules live in
+   supporting-apps.css; everything here is scoped under .win7. */
+
+/* White window bodies: text, lines, surfaces and links use the light roles in both
+   themes, so reading contrast stays high in Aero Night. */
+.win7 .window-body,
+.win7 .os-support,
+.win7 .os-not-found {
+  --os-text: var(--win7-body-text);
+  --os-muted: var(--win7-body-muted);
+  --os-surface: var(--win7-body-bg);
+  --os-bg: var(--win7-body-bg);
+  --os-line: #d5dfe5;
+  --os-control-line: var(--w7-el-bd, #8e8f8f);
+  --os-accent: var(--win7-link);
+}
+
+.win7 .window-body {
+  min-inline-size: 0;
+}
+
+/* Display headings: the research glow gradient is pastel (about 2.4:1 on white), so
+   it fails 3:1 for large text. Reading headings take the solid body text colour. */
+.win7
+  :is(
+    .os-about,
+    .os-contact,
+    .os-page-intro,
+    .os-library-header,
+    .os-lab-header,
+    .os-writeup > header,
+    .os-resume-header,
+    .os-lab-detail-info
+  )
+  h1 {
+  background-image: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--win7-body-text);
+}
+
+/* Reading text: 16px body (set in supporting-apps.css), black on white. */
+.win7 .os-writeup-body,
+.win7 .os-report {
+  font-size: var(--win7-body-size);
+  color: var(--win7-body-text);
+}
+
+/* Section headings become Win7 headings: 20px, regular weight, hairline rule. */
+.win7 .os-report h2,
+.win7 .os-writeup-body h2,
+.win7 .os-policy-section > h2 {
+  font-size: 20px;
+  font-weight: 400;
+  padding-block-end: 4px;
+  border-block-end: 1px solid #d5dfe5;
+}
+
+/* Section cards become groupboxes: hairline, 3px radius, 14px padding. A plain div
+   with the same padding is enough for prose. */
+.win7
+  :is(
+    .os-resume-card,
+    .os-lab-card,
+    .os-policy-section,
+    .os-about-labs article,
+    .os-about-education article
+  ) {
+  border: 1px solid #d5dfe5;
+  border-radius: 3px;
+  padding: 14px;
+  background: var(--win7-body-bg);
+}
+
+/* Tables stay real tables with captions and th scope. They take the 7.css look, wrap
+   their text, and stay inside the pane (no fixed width). */
+.win7 :is(.os-support, .os-writeup-body, .os-report) table {
+  inline-size: 100%;
+  max-inline-size: 100%;
+  table-layout: auto;
+  white-space: normal;
+}
+.win7 :is(.os-support, .os-writeup-body, .os-report) :is(th, td) {
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+.win7 :is(.os-support, .os-writeup-body, .os-report) caption {
+  padding-block: 4px;
+  font-weight: 600;
+  text-align: start;
+}
+
+/* Search and select fields on reading pages shrink to the pane, not to 7.css's
+   187px minimum. */
+.win7 .os-support :is(input, select, textarea) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+/* Win7 push buttons on the locale 404 (the global 404 has its own copy). */
+.win7 .os-not-found-actions .os-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-inline-size: 75px;
+  min-block-size: 23px;
+  padding: 0 12px;
+  border: 1px solid var(--w7-el-bd, #8e8f8f);
+  border-radius: 3px;
+  background: var(--w7-el-grad, linear-gradient(#f2f2f2, #dbdbdb));
+  color: #222222;
+  font-size: var(--win7-ui-size);
+  text-decoration: none;
+}
+.win7 .os-not-found-actions .os-button:not(.os-button--secondary) {
+  border-color: #3c7fb1;
+}
+.win7 .os-not-found-actions .os-button:hover {
+  border-color: #3c7fb1;
+  background: var(
+    --w7-el-grad-h,
+    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
+  );
+}
+
+/* Locale 404: a window in the shell, with the 404 in the title bar. */
+.win7 .os-not-found {
+  display: block;
+  inline-size: min(100%, 36rem);
+  min-block-size: 0;
+  margin-block: 24px;
+  margin-inline: auto;
+  padding: 0;
+  text-align: start;
+}
+.win7 .os-not-found .title-bar .os-not-found-code {
+  margin: 0;
+  font-size: var(--win7-ui-size);
+  color: var(--win7-text-glass);
+  text-shadow: var(--win7-text-shadow);
+}
+.win7 .os-not-found .window-body {
+  padding: 18px 20px 20px;
+}
+.win7 .os-not-found .signal-vortex {
+  min-block-size: 160px;
+  margin-block: 0 8px;
+  margin-inline: 0 auto;
+}
+.win7 .os-not-found h1 {
+  max-inline-size: none;
+  margin: 0 0 12px;
+  color: var(--win7-body-text);
+  font-size: clamp(28px, 4.2vw, 40px);
+  font-weight: 300;
+}
+.win7 .os-not-found p:not(.os-not-found-code) {
+  max-inline-size: none;
+  color: var(--win7-body-muted);
+  font-size: var(--win7-body-size);
+  line-height: 1.55;
+}
+.win7 .os-not-found-actions {
+  justify-content: flex-start;
+  margin-block-start: 18px;
+  gap: 8px;
+}
+
+/* Phones: the reading pane keeps 16px gutters, and the 404 buttons take the full
+   width and 44px targets. */
+@media (max-width: 700px) {
+  .win7 .os-support {
+    padding-inline: 16px;
+  }
+  .win7 .os-not-found .window-body {
+    padding: 16px;
+  }
+  .win7 .os-not-found-actions .os-button {
+    flex: 1 1 100%;
+    min-block-size: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .win7 :is(.os-support, .os-writeup-body, .os-report, .os-not-found) * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Forced colours: gradients and shadows are dropped. The cards keep a system border. */
+@media (forced-colors: active) {
+  .win7
+    :is(
+      .os-resume-card,
+      .os-lab-card,
+      .os-policy-section,
+      .os-about-labs article,
+      .os-about-education article
+    ) {
+    border-color: CanvasText;
+    background: Canvas;
+  }
+  .win7 .os-report h2,
+  .win7 .os-writeup-body h2,
+  .win7 .os-policy-section > h2 {
+    border-block-end-color: CanvasText;
+  }
+}

@@ -84,6 +84,14 @@ export function ProjectExplorer({
 
   return (
     <div className="os-project-explorer">
+      {/* Aero chrome only: the title and address bars repeat existing copy and are hidden from assistive tech. */}
+      <div className="os-explorer-titlebar" aria-hidden="true">
+        <span>{copy.projects}</span>
+      </div>
+      <div className="os-explorer-address" aria-hidden="true">
+        <Folder size={15} aria-hidden="true" />
+        <span>{copy.allProjects}</span>
+      </div>
       <div className="os-explorer-layout">
         <aside className="os-explorer-sidebar">
           <Link

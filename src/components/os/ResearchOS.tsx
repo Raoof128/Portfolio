@@ -19,7 +19,6 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowDownRight,
   Check,
   ChevronDown,
   Copy,
@@ -31,9 +30,6 @@ import {
   Globe,
   Languages,
   LockKeyhole,
-  Maximize2,
-  Minimize2,
-  Minus,
   Search,
   X,
 } from "lucide-react";
@@ -75,10 +71,15 @@ import {
 import "./research-os.css";
 import "./liquid-glass.css";
 import "./reading-window.css";
-import "./showstopper.css";
-import "./welcome-show.css";
-import "./desktop-show.css";
-import "./dock-show.css";
+import "7.css/dist/7.scoped.css";
+import "./win7-theme.css";
+import "./win7-logon.css";
+import "./win7-taskbar.css";
+import "./win7-desktop.css";
+import "./win7-windows.css";
+import "./win7-explorer.css";
+import "./win7-pages.css";
+import "./win7-polish.css";
 import { mountSpotlight } from "./spotlight";
 import {
   readMinuteClock,
@@ -196,6 +197,10 @@ function SydneyClock({
       })
     : "—:—";
   const date = now ? formatSydneyDate(now, locale) : undefined;
+  // Short date for the taskbar clock, from the same formatDate helper and no new copy.
+  const shortDate = now
+    ? formatDate(now, locale, { ...options, dateStyle: "medium" })
+    : undefined;
   return welcome ? (
     <div className="os-lock-clock">
       <p className="os-eyebrow">{copy.timeZone}</p>
@@ -209,11 +214,13 @@ function SydneyClock({
     </div>
   ) : (
     <span className="os-top-clock">
-      <span>{copy.timeZone}</span>
+      <span className="sr-only">{copy.timeZone}</span>
       <span className="sr-only">{copy.currentTime}</span>
       <time dir="ltr" dateTime={now?.toISOString()}>
         {time}
       </time>
+      {/* A span rather than a second time, so each clock keeps one time element. */}
+      {shortDate && <span className="os-top-date">{shortDate}</span>}
     </span>
   );
 }
@@ -697,7 +704,7 @@ export function ResearchOS({
     <ApplicationRegistrationContext.Provider
       value={{ ready: workspaceReady, register: registerApplication }}
     >
-      <div className="os-shell" data-appearance={appearance}>
+      <div className="os-shell win7" data-appearance={appearance}>
         <a
           href={
             !workspaceDisplayed && reading.minimized
@@ -782,8 +789,10 @@ export function ResearchOS({
                 }
               }}
             >
+              {/* CSS attr() reads the summary's own attribute, so the code lives here. */}
               <summary
                 aria-label={`${copy.selectLanguage}: ${locales[locale].label}`}
+                data-locale-code={locale.toUpperCase()}
               >
                 <Languages aria-hidden="true" />
                 <span lang={locale}>{locales[locale].label}</span>
@@ -991,7 +1000,7 @@ export function ResearchOS({
             className={
               isHome
                 ? "os-main"
-                : `os-window ${reading.rect ? "os-window--floating" : expanded ? "os-window--expanded" : ""}`
+                : `os-window window glass active ${reading.rect ? "os-window--floating" : expanded ? "os-window--expanded" : ""}`
             }
             hidden={workspaceDisplayed || reading.minimized}
             inert={(workspaceDisplayed || reading.minimized) && hydrated}
@@ -1007,7 +1016,7 @@ export function ResearchOS({
             }
           >
             {!workspaceDisplayed && !isHome && (
-              <div className="os-windowbar os-windowbar--route">
+              <div className="os-windowbar os-windowbar--route title-bar">
                 <div className="os-window-navigation">
                   {/* The name stays "Back" on phones, where the visible word is hidden. */}
                   <Link
@@ -1021,7 +1030,7 @@ export function ResearchOS({
                   <OSIcon app={activeApp} />
                 </div>
                 <span
-                  className={`os-window-title ${reading.desktop ? "os-window-title--movable" : ""}`}
+                  className={`os-window-title title-bar-text ${reading.desktop ? "os-window-title--movable" : ""}`}
                   id="os-window-title"
                   lang={pageEntry?.titleLocale ?? locale}
                   dir={locales[pageEntry?.titleLocale ?? locale].dir}
@@ -1030,7 +1039,7 @@ export function ResearchOS({
                 >
                   {windowTitle}
                 </span>
-                <div className="os-window-actions">
+                <div className="os-window-actions title-bar-controls">
                   {reading.desktop && !reading.minimized && !locked && (
                     <ReadingWindowControls
                       locale={locale}
@@ -1047,15 +1056,14 @@ export function ResearchOS({
                   >
                     <Copy aria-hidden="true" />
                   </button>
+                  {/* Caption glyphs come from 7.css (is-minimize, is-maximize, is-restore). */}
                   <button
-                    className="os-control"
+                    className="os-control is-minimize"
                     onClick={minimizeReadingWindow}
                     aria-label={windowCopy.minimize}
-                  >
-                    <Minus aria-hidden="true" />
-                  </button>
+                  />
                   <button
-                    className="os-control os-expand"
+                    className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
                     onClick={() => {
                       reading.reset();
                       setExpanded((value) => !value);
@@ -1063,13 +1071,7 @@ export function ResearchOS({
                     // The name is constant; aria-pressed carries the expanded state.
                     aria-label={windowCopy.fullSize}
                     aria-pressed={expanded}
-                  >
-                    {expanded ? (
-                      <Minimize2 aria-hidden="true" />
-                    ) : (
-                      <Maximize2 aria-hidden="true" />
-                    )}
-                  </button>
+                  />
                   <Link
                     className="os-control os-window-close"
                     href={home}
@@ -1092,7 +1094,7 @@ export function ResearchOS({
             </p>
             <Activity mode={reading.minimized ? "hidden" : "visible"}>
               <div
-                className="os-page-content"
+                className="os-page-content window-body has-scrollbar"
                 onScroll={reading.onContentScroll}
               >
                 <ProofAtlasVisibilityContext.Provider
@@ -1144,9 +1146,7 @@ export function ResearchOS({
                       reading.resize(delta);
                     }
                   }}
-                >
-                  <ArrowDownRight aria-hidden="true" />
-                </button>
+                />
               </>
             )}
           </main>

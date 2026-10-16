@@ -25,6 +25,7 @@
     "test:dependency-security": "node --test scripts/lib/braces-guard.test.mjs"
   },
   "dependencies": {
+    "7.css": "0.21.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.29.2",
     "lucide-react": "^0.563.0",

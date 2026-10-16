@@ -1,163 +1,126 @@
-/* Enter on the welcome screen. While the three-second wait runs, the button is
-   disabled, a 2px accent hairline fills in reading direction (transform only) and
-   a polite status line names what is opening. Reduced motion shows the hairline
-   full at once. */
+/* Enter wait state on the Win7 logon. The Aero face, halo and logon layout are in
+   win7-logon.css, which loads later. This file holds the wait mechanics: the progress
+   bar, the status plate, the visually hidden label, and the reduced-motion and
+   forced-colour fallbacks. The three-second timer is in WelcomeEnter.tsx. */
 .os-enter-stage {
   display: grid;
   justify-items: center;
-  gap: var(--space-3);
-}
-.os-shell .os-enter-stage .os-enter {
-  transition:
-    background-color var(--motion-quick) var(--ease-standard),
-    color var(--motion-quick) var(--ease-standard),
-    transform var(--motion-press-out) var(--ease-standard);
+  gap: 12px;
 }
 
+/* The label keeps the accessible name; the Aero face shows the arrow alone. */
+.os-enter-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+}
+
+/* Win7 progress bar: a white track with a grey edge. A green segment, about 30 percent
+   wide, crosses it once over the wait. */
 .os-enter-progress {
   position: relative;
-  width: min(240px, 100%);
-  height: 2px;
+  box-sizing: border-box;
+  width: 180px;
+  max-width: 100%;
+  height: 14px;
   overflow: hidden;
-  border-radius: var(--radius-pill);
-  background: var(--os-line);
+  border: 1px solid #6b6b6b;
+  border-radius: 2px;
+  background: #ffffff;
   opacity: 0;
   transition: opacity var(--motion-control) var(--ease-standard);
 }
+/* The lightest stop is #36a455 rather than #3fb35f: it keeps the segment at 3:1 or
+   more against the white track (about 3.2:1). */
 .os-enter-progress span {
   position: absolute;
-  inset: 0;
-  background: var(--os-accent);
-  transform-origin: left center;
-  transform: scaleX(0);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  background: linear-gradient(90deg, #36a455, var(--win7-progress-fill));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45);
 }
 .os-enter-stage:dir(rtl) .os-enter-progress span {
-  transform-origin: right center;
+  left: auto;
+  right: 0;
 }
 .os-enter-stage[data-loading] .os-enter-progress {
   opacity: 1;
 }
-/* The duration is set inline from WELCOME_LOADER_MS, so the wait and the fill agree. */
+/* The duration is set inline from WELCOME_LOADER_MS, so the wait and the segment agree. */
 .os-enter-stage[data-loading] .os-enter-progress span {
-  animation: os-enter-fill var(--ease-standard) both;
+  animation: os-enter-fill linear both;
+}
+.os-enter-stage[data-loading]:dir(rtl) .os-enter-progress span {
+  animation-name: os-enter-fill-rtl;
 }
 @keyframes os-enter-fill {
   from {
-    transform: scaleX(0);
+    transform: translateX(-100%);
   }
   to {
-    transform: scaleX(1);
+    transform: translateX(333.333%);
+  }
+}
+@keyframes os-enter-fill-rtl {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-333.333%);
   }
 }
 
+/* Status line on a dark plate, so the white text clears 4.5:1 over the wallpaper. */
 .os-enter-status {
-  min-height: 1.5em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
   margin: 0;
-  font-size: var(--text-s);
-  color: var(--os-muted);
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--win7-plate);
+  color: #ffffff;
+  font-size: var(--win7-ui-size);
+  line-height: 1.5;
+}
+.os-enter-status:empty {
+  padding: 0;
+  background: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .os-enter-progress,
-  .os-shell .os-enter-stage .os-enter {
+  .os-enter-progress {
     transition: none;
   }
+  /* A static 40 percent segment shows the wait without motion. The timer still runs. */
   .os-enter-stage[data-loading] .os-enter-progress span {
     animation: none;
-    transform: scaleX(1);
+    transform: none;
+    width: 40%;
   }
 }
-/* Forced colours reset author backgrounds, which would hide both the track and the
-   fill. Opt out for this 2px indicator and use system colours; the status line still
-   carries the meaning. */
+
+/* Forced colours reset author backgrounds. Opt out for this bar and use system colours;
+   the status line still carries the meaning. */
 @media (forced-colors: active) {
   .os-enter-progress,
   .os-enter-progress span {
     forced-color-adjust: none;
   }
   .os-enter-progress {
-    background: ButtonBorder;
+    background: Canvas;
+    border-color: CanvasText;
   }
   .os-enter-progress span {
     background: Highlight;
-  }
-}
-
-/* Enter face (v2.0). A static titanium face with a masked 3px ring in the glow gradient
-   and a violet glow. The ring sits outside the face, so the face is not tinted. Nothing
-   here animates: the loader fill and the status line keep the progress meaning, and the
-   glow is never read as progress. The containing block stays the button in every state,
-   so the ring does not jump to the stage frame when the button is disabled. The
-   :not(:disabled) guard keeps the enabled face rules off the disabled state, which
-   research-os.css styles. */
-.os-shell .os-enter {
-  position: relative;
-  isolation: isolate;
-}
-.os-shell .os-enter:not(:disabled) {
-  background: linear-gradient(
-    180deg,
-    var(--os-titanium-top),
-    var(--os-titanium-bottom)
-  );
-  color: var(--os-titanium-ink);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 60%),
-    0 0 18px rgb(180 156 255 / 22%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 60%),
-    0 0 18px color-mix(in srgb, var(--os-glow-violet) 22%, transparent);
-}
-.os-shell .os-enter::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  z-index: -1;
-  border-radius: calc(var(--radius-s) + 3px);
-  padding: 3px;
-  background: var(--os-glow-gradient);
-  opacity: 0.7;
-  pointer-events: none;
-  transition: opacity var(--motion-quick) var(--ease-standard);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-}
-/* Hover and keyboard focus light the ring fully and lift the face one step. Press
-   darkens the top stop. These are more specific than the accent fills in
-   research-os.css, so they win without relying on source order. The background-image
-   swap is instant; background-image is not in the transition list. */
-.os-shell .os-enter:not(:disabled):is(:hover, :focus-visible)::before {
-  opacity: 1;
-}
-.os-shell .os-enter:not(:disabled):is(:hover, :focus-visible) {
-  background: linear-gradient(
-    180deg,
-    var(--os-titanium-top),
-    color-mix(in srgb, var(--os-titanium-bottom) 90%, var(--os-titanium-top))
-  );
-}
-.os-shell .os-enter:not(:disabled):active {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--os-titanium-top) 90%, var(--os-titanium-bottom)),
-    var(--os-titanium-bottom)
-  );
-}
-/* Disabled (the wait is running): no ring and no glow, so the face reads as inactive
-   rather than as progress. The disabled colours from research-os.css still apply. */
-.os-shell .os-enter:disabled {
-  box-shadow: none;
-}
-.os-shell .os-enter:disabled::before {
-  opacity: 0;
-}
-@media (forced-colors: active) {
-  .os-shell .os-enter::before {
-    display: none;
+    box-shadow: none;
   }
 }

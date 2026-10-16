@@ -1,9 +1,8 @@
 /* "Signal lost" vortex after "ordinary-mouse-17" by NlghtM4re, Uiverse.io (MIT).
-   Restyled to the ResearchOS showstopper palette: each ring takes one stop of the
-   glow gradient by index, at a stepped alpha (opacity), with no glow. The rings rise
-   at most 24px, twice, and then stop. */
+   Restyled as a faint Aero light sweep: each ring takes one blue stop by index, with
+   no glow. The rings rise at most 24px, twice, and then stop. */
 .signal-vortex {
-  --vortex: var(--os-accent);
+  --vortex: #3a8fd6;
   /* Finite motion (WCAG 2.2.2): each ring rises twice, then stops at rest. The markup
      renders 21 rings (--i 0 to 20), so the last ring starts at 1.2s and ends at
      1.2s + 2 x 1.9s = 5.0s, the limit. Each ring starts one step after the last. */
@@ -16,9 +15,7 @@
   /* Tall enough that the rings stay clear of the heading below them. */
   width: min(100%, 320px);
   min-height: 200px;
-  /* Keeps the outermost ring (it rises a few px at peak) clear of the mark tile above
-     it on the global 404. The locale 404 has no tile, so it gets the same 32px gap
-     above its "404" line; this is a deliberate visual change there. */
+  /* Keeps the outermost ring clear of the content above it. */
   margin-block-start: var(--space-8);
   margin-block-end: 0;
   margin-inline: auto;
@@ -36,19 +33,24 @@
   transform-style: preserve-3d;
   transform: rotateX(70deg) translateZ(30px);
 }
-/* Rings take the signature gradient by index (blue, violet, pink, orange). The
-   fallback keeps the accent if the ResearchOS tokens are missing. */
+/* Rings take the Aero blue ramp by index. */
 .signal-vortex span:nth-child(4n + 1) {
-  --vortex: var(--os-glow-blue, var(--os-accent));
+  --vortex: #3a8fd6;
 }
 .signal-vortex span:nth-child(4n + 2) {
-  --vortex: var(--os-glow-violet, var(--os-accent));
+  --vortex: #6cb8ec;
 }
 .signal-vortex span:nth-child(4n + 3) {
-  --vortex: var(--os-glow-pink, var(--os-accent));
+  --vortex: #9bdcff;
 }
 .signal-vortex span:nth-child(4n) {
-  --vortex: var(--os-glow-orange, var(--os-accent));
+  --vortex: #2f8fe0;
+}
+/* Forced colours: the rings take the system text colour so they stay visible. */
+@media (forced-colors: active) {
+  .signal-vortex span {
+    border-color: CanvasText;
+  }
 }
 /* The rise runs only when the reader allows motion, and it stops at rest: the
    0% and 100% frames match the static transform, so no fill mode is needed. */

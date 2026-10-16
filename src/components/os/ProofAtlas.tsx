@@ -295,160 +295,181 @@ export function ProofAtlas({
         <p className="proof-atlas-eyebrow">{copy.eyebrow}</p>
         <h2 id={titleId}>{copy.heading}</h2>
       </div>
-      <svg
-        ref={frameRef}
-        className="proof-atlas-figure"
-        viewBox="0 0 552 320"
-        direction="ltr"
-        role={isDecorative ? undefined : "img"}
-        aria-labelledby={isDecorative ? undefined : svgTitleId}
-        aria-describedby={isDecorative ? undefined : descriptionId}
-        aria-hidden={isDecorative || undefined}
-        onPointerMove={isInteractive ? moveWithPointer : undefined}
-        onPointerLeave={isInteractive ? resetPointer : undefined}
-      >
-        {!isDecorative && (
-          <>
-            <title id={svgTitleId}>{copy.heading}</title>
-            <desc id={descriptionId}>{copy.diagramDescription[selected]}</desc>
-          </>
-        )}
-        <g
-          className={`proof-atlas-lines${selected === "invisible-window-research" ? " proof-atlas-lines--comparison" : ""}`}
-          aria-hidden="true"
+      {/* White window body. The figure and its controls share one surface. */}
+      <div className="proof-atlas-body">
+        <svg
+          ref={frameRef}
+          className="proof-atlas-figure"
+          viewBox="0 0 552 320"
+          direction="ltr"
+          role={isDecorative ? undefined : "img"}
+          aria-labelledby={isDecorative ? undefined : svgTitleId}
+          aria-describedby={isDecorative ? undefined : descriptionId}
+          aria-hidden={isDecorative || undefined}
+          onPointerMove={isInteractive ? moveWithPointer : undefined}
+          onPointerLeave={isInteractive ? resetPointer : undefined}
         >
-          {atlas.edges.map((edge) => {
-            const from = positions.get(edge.from)!;
-            const to = positions.get(edge.to)!;
-            const midpoint = (from.x + to.x) / 2;
-            return (
-              <path
-                key={`${selected}-${edge.id}`}
-                className={`proof-atlas-edge${edge.kind ? " proof-atlas-edge--evidence" : ""}`}
-                d={`M ${from.x} ${from.y} C ${midpoint} ${from.y - 18}, ${midpoint} ${to.y - 18}, ${to.x} ${to.y}`}
-                pathLength="1"
+          {!isDecorative && (
+            <>
+              <title id={svgTitleId}>{copy.heading}</title>
+              <desc id={descriptionId}>
+                {copy.diagramDescription[selected]}
+              </desc>
+            </>
+          )}
+          <g
+            className={`proof-atlas-lines${selected === "invisible-window-research" ? " proof-atlas-lines--comparison" : ""}`}
+            aria-hidden="true"
+          >
+            {atlas.edges.map((edge) => {
+              const from = positions.get(edge.from)!;
+              const to = positions.get(edge.to)!;
+              const midpoint = (from.x + to.x) / 2;
+              return (
+                <path
+                  key={`${selected}-${edge.id}`}
+                  className={`proof-atlas-edge${edge.kind ? " proof-atlas-edge--evidence" : ""}`}
+                  d={`M ${from.x} ${from.y} C ${midpoint} ${from.y - 18}, ${midpoint} ${to.y - 18}, ${to.x} ${to.y}`}
+                  pathLength="1"
+                />
+              );
+            })}
+          </g>
+          {selected === "project-simurgh" && (
+            <g className="proof-atlas-evidence-collection" aria-hidden="true">
+              <path d="M 145 214 V 250 M 276 214 V 250 M 407 214 V 250 M 500 214 V 250 M 145 250 H 500 M 276 250 V 270" />
+              <rect x="245" y="270" width="62" height="36" rx="4" />
+              <path d="M 255 279 H 287 M 255 285 H 287 M 255 291 H 279" />
+            </g>
+          )}
+          {selected === "invisible-window-research" && (
+            <g className="proof-atlas-capture" aria-hidden="true">
+              <rect
+                className="proof-atlas-plane"
+                x="24"
+                y="30"
+                width="230"
+                height="230"
+                rx="5"
               />
-            );
-          })}
-        </g>
-        {selected === "project-simurgh" && (
-          <g className="proof-atlas-evidence-collection" aria-hidden="true">
-            <path d="M 145 214 V 250 M 276 214 V 250 M 407 214 V 250 M 500 214 V 250 M 145 250 H 500 M 276 250 V 270" />
-            <rect x="245" y="270" width="62" height="36" rx="4" />
-            <path d="M 255 279 H 287 M 255 285 H 287 M 255 291 H 279" />
-          </g>
-        )}
-        {selected === "invisible-window-research" && (
-          <g className="proof-atlas-capture" aria-hidden="true">
-            <rect
-              className="proof-atlas-plane"
-              x="24"
-              y="30"
-              width="230"
-              height="230"
-              rx="5"
-            />
-            <rect
-              className="proof-atlas-plane"
-              x="298"
-              y="30"
-              width="230"
-              height="230"
-              rx="5"
-            />
-            <path
-              className="proof-atlas-plane-grid"
-              d="M 40 57 H 238 M 40 238 H 238 M 314 57 H 512 M 314 238 H 512"
-            />
-            <rect
-              className="proof-atlas-visible-window"
-              x="79"
-              y="76"
-              width="120"
-              height="70"
-              rx="3"
-            />
-            <path
-              className="proof-atlas-window-light"
-              d="M 92 90 H 186 M 92 132 H 186"
-            />
-            <rect
-              className="proof-atlas-excluded-window"
-              x="353"
-              y="76"
-              width="120"
-              height="70"
-              rx="3"
-            />
-            <path className="proof-atlas-absence" d="M 378 111 H 448" />
-            <path
-              className="proof-atlas-comparison-arrow"
-              d="M 258 111 H 291 M 283 104 L 291 111 L 283 118"
-            />
-            <text
-              className="proof-atlas-plane-label"
-              x="139"
-              y="285"
-              textAnchor="middle"
-            >
-              {copy.nodeLabels.screen}
-            </text>
-            <text
-              className="proof-atlas-plane-label"
-              x="413"
-              y="285"
-              textAnchor="middle"
-            >
-              {copy.nodeLabels.capture}
-            </text>
-          </g>
-        )}
-        {selected !== "invisible-window-research" &&
-          atlas.nodes.map((node, index) => (
-            <g
-              key={index}
-              className={`proof-atlas-node${node.kind === "evidence" ? " proof-atlas-node--evidence" : ""}${node.kind === "boundary" ? " proof-atlas-node--boundary" : ""}`}
-              transform={`translate(${node.x} ${node.y})`}
-            >
-              {node.kind === "boundary" ? (
-                <>
-                  <rect
-                    className="proof-atlas-boundary-plate"
-                    x="-31"
-                    y="-27"
-                    width="62"
-                    height="54"
-                    rx="8"
-                  />
-                  <path
-                    className="proof-atlas-boundary-glyph"
-                    d={boundaryGlyphs[node.id]}
-                  />
-                  <text
-                    x="0"
-                    y={node.labelY ?? 43}
-                    textAnchor="middle"
-                    direction={
-                      locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-                    }
-                    unicodeBidi="plaintext"
-                  >
-                    {copy.nodeLabels[node.id] ?? node.label}
-                  </text>
-                </>
-              ) : node.kind === "evidence" ? (
-                <>
-                  <path
-                    className="proof-atlas-receipt"
-                    d="M -14 -15 H 8 L 15 -8 V 15 H -14 Z M 8 -15 V -8 H 15 M -7 -3 H 7 M -7 2 H 7 M -7 7 H 3"
-                  />
-                  <circle
-                    className="proof-atlas-receipt-seal"
-                    cx="10"
-                    cy="10"
-                    r="2.3"
-                  />
-                  {!node.id.endsWith("-proof") && (
+              <rect
+                className="proof-atlas-plane"
+                x="298"
+                y="30"
+                width="230"
+                height="230"
+                rx="5"
+              />
+              <path
+                className="proof-atlas-plane-grid"
+                d="M 40 57 H 238 M 40 238 H 238 M 314 57 H 512 M 314 238 H 512"
+              />
+              <rect
+                className="proof-atlas-visible-window"
+                x="79"
+                y="76"
+                width="120"
+                height="70"
+                rx="3"
+              />
+              <path
+                className="proof-atlas-window-light"
+                d="M 92 90 H 186 M 92 132 H 186"
+              />
+              <rect
+                className="proof-atlas-excluded-window"
+                x="353"
+                y="76"
+                width="120"
+                height="70"
+                rx="3"
+              />
+              <path className="proof-atlas-absence" d="M 378 111 H 448" />
+              <path
+                className="proof-atlas-comparison-arrow"
+                d="M 258 111 H 291 M 283 104 L 291 111 L 283 118"
+              />
+              <text
+                className="proof-atlas-plane-label"
+                x="139"
+                y="285"
+                textAnchor="middle"
+              >
+                {copy.nodeLabels.screen}
+              </text>
+              <text
+                className="proof-atlas-plane-label"
+                x="413"
+                y="285"
+                textAnchor="middle"
+              >
+                {copy.nodeLabels.capture}
+              </text>
+            </g>
+          )}
+          {selected !== "invisible-window-research" &&
+            atlas.nodes.map((node, index) => (
+              <g
+                key={index}
+                className={`proof-atlas-node${node.kind === "evidence" ? " proof-atlas-node--evidence" : ""}${node.kind === "boundary" ? " proof-atlas-node--boundary" : ""}`}
+                transform={`translate(${node.x} ${node.y})`}
+              >
+                {node.kind === "boundary" ? (
+                  <>
+                    <rect
+                      className="proof-atlas-boundary-plate"
+                      x="-31"
+                      y="-27"
+                      width="62"
+                      height="54"
+                      rx="8"
+                    />
+                    <path
+                      className="proof-atlas-boundary-glyph"
+                      d={boundaryGlyphs[node.id]}
+                    />
+                    <text
+                      x="0"
+                      y={node.labelY ?? 43}
+                      textAnchor="middle"
+                      direction={
+                        locale === "fa" || locale === "ar" ? "rtl" : "ltr"
+                      }
+                      unicodeBidi="plaintext"
+                    >
+                      {copy.nodeLabels[node.id] ?? node.label}
+                    </text>
+                  </>
+                ) : node.kind === "evidence" ? (
+                  <>
+                    <path
+                      className="proof-atlas-receipt"
+                      d="M -14 -15 H 8 L 15 -8 V 15 H -14 Z M 8 -15 V -8 H 15 M -7 -3 H 7 M -7 2 H 7 M -7 7 H 3"
+                    />
+                    <circle
+                      className="proof-atlas-receipt-seal"
+                      cx="10"
+                      cy="10"
+                      r="2.3"
+                    />
+                    {!node.id.endsWith("-proof") && (
+                      <text
+                        x="0"
+                        y="32"
+                        textAnchor="middle"
+                        direction={
+                          locale === "fa" || locale === "ar" ? "rtl" : "ltr"
+                        }
+                        unicodeBidi="plaintext"
+                      >
+                        {copy.nodeLabels[node.id] ?? node.label}
+                      </text>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <circle className="proof-atlas-node-halo" r="16" />
+                    <circle className="proof-atlas-node-core" r="3.5" />
                     <text
                       x="0"
                       y="32"
@@ -460,69 +481,53 @@ export function ProofAtlas({
                     >
                       {copy.nodeLabels[node.id] ?? node.label}
                     </text>
-                  )}
-                </>
-              ) : (
-                <>
-                  <circle className="proof-atlas-node-halo" r="16" />
-                  <circle className="proof-atlas-node-core" r="3.5" />
-                  <text
-                    x="0"
-                    y="32"
-                    textAnchor="middle"
-                    direction={
-                      locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-                    }
-                    unicodeBidi="plaintext"
-                  >
-                    {copy.nodeLabels[node.id] ?? node.label}
-                  </text>
-                </>
-              )}
-              {index === 0 && (
-                <circle className="proof-atlas-node-ring" r="27" />
-              )}
-            </g>
-          ))}
-        <path className="proof-atlas-axis" d="M 28 311 H 524" />
-      </svg>
-      {isInteractive ? (
-        <div className="proof-atlas-controls">
-          <div
-            className="proof-atlas-options"
-            role="group"
-            aria-label={copy.selectProject}
-          >
-            {projectOrder.map((project) => (
-              <button
-                key={project}
-                type="button"
-                className="proof-atlas-option"
-                aria-pressed={selected === project}
-                onClick={() => setSelected(project)}
-              >
-                {copy.projects[project].title}
-              </button>
+                  </>
+                )}
+                {index === 0 && (
+                  <circle className="proof-atlas-node-ring" r="27" />
+                )}
+              </g>
             ))}
+          <path className="proof-atlas-axis" d="M 28 311 H 524" />
+        </svg>
+        {isInteractive ? (
+          <div className="proof-atlas-controls">
+            <div
+              className="proof-atlas-options"
+              role="group"
+              aria-label={copy.selectProject}
+            >
+              {projectOrder.map((project) => (
+                <button
+                  key={project}
+                  type="button"
+                  className="proof-atlas-option"
+                  aria-pressed={selected === project}
+                  onClick={() => setSelected(project)}
+                >
+                  {copy.projects[project].title}
+                </button>
+              ))}
+            </div>
+            <div className="proof-atlas-copy" aria-live="polite">
+              <p className="proof-atlas-summary">{selectedCopy.summary}</p>
+              {copy.qualifier[selected] && (
+                <p className="proof-atlas-qualifier">
+                  {copy.qualifier[selected]}
+                </p>
+              )}
+            </div>
+            <Link className="proof-atlas-link" href={href}>
+              {copy.openEvidence}
+              <span className="proof-atlas-link-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </Link>
           </div>
-          <div className="proof-atlas-copy" aria-live="polite">
-            <p className="proof-atlas-summary">{selectedCopy.summary}</p>
-            {copy.qualifier[selected] && (
-              <p className="proof-atlas-qualifier">
-                {copy.qualifier[selected]}
-              </p>
-            )}
-          </div>
-          <Link className="proof-atlas-link" href={href}>
-            {copy.openEvidence}
-            <span className="proof-atlas-link-arrow" aria-hidden="true">
-              ↗
-            </span>
-          </Link>
-        </div>
-      ) : (
-        <p className="proof-atlas-caption">{copy.welcomeCaption}</p>
-      )}
+        ) : (
+          <p className="proof-atlas-caption">{copy.welcomeCaption}</p>
+        )}
+      </div>
     </section>
   );
 }

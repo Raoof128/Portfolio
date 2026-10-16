@@ -20,8 +20,7 @@
   --color-text-meta: var(--text-meta);
 
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
-    Arial, sans-serif;
+    ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   --font-mono:
     var(--font-jetbrains-mono), ui-monospace, Menlo, Consolas, monospace;
 }

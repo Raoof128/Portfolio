@@ -1,192 +1,271 @@
-/* Global 404: a standalone document with no locale layout. The <html> element
-   carries the .os-shell class, so the ResearchOS tokens (research-os.css) and the
-   control primitive (controls.css), both imported in global-not-found.tsx, supply
-   colour, radius, focus and the Latin type stack. The server render is
-   <html lang="en">; GlobalNotFoundContent sets html lang, dir and data-appearance to
-   the path locale after hydration, so the .os-shell:lang() overrides in
-   research-os.css also match on <html> at runtime. The locale type tokens are
-   repeated on the <main lang> element below so that the scope changes in the same
-   render as the language select, before the effect has updated <html>. This file
-   lays the page out and carries that locale type scope. */
+/* Global 404: a standalone document with no locale layout. It is a Win7-style error
+   dialog on the Aero wallpaper. The html element carries .os-shell, and main carries
+   .win7, so the 7.css rules (7.scoped.css) and the Aero tokens (win7-theme.css) both
+   apply. The server render is <html lang="en">. GlobalNotFoundContent sets html lang,
+   dir and data-appearance to the path locale after hydration, and the main element
+   repeats the locale type scope so that it changes in the same render as the select. */
 
 html[data-global-not-found] * {
   box-sizing: border-box;
 }
 html[data-global-not-found] body {
   margin: 0;
-  min-height: 100svh;
+  min-height: 100dvh;
+  background-color: #0a1d3a;
+  color: var(--win7-body-text);
+}
+
+/* The full-height wallpaper frame. The dialog sits in the centre on the start edge
+   of a 16px gutter, and grows to full width on phones. */
+.global-not-found {
+  position: relative;
+  isolation: isolate;
   display: grid;
   place-items: center;
+  min-block-size: 100dvh;
+  margin: 0;
+  overflow: hidden;
   padding-block: max(24px, env(safe-area-inset-top))
     max(24px, env(safe-area-inset-bottom));
-  /* Both inline edges take the larger inset: the start edge is right in RTL. */
   padding-inline: max(
     16px,
     env(safe-area-inset-left),
     env(safe-area-inset-right)
   );
-  background: var(--os-bg);
-  color: var(--os-text);
+  background: var(--win7-wallpaper);
+  background-color: #0a1d3a;
+  font-family: var(--win7-font);
+  color: var(--win7-body-text);
 }
-/* The card: a solid surface with a hairline and a static rim. Padding keeps the text
-   and the vortex clear of the rim. The rim is painted on the ::after layer (RIM
-   RECIPE), so it adds no layout and no motion. */
-.global-not-found {
-  position: relative;
-  width: min(100%, 38rem);
-  padding: var(--space-6);
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
-  background: var(--os-surface);
-  /* Re-resolved here, not inherited from <html>: inherited font-family is computed on
-     the root, so the locale tokens below would otherwise never reach the descendants. */
-  font-family: var(--os-font-ui);
-}
-.global-not-found::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: var(--os-rim-gradient);
-  pointer-events: none;
-  opacity: var(--os-rim-opacity);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-}
-/* Increased contrast: the rim steps up to the solid boundary at full opacity. */
-@media (prefers-contrast: more) {
-  .global-not-found::after {
-    background: var(--os-rim-solid);
-    opacity: 1;
-  }
-}
-/* Forced colours ignore the rim paint, so it is removed rather than left as a mask. */
-@media (forced-colors: active) {
-  .global-not-found::after {
-    display: none;
-  }
-}
-/* Persian and Arabic: Vazirmatn for UI and display type. Redefining the tokens on this
-   element lets the heading, copy, labels, select and os-button all pick them up. */
+/* Persian and Arabic: Vazirmatn for UI and display type. The token is redefined on
+   this element so every descendant picks it up. */
 .global-not-found:is(:lang(fa), :lang(ar)) {
-  --os-font-ui: var(--font-vazirmatn, Tahoma), "Segoe UI", sans-serif;
-  --os-font-display: var(--font-vazirmatn, Tahoma), "Segoe UI", sans-serif;
+  --win7-font: var(--font-vazirmatn, Tahoma), system-ui, sans-serif;
+  --os-font-ui: var(--font-vazirmatn, Tahoma), system-ui, sans-serif;
+  --os-font-display: var(--font-vazirmatn, Tahoma), system-ui, sans-serif;
 }
 /* Chinese: the PingFang-first stack for UI and display type. */
 .global-not-found:lang(zh) {
-  --os-font-ui:
+  --win7-font:
     "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
     system-ui, sans-serif;
-  --os-font-display:
-    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
-    system-ui, sans-serif;
+  --os-font-ui: var(--win7-font);
+  --os-font-display: var(--win7-font);
 }
-/* Solid tile in --os-surface; the glyph takes --os-text through currentColor, so it
-   contrasts with the tile in both themes and in forced-colours mode. */
+
+/* The light sweep sits behind the dialog: faint, screened onto the wallpaper, and
+   static under reduced motion (signal-vortex.css). */
+.global-not-found .signal-vortex {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 0;
+  width: 100%;
+  height: 60%;
+  min-height: 0;
+  margin: 0;
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+/* The dialog: a 7.css glass window. Its own stacking context keeps the glass blur
+   layer (z-index -10) above the window background and below the body. */
+.global-not-found-dialog {
+  position: relative;
+  z-index: 1;
+  inline-size: min(100%, 36rem);
+  margin: 0;
+}
+.global-not-found-dialog > .window-body {
+  padding: 18px 20px 20px;
+}
+
+.global-not-found-code {
+  /* The code sits in the title bar. Digits stay LTR. */
+  margin: 0;
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  line-height: 15px;
+  color: var(--win7-text-glass);
+  text-shadow: var(--win7-text-shadow);
+}
+
+/* The R glyph: a glossy white tile with a red fill (the danger token). The attribute
+   fill="currentColor" stays in the markup; this rule takes precedence over it. */
 .global-not-found-mark {
   display: inline-grid;
   place-items: center;
-  width: 60px;
-  height: 60px;
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
-  background: var(--os-surface);
-  color: var(--os-text);
+  inline-size: 56px;
+  block-size: 56px;
+  margin-block-end: 14px;
+  border: 1px solid var(--w7-el-bd, #8e8f8f);
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffffff 0%, #e8e8e8 60%, #d4d4d4 100%);
 }
 .global-not-found-glyph {
   display: block;
-  width: 36px;
-  height: 36px;
+  inline-size: 34px;
+  block-size: 34px;
   flex: none;
+  fill: var(--win7-danger);
 }
-/* The text column reads from the start edge, so the vortex shares that edge rather
-   than floating centred above it. Rings run from --i 0 to 20 (14px steps), so the
-   widest is 280px and the box is that width: the outer ring sits on the start edge,
-   with only its perspective bulge (a few px) beyond it. The base rule in
-   signal-vortex.css centres the box (margin-inline auto); this override pins the
-   inline-start edge, and restates the block margins so the override is complete on
-   its own. The locale 404 keeps its own centred vortex through the base rule. */
-.global-not-found .signal-vortex {
-  width: min(100%, 280px);
-  margin-block-start: var(--space-8);
-  margin-block-end: 0;
-  margin-inline: 0 auto;
-}
-.global-not-found-code {
-  /* Digits stay LTR, but the block takes only its own width so it sits on the column's
-     start edge in RTL too; a full-width LTR block would put "404" left of the heading. */
-  width: fit-content;
-  margin: var(--space-8) 0 var(--space-3);
-  color: var(--os-accent);
-  font-family: var(--os-font-mono);
-  font-size: var(--text-s);
-}
+
 .global-not-found h1 {
   margin: 0;
-  color: var(--os-text);
-  font-family: var(--os-font-display);
-  font-size: var(--text-h1);
-  font-weight: 600;
+  color: var(--win7-body-text);
+  font-family: var(--os-font-display, var(--win7-font));
+  font-size: clamp(28px, 4.2vw, 40px);
+  font-weight: 300;
   line-height: 1.15;
   overflow-wrap: anywhere;
 }
 .global-not-found-description {
-  max-width: 36rem;
-  margin: var(--space-6) 0 var(--space-8);
-  color: var(--os-muted);
-  font-size: var(--text-reading);
-  line-height: 1.75;
+  max-inline-size: 36rem;
+  margin: 12px 0 18px;
+  color: var(--win7-body-muted);
+  font-size: var(--win7-body-size);
+  line-height: 1.55;
 }
 .global-not-found-description:lang(zh) {
-  line-height: 1.8;
+  line-height: 1.7;
 }
 .global-not-found-description:is(:lang(fa), :lang(ar)) {
-  line-height: 1.95;
+  line-height: 1.9;
 }
+
+/* Win7 push buttons, drawn on a link element with the 7.css button values. */
 .global-not-found-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: 8px;
 }
+.global-not-found-actions a.os-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-inline-size: 75px;
+  min-block-size: 23px;
+  padding: 0 12px;
+  border: 1px solid var(--w7-el-bd, #8e8f8f);
+  border-radius: 3px;
+  background: var(--w7-el-grad, linear-gradient(#f2f2f2, #dbdbdb));
+  box-shadow: var(--w7-el-sd, inset 0 0 0 1px #fffc);
+  color: #222222;
+  font: inherit;
+  font-size: var(--win7-ui-size);
+  line-height: 1.2;
+  text-decoration: none;
+}
+/* The primary action carries the 7.css default border. It is a link, not a form
+   default, so it has no extra behaviour. */
+.global-not-found-actions a.os-button:not(.os-button--secondary) {
+  border-color: #3c7fb1;
+}
+.global-not-found-actions a.os-button:hover {
+  border-color: #3c7fb1;
+  background: var(
+    --w7-el-grad-h,
+    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
+  );
+}
+.global-not-found-actions a.os-button:active {
+  background: var(
+    --w7-el-grad-a,
+    linear-gradient(#e5f4fc, #c4e5f6 30% 50%, #98d1ef 50%, #68b3db)
+  );
+}
+.global-not-found-actions a.os-button:focus-visible,
+.global-not-found-locales a:focus-visible,
+.global-not-found-language select:focus-visible {
+  /* --win7-focus is not a token; the inner ring is black, and every focus target
+     here sits on the light window body, so it meets 3:1 in both themes. */
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 2px;
+}
+
 .global-not-found-language {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
-  margin-block-start: var(--space-8);
+  gap: 8px;
+  margin-block-start: 20px;
 }
 .global-not-found-language label {
-  color: var(--os-muted);
-  font-size: var(--text-s);
+  color: var(--win7-body-muted);
+  font-size: var(--win7-ui-size);
 }
+/* The select takes the 7.css select look; only its width and the touch size change. */
 .global-not-found-language select {
   max-inline-size: 100%;
-  min-height: 44px;
-  padding-inline: var(--space-3);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
-  background: var(--os-surface);
-  color: var(--os-text);
-  font: inherit;
-  /* 16px stops iOS zooming the page when the select is focused. */
-  font-size: 1rem;
+  min-inline-size: 0;
+  font-size: var(--win7-ui-size);
 }
+
 .global-not-found-locales {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px var(--space-3);
-  margin-block-start: var(--space-4);
+  gap: 4px 12px;
+  margin-block-start: 16px;
 }
-.global-not-found-locales a {
+.global-not-found-locales a.os-text-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  color: var(--win7-link);
+  font-size: var(--win7-ui-size);
+  text-decoration: underline;
+}
+.global-not-found-locales a.os-text-link:hover {
+  color: var(--win7-link-hover);
+}
+
+/* Phones: buttons and the select take 44px targets, and the dialog stays inside the
+   gutters. */
+@media (max-width: 700px) {
+  .global-not-found-actions a.os-button {
+    min-block-size: 44px;
+    flex: 1 1 100%;
+  }
+  .global-not-found-language select {
+    font-size: var(--win7-body-size);
+    min-block-size: 44px;
+  }
+  .global-not-found-dialog > .window-body {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-not-found * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Forced colours: gradients, shadows and text-shadow are dropped. The focus outline
+   is kept, and the frame keeps a system border. */
+@media (forced-colors: active) {
+  .global-not-found-dialog {
+    border: 1px solid CanvasText;
+  }
+  .global-not-found-mark,
+  .global-not-found-actions a.os-button {
+    background: Canvas;
+    box-shadow: none;
+    border-color: ButtonText;
+  }
+  .global-not-found-glyph {
+    fill: CanvasText;
+  }
+  .global-not-found-code {
+    text-shadow: none;
+  }
+  .global-not-found-actions a.os-button:focus-visible,
+  .global-not-found-locales a:focus-visible,
+  .global-not-found-language select:focus-visible {
+    outline: 2px solid Highlight;
+  }
 }

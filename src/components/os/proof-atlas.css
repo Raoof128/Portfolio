@@ -15,52 +15,24 @@
   text-align: center;
 }
 
-/* Desktop panel: solid surface, hairline and the window radius. */
+/* Desktop window (Aero): the glass frame is set in win7-desktop.css. The heading is the
+   title bar. The palette is scoped to this window, so the SVG fills and text read the
+   same on the white body in both themes. The Aero Night accent is set further down. */
 .proof-atlas--desktop {
+  --os-surface: #ffffff;
+  --os-text: #000000;
+  --os-muted: #3d3d3d;
+  --os-accent: #0066cc;
+  --os-accent-tint: #d7ebfb;
+  --os-line: #8e8f8f;
+  --os-control-line: #6d6d6d;
   position: relative;
-  /* Clips the top rail to the rounded corners. Clip, not hidden: a scroll container
-     here would detach the rail's view() timeline from the page scroll. */
-  overflow: clip;
-  padding: var(--space-4) var(--space-6) var(--space-6);
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
-  background: var(--os-surface);
+  min-width: 0;
 }
 
-/* Showstopper rail (v2.0): a 2px glow hairline across the top edge. It is static at full
-   width. Under view() it draws in once, scaled from the start edge, over the first 40%
-   of the panel's entry. Unsupported browsers keep the static rail. */
-.proof-atlas--desktop::before {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline: 0;
-  height: 2px;
-  background: var(--os-glow-gradient);
-  pointer-events: none;
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .proof-atlas--desktop::before {
-      transform-origin: left;
-      animation: os-rail-draw linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
-    .proof-atlas--desktop:dir(rtl)::before {
-      transform-origin: right;
-    }
-  }
-}
-
-/* Luminous nodes (v2.0): a static accent halo on the desktop variant only. Evidence
-   receipts keep their solid surface fill. */
-@media (prefers-reduced-transparency: no-preference) {
-  .proof-atlas--desktop
-    .proof-atlas-node:not(.proof-atlas-node--evidence)
-    .proof-atlas-node-halo {
-    fill: color-mix(in srgb, var(--os-glow-blue) 22%, transparent);
-  }
+.proof-atlas--desktop .proof-atlas-body {
+  background: var(--win7-body-bg);
+  border-radius: 0 0 3px 3px;
 }
 
 .proof-atlas-heading {
@@ -397,20 +369,8 @@
   font-size: var(--text-ui);
 }
 
-.os-desktop .os-desktop-identity--atlas {
-  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1.18fr);
-  gap: clamp(28px, 4vw, 64px);
-}
-
 .os-shell:dir(rtl) .proof-atlas-node text {
   font-family: var(--os-font-ui);
-}
-
-@media (max-width: 960px) {
-  .os-desktop .os-desktop-identity--atlas {
-    grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
-    gap: var(--space-6);
-  }
 }
 
 @media (max-width: 700px) {
@@ -422,15 +382,6 @@
   .proof-atlas-caption {
     max-width: 36ch;
     font-size: var(--text-xs);
-  }
-
-  .os-desktop .os-desktop-identity--atlas {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-6);
-  }
-
-  .proof-atlas--desktop {
-    padding: var(--space-3) var(--space-4) var(--space-4);
   }
 
   .proof-atlas--desktop .proof-atlas-figure {
@@ -526,5 +477,130 @@
      colour alone). */
   .proof-atlas-option[aria-pressed="true"] {
     border-width: 2px;
+  }
+}
+
+/* Desktop window. The heading is the title bar, 30px high unless it has to wrap. */
+.proof-atlas--desktop .proof-atlas-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 8px;
+  justify-content: flex-start;
+  min-height: var(--win7-title-h);
+  margin: 0;
+  padding: 6px 8px;
+  /* Top corners follow the 5px inner radius of the 6px frame. */
+  border-radius: 5px 5px 0 0;
+  /* Same gloss over the solid title base as the Getting Started title bar. */
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 50%),
+    var(--win7-title-base);
+  color: var(--win7-text-glass);
+  text-shadow: var(--win7-text-shadow);
+}
+
+.proof-atlas--desktop .proof-atlas-eyebrow,
+.proof-atlas--desktop .proof-atlas-heading h2 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.proof-atlas--desktop .proof-atlas-heading h2 {
+  flex: 0 1 auto;
+}
+
+/* White body: the figure, the controls and the caption share one surface. */
+.proof-atlas--desktop .proof-atlas-figure {
+  box-sizing: border-box;
+  padding: 12px;
+  background: var(--win7-body-bg);
+  border-block-start: none;
+}
+
+.proof-atlas--desktop .proof-atlas-controls {
+  margin-top: 0;
+  padding: 0 12px 12px;
+}
+
+/* Body copy sits at the 15px reading minimum, not the 13px UI size. */
+.proof-atlas--desktop .proof-atlas-caption {
+  max-width: none;
+  margin: 0;
+  padding: 0 12px 12px;
+  font-size: var(--text-ui);
+}
+
+.proof-atlas--desktop .proof-atlas-qualifier {
+  font-size: var(--text-ui);
+}
+
+.proof-atlas--desktop .proof-atlas-summary {
+  font-size: var(--win7-body-size);
+  line-height: 1.55;
+}
+
+/* Project selectors are Win7 push buttons: the 7.css gradients for rest, hover and
+   pressed. The pressed one is the selected project. */
+.proof-atlas--desktop .proof-atlas-option {
+  min-height: 30px;
+  padding: 3px 12px;
+  border: 1px solid var(--w7-el-bd);
+  border-radius: var(--w7-el-bdr);
+  background: var(--w7-el-grad);
+  box-shadow: var(--w7-el-sd);
+  color: var(--w7-el-c);
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  font-weight: 400;
+}
+
+.proof-atlas--desktop .proof-atlas-option:is(:hover, :focus-visible) {
+  border-color: var(--w7-el-bd-h);
+  background: var(--w7-el-grad-h);
+}
+
+.proof-atlas--desktop .proof-atlas-option[aria-pressed="true"] {
+  border-color: var(--w7-el-bd-a);
+  background: var(--w7-el-grad-a);
+  box-shadow: var(--w7-el-sd-a);
+}
+
+.proof-atlas--desktop .proof-atlas-link {
+  min-height: 30px;
+  color: var(--os-accent);
+}
+
+/* Aero Night: the accent deepens and the tint turns blue. The body stays white. */
+.win7[data-appearance="dark"] .proof-atlas,
+[data-appearance="dark"] .win7 .proof-atlas {
+  --os-accent: #00479a;
+  --os-accent-tint: #c9e0f7;
+  --os-line: #6f8399;
+  --os-control-line: #4f5b68;
+}
+
+@media (max-width: 700px) {
+  .proof-atlas--desktop .proof-atlas-option,
+  .proof-atlas--desktop .proof-atlas-link {
+    min-height: 44px;
+  }
+
+  /* The window runs full width on phones, so its corners go square. */
+  .proof-atlas--desktop .proof-atlas-heading,
+  .proof-atlas--desktop .proof-atlas-body {
+    border-radius: 0;
+  }
+}
+
+/* Reduced motion: the figure and the options change state instantly. */
+@media (prefers-reduced-motion: reduce) {
+  .proof-atlas--desktop .proof-atlas-option,
+  .proof-atlas--desktop .proof-atlas-figure {
+    transition: none;
   }
 }
