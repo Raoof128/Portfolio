@@ -83,7 +83,7 @@
     .os-about-education article
   ) {
   border: 1px solid var(--os-line);
-  border-radius: 3px;
+  border-radius: var(--win7-radius-control, 3px);
   padding: 14px;
   background: var(--win7-body-bg);
 }
@@ -437,9 +437,12 @@
   }
 }
 @media (pointer: coarse), (max-width: 700px) {
+  /* The :not clause matches the 24px base rule above, so this 44px touch rule wins on order. */
   .os-shell.win7
     :is(.os-support, .os-not-found)
-    :is(a, button):is(.os-button, .os-button--secondary) {
+    :is(a, button):is(.os-button, .os-button--secondary):not(
+      :is([aria-disabled="true"], :disabled)
+    ) {
     min-block-size: 44px;
   }
   .os-shell.win7
@@ -480,4 +483,338 @@
   .win7 .os-policy-section > h2 {
     border-block-end-color: CanvasText;
   }
+}
+
+/* Lab code panel (A11Y-V-03). The Win7 body re-points --os-text and --os-muted to black
+   and grey for reading pages, which left the code glyphs black and the header and line
+   numbers at 1.74:1 on the navy code surface. Inside the panel, the text takes the code
+   colour and the muted role is a mix of the code text and the surface: 8.3:1 on the dark
+   surface and 6.1:1 on the light one. */
+.win7 .os-code-panel {
+  --os-text: var(--os-code-text);
+  --os-muted: #a3adbb;
+  --os-muted: color-mix(
+    in srgb,
+    var(--os-code-text) 72%,
+    var(--os-code-surface)
+  );
+}
+
+/* Contact CTA (TI-03). The mail-client link is the primary action on the card: 44px tall,
+   a full-width target on phones, and the 7.css blue face. Its copy-address partner is the
+   secondary face. */
+.os-shell.win7 .os-support .os-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.os-shell.win7 .os-support .os-contact-email a.os-button {
+  min-block-size: 44px;
+  min-inline-size: min(100%, 16rem);
+  padding-inline: 20px;
+  font-size: var(--win7-ui-size);
+}
+@media (max-width: 700px) {
+  .os-shell.win7 .os-support .os-contact-email .os-contact-actions {
+    flex-direction: column;
+    inline-size: 100%;
+  }
+  .os-shell.win7 .os-support .os-contact-email .os-contact-actions > * {
+    inline-size: 100%;
+  }
+  .os-shell.win7 .os-support .os-contact-email a.os-button,
+  .os-shell.win7 .os-support .os-secure-copy > button {
+    inline-size: 100%;
+  }
+}
+
+/* Touch: the contact submit and the copy-address button are 44px tall on coarse pointers, at
+   every width (the 7.css push button is 24px). */
+@media (pointer: coarse) {
+  .os-shell.win7 .os-secure-contact .os-button,
+  .os-shell.win7 .os-secure-copy > button {
+    min-height: 44px;
+  }
+}
+
+/* Contact form (SecureContactForm inside the Win7 window body). A groupbox with the 7.css
+   fields. Red and amber are kept for real errors; typing and handoff use the blue accent. */
+.win7 .os-contact-form {
+  margin-block-start: var(--space-8);
+  text-align: start;
+}
+.win7 .os-contact-form .os-secure-contact {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  inline-size: 100%;
+  padding: 16px;
+  border: 1px solid var(--os-line);
+  border-radius: var(--win7-radius-control, 3px);
+  background: var(--os-surface);
+  color: var(--os-text);
+  text-align: start;
+}
+.win7 .os-contact-form .os-secure-contact::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 3px;
+  background: var(--os-accent);
+}
+.win7 .os-contact-form .os-secure-contact[data-tone="error"]::before {
+  background: var(--win7-danger);
+}
+.win7 .os-support .os-secure-contact .os-secure-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+.win7 .os-support .os-secure-contact .os-secure-title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+.win7 .os-secure-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--os-text);
+  font-size: var(--win7-ui-size);
+}
+.win7 .os-secure-status[data-phase="TYPING"] {
+  color: var(--os-accent);
+}
+.win7 .os-secure-contact[data-tone="error"] .os-secure-status {
+  color: var(--win7-danger);
+}
+.win7 .os-secure-form {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+.win7 .os-secure-legend {
+  margin: 0;
+  font-size: var(--win7-ui-size);
+  color: var(--os-muted);
+}
+.win7 .os-secure-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 640px) {
+  .win7 .os-secure-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.win7 .os-secure-field {
+  display: grid;
+  gap: 4px;
+  min-inline-size: 0;
+}
+.win7 .os-secure-label-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.win7 .os-secure-label-row label {
+  font-size: var(--win7-ui-size);
+  color: var(--os-text);
+}
+.win7 .os-secure-required {
+  font-size: var(--win7-ui-size);
+  color: var(--os-text);
+}
+.win7 .os-secure-field :is(input, textarea) {
+  inline-size: 100%;
+  box-sizing: border-box;
+  min-block-size: 24px;
+  font-size: var(--win7-ui-size);
+}
+/* Field edges (WCAG 1.4.11). 7.css draws the top edge of a text field at #abadb3, about
+   2.2:1 on white, so the resting edge takes the 7.css control line, #8e8f8f (3.2:1). Hover
+   and focus keep the 7.css blue, and invalid fields keep the danger red. */
+.win7 .os-secure-field :is(input, textarea):not(:hover, :focus) {
+  border-color: var(--w7-el-bd);
+}
+.win7 .os-secure-field textarea {
+  min-block-size: 96px;
+  resize: vertical;
+}
+.win7 .os-secure-field :is(input, textarea)[aria-invalid="true"] {
+  border-color: var(--win7-danger);
+}
+/* Phones and touch: 16px fields, so iOS does not zoom the page when a field takes focus. The
+   selector must outrank the reading-field rule above (font-size from --win7-ui-size, specificity
+   0,5,1), or the 14px value wins and the zoom returns. */
+@media (pointer: coarse), (max-width: 700px) {
+  .os-shell.win7
+    .os-support
+    .os-secure-form
+    .os-secure-field
+    :is(input, textarea) {
+    font-size: 16px;
+  }
+}
+.win7 .os-secure-help {
+  margin: 0;
+  font-size: var(--win7-ui-size);
+  line-height: 1.4;
+  color: var(--os-muted);
+}
+.win7 .os-secure-error {
+  margin: 0;
+  font-size: var(--win7-ui-size);
+  line-height: 1.4;
+  color: var(--win7-danger);
+}
+.win7 .os-secure-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.win7 .os-secure-note {
+  flex: 1 1 16rem;
+  margin: 0;
+  font-size: var(--win7-ui-size);
+  color: var(--os-muted);
+}
+.win7 .os-secure-fallback {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--os-line);
+  border-radius: var(--win7-radius-control, 3px);
+}
+.win7 .os-secure-hint,
+.win7 .os-secure-address {
+  margin: 0;
+}
+.win7 .os-secure-address span {
+  color: var(--os-muted);
+}
+.win7 .os-secure-address a {
+  color: var(--os-accent);
+  overflow-wrap: anywhere;
+}
+.win7 .os-secure-copy {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.win7 .os-secure-copy-status {
+  font-size: var(--win7-ui-size);
+  color: var(--os-muted);
+}
+/* 7.css buttons are 23px tall. WCAG 2.5.8 asks for 24px on any pointer, and the coarse
+   rule above takes these to 44px. */
+.win7 :is(.os-secure-copy, .os-secure-footer) > button {
+  min-block-size: 24px;
+}
+@media (max-width: 700px), (pointer: coarse) {
+  .os-shell.win7 .os-support .os-secure-footer > .os-button {
+    inline-size: 100%;
+  }
+}
+
+/* Hall of Fame empty state (F13). One plain block, no frame inside a frame. */
+.win7 .os-hof-empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding-block: 8px;
+}
+.win7 .os-hof-empty h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.win7 .os-hof-empty > div {
+  flex: 1 1 16rem;
+  min-inline-size: 0;
+}
+.win7 .os-hof-empty p {
+  margin: 4px 0 0;
+  color: var(--os-muted);
+}
+
+/* Section links on the locale 404: the 404 sits outside the desktop shell, so the main
+   sections are offered as ordinary links. */
+.win7 .os-not-found-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-block-start: 16px;
+}
+.win7 .os-not-found-sections a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 24px;
+}
+@media (pointer: coarse), (max-width: 700px) {
+  .win7 .os-not-found-sections a {
+    min-block-size: 44px;
+  }
+}
+
+/* Keylines, not glow (SC-05). The pastel glow hairlines between sections and the gradient
+   hover rims become the Win7 keyline and a flat Win7 blue border. win7-theme.css sets both
+   tokens, and Aero Night overrides them. The rules sit under .win7, so they outrank the
+   glow recipe in supporting-apps.css whatever the import order. */
+.win7
+  :is(
+    .os-about-section,
+    .os-resume-section,
+    .os-policy-section,
+    .os-contact-socials,
+    .os-library > section + section,
+    .os-lab-footnote,
+    .os-writeup-footer
+  )::before {
+  background: var(--win7-keyline);
+  opacity: 1;
+}
+.win7
+  :is(
+    .os-about-spec,
+    .os-about-education article,
+    .os-resume-card,
+    .os-contact-email,
+    .os-contact-socials a,
+    .os-hall .os-callout,
+    .os-policy .os-callout
+  )::after {
+  background: none;
+  border: 1px solid transparent;
+  padding: 0;
+  -webkit-mask: none;
+  mask: none;
+}
+.win7
+  :is(
+    .os-about-spec,
+    .os-about-education article,
+    .os-resume-card,
+    .os-contact-email,
+    .os-contact-socials a,
+    .os-hall .os-callout,
+    .os-policy .os-callout
+  ):hover::after {
+  border-color: var(--win7-hover-border);
+  opacity: 1;
 }

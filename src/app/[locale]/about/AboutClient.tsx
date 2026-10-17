@@ -29,7 +29,10 @@ import { formatDate, formatNumber } from "@/i18n/format";
 import { getPageSupportCopy } from "@/lib/page-support-copy";
 import "@/components/os/supporting-apps.css";
 
+// The 600 px WebP is the displayed size (the box is 300 CSS px at 2x). The 1200 px
+// JPEG and the PNG stay as fallbacks, and the JPEG is also the JSON-LD and OG image.
 const PROFILE_PHOTO_SOURCES = [
+  `${BASE_PATH}/images/raouf-about-600-7d22ea07.webp`,
   `${BASE_PATH}/Raouf_2.jpg`,
   `${BASE_PATH}/Raouf_2.png`,
 ] as const;
@@ -228,7 +231,9 @@ export function AboutClient() {
                 fill
                 sizes="(max-width: 700px) 240px, 300px"
                 unoptimized
-                priority
+                // Not the LCP (the intro paragraph is), so no preload. The default lazy
+                // load still starts at layout because the photo sits in the first view.
+                loading="lazy"
                 className="os-about-photo-image"
                 onError={handlePhotoError}
               />

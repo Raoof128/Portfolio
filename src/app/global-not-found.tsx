@@ -23,6 +23,7 @@ export default async function GlobalNotFound() {
   const entries = await Promise.all(
     (Object.keys(locales) as Locale[]).map(async (locale) => {
       const dictionary = await getDictionary(locale);
+      const prefix = locale === "en" ? "" : `/${locale}`;
       const copy: NotFoundCopy = {
         title: dictionary.not_found.error_code,
         description: dictionary.not_found.description,
@@ -31,6 +32,13 @@ export default async function GlobalNotFound() {
         languageLabel: getOSCopy(locale).selectLanguage,
         languageName: locales[locale].label,
         dir: locales[locale].dir,
+        // The 404 sits outside the desktop shell, so the main sections are offered here.
+        sections: [
+          { label: dictionary.nav.projects, href: `${prefix}/projects` },
+          { label: dictionary.nav.lab, href: `${prefix}/lab` },
+          { label: dictionary.nav.resume, href: `${prefix}/resume` },
+          { label: dictionary.nav.contact, href: `${prefix}/contact` },
+        ],
       };
       return [locale, copy] as const;
     }),

@@ -279,4 +279,41 @@ describe("Proof Atlas", () => {
       expect(cancel).toHaveBeenCalledWith(1);
     },
   );
+
+  it("lists the figure's node names in HTML for phones, in the same order as the drawing", () => {
+    const { container } = render(<ProofAtlas locale="en" interactive />);
+    const drawn = [...container.querySelectorAll(".proof-atlas-node text")].map(
+      (node) => node.textContent?.trim(),
+    );
+    const listed = [
+      ...container.querySelectorAll(".proof-atlas-node-labels li"),
+    ].map((item) => item.textContent?.trim());
+    expect(listed.length).toBeGreaterThan(0);
+    expect(listed).toEqual(drawn);
+  });
+
+  it("keeps the desktop window title to the heading and moves the eyebrow into the body", () => {
+    const { container } = render(
+      <ProofAtlas
+        locale="en"
+        interactive
+        className="proof-atlas--desktop window glass active"
+      />,
+    );
+    const titleBar = container.querySelector(".proof-atlas-heading")!;
+    expect(titleBar).toHaveClass("title-bar");
+    expect(titleBar.querySelector(".proof-atlas-eyebrow")).toBeNull();
+    expect(titleBar.querySelector("h2")).toHaveTextContent(
+      getAtlasCopy("en").heading,
+    );
+    const kicker = container.querySelector(
+      ".proof-atlas-body .proof-atlas-kicker",
+    );
+    expect(kicker).toHaveTextContent(getAtlasCopy("en").eyebrow);
+    const arrow = container.querySelector(".proof-atlas-link svg");
+    expect(arrow).toHaveAttribute("aria-hidden", "true");
+    expect(container.querySelector(".proof-atlas-link")).not.toHaveTextContent(
+      "↗",
+    );
+  });
 });

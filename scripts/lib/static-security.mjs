@@ -65,15 +65,8 @@ const publicAssets = new Set([
   "next.svg",
   "vercel.svg",
   "window.svg",
-  "hero-verification-desktop-poster.avif",
-  "hero-verification-desktop-poster.jpg",
-  "hero-verification-desktop.mp4",
-  "hero-verification-desktop.webm",
-  "hero-verification-mobile-poster.avif",
-  "hero-verification-mobile-poster.jpg",
-  "hero-verification-mobile.mp4",
-  "hero-verification-mobile.webm",
-  "images/raouf-welcome.webp",
+  "images/raouf-welcome-168-2ae922a8.webp",
+  "images/raouf-about-600-7d22ea07.webp",
 ]);
 
 function approvedPublicPath(name) {

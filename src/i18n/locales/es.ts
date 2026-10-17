@@ -203,7 +203,7 @@ const es: Dictionary = {
   },
   lab_page: {
     experimental_division: "Investigación experimental",
-    title: "El laboratorio",
+    title: "Laboratorio",
     description_1: "Una colección de",
     description_2: "pruebas de concepto, ",
     description_3:
@@ -214,7 +214,7 @@ const es: Dictionary = {
     id_label: "ID:",
   },
   writeups_page: {
-    classified_archive: "Investigación y artículos",
+    classified_archive: "Publicaciones y artículos",
     title: "Artículos",
     description: "Análisis técnicos, soluciones CTF y registros de ingeniería.",
   },
@@ -336,7 +336,7 @@ const es: Dictionary = {
     error_code: "Página no encontrada",
   },
   lab_detail: {
-    exit: "Volver a los experimentos",
+    exit: "Volver al laboratorio",
     experiment_id: "Experimento",
     objective: "Objetivo",
     constraints: "Limitaciones",
@@ -378,10 +378,10 @@ const es: Dictionary = {
     report_guidance_suffix: "para las directrices.",
     security_policy_link: "política de seguridad",
     report_btn: "Informar de una vulnerabilidad",
-    no_entries_title: "Aún no hay informes",
+    no_entries_title: "Sé el primer nombre en esta lista",
     no_entries_desc:
-      "Esta página espera a su primer investigador de seguridad. Encuentra una vulnerabilidad, repórtala responsablemente y sé el primero en ser reconocido.",
-    awaiting_badge: "En espera del primer informe",
+      "Encuentra una vulnerabilidad y repórtala de forma responsable. Los informes que cumplen los criterios se consideran para esta página.",
+    awaiting_badge: "Abierto al primer informe",
     criteria_title: "Criterios de reconocimiento",
     criteria_1:
       "Reportar una vulnerabilidad de seguridad válida y dentro del alcance",

@@ -210,7 +210,7 @@ const fa: Dictionary = {
     id_label: "شناسه:",
   },
   writeups_page: {
-    classified_archive: "پژوهش و نوشته‌ها",
+    classified_archive: "مقاله‌ها و نوشته‌ها",
     title: "نوشته‌ها",
     description: "تحلیل‌های فنی، راه‌حل‌های CTF و یادداشت‌های مهندسی.",
   },
@@ -331,7 +331,7 @@ const fa: Dictionary = {
     error_code: "صفحه پیدا نشد",
   },
   lab_detail: {
-    exit: "بازگشت به آزمایش‌ها",
+    exit: "بازگشت به آزمایشگاه",
     experiment_id: "شناسه آزمایش",
     objective: "هدف",
     constraints: "محدودیت‌ها",
@@ -373,10 +373,10 @@ const fa: Dictionary = {
     report_guidance_suffix: "مراجعه کنید.",
     security_policy_link: "سیاست امنیتی",
     report_btn: "گزارش",
-    no_entries_title: "هنوز گزارشی ثبت نشده است",
+    no_entries_title: "نخستین نامی باشید که در این تالار ثبت می‌شود",
     no_entries_desc:
       "با یافتن و گزارش مسئولانه یک آسیب‌پذیری، می‌توانید نخستین پژوهشگری باشید که در این صفحه از او قدردانی می‌شود.",
-    awaiting_badge: "در انتظار نخستین گزارش",
+    awaiting_badge: "برای نخستین گزارش باز است",
     criteria_title: "معیارهای تقدیر",
     criteria_1: "گزارش یک آسیب‌پذیری معتبر و در محدوده تعریف‌شده",
     criteria_2: "پیروی از راهنمایی‌های افشای مسئولانه",

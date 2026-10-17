@@ -62,7 +62,7 @@
   font-size: 0.9em;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   overflow-wrap: anywhere;
   padding: 0 4px;
@@ -124,7 +124,7 @@
 .os-callout {
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   padding: var(--space-6);
 }
@@ -160,7 +160,7 @@
   align-items: center;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-muted);
   display: inline-flex;
   font-size: var(--text-xs);
@@ -214,7 +214,7 @@
   aspect-ratio: 4 / 5;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   overflow: hidden;
   position: relative;
 }
@@ -320,7 +320,7 @@
 .os-about-education article {
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   min-inline-size: 0;
   padding: var(--space-6);
 }
@@ -369,7 +369,7 @@
   align-items: center;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-muted);
   display: inline-flex;
   font-size: var(--text-xs);
@@ -428,7 +428,7 @@
   align-items: center;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-muted);
   display: inline-flex;
   justify-content: center;
@@ -439,7 +439,7 @@
   align-items: center;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -476,7 +476,7 @@
 .os-contact-socials a {
   align-items: center;
   border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   display: flex;
   font-size: var(--text-ui);
@@ -535,7 +535,7 @@
   align-items: center;
   background: var(--os-surface);
   border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-muted);
   display: flex;
   flex: 1 1 240px;
@@ -565,7 +565,7 @@
 .os-library-topic select {
   background: var(--os-surface);
   border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   cursor: pointer;
   font-size: var(--text-ui);
@@ -596,7 +596,7 @@
   align-items: center;
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-s);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-muted);
   display: inline-flex;
   justify-content: center;
@@ -783,7 +783,7 @@
 .os-resume-card {
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   min-inline-size: 0;
   padding: var(--space-4) var(--space-6);
 }
@@ -866,7 +866,7 @@
 }
 .os-resume-grade {
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   font-size: var(--text-xs);
   padding: 2px 6px;
@@ -914,7 +914,7 @@
 .os-lab-card {
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   display: flex;
   flex-direction: column;
@@ -1037,7 +1037,7 @@
 .os-lab-constraints {
   background: var(--os-bg);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-s);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   font-size: var(--text-s);
   line-height: 1.6;
@@ -1054,7 +1054,7 @@
 .os-lab-tech-list li {
   align-items: center;
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-muted);
   display: inline-flex;
   font-size: var(--text-xs);
@@ -1064,7 +1064,7 @@
 .os-code-panel {
   background: var(--os-code-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-code-text);
   min-inline-size: 0;
   overflow: hidden;
@@ -1324,7 +1324,7 @@
 .os-writeup-body blockquote {
   background: var(--os-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-text);
   padding: var(--space-4) var(--space-6);
 }
@@ -1343,7 +1343,7 @@
 .os-writeup-body .os-code-surface {
   background: var(--os-code-surface);
   border: 1px solid var(--os-line);
-  border-radius: var(--radius-m);
+  border-radius: var(--win7-radius-control, 3px);
   color: var(--os-code-text);
   overflow: hidden;
 }

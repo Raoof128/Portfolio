@@ -24,7 +24,7 @@
   text-shadow: var(--win7-text-shadow);
 }
 .os-shell.win7 .os-welcome a {
-  color: #ffffff;
+  color: var(--win7-text-on-wallpaper);
 }
 .os-shell.win7 .os-welcome #os-lock-name {
   font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
@@ -38,20 +38,57 @@
 .os-shell.win7 .os-apps .os-app strong,
 .os-shell.win7 .os-apps .os-app small {
   background: none;
-  color: #ffffff;
+  color: var(--win7-text-on-wallpaper);
   text-shadow: var(--win7-text-shadow);
 }
 .os-shell.win7 .os-apps .os-app small {
   opacity: 0.92;
 }
-/* Desktop icon hover and selection: the translucent blue box. */
-.os-shell.win7 .os-apps .os-app:hover {
-  border-color: rgb(140 200 255 / 0.55);
-  background: linear-gradient(rgb(160 210 255 / 0.28), rgb(110 180 245 / 0.18));
+/* Desktop icon hover: the translucent blue box, on pointer devices only, so a tap does
+   not leave it lit. Focus keeps its own box below. */
+@media (hover: hover) {
+  .os-shell.win7 .os-apps .os-app:hover {
+    border-color: var(--win7-icon-hover-edge);
+    background: linear-gradient(
+      var(--win7-icon-hover-top),
+      var(--win7-icon-hover-bottom)
+    );
+  }
 }
 .os-shell.win7 .os-apps .os-app:focus-visible {
-  border-color: rgb(170 220 255 / 0.9);
-  background: linear-gradient(rgb(160 210 255 / 0.4), rgb(110 180 245 / 0.28));
+  border-color: var(--win7-icon-focus-edge);
+  background: linear-gradient(
+    var(--win7-icon-focus-top),
+    var(--win7-icon-focus-bottom)
+  );
+}
+
+/* Gradient hairlines and hover rims become flat Win7 lines. The glow tokens stay as they
+   are: --os-glow-gradient also fills the gradient headings, so it is not replaced
+   globally. Only the section dividers take the keyline. The title-bar glow line is not
+   listed: win7-windows.css hides it (display: none), so it has nothing to restyle. */
+.os-shell.win7
+  :is(
+    .os-about-section,
+    .os-resume-section,
+    .os-policy-section,
+    .os-contact-socials,
+    .os-library > section + section,
+    .os-lab-footnote,
+    .os-writeup-footer
+  )::before {
+  background: var(--win7-keyline);
+  opacity: 1;
+}
+/* Every hover rim (cards, windows, tiles) is one flat 1px Win7-blue border at full
+   strength, instead of the pastel conic rim. Rims that are always shown (the search dialog)
+   take the same solid border, since --os-rim-opacity is 1 for the whole shell. */
+.os-shell.win7 {
+  --os-rim-gradient: linear-gradient(
+    var(--win7-hover-border),
+    var(--win7-hover-border)
+  );
+  --os-rim-opacity: 1;
 }
 
 /* Script-focused headings never draw a ring or a box (they are not controls). */
@@ -74,4 +111,123 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* Reading routes render the window in server HTML before the desktop mounts. Its base
+   `.os-window` margin (32 px top) pushed the whole shell down, and hydration then moved
+   it back to the top edge: CLS 0.042 on /about and 0.024 on project pages. The window
+   now starts at the top edge in both states, so the shell does not move on hydration. */
+.os-shell.win7 main.os-window {
+  margin-block-start: 0;
+}
+
+/* Skip link. Its colours are set here, after the 7.css link colour, so the focused link
+   is a white plate with black text in both themes (21:1). Before this it took the blue
+   link colour on a light plate and read at about 1:1 in Aero Night. */
+.os-shell.win7 a.os-skip-link,
+.os-shell.win7 a.os-skip-link:link,
+.os-shell.win7 a.os-skip-link:visited,
+.os-shell.win7 a.os-skip-link:hover,
+.os-shell.win7 a.os-skip-link:focus {
+  background: var(--win7-paper);
+  color: var(--win7-ink);
+  text-decoration: underline;
+}
+
+/* Primary buttons: a two-tone focus ring. The blue inner ring is about 5.6:1 on the white
+   body, and the white outer ring stands out on the dark wallpaper, so one of the two always
+   contrasts with what sits behind the button. The 7.css focus was a 1px dotted outline. */
+.os-shell.win7 .os-button:focus-visible {
+  outline: 2px solid var(--win7-ring-outer);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--win7-ring-inner);
+}
+
+/* Touch. On a coarse pointer every window button reaches 44px tall, at any width, so a
+   tablet gets the same targets as a phone (the audit found 24px at 768). The search field
+   is 16px so iOS does not zoom the page when it takes focus, and 44px tall. */
+@media (pointer: coarse) {
+  .os-shell.win7 .os-button,
+  .os-shell.win7 .os-direct-links a {
+    min-height: 44px;
+  }
+  .os-shell.win7 .os-search-field input {
+    font-size: 16px;
+    min-height: 44px;
+  }
+}
+
+/* Sticky hover after a tap. On a coarse pointer or a device with no hover, a tap leaves
+   :hover on the element it landed on, so the hover colour stays lit until the next tap.
+   7.css sets the link hover colour without a guard, so the colour is reset here for those
+   devices. The hovered underline is left on purpose, so a tapped link still reads as a link.
+   The 7.css button border and glow are reset in win7-theme.css. Pointer hover rules in the
+   other win7 lanes are wrapped in (hover: hover) in those files. */
+@media (hover: none), (pointer: coarse) {
+  .os-shell.win7 a:not(.os-skip-link):hover:not(:focus-visible) {
+    color: var(--win7-link);
+  }
+}
+
+/* Terminal caption strip. The terminal sits in a reading window, so its caption is a light
+   steel over the white body. Aero Night's white title measured 4.25:1 on that steel, and the
+   black ink token is about 4.9:1 there. Day already uses black. This assumes the terminal
+   stays on a white body: on the dark wallpaper, black would fail. The copy button keeps its
+   own face and was already above 4.5:1. */
+.os-shell.win7 .os-terminal-title {
+  color: var(--win7-ink);
+}
+
+/* Contact buttons on a coarse pointer: 44px on the copy-address and submit buttons. The
+   7.css button sets min-height 23px, and win7-pages.css sets min-block-size 24px on these
+   buttons (the same property as min-height in horizontal text). This rule is more specific
+   than both, so it sets the 44px floor. Both names are set, so they agree. */
+@media (pointer: coarse) {
+  .os-shell.win7 .os-secure-copy > button,
+  .os-shell.win7 .os-secure-footer > button {
+    min-block-size: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Language switch pending: the summary dims and shows a wait cursor until the new locale
+   renders (the route change is the wait). */
+.os-shell.win7 .os-language summary[aria-busy="true"] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Touch, final word (TI-02, TI-04, the explorer rows at 390). On a coarse pointer the
+   reading-window toolbar (Back, Copy Link), the explorer search, the category select and
+   every project row take a 44px target at tablet and phone widths. The earlier explorer
+   rule loses to the Win7 row sizing, so this block sets the floor again, last. Fields are
+   16px so iOS does not zoom the page when one takes focus. */
+@media (pointer: coarse) {
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back,
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy {
+    min-block-size: 44px;
+    min-height: 44px;
+  }
+  .os-shell.win7
+    .os-project-explorer
+    :is(.os-explorer-index-link, .os-explorer-project-link),
+  .os-shell.win7 .os-project-explorer .os-explorer-search,
+  .os-shell.win7 .os-project-explorer .os-explorer-controls select {
+    min-block-size: 44px;
+    min-height: 44px;
+  }
+  .os-shell.win7 .os-project-explorer .os-explorer-search input[type="search"] {
+    min-block-size: 44px;
+    min-height: 44px;
+    font-size: 16px;
+  }
+  /* Selects and text fields across the Win7 pages. The page sheets set 13 to 14px with
+     selectors that outrank this block, so the 16px floor is !important on a coarse pointer
+     only (iOS zooms the page on focus below 16px). */
+  .os-shell.win7 select,
+  .os-shell.win7
+    input:is([type="text"], [type="search"], [type="email"], [type="url"]),
+  .os-shell.win7 textarea {
+    font-size: 16px !important;
+  }
 }

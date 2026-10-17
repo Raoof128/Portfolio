@@ -125,6 +125,18 @@
   font-size: var(--text-s);
 }
 
+/* Story prose stops at about 68 characters a line (TC-07). The cap is in em, not ch:
+   a ch is the width of "0", which runs wider than the average character in this face,
+   so 68ch measured about 78 characters a line. 38em holds the 13-17px prose near 68. */
+.os-shell .os-project-explorer .os-project-section .os-evidence-story > p,
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-evidence-story-caption
+  > p {
+  max-inline-size: 38em;
+}
+
 /* Source and reproduce links: the secondary control geometry, 40px (44px coarse). */
 .os-shell .os-project-explorer .os-project-section .os-evidence-story-links {
   display: flex;

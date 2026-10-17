@@ -208,7 +208,7 @@ const ar: Dictionary = {
     id_label: "المعرف:",
   },
   writeups_page: {
-    classified_archive: "الأبحاث والمقالات",
+    classified_archive: "أوراق ومقالات",
     title: "المقالات",
     description: "تحليلات تقنية وحلول CTF وسجلات هندسية.",
   },
@@ -328,7 +328,7 @@ const ar: Dictionary = {
     error_code: "الصفحة غير موجودة",
   },
   lab_detail: {
-    exit: "العودة إلى التجارب",
+    exit: "العودة إلى المختبر",
     experiment_id: "معرف التجربة",
     objective: "الهدف",
     constraints: "القيود",
@@ -368,10 +368,10 @@ const ar: Dictionary = {
     report_guidance_suffix: "للحصول على الإرشادات.",
     security_policy_link: "سياسة الأمان",
     report_btn: "إبلاغ",
-    no_entries_title: "لا توجد تقارير حتى الآن",
+    no_entries_title: "كن أول من يُدرَج في لوحة الشرف",
     no_entries_desc:
-      "يمكنك أن تكون أول باحث يُذكر إسهامه هنا، عبر اكتشاف ثغرة والإبلاغ عنها بمسؤولية.",
-    awaiting_badge: "في انتظار أول تقرير",
+      "اكتشف ثغرة وأبلغ عنها بمسؤولية، وقد يكون اسمك أول اسم يُدرج في هذه الصفحة.",
+    awaiting_badge: "مفتوح لأول بلاغ",
     criteria_title: "معايير التقدير",
     criteria_1: "الإبلاغ عن ثغرة أمنية صحيحة وضمن النطاق",
     criteria_2: "اتباع إرشادات الإفصاح المسؤول",

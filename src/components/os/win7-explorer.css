@@ -33,7 +33,8 @@
 }
 
 /* Address bar: a white field with the Win7 control edge and an inset highlight.
-   Decorative only (aria-hidden on the command bar), it shows the path as crumbs. */
+   It is the breadcrumb (a nav landmark): Projects links back to the index, and the
+   open project is the last crumb. */
 .os-shell.win7
   .os-project-explorer
   > .os-explorer-commandbar
@@ -88,7 +89,7 @@
   .os-project-explorer
   > .os-explorer-layout
   > .os-explorer-sidebar
-  > .os-explorer-index-link:not([aria-current="page"]) {
+  .os-explorer-index-link:not([aria-current="page"]) {
   min-height: 28px;
   margin-block-end: 4px;
   border-block-end: 1px solid var(--explorer-keyline);
@@ -144,6 +145,16 @@
     > .os-explorer-commandbar
     > .os-explorer-address {
     height: 32px;
+  }
+}
+
+/* Touch: the breadcrumb link takes the 44px target, so the address bar grows to hold it. */
+@media (pointer: coarse) {
+  .os-shell.win7
+    .os-project-explorer
+    > .os-explorer-commandbar
+    > .os-explorer-address {
+    height: 46px;
   }
 }
 

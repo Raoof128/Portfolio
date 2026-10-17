@@ -13,6 +13,7 @@ import {
 } from "@/lib/constants";
 import { resolveLocale, getLocaleConfig, locales, getDictionary } from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
+import { MotionPreferences } from "@/components/ui/MotionPreferences";
 import { ResearchOS } from "@/components/os/ResearchOS";
 import { buildSearchEntries } from "@/lib/os-search";
 import {
@@ -184,15 +185,17 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: jsonLdString }}
         />
         <I18nProvider locale={locale} dictionary={dictionary}>
-          <ResearchOS
-            key={locale}
-            locale={locale}
-            role={dictionary.hero.researcher}
-            entries={buildSearchEntries(locale)}
-            skipLabel={dictionary.seo.skip_to_content}
-          >
-            {children}
-          </ResearchOS>
+          <MotionPreferences>
+            <ResearchOS
+              key={locale}
+              locale={locale}
+              role={dictionary.hero.researcher}
+              entries={buildSearchEntries(locale)}
+              skipLabel={dictionary.seo.skip_to_content}
+            >
+              {children}
+            </ResearchOS>
+          </MotionPreferences>
         </I18nProvider>
       </body>
     </html>

@@ -23,6 +23,8 @@ export interface NotFoundCopy {
   languageLabel: string;
   languageName: string;
   dir: "ltr" | "rtl";
+  /* Site sections for recovery (the 404 has no shell taskbar). Optional so older callers still compile. */
+  sections?: Array<{ label: string; href: string }>;
 }
 
 const supportedLocales: Locale[] = ["en", "fa", "ar", "zh", "es"];
@@ -42,6 +44,10 @@ function subscribeToPath(callback: () => void) {
 const getPathLocale = () => notFoundLocale(window.location.pathname);
 const getServerLocale = (): Locale => "en";
 const getServerAppearance = (): Appearance => DEFAULT_APPEARANCE;
+const subscribeNone = () => () => {};
+// False in server HTML and during hydration, true once the client runs.
+const getClientReady = () => true;
+const getServerReady = () => false;
 
 export function GlobalNotFoundContent({
   copies,
@@ -59,6 +65,11 @@ export function GlobalNotFoundContent({
     subscribeAppearance,
     readAppearance,
     getServerAppearance,
+  );
+  const jsReady = useSyncExternalStore(
+    subscribeNone,
+    getClientReady,
+    getServerReady,
   );
   const [selectedLocale, setLocale] = useState<Locale | null>(null);
   const locale = selectedLocale ?? pathLocale;
@@ -135,43 +146,60 @@ export function GlobalNotFoundContent({
               {copy.projects}
             </a>
           </div>
-          <div className="global-not-found-language">
-            <label htmlFor="not-found-language">{copy.languageLabel}</label>
-            <select
-              id="not-found-language"
-              value={locale}
-              onChange={changeLanguage}
+          {/* One language control at a time: the select after hydration, and the
+              ordinary localized home links in server HTML for visitors without JavaScript. */}
+          {jsReady ? (
+            <div className="global-not-found-language">
+              <label htmlFor="not-found-language">{copy.languageLabel}</label>
+              <select
+                id="not-found-language"
+                value={locale}
+                onChange={changeLanguage}
+              >
+                {supportedLocales.map((language) => (
+                  <option
+                    key={language}
+                    value={language}
+                    lang={language}
+                    dir={copies[language].dir}
+                  >
+                    {copies[language].languageName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <nav
+              className="global-not-found-locales"
+              aria-label={copy.languageLabel}
             >
               {supportedLocales.map((language) => (
-                <option
+                <a
                   key={language}
-                  value={language}
+                  className="os-text-link"
+                  href={language === "en" ? "/" : `/${language}`}
+                  hrefLang={language}
                   lang={language}
                   dir={copies[language].dir}
                 >
                   {copies[language].languageName}
-                </option>
+                </a>
               ))}
-            </select>
-          </div>
-          {/* Ordinary localized home links provide recovery even without JavaScript. */}
-          <nav
-            className="global-not-found-locales"
-            aria-label={copy.languageLabel}
-          >
-            {supportedLocales.map((language) => (
-              <a
-                key={language}
-                className="os-text-link"
-                href={language === "en" ? "/" : `/${language}`}
-                hrefLang={language}
-                lang={language}
-                dir={copies[language].dir}
-              >
-                {copies[language].languageName}
-              </a>
-            ))}
-          </nav>
+            </nav>
+          )}
+          {copy.sections && copy.sections.length > 0 && (
+            <nav className="global-not-found-sections">
+              {copy.sections.map((section) => (
+                <a
+                  key={section.href}
+                  className="os-text-link"
+                  href={section.href}
+                >
+                  {section.label}
+                </a>
+              ))}
+            </nav>
+          )}
         </div>
       </div>
     </main>

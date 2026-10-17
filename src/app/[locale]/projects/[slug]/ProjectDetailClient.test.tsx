@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { getDictionary, type Locale } from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
 import { CONTACT_EMAIL_GMAIL } from "@/lib/constants";
-import { projects } from "@/lib/data";
+import { projects, type ProjectPaper } from "@/lib/data";
 import {
   getLocalizedProject,
   getProjectDiagramCopy,
@@ -83,5 +83,57 @@ describe("project source availability", () => {
     expect(
       screen.queryByText(dictionary.project_detail.private_source_note),
     ).not.toBeInTheDocument();
+  });
+
+  it("opens paper PDFs in a new tab, as the resume PDF does, without forcing a download", async () => {
+    const dictionary = await getDictionary("en");
+    const project = getLocalizedProject(projects["project-simurgh"], "en");
+    render(
+      <I18nProvider locale="en" dictionary={dictionary}>
+        <ProjectDetailClient
+          project={project}
+          slug={project.slug}
+          summaries={[]}
+          diagramCopy={getProjectDiagramCopy("en")}
+          evidenceStory={null}
+        />
+      </I18nProvider>,
+    );
+    const pdfLinks = Array.from(document.querySelectorAll("a")).filter((a) =>
+      (a.getAttribute("href") ?? "").endsWith(".pdf"),
+    );
+    expect(pdfLinks.length).toBeGreaterThan(0);
+    for (const link of pdfLinks) {
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link.getAttribute("rel")).toContain("noopener");
+      expect(link).not.toHaveAttribute("download");
+    }
+  });
+
+  it("keeps an external paper record in a new tab", async () => {
+    const dictionary = await getDictionary("en");
+    const base = getLocalizedProject(projects["project-simurgh"], "en");
+    const externalPaper: ProjectPaper = {
+      title: "External record",
+      label: "Record",
+      href: "https://example.org/record",
+      kind: "external",
+    };
+    const project = { ...base, papers: [externalPaper] };
+    render(
+      <I18nProvider locale="en" dictionary={dictionary}>
+        <ProjectDetailClient
+          project={project}
+          slug={project.slug}
+          summaries={[]}
+          diagramCopy={getProjectDiagramCopy("en")}
+          evidenceStory={null}
+        />
+      </I18nProvider>,
+    );
+    const link = document.querySelector('a[href="https://example.org/record"]');
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link?.getAttribute("rel")).toContain("noopener");
+    expect(link).not.toHaveAttribute("download");
   });
 });

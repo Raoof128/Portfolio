@@ -406,3 +406,30 @@ html[data-global-not-found]
     outline: 2px solid Highlight;
   }
 }
+
+/* Section links under the 404 actions (the 404 has no desktop taskbar). */
+.global-not-found-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-block-start: 16px;
+}
+.global-not-found-sections a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 24px;
+}
+@media (pointer: coarse), (max-width: 700px) {
+  .global-not-found-sections a {
+    min-block-size: 44px;
+  }
+}
+
+/* The section links sit on the white Win7 dialog body in both themes, so they take the
+   Win7 link pair rather than the Aero Night accent (cyan on white is about 1.6:1). */
+.global-not-found-sections a.os-text-link {
+  color: var(--win7-link);
+}
+.global-not-found-sections a.os-text-link:hover {
+  color: var(--win7-link-hover);
+}

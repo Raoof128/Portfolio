@@ -285,11 +285,12 @@
     animation: os-body-stagger-in var(--motion-quick) var(--ease-standard)
       backwards;
   }
+  /* 36ms per row, inside the 30 to 50ms stagger guideline (it was 16ms per row). */
   .os-window[data-opening] .os-page-content > * > :nth-child(2) {
-    animation-delay: 16ms;
+    animation-delay: 36ms;
   }
   .os-window[data-opening] .os-page-content > * > :nth-child(3) {
-    animation-delay: 32ms;
+    animation-delay: 72ms;
   }
   @keyframes os-body-stagger-in {
     from {

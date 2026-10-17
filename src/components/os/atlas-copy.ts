@@ -26,7 +26,7 @@ const copy: Record<Locale, AtlasCopy> = {
     welcomeCaption:
       "Three research paths. Each line follows a documented relationship.",
     journeyExplore: "Explore the Lab",
-    journeyReview: "Review My Research",
+    journeyReview: "Review My Projects",
     nodeLabels: {
       agent: "Agent",
       input: "Input",
@@ -92,7 +92,7 @@ const copy: Record<Locale, AtlasCopy> = {
     openEvidence: "مشاهده شواهد پروژه",
     welcomeCaption: "سه مسیر پژوهشی؛ هر خط یک رابطه مستند را نشان می‌دهد.",
     journeyExplore: "کاوش در آزمایشگاه",
-    journeyReview: "مرور پژوهش‌ها",
+    journeyReview: "مرور پروژه‌ها",
     nodeLabels: {
       agent: "عامل",
       input: "ورودی",
@@ -158,7 +158,7 @@ const copy: Record<Locale, AtlasCopy> = {
     openEvidence: "افتح أدلة المشروع",
     welcomeCaption: "ثلاثة مسارات بحثية؛ يمثّل كل خط علاقة موثقة.",
     journeyExplore: "استكشف المختبر",
-    journeyReview: "راجع أبحاثي",
+    journeyReview: "راجع مشاريعي",
     nodeLabels: {
       agent: "الوكيل",
       input: "الإدخال",
@@ -225,7 +225,7 @@ const copy: Record<Locale, AtlasCopy> = {
     welcomeCaption:
       "Tres rutas de investigación; cada línea sigue una relación documentada.",
     journeyExplore: "Explorar el laboratorio",
-    journeyReview: "Revisar mi investigación",
+    journeyReview: "Revisar mis proyectos",
     nodeLabels: {
       agent: "Agente",
       input: "Entrada",
@@ -291,7 +291,7 @@ const copy: Record<Locale, AtlasCopy> = {
     openEvidence: "查看项目证据",
     welcomeCaption: "三条研究路径；每条连线都对应有文档依据的关系。",
     journeyExplore: "探索实验室",
-    journeyReview: "查看我的研究",
+    journeyReview: "查看我的项目",
     nodeLabels: {
       agent: "智能体",
       input: "输入",

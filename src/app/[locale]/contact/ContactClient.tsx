@@ -20,6 +20,10 @@ import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
 import { getOSCopy } from "@/components/os/os-copy";
 import { getPageSupportCopy } from "@/lib/page-support-copy";
+import {
+  CopyAddressControl,
+  SecureContactForm,
+} from "@/components/ui/SecureContactForm";
 import "@/components/os/supporting-apps.css";
 
 export function ContactClient() {
@@ -42,16 +46,23 @@ export function ContactClient() {
         <p>{copy.contactDescription}</p>
       </div>
 
+      <div className="os-contact-form">
+        <SecureContactForm />
+      </div>
+
+      {/* The mail-client route stays as the fallback for visitors who prefer their own app. */}
       <div className="os-contact-email">
         <span className="os-support-eyebrow">{t.contact_form.email_label}</span>
-        {/* The address is shown as text so there is one mailto action per view. */}
         <p className="os-contact-address" dir="ltr">
           {CONTACT_EMAIL_GMAIL}
         </p>
-        <a href={`mailto:${CONTACT_EMAIL_GMAIL}`} className="os-button">
-          {copy.openEmail}
-          <ArrowUpRight className="os-flip" aria-hidden="true" size={17} />
-        </a>
+        <div className="os-contact-actions">
+          <a href={`mailto:${CONTACT_EMAIL_GMAIL}`} className="os-button">
+            {copy.openEmail}
+            <ArrowUpRight className="os-flip" aria-hidden="true" size={17} />
+          </a>
+          <CopyAddressControl />
+        </div>
         <p className="os-contact-note">{copy.emailDraftNote}</p>
       </div>
 

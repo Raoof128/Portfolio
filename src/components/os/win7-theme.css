@@ -9,6 +9,17 @@
    (data-appearance on the same element) and on the 404 wrapper (data-appearance on html).
    Every 7.css rule is scoped under .win7, so the unscoped sheet is never loaded. */
 .win7 {
+  /* Skip link and focus ring (added with the 2026-10-17 audit pass). The skip link is a
+     white plate with black text in both themes; the ring is blue inside and white outside. */
+  --win7-paper: #ffffff;
+  --win7-ink: #000000;
+  --win7-ring-inner: #0066cc;
+  --win7-ring-outer: #ffffff;
+  /* Chinese stack, shared by the Win7 window font and the research shell font. Microsoft
+     YaHei is listed so Windows does not fall back to per-glyph substitution. */
+  --win7-font-zh:
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
+    system-ui, sans-serif;
   /* Scrim: a soft dark pool behind the centre column. Both wallpaper stacks read it through
      this token, so white text on the brightest band still clears 4.5:1 with its shadow. */
   --win7-scrim: radial-gradient(
@@ -160,6 +171,37 @@
   --win7-body-bg: var(--body-bg);
   --win7-body-text: #000000;
   --win7-body-muted: #3d3d3d;
+  /* Hairline and control edge on the white window bodies. They are light in both themes,
+     because the bodies stay white (see the Aero Night note below). research-os.css reads
+     them. win7-pages.css, win7-windows.css and project-explorer.css still hard-code the same
+     two values until their lanes adopt these tokens. */
+  --win7-body-line: #d5dfe5;
+  --win7-body-control-line: #8e8f8f;
+  /* Scrollbar faces for the white window bodies, light in both themes. The track, face,
+     hover and pressed steps are one palette, so the gradients in research-os.css read here. */
+  --win7-scroll-track: #e5e5e5;
+  --win7-scroll-track-fade: #f0f0f0;
+  --win7-scroll-face: #f2f2f2;
+  --win7-scroll-face-fade: #e6e6e6;
+  --win7-scroll-hover: #eaf6fd;
+  --win7-scroll-hover-fade: #bee6fd;
+  --win7-scroll-hover-line: #3c7fb1;
+  --win7-scroll-press: #c4e5f6;
+  --win7-scroll-press-fade: #98d1ef;
+  --win7-scroll-press-line: #6d91ab;
+  /* Keylines replace the glow hairlines and gradient hover rims. Day uses the Win7 chrome
+     keyline and a Win7 blue border; Aero Night overrides both below. */
+  --win7-keyline: #d5dfe5;
+  --win7-hover-border: #3c7fb1;
+  /* White labels on the wallpaper, in both appearances. */
+  --win7-text-on-wallpaper: #ffffff;
+  /* Desktop icon states: a translucent Win7 blue box on hover, a brighter one on focus. */
+  --win7-icon-hover-edge: rgb(140 200 255 / 0.55);
+  --win7-icon-hover-top: rgb(160 210 255 / 0.28);
+  --win7-icon-hover-bottom: rgb(110 180 245 / 0.18);
+  --win7-icon-focus-edge: rgb(170 220 255 / 0.9);
+  --win7-icon-focus-top: rgb(160 210 255 / 0.4);
+  --win7-icon-focus-bottom: rgb(110 180 245 / 0.28);
   --win7-link: #0066cc;
   --win7-link-hover: #003d99;
   --win7-select-bg: linear-gradient(
@@ -210,7 +252,11 @@
   --win7-font:
     ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial,
     "Noto Sans", sans-serif;
-  --win7-ui-size: 13px;
+  /* One type scale, 12/14/16/18/24/32. Window chrome is 14px on desktop and phones alike
+     (the 13px step it replaces was off the scale), the small label is 12px on desktop,
+     and body text is 16px. Phones raise the small label to 14px further down, so no chrome
+     text on a phone is below 14px. */
+  --win7-ui-size: 14px;
   --win7-small-size: 12px;
   --win7-body-size: 16px;
   --win7-taskbar-h: 44px;
@@ -219,6 +265,9 @@
   --win7-tray-w: 340px;
   --win7-title-h: 30px;
   --win7-caption-w: 30px;
+  /* One OS radius scale. Controls and content cards take 3px; the window frame takes
+     --win7-radius (6px) and nothing else does. research-os.css maps its radius tokens here. */
+  --win7-radius-control: 3px;
   --win7-radius: 6px;
 
   /* Mapping onto the 7.css variables. The buttons keep the 7.css element defaults. The
@@ -236,6 +285,10 @@
   --w7-pg-bg: var(--win7-progress-fill);
 }
 
+/* Aero Night decision (UI/UX audit F11 and TC-04): reading windows keep white bodies in both
+   themes, for reading contrast, so the night tokens change the frame, the wallpaper, the labels
+   and the chrome, not the page body. The explorer and the Proof Atlas bodies are white too,
+   and their text pairs are checked on white. Documented, not a defect. */
 /* Aero Night. The shell carries data-appearance, and the 404 wrapper sits under html. The
    primary pair and the surfaces are shared with the light theme, so they are not repeated. */
 .win7[data-appearance="dark"],
@@ -277,6 +330,8 @@
     #0a3570 100%
   );
   --win7-tile-bg: #24558f;
+  --win7-keyline: #2b4466;
+  --win7-hover-border: #6fb8ec;
   /* White title text on the navy title base, about 11:1. */
   --w7-title-c: #ffffff;
 }
@@ -296,8 +351,7 @@
   --win7-font: var(--font-vazirmatn), system-ui, sans-serif;
 }
 .win7:lang(zh) {
-  --win7-font:
-    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", system-ui, sans-serif;
+  --win7-font: var(--win7-font-zh);
 }
 
 /* Night title text. 7.css sets the title colour and glow directly, not through a token. */
@@ -319,10 +373,10 @@
   );
 }
 /* The wallpaper, painted in two layers. The day stack is the element's own background. The
-   night stack sits on ::after at opacity 0 and fades to 1 when the shell carries
-   data-appearance="dark", so the switch cross-fades over 250ms with no JS and no extra
-   element. Reduced motion removes the transition in the guard below, so the swap is
-   instant there. The shared accent wash on ::before stays off. */
+   night stack sits on ::after at opacity 0 and becomes opacity 1 when the shell carries
+   data-appearance="dark". The flip is instant: there is no transition on the wallpaper, so
+   it changes together with the windows and the text. The shared accent wash on ::before
+   stays off. */
 .os-shell.win7 .os-wallpaper {
   position: fixed;
   inset: 0;
@@ -341,7 +395,7 @@
   inset: 0;
   background: var(--win7-wallpaper-night);
   opacity: 0;
-  transition: opacity 250ms var(--ease-standard, ease-in-out);
+  transition: none;
 }
 .os-shell.win7[data-appearance="dark"] .os-wallpaper::after {
   opacity: 1;
@@ -352,9 +406,27 @@
 .os-shell.win7 a {
   color: var(--win7-link);
 }
-.os-shell.win7 a:hover,
 .os-shell.win7 a:focus-visible {
   color: var(--win7-link-hover);
+}
+@media (hover: hover) {
+  .os-shell.win7 a:hover {
+    color: var(--win7-link-hover);
+  }
+}
+/* 7.css lights every button on :hover (a blue border and a gradient glow on ::before), and a
+   tap leaves that state lit. On coarse pointers and no-hover devices the hover-only glow
+   is reset here. The pressed border (:active) and focus stay with 7.css, so the reset
+   excludes :active: a tap also sets :hover, and without the exclusion it would hide the
+   pressed border. */
+@media (hover: none), (pointer: coarse) {
+  .os-shell.win7
+    :is(button, [role="button"]):not(:disabled):hover:not(:active) {
+    border-color: var(--w7-el-bd);
+  }
+  .os-shell.win7 :is(button, [role="button"]):not(:disabled):hover::before {
+    opacity: 0;
+  }
 }
 .os-shell.win7 :focus-visible {
   outline: 2px solid var(--win7-focus-outer);
@@ -391,13 +463,16 @@
     --win7-pin-h: 44px;
     --win7-caption-w: 44px;
     --win7-glass-blur: 8px;
+    /* 14px floor for chrome text on phones, the same step as the desktop chrome size. */
+    --win7-ui-size: 14px;
+    --win7-small-size: 14px;
   }
 }
 
 /* Reduced motion, one global guard for the whole site shell. No animation, transition or
-   loop runs anywhere, including the 7.css pulses, the research keyframes and the theme
-   switch, and state changes are instant. The welcome timer still runs; its bar and spinner
-   stay static. The press scale is a transform, so it is removed here as well. */
+   loop runs anywhere, including the 7.css pulses and the research keyframes, and state
+   changes are instant. The welcome timer still runs; its bar and spinner stay static. The
+   press scale is a transform, so it is removed here as well. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

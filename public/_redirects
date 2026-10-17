@@ -3,6 +3,26 @@
 # stale cached asset that a plain deploy leaves at this exact path).
 /pgp-key.txt  /.well-known/security.txt  301
 
+# Trailing-slash variants of the top-level pages go straight to the canonical path in
+# one hop. Without these, /projects/ matched the /projects/* rewrite below and then
+# took a second redirect. Exact paths must stay above their /* wildcards.
+/about/           /about           308
+/contact/         /contact         308
+/resume/          /resume          308
+/projects/        /projects        308
+/lab/             /lab             308
+/write-ups/       /write-ups       308
+/hall-of-fame/    /hall-of-fame    308
+/security-policy/ /security-policy 308
+/en/about/           /about           308
+/en/contact/         /contact         308
+/en/resume/          /resume          308
+/en/projects/        /projects        308
+/en/lab/             /lab             308
+/en/write-ups/       /write-ups       308
+/en/hall-of-fame/    /hall-of-fame    308
+/en/security-policy/ /security-policy 308
+
 # Redirect authored English aliases with a fixed destination prefix. A generic
 # /en/* -> /:splat rule can put //host at the beginning of Location.
 # Unpublished root aliases fall through to 404. Queries remain preserved.

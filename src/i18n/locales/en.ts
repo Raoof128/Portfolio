@@ -53,7 +53,7 @@ const en = {
     about: "About",
     projects: "Projects",
     lab: "Lab",
-    writeups: "Writing",
+    writeups: "Write-ups",
     resume: "Résumé",
     contact: "Contact",
     open_menu: "Open Navigation Menu",
@@ -197,7 +197,7 @@ const en = {
   },
   lab_page: {
     experimental_division: "Experimental research",
-    title: "The Lab",
+    title: "Lab",
     description_1: "A collection of",
     description_2: "proofs of concept, ",
     description_3:
@@ -208,7 +208,7 @@ const en = {
     id_label: "ID:",
   },
   writeups_page: {
-    classified_archive: "Research and writing",
+    classified_archive: "Papers and write-ups",
     title: "Write-ups",
     description: "Technical analysis, CTF solutions, and engineering logs.",
   },
@@ -329,7 +329,7 @@ const en = {
     error_code: "Page not found",
   },
   lab_detail: {
-    exit: "Back to Experiments",
+    exit: "Back to Lab",
     experiment_id: "Experiment",
     objective: "Objective",
     constraints: "Constraints",
@@ -370,10 +370,10 @@ const en = {
     report_guidance_suffix: "for guidelines.",
     security_policy_link: "security policy",
     report_btn: "Report a Vulnerability",
-    no_entries_title: "No Entries Yet",
+    no_entries_title: "Be the First Name Listed",
     no_entries_desc:
-      "No researchers have been recognised yet. Report a vulnerability responsibly to be considered for the Hall of Fame.",
-    awaiting_badge: "Awaiting the First Report",
+      "Find a real vulnerability and report it responsibly. Qualifying reports are considered for this page.",
+    awaiting_badge: "Open for the first report",
     criteria_title: "Recognition Criteria",
     criteria_1: "Report a valid, in-scope security vulnerability",
     criteria_2: "Follow responsible disclosure guidelines",

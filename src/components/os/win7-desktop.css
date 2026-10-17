@@ -27,13 +27,18 @@
    --os-desktop-cell-inset is the tile's 1px border plus 4px padding, so the shortcut row
    (footer) starts on the same line as the icon labels. --os-footer-h is the shortcut row
    height, and --os-cascade-step is the CASCADE_STEP of window-geometry.ts (28px). Labels
-   are white 13px text with a 1px dark shadow: no plates, so the wallpaper reads through. */
+   are white text with a 1px dark shadow. On the light day sky white text is about 3.8:1,
+   below the 4.5:1 that small text needs, so each label sits on a translucent dark chip
+   (--win7-desk-label-plate, 24% black). Measured on the wallpaper under every label, with
+   tiles hovered, the worst pixel is about 5.4:1. The chip is day-only: the night labels
+   reach about 6.8:1 without it. */
 .os-shell.win7 .os-desktop {
   --os-desktop-gutter: 24px;
   --os-desktop-cell-inset: 5px;
   --os-footer-h: 48px;
   --os-cascade-step: 28px;
   --win7-desk-label-shadow: 0 1px 2px rgb(0 0 0 / 0.85);
+  --win7-desk-label-plate: rgb(0 0 0 / 0.24);
   --win7-desk-selected: rgb(51 153 255 / 0.4);
   --win7-desk-selected-edge: rgb(170 221 250 / 0.9);
   position: relative;
@@ -52,6 +57,11 @@
   background: transparent;
   box-shadow: none;
   color: #ffffff;
+}
+
+/* Aero Night: the night wallpaper is dark enough for white labels without a chip. */
+.os-shell.win7[data-appearance="dark"] .os-desktop {
+  --win7-desk-label-plate: transparent;
 }
 
 /* Anything the markup hides (a minimised or closed window) stays hidden, even where a
@@ -111,6 +121,13 @@
     grid-column: 1;
     grid-row: 1;
   }
+  /* The column is as wide as its widest item. The section label's one-line caption set that
+     width at about 540px and squeezed the windows, so the Atlas diagram fell to 8 to 10px
+     labels. The icon grid is 120px or 244px wide (two columns of 120px and a 4px gap), so
+     the column stops at 244px and the caption wraps inside it. */
+  .os-shell.win7 .os-desktop .os-apps {
+    max-inline-size: 244px;
+  }
   .os-shell.win7 .os-desktop-identity--atlas {
     grid-column: 2;
     grid-row: 1;
@@ -121,9 +138,39 @@
   }
 }
 
+/* Fit the two desktop windows to the screen (LR-01, LR-02). A window never grows taller than
+   the viewport above the taskbar: its title bar stays put and its body scrolls inside the
+   frame. Phones keep the page scroll instead, so a long Proof Atlas is not a nested scroll
+   under a thumb, and the rule is off at 700px and below unless the screen is short. */
+@media (min-width: 701px), (max-height: 500px) {
+  .os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window {
+    display: flex;
+    flex-direction: column;
+    max-block-size: calc(100dvh - var(--win7-taskbar-h) - 24px);
+  }
+
+  .os-shell.win7
+    .os-desktop
+    :is(.os-intro, .proof-atlas--desktop).window
+    > :is(.title-bar, .proof-atlas-heading) {
+    flex: none;
+  }
+
+  .os-shell.win7 .os-desktop .os-intro.window > .window-body,
+  .os-shell.win7 .os-desktop .proof-atlas--desktop.window > .proof-atlas-body {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+}
+
 /* Wide desktops: the two windows sit side by side, the Proof Atlas one cascade step
-   lower and to the right of the Getting Started window. At 1280px each window is about
-   470px, so the Atlas labels stay near the 12px floor. */
+   lower and to the right of the Getting Started window. From 1280px each window is about
+   470px and the Atlas figure about 430px, which draws its labels at 11.6px. From 1280px the
+   names therefore move to the HTML list (proof-atlas.css), which keeps them at 14px. The
+   side-by-side layout also keeps the 1280x720 selectors above the taskbar (LR-02). Below
+   1280px the windows stack, as the medium band below describes. */
 @media (min-width: 1280px) {
   .os-shell.win7 .os-desktop-identity--atlas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -135,11 +182,16 @@
   }
 }
 
-/* Medium desktops: one column, the Proof Atlas window cascades one step in from the
-   start and one step down. */
+/* Medium desktops (1024px to 1279px): one column. The Proof Atlas window steps one cascade
+   step in from the start, but not down: a downward step pushed its project selectors under
+   the taskbar on a 1024x768 first screen (LR-02). The gap between the windows tightens to 16px
+   for the same reason. */
 @media (min-width: 1024px) and (max-width: 1279px) {
+  .os-shell.win7 .os-desktop-identity--atlas {
+    gap: 16px;
+  }
   .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop {
-    margin-block-start: var(--os-cascade-step);
+    margin-block-start: 0;
     margin-inline-start: var(--os-cascade-step);
   }
 }
@@ -147,6 +199,15 @@
 /* A maximised window takes the full row of the windows area. */
 .os-shell.win7 .os-desktop-identity--atlas > .is-expanded {
   grid-column: 1 / -1;
+}
+
+/* Tablet portrait (701px to 1023px): the app row comes first, so the launchers are in the
+   first screen above the windows. At this width the row is one line of five. Landscape
+   keeps the windows first, so the Getting Started buttons stay above the taskbar. */
+@media (orientation: portrait) and (min-width: 701px) and (max-width: 1023px) {
+  .os-shell.win7 .os-desktop .os-apps {
+    order: -1;
+  }
 }
 
 /* Title bars of the two desktop windows. They use the same 7.css title bar as the
@@ -164,8 +225,8 @@
   gap: 8px;
   min-height: var(--win7-title-h);
   height: auto;
-  /* One row: the title ends in an ellipsis and the caption group keeps its size, so the
-     divider never wraps onto a line of its own. */
+  /* One row of items: the title wraps onto a second line rather than truncating, and the
+     caption group keeps its size, so it never wraps onto a line of its own. */
   flex-wrap: nowrap;
   margin: 0 -6px;
   padding: 6px 6px 6px 8px;
@@ -200,9 +261,9 @@
   margin: 0;
   padding: 0;
   align-self: auto;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  /* Wrap, never ellipsis: a cut title reads as unfinished (SC-06, LR-05). */
+  overflow-wrap: anywhere;
+  white-space: normal;
   font-family: var(--win7-font);
   font-size: var(--win7-ui-size);
   font-weight: 600;
@@ -211,8 +272,8 @@
   text-shadow: none;
 }
 
-/* The subtitle is the lighter second line of the title: the same size, with a regular
-   weight, so it reads as the window's subject after the eyebrow. */
+/* The Atlas title is the heading alone, set in the regular weight so it reads as the window's
+   subject. The eyebrow sits in the body as the kicker. */
 .os-shell.win7 .os-desktop .proof-atlas--desktop .proof-atlas-heading > h2 {
   font-weight: 400;
 }
@@ -293,17 +354,27 @@
   box-shadow: var(--w7-el-sd-a);
 }
 
-/* Desktop labels. The section hint and the category caption sit on the wallpaper with no
-   plate; the shadow keeps white text readable on the lighter parts of the wallpaper. */
+/* Focus on the Getting Started buttons: a 2px black ring with a 2px offset, the same width
+   as the taskbar ring. The buttons sit on the white window body in both themes, so black
+   carries the contrast (21:1 against the white body). controls.css draws a 1px dotted outline
+   here. */
+.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button:focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 2px;
+  box-shadow: var(--w7-el-sd);
+}
+
+/* Desktop labels. The section hint and the category caption sit on a translucent dark chip,
+   so white text clears 4.5:1 on the light sky; the shadow sits on top of the chip. */
 .os-shell.win7 .os-desktop .os-apps .os-section-label {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 4px 12px;
   margin: 0 0 16px;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: var(--win7-desk-label-plate);
   color: #ffffff;
   font-size: var(--win7-ui-size);
   line-height: 1.5;
@@ -326,8 +397,9 @@
    is full. From 1024px the grid has a definite height, so the auto-filled rows count
    follows the viewport: about five rows at 900px tall, which is one column for the five
    apps. The base app grid sets five fixed columns, so they are cleared here; the
-   implicit 120px columns then apply. The 200px is the space the section label, the
-   shortcut row, the top padding and the taskbar clearance take. */
+   implicit 120px columns then apply. The 256px is the space the section label (three
+   lines in the 244px column), the shortcut row, the top padding and the taskbar clearance
+   take. */
 .os-shell.win7 .os-desktop .os-app-grid {
   display: grid;
   grid-template-columns: none;
@@ -341,7 +413,7 @@
 
 @media (min-width: 1024px) {
   .os-shell.win7 .os-desktop .os-app-grid {
-    block-size: calc(100dvh - 200px);
+    block-size: calc(100dvh - 256px);
   }
 }
 
@@ -369,7 +441,8 @@
   margin: 0;
   padding: 1px 2px;
   border-radius: 3px;
-  background: transparent;
+  /* The chip sits under the label, so a hovered or selected tile keeps the label legible. */
+  background: var(--win7-desk-label-plate);
   color: #ffffff;
   text-align: center;
   text-shadow: var(--win7-desk-label-shadow);
@@ -466,13 +539,16 @@
   padding: 2px 6px;
   border: 1px solid transparent;
   border-radius: 3px;
-  background: transparent;
+  background: var(--win7-desk-label-plate);
   color: #ffffff;
   text-decoration: none;
 }
 
 .os-shell.win7 .os-desktop .os-desktop-footer a:is(:hover, :focus-visible) {
-  background: var(--win7-desk-selected);
+  /* The selection tint sits over the chip, so the link keeps its contrast when active. */
+  background:
+    linear-gradient(var(--win7-desk-label-plate), var(--win7-desk-label-plate)),
+    var(--win7-desk-selected);
   border-color: var(--win7-desk-selected-edge);
   color: #ffffff;
   text-decoration: underline;
@@ -598,6 +674,13 @@
     border-radius: 0;
   }
 
+  /* The windows lane reserves 76px of body bottom for the taskbar. The desktop keeps its own
+     clearance below the windows, so the intro needs 20px here. The selectors and the CTAs
+     then clear the taskbar on a 390x844 first screen (LR-02). */
+  .os-shell.win7 .os-desktop .os-intro.window.glass > .window-body.has-space {
+    padding-block-end: 20px;
+  }
+
   .os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button {
     min-height: 44px;
     flex: 1 1 auto;
@@ -644,6 +727,98 @@
 
   .os-shell.win7 .os-desktop .os-desktop-footer a,
   .os-shell.win7 .os-desktop .os-desktop-restore-button {
+    min-height: 44px;
+  }
+}
+
+/* Short viewports (under 500px tall): the Getting Started buttons must clear the taskbar on
+   first paint. This block follows the phone rules, so it wins at equal specificity. The
+   window body gives up some of its padding and the heading some of its size. */
+@media (max-height: 500px) {
+  .os-shell.win7 .os-desktop {
+    padding-top: 8px;
+  }
+  .os-shell.win7 .os-intro .window-body.has-space {
+    padding: 12px 16px;
+  }
+  .os-shell.win7 .os-intro h1 {
+    margin-bottom: 8px;
+    font-size: 24px;
+  }
+  .os-shell.win7 .os-intro .os-role {
+    margin: 0;
+  }
+  .os-shell.win7 .os-intro .os-desktop-summary {
+    margin-top: 8px;
+  }
+  .os-shell.win7 .os-intro .os-direct-links {
+    margin-top: 12px;
+  }
+}
+
+/* Short and wide screens (640x360, 844x390, a 200% zoom of 1280x720): the two windows sit
+   side by side from the top, so the Proof Atlas title is in the first screen beside the
+   Getting Started buttons (LR-01). Each window keeps its frame, and fits the height above the
+   taskbar through the rule above. The Atlas labels move to the HTML list in this layout. */
+@media (max-height: 500px) and (min-width: 561px) {
+  .os-shell.win7 .os-desktop-identity--atlas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+
+  .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop {
+    margin-block-start: 0;
+    margin-inline-start: 0;
+  }
+
+  .os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window {
+    border-inline: 1px solid var(--win7-frame-border);
+    border-radius: var(--win7-radius);
+  }
+}
+
+/* Phone-width side by side (560px to 700px, short): the Getting Started column is narrow, so
+   its copy wraps onto more lines. The window body tightens so the two CTAs stay above the
+   taskbar on a 640x360 first screen. The text stays at 14px or more. */
+@media (max-height: 500px) and (min-width: 561px) and (max-width: 700px) {
+  .os-shell.win7 .os-intro .window-body.has-space {
+    padding: 8px 12px;
+  }
+  .os-shell.win7 .os-intro h1 {
+    margin-bottom: 4px;
+    font-size: 20px;
+    line-height: 1.1;
+  }
+  .os-shell.win7 .os-intro .os-role,
+  .os-shell.win7 .os-intro .os-desktop-summary {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .os-shell.win7 .os-intro .os-desktop-summary {
+    margin-top: 4px;
+  }
+  .os-shell.win7 .os-intro .os-direct-links {
+    margin-top: 6px;
+  }
+}
+
+/* Keyboard focus and in-page jumps scroll their target clear of the taskbar. The dock is
+   44px to 52px tall, so 72px leaves room above it. The scroll container is the document,
+   so the rule sits on the root and applies only while the desktop is on the page. */
+html:has(.os-desktop) {
+  scroll-padding-block-end: 72px;
+}
+
+/* Coarse pointers at any width (tablets, touch laptops): the desktop's own controls reach
+   44px tall, as they already do on phones. The rules sit after the 23px to 30px fine-pointer
+   sizes above, at the same specificity, so they win. Fine pointers keep the compact sizes. */
+@media (pointer: coarse) {
+  .os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button,
+  .os-shell.win7 .os-desktop .os-desktop-footer a,
+  .os-shell.win7 .os-desktop .os-desktop-restore-button,
+  .os-shell.win7 .proof-atlas--desktop .proof-atlas-option,
+  .os-shell.win7 .proof-atlas--desktop .proof-atlas-link {
     min-height: 44px;
   }
 }

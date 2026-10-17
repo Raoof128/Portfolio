@@ -53,7 +53,12 @@
     inset 0 1px 0 var(--os-glass-highlight),
     var(--shadow-dock);
 }
-.os-dock a:hover,
+@media (hover: hover) {
+  .os-dock a:hover {
+    background: var(--os-dock-selection);
+    box-shadow: none;
+  }
+}
 .os-dock a:focus-visible {
   background: var(--os-dock-selection);
   box-shadow: none;

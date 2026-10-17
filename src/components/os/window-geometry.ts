@@ -181,6 +181,33 @@ export function createCascadedWindowRect(
 }
 
 /**
+ * The old box, stretched to the new box's aspect ratio at the larger of the two factors.
+ * A FLIP from this box scales uniformly, so text and screenshots keep their proportions while
+ * the frame moves. Only the transform is animated; the new box is committed at once.
+ */
+export function createUniformFlipOrigin(
+  from: WindowRect,
+  to: WindowRect,
+): WindowRect {
+  if (
+    !Number.isFinite(from.x) ||
+    !Number.isFinite(from.y) ||
+    from.width <= 0 ||
+    from.height <= 0 ||
+    to.width <= 0 ||
+    to.height <= 0
+  )
+    return from;
+  const factor = Math.max(from.width / to.width, from.height / to.height);
+  return {
+    x: from.x,
+    y: from.y,
+    width: to.width * factor,
+    height: to.height * factor,
+  };
+}
+
+/**
  * The transform that maps a window's new box back onto its old one, for a FLIP
  * animation with a top-left origin. Only transform is animated; the size is committed at
  * once. Returns null when nothing visibly moves or a rectangle is not usable.

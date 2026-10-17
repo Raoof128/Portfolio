@@ -21,7 +21,7 @@
 }
 
 /* Title: a centred, single-line label in the title bar. It is the drag handle on desktop. */
-.os-shell button.os-window-title {
+.os-shell :is(button, div).os-window-title {
   /* Grows to fill the bar on phones (flex) and centres; the grid on desktop sizes it. */
   flex: 1 1 auto;
   min-width: 0;
@@ -40,13 +40,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.os-shell button.os-window-title--movable {
+.os-shell :is(button, div).os-window-title--movable {
   cursor: grab;
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
 }
-.os-shell button.os-window-title--movable:active {
+.os-shell :is(button, div).os-window-title--movable:active {
   cursor: grabbing;
 }
 
@@ -355,5 +355,103 @@
   .os-shell .os-window,
   .os-shell .os-search-dialog {
     transition-duration: 0ms !important;
+  }
+}
+
+/* Copy Link feedback sits under the command toolbar, next to the button that made it.
+   research-os.css floats the shared status at the top edge of the viewport, which is far
+   from the window. A failed copy keeps its address on screen until the visitor dismisses it. */
+.os-shell .os-window .os-share-status {
+  position: static;
+  z-index: auto;
+  max-width: none;
+  margin: 6px 12px 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  animation: none;
+}
+/* The address that could not be copied: a read-only field, selectable in full. It sits under the
+   status line and stays until the visitor dismisses it. */
+.os-shell .os-share-address {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  margin: 6px 12px 0;
+}
+.os-shell .os-share-url {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  /* 0.8 alpha navy on white is about 7:1 (WCAG 1.4.11 needs 3:1 for a field boundary). */
+  border: 1px solid rgb(16 48 92 / 0.8);
+  border-radius: 3px;
+  background: var(--win7-body-bg);
+  color: var(--win7-body-text);
+  font-family: inherit;
+  font-size: var(--text-s);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+.os-shell .os-share-url:focus-visible {
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px var(--win7-focus-outer);
+}
+.os-shell .os-share-dismiss {
+  min-height: 44px;
+  margin: 0;
+}
+.os-shell .os-window-copy.is-copied {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.os-shell .os-window-copy.is-copied svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+/* Reopen notice: after a window closes, the visitor can reopen it for a short time. It sits at the
+   start edge, above the taskbar, and is announced as a status. */
+.os-shell .os-window-undo {
+  position: fixed;
+  inset-block-end: calc(var(--win7-taskbar-h, 40px) + 12px);
+  inset-inline-start: 12px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 24px);
+  min-height: 44px;
+  padding-inline: 14px 6px;
+  border: 1px solid var(--os-control-line);
+  border-radius: var(--radius-s);
+  background: var(--os-elevated);
+  box-shadow: var(--shadow-dock);
+  color: var(--os-text);
+  font-size: var(--text-s);
+  animation: os-menu-arrive var(--motion-quick) var(--ease-standard) backwards;
+}
+.os-shell .os-window-undo > span {
+  overflow-wrap: anywhere;
+}
+.os-shell .os-window-undo-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 10px;
+  color: var(--os-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Phones: the minimised-window chip sits on the same edge just above the taskbar, so the notice
+   rises above it instead of covering it. */
+@media (max-width: 700px) {
+  .os-shell .os-window-undo {
+    inset-block-end: calc(var(--win7-taskbar-h, 40px) + 56px);
   }
 }

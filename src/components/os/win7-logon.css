@@ -275,7 +275,7 @@
   fill: currentColor;
   filter: drop-shadow(0 1px 0 rgb(255 255 255 / 0.6));
 }
-.os-shell.win7 .os-welcome .os-enter:not(:disabled):hover {
+.os-shell.win7 .os-welcome .os-enter:hover {
   box-shadow:
     inset 0 -3px 6px rgb(0 36 98 / 0.4),
     inset 0 0 0 1px rgb(255 255 255 / 0.35),
@@ -283,20 +283,21 @@
     0 0 10px rgb(140 210 255 / 0.9);
 }
 /* Pressed: the lower rim darkens and the orb sinks, as a held Aero button does. */
-.os-shell.win7 .os-welcome .os-enter:not(:disabled):active {
+.os-shell.win7 .os-welcome .os-enter:active {
   box-shadow:
     inset 0 2px 5px rgb(0 0 0 / 0.5),
     0 0 0 1px rgb(255 255 255 / 0.3);
 }
 /* Keyboard focus keeps the 7.css inset ring. The 2px outline lives in welcome-enter.css. */
-.os-shell.win7 .os-welcome .os-enter:not(:disabled):focus-visible {
+.os-shell.win7 .os-welcome .os-enter:focus-visible {
   box-shadow:
     inset 0 0 0 2px #98d1ef,
     inset 0 -3px 6px rgb(0 36 98 / 0.4),
     0 0 0 1px rgb(255 255 255 / 0.4);
 }
-/* While the wait runs the face keeps full visibility and the cursor reads as busy. */
-.os-shell.win7 .os-welcome .os-enter:disabled {
+/* While the wait runs the face keeps full visibility and the cursor reads as busy. The orb stays
+   pressable: a second press ends the wait (WelcomeEnter.tsx). */
+.os-shell.win7 .os-welcome .os-enter[aria-busy="true"] {
   cursor: progress;
   opacity: 1;
   color: #ffffff;

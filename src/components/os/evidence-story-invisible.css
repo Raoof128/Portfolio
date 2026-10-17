@@ -286,6 +286,15 @@
   line-height: 1.65;
 }
 
+/* Capture notes take the same 38em measure as the rest of the story prose (TC-07). */
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-capture-panel
+  > p:not(.os-capture-api) {
+  max-inline-size: 38em;
+}
+
 @container evidence-story (min-width: 521px) {
   .os-shell .os-project-explorer .os-project-section .os-capture-observability {
     grid-template-columns: repeat(2, minmax(0, 1fr));

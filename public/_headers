@@ -24,3 +24,17 @@
 # Immutable static assets (content-hashed filenames, safe to cache forever)
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Hashed media (every file under /images carries a content hash in its name, so a
+# new version is a new URL). Only hashed files may live in this directory.
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Unhashed media that can be replaced in place keep a short cache with revalidation,
+# so a new photo or card image reaches returning visitors within a day.
+/Raouf_2.jpg
+  Cache-Control: public, max-age=86400, must-revalidate
+/Raouf_2.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/og.png
+  Cache-Control: public, max-age=86400, must-revalidate

@@ -99,7 +99,14 @@ function readIconColumnEdge(): number {
   }
 }
 
-/** Keep a reading document mounted during minimization; geometry is session-only. */
+/**
+ * Keep a reading document mounted during minimization; geometry is session-only.
+ *
+ * Navigation model (decision, owner may override later): this hook owns geometry, not
+ * navigation. A window's Back control is a parent link (WorkspaceWindows.tsx) and is not a
+ * history step, so browser Back returns to the page the visitor just left (audit
+ * nav-window-back-vs-history). Changing that means changing WorkspaceWindows.tsx, not this hook.
+ */
 export function useReadingWindow(
   path: string,
   content: RefObject<HTMLElement | null>,

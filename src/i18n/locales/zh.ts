@@ -203,7 +203,7 @@ const zh: Dictionary = {
     id_label: "编号：",
   },
   writeups_page: {
-    classified_archive: "研究与文章",
+    classified_archive: "论文与文章",
     title: "文章",
     description: "技术分析、CTF 解题报告及工程日志。",
   },
@@ -320,7 +320,7 @@ const zh: Dictionary = {
     error_code: "找不到页面",
   },
   lab_detail: {
-    exit: "返回实验列表",
+    exit: "返回实验室",
     experiment_id: "实验编号",
     objective: "目标",
     constraints: "约束",
@@ -359,10 +359,10 @@ const zh: Dictionary = {
     report_guidance_suffix: "了解指南。",
     security_policy_link: "安全政策",
     report_btn: "报告漏洞",
-    no_entries_title: "暂无报告",
+    no_entries_title: "成为首位入榜者",
     no_entries_desc:
       "发现并负责任地报告漏洞，你就有机会成为这里第一位获得致谢的研究者。",
-    awaiting_badge: "等待第一份报告",
+    awaiting_badge: "开放接收首份报告",
     criteria_title: "认可标准",
     criteria_1: "报告有效且在范围内的安全漏洞",
     criteria_2: "遵守负责任披露指南",

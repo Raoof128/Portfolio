@@ -46,36 +46,33 @@ export function HallOfFameClient() {
         </a>
       </div>
 
-      <section className="os-policy-section">
-        {/* Empty state: the honest copy is kept, with a status dot and text. */}
-        <div className="os-callout os-empty-state">
-          <span className="os-empty-icon" aria-hidden="true">
-            <Users size={24} />
-          </span>
-          <div>
-            <h2>{t.hall_of_fame.no_entries_title}</h2>
-            <p>{t.hall_of_fame.no_entries_desc}</p>
-          </div>
-          <span className="os-status" data-state="inactive">
-            {t.hall_of_fame.awaiting_badge}
-          </span>
+      {/* Empty state: one plain block, not a frame inside a frame. The honest copy is kept,
+          with a status badge and text. */}
+      <section className="os-hof-empty" aria-labelledby="os-hof-empty-title">
+        <span className="os-empty-icon" aria-hidden="true">
+          <Users size={22} />
+        </span>
+        <div>
+          <h2 id="os-hof-empty-title">{t.hall_of_fame.no_entries_title}</h2>
+          <p>{t.hall_of_fame.no_entries_desc}</p>
         </div>
+        <span className="os-status" data-state="inactive">
+          {t.hall_of_fame.awaiting_badge}
+        </span>
       </section>
 
       <section className="os-policy-section">
         <h2>{t.hall_of_fame.criteria_title}</h2>
-        <div className="os-callout">
-          <ol className="os-numbered-list">
-            {[
-              t.hall_of_fame.criteria_1,
-              t.hall_of_fame.criteria_2,
-              t.hall_of_fame.criteria_3,
-              t.hall_of_fame.criteria_4,
-            ].map((criterion, i) => (
-              <li key={i}>{criterion}</li>
-            ))}
-          </ol>
-        </div>
+        <ol className="os-numbered-list">
+          {[
+            t.hall_of_fame.criteria_1,
+            t.hall_of_fame.criteria_2,
+            t.hall_of_fame.criteria_3,
+            t.hall_of_fame.criteria_4,
+          ].map((criterion, i) => (
+            <li key={i}>{criterion}</li>
+          ))}
+        </ol>
       </section>
 
       <div className="os-callout os-policy-note">

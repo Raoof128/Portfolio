@@ -37,7 +37,18 @@ import { OSApplicationBridge } from "./OSApplicationBridge";
 import { useContentId, useInitialAppState } from "./application-context";
 import { clearLanguageNavigation } from "./language-navigation";
 
-const navigation = vi.hoisted(() => ({ pathname: "/", push: vi.fn() }));
+/**
+ * The logon orb's accessible name is "Sign in: <lab entry>", so the visible caption is part of it
+ * (WCAG 2.5.3). The predicate matches the lab entry text that ends the name.
+ */
+const orbName = (locale: Locale) => (name: string) =>
+  name.endsWith(getAtlasCopy(locale).journeyExplore);
+
+const navigation = vi.hoisted(() => ({
+  pathname: "/",
+  push: vi.fn(),
+  prefetch: vi.fn(),
+}));
 
 vi.mock("next/navigation", () => ({
   usePathname: () => navigation.pathname,
@@ -249,6 +260,47 @@ describe("current application window", () => {
     expect(shellElement).toHaveAttribute("data-appearance", "dark");
   });
 
+  it("marks the shell for a short colour cross-fade on a theme change, not under reduced motion", async () => {
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }));
+    render(shell());
+    const toggle = screen.getByRole("switch", { name: copy.darkAppearance });
+    const shellElement = document.querySelector<HTMLElement>(".os-shell")!;
+    fireEvent.click(toggle);
+    expect(shellElement).toHaveAttribute("data-theme-switching");
+    await waitFor(() =>
+      expect(shellElement).not.toHaveAttribute("data-theme-switching"),
+    );
+  });
+
+  it("flips the theme instantly, with no cross-fade marker, under reduced motion", () => {
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+      matches: query.includes("reduce"),
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }));
+    render(shell());
+    const toggle = screen.getByRole("switch", { name: copy.darkAppearance });
+    const shellElement = document.querySelector<HTMLElement>(".os-shell")!;
+    const before = shellElement.getAttribute("data-appearance");
+    fireEvent.click(toggle);
+    expect(shellElement.getAttribute("data-appearance")).not.toBe(before);
+    expect(shellElement).not.toHaveAttribute("data-theme-switching");
+  });
+
   it("keeps one window open with its bounds when moving between projects", () => {
     desktop();
     navigation.pathname = "/projects/project-simurgh";
@@ -331,7 +383,7 @@ describe("current application window", () => {
     fireEvent.change(within(pane).getByRole("textbox", { name: "Draft" }), {
       target: { value: "Current draft" },
     });
-    fireEvent.click(within(pane).getByRole("button", { name: "Minimise" }));
+    fireEvent.click(within(pane).getByRole("button", { name: /^Minimise: / }));
     flushFrames();
     const restore =
       view.container.querySelector<HTMLButtonElement>(".os-minimized-task")!;
@@ -344,7 +396,7 @@ describe("current application window", () => {
       "Current draft",
     );
     expect(view.container.querySelector(".os-minimized-task")).toBeNull();
-    fireEvent.click(within(pane).getByRole("button", { name: "Close" }));
+    fireEvent.click(within(pane).getByRole("button", { name: /^Close: / }));
     expect(pane.isConnected).toBe(false);
     expect(
       view.container.querySelectorAll(".os-workspace-window"),
@@ -397,7 +449,7 @@ describe("current application window", () => {
     const pane = view.container.querySelector<HTMLElement>(
       '[data-window-path="/projects/project-simurgh"]',
     )!;
-    fireEvent.click(within(pane).getByRole("button", { name: "Minimise" }));
+    fireEvent.click(within(pane).getByRole("button", { name: /^Minimise: / }));
     expect(pane).not.toBeVisible();
     const projectsDock = view.container.querySelector(
       '.os-dock [data-app="projects"]',
@@ -449,7 +501,9 @@ describe("current application window", () => {
         );
         expect(writeText).toHaveBeenCalledOnce();
         if (scope === "app")
-          fireEvent.click(within(pane).getByRole("button", { name: "Close" }));
+          fireEvent.click(
+            within(pane).getByRole("button", { name: /^Close: / }),
+          );
         else view.unmount();
         expect(pane.isConnected).toBe(false);
         const timer = vi.spyOn(globalThis, "setTimeout");
@@ -765,13 +819,11 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
       within(screen.getByRole("main")).getByRole("button", {
-        name: getAtlasCopy("en").journeyExplore,
+        name: orbName("en"),
       }),
     ).toBeVisible();
 
-    fireEvent.click(
-      screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
     flushFrames();
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
@@ -785,7 +837,7 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
       within(screen.getByRole("main")).getByRole("button", {
-        name: getAtlasCopy("en").journeyExplore,
+        name: orbName("en"),
       }),
     ).toBeVisible();
   });
@@ -809,7 +861,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
       fireEvent.click(
         screen.getByRole("button", {
-          name: getAtlasCopy(locale).journeyExplore,
+          name: orbName(locale),
         }),
       );
       flushFrames();
@@ -846,9 +898,7 @@ describe("ResearchOS workspace lifecycle", () => {
         within(dock).queryByRole("link", { name: copy.projects }),
       ).toBeNull();
 
-      fireEvent.click(
-        screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-      );
+      fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
       flushFrames();
 
       expect(content).not.toHaveAttribute("hidden");
@@ -876,9 +926,7 @@ describe("ResearchOS workspace lifecycle", () => {
     );
 
     expect(container.querySelector(".os-welcome .proof-atlas")).toBeNull();
-    fireEvent.click(
-      screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
     flushFrames();
 
     await waitFor(() => {
@@ -901,7 +949,7 @@ describe("ResearchOS workspace lifecycle", () => {
       render(shell());
       fireEvent.click(
         screen.getByRole("button", {
-          name: getAtlasCopy("en").journeyExplore,
+          name: orbName("en"),
         }),
       );
 
@@ -919,9 +967,7 @@ describe("ResearchOS workspace lifecycle", () => {
     const { container } = render(shell("Project evidence"));
     const { content, dock } = desktopElements(container);
 
-    expect(
-      screen.queryByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-    ).toBeNull();
+    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
     expect(
       screen.getByRole("heading", { name: "Project evidence" }),
     ).toBeVisible();
@@ -944,9 +990,7 @@ describe("ResearchOS workspace lifecycle", () => {
     fireEvent.click(skip);
     flushFrames();
 
-    expect(
-      screen.queryByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-    ).toBeNull();
+    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
     expect(content).not.toHaveAttribute("hidden");
     expect(content).not.toHaveAttribute("inert");
     expect(dock).not.toHaveAttribute("hidden");
@@ -962,21 +1006,183 @@ describe("ResearchOS workspace lifecycle", () => {
     expect(navigation.push).toHaveBeenCalledWith("/");
     // Navigation is intentionally delayed: no intro exists on the old route.
     flushFrames();
-    expect(
-      screen.queryByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-    ).toBeNull();
+    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
 
     navigation.pathname = "/";
     view.rerender(shell());
     flushFrames();
 
-    expect(
-      screen.getByRole("button", { name: getAtlasCopy("en").journeyExplore }),
-    ).toHaveFocus();
+    expect(screen.getByRole("button", { name: orbName("en") })).toHaveFocus();
     const { content, dock } = desktopElements(view.container);
     expect(content).toHaveAttribute("hidden");
     expect(dock).toHaveAttribute("inert");
     expect(screen.queryByRole("heading", { name: "Workspace" })).toBeNull();
+  });
+});
+
+describe("ResearchOS logon session", () => {
+  it("skips the logon on a return home within the same session", () => {
+    navigation.pathname = "/";
+    const first = render(shell());
+    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
+    flushFrames();
+    first.unmount();
+
+    // A later mount of home in this session (a reload or a return) goes straight to the desktop.
+    render(shell());
+    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
+    expect(
+      document
+        .querySelector<HTMLElement>(".os-content")
+        ?.hasAttribute("hidden"),
+    ).toBe(false);
+  });
+
+  it("reopens the page a lock left when the visitor unlocks", () => {
+    navigation.pathname = "/projects/project-zurvan";
+    const view = render(shell("Project evidence"));
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
+    expect(navigation.push).toHaveBeenCalledWith("/");
+
+    navigation.pathname = "/";
+    view.rerender(shell());
+    flushFrames();
+    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
+
+    expect(navigation.push).toHaveBeenLastCalledWith(
+      "/projects/project-zurvan",
+    );
+    expect(window.sessionStorage.getItem("researchos:last-path")).toBeNull();
+  });
+});
+
+describe("ResearchOS taskbar", () => {
+  it("prefetches a dock app's route on hover and press, before the click", () => {
+    navigation.pathname = "/";
+    navigation.prefetch.mockClear();
+    const { container } = render(
+      <ResearchOS
+        locale="en"
+        role="Researcher"
+        entries={entries}
+        skipLabel="Skip"
+      >
+        <h1>Workspace</h1>
+      </ResearchOS>,
+    );
+    const pin = container.querySelector<HTMLElement>(
+      '.os-dock-app[data-app="projects"]',
+    )!;
+    fireEvent.pointerEnter(pin);
+    fireEvent.pointerDown(pin);
+    expect(navigation.prefetch).toHaveBeenCalledWith("/projects");
+  });
+
+  it("brings the pressed pin into the strip, so the current page is never off screen", () => {
+    const original = Object.getOwnPropertyDescriptor(
+      Element.prototype,
+      "scrollIntoView",
+    );
+    const scroll = vi.fn();
+    Object.defineProperty(Element.prototype, "scrollIntoView", {
+      configurable: true,
+      value: scroll,
+    });
+    try {
+      navigation.pathname = "/about";
+      const { container } = render(shell());
+      const about = container.querySelector<HTMLElement>(
+        '.os-dock-app[data-app="about"]',
+      )!;
+      expect(about).toHaveAttribute("aria-current", "page");
+      expect(scroll).toHaveBeenCalledWith({
+        block: "nearest",
+        inline: "nearest",
+      });
+      expect(scroll.mock.contexts).toContain(about);
+    } finally {
+      if (original)
+        Object.defineProperty(Element.prototype, "scrollIntoView", original);
+      else Reflect.deleteProperty(Element.prototype, "scrollIntoView");
+    }
+  });
+
+  it.each<[Locale, string]>([
+    ["en", "Start: show desktop"],
+    ["fa", "شروع: نمایش میز کار"],
+    ["ar", "ابدأ: عرض سطح المكتب"],
+    ["es", "Inicio: mostrar escritorio"],
+    ["zh", "开始：显示桌面"],
+  ])("names the Start orb in %s and keeps it a home link", (locale, name) => {
+    navigation.pathname = locale === "en" ? "/" : `/${locale}`;
+    const { container } = render(
+      <ResearchOS
+        locale={locale}
+        role="Researcher"
+        entries={entries}
+        skipLabel="Skip"
+      >
+        <h1>Workspace</h1>
+      </ResearchOS>,
+    );
+    const orb = container.querySelector<HTMLElement>(".os-dock-home")!;
+    expect(orb).toHaveAccessibleName(name);
+    expect(orb).toHaveAttribute("title", name);
+    expect(orb.getAttribute("href")).toBeTruthy();
+  });
+
+  it("keeps Lock last in the tray, with a tooltip, away from the pins", () => {
+    navigation.pathname = "/about";
+    const { container } = render(shell());
+    const lock = container.querySelector<HTMLElement>(".os-tray-lock")!;
+    expect(lock).toHaveAccessibleName(copy.lock);
+    expect(lock).toHaveAttribute("title", copy.lock);
+    expect(lock.parentElement?.lastElementChild).toBe(lock);
+    expect(lock.closest(".os-dock")).toBeNull();
+  });
+
+  it("shows the pin strip's overflow cue only on the side that still hides pins", () => {
+    const widths = { scrollWidth: 400, clientWidth: 200 };
+    const layout = (name: "scrollWidth" | "clientWidth") => {
+      const original = Object.getOwnPropertyDescriptor(
+        HTMLElement.prototype,
+        name,
+      );
+      Object.defineProperty(HTMLElement.prototype, name, {
+        configurable: true,
+        get(this: HTMLElement) {
+          return this.classList.contains("os-dock-strip") ? widths[name] : 0;
+        },
+      });
+      return () => {
+        if (original)
+          Object.defineProperty(HTMLElement.prototype, name, original);
+        else Reflect.deleteProperty(HTMLElement.prototype, name);
+      };
+    };
+    const restore = [layout("scrollWidth"), layout("clientWidth")];
+    try {
+      navigation.pathname = "/about";
+      const { container } = render(shell());
+      const strip = container.querySelector<HTMLElement>(".os-dock-strip")!;
+      let scrollLeft = 0;
+      Object.defineProperty(strip, "scrollLeft", {
+        configurable: true,
+        get: () => scrollLeft,
+        set: (value: number) => {
+          scrollLeft = value;
+        },
+      });
+      expect(strip).toHaveAttribute("data-fade-r");
+      expect(strip).not.toHaveAttribute("data-fade-l");
+
+      scrollLeft = 200;
+      fireEvent.scroll(strip);
+      expect(strip).toHaveAttribute("data-fade-l");
+      expect(strip).not.toHaveAttribute("data-fade-r");
+    } finally {
+      restore.forEach((undo) => undo());
+    }
   });
 });
 
@@ -1002,7 +1208,7 @@ describe("ResearchOS keyboard and search", () => {
       const { container, rerender } = render(localizedShell(source));
       fireEvent.click(
         screen.getByRole("button", {
-          name: getAtlasCopy(source).journeyExplore,
+          name: orbName(source),
         }),
       );
       fireEvent.click(
@@ -1016,8 +1222,13 @@ describe("ResearchOS keyboard and search", () => {
       expect(
         window.sessionStorage.getItem("researchos:language-navigation"),
       ).toBeNull();
-      // A later ordinary visit must still get the welcome screen.
+      // A return to home in the same session goes straight to the desktop (no logon).
       cleanup();
+      const returning = render(localizedShell(destination));
+      expect(returning.container.querySelector(".os-welcome")).toBeNull();
+      // A new session still gets the welcome screen.
+      cleanup();
+      window.sessionStorage.clear();
       const fresh = render(localizedShell(destination));
       expect(fresh.container.querySelector(".os-welcome")).toBeVisible();
     },
@@ -1129,6 +1340,48 @@ describe("ResearchOS keyboard and search", () => {
     expect(navigation.push).not.toHaveBeenCalled();
   });
 
+  it("returns focus to the Search launcher after Ctrl+K from an unfocused page", async () => {
+    navigation.pathname = "/about";
+    render(shell("About Raouf"));
+    const launcher = screen.getByRole("button", { name: copy.search });
+    (document.activeElement as HTMLElement | null)?.blur();
+    expect(document.activeElement).toBe(document.body);
+
+    fireEvent.keyDown(document, { key: "k", ctrlKey: true });
+    const dialog = screen.getByRole("dialog", { name: copy.search });
+    const input = within(dialog).getByRole("searchbox");
+    expect(dialog).toHaveAttribute("open");
+    expect(input).toHaveFocus();
+
+    fireEvent.keyDown(input, { key: "Escape" });
+    expect(dialog).not.toHaveAttribute("open");
+    await waitFor(() => expect(launcher).toHaveFocus());
+    expect(document.activeElement).not.toBe(document.body);
+  });
+
+  it("names the search field by its visible label, and keeps that label once text is typed", () => {
+    render(shell());
+    const { dialog, input } = openSearch();
+    expect(input).toHaveAccessibleName(copy.search);
+    fireEvent.change(input, { target: { value: "Simurgh" } });
+    expect(input).toHaveAccessibleName(copy.search);
+    expect(
+      within(dialog).getByText(copy.search, { selector: "label" }),
+    ).toBeVisible();
+  });
+
+  it("names each search result by its kind and title, and describes it by its summary", () => {
+    render(shell());
+    const { dialog, input } = openSearch();
+    fireEvent.change(input, { target: { value: "Simurgh" } });
+    const result = within(dialog).getByRole("link", { name: /Simurgh/ });
+    expect(result).toHaveAccessibleName(/Simurgh$/);
+    expect(result).not.toHaveAccessibleName(/Containment/);
+    expect(result).toHaveAccessibleDescription(
+      "Containment and verifiable evidence",
+    );
+  });
+
   it("closes the language menu with Escape without navigating away from a detail", () => {
     navigation.pathname = "/projects/project-simurgh";
     const { container } = render(shell("Project evidence"));
@@ -1162,6 +1415,24 @@ describe("ResearchOS keyboard and search", () => {
     expect(menu.open).toBe(false);
     expect(summary).toHaveFocus();
     expect(navigation.push).not.toHaveBeenCalled();
+  });
+
+  it("closes a page window only from its chrome, never from page content", () => {
+    navigation.pathname = "/projects/project-simurgh";
+    const { container } = render(shell("Project evidence"));
+    const heading = screen.getByRole("heading", { name: "Project evidence" });
+    heading.tabIndex = -1;
+    heading.focus();
+
+    fireEvent.keyDown(heading, { key: "Escape" });
+    expect(navigation.push).not.toHaveBeenCalled();
+
+    const close = container.querySelector<HTMLElement>(
+      ".os-windowbar .os-window-close",
+    )!;
+    close.focus();
+    fireEvent.keyDown(close, { key: "Escape" });
+    expect(navigation.push).toHaveBeenCalledWith("/");
   });
 
   it("respects Escape already consumed by another control", () => {

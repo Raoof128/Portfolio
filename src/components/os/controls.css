@@ -64,13 +64,19 @@
   background: var(--win7-primary-fill, var(--os-accent));
   color: var(--win7-on-primary, var(--os-on-accent));
 }
-.os-shell
-  :is(
-    .os-button,
-    .os-direct-links .os-button,
-    .os-document-button[data-variant="primary"]
-  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(:hover) {
-  background: var(--win7-primary-fill-hover, var(--os-accent-hover));
+/* Hover fills sit behind (hover: hover) so a tap does not leave them lit. :active stays
+   outside the guard, so touch still gets its pressed fill. */
+@media (hover: hover) {
+  .os-shell
+    :is(
+      .os-button,
+      .os-direct-links .os-button,
+      .os-document-button[data-variant="primary"]
+    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+      :hover
+    ) {
+    background: var(--win7-primary-fill-hover, var(--os-accent-hover));
+  }
 }
 .os-shell
   :is(
@@ -89,10 +95,12 @@
   border-color: transparent;
   color: var(--win7-on-primary, var(--os-on-accent));
 }
-.os-shell
-  .os-project-resources
-  a.os-button:not(:is([aria-disabled="true"], :disabled)):is(:hover) {
-  background: var(--win7-primary-fill-hover, var(--os-accent-hover));
+@media (hover: hover) {
+  .os-shell
+    .os-project-resources
+    a.os-button:not(:is([aria-disabled="true"], :disabled)):is(:hover) {
+    background: var(--win7-primary-fill-hover, var(--os-accent-hover));
+  }
 }
 .os-shell
   .os-project-resources
@@ -118,11 +126,21 @@
     .os-project-explorer .os-project-resource,
     .os-project-explorer .os-project-paper .os-project-resource,
     .os-document-button:not([data-variant="primary"])
-  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-    :hover,
-    :active
-  ) {
+  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(:active) {
   background: var(--os-accent-tint);
+}
+@media (hover: hover) {
+  .os-shell
+    :is(
+      .os-button--secondary,
+      .os-project-explorer .os-project-resource,
+      .os-project-explorer .os-project-paper .os-project-resource,
+      .os-document-button:not([data-variant="primary"])
+    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+      :hover
+    ) {
+    background: var(--os-accent-tint);
+  }
 }
 
 /* Press feedback: one shared scale for every control, card, tile and dock item. The
@@ -282,14 +300,15 @@
   }
   /* Hover and pressed fills are author colours, which forced colours replace with
      Canvas. That would leave HighlightText on Canvas, so the system pair is restated
-     here with the same selectors as the colour states and declared after them. */
+     here with the same selectors as the colour states and declared after them. Hover is
+     split from :active and guarded like the colour states, so a tap does not leave the
+     system fill stuck on touch; :active keeps the pressed fill everywhere. */
   .os-shell
     :is(
       .os-button,
       .os-direct-links .os-button,
       .os-document-button[data-variant="primary"]
     ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-      :hover,
       :active
     ) {
     background: Highlight;
@@ -301,10 +320,32 @@
       .os-project-explorer .os-project-paper .os-project-resource,
       .os-document-button:not([data-variant="primary"])
     ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-      :hover,
       :active
     ) {
     background: ButtonFace;
+  }
+  @media (hover: hover) {
+    .os-shell
+      :is(
+        .os-button,
+        .os-direct-links .os-button,
+        .os-document-button[data-variant="primary"]
+      ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+        :hover
+      ) {
+      background: Highlight;
+    }
+    .os-shell
+      :is(
+        .os-button--secondary,
+        .os-project-explorer .os-project-resource,
+        .os-project-explorer .os-project-paper .os-project-resource,
+        .os-document-button:not([data-variant="primary"])
+      ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
+        :hover
+      ) {
+      background: ButtonFace;
+    }
   }
 }
 

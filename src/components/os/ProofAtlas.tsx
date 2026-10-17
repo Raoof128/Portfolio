@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import {
   useCallback,
   useContext,
@@ -242,6 +243,16 @@ export function ProofAtlas({
   const positions = new Map(atlas.nodes.map((node) => [node.id, node]));
   const selectedCopy = copy.projects[selected];
   const href = `${locale === "en" ? "" : `/${locale}`}/projects/${selected}`;
+  // The names the figure draws, in order. Receipts stay unlabelled in the figure, so they
+  // are left out here too. Phones hide the figure's text and list these beneath it.
+  const figureLabels =
+    selected === "invisible-window-research"
+      ? [copy.nodeLabels.screen, copy.nodeLabels.capture]
+      : atlas.nodes
+          .filter(
+            (node) => !(node.kind === "evidence" && node.id.endsWith("-proof")),
+          )
+          .map((node) => copy.nodeLabels[node.id] ?? node.label);
 
   function moveWithPointer(event: PointerEvent<SVGSVGElement>) {
     // motionEnabled already reflects reduced motion and pointer capability.
@@ -302,11 +313,17 @@ export function ProofAtlas({
       hidden={hidden || undefined}
     >
       <div className={`proof-atlas-heading${isWindow ? " title-bar" : ""}`}>
-        {/* The eyebrow and the subtitle are two spans, split by a 1px divider on the window. */}
-        <span className="proof-atlas-eyebrow title-bar-text">
-          {copy.eyebrow}
-        </span>
-        <span className="proof-atlas-divider" aria-hidden="true" />
+        {/* Outside the window the eyebrow and the heading are two spans, split by a 1px
+            divider. On the desktop window the title bar carries the heading alone, and the
+            eyebrow moves into the body as a kicker, so the title never truncates. */}
+        {!isWindow && (
+          <>
+            <span className="proof-atlas-eyebrow title-bar-text">
+              {copy.eyebrow}
+            </span>
+            <span className="proof-atlas-divider" aria-hidden="true" />
+          </>
+        )}
         <h2 id={titleId} tabIndex={isWindow ? -1 : undefined}>
           {copy.heading}
         </h2>
@@ -314,6 +331,11 @@ export function ProofAtlas({
       </div>
       {/* White window body. The figure and its controls share one surface. */}
       <div className="proof-atlas-body">
+        {isWindow && (
+          <p className="proof-atlas-eyebrow proof-atlas-kicker">
+            {copy.eyebrow}
+          </p>
+        )}
         <svg
           ref={frameRef}
           className="proof-atlas-figure"
@@ -507,6 +529,13 @@ export function ProofAtlas({
             ))}
           <path className="proof-atlas-axis" d="M 28 311 H 524" />
         </svg>
+        {isInteractive && (
+          <ul className="proof-atlas-node-labels">
+            {figureLabels.map((label, index) => (
+              <li key={index}>{label}</li>
+            ))}
+          </ul>
+        )}
         {isInteractive ? (
           <div className="proof-atlas-controls">
             <div
@@ -536,9 +565,12 @@ export function ProofAtlas({
             </div>
             <Link className="proof-atlas-link" href={href}>
               {copy.openEvidence}
-              <span className="proof-atlas-link-arrow" aria-hidden="true">
-                ↗
-              </span>
+              <ArrowUpRight
+                className="proof-atlas-link-arrow"
+                size={16}
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
             </Link>
           </div>
         ) : (

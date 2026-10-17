@@ -92,13 +92,18 @@ export function ResumeClient() {
       <div className="os-resume-header">
         <h1>{t.resume_page.title}</h1>
         <div className="os-resume-download">
+          {/* PDF links open in a new tab, like View Résumé PDF on the desktop, so the reader
+              keeps their place on the site. The download attribute still saves the file. */}
           <a
             className="os-button"
             href="/Mohammad_Raouf_Abedini_Resume.pdf"
             download
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <Download aria-hidden="true" size={16} />
             {t.resume_page.download}
+            <span className="sr-only">{copy.opensInNewTab}</span>
           </a>
           <p className="os-support-note">{copy.originalEnglishPDF}</p>
         </div>

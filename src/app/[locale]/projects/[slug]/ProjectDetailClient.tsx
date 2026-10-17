@@ -11,7 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Download, FileText } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import type { ProjectPaper } from "@/lib/data";
 import type {
   LocalizedProject,
@@ -65,33 +65,34 @@ type EvidenceStory =
   | { kind: "invisible-window"; copy: InvisibleWindowStoryCopy }
   | { kind: "zurvan"; copy: ZurvanEvidenceStoryCopy };
 
-/** One primary action per dossier header; every other resource stays secondary. */
+/**
+ * One primary action per dossier header; every other resource stays secondary.
+ * External links and paper PDFs open in a new tab, as the resume PDF does, so the
+ * reader keeps the project page. PDFs are not forced to download (no `download`
+ * attribute), so the browser viewer opens them and the reader can save from there.
+ */
 function ResourceLink({
   href,
   children,
-  download = false,
+  newTab,
   primary = false,
 }: {
   href: string;
   children: ReactNode;
-  download?: boolean;
+  newTab?: boolean;
   primary?: boolean;
 }) {
   const external = /^https?:\/\//.test(href);
+  const opensNewTab = newTab ?? external;
   return (
     <a
       className={primary ? "os-button" : "os-project-resource"}
       href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      download={download || undefined}
+      target={opensNewTab ? "_blank" : undefined}
+      rel={opensNewTab ? "noopener noreferrer" : undefined}
     >
       {children}
-      {download ? (
-        <Download size={15} aria-hidden="true" />
-      ) : (
-        <ArrowUpRight className="os-icon-flip" size={15} aria-hidden="true" />
-      )}
+      <ArrowUpRight className="os-icon-flip" size={15} aria-hidden="true" />
     </a>
   );
 }
@@ -245,7 +246,7 @@ export function ProjectDetailClient({
               aria-label={t.project_detail.project_links}
             >
               {project.links.paper && (
-                <ResourceLink href={project.links.paper} download primary>
+                <ResourceLink href={project.links.paper} newTab primary>
                   {t.project_detail.download_paper}
                 </ResourceLink>
               )}
@@ -446,7 +447,7 @@ export function ProjectDetailClient({
                   </div>
                   <ResourceLink
                     href={paper.href}
-                    download={paper.kind === "download"}
+                    newTab={paper.kind === "download" || undefined}
                   >
                     <FileText size={15} aria-hidden="true" />
                     {paper.kind === "download"

@@ -59,17 +59,50 @@
 }
 
 /* The copy button sits inside the title strip, on the same row as the title. It is
-   the 7.css button at 24px on desktop; coarse pointers take the 44px target. */
-.os-shell .os-terminal .os-terminal-copy {
+   the 7.css button at 24px on desktop; coarse pointers take the 44px target.
+   controls.css paints every secondary button transparent (specificity 0,4,0), so the
+   label sat on the translucent strip in both themes. The button carries its own opaque
+   face and label pair instead: black on the light 7.css face, about 19:1, the same in
+   Aero and Aero Night. The control edge marks the button: in Aero the pale strip is
+   close to the face, so the 1px #707070 border (about 3.9:1 on the strip) does the work;
+   in Aero Night the light face does (about 5.7:1 on the navy strip).
+   Each state adds weight to beat the shared secondary rules without !important. */
+.os-shell
+  .os-terminal
+  .os-terminal-head
+  .os-terminal-copy.os-button--secondary {
   flex: none;
   gap: 6px;
   min-height: 24px;
   padding-inline: 10px;
   font-size: var(--win7-small-size);
+  --terminal-copy-ink: #000000;
+  border-color: #707070;
+  color: var(--terminal-copy-ink);
+  background: linear-gradient(180deg, #f2f2f2 0%, #ebebeb 50%, #dddddd 100%);
 }
-
+.os-shell
+  .os-terminal
+  .os-terminal-head
+  .os-terminal-copy.os-button--secondary:not(:disabled):is(:hover) {
+  border-color: #3c7fb1;
+  color: var(--terminal-copy-ink);
+  background: linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5);
+}
+.os-shell
+  .os-terminal
+  .os-terminal-head
+  .os-terminal-copy.os-button--secondary:not(:disabled):is(:active) {
+  border-color: #6d91ab;
+  color: var(--terminal-copy-ink);
+  background: linear-gradient(#e5f4fc, #c4e5f6 30% 50%, #98d1ef 50%, #68b3db);
+}
+/* Coarse pointers take the 44px target. Same weight as the base rule, declared after it. */
 @media (pointer: coarse) {
-  .os-shell .os-terminal .os-terminal-copy {
+  .os-shell
+    .os-terminal
+    .os-terminal-head
+    .os-terminal-copy.os-button--secondary {
     min-height: 44px;
   }
 }

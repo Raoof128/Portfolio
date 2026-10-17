@@ -12,21 +12,8 @@ html:has(.os-shell[data-appearance="light"]) {
   background-color: #f2f7ff;
   scrollbar-color: #3d5470 #f2f7ff;
 }
-/* Theme switch: JS sets data-theme-switching for one 240ms window, so only the flip
-   cross-fades. Reduced motion never sets the attribute, so the flip is instant there.
-   html and the view-transition pseudo-elements sit outside .os-shell, so these rules
-   use literal values rather than the shell tokens. */
-.os-shell[data-theme-switching] *,
-.os-shell[data-theme-switching] *::before,
-.os-shell[data-theme-switching] *::after {
-  transition-property:
-    background-color, border-color, color, fill, stroke !important;
-  transition-duration: var(--motion-window) !important;
-  transition-timing-function: var(--ease-standard) !important;
-}
-html:has(.os-shell[data-theme-switching]) {
-  transition: background-color 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
+/* The theme flip is instant. No code sets a switching window (the old cross-fade rule
+   was dead), so the wallpaper and the windows change together. */
 /* Dormant: the View Transitions path is off until a frame-cost trace clears it. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -108,9 +95,11 @@ html:has(.os-shell[data-theme-switching]) {
     Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
   --os-font-mono:
     var(--font-jetbrains-mono), ui-monospace, Menlo, Consolas, monospace;
+  /* Small text steps on the 12/14/16 set. 13px and 15px were off the scale; the
+     Win7 chrome is 14px (win7-theme.css), so the small step is 14px too. */
   --text-xs: 0.75rem;
-  --text-s: 0.8125rem;
-  --text-ui: 0.9375rem;
+  --text-s: 0.875rem;
+  --text-ui: 1rem;
   --text-reading: 1.0625rem;
   --text-h3: 1.25rem;
   --text-h2: 1.5rem;
@@ -129,10 +118,13 @@ html:has(.os-shell[data-theme-switching]) {
   --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
-  --radius-xs: 6px;
-  --radius-s: 10px;
-  --radius-m: 14px;
-  --radius-l: 20px;
+  /* One OS radius scale: 3px for controls and content cards, 6px for window frames.
+     The values come from the Win7 tokens in win7-theme.css; the fallbacks apply where
+     the Win7 shell is absent (the global 404). */
+  --radius-xs: var(--win7-radius-control, 3px);
+  --radius-s: var(--win7-radius-control, 3px);
+  --radius-m: var(--win7-radius-control, 3px);
+  --radius-l: var(--win7-radius, 6px);
   --radius-pill: 999px;
   --shadow-window: 0 24px 48px -12px rgb(0 0 0 / 45%);
   --shadow-dock: 0 8px 24px rgb(0 0 0 / 28%);
@@ -141,7 +133,7 @@ html:has(.os-shell[data-theme-switching]) {
   --motion-quick: 120ms;
   --motion-control: 180ms;
   --motion-window: 240ms;
-  --motion-stagger: 16ms;
+  --motion-stagger: 32ms;
   --motion-tooltip-delay: 400ms;
   --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
@@ -255,13 +247,19 @@ html:has(.os-shell[data-theme-switching]) {
   --os-font-display: var(--font-vazirmatn), Tahoma, sans-serif;
   letter-spacing: 0;
 }
+/* Chinese stack: one token, --win7-font-zh in win7-theme.css, shared with the window font. */
 .os-shell:lang(zh) {
-  --os-font-ui:
-    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
-    system-ui, sans-serif;
-  --os-font-display:
-    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
-    system-ui, sans-serif;
+  --os-font-ui: var(--win7-font-zh, system-ui, sans-serif);
+  --os-font-display: var(--win7-font-zh, system-ui, sans-serif);
+}
+/* Phones: the small step (tags, row meta, explorer footers) takes the same 14px floor as the
+   window chrome. Literal sizes in other sheets (project-explorer.css, win7-windows.css) are
+   not covered by this token and need their own lane. The 11px keyboard keys are the one
+   allowed exception. */
+@media (max-width: 700px) {
+  .os-shell {
+    --text-xs: 0.875rem;
+  }
 }
 .os-shell[data-appearance="light"] {
   /* Colour, light. Values follow the design system, section 3.2. */
@@ -378,9 +376,13 @@ html:has(.os-shell[data-theme-switching]) {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.os-shell .os-control:hover,
-:where(.os-shell) a:hover {
-  color: var(--os-accent);
+/* Hover decoration sits behind (hover: hover), so a tap does not leave it stuck. Keyboard
+   focus keeps its own rule, so focus feedback stays on touch devices too. */
+@media (hover: hover) {
+  .os-shell .os-control:hover,
+  :where(.os-shell) a:hover {
+    color: var(--os-accent);
+  }
 }
 
 /* Shell components (design system, sections 4 and 5). Colour, type, space, radius
@@ -398,7 +400,8 @@ html:has(.os-shell[data-theme-switching]) {
   background: var(--os-bg);
 }
 /* One static radial accent wash at 8%, one layer per appearance. Each layer only
-   changes opacity, so the switch cross-fades with no loops. The colour is the accent
+   changes opacity, with no loops. The Win7 shell hides ::before and turns off the
+   ::after transition (win7-theme.css), so its flip is instant. The colour is the accent
    of its own appearance (sRGB, since the wash is decorative). */
 .os-wallpaper::before,
 .os-wallpaper::after {
@@ -533,7 +536,12 @@ html:has(.os-shell[data-theme-switching]) {
     color var(--motion-quick) var(--ease-standard),
     transform var(--motion-press-out) var(--ease-standard);
 }
-.os-shell .os-control:is(:hover, :focus-visible) {
+@media (hover: hover) {
+  .os-shell .os-control:hover {
+    background: var(--os-accent-tint);
+  }
+}
+.os-shell .os-control:focus-visible {
   background: var(--os-accent-tint);
 }
 .os-control svg {
@@ -588,7 +596,12 @@ html:has(.os-shell[data-theme-switching]) {
 .os-language summary::-webkit-details-marker {
   display: none;
 }
-.os-language summary:is(:hover, :focus-visible),
+@media (hover: hover) {
+  .os-language summary:hover {
+    background: var(--os-accent-tint);
+  }
+}
+.os-language summary:focus-visible,
 .os-language[open] summary {
   background: var(--os-accent-tint);
 }
@@ -621,12 +634,17 @@ html:has(.os-shell[data-theme-switching]) {
   justify-content: space-between;
   gap: var(--space-2);
   padding: 0 var(--space-3);
-  border-radius: calc(var(--radius-m) - 6px);
+  border-radius: var(--radius-m);
   color: var(--os-text);
   font-size: var(--text-ui);
   transition: background-color var(--motion-quick) var(--ease-standard);
 }
-.os-language nav a:is(:hover, :focus-visible),
+@media (hover: hover) {
+  .os-language nav a:hover {
+    background: var(--os-accent-tint);
+  }
+}
+.os-language nav a:focus-visible,
 .os-language nav a[aria-current="true"] {
   background: var(--os-accent-tint);
 }
@@ -848,7 +866,12 @@ html:has(.os-shell[data-theme-switching]) {
   width: 28px;
   height: 28px;
 }
-.os-app:is(:hover, :focus-visible) .os-app-icon {
+@media (hover: hover) {
+  .os-app:hover .os-app-icon {
+    background: var(--os-accent-tint);
+  }
+}
+.os-app:focus-visible .os-app-icon {
   background: var(--os-accent-tint);
 }
 .os-small-icon {
@@ -994,8 +1017,11 @@ html:has(.os-shell[data-theme-switching]) {
   z-index: 100;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-s);
-  background: var(--os-accent);
-  color: var(--os-on-accent);
+  /* The white window body with black text in both themes (21:1). The accent pair failed
+     4.5:1 in Aero Night once the link was focused. */
+  background: var(--win7-body-bg, #ffffff);
+  color: var(--win7-body-text, #000000);
+  box-shadow: 0 0 0 2px var(--os-focus);
   font-size: var(--text-ui);
   font-weight: 500;
   transform: translateY(-200%);
@@ -1003,8 +1029,10 @@ html:has(.os-shell[data-theme-switching]) {
 .os-skip-link:focus {
   transform: translateY(0);
 }
-.os-skip-link:hover {
-  color: var(--os-on-accent);
+@media (hover: hover) {
+  .os-skip-link:hover {
+    color: var(--win7-body-text, #000000);
+  }
 }
 .os-windowbar {
   position: sticky;
@@ -1054,7 +1082,12 @@ html:has(.os-shell[data-theme-switching]) {
   font-size: var(--text-s);
   font-weight: 500;
 }
-.os-shell .os-window-back:is(:hover, :focus-visible) {
+@media (hover: hover) {
+  .os-shell .os-window-back:hover {
+    background: var(--os-accent-tint);
+  }
+}
+.os-shell .os-window-back:focus-visible {
   background: var(--os-accent-tint);
 }
 .os-window-back svg {
@@ -1203,7 +1236,7 @@ html:has(.os-shell[data-theme-switching]) {
   line-height: 1.5;
   color: var(--os-muted);
 }
-/* Field: 44px solid surface, 10px radius (--radius-s), one accent focus ring. */
+/* Field: 44px solid surface, 3px radius (--radius-s), one accent focus ring. */
 .os-search-field {
   display: flex;
   align-items: center;
@@ -1265,7 +1298,7 @@ html:has(.os-shell[data-theme-switching]) {
   min-height: 40px;
   padding: 0 var(--space-3);
   border: 0;
-  border-radius: calc(var(--radius-m) - 4px);
+  border-radius: max(0px, calc(var(--radius-m) - 4px));
   background: transparent;
   color: var(--os-muted);
   font-size: var(--text-s);
@@ -1274,8 +1307,10 @@ html:has(.os-shell[data-theme-switching]) {
     background-color var(--motion-quick) var(--ease-standard),
     color var(--motion-quick) var(--ease-standard);
 }
-.os-search-scopes button:hover {
-  color: var(--os-text);
+@media (hover: hover) {
+  .os-search-scopes button:hover {
+    color: var(--os-text);
+  }
 }
 .os-search-scopes button[aria-pressed="true"] {
   background: var(--os-accent-tint);
@@ -1318,7 +1353,12 @@ html:has(.os-shell[data-theme-switching]) {
   text-decoration: none;
   transition: background-color var(--motion-quick) var(--ease-standard);
 }
-.os-search-result:is(:hover, :focus-visible) {
+@media (hover: hover) {
+  .os-search-result:hover {
+    background: var(--os-accent-tint);
+  }
+}
+.os-search-result:focus-visible {
   background: var(--os-accent-tint);
 }
 .os-search-result:focus-visible {
@@ -1417,7 +1457,7 @@ html:has(.os-shell[data-theme-switching]) {
   font: 11px / 1.5 var(--os-font-mono);
   color: var(--os-text);
 }
-/* Results: the first six rows rise in with a 16ms stagger, then the rest appear at once.
+/* Results: the first six rows rise in with a 32ms stagger (inside the 30-50ms guide), then the rest appear at once.
    CSS only, and only where motion is allowed. */
 @media (prefers-reduced-motion: no-preference) {
   .os-search-results > li {
@@ -1548,54 +1588,82 @@ html:has(.os-shell[data-theme-switching]) {
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-track:vertical {
-  background: linear-gradient(to right, #e5e5e5, #f0f0f0 20%);
+  background: linear-gradient(
+    to right,
+    var(--win7-scroll-track),
+    var(--win7-scroll-track-fade) 20%
+  );
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-track:horizontal {
-  background: linear-gradient(to bottom, #e5e5e5, #f0f0f0 20%);
+  background: linear-gradient(
+    to bottom,
+    var(--win7-scroll-track),
+    var(--win7-scroll-track-fade) 20%
+  );
 }
 .os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb {
-  border: 1px solid #8e8f8f;
-  border-radius: 3px;
-  background: linear-gradient(to right, #f2f2f2, #e6e6e6);
+  border: 1px solid var(--win7-body-control-line);
+  border-radius: var(--win7-radius-control);
+  background: linear-gradient(
+    to right,
+    var(--win7-scroll-face),
+    var(--win7-scroll-face-fade)
+  );
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:vertical {
-  background: linear-gradient(to right, #f2f2f2, #e6e6e6);
+  background: linear-gradient(
+    to right,
+    var(--win7-scroll-face),
+    var(--win7-scroll-face-fade)
+  );
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:horizontal {
-  background: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+  background: linear-gradient(
+    to bottom,
+    var(--win7-scroll-face),
+    var(--win7-scroll-face-fade)
+  );
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:hover {
-  border-color: #3c7fb1;
-  background: linear-gradient(to right, #eaf6fd, #bee6fd);
+  border-color: var(--win7-scroll-hover-line);
+  background: linear-gradient(
+    to right,
+    var(--win7-scroll-hover),
+    var(--win7-scroll-hover-fade)
+  );
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:active {
-  border-color: #6d91ab;
-  background: linear-gradient(to right, #c4e5f6, #98d1ef);
+  border-color: var(--win7-scroll-press-line);
+  background: linear-gradient(
+    to right,
+    var(--win7-scroll-press),
+    var(--win7-scroll-press-fade)
+  );
 }
 .os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button {
   display: block;
   width: 17px;
   height: 17px;
-  border: 1px solid #8e8f8f;
-  border-radius: 3px;
-  background-color: #f2f2f2;
+  border: 1px solid var(--win7-body-control-line);
+  border-radius: var(--win7-radius-control);
+  background-color: var(--win7-scroll-face);
   background-position: center;
   background-repeat: no-repeat;
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:hover {
-  border-color: #3c7fb1;
-  background-color: #eaf6fd;
+  border-color: var(--win7-scroll-hover-line);
+  background-color: var(--win7-scroll-hover);
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:active {
-  border-color: #6d91ab;
-  background-color: #c4e5f6;
+  border-color: var(--win7-scroll-press-line);
+  background-color: var(--win7-scroll-press);
 }
 .os-shell
   .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:vertical:start {
@@ -1614,13 +1682,13 @@ html:has(.os-shell[data-theme-switching]) {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M5 4.5v8l5-4z' fill='%23333'/%3E%3C/svg%3E");
 }
 .os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-corner {
-  background: #f2f2f2;
+  background: var(--win7-scroll-face);
 }
 /* Firefox has no pseudo-element scrollbars. It gets the same light thumb and track. */
 @supports not selector(::-webkit-scrollbar) {
   .os-shell .os-page-content.window-body.has-scrollbar {
     scrollbar-width: auto;
-    scrollbar-color: #f2f2f2 #e5e5e5;
+    scrollbar-color: var(--win7-scroll-face) var(--win7-scroll-track);
   }
 }
 @keyframes os-arrive {
@@ -2187,7 +2255,12 @@ html:has(.os-shell[data-theme-switching]) {
   font-weight: 500;
   line-height: 1.3;
 }
-.os-shell .os-enter:is(:hover, :focus-visible) {
+@media (hover: hover) {
+  .os-shell .os-enter:hover {
+    background: var(--os-accent-hover);
+  }
+}
+.os-shell .os-enter:focus-visible {
   background: var(--os-accent-hover);
 }
 .os-shell .os-enter:active {

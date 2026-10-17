@@ -37,7 +37,7 @@ describe("Navbar", () => {
       { name: /about/i, path: "/about" },
       { name: /projects/i, path: "/projects" },
       { name: /lab/i, path: "/lab" },
-      { name: /writing/i, path: "/write-ups" },
+      { name: /write-ups/i, path: "/write-ups" },
       { name: /résumé/i, path: "/resume" },
     ];
     navItems.forEach((item) => {

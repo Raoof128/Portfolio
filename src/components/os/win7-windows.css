@@ -567,6 +567,93 @@
   }
 }
 
+/* Touch (coarse pointer) and phones: each caption button is a 44px target, with 8px between
+   neighbours and Close set a further 8px off Maximise, so a stray tap does not reach Close. The
+   shared bordered group is dropped so each button stands alone as its own target. Phones get
+   the same spacing with a fine pointer too, since a narrow window is often used by touch. A
+   tablet with a fine pointer keeps the 24px target and 2px gap (WCAG 2.5.8). */
+@media (pointer: coarse), (max-width: 700px) {
+  .os-shell.win7 .window.glass > .title-bar {
+    height: auto;
+    min-height: 44px;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls {
+    gap: 8px;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button,
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  /* 7.css places each caption glyph 10px from the top, which suits a 30px bar. At 44px the glyph
+     is centred instead. */
+  .os-shell.win7
+    .window.glass
+    > .title-bar
+    .title-bar-controls
+    > button::before {
+    background-position: center;
+  }
+  .os-shell.win7
+    .window.glass
+    > .title-bar
+    .title-bar-controls
+    > .os-window-close {
+    margin-inline-start: 8px;
+  }
+  /* The Window Controls popover: its step and footer buttons are touch targets too. */
+  .os-shell .os-window-controls-panel .os-window-step,
+  .os-shell .os-window-controls-panel .os-button,
+  .os-shell .os-window-controls-footer .os-button {
+    min-height: 44px;
+  }
+}
+
+/* A cut-off title fades at its end edge, so the truncation shows without the tooltip. The
+   ellipsis stays, and the full title is in the tooltip and the frame's accessible name. */
+.os-shell.win7
+  .window.glass
+  > .title-bar
+  .os-window-title[data-truncated="true"] {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 calc(100% - 24px),
+    transparent
+  );
+  mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+}
+.os-shell.win7
+  .window.glass
+  > .title-bar
+  .os-window-title[data-truncated="true"]:dir(rtl) {
+  -webkit-mask-image: linear-gradient(
+    to left,
+    #000 calc(100% - 24px),
+    transparent
+  );
+  mask-image: linear-gradient(to left, #000 calc(100% - 24px), transparent);
+}
+
+/* Phones: the window title wraps to two lines instead of cutting off its descriptive part, so the
+   full title is readable without a tooltip. The caption buttons keep their 44px targets. */
+@media (max-width: 700px) {
+  .os-shell.win7 .window.glass > .title-bar .os-window-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* Phone chrome floor: 14px, not the 12px desktop title. */
+    font-size: 14px;
+    white-space: normal;
+    line-height: 1.25;
+    padding-block: 6px;
+    overflow-wrap: anywhere;
+  }
+}
+
 /* Window frame layout. A floating window is a column: the title bar and command bar keep their
    height, and the page body takes the rest and scrolls inside the frame, so the bottom frame and
    the last controls are never clipped. Hidden frames stay hidden (the display rule is scoped). */
@@ -596,12 +683,14 @@
     animation: os-win7-window-open 180ms cubic-bezier(0.2, 0.8, 0.2, 1)
       backwards;
   }
+  /* Exits run at 120 ms (ease-in), two thirds of the 180 ms open. WorkspaceWindows keeps the
+     frame mounted for the same LEAVE_MS, so the exit ends before the window is removed. */
   .os-shell.win7 .os-window[data-state="closing"] {
-    animation: os-win7-window-close 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+    animation: os-win7-window-close 120ms cubic-bezier(0.4, 0, 1, 1) forwards;
     pointer-events: none;
   }
   .os-shell.win7 .os-window[data-state="minimizing"] {
-    animation: os-win7-window-minimize 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+    animation: os-win7-window-minimize 120ms cubic-bezier(0.4, 0, 1, 1) forwards;
     pointer-events: none;
   }
   .os-shell.win7 .os-desktop-identity > .window {

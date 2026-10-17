@@ -1,13 +1,27 @@
 /* Enter wait state on the Win7 logon. The Aero face, halo and logon layout are in
-   win7-logon.css, which loads later. This file holds the wait mechanics: the busy dots,
-   the status row, the visually hidden label, the focus ring, the logon-to-desktop
-   hand-off, and the reduced-motion and forced-colour fallbacks. The three-second timer
-   is in WelcomeEnter.tsx. */
+   win7-logon.css, which loads later. This file holds the wait mechanics: the visible
+   caption, the busy dots, the status row, the visually hidden label, the focus ring, the
+   logon-to-desktop hand-off, the language-switch pending state, and the reduced-motion and
+   forced-colour fallbacks. The wait length (3s first visit, about 0.6s after a Lock or under
+   reduced motion) is set in WelcomeEnter.tsx and passed to the dots as --os-wait. */
 .os-enter-stage {
   display: grid;
   justify-items: center;
   /* The same gap token as the logon stack, so the loader spaces like the rest. */
   gap: var(--os-logon-gap, 12px);
+}
+
+/* The visible cue under the arrow. It inherits the logon's white text and sits on the scrim,
+   with the same text shadow as the status row, so it clears 4.5:1 on the wallpaper. It does
+   not move while the wait runs. */
+.os-enter-caption {
+  display: block;
+  margin: 0;
+  color: inherit;
+  font-size: var(--win7-ui-size);
+  font-weight: 600;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.75);
 }
 
 /* Focus ring on the Enter orb: a 2px white outline, which clears 3:1 on the wallpaper.
@@ -36,6 +50,7 @@
   transition: opacity var(--motion-control) var(--ease-standard);
 }
 .os-enter-track {
+  --os-wait: 3000ms;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -54,9 +69,10 @@
 .os-enter-stage[data-loading] .os-enter-progress {
   opacity: 1;
 }
-/* The dots share the 3s cycle set on the track. Each dot pulses 0.6s after the one before
-   it, over the first 10 percent of the cycle. A negative delay offsets each dot inside the
-   cycle, so the sequence repeats every cycle with no restart. */
+/* The dots share the cycle set on the track (--os-wait, 3s on a first visit, about 0.6s on a
+   return). Each dot pulses one fifth of a cycle after the one before it, over the first 10
+   percent of the cycle. A negative delay offsets each dot inside the cycle, so the sequence
+   repeats every cycle with no restart and a shorter wait shows the same sequence. */
 .os-enter-stage[data-loading] .os-enter-track i {
   animation-name: os-enter-dot;
   animation-timing-function: linear;
@@ -64,19 +80,19 @@
   animation-duration: inherit;
 }
 .os-enter-track i:nth-child(1) {
-  animation-delay: -3s;
+  animation-delay: calc(var(--os-wait) * -1);
 }
 .os-enter-track i:nth-child(2) {
-  animation-delay: -2.4s;
+  animation-delay: calc(var(--os-wait) * -0.8);
 }
 .os-enter-track i:nth-child(3) {
-  animation-delay: -1.8s;
+  animation-delay: calc(var(--os-wait) * -0.6);
 }
 .os-enter-track i:nth-child(4) {
-  animation-delay: -1.2s;
+  animation-delay: calc(var(--os-wait) * -0.4);
 }
 .os-enter-track i:nth-child(5) {
-  animation-delay: -0.6s;
+  animation-delay: calc(var(--os-wait) * -0.2);
 }
 @keyframes os-enter-dot {
   0% {
@@ -115,14 +131,14 @@
   background: none;
 }
 
-/* Hand-off from logon to desktop. Enter marks the logon as leaving for the last 180ms of
+/* Hand-off from logon to desktop. Enter marks the logon as leaving for the last 120ms of
    the wait. The fade runs to opacity 0 and the logon unmounts only after it has finished
    (WelcomeEnter.tsx waits on the animation), so the logon never drops out part way. Only
    opacity and transform move, and reduced motion removes both. The desktop arrives over
    the same wallpaper with backwards fill, so no transform is left behind once it settles. */
 @media (prefers-reduced-motion: no-preference) {
   .os-shell .os-welcome[data-leaving] {
-    animation: os-logon-leave 180ms var(--ease-exit, ease-in) forwards;
+    animation: os-logon-leave 120ms var(--ease-exit, ease-in) forwards;
     pointer-events: none;
   }
   .os-shell[data-arriving] .os-content {
@@ -151,6 +167,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .os-language summary[aria-busy="true"] {
+    animation: none;
+  }
   .os-enter-progress {
     transition: none;
   }
@@ -158,6 +177,21 @@
   .os-enter-stage[data-loading] .os-enter-track i {
     animation: none;
     opacity: 0.7;
+  }
+}
+
+/* Language switch pending. The chip shows a soft ring that pulses while the next locale loads,
+   so the change shows at once. The text never fades: a fade would drop the chip's white label
+   below 4.5:1 on every pulse. ResearchOS.tsx then fades the content in once the new locale has
+   rendered. The ring is a box-shadow, so the chip keeps its colour and contrast. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-language summary[aria-busy="true"] {
+    animation: os-language-pending 900ms ease-in-out infinite;
+  }
+}
+@keyframes os-language-pending {
+  50% {
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 0.55);
   }
 }
 

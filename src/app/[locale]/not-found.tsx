@@ -53,6 +53,23 @@ export default function NotFound() {
             {t.not_found.browse_projects}
           </Link>
         </div>
+        {/* Section links, so recovery does not depend on the taskbar or the desktop icons. */}
+        <nav className="os-not-found-sections">
+          {[
+            { label: t.nav.projects, href: getPath("/projects") },
+            { label: t.nav.lab, href: getPath("/lab") },
+            { label: t.nav.resume, href: getPath("/resume") },
+            { label: t.nav.contact, href: getPath("/contact") },
+          ].map((section) => (
+            <Link
+              key={section.href}
+              className="os-text-link"
+              href={section.href}
+            >
+              {section.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </section>
   );

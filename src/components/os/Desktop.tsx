@@ -6,7 +6,6 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import type { Locale } from "@/i18n";
 import { projects, type Project } from "@/lib/data";
-import { getAtlasCopy } from "./atlas-copy";
 import { getOSCopy } from "./os-copy";
 import { OSIcon, type PortfolioApp } from "./OSIcon";
 import { getWindowCopy } from "./window-copy";
@@ -43,6 +42,19 @@ const projectCounts = projectList.reduce<Record<Project["category"], number>>(
 
 type WindowId = "intro" | "atlas";
 type HiddenWindow = "minimized" | "closed";
+
+/**
+ * Visible labels for the footer chips that bring a closed desktop window back. Lane-local
+ * until the copy lane moves them into the shared copy files. The chip names the action
+ * ("Show intro"), not the window title, so it does not read as a window.
+ */
+const restoreChipLabels: Record<Locale, Record<WindowId, string>> = {
+  en: { intro: "Show intro", atlas: "Show evidence" },
+  fa: { intro: "نمایش معرفی", atlas: "نمایش شواهد" },
+  ar: { intro: "عرض المقدمة", atlas: "عرض الأدلة" },
+  es: { intro: "Mostrar introducción", atlas: "Mostrar pruebas" },
+  zh: { intro: "显示简介", atlas: "显示证据" },
+};
 
 /** The 7.css caption group, in Win7 order: Minimise, Maximise (or Restore), Close. */
 function WindowCaption({
@@ -95,7 +107,6 @@ export function Desktop({
 }) {
   const copy = getOSCopy(locale);
   const windowCopy = getWindowCopy(locale);
-  const atlasCopy = getAtlasCopy(locale);
   const path = (value: string) =>
     locale === "en" ? value : `/${locale}${value}`;
   const hints = {
@@ -106,11 +117,7 @@ export function Desktop({
     contact: copy.appContact,
   };
   const introTitle = copy.independentResearch;
-  const atlasTitle = atlasCopy.eyebrow;
-  const windowTitles: Record<WindowId, string> = {
-    intro: introTitle,
-    atlas: atlasTitle,
-  };
+  const restoreLabels = restoreChipLabels[locale];
 
   // The Getting Started and Proof Atlas windows are not in the window manager, so their
   // caption controls are local: minimise and close hide the window and leave a restore
@@ -355,10 +362,11 @@ export function Desktop({
                   restoreButtons.current[id] = node;
                 }}
                 className="os-desktop-restore-button"
-                aria-label={`${windowCopy.restoreWindow}: ${windowTitles[id]}`}
+                // The accessible name keeps the visible action text (WCAG 2.5.3, label in name).
+                aria-label={`${windowCopy.restoreWindow}: ${restoreLabels[id]}`}
                 onClick={() => restoreWindow(id)}
               >
-                {windowTitles[id]}
+                {restoreLabels[id]}
               </button>
             ))}
           </div>

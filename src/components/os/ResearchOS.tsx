@@ -2,6 +2,7 @@
 
 import {
   Activity,
+  startTransition,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -44,7 +45,11 @@ import {
 import { formatDate, formatNumber } from "@/i18n/format";
 import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
-import { WelcomeEnter } from "./WelcomeEnter";
+import {
+  markWelcomeSeen,
+  WelcomeEnter,
+  welcomeSeenThisSession,
+} from "./WelcomeEnter";
 import "./controls.css";
 import "./theme-switch.css";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
@@ -138,6 +143,127 @@ const searchIcons = {
   experiment: FlaskConical,
   action: Globe,
 };
+
+/** Escape closes the window it is pressed in. The hint is read by screen readers and kept off screen. */
+const escapeHintCopy: Record<Locale, string> = {
+  en: "Press Escape to close this window.",
+  fa: "برای بستن این پنجره، کلید Escape را فشار دهید.",
+  ar: "اضغط Escape لإغلاق هذه النافذة.",
+  es: "Pulsa Escape para cerrar esta ventana.",
+  zh: "按 Esc 关闭此窗口。",
+};
+
+/** How long a requested focus move waits for its window to render before it gives up. */
+const OPEN_FOCUS_MS = 4000;
+/** Session key for the page a lock left, so the next unlock can reopen it. */
+const lastPathKey = "researchos:last-path";
+
+/** A path as the shell compares it: the English root has no prefix, other locales keep theirs. */
+function routeKey(href: string): string {
+  return href.split(/[?#]/)[0].replace(/^\/en(?=\/|$)/, "") || "/";
+}
+
+function rememberLastPath(path: string | null) {
+  try {
+    if (path) window.sessionStorage.setItem(lastPathKey, path);
+    else window.sessionStorage.removeItem(lastPathKey);
+  } catch {
+    // Storage can be blocked; the unlock then lands on home, as before.
+  }
+}
+
+/** Reads and clears the path a lock left. Storage that cannot be read gives no path. */
+function recallLastPath(): string | null {
+  try {
+    const path = window.sessionStorage.getItem(lastPathKey);
+    window.sessionStorage.removeItem(lastPathKey);
+    return path;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The surface focus should land in for a requested page: the active window that shows it, or the
+ * route's own main element when the page is not a window. Null while that page is not on screen.
+ */
+function openedSurface(
+  path: string,
+  routeMain: HTMLElement | null,
+): HTMLElement | null {
+  const frame = document.querySelector<HTMLElement>(
+    "section.os-workspace-window[data-active='true']",
+  );
+  if (frame) {
+    if (routeKey(frame.dataset.windowPath ?? "") !== path) return null;
+    return frame.querySelector<HTMLElement>(".os-page-content") ?? frame;
+  }
+  return routeMain && !routeMain.hidden ? routeMain : null;
+}
+
+/**
+ * A language switch remounts the shell for the new locale, so its focus request and crossfade
+ * cross the remount in session storage. The entry is short-lived and read once.
+ */
+const languageCarryKey = "researchos:language-carry";
+
+function carryLanguageSwitch(href: string) {
+  try {
+    window.sessionStorage.setItem(
+      languageCarryKey,
+      JSON.stringify({ path: routeKey(href), at: Date.now() }),
+    );
+  } catch {
+    // Storage can be blocked; focus then stays where the browser leaves it.
+  }
+}
+
+function takeLanguageSwitch(): string | null {
+  try {
+    const raw = window.sessionStorage.getItem(languageCarryKey);
+    window.sessionStorage.removeItem(languageCarryKey);
+    if (!raw || raw.length > 512) return null;
+    const value = JSON.parse(raw) as { path?: unknown; at?: unknown };
+    if (typeof value.path !== "string" || typeof value.at !== "number")
+      return null;
+    return Date.now() - value.at <= OPEN_FOCUS_MS ? value.path : null;
+  } catch {
+    return null;
+  }
+}
+
+function reducedMotionPreferred(): boolean {
+  try {
+    return (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  } catch {
+    return false;
+  }
+}
+
+/** How long the shell carries data-theme-switching after a theme change (theme-switch.css). */
+const THEME_SWITCH_MS = 240;
+const themeSwitchTimers = new WeakMap<HTMLElement, number>();
+
+/**
+ * Marks the shell for the colour cross-fade from the theme switch that was pressed. The attribute
+ * is set for THEME_SWITCH_MS and then removed; under reduced motion it is never set, so the flip is
+ * instant. Set in the same task as the appearance change, so the transition uses the new colours.
+ */
+function beginThemeSwitch(from: HTMLElement) {
+  const shell = from.closest<HTMLElement>(".os-shell");
+  if (!shell || reducedMotionPreferred()) return;
+  const previous = themeSwitchTimers.get(shell);
+  if (previous !== undefined) window.clearTimeout(previous);
+  shell.setAttribute("data-theme-switching", "");
+  const timer = window.setTimeout(() => {
+    shell.removeAttribute("data-theme-switching");
+    themeSwitchTimers.delete(shell);
+  }, THEME_SWITCH_MS + 20);
+  themeSwitchTimers.set(shell, timer);
+}
 
 function appForPath(path: string): PortfolioApp {
   if (path.startsWith("/projects")) return "projects";
@@ -281,6 +407,27 @@ export function ResearchOS({
   const [lockedPath, setLockedPath] = useState<string | null>(
     isHome ? pathname : null,
   );
+  // The language being switched to while its route loads. It clears itself when the locale changes.
+  const [languageSwitch, setLanguageSwitch] = useState<{
+    from: Locale;
+    to: Locale;
+  } | null>(null);
+  const languageArrival = useRef(false);
+  const contentLayer = useRef<HTMLDivElement>(null);
+  // The page the visitor just opened, so focus can move into it once it has rendered.
+  const [focusRequest, setFocusRequest] = useState<{ path: string } | null>(
+    null,
+  );
+  const firstLayoutPass = useRef(true);
+  useLayoutEffect(() => {
+    // The shell remounts for the new locale after a language switch: pick up its focus request
+    // and the crossfade it was waiting for.
+    const path = takeLanguageSwitch();
+    if (!path) return;
+    languageArrival.current = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot state across a locale-root remount
+    setFocusRequest({ path });
+  }, []);
   useEffect(() => mountSpotlight(), []);
   const [expanded, setExpanded] = useState(false);
   const [query, setQuery] = useState("");
@@ -288,6 +435,9 @@ export function ResearchOS({
   const [shareStatus, setShareStatus] = useState("");
   const searchDialog = useRef<HTMLDialogElement>(null);
   const searchField = useRef<HTMLInputElement>(null);
+  // The tray Search button. Focus returns here when nothing else had focus at open.
+  const searchLauncher = useRef<HTMLButtonElement>(null);
+  const dockStrip = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLElement>(null);
   const desktopContent = useRef<HTMLElement>(null);
   const minimizedTask = useRef<HTMLButtonElement>(null);
@@ -370,7 +520,13 @@ export function ResearchOS({
   const lockRequested = useRef(false);
   const languageMenu = useRef<HTMLDetailsElement>(null);
   const locked = lockedPath === pathname;
+  useEffect(() => {
+    // Any shown desktop counts as seen for this session, so a reload goes straight to it.
+    if (!locked) markWelcomeSeen();
+  }, [locked]);
   useLayoutEffect(() => {
+    const first = firstLayoutPass.current;
+    firstLayoutPass.current = false;
     if (getLocaleFromPath(pathname) !== locale) return;
     const open = consumeLanguageNavigation(pathname);
     // Restore only an explicit language change before the hydrated shell paints.
@@ -378,8 +534,14 @@ export function ResearchOS({
     if (open !== null) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot state across a locale-root remount
       setLockedPath(open ? null : home);
+      return;
     }
-  }, [home, locale, pathname]);
+    // A return to home in the same session goes straight to the desktop. Only the first render
+    // checks it, so a lock (which also lands on home) still shows the logon.
+    if (first && isHome && welcomeSeenThisSession()) {
+      setLockedPath(null);
+    }
+  }, [home, isHome, locale, pathname]);
   const activeApp = appForPath(relativePath);
   const getPath = (path: string) =>
     locale === "en" ? path : `/${locale}${path}`;
@@ -435,6 +597,29 @@ export function ResearchOS({
     setLockedPath(null);
   }
 
+  // The logon's Enter and skip link unlock the desktop. A lock remembers the page it left, so the
+  // unlock reopens it (a per-viewer convenience). Start, brand and close links do not reopen it.
+  function unlockFromLogon() {
+    const stored = recallLastPath();
+    const reopen =
+      stored &&
+      stored !== pathname &&
+      isHome &&
+      getOSAppDescriptor(stored, locale)
+        ? stored
+        : null;
+    startTransition(() => enterWorkspace());
+    if (reopen) {
+      rememberOpenTarget(reopen);
+      router.push(reopen);
+    }
+  }
+
+  // Records the page a visitor just asked to open, so focus can move into it once it renders.
+  function rememberOpenTarget(href: string) {
+    setFocusRequest({ path: routeKey(href) });
+  }
+
   useLayoutEffect(() => {
     if (locked || !focusAfterUnlock.current) return;
     focusAfterUnlock.current = false;
@@ -447,10 +632,11 @@ export function ResearchOS({
   const openSearch = useCallback(() => {
     const dialog = searchDialog.current;
     if (!dialog || dialog.open) return;
+    // BODY is what focus rests on when nothing is focused (Ctrl/Cmd+K from a bare page). It
+    // is not a useful place to return to, so restoreSearchFocus falls back to the launcher.
+    const active = document.activeElement;
     returnFocus.current =
-      document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
+      active instanceof HTMLElement && active !== document.body ? active : null;
     setQuery("");
     setScope("all");
     dialog.showModal();
@@ -468,9 +654,62 @@ export function ResearchOS({
     return () => cancelAnimationFrame(frame);
   }, [pathname, locked, focusContent, workspaceReady]);
 
+  // A requested focus move lapses after OPEN_FOCUS_MS if the page never shows.
+  useEffect(() => {
+    if (!focusRequest) return;
+    const expire = window.setTimeout(
+      () => setFocusRequest(null),
+      OPEN_FOCUS_MS,
+    );
+    return () => window.clearTimeout(expire);
+  }, [focusRequest]);
+
+  // Moves focus into the window or page the visitor just opened (dock, Proof Atlas link, search
+  // result, language switch, reopened window). It waits until that document is the one on
+  // screen, so focus never lands in the page it replaces.
+  useEffect(() => {
+    if (!focusRequest || locked || focusRequest.path !== pathname) return;
+    const frame = requestAnimationFrame(() => {
+      const surface = openedSurface(focusRequest.path, content.current);
+      if (!surface) return;
+      setFocusRequest(null);
+      // Focus already inside the new window (the visitor moved on) is left alone.
+      if (surface.contains(document.activeElement)) return;
+      const heading = surface.querySelector<HTMLElement>("h1");
+      if (heading) heading.tabIndex = -1;
+      (heading ?? surface).focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [focusRequest, locked, pathname]);
+
+  // Crossfade in the new locale's content once it has rendered after a language switch.
+  useEffect(() => {
+    if (!languageArrival.current) return;
+    languageArrival.current = false;
+    const layer = contentLayer.current;
+    if (
+      !layer ||
+      reducedMotionPreferred() ||
+      typeof layer.animate !== "function"
+    )
+      return;
+    layer.animate([{ opacity: 0.35 }, { opacity: 1 }], {
+      duration: 180,
+      easing: "ease-out",
+    });
+  }, [locale]);
+
+  // A language switch that never lands clears its pending state after a few seconds.
+  useEffect(() => {
+    if (!languageSwitch) return;
+    const timer = window.setTimeout(() => setLanguageSwitch(null), 6000);
+    return () => window.clearTimeout(timer);
+  }, [languageSwitch]);
+
   function focusWorkspaceWindow(id: string, destination?: string) {
     const application = workspace.applications.get(id);
     if (!application) return;
+    rememberOpenTarget(destination ?? application.descriptor.path);
     setWorkspace((value) => ({
       ...value,
       model: workspaceReducer(value.model, { type: "restore", id }),
@@ -552,6 +791,9 @@ export function ResearchOS({
           target?.closest("input, textarea, select, [contenteditable='true']")
         )
           return;
+        // Escape closes the window only from its chrome (the title bar and toolbar). Page content,
+        // the desktop and the body keep their own keys, so a stray Escape never leaves the page.
+        if (!target?.closest(".os-windowbar, .os-window-toolbar")) return;
         event.preventDefault();
         if (workspaceDisplayed && workspace.model.activeId)
           closeWorkspaceWindow(workspace.model.activeId);
@@ -597,6 +839,7 @@ export function ResearchOS({
     clearLanguageNavigation();
     reading.stopGesture();
     searchDialog.current?.close();
+    rememberLastPath(isHome ? null : pathname);
     lockRequested.current = true;
     setLockedPath(home);
     if (!isHome) router.push(home);
@@ -619,6 +862,11 @@ export function ResearchOS({
     if (languageMenu.current) languageMenu.current.open = false;
     if (language === locale) return;
     const target = getLocalizedPath(pathname, language);
+    // The chip shows the pending state at once; the content crossfades when the new locale renders.
+    setLanguageSwitch({ from: locale, to: language });
+    languageArrival.current = true;
+    rememberOpenTarget(target);
+    carryLanguageSwitch(target);
     prepareLanguageNavigation(target, !locked);
     router.push(`${target}${window.location.search}${window.location.hash}`);
   }
@@ -698,10 +946,53 @@ export function ResearchOS({
   }
 
   function restoreSearchFocus() {
-    const target = returnFocus.current;
-    if (target?.isConnected && !target.closest("[inert], [hidden]"))
-      target.focus();
+    const usable = (element: HTMLElement | null): element is HTMLElement =>
+      !!element &&
+      element.isConnected &&
+      element !== document.body &&
+      !element.closest("[inert], [hidden]");
+    if (usable(returnFocus.current)) returnFocus.current.focus();
+    else if (usable(searchLauncher.current)) searchLauncher.current.focus();
   }
+
+  // Overflow cue for the pin strip. The strip scrolls when the pins are wider than the room
+  // between the orb and the tray; a fade shows on each side that still hides pins. Physical
+  // sides are used, so RTL reads the same. Only the hidden sides are marked.
+  useEffect(() => {
+    const strip = dockStrip.current;
+    if (!strip) return;
+    const update = () => {
+      const max = strip.scrollWidth - strip.clientWidth;
+      const rtl = getComputedStyle(strip).direction === "rtl";
+      // Hidden pins on the physical left. In RTL scrollLeft runs from 0 to -max.
+      const hiddenLeft = rtl ? max + strip.scrollLeft : strip.scrollLeft;
+      const hiddenRight = max - hiddenLeft;
+      strip.toggleAttribute("data-fade-l", hiddenLeft > 2);
+      strip.toggleAttribute("data-fade-r", hiddenRight > 2);
+    };
+    update();
+    strip.addEventListener("scroll", update, { passive: true });
+    const observer =
+      typeof ResizeObserver === "function" ? new ResizeObserver(update) : null;
+    observer?.observe(strip);
+    Array.from(strip.children).forEach((child) => observer?.observe(child));
+    window.addEventListener("resize", update);
+    return () => {
+      strip.removeEventListener("scroll", update);
+      observer?.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, [locale]);
+
+  // The strip starts at the first pin, so a later page's pin can begin off screen. Scrolling
+  // the pressed pin in (nearest edge) keeps the page the visitor is on visible in the bar.
+  useEffect(() => {
+    const current = dockStrip.current?.querySelector<HTMLElement>(
+      ".os-dock-app[aria-current='page']",
+    );
+    if (current && typeof current.scrollIntoView === "function")
+      current.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [pathname, locale]);
 
   return (
     <ApplicationRegistrationContext.Provider
@@ -718,7 +1009,7 @@ export function ResearchOS({
           onClick={(event) => {
             if (locked) {
               event.preventDefault();
-              enterWorkspace();
+              unlockFromLogon();
             }
           }}
         >
@@ -738,6 +1029,7 @@ export function ResearchOS({
           </Link>
           <div className="os-top-actions">
             <button
+              ref={searchLauncher}
               className="os-control"
               onClick={openSearch}
               aria-label={copy.search}
@@ -747,16 +1039,6 @@ export function ResearchOS({
               <span>{copy.search}</span>
               <kbd aria-hidden="true">{shortcutText}</kbd>
             </button>
-            {!locked && (
-              <button
-                className="os-control"
-                onClick={lockWorkspace}
-                aria-label={copy.lock}
-              >
-                <LockKeyhole aria-hidden="true" />
-                <span>{copy.lock}</span>
-              </button>
-            )}
             {/* Theme switch: the thumb carries the glyph for the current theme (sun in
                 light, moon in dark), and the visible state label sits beside it. */}
             <button
@@ -765,8 +1047,9 @@ export function ResearchOS({
               className="os-theme-switch"
               aria-checked={appearance === "dark"}
               aria-label={copy.darkAppearance}
-              onClick={() => {
+              onClick={(event) => {
                 const next = appearance === "dark" ? "light" : "dark";
+                beginThemeSwitch(event.currentTarget);
                 writeAppearance(next);
                 setSessionAppearance(next);
               }}
@@ -798,6 +1081,7 @@ export function ResearchOS({
               {/* CSS attr() reads the summary's own attribute, so the code lives here. */}
               <summary
                 aria-label={`${copy.selectLanguage}: ${locales[locale].label}`}
+                aria-busy={languageSwitch?.from === locale ? true : undefined}
                 data-locale-code={locale.toUpperCase()}
               >
                 <Languages aria-hidden="true" />
@@ -820,6 +1104,19 @@ export function ResearchOS({
               </nav>
             </details>
             <SydneyClock locale={locale} />
+            {/* Lock is last in the tray: it sits at the far edge, apart from search and theme,
+                so it is never next to a pin. The tooltip names it for pointer users. */}
+            {!locked && (
+              <button
+                className="os-control os-tray-lock"
+                onClick={lockWorkspace}
+                aria-label={copy.lock}
+                title={copy.lock}
+              >
+                <LockKeyhole aria-hidden="true" />
+                <span>{copy.lock}</span>
+              </button>
+            )}
           </div>
         </header>
         {locked && (
@@ -831,7 +1128,7 @@ export function ResearchOS({
             <SydneyClock locale={locale} welcome />
             <div className="os-lock-profile">
               <Image
-                src="/images/raouf-welcome.webp"
+                src="/images/raouf-welcome-168-2ae922a8.webp"
                 alt=""
                 width={84}
                 height={84}
@@ -848,8 +1145,9 @@ export function ResearchOS({
               <p className="os-role">{role}</p>
               <p className="os-lock-intro">{copy.intro}</p>
               <WelcomeEnter
-                onEnter={enterWorkspace}
+                onEnter={unlockFromLogon}
                 status={copy.welcomeStatus}
+                locale={locale}
               >
                 {atlasJourneyCopy.explore}
                 <ArrowRight aria-hidden="true" />
@@ -884,17 +1182,30 @@ export function ResearchOS({
           </section>
         )}
         <div
+          ref={contentLayer}
           className="os-content"
           hidden={locked}
           inert={locked && hydrated}
           onClickCapture={(event) => {
-            if (
-              workspaceReady &&
+            const plain =
               !event.ctrlKey &&
               !event.metaKey &&
               !event.shiftKey &&
-              !event.altKey
-            ) {
+              !event.altKey;
+            if (plain) {
+              // A link to a window page moves focus into that window once it renders.
+              const link =
+                event.target instanceof Element
+                  ? event.target.closest("a")
+                  : null;
+              const href = link?.getAttribute("href");
+              if (
+                href?.startsWith("/") &&
+                getOSAppDescriptor(href.split("#")[0], locale)
+              )
+                rememberOpenTarget(href);
+            }
+            if (workspaceReady && plain) {
               const link =
                 event.target instanceof Element
                   ? event.target.closest("a")
@@ -1020,6 +1331,11 @@ export function ResearchOS({
                 : undefined
             }
           >
+            {!isHome && (
+              <span id="os-escape-hint" className="sr-only">
+                {escapeHintCopy[locale]}
+              </span>
+            )}
             {!workspaceDisplayed && !isHome && (
               <div className="os-windowbar os-windowbar--route title-bar">
                 <div className="os-window-navigation">
@@ -1080,6 +1396,8 @@ export function ResearchOS({
                   <Link
                     className="os-control os-window-close"
                     href={home}
+                    aria-keyshortcuts="Escape"
+                    aria-describedby={isHome ? undefined : "os-escape-hint"}
                     onClick={enterWorkspace}
                     // The name contains the visible word "Desktop" (WCAG 2.5.3).
                     aria-label={`${copy.close}: ${copy.desktop}`}
@@ -1183,7 +1501,8 @@ export function ResearchOS({
             className="os-dock-home"
             href={home}
             onClick={enterWorkspace}
-            aria-label={copy.desktop}
+            aria-label={copy.startOrb}
+            title={copy.startOrb}
             aria-current={isHome ? "page" : undefined}
           >
             <OSMark />
@@ -1191,7 +1510,7 @@ export function ResearchOS({
           <span className="os-dock-divider" aria-hidden="true" />
           {/* The pins scroll inside this strip, not the bar, so the strip ends where the
               tray begins and no pin can run under the tray chips. */}
-          <div className="os-dock-strip">
+          <div className="os-dock-strip" ref={dockStrip}>
             {apps.map((app) => {
               const dockLabel =
                 app === "research"
@@ -1225,6 +1544,10 @@ export function ResearchOS({
                 <Link
                   key={app}
                   href={getPath(appPaths[app])}
+                  // Hover and press start the route fetch, so a first visit does not wait for
+                  // the page chunk after the click. The window still opens on the same timing.
+                  onPointerEnter={() => router.prefetch(getPath(appPaths[app]))}
+                  onPointerDown={() => router.prefetch(getPath(appPaths[app]))}
                   className={[
                     "os-dock-app",
                     running ? "is-running" : "",
@@ -1237,6 +1560,13 @@ export function ResearchOS({
                   aria-current={current ? "page" : undefined}
                   data-minimized={minimized ? "true" : undefined}
                   onClick={(event) => {
+                    if (
+                      !event.ctrlKey &&
+                      !event.metaKey &&
+                      !event.shiftKey &&
+                      !event.altKey
+                    )
+                      rememberOpenTarget(getPath(appPaths[app]));
                     if (
                       workspaceReady &&
                       !event.ctrlKey &&
@@ -1307,11 +1637,17 @@ export function ResearchOS({
           </div>
           <div className="os-search-field">
             <Search aria-hidden="true" />
+            {/* A visible label, not only the placeholder, which disappears once text is typed. */}
+            <label className="os-search-label" htmlFor="os-search-input">
+              {copy.search}
+            </label>
+            {/* No aria-label here: it would override the visible label above, and the name
+                must be the text a sighted user reads (WCAG 2.5.3). */}
             <input
+              id="os-search-input"
               ref={searchField}
               type="search"
               placeholder={copy.searchPlaceholder}
-              aria-label={copy.searchPlaceholder}
               aria-controls="os-search-results"
               value={query}
               maxLength={200}
@@ -1366,6 +1702,9 @@ export function ResearchOS({
                 const external =
                   /^(https?:|mailto:)/.test(entry.href) ||
                   /\.pdf(?:$|\?)/i.test(entry.href);
+                // The name is the kind and the title; the description is read after it, so a
+                // long abstract never runs into the name.
+                const resultId = `os-search-result-${entry.id.replace(/[^A-Za-z0-9_-]/g, "-")}`;
                 const label = (
                   <>
                     <span
@@ -1375,16 +1714,18 @@ export function ResearchOS({
                       <ResultIcon aria-hidden="true" />
                     </span>
                     <span className="os-search-result-copy">
-                      <span className="os-result-kind">
+                      <span className="os-result-kind" id={`${resultId}-kind`}>
                         {scopeLabels[entry.kind]}
                       </span>
                       <strong
+                        id={`${resultId}-title`}
                         lang={entry.titleLocale ?? locale}
                         dir={locales[entry.titleLocale ?? locale].dir}
                       >
                         {entry.title}
                       </strong>
                       <small
+                        id={`${resultId}-desc`}
                         lang={entry.descriptionLocale ?? locale}
                         dir={locales[entry.descriptionLocale ?? locale].dir}
                       >
@@ -1405,6 +1746,8 @@ export function ResearchOS({
                         href={entry.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-labelledby={`${resultId}-kind ${resultId}-title`}
+                        aria-describedby={`${resultId}-desc`}
                         onClick={selectResult}
                       >
                         {label}
@@ -1413,6 +1756,8 @@ export function ResearchOS({
                       <Link
                         className="os-search-result"
                         href={entry.href}
+                        aria-labelledby={`${resultId}-kind ${resultId}-title`}
+                        aria-describedby={`${resultId}-desc`}
                         onClick={selectResult}
                       >
                         {label}

@@ -132,6 +132,7 @@
   > .os-simurgh-instrument-control {
   border-color: var(--os-accent);
   background: var(--os-accent-tint);
+  color: var(--os-on-tint);
 }
 
 .os-shell
@@ -140,7 +141,7 @@
   .os-simurgh-instrument-station[data-selected="true"]
   > .os-simurgh-instrument-control
   strong {
-  color: var(--os-text);
+  color: var(--os-on-tint);
 }
 
 .os-shell
@@ -160,7 +161,7 @@
   .os-simurgh-instrument-station[data-selected="true"]
   .os-simurgh-instrument-point {
   border-color: var(--os-accent);
-  color: var(--os-text);
+  color: var(--os-on-tint);
 }
 
 .os-shell .os-project-explorer .os-project-section .os-simurgh-explanations {
@@ -186,8 +187,10 @@
   .os-project-section
   .os-simurgh-explanations
   li[data-selected="true"] {
-  color: var(--os-text);
-  background: var(--os-accent-tint);
+  /* The active item takes its own fill and text pair, so the text stays readable
+     in Aero Night, where the accent tint is navy. */
+  color: var(--explorer-active-fg);
+  background: var(--explorer-active-bg);
 }
 
 .os-shell
@@ -207,7 +210,7 @@
   li[data-selected="true"]
   .os-simurgh-explanation-index {
   border-color: var(--os-accent);
-  color: var(--os-text);
+  color: var(--explorer-active-fg);
 }
 
 /* Wide story: six stages in one row, markers above their titles. */

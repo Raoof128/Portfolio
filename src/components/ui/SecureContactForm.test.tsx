@@ -6,7 +6,11 @@ import {
   render,
   screen,
 } from "@testing-library/react";
-import { SecureContactForm } from "./SecureContactForm";
+import {
+  CopyAddressControl,
+  SECURE_CONTACT_COPY,
+  SecureContactForm,
+} from "./SecureContactForm";
 import { I18nProvider } from "@/i18n/provider";
 import type { Locale } from "@/i18n";
 import en, { type Dictionary } from "@/i18n/locales/en";
@@ -39,9 +43,9 @@ function fillDraft(dictionary: Dictionary = en) {
   );
 }
 
-function submitDraft(dictionary: Dictionary = en) {
+function submitDraft(locale: Locale = "en") {
   const form = screen
-    .getByRole("button", { name: dictionary.contact_form.cta_transmit })
+    .getByRole("button", { name: SECURE_CONTACT_COPY[locale].submit })
     .closest("form");
   expect(form).not.toBeNull();
   fireEvent.submit(form as HTMLFormElement);
@@ -60,6 +64,28 @@ describe("SecureContactForm", () => {
     expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
   });
 
+  it("does not show a draft reference, since no server record exists", () => {
+    renderForm();
+
+    expect(screen.queryByText(/draft id/i)).not.toBeInTheDocument();
+    expect(document.querySelector(".os-secure-trace")).toBeNull();
+  });
+
+  it("marks required fields and shows the message limit", () => {
+    renderForm();
+
+    expect(screen.getByLabelText(en.contact_form.name_label)).toBeRequired();
+    expect(screen.getByLabelText(en.contact_form.email_label)).toBeRequired();
+    expect(screen.getByLabelText(en.contact_form.message_label)).toBeRequired();
+    expect(
+      screen.getByText(SECURE_CONTACT_COPY.en.requiredLegend),
+    ).toBeInTheDocument();
+    expect(screen.getByText("0 of 2000 characters used")).toBeInTheDocument();
+    expect(screen.getByLabelText(/email/i)).toHaveAccessibleDescription(
+      SECURE_CONTACT_COPY.en.emailHelp,
+    );
+  });
+
   it("shows the draft editing state while the user is typing", () => {
     renderForm();
 
@@ -69,7 +95,26 @@ describe("SecureContactForm", () => {
     expect(screen.getByText(/editing draft/i)).toBeInTheDocument();
   });
 
-  it("shows a validation message for invalid email addresses", () => {
+  it("runs validation itself, so empty submits reach the component", () => {
+    renderForm();
+    const form = screen
+      .getByRole("button", { name: SECURE_CONTACT_COPY.en.submit })
+      .closest("form");
+    expect(form).toHaveAttribute("novalidate");
+
+    submitDraft();
+
+    expect(screen.getByLabelText(/name/i)).toHaveFocus();
+    expect(screen.getByLabelText(/name/i)).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+    expect(screen.getByLabelText(/name/i)).toHaveAccessibleDescription(
+      SECURE_CONTACT_COPY.en.nameRequired,
+    );
+  });
+
+  it("ties an invalid email error to its field and moves focus there", () => {
     renderForm();
 
     fireEvent.change(screen.getByLabelText(/name/i), {
@@ -84,7 +129,42 @@ describe("SecureContactForm", () => {
 
     submitDraft();
 
-    expect(screen.getByRole("alert")).toHaveTextContent(/valid email address/i);
+    const email = screen.getByLabelText(/email/i);
+    expect(email).toHaveFocus();
+    expect(email).toHaveAttribute("aria-invalid", "true");
+    expect(email).toHaveAccessibleDescription(/valid email address/i);
+    expect(screen.getByLabelText(/name/i)).not.toHaveAttribute("aria-invalid");
+  });
+
+  it("treats a whitespace-only name as missing", () => {
+    renderForm();
+
+    fireEvent.change(screen.getByLabelText(/name/i), {
+      target: { value: "   " },
+    });
+    fireEvent.change(screen.getByLabelText(/email/i), {
+      target: { value: "raouf@example.com" },
+    });
+    fireEvent.change(screen.getByLabelText(/message/i), {
+      target: { value: "Hello from tests" },
+    });
+    submitDraft();
+
+    expect(screen.getByLabelText(/name/i)).toHaveAccessibleDescription(
+      SECURE_CONTACT_COPY.en.nameRequired,
+    );
+  });
+
+  it("drops a field's error as soon as its value passes, without waiting for blur", () => {
+    renderForm();
+    submitDraft();
+
+    const message = screen.getByLabelText(/message/i);
+    expect(message).toHaveAttribute("aria-invalid", "true");
+
+    fireEvent.change(message, { target: { value: "Hello from tests" } });
+
+    expect(message).not.toHaveAttribute("aria-invalid");
   });
 
   describe("email draft lifecycle", () => {
@@ -113,12 +193,15 @@ describe("SecureContactForm", () => {
       vi.unstubAllGlobals();
     });
 
-    it("opens one encoded draft and preserves the result after typing timers expire", () => {
+    it("opens one encoded draft and reports a handoff, not a sent email", () => {
       renderForm();
       fillDraft();
       submitDraft();
 
-      expect(screen.getByRole("button", { name: /opening/i })).toBeDisabled();
+      expect(screen.getByRole("button", { name: /opening/i })).toHaveAttribute(
+        "aria-disabled",
+        "true",
+      );
       act(() => vi.advanceTimersByTime(600));
 
       expect(openDraft).toHaveBeenCalledTimes(1);
@@ -134,11 +217,52 @@ describe("SecureContactForm", () => {
       expect([...destination.searchParams.keys()]).toEqual(["subject", "body"]);
 
       act(() => vi.advanceTimersByTime(1000));
-      expect(screen.getByText(en.contact_form.status_sent)).toBeInTheDocument();
       expect(
-        screen.getByRole("button", { name: /draft opened/i }),
-      ).toBeDisabled();
+        screen.getByText(SECURE_CONTACT_COPY.en.statusHandoff),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(SECURE_CONTACT_COPY.en.handoffHint),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("button", { name: SECURE_CONTACT_COPY.en.openAgain }),
+      ).toBeEnabled();
       expect(openDraft).toHaveBeenCalledTimes(1);
+    });
+
+    it("keeps focus on the submit button while the draft opens, and ignores a repeat submit", () => {
+      renderForm();
+      fillDraft();
+      const button = screen.getByRole("button", {
+        name: SECURE_CONTACT_COPY.en.submit,
+      });
+      button.focus();
+      submitDraft();
+
+      const opening = screen.getByRole("button", { name: /opening/i });
+      expect(opening).toHaveFocus();
+
+      act(() => vi.advanceTimersByTime(300));
+      fireEvent.submit(opening.closest("form") as HTMLFormElement);
+      act(() => vi.advanceTimersByTime(300));
+
+      // The repeat submit must not restart the 600 ms timer, so one draft opens at 600 ms.
+      expect(openDraft).toHaveBeenCalledTimes(1);
+    });
+
+    it("opens the draft again from the Open again action", () => {
+      renderForm();
+      fillDraft();
+      submitDraft();
+      act(() => vi.advanceTimersByTime(600));
+
+      fireEvent.submit(
+        screen
+          .getByRole("button", { name: SECURE_CONTACT_COPY.en.openAgain })
+          .closest("form") as HTMLFormElement,
+      );
+      act(() => vi.advanceTimersByTime(600));
+
+      expect(openDraft).toHaveBeenCalledTimes(2);
     });
 
     it.each([
@@ -151,7 +275,7 @@ describe("SecureContactForm", () => {
       (locale, dictionary) => {
         renderForm(locale, dictionary);
         fillDraft(dictionary);
-        submitDraft(dictionary);
+        submitDraft(locale);
 
         act(() => vi.advanceTimersByTime(600));
         const destination = new URL(openDraft.mock.calls[0][0]);
@@ -190,7 +314,7 @@ describe("SecureContactForm", () => {
       act(() => vi.advanceTimersByTime(1000));
       expect(openDraft).not.toHaveBeenCalled();
       expect(
-        screen.getByRole("button", { name: /open email draft/i }),
+        screen.getByRole("button", { name: SECURE_CONTACT_COPY.en.submit }),
       ).toBeEnabled();
 
       submitDraft();
@@ -217,8 +341,67 @@ describe("SecureContactForm", () => {
         screen.getByRole("link", { name: CONTACT_EMAIL_GMAIL }),
       ).toHaveAttribute("href", `mailto:${CONTACT_EMAIL_GMAIL}`);
       expect(
-        screen.getByRole("button", { name: /open email draft/i }),
+        screen.getByRole("button", { name: SECURE_CONTACT_COPY.en.submit }),
       ).toBeEnabled();
+    });
+  });
+
+  describe("copy address", () => {
+    const originalClipboard = Object.getOwnPropertyDescriptor(
+      navigator,
+      "clipboard",
+    );
+
+    afterEach(() => {
+      cleanup();
+      if (originalClipboard) {
+        Object.defineProperty(navigator, "clipboard", originalClipboard);
+      } else {
+        delete (navigator as { clipboard?: unknown }).clipboard;
+      }
+    });
+
+    it("copies the address and announces the result", async () => {
+      const writeText = vi.fn().mockResolvedValue(undefined);
+      Object.defineProperty(navigator, "clipboard", {
+        value: { writeText },
+        configurable: true,
+      });
+      render(
+        <I18nProvider locale="en" dictionary={en}>
+          <CopyAddressControl />
+        </I18nProvider>,
+      );
+
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: SECURE_CONTACT_COPY.en.copyAddress,
+        }),
+      );
+
+      expect(
+        await screen.findByText(SECURE_CONTACT_COPY.en.addressCopied),
+      ).toBeInTheDocument();
+      expect(writeText).toHaveBeenCalledWith(CONTACT_EMAIL_GMAIL);
+    });
+
+    it("reports when the clipboard is unavailable", async () => {
+      delete (navigator as { clipboard?: unknown }).clipboard;
+      render(
+        <I18nProvider locale="en" dictionary={en}>
+          <CopyAddressControl />
+        </I18nProvider>,
+      );
+
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: SECURE_CONTACT_COPY.en.copyAddress,
+        }),
+      );
+
+      expect(
+        await screen.findByText(SECURE_CONTACT_COPY.en.copyFailed),
+      ).toBeInTheDocument();
     });
   });
 });

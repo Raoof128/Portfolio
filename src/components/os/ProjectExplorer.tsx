@@ -2,9 +2,15 @@
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ChevronRight, Folder, Search } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  ChevronRight,
+  Folder,
+  Search,
+} from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
-import { defaultLocale } from "@/i18n";
+import { defaultLocale, type Locale } from "@/i18n";
 import { formatNumber } from "@/i18n/format";
 import type { ProjectSummary } from "@/lib/project-summaries";
 import { searchEntries } from "@/lib/os-search-query";
@@ -15,6 +21,15 @@ import { useCopyrightYear } from "./use-copyright-year";
 import "./project-explorer.css";
 
 type ProjectCategory = "ALL" | ProjectSummary["category"];
+
+/** Component-local strings that are not in the shared OS copy. */
+const explorerCopy: Readonly<Record<Locale, { location: string }>> = {
+  en: { location: "Location" },
+  fa: { location: "مسیر" },
+  ar: { location: "المسار" },
+  zh: { location: "当前位置" },
+  es: { location: "Ubicación" },
+};
 
 /** A project link was chosen. The explorer that mounts next moves focus to its heading. */
 let pendingHeadingFocusAt = 0;
@@ -53,6 +68,22 @@ export function ProjectExplorer({
       : "ALL",
   );
   const allProjects = summaries;
+  const selectedProject = selectedSlug
+    ? allProjects.find((project) => project.slug === selectedSlug)
+    : undefined;
+  // On narrow screens the project list sits behind a disclosure. It starts closed on
+  // every route, so the index or dossier comes first and the visitor opens the list to
+  // browse. Wide screens ignore the disclosure and keep the list visible. The reset
+  // happens during render when the selection changes, not in an effect.
+  const [navState, setNavState] = useState({
+    slug: selectedSlug,
+    open: false,
+  });
+  if (navState.slug !== selectedSlug) {
+    setNavState({ slug: selectedSlug, open: false });
+  }
+  const navOpen = navState.open;
+  const navPanelId = `${fieldId}-nav`;
   const getPath = (path: string) =>
     locale === defaultLocale ? path : `/${locale}${path}`;
   const matchingSlugs = new Set(
@@ -131,93 +162,154 @@ export function ProjectExplorer({
 
   return (
     <div className="os-project-explorer" ref={rootRef}>
-      {/* The window title is the only title above the content. The address bar repeats the path for sighted users, so it is hidden from assistive tech. */}
-      <div className="os-explorer-commandbar" aria-hidden="true">
-        <div className="os-explorer-address">
+      {/* The window title is the only title above the content. The address bar is a
+          breadcrumb: Projects links back to the index, and the open project is the last crumb. */}
+      <div className="os-explorer-commandbar">
+        <nav
+          className="os-explorer-address"
+          aria-label={explorerCopy[locale].location}
+        >
           <Folder size={15} aria-hidden="true" />
-          <span>{copy.projects}</span>
+          {selectedProject ? (
+            <Link
+              className="os-explorer-crumb-link"
+              href={getPath("/projects")}
+            >
+              {copy.projects}
+            </Link>
+          ) : (
+            <span>{copy.projects}</span>
+          )}
           <ChevronRight
             className="os-icon-flip os-explorer-crumb"
             size={12}
             aria-hidden="true"
           />
-          <span>{copy.allProjects}</span>
-        </div>
+          {selectedProject ? (
+            <span
+              className="os-explorer-crumb-current"
+              aria-current="page"
+              lang={selectedProject.titleLocale}
+              dir={selectedProject.titleLocale === "en" ? "ltr" : undefined}
+            >
+              {selectedProject.title}
+            </span>
+          ) : (
+            <span aria-current="page">{copy.allProjects}</span>
+          )}
+        </nav>
       </div>
       <div className="os-explorer-layout">
         <aside className="os-explorer-sidebar">
-          <Link
-            className="os-explorer-index-link"
-            href={getPath("/projects")}
-            aria-current={!selectedSlug ? "page" : undefined}
+          {/* Narrow screens only: the project list is a disclosure. Wide screens hide it
+              and keep the whole panel visible as the sticky navigation pane. */}
+          <button
+            type="button"
+            className="os-explorer-nav-toggle"
+            aria-expanded={navOpen}
+            aria-controls={navPanelId}
+            onClick={() =>
+              setNavState((state) => ({ ...state, open: !state.open }))
+            }
           >
             <Folder size={17} aria-hidden="true" />
             <span>{copy.allProjects}</span>
             <span className="os-explorer-count">
               {formatNumber(allProjects.length, locale)}
             </span>
-          </Link>
-          <div className="os-explorer-controls">
-            <label htmlFor={`${fieldId}-search`}>{copy.projectSearch}</label>
-            <div className="os-explorer-search">
-              <Search size={15} aria-hidden="true" />
-              <input
-                id={`${fieldId}-search`}
-                type="search"
-                value={query}
-                maxLength={100}
-                placeholder={copy.projectSearch}
-                onChange={(event) => setQuery(event.target.value)}
-                autoComplete="off"
-              />
-            </div>
-            <label htmlFor={`${fieldId}-category`}>{copy.category}</label>
-            <select
-              id={`${fieldId}-category`}
-              value={category}
-              onChange={(event) => {
-                const value = event.target.value;
-                if (Object.hasOwn(categoryLabels, value))
-                  setCategory(value as ProjectCategory);
-              }}
-            >
-              {Object.entries(categoryLabels).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-            <p className="sr-only" role="status">
-              {announcedResults}
-            </p>
-          </div>
-          <nav
-            className="os-explorer-project-nav"
-            aria-label={copy.allProjects}
-          >
-            {visibleProjects.map((project) => (
-              <Link
-                key={project.slug}
-                href={getPath(`/projects/${project.slug}`)}
-                className="os-explorer-project-link"
-                aria-current={
-                  selectedSlug === project.slug ? "page" : undefined
-                }
-                onClick={markProjectNavigation}
+            {selectedProject && (
+              <span
+                className="os-explorer-nav-toggle-current"
+                lang={selectedProject.titleLocale}
+                dir={selectedProject.titleLocale === "en" ? "ltr" : undefined}
               >
-                <span
-                  lang={project.titleLocale}
-                  dir={project.titleLocale === "en" ? "ltr" : undefined}
-                >
-                  {project.title}
-                </span>
-                <small>{categoryLabels[project.category]}</small>
-              </Link>
-            ))}
-            {visibleProjects.length === 0 && (
-              <p className="os-explorer-empty">{copy.noProjects}</p>
+                {selectedProject.title}
+              </span>
             )}
-          </nav>
+            <ChevronDown
+              className="os-explorer-nav-toggle-icon"
+              size={16}
+              aria-hidden="true"
+            />
+          </button>
+          <div
+            id={navPanelId}
+            className="os-explorer-nav-panel"
+            data-open={navOpen ? "true" : "false"}
+          >
+            <Link
+              className="os-explorer-index-link"
+              href={getPath("/projects")}
+              aria-current={!selectedSlug ? "page" : undefined}
+            >
+              <Folder size={17} aria-hidden="true" />
+              <span>{copy.allProjects}</span>
+              <span className="os-explorer-count">
+                {formatNumber(allProjects.length, locale)}
+              </span>
+            </Link>
+            <div className="os-explorer-controls">
+              <label htmlFor={`${fieldId}-search`}>{copy.projectSearch}</label>
+              <div className="os-explorer-search">
+                <Search size={15} aria-hidden="true" />
+                <input
+                  id={`${fieldId}-search`}
+                  type="search"
+                  value={query}
+                  maxLength={100}
+                  placeholder={copy.projectSearch}
+                  onChange={(event) => setQuery(event.target.value)}
+                  autoComplete="off"
+                />
+              </div>
+              <label htmlFor={`${fieldId}-category`}>{copy.category}</label>
+              <select
+                id={`${fieldId}-category`}
+                value={category}
+                onChange={(event) => {
+                  const value = event.target.value;
+                  if (Object.hasOwn(categoryLabels, value))
+                    setCategory(value as ProjectCategory);
+                }}
+              >
+                {Object.entries(categoryLabels).map(([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+              <p className="sr-only" role="status">
+                {announcedResults}
+              </p>
+            </div>
+            <nav
+              className="os-explorer-project-nav"
+              aria-label={copy.allProjects}
+            >
+              {visibleProjects.map((project) => (
+                <Link
+                  key={project.slug}
+                  href={getPath(`/projects/${project.slug}`)}
+                  className="os-explorer-project-link"
+                  aria-current={
+                    selectedSlug === project.slug ? "page" : undefined
+                  }
+                  onClick={markProjectNavigation}
+                >
+                  <span
+                    lang={project.titleLocale}
+                    dir={project.titleLocale === "en" ? "ltr" : undefined}
+                  >
+                    {project.title}
+                  </span>
+                  <small>{categoryLabels[project.category]}</small>
+                </Link>
+              ))}
+              {visibleProjects.length === 0 && (
+                <p className="os-explorer-empty">{copy.noProjects}</p>
+              )}
+            </nav>
+          </div>
         </aside>
         <div className="os-explorer-content" ref={contentRef}>
           <div key={selectedSlug ?? "index"} className="os-explorer-view">

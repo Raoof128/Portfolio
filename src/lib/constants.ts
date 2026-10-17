@@ -5,6 +5,9 @@ export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
 // the role belongs in page titles/descriptions rather than WebSite.name.
 export const SITE_NAME = "Mohammad Raouf Abedini";
 
+// Two addresses by policy (UI/UX audit SC-09). The Gmail address is the public contact used on
+// the About, Contact and Resume pages. The Outlook address is security-only: it is used for
+// vulnerability reports on the security policy page, and nowhere else.
 export const CONTACT_EMAIL = "raoof.r999@outlook.com";
 export const CONTACT_EMAIL_GMAIL = "raoof.r12@gmail.com";
 export const GITHUB_URL = "https://github.com/Raoof128";

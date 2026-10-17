@@ -21,19 +21,28 @@ describe("AboutClient", () => {
     ).toBeInTheDocument();
 
     const image = screen.getByAltText("Mohammad Raouf Abedini");
-    expect(image).toHaveAttribute("src", "/Raouf_2.jpg");
+    expect(image).toHaveAttribute(
+      "src",
+      "/images/raouf-about-600-7d22ea07.webp",
+    );
   });
 
-  it("shows a fallback when photo fails to load", () => {
+  it("walks the photo fallbacks and then shows the unavailable state", () => {
     renderAbout();
 
-    const image = screen.getByAltText("Mohammad Raouf Abedini");
-    fireEvent.error(image);
+    fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
+    expect(screen.getByAltText("Mohammad Raouf Abedini")).toHaveAttribute(
+      "src",
+      "/Raouf_2.jpg",
+    );
 
-    const fallbackImage = screen.getByAltText("Mohammad Raouf Abedini");
-    expect(fallbackImage).toHaveAttribute("src", "/Raouf_2.png");
+    fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
+    expect(screen.getByAltText("Mohammad Raouf Abedini")).toHaveAttribute(
+      "src",
+      "/Raouf_2.png",
+    );
 
-    fireEvent.error(fallbackImage);
+    fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
 
     expect(screen.getByText(en.about.photo_unavailable)).toBeInTheDocument();
     expect(screen.getByText("MRA")).toBeInTheDocument();
@@ -42,15 +51,15 @@ describe("AboutClient", () => {
   it("allows retry after fallback", () => {
     renderAbout();
 
-    const image = screen.getByAltText("Mohammad Raouf Abedini");
-    fireEvent.error(image);
-    fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
+    for (let i = 0; i < 3; i++) {
+      fireEvent.error(screen.getByAltText("Mohammad Raouf Abedini"));
+    }
 
     fireEvent.click(screen.getByRole("button", { name: en.about.retry_photo }));
 
     expect(screen.getByAltText("Mohammad Raouf Abedini")).toHaveAttribute(
       "src",
-      "/Raouf_2.jpg",
+      "/images/raouf-about-600-7d22ea07.webp",
     );
   });
 });

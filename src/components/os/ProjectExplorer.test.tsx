@@ -461,6 +461,66 @@ describe("original project index previews", () => {
     );
   });
 
+  it("names the open project in the breadcrumb and toggles the phone project list", async () => {
+    const { summaries, copy } = await explorer("en");
+    const activeProject = summaries.find(
+      (project) => project.slug === "project-simurgh",
+    )!;
+    const { container } = render(
+      <I18nProvider locale="en" dictionary={await getDictionary("en")}>
+        <ProjectExplorer
+          summaries={summaries}
+          selectedSlug={activeProject.slug}
+        >
+          <h1>Open dossier</h1>
+        </ProjectExplorer>
+      </I18nProvider>,
+    );
+
+    const location = screen.getByRole("navigation", { name: "Location" });
+    expect(
+      within(location).getByRole("link", { name: copy.projects }),
+    ).toHaveAttribute("href", "/projects");
+    expect(location.querySelector('[aria-current="page"]')).toHaveTextContent(
+      activeProject.title,
+    );
+
+    // The disclosure starts closed on a dossier so the project comes first.
+    const toggle = container.querySelector<HTMLButtonElement>(
+      ".os-explorer-nav-toggle",
+    )!;
+    const panelId = toggle.getAttribute("aria-controls")!;
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(document.getElementById(panelId)).toHaveAttribute(
+      "data-open",
+      "false",
+    );
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(document.getElementById(panelId)).toHaveAttribute(
+      "data-open",
+      "true",
+    );
+  });
+
+  it("keeps the project list closed on the index so the work comes first on phones", async () => {
+    const { summaries, copy } = await explorer("en");
+    const { container } = render(
+      <I18nProvider locale="en" dictionary={await getDictionary("en")}>
+        <ProjectExplorer summaries={summaries} />
+      </I18nProvider>,
+    );
+    const location = screen.getByRole("navigation", { name: "Location" });
+    expect(
+      within(location).queryByRole("link", { name: copy.projects }),
+    ).toBeNull();
+    expect(location.querySelector('[aria-current="page"]')).toHaveTextContent(
+      copy.allProjects,
+    );
+    const toggle = container.querySelector(".os-explorer-nav-toggle");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("rejects an invalid bootstrap category and bounds the captured query", async () => {
     const { element, copy } = await explorer("en");
     vi.spyOn(applicationContext, "useInitialAppState").mockReturnValue({

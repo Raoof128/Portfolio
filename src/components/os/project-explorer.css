@@ -19,6 +19,8 @@
   --os-muted: var(--win7-body-muted);
   --os-accent: var(--win7-link);
   --os-accent-tint: #e5f3fc;
+  /* Text on an accent tint: dark on the light Aero tint. */
+  --os-on-tint: var(--win7-body-text);
   --os-focus: var(--win7-link);
   /* Explorer surface tokens. Light values are the Win7 white body; the Aero Night
      block below swaps every one of them, so no rule in this sheet names a light
@@ -35,8 +37,22 @@
   --explorer-badge-bg: linear-gradient(180deg, #ffffff, #e6eef6);
   --explorer-badge-line: #9bb3c9;
   --explorer-badge-text: #000000;
+  /* Search and category fields are white with black text in both themes, as the
+     Write-ups fields are. #767676 is the field edge (about 4.5:1 on white). */
   --explorer-field-bg: #ffffff;
-  --explorer-field-line: #abadb3;
+  --explorer-field-line: #767676;
+  --explorer-field-text: #000000;
+  /* Navigation pane header row and the active explanation: text pairs with their fill. */
+  --explorer-nav-head-text: #000000;
+  --explorer-active-bg: #e5f3fc;
+  --explorer-active-fg: #000000;
+  /* Footer text pairs with the footer fill (--explorer-footer-bg). */
+  --explorer-footer-fg: #000000;
+  --explorer-footer-muted: #3d3d3d;
+  --explorer-footer-link: #0066cc;
+  --explorer-footer-link-hover: #003d99;
+  /* The Contact button edge is a non-text boundary: 3.85:1 on the Aero footer. */
+  --explorer-footer-line: #7a7a7a;
   /* The 7.css select arrow is a black glyph. Its colour follows the field, so it
      stays visible on the Aero Night field, and the hover face takes its own text pair. */
   --explorer-select-arrow: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6Z' fill='%23000'/%3E%3C/svg%3E");
@@ -100,6 +116,8 @@
   --os-line: #2b4466;
   --os-control-line: #6f8fb4;
   --os-accent-tint: #1b3d66;
+  /* Text on the navy tint: light, so selected stations clear 4.5:1 in Aero Night. */
+  --os-on-tint: #f1f7ff;
   --explorer-keyline: #2b4466;
   --explorer-row-line: #2b4466;
   --explorer-hover: #173a63;
@@ -111,9 +129,14 @@
   --explorer-badge-bg: linear-gradient(180deg, #1b3a62, #132c50);
   --explorer-badge-line: #4d6f96;
   --explorer-badge-text: #f1f7ff;
-  --explorer-field-bg: #0a1a33;
-  --explorer-field-line: #4d6f96;
-  --explorer-select-arrow: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6Z' fill='%23f1f7ff'/%3E%3C/svg%3E");
+  --explorer-nav-head-text: #f1f7ff;
+  --explorer-active-bg: #1b3d66;
+  --explorer-active-fg: #f1f7ff;
+  --explorer-footer-fg: #f1f7ff;
+  --explorer-footer-muted: #b4c6da;
+  --explorer-footer-link: #8fd6ff;
+  --explorer-footer-link-hover: #ffffff;
+  --explorer-footer-line: #6f8fb4;
   --explorer-field-hover: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
   --explorer-field-hover-fg: #ffffff;
   --explorer-chip-bg: linear-gradient(180deg, #1b3a62, #15304f);
@@ -169,6 +192,11 @@
 .os-shell .os-project-explorer .os-explorer-project-link {
   padding-inline-start: 20px;
 }
+/* The All Projects row sits on the white sidebar in both themes, so it takes the
+   sidebar text token. The selected state still wins below. */
+.os-shell .os-project-explorer .os-explorer-index-link {
+  color: var(--os-text);
+}
 /* Selected: the Win7 select gradient on a blue border. The text pair is a token,
    so the night gradient keeps white text at 4.5:1 or better. */
 .os-shell
@@ -208,6 +236,33 @@
 .os-shell .os-project-explorer .os-explorer-project-link small {
   color: var(--win7-body-muted);
   font-size: 12px;
+}
+
+/* Breadcrumb: Projects is a link back to the index, and the open project is the
+   last crumb. Links take the row text and the focus ring, and wrap no further. */
+.os-shell .os-project-explorer .os-explorer-crumb-link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  min-height: 24px;
+  color: var(--os-text);
+  text-decoration: none;
+}
+.os-shell .os-project-explorer .os-explorer-crumb-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.os-shell .os-project-explorer .os-explorer-crumb-link:focus-visible {
+  outline: 2px solid var(--os-focus);
+  outline-offset: 1px;
+}
+/* The disclosure is a phone control. On wide screens the panel is not a box at all
+   (display: contents), so the sidebar lays out exactly as before. */
+.os-shell .os-project-explorer .os-explorer-nav-toggle {
+  display: none;
+}
+.os-shell .os-project-explorer .os-explorer-nav-panel {
+  display: contents;
 }
 
 /* Filter field and category select: solid, with the control boundary colour. */
@@ -273,15 +328,22 @@
   width: 100%;
   min-width: 0;
   min-height: 26px;
-  padding-inline: 6px;
+  /* The 7.css arrow sits at the inline end, so the label keeps 28px clear of it. */
+  padding-inline: 6px 28px;
   border-color: var(--explorer-field-line);
-  color: var(--os-text);
+  color: var(--explorer-field-text);
   background-color: var(--explorer-field-bg);
   background-image:
     var(--explorer-select-arrow),
     linear-gradient(var(--explorer-field-bg), var(--explorer-field-bg));
+  /* The arrow is painted at a physical edge, so in RTL it moves to the left with the
+     inline end. */
+  background-position: 100% center;
   font: inherit;
   font-size: 13px;
+}
+.os-shell .os-project-explorer .os-explorer-controls select:dir(rtl) {
+  background-position: 0 center;
 }
 .os-shell
   .os-project-explorer
@@ -358,7 +420,7 @@
 .os-shell
   .os-project-explorer
   :is(.os-project-index-header > p:not(.os-project-eyebrow), .os-project-lead) {
-  max-width: 66ch;
+  max-width: 58ch;
   margin: 12px 0;
   color: var(--os-muted);
   font-size: 16px;
@@ -938,8 +1000,28 @@
   padding: 10px 12px;
   border-block-start: 1px solid var(--explorer-keyline);
   background: var(--explorer-footer-bg);
-  color: var(--win7-body-text);
+  color: var(--explorer-footer-fg);
   font-family: var(--win7-font);
+}
+/* The Contact button keeps the secondary shape, with the footer text pair. Its
+   hover fill is the accent tint, which carries its own text pair in both themes. */
+.os-shell
+  .os-project-explorer
+  > .os-explorer-layout
+  > .os-explorer-content
+  > .os-explorer-footer
+  .os-project-resource {
+  color: var(--explorer-footer-fg);
+  border-color: var(--explorer-footer-line);
+}
+.os-shell
+  .os-project-explorer
+  > .os-explorer-layout
+  > .os-explorer-content
+  > .os-explorer-footer
+  .os-project-resource:is(:hover, :active) {
+  color: var(--explorer-footer-fg);
+  background: var(--os-accent-tint);
 }
 .os-shell .os-project-explorer .os-explorer-footer-next {
   display: flex;
@@ -954,7 +1036,7 @@
 }
 .os-shell .os-project-explorer .os-explorer-footer h2 {
   margin: 0 0 2px;
-  color: var(--win7-body-text);
+  color: var(--explorer-footer-fg);
   font-family: var(--win7-font);
   font-size: 13px;
   font-weight: 600;
@@ -963,7 +1045,7 @@
 .os-shell .os-project-explorer .os-explorer-footer-next p {
   margin: 0;
   max-width: 60ch;
-  color: var(--win7-body-muted);
+  color: var(--explorer-footer-muted);
   font-size: 13px;
   line-height: 1.55;
 }
@@ -975,7 +1057,7 @@
   gap: 4px 12px;
   padding-block-start: 8px;
   border-block-start: 1px solid var(--explorer-keyline);
-  color: var(--win7-body-muted);
+  color: var(--explorer-footer-muted);
   font-size: 12px;
   line-height: 1.6;
 }
@@ -988,11 +1070,11 @@
   display: inline-flex;
   align-items: center;
   min-height: 24px;
-  color: var(--win7-link);
+  color: var(--explorer-footer-link);
   text-decoration: none;
 }
 .os-shell .os-project-explorer .os-explorer-footer-meta a:hover {
-  color: var(--win7-link-hover);
+  color: var(--explorer-footer-link-hover);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
@@ -1064,15 +1146,70 @@
   .os-shell .os-project-explorer > .os-explorer-layout {
     grid-template-columns: minmax(0, 1fr);
   }
-  /* The pane stacks above the list and scrolls inside itself at 40% of the
-     viewport, so a long project list never pushes the dossier off the screen. */
+  /* The sidebar stacks above the dossier at full width, with no nested scroll region.
+     The project list is a disclosure: its header row shows the open project, and the
+     dossier starts directly below it once the list is closed. */
   .os-shell .os-project-explorer > .os-explorer-layout > .os-explorer-sidebar {
     padding: 8px 0;
     border-inline-end: 0;
     border-block-end: 1px solid var(--explorer-keyline);
-    max-block-size: 40dvh;
-    overflow-y: auto;
-    overscroll-behavior: contain;
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    inline-size: 100%;
+    min-height: 44px;
+    margin-inline: var(--space-1);
+    padding: 4px 8px;
+    /* The fill is near white in Aero, so the edge is the control boundary: it takes
+       the control line (4.3:1 on white), not the pale select blue (2.2:1). */
+    border: 1px solid var(--os-control-line);
+    border-radius: 2px;
+    color: var(--explorer-nav-head-text);
+    background: var(--explorer-pane-head);
+    font-family: var(--win7-font);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: start;
+    cursor: pointer;
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-toggle:focus-visible {
+    outline: 2px solid var(--os-focus);
+    outline-offset: 2px;
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-toggle svg {
+    flex: none;
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-toggle-current {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-toggle-icon {
+    margin-inline-start: auto;
+    transition: transform 120ms ease-out;
+  }
+  .os-shell
+    .os-project-explorer
+    .os-explorer-nav-toggle[aria-expanded="true"]
+    .os-explorer-nav-toggle-icon {
+    transform: rotate(180deg);
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .os-shell .os-project-explorer .os-explorer-nav-panel[data-open="false"] {
+    display: none;
+  }
+  /* The All Projects row is the disclosure header on phones, so it is not repeated. */
+  .os-shell .os-project-explorer .os-explorer-index-link {
+    display: none;
   }
   .os-shell .os-project-explorer .os-explorer-controls {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1114,6 +1251,10 @@
     min-height: 44px;
   }
   .os-shell .os-project-explorer .os-explorer-controls select {
+    min-height: 44px;
+  }
+  .os-shell .os-project-explorer .os-explorer-crumb-link,
+  .os-shell .os-project-explorer .os-explorer-footer-meta a {
     min-height: 44px;
   }
 }
@@ -1191,4 +1332,9 @@
     :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
     display: none;
   }
+}
+
+/* Long project copy stops at about 68 characters a line (TC-07). */
+.os-shell .os-project-explorer .os-project-intro > p {
+  max-inline-size: 68ch;
 }

@@ -1332,3 +1332,19 @@ Grouped by severity, then by lens. Evidence paths point to screenshots and scrip
 - **P-09** (Performance): HTML is served with cf-cache-status DYNAMIC and TTFB median about 0.7 s from this network. Verifier: Not reproduced. cf-cache-status DYNAMIC on /about is real (curl, cf-ray ends SYD). But TTFB measured in browser over 4 fresh contexts each was 48 to 55 ms on / and 48 to 128 ms on /about, and curl TTFB was 60 to 88 ms. The 0.7 s median (SJC edge) does not hold on the current SYD edge. Without the 0.7 s figure there is no demonstrated harm, so this finding is rejected as written.
 - **LR-08** (Layout and responsive): At 768 wide the topbar status line is covered by the intro window. Verifier: Stated mechanism not reproduced. The line 'Open an app to explore my work.' is the .os-section-label in the app column (Desktop.tsx ~312), not a topbar status line. At 1024x768, 1280x720 and 820x1180 it is visible at top-left (y 25 to 45) and not covered by the intro window (intro starts at x=586 at 1024). At 768x1024 the line sits at y=1021-1040, i.e. below the first screen, which is why t768.png shows no line. A narrower real defect is that the decorative line falls below the fold on tablet portrait, which is folded into LR-09. Rule z-index-management does not fit the reproduced behaviour.
 - **ANIM-12** (Animation): An infinite dandelion loop ran once while several windows were open. Verifier: Not reproduced as stated. After opening Projects, About, Contact and Resume, no infinite animation was running. dn-spin runs only on /en/projects/gitswitch while visible. project-artwork.ts lazy-imports DandelionSpinner for the gitswitch slug, so the 'only referenced from a test mock and CSS' mount-path claim is wrong. artwork-pause.ts pauses it off-screen, and reduced motion removes it. The loop is by design on the case-study page, not an open-window issue.
+
+## Resolution log (re-verification, 2026-10-17)
+
+Owner decisions recorded as by design, with no behaviour change:
+
+- **nav-single-window**: one reading window at a time is intended.
+- **SC-09**: two contact addresses are policy (Gmail public, Outlook security-only).
+- **F15**: lab ordering is owner editorial content.
+- **F16**: hero availability copy is owner content; no claims are invented.
+- **F11, TC-04**: reading window bodies stay white in Aero Night for reading contrast. SC-02 is fixed separately: the Proof Atlas body is the same white as the sibling windows.
+
+Fixed and measured in the built preview (Aero Night, 1440 and 390): A11Y-V-01, SC-01, F2 (explorer footer tokens); A11Y-V-02, SC-03, F3 (white search and select fields); F4 (active explanation); TC-02, TC-03 (sidebar index row, now on white with the body text token); skip link focus contrast; 404 section links.
+
+Fixed in source and checked by keyboard probe: a11y-focus-lost-on-window-open (focus lands on the new window's H1), a11y-escape-navigates-home (Escape acts only from inside a window), nav-start-orb (localised accessible name), FB-03 / F14 / nav-contact-no-form (form mounted), FB-04 (copy-address control), logon gate (ANIM-01, F5, F6, P-02).
+
+Not re-measured in this pass: SC-04, SC-05, SC-06, SC-07, F7, F8, F9, F10, F12, F13, TC-05, TC-06 to TC-09, LR-03, and the remaining low-severity items.

@@ -16,8 +16,9 @@
 }
 
 /* Desktop window (Aero): the glass frame is set in win7-desktop.css. The heading is the
-   title bar. The palette is scoped to this window, so the SVG fills and text read the
-   same on the white body in both themes. The Aero Night accent is set further down. */
+   title bar, and the eyebrow sits above the figure in the white body. The palette is scoped
+   to this window and stays light in both themes, like the other window bodies (reading
+   windows and Getting Started), so the SVG fills and text read the same on white. */
 .proof-atlas--desktop {
   --os-surface: #ffffff;
   --os-text: #000000;
@@ -352,6 +353,7 @@
 /* The evidence link is a text link: accent and underlined. Its arrow mirrors in RTL. */
 .proof-atlas-link-arrow {
   display: inline-block;
+  flex: none;
 }
 .proof-atlas-link:dir(rtl) .proof-atlas-link-arrow {
   transform: scaleX(-1);
@@ -377,12 +379,46 @@
   font-family: var(--os-font-ui);
 }
 
-@media (max-width: 700px) {
+/* Node names as HTML. The diagram's own text is hidden on phones (its scale there is under
+   0.7), so the same names are listed beneath the figure at a readable size. Desktop shows
+   them inside the figure and hides this list. */
+.proof-atlas-node-labels {
+  display: none;
+}
+
+/* Where the drawing scales below 0.8, its 15-unit labels fall under 12px, so the names leave
+   the figure and the HTML list carries them at 14px (LR-04, F8). That is every phone, the
+   side-by-side desktop windows on a short screen (640x360, 844x390, 720x450), and the
+   side-by-side band from 1280px, where the figure is about 430px wide and draws at 11.6px
+   (LR-02, 1280x720). The list is also what keeps the selectors clear of the taskbar there. */
+@media (max-width: 700px),
+  (max-height: 500px) and (min-width: 561px),
+  (min-width: 1280px) and (max-width: 1359px) {
   .proof-atlas-node text,
   .proof-atlas-plane-label {
     display: none;
   }
 
+  .proof-atlas-node-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0 12px 4px;
+    list-style: none;
+  }
+
+  .proof-atlas-node-labels li {
+    padding: 4px 8px;
+    border: 1px solid var(--os-control-line);
+    border-radius: var(--radius-s);
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--os-text);
+  }
+}
+
+@media (max-width: 700px) {
   .proof-atlas-caption {
     max-width: 36ch;
     font-size: var(--text-xs);
@@ -516,8 +552,23 @@
   line-height: 18px;
 }
 
+/* The title wraps rather than truncating (SC-06, LR-05). The eyebrow is in the body. */
 .proof-atlas--desktop .proof-atlas-heading h2 {
   flex: 0 1 auto;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* The eyebrow is a kicker above the figure in the white body, in the muted text colour. */
+.proof-atlas--desktop .proof-atlas-kicker {
+  margin: 0;
+  padding: 12px 12px 0;
+  font-family: var(--win7-font);
+  font-size: var(--win7-ui-size);
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--os-muted);
 }
 
 /* The 1px divider between the eyebrow and the subtitle, in the title text colour. */
@@ -538,14 +589,34 @@
   border-block-start: none;
 }
 
+/* The figure is capped in height, so a wide window letterboxes the diagram rather than
+   growing it tall and pushing the project selectors off screen. The cap is 256px at least
+   (30dvh on a laptop, about 307px on a 768x1024 tablet), so the drawing scales to 0.8 or more
+   and its 15-unit labels render at 12px or more. Where the window is too narrow for that, the
+   names move to the HTML list (see the compact-label block below). Phones keep their own cap
+   below. The lower cap also brings the project selectors above the taskbar on a 1024x768 and
+   a 768x1024 first screen (LR-02). */
+@media (min-width: 701px) {
+  .proof-atlas--desktop .proof-atlas-figure {
+    max-block-size: clamp(256px, 30dvh, 364px);
+  }
+}
+
+/* Focus and in-page jumps stop clear of the taskbar. The desktop window scrolls its own body
+   when it is taller than the screen, so each control carries its own scroll margin. */
+.proof-atlas--desktop .proof-atlas-option,
+.proof-atlas--desktop .proof-atlas-link {
+  scroll-margin-block: 16px calc(var(--win7-taskbar-h, 44px) + 16px);
+}
+
 .proof-atlas--desktop .proof-atlas-controls {
   margin-top: 0;
   padding: 0 12px 12px;
 }
 
-/* Node labels sit on the body, so they are pinned to black on white (about 21:1) on the
-   window itself. The halo is the same white, so a connector behind a label is cut away
-   around the text. Aero Night swaps both for the dark body values below. */
+/* Node labels sit on the white body in both themes, so they are pinned to black on white
+   (about 21:1). The halo is the same white, so a connector behind a label is cut away
+   around the text. */
 .proof-atlas--desktop {
   --atlas-label-ink: #000000;
   --atlas-label-halo: #ffffff;
@@ -604,26 +675,10 @@
   color: var(--os-accent);
 }
 
-/* Aero Night: the atlas body takes the same dark reading tokens as the reading windows
-   (win7-pages.css), so the body is the dark panel, not a white one. The link accent
-   turns light for the dark body, and the node labels take the light ink with a dark halo.
-   Contrast matches the reading bodies: text about 16:1, muted about 9.9:1. */
-.win7[data-appearance="dark"] .proof-atlas,
-[data-appearance="dark"] .win7 .proof-atlas {
-  --win7-body-bg: #0d1b2e;
-  --win7-body-text: #f1f7ff;
-  --win7-body-muted: #b4c6da;
-  --win7-link: #8fd6ff;
-  --os-surface: #0d1b2e;
-  --os-text: #f1f7ff;
-  --os-muted: #b4c6da;
-  --os-accent: #8fd6ff;
-  --os-accent-tint: #1e3a5f;
-  --os-line: #2b4466;
-  --os-control-line: #4f5b68;
-  --atlas-label-ink: #f1f7ff;
-  --atlas-label-halo: #0d1b2e;
-}
+/* Aero Night keeps the white window body, like the Getting Started window and the reading
+   windows (win7-pages.css), so the desktop windows match in both themes. The palette above
+   is already light and passes on white: text black (21:1), muted #3d3d3d (10.9:1), link
+   #0066cc (5.6:1), and the diagram lines at 3:1 or better. */
 
 @media (max-width: 700px) {
   .proof-atlas--desktop .proof-atlas-option,
@@ -635,6 +690,17 @@
   .proof-atlas--desktop .proof-atlas-heading,
   .proof-atlas--desktop .proof-atlas-body {
     border-radius: 0;
+  }
+
+  /* The three project selectors stay in one row in the desktop window, so the row clears the
+     taskbar on a 390x844 first screen (LR-02). The labels wrap inside their columns. */
+  .proof-atlas--desktop .proof-atlas-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .proof-atlas--desktop .proof-atlas-option {
+    padding-inline: 6px;
+    line-height: 1.2;
   }
 }
 

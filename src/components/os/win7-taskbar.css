@@ -22,6 +22,23 @@
      time; below 480px the tray keeps only the chips. */
   --win7-tray-phone-w: 248px;
   --win7-tray-xs-w: 192px;
+  /* One touch target for taskbar, dock, chip and tray controls on coarse pointers, at every
+     width. Tablets at 768px get the same 44px as phones. */
+  --win7-touch-target: 44px;
+  /* Hover and pressed plates for the bar. Light: white glass on the Aero bar, with black
+     text. Night: a navy plate, so the white labels keep 4.5:1 on the highlight. */
+  --win7-plate-hover: linear-gradient(
+    rgb(255 255 255 / 0.55),
+    rgb(255 255 255 / 0.15)
+  );
+  --win7-plate-pressed: linear-gradient(
+    rgb(255 255 255 / 0.2),
+    rgb(255 255 255 / 0.65)
+  );
+  --win7-plate-pressed-border: rgb(0 0 0 / 0.35);
+  /* Behind a pin's stacked label on touch. Ink follows the theme (black in Aero, white in
+     Aero Night), so the plate is white in Aero and navy in Aero Night. */
+  --win7-label-plate: rgb(255 255 255 / 0.7);
 }
 .os-shell.win7[data-appearance="dark"] {
   --win7-taskbar-glass: linear-gradient(
@@ -32,6 +49,18 @@
   );
   --win7-run-line: #9bdcff;
   --win7-run-glow: rgb(140 210 255 / 0.85);
+  /* White text on these plates measures 5.3:1 at the lightest point of the hover plate and
+     9:1 on the pressed plate, so the labels pass 4.5:1 in Aero Night. */
+  --win7-plate-hover: linear-gradient(
+    rgb(70 110 160 / 0.9),
+    rgb(28 56 96 / 0.92)
+  );
+  --win7-plate-pressed: linear-gradient(
+    rgb(40 74 118 / 0.94),
+    rgb(12 30 60 / 0.95)
+  );
+  --win7-plate-pressed-border: rgb(155 220 255 / 0.55);
+  --win7-label-plate: rgb(0 22 46 / 0.8);
 }
 
 /* Taskbar: one full-width glass strip. The end padding is the tray's width, and the pins
@@ -96,11 +125,37 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  padding-block: 4px;
+  /* No block padding: the strip is 51px inside the 52px bar, so a 44px pin fits whole. Any
+     padding here would leave 43px and clip the top and bottom of every pin and its ring. */
+  padding-block: 0;
   padding-inline: 2px;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
+  /* Overflow cue. The script sets data-fade-l or data-fade-r only while pins are hidden on
+     that physical side, so a strip that fits shows no fade. */
+  --fade-l: 0px;
+  --fade-r: 0px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade-l),
+    #000 calc(100% - var(--fade-r)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade-l),
+    #000 calc(100% - var(--fade-r)),
+    transparent 100%
+  );
+}
+.os-shell.win7 .os-dock .os-dock-strip[data-fade-l] {
+  --fade-l: 28px;
+}
+.os-shell.win7 .os-dock .os-dock-strip[data-fade-r] {
+  --fade-r: 28px;
 }
 .os-shell.win7 .os-dock .os-dock-strip::-webkit-scrollbar {
   display: none;
@@ -241,7 +296,7 @@
   text-overflow: ellipsis;
 }
 .os-shell.win7 .os-dock .os-dock-app:is(:hover, :focus-visible) {
-  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  background: var(--win7-plate-hover);
   border-color: rgb(255 255 255 / 0.7);
   box-shadow: 0 0 8px rgb(140 210 255 / 0.9);
 }
@@ -254,8 +309,8 @@
 }
 /* Active page: a pressed Aero button. Placed after hover so it wins while both apply. */
 .os-shell.win7 .os-dock .os-dock-app[aria-current="page"] {
-  background: linear-gradient(rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.65));
-  border-color: rgb(0 0 0 / 0.35);
+  background: var(--win7-plate-pressed);
+  border-color: var(--win7-plate-pressed-border);
   box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.25);
 }
 /* The current-page dot from research-os.css is retired. A minimised app shows a small
@@ -302,7 +357,7 @@
   color: var(--win7-text-glass);
 }
 .os-shell.win7 .os-brand:hover {
-  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  background: var(--win7-plate-hover);
   border-color: rgb(255 255 255 / 0.7);
 }
 .os-shell.win7 .os-brand:focus-visible {
@@ -396,12 +451,17 @@
   display: none;
 }
 .os-shell.win7 .os-topbar .os-control:hover {
-  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  background: var(--win7-plate-hover);
   border-color: rgb(255 255 255 / 0.7);
   box-shadow: 0 0 8px rgb(140 210 255 / 0.9);
 }
 .os-shell.win7 .os-topbar .os-control:focus-visible {
   box-shadow: 0 0 0 2px var(--win7-focus-inner);
+}
+/* Lock sits last in the tray, at the screen's far edge and clear of the pins, so a tap meant
+   for a pin cannot land on it. The gap sets it apart from search and theme. */
+.os-shell.win7 .os-topbar .os-tray-lock {
+  margin-inline-start: 10px;
 }
 
 /* Theme switch: a 40 by 24px inset track with a white thumb. The thumb carries the glyph
@@ -556,7 +616,7 @@
 }
 .os-shell.win7 .os-language summary:is(:hover, :focus-visible),
 .os-shell.win7 .os-language[open] summary {
-  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.15));
+  background: var(--win7-plate-hover);
   border-color: rgb(255 255 255 / 0.7);
 }
 .os-shell.win7 .os-language summary:focus-visible {
@@ -688,21 +748,29 @@
   box-shadow: var(--win7-frame-shadow);
   overflow: hidden;
   font-size: var(--win7-ui-size);
-  /* Opacity only, 120ms: the Start menu fades in and never scales or moves. */
-  transition: opacity 120ms ease-out;
+  /* Closed: fully transparent, and display switches off only after the fade ends, so the
+     Start menu fades out as it fades in. Opacity only: it never scales or moves. */
+  opacity: 0;
+  transition:
+    opacity 100ms ease-in,
+    display 100ms allow-discrete;
 }
 .os-shell.win7 .os-search-dialog[open] {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 180px;
   grid-template-rows: auto auto minmax(0, 1fr) auto;
+  opacity: 1;
   animation: none;
+  transition:
+    opacity 120ms ease-out,
+    display 120ms allow-discrete;
 }
 .os-shell.win7 .os-search-dialog::backdrop {
   background: transparent;
   animation: none;
 }
-/* The windows layer starts the dialog at scale 0.96 over 300ms. This layer keeps the
-   opacity-only fade, so the starting state drops the scale. */
+/* The windows layer starts the dialog at scale 0.96 over --motion-window (240ms). This layer
+   keeps the opacity-only fade, so the starting state drops the scale. */
 @supports (transition-behavior: allow-discrete) {
   @starting-style {
     .os-shell.win7 .os-search-dialog[open] {
@@ -765,6 +833,16 @@
   width: 16px;
   height: 16px;
   color: #3d3d3d;
+}
+/* Visible label beside the field. It stays while the field holds text, so the placeholder
+   is never the only prompt. */
+.os-shell.win7 .os-search-field .os-search-label {
+  flex: none;
+  color: #3d3d3d;
+  font-size: var(--win7-small-size);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
 }
 .os-shell.win7 .os-search-field:focus-within {
   outline: 2px solid #0066cc;
@@ -835,8 +913,9 @@
   align-content: start;
   gap: 4px;
   min-height: 0;
-  margin: 0;
-  padding: 12px 10px 92px;
+  /* The key hints sit over the bottom of this column, so the column stops above them. */
+  margin: 0 0 96px;
+  padding: 12px 10px;
   overflow-y: auto;
   overflow-x: hidden;
   border: 0;
@@ -1001,6 +1080,9 @@
   .os-shell.win7 .os-top-clock {
     margin-inline: 2px 0;
   }
+  .os-shell.win7 .os-topbar .os-tray-lock {
+    margin-inline-start: 4px;
+  }
   .os-shell.win7 .os-search-dialog {
     width: 100vw;
     border-inline: 0;
@@ -1022,6 +1104,7 @@
   .os-shell.win7 .os-search-scopes {
     grid-column: 1;
     grid-row: 2;
+    margin: 0;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 8px 10px;
@@ -1057,8 +1140,9 @@
   }
 }
 
-/* Narrow phones (below 480px): the tray keeps only the chips, and the pin labels are
-   visually hidden, leaving icon buttons with 44px targets. */
+/* Narrow phones (below 480px): the tray keeps only the chips. The pin labels stay visible
+   under the icons (see the touch dock block below), so the dock reads the same from 320px
+   up to 700px. */
 @media (max-width: 479px) {
   .os-shell.win7 .os-dock {
     padding-inline: 4px var(--win7-tray-xs-w);
@@ -1069,16 +1153,42 @@
   .os-shell.win7 .os-topbar {
     width: var(--win7-tray-xs-w);
   }
+}
+
+/* Touch dock: on phones and on any coarse pointer, each pin stacks its icon over a short
+   label, so every app is named on screen and no label collapses to a letter. Pins keep 8px
+   between them. The strip keeps the DOM order (Projects first), so what is seen, what is
+   read and what keyboard focus visits all run in one sequence. Pins past the edge are
+   reached by scrolling, and the fade shows that more are there. */
+/* Pins keep 8px between them from tablet width down, whatever the pointer. */
+@media (max-width: 768px) {
+  .os-shell.win7 .os-dock .os-dock-strip {
+    gap: 8px;
+  }
+}
+@media (max-width: 700px), (pointer: coarse) {
+  .os-shell.win7 .os-dock .os-dock-strip {
+    gap: 8px;
+  }
+  .os-shell.win7 .os-dock .os-dock-app {
+    min-width: 56px;
+    flex-direction: column;
+    gap: 1px;
+    padding: 3px 4px 5px;
+  }
   .os-shell.win7 .os-dock .os-dock-app > span:last-child {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    max-width: 6.5em;
+    /* 12px is the floor for dock text. The plate matches the ink: white under dark text in
+       Aero, navy under white text in Aero Night (see --win7-label-plate). */
+    font-size: 12px;
+    line-height: 1.1;
+    padding: 1px 3px;
+    border-radius: 3px;
+    background: var(--win7-label-plate);
+  }
+  .os-shell.win7 .os-dock .os-dock-app .os-small-icon svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -1094,16 +1204,57 @@
 @media (prefers-reduced-motion: reduce) {
   .os-shell.win7 .os-dock .os-dock-app,
   .os-shell.win7 .os-dock .os-dock-home,
-  .os-shell.win7 .os-search-dialog {
+  .os-shell.win7 .os-search-dialog,
+  .os-shell.win7 .os-search-dialog[open] {
     transition: none;
   }
 }
 
-/* Touch: chips grow to the 44px target. The glyph stays centred, so the bar keeps its look. */
+/* Touch targets: every taskbar, dock, chip, tray and Start-menu control reaches 44px on a
+   coarse pointer at any width, so a tablet at 768px gets the phone sizes. Fine pointers keep
+   the desktop sizes. The glyphs stay centred, so the bar keeps its look. */
 @media (pointer: coarse) {
-  .os-shell.win7 .os-topbar .os-control {
-    min-width: 44px;
-    min-height: 44px;
+  .os-shell.win7 .os-topbar .os-control,
+  .os-shell.win7 .os-search-dialog .os-control,
+  .os-shell.win7 .os-search-field .os-control {
+    min-width: var(--win7-touch-target);
+    min-height: var(--win7-touch-target);
+  }
+  .os-shell.win7 .os-topbar .os-theme-switch {
+    --sw-pad: 10px;
+    width: var(--win7-touch-target);
+    height: var(--win7-touch-target);
+    min-width: var(--win7-touch-target);
+    min-height: var(--win7-touch-target);
+    margin: 0;
+  }
+  .os-shell.win7 .os-topbar .os-theme-switch::after {
+    inset-block: var(--sw-pad);
+  }
+  .os-shell.win7 .os-language summary {
+    min-width: var(--win7-touch-target);
+    min-height: var(--win7-touch-target);
+    height: var(--win7-touch-target);
+  }
+  .os-shell.win7 .os-language nav a {
+    min-height: var(--win7-touch-target);
+  }
+  .os-shell.win7 .os-dock .os-dock-home {
+    width: var(--win7-touch-target);
+    height: var(--win7-touch-target);
+  }
+  .os-shell.win7 .os-dock .os-dock-app {
+    height: var(--win7-touch-target);
+    min-height: var(--win7-touch-target);
+  }
+  /* 16px stops iOS Safari from zooming the page when the search field takes focus. */
+  .os-shell.win7 .os-search-field input {
+    height: var(--win7-touch-target);
+    min-height: var(--win7-touch-target);
+    font-size: max(16px, var(--win7-ui-size));
+  }
+  .os-shell.win7 .os-search-scopes button {
+    min-height: var(--win7-touch-target);
   }
 }
 
