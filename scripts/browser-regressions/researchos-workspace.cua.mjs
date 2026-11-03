@@ -1,3 +1,11 @@
+/**
+ * @deprecated Historical pre-single-current-app regression helper.
+ * This preserves the earlier multiple-retained-app model and its former control names.
+ * Its two-app/query-retention assertions intentionally do not describe the current
+ * single-current-document workspace; do not use this helper as a current acceptance gate.
+ * Use playwright.config.ts and scripts/browser-regressions/playwright/portfolio.spec.ts
+ * for maintained browser regression coverage. Historical results keep their original build identity.
+ */
 /** Execute with the documented Codex CUA tab API, not an external browser driver. */
 export async function verifyResearchOSWorkspace(tab, origin) {
   const address = new URL(origin);

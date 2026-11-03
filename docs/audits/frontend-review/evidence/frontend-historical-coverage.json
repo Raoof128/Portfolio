@@ -1,0 +1,97 @@
+[
+  {
+    "path": "docs/design/UIUX_AUDIT_2026-10-16.md",
+    "sha256": "b99a60df7cbbfa4772709d0baae8c7a7ad598abbb9b72a4f6f3c7e1bf47a872c",
+    "lines": 1350,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        1350
+      ]
+    ],
+    "responsibility": "Historical audit/design/verification context; not current source acceptance evidence",
+    "findings": "Stale chronology and conflicts reconciled in historical-review.md",
+    "severity": null,
+    "action": "retained",
+    "verification": "Entire document read in bounded sequential chunks; truncated spans reread; padded tables whitespace-normalized without omitting content",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "docs/design/FRONTEND_BASELINE_AUDIT.md",
+    "sha256": "b84c98fcf0c0ac7d9f7bf13ffb9b6d35ab713e120e12ab782481c2aec4aa7e51",
+    "lines": 252,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        252
+      ]
+    ],
+    "responsibility": "Historical audit/design/verification context; not current source acceptance evidence",
+    "findings": "Stale chronology and conflicts reconciled in historical-review.md",
+    "severity": null,
+    "action": "retained",
+    "verification": "Entire document read in bounded sequential chunks; truncated spans reread; padded tables whitespace-normalized without omitting content",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "docs/design/RESEARCHOS_DESIGN_SYSTEM_2026.md",
+    "sha256": "b81b5c685ed31fac952527795b29f6d0fe64ae7166423917c26b096b9a5a81ca",
+    "lines": 625,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        625
+      ]
+    ],
+    "responsibility": "Historical audit/design/verification context; not current source acceptance evidence",
+    "findings": "Stale chronology and conflicts reconciled in historical-review.md",
+    "severity": null,
+    "action": "retained",
+    "verification": "Entire document read in bounded sequential chunks; truncated spans reread; padded tables whitespace-normalized without omitting content",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "docs/research-os-implementation.md",
+    "sha256": "56fa1970aba6ccc9ec427ad993f45b944dfcdf5451378dcf91a483dd200193a2",
+    "lines": 548,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        548
+      ]
+    ],
+    "responsibility": "Historical audit/design/verification context; not current source acceptance evidence",
+    "findings": "Stale chronology and conflicts reconciled in historical-review.md",
+    "severity": null,
+    "action": "retained",
+    "verification": "Entire document read in bounded sequential chunks; truncated spans reread; padded tables whitespace-normalized without omitting content",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "docs/research-os-verification.md",
+    "sha256": "67dc77021c4344049de2472efeab18133c9762fa6e9e6a507f35c3c81e6aea1e",
+    "lines": 293,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        293
+      ]
+    ],
+    "responsibility": "Historical audit/design/verification context; not current source acceptance evidence",
+    "findings": "Stale chronology and conflicts reconciled in historical-review.md",
+    "severity": null,
+    "action": "retained",
+    "verification": "Entire document read in bounded sequential chunks; truncated spans reread; padded tables whitespace-normalized without omitting content",
+    "status": "verified",
+    "reviewer": "routes"
+  }
+]

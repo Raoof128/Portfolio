@@ -1510,6 +1510,10 @@ import (
 )
 
 func embed(img *image.NRGBA, payload []byte) error {
+	capacity := img.Bounds().Dx() * img.Bounds().Dy() / 8
+	if capacity < 4 || len(payload) > capacity-4 || uint64(len(payload)) > uint64(^uint32(0)) {
+		return fmt.Errorf("image too small for payload")
+	}
 	header := make([]byte, 4)
 	binary.BigEndian.PutUint32(header, uint32(len(payload)))
 	bits := append(header, payload...)
@@ -1534,10 +1538,16 @@ func embed(img *image.NRGBA, payload []byte) error {
 	return fmt.Errorf("image too small for payload")
 }
 
-func main() {
-	f, _ := os.Open("cover.png")
+func run() error {
+	f, err := os.Open("cover.png")
+	if err != nil {
+		return fmt.Errorf("open cover: %w", err)
+	}
 	defer f.Close()
-	src, _ := png.Decode(f)
+	src, err := png.Decode(f)
+	if err != nil {
+		return fmt.Errorf("decode cover: %w", err)
+	}
 
 	dst := image.NewNRGBA(src.Bounds())
 	for y := dst.Bounds().Min.Y; y < dst.Bounds().Max.Y; y++ {
@@ -1545,13 +1555,30 @@ func main() {
 			dst.Set(x, y, src.At(x, y))
 		}
 	}
+	if err := embed(dst, []byte("HIDDEN_MESSAGE")); err != nil {
+		return err
+	}
 
-	_ = embed(dst, []byte("HIDDEN_MESSAGE"))
-
-	out, _ := os.Create("stego.png")
+	out, err := os.Create("stego.png")
+	if err != nil {
+		return fmt.Errorf("create output: %w", err)
+	}
 	defer out.Close()
-	png.Encode(out, dst)
+	if err := png.Encode(out, dst); err != nil {
+		return fmt.Errorf("encode output: %w", err)
+	}
+	if err := out.Close(); err != nil {
+		return fmt.Errorf("close output: %w", err)
+	}
 	fmt.Println("Done — payload embedded into stego.png")
+	return nil
+}
+
+func main() {
+	if err := run(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
 }`,
   },
 ];

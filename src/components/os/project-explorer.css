@@ -120,7 +120,8 @@
   --os-on-tint: #f1f7ff;
   --explorer-keyline: #2b4466;
   --explorer-row-line: #2b4466;
-  --explorer-hover: #173a63;
+  /* Reading rows stay white in Aero Night; keep their dark text on a light hover. */
+  --explorer-hover: #e5f3fc;
   --explorer-select: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
   --explorer-select-text: #ffffff;
   --explorer-select-muted: #ffffff;

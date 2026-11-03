@@ -1,0 +1,16 @@
+
+Running 5 tests using 2 workers
+
+(node:29052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29053) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✓  2 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:114:5 › pointer geometry, search selection, locale and appearance persistence (14.9s)
+  ✓  1 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact (16.3s)
+  ✓  3 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:161:5 › forced colours preserve caption glyph geometry and language fonts (5.4s)
+  ✓  4 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:190:5 › keyboard workspace entry and five-language 404 recovery (8.4s)
+  ✓  5 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:218:5 › five-language keyboard search, empty results and dismissal (19.0s)
+
+  5 passed (40.4s)

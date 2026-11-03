@@ -7,6 +7,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import type { Locale } from "@/i18n";
 import { projects, type Project } from "@/lib/data";
 import { getOSCopy } from "./os-copy";
+import { getAtlasCopy } from "./atlas-copy";
 import { OSIcon, type PortfolioApp } from "./OSIcon";
 import { getWindowCopy } from "./window-copy";
 
@@ -58,12 +59,14 @@ const restoreChipLabels: Record<Locale, Record<WindowId, string>> = {
 
 /** The 7.css caption group, in Win7 order: Minimise, Maximise (or Restore), Close. */
 function WindowCaption({
+  title,
   expanded,
   labels,
   onMinimize,
   onToggleSize,
   onClose,
 }: {
+  title: string;
   expanded: boolean;
   labels: { minimize: string; fullSize: string; close: string };
   onMinimize: () => void;
@@ -76,21 +79,21 @@ function WindowCaption({
         type="button"
         className="os-control is-minimize"
         onClick={onMinimize}
-        aria-label={labels.minimize}
+        aria-label={`${labels.minimize}: ${title}`}
       />
       <button
         type="button"
         className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
         onClick={onToggleSize}
         // The name is constant; aria-pressed carries the expanded state.
-        aria-label={labels.fullSize}
+        aria-label={`${labels.fullSize}: ${title}`}
         aria-pressed={expanded}
       />
       <button
         type="button"
         className="os-control os-window-close is-close"
         onClick={onClose}
-        aria-label={labels.close}
+        aria-label={`${labels.close}: ${title}`}
       />
     </div>
   );
@@ -264,6 +267,7 @@ export function Desktop({
           <div className="title-bar">
             <p className="os-eyebrow title-bar-text">{introTitle}</p>
             <WindowCaption
+              title={introTitle}
               expanded={Boolean(expanded.intro)}
               labels={captionLabels}
               onMinimize={() => hideWindow("intro", "minimized")}
@@ -305,6 +309,7 @@ export function Desktop({
           className={`proof-atlas--desktop window glass active${expanded.atlas ? " is-expanded" : ""}`}
           controls={
             <WindowCaption
+              title={getAtlasCopy(locale).heading}
               expanded={Boolean(expanded.atlas)}
               labels={captionLabels}
               onMinimize={() => hideWindow("atlas", "minimized")}

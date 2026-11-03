@@ -1,0 +1,566 @@
+[
+  {
+    "path": "src/app/global-not-found.css",
+    "sha256": "a79a7a8c36b9e645524c0b2cdddea929d2b803e3a6f974b7fa09cb09f0b03550",
+    "lines": 435,
+    "responsibility": "Standalone localized 404 document and Aero error dialog",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        435
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/app/globals.css",
+    "sha256": "076b16a2622faf60e5cbc35d33b9d9a63d3f7ccbeaffb4e54b2764c0461236d1",
+    "lines": 119,
+    "responsibility": "Tailwind integration, document fallbacks, scrollbars and global accessibility preferences",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        119
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/controls.css",
+    "sha256": "234e39c33a6a56081606c55a01d7011f42b8868575e487951b3a6cef53cfb282",
+    "lines": 365,
+    "responsibility": "Shared control geometry, interaction states, focus, disabled and touch targets",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        365
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/evidence-story-common.css",
+    "sha256": "d5b7b6952cf85bfe733768eef3488f3f54aebc83c334c7df06089699a44135d7",
+    "lines": 382,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        382
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/evidence-story-invisible.css",
+    "sha256": "7807543847cb0996fadc71bb8185b4dafc41617f819a26a311f6f7c5e04cd02b",
+    "lines": 313,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        313
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/evidence-story-simurgh.css",
+    "sha256": "c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98",
+    "lines": 261,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        261
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/evidence-story-zurvan.css",
+    "sha256": "52eab4b696ad6cead6fa4dd7b33adcee0caa67348f71856ec72892302fb01440",
+    "lines": 138,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        138
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/liquid-glass.css",
+    "sha256": "bc9cbb9702d15f20e0d1514112be1cee7dc4317833171480879b4b35fe41365c",
+    "lines": 130,
+    "responsibility": "Legacy chrome materials and reduced-transparency/forced-color fallbacks",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        130
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/project-explorer.css",
+    "sha256": "3a0582d5d02a9064182c06fe567550d9d44254135c96e767972f1df60e361189",
+    "lines": 1341,
+    "responsibility": "Explorer navigation, list/dossier, tabs, diagrams and responsive layout",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        1341
+      ]
+    ],
+    "findings": [
+      "CSS-02"
+    ],
+    "severity": "high",
+    "action": "modified",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/project-motion.css",
+    "sha256": "050c267f3fcab858a103518d4f3917e026099cc8e25cfef582de8fd2b6d3c603",
+    "lines": 198,
+    "responsibility": "Artwork hero layout, pause/retry controls, container behavior",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        198
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/project-thumbnails.css",
+    "sha256": "ff7ac7a54de76d1182ae89a59b47e5e3445ebadc2156ecb188dad6ce1131f964",
+    "lines": 135,
+    "responsibility": "Reserved preview geometry and still artwork index state",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        135
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/proof-atlas.css",
+    "sha256": "d7a426cd4c6f66d0700aedb8de145cc2661f98a2755dc42a65a1c8628dd604cc",
+    "lines": 713,
+    "responsibility": "Proof Atlas SVG, controls, label alternatives and responsive composition",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        713
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/reading-window.css",
+    "sha256": "45b36d728f0f4fb72a5ad94f68b7a9af1c62895c942ce13dbca36666e3d42c65",
+    "lines": 360,
+    "responsibility": "Window geometry, pointer alternatives, popover and resize layout",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        360
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/research-os.css",
+    "sha256": "714e270dc93d5a384f0b3af661981a787e83e449457a831afd125101e6ec46b2",
+    "lines": 2298,
+    "responsibility": "Shell themes, base chrome, search, viewport and accessibility preferences",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        2298
+      ]
+    ],
+    "findings": [
+      "CSS-03"
+    ],
+    "severity": "medium",
+    "action": "modified",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/signal-vortex.css",
+    "sha256": "d8dd2b44e5c01b90aa9e21f020e7e7a04681044f07de816ee7bfb9ff0f1de799",
+    "lines": 88,
+    "responsibility": "Finite decorative 404 light-sweep motion and fallbacks",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        88
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/supporting-apps.css",
+    "sha256": "71bde29bf4999050743b5826ba7683d1c5cd7ac1c7cedd964675955bed353edd",
+    "lines": 1702,
+    "responsibility": "Supporting reading routes, r\u00e9sum\u00e9, contact, lab and writing surfaces",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        1702
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles/legacy_css + styles"
+  },
+  {
+    "path": "src/components/os/terminal.css",
+    "sha256": "874675dce73e47dc15356a5640d316a6288514c96e50e90f9b023d55e465b706",
+    "lines": 195,
+    "responsibility": "Command-prompt card, copy action and visible clipboard feedback",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        195
+      ]
+    ],
+    "findings": [
+      "ART-clipboard-feedback"
+    ],
+    "severity": "medium",
+    "action": "modified",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/theme-switch.css",
+    "sha256": "20eb689675bc664328bf846b77a0b11d1bb9804c0071d42f5969c321f5a12fbe",
+    "lines": 203,
+    "responsibility": "Appearance switch interaction and logon variant",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        203
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/welcome-enter.css",
+    "sha256": "7e83ab17fbe52169e1b5037a8340f46e9189adcbca172a93108ee24b85aa03e0",
+    "lines": 225,
+    "responsibility": "Welcome loading indicator, transition and language pending states",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        225
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-desktop.css",
+    "sha256": "1251c1e6d5c47f4a8ac58754105a002d5da6fa35e7149129e8783916e967a131",
+    "lines": 838,
+    "responsibility": "Desktop responsive grid, icons and Getting Started/Proof Atlas windows",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        838
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-explorer.css",
+    "sha256": "a93d42087eaa75250dd17338f346bb340b47a774e0bdd101f4d6520be758580b",
+    "lines": 180,
+    "responsibility": "Explorer canonical address/command panes and navigation header",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        180
+      ]
+    ],
+    "findings": [
+      "CSS-02"
+    ],
+    "severity": "high",
+    "action": "modified",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-logon.css",
+    "sha256": "e5a961bedbe8d7d468cc8ceb83b925efe516beeea08257202d41fb443f85a520",
+    "lines": 331,
+    "responsibility": "Welcome/logon tile, entry action and corner controls",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        331
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-pages.css",
+    "sha256": "ef42f49189c88f4cb15fcea648eee3c76698fc6b950aea0053be7b6b1ee44f78",
+    "lines": 820,
+    "responsibility": "Reading body roles and controls for pages, contact and locale 404",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        820
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-polish.css",
+    "sha256": "4dcfc95627355e3497e17405142913ba68aeccc15960be048ae802f783c4400c",
+    "lines": 233,
+    "responsibility": "Last cascade layer and previously reproduced focus/touch/contrast corrections",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        233
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-taskbar.css",
+    "sha256": "108bd1df671c6c47687ad301ad46be3c00f1d6b0c6132a442dc020eb60077647",
+    "lines": 1278,
+    "responsibility": "Taskbar pins, tray, search menu and responsive interactions",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        1278
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-theme.css",
+    "sha256": "6f4c28b9d4f5cdc9348d49b5433774749c9f019f04731a6d000bf1a1add46203",
+    "lines": 565,
+    "responsibility": "Aero tokens, 7.css contract, locale typography and accessibility modes",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        565
+      ]
+    ],
+    "findings": [
+      "CSS-03"
+    ],
+    "severity": "medium",
+    "action": "modified",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/win7-windows.css",
+    "sha256": "ab7b249c20790c07eedb0d387bd24b418fd57a2908ffc36cd53d6c6cfa5ee5b5",
+    "lines": 805,
+    "responsibility": "Aero frame/title/caption chrome, geometry and forced-color glyphs",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        805
+      ]
+    ],
+    "findings": [
+      "CSS-01",
+      "CSS-03"
+    ],
+    "severity": "high",
+    "action": "modified",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/os/workspace-windows.css",
+    "sha256": "83c9d393de349766b7a33df5011b7836c8910c85fd29baca8fdb6a50a73d6d9d",
+    "lines": 457,
+    "responsibility": "Workspace transition/tooltips/share/undo and container geometry",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        457
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  },
+  {
+    "path": "src/components/ui/ui-surfaces.css",
+    "sha256": "7dc5edadc37c16c5d11c09cd722d69eb899672cf680d8514f075c65d9926f709",
+    "lines": 163,
+    "responsibility": "Shared UI surfaces, Markdown typography and artwork pause state",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        163
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source examination. CSS token/contrast suites 32/32 pass (2026-11-03); runtime state checks and screenshots owned by root. Changed-source diffs re-reviewed.",
+    "status": "verified-source",
+    "reviewer": "styles"
+  }
+]

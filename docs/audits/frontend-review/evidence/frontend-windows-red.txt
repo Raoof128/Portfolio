@@ -1,0 +1,58 @@
+
+ RUN  v4.1.11 /workspace/Portfolio
+
+ ❯ src/components/os/WorkspaceWindows.test.tsx (8 tests | 2 failed) 509ms
+     × clears the previous page's failed-copy address when the retained frame navigates 68ms
+     × ignores a clipboard request that settles after the retained frame navigates 53ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/os/WorkspaceWindows.test.tsx > Copy Link feedback > clears the previous page's failed-copy address when the retained frame navigates
+Error: expect(element).not.toBeInTheDocument()
+
+expected document not to contain element, found <input
+  aria-label="Address to copy"
+  class="os-share-url"
+  dir="ltr"
+  readonly=""
+  tabindex="0"
+  type="text"
+  value="http://localhost:3000/projects/project-simurgh"
+/> instead
+ ❯ src/components/os/WorkspaceWindows.test.tsx:147:76
+    145|     await screen.findByRole("textbox", { name: "Address to copy" });
+    146|     view.navigate(getOSAppDescriptor("/about", "en")!);
+    147|     expect(screen.queryByRole("textbox", { name: "Address to copy" }))…
+       |                                                                            ^
+    148|     expect(screen.getByRole("button", { name: "Copy Link" })).toBeVisi…
+    149|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/components/os/WorkspaceWindows.test.tsx > Copy Link feedback > ignores a clipboard request that settles after the retained frame navigates
+Error: expect(element).not.toBeInTheDocument()
+
+expected document not to contain element, found <input
+  aria-label="Address to copy"
+  class="os-share-url"
+  dir="ltr"
+  readonly=""
+  tabindex="0"
+  type="text"
+  value="http://localhost:3000/projects/project-simurgh"
+/> instead
+ ❯ src/components/os/WorkspaceWindows.test.tsx:158:76
+    156|     view.navigate(getOSAppDescriptor("/about", "en")!);
+    157|     await act(async () => rejectCopy(new Error("denied")));
+    158|     expect(screen.queryByRole("textbox", { name: "Address to copy" }))…
+       |                                                                            ^
+    159|     expect(screen.getByRole("button", { name: "Copy Link" })).toBeVisi…
+    160|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 6 passed (8)
+   Start at  05:38:10
+   Duration  1.52s (transform 339ms, setup 97ms, import 400ms, tests 509ms, environment 382ms)

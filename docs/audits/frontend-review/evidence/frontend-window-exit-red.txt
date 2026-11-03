@@ -1,0 +1,39 @@
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+ ❯ src/components/os/WorkspaceWindows.test.tsx (11 tests | 2 failed) 765ms
+     × cancels the previous document's pending close when the frame navigates 57ms
+     × cancels the previous document's pending minimize when the frame navigates 43ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/os/WorkspaceWindows.test.tsx > workspace window controls > cancels the previous document's pending close when the frame navigates
+ FAIL  src/components/os/WorkspaceWindows.test.tsx > workspace window controls > cancels the previous document's pending minimize when the frame navigates
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "/projects/project-simurgh",
+    ]
+
+
+Number of calls: 1
+
+ ❯ src/components/os/WorkspaceWindows.test.tsx:134:42
+    132|         view.navigate(getOSAppDescriptor("/about", "en")!);
+    133|         act(() => vi.advanceTimersByTime(200));
+    134|         expect(view.actions[action]).not.toHaveBeenCalled();
+       |                                          ^
+    135|         expect(screen.getByRole("main")).toBeVisible();
+    136|       } finally {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 9 passed (11)
+   Start at  05:43:25
+   Duration  1.96s (transform 380ms, setup 100ms, import 564ms, tests 765ms, environment 382ms)

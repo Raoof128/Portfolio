@@ -1,0 +1,79 @@
+{
+  "build_id": "Dfv1QQLfhv_4WAY_tllxC",
+  "browser": "155.0.8059.79",
+  "profile": "390x844,4x CPU,150ms latency,1.6Mbps down,fresh context each run,shared cloud machine/local Cloudflare preview",
+  "results": [
+    {
+      "path": "/",
+      "run": 0,
+      "lcp": 1260,
+      "cls": 0,
+      "transfer": 318250,
+      "resources": 22
+    },
+    {
+      "path": "/",
+      "run": 1,
+      "lcp": 1616,
+      "cls": 0,
+      "transfer": 318250,
+      "resources": 22
+    },
+    {
+      "path": "/",
+      "run": 2,
+      "lcp": 1104,
+      "cls": 0,
+      "transfer": 318250,
+      "resources": 22
+    },
+    {
+      "path": "/projects",
+      "run": 0,
+      "lcp": 1640,
+      "cls": 0,
+      "transfer": 329465,
+      "resources": 25
+    },
+    {
+      "path": "/projects",
+      "run": 1,
+      "lcp": 1632,
+      "cls": 0,
+      "transfer": 329765,
+      "resources": 26
+    },
+    {
+      "path": "/projects",
+      "run": 2,
+      "lcp": 1368,
+      "cls": 0.00008742633122139422,
+      "transfer": 330665,
+      "resources": 29
+    },
+    {
+      "path": "/projects/project-simurgh",
+      "run": 0,
+      "lcp": 1556,
+      "cls": 0.00008742633122139422,
+      "transfer": 339426,
+      "resources": 32
+    },
+    {
+      "path": "/projects/project-simurgh",
+      "run": 1,
+      "lcp": 1504,
+      "cls": 0.00008742633122139422,
+      "transfer": 342154,
+      "resources": 36
+    },
+    {
+      "path": "/projects/project-simurgh",
+      "run": 2,
+      "lcp": 1280,
+      "cls": 0.00008742633122139422,
+      "transfer": 340114,
+      "resources": 33
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "baseline_commit": "2b6d048c42c7feb7ef82e38f5ca519603d40afc6",
+  "candidate_build_id": "Dfv1QQLfhv_4WAY_tllxC",
+  "export_version": {
+    "commit": "2b6d048c42c7feb7ef82e38f5ca519603d40afc6",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T05:58:48.112Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "note": "Working tree intentionally uncommitted; source-manifest hashes identify reviewed changes, not HEAD alone."
+}

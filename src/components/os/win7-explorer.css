@@ -94,6 +94,7 @@
   margin-block-end: 4px;
   border-block-end: 1px solid var(--explorer-keyline);
   background: var(--explorer-pane-head);
+  color: var(--explorer-nav-head-text);
   font-weight: 600;
 }
 

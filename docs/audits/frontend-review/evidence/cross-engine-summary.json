@@ -1,0 +1,28 @@
+{
+  "build_id": "Dfv1QQLfhv_4WAY_tllxC",
+  "cohorts": [
+    {
+      "source": "artifacts/frontend-review/cross-engine-http-results.json",
+      "stats": {
+        "startTime": "2026-11-03T06:06:43.665Z",
+        "duration": 110992.75099999999,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 5,
+        "flaky": 0
+      }
+    },
+    {
+      "source": "artifacts/frontend-review/webkit-https-results.json",
+      "stats": {
+        "startTime": "2026-11-03T06:10:12.942Z",
+        "duration": 40413.232,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "accepted_scope": "5 unique native journeys in each of Chromium155,Firefox157,WebKit27.2; first two HTTP, WebKit HTTPS local fixture"
+}

@@ -1,0 +1,819 @@
+[
+  {
+    "path": "src/app/[locale]/about/AboutClient.test.tsx",
+    "sha256": "f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f",
+    "lines": 65,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        65
+      ]
+    ],
+    "responsibility": "Regression tests for AboutClient",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/about/AboutClient.tsx",
+    "sha256": "ecfcf45cb2c2e92bc04a68f7338dcb3bc052eff7620f4ce7aa43af5569b70e2b",
+    "lines": 425,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        425
+      ]
+    ],
+    "responsibility": "Localised About application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/about/page.tsx",
+    "sha256": "b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5",
+    "lines": 89,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        89
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/contact/ContactClient.tsx",
+    "sha256": "f17128f0728a3c179eae2a995090e0e2cb4af31d23d9fdbe650edafd8dca1fbb",
+    "lines": 105,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        105
+      ]
+    ],
+    "responsibility": "Localised Contact application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/contact/page.tsx",
+    "sha256": "c0d2339ea1055d2177991846c4f2d837873cb8c8c6264ca01d667dac120503da",
+    "lines": 56,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        56
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/hall-of-fame/HallOfFameClient.tsx",
+    "sha256": "50f75119738012d9e763e8d7443bbfd6d795ecb78bf626776d85aea5673dfc9c",
+    "lines": 86,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        86
+      ]
+    ],
+    "responsibility": "Localised HallOfFame application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/hall-of-fame/page.tsx",
+    "sha256": "4ebad9649324ce670d3fead33e357cca0c9f088c3032c4c0802574513cab315d",
+    "lines": 53,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        53
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/lab/LabClient.tsx",
+    "sha256": "02a7c6026725f124519a5c08b889a903a938651c49fda241601d52a99bed14a0",
+    "lines": 97,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        97
+      ]
+    ],
+    "responsibility": "Localised Lab application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/lab/[id]/LabDetailClient.test.tsx",
+    "sha256": "f49438cc052ecee7b5bbbe2faa7778f0d7210181d1a639769051348cf770c6e5",
+    "lines": 41,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        41
+      ]
+    ],
+    "responsibility": "Regression tests for LabDetailClient",
+    "findings": "ROUTE-01",
+    "severity": "medium",
+    "action": "modified",
+    "verification": "/tmp/frontend-routes-green.log; /tmp/frontend-routes-tests.log; source inspection",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/lab/[id]/LabDetailClient.tsx",
+    "sha256": "c4ae50674a01b12ddeceecfdb63b4a0647ca5b9815541d1e1932b75f36361129",
+    "lines": 120,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        120
+      ]
+    ],
+    "responsibility": "Localised LabDetail application presentation and controls",
+    "findings": "ROUTE-01",
+    "severity": "medium",
+    "action": "modified",
+    "verification": "/tmp/frontend-routes-green.log; /tmp/frontend-routes-tests.log; source inspection",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/lab/[id]/page.tsx",
+    "sha256": "b1f450724644126ad5129dc7a3886d9281ded1efb37a124dfb2638681cc2d84b",
+    "lines": 153,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        153
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/lab/page.tsx",
+    "sha256": "99a3a6a8d50b8a84b07573348f839c8007fc9a4fbe042a1f886329871b237ca3",
+    "lines": 65,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        65
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/layout.tsx",
+    "sha256": "77a639e4066ac193b4461fe8c46e5b8609e9173b5b0e4e00870f4622eba14563",
+    "lines": 203,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        203
+      ]
+    ],
+    "responsibility": "Locale/root layout, inherited metadata and application composition",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/not-found.tsx",
+    "sha256": "da5ce54f10d987f79d9d6c1a3d4969a29f5f44c1722dc1e36eaf3e9120211bfa",
+    "lines": 76,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        76
+      ]
+    ],
+    "responsibility": "Localised 404 recovery document",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/page.tsx",
+    "sha256": "f625f78a532646b974ae540f56407fa8d4a208a212dfddb77db2f00dea23e777",
+    "lines": 13,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        13
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+    "sha256": "152fa97f9cf0e91b8a870368b73f5bff29f482ca6b4c98bb924c0e2dbd7a05aa",
+    "lines": 139,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        139
+      ]
+    ],
+    "responsibility": "Regression tests for ProjectDetailClient",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+    "sha256": "4edc73693215bcbe48993fefe4c9827b5c53bc7a19f53ae008b749f5118f65cc",
+    "lines": 517,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        517
+      ]
+    ],
+    "responsibility": "Localised ProjectDetail application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/page.tsx",
+    "sha256": "7670190e84a5740728a04502ab889dd18a8ccbffff037c355f4c8d3b0f409c20",
+    "lines": 213,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        213
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/projects/layout.tsx",
+    "sha256": "6d3487de97f6931c40780b6e3586545b53975a035198cdad94ca232e2d5940fd",
+    "lines": 50,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        50
+      ]
+    ],
+    "responsibility": "Locale/root layout, inherited metadata and application composition",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/projects/page.tsx",
+    "sha256": "bd6dcbae32e5ec0392649345d2191d33a5baa136e07704b22c109070ba9c341a",
+    "lines": 18,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        18
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/resume/ResumeClient.test.tsx",
+    "sha256": "edb54d951d7138d116b42daf7d9fde45cb328332c6fdac31a69cf25b2bffb36a",
+    "lines": 143,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        143
+      ]
+    ],
+    "responsibility": "Regression tests for ResumeClient",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/resume/ResumeClient.tsx",
+    "sha256": "08054382b6a59d7a06d4952d307dd6232504c2ea9928f1342a75c56b3b588881",
+    "lines": 451,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        451
+      ]
+    ],
+    "responsibility": "Localised Resume application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/resume/page.tsx",
+    "sha256": "591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30",
+    "lines": 53,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        53
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/security-policy/SecurityPolicyClient.tsx",
+    "sha256": "7cb75c75930ba53555bd342408377426c62ae0cdd7091f20fa255ff0ee0037af",
+    "lines": 181,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        181
+      ]
+    ],
+    "responsibility": "Localised SecurityPolicy application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/security-policy/page.tsx",
+    "sha256": "50a5a53e9af797d5a3ee2efc06328261b10df7df490cb4e91d0b4e611d7c429b",
+    "lines": 53,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        53
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/write-ups/WriteUpsClient.test.tsx",
+    "sha256": "cbff7282cf078e565386304ed52e7ba0dcf3f31549c90322c7f390afe84dcad4",
+    "lines": 209,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        209
+      ]
+    ],
+    "responsibility": "Regression tests for WriteUpsClient",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/write-ups/WriteUpsClient.tsx",
+    "sha256": "031dc11c6664a957467787a3dd3c5cc00520979bdbd2b57c575f6e273237aa7f",
+    "lines": 248,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        248
+      ]
+    ],
+    "responsibility": "Localised WriteUps application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/write-ups/[slug]/WriteupDetailClient.tsx",
+    "sha256": "3ae8fa9752ce5820b49cf31cfa6d431a38e2c4e8986f942cc0ea457518857114",
+    "lines": 63,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        63
+      ]
+    ],
+    "responsibility": "Localised WriteupDetail application presentation and controls",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/write-ups/[slug]/page.tsx",
+    "sha256": "b6e6304d46bd5dfc52385ecf9438743fdbd0f33686d796fe05d78417301400e0",
+    "lines": 166,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        166
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/[locale]/write-ups/page.tsx",
+    "sha256": "20f5c7d5a3bff662067e5b6c2d5a4e5082df832609186537e88d8bedf2b7d39c",
+    "lines": 74,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        74
+      ]
+    ],
+    "responsibility": "Export-safe server route adapter, static parameters and localised metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/feed.xml/route.ts",
+    "sha256": "22c9c9ade2e57e9730f1463b35ed2301c7e5c39c45c20f414192c06bb38a5310",
+    "lines": 62,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        62
+      ]
+    ],
+    "responsibility": "Build-time machine-readable route generation and metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/global-not-found.tsx",
+    "sha256": "133d744ee00aa4474fa16ded0a1cf3eed40a3c62492ae05d9bc4aa8c5f8cf21d",
+    "lines": 56,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        56
+      ]
+    ],
+    "responsibility": "Localised 404 recovery document",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/llms-full.txt/route.ts",
+    "sha256": "22f345865db2aea950703a7344e858a4ffe9d98f6df387e258bfe3827253d260",
+    "lines": 162,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        162
+      ]
+    ],
+    "responsibility": "Build-time machine-readable route generation and metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/robots.ts",
+    "sha256": "a7b4b4b781c96e061a34007c1cabbe3949edff42718e88383e9e3f85b529c354",
+    "lines": 15,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        15
+      ]
+    ],
+    "responsibility": "Build-time machine-readable route generation and metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/sitemap.ts",
+    "sha256": "0b2e58de2fe34559d27b91feeb5caf8991e88a223f8e84a386b7863f3c8328db",
+    "lines": 106,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        106
+      ]
+    ],
+    "responsibility": "Build-time machine-readable route generation and metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/app/version.json/route.ts",
+    "sha256": "8e2f63e541d291897336cdb87b39d0780415abe4968dba3f5d22fc0d9e599c4b",
+    "lines": 52,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        52
+      ]
+    ],
+    "responsibility": "Build-time machine-readable route generation and metadata",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/components/layout/Footer.test.tsx",
+    "sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+    "lines": 63,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        63
+      ]
+    ],
+    "responsibility": "Regression tests for Footer",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/components/layout/Footer.tsx",
+    "sha256": "f4b831e2eec2e775543b56ae913ac9cf4f94b09d866551355237d7f87927aa96",
+    "lines": 170,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        170
+      ]
+    ],
+    "responsibility": "Retained legacy navigation/footer component (not mounted by ResearchOS)",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/components/layout/LanguageSwitcher.tsx",
+    "sha256": "9996fd1cbf37f063aa3efde4c0e2221b1f7a72afe8d806805696fdf65424bec5",
+    "lines": 93,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        93
+      ]
+    ],
+    "responsibility": "Retained legacy navigation/footer component (not mounted by ResearchOS)",
+    "findings": "ROUTE-02 (deferred; unmounted legacy component)",
+    "severity": "medium",
+    "action": "deferred",
+    "verification": "/tmp/frontend-routes-green.log; /tmp/frontend-routes-tests.log; source inspection",
+    "status": "unresolved",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/components/layout/Navbar.test.tsx",
+    "sha256": "c3f0692e27d04cf517db6ce9094ec6baa8d87d8ff577d2867c64ba9566b7b19a",
+    "lines": 81,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        81
+      ]
+    ],
+    "responsibility": "Regression tests for Navbar",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/components/layout/Navbar.tsx",
+    "sha256": "78b8d1cee68c7dcfaea60ec15a61a5cea1a297f324d27a7db7c718c93b88d6d3",
+    "lines": 170,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        170
+      ]
+    ],
+    "responsibility": "Retained legacy navigation/footer component (not mounted by ResearchOS)",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/proxy.test.ts",
+    "sha256": "2e2da92d4008e50594571acdff1c5b2a366fb18988f8a11c81a3b65594f48f60",
+    "lines": 42,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        42
+      ]
+    ],
+    "responsibility": "Regression tests for proxy",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  },
+  {
+    "path": "src/proxy.ts",
+    "sha256": "db5b1515602fd35c4fea190084ba487da793562c2853db5a9d1333ff8f429aaa",
+    "lines": 58,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        58
+      ]
+    ],
+    "responsibility": "Development locale rewriting and same-origin English redirect boundary",
+    "findings": "",
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete source inspection; /tmp/frontend-routes-tests.log where applicable; browser validation owned by root",
+    "status": "verified",
+    "reviewer": "routes"
+  }
+]

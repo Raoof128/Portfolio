@@ -133,12 +133,7 @@
   box-shadow: none;
   color: inherit;
   font: inherit;
-  font-family:
-    system-ui,
-    -apple-system,
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
+  font-family: var(--win7-font);
   font-size: 12px;
   font-weight: 700;
   line-height: var(--win7-title-h);
@@ -725,5 +720,86 @@
   to {
     opacity: 0;
     transform: translateY(24px) scale(0.6);
+  }
+}
+
+/* 7.css captions use bitmap backgrounds. Forced colours removes author background
+   images, so draw the same controls from system-coloured borders in this mode. The
+   class names are stable across all locales; accessible names remain in the markup. */
+@media (forced-colors: active) {
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button {
+    color: ButtonText;
+    background: ButtonFace;
+    border: 1px solid ButtonText;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button:is(
+    .is-minimize, .is-maximize, .is-restore, .is-close
+  )::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+    width: 12px;
+    height: 10px;
+    border: 0;
+    border-radius: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-minimize::before {
+    height: 0;
+    border-block-start: 2px solid ButtonText;
+    margin-block-start: 4px;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button:is(.is-maximize, .is-restore)::before {
+    border: 1px solid ButtonText;
+    border-block-start-width: 3px;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-restore::before {
+    width: 10px;
+    height: 8px;
+    margin: -2px 0 0 2px;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button:is(.is-restore, .is-close)::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+    border-radius: 0;
+    opacity: 1;
+    pointer-events: none;
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-restore::after {
+    width: 10px;
+    height: 8px;
+    margin: 1px 0 0 -1px;
+    border: 1px solid ButtonText;
+    border-block-start-width: 3px;
+    background: ButtonFace;
+    transform: translate(-50%, -50%);
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-close::before,
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-close::after {
+    width: 14px;
+    height: 0;
+    border: 0;
+    border-block-start: 2px solid ButtonText;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 }

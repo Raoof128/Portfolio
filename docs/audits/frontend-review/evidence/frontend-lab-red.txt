@@ -1,0 +1,9 @@
+=== RUN   TestOversizeLeavesImageUnchanged
+    main_test.go:19: rejected payload partially modified image
+--- FAIL: TestOversizeLeavesImageUnchanged (0.00s)
+=== RUN   TestCLIRejectsTooSmallCover
+    main_test.go:29: must fail, instead output: Done — payload embedded into stego.png
+--- FAIL: TestCLIRejectsTooSmallCover (0.00s)
+FAIL
+exit status 1
+FAIL	_/tmp/frontend-lab-red	0.004s

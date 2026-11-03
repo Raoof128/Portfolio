@@ -1,0 +1,5 @@
+
+> portfolio@0.1.0 typecheck
+> tsc --noEmit
+
+scripts/browser-regressions/playwright/portfolio.spec.ts(134,50): error TS2783: 'width' is specified more than once, so this usage will be overwritten.

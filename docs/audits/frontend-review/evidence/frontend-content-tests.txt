@@ -1,0 +1,8 @@
+
+ RUN  v4.1.11 /workspace/Portfolio
+
+
+ Test Files  14 passed (14)
+      Tests  197 passed (197)
+   Start at  05:39:55
+   Duration  11.95s (transform 894ms, setup 876ms, import 1.06s, tests 764ms, environment 6.95s)

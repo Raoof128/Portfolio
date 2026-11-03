@@ -1,0 +1,10 @@
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+Not implemented: navigation to another Document
+Not implemented: navigation to another Document
+
+ Test Files  13 passed (13)
+      Tests  187 passed (187)
+   Start at  05:40:58
+   Duration  16.75s (transform 598ms, setup 687ms, import 1.68s, tests 7.32s, environment 5.41s)

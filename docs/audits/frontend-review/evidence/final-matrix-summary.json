@@ -1,0 +1,18 @@
+{
+  "build_id": "Dfv1QQLfhv_4WAY_tllxC",
+  "stats": {
+    "startTime": "2026-11-03T05:59:17.751Z",
+    "duration": 349569.48,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "counts": {
+    "responsive-observations": 360,
+    "route-observations": 160,
+    "axe_violations": 0,
+    "axe_incomplete_results": 158
+  },
+  "fixture_failure": "Persistence fixture reset localStorage; corrected and verified by separate cross-engine rerun."
+}

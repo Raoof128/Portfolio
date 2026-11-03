@@ -1,0 +1,99 @@
+
+> portfolio@0.1.0 build
+> next build
+
+▲ Next.js 16.3.8 (Turbopack)
+✓ Running next.config.ts took 29ms
+- Experiments (use with caution):
+  · cpus: 1
+  ✓ globalNotFound
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1191ms
+  Running TypeScript ...
+  Finished TypeScript in 6.2s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/168) ...
+  Generating static pages using 1 worker (42/168)
+  Generating static pages using 1 worker (84/168)
+  Generating static pages using 1 worker (126/168)
+✓ Generating static pages using 1 worker (168/168) in 3.0s
+  Finalizing page optimization ...
+⚠ Statically exporting a Next.js application via `next export` disables API routes and middleware.
+This command is meant for static-only hosts, and is not necessary to make your application static.
+Pages in your application without server-side data dependencies will be automatically statically exported by `next build`, including pages powered by `getStaticProps`.
+Learn more: https://nextjs.org/docs/messages/api-routes-static-export
+
+Route (app)
+┌ ○ /_not-found
+├   /[locale]
+│ ├ ● /en
+│ ├ ● /fa
+│ ├ ● /ar
+│ └ ● [+2 more paths]
+├   /[locale]/about
+│ ├ ● /en/about
+│ ├ ● /fa/about
+│ ├ ● /ar/about
+│ └ ● [+2 more paths]
+├   /[locale]/contact
+│ ├ ● /en/contact
+│ ├ ● /fa/contact
+│ ├ ● /ar/contact
+│ └ ● [+2 more paths]
+├   /[locale]/hall-of-fame
+│ ├ ● /en/hall-of-fame
+│ ├ ● /fa/hall-of-fame
+│ ├ ● /ar/hall-of-fame
+│ └ ● [+2 more paths]
+├   /[locale]/lab
+│ ├ ● /en/lab
+│ ├ ● /fa/lab
+│ ├ ● /ar/lab
+│ └ ● [+2 more paths]
+├   /[locale]/lab/[id]
+│ ├ ● /en/lab/001
+│ ├ ● /en/lab/002
+│ ├ ● /en/lab/003
+│ └ ● [+12 more paths]
+├   /[locale]/projects
+│ ├ ● /en/projects
+│ ├ ● /fa/projects
+│ ├ ● /ar/projects
+│ └ ● [+2 more paths]
+├   /[locale]/projects/[slug]
+│ ├ ● /en/projects/invisible-window-research
+│ ├ ● /en/projects/project-simurgh
+│ ├ ● /en/projects/project-zurvan
+│ └ ● [+62 more paths]
+├   /[locale]/resume
+│ ├ ● /en/resume
+│ ├ ● /fa/resume
+│ ├ ● /ar/resume
+│ └ ● [+2 more paths]
+├   /[locale]/security-policy
+│ ├ ● /en/security-policy
+│ ├ ● /fa/security-policy
+│ ├ ● /ar/security-policy
+│ └ ● [+2 more paths]
+├   /[locale]/write-ups
+│ ├ ● /en/write-ups
+│ ├ ● /fa/write-ups
+│ ├ ● /ar/write-ups
+│ └ ● [+2 more paths]
+├   /[locale]/write-ups/[slug]
+│ ├ ● /en/write-ups/project-simurgh-containment
+│ ├ ● /en/write-ups/invisible-window-research
+│ ├ ● /en/write-ups/nanomatch-deep-dive
+│ └ ● [+32 more paths]
+├ ○ /feed.xml
+├ ○ /llms-full.txt
+├ ○ /robots.txt
+├ ○ /sitemap.xml
+└ ○ /version.json
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)

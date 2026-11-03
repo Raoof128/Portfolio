@@ -1,0 +1,12 @@
+
+Running 28 tests using 1 worker
+
+(node:14497) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:56:5 › reviewer journey, window controls, history, search and contact (3.0s)
+  ✓   2 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:101:5 › forced colours preserve caption glyph geometry and language fonts (2.0s)
+  ✓   3 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:122:7 › responsive en light (23.6s)
+  ✓   4 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:122:7 › responsive fa light (25.8s)
+  ✓   5 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:122:7 › responsive ar light (25.2s)
+  ✓   6 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:122:7 › responsive zh light (22.1s)
+  ✓   7 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:122:7 › responsive es light (22.5s)

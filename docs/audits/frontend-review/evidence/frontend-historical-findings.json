@@ -1,0 +1,644 @@
+[
+  {
+    "id": "A11Y-V-01",
+    "title": "Explorer footer unreadable in Aero Night on project pages",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "A11Y-V-03",
+    "title": "Lab code-panel header and line numbers at 1.74:1 in dark mode",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "SC-01",
+    "title": "Projects explorer footer is near-invisible in Aero Night",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "a11y-focus-lost-on-window-open",
+    "title": "Keyboard focus does not move into a window when it opens",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "A11Y-V-02",
+    "title": "Projects search field and category select: text 1.21:1, placeholder 1.60:1 in dark mode",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F1",
+    "title": "Phone taskbar: tapping pinned Contact locks the desktop; Resume opens Search",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F2",
+    "title": "Dark theme: Explorer footer text is black or grey on navy; Contact CTA nearly invisible",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F3",
+    "title": "Dark theme: Explorer category select and search placeholder unreadable; Arabic chevron overlaps label",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F4",
+    "title": "Dark theme: active 'Boundary explanations' item has black text on navy",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "nav-phone-dock-clipped",
+    "title": "Phone and tablet taskbar clips the Resume and Contact pins",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "SC-03",
+    "title": "Explorer search and category select are navy in dark theme; other routes keep white fields",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TC-01",
+    "title": "Active taskbar label is white on a light steel highlight in Aero Night",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TC-02",
+    "title": "Project-detail sidebar index header renders black on navy",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TC-03",
+    "title": "Dark explorer search placeholder and category select are near-invisible",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "a11y-escape-navigates-home",
+    "title": "Escape closes the active window and navigates home even when focus is on page content",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "A11Y-V-05",
+    "title": "Desktop icon sub-labels at 12px white on light Aero wallpaper, about 3.8:1",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "A11Y-V-07",
+    "title": "Phone-width taskbar is icon-only with no visible labels",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "ANIM-01",
+    "title": "Logon Enter forces a fixed 3 s wait that cannot be skipped or cancelled",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F5",
+    "title": "Logon orb has no visible label; the only cue is a bare arrow",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F6",
+    "title": "Logon gate repeats on every home visit with a forced wait of about 3 seconds and no skip",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F7",
+    "title": "Phone Explorer: project index fills the first screen and the work starts below the fold",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F8",
+    "title": "Atlas diagram labels render at about 9px",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F9",
+    "title": "Same destinations carry different names across chrome and content",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "FB-01",
+    "title": "Search dialog returns focus to BODY when opened with Ctrl/Cmd+K from an unfocused page",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "LR-01",
+    "title": "Desktop intro and Proof Atlas windows ignore the viewport: on short or zoomed screens the Atlas sits below the fold and covers the intro CTAs",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "LR-03",
+    "title": "Taskbar pin strip overflows with no visible scroll cue: at 320 to 768 wide only one or two apps are visible, and Resume and Contact are cut or hidden",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "LR-04",
+    "title": "Proof Atlas diagram labels are about 8px at 1280x720 and removed entirely on phones, so the schematic loses its node names",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "nav-focus-route-change",
+    "title": "Focus does not move into a window after it opens, and is lost to BODY after a language switch",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "nav-window-back-vs-history",
+    "title": "Window Back is a parent link, so browser Back does not undo it",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "P-01",
+    "title": "Desktop reading routes shift the window shell during load (CLS 0.043 on /about, 0.024 on project pages)",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "P-04",
+    "title": "About-page photo is a 270 KB 1200 px JPEG shown at 240x300, and it is preloaded at high priority",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "P-05",
+    "title": "Every route ships the full desktop shell JS eagerly: about 620 KB raw (about 193 KB gzip) on the logon, roughly half not executed",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "P-06",
+    "title": "Render-blocking CSS is 270 KB raw on the logon route, about 75% unused on load",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "SC-02",
+    "title": "Proof Atlas is the only dark window body in Aero Night; sibling windows stay white",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "SC-04",
+    "title": "Two radius systems sit side by side on the same window bodies",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "TI-01",
+    "title": "Pinned Resume and Contact dock apps sit under the tray on phone and tablet",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TI-02",
+    "title": "Tablet width (768) falls back to desktop-size touch targets",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TI-03",
+    "title": "Primary Contact CTA 'Open Email Draft' is 24px tall on phone",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TI-04",
+    "title": "Search input is 13px and 26px tall; focusing it on iOS will zoom the page",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TI-05",
+    "title": "Window title-bar controls: 0px gap on phone, 2px on tablet, Close adjacent to Maximise",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TI-06",
+    "title": "Phone dock: 4px gaps between 44px pins and icon-only labels",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "a11y-404-duplicate-language-control",
+    "title": "404 page exposes the language switcher twice under the same name",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "a11y-duplicate-window-control-names",
+    "title": "Window control buttons use bare names and are duplicated on the home desktop",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "a11y-loader-fixed-delay-reduced-motion",
+    "title": "Logon loader holds for a fixed 3 seconds, unaffected by reduced motion, and Enter is ignored meanwhile",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "a11y-search-result-names-verbose",
+    "title": "Search result link names run kind, title and full description together",
+    "disposition": "Partial historical repair; fresh reproduction needed",
+    "evidence": "AGENT.md records partial affordance/description changes, not complete closure. Root browser/window lane owns current result."
+  },
+  {
+    "id": "a11y-thin-focus-ring-primary-cta",
+    "title": "Primary 'Explore My Work' focus ring is a 1px dotted outline",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "a11y-titlebar-button-tab-stop",
+    "title": "Reading-window title bar is a tab stop that only refocuses the window",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "ANIM-02",
+    "title": "Theme-switch colour cross-fade never runs: data-theme-switching is styled but never set",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "ANIM-03",
+    "title": "Start-menu (search dialog) closes with no exit animation while it opens with a fade",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "ANIM-04",
+    "title": "Maximise and restore FLIP applies a non-uniform scale to the whole window",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "ANIM-05",
+    "title": "Hand-off from logon to desktop shows one main-thread stall at the crossfade end",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "ANIM-06",
+    "title": "Exit durations equal enter durations for windows and logon",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "ANIM-07",
+    "title": "Language switch changes the page with no transition and a route wait of about 570 ms",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "ANIM-08",
+    "title": "First activation of a route takes 48-423 ms before a window appears (press feedback is immediate)",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "ANIM-09",
+    "title": "Framer-motion components would bypass the CSS reduced-motion guard if mounted",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "ANIM-10",
+    "title": "Stale and contradictory motion comments",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "ANIM-11",
+    "title": "Row stagger is 16 ms, below the 30-50 ms guideline",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "F10",
+    "title": "Window titles truncate with no full-title affordance",
+    "disposition": "Partial historical repair; fresh reproduction needed",
+    "evidence": "AGENT.md records partial affordance/description changes, not complete closure. Root browser/window lane owns current result."
+  },
+  {
+    "id": "F11",
+    "title": "Dark theme only partly applied: reading windows keep white bodies",
+    "disposition": "Retained by documented product/policy decision",
+    "evidence": "Audit Resolution log; AGENT.md closeout. Not a defect merely because it differs from a desktop OS."
+  },
+  {
+    "id": "F12",
+    "title": "Tray 'Lock' and 'Window Controls' labels are unclear and sit next to frequent controls",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "F13",
+    "title": "Hall of Fame shows an empty state from a main desktop link",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "F14",
+    "title": "Contact page has no form, while the audit brief describes a secure contact form",
+    "disposition": "Historical premise disproved by current source",
+    "evidence": "Complete route lane review: ContactClient mounts SecureContactForm and CopyAddressControl; PDF links have explicit new-tab/download semantics."
+  },
+  {
+    "id": "F15",
+    "title": "Lab index leads with a keylogger proof of concept (editorial judgement)",
+    "disposition": "Retained by documented product/policy decision",
+    "evidence": "Audit Resolution log; AGENT.md closeout. Not a defect merely because it differs from a desktop OS."
+  },
+  {
+    "id": "F16",
+    "title": "Hero does not show availability; the Resume does",
+    "disposition": "Retained by documented product/policy decision",
+    "evidence": "Audit Resolution log; AGENT.md closeout. Not a defect merely because it differs from a desktop OS."
+  },
+  {
+    "id": "FB-02",
+    "title": "Search input has only a placeholder as its label, and the placeholder disappears once text is typed",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-03",
+    "title": "The live /en/contact page has no contact form; SecureContactForm is orphaned code",
+    "disposition": "Historical premise disproved by current source",
+    "evidence": "Complete route lane review: ContactClient mounts SecureContactForm and CopyAddressControl; PDF links have explicit new-tab/download semantics."
+  },
+  {
+    "id": "FB-04",
+    "title": "Mail-client handoff has no fallback copy action for the address",
+    "disposition": "Historical premise disproved by current source",
+    "evidence": "Complete route lane review: ContactClient mounts SecureContactForm and CopyAddressControl; PDF links have explicit new-tab/download semantics."
+  },
+  {
+    "id": "FB-05",
+    "title": "Copy Link failure message does not show the address to copy",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-06",
+    "title": "Copy Link success toast appears far from the button that triggered it",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-07",
+    "title": "Latent: native required and type=email constraint validation hides the component's custom error copy",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-08",
+    "title": "Latent: validation errors are not associated with their fields and move no focus",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-09",
+    "title": "Latent: success state reports 'Email draft opened' even though the page cannot know a mail client handled the mailto",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-10",
+    "title": "Latent: the form status line is not a live region, so state changes are silent to screen readers",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-11",
+    "title": "Latent: the typing state uses error red, a warning icon and a red top bar for neutral input",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-12",
+    "title": "Latent: no required markers, helper text or visible character limits on the form fields",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "FB-13",
+    "title": "404 page offers two language controls that repeat the same choices",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "LR-02",
+    "title": "At 1024x768 and 390x844 the Proof Atlas option row is cut by the taskbar on first paint and its description and link sit below the fold",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "LR-05",
+    "title": "Window titles truncate on desktop widths 1024 to 1440, and the intro title truncates at 320",
+    "disposition": "Partial historical repair; fresh reproduction needed",
+    "evidence": "AGENT.md records partial affordance/description changes, not complete closure. Root browser/window lane owns current result."
+  },
+  {
+    "id": "LR-06",
+    "title": "Projects explorer sidebar is a nested scroll region capped at 40dvh, showing about two and a half rows on phones and short screens",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "LR-07",
+    "title": "Between 480px and 700px the pinned app labels collapse to a single letter with ellipses",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "LR-09",
+    "title": "On tablet portrait the first screen shows only windows; the desktop app icons sit below the fold",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "nav-404-no-shell",
+    "title": "The 404 page drops the desktop shell, so the taskbar and search disappear",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "nav-breadcrumb-static",
+    "title": "Explorer breadcrumb is decorative and never names the open project",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "nav-contact-no-form",
+    "title": "Contact is a mailto-only page; the 'secure contact form' is not mounted",
+    "disposition": "Historical premise disproved by current source",
+    "evidence": "Complete route lane review: ContactClient mounts SecureContactForm and CopyAddressControl; PDF links have explicit new-tab/download semantics."
+  },
+  {
+    "id": "nav-lock-resets",
+    "title": "Lock returns to home and drops the open window",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "nav-naming-drift",
+    "title": "The same destination has different names on the dock, window, document title and footer",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "nav-pdf-target",
+    "title": "PDF links open in the same tab on project pages and the resume page, but in a new tab elsewhere",
+    "disposition": "Historical premise disproved by current source",
+    "evidence": "Complete route lane review: ContactClient mounts SecureContactForm and CopyAddressControl; PDF links have explicit new-tab/download semantics."
+  },
+  {
+    "id": "nav-restore-chip",
+    "title": "A closed desktop window is restored only through a small bottom chip",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "nav-single-window",
+    "title": "Opening another app closes the current window and its state, with no way to keep two open",
+    "disposition": "Retained by documented product/policy decision",
+    "evidence": "Audit Resolution log; AGENT.md closeout. Not a defect merely because it differs from a desktop OS."
+  },
+  {
+    "id": "nav-start-orb",
+    "title": "The Start orb is a home link labelled 'Desktop', not a Start menu",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "nav-trailing-slash-chain",
+    "title": "Trailing-slash URLs take two redirect hops",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  },
+  {
+    "id": "P-02",
+    "title": "Logon sign-in waits a fixed 3 s with no reduced-motion bypass",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "P-03",
+    "title": "Logon portrait is a 118 KB file for an 84 px slot and is the LCP element on the first screen",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "P-07",
+    "title": "About 11.5 MB of unused hero video and posters ship in public/ on every build",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "P-08",
+    "title": "Replaceable images and video are cached for 4 h without hashed names or immutable caching",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "SC-05",
+    "title": "Pastel glow gradient hairlines and hover rims survive in the Win7 layer",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "SC-06",
+    "title": "Proof Atlas title bar truncates at the default desktop width",
+    "disposition": "Partial historical repair; fresh reproduction needed",
+    "evidence": "AGENT.md records partial affordance/description changes, not complete closure. Root browser/window lane owns current result."
+  },
+  {
+    "id": "SC-07",
+    "title": "Atlas uses a text arrow glyph while the rest of the OS uses Lucide icons",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "SC-09",
+    "title": "Two contact addresses appear across pages",
+    "disposition": "Retained by documented product/policy decision",
+    "evidence": "Audit Resolution log; AGENT.md closeout. Not a defect merely because it differs from a desktop OS."
+  },
+  {
+    "id": "TI-07",
+    "title": "Hover styles stick after a tap (no (hover: hover) guard)",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "TI-09",
+    "title": "Theme switch thumb renders as a stray ring outside the track on the logon screen at 390",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TC-04",
+    "title": "Aero Night is only half dark: explorer list and reading bodies stay pure white",
+    "disposition": "Retained by documented product/policy decision",
+    "evidence": "Audit Resolution log; AGENT.md closeout. Not a defect merely because it differs from a desktop OS."
+  },
+  {
+    "id": "TC-05",
+    "title": "Desktop icon sub-labels are white 12px text on mid-blue in light mode",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TC-06",
+    "title": "Raw colour and duplicated tokens undercut the 'define once' token layer",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "TC-07",
+    "title": "Project-detail prose runs about 81 characters per line",
+    "disposition": "Reported fixed historically; current independent check required",
+    "evidence": "2026-10-17 AGENT/CHANGELOG and/or audit Resolution log. This lane did not remeasure geometry/contrast/motion."
+  },
+  {
+    "id": "TC-08",
+    "title": "Type scale is off-grid and phone window chrome sits at 12-13px",
+    "disposition": "Deferred/current candidate requiring scoped measurement",
+    "evidence": "AGENT.md closeout lists an outstanding tradeoff/refactor or field/device measurement. Historical numbers cannot prove current impact."
+  },
+  {
+    "id": "TC-09",
+    "title": "CJK font stacks differ between the two sheets",
+    "disposition": "Unresolved verification state",
+    "evidence": "Full historical record read. No claim of current reproduction or closure from documentation alone; inspect current owner lane evidence."
+  }
+]

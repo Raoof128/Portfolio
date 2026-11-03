@@ -2,6 +2,22 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-03 (Australia/Sydney) — Owner-authorised audit checkpoint
+
+- **Scope**: Commit the completed frontend audit and read the owner's new Operation Aero prompt in full.
+- **Summary**: Preserve the verified application source; trim trailing terminal whitespace and excess final blank lines from captured text logs for repository hygiene. Historical results and failures remain intact.
+- **Files Changed**: Audit evidence text logs, audit test-results note, AGENT.md and CHANGELOG.md.
+- **Verification**: Independent precommit inspection confirmed all 268 source-manifest hashes match and found no credential indicators or oversized generated artifacts among the pending files. Existing application/browser/build results retain their original identities; this checkpoint does not claim a new implementation or test run.
+- **Follow-ups**: Owner authorises this local commit. The new prompt prioritises controlled reference-versus-candidate 7.css visual comparisons and iterative refinement. Push, merge, deployment and environment publication remain outside this checkpoint.
+
+### Raouf: 2026-11-03 (Australia/Sydney) — Windows 7 frontend audit and verified corrections
+
+- **Scope**: Current Portfolio frontend, historical 107-finding reconciliation, five languages, original artwork and static Cloudflare architecture.
+- **Summary**: Correct forced-colour caption glyphs and Aero Night Explorer contrast; repair 7.css font contracts and locale caption inheritance; make entry/copy feedback truthful; cancel stale retained-window clipboard and exit callbacks; hide decorative code line numbers; validate the published Go example; upgrade advisory-affected framework/test pins within supported majors; add maintained Playwright/axe tests and mark obsolete CUA/probe helpers explicitly historical; correct the development container from unsupported Node 20 to the verified official Node 22 image.
+- **Files Changed**: package and lock; README; core window/welcome/desktop/terminal components and tests; Lab detail and test; source data/localisation; Windows 7/Explorer/terminal CSS; browser and local development configs/tests; historical root probe; optional Go sample regression; docs/audits/frontend-review; AGENT.md; CHANGELOG.md.
+- **Verification**: Fresh Node 24/npm frozen install; final 674 application tests in 51 files and coverage run pass; lint/typecheck, backend/schema/dependency/security tests and static build pass. Current full/runtime high-threshold audits pass with 16 moderate tooling entries and zero runtime advisories. First broad Chromium pass executed 360 responsive captures and 160 route/axe scans with zero violations and 158 incomplete results. Exact final build, affected reruns, browser limits, independent review and release recommendation are in docs/audits/frontend-review/test-results.md and release-readiness.md; no universal accessibility or field-CWV certification.
+- **Follow-ups**: Qualify research claims with owner evidence; preserve original untagged research PDFs pending author-level accessibility work; revisit compatible lint dependency fixes; complete native assistive/device/field checks before unqualified certification. No commit, push, merge, deployment or environment publication.
+
 ## 🛡️ The Raouf Change Protocol (MANDATORY)
 
 Before making any code changes, agents MUST:

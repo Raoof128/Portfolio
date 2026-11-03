@@ -1,0 +1,27 @@
+=== RUN   TestOversizeLeavesImageUnchanged
+--- PASS: TestOversizeLeavesImageUnchanged (0.00s)
+=== RUN   TestExactCapacityRoundTrip
+--- PASS: TestExactCapacityRoundTrip (0.00s)
+=== RUN   TestCLIRejectsInvalidInputs
+=== RUN   TestCLIRejectsInvalidInputs/missing
+=== RUN   TestCLIRejectsInvalidInputs/invalid
+=== RUN   TestCLIRejectsInvalidInputs/too-small
+=== RUN   TestCLIRejectsInvalidInputs/unwritable-output
+--- PASS: TestCLIRejectsInvalidInputs (0.01s)
+    --- PASS: TestCLIRejectsInvalidInputs/missing (0.00s)
+    --- PASS: TestCLIRejectsInvalidInputs/invalid (0.00s)
+    --- PASS: TestCLIRejectsInvalidInputs/too-small (0.00s)
+    --- PASS: TestCLIRejectsInvalidInputs/unwritable-output (0.00s)
+=== RUN   TestCLIEmitsDecodablePayload
+--- PASS: TestCLIEmitsDecodablePayload (0.00s)
+PASS
+ok  	_/tmp/portfolio-go-snippet-CtaojJ	0.012s
+✔ published Go snippet rejects failures and preserves a lossless payload (8511.316907ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8572.196028

@@ -1,0 +1,42 @@
+
+> portfolio@0.1.0 test:ci
+> vitest run src/app/[locale]/lab/[id]/LabDetailClient.test.tsx
+
+
+ RUN  v4.1.11 /workspace/Portfolio
+
+ ❯ src/app/[locale]/lab/[id]/LabDetailClient.test.tsx (5 tests | 5 failed) 297ms
+     × en keeps source keyboard reachable without announcing decorative line numbers 153ms
+     × fa keeps source keyboard reachable without announcing decorative line numbers 42ms
+     × ar keeps source keyboard reachable without announcing decorative line numbers 35ms
+     × zh keeps source keyboard reachable without announcing decorative line numbers 33ms
+     × es keeps source keyboard reachable without announcing decorative line numbers 31ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/[locale]/lab/[id]/LabDetailClient.test.tsx > accessible lab source listing > en keeps source keyboard reachable without announcing decorative line numbers
+ FAIL  src/app/[locale]/lab/[id]/LabDetailClient.test.tsx > accessible lab source listing > fa keeps source keyboard reachable without announcing decorative line numbers
+ FAIL  src/app/[locale]/lab/[id]/LabDetailClient.test.tsx > accessible lab source listing > ar keeps source keyboard reachable without announcing decorative line numbers
+ FAIL  src/app/[locale]/lab/[id]/LabDetailClient.test.tsx > accessible lab source listing > zh keeps source keyboard reachable without announcing decorative line numbers
+ FAIL  src/app/[locale]/lab/[id]/LabDetailClient.test.tsx > accessible lab source listing > es keeps source keyboard reachable without announcing decorative line numbers
+Error: expect(element).toHaveAttribute("aria-hidden", "true") // element.getAttribute("aria-hidden") === "true"
+
+Expected the element to have attribute:
+  aria-hidden="true"
+Received:
+  null
+ ❯ src/app/[locale]/lab/[id]/LabDetailClient.test.tsx:32:24
+     30|       for (const [index, number] of numbers.entries()) {
+     31|         expect(number).toHaveTextContent(String(index + 1));
+     32|         expect(number).toHaveAttribute("aria-hidden", "true");
+       |                        ^
+     33|       }
+     34|       expect(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  05:38:01
+   Duration  1.17s (transform 215ms, setup 83ms, import 281ms, tests 297ms, environment 384ms)

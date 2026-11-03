@@ -1,0 +1,586 @@
+{
+  "baseline_commit": "2b6d048c42c7feb7ef82e38f5ca519603d40afc6",
+  "reviewer": "windows lane",
+  "files": [
+    {
+      "path": "src/components/os/Desktop.test.tsx",
+      "sha256": "029af167ed73886d9f7fa0e9404890199ec93bd45acc3e32dc0c68ff6d7e4a1a",
+      "lines": 27,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          27
+        ]
+      ],
+      "responsibility": "Introduction/evidence windows, app shortcuts and desktop restore focus regression tests",
+      "findings": [
+        "WIN-03"
+      ],
+      "severity": "medium",
+      "action": "modified",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/Desktop.tsx",
+      "sha256": "303ada5fbdf64186872dd7d795623a8f00c1de505330099c316c40f22ad50620",
+      "lines": 386,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          386
+        ]
+      ],
+      "responsibility": "Introduction/evidence windows, app shortcuts and desktop restore focus",
+      "findings": [
+        "WIN-03"
+      ],
+      "severity": "medium",
+      "action": "modified",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.test.tsx",
+      "sha256": "9ff069ea030743ac29d9d55fd37f215b67af0fc64f596e38437c08078a75fc51",
+      "lines": 376,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          376
+        ]
+      ],
+      "responsibility": "SSR-to-hydrated document handoff preserving prehydration input regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.tsx",
+      "sha256": "67457714c0c6ca74d568f1788694be642f1a08de419c44fd1f0fc918a5270705",
+      "lines": 77,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          77
+        ]
+      ],
+      "responsibility": "SSR-to-hydrated document handoff preserving prehydration input",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/ReadingWindowControls.tsx",
+      "sha256": "f8130f5b74ed11abe34048ab85327993342e5ced03b0b0ce797f4849fbcd4c49",
+      "lines": 297,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          297
+        ]
+      ],
+      "responsibility": "Portaled single-pointer and keyboard movement/resize commands",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/ResearchOS.test.tsx",
+      "sha256": "9e5dc730889bfb840bac0d07a81e54222cc327607315c078032842563f33e962",
+      "lines": 1452,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          1452
+        ]
+      ],
+      "responsibility": "Persistent shell, search dialog, locale/theme changes, taskbar and navigation regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/ResearchOS.tsx",
+      "sha256": "f8bd02e37707c135ea6d4d46a95376d008c34c3e96f7665f934f257506f3599b",
+      "lines": 1808,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          1808
+        ]
+      ],
+      "responsibility": "Persistent shell, search dialog, locale/theme changes, taskbar and navigation",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/WelcomeEnter.test.tsx",
+      "sha256": "05575b7c995da31a46171e5815b489d81391e9d2828d59c80fee1140b8be5a42",
+      "lines": 163,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          163
+        ]
+      ],
+      "responsibility": "Decorative desktop entry and skippable handoff regression tests",
+      "findings": [
+        "WIN-01"
+      ],
+      "severity": "medium",
+      "action": "modified",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/WelcomeEnter.tsx",
+      "sha256": "7c34d50f37080fbf7ba6f70ee062056ed91585e2efa7f280a57d82cf2503b7b7",
+      "lines": 314,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          314
+        ]
+      ],
+      "responsibility": "Decorative desktop entry and skippable handoff",
+      "findings": [
+        "WIN-01"
+      ],
+      "severity": "medium",
+      "action": "modified",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.restored.test.tsx",
+      "sha256": "dcdfb0f1ff8c835f7672dfc562231b8b4951df5e34c83c4add2c7469cff93ddb",
+      "lines": 65,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "responsibility": "Route-backed modeless window, caption, clipboard, focus and minimized restore regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.test.tsx",
+      "sha256": "984646005a176a3e3c05a5edc7920d4e9872e97e71b778aaad7c1959adaebf0e",
+      "lines": 205,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          205
+        ]
+      ],
+      "responsibility": "Route-backed modeless window, caption, clipboard, focus and minimized restore regression tests",
+      "findings": [
+        "WIN-02",
+        "WIN-04"
+      ],
+      "severity": "high",
+      "action": "modified",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.tsx",
+      "sha256": "20974b47a8cc5e49c278329eea67d4ff6a0dd70d7564fed66935a7cadd94f072",
+      "lines": 950,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          950
+        ]
+      ],
+      "responsibility": "Route-backed modeless window, caption, clipboard, focus and minimized restore",
+      "findings": [
+        "WIN-02",
+        "WIN-04"
+      ],
+      "severity": "high",
+      "action": "modified",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/appearance.test.ts",
+      "sha256": "3aa5b9500e1ff6cd07f90748cb33fe19f1cd7c79f20b14d99b8bc98fd48686c3",
+      "lines": 62,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          62
+        ]
+      ],
+      "responsibility": "Stored theme preference and subscriptions regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/appearance.ts",
+      "sha256": "ee0678a326adcdfd9bd7e77cbbf269fdd4370b29c650481da7c4aa6a19899659",
+      "lines": 52,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          52
+        ]
+      ],
+      "responsibility": "Stored theme preference and subscriptions",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/application-context.tsx",
+      "sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "lines": 46,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "responsibility": "Application registration, initial-state and visibility contracts",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/language-navigation.test.ts",
+      "sha256": "f4089702c1bee8f634a8f3b558af805bb25a41c1f9c98bbdba9cbb76ec334add",
+      "lines": 70,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "responsibility": "Bounded one-shot session locale handoff regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/language-navigation.ts",
+      "sha256": "1cc28b424a33bdf8ece9e8454e659665351d13a03ebb130f67171e999ad02d4a",
+      "lines": 72,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          72
+        ]
+      ],
+      "responsibility": "Bounded one-shot session locale handoff",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/minute-clock.test.ts",
+      "sha256": "23820cdc2cd5572fe64f55316edcbc8ec5ff29bd611385b18ac94a43396172d6",
+      "lines": 63,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          63
+        ]
+      ],
+      "responsibility": "Shared visibility-aware minute clock regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/minute-clock.ts",
+      "sha256": "e6932768845bd4149548806cc057077de1043795a93eb04e8c943af5889c5aff",
+      "lines": 46,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "responsibility": "Shared visibility-aware minute clock",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/os-copy.ts",
+      "sha256": "f4800fdafd086126c0e75fa68da69b5f4bb3f3559f58f523ed4882bb13250574",
+      "lines": 505,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          505
+        ]
+      ],
+      "responsibility": "Five-language shell text contract",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/spotlight.ts",
+      "sha256": "dae808de0e324451d726e5876bae775efeb7a616e32f27e02ded6d23a838d9ec",
+      "lines": 28,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          28
+        ]
+      ],
+      "responsibility": "Taskbar origin custom properties for window animation",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/use-copyright-year.ts",
+      "sha256": "48d28e501715a86d23522112628a5492f9c28981d34d11ebd36b27088949e03d",
+      "lines": 15,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          15
+        ]
+      ],
+      "responsibility": "Hydration-stable copyright year",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/use-reading-window.test.tsx",
+      "sha256": "72d8820f14a980a9c6e47629b5be03092376e720369899326fc83d39723fc5a2",
+      "lines": 547,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          547
+        ]
+      ],
+      "responsibility": "Viewport geometry, drag capture, resize and reading offset preservation regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/use-reading-window.ts",
+      "sha256": "00fae2f7d9648e4966c928f0123292b73fc473f2aabf5d9ca6e1a282c75abd3d",
+      "lines": 459,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          459
+        ]
+      ],
+      "responsibility": "Viewport geometry, drag capture, resize and reading offset preservation",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/use-stage-visibility.ts",
+      "sha256": "e1227e061acbdf8466bbd44b80856be143425de618fdfa5a3ca7548192d04917",
+      "lines": 116,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          116
+        ]
+      ],
+      "responsibility": "Intersection and fallback clipped artwork visibility",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/window-copy.ts",
+      "sha256": "c6444925aa5410e597f4ebe77f7ab31d7b97356bd4cce4bfedd1d6142a205dcc",
+      "lines": 134,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          134
+        ]
+      ],
+      "responsibility": "Five-language window command copy",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/window-geometry.test.ts",
+      "sha256": "808dd044ab77fc9d50badd7b43b75df207dd076dec9e2f7ad4e84f8558fa0280",
+      "lines": 265,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          265
+        ]
+      ],
+      "responsibility": "Bounded finite window coordinates and FLIP transforms regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/window-geometry.ts",
+      "sha256": "c301ddf2bc5b94aa6a4d85d21507a9dd3733a2f9b40a71a0c5905308a86840cc",
+      "lines": 294,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          294
+        ]
+      ],
+      "responsibility": "Bounded finite window coordinates and FLIP transforms",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/window-motion.test.ts",
+      "sha256": "49e9c8825f47236301a54118ad1b4c61bc011d0df13475f0eb98606fce6e2276",
+      "lines": 28,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          28
+        ]
+      ],
+      "responsibility": "Deterministic uniform FLIP regression regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/workspace-model.test.ts",
+      "sha256": "5b7fe06260fd1b694de44a6dc0cc2356149e4a1a2846529e4347b40a8705df27",
+      "lines": 187,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          187
+        ]
+      ],
+      "responsibility": "Single-current-document reducer and locale/schema validation regression tests",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    },
+    {
+      "path": "src/components/os/workspace-model.ts",
+      "sha256": "88e9266063f0d73ad981b329696260abeaa58f9dd6865a682391b544053fc838",
+      "lines": 89,
+      "coverage": "complete",
+      "read_ranges": [
+        [
+          1,
+          89
+        ]
+      ],
+      "responsibility": "Single-current-document reducer and locale/schema validation",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "verification": "/tmp/frontend-windows-suite-final.log (194 tests / 13 files); /tmp/frontend-windows-lint-final.log; root browser evidence pending",
+      "status": "source-reviewed; automated regression verified"
+    }
+  ],
+  "total_lines": 9198,
+  "test_results": {
+    "files": 13,
+    "tests": 194,
+    "passed": 194,
+    "failed": 0,
+    "log": "/tmp/frontend-windows-suite-final.log"
+  }
+}

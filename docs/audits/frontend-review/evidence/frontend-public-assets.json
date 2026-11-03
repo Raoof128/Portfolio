@@ -1,0 +1,335 @@
+[
+  {
+    "path": "public/.well-known/security.txt",
+    "bytes": 454,
+    "sha256": "75e5619fdb15c50a8ce156ea30a16f05fff710fabe38029cbbb671a1c513b121",
+    "format": "txt",
+    "inspection": "Usage inventory only; text review owned by root lane",
+    "references": [
+      "src/lib/machine-reliability.test.ts",
+      "src/app/[locale]/layout.tsx",
+      "src/app/llms-full.txt/route.ts",
+      "src/components/layout/Footer.tsx"
+    ]
+  },
+  {
+    "path": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+    "bytes": 170083,
+    "sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+    "format": "pdf",
+    "inspection": "metadata and usage inventory; cover rendered and visually examined; resume text examined",
+    "references": [
+      "src/lib/data.test.ts",
+      "src/lib/data.ts"
+    ],
+    "pdfInfo": {
+      "Title": "",
+      "Author": "",
+      "Tagged": "no",
+      "JavaScript": "no",
+      "Pages": "6",
+      "Encrypted": "no",
+      "Page size": "612 x 792 pts (letter)",
+      "PDF version": "1.5"
+    },
+    "accessibility": "Untagged research PDF; related HTML narrative available; full PDF accessibility unverified"
+  },
+  {
+    "path": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+    "bytes": 320653,
+    "sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+    "format": "pdf",
+    "inspection": "metadata and usage inventory; cover rendered and visually examined; resume text examined",
+    "references": [
+      "src/lib/data.test.ts",
+      "src/lib/data.ts"
+    ],
+    "pdfInfo": {
+      "Title": "The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+      "Author": "Mohammad Raouf Abedini",
+      "Tagged": "no",
+      "JavaScript": "no",
+      "Pages": "13",
+      "Encrypted": "no",
+      "Page size": "612 x 792 pts (letter)",
+      "PDF version": "1.5"
+    },
+    "accessibility": "Untagged research PDF; related HTML narrative available; full PDF accessibility unverified"
+  },
+  {
+    "path": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+    "bytes": 112307,
+    "sha256": "ff757111b7c3b3c30785a91a661155cd0a8fa744b804fd9d5bd8af053bab3927",
+    "format": "pdf",
+    "inspection": "metadata and usage inventory; cover rendered and visually examined; resume text examined",
+    "references": [
+      "src/lib/os-search.test.ts",
+      "src/lib/os-search.ts",
+      "src/app/llms-full.txt/route.ts",
+      "src/app/[locale]/resume/ResumeClient.test.tsx",
+      "src/app/[locale]/resume/ResumeClient.tsx",
+      "src/components/os/Desktop.tsx",
+      "src/components/os/ResearchOS.tsx"
+    ],
+    "pdfInfo": {
+      "Author": "Un-named",
+      "Tagged": "yes",
+      "JavaScript": "no",
+      "Pages": "2",
+      "Encrypted": "no",
+      "Page size": "612 x 792 pts (letter)",
+      "PDF version": "1.7"
+    },
+    "accessibility": "Tagged r\u00e9sum\u00e9; reading order not certified"
+  },
+  {
+    "path": "public/Project_Simurgh_Preprint_v1.0.pdf",
+    "bytes": 250477,
+    "sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+    "format": "pdf",
+    "inspection": "metadata and usage inventory; cover rendered and visually examined; resume text examined",
+    "references": [
+      "src/lib/data.test.ts",
+      "src/lib/data.ts",
+      "src/lib/os-search.test.ts"
+    ],
+    "pdfInfo": {
+      "Title": "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions",
+      "Author": "Mohammad Raouf Abedini",
+      "Tagged": "no",
+      "JavaScript": "no",
+      "Pages": "12",
+      "Encrypted": "no",
+      "Page size": "612 x 792 pts (letter)",
+      "PDF version": "1.5"
+    },
+    "accessibility": "Untagged research PDF; related HTML narrative available; full PDF accessibility unverified"
+  },
+  {
+    "path": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+    "bytes": 132302,
+    "sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+    "format": "pdf",
+    "inspection": "metadata and usage inventory; cover rendered and visually examined; resume text examined",
+    "references": [
+      "src/lib/data.test.ts",
+      "src/lib/data.ts"
+    ],
+    "pdfInfo": {
+      "Title": "",
+      "Author": "",
+      "Tagged": "no",
+      "JavaScript": "no",
+      "Pages": "5",
+      "Encrypted": "no",
+      "Page size": "612 x 792 pts (letter)",
+      "PDF version": "1.5"
+    },
+    "accessibility": "Untagged research PDF; related HTML narrative available; full PDF accessibility unverified"
+  },
+  {
+    "path": "public/Raouf_2.jpg",
+    "bytes": 270547,
+    "sha256": "e877a6226aa840cb91421816150e576ca82c7833738f970a6e9b1fa9c77cebe1",
+    "format": "jpg",
+    "inspection": "metadata and usage inventory",
+    "references": [
+      "src/app/[locale]/layout.tsx",
+      "src/app/[locale]/about/AboutClient.test.tsx",
+      "src/app/[locale]/about/AboutClient.tsx",
+      "src/app/[locale]/about/page.tsx"
+    ],
+    "imageInfo": "JPEG 1200x1200",
+    "accessibility": "Portrait alt provided at image usage; OG metadata alt in seo.ts"
+  },
+  {
+    "path": "public/Raouf_2.png",
+    "bytes": 538062,
+    "sha256": "de8e0a5462074b394c7f8e58e62fb88af1904c54a5259db5fca18c6eb6c06a23",
+    "format": "png",
+    "inspection": "metadata and usage inventory",
+    "references": [
+      "src/app/[locale]/about/AboutClient.test.tsx",
+      "src/app/[locale]/about/AboutClient.tsx"
+    ],
+    "imageInfo": "PNG 1200x1200",
+    "accessibility": "Portrait alt provided at image usage; OG metadata alt in seo.ts"
+  },
+  {
+    "path": "public/_headers",
+    "bytes": 2295,
+    "sha256": "7833be7e0ffb09242c5a7d3ec7fe7894849e581f561b006e3014f30b81a54d9a",
+    "format": "",
+    "inspection": "Usage inventory only; text review owned by root lane",
+    "references": []
+  },
+  {
+    "path": "public/_redirects",
+    "bytes": 4201,
+    "sha256": "4d98e44f5c999e5dbcc52b04e9311a28d705510c00f90b40a55157dc5049219f",
+    "format": "",
+    "inspection": "Usage inventory only; text review owned by root lane",
+    "references": [
+      "src/lib/seo.ts"
+    ]
+  },
+  {
+    "path": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+    "bytes": 173492,
+    "sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+    "format": "pdf",
+    "inspection": "metadata and usage inventory; cover rendered and visually examined; resume text examined",
+    "references": [
+      "src/lib/data.test.ts",
+      "src/lib/data.ts"
+    ],
+    "pdfInfo": {
+      "Title": "Aion-BibleQA: Evaluating Retrieval and Citation Faithfulness in Verse-Grounded Bible RAG Systems",
+      "Author": "Mohammad Raouf Abedini",
+      "Tagged": "no",
+      "JavaScript": "no",
+      "Pages": "8",
+      "Encrypted": "no",
+      "Page size": "595.276 x 841.89 pts (A4)",
+      "PDF version": "1.5"
+    },
+    "accessibility": "Untagged research PDF; related HTML narrative available; full PDF accessibility unverified"
+  },
+  {
+    "path": "public/brand/favicon.svg",
+    "bytes": 542,
+    "sha256": "3a3e151d2d0ffcb1317055a1ee2480c8d610e0263d3669278e07687c88b656d3",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Named original monogram SVG"
+  },
+  {
+    "path": "public/brand/glass-lens-map.png",
+    "bytes": 6134,
+    "sha256": "10af03c332eb58291e9f9c1561968beb4165d93c7b015632760d54af5b7af1ee",
+    "format": "png",
+    "inspection": "metadata and usage inventory",
+    "references": [],
+    "imageInfo": "PNG 768x128",
+    "accessibility": "Historical decorative normal map; active dock has no URL reference"
+  },
+  {
+    "path": "public/brand/raouf-mark.svg",
+    "bytes": 491,
+    "sha256": "f75e6f355e13faa3f683fdc29892e9e03905927feba10307e136b8ddb9345a87",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Named original monogram SVG"
+  },
+  {
+    "path": "public/file.svg",
+    "bytes": 391,
+    "sha256": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Unused Next scaffold asset (no src basename reference)"
+  },
+  {
+    "path": "public/globe.svg",
+    "bytes": 1035,
+    "sha256": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Unused Next scaffold asset (no src basename reference)"
+  },
+  {
+    "path": "public/images/raouf-about-600-7d22ea07.webp",
+    "bytes": 26336,
+    "sha256": "7d22ea07eb3973b9ce66366721af4f7cfcc7c5df07cd8f83048e52113a69d50b",
+    "format": "webp",
+    "inspection": "metadata and usage inventory; actual image viewed",
+    "references": [
+      "src/app/[locale]/about/AboutClient.test.tsx",
+      "src/app/[locale]/about/AboutClient.tsx"
+    ],
+    "imageInfo": "WEBP 600x750",
+    "accessibility": "Portrait alt provided at image usage; OG metadata alt in seo.ts"
+  },
+  {
+    "path": "public/images/raouf-welcome-168-2ae922a8.webp",
+    "bytes": 4840,
+    "sha256": "2ae922a82ad917c02253d9c0f92f685787bd7b3e43e0dceabd7ce02301f8e610",
+    "format": "webp",
+    "inspection": "metadata and usage inventory; actual image viewed",
+    "references": [
+      "src/components/os/ResearchOS.tsx"
+    ],
+    "imageInfo": "WEBP 168x168",
+    "accessibility": "Portrait alt provided at image usage; OG metadata alt in seo.ts"
+  },
+  {
+    "path": "public/llms.txt",
+    "bytes": 6690,
+    "sha256": "7f2f0808252f5bac191ae4e9e17b9fbea6401e21e041593162e17746a466be03",
+    "format": "txt",
+    "inspection": "Usage inventory only; text review owned by root lane",
+    "references": [
+      "src/lib/content-integrity.test.tsx",
+      "src/app/llms-full.txt/route.ts",
+      "src/components/layout/Footer.tsx"
+    ]
+  },
+  {
+    "path": "public/next.svg",
+    "bytes": 1375,
+    "sha256": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Unused Next scaffold asset (no src basename reference)"
+  },
+  {
+    "path": "public/og.png",
+    "bytes": 161455,
+    "sha256": "ba146e7e4d80f9b42b5bf873d29236653e48958fcd929f9e2902ff92193f650a",
+    "format": "png",
+    "inspection": "metadata and usage inventory; actual image viewed",
+    "references": [
+      "src/lib/seo.ts",
+      "src/app/[locale]/lab/[id]/page.tsx",
+      "src/app/[locale]/write-ups/[slug]/page.tsx"
+    ],
+    "imageInfo": "PNG 1200x630",
+    "accessibility": "Portrait alt provided at image usage; OG metadata alt in seo.ts"
+  },
+  {
+    "path": "public/security.txt",
+    "bytes": 425,
+    "sha256": "03ecefa7b281c8b315a32361f9d55aaebdac99650240417b33415bb7137a0f00",
+    "format": "txt",
+    "inspection": "Usage inventory only; text review owned by root lane",
+    "references": [
+      "src/lib/machine-reliability.test.ts",
+      "src/app/[locale]/layout.tsx",
+      "src/app/llms-full.txt/route.ts",
+      "src/components/layout/Footer.tsx"
+    ]
+  },
+  {
+    "path": "public/vercel.svg",
+    "bytes": 128,
+    "sha256": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Unused Next scaffold asset (no src basename reference)"
+  },
+  {
+    "path": "public/window.svg",
+    "bytes": 385,
+    "sha256": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+    "format": "svg",
+    "inspection": "Complete SVG markup examined; no executable script or remote resources",
+    "references": [],
+    "accessibility": "Unused Next scaffold asset (no src basename reference)"
+  }
+]

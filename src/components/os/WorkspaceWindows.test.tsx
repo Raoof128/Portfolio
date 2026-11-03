@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import type { AnchorHTMLAttributes } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { getOSAppDescriptor, type OSAppDescriptor } from "@/lib/os-app-schema";
@@ -44,18 +44,28 @@ function renderWindow() {
     restore: vi.fn(),
     close: vi.fn(),
   };
-  return render(
+  const frame = (next = descriptor) => (
     <WorkspaceWindows
-      state={state}
-      applications={new Map([[descriptor.id, application]])}
-      pathname={descriptor.path}
+      state={{
+        ...state,
+        windows: [{ descriptor: next, minimized: false }],
+        activeId: next.id,
+      }}
+      applications={new Map([[next.id, { ...application, descriptor: next }]])}
+      pathname={next.path}
       locale="en"
       role="visitor"
       entries={[]}
       actions={actions}
       locked={false}
-    />,
+    />
   );
+  const result = render(frame());
+  return {
+    ...result,
+    actions,
+    navigate: (next: OSAppDescriptor) => result.rerender(frame(next)),
+  };
 }
 
 function setClipboard(writeText: (value: string) => Promise<void>) {
@@ -108,6 +118,26 @@ describe("workspace window controls", () => {
       "/projects",
     );
   });
+
+  it.each(["close", "minimize"] as const)(
+    "cancels the previous document's pending %s when the frame navigates",
+    (action) => {
+      vi.useFakeTimers();
+      try {
+        const view = renderWindow();
+        fireEvent.click(screen.getByRole("button", {
+          name: action === "close" ? /^Close: / : /^Minimise: /,
+        }));
+        expect(view.actions[action]).not.toHaveBeenCalled();
+        view.navigate(getOSAppDescriptor("/about", "en")!);
+        act(() => vi.advanceTimersByTime(200));
+        expect(view.actions[action]).not.toHaveBeenCalled();
+        expect(screen.getByRole("main")).toBeVisible();
+      } finally {
+        vi.useRealTimers();
+      }
+    },
+  );
 });
 
 describe("Copy Link feedback", () => {
@@ -135,4 +165,41 @@ describe("Copy Link feedback", () => {
       screen.queryByRole("textbox", { name: "Address to copy" }),
     ).not.toBeInTheDocument();
   });
+
+  it("clears the previous page's failed-copy address when the retained frame navigates", async () => {
+    setClipboard(vi.fn().mockRejectedValue(new Error("denied")));
+    const view = renderWindow();
+    fireEvent.click(screen.getByRole("button", { name: "Copy Link" }));
+    await screen.findByRole("textbox", { name: "Address to copy" });
+    view.navigate(getOSAppDescriptor("/about", "en")!);
+    expect(
+      screen.queryByRole("textbox", { name: "Address to copy" }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Copy Link" })).toBeVisible();
+  });
+
+  it.each(["resolve", "reject"] as const)(
+    "ignores a clipboard request that %ss after the retained frame navigates",
+    async (settlement) => {
+      let resolveCopy!: () => void;
+      let rejectCopy!: (error: Error) => void;
+      setClipboard(
+        () => new Promise<void>((resolve, reject) => {
+          resolveCopy = resolve;
+          rejectCopy = reject;
+        }),
+      );
+      const view = renderWindow();
+      fireEvent.click(screen.getByRole("button", { name: "Copy Link" }));
+      view.navigate(getOSAppDescriptor("/about", "en")!);
+      await act(async () => {
+        if (settlement === "resolve") resolveCopy();
+        else rejectCopy(new Error("denied"));
+      });
+      expect(
+        screen.queryByRole("textbox", { name: "Address to copy" }),
+      ).not.toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Copy Link" })).toBeVisible();
+    },
+  );
 });

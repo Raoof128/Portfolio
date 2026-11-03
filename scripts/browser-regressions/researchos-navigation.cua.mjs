@@ -1,4 +1,12 @@
 /**
+ * @deprecated Historical pre-single-current-app regression helper.
+ * This preserves the earlier multiple-retained-app model and its former control names.
+ * Its two-app/query-retention assertions intentionally do not describe the current
+ * single-current-document workspace; do not use this helper as a current acceptance gate.
+ * Use playwright.config.ts and scripts/browser-regressions/playwright/portfolio.spec.ts
+ * for maintained browser regression coverage. Historical results keep their original build identity.
+ */
+/**
  * Run with a fresh, caller-owned CUA tab at a desktop viewport (1024×600 minimum).
  * The caller saves the returned evidence and closes its tab; this module changes
  * no browser preferences and never creates a browser or an external request.

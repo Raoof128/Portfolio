@@ -1,0 +1,152 @@
+[
+  {
+    "path": "src/components/os/research-os.css",
+    "sha256": "ba0c34d36e4b818a8d6b34454854ccec9a63e48fb75b82587bff894f821fedad",
+    "lines": 2297,
+    "responsibility": "Shell themes, base chrome, search, viewport and accessibility preferences",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        2297
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "verified-source"
+  },
+  {
+    "path": "src/components/os/supporting-apps.css",
+    "sha256": "71bde29bf4999050743b5826ba7683d1c5cd7ac1c7cedd964675955bed353edd",
+    "lines": 1702,
+    "responsibility": "Supporting reading routes, r\u00e9sum\u00e9, contact, lab and writing surfaces",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        1702
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "verified-source"
+  },
+  {
+    "path": "src/components/os/project-explorer.css",
+    "sha256": "1da050f9d89743a28103bd6410293c0d64091b1c8cc2723ef57aa1b1ea74b59a",
+    "lines": 1340,
+    "responsibility": "Explorer navigation, list/dossier, tabs, diagrams and responsive layout",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        1340
+      ]
+    ],
+    "findings": [
+      "CSS-L01: Aero Night noncurrent nav header and hover text/background pairs require browser confirmation"
+    ],
+    "severity": "medium",
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "unresolved"
+  },
+  {
+    "path": "src/components/os/proof-atlas.css",
+    "sha256": "d7a426cd4c6f66d0700aedb8de145cc2661f98a2755dc42a65a1c8628dd604cc",
+    "lines": 713,
+    "responsibility": "Proof Atlas SVG, controls, label alternatives and responsive composition",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        713
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "verified-source"
+  },
+  {
+    "path": "src/components/os/evidence-story-common.css",
+    "sha256": "d5b7b6952cf85bfe733768eef3488f3f54aebc83c334c7df06089699a44135d7",
+    "lines": 382,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        382
+      ]
+    ],
+    "findings": [
+      "CSS-L02: Aero Night evidence link hover fill requires browser confirmation"
+    ],
+    "severity": "medium",
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "unresolved"
+  },
+  {
+    "path": "src/components/os/evidence-story-invisible.css",
+    "sha256": "7807543847cb0996fadc71bb8185b4dafc41617f819a26a311f6f7c5e04cd02b",
+    "lines": 313,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        313
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "verified-source"
+  },
+  {
+    "path": "src/components/os/evidence-story-simurgh.css",
+    "sha256": "c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98",
+    "lines": 261,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        261
+      ]
+    ],
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "verified-source"
+  },
+  {
+    "path": "src/components/os/evidence-story-zurvan.css",
+    "sha256": "52eab4b696ad6cead6fa4dd7b33adcee0caa67348f71856ec72892302fb01440",
+    "lines": 138,
+    "responsibility": "Evidence-story layout, interactive state styling and contrast",
+    "coverage": "complete",
+    "reviewed_line_ranges": [
+      [
+        1,
+        138
+      ]
+    ],
+    "findings": [
+      "CSS-L03: Aero Night hovered typed node and selected ledger fill require browser confirmation"
+    ],
+    "severity": "medium",
+    "action": "retained",
+    "verification": "Full sequential source inspection; CSS cascade integration inspected, runtime confirmation delegated to root",
+    "status": "unresolved"
+  }
+]

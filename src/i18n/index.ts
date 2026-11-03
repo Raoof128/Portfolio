@@ -11,7 +11,7 @@ export const locales: Record<Locale, LocaleConfig> = {
     label: "English",
     dir: "ltr",
     fontFamily:
-      'ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif',
+      '"Segoe UI", Tahoma, ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif',
   },
   fa: {
     label: "فارسی",
@@ -33,7 +33,7 @@ export const locales: Record<Locale, LocaleConfig> = {
     label: "Español",
     dir: "ltr",
     fontFamily:
-      'ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif',
+      '"Segoe UI", Tahoma, ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif',
   },
 };
 

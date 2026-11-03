@@ -90,7 +90,8 @@ html:has(.os-shell[data-appearance="light"]) {
   /* Type. Persian and Arabic override the two families below, see :lang rules.
      Sizes follow section 3.4 except --text-display, which is noted below. */
   --os-font-ui:
-    ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    var(--win7-font, ui-sans-serif), system-ui, -apple-system, "Helvetica Neue",
+    Arial, sans-serif;
   --os-font-display:
     Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
   --os-font-mono:

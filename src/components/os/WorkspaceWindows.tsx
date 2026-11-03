@@ -235,6 +235,9 @@ function ApplicationWindow({
   // The Copy Link button reads "Copied" for a moment, next to the status message.
   const [copied, setCopied] = useState(false);
   const copiedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // A retained frame can show another document before a clipboard promise settles.
+  // Only the latest request for the current document may publish feedback.
+  const copyRequest = useRef(0);
   // Dismissing the failure message removes its button, so focus goes back to Copy Link.
   const copyButton = useRef<HTMLButtonElement>(null);
   // The title's text element, and whether its text is cut off by the ellipsis.
@@ -253,6 +256,9 @@ function ApplicationWindow({
   if (settledDocument !== descriptor.id) {
     setSettledDocument(descriptor.id);
     setPendingFrom(null);
+    setShareUrl(null);
+    setShareStatus("");
+    setCopied(false);
     // A frame reused for another window must not keep the previous window's exit.
     setLeaving(null);
   }
@@ -340,6 +346,16 @@ function ApplicationWindow({
     firstFocus.current = false;
     previousActive.current = true;
   }, [active, minimized, locked, initial, descriptor.id]);
+
+  useLayoutEffect(() => {
+    return () => {
+      copyRequest.current += 1;
+      leaveDone.current = null;
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+      if (shareTimer.current) clearTimeout(shareTimer.current);
+      if (copiedTimer.current) clearTimeout(copiedTimer.current);
+    };
+  }, [descriptor.id]);
 
   useEffect(() => {
     if (!pending) return;
@@ -449,6 +465,7 @@ function ApplicationWindow({
   }
 
   async function copyLink() {
+    const request = ++copyRequest.current;
     const hash =
       active && location.pathname === descriptor.path ? location.hash : "";
     const url = `${location.origin}${descriptor.path}${hash}`;
@@ -456,7 +473,7 @@ function ApplicationWindow({
     if (copiedTimer.current) clearTimeout(copiedTimer.current);
     try {
       await navigator.clipboard.writeText(url);
-      if (disposed.current) return;
+      if (disposed.current || request !== copyRequest.current) return;
       setShareUrl(null);
       setShareStatus(copy.copied);
       setCopied(true);
@@ -466,7 +483,7 @@ function ApplicationWindow({
         SHARE_STATUS_MS,
       );
     } catch {
-      if (disposed.current) return;
+      if (disposed.current || request !== copyRequest.current) return;
       // The address is shown in the message, so the visitor can select and copy it by hand.
       // It stays until dismissed.
       setCopied(false);

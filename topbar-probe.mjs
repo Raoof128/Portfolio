@@ -1,3 +1,8 @@
+/**
+ * Historical one-off probe for the old port3419/#os-enter shell. Retained as
+ * diagnostic history, not a current acceptance gate. Use npm run test:browser
+ * and docs/audits/frontend-review/README.md for the maintained workflow.
+ */
 import { chromium } from "playwright";
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: "light" });

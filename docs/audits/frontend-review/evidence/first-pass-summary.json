@@ -1,0 +1,16 @@
+{
+  "stats": {
+    "startTime": "2026-11-03T05:47:09.978Z",
+    "duration": 493206.303,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "counts": {
+    "responsive-observations": 360,
+    "route-observations": 160,
+    "axe_violations": 0,
+    "axe_incomplete_results": 158
+  }
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "path": "AGENT.md",
+    "sha256": "f1b582427ea146d150693d466d673936225d720530dbd9d03d7b21a6057f5cde",
+    "lines": 1460,
+    "coverage": "complete",
+    "reviewedLineRanges": [
+      [
+        1,
+        1460
+      ]
+    ],
+    "responsibility": "Active repository governance plus historical Raouf change log",
+    "findings": "Current brief supersedes historical style/task-specific permissions; see governance-review.md",
+    "severity": null,
+    "action": "retained",
+    "verification": "Entire 1460-line original read sequentially; no truncated chunks",
+    "status": "verified",
+    "reviewer": "routes"
+  }
+]

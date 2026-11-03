@@ -1,0 +1,135 @@
+{
+  "reviewer": "windows lane independent follow-up",
+  "files": [
+    {
+      "path": "scripts/browser-regressions/researchos-navigation.cua.mjs",
+      "sha256": "0c8421e977cb514b000d518c143f19582e6690bc00abf32359732b6800065ac3",
+      "lines": 330,
+      "read_ranges": [
+        [
+          1,
+          330
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Historical CUA regression helper",
+      "findings": [
+        "BROWSER-HISTORICAL"
+      ],
+      "severity": "medium",
+      "action": "modified",
+      "status": "source-reviewed; legacy explicitly deprecated",
+      "verification": "node --check"
+    },
+    {
+      "path": "scripts/browser-regressions/researchos-workspace.cua.mjs",
+      "sha256": "fec5b9de3c40cb1e6247f78f7bc57e0faa836661572fa7b02b8df33b7eea8acd",
+      "lines": 163,
+      "read_ranges": [
+        [
+          1,
+          163
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Historical CUA regression helper",
+      "findings": [
+        "BROWSER-HISTORICAL"
+      ],
+      "severity": "medium",
+      "action": "modified",
+      "status": "source-reviewed; legacy explicitly deprecated",
+      "verification": "node --check"
+    },
+    {
+      "path": "src/components/os/quiet-depth-contrast.test.ts",
+      "sha256": "4080797891118944365b4934af171b62ffa5829ea490a71836072c5c6085fa47",
+      "lines": 380,
+      "read_ranges": [
+        [
+          1,
+          380
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Static token/contrast source regression",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "status": "source-reviewed; execution owned by root",
+      "verification": "root full Vitest suite"
+    },
+    {
+      "path": "src/components/os/reading-contrast.test.ts",
+      "sha256": "194affd69f9e9ba69d01c42b56c3e537104bd52e270dfe3e477024f4ea6fa2fd",
+      "lines": 197,
+      "read_ranges": [
+        [
+          1,
+          197
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Static token/contrast source regression",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "status": "source-reviewed; execution owned by root",
+      "verification": "root full Vitest suite"
+    },
+    {
+      "path": "src/components/os/theme-token-guard.test.ts",
+      "sha256": "0932fa43af11434eccbe56542efd69095e157fd74a94efc7ea09bac4ac162414",
+      "lines": 118,
+      "read_ranges": [
+        [
+          1,
+          118
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Static token/contrast source regression",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "status": "source-reviewed; execution owned by root",
+      "verification": "root full Vitest suite"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "665c3de057ebf88fde47604e33b5d9d35561d320627be5ab575a16f66d51c67a",
+      "lines": 32,
+      "read_ranges": [
+        [
+          1,
+          32
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Maintained browser regression configuration and journeys",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "status": "source-reviewed; final root browser run pending",
+      "verification": "independent full source review and locator cross-check; execution by root"
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/portfolio.spec.ts",
+      "sha256": "a9951c2f6ed38b05b000f1dcb2489ce6d4540a6a437e08c5758706b60e684039",
+      "lines": 260,
+      "read_ranges": [
+        [
+          1,
+          260
+        ]
+      ],
+      "coverage": "complete",
+      "responsibility": "Maintained browser regression configuration and journeys",
+      "findings": [],
+      "severity": null,
+      "action": "retained",
+      "status": "source-reviewed; final root browser run pending",
+      "verification": "independent full source review and locator cross-check; execution by root"
+    }
+  ]
+}

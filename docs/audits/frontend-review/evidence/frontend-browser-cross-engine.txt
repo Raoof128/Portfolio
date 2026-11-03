@@ -1,0 +1,187 @@
+
+Running 15 tests using 2 workers
+
+(node:26955) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact (5.2s)
+  ✓   1 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:114:5 › pointer geometry, search selection, locale and appearance persistence (6.3s)
+  ✓   3 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:161:5 › forced colours preserve caption glyph geometry and language fonts (3.6s)
+  ✓   4 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:190:5 › keyboard workspace entry and five-language 404 recovery (7.7s)
+(node:27459) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✓   5 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:218:5 › five-language keyboard search, empty results and dismissal (13.1s)
+  ✓   6 [firefox] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact (6.8s)
+(node:27856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✓   7 [firefox] › scripts/browser-regressions/playwright/portfolio.spec.ts:161:5 › forced colours preserve caption glyph geometry and language fonts (2.6s)
+  ✓   8 [firefox] › scripts/browser-regressions/playwright/portfolio.spec.ts:114:5 › pointer geometry, search selection, locale and appearance persistence (6.7s)
+  ✓   9 [firefox] › scripts/browser-regressions/playwright/portfolio.spec.ts:190:5 › keyboard workspace entry and five-language 404 recovery (5.7s)
+(node:28263) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✓  10 [firefox] › scripts/browser-regressions/playwright/portfolio.spec.ts:218:5 › five-language keyboard search, empty results and dismissal (8.2s)
+(node:28378) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✘  11 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact (25.7s)
+(node:28507) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✘  12 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:114:5 › pointer geometry, search selection, locale and appearance persistence (25.5s)
+(node:28635) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✘  13 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:161:5 › forced colours preserve caption glyph geometry and language fonts (25.5s)
+(node:28778) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+  ✘  14 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:190:5 › keyboard workspace entry and five-language 404 recovery (25.5s)
+  ✘  15 [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:218:5 › five-language keyboard search, empty results and dismissal (25.5s)
+
+
+  1) [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact
+
+    TimeoutError: page.goto: Timeout 20000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4398/projects", waiting until "domcontentloaded"
+
+
+      43 |
+      44 | async function ready(page: Page, path: string, theme = "dark") {
+    > 45 |   const response = await page.goto(path, { waitUntil: "domcontentloaded" });
+         |                               ^
+      46 |   expect(response?.status()).toBe(200);
+      47 |   await expect(page.locator(`.os-shell[data-appearance="${theme}"]`)).toBeVisible();
+      48 |   if (!locales.some((l) => path === route(l, "/"))) await expect(pane(page)).toBeVisible();
+        at ready (/workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:45:31)
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:73:9
+
+    Error Context: artifacts/frontend-review/browser-results/portfolio-reviewer-journey-f8184--history-search-and-contact-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/portfolio-reviewer-journey-f8184--history-search-and-contact-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/portfolio-reviewer-journey-f8184--history-search-and-contact-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:114:5 › pointer geometry, search selection, locale and appearance persistence
+
+    TimeoutError: page.goto: Timeout 20000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4398/about", waiting until "domcontentloaded"
+
+
+      43 |
+      44 | async function ready(page: Page, path: string, theme = "dark") {
+    > 45 |   const response = await page.goto(path, { waitUntil: "domcontentloaded" });
+         |                               ^
+      46 |   expect(response?.status()).toBe(200);
+      47 |   await expect(page.locator(`.os-shell[data-appearance="${theme}"]`)).toBeVisible();
+      48 |   if (!locales.some((l) => path === route(l, "/"))) await expect(pane(page)).toBeVisible();
+        at ready (/workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:45:31)
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:116:9
+
+    Error Context: artifacts/frontend-review/browser-results/portfolio-pointer-geometry-43c94--and-appearance-persistence-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/portfolio-pointer-geometry-43c94--and-appearance-persistence-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/portfolio-pointer-geometry-43c94--and-appearance-persistence-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:161:5 › forced colours preserve caption glyph geometry and language fonts
+
+    TimeoutError: page.goto: Timeout 20000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4398/projects", waiting until "domcontentloaded"
+
+
+      43 |
+      44 | async function ready(page: Page, path: string, theme = "dark") {
+    > 45 |   const response = await page.goto(path, { waitUntil: "domcontentloaded" });
+         |                               ^
+      46 |   expect(response?.status()).toBe(200);
+      47 |   await expect(page.locator(`.os-shell[data-appearance="${theme}"]`)).toBeVisible();
+      48 |   if (!locales.some((l) => path === route(l, "/"))) await expect(pane(page)).toBeVisible();
+        at ready (/workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:45:31)
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:164:9
+
+    Error Context: artifacts/frontend-review/browser-results/portfolio-forced-colours-p-65f77-geometry-and-language-fonts-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/portfolio-forced-colours-p-65f77-geometry-and-language-fonts-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/portfolio-forced-colours-p-65f77-geometry-and-language-fonts-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:190:5 › keyboard workspace entry and five-language 404 recovery
+
+    TimeoutError: page.goto: Timeout 20000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4398/", waiting until "domcontentloaded"
+
+
+      43 |
+      44 | async function ready(page: Page, path: string, theme = "dark") {
+    > 45 |   const response = await page.goto(path, { waitUntil: "domcontentloaded" });
+         |                               ^
+      46 |   expect(response?.status()).toBe(200);
+      47 |   await expect(page.locator(`.os-shell[data-appearance="${theme}"]`)).toBeVisible();
+      48 |   if (!locales.some((l) => path === route(l, "/"))) await expect(pane(page)).toBeVisible();
+        at ready (/workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:45:31)
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:192:9
+
+    Error Context: artifacts/frontend-review/browser-results/portfolio-keyboard-workspa-a321a--five-language-404-recovery-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/portfolio-keyboard-workspa-a321a--five-language-404-recovery-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/portfolio-keyboard-workspa-a321a--five-language-404-recovery-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:218:5 › five-language keyboard search, empty results and dismissal
+
+    TimeoutError: page.goto: Timeout 20000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4398/projects", waiting until "domcontentloaded"
+
+
+      43 |
+      44 | async function ready(page: Page, path: string, theme = "dark") {
+    > 45 |   const response = await page.goto(path, { waitUntil: "domcontentloaded" });
+         |                               ^
+      46 |   expect(response?.status()).toBe(200);
+      47 |   await expect(page.locator(`.os-shell[data-appearance="${theme}"]`)).toBeVisible();
+      48 |   if (!locales.some((l) => path === route(l, "/"))) await expect(pane(page)).toBeVisible();
+        at ready (/workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:45:31)
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/portfolio.spec.ts:221:11
+
+    Error Context: artifacts/frontend-review/browser-results/portfolio-five-language-ke-05a07-empty-results-and-dismissal-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/portfolio-five-language-ke-05a07-empty-results-and-dismissal-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/portfolio-five-language-ke-05a07-empty-results-and-dismissal-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact
+    [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:114:5 › pointer geometry, search selection, locale and appearance persistence
+    [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:161:5 › forced colours preserve caption glyph geometry and language fonts
+    [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:190:5 › keyboard workspace entry and five-language 404 recovery
+    [webkit] › scripts/browser-regressions/playwright/portfolio.spec.ts:218:5 › five-language keyboard search, empty results and dismissal
+  10 passed (1.8m)

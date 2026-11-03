@@ -65,7 +65,7 @@ The independent-window continuation is implemented on `main-frontend-gauntlet-20
 
 ### Prerequisites
 
-- Node.js `22.x`, at least `22.12.0` (see [`.nvmrc`](./.nvmrc)); Node.js 24 is also supported by the package engines.
+- Node.js `22.x`, at least `22.13.0` (see [`.nvmrc`](./.nvmrc)); Node.js 24 is also supported by the package engines.
 - npm `10+`
 
 ### Setup
@@ -98,7 +98,7 @@ npm audit --omit=dev --audit-level=high
 npm audit --audit-level=high
 ```
 
-The [CUA workspace regression helper](./scripts/browser-regressions/researchos-workspace.cua.mjs) runs through an owned Codex browser tab, not Node or an external browser driver. Its supported API, hydration readiness and coverage limits are documented in [Run and review](./docs/research-os-implementation.md#run-and-review).
+The [historical CUA workspace regression helper](./scripts/browser-regressions/researchos-workspace.cua.mjs) runs through an owned Codex browser tab, not Node or an external browser driver. Its old multiple-retained-window assertions are not current acceptance gates. Use `npm run test:browser -- --project=chromium` against a fresh Cloudflare Pages preview; setup, browser engines and review artifacts are documented in `docs/audits/frontend-review/README.md`. Historical API and coverage limits are documented in [Run and review](./docs/research-os-implementation.md#run-and-review).
 
 ## Deployment
 

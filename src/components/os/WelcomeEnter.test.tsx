@@ -6,6 +6,7 @@ import {
   screen,
 } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { Locale } from "@/i18n";
 import {
   markWelcomeSeen,
   setWelcomeLoaderDuration,
@@ -17,7 +18,7 @@ import {
 
 const status = "Opening the research desk";
 
-function renderEnter(onEnter = vi.fn(), locale?: "en" | "fa") {
+function renderEnter(onEnter = vi.fn(), locale?: Locale) {
   const view = render(
     <WelcomeEnter onEnter={onEnter} status={status} locale={locale}>
       Explore the lab
@@ -126,18 +127,17 @@ describe("WelcomeEnter", () => {
     expect(onEnter).toHaveBeenCalledTimes(1);
   });
 
-  it("names the orb with its visible sign-in caption first, then the lab entry text", () => {
-    // WCAG 2.5.3 label in name: the caption the sighted visitor reads is part of the name.
-    renderEnter(vi.fn(), "en");
-    expect(screen.getByText("Sign in")).toBeVisible();
+  it.each<[Locale, string]>([
+    ["en", "Enter workspace"],
+    ["fa", "ورود به فضای کار"],
+    ["ar", "ادخل مساحة العمل"],
+    ["es", "Entrar al espacio de trabajo"],
+    ["zh", "进入工作空间"],
+  ])("names the %s orb with its visible workspace-entry caption", (locale, caption) => {
+    renderEnter(vi.fn(), locale);
+    expect(screen.getByText(caption)).toBeVisible();
     expect(
-      screen.getByRole("button", { name: "Sign in: Explore the lab" }),
-    ).toBeVisible();
-    cleanup();
-    renderEnter(vi.fn(), "fa");
-    expect(screen.getByText("ورود")).toBeVisible();
-    expect(
-      screen.getByRole("button", { name: "ورود: Explore the lab" }),
+      screen.getByRole("button", { name: `${caption}: Explore the lab` }),
     ).toBeVisible();
   });
 

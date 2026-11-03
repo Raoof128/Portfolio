@@ -24,12 +24,12 @@ const HANDOFF_MS = 120;
 const SEEN_KEY = "researchos:welcome-seen";
 
 /** The visible orb caption, keyed by locale. It is also the start of the orb's accessible name. */
-const welcomeCopy: Record<Locale, { signIn: string }> = {
-  en: { signIn: "Sign in" },
-  fa: { signIn: "ورود" },
-  ar: { signIn: "تسجيل الدخول" },
-  es: { signIn: "Iniciar sesión" },
-  zh: { signIn: "登录" },
+const welcomeCopy: Record<Locale, { enterWorkspace: string }> = {
+  en: { enterWorkspace: "Enter workspace" },
+  fa: { enterWorkspace: "ورود به فضای کار" },
+  ar: { enterWorkspace: "ادخل مساحة العمل" },
+  es: { enterWorkspace: "Entrar al espacio de trabajo" },
+  zh: { enterWorkspace: "进入工作空间" },
 };
 
 let loaderMs = WELCOME_LOADER_MS;
@@ -72,7 +72,7 @@ function prefersReducedMotion(): boolean {
 }
 
 /**
- * The orb's accessible name: the visible "Sign in" caption, then the lab entry text. The visible
+ * The orb's accessible name: the visible "Enter workspace" caption, then the lab entry text. The visible
  * label is part of the name (WCAG 2.5.3), so speech input can say what the sighted user reads.
  */
 function accessibleName(locale: Locale, children: ReactNode): string {
@@ -83,8 +83,8 @@ function accessibleName(locale: Locale, children: ReactNode): string {
     )
     .join("")
     .trim();
-  const signIn = welcomeCopy[locale].signIn;
-  return text ? `${signIn}: ${text}` : signIn;
+  const enterWorkspace = welcomeCopy[locale].enterWorkspace;
+  return text ? `${enterWorkspace}: ${text}` : enterWorkspace;
 }
 
 function clearTimer(ref: MutableRefObject<number | null>) {
@@ -278,7 +278,7 @@ export function WelcomeEnter({
       {/* The visible cue under the arrow. It is named by the button's aria-label, so it stays
           aria-hidden here, and it stays in the same place while the wait runs. */}
       <span className="os-enter-caption" lang={locale} aria-hidden="true">
-        {welcomeCopy[locale].signIn}
+        {welcomeCopy[locale].enterWorkspace}
       </span>
       <div className="os-enter-progress" aria-hidden="true">
         {/* The track carries the wait duration and the dots take their timing from it,

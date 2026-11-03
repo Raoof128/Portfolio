@@ -1,0 +1,353 @@
+
+ RUN  v4.1.11 /workspace/Portfolio
+
+ ❯ src/components/os/Desktop.test.tsx (1 test | 1 failed) 1046ms
+     × names both caption groups by their window and preserves hide/restore focus 1043ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/os/Desktop.test.tsx > desktop window caption controls > names both caption groups by their window and preserves hide/restore focus
+TestingLibraryElementError: Unable to find role="button" and name "Minimise: Independent research · Sydney"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"os-desktop"[39m
+      [33mdata-spotlight-field[39m=[32m""[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"os-desktop-identity os-desktop-identity--atlas"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"os-intro window glass active"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"title-bar"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-eyebrow title-bar-text"[39m
+            [36m>[39m
+              [0mIndependent research · Sydney[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-window-actions title-bar-controls"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Minimise"[39m
+                [33mclass[39m=[32m"os-control is-minimize"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Full Size"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mclass[39m=[32m"os-control os-expand is-maximize"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Close"[39m
+                [33mclass[39m=[32m"os-control os-window-close is-close"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"window-body has-space"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"en"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mMohammad[0m
+              [0m [0m
+              [36m<span>[39m
+                [0mRaouf Abedini[0m
+                [0m.[0m
+              [36m</span>[39m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-role"[39m
+            [36m>[39m
+              [0mIndependent researcher[0m
+            [36m</p>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-desktop-summary"[39m
+            [36m>[39m
+              [0mI build systems to understand and contain the risks of agentic AI. This is my workspace for research, engineering, and ideas.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-direct-links"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button"[39m
+                [33mhref[39m=[32m"/projects"[39m
+              [36m>[39m
+                [0mExplore My Work[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-right"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M5 12h14"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m12 5 7 7-7 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button os-button--secondary"[39m
+                [33mhref[39m=[32m"/Mohammad_Raouf_Abedini_Resume.pdf"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mView Résumé PDF[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-external-link os-external-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 3h6v6"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M10 14 21 3"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_0_"[39m
+          [33mclass[39m=[32m"proof-atlas proof-atlas--desktop window glass active"[39m
+          [33mdata-interactive[39m=[32m"true"[39m
+          [33mdata-motion-enabled[39m=[32m"false"[39m
+          [33mdata-project[39m=[32m"project-simurgh"[39m
+          [33mdir[39m=[32m"ltr"[39m
+          [33mlang[39m=[32m"en"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"proof-atlas-heading title-bar"[39m
+          [36m>[39m
+            [36m<h2[39m
+              [33mid[39m=[32m"_r_0_"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mWhere the evidence connects[0m
+            [36m</h2>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-window-actions title-bar-controls"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Minimise"[39m
+                [33mclass[39m=[32m"os-control is-minimize"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Full Size"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mclass[39m=[32m"os-control os-expand is-maximize"[39m
+                [33mtype[39m=[32m"button"[39m
+ ...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"os-desktop"[39m
+      [33mdata-spotlight-field[39m=[32m""[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"os-desktop-identity os-desktop-identity--atlas"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"os-intro window glass active"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"title-bar"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-eyebrow title-bar-text"[39m
+            [36m>[39m
+              [0mIndependent research · Sydney[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-window-actions title-bar-controls"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Minimise"[39m
+                [33mclass[39m=[32m"os-control is-minimize"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Full Size"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mclass[39m=[32m"os-control os-expand is-maximize"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Close"[39m
+                [33mclass[39m=[32m"os-control os-window-close is-close"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"window-body has-space"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"en"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mMohammad[0m
+              [0m [0m
+              [36m<span>[39m
+                [0mRaouf Abedini[0m
+                [0m.[0m
+              [36m</span>[39m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-role"[39m
+            [36m>[39m
+              [0mIndependent researcher[0m
+            [36m</p>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-desktop-summary"[39m
+            [36m>[39m
+              [0mI build systems to understand and contain the risks of agentic AI. This is my workspace for research, engineering, and ideas.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-direct-links"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button"[39m
+                [33mhref[39m=[32m"/projects"[39m
+              [36m>[39m
+                [0mExplore My Work[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-right"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M5 12h14"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m12 5 7 7-7 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button os-button--secondary"[39m
+                [33mhref[39m=[32m"/Mohammad_Raouf_Abedini_Resume.pdf"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mView Résumé PDF[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-external-link os-external-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"24"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"24"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M15 3h6v6"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M10 14 21 3"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_0_"[39m
+          [33mclass[39m=[32m"proof-atlas proof-atlas--desktop window glass active"[39m
+          [33mdata-interactive[39m=[32m"true"[39m
+          [33mdata-motion-enabled[39m=[32m"false"[39m
+          [33mdata-project[39m=[32m"project-simurgh"[39m
+          [33mdir[39m=[32m"ltr"[39m
+          [33mlang[39m=[32m"en"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"proof-atlas-heading title-bar"[39m
+          [36m>[39m
+            [36m<h2[39m
+              [33mid[39m=[32m"_r_0_"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mWhere the evidence connects[0m
+            [36m</h2>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-window-actions title-bar-controls"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Minimise"[39m
+                [33mclass[39m=[32m"os-control is-minimize"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Full Size"[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mclass[39m=[32m"os-control os-expand is-maximize"[39m
+                [33mtype[39m=[32m"button"[39m
+ ...
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/os/Desktop.test.tsx:14:29
+     12|     for (const windowTitle of [title, atlas]) {
+     13|       for (const action of ["Minimise", "Full Size", "Close"]) {
+     14|         expect(await screen.findByRole("button", { name: `${action}: $…
+       |                             ^
+     15|       }
+     16|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  05:39:42
+   Duration  1.91s (transform 214ms, setup 83ms, import 293ms, tests 1.05s, environment 359ms)

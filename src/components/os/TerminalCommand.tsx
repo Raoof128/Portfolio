@@ -79,14 +79,16 @@ export function TerminalCommand({
   );
 
   async function copyCommands() {
+    if (timer.current) clearTimeout(timer.current);
     try {
       await navigator.clipboard.writeText(commands.join("\n"));
       setStatus("copied");
+      timer.current = setTimeout(() => setStatus("idle"), 2500);
     } catch {
+      // Keep the recovery instruction visible until the next attempt. A short
+      // confirmation timeout would remove it before the commands are selected.
       setStatus("failed");
     }
-    if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => setStatus("idle"), 2500);
   }
 
   return (
@@ -109,7 +111,7 @@ export function TerminalCommand({
           ) : (
             <Copy size={16} aria-hidden="true" />
           )}
-          {labels.copy}
+          {status === "copied" ? labels.copied : labels.copy}
         </button>
       </div>
       {/* The prompt is drawn by CSS (::before), so copied text is only the commands. */}
@@ -126,7 +128,7 @@ export function TerminalCommand({
           </code>
         ))}
       </pre>
-      <p className="sr-only" role="status">
+      <p className="os-terminal-feedback" role="status">
         {status === "copied"
           ? labels.copied
           : status === "failed"

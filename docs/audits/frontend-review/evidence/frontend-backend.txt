@@ -1,0 +1,41 @@
+
+> portfolio@0.1.0 test:backend
+> npm run test:audit-http && vitest run src/i18n/index.test.ts src/lib/server-routes.test.tsx src/lib/data.test.ts src/lib/machine-reliability.test.ts src/lib/content-integrity.test.tsx src/lib/version-route.test.ts src/lib/feed-route.test.ts
+
+
+> portfolio@0.1.0 test:audit-http
+> node --test scripts/lib/production-audit.test.mjs
+
+✔ accepts production/staging HTTPS and explicit HTTP loopback origins (1.512491ms)
+✔ rejects credentials, paths, query strings and unsupported audit origins (0.418722ms)
+✔ reads bounded UTF-8 across chunks and closes the request lifecycle (33.878317ms)
+✔ cancels bodies for header-only requests (0.753847ms)
+✔ rejects oversized advertised responses before reading them (1.346079ms)
+✔ enforces the actual decoded byte limit without Content-Length (0.522388ms)
+✔ a request that never returns headers still has a finite deadline (20.346672ms)
+✔ the same deadline also covers a stalled response body (21.332584ms)
+✔ headers arriving after the deadline never start a new body reader (20.654491ms)
+✔ rejects non-finite request limits and preserves network errors (0.575558ms)
+✔ direct-200 probes reject redirects instead of following another origin (0.254704ms)
+✔ redirects must preserve status, origin, path and query (0.639494ms)
+✔ security expiry rejects missing, malformed, impossible and expired dates (0.704091ms)
+✔ security headers retain the complete authored browser policy (1.676418ms)
+✔ weakening any browser header or CSP directive fails closed (3.528071ms)
+✔ CSP ordering and source ordering do not change an approved policy (0.415066ms)
+✔ deployment identity must be a valid fingerprint, never unknown or malformed (0.339232ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 188.338436
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+
+ Test Files  7 passed (7)
+      Tests  56 passed (56)
+   Start at  05:43:47
+   Duration  5.83s (transform 685ms, setup 512ms, import 586ms, tests 347ms, environment 3.34s)

@@ -1,0 +1,344 @@
+[
+  {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "cbaecd4e0413d02dd3fff697f75d5a1267464742e20bb914075bf88aaf0c7481",
+    "lines": 65,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        65
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": ".github/workflows/deploy.yml",
+    "sha256": "950093fb72fa8f1482a3a51ae4bbe2ba19ab282f2c94107a04d8cf5cf60c8b22",
+    "lines": 137,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        137
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "eslint.config.mjs",
+    "sha256": "bf85f63e27e675e8c243a74435e8cc89ff9a15fb0fb4d7ea9d8719c31452da69",
+    "lines": 48,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        48
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "next.config.ts",
+    "sha256": "9f241298ed6f05ee4437b2e343bbf89850c175e4f63a534b0933fd3fd2c073ad",
+    "lines": 19,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        19
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "postcss.config.mjs",
+    "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+    "lines": 7,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        7
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/audit-agents.mjs",
+    "sha256": "390a62275e6e48c853dd7f3e0387cd8ebe35efe9e9f069c2ab3badba378021da",
+    "lines": 395,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        395
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/audit-production.mjs",
+    "sha256": "0647ec9d19203f9dec5e8c11410f5368d4bdb9d812eb238b5282614b6e260a3c",
+    "lines": 235,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        235
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/audit-static-security.mjs",
+    "sha256": "f2e3ca420e31defece9b748e2775ffad377602bc947c1da49b10d2f35a0c1133",
+    "lines": 15,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        15
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/generate-glass-lens-map.mjs",
+    "sha256": "0afbb352342c285ade5a916e0cf66320adedaf0afc666d04b4d6e6c0eb437980",
+    "lines": 133,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        133
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/braces-guard.test.mjs",
+    "sha256": "933f9313a8bf5ed7b04de3dd983c69ddfd703bf8f360ad3d707505ec1b218bbf",
+    "lines": 136,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        136
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/braces-guard.worker.mjs",
+    "sha256": "e0a6b3f815b9254a7612ad9ff277f5a84cdde0afe8b3f858718fc14707810418",
+    "lines": 130,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        130
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/production-audit.mjs",
+    "sha256": "38f133360c6f47ce37627ad053d6a63c1b188879da8a3b5720be4af6a719d214",
+    "lines": 264,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        264
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/production-audit.test.mjs",
+    "sha256": "af38b07481c3866b22d096c60e0dacedddc70804bda7bf5409c201272dd7a9a4",
+    "lines": 356,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        356
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/schema-language-audit.mjs",
+    "sha256": "f548ca84c75d4b7114941fef7b7baf1d38bcdbb7dc6638ac64975f3fcb813562",
+    "lines": 55,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        55
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/schema-language-audit.test.mjs",
+    "sha256": "2b3adb2542a608ae8470c8acf2bf925c04aa436ba3293a06444106078daf6f58",
+    "lines": 105,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        105
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/static-security.mjs",
+    "sha256": "3c6771153e033d4dd351439f810055d9d83a59d83a9d6d8514f7706f542d5139",
+    "lines": 326,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        326
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "scripts/lib/static-security.test.mjs",
+    "sha256": "686bad051c36b8274a3c2132667610744154947a0f009dba7fff55c33773c4d0",
+    "lines": 273,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        273
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "tsconfig.json",
+    "sha256": "5c51df4c59f4510d8c7dadf07a5c32132228826a3b331da5e286207b4df7ef9c",
+    "lines": 34,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        34
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  },
+  {
+    "path": "vitest.config.ts",
+    "sha256": "2d68944391749a0170f7551d73341e634d51219f6b49082f887810bc20d4d0b8",
+    "lines": 28,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        28
+      ]
+    ],
+    "responsibility": "Frontend validation, build/runtime configuration or CI artifact delivery",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static review; root runs required CLI validation",
+    "status": "reviewed"
+  }
+]

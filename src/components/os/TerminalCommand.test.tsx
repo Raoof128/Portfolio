@@ -14,6 +14,7 @@ const commands = ["git clone https://example.test/repo", "bash run.sh"];
 describe("TerminalCommand", () => {
   afterEach(() => {
     cleanup();
+    vi.useRealTimers();
     vi.restoreAllMocks();
   });
 
@@ -32,6 +33,10 @@ describe("TerminalCommand", () => {
     });
     expect(writeText).toHaveBeenCalledWith(commands.join("\n"));
     expect(screen.getByRole("status")).toHaveTextContent("Commands copied");
+    expect(screen.getByRole("status")).not.toHaveClass("sr-only");
+    expect(
+      screen.getByRole("button", { name: "Commands copied" }),
+    ).toBeInTheDocument();
   });
 
   it("explains how to copy when the clipboard is unavailable", async () => {
@@ -45,6 +50,30 @@ describe("TerminalCommand", () => {
     expect(screen.getByRole("status")).toHaveTextContent(
       "Selecciona los comandos para copiarlos",
     );
+    expect(screen.getByRole("status")).not.toHaveClass("sr-only");
+  });
+
+  it("keeps recovery instructions visible until another copy attempt", async () => {
+    vi.useFakeTimers();
+    const writeText = vi
+      .fn()
+      .mockRejectedValueOnce(new Error("denied"))
+      .mockResolvedValueOnce(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+    render(<TerminalCommand locale="en" commands={commands} />);
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: "Copy Commands" }));
+    });
+    act(() => vi.advanceTimersByTime(10_000));
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Select the commands to copy them",
+    );
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: "Copy Commands" }));
+    });
+    expect(screen.getByRole("status")).toHaveTextContent("Commands copied");
+    act(() => vi.advanceTimersByTime(2500));
+    expect(screen.getByRole("status")).toBeEmptyDOMElement();
   });
 });
 

@@ -1,0 +1,960 @@
+[
+  {
+    "path": "src/components/os/EvidenceStory.test.tsx",
+    "sha256": "9dbe19bd86bfd94014d041a2d5938a6943803d8cc0be5a2463e633aca6b775f6",
+    "lines": 327,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        327
+      ]
+    ],
+    "responsibility": "Regression coverage for EvidenceStory.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/GlobalNotFoundContent.test.tsx",
+    "sha256": "acb4a4dff4d67d94ee89f7e920f20c548a242bb14d7637b674ca57401b808640",
+    "lines": 152,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        152
+      ]
+    ],
+    "responsibility": "Regression coverage for GlobalNotFoundContent.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/GlobalNotFoundContent.tsx",
+    "sha256": "97815052b1a9c5a3d728420a630b37803f782800b3e2d0221ecf89bb3d1f033c",
+    "lines": 207,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        207
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/InvisibleWindowEvidenceStory.tsx",
+    "sha256": "9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6",
+    "lines": 152,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        152
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/OSIcon.tsx",
+    "sha256": "d4cbbfa99d661aaba5e748d1111037345663f680cdaa0171833619b8e2e3df8e",
+    "lines": 51,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        51
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/ProjectDiagram.tsx",
+    "sha256": "3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0",
+    "lines": 179,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        179
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/ProjectExplorer.test.tsx",
+    "sha256": "4624805bb7503bed600b3a5de1b2fdbbc9e7b90bd86a1bde8e39fab35b16af9d",
+    "lines": 610,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        610
+      ]
+    ],
+    "responsibility": "Regression coverage for ProjectExplorer.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/ProjectExplorer.tsx",
+    "sha256": "44177dca0845882b27431fa97d3f6234b5b3b1b21cd8dba677de5feacdea25e8",
+    "lines": 425,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        425
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/ProjectMotion.test.tsx",
+    "sha256": "8caf93211c8725503835cd7e225401a33960487043f11b5c3cf1bd61e8014af1",
+    "lines": 354,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        354
+      ]
+    ],
+    "responsibility": "Regression coverage for ProjectMotion.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/ProjectMotion.tsx",
+    "sha256": "7bd74eb8696b56d5c28b317e3b6ec1525a5331277e52cbb0fbab1790c082f84a",
+    "lines": 195,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        195
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/ProjectThumbnail.test.tsx",
+    "sha256": "9f0ec898b41f811edf7220a0611698f563a9d3151de55738580570e7e4ce1a27",
+    "lines": 105,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        105
+      ]
+    ],
+    "responsibility": "Regression coverage for ProjectThumbnail.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/ProjectThumbnail.tsx",
+    "sha256": "9e228028898a0a90203d531b6fbe1017dfeca82efd1ee3d2429d70e08e96c060",
+    "lines": 73,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        73
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/ProofAtlas.test.tsx",
+    "sha256": "d838938b71ba6e71e1ab97649281399abe1eadd676dcebadd93514f534ec6ed5",
+    "lines": 319,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        319
+      ]
+    ],
+    "responsibility": "Regression coverage for ProofAtlas.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/ProofAtlas.tsx",
+    "sha256": "83e46456e322d209b211be2866b191a9fd85dafd1c8940a6a5e297f5197a3bc5",
+    "lines": 582,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        582
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/SignalVortex.tsx",
+    "sha256": "dd083499784ce344ed4bfcebba6d3c56172e0a7d02886e4c3d46e7907c05ef38",
+    "lines": 15,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        15
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/SimurghEvidenceStory.tsx",
+    "sha256": "d99d728d70df76ce7d7b46712a7372e86a95ed1a332f3b1b63d421c60452caf2",
+    "lines": 160,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        160
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/TerminalCommand.test.tsx",
+    "sha256": "d2ec4f9684080576da928353766cd16287e299017487ddb826fd144797f27c8c",
+    "lines": 87,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        87
+      ]
+    ],
+    "responsibility": "Regression coverage for TerminalCommand.tsx",
+    "findings": [
+      "ART-01"
+    ],
+    "severity": "medium",
+    "action": "modified",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/TerminalCommand.tsx",
+    "sha256": "15a68a9de2ecfa711775a8a36e40c2df4771298fa4ee0f02b78bcd9a4097e48e",
+    "lines": 140,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        140
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [
+      "ART-01"
+    ],
+    "severity": "medium",
+    "action": "modified",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/os/ZurvanEvidenceStory.tsx",
+    "sha256": "b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178",
+    "lines": 109,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        109
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/atlas-copy.ts",
+    "sha256": "d7ea99e51b9f201ae96eab07e5d682c4637fe66d4506207786dac262de8b9ec7",
+    "lines": 353,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        353
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/atlas-journey-copy.ts",
+    "sha256": "3f93fdf191820e62e6ca9799e82b4876d62c0e22955e76e3b27b069460ce10ed",
+    "lines": 8,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        8
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/project-artwork.ts",
+    "sha256": "0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7",
+    "lines": 123,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        123
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/os/proof-atlas-context.ts",
+    "sha256": "e755fb58a72486307edc477b3896049e808e73d145a40266e6a6f6ba228859bc",
+    "lines": 5,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        5
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/AnimatedSection.tsx",
+    "sha256": "f70caf76d527be06067095c38c0815dd791ba759d009bf7fd1f80ab7ba8cfbf5",
+    "lines": 13,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        13
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/BlueButterfly.tsx",
+    "sha256": "d854f07bb9603d793d7395962d86a2fd6a2b307658dfff76ec499c3db97ae0dc",
+    "lines": 256,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        256
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/Card.test.tsx",
+    "sha256": "3aebd1f30e261c104bef9e4d58cc64fe6f6b836b33b9d00a331be0c3bf291c59",
+    "lines": 41,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        41
+      ]
+    ],
+    "responsibility": "Regression coverage for Card.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/ui/Card.tsx",
+    "sha256": "6d0c32bb9d4d7cc3eeac362fe7b31105812269cc85a5209eae6823b1cb33e586",
+    "lines": 27,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        27
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/CelestialCatcher.tsx",
+    "sha256": "2d054fa4b5c7193a7d85cdcfa1eb633a5e3adf763c88cdfe8b8e0ac920aa9f55",
+    "lines": 258,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        258
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/ConstellationOwl.tsx",
+    "sha256": "d9ac37f43d807842e74b034e657ea86314bd599865c856606c5233a30eb0ef1f",
+    "lines": 338,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        338
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/CosmicLoomCanvas.tsx",
+    "sha256": "b47e04b0e72599d767690c70c6d42b3f951b82f2673a867b9760d717f7b144cb",
+    "lines": 323,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        323
+      ]
+    ],
+    "responsibility": "Canvas lifecycle and original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/CosmicOracleEye.tsx",
+    "sha256": "de6f54e58e0451a362568f8b643e311b17145b7e435014212f0a4dcb6b6ae107",
+    "lines": 208,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        208
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/DandelionSpinner.tsx",
+    "sha256": "e10a38efb15744ca42c15e3609c04b8ada13dc0096d45d831826b816ad4ab706",
+    "lines": 121,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        121
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/DnaHelixCanvas.tsx",
+    "sha256": "8b3b12c42a35ac94e538456562b68631663ee38a6d94095060608c4b7bcd4bad",
+    "lines": 132,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        132
+      ]
+    ],
+    "responsibility": "Canvas lifecycle and original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/FireShieldCanvas.tsx",
+    "sha256": "3fe5ac53c6ad192dd65ae817f278d4a0a13780b65d34fa00d5b6d7dccd8437b6",
+    "lines": 296,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        296
+      ]
+    ],
+    "responsibility": "Canvas lifecycle and original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/GlowCard.tsx",
+    "sha256": "f9cd73d6f2edb62b80a4825c3ce97a543b43476e47fedecc716ab9f969cd2875",
+    "lines": 22,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        22
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/HUDFrame.tsx",
+    "sha256": "6d97d63bf3e53b1ea6ee1b40c98211f4bf674fba36fe7869a4608033e9099dfa",
+    "lines": 32,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        32
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/KineticAstrolabe.tsx",
+    "sha256": "617aaec5d3bf148ad78f0132b4ffb46bda56ad36b72941876d88e7349ce1872f",
+    "lines": 182,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        182
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/KineticLotus.tsx",
+    "sha256": "13c8819b5a32eee191a33ed34c59dee87d1be8d99808c74514affdfc6ccbde41",
+    "lines": 132,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        132
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/KoiPond.tsx",
+    "sha256": "89a20effaa8f02fc79a7866e782375b6f4d236b19fb57c29c6ba3d8088bb41d7",
+    "lines": 337,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        337
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/MotionPreferences.tsx",
+    "sha256": "dcbf265bb73a709fa6f3998f3a511341d19b59dc2066511953ef8db88ce111ff",
+    "lines": 13,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        13
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/NeonButton.test.tsx",
+    "sha256": "eec3bb12676ad7fcf1c5bd4a0b7ba5b1b296f2a55b1323733eed5e886702eebe",
+    "lines": 105,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        105
+      ]
+    ],
+    "responsibility": "Regression coverage for NeonButton.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/ui/NeonButton.tsx",
+    "sha256": "8a9a5d2e0b414548b51da3967118b17172319f2bdaa577f2679e68b2f01e46dc",
+    "lines": 107,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        107
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/ProjectCard.test.tsx",
+    "sha256": "4e8db40143fe3fc446ebf0d0842b42dbf2971a03d8f74f19022e849ca02020de",
+    "lines": 141,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        141
+      ]
+    ],
+    "responsibility": "Regression coverage for ProjectCard.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/ui/ProjectCard.tsx",
+    "sha256": "558121eadf4f6aee325384eaad3d08625f116e023de175e2429e60d3a8aff804",
+    "lines": 197,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        197
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/RoyalAbyssCanvas.tsx",
+    "sha256": "e7c58684305b08fa555a6bd9479fdadf98be4e3dd59a9977de1916acc992848d",
+    "lines": 402,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        402
+      ]
+    ],
+    "responsibility": "Canvas lifecycle and original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/SecureContactForm.test.tsx",
+    "sha256": "ce3ec3410c31e3f4a5266e09497191a9e30f3e5571e0ed762be5a6a8e66abba1",
+    "lines": 407,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        407
+      ]
+    ],
+    "responsibility": "Regression coverage for SecureContactForm.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/ui/SecureContactForm.tsx",
+    "sha256": "1447743d3a06df69ed36ef5809b7367d63707003d864e727e88511a699a15bb3",
+    "lines": 565,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        565
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/SimpleMarkdown.test.tsx",
+    "sha256": "6433a9ccb7ead9c65fc07acdb2f9dd49c0dc1548e7926c7e99d5fdd2ae1ef67f",
+    "lines": 168,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        168
+      ]
+    ],
+    "responsibility": "Regression coverage for SimpleMarkdown.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/ui/SimpleMarkdown.tsx",
+    "sha256": "c65b1d27909ef1120aa423bda5c68a57cca47eb144629d5b1a19e91fff2285de",
+    "lines": 325,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        325
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/WheelsOfEzekiel.tsx",
+    "sha256": "fcc07541a3d40ad49cf4f3716b845585f798573d03472a4aad61b4f55eaa33cb",
+    "lines": 234,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        234
+      ]
+    ],
+    "responsibility": "Decorative original artwork",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/artwork-pause.ts",
+    "sha256": "8333d19495a4d89b6dcc01d225bae0e61213990e5a20fac5f338470925f12d1c",
+    "lines": 40,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        40
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  },
+  {
+    "path": "src/components/ui/canvas-playback.test.tsx",
+    "sha256": "2e0cb12196326160cfc78bc8db65740fb087c8973b922946487bc05ef5685968",
+    "lines": 266,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        266
+      ]
+    ],
+    "responsibility": "Regression coverage for canvas-playback.tsx",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Scoped Vitest: 13 files, 183 tests passed (2026-11-03; Vitest4.1.11 before dependency update); browser root-owned",
+    "status": "verified"
+  },
+  {
+    "path": "src/components/ui/canvas-playback.ts",
+    "sha256": "52247b3cb66c4bfdef9e14a32cb823cec4666139832d308b0a5dbca52b068529",
+    "lines": 100,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        100
+      ]
+    ],
+    "responsibility": "Portfolio shared UI / project evidence / accessible controls",
+    "findings": [],
+    "severity": null,
+    "action": "retained",
+    "verification": "Complete static source review; associated existing tests inspected; browser root-owned",
+    "status": "reviewed"
+  }
+]

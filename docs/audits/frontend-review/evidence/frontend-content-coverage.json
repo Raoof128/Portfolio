@@ -1,0 +1,1070 @@
+[
+  {
+    "path": "scripts/lib/lab-go-snippet.test.mjs",
+    "sha256": "5e99e45d9836ab5a0e4ef07ab76d021d7375dfec8e07193d24996add1a790ab7",
+    "lines": 112,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        112
+      ]
+    ],
+    "responsibility": "Regression coverage for lab-go-snippet.mjs",
+    "findings": [
+      "Executable regression covers C-LAB-01"
+    ],
+    "severity": "none",
+    "action": "added",
+    "verification": "197 Vitest content/localization tests; exact source and numeric/resource identity parity; Go helper: 4 tests plus 4 error subcases passed",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/i18n/format.test.ts",
+    "sha256": "d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9",
+    "lines": 31,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        31
+      ]
+    ],
+    "responsibility": "Regression coverage for format.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/i18n/format.ts",
+    "sha256": "70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064",
+    "lines": 34,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        34
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/i18n/index.test.ts",
+    "sha256": "2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9",
+    "lines": 37,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        37
+      ]
+    ],
+    "responsibility": "Regression coverage for index.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/i18n/index.ts",
+    "sha256": "78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af",
+    "lines": 70,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        70
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [
+      "C-TYPE-01: en/es system-first stacks bypass installed Windows 7 Segoe UI"
+    ],
+    "severity": "low",
+    "action": "modified",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/i18n/locales/ar.ts",
+    "sha256": "1506637c441e5c8fa6b69c4b52802c6f23ccc3ea7b0b8ba70dca88d899766f46",
+    "lines": 465,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        465
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/i18n/locales/en.ts",
+    "sha256": "c3b960ecf73b26ac60a7139ffaf0d6cd282c684de4727ac7f570827ec67e91e4",
+    "lines": 472,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        472
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/i18n/locales/es.ts",
+    "sha256": "d6004973ac9685d44f7fda07aac154cefaf757b41cf969dbac9b34db6ab6b8fa",
+    "lines": 484,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        484
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/i18n/locales/fa.ts",
+    "sha256": "59c0c5098c832f0beed62b9247d068f7b7dfadfe201e7ce321cd40702bf71578",
+    "lines": 472,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        472
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/i18n/locales/locales.test.ts",
+    "sha256": "ccad9f744054409029227bd1b0e00e40fe02a7842f6af969e6639401391570ec",
+    "lines": 131,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        131
+      ]
+    ],
+    "responsibility": "Regression coverage for locales.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/i18n/locales/zh.ts",
+    "sha256": "6f1a85be09fc1eb6b6e42ea1d8e3783a776af0e00585baff9fe2dcc171167571",
+    "lines": 454,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        454
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/i18n/navigation.ts",
+    "sha256": "aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294",
+    "lines": 42,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        42
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/i18n/provider.tsx",
+    "sha256": "1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381",
+    "lines": 34,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        34
+      ]
+    ],
+    "responsibility": "Locale registry, navigation, formatting and complete interface copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/certifications.ts",
+    "sha256": "2314865a1753aa67f52291f27e86825b324f73828b4716120f5ec10ec5485134",
+    "lines": 227,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        227
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/constants.ts",
+    "sha256": "d6031d067bd0671d7b2330b6ebc1f17f184ee0b65d7d092bd86e038570254335",
+    "lines": 22,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        22
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/content-integrity.test.tsx",
+    "sha256": "a9e73c1676b9152cad50a0f06bb7084a7bd1740bfe2a22df425a378ccf30f010",
+    "lines": 65,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        65
+      ]
+    ],
+    "responsibility": "Regression coverage for content-integrity.tsx",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/data.test.ts",
+    "sha256": "03a39a087e21fe4b0a5113be5e3392b19177d999dfe15333e24076a9916e156f",
+    "lines": 247,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        247
+      ]
+    ],
+    "responsibility": "Regression coverage for data.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/data.ts",
+    "sha256": "e046988331bb6e2328d010953cbf628232b8b4401ada972d976091a71f7b1b31",
+    "lines": 1584,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        1584
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [
+      "C-LAB-01: rejected sample payload partially modified image and CLI reported success after embedding failure (fixed)",
+      "C-CLAIM-01: Zurvan absolute no-cloud claim needs owner evidence against configured cloud provider option",
+      "C-CLAIM-02: Aion absolute non-hallucination claim needs qualification to recorded benchmark scope"
+    ],
+    "severity": "medium",
+    "action": "modified",
+    "verification": "197 Vitest content/localization tests; exact source and numeric/resource identity parity; Go helper: 4 tests plus 4 error subcases passed",
+    "status": "unresolved owner-verification risks; implementation verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/feed-route.test.ts",
+    "sha256": "2d5087e3884b43f86cf172f0cccaf962085bf18dfc2f5883cf2523cc516191a4",
+    "lines": 42,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        42
+      ]
+    ],
+    "responsibility": "Regression coverage for feed-route.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/localized-labs.ts",
+    "sha256": "5e939ac1007e8892703c2f0d6d0c0841f503acb3ae1b14f121456a5a4a48a8a1",
+    "lines": 171,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        171
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/localized-pages.test.ts",
+    "sha256": "b3a237d4207849afa9f49aec051f6fff5a62944f7b4707c3bfdf5e8740752d20",
+    "lines": 173,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        173
+      ]
+    ],
+    "responsibility": "Regression coverage for localized-pages.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/localized-writing.ts",
+    "sha256": "9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b",
+    "lines": 79,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        79
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/machine-reliability.test.ts",
+    "sha256": "1058bc7c2f7875a8154fe5f7ee18098a797c4dc1ba5313dc31d109b65d221b37",
+    "lines": 93,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        93
+      ]
+    ],
+    "responsibility": "Regression coverage for machine-reliability.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/os-app-schema.test.ts",
+    "sha256": "b7e8029d1d82ee5fe7315da7c32f62f0f62a734f53a8023a9de099a8e8ff88ea",
+    "lines": 175,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        175
+      ]
+    ],
+    "responsibility": "Regression coverage for os-app-schema.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/os-app-schema.ts",
+    "sha256": "7323a287a22469e1a7f185860564bfba1155f3aa17310d82dcc79bc5a78108be",
+    "lines": 185,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        185
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/os-search-query.ts",
+    "sha256": "30cfffe8440355b03a53d8b11553fcd17643a7b7394471ec2e37a3f1a3cf291d",
+    "lines": 74,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        74
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/os-search.test.ts",
+    "sha256": "d3cb247be0ac391f691aec52d38728f7c7ce49b736dd241d40b3cbdba4680bde",
+    "lines": 264,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        264
+      ]
+    ],
+    "responsibility": "Regression coverage for os-search.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/os-search.ts",
+    "sha256": "70261603e501bc57b40a189396dc58b393bbe5300448013e3ae45702125f9991",
+    "lines": 129,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        129
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/page-support-copy.ts",
+    "sha256": "62b5b29b7d25dfe2483b071bc18b1c1858d47f37e870119694b9271e619e9a80",
+    "lines": 130,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        130
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/project-content/ar.ts",
+    "sha256": "895331fd58b3870556e3378c6bcb6da6dfcaca6ab6ed79dd14f5ed4924cb7f02",
+    "lines": 531,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        531
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/diagram-copy.ts",
+    "sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+    "lines": 173,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        173
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/es.ts",
+    "sha256": "14e98d4eeb64e72fb8638f9411e20a156d1cffd146024c8852d63474c6966c26",
+    "lines": 526,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        526
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/evidence-story-copy.ts",
+    "sha256": "caaba572501f7d07710346d22b4b7c613ef06d497d882f42aceb6b11f1d20a32",
+    "lines": 681,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        681
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/fa.ts",
+    "sha256": "28b25b62eb2af8b4c18d0ead4083b64b3ed681f7a9d585ada1f88c4f4a85d57a",
+    "lines": 526,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        526
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/terms.ts",
+    "sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e",
+    "lines": 141,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        141
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/types.ts",
+    "sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524",
+    "lines": 63,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        63
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-content/zh.ts",
+    "sha256": "222ba4a764873adac666b6f37f1321d4639ef0ddbb98e52468f33ecc6e45286f",
+    "lines": 530,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        530
+      ]
+    ],
+    "responsibility": "Authored project translations and illustrative research architecture copy",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/project-localization.test.ts",
+    "sha256": "330155ab85b81a198a2e5aafe61c4b24933609cf39f81a8d19002856d2b87449",
+    "lines": 276,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        276
+      ]
+    ],
+    "responsibility": "Regression coverage for project-localization.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/project-localization.ts",
+    "sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67",
+    "lines": 69,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        69
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/project-summaries.ts",
+    "sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a",
+    "lines": 33,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        33
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/publications.ts",
+    "sha256": "5194ea5cceb641d84a00bf8491bd3fff438d71ae9db336d7aa0727cb62042028",
+    "lines": 74,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        74
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/resume-section-copy.ts",
+    "sha256": "fa0f1d91ce50c7304c6aed54afe65c565a29d30924678b90484e3c2b9ac37a20",
+    "lines": 38,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        38
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/seo.ts",
+    "sha256": "b8df840daa189401dc4b085bd2b9adb8b49b8d85df575657b5e866331656a4d4",
+    "lines": 110,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        110
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/server-routes.test.tsx",
+    "sha256": "5159991271401533e8f59d1c4546df5d14977323e5574dc833ffa61616108f0e",
+    "lines": 63,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        63
+      ]
+    ],
+    "responsibility": "Regression coverage for server-routes.tsx",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/utils.test.ts",
+    "sha256": "6faeab864f9beee04f13a066f2dd43bcdcf85c9609b3789f784ec82da406a2a9",
+    "lines": 46,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        46
+      ]
+    ],
+    "responsibility": "Regression coverage for utils.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/utils.ts",
+    "sha256": "34cee4996368dd7d9a19f0d644725630cb9cc0686cf52c9020ad5ea66bf180e0",
+    "lines": 14,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        14
+      ]
+    ],
+    "responsibility": "Frontend content model, derived public summaries and integrity boundary",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/version-route.test.ts",
+    "sha256": "168daf00910e52eb8bb214006d8cbc7523fa6763643e2bf8bd2a154636fb3183",
+    "lines": 64,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        64
+      ]
+    ],
+    "responsibility": "Regression coverage for version-route.ts",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  },
+  {
+    "path": "src/lib/writing-translations/ar.json",
+    "sha256": "7f685a1dda130b0cd612485e53f3abcf0cce25ea1e6ab1a95966c8194414007b",
+    "lines": 244,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        244
+      ]
+    ],
+    "responsibility": "Write-up prose overlays retaining source code, identifiers and numeric evidence",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/writing-translations/es.json",
+    "sha256": "ee30022c0dd52a2d22a03572a912539423aaf3f46b0df198a9db587f02bbf6d0",
+    "lines": 244,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        244
+      ]
+    ],
+    "responsibility": "Write-up prose overlays retaining source code, identifiers and numeric evidence",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/writing-translations/fa.json",
+    "sha256": "4b00928866d61775ef3242498c341da011bca53ed0b1817edff8719fdd2386eb",
+    "lines": 244,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        244
+      ]
+    ],
+    "responsibility": "Write-up prose overlays retaining source code, identifiers and numeric evidence",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/writing-translations/source-revision.json",
+    "sha256": "c0ab53b2eb2a77467f756182730305f80398761c1d83d6a66b0edde0dbba5056",
+    "lines": 9,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        9
+      ]
+    ],
+    "responsibility": "Write-up prose overlays retaining source code, identifiers and numeric evidence",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/lib/writing-translations/zh.json",
+    "sha256": "5773fd01ca3d8efb8ee0431e268727a0f292d2b9e05b1b214708f5d6047d0eec",
+    "lines": 244,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        244
+      ]
+    ],
+    "responsibility": "Write-up prose overlays retaining source code, identifiers and numeric evidence",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": "Translated prose examined for structural/identifier/evidence consistency; native-speaker editorial certification is not claimed."
+  },
+  {
+    "path": "src/test/setup.ts",
+    "sha256": "db3c04607470b8e1af1adb7f2bb0b2996ee8b04433545793a6c6edf8ebb52aa8",
+    "lines": 78,
+    "coverage": "complete",
+    "reviewed_ranges": [
+      [
+        1,
+        78
+      ]
+    ],
+    "responsibility": "Shared JSDOM test doubles and rendering environment",
+    "findings": [],
+    "severity": "none",
+    "action": "retained",
+    "verification": "Complete source examination; content/localization regression suite (14 files, 197 tests)",
+    "status": "verified",
+    "reviewer": "content",
+    "note": ""
+  }
+]

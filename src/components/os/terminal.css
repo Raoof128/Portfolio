@@ -107,6 +107,21 @@
   }
 }
 
+/* Clipboard feedback stays visible beside the console, including when clipboard
+   access is denied. The mounted empty status region occupies no space at rest. */
+.os-shell .os-terminal-feedback {
+  margin: 0;
+  padding: 6px 12px;
+  color: var(--win7-console-feedback);
+  background: #0c0c0c;
+  font-family: var(--win7-font);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.os-shell .os-terminal-feedback:empty {
+  padding: 0;
+}
+
 /* The console: black, light grey, a 14px mono face. Its focus ring is light blue,
    which keeps 3:1 on the black pane. */
 .os-shell .os-terminal-body {
@@ -164,6 +179,10 @@
     color: CanvasText;
     background: Canvas;
     box-shadow: none;
+  }
+  .os-shell .os-terminal-feedback {
+    color: CanvasText;
+    background: Canvas;
   }
   .os-shell .os-terminal-body {
     border: 1px solid CanvasText;

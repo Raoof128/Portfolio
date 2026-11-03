@@ -1,0 +1,18 @@
+
+> portfolio@0.1.0 test:schemas
+> node --test scripts/lib/schema-language-audit.test.mjs
+
+✔ accepts active translated body alongside an original English DOI paper (3.498605ms)
+✔ rejects an English fallback body on a Persian route (0.322506ms)
+✔ rejects falsely localized original DOI publications (1.238638ms)
+✔ reads every JSON-LD block and nested graphs, with array types (0.27191ms)
+✔ rejects malformed or missing primary schemas without throwing (0.328806ms)
+✔ validates project bodies and lab experiment identities (0.252521ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.637029

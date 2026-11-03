@@ -100,7 +100,9 @@ export function LabDetailClient({ exp }: { exp: LabExperiment }) {
               <code>
                 {exp.codeSnippet.split("\n").map((line, i) => (
                   <span key={i} className="os-code-line">
-                    <span className="os-code-number">{i + 1}</span>
+                    <span className="os-code-number" aria-hidden="true">
+                      {i + 1}
+                    </span>
                     <span className="os-code-text">{line}</span>
                   </span>
                 ))}
