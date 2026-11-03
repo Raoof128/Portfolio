@@ -1,0 +1,160 @@
+{
+  "baseline_commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+  "build_id": "xfHy_bhVfJKii-CA72D9U",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:23:07.345Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "source_files": [
+    {
+      "path": "scripts/browser-regressions/aero-parity/README.md",
+      "sha256": "c5108283335299803022edb59929bd580f0db649e8b0ee905797c3fd0b714fba",
+      "lines": 38
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/compare.mjs",
+      "sha256": "9576606f3ce8ac5ac287dad50ad5554ff58a87d67ec5ed5ac01ddf6ed198480c",
+      "lines": 658
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.mjs",
+      "sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "lines": 189
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.test.mjs",
+      "sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "lines": 99
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "sha256": "adeae013839b8f06618bcc54deb61592a09ddda4d014710097bb4887a770fbd4",
+      "lines": 131
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/portfolio.spec.ts",
+      "sha256": "77faee19a14a24f7cfb794507fb5f98b83c39050f5715785e767f19de6bd296e",
+      "lines": 350
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "sha256": "e76ff4c57ad7217458ec3d87ecdd5dfc7ba12ad86ad0ba4b7a5876fb5277d07e",
+      "lines": 517
+    },
+    {
+      "path": "src/components/os/Desktop.tsx",
+      "sha256": "108f69ed946a988010111564b6250e51287dbd01f56afe521d8a92d9fa8667fc",
+      "lines": 389
+    },
+    {
+      "path": "src/components/os/ProjectExplorer.tsx",
+      "sha256": "b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18",
+      "lines": 423
+    },
+    {
+      "path": "src/components/os/ProofAtlas.tsx",
+      "sha256": "123c638912b32b4599b18e2c7a35f667969c6a7072112957377df6ba54bc638c",
+      "lines": 586
+    },
+    {
+      "path": "src/components/os/ReadingWindowControls.tsx",
+      "sha256": "164029051928af861a8798e22ad6f57b2dd366f796706fd365ce10054a873a98",
+      "lines": 298
+    },
+    {
+      "path": "src/components/os/ResearchOS.test.tsx",
+      "sha256": "808a35787d89e5871e6801eaf7b2e5a1a5f33773ff2ab26f173d3a4e33b0f218",
+      "lines": 1461
+    },
+    {
+      "path": "src/components/os/ResearchOS.tsx",
+      "sha256": "2e93532539cb4e23eca7c186a304d60b28fd89e6ad11e5d483940f68ac570deb",
+      "lines": 1806
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.tsx",
+      "sha256": "ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb",
+      "lines": 953
+    },
+    {
+      "path": "src/components/os/controls.css",
+      "sha256": "43071d7af2b96e3a1aff392f41617eb87f0ce1d5c17834c85e45d8dd1a261b2a",
+      "lines": 179
+    },
+    {
+      "path": "src/components/os/project-explorer.css",
+      "sha256": "94060050e32e700ad0bfbe7e0b6c591f70050db411fb41d48b69cb854a9be4c4",
+      "lines": 1165
+    },
+    {
+      "path": "src/components/os/proof-atlas.css",
+      "sha256": "0e9d191dda00e6db3d17d59855af63c356112fc25619bf3ecad1dd346664369f",
+      "lines": 714
+    },
+    {
+      "path": "src/components/os/reading-window.css",
+      "sha256": "140f7427c8c7d6c5fe8708002095c389ffb8a957d84d590269a4f3791c0037c1",
+      "lines": 262
+    },
+    {
+      "path": "src/components/os/research-os.css",
+      "sha256": "e1e5cfcb622f8a1104f7b65408438119a1c310ca1ef69ef7a4e81a7ee912a67e",
+      "lines": 2192
+    },
+    {
+      "path": "src/components/os/theme-switch.css",
+      "sha256": "598431defa8a4359fd80b01bb78abfecf70ab06d1e11a7b62c1fce0857741cf8",
+      "lines": 83
+    },
+    {
+      "path": "src/components/os/theme-token-guard.test.ts",
+      "sha256": "1588f902276a7d1a84330b7a9567bd41f2327b8bb05ca087df33ecde76b9fe2b",
+      "lines": 116
+    },
+    {
+      "path": "src/components/os/win7-desktop.css",
+      "sha256": "42fa2437e522d7d4203df7982a337e963eb6094f3a4909ad487104d7ffd6c64b",
+      "lines": 748
+    },
+    {
+      "path": "src/components/os/win7-explorer.css",
+      "sha256": "6db822b86e85ec38bb13f037b0847890913d83eabe8692922c7e48cad973a059",
+      "lines": 179
+    },
+    {
+      "path": "src/components/os/win7-logon.css",
+      "sha256": "d4643d5f14f819b42a805bebf8a0e91cce04c9fad7fac9d1a14843c649f08523",
+      "lines": 340
+    },
+    {
+      "path": "src/components/os/win7-pages.css",
+      "sha256": "2b02b551165f7217380c0a4c2c7261fc724671cff4511f438bbb3bf0b3ad2590",
+      "lines": 686
+    },
+    {
+      "path": "src/components/os/win7-taskbar.css",
+      "sha256": "bb7f0004bcc13de5731503770ae171e5d8f7ec401c4f183f31ee6de761e1eb36",
+      "lines": 1207
+    },
+    {
+      "path": "src/components/os/win7-theme.css",
+      "sha256": "f942a41eefa1fe5a885235a5bbdfc3ce2916418aac5836921576c0261f3cc163",
+      "lines": 577
+    },
+    {
+      "path": "src/components/os/win7-windows.css",
+      "sha256": "a9963fdaacd951a8ffd40b2a524964bb01c4a88f498349a4a377f35e810af911",
+      "lines": 783
+    },
+    {
+      "path": "src/components/os/workspace-windows.css",
+      "sha256": "69d474889820fae1cc5c1d4c0458fac466dcb0a7abb2d8910e4fcdd644294bb1",
+      "lines": 459
+    }
+  ],
+  "export_file_count": 1072,
+  "source_status": "uncommitted Operation Aero implementation; no deployment",
+  "record_scope": "source_files are hashes recorded at final build time, including then-current test tooling; subsequently reviewed validation-only revisions are identified in source-manifest.json. All 23 src files and all 1072 export files still match."
+}

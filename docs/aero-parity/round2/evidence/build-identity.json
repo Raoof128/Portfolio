@@ -1,0 +1,178 @@
+{
+  "build_id": "UD_vNX6v9YqmgrvZLWuY7",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T09:25:26.070Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "source_base": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+  "uncommitted": true,
+  "application_changed_since_previous_pass": [
+    {
+      "path": "src/components/os/controls.css",
+      "sha256": "bee066193f7d90b3f6b5fec3070986819ff8863796460e1556016e6b2013c8d4",
+      "baseline_sha256": "43071d7af2b96e3a1aff392f41617eb87f0ce1d5c17834c85e45d8dd1a261b2a",
+      "lines": 182,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/project-explorer.css",
+      "sha256": "091009386048da7245059baec179fc849600f740ab79f5e001399094dd5004ca",
+      "baseline_sha256": "94060050e32e700ad0bfbe7e0b6c591f70050db411fb41d48b69cb854a9be4c4",
+      "lines": 1167,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/reading-window.css",
+      "sha256": "3c5a8063ae69cd4bfaafe725c0bbc8af2ee208f818af1e030a3a9fef4fc32574",
+      "baseline_sha256": "140f7427c8c7d6c5fe8708002095c389ffb8a957d84d590269a4f3791c0037c1",
+      "lines": 262,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/theme-token-guard.test.ts",
+      "sha256": "22e7420bc33691a7ad25d947ade2f466a5bfc4b66933b1976038989d869f2479",
+      "baseline_sha256": "1588f902276a7d1a84330b7a9567bd41f2327b8bb05ca087df33ecde76b9fe2b",
+      "lines": 114,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/win7-desktop.css",
+      "sha256": "e3cdf8bd3f434a78347211026a41b83a47f7a28b083f3cded1f6f3c55353c4ba",
+      "baseline_sha256": "42fa2437e522d7d4203df7982a337e963eb6094f3a4909ad487104d7ffd6c64b",
+      "lines": 745,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/win7-pages.css",
+      "sha256": "3429570078eb76e98204ee17ecdceb8e4282e10375e3df348ee030f22bd6babe",
+      "baseline_sha256": "2b02b551165f7217380c0a4c2c7261fc724671cff4511f438bbb3bf0b3ad2590",
+      "lines": 652,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/win7-taskbar.css",
+      "sha256": "f1b51b0fbdd395b070bb4f605873a0b5f05934551af0ebd0c6d9ed193e6b97cd",
+      "baseline_sha256": "bb7f0004bcc13de5731503770ae171e5d8f7ec401c4f183f31ee6de761e1eb36",
+      "lines": 1219,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/win7-windows.css",
+      "sha256": "3bb7e14df39d2bd8cb0b831cbef4eac74d5e742758f01c31d0afd513bec9b601",
+      "baseline_sha256": "a9963fdaacd951a8ffd40b2a524964bb01c4a88f498349a4a377f35e810af911",
+      "lines": 822,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/workspace-windows.css",
+      "sha256": "9662ed745105b5c2e710974e781760c07e3f26a435b5bac9795e13bb611ae4b6",
+      "baseline_sha256": "69d474889820fae1cc5c1d4c0458fac466dcb0a7abb2d8910e4fcdd644294bb1",
+      "lines": 466,
+      "build_input": true
+    },
+    {
+      "path": "src/app/[locale]/not-found.tsx",
+      "sha256": "e8c198163726ca9d3f384cd1f80a651322c0f53f5ee505586a749f99164c6644",
+      "baseline_sha256": "da5ce54f10d987f79d9d6c1a3d4969a29f5f44c1722dc1e36eaf3e9120211bfa",
+      "lines": 76,
+      "build_input": true
+    },
+    {
+      "path": "src/app/global-not-found.css",
+      "sha256": "d558509fe4ec4eeb19db79d45b343bbdf5e395f8545a9d0f2745ced5694910fb",
+      "baseline_sha256": "a79a7a8c36b9e645524c0b2cdddea929d2b803e3a6f974b7fa09cb09f0b03550",
+      "lines": 280,
+      "build_input": true
+    },
+    {
+      "path": "src/app/global-not-found.tsx",
+      "sha256": "c1aceae85a37bbd450ed6bbe5e855d97e08c5d3136aea8937b14637b5af533b4",
+      "baseline_sha256": "133d744ee00aa4474fa16ded0a1cf3eed40a3c62492ae05d9bc4aa8c5f8cf21d",
+      "lines": 56,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/GlobalNotFoundContent.tsx",
+      "sha256": "a1ab484dd285f5fbf72c6b5e6de11d792b5a3be79f3693733c1f68a9204e9491",
+      "baseline_sha256": "97815052b1a9c5a3d728420a630b37803f782800b3e2d0221ecf89bb3d1f033c",
+      "lines": 207,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/TerminalCommand.tsx",
+      "sha256": "8144c28d6a9785d6c38994ab8224444f8c6ffac2f09fa96f46bb1cc23c8fb694",
+      "baseline_sha256": "15a68a9de2ecfa711775a8a36e40c2df4771298fa4ee0f02b78bcd9a4097e48e",
+      "lines": 142,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/evidence-story-common.css",
+      "sha256": "55cc4c46c155140c02b78cb2aec32d845e7f7f8ecab5fbdf0a93117af016aba2",
+      "baseline_sha256": "d5b7b6952cf85bfe733768eef3488f3f54aebc83c334c7df06089699a44135d7",
+      "lines": 319,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/evidence-story-invisible.css",
+      "sha256": "cbe57ff69c35f52865cc635bd2cfccb555a44453a7e5cf5eeb23354bb7722f93",
+      "baseline_sha256": "7807543847cb0996fadc71bb8185b4dafc41617f819a26a311f6f7c5e04cd02b",
+      "lines": 244,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/supporting-apps.css",
+      "sha256": "f6721c674dc6ae698247a739f69d8809b56cb33b9554e01b24d3e0ac57895a8e",
+      "baseline_sha256": "71bde29bf4999050743b5826ba7683d1c5cd7ac1c7cedd964675955bed353edd",
+      "lines": 1658,
+      "build_input": true
+    },
+    {
+      "path": "src/components/os/terminal.css",
+      "sha256": "8954a7d39b88c5b46625f9ceb03a59f04d58e00ca66b40ec8ac810897c059916",
+      "baseline_sha256": "874675dce73e47dc15356a5640d316a6288514c96e50e90f9b023d55e465b706",
+      "lines": 124,
+      "build_input": true
+    },
+    {
+      "path": "src/components/ui/ui-surfaces.css",
+      "sha256": "e60139a0e5b015b2d586f719b51036579c586eed1d61015df056ead50fc78812",
+      "baseline_sha256": "7dc5edadc37c16c5d11c09cd722d69eb899672cf680d8514f075c65d9926f709",
+      "lines": 153,
+      "build_input": true
+    }
+  ],
+  "validation_tools_currently_changed": [
+    {
+      "path": "scripts/browser-regressions/aero-parity/README.md",
+      "sha256": "0c18848cc131d8d57ec4789154b5d06e8f22f94eb604326cc2db47e499647a73",
+      "baseline_sha256": "2bb1927e358dc8c7ca488f13f6fcf8b23d72ad9a8c50e55fa988de754cfbbb4e",
+      "lines": 73,
+      "build_input": false
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/compare.mjs",
+      "sha256": "0b263eb65f11d63c97827e898ecd090e0c409dc1c4831ac1a09e679325cba911",
+      "baseline_sha256": "2e9d5c2c4424f47554394e22a1832b3f3159732a12a596810fc330169310616b",
+      "lines": 761,
+      "build_input": false
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "sha256": "76ce4e65462d5f1093bd7a5e14b55c03f5e3403718976ddf04ae1cd8582dc086",
+      "baseline_sha256": "a291c5e0376b5bb82f3679f804b3a5e19e0b0edc1518930a762004389c2a1c82",
+      "lines": 264,
+      "build_input": false
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/portfolio.spec.ts",
+      "sha256": "5eb6525f218c7176a02d3e2ee67a4243c587c49ac5df039dfd274d37abdb55e3",
+      "baseline_sha256": "df4f45e096fccd535a44c6d85766636837a1b6920d20380cb9d42256a4adcfb0",
+      "lines": 378,
+      "build_input": false
+    }
+  ],
+  "source_status": "Application frozen after final platform palette, toolbar and global404 compositing corrections; tool hashes separately finalised after validation",
+  "deployment": "local preview only"
+}

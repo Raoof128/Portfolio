@@ -106,31 +106,34 @@
   text-align: start;
 }
 
-/* Write-ups search: one border and one icon. The .os-library-search label carries the
-   border and the lucide magnifier. 7.css's [type=search] box border, its white fill and
-   its trailing blue magnifier are switched off on the input. The label takes the focus
-   ring, and the input's own ring is switched off below, because the shell's
-   :focus-visible rule would otherwise draw a second ring inside the label. Every section
-   on the library starts 24px below the one above it. */
-.win7 .os-library-search input[type="search"] {
-  background-color: transparent;
-  background-image: none;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  color: var(--os-text);
-  font: inherit;
-  min-inline-size: 0;
-  padding: 0;
+/* Search fields use the canonical 7.css surface and trailing magnifier. The
+   existing semantic label is a layout wrapper; its decorative Lucide icon is
+   hidden so there is one icon, and focus stays on the native input. */
+.win7 .os-library-search > svg {
+  display: none;
 }
-.win7 .os-library-search:focus-within {
-  outline: 1px dotted #000000;
+.win7 .os-library-search input[type="search"] {
+  min-block-size: 24px;
+  padding-inline-end: 26px;
+  color: var(--win7-body-text);
+  font-family: var(--win7-font);
+}
+.win7 .os-library-search input[type="search"]:dir(rtl) {
+  background-position: 8px center;
+  padding-inline-start: 6px;
+}
+.win7 .os-library-search input:focus-visible {
+  outline: 1px dotted #000;
   outline-offset: -4px;
   box-shadow: inset 0 0 0 2px #98d1ef;
 }
-.win7 .os-library-search input:is(:focus, :focus-visible) {
-  outline: 0;
-  box-shadow: none;
+.win7 .os-library-topic select {
+  min-block-size: 23px;
+  padding-inline: 3px 30px;
+  font-family: var(--win7-font);
+}
+.win7 .os-library-topic select:dir(rtl) {
+  background-position: 0 center;
 }
 
 /* 7.css gives [role=tabpanel] its own tab surface (--w7-tab-bg). Inside a reading body the
@@ -150,138 +153,8 @@
   max-inline-size: 100%;
 }
 
-/* Push buttons on the reading pages and the locale 404: the 7.css look for links and
-   buttons. Desktop targets are 24px tall and touch targets 44px. Every rule carries the
-   same selector weight, (0,5,1) or more, so it beats controls.css, which sets the accent
-   fill and a 40px height. Hover and press use the 7.css overlays, drawn on ::before and
-   ::after with opacity, so no colour, size or position animates. The primary action is
-   the 7.css default button: a blue face with a #5586a3 border. */
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):not(
-    :is([aria-disabled="true"], :disabled)
-  ) {
-  position: relative;
-  isolation: isolate;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  box-sizing: border-box;
-  min-inline-size: 75px;
-  min-block-size: 24px;
-  padding: 0 12px;
-  border: 1px solid var(--w7-el-bd, #8e8f8f);
-  border-radius: var(--w7-el-bdr, 3px);
-  background: var(
-    --w7-el-grad,
-    linear-gradient(#f2f2f2 45%, #ebebeb 0, #cfcfcf)
-  );
-  box-shadow: var(--w7-el-sd, inset 0 0 0 1px #fffc);
-  color: #222222;
-  font-family: var(--os-font-ui);
-  font-size: var(--win7-ui-size);
-  font-weight: 400;
-  line-height: 1.2;
-  text-align: center;
-  text-decoration: none;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):not(
-    .os-button--secondary
-  ):not(:is([aria-disabled="true"], :disabled)) {
-  border-color: #5586a3;
-  background: var(
-    --w7-el-grad-h,
-    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
-  );
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary)::before,
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary)::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  pointer-events: none;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary)::before {
-  background: var(
-    --w7-el-grad-h,
-    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
-  );
-  transition: opacity 0.3s;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary)::after {
-  background: var(
-    --w7-el-grad-a,
-    linear-gradient(#e5f4fc, #c4e5f6 30% 50%, #98d1ef 50%, #68b3db)
-  );
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):not(
-    :is([aria-disabled="true"], :disabled)
-  ):is(:hover)::before {
-  opacity: 1;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):not(
-    :is([aria-disabled="true"], :disabled)
-  ):is(:hover, :active) {
-  border-color: #3c7fb1;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):not(
-    :is([aria-disabled="true"], :disabled)
-  ):is(:active)::after {
-  opacity: 1;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):not(
-    :is([aria-disabled="true"], :disabled)
-  ):is(:active) {
-  border-color: #6d91ab;
-}
-/* Focus: the 7.css dotted line inside a 2px blue ring. Static, with no pulse. */
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):focus-visible {
-  outline: 1px dotted #000000;
-  outline-offset: -4px;
-  box-shadow: inset 0 0 0 2px var(--win7-focus-ring, #98d1ef);
-}
-/* 7.css runs an infinite box-shadow pulse (pulse-anim) on every focused button, and the
-   About retry control is a button, not a link. The reading and 404 buttons take the
-   static ring above instead, so no loop runs while they hold focus. */
-.os-shell.win7 :is(.os-support, .os-not-found) button {
-  animation: none;
-}
-.os-shell.win7
-  :is(.os-support, .os-not-found)
-  :is(a, button):is(.os-button, .os-button--secondary):is(
-    [aria-disabled="true"],
-    :disabled
-  ) {
-  border-color: #adb2b5;
-  background: #f4f4f4;
-  box-shadow: none;
-  color: #838383;
-  cursor: default;
-}
+/* Shared push buttons and button-like links use controls.css. Native controls use
+   the canonical scoped stylesheet; this page layer owns layout only. */
 /* Locale 404: a 7.css message box in the shell. The 404 code sits in the glass title bar,
    and the body holds the error icon, the message and the buttons. The default button
    comes first and the buttons align to the end, as in a Win7 dialog. The rings of the
@@ -297,9 +170,6 @@
 }
 .win7 .os-not-found .title-bar .os-not-found-code {
   margin: 0;
-  font-size: var(--win7-ui-size);
-  color: var(--win7-text-glass);
-  text-shadow: var(--win7-text-shadow);
 }
 .win7 .os-not-found .window-body {
   position: relative;
@@ -367,9 +237,9 @@
   margin-block-start: 20px;
 }
 
-/* Fields on the reading pages: the 7.css sunken border and a 24px target. The write-up
-   search keeps the ring on its label (above), so the field rules skip it. Focus takes the
-   7.css blue border and the dotted black line, which holds 3:1 on white. */
+/* Reading fields keep the native 7.css font and geometry. The separate search
+   rule retains its 24px height. Text fields add visible keyboard focus; selects
+   retain their canonical dotted outline and blue inset instead of text-field edges. */
 .os-shell.win7
   .os-support
   :is(
@@ -377,39 +247,17 @@
     select,
     textarea
   ):not(.os-library-search *) {
-  min-block-size: 24px;
-  font-family: var(--os-font-ui);
-  font-size: var(--win7-ui-size);
+  min-block-size: 23px;
+  font: var(--w7-font);
+  font-family: var(--win7-font);
 }
 .os-shell.win7
   .os-support
-  :is(input, select, textarea):not(.os-library-search *):focus-visible {
+  :is(input, textarea):not(.os-library-search *):focus-visible {
   outline: 1px dotted #000000;
   outline-offset: -4px;
   border-color: #3d7bad #a4c9e3 #b7d9ed #b5cfe7;
   box-shadow: none;
-}
-
-/* Find Me Elsewhere: the tiles take the 7.css face and border, and the hover is the 7.css
-   blue face. Each tile keeps a 44px target. */
-.os-shell.win7 .os-contact-socials a {
-  border: 1px solid var(--w7-el-bd, #8e8f8f);
-  border-radius: var(--w7-el-bdr, 3px);
-  background: var(
-    --w7-el-grad,
-    linear-gradient(#f2f2f2 45%, #ebebeb 0, #cfcfcf)
-  );
-  box-shadow: var(--w7-el-sd, inset 0 0 0 1px #fffc);
-  color: #222222;
-  min-block-size: 44px;
-}
-.os-shell.win7 .os-contact-socials a:hover {
-  border-color: #3c7fb1;
-  background: var(
-    --w7-el-grad-h,
-    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5)
-  );
-  color: #222222;
 }
 
 /* Headings on the reading pages: the document header is 26px at most, and the group
@@ -437,7 +285,7 @@
   }
 }
 @media (pointer: coarse), (max-width: 700px) {
-  /* The :not clause matches the 24px base rule above, so this 44px touch rule wins on order. */
+  /* Match the desktop selector so this 44px touch rule wins on order. */
   .os-shell.win7
     :is(.os-support, .os-not-found)
     :is(a, button):is(.os-button, .os-button--secondary):not(
@@ -453,7 +301,8 @@
     ):not(.os-library-search *) {
     min-block-size: 44px;
   }
-  .os-shell.win7 .os-support .os-library-search {
+  .os-shell.win7 .os-support .os-library-search,
+  .os-shell.win7 .os-support .os-library-search input {
     min-block-size: 44px;
   }
 }
@@ -500,21 +349,14 @@
   );
 }
 
-/* Contact CTA (TI-03). The mail-client link is the primary action on the card: 44px tall,
-   a full-width target on phones, and the 7.css blue face. Its copy-address partner is the
-   secondary face. */
+/* Contact actions share canonical push-button geometry and wrap at an 8px gap.
+   Phones keep full-width targets, and coarse pointers keep the shared 44px height. */
 .os-shell.win7 .os-support .os-contact-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
-.os-shell.win7 .os-support .os-contact-email a.os-button {
-  min-block-size: 44px;
-  min-inline-size: min(100%, 16rem);
-  padding-inline: 20px;
-  font-size: var(--win7-ui-size);
 }
 @media (max-width: 700px) {
   .os-shell.win7 .os-support .os-contact-email .os-contact-actions {
@@ -531,7 +373,7 @@
 }
 
 /* Touch: the contact submit and the copy-address button are 44px tall on coarse pointers, at
-   every width (the 7.css push button is 24px). */
+   every width (the 7.css push button is 23px). */
 @media (pointer: coarse) {
   .os-shell.win7 .os-secure-contact .os-button,
   .os-shell.win7 .os-secure-copy > button {
@@ -637,8 +479,6 @@
 .win7 .os-secure-field :is(input, textarea) {
   inline-size: 100%;
   box-sizing: border-box;
-  min-block-size: 24px;
-  font-size: var(--win7-ui-size);
 }
 /* Field edges (WCAG 1.4.11). 7.css draws the top edge of a text field at #abadb3, about
    2.2:1 on white, so the resting edge takes the 7.css control line, #8e8f8f (3.2:1). Hover
@@ -647,15 +487,14 @@
   border-color: var(--w7-el-bd);
 }
 .win7 .os-secure-field textarea {
-  min-block-size: 96px;
   resize: vertical;
 }
 .win7 .os-secure-field :is(input, textarea)[aria-invalid="true"] {
   border-color: var(--win7-danger);
 }
 /* Phones and touch: 16px fields, so iOS does not zoom the page when a field takes focus. The
-   selector must outrank the reading-field rule above (font-size from --win7-ui-size, specificity
-   0,5,1), or the 14px value wins and the zoom returns. */
+   selector must outrank the reading-field rule above, or the native 12px value wins
+   and the zoom returns. */
 @media (pointer: coarse), (max-width: 700px) {
   .os-shell.win7
     .os-support
@@ -717,11 +556,6 @@
 .win7 .os-secure-copy-status {
   font-size: var(--win7-ui-size);
   color: var(--os-muted);
-}
-/* 7.css buttons are 23px tall. WCAG 2.5.8 asks for 24px on any pointer, and the coarse
-   rule above takes these to 44px. */
-.win7 :is(.os-secure-copy, .os-secure-footer) > button {
-  min-block-size: 24px;
 }
 @media (max-width: 700px), (pointer: coarse) {
   .os-shell.win7 .os-support .os-secure-footer > .os-button {
@@ -795,7 +629,6 @@
     .os-about-education article,
     .os-resume-card,
     .os-contact-email,
-    .os-contact-socials a,
     .os-hall .os-callout,
     .os-policy .os-callout
   )::after {
@@ -811,7 +644,6 @@
     .os-about-education article,
     .os-resume-card,
     .os-contact-email,
-    .os-contact-socials a,
     .os-hall .os-callout,
     .os-policy .os-callout
   ):hover::after {

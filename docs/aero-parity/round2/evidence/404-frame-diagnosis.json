@@ -1,0 +1,57 @@
+{
+  "diagnostic_build": "iIwRABh8xPIUf2fpDkuDr",
+  "diagnostic_build_time": "2026-11-03T09:07:57.318Z",
+  "specimen": "Frozen actual global404 window vs unchanged7.css; common640x240 external camera, measured text mask, same fonts",
+  "original_mask_pixels": 24433,
+  "original_above16": 1046,
+  "pixel_locations": {
+    "left_one_pixel_inset": 207,
+    "right_one_pixel_inset": 207,
+    "bottom_one_pixel_inset": 630,
+    "corner_remainder": 2
+  },
+  "temporary_rules": [
+    {
+      "rule": "ancestor isolation:auto",
+      "above16": 0
+    },
+    {
+      "rule": "ancestor position:static",
+      "above16": 1046
+    },
+    {
+      "rule": "ancestor overflow:visible",
+      "above16": 1046
+    },
+    {
+      "rule": "ancestor display:block",
+      "above16": 1046
+    },
+    {
+      "rule": "body isolation:isolate",
+      "above16": 1046
+    },
+    {
+      "rule": "body background:#f0f0f0",
+      "above16": 1046
+    },
+    {
+      "rule": "frame isolation:isolate",
+      "above16": 1046
+    },
+    {
+      "rule": "frame z-index:0",
+      "above16": 1046
+    },
+    {
+      "rule": "frame pseudo box-sizing:content-box",
+      "above16": 1046
+    }
+  ],
+  "root_cause": "The global404 main ancestor isolation changed compositor ordering of the otherwise matching inset frame. All frame/title/body external rectangles and pseudo-element paint declarations matched.",
+  "final_application_fix": "Remove originating .global-not-found isolation:isolate; window retains own z-index context and vortex remains behind it.",
+  "final_build": "UD_vNX6v9YqmgrvZLWuY7",
+  "final_mask_above16": 0,
+  "final_mask_mean_rgb_delta": 0,
+  "evidence_scope": "Temporary diagnostic injections are not final screenshots. Final measurement is separately captured from compiled export without application CSS injection."
+}

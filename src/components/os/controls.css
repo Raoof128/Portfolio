@@ -1,222 +1,150 @@
-/* ResearchOS controls: one primitive for buttons and button-like links (design
-   system, section 4). Primary fills with the accent; secondary is a hairline
-   outline. Nothing uppercase, tracked, lifted or glowing. The `.os-shell` prefix
-   and :is() lists outrank the component rules in research-os.css without
-   `!important`, and the secondary rules follow the primary ones on purpose. */
-
-/* Geometry shared by every control. */
-.os-shell
-  :is(
-    .os-button,
-    .os-button--secondary,
-    .os-direct-links .os-button,
-    .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button
-  ):not(.os-welcome *) {
+/* 7.css push-button adapter for semantic links and shared action classes.
+   Native buttons without these classes use 7.scoped.css directly. Links keep their
+   navigation semantics rather than claiming role=button to obtain a visual style.
+   The face, borders and state overlays use the canonical 7.css variables; extensions
+   are native 23px desktop geometry, locale-aware fonts, static focus and 44px touch sizing.
+   Compact desktop controls retain separated targets (WCAG 2.5.8 spacing exception). */
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *) {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  min-height: 40px;
-  padding: 0 var(--space-4);
-  border: 1px solid transparent;
-  border-radius: var(--radius-s);
-  box-shadow: none;
-  font-family: var(--os-font-ui);
-  font-size: var(--text-ui);
-  font-weight: 500;
+  gap: 0;
+  box-sizing: border-box;
+  min-inline-size: 75px;
+  min-block-size: 23px;
+  padding: 0 12px;
+  border: 1px solid var(--w7-el-bd);
+  border-radius: var(--w7-el-bdr);
+  background: var(--w7-el-grad);
+  box-shadow: var(--w7-el-sd);
+  color: var(--win7-button-text);
+  font: var(--w7-font);
+  font-family: var(--win7-font);
   letter-spacing: 0;
-  line-height: 1.3;
   text-align: center;
   text-decoration: none;
   text-transform: none;
+  /* Preserve authored spaces beside isolated bdi/text items without adding an icon gap. */
+  white-space: pre-wrap;
   overflow-wrap: anywhere;
   cursor: pointer;
-  transition:
-    background-color var(--motion-quick) var(--ease-standard),
-    border-color var(--motion-quick) var(--ease-standard),
-    color var(--motion-quick) var(--ease-standard),
-    transform var(--motion-press-out) var(--ease-standard);
+  transform: none;
+  transition: border-color 1s linear;
 }
-.os-shell
-  :is(
-    .os-button,
-    .os-button--secondary,
-    .os-direct-links .os-button,
-    .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button
-  )
-  svg {
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)::before,
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)::before {
+  border-radius: var(--w7-el-bdr);
+  box-shadow: var(--w7-el-sd);
+  background: var(--w7-el-grad-h);
+  transition: opacity 1s linear;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)::after {
+  border-radius: 2px;
+  box-shadow: var(--w7-el-sd-a);
+  background: var(--w7-el-grad-a);
+  transition: opacity 0.3s;
+}
+/* A primary link takes the canonical default-button face without the pulsing loop. */
+.os-shell.win7
+  :is(.os-button:not(.os-button--secondary), .os-document-button[data-variant="primary"]):not(.os-welcome *) {
+  background: var(--w7-el-grad-h);
+  border-color: var(--win7-button-default-border);
+}
+@media (hover: hover) {
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):not(:disabled, [aria-disabled="true"]):hover {
+    border-color: var(--w7-el-bd-h);
+    transition: border-color 0.3s;
+  }
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):not(:disabled, [aria-disabled="true"]):hover::before {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):not(:disabled, [aria-disabled="true"]):active {
+  border-color: var(--w7-el-bd-a);
+  transition: border-color 0.3s;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):not(:disabled, [aria-disabled="true"]):active::after {
+  opacity: 1;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):focus {
+  background: var(--w7-el-grad-h);
+  border-color: var(--win7-button-default-border);
+  animation: none;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):focus-visible {
+  outline: 1px dotted var(--win7-focus-inner);
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px var(--win7-focus-ring);
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):is(:disabled, [aria-disabled="true"]) {
+  background: var(--w7-el-bg-d);
+  border-color: var(--w7-el-bd-d);
+  color: var(--w7-el-c-d);
+  cursor: default;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):is(:disabled, [aria-disabled="true"])::before,
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):is(:disabled, [aria-disabled="true"])::after {
+  content: none;
+}
+.os-shell :is(.os-button, .os-project-resource, .os-document-button) svg {
   flex: none;
   color: currentColor;
 }
-
-/* Primary: the Aero primary pair from win7-theme.css (one fill and one label in both
-   themes, 6.3:1 at rest). The accent tokens are the fallback outside the Win7 shell. */
-.os-shell
-  :is(
-    .os-button,
-    .os-direct-links .os-button,
-    .os-document-button[data-variant="primary"]
-  ):not(.os-welcome *) {
-  background: var(--win7-primary-fill, var(--os-accent));
-  color: var(--win7-on-primary, var(--os-on-accent));
-}
-/* Hover fills sit behind (hover: hover) so a tap does not leave them lit. :active stays
-   outside the guard, so touch still gets its pressed fill. */
-@media (hover: hover) {
-  .os-shell
-    :is(
-      .os-button,
-      .os-direct-links .os-button,
-      .os-document-button[data-variant="primary"]
-    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-      :hover
-    ) {
-    background: var(--win7-primary-fill-hover, var(--os-accent-hover));
-  }
-}
-.os-shell
-  :is(
-    .os-button,
-    .os-direct-links .os-button,
-    .os-document-button[data-variant="primary"]
-  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):active {
-  background: var(--win7-primary-fill-pressed, var(--os-accent-pressed));
-}
-/* Project resource links: the primary download and source links read the same pair, so
-   their label never drops below 4.5:1 in either theme. */
-.os-shell
-  .os-project-resources
-  a.os-button:not(:is([aria-disabled="true"], :disabled)) {
-  background: var(--win7-primary-fill, var(--os-accent));
-  border-color: transparent;
-  color: var(--win7-on-primary, var(--os-on-accent));
-}
-@media (hover: hover) {
-  .os-shell
-    .os-project-resources
-    a.os-button:not(:is([aria-disabled="true"], :disabled)):is(:hover) {
-    background: var(--win7-primary-fill-hover, var(--os-accent-hover));
-  }
-}
-.os-shell
-  .os-project-resources
-  a.os-button:not(:is([aria-disabled="true"], :disabled)):active {
-  background: var(--win7-primary-fill-pressed, var(--os-accent-pressed));
-}
-
-/* Secondary: hairline outline, primary text. Declared after primary so it wins ties. */
-.os-shell
-  :is(
-    .os-button--secondary,
-    .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button:not([data-variant="primary"])
-  ):not(.os-welcome *) {
-  background: transparent;
-  border-color: var(--os-control-line);
-  color: var(--os-text);
-}
-.os-shell
-  :is(
-    .os-button--secondary,
-    .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button:not([data-variant="primary"])
-  ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(:active) {
-  background: var(--os-accent-tint);
-}
-@media (hover: hover) {
-  .os-shell
-    :is(
-      .os-button--secondary,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button:not([data-variant="primary"])
-    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-      :hover
-    ) {
-    background: var(--os-accent-tint);
-  }
-}
-
-/* Press feedback: one shared scale for every control, card, tile and dock item. The
-   press enters in 90ms; release eases back over the 160ms base transition. Disabled
-   controls are excluded, and the theme thumb takes the same scale. No lift or glow. */
-.os-shell
-  :is(
-    .os-control,
-    .os-button,
-    .os-button--secondary,
-    .os-document-button,
-    .os-direct-links .os-button,
-    .os-project-explorer .os-project-resource,
-    .os-app-icon,
-    .ui-card--interactive,
-    .os-dock a,
-    .os-enter
-  ):not(:disabled, [aria-disabled="true"]):active,
-.os-shell .os-theme-switch:not(:disabled):active::before {
-  transform: scale(0.98);
-  transition-duration: var(--motion-press-in);
-}
-/* Base state for the same list, so the release and colour changes share one timing. */
-.os-shell
-  :is(.os-control, .os-app-icon, .ui-card--interactive, .os-dock a, .os-enter) {
-  transition:
-    background-color var(--motion-quick) var(--ease-standard),
-    border-color var(--motion-quick) var(--ease-standard),
-    color var(--motion-quick) var(--ease-standard),
-    transform var(--motion-press-out) var(--ease-standard);
-}
-
-/* Disabled: muted text on a hairline fill, so the state reads without opacity. */
-.os-shell
-  :is(
-    .os-button,
-    .os-button--secondary,
-    .os-direct-links .os-button,
-    .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button
-  ):not(.os-welcome *):is([aria-disabled="true"], :disabled) {
-  background: var(--os-line);
-  border-color: transparent;
-  color: var(--os-muted);
-  cursor: default;
-}
-
-/* Document buttons keep only their first label span visible. */
 .os-shell .os-document-button > span:not(:first-child) {
   display: none;
 }
 .os-shell .os-document-button > span:first-child {
   color: inherit;
 }
-
-/* Text link: accent, underlined, for reading contexts. */
 .os-shell .os-text-link {
   color: var(--os-accent);
   text-decoration: underline;
   text-underline-offset: 0.25em;
 }
 
-/* Global focus ring: 2px solid accent with a 2px offset (design system, section 4).
-   The :not() list keeps h1 and the main and window containers on their own focus
-   handling. Specificity is (0,2,0), equal to the shell-wide rule in research-os.css,
-   which loads after this file. That lets the deliberate negative-offset exceptions in
-   research-os.css (.os-reading-scroll, .os-search-result) win: their ring sits inside
-   clipped surfaces, and a higher-specificity 2px offset here would push it outside. */
+/* Shared focus handling; clipped surfaces retain their negative-offset exceptions. */
 :where(.os-shell) :focus-visible:not(h1, .os-main, .os-window) {
   outline: 2px solid var(--os-focus);
   outline-offset: 2px;
 }
 .os-shell :is(:focus, :focus-visible) {
-  /* Focus is never hidden behind the sticky top bar or the dock (WCAG 2.4.11). */
   scroll-margin-block: 120px;
+}
+.os-shell.win7 button:focus,
+.os-shell.win7 button.default,
+.os-shell.win7 button.focused,
+.os-shell.win7 [role="button"]:focus {
+  animation: none;
 }
 @media (prefers-contrast: more) {
   :where(.os-shell) :focus-visible:not(h1, .os-main, .os-window) {
@@ -227,139 +155,28 @@
   .os-shell :focus-visible:not(h1, .os-main, .os-window) {
     outline-color: Highlight;
   }
-}
-
-/* Win7 focus for every control in this file. 7.css draws a 1px dotted rectangle inside the
-   control and a 2px blue inset ring (#98d1ef). Both are kept here. The dotted line is black, about
-   19:1 on the light 7.css gradients. On the primary fill (#005fb8) the blue ring still gives about
-   3.8:1 against the fill, which meets the 3:1 focus-indicator rule (WCAG 2.2 2.4.11 and 1.4.11).
-   The 7.css gradient replaces the primary fill on most buttons, so the dotted line stays black. */
-.os-shell.win7
-  :is(
-    .os-button,
-    .os-button--secondary,
-    .os-direct-links .os-button,
-    .os-project-explorer .os-project-resource,
-    .os-project-explorer .os-project-paper .os-project-resource,
-    .os-document-button
-  ):focus-visible {
-  outline: 1px dotted var(--win7-focus-inner);
-  outline-offset: -4px;
-  box-shadow: inset 0 0 0 2px var(--win7-focus-ring);
-}
-/* 7.css runs an infinite pulse-anim on button:focus and on its default and focused states.
-   That loop breaks the no-infinite-loop rule, so focus gets the static ring above instead. */
-.os-shell.win7 button:focus,
-.os-shell.win7 button.default,
-.os-shell.win7 button.focused,
-.os-shell.win7 [role="button"]:focus {
-  animation: none;
-}
-
-/* Forced colours: the system palette supplies every fill, text and border, so
-   a control keeps a visible edge when author colours are removed. Primary uses
-   the Highlight fill; secondary uses ButtonFace with a ButtonText border. The
-   disabled rule comes last and outranks both, so disabled reads as GrayText. */
-@media (forced-colors: active) {
-  .os-shell
-    :is(
-      .os-button,
-      .os-button--secondary,
-      .os-direct-links .os-button,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button
-    ):not(.os-welcome *) {
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *) {
     background: ButtonFace;
     border-color: ButtonText;
     box-shadow: none;
     color: ButtonText;
   }
-  .os-shell
-    :is(
-      .os-button,
-      .os-direct-links .os-button,
-      .os-document-button[data-variant="primary"]
-    ):not(.os-welcome *) {
-    background: Highlight;
-    border-color: Highlight;
-    color: HighlightText;
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)::before,
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)::after {
+    content: none;
   }
-  .os-shell
-    :is(
-      .os-button,
-      .os-button--secondary,
-      .os-direct-links .os-button,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button
-    ):not(.os-welcome *):is([aria-disabled="true"], :disabled) {
-    background: ButtonFace;
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):is(:disabled, [aria-disabled="true"]) {
     border-color: GrayText;
     color: GrayText;
   }
-  /* Hover and pressed fills are author colours, which forced colours replace with
-     Canvas. That would leave HighlightText on Canvas, so the system pair is restated
-     here with the same selectors as the colour states and declared after them. Hover is
-     split from :active and guarded like the colour states, so a tap does not leave the
-     system fill stuck on touch; :active keeps the pressed fill everywhere. */
-  .os-shell
-    :is(
-      .os-button,
-      .os-direct-links .os-button,
-      .os-document-button[data-variant="primary"]
-    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-      :active
-    ) {
-    background: Highlight;
-  }
-  .os-shell
-    :is(
-      .os-button--secondary,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button:not([data-variant="primary"])
-    ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-      :active
-    ) {
-    background: ButtonFace;
-  }
-  @media (hover: hover) {
-    .os-shell
-      :is(
-        .os-button,
-        .os-direct-links .os-button,
-        .os-document-button[data-variant="primary"]
-      ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-        :hover
-      ) {
-      background: Highlight;
-    }
-    .os-shell
-      :is(
-        .os-button--secondary,
-        .os-project-explorer .os-project-resource,
-        .os-project-explorer .os-project-paper .os-project-resource,
-        .os-document-button:not([data-variant="primary"])
-      ):not(.os-welcome *):not(:is([aria-disabled="true"], :disabled)):is(
-        :hover
-      ) {
-      background: ButtonFace;
-    }
-  }
 }
-
-/* Touch targets are 44px on coarse pointers. */
-@media (pointer: coarse) {
-  .os-shell
-    :is(
-      .os-button,
-      .os-button--secondary,
-      .os-direct-links .os-button,
-      .os-project-explorer .os-project-resource,
-      .os-project-explorer .os-project-paper .os-project-resource,
-      .os-document-button
-    ):not(.os-welcome *) {
-    min-height: 44px;
+@media (pointer: coarse), (max-width: 700px) {
+  .os-shell.win7
+    :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *) {
+    min-block-size: 44px;
   }
 }

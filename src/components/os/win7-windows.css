@@ -7,36 +7,21 @@
    reading-window.css and workspace-windows.css skin, and the caption rules run through the
    .title-bar > .title-bar-controls chain so they beat the 7.css caption rules. */
 
-/* Frame: a 4px glass edge around the white body, with an 8px top radius and a 1px
-   translucent edge (the Aero glass rim). The 7.css ::before is removed in win7-theme.css, so
-   this background is the visible frame. The frame carries no backdrop filter: a backdrop
-   filter on an ancestor re-anchors every position: fixed descendant (the .os-share-status
-   toast, research-os.css) to the window box. The glass blur sits on the title bar instead. */
+/* The installed 7.css stylesheet owns the frame, reflected glass, shadow and caption
+   artwork. These rules only undo legacy ResearchOS geometry that would cover it. Blur
+   stays on the canonical pseudo-element, so viewport-positioned descendants are not
+   re-anchored to a filtered ancestor. */
 .os-shell.win7 .window.glass {
   box-sizing: border-box;
-  padding: 0 4px 4px;
-  border: 1px solid rgb(255 255 255 / 0.55);
-  border-radius: 8px 8px 4px 4px;
-  background: var(--win7-title-bg);
-  box-shadow:
-    0 0 0 1px var(--win7-frame-border),
-    var(--win7-frame-shadow);
+  padding: 0;
+  background: transparent;
   color: var(--win7-text-glass);
 }
-/* 7.css paints a blurred layer behind every glass window. Both blur layers are off. */
+.os-shell.win7 .window.glass::before,
 .os-shell.win7 .window.glass::after {
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  pointer-events: none;
 }
-/* The reading-window.css focus rim is a gradient mask. The Aero frame shows focus through its
-   title bar, so the rim stays off. */
-.os-shell.win7 .os-workspace-window.os-window--floating::after {
-  padding: 0;
-  background: none;
-  -webkit-mask: none;
-  mask: none;
-}
-/* The title bar's glow line is retired with the Quiet Depth glow. */
+/* Retire the former title-bar glow; the canonical glass reflections supply the edge. */
 .os-shell.win7 .os-workspace-window > .os-windowbar::after {
   display: none;
 }
@@ -55,6 +40,7 @@
    shortcut row (48px plus a 16px gap, as FOOTER_RESERVE in window-geometry.ts). It has no radius
    or shadow. The stored normal rectangle is untouched, so Restore size returns to it. */
 .os-shell.win7 .os-workspace-window.os-window--floating[data-expanded="true"] {
+  --w7-w-bdr: 0px;
   left: 0 !important;
   top: 0 !important;
   width: 100% !important;
@@ -63,70 +49,46 @@
   box-shadow: none;
 }
 
-/* Active and inactive frames. The active window keeps the Aero title gradient. The inactive
-   window swaps it for a grey gradient and a quieter edge, so the focused window reads first. */
-.os-shell.win7 {
-  --win7-title-inactive: linear-gradient(
-    180deg,
-    #f4f7fa 0%,
-    #dfe6ee 52%,
-    #cbd5e0 100%
-  );
-}
-.os-shell.win7 .window.glass:not(.active) {
-  border-color: rgb(255 255 255 / 0.35);
-  background: var(--win7-title-inactive);
-  box-shadow:
-    0 0 0 1px rgb(16 48 92 / 0.45),
-    0 4px 12px rgb(0 0 0 / 0.22);
-}
-.os-shell.win7 .window.glass:not(.active) > .title-bar {
-  background: var(--win7-title-inactive);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-/* Inactive windows no longer fade their title bar (workspace-windows.css). */
+/* 7.css changes the caption treatment through .window.active. Do not invent a second
+   inactive gradient: both frames retain the canonical glass, and controls lose their
+   active glow. The title remains opaque and readable when focus moves away. */
 .os-shell.win7 .os-workspace-window[data-active="false"] > .os-windowbar {
   opacity: 1;
 }
 
-/* Title bar: a 30px glass bar with the title on the start edge and the caption group on
-   the end edge. The grid from reading-window.css is replaced by a row. */
+/* The canonical title bar is content-sized: 21px title line plus the 6px bottom inset.
+   Reading-window geometry remains flex-based for its app icon and localised title. */
 .os-shell.win7 .window.glass > .title-bar {
   position: relative;
   top: 0;
+  /* The legacy sticky bar's z-index:20 paints glass over the body's white rim.
+     Native captions retain their own layers; the bar follows normal paint order. */
+  z-index: auto;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 6px;
-  height: var(--win7-title-h);
-  min-height: var(--win7-title-h);
-  margin: 0;
-  padding-block: 0;
-  padding-inline: 6px 4px;
-  border: 0;
-  border-radius: 7px 7px 0 0;
-  background: var(--win7-title-bg);
-  box-shadow: inset 0 1px 0 var(--win7-glass-edge);
-  color: var(--win7-text-glass);
-  text-shadow: var(--win7-text-shadow);
+  height: auto;
+  min-height: 0;
   min-width: 0;
-  -webkit-backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
-  backdrop-filter: blur(var(--win7-glass-blur)) saturate(140%);
+  margin: 0;
+  padding: 0 var(--w7-w-space) var(--w7-w-space);
+  font: var(--w7-font);
+  color: var(--win7-text-glass);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
-/* Title text. The workspace title is a button (the drag handle on desktop) and the route
-   title is a span. Both reset to plain text. */
+/* Title text is a non-tabbable drag handle. Preserve the canonical normal weight,
+   15px line and 6px top inset, with locale-aware fonts and long-title truncation. */
 .os-shell.win7 .window.glass > .title-bar .title-bar-text {
   flex: 1 1 auto;
   box-sizing: border-box;
-  align-self: stretch;
   min-width: 0;
   min-height: 0;
   max-width: 100%;
   margin: 0;
-  padding: 0;
+  padding: var(--w7-w-space) 0 0;
   border: 0;
   border-radius: 0;
   background: none;
@@ -134,11 +96,9 @@
   color: inherit;
   font: inherit;
   font-family: var(--win7-font);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: var(--win7-title-h);
+  font-weight: 400;
+  line-height: 15px;
   text-align: start;
-  text-shadow: var(--win7-text-shadow);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -155,6 +115,13 @@
   > .title-bar
   .title-bar-text.os-window-title--movable:active {
   cursor: move;
+}
+/* Short titles keep the canonical white glow outside the glyph box. Only measured
+   truncation needs clipping; otherwise overflow:hidden clips the reference's halo. */
+@media (min-width: 701px) {
+  .os-shell.win7 .window.glass > .title-bar .os-window-title:not([data-truncated="true"]) {
+    overflow: visible;
+  }
 }
 
 /* Icon: the app glyph sits at the start of the title bar, a flex sibling of the title, so the
@@ -187,9 +154,9 @@
   gap: 4px;
   min-width: 0;
   min-height: 34px;
-  margin: 0;
+  margin: 0 var(--w7-w-space);
   padding: 3px 4px;
-  border: 1px solid rgb(16 48 92 / 0.45);
+  border: 1px solid var(--w7-w-bd);
   border-block-end-width: 0;
   background: var(--win7-chrome-bg);
   color: var(--win7-command-ink);
@@ -223,23 +190,19 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  min-width: 24px;
-  min-height: 24px;
+  min-width: 75px;
+  min-height: 23px;
   margin: 0;
-  padding: 0 8px;
-  border: 1px solid rgb(0 0 0 / 0.3);
+  padding: 0 12px;
+  border: 1px solid var(--w7-el-bd);
   border-radius: 3px;
   background: var(--w7-el-grad);
   box-shadow: var(--w7-el-sd);
-  color: #000000;
-  font-size: var(--win7-ui-size);
-  font-weight: 400;
+  color: var(--win7-button-text);
+  font: var(--w7-font);
   text-decoration: none;
   text-shadow: none;
   cursor: pointer;
-}
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy {
-  padding: 0 8px;
 }
 .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover,
 .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:hover,
@@ -259,6 +222,13 @@
   > .os-window-controls
   > summary:active {
   background: var(--w7-el-grad-a);
+  border-color: var(--w7-el-bd-a);
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:disabled {
+  background: var(--w7-el-bg-d);
+  border-color: var(--w7-el-bd-d);
+  color: var(--w7-el-c-d);
+  cursor: default;
 }
 .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back svg,
 .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy svg,
@@ -310,22 +280,17 @@
   --win7-caption-fill: rgb(226 238 250 / 0.92);
 }
 
-/* Caption group: a bordered set of buttons on the end edge. The 7.css glyphs (is-minimize,
-   is-maximize, is-restore, is-close) draw on each button. Only geometry is set here, so the
-   7.css backgrounds for the active and pressed states still apply. */
+/* Keep the installed caption geometry and all native bitmap/gradient states. The
+   old .os-window-actions gap and 30px min-width also squeezed Close to the wrong width.
+   The Night fill is an intentional contrast adaptation behind the unchanged glyphs. */
 .os-shell.win7 .window.glass > .title-bar .title-bar-controls {
-  box-sizing: border-box;
-  display: flex;
   flex: 0 0 auto;
-  align-items: stretch;
+  gap: 0;
   min-width: 0;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--win7-frame-border);
-  border-radius: calc(var(--win7-radius) - 3px);
-  background: var(--win7-caption-fill);
-  box-shadow: inset 0 1px 0 var(--win7-glass-edge);
-  overflow: hidden;
+  background-color: var(--win7-caption-fill);
+  overflow: visible;
 }
 .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button,
 .os-shell.win7 .window.glass > .title-bar .title-bar-controls > a {
@@ -335,19 +300,36 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  min-width: var(--win7-caption-w);
-  min-height: 24px;
+  min-width: 29px;
+  min-height: 19px;
   margin: 0;
   padding: 0;
+  font: inherit;
   text-decoration: none;
   color: var(--win7-caption-ink);
 }
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > button:not(.is-minimize):not(.is-maximize):not(.is-restore):not(.is-close) {
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > .is-close {
+  min-width: 48px;
+}
+/* The visual button remains the reference's 19px. A transparent 5px extension into
+   the title bar's unused bottom inset makes the effective pointer target 24px high.
+   Native title hints replace the legacy ::after tooltip, which conflicted with the
+   framework's pseudo-elements. Mobile/coarse pointers use real 44px boxes below. */
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > button::after,
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > a.os-window-close::after {
+  content: "";
+  position: absolute;
+  inset: auto 0;
+  top: 100%;
+  height: 5px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
   background: transparent;
+  box-shadow: none;
+  opacity: 1;
+  pointer-events: auto;
 }
 .os-shell.win7 .window.glass > .title-bar .title-bar-controls svg {
   position: relative;
@@ -356,26 +338,45 @@
   height: 16px;
 }
 
-/* Close (route): the Link is styled by hand, so it takes the 7.css danger hover fill. */
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > a.os-window-close {
-  border-inline-end: 0;
+/* 7.css 0.21.1 styles captions only on buttons. The server fallback Close remains
+   a real navigation link, so adapt the MIT upstream _window.scss Close rules and
+   unchanged bundled bitmap here; do not nest a second interactive control. */
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > a.os-window-close {
+  --win7-close-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAKCAYAAABi8KSDAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACUSURBVHgBlZFNCoQwDIVbmRvOMHOAAd0K/uDGlYKiCG4VPICi9yu0oCSQoFUXFtKEl6+voZXvr7sKay1TL690FOexY+Hz87i2decOuDKQsNGVe8AGYTRJIh0Y+orBvxszCPllOymlxN06jNE26Qnwg4zdHQLrMhFaawwAqAadDPE1ijwUxhiMKCmxCZk06OMYTz5lAx3xWDeXkLNAAAAAAElFTkSuQmCC");
+  border: 0;
+  border-radius: 0 0 var(--w7-wct-bdr) 0;
+  background: var(--win7-close-icon) no-repeat center, var(--w7-wct-bg), var(--w7-wct_close-bg);
+  box-shadow: var(--w7-wct-sd);
   color: var(--win7-caption-ink);
 }
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > a.os-window-close:hover {
-  background: rgb(196 43 28 / 0.9);
-  color: #ffffff;
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > a.os-window-close::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--win7-close-icon) no-repeat center, var(--w7-wct-bg),
+    radial-gradient(circle at 50% 170%, #f4e676 10% 20%, #0000 60%),
+    radial-gradient(circle at -60% 50%, #000a 5% 10%, #0000 50%),
+    radial-gradient(circle at 160% 50%, #000a 5% 10%, #0000 50%),
+    linear-gradient(#fb9d8b, #ee6d56 25% 50%, #d42809 50%);
+  box-shadow: 0 0 7px 3px #e68e75, var(--w7-wct-sd);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s linear;
 }
-/* The route close keeps its visible word for the accessible name (aria-label), but the glyph
-   is the caption. */
-.os-shell.win7 .window.glass > .title-bar .os-window-close > span {
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > a.os-window-close:is(:hover, :focus-visible)::before {
+  opacity: 1;
+  transition: opacity 0.1s linear;
+}
+.os-shell.win7 .window.glass > .title-bar .title-bar-controls > a.os-window-close:active::before {
+  background: var(--win7-close-icon) no-repeat center, var(--w7-wct-bg),
+    radial-gradient(circle at 50% 170%, #dcc03f 10% 20%, #0000 60%),
+    radial-gradient(circle at -60% 50%, #000 5% 10%, #0000 50%),
+    radial-gradient(circle at 160% 50%, #000 5% 10%, #0000 50%),
+    linear-gradient(#d1a894, #b67562 25% 50%, #7d0d01 50%);
+}
+.os-shell.win7 .window.glass > .title-bar .os-window-close > span,
+.os-shell.win7 .window.glass > .title-bar a.os-window-close > svg {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -383,17 +384,23 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
-.os-shell.win7
-  .window.glass
-  > .title-bar
-  .title-bar-controls
-  > a.os-window-close:hover
-  svg {
-  color: #ffffff;
+@media (forced-colors: active) {
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > a.os-window-close {
+    background: ButtonFace;
+    border: 1px solid ButtonText;
+    color: ButtonText;
+  }
+  .os-shell.win7 .window.glass > .title-bar a.os-window-close > svg {
+    position: static;
+    width: 16px;
+    height: 16px;
+    overflow: visible;
+    clip-path: none;
+  }
 }
 
-/* Keyboard focus inside the caption group. The group clips with overflow: hidden, so the
-   global outline would be cut away at its edges. An inset ring stays inside each control. */
+/* Keyboard focus uses an inset two-tone ring. This accessibility extension leaves the
+   reference geometry and its hover/pressed artwork intact. */
 .os-shell.win7 .window.glass > .title-bar .title-bar-controls > :focus-visible,
 .os-shell.win7
   .window.glass
@@ -423,26 +430,30 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  background: repeating-linear-gradient(
-    135deg,
-    transparent 0 3px,
-    rgb(16 48 92 / 0.7) 3px 4px,
-    transparent 4px 6px
-  );
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  /* Draw only the grip, without clipping the control's focus ring or tooltip. */
+  background:
+    linear-gradient(135deg, transparent 46%, rgb(16 48 92 / 0.7) 46% 54%, transparent 54%) bottom right / 12px 12px no-repeat,
+    linear-gradient(135deg, transparent 43%, rgb(16 48 92 / 0.7) 43% 57%, transparent 57%) bottom right / 8px 8px no-repeat,
+    linear-gradient(135deg, transparent 38%, rgb(16 48 92 / 0.7) 38% 62%, transparent 62%) bottom right / 4px 4px no-repeat;
+}
+.os-shell.win7 .window.glass > .os-window-resize:not(:hover)::before {
+  content: none;
 }
 
 /* Body: a white reading surface with a hairline edge. --w7-surface follows so 7.css
    footers and groups inside the body stay white too. Reading text is 16px at 1.55. */
 .os-shell.win7 .window.glass > .window-body {
   --w7-surface: var(--win7-body-bg);
+  /* Paint the native outer highlight after the preceding title background without
+     changing containing blocks for positioned content or the portalled controls. */
+  isolation: isolate;
   box-sizing: border-box;
   min-width: 0;
-  margin: 0;
-  border: 1px solid rgb(16 48 92 / 0.45);
-  border-radius: 0 0 2px 2px;
+  margin: 0 var(--w7-w-space) var(--w7-w-space);
+  border: 1px solid var(--w7-w-bd);
+  border-radius: 0;
   background: var(--win7-body-bg);
-  box-shadow: none;
+  box-shadow: 0 0 0 1px #fff9;
   color: var(--win7-body-text);
   font-size: var(--win7-body-size);
   line-height: 1.55;
@@ -515,7 +526,8 @@
    with !important. Height is a minimum, so long reading text scrolls with the page and is
    not clipped by the frame's overflow. The body keeps clear of the taskbar. */
 @media (max-width: 700px) {
-  .os-shell.win7 .window.glass {
+  .os-shell.win7 .window.glass:not(.os-terminal) {
+    --w7-w-bdr: 0px;
     left: 0 !important;
     top: 0 !important;
     width: 100% !important;
@@ -568,6 +580,11 @@
    the same spacing with a fine pointer too, since a narrow window is often used by touch. A
    tablet with a fine pointer keeps the 24px target and 2px gap (WCAG 2.5.8). */
 @media (pointer: coarse), (max-width: 700px) {
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back,
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy,
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-controls > summary {
+    font-size: var(--win7-ui-size);
+  }
   .os-shell.win7 .window.glass > .title-bar {
     height: auto;
     min-height: 44px;
@@ -649,13 +666,12 @@
   }
 }
 
-/* Window frame layout. A floating window is a column: the title bar and command bar keep their
-   height, and the page body takes the rest and scrolls inside the frame, so the bottom frame and
-   the last controls are never clipped. Hidden frames stay hidden (the display rule is scoped). */
+/* The body owns scrolling; the frame stays overflow-visible so canonical caption hover
+   glows and expanded hit targets are not cut off. Hidden frames stay hidden. */
 .os-shell.win7 .os-workspace-window.os-window--floating:not([hidden]) {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 .os-shell.win7
   .os-workspace-window.os-window--floating:not([hidden])
@@ -728,6 +744,7 @@
    class names are stable across all locales; accessible names remain in the markup. */
 @media (forced-colors: active) {
   .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button {
+    min-height: 24px;
     color: ButtonText;
     background: ButtonFace;
     border: 1px solid ButtonText;

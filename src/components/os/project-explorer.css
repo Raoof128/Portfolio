@@ -25,7 +25,8 @@
   /* Explorer surface tokens. Light values are the Win7 white body; the Aero Night
      block below swaps every one of them, so no rule in this sheet names a light
      colour directly. Text pairs are checked in each theme: the selected row, chip,
-     badge and tab text stay at 4.5:1 or better. */
+     badge text stay at 4.5:1 or better. Native fields and tabs retain their light
+     7.css surface in both appearances. */
   --explorer-keyline: #d5dfe5;
   --explorer-row-line: #e5e5e5;
   --explorer-hover: #e5f3fc;
@@ -37,11 +38,6 @@
   --explorer-badge-bg: linear-gradient(180deg, #ffffff, #e6eef6);
   --explorer-badge-line: #9bb3c9;
   --explorer-badge-text: #000000;
-  /* Search and category fields are white with black text in both themes, as the
-     Write-ups fields are. #767676 is the field edge (about 4.5:1 on white). */
-  --explorer-field-bg: #ffffff;
-  --explorer-field-line: #767676;
-  --explorer-field-text: #000000;
   /* Navigation pane header row and the active explanation: text pairs with their fill. */
   --explorer-nav-head-text: #000000;
   --explorer-active-bg: #e5f3fc;
@@ -51,27 +47,9 @@
   --explorer-footer-muted: #3d3d3d;
   --explorer-footer-link: #0066cc;
   --explorer-footer-link-hover: #003d99;
-  /* The Contact button edge is a non-text boundary: 3.85:1 on the Aero footer. */
-  --explorer-footer-line: #7a7a7a;
-  /* The 7.css select arrow is a black glyph. Its colour follows the field, so it
-     stays visible on the Aero Night field, and the hover face takes its own text pair. */
-  --explorer-select-arrow: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6Z' fill='%23000'/%3E%3C/svg%3E");
-  --explorer-field-hover: linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5);
-  --explorer-field-hover-fg: #000000;
   --explorer-chip-bg: linear-gradient(180deg, #ffffff, #eef4fa);
   --explorer-chip-fg: #000000;
   --explorer-chip-line: #aabbcc;
-  --explorer-tab-bg: linear-gradient(
-    180deg,
-    #f2f2f2 0%,
-    #ebebeb 50%,
-    #dddddd 100%
-  );
-  --explorer-tab-fg: #000000;
-  --explorer-tab-muted: #3d3d3d;
-  --explorer-tab-hover-bg: linear-gradient(180deg, #eaf6fd 0%, #bee6fd 100%);
-  --explorer-tab-hover-fg: #000000;
-  --explorer-tab-selected-bg: #ffffff;
   --explorer-footer-bg: var(--w7-surface);
   --explorer-commandbar-bg: linear-gradient(
     180deg,
@@ -108,10 +86,9 @@
   --reading-leading: 1.95;
 }
 
-/* Aero Night: the explorer surfaces take the night tokens. Each light/dark pair
-   is set once above, so selection, chips, tabs and fields change together. The
-   selected text is white on the blue select gradient, and the muted text on the
-   tab strip is about 6.7:1 on the darkest tab face. */
+/* Aero Night changes the Explorer frame, selection, metadata chips and footer.
+   Native fields and tabs stay on the canonical light 7.css surface, matching the
+   white reading body rather than introducing a second set of control faces. */
 .os-shell[data-appearance="dark"] .os-project-explorer {
   --os-line: #2b4466;
   --os-control-line: #6f8fb4;
@@ -137,18 +114,9 @@
   --explorer-footer-muted: #b4c6da;
   --explorer-footer-link: #8fd6ff;
   --explorer-footer-link-hover: #ffffff;
-  --explorer-footer-line: #6f8fb4;
-  --explorer-field-hover: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
-  --explorer-field-hover-fg: #ffffff;
   --explorer-chip-bg: linear-gradient(180deg, #1b3a62, #15304f);
   --explorer-chip-fg: #f1f7ff;
   --explorer-chip-line: #4d6f96;
-  --explorer-tab-bg: linear-gradient(180deg, #1d3a60 0%, #15294a 100%);
-  --explorer-tab-fg: #f1f7ff;
-  --explorer-tab-muted: #b4c6da;
-  --explorer-tab-hover-bg: linear-gradient(180deg, #2c5d96 0%, #1a4275 100%);
-  --explorer-tab-hover-fg: #ffffff;
-  --explorer-tab-selected-bg: #0d1b2e;
   --explorer-footer-bg: #132c50;
   --explorer-commandbar-bg: linear-gradient(180deg, #1b3a62 0%, #132c50 100%);
   --explorer-commandbar-line: #2b4466;
@@ -278,80 +246,45 @@
   color: var(--os-muted);
   font-size: var(--text-s);
 }
-/* The search field keeps the 7.css text-field face: white, the Win7 edge and an
-   inset shadow. The icon sits inside it. */
+/* Canonical 7.css search and dropdown faces are painted by the native fields.
+   The wrapper is layout only. No second icon or copied arrow overrides the source
+   stylesheet. Search retains its native 24px height; selects use 23px with separated targets.
+   Both grow to 44px on touch. */
 .os-shell .os-project-explorer .os-explorer-search {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: block;
   width: 100%;
   min-width: 0;
-  min-height: 26px;
-  padding-inline: 6px;
-  border: 1px solid var(--explorer-field-line);
-  border-radius: 2px;
-  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 0.08);
-  color: var(--os-muted);
-  background: var(--explorer-field-bg);
 }
 .os-shell .os-project-explorer .os-explorer-search input {
-  flex: 1 1 auto;
   width: 100%;
   min-width: 0;
   min-height: 24px;
-  padding: 0;
-  border: 0;
-  color: var(--os-text);
-  background: transparent;
-  box-shadow: none;
-  font: inherit;
-  font-size: 13px;
+  padding-inline-end: 26px;
+  color: var(--win7-body-text);
+  font-family: var(--win7-font);
 }
-/* Placeholder text: the browser default grey fails contrast on white. */
 .os-shell .os-project-explorer .os-explorer-search input::placeholder {
   color: var(--win7-body-muted);
   opacity: 1;
 }
-/* One ring per field: the field draws it while its input has focus, and the
-   input's own outline is removed only in that state. */
-.os-shell .os-project-explorer .os-explorer-search:focus-within {
-  outline: 2px solid var(--os-focus);
-  outline-offset: 2px;
+.os-shell .os-project-explorer .os-explorer-search input:dir(rtl) {
+  background-position: 8px center;
+  padding-inline-start: 6px;
 }
-.os-shell .os-project-explorer .os-explorer-search:focus-within input {
-  outline: 0;
+.os-shell .os-project-explorer .os-explorer-search input:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px #98d1ef;
 }
-/* The select keeps the 7.css drop-down shape and focus ring. 7.css paints the rest,
-   hover and pressed faces, and the black arrow, as background images, so those
-   layers are set here per appearance. The hover and pressed face takes its own
-   text pair, so the label stays readable on the blue face in Aero Night. */
 .os-shell .os-project-explorer .os-explorer-controls select {
   width: 100%;
   min-width: 0;
-  min-height: 26px;
-  /* The 7.css arrow sits at the inline end, so the label keeps 28px clear of it. */
-  padding-inline: 6px 28px;
-  border-color: var(--explorer-field-line);
-  color: var(--explorer-field-text);
-  background-color: var(--explorer-field-bg);
-  background-image:
-    var(--explorer-select-arrow),
-    linear-gradient(var(--explorer-field-bg), var(--explorer-field-bg));
-  /* The arrow is painted at a physical edge, so in RTL it moves to the left with the
-     inline end. */
-  background-position: 100% center;
-  font: inherit;
-  font-size: 13px;
+  min-height: 23px;
+  padding-inline: 3px 30px;
+  font-family: var(--win7-font);
 }
 .os-shell .os-project-explorer .os-explorer-controls select:dir(rtl) {
   background-position: 0 center;
-}
-.os-shell
-  .os-project-explorer
-  .os-explorer-controls
-  select:not(:disabled):is(:hover, :active) {
-  color: var(--explorer-field-hover-fg);
-  background-image: var(--explorer-select-arrow), var(--explorer-field-hover);
 }
 .os-shell .os-project-explorer .os-explorer-project-nav {
   display: grid;
@@ -541,7 +474,7 @@
   li {
   padding: 2px 8px;
   border: 1px solid var(--explorer-chip-line);
-  border-radius: 2px 12px;
+  border-radius: 3px;
   color: var(--explorer-chip-fg);
   background: var(--explorer-chip-bg);
   font-size: 12px;
@@ -568,61 +501,35 @@
   color: var(--os-muted);
   font-size: var(--text-s);
 }
-/* Dossier switcher (after hydration): a Win7 tab strip. The active tab is raised
-   over the white pane below, and the strip stays at the top of the window body
-   while the pane scrolls. Before hydration the same row is plain anchors. */
+/* The semantic menu[role=tablist] uses the canonical 7.css tab geometry and
+   state paint directly. Only sticky positioning, wrapping, logical RTL margins
+   and a 44px touch target floor extend the reference. */
 .os-shell .os-project-explorer .os-project-tablist {
   position: sticky;
   inset-block-start: 0;
-  z-index: 2;
-  display: flex;
+  z-index: 3;
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: 2px;
-  margin-block: var(--explorer-gap) 0;
-  padding: 4px 4px 0;
-  border-block-end: 1px solid #8e8f8f;
+  margin-block: var(--explorer-gap) -2px;
+  padding-block: 0;
+  padding-inline: 3px 0;
   background: var(--win7-body-bg);
 }
 .os-shell .os-project-explorer .os-project-tab {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  margin-block-end: -1px;
-  padding: 4px 14px;
-  border: 1px solid #8e8f8f;
-  border-radius: 3px 3px 0 0;
-  color: var(--explorer-tab-muted);
-  background: var(--explorer-tab-bg);
+  min-height: 23px;
   font-family: var(--win7-font);
-  font-size: var(--text-ui);
-  font-weight: 500;
-  line-height: 1.3;
   cursor: pointer;
 }
-.os-shell .os-project-explorer .os-project-tab:hover {
-  background: var(--explorer-tab-hover-bg);
-  border-color: #3c7fb1;
-  color: var(--explorer-tab-hover-fg);
-}
-.os-shell .os-project-explorer .os-project-tab:focus-visible {
-  outline: 1px dotted #000;
-  outline-offset: -4px;
-  box-shadow: inset 0 0 0 2px #98d1ef;
-}
-/* The selected tab is the pane colour, joins the pane, and is set in a heavier
-   weight. Its text is the body text token (black in Light, white in Aero Night). */
 .os-shell .os-project-explorer .os-project-tab[aria-selected="true"] {
-  z-index: 1;
-  padding-block-end: 6px;
-  border-color: #8e8f8f;
-  border-block-end-color: var(--explorer-tab-selected-bg);
-  color: var(--explorer-tab-fg);
-  background: var(--explorer-tab-selected-bg);
-  font-weight: 600;
+  margin-inline: -3px 0;
 }
-@media (pointer: coarse) {
+.os-shell .os-project-explorer .os-project-tablist ~ .os-project-section[role="tabpanel"] {
+  margin-block-start: 0;
+  padding: 14px;
+  border-color: var(--w7-el-bd);
+  border-radius: 0;
+}
+@media (pointer: coarse), (max-width: 700px) {
   .os-shell .os-project-explorer .os-project-tab {
     min-height: 44px;
   }
@@ -1004,26 +911,7 @@
   color: var(--explorer-footer-fg);
   font-family: var(--win7-font);
 }
-/* The Contact button keeps the secondary shape, with the footer text pair. Its
-   hover fill is the accent tint, which carries its own text pair in both themes. */
-.os-shell
-  .os-project-explorer
-  > .os-explorer-layout
-  > .os-explorer-content
-  > .os-explorer-footer
-  .os-project-resource {
-  color: var(--explorer-footer-fg);
-  border-color: var(--explorer-footer-line);
-}
-.os-shell
-  .os-project-explorer
-  > .os-explorer-layout
-  > .os-explorer-content
-  > .os-explorer-footer
-  .os-project-resource:is(:hover, :active) {
-  color: var(--explorer-footer-fg);
-  background: var(--os-accent-tint);
-}
+/* Footer actions use the shared canonical control adapter in controls.css. */
 .os-shell .os-project-explorer .os-explorer-footer-next {
   display: flex;
   flex-wrap: wrap;
@@ -1270,68 +1158,6 @@
     )[aria-current="page"] {
     outline: 2px solid Highlight;
     outline-offset: -2px;
-  }
-}
-
-/* Static rims (v2.0 rim recipe; the Intelligence Glow layer is retired). An index row shows its rim on
-   hover or while focus is inside it; a paper card shows its rim on hover only. The
-   rim is painted once on ::after and never moves: no transition, no glow, no lift.
-   Thumbnails and links get no rim. Scoped to the explorer, so .ui-card--interactive
-   on reading pages is untouched. */
-.os-shell .os-project-explorer .os-project-paper-library .os-project-paper {
-  position: relative;
-}
-.os-shell
-  .os-project-explorer
-  :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: var(--os-rim-gradient);
-  pointer-events: none;
-  opacity: 0;
-  /* Aero rows show a Win7 highlight instead of the rim. */
-  display: none;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-}
-.os-shell .os-project-explorer .os-project-row:is(:hover, :focus-within)::after,
-.os-shell
-  .os-project-explorer
-  .os-project-paper-library
-  .os-project-paper:hover::after {
-  opacity: var(--os-rim-opacity);
-}
-/* Increased contrast: the rim steps up to the solid boundary token at full strength. */
-@media (prefers-contrast: more) {
-  .os-shell
-    .os-project-explorer
-    :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
-    background: var(--os-rim-solid);
-  }
-  .os-shell
-    .os-project-explorer
-    .os-project-row:is(:hover, :focus-within)::after,
-  .os-shell
-    .os-project-explorer
-    .os-project-paper-library
-    .os-project-paper:hover::after {
-    opacity: 1;
-  }
-}
-/* Forced colours ignore the gradient paint, so the rim is removed. */
-@media (forced-colors: active) {
-  .os-shell
-    .os-project-explorer
-    :is(.os-project-row, .os-project-paper-library .os-project-paper)::after {
-    display: none;
   }
 }
 

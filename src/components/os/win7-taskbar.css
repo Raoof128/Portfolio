@@ -3,11 +3,12 @@
    clock. Logical properties throughout, so RTL mirrors. */
 
 .os-shell.win7 {
-  /* The bar is 52px on every width, so the 44px pins sit inside it with room for the
-     focus ring and the running line. Phones already use 52px in the foundations layer.
-     Window and dialog clearance read this token, so they follow the same height. */
-  --win7-taskbar-h: 52px;
-  --win7-pin-h: 44px;
+  /* Windows 7's compact desktop band. Fine-pointer buttons fit with an inset focus
+     ring; phones and coarse pointers use 52/44px below. Window clearance reads the same
+     measured taskbar, so changing the visual band does not hide document controls. */
+  --win7-taskbar-h: 40px;
+  --win7-pin-h: 36px;
+  --win7-orb-size: 36px;
   /* Glass for the bar and the running line. The light values are the Aero day bar; the
      night values are set on the dark shell below. */
   --win7-taskbar-glass: linear-gradient(
@@ -16,8 +17,8 @@
     rgb(196 228 249 / 0.6) 46%,
     rgb(120 178 228 / 0.7) 100%
   );
-  --win7-run-line: #1f7fd6;
-  --win7-run-glow: rgb(120 200 255 / 0.9);
+  --win7-running-plate: linear-gradient(rgb(255 255 255 / 0.4), rgb(255 255 255 / 0.12));
+  --win7-running-edge: rgb(0 35 70 / 0.55);
   /* Tray widths on phones, sized to the chips that remain. From 480px the clock keeps its
      time; below 480px the tray keeps only the chips. */
   --win7-tray-phone-w: 248px;
@@ -47,8 +48,8 @@
     rgb(40 72 116 / 0.64) 46%,
     rgb(14 34 66 / 0.74) 100%
   );
-  --win7-run-line: #9bdcff;
-  --win7-run-glow: rgb(140 210 255 / 0.85);
+  --win7-running-plate: linear-gradient(rgb(90 132 180 / 0.35), rgb(20 52 88 / 0.6));
+  --win7-running-edge: rgb(192 221 249 / 0.65);
   /* White text on these plates measures 5.3:1 at the lightest point of the hover plate and
      9:1 on the pressed plate, so the labels pass 4.5:1 in Aero Night. */
   --win7-plate-hover: linear-gradient(
@@ -125,8 +126,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  /* No block padding: the strip is 51px inside the 52px bar, so a 44px pin fits whole. Any
-     padding here would leave 43px and clip the top and bottom of every pin and its ring. */
+  /* No block padding: each button stays inside its 40px desktop or 52px touch band. */
   padding-block: 0;
   padding-inline: 2px;
   overflow-x: auto;
@@ -231,8 +231,9 @@
 }
 .os-shell.win7 .os-dock .os-dock-home:focus-visible {
   outline: 2px solid var(--win7-focus-inner);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--win7-focus-outer);
+  /* Keep the full ring inside the 40px band rather than clipping its top and bottom. */
+  outline-offset: -3px;
+  box-shadow: inset 0 0 0 1px var(--win7-focus-outer);
 }
 
 /* Divider between the orb and the pins. */
@@ -244,8 +245,10 @@
   box-shadow: 1px 0 0 rgb(255 255 255 / 0.5);
 }
 
-/* Pinned apps: 44px glass buttons on every width, icon and label. Running apps carry a
-   glowing line along the foot; the pressed look is the current page only. */
+/* Windows 7 task buttons use a full glass border for running programs. Retain visible
+   labels (the native "never combine" presentation) for portfolio discovery. A minimized
+   program keeps its bordered task button; the brighter pressed plate denotes the current
+   window. The modern running underline and detached minimized dot are not used. */
 .os-shell.win7 .os-dock .os-dock-app {
   position: relative;
   box-sizing: border-box;
@@ -253,7 +256,7 @@
   min-width: 44px;
   min-height: 0;
   margin: 0;
-  padding: 0 10px 3px;
+  padding: 0 10px;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -271,20 +274,16 @@
   color: inherit;
 }
 .os-shell.win7 .os-dock .os-small-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
-/* Running: a 3px glowing line along the foot of the pin, inset from the edges. */
-.os-shell.win7 .os-dock .os-dock-app.is-running::before {
-  content: "";
-  position: absolute;
-  inset-inline: 10px;
-  inset-block-end: 2px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--win7-run-line);
-  box-shadow: 0 0 6px var(--win7-run-glow);
-  pointer-events: none;
+.os-shell.win7 .os-dock .os-dock-app.is-running {
+  border-color: var(--win7-running-edge);
+  background: var(--win7-running-plate);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6), 0 0 0 1px rgb(255 255 255 / 0.24);
+}
+.os-shell.win7 .os-dock .os-dock-app::before {
+  content: none;
 }
 .os-shell.win7 .os-dock .os-dock-app > span:last-child {
   max-width: 14em;
@@ -298,14 +297,14 @@
 .os-shell.win7 .os-dock .os-dock-app:is(:hover, :focus-visible) {
   background: var(--win7-plate-hover);
   border-color: rgb(255 255 255 / 0.7);
-  box-shadow: 0 0 8px rgb(140 210 255 / 0.9);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.75), inset 0 -10px 12px -12px #ffffff;
 }
 /* Keyboard focus keeps the dark inner ring of the two-tone pair, since the glow above
    would otherwise replace it. */
 .os-shell.win7 .os-dock .os-dock-app:focus-visible {
-  box-shadow:
-    0 0 0 2px var(--win7-focus-inner),
-    0 0 8px rgb(140 210 255 / 0.9);
+  outline: 2px solid var(--win7-focus-inner);
+  outline-offset: -3px;
+  box-shadow: inset 0 0 0 1px var(--win7-focus-outer);
 }
 /* Active page: a pressed Aero button. Placed after hover so it wins while both apply. */
 .os-shell.win7 .os-dock .os-dock-app[aria-current="page"] {
@@ -313,23 +312,10 @@
   border-color: var(--win7-plate-pressed-border);
   box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.25);
 }
-/* The current-page dot from research-os.css is retired. A minimised app shows a small
-   dot at the top of its pin: its window is hidden, so it is neither current nor pressed. */
+/* An inactive/minimized program retains its task button, as in Windows 7. */
+.os-shell.win7 .os-dock .os-dock-app::after,
 .os-shell.win7 .os-dock a[aria-current="page"]::after {
   content: none;
-}
-.os-shell.win7 .os-dock .os-dock-app.is-minimized::after,
-.os-shell.win7 .os-dock .os-dock-app[data-minimized="true"]::after {
-  content: "";
-  position: absolute;
-  inset-block-start: 3px;
-  inset-inline: 0;
-  width: 4px;
-  height: 4px;
-  margin-inline: auto;
-  border-radius: 50%;
-  background: var(--win7-text-glass);
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.6);
 }
 
 /* Brand chip and the visually hidden text beside it. The text stays focusable and
@@ -420,9 +406,8 @@
   min-width: 0;
 }
 
-/* Chips: 24px tall, rounded like a Start-menu pill rather than a bordered square. A coarse
-   pointer gets a 44px target through the pointer query below. The keyboard hint stays out
-   of the tray. */
+/* Notification-area controls use compact rectangular Aero plates. Coarse pointers get
+   a 44px target below; the keyboard shortcut hint is presented in the search panel. */
 .os-shell.win7 .os-topbar .os-control {
   box-sizing: border-box;
   width: 28px;
@@ -436,7 +421,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: 3px;
   background: transparent;
   box-shadow: none;
   color: var(--win7-text-glass);
@@ -464,13 +449,10 @@
   margin-inline-start: 10px;
 }
 
-/* Theme switch: a 40 by 24px inset track with a white thumb. The thumb carries the glyph
-   for the current theme (a sun in light, a moon in dark), so the control reads as a
-   live switch and not a disabled pill. The track is drawn on ::after so the thumb
-   (::before) and the glyph (svg) keep their layers. The visible state label sits beside it. */
+/* Theme is a portfolio extension, rendered as a compact native-style push face rather
+   than a mobile sliding pill. Its existing switch role and aria-checked state stay intact.
+   All faces consume the installed 7.css element variables, with a larger touch box below. */
 .os-shell.win7 .os-topbar .os-theme-switch {
-  --sw-pad: 0px;
-  isolation: isolate;
   box-sizing: border-box;
   position: relative;
   width: 40px;
@@ -482,75 +464,36 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  color: var(--win7-text-glass);
+  border: 1px solid var(--w7-el-bd);
+  border-radius: var(--w7-el-bdr);
+  background: var(--w7-el-grad);
+  box-shadow: var(--w7-el-sd);
+  color: var(--w7-el-c);
+  animation: none;
 }
+.os-shell.win7 .os-topbar .os-theme-switch::before,
 .os-shell.win7 .os-topbar .os-theme-switch::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  /* 7.css gives button pseudo-elements 100% width and height, so both are reset here
-     and the insets alone set the track. */
-  inset-block: var(--sw-pad);
-  inset-inline: 0;
-  width: auto;
-  height: auto;
-  box-sizing: border-box;
-  border: 1px solid rgb(0 0 0 / 0.6);
-  border-radius: 12px;
-  /* 7.css fades every button pseudo-element to 0 until hover, so the track and thumb
-     set their own opacity. */
-  opacity: 1;
-  background: linear-gradient(rgb(255 255 255 / 0.55), rgb(190 214 236 / 0.85));
-  box-shadow:
-    inset 0 1px 2px rgb(0 0 0 / 0.3),
-    inset 0 0 0 1px rgb(255 255 255 / 0.35);
+  content: none;
 }
-.os-shell.win7 .os-topbar .os-theme-switch::before {
-  inset: auto;
-  inset-block-start: calc(var(--sw-pad) + 3px);
-  inset-inline-start: 2px;
-  inset-inline-end: auto;
-  z-index: 1;
-  opacity: 1;
-  width: 18px;
-  height: 18px;
-  border: 1px solid rgb(0 0 0 / 0.45);
-  border-radius: 50%;
-  background: linear-gradient(#ffffff, #dde8f3);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
-}
-/* The glyph sits in the thumb: 12px, centred on the 18px knob. */
 .os-shell.win7 .os-topbar .os-theme-switch svg {
-  position: absolute;
-  z-index: 2;
-  inset-block-start: calc(var(--sw-pad) + 6px);
-  inset-inline-start: 5px;
-  inset-inline-end: auto;
-  width: 12px;
-  height: 12px;
-  color: #6b4a00;
-  stroke-width: 2.4;
+  position: static;
+  width: 16px;
+  height: 16px;
+  color: var(--w7-el-c);
+  stroke-width: 2;
   pointer-events: none;
 }
-.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"] svg {
-  inset-inline-start: auto;
-  inset-inline-end: 5px;
-  color: #0c4c97;
+.os-shell.win7 .os-topbar .os-theme-switch path {
+  fill: none;
 }
-.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"] {
-  justify-content: center;
+.os-shell.win7 .os-topbar .os-theme-switch:hover {
+  border-color: var(--w7-el-bd-h);
+  background: var(--w7-el-grad-h);
 }
-.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::after {
-  background: linear-gradient(#8fd3f8, #2f8fe0);
-  border-color: rgb(0 0 0 / 0.7);
-}
-.os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::before {
-  inset-inline-start: auto;
-  inset-inline-end: 2px;
+.os-shell.win7 .os-topbar .os-theme-switch:is(:active, [aria-checked="true"]) {
+  border-color: var(--w7-el-bd-a);
+  background: var(--w7-el-grad-a);
+  box-shadow: var(--w7-el-sd-a);
 }
 .os-shell.win7 .os-topbar .os-theme-switch:focus-visible {
   outline: 2px solid var(--win7-focus-inner);
@@ -828,12 +771,6 @@
   border-radius: 0;
   background: #ffffff;
 }
-.os-shell.win7 .os-search-field > svg {
-  flex: none;
-  width: 16px;
-  height: 16px;
-  color: #3d3d3d;
-}
 /* Visible label beside the field. It stays while the field holds text, so the placeholder
    is never the only prompt. */
 .os-shell.win7 .os-search-field .os-search-label {
@@ -848,27 +785,18 @@
   outline: 2px solid #0066cc;
   outline-offset: -2px;
 }
+/* Keep the installed 7.css searchbox inset and magnifier, with layout-only extensions.
+   The trailing reserve prevents the placeholder from colliding with the native icon. */
 .os-shell.win7 .os-search-field input {
-  box-sizing: border-box;
   flex: 1 1 auto;
   width: auto;
   min-width: 0;
-  height: 26px;
   margin: 0;
-  padding: 0 6px;
-  border: 1px solid #7a7a7a;
-  border-radius: 3px;
-  background: #ffffff;
-  color: #000000;
-  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
-  font-size: var(--win7-ui-size);
+  padding-inline-end: 26px;
+  color: var(--win7-body-text);
 }
-.os-shell.win7
-  .os-search-dialog
-  .os-search-field
-  input:is(:focus, :focus-visible) {
-  outline: none;
-  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
+.os-shell.win7:dir(rtl) .os-search-field input:placeholder-shown {
+  background-position: 8px center;
 }
 .os-shell.win7 .os-search-field input::placeholder {
   color: #5a5a5a;
@@ -1028,6 +956,11 @@
    chips. The clock shows time only, and the Start menu is full width with a wrapping
    scope row above the results. */
 @media (max-width: 700px) {
+  .os-shell.win7 {
+    --win7-taskbar-h: 52px;
+    --win7-pin-h: 44px;
+    --win7-orb-size: 44px;
+  }
   .os-shell.win7 .os-dock {
     padding-inline: 4px var(--win7-tray-phone-w);
     gap: 2px;
@@ -1063,16 +996,12 @@
     gap: 2px;
   }
   .os-shell.win7 .os-topbar .os-theme-switch {
-    --sw-pad: 10px;
     width: 44px;
     height: 44px;
     min-width: 44px;
     min-height: 44px;
     margin: 0;
     padding: 0;
-  }
-  .os-shell.win7 .os-topbar .os-theme-switch::after {
-    inset-block: var(--sw-pad);
   }
   .os-shell.win7 .os-language nav a {
     min-height: 44px;
@@ -1214,6 +1143,11 @@
    coarse pointer at any width, so a tablet at 768px gets the phone sizes. Fine pointers keep
    the desktop sizes. The glyphs stay centred, so the bar keeps its look. */
 @media (pointer: coarse) {
+  .os-shell.win7 {
+    --win7-taskbar-h: 52px;
+    --win7-pin-h: 44px;
+    --win7-orb-size: 44px;
+  }
   .os-shell.win7 .os-topbar .os-control,
   .os-shell.win7 .os-search-dialog .os-control,
   .os-shell.win7 .os-search-field .os-control {
@@ -1221,15 +1155,11 @@
     min-height: var(--win7-touch-target);
   }
   .os-shell.win7 .os-topbar .os-theme-switch {
-    --sw-pad: 10px;
     width: var(--win7-touch-target);
     height: var(--win7-touch-target);
     min-width: var(--win7-touch-target);
     min-height: var(--win7-touch-target);
     margin: 0;
-  }
-  .os-shell.win7 .os-topbar .os-theme-switch::after {
-    inset-block: var(--sw-pad);
   }
   .os-shell.win7 .os-language summary {
     min-width: var(--win7-touch-target);
@@ -1262,17 +1192,28 @@
    colours with a visible edge. Focus outlines stay. */
 @media (forced-colors: active) {
   .os-shell.win7 .os-dock .os-dock-home,
-  .os-shell.win7 .os-topbar .os-theme-switch::after {
+  .os-shell.win7 .os-topbar .os-theme-switch {
     background: ButtonFace;
     border: 1px solid ButtonText;
   }
   .os-shell.win7 .os-dock .os-dock-app[aria-current="page"],
-  .os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"]::after {
+  .os-shell.win7 .os-topbar .os-theme-switch[aria-checked="true"] {
     background: Highlight;
     color: HighlightText;
   }
   .os-shell.win7 .os-search-scopes button[aria-pressed="true"] {
-    background: Highlight;
-    color: HighlightText;
+    /* Canvas avoids a text backplate masking HighlightText over translucent Highlight. */
+    background: Canvas;
+    color: CanvasText;
+    border: 2px solid Highlight;
+  }
+  /* SVG preserves authored colours in forced palettes. Follow each control's forced
+     foreground so icons remain visible when app theme and system palette differ. */
+  .os-shell.win7 .os-dock .os-dock-home svg,
+  .os-shell.win7 .os-topbar :is(.os-control, .os-theme-switch) svg,
+  .os-shell.win7 .os-language summary > svg:first-of-type,
+  .os-shell.win7 .os-language nav a svg,
+  .os-shell.win7 .os-search-dialog .os-control svg {
+    color: inherit;
   }
 }

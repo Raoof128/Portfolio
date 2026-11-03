@@ -1,0 +1,44 @@
+> portfolio@0.1.0 test:browser
+> playwright test --project=chromium
+
+
+Running 32 tests using 2 workers
+
+(node:58974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:58975) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:69:5 › reviewer journey, window controls, history, search and contact (22.1s)
+  ✓   2 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:126:5 › pointer geometry, search selection, locale and appearance persistence (25.9s)
+  ✓   4 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:222:5 › increased contrast and reduced transparency use opaque window frames (9.7s)
+  ✓   3 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:173:5 › forced colours preserve caption glyph geometry and language fonts (16.7s)
+  ✓   5 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:254:5 › keyboard workspace entry and five-language 404 recovery (24.1s)
+  ✓   6 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:282:5 › five-language keyboard search, empty results and dismissal (35.7s)
+  ✓   7 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive en light (1.4m)
+  ✓   8 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive fa light (1.3m)
+  ✓   9 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive ar light (57.1s)
+  ✓  10 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive zh light (50.6s)
+  ✓  11 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive es light (38.4s)
+  ✓  12 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive en dark (35.1s)
+  ✓  13 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive fa dark (38.0s)
+  ✓  14 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive ar dark (37.8s)
+  ✓  15 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive zh dark (36.6s)
+  ✓  16 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:309:7 › responsive es dark (35.8s)
+  ✓  17 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 1-10 (20.3s)
+  ✓  18 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 11-20 (20.8s)
+  ✓  19 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 21-30 (22.1s)
+  ✓  20 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 31-40 (20.6s)
+  ✓  21 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 41-50 (24.0s)
+  ✓  22 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 51-60 (27.8s)
+  ✓  23 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 61-70 (26.1s)
+  ✓  24 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 71-80 (25.8s)
+  ✓  25 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 81-90 (26.3s)
+  ✓  26 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 91-100 (27.8s)
+  ✓  27 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 101-110 (24.9s)
+  ✓  28 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 111-120 (21.2s)
+  ✓  29 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 121-130 (21.1s)
+  ✓  30 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 131-140 (21.3s)
+  ✓  31 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 141-150 (22.7s)
+  ✓  32 [chromium] › scripts/browser-regressions/playwright/portfolio.spec.ts:335:7 › exported route audit 151-160 (20.4s)
+
+  32 passed (8.4m)

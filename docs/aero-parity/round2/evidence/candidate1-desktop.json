@@ -1,0 +1,658 @@
+[
+  {
+    "id": "forced-light-light",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "icons": [
+      {
+        "s": ".os-dock-home svg",
+        "icon": "rgb(0, 0, 159)",
+        "parent": "rgb(0, 0, 159)",
+        "stroke": "none",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "s": ".os-theme-switch svg",
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)",
+        "stroke": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "s": ".os-language summary svg",
+        "icon": "rgb(0, 0, 159)",
+        "parent": "rgb(0, 0, 159)",
+        "stroke": "rgb(0, 0, 159)",
+        "background": "rgba(255, 255, 255, 0)"
+      },
+      {
+        "s": ".os-topbar .os-control svg",
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)",
+        "stroke": "rgb(0, 0, 0)",
+        "background": "rgba(255, 255, 255, 0)"
+      }
+    ],
+    "scopes": [
+      {
+        "text": "All",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Projects",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Papers",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Write-ups",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Lab",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Pages and Actions",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      }
+    ],
+    "dialogIcons": [
+      {
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)"
+      },
+      {
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)"
+      }
+    ],
+    "check": {
+      "icon": "rgb(0, 0, 159)",
+      "parent": "rgb(0, 0, 159)"
+    }
+  },
+  {
+    "id": "forced-light-dark",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "icons": [
+      {
+        "s": ".os-dock-home svg",
+        "icon": "rgb(0, 0, 159)",
+        "parent": "rgb(0, 0, 159)",
+        "stroke": "none",
+        "background": "rgb(255, 255, 255)"
+      },
+      {
+        "s": ".os-theme-switch svg",
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)",
+        "stroke": "rgb(255, 255, 255)",
+        "background": "rgba(5, 0, 73, 0.8)"
+      },
+      {
+        "s": ".os-language summary svg",
+        "icon": "rgb(0, 0, 159)",
+        "parent": "rgb(0, 0, 159)",
+        "stroke": "rgb(0, 0, 159)",
+        "background": "rgba(255, 255, 255, 0)"
+      },
+      {
+        "s": ".os-topbar .os-control svg",
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)",
+        "stroke": "rgb(0, 0, 0)",
+        "background": "rgba(255, 255, 255, 0)"
+      }
+    ],
+    "scopes": [
+      {
+        "text": "All",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Projects",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Papers",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Write-ups",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Lab",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Pages and Actions",
+        "pressed": "true",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "borderWidth": "2px"
+      }
+    ],
+    "dialogIcons": [
+      {
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)"
+      },
+      {
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)"
+      }
+    ],
+    "check": {
+      "icon": "rgb(0, 0, 159)",
+      "parent": "rgb(0, 0, 159)"
+    }
+  },
+  {
+    "id": "forced-dark-light",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "icons": [
+      {
+        "s": ".os-dock-home svg",
+        "icon": "rgb(255, 255, 0)",
+        "parent": "rgb(255, 255, 0)",
+        "stroke": "none",
+        "background": "rgb(0, 0, 0)"
+      },
+      {
+        "s": ".os-theme-switch svg",
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)",
+        "stroke": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)"
+      },
+      {
+        "s": ".os-language summary svg",
+        "icon": "rgb(255, 255, 0)",
+        "parent": "rgb(255, 255, 0)",
+        "stroke": "rgb(255, 255, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "s": ".os-topbar .os-control svg",
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)",
+        "stroke": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "scopes": [
+      {
+        "text": "All",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Projects",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Papers",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Write-ups",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Lab",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Pages and Actions",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      }
+    ],
+    "dialogIcons": [
+      {
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)"
+      },
+      {
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)"
+      }
+    ],
+    "check": {
+      "icon": "rgb(255, 255, 0)",
+      "parent": "rgb(255, 255, 0)"
+    }
+  },
+  {
+    "id": "forced-dark-dark",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "icons": [
+      {
+        "s": ".os-dock-home svg",
+        "icon": "rgb(255, 255, 0)",
+        "parent": "rgb(255, 255, 0)",
+        "stroke": "none",
+        "background": "rgb(0, 0, 0)"
+      },
+      {
+        "s": ".os-theme-switch svg",
+        "icon": "rgb(0, 0, 0)",
+        "parent": "rgb(0, 0, 0)",
+        "stroke": "rgb(0, 0, 0)",
+        "background": "rgba(0, 230, 255, 0.8)"
+      },
+      {
+        "s": ".os-language summary svg",
+        "icon": "rgb(255, 255, 0)",
+        "parent": "rgb(255, 255, 0)",
+        "stroke": "rgb(255, 255, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "s": ".os-topbar .os-control svg",
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)",
+        "stroke": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "scopes": [
+      {
+        "text": "All",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Projects",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Papers",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Write-ups",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Lab",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      },
+      {
+        "text": "Pages and Actions",
+        "pressed": "true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "borderWidth": "2px"
+      }
+    ],
+    "dialogIcons": [
+      {
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)"
+      },
+      {
+        "icon": "rgb(255, 255, 255)",
+        "parent": "rgb(255, 255, 255)"
+      }
+    ],
+    "check": {
+      "icon": "rgb(255, 255, 0)",
+      "parent": "rgb(255, 255, 0)"
+    }
+  },
+  {
+    "id": "menu-en-1440",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "orb": {
+      "outline": "2px",
+      "offset": "-3px"
+    },
+    "desktop": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es"
+      }
+    ],
+    "foreground": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/projects"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa/projects"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar/projects"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh/projects"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es/projects"
+      }
+    ]
+  },
+  {
+    "id": "menu-en-390",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "orb": {
+      "outline": "2px",
+      "offset": "-3px"
+    },
+    "desktop": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es"
+      }
+    ],
+    "foreground": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/projects"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa/projects"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar/projects"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh/projects"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es/projects"
+      }
+    ]
+  },
+  {
+    "id": "menu-fa-1440",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "orb": {
+      "outline": "2px",
+      "offset": "-3px"
+    },
+    "desktop": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es"
+      }
+    ],
+    "foreground": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/projects"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa/projects"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar/projects"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh/projects"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es/projects"
+      }
+    ]
+  },
+  {
+    "id": "menu-fa-390",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T08:12:59.751Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "orb": {
+      "outline": "2px",
+      "offset": "-3px"
+    },
+    "desktop": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es"
+      }
+    ],
+    "foreground": [
+      {
+        "text": "English",
+        "reachable": true,
+        "hit": "/projects"
+      },
+      {
+        "text": "فارسی",
+        "reachable": true,
+        "hit": "/fa/projects"
+      },
+      {
+        "text": "العربية",
+        "reachable": true,
+        "hit": "/ar/projects"
+      },
+      {
+        "text": "中文",
+        "reachable": true,
+        "hit": "/zh/projects"
+      },
+      {
+        "text": "Español",
+        "reachable": true,
+        "hit": "/es/projects"
+      }
+    ]
+  }
+]

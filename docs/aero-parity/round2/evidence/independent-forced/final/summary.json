@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "resolved_finding": "R2-REVIEW-01",
+  "build_id": "UD_vNX6v9YqmgrvZLWuY7",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T09:25:26.070Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "cases": 4,
+  "injected_css": false,
+  "platform_opaque_system_face_with_legible_ink_and_2px_selection_border": 4,
+  "terminal_title_code_copy_readable": 4,
+  "page_errors": 0,
+  "all_eight_final_images_visually_inspected": true,
+  "text_contrast_ratio_for_measured_black_white_pairs": 21,
+  "scope": "Chromium forced-colour actual compiled selected platform and embedded terminal; not all controls or full WCAG conformance."
+}

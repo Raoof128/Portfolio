@@ -2,6 +2,30 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-03 (Australia/Sydney) — Owner-authorised Aero commit and push
+
+- **Scope**: Commit all reviewed Aero implementation/evidence changes and push the Portfolio default branch, as explicitly requested by the owner.
+- **Summary**: Preserve the accepted application and validation-tool bytes; record the transition from local review to the authorised repository push. Historical build identities and earlier no-push statements retain their original scope.
+- **Files Changed**: Reviewed frontend styles/components/tests, maintained parity tooling, curated audit evidence, AGENT.md and CHANGELOG.md.
+- **Verification**: Independent precommit review confirmed all 274 source, six harness and 1,072 export hashes match accepted evidence; no credential indicators or oversized generated artifacts; whitespace check clean. Existing final 674 unit tests and Chromium32/Firefox-WebKit12 browser results remain tied to build UD_vNX6v9YqmgrvZLWuY7. The commit hook runs the repository's staged lint/type checks.
+- **Follow-ups**: Push HEAD to origin/main without rewriting remote history. Main's existing CI/deployment workflow runs automatically; deployment success requires its own result and is not inferred from a successful push.
+
+### Raouf: 2026-11-03 (Australia/Sydney) — Second Aero parity pass and recovered verification
+
+- **Scope**: Continue the owner's all-element 7.css review while preserving ResearchOS, original content/artwork, five languages and static export; recover safely after the execution environment disconnected.
+- **Summary**: Correct standalone/locale404 chrome, native table/control/evidence/terminal styling, frame highlight stacking, server Close appearance, resize tooltip/focus, language-popup layering, forced-colour controls and Start focus. Independently reproduce and fix the selected-platform palette regression, with a maintained browser test. Expand comparison/census tooling and correct headless-hidden scrollbar evidence without concealing older captures.
+- **Files Changed**: 19 application/style/test files and five validation/instruction files, listed with exact hashes in docs/aero-parity/round2/evidence/source-manifest.json; second-pass reports/evidence; first-pass report pointers; AGENT.md; CHANGELOG.md. Dependencies and public research assets unchanged.
+- **Verification**: Final build UD_vNX6v9YqmgrvZLWuY7 (2026-11-03T09:25:26.070Z); 168 generated routes,1,072 export hashes. Lint/typecheck,674 tests/51 files and artifact/HTTP/agent/dependency checks pass. Chromium32/32;Firefox/WebKit12/12;360 responsive observations and160 route/axe scans with0 violations/158 incomplete contrast groups.134 paired states/38 specimens;50 exact matches, standalone404 sampled chrome exact0; four visible scrollbar states and seven reflow cases. Independent palette4/4,40410/10,terminal clipboard7/7,no-JS Close4 states+navigation and tooltip workflows pass. PNG fixtures4/4 and snapshot guards4/4 pass. Interrupted/failed diagnostic evidence retained.
+- **Follow-ups**: Conditional owner-review verdict and remaining accessibility/content/platform differences in docs/aero-parity/round2/README.md. Source accounting274 cumulative files:24 current complete reviews+250 byte-identical prior reviews; no false fresh-review or universal100% parity claim. No new commit, push, merge, deployment or environment publication.
+
+### Raouf: 2026-11-03 (Australia/Sydney) — Operation Aero reconstruction and measured parity
+
+- **Scope**: Execute the owner-authorised 7.css fidelity prompt from checkpoint `b4cc49d`, preserving ResearchOS, five languages, original evidence/artwork and static export.
+- **Summary**: Restore native scoped glass/frame/caption/field/tab/scrollbar styling; remove competing control skins; refine taskbar and icon presentation. Correct forward Tab from move/resize, inherited RTL search placement, opaque preference pseudo-elements, forced-colour breadcrumb and Atlas diagrams. Add controlled snapshot/image comparison with protected baseline identity and calibrated metrics.
+- **Files Changed**: 23 application/style/test files and six browser-harness files listed exactly in `docs/aero-parity/source-changes.md`; curated audit reports/evidence; historical scrollbar-note erratum; AGENT.md; CHANGELOG.md. No dependency, translation or public research-asset changes.
+- **Verification**: Final build `xfHy_bhVfJKii-CA72D9U` (2026-11-03T07:23:07.345Z), 168 generated routes; 23 application hashes and 1,072 export hashes revalidated. Lint/typecheck, 674/674 unit tests, schema/security/dependency checks and artifact/preview audits pass. Chromium 32/32; final Firefox/WebKit native cases 12/12; 360 responsive captures and 160 route/axe scans with zero violations and 158 incomplete contrast groups. 56 visual pairs; 23 caption states exact; image metric tests 4/4 and snapshot guards 2/2. Original failed/interrupted attempts and fixture corrections remain documented.
+- **Follow-ups**: Conditional owner-review verdict in `docs/aero-parity/final-acceptance.md`. Retain the measured P3 one-pixel frame overlap, intentional accessibility/mobile/Night differences and prior document/content/tooling limitations. Native assistive/device/Windows and field/production checks remain distinct. No new commit, push, merge, deployment or environment publication.
+
 ### Raouf: 2026-11-03 (Australia/Sydney) — Owner-authorised audit checkpoint
 
 - **Scope**: Commit the completed frontend audit and read the owner's new Operation Aero prompt in full.

@@ -1,0 +1,378 @@
+[
+  {
+    "colorScheme": "dark",
+    "stage": "compiled",
+    "project": "simurgh",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:23:07.345Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "styles": {
+      "selected": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "auto"
+      },
+      "figure": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "plate": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "label": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "rgb(0, 0, 0)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "glyph": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "none",
+        "stroke": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "seal": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(0, 230, 255, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "core": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(0, 230, 255, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "visible": null,
+      "excluded": null,
+      "planeLabel": null
+    }
+  },
+  {
+    "colorScheme": "dark",
+    "stage": "compiled",
+    "project": "invisible-window",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:23:07.345Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "styles": {
+      "selected": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "auto"
+      },
+      "figure": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "plate": null,
+      "label": null,
+      "glyph": null,
+      "seal": null,
+      "core": null,
+      "visible": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "rgba(0, 230, 255, 0.8)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "excluded": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "planeLabel": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      }
+    }
+  },
+  {
+    "colorScheme": "dark",
+    "stage": "compiled",
+    "project": "zurvan",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:23:07.345Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "styles": {
+      "selected": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "auto"
+      },
+      "figure": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "plate": null,
+      "label": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "rgb(0, 0, 0)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "glyph": null,
+      "seal": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(0, 230, 255, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "core": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(0, 230, 255, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "visible": null,
+      "excluded": null,
+      "planeLabel": null
+    }
+  },
+  {
+    "colorScheme": "light",
+    "stage": "compiled",
+    "project": "simurgh",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:23:07.345Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "styles": {
+      "selected": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "auto"
+      },
+      "figure": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "plate": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "rgb(0, 0, 0)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "label": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "glyph": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "none",
+        "stroke": "rgb(0, 0, 0)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "seal": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(5, 0, 73, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "core": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(5, 0, 73, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "visible": null,
+      "excluded": null,
+      "planeLabel": null
+    }
+  },
+  {
+    "colorScheme": "light",
+    "stage": "compiled",
+    "project": "invisible-window",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:23:07.345Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "styles": {
+      "selected": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "auto"
+      },
+      "figure": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "plate": null,
+      "label": null,
+      "glyph": null,
+      "seal": null,
+      "core": null,
+      "visible": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "rgba(5, 0, 73, 0.8)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "excluded": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(0, 0, 0)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "planeLabel": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      }
+    }
+  },
+  {
+    "colorScheme": "light",
+    "stage": "compiled",
+    "project": "zurvan",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:23:07.345Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "styles": {
+      "selected": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "auto"
+      },
+      "figure": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgb(255, 255, 255)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "plate": null,
+      "label": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgb(0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "glyph": null,
+      "seal": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(5, 0, 73, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "core": {
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fill": "rgba(5, 0, 73, 0.8)",
+        "stroke": "none",
+        "opacity": "1",
+        "forcedColorAdjust": "preserve-parent-color"
+      },
+      "visible": null,
+      "excluded": null,
+      "planeLabel": null
+    }
+  }
+]

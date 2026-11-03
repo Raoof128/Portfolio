@@ -1,0 +1,824 @@
+{
+  "buildId": "UD_vNX6v9YqmgrvZLWuY7",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T09:25:26.070Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "cases": [
+    {
+      "locale": "en",
+      "theme": "light",
+      "width": 1440,
+      "forced": false,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        },
+        "hover": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "1",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        },
+        "pressed": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245))",
+          "buttonBefore": "1",
+          "buttonAfter": "1",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        },
+        "focus": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "Commands copied",
+        "status": "Commands copied"
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "dark",
+      "width": 1440,
+      "forced": false,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        },
+        "hover": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "1",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        },
+        "pressed": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 518.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 101.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 511.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 381.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245))",
+          "buttonBefore": "1",
+          "buttonAfter": "1",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        },
+        "focus": {
+          "frame": {
+            "x": 576,
+            "y": 380.59375,
+            "width": 616,
+            "height": 171.171875,
+            "top": 380.59375,
+            "right": 1192,
+            "bottom": 551.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 381.59375,
+            "width": 614,
+            "height": 29,
+            "top": 381.59375,
+            "right": 1191,
+            "bottom": 410.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 410.59375,
+            "width": 602,
+            "height": 134.171875,
+            "top": 410.59375,
+            "right": 1185,
+            "bottom": 544.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1037.671875,
+            "y": 381.59375,
+            "width": 147.328125,
+            "height": 23,
+            "top": 381.59375,
+            "right": 1185,
+            "bottom": 404.59375,
+            "left": 1037.671875
+          },
+          "frameRadius": "6px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "Commands copied",
+        "status": "Commands copied"
+      }
+    },
+    {
+      "locale": "fa",
+      "theme": "dark",
+      "width": 320,
+      "forced": false,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 55,
+            "y": 239.15625,
+            "width": 210,
+            "height": 349.515625,
+            "top": 239.15625,
+            "right": 265,
+            "bottom": 588.671875,
+            "left": 55
+          },
+          "header": {
+            "x": 56,
+            "y": 240.15625,
+            "width": 208,
+            "height": 106,
+            "top": 240.15625,
+            "right": 264,
+            "bottom": 346.15625,
+            "left": 56
+          },
+          "body": {
+            "x": 62,
+            "y": 346.15625,
+            "width": 196,
+            "height": 235.515625,
+            "top": 346.15625,
+            "right": 258,
+            "bottom": 581.671875,
+            "left": 62
+          },
+          "button": {
+            "x": 155.34375,
+            "y": 296.15625,
+            "width": 102.65625,
+            "height": 44,
+            "top": 296.15625,
+            "right": 258,
+            "bottom": 340.15625,
+            "left": 155.34375
+          },
+          "frameRadius": "0px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px Vazirmatn, \"Vazirmatn Fallback\", system-ui, sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "فرمان‌ها کپی شد",
+        "status": "فرمان‌ها کپی شد"
+      }
+    },
+    {
+      "locale": "ar",
+      "theme": "light",
+      "width": 390,
+      "forced": false,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 55,
+            "y": 286.6875,
+            "width": 280,
+            "height": 254.734375,
+            "top": 286.6875,
+            "right": 335,
+            "bottom": 541.421875,
+            "left": 55
+          },
+          "header": {
+            "x": 56,
+            "y": 287.6875,
+            "width": 278,
+            "height": 56,
+            "top": 287.6875,
+            "right": 334,
+            "bottom": 343.6875,
+            "left": 56
+          },
+          "body": {
+            "x": 62,
+            "y": 343.6875,
+            "width": 266,
+            "height": 190.734375,
+            "top": 343.6875,
+            "right": 328,
+            "bottom": 534.421875,
+            "left": 62
+          },
+          "button": {
+            "x": 62,
+            "y": 290.6875,
+            "width": 95.796875,
+            "height": 44,
+            "top": 290.6875,
+            "right": 157.796875,
+            "bottom": 334.6875,
+            "left": 62
+          },
+          "frameRadius": "0px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px Vazirmatn, \"Vazirmatn Fallback\", system-ui, sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "تم نسخ الأوامر",
+        "status": "تم نسخ الأوامر"
+      }
+    },
+    {
+      "locale": "zh",
+      "theme": "light",
+      "width": 390,
+      "forced": false,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 55,
+            "y": 286.625,
+            "width": 280,
+            "height": 254.734375,
+            "top": 286.625,
+            "right": 335,
+            "bottom": 541.359375,
+            "left": 55
+          },
+          "header": {
+            "x": 56,
+            "y": 287.625,
+            "width": 278,
+            "height": 56,
+            "top": 287.625,
+            "right": 334,
+            "bottom": 343.625,
+            "left": 56
+          },
+          "body": {
+            "x": 62,
+            "y": 343.625,
+            "width": 266,
+            "height": 190.734375,
+            "top": 343.625,
+            "right": 328,
+            "bottom": 534.359375,
+            "left": 62
+          },
+          "button": {
+            "x": 237.984375,
+            "y": 290.625,
+            "width": 90.015625,
+            "height": 44,
+            "top": 290.625,
+            "right": 328,
+            "bottom": 334.625,
+            "left": 237.984375
+          },
+          "frameRadius": "0px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"PingFang SC\", \"Hiragino Sans GB\", \"Noto Sans SC\", \"Microsoft YaHei\", system-ui, sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "命令已复制",
+        "status": "命令已复制"
+      }
+    },
+    {
+      "locale": "es",
+      "theme": "light",
+      "width": 320,
+      "forced": false,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 55,
+            "y": 239.140625,
+            "width": 210,
+            "height": 349.515625,
+            "top": 239.140625,
+            "right": 265,
+            "bottom": 588.65625,
+            "left": 55
+          },
+          "header": {
+            "x": 56,
+            "y": 240.140625,
+            "width": 208,
+            "height": 106,
+            "top": 240.140625,
+            "right": 264,
+            "bottom": 346.140625,
+            "left": 56
+          },
+          "body": {
+            "x": 62,
+            "y": 346.140625,
+            "width": 196,
+            "height": 235.515625,
+            "top": 346.140625,
+            "right": 258,
+            "bottom": 581.65625,
+            "left": 62
+          },
+          "button": {
+            "x": 62,
+            "y": 296.140625,
+            "width": 140.90625,
+            "height": 44,
+            "top": 296.140625,
+            "right": 202.90625,
+            "bottom": 340.140625,
+            "left": 62
+          },
+          "frameRadius": "0px",
+          "frameShadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+          "frameGlass": "0.6",
+          "frameBlur": "blur(4px)",
+          "titleColour": "rgb(0, 0, 0)",
+          "consoleColour": "rgb(204, 204, 204)",
+          "consoleBackground": "rgb(12, 12, 12)",
+          "buttonFont": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+          "buttonBackground": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "Comandos copiados",
+        "status": "Comandos copiados"
+      }
+    },
+    {
+      "locale": "en",
+      "theme": "dark",
+      "width": 1440,
+      "forced": true,
+      "errors": [],
+      "states": {
+        "default": {
+          "frame": {
+            "x": 576,
+            "y": 381.59375,
+            "width": 616,
+            "height": 140.171875,
+            "top": 381.59375,
+            "right": 1192,
+            "bottom": 521.765625,
+            "left": 576
+          },
+          "header": {
+            "x": 577,
+            "y": 382.59375,
+            "width": 614,
+            "height": 29,
+            "top": 382.59375,
+            "right": 1191,
+            "bottom": 411.59375,
+            "left": 577
+          },
+          "body": {
+            "x": 583,
+            "y": 411.59375,
+            "width": 602,
+            "height": 103.171875,
+            "top": 411.59375,
+            "right": 1185,
+            "bottom": 514.765625,
+            "left": 583
+          },
+          "button": {
+            "x": 1047.203125,
+            "y": 382.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 382.59375,
+            "right": 1185,
+            "bottom": 405.59375,
+            "left": 1047.203125
+          },
+          "frameRadius": "6px",
+          "frameShadow": "none",
+          "frameGlass": "1",
+          "frameBlur": "none",
+          "titleColour": "rgb(255, 255, 255)",
+          "consoleColour": "rgb(255, 255, 255)",
+          "consoleBackground": "rgb(0, 0, 0)",
+          "buttonFont": "",
+          "buttonBackground": "none",
+          "buttonBefore": "0",
+          "buttonAfter": "0",
+          "pageOverflow": false,
+          "terminalOverflow": false
+        }
+      },
+      "copied": {
+        "matches": true,
+        "button": "Commands copied",
+        "status": "Commands copied"
+      }
+    }
+  ]
+}

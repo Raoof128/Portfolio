@@ -1,0 +1,44 @@
+{
+  "scope": "Negative guard cases against an isolated copy of the baseline manifest, never the original frozen evidence",
+  "cases": [
+    {
+      "arguments": [],
+      "expected_error": "Snapshot already exists",
+      "exit_code": 1,
+      "original_hashes_preserved": true,
+      "passed": true
+    },
+    {
+      "arguments": [
+        "--extend",
+        "--expanded",
+        "--dark"
+      ],
+      "expected_error": "different appearance",
+      "exit_code": 1,
+      "original_hashes_preserved": true,
+      "passed": true
+    },
+    {
+      "arguments": [
+        "--extend"
+      ],
+      "expected_error": "Cannot downgrade",
+      "exit_code": 1,
+      "original_hashes_preserved": true,
+      "passed": true
+    },
+    {
+      "arguments": [
+        "--extend",
+        "--expanded"
+      ],
+      "expected_error": "different export",
+      "exit_code": 1,
+      "original_hashes_preserved": true,
+      "passed": true
+    }
+  ],
+  "count": 4,
+  "passed": 4
+}

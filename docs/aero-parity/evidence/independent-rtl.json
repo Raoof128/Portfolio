@@ -1,0 +1,22 @@
+[
+  {
+    "dir": "rtl",
+    "shellDir": null,
+    "matches": false,
+    "placeholder": "جست‌وجو در پروژه‌ها، مقاله‌ها و نوشته‌ها",
+    "backgroundPosition": "8px 50%",
+    "paddingInlineStart": "6px",
+    "paddingInlineEnd": "26px",
+    "direction": "rtl"
+  },
+  {
+    "dir": "rtl",
+    "shellDir": null,
+    "matches": false,
+    "placeholder": "ابحث في المشاريع والأوراق والمقالات",
+    "backgroundPosition": "8px 50%",
+    "paddingInlineStart": "6px",
+    "paddingInlineEnd": "26px",
+    "direction": "rtl"
+  }
+]

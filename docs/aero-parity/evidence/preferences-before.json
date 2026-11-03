@@ -1,0 +1,641 @@
+{
+  "build": "ON51LemB7bb4KspUAzPn6",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:10:47.522Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "results": [
+    {
+      "theme": "light",
+      "pref": "normal",
+      "state": {
+        "reducedTransparency": false,
+        "forcedColors": false,
+        "frame": {
+          "backdropFilter": "none",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "flex"
+        },
+        "before": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(69, 128, 196) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "0.6",
+          "content": "\"\"",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "after": {
+          "backdropFilter": "blur(4px)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "\"\"",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "title": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%) no-repeat fixed 0% 50% / 1440px 900px padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "flex"
+        },
+        "body": {
+          "backdropFilter": "none",
+          "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "blurs": [
+          {
+            "tag": "SECTION",
+            "cls": "os-intro window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "proof-atlas proof-atlas--desktop window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "os-window os-workspace-window window glass active os-window--floating",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "os-window window glass active ",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "NAV",
+            "cls": "os-dock",
+            "pseudo": "",
+            "backdropFilter": "blur(14px) saturate(1.5)",
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgba(240, 250, 255, 0.8) 0%, rgba(196, 228, 249, 0.6) 46%, rgba(120, 178, 228, 0.7) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "normal",
+            "color": "rgb(0, 0, 0)",
+            "display": "flex"
+          }
+        ]
+      }
+    },
+    {
+      "theme": "light",
+      "pref": "transparency",
+      "state": {
+        "reducedTransparency": true,
+        "forcedColors": false,
+        "frame": {
+          "backdropFilter": "none",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "flex"
+        },
+        "before": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(69, 128, 196) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "0.6",
+          "content": "\"\"",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "after": {
+          "backdropFilter": "blur(4px)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "\"\"",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "title": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%) no-repeat fixed 0% 50% / 1440px 900px padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "flex"
+        },
+        "body": {
+          "backdropFilter": "none",
+          "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "blurs": [
+          {
+            "tag": "SECTION",
+            "cls": "os-intro window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "proof-atlas proof-atlas--desktop window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "os-window os-workspace-window window glass active os-window--floating",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "os-window window glass active ",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "NAV",
+            "cls": "os-dock",
+            "pseudo": "",
+            "backdropFilter": "blur(0px) saturate(1.5)",
+            "background": "rgb(207, 233, 250) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "normal",
+            "color": "rgb(0, 0, 0)",
+            "display": "flex"
+          }
+        ]
+      }
+    },
+    {
+      "theme": "light",
+      "pref": "forced",
+      "state": {
+        "reducedTransparency": false,
+        "forcedColors": true,
+        "frame": {
+          "backdropFilter": "none",
+          "background": "rgba(255, 255, 255, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "flex"
+        },
+        "before": {
+          "backdropFilter": "none",
+          "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "0.6",
+          "content": "\"\"",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "after": {
+          "backdropFilter": "blur(4px)",
+          "background": "rgba(255, 255, 255, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "\"\"",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "title": {
+          "backdropFilter": "none",
+          "background": "rgba(255, 255, 255, 0) none repeat fixed 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "flex"
+        },
+        "body": {
+          "backdropFilter": "none",
+          "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "blurs": [
+          {
+            "tag": "SECTION",
+            "cls": "os-intro window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(255, 255, 255, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "proof-atlas proof-atlas--desktop window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(255, 255, 255, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "os-window os-workspace-window window glass active os-window--floating",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(255, 255, 255, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "os-window window glass active ",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(255, 255, 255, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "NAV",
+            "cls": "os-dock",
+            "pseudo": "",
+            "backdropFilter": "blur(14px) saturate(1.5)",
+            "background": "rgba(255, 255, 255, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "normal",
+            "color": "rgb(0, 0, 0)",
+            "display": "flex"
+          }
+        ]
+      }
+    },
+    {
+      "theme": "dark",
+      "pref": "normal",
+      "state": {
+        "reducedTransparency": false,
+        "forcedColors": false,
+        "frame": {
+          "backdropFilter": "none",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex"
+        },
+        "before": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(24, 52, 92) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "0.6",
+          "content": "\"\"",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "after": {
+          "backdropFilter": "blur(4px)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "\"\"",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "title": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%) no-repeat fixed 0% 50% / 1440px 900px padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex"
+        },
+        "body": {
+          "backdropFilter": "none",
+          "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "blurs": [
+          {
+            "tag": "SECTION",
+            "cls": "os-intro window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "proof-atlas proof-atlas--desktop window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "os-window os-workspace-window window glass active os-window--floating",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "os-window window glass active ",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "NAV",
+            "cls": "os-dock",
+            "pseudo": "",
+            "backdropFilter": "blur(14px) saturate(1.5)",
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgba(104, 142, 190, 0.62) 0%, rgba(40, 72, 116, 0.64) 46%, rgba(14, 34, 66, 0.74) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "normal",
+            "color": "rgb(255, 255, 255)",
+            "display": "flex"
+          }
+        ]
+      }
+    },
+    {
+      "theme": "dark",
+      "pref": "transparency",
+      "state": {
+        "reducedTransparency": true,
+        "forcedColors": false,
+        "frame": {
+          "backdropFilter": "none",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex"
+        },
+        "before": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(24, 52, 92) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "0.6",
+          "content": "\"\"",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "after": {
+          "backdropFilter": "blur(4px)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "\"\"",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "title": {
+          "backdropFilter": "none",
+          "background": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%) no-repeat fixed 0% 50% / 1440px 900px padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex"
+        },
+        "body": {
+          "backdropFilter": "none",
+          "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(0, 0, 0)",
+          "display": "block"
+        },
+        "blurs": [
+          {
+            "tag": "SECTION",
+            "cls": "os-intro window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "proof-atlas proof-atlas--desktop window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(0, 0, 0)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "os-window os-workspace-window window glass active os-window--floating",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "os-window window glass active ",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "NAV",
+            "cls": "os-dock",
+            "pseudo": "",
+            "backdropFilter": "blur(0px) saturate(1.5)",
+            "background": "rgb(21, 41, 74) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "normal",
+            "color": "rgb(255, 255, 255)",
+            "display": "flex"
+          }
+        ]
+      }
+    },
+    {
+      "theme": "dark",
+      "pref": "forced",
+      "state": {
+        "reducedTransparency": false,
+        "forcedColors": true,
+        "frame": {
+          "backdropFilter": "none",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex"
+        },
+        "before": {
+          "backdropFilter": "none",
+          "background": "rgb(0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "0.6",
+          "content": "\"\"",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "after": {
+          "backdropFilter": "blur(4px)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "\"\"",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "title": {
+          "backdropFilter": "none",
+          "background": "rgba(0, 0, 0, 0) none repeat fixed 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex"
+        },
+        "body": {
+          "backdropFilter": "none",
+          "background": "rgb(0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1",
+          "content": "normal",
+          "color": "rgb(255, 255, 255)",
+          "display": "block"
+        },
+        "blurs": [
+          {
+            "tag": "SECTION",
+            "cls": "os-intro window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "proof-atlas proof-atlas--desktop window glass active",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "SECTION",
+            "cls": "os-window os-workspace-window window glass active os-window--floating",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "MAIN",
+            "cls": "os-window window glass active ",
+            "pseudo": "::after",
+            "backdropFilter": "blur(4px)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "\"\"",
+            "color": "rgb(255, 255, 255)",
+            "display": "block"
+          },
+          {
+            "tag": "NAV",
+            "cls": "os-dock",
+            "pseudo": "",
+            "backdropFilter": "blur(14px) saturate(1.5)",
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "opacity": "1",
+            "content": "normal",
+            "color": "rgb(255, 255, 255)",
+            "display": "flex"
+          }
+        ]
+      }
+    }
+  ]
+}

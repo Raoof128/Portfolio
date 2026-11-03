@@ -1,0 +1,13 @@
+
+> portfolio@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+
+ Test Files  51 passed (51)
+      Tests  674 passed (674)
+   Start at  09:25:17
+   Duration  56.21s (transform 1.99s, setup 2.24s, import 6.38s, tests 22.41s, environment 19.21s)
+

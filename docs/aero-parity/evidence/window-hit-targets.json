@@ -1,0 +1,28 @@
+{
+  "build": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:06:11.209Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "buildId": "zhI36HtTY1lmEpHTY4Njv",
+  "checks": [
+    "expanded by click4pxbelow19pxvisualbox",
+    "restored by click4pxbelow19pxvisualbox",
+    {
+      "reverse": {
+        "panel": false,
+        "target": "os-control"
+      }
+    },
+    {
+      "forward": {
+        "panel": false,
+        "target": "<a class=\"os-explorer-index-link\" aria-current=\"page\" href=\"/projects\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-folder\" aria-hidden=\"true\">",
+        "isSummary": false
+      }
+    },
+    "minimized by click4pxbelow19pxvisualbox",
+    "closed by click4pxbelow19pxvisualbox"
+  ]
+}

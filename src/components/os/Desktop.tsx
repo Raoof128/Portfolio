@@ -80,6 +80,7 @@ function WindowCaption({
         className="os-control is-minimize"
         onClick={onMinimize}
         aria-label={`${labels.minimize}: ${title}`}
+        title={`${labels.minimize}: ${title}`}
       />
       <button
         type="button"
@@ -87,6 +88,7 @@ function WindowCaption({
         onClick={onToggleSize}
         // The name is constant; aria-pressed carries the expanded state.
         aria-label={`${labels.fullSize}: ${title}`}
+        title={`${labels.fullSize}: ${title}`}
         aria-pressed={expanded}
       />
       <button
@@ -94,6 +96,7 @@ function WindowCaption({
         className="os-control os-window-close is-close"
         onClick={onClose}
         aria-label={`${labels.close}: ${title}`}
+        title={`${labels.close}: ${title}`}
       />
     </div>
   );

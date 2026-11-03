@@ -143,11 +143,12 @@ export function ReadingWindowControls({
             if (event.shiftKey) close();
             else buttons[0]?.focus();
           } else if (!event.shiftKey && event.target === buttons.at(-1)) {
-            event.preventDefault();
             close(false);
-            const next = menu.current.nextElementSibling;
-            if (next instanceof HTMLElement) next.focus();
-            else summary.current?.focus();
+            // Resume the document's native tab order after the disclosure. The panel
+            // is portalled, and this disclosure can be the toolbar's last child;
+            // nextElementSibling therefore cannot identify the next focus target.
+            // Leave Tab uncancelled so the browser advances from the summary.
+            summary.current?.focus();
           }
         }
       }}

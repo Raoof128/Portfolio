@@ -1,0 +1,14 @@
+> portfolio@0.1.0 test:dependency-security
+> node --test scripts/lib/braces-guard.test.mjs
+
+✔ installed Next consumer uses the attributed fork with exact source/tarball parity (17.720048ms)
+✔ ordinary globs and the real enabled Next internal-link rule remain correct (309.758526ms)
+✔ bounded installed-consumer subprocesses reject recursive/coercion/resource inputs (2184.06642ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2617.035567

@@ -1,0 +1,158 @@
+{
+  "build_id": "UD_vNX6v9YqmgrvZLWuY7",
+  "stats": {
+    "startTime": "2026-11-03T09:36:16.588Z",
+    "duration": 86093.239,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "engine": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5756,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "pointer geometry, search selection, locale and appearance persistence",
+      "engine": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4723,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "forced colours preserve caption glyph geometry and language fonts",
+      "engine": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3312,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "engine": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1316,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "keyboard workspace entry and five-language 404 recovery",
+      "engine": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3512,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "five-language keyboard search, empty results and dismissal",
+      "engine": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7084,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "engine": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 11024,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "pointer geometry, search selection, locale and appearance persistence",
+      "engine": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8607,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "forced colours preserve caption glyph geometry and language fonts",
+      "engine": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5366,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "engine": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2398,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "keyboard workspace entry and five-language 404 recovery",
+      "engine": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7088,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "five-language keyboard search, empty results and dismissal",
+      "engine": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 23528,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

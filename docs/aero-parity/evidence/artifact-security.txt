@@ -1,0 +1,4 @@
+> portfolio@0.1.0 audit:security
+> node scripts/audit-static-security.mjs
+
+Static security audit passed (1072 files; disclosure contact, browser policy and routing preserved).

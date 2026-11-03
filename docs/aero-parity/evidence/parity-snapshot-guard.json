@@ -1,0 +1,19 @@
+{
+  "tests": [
+    {
+      "args": [],
+      "exit": 1,
+      "expected_error": "Snapshot already exists",
+      "all_original_hashes_preserved": true
+    },
+    {
+      "args": [
+        "--extend"
+      ],
+      "exit": 1,
+      "expected_error": "Cannot extend a snapshot from a different export",
+      "all_original_hashes_preserved": true
+    }
+  ],
+  "pass": 2
+}

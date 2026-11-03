@@ -1,0 +1,35 @@
+{
+  "scope": "Complete original harness read plus all changed regions and full new specimen module reviewed; standalone PNG implementation retained from previous independent calibration.",
+  "files": [
+    {
+      "path": "scripts/browser-regressions/aero-parity/README.md",
+      "sha256": "d167b0c8d17363b54a18ed458a8f157fed51dc1594fb34bce0ffc9fb6d672cda",
+      "lines": 81
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/compare.mjs",
+      "sha256": "7dc3677b2896211f910db16ae35b35369a2801e127a204c11abbf485741c6767",
+      "lines": 817
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.mjs",
+      "sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "lines": 189
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.test.mjs",
+      "sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "lines": 99
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/round2-specimens.mjs",
+      "sha256": "59ff59ad64da007bb77186c8303210b34ce0c32250d58128c7c2ee300b2dd147",
+      "lines": 302
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "sha256": "76ce4e65462d5f1093bd7a5e14b55c03f5e3403718976ddf04ae1cd8582dc086",
+      "lines": 264
+    }
+  ]
+}

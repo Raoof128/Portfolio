@@ -1,0 +1,13 @@
+> portfolio@0.1.0 lint
+> eslint
+
+
+/workspace/Portfolio/docs/aero-parity/round2/evidence/controls-recovered/behaviour.cjs
+  1:17  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  1:82  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+/workspace/Portfolio/docs/aero-parity/round2/evidence/controls-recovered/spacing.cjs
+  1:17  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  1:82  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+✖ 4 problems (4 errors, 0 warnings)

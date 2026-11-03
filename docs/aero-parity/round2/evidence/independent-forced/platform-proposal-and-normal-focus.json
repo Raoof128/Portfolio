@@ -1,0 +1,110 @@
+[
+  {
+    "appearance": "light",
+    "system": "light",
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:07:57.318Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "injected": true,
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "border": "2px solid rgba(5, 0, 73, 0.8)",
+    "outline": "rgba(5, 0, 73, 0.8) dotted 1px",
+    "shadow": "none",
+    "pressed": "true",
+    "focusVisible": true
+  },
+  {
+    "appearance": "light",
+    "system": "dark",
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:07:57.318Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "injected": true,
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(0, 0, 0)",
+    "border": "2px solid rgba(0, 230, 255, 0.8)",
+    "outline": "rgba(0, 230, 255, 0.8) dotted 1px",
+    "shadow": "none",
+    "pressed": "true",
+    "focusVisible": true
+  },
+  {
+    "appearance": "light",
+    "system": "normal",
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:07:57.318Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "injected": false,
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "border": "1px solid rgb(109, 145, 171)",
+    "outline": "rgb(0, 0, 0) dotted 1px",
+    "shadow": "rgb(152, 209, 239) 0px 0px 0px 2px inset",
+    "pressed": "true",
+    "focusVisible": true
+  },
+  {
+    "appearance": "dark",
+    "system": "light",
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:07:57.318Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "injected": true,
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "border": "2px solid rgba(5, 0, 73, 0.8)",
+    "outline": "rgba(5, 0, 73, 0.8) dotted 1px",
+    "shadow": "none",
+    "pressed": "true",
+    "focusVisible": true
+  },
+  {
+    "appearance": "dark",
+    "system": "dark",
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:07:57.318Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "injected": true,
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(0, 0, 0)",
+    "border": "2px solid rgba(0, 230, 255, 0.8)",
+    "outline": "rgba(0, 230, 255, 0.8) dotted 1px",
+    "shadow": "none",
+    "pressed": "true",
+    "focusVisible": true
+  },
+  {
+    "appearance": "dark",
+    "system": "normal",
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:07:57.318Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "injected": false,
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "border": "1px solid rgb(109, 145, 171)",
+    "outline": "rgb(0, 0, 0) dotted 1px",
+    "shadow": "rgb(152, 209, 239) 0px 0px 0px 2px inset",
+    "pressed": "true",
+    "focusVisible": true
+  }
+]

@@ -91,21 +91,11 @@
   margin: 0;
 }
 
-/* Glass window frames: a 6px blue frame around a white body, as on Windows 7 (the
-   window frame rulebook). The `.os-desktop` ancestor is needed: win7-windows.css loads
-   after this file and sets a 4px frame at the same specificity, which left the 6px
-   title bar overhanging the frame by 2px on each side. The frame and title bar stay
-   translucent, so the wallpaper reads through. */
+/* Shared window chrome comes from win7-windows.css. Keep only desktop layout here;
+   separate frame/title paints used to suppress the canonical 7.css glass treatment. */
 .os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window {
   min-width: 0;
   margin: 0;
-  padding: 0 6px 6px;
-  border: 1px solid var(--win7-frame-border);
-  border-radius: var(--win7-radius);
-  background: var(--win7-title-bg);
-  box-shadow:
-    2px 2px 10px 1px rgb(0 0 0 / 0.5),
-    inset 0 0 0 1px rgb(255 255 255 / 0.45);
   color: var(--win7-body-text);
 }
 
@@ -210,37 +200,15 @@
   }
 }
 
-/* Title bars of the two desktop windows. They use the same 7.css title bar as the
-   reading windows: a 30px glass bar on a solid base, flush with the frame. The caption
-   group (Minimise, Maximise, Close) sits on the end edge. The title text is black on the
-   light base with no shadow, so its edges stay crisp. */
+/* Desktop titles may wrap for translations. Frame, reflection, typography and caption
+   geometry share the canonical window rules; no separate opaque desktop title skin. */
 .os-shell.win7 .os-desktop .os-intro.window.glass > .title-bar,
 .os-shell.win7
   .os-desktop
   .proof-atlas--desktop.window.glass
   > .proof-atlas-heading.title-bar {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: var(--win7-title-h);
   height: auto;
-  /* One row of items: the title wraps onto a second line rather than truncating, and the
-     caption group keeps its size, so it never wraps onto a line of its own. */
   flex-wrap: nowrap;
-  margin: 0 -6px;
-  padding: 6px 6px 6px 8px;
-  border: 0;
-  /* The frame is 6px with a 1px border, so the title bar follows its inner 5px radius.
-     Square corners would poke past the rounded frame edge. */
-  border-radius: 5px 5px 0 0;
-  /* The gloss is a light top edge over the solid title base, so the title text keeps
-     its contrast (the full glass gradient lifts the Night title too far). */
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 50%),
-    var(--win7-title-base);
-  box-shadow: none;
-  color: var(--win7-text-glass);
 }
 
 .os-shell.win7 .os-desktop .title-bar-controls {
@@ -255,21 +223,19 @@
   .proof-atlas-heading
   > .proof-atlas-eyebrow,
 .os-shell.win7 .os-desktop .proof-atlas--desktop .proof-atlas-heading > h2 {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
   margin: 0;
-  padding: 0;
+  padding: 6px 0 0;
   align-self: auto;
   /* Wrap, never ellipsis: a cut title reads as unfinished (SC-06, LR-05). */
   overflow-wrap: anywhere;
   white-space: normal;
+  font: inherit;
   font-family: var(--win7-font);
-  font-size: var(--win7-ui-size);
-  font-weight: 600;
-  line-height: 18px;
+  line-height: 15px;
   color: inherit;
-  text-shadow: none;
 }
 
 /* The Atlas title is the heading alone, set in the regular weight so it reads as the window's
@@ -279,12 +245,11 @@
 }
 
 .os-shell.win7 .os-intro .window-body.has-space {
-  margin: 0;
+  margin: 0 6px 6px;
   padding: 24px;
-  border: 0;
-  border-radius: 0 0 3px 3px;
+  border: 1px solid var(--w7-w-bd);
+  border-radius: 0;
   background: var(--win7-body-bg);
-  box-shadow: none;
   color: var(--win7-body-text);
 }
 
@@ -318,50 +283,13 @@
   gap: 8px;
 }
 
-/* Win7 push buttons for the Getting Started links. Links keep the 7.css gradients and
-   black text. The `.os-desktop` ancestor lifts these rules above the controls.css
-   secondary hover, which sets a translucent accent tint. In Aero Night that tint is
-   dark, so black text on it fell to about 1.6:1. */
+/* The shared action layer owns the canonical 7.css face and every interaction state.
+   Desktop CTAs only add their icon/text layout; phone and coarse targets grow below. */
 .os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button {
-  min-width: 75px;
-  min-height: 23px;
-  padding: 0 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border: 1px solid var(--w7-el-bd);
-  border-radius: var(--w7-el-bdr);
-  background: var(--w7-el-grad);
-  box-shadow: var(--w7-el-sd);
-  color: var(--w7-el-c);
-  font-family: var(--win7-font);
-  font-size: var(--win7-ui-size);
-  line-height: 1.2;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button:hover {
-  border-color: var(--w7-el-bd-h);
-  background: var(--w7-el-grad-h);
-  color: var(--w7-el-c);
-}
-
-.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button:active {
-  border-color: var(--w7-el-bd-a);
-  background: var(--w7-el-grad-a);
-  box-shadow: var(--w7-el-sd-a);
-}
-
-/* Focus on the Getting Started buttons: a 2px black ring with a 2px offset, the same width
-   as the taskbar ring. The buttons sit on the white window body in both themes, so black
-   carries the contrast (21:1 against the white body). controls.css draws a 1px dotted outline
-   here. */
-.os-shell.win7 .os-desktop .os-intro .os-direct-links .os-button:focus-visible {
-  outline: 2px solid var(--win7-focus-inner);
-  outline-offset: 2px;
-  box-shadow: var(--w7-el-sd);
 }
 
 /* Desktop labels. The section hint and the category caption sit on a translucent dark chip,
@@ -461,31 +389,41 @@
   line-height: 1.35;
 }
 
-/* Glossy 48px tile in the 7.css style: a white gloss fading out over the top half, a
-   1px dark rim and a light inner edge. The glyph is decorative and sits on the tile. */
+/* Desktop pictograms keep their existing Lucide paths and app identities. Windows 7
+   uses distinct icon silhouettes rather than one identical rounded-square app tile.
+   The 48px layout slot remains stable; the original glyph gains a restrained paper/folder
+   fill, dark edge and drop shadow. These are ResearchOS icons, not Microsoft assets. */
 .os-shell.win7 .os-desktop .os-apps .os-app-icon {
   display: grid;
   place-items: center;
   flex: none;
   inline-size: 48px;
   block-size: 48px;
-  border: 1px solid rgb(0 0 0 / 0.45);
-  border-radius: 6px;
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0) 50%),
-    var(--win7-tile-bg);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.4),
-    0 1px 2px rgb(0 0 0 / 0.35);
-  color: #ffffff;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .os-shell.win7 .os-desktop .os-apps .os-app-icon svg {
-  inline-size: 26px;
-  block-size: 26px;
-  color: #ffffff;
-  stroke: #ffffff;
-  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5));
+  inline-size: 36px;
+  block-size: 36px;
+  fill: #f6fbff;
+  color: #174b7d;
+  stroke: currentColor;
+  filter: drop-shadow(0 1px 0 #ffffff) drop-shadow(0 2px 2px rgb(0 0 0 / 0.55));
+}
+.os-shell.win7 .os-desktop .os-apps [data-app="projects"] .os-app-icon svg,
+.os-shell.win7 .os-desktop .os-apps [data-app="contact"] .os-app-icon svg {
+  fill: #ffe5a0;
+  color: #795117;
+}
+
+/* Lucide draws these open detail strokes before the enclosing outline. A fill on that
+   later outline would conceal the book spine or envelope flap, so these stay outlined. */
+.os-shell.win7 .os-desktop .os-apps :is([data-app="research"], [data-app="contact"]) .os-app-icon svg {
+  fill: none;
+  color: var(--win7-text-on-wallpaper);
 }
 
 /* Win7 selection: a translucent blue rounded box on hover, while pressed, when selected
@@ -507,12 +445,10 @@
 }
 
 /* Shortcut row: the labels sit on the wallpaper at the same inline-start edge as the icon
-   labels, and the row stacks above the windows (the bottom edge they reserve is
-   --os-footer-h). Its links are white text, with the same translucent box on hover and
-   focus. */
+   labels, in the bottom space reserved by --os-footer-h. Keep normal stacking so the
+   taskbar's language popup stays above these links. */
 .os-shell.win7 .os-desktop .os-desktop-footer {
   position: relative;
-  z-index: 50;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -567,39 +503,10 @@
   gap: 8px;
 }
 
+/* Native button markup receives its face and states directly from 7.css. */
 .os-shell.win7 .os-desktop .os-desktop-restore-button {
-  min-width: 75px;
-  min-height: 24px;
-  padding: 0 12px;
-  border: 1px solid var(--w7-el-bd);
-  border-radius: var(--w7-el-bdr);
-  background: var(--w7-el-grad);
-  box-shadow: var(--w7-el-sd);
-  color: var(--w7-el-c);
   font-family: var(--win7-font);
-  font-size: var(--win7-ui-size);
-  line-height: 1.2;
   text-shadow: none;
-  cursor: pointer;
-}
-
-.os-shell.win7 .os-desktop .os-desktop-restore-button:hover {
-  border-color: var(--w7-el-bd-h);
-  background: var(--w7-el-grad-h);
-}
-
-.os-shell.win7 .os-desktop .os-desktop-restore-button:active {
-  border-color: var(--w7-el-bd-a);
-  background: var(--w7-el-grad-a);
-  box-shadow: var(--w7-el-sd-a);
-}
-
-.os-shell.win7 .os-desktop .os-desktop-restore-button:focus-visible {
-  outline: 1px dotted #000000;
-  outline-offset: -4px;
-  box-shadow:
-    var(--w7-el-sd),
-    inset 0 0 0 2px #98d1ef;
 }
 
 /* Window open: scale 0.95 to 1 with a fade over 180ms, transform and opacity only.
@@ -716,8 +623,8 @@
   }
 
   .os-shell.win7 .os-desktop .os-apps .os-app-icon svg {
-    inline-size: 18px;
-    block-size: 18px;
+    inline-size: 28px;
+    block-size: 28px;
   }
 
   .os-shell.win7 .os-desktop .os-desktop-footer {

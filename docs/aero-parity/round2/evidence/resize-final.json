@@ -1,0 +1,66 @@
+{
+  "proposalInjected": false,
+  "hover": {
+    "rect": {
+      "x": 1247,
+      "y": 747,
+      "width": 16,
+      "height": 16,
+      "top": 747,
+      "right": 1263,
+      "bottom": 763,
+      "left": 1247
+    },
+    "clip": "none",
+    "tooltip": {
+      "content": "\"Resize Window\"",
+      "width": "120.141px",
+      "height": "33.5938px",
+      "top": "-39.5938px",
+      "right": "0px",
+      "bottom": "22px",
+      "left": "-104.141px",
+      "opacity": "1"
+    },
+    "overTooltip": true
+  },
+  "focus": {
+    "focused": true,
+    "outline": "rgb(255, 255, 255) solid 2px",
+    "tooltip": "1"
+  },
+  "escape": {
+    "tooltip": "0"
+  },
+  "footer": {
+    "columns": "177.781px 80.2188px",
+    "buttons": [
+      {
+        "label": "Reset Window Layout",
+        "rect": {
+          "x": 280.46875,
+          "y": 460,
+          "width": 177.78125,
+          "height": 26,
+          "top": 460,
+          "right": 458.25,
+          "bottom": 486,
+          "left": 280.46875
+        }
+      },
+      {
+        "label": "Done",
+        "rect": {
+          "x": 466.25,
+          "y": 460,
+          "width": 80.21875,
+          "height": 26,
+          "top": 460,
+          "right": 546.46875,
+          "bottom": 486,
+          "left": 466.25
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,2041 @@
+{
+  "baseline_commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+  "build_id": "xfHy_bhVfJKii-CA72D9U",
+  "built_at": "2026-11-03T07:23:07.345Z",
+  "scope": "23 changed application/style/test files and 6 browser harness files; prior full268-file source audit remains separately identified",
+  "application_files_unchanged_since_build": 23,
+  "export_files_revalidated": 1072,
+  "files": [
+    {
+      "path": "scripts/browser-regressions/aero-parity/README.md",
+      "sha256": "2bb1927e358dc8c7ca488f13f6fcf8b23d72ad9a8c50e55fa988de754cfbbb4e",
+      "lines": 38,
+      "coverage": "complete",
+      "reviewer": "browser harness author + independent window/harness reviewer",
+      "action": "added",
+      "status": "verified within documented scope",
+      "build_input": false,
+      "same_hash_as_build_record": false
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/compare.mjs",
+      "sha256": "2e9d5c2c4424f47554394e22a1832b3f3159732a12a596810fc330169310616b",
+      "lines": 724,
+      "coverage": "complete",
+      "reviewer": "browser harness author + independent window/harness reviewer",
+      "action": "added",
+      "status": "verified within documented scope",
+      "build_input": false,
+      "same_hash_as_build_record": false
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.mjs",
+      "sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "lines": 189,
+      "coverage": "complete",
+      "reviewer": "browser harness author + independent window/harness reviewer",
+      "action": "added",
+      "status": "verified within documented scope",
+      "build_input": false,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.test.mjs",
+      "sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "lines": 99,
+      "coverage": "complete",
+      "reviewer": "browser harness author + independent window/harness reviewer",
+      "action": "added",
+      "status": "verified within documented scope",
+      "build_input": false,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "sha256": "a291c5e0376b5bb82f3679f804b3a5e19e0b0edc1518930a762004389c2a1c82",
+      "lines": 146,
+      "coverage": "complete",
+      "reviewer": "browser harness author + independent window/harness reviewer",
+      "action": "added",
+      "status": "verified within documented scope",
+      "build_input": false,
+      "same_hash_as_build_record": false
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/portfolio.spec.ts",
+      "sha256": "df4f45e096fccd535a44c6d85766636837a1b6920d20380cb9d42256a4adcfb0",
+      "lines": 361,
+      "coverage": "complete",
+      "reviewer": "root + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": false,
+      "same_hash_as_build_record": false
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "sha256": "e76ff4c57ad7217458ec3d87ecdd5dfc7ba12ad86ad0ba4b7a5876fb5277d07e",
+      "lines": 517,
+      "coverage": "complete",
+      "reviewer": "controls author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/Desktop.tsx",
+      "sha256": "108f69ed946a988010111564b6250e51287dbd01f56afe521d8a92d9fa8667fc",
+      "lines": 389,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/ProjectExplorer.tsx",
+      "sha256": "b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18",
+      "lines": 423,
+      "coverage": "complete",
+      "reviewer": "controls author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/ProofAtlas.tsx",
+      "sha256": "123c638912b32b4599b18e2c7a35f667969c6a7072112957377df6ba54bc638c",
+      "lines": 586,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/ReadingWindowControls.tsx",
+      "sha256": "164029051928af861a8798e22ad6f57b2dd366f796706fd365ce10054a873a98",
+      "lines": 298,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/ResearchOS.test.tsx",
+      "sha256": "808a35787d89e5871e6801eaf7b2e5a1a5f33773ff2ab26f173d3a4e33b0f218",
+      "lines": 1461,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/ResearchOS.tsx",
+      "sha256": "2e93532539cb4e23eca7c186a304d60b28fd89e6ad11e5d483940f68ac570deb",
+      "lines": 1806,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.tsx",
+      "sha256": "ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb",
+      "lines": 953,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/controls.css",
+      "sha256": "43071d7af2b96e3a1aff392f41617eb87f0ce1d5c17834c85e45d8dd1a261b2a",
+      "lines": 179,
+      "coverage": "complete",
+      "reviewer": "controls author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/project-explorer.css",
+      "sha256": "94060050e32e700ad0bfbe7e0b6c591f70050db411fb41d48b69cb854a9be4c4",
+      "lines": 1165,
+      "coverage": "complete",
+      "reviewer": "controls author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/proof-atlas.css",
+      "sha256": "0e9d191dda00e6db3d17d59855af63c356112fc25619bf3ecad1dd346664369f",
+      "lines": 714,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/reading-window.css",
+      "sha256": "140f7427c8c7d6c5fe8708002095c389ffb8a957d84d590269a4f3791c0037c1",
+      "lines": 262,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/research-os.css",
+      "sha256": "e1e5cfcb622f8a1104f7b65408438119a1c310ca1ef69ef7a4e81a7ee912a67e",
+      "lines": 2192,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/theme-switch.css",
+      "sha256": "598431defa8a4359fd80b01bb78abfecf70ab06d1e11a7b62c1fce0857741cf8",
+      "lines": 83,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/theme-token-guard.test.ts",
+      "sha256": "1588f902276a7d1a84330b7a9567bd41f2327b8bb05ca087df33ecde76b9fe2b",
+      "lines": 116,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-desktop.css",
+      "sha256": "42fa2437e522d7d4203df7982a337e963eb6094f3a4909ad487104d7ffd6c64b",
+      "lines": 748,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-explorer.css",
+      "sha256": "6db822b86e85ec38bb13f037b0847890913d83eabe8692922c7e48cad973a059",
+      "lines": 179,
+      "coverage": "complete",
+      "reviewer": "controls author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-logon.css",
+      "sha256": "d4643d5f14f819b42a805bebf8a0e91cce04c9fad7fac9d1a14843c649f08523",
+      "lines": 340,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-pages.css",
+      "sha256": "2b02b551165f7217380c0a4c2c7261fc724671cff4511f438bbb3bf0b3ad2590",
+      "lines": 686,
+      "coverage": "complete",
+      "reviewer": "controls author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-taskbar.css",
+      "sha256": "bb7f0004bcc13de5731503770ae171e5d8f7ec401c4f183f31ee6de761e1eb36",
+      "lines": 1207,
+      "coverage": "complete",
+      "reviewer": "desktop author + independent cascade reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-theme.css",
+      "sha256": "f942a41eefa1fe5a885235a5bbdfc3ce2916418aac5836921576c0261f3cc163",
+      "lines": 577,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/win7-windows.css",
+      "sha256": "a9963fdaacd951a8ffd40b2a524964bb01c4a88f498349a4a377f35e810af911",
+      "lines": 783,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    },
+    {
+      "path": "src/components/os/workspace-windows.css",
+      "sha256": "69d474889820fae1cc5c1d4c0458fac466dcb0a7abb2d8910e4fcdd644294bb1",
+      "lines": 459,
+      "coverage": "complete",
+      "reviewer": "window/cascade authors + independent browser/integration reviewer",
+      "action": "modified",
+      "status": "verified within documented scope",
+      "build_input": true,
+      "same_hash_as_build_record": true
+    }
+  ],
+  "unchanged_prior_reviewed_files": [
+    {
+      "path": ".claude/launch.json",
+      "sha256": "efe7a5850e2c24a6951dffde43a025e5b00576f49044a34549a18feb07d15b3c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".devcontainer/devcontainer.json",
+      "sha256": "7956599883f10b48e72416ca769136d78b2fdfdbce5159bf315ac09fe30b4b7a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".editorconfig",
+      "sha256": "6d6796f174b736bcd7a68999e30d2f19a3719ad92355dcc0cfdfce8a66864553",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "cbaecd4e0413d02dd3fff697f75d5a1267464742e20bb914075bf88aaf0c7481",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "sha256": "950093fb72fa8f1482a3a51ae4bbe2ba19ab282f2c94107a04d8cf5cf60c8b22",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "572feb7e366e438751c989873da2907f0b8d16d10f1e974571e2256cfbed71bd",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".husky/pre-commit",
+      "sha256": "e2b7c9733375d7182af2033bda9a7d2a05d0db5eef5be53d26eb7b5f3df8fbc3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": ".nvmrc",
+      "sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "bf85f63e27e675e8c243a74435e8cc89ff9a15fb0fb4d7ea9d8719c31452da69",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "9f241298ed6f05ee4437b2e343bbf89850c175e4f63a534b0933fd3fd2c073ad",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a25e925af0a64b92e380ea50a70871b53a7e8ab0aa0992d683f3052051f599f9",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "efd20f5e998ac2418463e4a6780f5a6d00bd19d1bbe7b9283f582b2fce9fb31b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/.well-known/security.txt",
+      "sha256": "75e5619fdb15c50a8ce156ea30a16f05fff710fabe38029cbbb671a1c513b121",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+      "sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+      "sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+      "sha256": "ff757111b7c3b3c30785a91a661155cd0a8fa744b804fd9d5bd8af053bab3927",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Project_Simurgh_Preprint_v1.0.pdf",
+      "sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+      "sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Raouf_2.jpg",
+      "sha256": "e877a6226aa840cb91421816150e576ca82c7833738f970a6e9b1fa9c77cebe1",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/Raouf_2.png",
+      "sha256": "de8e0a5462074b394c7f8e58e62fb88af1904c54a5259db5fca18c6eb6c06a23",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/_headers",
+      "sha256": "7833be7e0ffb09242c5a7d3ec7fe7894849e581f561b006e3014f30b81a54d9a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/_redirects",
+      "sha256": "4d98e44f5c999e5dbcc52b04e9311a28d705510c00f90b40a55157dc5049219f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+      "sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/brand/favicon.svg",
+      "sha256": "3a3e151d2d0ffcb1317055a1ee2480c8d610e0263d3669278e07687c88b656d3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/brand/glass-lens-map.png",
+      "sha256": "10af03c332eb58291e9f9c1561968beb4165d93c7b015632760d54af5b7af1ee",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/brand/raouf-mark.svg",
+      "sha256": "f75e6f355e13faa3f683fdc29892e9e03905927feba10307e136b8ddb9345a87",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/file.svg",
+      "sha256": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/globe.svg",
+      "sha256": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/images/raouf-about-600-7d22ea07.webp",
+      "sha256": "7d22ea07eb3973b9ce66366721af4f7cfcc7c5df07cd8f83048e52113a69d50b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/images/raouf-welcome-168-2ae922a8.webp",
+      "sha256": "2ae922a82ad917c02253d9c0f92f685787bd7b3e43e0dceabd7ce02301f8e610",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/llms.txt",
+      "sha256": "7f2f0808252f5bac191ae4e9e17b9fbea6401e21e041593162e17746a466be03",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/next.svg",
+      "sha256": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/og.png",
+      "sha256": "ba146e7e4d80f9b42b5bf873d29236653e48958fcd929f9e2902ff92193f650a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/security.txt",
+      "sha256": "03ecefa7b281c8b315a32361f9d55aaebdac99650240417b33415bb7137a0f00",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/vercel.svg",
+      "sha256": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "public/window.svg",
+      "sha256": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/audit-agents.mjs",
+      "sha256": "390a62275e6e48c853dd7f3e0387cd8ebe35efe9e9f069c2ab3badba378021da",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/audit-production.mjs",
+      "sha256": "0647ec9d19203f9dec5e8c11410f5368d4bdb9d812eb238b5282614b6e260a3c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/audit-static-security.mjs",
+      "sha256": "f2e3ca420e31defece9b748e2775ffad377602bc947c1da49b10d2f35a0c1133",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/browser-regressions/researchos-navigation.cua.mjs",
+      "sha256": "0c8421e977cb514b000d518c143f19582e6690bc00abf32359732b6800065ac3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/browser-regressions/researchos-workspace.cua.mjs",
+      "sha256": "fec5b9de3c40cb1e6247f78f7bc57e0faa836661572fa7b02b8df33b7eea8acd",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/generate-glass-lens-map.mjs",
+      "sha256": "0afbb352342c285ade5a916e0cf66320adedaf0afc666d04b4d6e6c0eb437980",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/braces-guard.test.mjs",
+      "sha256": "933f9313a8bf5ed7b04de3dd983c69ddfd703bf8f360ad3d707505ec1b218bbf",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/braces-guard.worker.mjs",
+      "sha256": "e0a6b3f815b9254a7612ad9ff277f5a84cdde0afe8b3f858718fc14707810418",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/lab-go-snippet.test.mjs",
+      "sha256": "5e99e45d9836ab5a0e4ef07ab76d021d7375dfec8e07193d24996add1a790ab7",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/production-audit.mjs",
+      "sha256": "38f133360c6f47ce37627ad053d6a63c1b188879da8a3b5720be4af6a719d214",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/production-audit.test.mjs",
+      "sha256": "af38b07481c3866b22d096c60e0dacedddc70804bda7bf5409c201272dd7a9a4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/schema-language-audit.mjs",
+      "sha256": "f548ca84c75d4b7114941fef7b7baf1d38bcdbb7dc6638ac64975f3fcb813562",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/schema-language-audit.test.mjs",
+      "sha256": "2b3adb2542a608ae8470c8acf2bf925c04aa436ba3293a06444106078daf6f58",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/static-security.mjs",
+      "sha256": "3c6771153e033d4dd351439f810055d9d83a59d83a9d6d8514f7706f542d5139",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "scripts/lib/static-security.test.mjs",
+      "sha256": "686bad051c36b8274a3c2132667610744154947a0f009dba7fff55c33773c4d0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/about/AboutClient.test.tsx",
+      "sha256": "f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/about/AboutClient.tsx",
+      "sha256": "ecfcf45cb2c2e92bc04a68f7338dcb3bc052eff7620f4ce7aa43af5569b70e2b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/about/page.tsx",
+      "sha256": "b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/contact/ContactClient.tsx",
+      "sha256": "f17128f0728a3c179eae2a995090e0e2cb4af31d23d9fdbe650edafd8dca1fbb",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/contact/page.tsx",
+      "sha256": "c0d2339ea1055d2177991846c4f2d837873cb8c8c6264ca01d667dac120503da",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/hall-of-fame/HallOfFameClient.tsx",
+      "sha256": "50f75119738012d9e763e8d7443bbfd6d795ecb78bf626776d85aea5673dfc9c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/hall-of-fame/page.tsx",
+      "sha256": "4ebad9649324ce670d3fead33e357cca0c9f088c3032c4c0802574513cab315d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/lab/LabClient.tsx",
+      "sha256": "02a7c6026725f124519a5c08b889a903a938651c49fda241601d52a99bed14a0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/lab/[id]/LabDetailClient.test.tsx",
+      "sha256": "f49438cc052ecee7b5bbbe2faa7778f0d7210181d1a639769051348cf770c6e5",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/lab/[id]/LabDetailClient.tsx",
+      "sha256": "c4ae50674a01b12ddeceecfdb63b4a0647ca5b9815541d1e1932b75f36361129",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/lab/[id]/page.tsx",
+      "sha256": "b1f450724644126ad5129dc7a3886d9281ded1efb37a124dfb2638681cc2d84b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/lab/page.tsx",
+      "sha256": "99a3a6a8d50b8a84b07573348f839c8007fc9a4fbe042a1f886329871b237ca3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/layout.tsx",
+      "sha256": "77a639e4066ac193b4461fe8c46e5b8609e9173b5b0e4e00870f4622eba14563",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/not-found.tsx",
+      "sha256": "da5ce54f10d987f79d9d6c1a3d4969a29f5f44c1722dc1e36eaf3e9120211bfa",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/page.tsx",
+      "sha256": "f625f78a532646b974ae540f56407fa8d4a208a212dfddb77db2f00dea23e777",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+      "sha256": "152fa97f9cf0e91b8a870368b73f5bff29f482ca6b4c98bb924c0e2dbd7a05aa",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/page.tsx",
+      "sha256": "7670190e84a5740728a04502ab889dd18a8ccbffff037c355f4c8d3b0f409c20",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/projects/layout.tsx",
+      "sha256": "6d3487de97f6931c40780b6e3586545b53975a035198cdad94ca232e2d5940fd",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/projects/page.tsx",
+      "sha256": "bd6dcbae32e5ec0392649345d2191d33a5baa136e07704b22c109070ba9c341a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/resume/ResumeClient.test.tsx",
+      "sha256": "edb54d951d7138d116b42daf7d9fde45cb328332c6fdac31a69cf25b2bffb36a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/resume/ResumeClient.tsx",
+      "sha256": "08054382b6a59d7a06d4952d307dd6232504c2ea9928f1342a75c56b3b588881",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/resume/page.tsx",
+      "sha256": "591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/security-policy/SecurityPolicyClient.tsx",
+      "sha256": "7cb75c75930ba53555bd342408377426c62ae0cdd7091f20fa255ff0ee0037af",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/security-policy/page.tsx",
+      "sha256": "50a5a53e9af797d5a3ee2efc06328261b10df7df490cb4e91d0b4e611d7c429b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/write-ups/WriteUpsClient.test.tsx",
+      "sha256": "cbff7282cf078e565386304ed52e7ba0dcf3f31549c90322c7f390afe84dcad4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/write-ups/WriteUpsClient.tsx",
+      "sha256": "031dc11c6664a957467787a3dd3c5cc00520979bdbd2b57c575f6e273237aa7f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/write-ups/[slug]/WriteupDetailClient.tsx",
+      "sha256": "3ae8fa9752ce5820b49cf31cfa6d431a38e2c4e8986f942cc0ea457518857114",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/write-ups/[slug]/page.tsx",
+      "sha256": "b6e6304d46bd5dfc52385ecf9438743fdbd0f33686d796fe05d78417301400e0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/[locale]/write-ups/page.tsx",
+      "sha256": "20f5c7d5a3bff662067e5b6c2d5a4e5082df832609186537e88d8bedf2b7d39c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "sha256": "56c7c2c1b014f515f0e00ef10d5a824ae991c4a5227c7be4f718ac67578b08ca",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/feed.xml/route.ts",
+      "sha256": "22c9c9ade2e57e9730f1463b35ed2301c7e5c39c45c20f414192c06bb38a5310",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/global-not-found.css",
+      "sha256": "a79a7a8c36b9e645524c0b2cdddea929d2b803e3a6f974b7fa09cb09f0b03550",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/global-not-found.tsx",
+      "sha256": "133d744ee00aa4474fa16ded0a1cf3eed40a3c62492ae05d9bc4aa8c5f8cf21d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/globals.css",
+      "sha256": "076b16a2622faf60e5cbc35d33b9d9a63d3f7ccbeaffb4e54b2764c0461236d1",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/llms-full.txt/route.ts",
+      "sha256": "22f345865db2aea950703a7344e858a4ffe9d98f6df387e258bfe3827253d260",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/robots.ts",
+      "sha256": "a7b4b4b781c96e061a34007c1cabbe3949edff42718e88383e9e3f85b529c354",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/sitemap.ts",
+      "sha256": "0b2e58de2fe34559d27b91feeb5caf8991e88a223f8e84a386b7863f3c8328db",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/app/version.json/route.ts",
+      "sha256": "8e2f63e541d291897336cdb87b39d0780415abe4968dba3f5d22fc0d9e599c4b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/layout/Footer.test.tsx",
+      "sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/layout/Footer.tsx",
+      "sha256": "f4b831e2eec2e775543b56ae913ac9cf4f94b09d866551355237d7f87927aa96",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/layout/LanguageSwitcher.tsx",
+      "sha256": "9996fd1cbf37f063aa3efde4c0e2221b1f7a72afe8d806805696fdf65424bec5",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/layout/Navbar.test.tsx",
+      "sha256": "c3f0692e27d04cf517db6ce9094ec6baa8d87d8ff577d2867c64ba9566b7b19a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/layout/Navbar.tsx",
+      "sha256": "78b8d1cee68c7dcfaea60ec15a61a5cea1a297f324d27a7db7c718c93b88d6d3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/Desktop.test.tsx",
+      "sha256": "029af167ed73886d9f7fa0e9404890199ec93bd45acc3e32dc0c68ff6d7e4a1a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/EvidenceStory.test.tsx",
+      "sha256": "9dbe19bd86bfd94014d041a2d5938a6943803d8cc0be5a2463e633aca6b775f6",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/GlobalNotFoundContent.test.tsx",
+      "sha256": "acb4a4dff4d67d94ee89f7e920f20c548a242bb14d7637b674ca57401b808640",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/GlobalNotFoundContent.tsx",
+      "sha256": "97815052b1a9c5a3d728420a630b37803f782800b3e2d0221ecf89bb3d1f033c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/InvisibleWindowEvidenceStory.tsx",
+      "sha256": "9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.test.tsx",
+      "sha256": "9ff069ea030743ac29d9d55fd37f215b67af0fc64f596e38437c08078a75fc51",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.tsx",
+      "sha256": "67457714c0c6ca74d568f1788694be642f1a08de419c44fd1f0fc918a5270705",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/OSIcon.tsx",
+      "sha256": "d4cbbfa99d661aaba5e748d1111037345663f680cdaa0171833619b8e2e3df8e",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProjectDiagram.tsx",
+      "sha256": "3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProjectExplorer.test.tsx",
+      "sha256": "4624805bb7503bed600b3a5de1b2fdbbc9e7b90bd86a1bde8e39fab35b16af9d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProjectMotion.test.tsx",
+      "sha256": "8caf93211c8725503835cd7e225401a33960487043f11b5c3cf1bd61e8014af1",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProjectMotion.tsx",
+      "sha256": "7bd74eb8696b56d5c28b317e3b6ec1525a5331277e52cbb0fbab1790c082f84a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProjectThumbnail.test.tsx",
+      "sha256": "9f0ec898b41f811edf7220a0611698f563a9d3151de55738580570e7e4ce1a27",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProjectThumbnail.tsx",
+      "sha256": "9e228028898a0a90203d531b6fbe1017dfeca82efd1ee3d2429d70e08e96c060",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ProofAtlas.test.tsx",
+      "sha256": "d838938b71ba6e71e1ab97649281399abe1eadd676dcebadd93514f534ec6ed5",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/SignalVortex.tsx",
+      "sha256": "dd083499784ce344ed4bfcebba6d3c56172e0a7d02886e4c3d46e7907c05ef38",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/SimurghEvidenceStory.tsx",
+      "sha256": "d99d728d70df76ce7d7b46712a7372e86a95ed1a332f3b1b63d421c60452caf2",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/TerminalCommand.test.tsx",
+      "sha256": "d2ec4f9684080576da928353766cd16287e299017487ddb826fd144797f27c8c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/TerminalCommand.tsx",
+      "sha256": "15a68a9de2ecfa711775a8a36e40c2df4771298fa4ee0f02b78bcd9a4097e48e",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/WelcomeEnter.test.tsx",
+      "sha256": "05575b7c995da31a46171e5815b489d81391e9d2828d59c80fee1140b8be5a42",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/WelcomeEnter.tsx",
+      "sha256": "7c34d50f37080fbf7ba6f70ee062056ed91585e2efa7f280a57d82cf2503b7b7",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.restored.test.tsx",
+      "sha256": "dcdfb0f1ff8c835f7672dfc562231b8b4951df5e34c83c4add2c7469cff93ddb",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.test.tsx",
+      "sha256": "984646005a176a3e3c05a5edc7920d4e9872e97e71b778aaad7c1959adaebf0e",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/ZurvanEvidenceStory.tsx",
+      "sha256": "b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/appearance.test.ts",
+      "sha256": "3aa5b9500e1ff6cd07f90748cb33fe19f1cd7c79f20b14d99b8bc98fd48686c3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/appearance.ts",
+      "sha256": "ee0678a326adcdfd9bd7e77cbbf269fdd4370b29c650481da7c4aa6a19899659",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/application-context.tsx",
+      "sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/atlas-copy.ts",
+      "sha256": "d7ea99e51b9f201ae96eab07e5d682c4637fe66d4506207786dac262de8b9ec7",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/atlas-journey-copy.ts",
+      "sha256": "3f93fdf191820e62e6ca9799e82b4876d62c0e22955e76e3b27b069460ce10ed",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/evidence-story-common.css",
+      "sha256": "d5b7b6952cf85bfe733768eef3488f3f54aebc83c334c7df06089699a44135d7",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/evidence-story-invisible.css",
+      "sha256": "7807543847cb0996fadc71bb8185b4dafc41617f819a26a311f6f7c5e04cd02b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/evidence-story-simurgh.css",
+      "sha256": "c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/evidence-story-zurvan.css",
+      "sha256": "52eab4b696ad6cead6fa4dd7b33adcee0caa67348f71856ec72892302fb01440",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/language-navigation.test.ts",
+      "sha256": "f4089702c1bee8f634a8f3b558af805bb25a41c1f9c98bbdba9cbb76ec334add",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/language-navigation.ts",
+      "sha256": "1cc28b424a33bdf8ece9e8454e659665351d13a03ebb130f67171e999ad02d4a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/liquid-glass.css",
+      "sha256": "bc9cbb9702d15f20e0d1514112be1cee7dc4317833171480879b4b35fe41365c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/minute-clock.test.ts",
+      "sha256": "23820cdc2cd5572fe64f55316edcbc8ec5ff29bd611385b18ac94a43396172d6",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/minute-clock.ts",
+      "sha256": "e6932768845bd4149548806cc057077de1043795a93eb04e8c943af5889c5aff",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/os-copy.ts",
+      "sha256": "f4800fdafd086126c0e75fa68da69b5f4bb3f3559f58f523ed4882bb13250574",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/project-artwork.ts",
+      "sha256": "0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/project-motion.css",
+      "sha256": "050c267f3fcab858a103518d4f3917e026099cc8e25cfef582de8fd2b6d3c603",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/project-thumbnails.css",
+      "sha256": "ff7ac7a54de76d1182ae89a59b47e5e3445ebadc2156ecb188dad6ce1131f964",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/proof-atlas-context.ts",
+      "sha256": "e755fb58a72486307edc477b3896049e808e73d145a40266e6a6f6ba228859bc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/quiet-depth-contrast.test.ts",
+      "sha256": "4080797891118944365b4934af171b62ffa5829ea490a71836072c5c6085fa47",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/reading-contrast.test.ts",
+      "sha256": "194affd69f9e9ba69d01c42b56c3e537104bd52e270dfe3e477024f4ea6fa2fd",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/signal-vortex.css",
+      "sha256": "d8dd2b44e5c01b90aa9e21f020e7e7a04681044f07de816ee7bfb9ff0f1de799",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/spotlight.ts",
+      "sha256": "dae808de0e324451d726e5876bae775efeb7a616e32f27e02ded6d23a838d9ec",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/supporting-apps.css",
+      "sha256": "71bde29bf4999050743b5826ba7683d1c5cd7ac1c7cedd964675955bed353edd",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/terminal.css",
+      "sha256": "874675dce73e47dc15356a5640d316a6288514c96e50e90f9b023d55e465b706",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/use-copyright-year.ts",
+      "sha256": "48d28e501715a86d23522112628a5492f9c28981d34d11ebd36b27088949e03d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/use-reading-window.test.tsx",
+      "sha256": "72d8820f14a980a9c6e47629b5be03092376e720369899326fc83d39723fc5a2",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/use-reading-window.ts",
+      "sha256": "00fae2f7d9648e4966c928f0123292b73fc473f2aabf5d9ca6e1a282c75abd3d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/use-stage-visibility.ts",
+      "sha256": "e1227e061acbdf8466bbd44b80856be143425de618fdfa5a3ca7548192d04917",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/welcome-enter.css",
+      "sha256": "7e83ab17fbe52169e1b5037a8340f46e9189adcbca172a93108ee24b85aa03e0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/win7-polish.css",
+      "sha256": "4dcfc95627355e3497e17405142913ba68aeccc15960be048ae802f783c4400c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/window-copy.ts",
+      "sha256": "c6444925aa5410e597f4ebe77f7ab31d7b97356bd4cce4bfedd1d6142a205dcc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/window-geometry.test.ts",
+      "sha256": "808dd044ab77fc9d50badd7b43b75df207dd076dec9e2f7ad4e84f8558fa0280",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/window-geometry.ts",
+      "sha256": "c301ddf2bc5b94aa6a4d85d21507a9dd3733a2f9b40a71a0c5905308a86840cc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/window-motion.test.ts",
+      "sha256": "49e9c8825f47236301a54118ad1b4c61bc011d0df13475f0eb98606fce6e2276",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/workspace-model.test.ts",
+      "sha256": "5b7fe06260fd1b694de44a6dc0cc2356149e4a1a2846529e4347b40a8705df27",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/os/workspace-model.ts",
+      "sha256": "88e9266063f0d73ad981b329696260abeaa58f9dd6865a682391b544053fc838",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/AnimatedSection.tsx",
+      "sha256": "f70caf76d527be06067095c38c0815dd791ba759d009bf7fd1f80ab7ba8cfbf5",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/BlueButterfly.tsx",
+      "sha256": "d854f07bb9603d793d7395962d86a2fd6a2b307658dfff76ec499c3db97ae0dc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/Card.test.tsx",
+      "sha256": "3aebd1f30e261c104bef9e4d58cc64fe6f6b836b33b9d00a331be0c3bf291c59",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/Card.tsx",
+      "sha256": "6d0c32bb9d4d7cc3eeac362fe7b31105812269cc85a5209eae6823b1cb33e586",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/CelestialCatcher.tsx",
+      "sha256": "2d054fa4b5c7193a7d85cdcfa1eb633a5e3adf763c88cdfe8b8e0ac920aa9f55",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/ConstellationOwl.tsx",
+      "sha256": "d9ac37f43d807842e74b034e657ea86314bd599865c856606c5233a30eb0ef1f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/CosmicLoomCanvas.tsx",
+      "sha256": "b47e04b0e72599d767690c70c6d42b3f951b82f2673a867b9760d717f7b144cb",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/CosmicOracleEye.tsx",
+      "sha256": "de6f54e58e0451a362568f8b643e311b17145b7e435014212f0a4dcb6b6ae107",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/DandelionSpinner.tsx",
+      "sha256": "e10a38efb15744ca42c15e3609c04b8ada13dc0096d45d831826b816ad4ab706",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/DnaHelixCanvas.tsx",
+      "sha256": "8b3b12c42a35ac94e538456562b68631663ee38a6d94095060608c4b7bcd4bad",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/FireShieldCanvas.tsx",
+      "sha256": "3fe5ac53c6ad192dd65ae817f278d4a0a13780b65d34fa00d5b6d7dccd8437b6",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/GlowCard.tsx",
+      "sha256": "f9cd73d6f2edb62b80a4825c3ce97a543b43476e47fedecc716ab9f969cd2875",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/HUDFrame.tsx",
+      "sha256": "6d97d63bf3e53b1ea6ee1b40c98211f4bf674fba36fe7869a4608033e9099dfa",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/KineticAstrolabe.tsx",
+      "sha256": "617aaec5d3bf148ad78f0132b4ffb46bda56ad36b72941876d88e7349ce1872f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/KineticLotus.tsx",
+      "sha256": "13c8819b5a32eee191a33ed34c59dee87d1be8d99808c74514affdfc6ccbde41",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/KoiPond.tsx",
+      "sha256": "89a20effaa8f02fc79a7866e782375b6f4d236b19fb57c29c6ba3d8088bb41d7",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/MotionPreferences.tsx",
+      "sha256": "dcbf265bb73a709fa6f3998f3a511341d19b59dc2066511953ef8db88ce111ff",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/NeonButton.test.tsx",
+      "sha256": "eec3bb12676ad7fcf1c5bd4a0b7ba5b1b296f2a55b1323733eed5e886702eebe",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/NeonButton.tsx",
+      "sha256": "8a9a5d2e0b414548b51da3967118b17172319f2bdaa577f2679e68b2f01e46dc",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/ProjectCard.test.tsx",
+      "sha256": "4e8db40143fe3fc446ebf0d0842b42dbf2971a03d8f74f19022e849ca02020de",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/ProjectCard.tsx",
+      "sha256": "558121eadf4f6aee325384eaad3d08625f116e023de175e2429e60d3a8aff804",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/RoyalAbyssCanvas.tsx",
+      "sha256": "e7c58684305b08fa555a6bd9479fdadf98be4e3dd59a9977de1916acc992848d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/SecureContactForm.test.tsx",
+      "sha256": "ce3ec3410c31e3f4a5266e09497191a9e30f3e5571e0ed762be5a6a8e66abba1",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/SecureContactForm.tsx",
+      "sha256": "1447743d3a06df69ed36ef5809b7367d63707003d864e727e88511a699a15bb3",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/SimpleMarkdown.test.tsx",
+      "sha256": "6433a9ccb7ead9c65fc07acdb2f9dd49c0dc1548e7926c7e99d5fdd2ae1ef67f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/SimpleMarkdown.tsx",
+      "sha256": "c65b1d27909ef1120aa423bda5c68a57cca47eb144629d5b1a19e91fff2285de",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/WheelsOfEzekiel.tsx",
+      "sha256": "fcc07541a3d40ad49cf4f3716b845585f798573d03472a4aad61b4f55eaa33cb",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/artwork-pause.ts",
+      "sha256": "8333d19495a4d89b6dcc01d225bae0e61213990e5a20fac5f338470925f12d1c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/canvas-playback.test.tsx",
+      "sha256": "2e0cb12196326160cfc78bc8db65740fb087c8973b922946487bc05ef5685968",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/canvas-playback.ts",
+      "sha256": "52247b3cb66c4bfdef9e14a32cb823cec4666139832d308b0a5dbca52b068529",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/components/ui/ui-surfaces.css",
+      "sha256": "7dc5edadc37c16c5d11c09cd722d69eb899672cf680d8514f075c65d9926f709",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/format.test.ts",
+      "sha256": "d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/format.ts",
+      "sha256": "70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/index.test.ts",
+      "sha256": "2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/index.ts",
+      "sha256": "78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/locales/ar.ts",
+      "sha256": "1506637c441e5c8fa6b69c4b52802c6f23ccc3ea7b0b8ba70dca88d899766f46",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/locales/en.ts",
+      "sha256": "c3b960ecf73b26ac60a7139ffaf0d6cd282c684de4727ac7f570827ec67e91e4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/locales/es.ts",
+      "sha256": "d6004973ac9685d44f7fda07aac154cefaf757b41cf969dbac9b34db6ab6b8fa",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/locales/fa.ts",
+      "sha256": "59c0c5098c832f0beed62b9247d068f7b7dfadfe201e7ce321cd40702bf71578",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/locales/locales.test.ts",
+      "sha256": "ccad9f744054409029227bd1b0e00e40fe02a7842f6af969e6639401391570ec",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/locales/zh.ts",
+      "sha256": "6f1a85be09fc1eb6b6e42ea1d8e3783a776af0e00585baff9fe2dcc171167571",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/navigation.ts",
+      "sha256": "aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/i18n/provider.tsx",
+      "sha256": "1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/certifications.ts",
+      "sha256": "2314865a1753aa67f52291f27e86825b324f73828b4716120f5ec10ec5485134",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/constants.ts",
+      "sha256": "d6031d067bd0671d7b2330b6ebc1f17f184ee0b65d7d092bd86e038570254335",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/content-integrity.test.tsx",
+      "sha256": "a9e73c1676b9152cad50a0f06bb7084a7bd1740bfe2a22df425a378ccf30f010",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/data.test.ts",
+      "sha256": "03a39a087e21fe4b0a5113be5e3392b19177d999dfe15333e24076a9916e156f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/data.ts",
+      "sha256": "e046988331bb6e2328d010953cbf628232b8b4401ada972d976091a71f7b1b31",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/feed-route.test.ts",
+      "sha256": "2d5087e3884b43f86cf172f0cccaf962085bf18dfc2f5883cf2523cc516191a4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/localized-labs.ts",
+      "sha256": "5e939ac1007e8892703c2f0d6d0c0841f503acb3ae1b14f121456a5a4a48a8a1",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/localized-pages.test.ts",
+      "sha256": "b3a237d4207849afa9f49aec051f6fff5a62944f7b4707c3bfdf5e8740752d20",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/localized-writing.ts",
+      "sha256": "9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/machine-reliability.test.ts",
+      "sha256": "1058bc7c2f7875a8154fe5f7ee18098a797c4dc1ba5313dc31d109b65d221b37",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/os-app-schema.test.ts",
+      "sha256": "b7e8029d1d82ee5fe7315da7c32f62f0f62a734f53a8023a9de099a8e8ff88ea",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/os-app-schema.ts",
+      "sha256": "7323a287a22469e1a7f185860564bfba1155f3aa17310d82dcc79bc5a78108be",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/os-search-query.ts",
+      "sha256": "30cfffe8440355b03a53d8b11553fcd17643a7b7394471ec2e37a3f1a3cf291d",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/os-search.test.ts",
+      "sha256": "d3cb247be0ac391f691aec52d38728f7c7ce49b736dd241d40b3cbdba4680bde",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/os-search.ts",
+      "sha256": "70261603e501bc57b40a189396dc58b393bbe5300448013e3ae45702125f9991",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/page-support-copy.ts",
+      "sha256": "62b5b29b7d25dfe2483b071bc18b1c1858d47f37e870119694b9271e619e9a80",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/ar.ts",
+      "sha256": "895331fd58b3870556e3378c6bcb6da6dfcaca6ab6ed79dd14f5ed4924cb7f02",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/diagram-copy.ts",
+      "sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/es.ts",
+      "sha256": "14e98d4eeb64e72fb8638f9411e20a156d1cffd146024c8852d63474c6966c26",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/evidence-story-copy.ts",
+      "sha256": "caaba572501f7d07710346d22b4b7c613ef06d497d882f42aceb6b11f1d20a32",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/fa.ts",
+      "sha256": "28b25b62eb2af8b4c18d0ead4083b64b3ed681f7a9d585ada1f88c4f4a85d57a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/terms.ts",
+      "sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/types.ts",
+      "sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-content/zh.ts",
+      "sha256": "222ba4a764873adac666b6f37f1321d4639ef0ddbb98e52468f33ecc6e45286f",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-localization.test.ts",
+      "sha256": "330155ab85b81a198a2e5aafe61c4b24933609cf39f81a8d19002856d2b87449",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-localization.ts",
+      "sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/project-summaries.ts",
+      "sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/publications.ts",
+      "sha256": "5194ea5cceb641d84a00bf8491bd3fff438d71ae9db336d7aa0727cb62042028",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/resume-section-copy.ts",
+      "sha256": "fa0f1d91ce50c7304c6aed54afe65c565a29d30924678b90484e3c2b9ac37a20",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/seo.ts",
+      "sha256": "b8df840daa189401dc4b085bd2b9adb8b49b8d85df575657b5e866331656a4d4",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/server-routes.test.tsx",
+      "sha256": "5159991271401533e8f59d1c4546df5d14977323e5574dc833ffa61616108f0e",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/utils.test.ts",
+      "sha256": "6faeab864f9beee04f13a066f2dd43bcdcf85c9609b3789f784ec82da406a2a9",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "sha256": "34cee4996368dd7d9a19f0d644725630cb9cc0686cf52c9020ad5ea66bf180e0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/version-route.test.ts",
+      "sha256": "168daf00910e52eb8bb214006d8cbc7523fa6763643e2bf8bd2a154636fb3183",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/writing-translations/ar.json",
+      "sha256": "7f685a1dda130b0cd612485e53f3abcf0cce25ea1e6ab1a95966c8194414007b",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/writing-translations/es.json",
+      "sha256": "ee30022c0dd52a2d22a03572a912539423aaf3f46b0df198a9db587f02bbf6d0",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/writing-translations/fa.json",
+      "sha256": "4b00928866d61775ef3242498c341da011bca53ed0b1817edff8719fdd2386eb",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/writing-translations/source-revision.json",
+      "sha256": "c0ab53b2eb2a77467f756182730305f80398761c1d83d6a66b0edde0dbba5056",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/lib/writing-translations/zh.json",
+      "sha256": "5773fd01ca3d8efb8ee0431e268727a0f292d2b9e05b1b214708f5d6047d0eec",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/proxy.test.ts",
+      "sha256": "2e2da92d4008e50594571acdff1c5b2a366fb18988f8a11c81a3b65594f48f60",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/proxy.ts",
+      "sha256": "db5b1515602fd35c4fea190084ba487da793562c2853db5a9d1333ff8f429aaa",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "src/test/setup.ts",
+      "sha256": "db3c04607470b8e1af1adb7f2bb0b2996ee8b04433545793a6c6edf8ebb52aa8",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "topbar-probe.mjs",
+      "sha256": "29e55f1d3a2b6d9f55ab8e27103d7cc683b2767a42822f2329985fe0c5aee185",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "5c51df4c59f4510d8c7dadf07a5c32132228826a3b331da5e286207b4df7ef9c",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "2d68944391749a0170f7551d73341e634d51219f6b49082f887810bc20d4d0b8",
+      "coverage": "complete in prior full audit; current bytes unchanged",
+      "review_origin": "docs/audits/frontend-review/source-manifest.json",
+      "revalidated": "SHA-256 equality only; not falsely counted as freshly reread"
+    }
+  ],
+  "cumulative_accounted_count": 273,
+  "cumulative_scope": "268 prior applicable files plus five new harness files (including its README); 244 unchanged prior files and 29 current complete reviews. Documentation/evidence artifacts are separate."
+}

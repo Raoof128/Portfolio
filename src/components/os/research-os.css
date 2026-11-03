@@ -1571,119 +1571,13 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-shell :is(a, button, input, select, summary, [tabindex]):focus-visible {
   scroll-margin-block: 120px;
 }
-/* Window bodies carry Win7 scrollbars: a 17px track, arrow buttons, and a light gradient
-   thumb with a grey edge, turning Aero blue on hover and press. These are the 7.css
-   scrollbar values, drawn here with inline arrows and no image sprites. Other shell
-   scrollers keep the root scrollbar from globals.css. Chromium ignores these pseudo-elements
-   once scrollbar-color is set, so the standard properties are limited to Firefox below. */
-/* scrollbar-color and scrollbar-width are inherited. Any value other than auto switches Chromium
-   to the standard scrollbar and drops the pseudo-elements below, so the window body resets both.
-   globals.css no longer sets either on html, and this reset keeps the 17px track working. */
+/* Reuse the installed scoped 7.css .has-scrollbar implementation: its original
+   16px vertical track, 17px horizontal track, grip sprites and interaction states.
+   Reset inherited standard properties so Chromium retains those pseudo-elements.
+   No second scrollbar recipe is needed. */
 .os-shell .os-page-content.window-body.has-scrollbar {
   scrollbar-width: auto;
   scrollbar-color: auto;
-}
-.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar {
-  width: 17px;
-  height: 17px;
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-track:vertical {
-  background: linear-gradient(
-    to right,
-    var(--win7-scroll-track),
-    var(--win7-scroll-track-fade) 20%
-  );
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-track:horizontal {
-  background: linear-gradient(
-    to bottom,
-    var(--win7-scroll-track),
-    var(--win7-scroll-track-fade) 20%
-  );
-}
-.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb {
-  border: 1px solid var(--win7-body-control-line);
-  border-radius: var(--win7-radius-control);
-  background: linear-gradient(
-    to right,
-    var(--win7-scroll-face),
-    var(--win7-scroll-face-fade)
-  );
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:vertical {
-  background: linear-gradient(
-    to right,
-    var(--win7-scroll-face),
-    var(--win7-scroll-face-fade)
-  );
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:horizontal {
-  background: linear-gradient(
-    to bottom,
-    var(--win7-scroll-face),
-    var(--win7-scroll-face-fade)
-  );
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:hover {
-  border-color: var(--win7-scroll-hover-line);
-  background: linear-gradient(
-    to right,
-    var(--win7-scroll-hover),
-    var(--win7-scroll-hover-fade)
-  );
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-thumb:active {
-  border-color: var(--win7-scroll-press-line);
-  background: linear-gradient(
-    to right,
-    var(--win7-scroll-press),
-    var(--win7-scroll-press-fade)
-  );
-}
-.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button {
-  display: block;
-  width: 17px;
-  height: 17px;
-  border: 1px solid var(--win7-body-control-line);
-  border-radius: var(--win7-radius-control);
-  background-color: var(--win7-scroll-face);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:hover {
-  border-color: var(--win7-scroll-hover-line);
-  background-color: var(--win7-scroll-hover);
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:active {
-  border-color: var(--win7-scroll-press-line);
-  background-color: var(--win7-scroll-press);
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:vertical:start {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M4 11h8L8 6z' fill='%23333'/%3E%3C/svg%3E");
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:vertical:end {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M4 6h8l-4 5z' fill='%23333'/%3E%3C/svg%3E");
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:horizontal:start {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M11 4.5v8L6 8.5z' fill='%23333'/%3E%3C/svg%3E");
-}
-.os-shell
-  .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-button:horizontal:end {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17'%3E%3Cpath d='M5 4.5v8l5-4z' fill='%23333'/%3E%3C/svg%3E");
-}
-.os-shell .os-page-content.window-body.has-scrollbar::-webkit-scrollbar-corner {
-  background: var(--win7-scroll-face);
 }
 /* Firefox has no pseudo-element scrollbars. It gets the same light thumb and track. */
 @supports not selector(::-webkit-scrollbar) {

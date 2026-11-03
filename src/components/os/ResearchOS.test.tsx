@@ -661,8 +661,17 @@ describe("ResearchOS workspace lifecycle", () => {
     await screen.findByRole("button", { name: commands.done });
     const done = screen.getByRole("button", { name: commands.done });
     done.focus();
-    fireEvent.keyDown(done, { key: "Tab" });
-    expect(screen.getByRole("button", { name: copy.copyLink })).toHaveFocus();
+    const exit = new KeyboardEvent("keydown", {
+      key: "Tab",
+      bubbles: true,
+      cancelable: true,
+    });
+    fireEvent(done, exit);
+    // jsdom cannot execute the browser's default Tab traversal. The disclosure
+    // closes and restores the traversal origin without cancelling that default.
+    expect(exit.defaultPrevented).toBe(false);
+    expect(launcher).toHaveFocus();
+    expect(screen.queryByRole("button", { name: commands.done })).toBeNull();
     fireEvent.keyDown(launcher, { key: "Escape" });
     expect(navigation.push).toHaveBeenCalledWith("/");
   });
@@ -684,7 +693,7 @@ describe("ResearchOS workspace lifecycle", () => {
     await screen.findByRole("button", { name: getWindowCopy("en").moveLeft });
     // No preceding pointerdown: hiding must not depend on the outside-click listener.
     fireEvent.click(
-      screen.getByRole("button", { name: getWindowCopy("en").minimize }),
+      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
     );
     expect(
       screen.queryByRole("button", { name: getWindowCopy("en").moveLeft }),
@@ -734,7 +743,7 @@ describe("ResearchOS workspace lifecycle", () => {
       target: { value: "Retain these notes" },
     });
     fireEvent.click(
-      screen.getByRole("button", { name: getWindowCopy("en").minimize }),
+      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
     );
     flushFrames();
     const task = screen.getByRole("button", { name: /^Restore Window:/ });
@@ -772,7 +781,7 @@ describe("ResearchOS workspace lifecycle", () => {
     navigation.pathname = "/projects";
     const { container } = render(shell("Project explorer"));
     fireEvent.click(
-      screen.getByRole("button", { name: getWindowCopy("en").minimize }),
+      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
     );
     flushFrames();
     fireEvent.keyDown(document, { key: "Escape" });
@@ -796,7 +805,7 @@ describe("ResearchOS workspace lifecycle", () => {
     navigation.pathname = "/projects";
     const view = render(shell("Project explorer"));
     fireEvent.click(
-      screen.getByRole("button", { name: getWindowCopy("en").minimize }),
+      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
     );
     const dock = view.container.querySelector<HTMLElement>(".os-dock")!;
     fireEvent.click(within(dock).getByRole("link", { name: copy.projects }), {

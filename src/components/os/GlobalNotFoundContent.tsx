@@ -109,7 +109,7 @@ export function GlobalNotFoundContent({
           and the 404 code sits in the glass title bar. The icon is decorative. */}
       <div className="window glass active global-not-found-dialog">
         <div className="title-bar">
-          <p className="global-not-found-code" dir="ltr">
+          <p className="title-bar-text global-not-found-code" dir="ltr">
             404
           </p>
         </div>

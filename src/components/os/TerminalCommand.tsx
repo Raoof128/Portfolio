@@ -94,9 +94,9 @@ export function TerminalCommand({
   return (
     // The card follows the page direction so the localised title and button sit
     // correctly in RTL; only the command block is forced LTR below.
-    <div className="os-terminal">
-      <div className="os-terminal-head">
-        <p className="os-terminal-title" lang={locale}>
+    <div className="os-terminal window glass active">
+      <div className="os-terminal-head title-bar">
+        <p className="os-terminal-title title-bar-text" lang={locale}>
           <SquareTerminal size={16} aria-hidden="true" />
           {labels.title}
         </p>
@@ -114,27 +114,29 @@ export function TerminalCommand({
           {status === "copied" ? labels.copied : labels.copy}
         </button>
       </div>
-      {/* The prompt is drawn by CSS (::before), so copied text is only the commands. */}
-      <pre
-        className="os-terminal-body"
-        dir="ltr"
-        role="region"
-        aria-label={labels.region}
-        tabIndex={0}
-      >
-        {commands.map((command) => (
-          <code key={command}>
-            <span className="os-terminal-typed">{command}</span>
-          </code>
-        ))}
-      </pre>
-      <p className="os-terminal-feedback" role="status">
-        {status === "copied"
-          ? labels.copied
-          : status === "failed"
-            ? labels.failed
-            : ""}
-      </p>
+      <div className="os-terminal-console window-body">
+        {/* The prompt is drawn by CSS (::before), so copied text is only the commands. */}
+        <pre
+          className="os-terminal-body"
+          dir="ltr"
+          role="region"
+          aria-label={labels.region}
+          tabIndex={0}
+        >
+          {commands.map((command) => (
+            <code key={command}>
+              <span className="os-terminal-typed">{command}</span>
+            </code>
+          ))}
+        </pre>
+        <p className="os-terminal-feedback" role="status">
+          {status === "copied"
+            ? labels.copied
+            : status === "failed"
+              ? labels.failed
+              : ""}
+        </p>
+      </div>
     </div>
   );
 }

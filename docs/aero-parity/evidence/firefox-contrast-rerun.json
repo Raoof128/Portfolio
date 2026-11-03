@@ -1,0 +1,27 @@
+{
+  "source": "artifacts/aero-parity/validation/firefox-contrast-rerun.json",
+  "build_id": "xfHy_bhVfJKii-CA72D9U",
+  "stats": {
+    "startTime": "2026-11-03T07:35:00.082Z",
+    "duration": 4832.667,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3185,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

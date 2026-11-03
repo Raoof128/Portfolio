@@ -1,0 +1,454 @@
+{
+  "engine": "155.0.8059.79",
+  "buildId": "xfHy_bhVfJKii-CA72D9U",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:23:07.345Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "data": [
+    {
+      "name": "projects-light",
+      "url": "/projects",
+      "theme": "light",
+      "measurement": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollWidth": 1440,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [
+          {
+            "name": "Minimise: Projects",
+            "w": 29,
+            "h": 19,
+            "right": 1179,
+            "bottom": 100.5
+          },
+          {
+            "name": "Full Size: Projects",
+            "w": 29,
+            "h": 19,
+            "right": 1208,
+            "bottom": 100.5
+          },
+          {
+            "name": "Close: Projects",
+            "w": 48,
+            "h": 19,
+            "right": 1256,
+            "bottom": 100.5
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": [],
+      "afterPanelTab": {
+        "text": "All Projects13",
+        "panelOpen": false
+      },
+      "afterToolbarTab": {
+        "tag": "A",
+        "text": "All Projects13",
+        "aria": null
+      }
+    },
+    {
+      "name": "projects-dark",
+      "url": "/projects",
+      "theme": "dark",
+      "measurement": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollWidth": 1440,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [
+          {
+            "name": "Minimise: Projects",
+            "w": 29,
+            "h": 19,
+            "right": 1179,
+            "bottom": 100.5
+          },
+          {
+            "name": "Full Size: Projects",
+            "w": 29,
+            "h": 19,
+            "right": 1208,
+            "bottom": 100.5
+          },
+          {
+            "name": "Close: Projects",
+            "w": 48,
+            "h": 19,
+            "right": 1256,
+            "bottom": 100.5
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": [],
+      "afterPanelTab": {
+        "text": "All Projects13",
+        "panelOpen": false
+      },
+      "afterToolbarTab": {
+        "tag": "A",
+        "text": "All Projects13",
+        "aria": null
+      }
+    },
+    {
+      "name": "desktop-light",
+      "url": "/",
+      "theme": "light",
+      "measurement": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollWidth": 1440,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [],
+        "body": [
+          {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    },
+    {
+      "name": "desktop-dark",
+      "url": "/",
+      "theme": "dark",
+      "measurement": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollWidth": 1440,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [],
+        "body": [
+          {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    },
+    {
+      "name": "welcome-dark-mobile",
+      "url": "/",
+      "theme": "dark",
+      "measurement": {
+        "viewport": [
+          320,
+          568
+        ],
+        "scrollWidth": 320,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [],
+        "body": [],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    },
+    {
+      "name": "fa-projects-dark-mobile",
+      "url": "/fa/projects",
+      "theme": "dark",
+      "measurement": {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "lang": "fa",
+        "dir": "rtl",
+        "controls": [
+          {
+            "name": "کمینه کردن: پروژه‌ها",
+            "w": 44,
+            "h": 44,
+            "right": 161,
+            "bottom": 45
+          },
+          {
+            "name": "اندازهٔ کامل: پروژه‌ها",
+            "w": 44,
+            "h": 44,
+            "right": 109,
+            "bottom": 45
+          },
+          {
+            "name": "بستن: پروژه‌ها",
+            "w": 48,
+            "h": 44,
+            "right": 49,
+            "bottom": 45
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:var(--font-vazirmatn), Tahoma, &quot;Segoe UI&quot;, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Pe"
+      },
+      "errors": []
+    },
+    {
+      "name": "ar-about-light-mobile",
+      "url": "/ar/about",
+      "theme": "light",
+      "measurement": {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "lang": "ar",
+        "dir": "rtl",
+        "controls": [
+          {
+            "name": "تصغير: نبذة عني",
+            "w": 44,
+            "h": 44,
+            "right": 161,
+            "bottom": 45
+          },
+          {
+            "name": "الحجم الكامل: نبذة عني",
+            "w": 44,
+            "h": 44,
+            "right": 109,
+            "bottom": 45
+          },
+          {
+            "name": "إغلاق: نبذة عني",
+            "w": 48,
+            "h": 44,
+            "right": 49,
+            "bottom": 45
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:var(--font-vazirmatn), Tahoma, &quot;Segoe UI&quot;, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Pe"
+      },
+      "errors": []
+    },
+    {
+      "name": "projects-dark-small",
+      "url": "/projects",
+      "theme": "dark",
+      "measurement": {
+        "viewport": [
+          320,
+          568
+        ],
+        "scrollWidth": 320,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [
+          {
+            "name": "Minimise: Projects",
+            "w": 44,
+            "h": 44,
+            "right": 203,
+            "bottom": 45
+          },
+          {
+            "name": "Full Size: Projects",
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 45
+          },
+          {
+            "name": "Close: Projects",
+            "w": 48,
+            "h": 44,
+            "right": 319,
+            "bottom": 45
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    },
+    {
+      "name": "writeups-light-tablet",
+      "url": "/write-ups",
+      "theme": "light",
+      "measurement": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "scrollWidth": 768,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [
+          {
+            "name": "Minimise: Write-ups",
+            "w": 44,
+            "h": 44,
+            "right": 644,
+            "bottom": 77
+          },
+          {
+            "name": "Full Size: Write-ups",
+            "w": 44,
+            "h": 44,
+            "right": 696,
+            "bottom": 77
+          },
+          {
+            "name": "Close: Write-ups",
+            "w": 48,
+            "h": 44,
+            "right": 760,
+            "bottom": 77
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    },
+    {
+      "name": "simurgh-dark-short",
+      "url": "/projects/project-simurgh",
+      "theme": "dark",
+      "measurement": {
+        "viewport": [
+          640,
+          360
+        ],
+        "scrollWidth": 640,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [
+          {
+            "name": "Minimise: Project Simurgh",
+            "w": 44,
+            "h": 44,
+            "right": 523,
+            "bottom": 45
+          },
+          {
+            "name": "Full Size: Project Simurgh",
+            "w": 44,
+            "h": 44,
+            "right": 575,
+            "bottom": 45
+          },
+          {
+            "name": "Close: Project Simurgh",
+            "w": 48,
+            "h": 44,
+            "right": 639,
+            "bottom": 45
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    },
+    {
+      "name": "contact-light-wide",
+      "url": "/contact",
+      "theme": "light",
+      "measurement": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "scrollWidth": 1920,
+        "lang": "en",
+        "dir": "ltr",
+        "controls": [
+          {
+            "name": "Minimise: Contact",
+            "w": 29,
+            "h": 19,
+            "right": 1179,
+            "bottom": 100.5
+          },
+          {
+            "name": "Full Size: Contact",
+            "w": 29,
+            "h": 19,
+            "right": 1208,
+            "bottom": 100.5
+          },
+          {
+            "name": "Close: Contact",
+            "w": 48,
+            "h": 19,
+            "right": 1256,
+            "bottom": 100.5
+          }
+        ],
+        "body": [
+          {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(0, 0, 0)"
+          }
+        ],
+        "activeElement": "<body class=\"VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground\" style=\"font-family:&quot;Segoe UI&quot;, Tahoma, ui-sans-serif, system-ui, -apple-system, &quot;Helvetica Neue&quot;, Arial, sans-serif\"><div hidden=\"\"><!--$--><!--/$--></div><script type=\"application/ld+json\">{\""
+      },
+      "errors": []
+    }
+  ]
+}

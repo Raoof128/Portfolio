@@ -1,0 +1,233 @@
+{
+  "build": "xfHy_bhVfJKii-CA72D9U",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:23:07.345Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "results": [
+    {
+      "theme": "light",
+      "index": 0,
+      "styles": [
+        {
+          "s": ".proof-atlas--desktop svg",
+          "text": "Where the evidence connectsThe agent crosses the input firewall, conte",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": ""
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-boundary-plate",
+          "text": "",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fill": "rgb(255, 255, 255)",
+          "stroke": "rgb(0, 0, 0)",
+          "border": "0px solid rgb(0, 0, 0)"
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-node text",
+          "text": "Agent",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "rgb(255, 255, 255)",
+          "border": "0px solid rgb(0, 0, 0)"
+        },
+        {
+          "s": ".proof-atlas-option[aria-pressed=\"true\"]",
+          "text": "Project Simurgh",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": "2px solid rgba(5, 0, 73, 0.8)"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "index": 1,
+      "styles": [
+        {
+          "s": ".proof-atlas--desktop svg",
+          "text": "Where the evidence connectsTwo separate planes compare the physical di",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": ""
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-boundary-plate",
+          "missing": true
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-node text",
+          "missing": true
+        },
+        {
+          "s": ".proof-atlas-option[aria-pressed=\"true\"]",
+          "text": "Invisible Window",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": "2px solid rgba(5, 0, 73, 0.8)"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "index": 2,
+      "styles": [
+        {
+          "s": ".proof-atlas--desktop svg",
+          "text": "Where the evidence connectsDocuments branch into claims, concepts, ent",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": ""
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-boundary-plate",
+          "missing": true
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-node text",
+          "text": "Documents",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "rgb(255, 255, 255)",
+          "border": "0px solid rgb(0, 0, 0)"
+        },
+        {
+          "s": ".proof-atlas-option[aria-pressed=\"true\"]",
+          "text": "Project Zurvan",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": "2px solid rgba(5, 0, 73, 0.8)"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "index": 0,
+      "styles": [
+        {
+          "s": ".proof-atlas--desktop svg",
+          "text": "Where the evidence connectsThe agent crosses the input firewall, conte",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": ""
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-boundary-plate",
+          "text": "",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "rgb(255, 255, 255)",
+          "border": "0px solid rgb(255, 255, 255)"
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-node text",
+          "text": "Agent",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fill": "rgb(255, 255, 255)",
+          "stroke": "rgb(0, 0, 0)",
+          "border": "0px solid rgb(255, 255, 255)"
+        },
+        {
+          "s": ".proof-atlas-option[aria-pressed=\"true\"]",
+          "text": "Project Simurgh",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": "2px solid rgba(0, 230, 255, 0.8)"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "index": 1,
+      "styles": [
+        {
+          "s": ".proof-atlas--desktop svg",
+          "text": "Where the evidence connectsTwo separate planes compare the physical di",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": ""
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-boundary-plate",
+          "missing": true
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-node text",
+          "missing": true
+        },
+        {
+          "s": ".proof-atlas-option[aria-pressed=\"true\"]",
+          "text": "Invisible Window",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": "2px solid rgba(0, 230, 255, 0.8)"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "index": 2,
+      "styles": [
+        {
+          "s": ".proof-atlas--desktop svg",
+          "text": "Where the evidence connectsDocuments branch into claims, concepts, ent",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": ""
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-boundary-plate",
+          "missing": true
+        },
+        {
+          "s": ".proof-atlas--desktop .proof-atlas-node text",
+          "text": "Documents",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fill": "rgb(255, 255, 255)",
+          "stroke": "rgb(0, 0, 0)",
+          "border": "0px solid rgb(255, 255, 255)"
+        },
+        {
+          "s": ".proof-atlas-option[aria-pressed=\"true\"]",
+          "text": "Project Zurvan",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 0, 0)",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "border": "2px solid rgba(0, 230, 255, 0.8)"
+        }
+      ]
+    }
+  ]
+}

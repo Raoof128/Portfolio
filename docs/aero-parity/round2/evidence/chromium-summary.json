@@ -1,0 +1,246 @@
+{
+  "build_id": "UD_vNX6v9YqmgrvZLWuY7",
+  "source_report": "artifacts/aero-parity/round2-accepted-chromium.json",
+  "stats": {
+    "startTime": "2026-11-03T09:28:14.030Z",
+    "duration": 385304.038,
+    "expected": 32,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 7822
+    },
+    {
+      "title": "pointer geometry, search selection, locale and appearance persistence",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 9138
+    },
+    {
+      "title": "forced colours preserve caption glyph geometry and language fonts",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 5423
+    },
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 2305
+    },
+    {
+      "title": "keyboard workspace entry and five-language 404 recovery",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 7790
+    },
+    {
+      "title": "five-language keyboard search, empty results and dismissal",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 11352
+    },
+    {
+      "title": "responsive en light",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 35856
+    },
+    {
+      "title": "responsive fa light",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 38127
+    },
+    {
+      "title": "responsive ar light",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 44315
+    },
+    {
+      "title": "responsive zh light",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 41587
+    },
+    {
+      "title": "responsive es light",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 37461
+    },
+    {
+      "title": "responsive en dark",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 35032
+    },
+    {
+      "title": "responsive fa dark",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 34994
+    },
+    {
+      "title": "responsive ar dark",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 35056
+    },
+    {
+      "title": "responsive zh dark",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 33098
+    },
+    {
+      "title": "responsive es dark",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 34509
+    },
+    {
+      "title": "exported route audit 1-10",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 19165
+    },
+    {
+      "title": "exported route audit 11-20",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 20715
+    },
+    {
+      "title": "exported route audit 21-30",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 22123
+    },
+    {
+      "title": "exported route audit 31-40",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 19018
+    },
+    {
+      "title": "exported route audit 41-50",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 22505
+    },
+    {
+      "title": "exported route audit 51-60",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 25792
+    },
+    {
+      "title": "exported route audit 61-70",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 24182
+    },
+    {
+      "title": "exported route audit 71-80",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 24186
+    },
+    {
+      "title": "exported route audit 81-90",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 23711
+    },
+    {
+      "title": "exported route audit 91-100",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 24130
+    },
+    {
+      "title": "exported route audit 101-110",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 23833
+    },
+    {
+      "title": "exported route audit 111-120",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 20408
+    },
+    {
+      "title": "exported route audit 121-130",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 21936
+    },
+    {
+      "title": "exported route audit 131-140",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 22228
+    },
+    {
+      "title": "exported route audit 141-150",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 19873
+    },
+    {
+      "title": "exported route audit 151-160",
+      "project": "chromium",
+      "status": "passed",
+      "duration_ms": 18371
+    }
+  ],
+  "route_count": 160,
+  "responsive_observations": 360,
+  "axe_violation_count": 0,
+  "axe_incomplete_count": 158,
+  "incomplete_rule_counts": {
+    "color-contrast": 158
+  },
+  "responsive_overflows": [],
+  "routes_metrics": {
+    "lcp": {
+      "count": 160,
+      "min": 0,
+      "median": 552,
+      "p75_observations": 660,
+      "max": 1532
+    },
+    "cls": {
+      "count": 160,
+      "min": 0,
+      "median": 0.00016429164556809413,
+      "p75_observations": 0.0003066551511997385,
+      "max": 0.09984938987449364
+    }
+  },
+  "responsive_metrics": {
+    "lcp": {
+      "count": 360,
+      "min": 0,
+      "median": 392,
+      "p75_observations": 544,
+      "max": 1504
+    },
+    "cls": {
+      "count": 360,
+      "min": 0,
+      "median": 0.0001357264389226466,
+      "p75_observations": 0.00048513803217146127,
+      "max": 0.0607147216796875
+    }
+  }
+}

@@ -1,0 +1,38 @@
+import {chromium} from '/workspace/Portfolio/node_modules/playwright/index.mjs';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const output='/tmp/aero-round2-accepted-windows';await mkdir(output,{recursive:true});
+const css=await readFile('/workspace/Portfolio/node_modules/7.css/dist/7.scoped.css','utf8');
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium'});
+const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:1440,height:900},reducedMotion:'reduce'});
+const page=await context.newPage(), reference=await context.newPage();
+const rows=[];
+const style=locator=>locator.evaluate(el=>{const c=getComputedStyle(el),p=getComputedStyle(el,'::before'),r=el.getBoundingClientRect();return{width:r.width,height:r.height,background:c.backgroundImage,shadow:c.boxShadow,radius:c.borderRadius,beforeBackground:p.backgroundImage,beforeOpacity:p.opacity,focusVisible:el.matches(':focus-visible'),outline:c.outline,href:el.getAttribute('href')}});
+try{
+ for(const state of ['default','hover','pressed','focus']){
+  await page.goto('http://127.0.0.1:4398/projects',{waitUntil:'networkidle'});
+  await reference.setContent(`<style>${css}body{background:#90b5d0}</style><div class="win7"><div class="window glass active"><div class="title-bar"><div class="title-bar-text">Projects</div><div class="title-bar-controls"><button class="is-minimize"></button><button class="is-maximize"></button><button class="is-close" aria-label="Close"></button></div></div></div></div>`);
+  const actual=page.locator('.os-windowbar--route a.os-window-close'),expected=reference.locator('.is-close');
+  const samples=[];
+  for(const [p,target] of [[page,actual],[reference,expected]]){
+   await p.bringToFront();
+   if(state==='focus'){await p.keyboard.press('Tab');await target.focus();}
+   else if(state!=='default'){await target.hover();if(state==='pressed')await p.mouse.down();}
+   await p.waitForTimeout(400);
+   samples.push(await style(target));
+   await target.screenshot({path:`${output}/nojs-close-${state}-${p===page?'candidate':'reference'}.png`});
+   if(state==='pressed')await p.mouse.up();
+  }
+  const [a,b]=samples;
+  for(const key of ['width','height','background','radius','beforeBackground','beforeOpacity'])assert.equal(a[key],b[key],state+':'+key);
+  assert.equal(a.href,'/');
+  if(state==='focus')assert.equal(a.focusVisible,true);
+  rows.push({state,actual:a,reference:b,materialAndGeometryMatch:true});
+ }
+ await page.goto('http://127.0.0.1:4398/projects',{waitUntil:'networkidle'});
+ await page.locator('.os-windowbar--route a.os-window-close').click();
+ assert.equal(new URL(page.url()).pathname,'/');
+ const result={buildId:(await readFile('.next/BUILD_ID','utf8')).trim(),version:JSON.parse(await readFile('out/version.json','utf8')),javaScriptEnabled:false,rows,closeNavigationPassed:true,scope:'Actual server fallback versus unchanged 7.css native Close: computed material/geometry, not pixel identity across different backdrops. Focus ring remains an accessibility adaptation.'};
+ await writeFile(output+'/nojs-close.json',JSON.stringify(result,null,2));
+ console.log(JSON.stringify({states:rows.length,closeNavigationPassed:true,build:result.buildId}));
+}finally{await browser.close();}

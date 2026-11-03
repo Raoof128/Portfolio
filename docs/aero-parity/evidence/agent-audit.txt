@@ -1,0 +1,5 @@
+> portfolio@0.1.0 audit:agents
+> node scripts/audit-agents.mjs
+
+Audited 160 sitemap URLs · inventory 160 (13 projects, 7 write-ups, 3 lab / locale)
+✔ agent audit passed (0 warning(s))

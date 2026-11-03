@@ -15,7 +15,7 @@
   text-align: center;
 }
 
-/* Desktop window (Aero): the glass frame is set in win7-desktop.css. The heading is the
+/* Desktop window (Aero): the glass frame is shared through win7-windows.css. The heading is the
    title bar, and the eyebrow sits above the figure in the white body. The palette is scoped
    to this window and stays light in both themes, like the other window bodies (reading
    windows and Getting Started), so the SVG fills and text read the same on white. */
@@ -33,7 +33,6 @@
 
 .proof-atlas--desktop .proof-atlas-body {
   background: var(--win7-body-bg);
-  border-radius: 0 0 3px 3px;
 }
 
 .proof-atlas-heading {
@@ -508,40 +507,42 @@
    currentColor stroke would bold the text. Outside forced colours the halo keeps
    --os-surface so it matches the panel (Canvas is a different colour in dark mode). */
 @media (forced-colors: active) {
+  /* SVG retains authored fills in forced colours. Rebind the desktop body's palette
+     after the shared window-body adapter, so its surface, strokes and label halos all
+     follow the same system palette instead of leaving white strokes on white plates. */
+  .proof-atlas.proof-atlas--desktop > .proof-atlas-body {
+    --os-surface: Canvas;
+    --os-text: CanvasText;
+    --os-muted: CanvasText;
+    --os-accent: Highlight;
+    --os-accent-tint: Canvas;
+    --os-line: CanvasText;
+    --os-control-line: CanvasText;
+    --atlas-label-ink: CanvasText;
+    --atlas-label-halo: Canvas;
+    --win7-body-bg: Canvas;
+  }
+
   .proof-atlas-node text {
     stroke: Canvas;
   }
 
-  /* Forced colours drop the accent tint and text colour, so the pressed project
-     selector gets a heavier border as its non-colour state cue (design system: never
-     colour alone). */
+  /* A heavier border preserves the selected state without relying on colour alone. */
   .proof-atlas-option[aria-pressed="true"] {
     border-width: 2px;
   }
+
+  /* The desktop gradient must not erase the system face. Canvas also avoids the
+     browser's text backplate obscuring HighlightText over a translucent Highlight. */
+  .proof-atlas.proof-atlas--desktop .proof-atlas-option[aria-pressed="true"] {
+    background: Canvas;
+    color: CanvasText;
+    border: 2px solid Highlight;
+  }
 }
 
-/* Desktop window. The heading is the title bar, 30px high unless it has to wrap. */
-.proof-atlas--desktop .proof-atlas-heading {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 8px;
-  justify-content: flex-start;
-  min-height: var(--win7-title-h);
-  /* The frame carries a 6px inset on the sides, so the title bar runs flush to it. */
-  margin: 0 -6px;
-  padding: 6px 8px;
-  /* Top corners follow the 5px inner radius of the 6px frame. */
-  border-radius: 5px 5px 0 0;
-  /* Same gloss over the solid title base as the Getting Started title bar. */
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 50%),
-    var(--win7-title-base);
-  color: var(--win7-text-glass);
-  /* The title is set on the solid title base with no shadow, so its edges stay crisp. */
-  text-shadow: none;
-}
-
+/* Native window/title/body classes share the installed 7.css chrome. Desktop-specific
+   wrapping and layout live in win7-desktop.css; no second opaque frame is painted here. */
 .proof-atlas--desktop .proof-atlas-eyebrow,
 .proof-atlas--desktop .proof-atlas-heading h2 {
   margin: 0;

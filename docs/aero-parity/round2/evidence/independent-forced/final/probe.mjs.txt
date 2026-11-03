@@ -1,0 +1,35 @@
+import { chromium } from '/workspace/Portfolio/node_modules/playwright-core/index.mjs';
+import { mkdir, writeFile } from 'node:fs/promises';
+const out='/workspace/Portfolio/docs/aero-parity/round2/evidence/independent-forced/final';
+await mkdir(out,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true});
+const rows=[];
+try {
+ for(const appearance of ['light','dark']) for(const system of ['light','dark']) {
+  const page=await browser.newPage({viewport:{width:1440,height:900},forcedColors:'active',colorScheme:system,reducedMotion:'reduce'});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(a=>localStorage.setItem('researchos.appearance.v1',a),appearance);
+  const row={appearance,system,errors};
+  row.version=await (await page.request.get('http://127.0.0.1:4398/version.json')).json();
+  const describe=async locator=>locator.evaluate(el=>{
+   const s=getComputedStyle(el);let p=el,background='unresolved';
+   while(p){const c=getComputedStyle(p).backgroundColor;if(c!=='transparent'&&!/^rgba\([^)]*,\s*0\s*\)$/.test(c)){background=c;break;}p=p.parentElement;}
+   return {text:el.textContent.trim().slice(0,90),color:s.color,background:s.backgroundColor,effectiveSolidBackground:background,border:s.borderTop,outline:s.outline,shadow:s.boxShadow,pressed:el.getAttribute('aria-pressed')};
+  });
+  await page.goto('http://127.0.0.1:4398/projects/invisible-window-research',{waitUntil:'networkidle'});
+  await page.evaluate(()=>document.fonts.ready);
+  const selected=page.locator('.os-story-platform-picker button[aria-pressed=true]');
+  await selected.focus();row.platform=await describe(selected);
+  await page.locator('.os-story-platform-picker').screenshot({path:`${out}/${appearance}-${system}-platform.png`});
+  await page.goto('http://127.0.0.1:4398/projects/project-simurgh',{waitUntil:'networkidle'});
+  await page.evaluate(()=>document.fonts.ready);
+  const terminal=page.locator('.os-terminal').first();await terminal.waitFor();
+  row.terminalTitle=await describe(terminal.locator('.title-bar-text'));
+  row.terminalCode=await describe(terminal.locator('code').first());
+  row.terminalCopy=await describe(terminal.locator('button'));
+  await terminal.screenshot({path:`${out}/${appearance}-${system}-terminal.png`});
+  rows.push(row);await page.close();
+ }
+} finally {await browser.close();}
+await writeFile(`${out}/results.json`,JSON.stringify(rows,null,2)+'\n');
+console.log(JSON.stringify(rows));

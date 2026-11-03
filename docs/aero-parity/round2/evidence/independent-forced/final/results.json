@@ -1,0 +1,206 @@
+[
+  {
+    "appearance": "light",
+    "system": "light",
+    "errors": [],
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:25:26.070Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "platform": {
+      "text": "Windows 10/11",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgb(255, 255, 255)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "2px solid rgba(5, 0, 73, 0.8)",
+      "outline": "rgba(5, 0, 73, 0.8) dotted 1px",
+      "shadow": "none",
+      "pressed": "true"
+    },
+    "terminalTitle": {
+      "text": "Reproduce Locally",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(255, 255, 255, 0)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "0px none rgb(0, 0, 0)",
+      "outline": "rgb(0, 0, 0) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCode": {
+      "text": "git clone https://github.com/Raoof128/Project-Simurgh",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(255, 255, 255, 0)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "0px solid rgb(0, 0, 0)",
+      "outline": "rgb(0, 0, 0) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCopy": {
+      "text": "Copy Commands",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgb(255, 255, 255)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "1px solid rgb(0, 0, 0)",
+      "outline": "rgb(0, 0, 0) none 3px",
+      "shadow": "none",
+      "pressed": null
+    }
+  },
+  {
+    "appearance": "light",
+    "system": "dark",
+    "errors": [],
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:25:26.070Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "platform": {
+      "text": "Windows 10/11",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "2px solid rgba(0, 230, 255, 0.8)",
+      "outline": "rgba(0, 230, 255, 0.8) dotted 1px",
+      "shadow": "none",
+      "pressed": "true"
+    },
+    "terminalTitle": {
+      "text": "Reproduce Locally",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "0px none rgb(255, 255, 255)",
+      "outline": "rgb(255, 255, 255) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCode": {
+      "text": "git clone https://github.com/Raoof128/Project-Simurgh",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "0px solid rgb(255, 255, 255)",
+      "outline": "rgb(255, 255, 255) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCopy": {
+      "text": "Copy Commands",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "1px solid rgb(255, 255, 255)",
+      "outline": "rgb(255, 255, 255) none 3px",
+      "shadow": "none",
+      "pressed": null
+    }
+  },
+  {
+    "appearance": "dark",
+    "system": "light",
+    "errors": [],
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:25:26.070Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "platform": {
+      "text": "Windows 10/11",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgb(255, 255, 255)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "2px solid rgba(5, 0, 73, 0.8)",
+      "outline": "rgba(5, 0, 73, 0.8) dotted 1px",
+      "shadow": "none",
+      "pressed": "true"
+    },
+    "terminalTitle": {
+      "text": "Reproduce Locally",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(255, 255, 255, 0)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "0px none rgb(0, 0, 0)",
+      "outline": "rgb(0, 0, 0) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCode": {
+      "text": "git clone https://github.com/Raoof128/Project-Simurgh",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(255, 255, 255, 0)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "0px solid rgb(0, 0, 0)",
+      "outline": "rgb(0, 0, 0) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCopy": {
+      "text": "Copy Commands",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgb(255, 255, 255)",
+      "effectiveSolidBackground": "rgb(255, 255, 255)",
+      "border": "1px solid rgb(0, 0, 0)",
+      "outline": "rgb(0, 0, 0) none 3px",
+      "shadow": "none",
+      "pressed": null
+    }
+  },
+  {
+    "appearance": "dark",
+    "system": "dark",
+    "errors": [],
+    "version": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T09:25:26.070Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "platform": {
+      "text": "Windows 10/11",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "2px solid rgba(0, 230, 255, 0.8)",
+      "outline": "rgba(0, 230, 255, 0.8) dotted 1px",
+      "shadow": "none",
+      "pressed": "true"
+    },
+    "terminalTitle": {
+      "text": "Reproduce Locally",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "0px none rgb(255, 255, 255)",
+      "outline": "rgb(255, 255, 255) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCode": {
+      "text": "git clone https://github.com/Raoof128/Project-Simurgh",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "0px solid rgb(255, 255, 255)",
+      "outline": "rgb(255, 255, 255) none 3px",
+      "shadow": "none",
+      "pressed": null
+    },
+    "terminalCopy": {
+      "text": "Copy Commands",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(0, 0, 0)",
+      "effectiveSolidBackground": "rgb(0, 0, 0)",
+      "border": "1px solid rgb(255, 255, 255)",
+      "outline": "rgb(255, 255, 255) none 3px",
+      "shadow": "none",
+      "pressed": null
+    }
+  }
+]

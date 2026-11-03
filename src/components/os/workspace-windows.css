@@ -82,7 +82,9 @@
   transform-origin: right;
 }
 
-/* Control tooltips (design system, section 4): the spec tooltip for each icon-only window
+/* Non-caption control tooltips. Native 7.css caption buttons use the browser title hint;
+   their ::before is the canonical hover/pressed layer and must not become a hover bridge.
+   The spec tooltip remains for each other icon-only window
    control and the resize grip. Elevated surface, hairline, 13px label, --radius-s radius
    (10px; the spec's 8px is off the section 3.5 scale and needs amending with this) and
    6px 10px padding. It shows after 400ms on keyboard focus (:focus-visible) and, where a
@@ -100,11 +102,11 @@
    leaves the window, so the component must decide which Escape wins.
    :where() keeps the base selector at low specificity so the grip override and the
    reduced-motion rules can win. */
-.os-shell .os-window-actions .os-control {
+.os-shell .os-window-actions:not(.title-bar-controls) .os-control {
   position: relative;
 }
 .os-shell
-  :where(.os-window-actions .os-control, .os-window-resize)[aria-label]::after {
+  :where(.os-window-actions:not(.title-bar-controls) .os-control, .os-window-resize)[aria-label]::after {
   content: attr(aria-label);
   position: absolute;
   inset-block-start: calc(100% + 6px);
@@ -129,12 +131,17 @@
 /* The grip sits on the inline-end bottom corner (reading-window.css), so its tooltip opens
    upward and uses the same inline-end anchoring as the other controls. */
 .os-shell .os-window-resize[aria-label]::after {
-  inset-block-start: auto;
+  inset: auto;
+  inset-inline-end: 0;
   inset-block-end: calc(100% + 6px);
+  width: max-content;
+  height: auto;
+  max-width: min(280px, calc(100vw - 24px));
+  white-space: normal;
 }
 .os-shell
   :where(
-    .os-window-actions .os-control,
+    .os-window-actions:not(.title-bar-controls) .os-control,
     .os-window-resize
   )[aria-label]:focus-visible::after {
   opacity: 1;
@@ -147,7 +154,7 @@
 @media (hover: hover) {
   .os-shell
     :where(
-      .os-window-actions .os-control,
+      .os-window-actions:not(.title-bar-controls) .os-control,
       .os-window-resize
     )[aria-label]:hover::after {
     opacity: 1;
@@ -156,7 +163,7 @@
   }
   .os-shell
     :where(
-      .os-window-actions .os-control,
+      .os-window-actions:not(.title-bar-controls) .os-control,
       .os-window-resize
     )[aria-label]:hover::before {
     content: "";
@@ -164,6 +171,8 @@
     inset-inline: 0;
     inset-block-start: 100%;
     height: 6px;
+    background: transparent;
+    box-shadow: none;
     pointer-events: auto;
   }
   .os-shell .os-window-resize[aria-label]:hover::before {
@@ -178,7 +187,7 @@
    Declared after the focus and hover rules so it wins at equal specificity. */
 .os-shell
   :where(
-    .os-window-actions .os-control,
+    .os-window-actions:not(.title-bar-controls) .os-control,
     .os-window-resize
   )[aria-label][data-tooltip-dismissed="true"]::after {
   opacity: 0;
@@ -187,7 +196,7 @@
 }
 .os-shell
   :where(
-    .os-window-actions .os-control,
+    .os-window-actions:not(.title-bar-controls) .os-control,
     .os-window-resize
   )[aria-label][data-tooltip-dismissed="true"]::before {
   pointer-events: none;
@@ -246,7 +255,7 @@
 @media (prefers-reduced-motion: reduce) {
   .os-shell
     :where(
-      .os-window-actions .os-control,
+      .os-window-actions:not(.title-bar-controls) .os-control,
       .os-window-resize
     )[aria-label]:focus-visible::after {
     transition-delay: var(--motion-tooltip-delay);
@@ -255,7 +264,7 @@
 @media (prefers-reduced-motion: reduce) and (hover: hover) {
   .os-shell
     :where(
-      .os-window-actions .os-control,
+      .os-window-actions:not(.title-bar-controls) .os-control,
       .os-window-resize
     )[aria-label]:hover::after {
     transition-delay: var(--motion-tooltip-delay);
@@ -265,7 +274,7 @@
 @media (prefers-reduced-motion: reduce) {
   .os-shell
     :where(
-      .os-window-actions .os-control,
+      .os-window-actions:not(.title-bar-controls) .os-control,
       .os-window-resize
     )[aria-label][data-tooltip-dismissed="true"]::after {
     transition-delay: 0s !important;
@@ -278,7 +287,7 @@
   /* System colours keep the tooltip legible, so it is not hidden in forced colours. */
   .os-shell
     :where(
-      .os-window-actions .os-control,
+      .os-window-actions:not(.title-bar-controls) .os-control,
       .os-window-resize
     )[aria-label]::after {
     border: 1px solid CanvasText;

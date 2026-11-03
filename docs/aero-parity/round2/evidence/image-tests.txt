@@ -1,0 +1,12 @@
+✔ identical pixels have zero difference (8.819449ms)
+✔ black versus white reports exact255 channel delta and valid overlays (5.733115ms)
+✔ unequal geometry counts missing pixels even when padded RGB matches (3.294829ms)
+✔ explicit chrome mask scopes metrics without changing raw comparison (3.132404ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33.514129

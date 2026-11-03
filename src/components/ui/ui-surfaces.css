@@ -117,21 +117,11 @@
   border: 0;
   border-top: 1px solid var(--os-line);
 }
+/* 7.css supplies the actual table, header gradient, cell borders and UI font.
+   Preserve document ink without replacing the native list-view materials. */
 .os-shell .ui-markdown th,
 .os-shell .ui-markdown td {
-  border-bottom: 1px solid var(--os-line);
   color: var(--os-text);
-}
-.os-shell .ui-markdown th {
-  background: var(--os-elevated);
-  font-family: var(--os-font-ui);
-  font-size: var(--text-s);
-  font-weight: 600;
-}
-.os-shell .ui-markdown table {
-  border: 1px solid var(--os-line);
-  border-radius: var(--radius-xs);
-  border-collapse: collapse;
 }
 .os-shell .ui-markdown .ui-code {
   border: 1px solid var(--os-line);

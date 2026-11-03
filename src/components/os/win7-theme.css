@@ -13,6 +13,9 @@
      white plate with black text in both themes; the ring is blue inside and white outside. */
   --win7-paper: #ffffff;
   --win7-ink: #000000;
+  /* Canonical 7.css push-button ink and static default-button outline. */
+  --win7-button-text: #222222;
+  --win7-button-default-border: #5586a3;
   --win7-console-feedback: #f2f2f2;
   --win7-ring-inner: #0066cc;
   --win7-ring-outer: #ffffff;
@@ -211,8 +214,8 @@
   );
   --win7-select-border: #6fb8ec;
 
-  /* Surfaces, none of them grey. The 7.css chrome colour (#f0f0f0) is mapped away at the
-     bottom of this block, so it cannot reach the desktop or the taskbar.
+  /* Extension surfaces. Canonical 7.css controls retain their original #f0f0f0 surface;
+     desktop/taskbar materials and white reading bodies use these separate tokens.
      - desktop: transparent, so the wallpaper shows edge to edge;
      - chrome: a cool tint for window chrome and the 7.css body surface (--w7-surface);
      - body: white, for reading text (--w7-tab-bg and every reading window). */
@@ -271,15 +274,13 @@
   --win7-radius-control: 3px;
   --win7-radius: 6px;
 
-  /* Mapping onto the 7.css variables. The buttons keep the 7.css element defaults. The
-     window body takes the chrome tint instead of the 7.css grey, and the desktop route
-     sets its own transparent surface further down. */
+  /* Canonical controls use the original 9pt (12 CSS px) type and grey surface. Portfolio
+     chrome and document copy retain their separate 14px/16px scale; mobile touch fields
+     keep their 16px floor. The family follows the active language. */
   /* 7.css consumes this as the font shorthand, not just a font-family. */
-  --w7-font: var(--win7-ui-size) / normal var(--win7-font);
-  --w7-surface: var(--win7-surface-chrome);
+  --w7-font: 9pt / normal var(--win7-font);
+  --w7-surface: #f0f0f0;
   --w7-tab-bg: var(--win7-surface-body);
-  --w7-w-bg: var(--win7-title-base);
-  --w7-w-glass: var(--win7-title-bg);
   --w7-w-bd: rgb(0 0 0 / 0.7);
   --w7-link-c: var(--win7-link);
   --w7-link-c-h: var(--win7-link-hover);
@@ -314,6 +315,8 @@
   --win7-glass-glow: 0 0 12px rgb(60 130 220 / 0.4);
   --win7-frame-border: rgb(0 0 0 / 0.85);
   --win7-title-base: rgb(24 52 92 / 0.78);
+  /* Night tint extends the canonical glass; its stripes and opacity stay in 7.css. */
+  --w7-w-bg: #18345c;
   --win7-title-inactive: rgb(58 70 88 / 0.8);
   --win7-taskbar-bg: linear-gradient(
     180deg,
@@ -441,10 +444,6 @@
   min-width: 0;
   min-height: 0;
 }
-/* The 7.css glass pseudo-element is replaced by the frame edge in the window layer. */
-.os-shell.win7 .window.glass::before {
-  content: none;
-}
 
 /* Home route: ResearchOS renders the page content inside main.os-main, so this rule keeps
    the 7.css frame, border and grey off the wallpaper there. Reading windows sit inside
@@ -507,9 +506,9 @@
   }
 }
 
-/* Reduced transparency: no backdrop blur, and the glass tokens use the solid variants. The
-   title base takes the solid glass tint, so the title bars stay opaque as well. */
-@media (prefers-reduced-transparency: reduce) {
+/* Reduced transparency and increased contrast use opaque frame materials. Canonical
+   7.css paints and blurs pseudo-elements, so the preference must cover those too. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .win7,
   .win7[data-appearance="dark"],
   [data-appearance="dark"] .win7 {
@@ -517,10 +516,17 @@
     --win7-taskbar-bg: var(--win7-taskbar-solid);
     --win7-glass-blur: 0px;
     --win7-title-base: var(--win7-glass-tint-solid);
+    --w7-w-bg: var(--win7-glass-tint-solid);
   }
-  .win7 * {
-    backdrop-filter: none !important;
+  .win7 *,
+  .win7 *::before,
+  .win7 *::after {
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .os-shell.win7 .window.glass::before {
+    background: var(--win7-glass-tint-solid);
+    opacity: 1;
   }
 }
 
@@ -533,6 +539,12 @@
     background-image: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .os-shell.win7 .window.glass::before {
+    background: Canvas;
+    opacity: 1;
   }
   .os-shell.win7,
   .os-shell.win7 .os-wallpaper,
@@ -557,7 +569,7 @@
     color: LinkText;
   }
   .os-shell.win7 [aria-selected="true"],
-  .os-shell.win7 [aria-current="page"],
+  .os-shell.win7 :is(a, button)[aria-current="page"],
   .os-shell.win7 [aria-pressed="true"] {
     background: Highlight;
     color: HighlightText;

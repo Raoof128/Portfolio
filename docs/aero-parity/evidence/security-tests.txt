@@ -1,0 +1,23 @@
+> portfolio@0.1.0 test:security
+> node --test scripts/lib/static-security.test.mjs
+
+✔ the authored policy is valid regardless of specific feed/asset header rules (114.362119ms)
+✔ static redirects reject authority-position splats and external destinations (5.162384ms)
+✔ specific path rules cannot detach or override any global security header (13.666807ms)
+✔ approved regular public files preserve the canonical disclosure contact (114.526723ms)
+✔ courtesy comments and Next build directories preserve valid exports (73.833072ms)
+✔ artifact transfer that omits hidden files fails the receiving gate (15.153119ms)
+✔ including hidden files never admits unexpected secrets or directories (19.873858ms)
+✔ symlinks, source maps and private source types cannot enter the artifact (16.808395ms)
+✔ missing roots and unequal disclosure copies fail without an uncaught I/O error (46.822302ms)
+✔ an artifact with weakened headers or unsafe locale redirects fails (50.63396ms)
+✔ execution controls and source/private namespaces cannot enter a static deployment (75.056085ms)
+✔ matching disclosure files must retain the approved contact, canonical URL and current expiry (89.116917ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 818.40668

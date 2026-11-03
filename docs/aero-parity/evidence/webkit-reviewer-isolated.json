@@ -1,0 +1,27 @@
+{
+  "source": "artifacts/aero-parity/validation/webkit-reviewer-isolated.json",
+  "build_id": "xfHy_bhVfJKii-CA72D9U",
+  "stats": {
+    "startTime": "2026-11-03T07:35:02.080Z",
+    "duration": 14139.143,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 12861,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

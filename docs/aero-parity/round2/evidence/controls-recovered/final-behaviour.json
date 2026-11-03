@@ -1,0 +1,272 @@
+[
+  {
+    "theme": "light",
+    "locale": "en",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 1,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "locale": "fa",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 2,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "locale": "ar",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 2,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "locale": "zh",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 1,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "locale": "es",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 1,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "locale": "en",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 1,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "locale": "fa",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 2,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "locale": "ar",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 2,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "locale": "zh",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 1,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "locale": "es",
+    "validation": {
+      "invalid": 3,
+      "focus": "contact-name",
+      "outline": "rgb(0, 0, 0) dotted 1px"
+    },
+    "corrected": null,
+    "platform": {
+      "pressed": "true",
+      "panel": "macos"
+    },
+    "tabState": {
+      "index": 1,
+      "focused": "tab"
+    },
+    "search": {
+      "empty": true,
+      "visibleEntries": 0
+    },
+    "filter": {
+      "options": 8,
+      "entries": 1
+    },
+    "errors": []
+  }
+]

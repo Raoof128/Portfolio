@@ -1,0 +1,2627 @@
+{
+  "before_build": {
+    "commit": "2b6d048c42c7feb7ef82e38f5ca519603d40afc6",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T05:58:48.112Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "final_build": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:23:07.345Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "final_build_id": "xfHy_bhVfJKii-CA72D9U",
+  "browser": "155.0.8059.79",
+  "reference": {
+    "package": "7.css@0.21.1",
+    "path": "node_modules/7.css/dist/7.scoped.css",
+    "sha256": "583a27d5dd81875f7e85df65da06451ae4ff6f01aa8687357ebcd0e04cc658f1"
+  },
+  "conditions": {
+    "viewport": "1440x900",
+    "dpr": 1,
+    "zoom": 1,
+    "backdrop": "#90b5d0 for glass chrome; #ffffff for opaque document controls",
+    "animations": "disabled equally",
+    "colourScheme": "light",
+    "theme": "candidate light",
+    "fontAvailability": "same host and same explicit family for both via canonical --w7-font; reference retains9pt fontsize and nativeweight",
+    "geometry": "natural caption/button dimensions; window sample640x240 with bodyfill; fluidinput outerwidth320/select240/tablist640; equal tab wording and buttonicon content; original live dimensions retained",
+    "fixtureLimits": "Actual DOM, classes, ancestor selectors and CSS; scripts removed; neutral backdrop and camera positions. Window sample removes toolbar/content controls to compare frame and caption; live whole-page captures remain separate. No whole-OS exact parity inference."
+  },
+  "before_count": 56,
+  "final_count": 56,
+  "exact_zero_count": 23,
+  "measurement_revisions": [
+    {
+      "scope": "window/default and window/inactive",
+      "reason": "Independent review replaced broad fixed title exclusion with measured text-node Range and icon union plus10px glow; raw screenshots and all otherstates retained.",
+      "source": "results-window.json",
+      "fullRunPairs": 56,
+      "rerunPairs": 2
+    }
+  ],
+  "rows": [
+    {
+      "component": "window",
+      "state": "default",
+      "before_size": [
+        640,
+        240
+      ],
+      "final_size": [
+        640,
+        240
+      ],
+      "reference_size": [
+        640,
+        240
+      ],
+      "before_pixels_over16": 39497,
+      "final_pixels_over16": 3095,
+      "final_exact_different_pixels": 130855,
+      "pixels": 182784,
+      "before_chrome_mask": {
+        "definition": {
+          "kind": "window-chrome",
+          "outer": {
+            "x": 16,
+            "y": 16,
+            "width": 640,
+            "height": 240
+          },
+          "edge": 7,
+          "titleHeight": 28,
+          "labelExclusion": {
+            "x": 23,
+            "y": 17,
+            "width": 84.265625,
+            "height": 27
+          },
+          "labelSourceBounds": [
+            {
+              "x": 49,
+              "y": 23,
+              "width": 48.265625,
+              "height": 17
+            },
+            {
+              "x": 27,
+              "y": 24,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "x": 23,
+              "y": 22,
+              "width": 44.953125,
+              "height": 17
+            }
+          ],
+          "glowPadding": 10
+        },
+        "pixels": 22975,
+        "differentPixelsAbove16": 21306,
+        "meanAbsoluteChannelDelta": 72.82351831701125,
+        "excludes": "reading body, title label/icon, exterior shadow; separately inspect raw images and control crops"
+      },
+      "final_chrome_mask": {
+        "definition": {
+          "kind": "window-chrome",
+          "outer": {
+            "x": 16,
+            "y": 16,
+            "width": 640,
+            "height": 240
+          },
+          "edge": 7,
+          "titleHeight": 28,
+          "labelExclusion": {
+            "x": 23,
+            "y": 17,
+            "width": 76.953125,
+            "height": 27
+          },
+          "labelSourceBounds": [
+            {
+              "x": 45,
+              "y": 22,
+              "width": 44.953125,
+              "height": 17
+            },
+            {
+              "x": 23,
+              "y": 19.5,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "x": 23,
+              "y": 22,
+              "width": 44.953125,
+              "height": 17
+            }
+          ],
+          "glowPadding": 10
+        },
+        "pixels": 23191,
+        "differentPixelsAbove16": 310,
+        "meanAbsoluteChannelDelta": 0.418495680795711,
+        "excludes": "reading body, title label/icon, exterior shadow; separately inspect raw images and control crops"
+      },
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "window",
+      "state": "inactive",
+      "before_size": [
+        640,
+        240
+      ],
+      "final_size": [
+        640,
+        240
+      ],
+      "reference_size": [
+        640,
+        240
+      ],
+      "before_pixels_over16": 37713,
+      "final_pixels_over16": 3095,
+      "final_exact_different_pixels": 130853,
+      "pixels": 182784,
+      "before_chrome_mask": {
+        "definition": {
+          "kind": "window-chrome",
+          "outer": {
+            "x": 16,
+            "y": 16,
+            "width": 640,
+            "height": 240
+          },
+          "edge": 7,
+          "titleHeight": 28,
+          "labelExclusion": {
+            "x": 23,
+            "y": 17,
+            "width": 84.265625,
+            "height": 27
+          },
+          "labelSourceBounds": [
+            {
+              "x": 49,
+              "y": 23,
+              "width": 48.265625,
+              "height": 17
+            },
+            {
+              "x": 27,
+              "y": 24,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "x": 23,
+              "y": 22,
+              "width": 44.953125,
+              "height": 17
+            }
+          ],
+          "glowPadding": 10
+        },
+        "pixels": 22975,
+        "differentPixelsAbove16": 21123,
+        "meanAbsoluteChannelDelta": 74.47332607907146,
+        "excludes": "reading body, title label/icon, exterior shadow; separately inspect raw images and control crops"
+      },
+      "final_chrome_mask": {
+        "definition": {
+          "kind": "window-chrome",
+          "outer": {
+            "x": 16,
+            "y": 16,
+            "width": 640,
+            "height": 240
+          },
+          "edge": 7,
+          "titleHeight": 28,
+          "labelExclusion": {
+            "x": 23,
+            "y": 17,
+            "width": 76.953125,
+            "height": 27
+          },
+          "labelSourceBounds": [
+            {
+              "x": 45,
+              "y": 22,
+              "width": 44.953125,
+              "height": 17
+            },
+            {
+              "x": 23,
+              "y": 19.5,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "x": 23,
+              "y": 22,
+              "width": 44.953125,
+              "height": 17
+            }
+          ],
+          "glowPadding": 10
+        },
+        "pixels": 23191,
+        "differentPixelsAbove16": 310,
+        "meanAbsoluteChannelDelta": 0.4183232000919897,
+        "excludes": "reading body, title label/icon, exterior shadow; separately inspect raw images and control crops"
+      },
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "titlebar",
+      "state": "default",
+      "before_size": [
+        630,
+        30
+      ],
+      "final_size": [
+        638,
+        27
+      ],
+      "reference_size": [
+        638,
+        27
+      ],
+      "before_pixels_over16": 18045,
+      "final_pixels_over16": 1274,
+      "final_exact_different_pixels": 1976,
+      "pixels": 39530,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "titlebar",
+      "state": "inactive",
+      "before_size": [
+        630,
+        30
+      ],
+      "final_size": [
+        638,
+        27
+      ],
+      "reference_size": [
+        638,
+        27
+      ],
+      "before_pixels_over16": 18052,
+      "final_pixels_over16": 1274,
+      "final_exact_different_pixels": 1974,
+      "pixels": 39530,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "caption-group",
+      "state": "default",
+      "before_size": [
+        96,
+        26
+      ],
+      "final_size": [
+        108,
+        20
+      ],
+      "reference_size": [
+        108,
+        20
+      ],
+      "before_pixels_over16": 2180,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 7280,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "caption-group",
+      "state": "inactive",
+      "before_size": [
+        96,
+        26
+      ],
+      "final_size": [
+        108,
+        20
+      ],
+      "reference_size": [
+        108,
+        20
+      ],
+      "before_pixels_over16": 1802,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 7280,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "caption-group",
+      "state": "disabled",
+      "before_size": [
+        96,
+        26
+      ],
+      "final_size": [
+        108,
+        20
+      ],
+      "reference_size": [
+        108,
+        20
+      ],
+      "before_pixels_over16": 2144,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 7280,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "minimize",
+      "state": "default",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 325,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "minimize",
+      "state": "hover",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 1064,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "minimize",
+      "state": "pressed",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 1255,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "minimize",
+      "state": "focus",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 569,
+      "final_pixels_over16": 145,
+      "final_exact_different_pixels": 152,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "minimize",
+      "state": "disabled",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 335,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "minimize",
+      "state": "inactive",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 142,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "maximize",
+      "state": "default",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 407,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "maximize",
+      "state": "hover",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 1126,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "maximize",
+      "state": "pressed",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 1315,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "maximize",
+      "state": "focus",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 630,
+      "final_pixels_over16": 144,
+      "final_exact_different_pixels": 144,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "maximize",
+      "state": "disabled",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 397,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "maximize",
+      "state": "inactive",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 258,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "restore",
+      "state": "default",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 402,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "restore",
+      "state": "hover",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 1121,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "restore",
+      "state": "pressed",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 1301,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "restore",
+      "state": "focus",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 627,
+      "final_pixels_over16": 144,
+      "final_exact_different_pixels": 144,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "restore",
+      "state": "disabled",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 402,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "restore",
+      "state": "inactive",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        29,
+        19
+      ],
+      "reference_size": [
+        29,
+        19
+      ],
+      "before_pixels_over16": 262,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 3111,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "close",
+      "state": "default",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        48,
+        19
+      ],
+      "reference_size": [
+        48,
+        19
+      ],
+      "before_pixels_over16": 807,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 4080,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "close",
+      "state": "hover",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        48,
+        19
+      ],
+      "reference_size": [
+        48,
+        19
+      ],
+      "before_pixels_over16": 2103,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 4080,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "close",
+      "state": "pressed",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        48,
+        19
+      ],
+      "reference_size": [
+        48,
+        19
+      ],
+      "before_pixels_over16": 2050,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 4080,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "close",
+      "state": "focus",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        48,
+        19
+      ],
+      "reference_size": [
+        48,
+        19
+      ],
+      "before_pixels_over16": 1418,
+      "final_pixels_over16": 221,
+      "final_exact_different_pixels": 227,
+      "pixels": 4080,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "close",
+      "state": "disabled",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        48,
+        19
+      ],
+      "reference_size": [
+        48,
+        19
+      ],
+      "before_pixels_over16": 799,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 4080,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "close",
+      "state": "inactive",
+      "before_size": [
+        30,
+        24
+      ],
+      "final_size": [
+        48,
+        19
+      ],
+      "reference_size": [
+        48,
+        19
+      ],
+      "before_pixels_over16": 306,
+      "final_pixels_over16": 0,
+      "final_exact_different_pixels": 0,
+      "pixels": 4080,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#90b5d0"
+    },
+    {
+      "component": "command-button",
+      "state": "default",
+      "before_size": [
+        81.515625,
+        24
+      ],
+      "final_size": [
+        80.4375,
+        24
+      ],
+      "reference_size": [
+        80.4375,
+        23
+      ],
+      "before_pixels_over16": 701,
+      "final_pixels_over16": 468,
+      "final_exact_different_pixels": 1150,
+      "pixels": 6328,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "command-button",
+      "state": "hover",
+      "before_size": [
+        81.515625,
+        24
+      ],
+      "final_size": [
+        80.4375,
+        24
+      ],
+      "reference_size": [
+        80.4375,
+        23
+      ],
+      "before_pixels_over16": 732,
+      "final_pixels_over16": 516,
+      "final_exact_different_pixels": 1160,
+      "pixels": 6328,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "command-button",
+      "state": "pressed",
+      "before_size": [
+        81.515625,
+        24
+      ],
+      "final_size": [
+        80.4375,
+        24
+      ],
+      "reference_size": [
+        80.4375,
+        23
+      ],
+      "before_pixels_over16": 773,
+      "final_pixels_over16": 443,
+      "final_exact_different_pixels": 1457,
+      "pixels": 6328,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "command-button",
+      "state": "focus",
+      "before_size": [
+        81.515625,
+        24
+      ],
+      "final_size": [
+        80.4375,
+        24
+      ],
+      "reference_size": [
+        80.4375,
+        23
+      ],
+      "before_pixels_over16": 1579,
+      "final_pixels_over16": 1497,
+      "final_exact_different_pixels": 1920,
+      "pixels": 6328,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "command-button",
+      "state": "disabled",
+      "before_size": [
+        81.515625,
+        24
+      ],
+      "final_size": [
+        80.4375,
+        24
+      ],
+      "reference_size": [
+        80.4375,
+        23
+      ],
+      "before_pixels_over16": 1165,
+      "final_pixels_over16": 1048,
+      "final_exact_different_pixels": 1824,
+      "pixels": 6328,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "search-field",
+      "state": "default",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        24
+      ],
+      "before_pixels_over16": 1244,
+      "final_pixels_over16": 270,
+      "final_exact_different_pixels": 400,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "search-field",
+      "state": "hover",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        24
+      ],
+      "before_pixels_over16": 1244,
+      "final_pixels_over16": 270,
+      "final_exact_different_pixels": 400,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "search-field",
+      "state": "focus",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        24
+      ],
+      "before_pixels_over16": 1244,
+      "final_pixels_over16": 1946,
+      "final_exact_different_pixels": 2076,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "search-field",
+      "state": "disabled",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        24
+      ],
+      "before_pixels_over16": 1244,
+      "final_pixels_over16": 270,
+      "final_exact_different_pixels": 400,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "category-select",
+      "state": "default",
+      "before_size": [
+        240,
+        26.140625
+      ],
+      "final_size": [
+        240,
+        24
+      ],
+      "reference_size": [
+        240,
+        23
+      ],
+      "before_pixels_over16": 3414,
+      "final_pixels_over16": 1101,
+      "final_exact_different_pixels": 3383,
+      "pixels": 15232,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "category-select",
+      "state": "hover",
+      "before_size": [
+        240,
+        26.140625
+      ],
+      "final_size": [
+        240,
+        24
+      ],
+      "reference_size": [
+        240,
+        23
+      ],
+      "before_pixels_over16": 2153,
+      "final_pixels_over16": 1287,
+      "final_exact_different_pixels": 3387,
+      "pixels": 15232,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "category-select",
+      "state": "focus",
+      "before_size": [
+        240,
+        26.140625
+      ],
+      "final_size": [
+        240,
+        24
+      ],
+      "reference_size": [
+        240,
+        23
+      ],
+      "before_pixels_over16": 4108,
+      "final_pixels_over16": 1249,
+      "final_exact_different_pixels": 3131,
+      "pixels": 15232,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "category-select",
+      "state": "disabled",
+      "before_size": [
+        240,
+        26.140625
+      ],
+      "final_size": [
+        240,
+        24
+      ],
+      "reference_size": [
+        240,
+        23
+      ],
+      "before_pixels_over16": 1388,
+      "final_pixels_over16": 816,
+      "final_exact_different_pixels": 1161,
+      "pixels": 15232,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "contact-textbox",
+      "state": "default",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        23
+      ],
+      "before_pixels_over16": 1392,
+      "final_pixels_over16": 1392,
+      "final_exact_different_pixels": 1487,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "contact-textbox",
+      "state": "hover",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        23
+      ],
+      "before_pixels_over16": 1032,
+      "final_pixels_over16": 1032,
+      "final_exact_different_pixels": 1125,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "contact-textbox",
+      "state": "focus",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        23
+      ],
+      "before_pixels_over16": 1365,
+      "final_pixels_over16": 1365,
+      "final_exact_different_pixels": 1457,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "contact-textbox",
+      "state": "disabled",
+      "before_size": [
+        320,
+        24
+      ],
+      "final_size": [
+        320,
+        24
+      ],
+      "reference_size": [
+        320,
+        23
+      ],
+      "before_pixels_over16": 1384,
+      "final_pixels_over16": 1384,
+      "final_exact_different_pixels": 7009,
+      "pixels": 19712,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": true,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "dossier-tabs",
+      "state": "default",
+      "before_size": [
+        640,
+        36.796875
+      ],
+      "final_size": [
+        640,
+        24
+      ],
+      "reference_size": [
+        640,
+        23
+      ],
+      "before_pixels_over16": 6359,
+      "final_pixels_over16": 1226,
+      "final_exact_different_pixels": 2218,
+      "pixels": 37632,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "dossier-tabs",
+      "state": "hover",
+      "before_size": [
+        640,
+        36.796875
+      ],
+      "final_size": [
+        640,
+        24
+      ],
+      "reference_size": [
+        640,
+        23
+      ],
+      "before_pixels_over16": 7213,
+      "final_pixels_over16": 1258,
+      "final_exact_different_pixels": 2218,
+      "pixels": 37632,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "dossier-tabs",
+      "state": "pressed",
+      "before_size": [
+        640,
+        36.796875
+      ],
+      "final_size": [
+        640,
+        24
+      ],
+      "reference_size": [
+        640,
+        23
+      ],
+      "before_pixels_over16": 7416,
+      "final_pixels_over16": 1258,
+      "final_exact_different_pixels": 2218,
+      "pixels": 37632,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "dossier-tabs",
+      "state": "focus",
+      "before_size": [
+        640,
+        36.796875
+      ],
+      "final_size": [
+        640,
+        24
+      ],
+      "reference_size": [
+        640,
+        23
+      ],
+      "before_pixels_over16": 7187,
+      "final_pixels_over16": 1855,
+      "final_exact_different_pixels": 2694,
+      "pixels": 37632,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": "false",
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "document-action",
+      "state": "default",
+      "before_size": [
+        135.9375,
+        24
+      ],
+      "final_size": [
+        123.375,
+        24
+      ],
+      "reference_size": [
+        117.375,
+        23
+      ],
+      "before_pixels_over16": 1596,
+      "final_pixels_over16": 1107,
+      "final_exact_different_pixels": 1961,
+      "pixels": 8736,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "document-action",
+      "state": "hover",
+      "before_size": [
+        135.9375,
+        24
+      ],
+      "final_size": [
+        123.375,
+        24
+      ],
+      "reference_size": [
+        117.375,
+        23
+      ],
+      "before_pixels_over16": 1617,
+      "final_pixels_over16": 971,
+      "final_exact_different_pixels": 1832,
+      "pixels": 8736,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": false,
+          "focusVisible": false,
+          "focused": false,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "document-action",
+      "state": "pressed",
+      "before_size": [
+        135.9375,
+        24
+      ],
+      "final_size": [
+        123.375,
+        24
+      ],
+      "reference_size": [
+        117.375,
+        23
+      ],
+      "before_pixels_over16": 1505,
+      "final_pixels_over16": 861,
+      "final_exact_different_pixels": 2282,
+      "pixels": 8736,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": true,
+          "pressed": true,
+          "focusVisible": false,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    },
+    {
+      "component": "document-action",
+      "state": "focus",
+      "before_size": [
+        135.9375,
+        24
+      ],
+      "final_size": [
+        123.375,
+        24
+      ],
+      "reference_size": [
+        117.375,
+        23
+      ],
+      "before_pixels_over16": 1819,
+      "final_pixels_over16": 1216,
+      "final_exact_different_pixels": 1849,
+      "pixels": 8736,
+      "before_chrome_mask": null,
+      "final_chrome_mask": null,
+      "state_verification": [
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        },
+        {
+          "hover": false,
+          "pressed": false,
+          "focusVisible": true,
+          "focused": true,
+          "disabled": false,
+          "selected": null,
+          "tabSelections": []
+        }
+      ],
+      "backdrop": "#ffffff"
+    }
+  ]
+}

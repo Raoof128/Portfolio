@@ -645,6 +645,7 @@ function ApplicationWindow({
               });
             }}
             aria-label={withTitle(local.minimizeWindow, title)}
+            title={withTitle(local.minimizeWindow, title)}
             tabIndex={active ? 0 : -1}
           />
           <button
@@ -661,6 +662,7 @@ function ApplicationWindow({
             }}
             // The name is constant; aria-pressed carries the expanded state.
             aria-label={withTitle(local.fullSizeWindow, title)}
+            title={withTitle(local.fullSizeWindow, title)}
             aria-pressed={expanded}
             // Phones already run every window full width, so there is nothing to expand.
             disabled={!reading.desktop}
@@ -677,6 +679,7 @@ function ApplicationWindow({
               });
             }}
             aria-label={withTitle(local.closeWindow, title)}
+            title={withTitle(local.closeWindow, title)}
             tabIndex={active ? 0 : -1}
           />
         </div>

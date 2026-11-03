@@ -324,13 +324,17 @@ export function ProofAtlas({
             <span className="proof-atlas-divider" aria-hidden="true" />
           </>
         )}
-        <h2 id={titleId} tabIndex={isWindow ? -1 : undefined}>
+        <h2
+          id={titleId}
+          className={isWindow ? "title-bar-text" : undefined}
+          tabIndex={isWindow ? -1 : undefined}
+        >
           {copy.heading}
         </h2>
         {controls}
       </div>
       {/* White window body. The figure and its controls share one surface. */}
-      <div className="proof-atlas-body">
+      <div className={`proof-atlas-body${isWindow ? " window-body" : ""}`}>
         {isWindow && (
           <p className="proof-atlas-eyebrow proof-atlas-kicker">
             {copy.eyebrow}

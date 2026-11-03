@@ -137,33 +137,11 @@
   max-inline-size: 38em;
 }
 
-/* Source and reproduce links: the secondary control geometry, 40px (44px coarse). */
+/* Source and reproduce links use the shared canonical action adapter in controls.css. */
 .os-shell .os-project-explorer .os-project-section .os-evidence-story-links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-}
-
-.os-shell .os-project-explorer .os-project-section .os-evidence-story-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 0 var(--space-3);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
-  color: var(--os-text);
-  font-size: var(--text-s);
-  line-height: 1.4;
-  text-decoration: none;
-  overflow-wrap: anywhere;
-}
-
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-evidence-story-links
-  a:hover {
-  background: var(--os-accent-tint);
 }
 
 .os-shell
@@ -200,8 +178,6 @@
   .os-evidence-story
   :is(
     .os-simurgh-instrument-control,
-    .os-story-platform-picker button,
-    .os-evidence-story-links a,
     .os-zurvan-typed
   ):focus-visible {
   outline: 2px solid var(--os-focus);
@@ -256,17 +232,6 @@
       .os-zurvan-type-ledger li[data-selected="true"]
     ) {
     border: 2px solid Highlight;
-  }
-}
-
-/* Touch: source and reproduce links take the shared 44px target. */
-@media (pointer: coarse) {
-  .os-shell
-    .os-project-explorer
-    .os-project-section
-    .os-evidence-story-links
-    a {
-    min-height: 44px;
   }
 }
 
@@ -338,8 +303,8 @@
 
 /* Aero pressed controls take the Win7 select gradient, and the text pair comes from the
    explorer tokens (black on the light face, white on the navy face in Aero Night). The
-   rule covers the Simurgh and Zurvan controls only: the platform picker is a joined
-   segmented strip and styles its own pressed state in evidence-story-invisible.css. */
+   rule covers the Simurgh and Zurvan diagram controls only: native platform buttons
+   latch their pressed face in evidence-story-invisible.css. */
 .os-shell
   .os-project-explorer
   .os-project-section
@@ -351,32 +316,4 @@
   color: var(--explorer-select-text);
   background: var(--explorer-select);
   border-color: var(--explorer-select-line);
-}
-.os-shell .os-project-explorer .os-project-section .os-story-platform-picker {
-  gap: 0;
-}
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-story-platform-picker
-  button {
-  border-radius: 0;
-  margin-inline-start: -1px;
-}
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-story-platform-picker
-  button:first-of-type {
-  margin-inline-start: 0;
-  border-start-start-radius: 3px;
-  border-end-start-radius: 3px;
-}
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-story-platform-picker
-  button:last-of-type {
-  border-start-end-radius: 3px;
-  border-end-end-radius: 3px;
 }

@@ -1,0 +1,16 @@
+{
+  "build_id": "UD_vNX6v9YqmgrvZLWuY7",
+  "accepted_version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T09:25:26.070Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "source_manifest_entries": 274,
+  "changed_current_pass": 24,
+  "unchanged_prior": 250,
+  "build_input_hash_mismatches": [],
+  "export_files": 1072,
+  "broken_report_links": [],
+  "staged_changes": []
+}

@@ -1,5 +1,7 @@
 # Windows7 fidelity
 
+**2026-11-03 erratum, Operation Aero:** the installed `7.css@0.21.1` scoped stylesheet does include `.win7 .has-scrollbar` rules. The statement below that it omits scrollbars repeated outdated upstream documentation and was incorrect. The new [reference analysis](../../aero-parity/reference-analysis.md) verifies the actual stylesheet and records the correction. The remaining measurements below retain their original build identity.
+
 The current presentation keeps scoped `7.css@0.21.1`, `.window.glass.active`, `.title-bar`, `.title-bar-controls`, caption-class glyphs, native controls, white reading bodies and the Explorer hierarchy. The official demo/documentation and installed integration were examined; the downloaded demo stylesheet retains a0.21.0 banner despite the site's0.21.1 package label. No version was inferred from the banner alone.
 
 [Reference above, candidate below: caption comparison](evidence/caption-reference-above-candidate.png). [Canonical glass fixture](evidence/reference-window.png) uses authoritative demo CSS and standard component markup at a comparable width. The first remote whole-page capture failed to demonstrate loaded styling and is excluded from fidelity proof. These final equivalent component captures use local authoritative bytes in the same Chromium environment.

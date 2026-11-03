@@ -1,0 +1,2499 @@
+{
+  "buildId": "xfHy_bhVfJKii-CA72D9U",
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:23:07.345Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "sourceState": "Base commit plus uncommitted Operation Aero changes; see export-manifest.json for exact artifact hashes.",
+  "browser": "Chromium 155",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "reducedMotion": "reduce",
+  "routes": [
+    "/projects",
+    "/projects/project-simurgh",
+    "/lab/001"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "routeObservationSha256": "9ea8265ac63a5a9294a2cef5488a2e26d778b4195ac09e8fcde63efa3f4ce04c",
+  "incompleteCounts": {
+    "routes": 160,
+    "ruleGroups": 158,
+    "nodeOccurrences": 6836,
+    "distinctTargetStrings": 528,
+    "reasons": {
+      "Fix any of the following:\n  Element's background color could not be determined due to a background gradient": 994,
+      "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element": 5832,
+      "Fix any of the following:\n  Element content contains only non-text characters": 10
+    }
+  },
+  "computedSamples": [
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-top-date",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-top-date",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SPAN",
+          "class": "os-top-clock",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-top-actions",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-topbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(242, 247, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-window-back > span",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-window-back",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-window-toolbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(255, 255, 255) 0%, rgb(241, 245, 249) 58%, rgb(227, 234, 242) 100%)",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SECTION",
+          "class": "os-window os-workspace-window window glass active os-window--floating",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(69, 128, 196) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-workspace",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(242, 247, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-window-copy",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "BUTTON",
+          "class": "os-control os-window-copy",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "before": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-window-toolbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(255, 255, 255) 0%, rgb(241, 245, 249) 58%, rgb(227, 234, 242) 100%)",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SECTION",
+          "class": "os-window os-workspace-window window glass active os-window--floating",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(69, 128, 196) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-workspace",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(242, 247, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-explorer-index-link > span",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-explorer-index-link",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgba(204, 236, 252, 0.95), rgba(144, 205, 245, 0.9))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-nav-panel",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ASIDE",
+          "class": "os-explorer-sidebar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-explorer-project-link > small",
+      "color": "rgb(61, 61, 61)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SMALL",
+          "class": "",
+          "color": "rgb(61, 61, 61)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-explorer-project-link",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgb(213, 223, 229) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "NAV",
+          "class": "os-explorer-project-nav",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-nav-panel",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ASIDE",
+          "class": "os-explorer-sidebar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-project-row-summary > p",
+      "color": "rgb(61, 61, 61)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "P",
+          "class": "",
+          "color": "rgb(61, 61, 61)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-row-summary",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-row os-project-row-with-preview",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects",
+      "selector": ".os-explorer-index-link > .os-explorer-count",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-explorer-count",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(255, 255, 255), rgb(230, 238, 246))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-explorer-index-link",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgba(204, 236, 252, 0.95), rgba(144, 205, 245, 0.9))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-nav-panel",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ASIDE",
+          "class": "os-explorer-sidebar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-lead",
+      "color": "rgb(61, 61, 61)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "P",
+          "class": "os-project-lead",
+          "color": "rgb(61, 61, 61)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-tags li",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "LI",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(255, 255, 255), rgb(238, 244, 250))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "UL",
+          "class": "os-project-tags",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-resources .os-button",
+      "color": "rgb(34, 34, 34)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "A",
+          "class": "os-button",
+          "color": "rgb(34, 34, 34)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245))",
+          "before": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-resources",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-resource",
+      "color": "rgb(34, 34, 34)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "A",
+          "class": "os-project-resource",
+          "color": "rgb(34, 34, 34)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "before": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-resources",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/projects/project-simurgh",
+      "selector": ".title-bar-text",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "P",
+          "class": "os-eyebrow title-bar-text",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "title-bar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px), linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px), linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%)",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SECTION",
+          "class": "os-intro window glass active",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(69, 128, 196) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-desktop-identity os-desktop-identity--atlas",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-desktop",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "MAIN",
+          "class": "os-main os-workspace-desktop",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-workspace",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(242, 247, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/lab/001",
+      "selector": ".os-code-panel-head",
+      "color": "color(srgb 0.317804 0.357176 0.438275)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "DIV",
+          "class": "os-code-panel-head",
+          "color": "color(srgb 0.317804 0.357176 0.438275)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-panel",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgb(238, 243, 250)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-lab-detail-grid",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-support os-lab-detail",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-page-content window-body has-scrollbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/lab/001",
+      "selector": ".os-code-number",
+      "color": "color(srgb 0.317804 0.357176 0.438275)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-code-number",
+          "color": "color(srgb 0.317804 0.357176 0.438275)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SPAN",
+          "class": "os-code-line",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "PRE",
+          "class": "",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-scroll",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-panel",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgb(238, 243, 250)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-lab-detail-grid",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-support os-lab-detail",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-page-content window-body has-scrollbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "route": "/lab/001",
+      "selector": ".os-code-text",
+      "color": "rgb(20, 32, 58)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-code-text",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SPAN",
+          "class": "os-code-line",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "PRE",
+          "class": "",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-scroll",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-panel",
+          "color": "rgb(20, 32, 58)",
+          "bg": "rgb(238, 243, 250)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-lab-detail-grid",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-support os-lab-detail",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-page-content window-body has-scrollbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-top-date",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-top-date",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SPAN",
+          "class": "os-top-clock",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-top-actions",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-topbar",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-window-back > span",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-window-back",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-window-toolbar",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(17, 27, 43)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SECTION",
+          "class": "os-window os-workspace-window window glass active os-window--floating",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(24, 52, 92) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-workspace",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-content",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-window-copy",
+      "color": "rgb(0, 0, 0)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "BUTTON",
+          "class": "os-control os-window-copy",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "before": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-window-toolbar",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(17, 27, 43)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SECTION",
+          "class": "os-window os-workspace-window window glass active os-window--floating",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(24, 52, 92) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-workspace",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-content",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-explorer-index-link > span",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-explorer-index-link",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(44, 93, 150) 0%, rgb(26, 66, 117) 100%)",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-nav-panel",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ASIDE",
+          "class": "os-explorer-sidebar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-explorer-project-link > small",
+      "color": "rgb(61, 61, 61)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SMALL",
+          "class": "",
+          "color": "rgb(61, 61, 61)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-explorer-project-link",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgb(43, 68, 102) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "NAV",
+          "class": "os-explorer-project-nav",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-nav-panel",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ASIDE",
+          "class": "os-explorer-sidebar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-project-row-summary > p",
+      "color": "rgb(61, 61, 61)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "P",
+          "class": "",
+          "color": "rgb(61, 61, 61)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-row-summary",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-row os-project-row-with-preview",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects",
+      "selector": ".os-explorer-index-link > .os-explorer-count",
+      "color": "rgb(241, 247, 255)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-explorer-count",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(27, 58, 98), rgb(19, 44, 80))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "A",
+          "class": "os-explorer-index-link",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(44, 93, 150) 0%, rgb(26, 66, 117) 100%)",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-nav-panel",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ASIDE",
+          "class": "os-explorer-sidebar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-lead",
+      "color": "rgb(61, 61, 61)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "P",
+          "class": "os-project-lead",
+          "color": "rgb(61, 61, 61)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-tags li",
+      "color": "rgb(241, 247, 255)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "LI",
+          "class": "",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(27, 58, 98), rgb(21, 48, 79))",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "UL",
+          "class": "os-project-tags",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-resources .os-button",
+      "color": "rgb(34, 34, 34)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "A",
+          "class": "os-button",
+          "color": "rgb(34, 34, 34)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245))",
+          "before": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-resources",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects/project-simurgh",
+      "selector": ".os-project-resource",
+      "color": "rgb(34, 34, 34)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "A",
+          "class": "os-project-resource",
+          "color": "rgb(34, 34, 34)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207))",
+          "before": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-resources",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HEADER",
+          "class": "os-project-dossier-header",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-project-intro",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "ARTICLE",
+          "class": "os-project-dossier",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-view",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-content",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-explorer-layout",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/projects/project-simurgh",
+      "selector": ".title-bar-text",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "P",
+          "class": "os-eyebrow title-bar-text",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "title-bar",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px), linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px), linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%)",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SECTION",
+          "class": "os-intro window glass active",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(24, 52, 92) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-desktop-identity os-desktop-identity--atlas",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-desktop",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "MAIN",
+          "class": "os-main os-workspace-desktop",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-workspace",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-content",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-shell win7",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "BODY",
+          "class": "VxV-Ta_variable ejxW-W_variable antialiased bg-background text-foreground",
+          "color": "rgb(241, 247, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "HTML",
+          "class": "",
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(8, 13, 25)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/lab/001",
+      "selector": ".os-code-panel-head",
+      "color": "color(srgb 0.640627 0.679373 0.732549)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "DIV",
+          "class": "os-code-panel-head",
+          "color": "color(srgb 0.640627 0.679373 0.732549)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-panel",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgb(10, 17, 32)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-lab-detail-grid",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-support os-lab-detail",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-page-content window-body has-scrollbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/lab/001",
+      "selector": ".os-code-number",
+      "color": "color(srgb 0.640627 0.679373 0.732549)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-code-number",
+          "color": "color(srgb 0.640627 0.679373 0.732549)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SPAN",
+          "class": "os-code-line",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "PRE",
+          "class": "",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-scroll",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-panel",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgb(10, 17, 32)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-lab-detail-grid",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-support os-lab-detail",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-page-content window-body has-scrollbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "route": "/lab/001",
+      "selector": ".os-code-text",
+      "color": "rgb(223, 234, 247)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "backgrounds": [
+        {
+          "tag": "SPAN",
+          "class": "os-code-text",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "SPAN",
+          "class": "os-code-line",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "PRE",
+          "class": "",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-scroll",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-code-panel",
+          "color": "rgb(223, 234, 247)",
+          "bg": "rgb(10, 17, 32)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-lab-detail-grid",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-support os-lab-detail",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        },
+        {
+          "tag": "DIV",
+          "class": "os-page-content window-body has-scrollbar",
+          "color": "rgb(0, 0, 0)",
+          "bg": "rgb(255, 255, 255)",
+          "image": "none",
+          "before": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "after": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "opacity": "1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "candidate1_build": "4XbG7ZUIl5UCdQuMwBv7c",
+  "provenance": "Recovered completed helper output written before disconnect; earlier agent had not read its completion. Helper itself does not store a per-page version response. Source-hashes.json and recorded candidate1 run bind its scope; these are not fresh captures of the later rebuilt artifact.",
+  "pages": 60,
+  "desktop_pages": 40,
+  "touch_pages": 20,
+  "control_observations": 488,
+  "desktop_control_observations": 258,
+  "spacing_conflicts": 0,
+  "horizontal_overflows": 0,
+  "minimum_changed_touch_target_height": 44,
+  "behaviour_rows": 10,
+  "behaviour_rows_matching_expected_observations": 10,
+  "behaviour_page_errors": 0,
+  "helper_source_evidence": [
+    "spacing.cjs.txt",
+    "behaviour.cjs.txt"
+  ],
+  "helper_source_scope": "Exact forensic text copies of original scratch helpers, not maintained executable repository source."
+}

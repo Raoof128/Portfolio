@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ChevronRight,
   Folder,
-  Search,
 } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale, type Locale } from "@/i18n";
@@ -251,7 +250,6 @@ export function ProjectExplorer({
             <div className="os-explorer-controls">
               <label htmlFor={`${fieldId}-search`}>{copy.projectSearch}</label>
               <div className="os-explorer-search">
-                <Search size={15} aria-hidden="true" />
                 <input
                   id={`${fieldId}-search`}
                   type="search"

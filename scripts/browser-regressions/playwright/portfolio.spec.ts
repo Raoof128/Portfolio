@@ -83,10 +83,22 @@ test("reviewer journey, window controls, history, search and contact", async ({ 
   await expect(pane(page)).toHaveAttribute("data-expanded", "true");
   await fullSize.click();
   await expect(pane(page)).not.toHaveAttribute("data-expanded", "true");
-  await pane(page).locator(".os-window-controls > summary").click();
-  await expect(page.locator(".os-window-controls-panel")).toBeVisible();
-  await page.locator(".os-window-controls-panel").getByRole("button", { name: "Down", exact: true }).click();
-  await page.getByRole("button", { name: "Done", exact: true }).click();
+  const windowControls = pane(page).locator(".os-window-controls > summary");
+  const controlsPanel = page.locator(".os-window-controls-panel");
+  await windowControls.click();
+  await expect(controlsPanel.getByRole("button").first()).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(controlsPanel).not.toBeVisible();
+  await expect(windowControls).toBeFocused();
+  await windowControls.click();
+  await controlsPanel.getByRole("button", { name: "Down", exact: true }).click();
+  await controlsPanel.getByRole("button", { name: "Done", exact: true }).focus();
+  await page.keyboard.press("Tab");
+  await expect(controlsPanel).not.toBeVisible();
+  await expect(windowControls).not.toBeFocused();
+  await windowControls.click();
+  await controlsPanel.getByRole("button", { name: "Done", exact: true }).click();
+  await expect(windowControls).toBeFocused();
   await page.locator('.os-dock-app[href="/about"]').click();
   await expect(pane(page)).toHaveAttribute("data-window-path", "/about");
   await expect(pane(page).locator("h1")).toBeFocused();
@@ -162,6 +174,26 @@ test("forced colours preserve caption glyph geometry and language fonts", async 
   await prepare(page);
   await page.emulateMedia({ forcedColors: "active" });
   await ready(page, "/projects");
+  const glass = await pane(page).evaluate((el) => ({
+    opacity: getComputedStyle(el, "::before").opacity,
+    blur: getComputedStyle(el, "::after").backdropFilter,
+  }));
+  expect(glass).toEqual({ opacity: "1", blur: "none" });
+  for (const colorScheme of ["light", "dark"] as const) {
+    await page.emulateMedia({ forcedColors: "active", colorScheme });
+    const breadcrumb = await page.locator(".os-explorer-address > [aria-current='page']").evaluate((el) => ({
+      ink: getComputedStyle(el).color,
+      inheritedInk: getComputedStyle(el.parentElement!).color,
+    }));
+    expect(breadcrumb.ink).toBe(breadcrumb.inheritedInk);
+    const atlas = await page.locator(".proof-atlas--desktop:visible").first().evaluate((el) => {
+      const plate = getComputedStyle(el.querySelector(".proof-atlas-boundary-plate")!);
+      const label = getComputedStyle(el.querySelector(".proof-atlas-node text")!);
+      return { plateFill: plate.fill, plateStroke: plate.stroke, labelFill: label.fill, labelStroke: label.stroke };
+    });
+    expect(atlas.plateStroke).not.toBe(atlas.plateFill);
+    expect(atlas.labelFill).not.toBe(atlas.labelStroke);
+  }
   for (const cls of ["is-minimize", "is-maximize", "is-close"]) {
     const style = await pane(page).locator(`.${cls}`).evaluate((el) => {
       const s = getComputedStyle(el, "::before");
@@ -180,11 +212,71 @@ test("forced colours preserve caption glyph geometry and language fonts", async 
   expect(strokes.map((s) => s.padding)).toEqual([0, 0]);
   expect(strokes[0].transform).not.toBe(strokes[1].transform);
   await capture(page, info, "forced-colours");
+  // A latched native gradient must not erase the selected label when forced
+  // colours supplies HighlightText. Exercise the actual evidence control.
+  await ready(page, "/projects/invisible-window-research");
+  for (const colorScheme of ["light", "dark"] as const) {
+    await page.emulateMedia({ forcedColors: "active", colorScheme });
+    const platform = pane(page).locator(".os-story-platform-picker button").last();
+    await platform.focus();
+    await page.keyboard.press("Space");
+    await expect(platform).toHaveAttribute("aria-pressed", "true");
+    const paint = await platform.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return { ink: style.color, face: style.backgroundColor, border: style.borderTopWidth };
+    });
+    expect(paint.face).toMatch(/^rgb\(/);
+    expect(paint.ink).not.toBe(paint.face);
+    expect(paint.border).toBe("2px");
+  }
   await page.emulateMedia({ forcedColors: "none" });
   await ready(page, "/fa/about");
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   const font = await pane(page).locator(".title-bar-text").evaluate((el) => getComputedStyle(el).fontFamily);
   expect(font.toLowerCase()).toContain("vazirmatn");
+});
+
+test("increased contrast and reduced transparency use opaque window frames", async ({ page, browserName }) => {
+  await prepare(page);
+  await ready(page, "/projects");
+  await page.emulateMedia({ contrast: "more" });
+  expect(await page.evaluate(() => matchMedia("(prefers-contrast: more)").matches)).toBe(true);
+  if (browserName === "firefox") {
+    // Bundled Firefox 157 resets this override on navigation and can leave CSS media
+    // evaluation stale after emulation, even while matchMedia returns true. A minimal
+    // fixture reproduces it. Invalidate layout, then restore the exact test viewport;
+    // the application's media rules and all opacity/blur assertions stay unchanged.
+    const viewport = page.viewportSize();
+    if (!viewport) throw new Error("Contrast regression requires a fixed viewport");
+    await page.setViewportSize({ ...viewport, width: viewport.width + 1 });
+    await page.setViewportSize(viewport);
+  }
+  const frame = () => pane(page).evaluate((el) => ({
+    opacity: getComputedStyle(el, "::before").opacity,
+    blur: getComputedStyle(el, "::after").backdropFilter,
+    background: getComputedStyle(el, "::before").backgroundColor,
+  }));
+  const contrast = await frame();
+  expect(contrast.opacity).toBe("1");
+  expect(contrast.blur).toBe("none");
+  expect(contrast.background).toMatch(/^rgb\(/);
+
+  // Playwright exposes contrast in all engines. Chromium CDP also exposes the
+  // separate transparency preference; other engines are not claimed for this part.
+  if (browserName === "chromium") {
+    const session = await page.context().newCDPSession(page);
+    await session.send("Emulation.setEmulatedMedia", { features: [
+      { name: "prefers-reduced-transparency", value: "reduce" },
+      { name: "prefers-contrast", value: "no-preference" },
+      { name: "prefers-reduced-motion", value: "reduce" },
+    ] });
+    expect(await page.evaluate(() => matchMedia("(prefers-reduced-transparency: reduce)").matches)).toBe(true);
+    const transparency = await frame();
+    expect(transparency.opacity).toBe("1");
+    expect(transparency.blur).toBe("none");
+    expect(transparency.background).toMatch(/^rgb\(/);
+    await session.detach();
+  }
 });
 
 test("keyboard workspace entry and five-language 404 recovery", async ({ page }, info) => {

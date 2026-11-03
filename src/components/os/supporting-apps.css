@@ -473,27 +473,6 @@
   gap: var(--space-3);
   justify-content: center;
 }
-.os-contact-socials a {
-  align-items: center;
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--win7-radius-control, 3px);
-  color: var(--os-text);
-  display: flex;
-  font-size: var(--text-ui);
-  gap: var(--space-3);
-  min-block-size: 44px;
-  padding: var(--space-3) var(--space-4);
-  text-decoration: none;
-}
-.os-contact-socials a {
-  transition:
-    background-color var(--motion-quick) var(--ease-standard),
-    color var(--motion-quick) var(--ease-standard);
-}
-.os-contact-socials a:hover {
-  background: var(--os-accent-tint);
-  color: var(--os-text);
-}
 .os-contact-orcid {
   border: 1px solid currentColor;
   border-radius: 50%;
@@ -530,26 +509,14 @@
   gap: var(--space-3);
   margin-block: var(--space-6) var(--space-4);
 }
-/* A solid field: no blur, no glow. The container carries the focus ring. */
+/* Search and select surfaces come from the native scoped 7.css controls.
+   These wrappers set only the responsive reading-page layout. */
 .os-library-search {
-  align-items: center;
-  background: var(--os-surface);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--win7-radius-control, 3px);
-  color: var(--os-muted);
-  display: flex;
+  display: block;
   flex: 1 1 240px;
-  gap: var(--space-2);
-  min-block-size: 44px;
   min-inline-size: 0;
-  padding-inline: var(--space-3);
 }
 .os-library-search input {
-  background: transparent;
-  border: 0;
-  color: var(--os-text);
-  font-size: var(--text-ui);
-  min-block-size: 44px;
   min-inline-size: 0;
   inline-size: 100%;
 }
@@ -563,17 +530,10 @@
   min-inline-size: 0;
 }
 .os-library-topic select {
-  background: var(--os-surface);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--win7-radius-control, 3px);
-  color: var(--os-text);
   cursor: pointer;
-  font-size: var(--text-ui);
   inline-size: 100%;
   max-inline-size: 100%;
-  min-block-size: 44px;
   min-inline-size: 0;
-  padding-inline: var(--space-3) var(--space-8);
 }
 .os-library-count {
   color: var(--os-muted);
@@ -1652,7 +1612,6 @@
 .os-about-education article,
 .os-resume-card,
 .os-contact-email,
-.os-contact-socials a,
 .os-hall .os-callout,
 .os-policy .os-callout {
   position: relative;
@@ -1661,7 +1620,6 @@
 .os-about-education article::after,
 .os-resume-card::after,
 .os-contact-email::after,
-.os-contact-socials a::after,
 .os-hall .os-callout::after,
 .os-policy .os-callout::after {
   background: var(--os-card-rim);
@@ -1684,7 +1642,6 @@
 .os-about-education article:hover::after,
 .os-resume-card:hover::after,
 .os-contact-email:hover::after,
-.os-contact-socials a:hover::after,
 .os-hall .os-callout:hover::after,
 .os-policy .os-callout:hover::after {
   opacity: var(--os-card-rim-opacity);
@@ -1694,7 +1651,6 @@
   .os-about-education article::after,
   .os-resume-card::after,
   .os-contact-email::after,
-  .os-contact-socials a::after,
   .os-hall .os-callout::after,
   .os-policy .os-callout::after {
     display: none;

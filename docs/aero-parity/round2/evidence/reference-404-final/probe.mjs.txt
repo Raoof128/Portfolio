@@ -1,0 +1,24 @@
+import { chromium } from '/workspace/Portfolio/node_modules/playwright/index.mjs';
+import {mkdir,writeFile}from'node:fs/promises';
+const base=process.env.PORTFOLIO_PREVIEW_ORIGIN||'http://127.0.0.1:4398',output=process.argv[2]||'/tmp/aero-round2-final-404';await mkdir(output,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true});
+const results=[],errors=[];let version;
+for(const appearance of ['light','dark'])for(const locale of ['en','fa','ar','zh','es']){
+ const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce',locale:'en-AU'});
+ await context.addInitScript(value=>localStorage.setItem('researchos.appearance.v1',value),appearance);
+ const page=await context.newPage();page.on('pageerror',e=>errors.push({locale,appearance,error:String(e)}));page.on('console',m=>{if(m.type()==='error'&&!m.text().includes('404'))errors.push({locale,appearance,error:m.text()});});
+ if(!version)version=await(await page.request.get(base+'/version.json')).json();
+ const route=(locale==='en'?'':'/'+locale)+'/__aero_reference_missing__';const response=await page.goto(base+route,{waitUntil:'networkidle'});
+ await page.waitForFunction(l=>document.documentElement.lang===l,locale);
+ const expectedDir=['fa','ar'].includes(locale)?'rtl':'ltr';
+ const data=await page.evaluate(()=>{const e=document.querySelector('.global-not-found-dialog'),t=e.querySelector('.title-bar'),p=e.querySelector('.title-bar-text'),body=e.querySelector('.window-body'),s=getComputedStyle(e);return {lang:document.documentElement.lang,dir:document.documentElement.dir,appearance:document.documentElement.dataset.appearance,frame:{padding:s.padding,border:s.border,borderRadius:s.borderRadius,background:s.background,width:e.getBoundingClientRect().width},titleHeight:t.getBoundingClientRect().height,canonicalTitle:!!p,bodyMargin:getComputedStyle(body).margin,links:[...document.querySelectorAll('.global-not-found-actions a')].map(a=>a.getAttribute('href')),overflow:document.documentElement.scrollWidth>innerWidth};});
+ if(response.status()!==404||data.lang!==locale||data.dir!==expectedDir||!data.canonicalTitle||data.overflow)throw new Error(JSON.stringify({route,status:response.status(),data}));
+ const csp=response.headers()['content-security-policy'];if(!csp?.includes("script-src-attr 'none'"))throw new Error('CSP missing');
+ const other=locale==='fa'?'es':'fa';await page.locator('#not-found-language').selectOption(other);await page.waitForFunction(l=>document.documentElement.lang===l,other);
+ const switched=await page.evaluate(()=>({lang:document.documentElement.lang,dir:document.documentElement.dir,href:document.querySelector('.global-not-found-actions a').getAttribute('href')}));
+ if(switched.lang!==other||switched.href!=='/'+other)throw new Error('Locale switching failed');
+ await page.locator('#not-found-language').selectOption(locale);await page.setViewportSize({width:320,height:568});await page.screenshot({path:output+`/${appearance}-${locale}-320.png`});
+ const mobile=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,bodyHeight:document.body.scrollHeight,frame:document.querySelector('.global-not-found-dialog').getBoundingClientRect().toJSON(),select:getComputedStyle(document.querySelector('#not-found-language')).height}));
+ if(mobile.overflow)throw new Error('Mobile overflow');results.push({locale,appearance,route,status:response.status(),data,switched,mobile,csp});await context.close();
+}
+await writeFile(output+'/results.json',JSON.stringify({version,browser:await browser.version(),results,errors},null,2));await browser.close();console.log(JSON.stringify({output,cases:results.length,errors,version}));if(errors.length)process.exitCode=1;

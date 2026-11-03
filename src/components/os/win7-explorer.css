@@ -7,17 +7,18 @@
    .os-shell prefix only. Layout is by logical properties, so the navigation pane
    sits on the inline-start edge in LTR and the inline-end edge in RTL. */
 
-/* Frame: a 4px glass edge around the white body. */
+/* Explorer is content inside the window body. The outer canonical window owns
+   the glass frame; a second framed window here would duplicate its edges. */
 .os-shell.win7 .os-project-explorer {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 0 4px 4px;
-  border: 1px solid var(--win7-frame-border);
-  border-radius: var(--win7-radius);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
   color: var(--win7-body-text);
-  background: var(--win7-title-bg);
-  box-shadow: var(--win7-frame-shadow);
+  background: var(--win7-body-bg);
+  box-shadow: none;
 }
 
 /* Command bar: the Explorer strip above the panes. It carries the address bar and
@@ -130,17 +131,15 @@
   pointer-events: none;
 }
 
-/* The white body sits under the glass frame, with the hairline Win7 uses. */
+/* One keyline separates the command bar from its white navigation/content panes. */
 .os-shell.win7 .os-project-explorer > .os-explorer-layout {
   background: var(--win7-body-bg);
-  border: 1px solid var(--explorer-keyline);
+  border: 0;
+  border-block-start: 1px solid var(--explorer-keyline);
 }
 
-/* Phones: the frame keeps its glass edge but loses the outer shadow. */
+/* Phones: the address field grows with its readable breadcrumb. */
 @media (max-width: 700px) {
-  .os-shell.win7 .os-project-explorer {
-    box-shadow: none;
-  }
   .os-shell.win7
     .os-project-explorer
     > .os-explorer-commandbar

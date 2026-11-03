@@ -155,11 +155,20 @@
   gap: 8px;
 }
 .os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-state {
+  position: static;
+  inline-size: auto;
+  block-size: auto;
   margin: 0;
+  overflow: visible;
+  clip-path: none;
+  display: inline-flex;
+  color: var(--win7-text-on-wallpaper);
 }
-/* The language menu is a chip like the theme track: a 24px tall plate with a white rim.
-   The native disclosure marker is removed; the chevron-free chip and the menu show that it
-   opens. The 44px touch size follows below. */
+.os-shell.win7:has(> .os-welcome) > header.os-topbar .os-theme-switch:focus-visible {
+  outline-color: #ffffff;
+}
+/* The language selector uses a compact rectangular Aero plate with a white rim.
+   The native disclosure marker is removed; the 44px touch size follows below. */
 .os-shell.win7:has(> .os-welcome) > header.os-topbar .os-language summary {
   box-sizing: border-box;
   display: inline-flex;
@@ -172,7 +181,7 @@
   margin: 0;
   padding: 0 8px;
   border: 1px solid rgb(255 255 255 / 0.75);
-  border-radius: 12px;
+  border-radius: 3px;
   background: rgb(0 22 46 / 0.45);
   color: #ffffff;
   font-size: var(--win7-ui-size);

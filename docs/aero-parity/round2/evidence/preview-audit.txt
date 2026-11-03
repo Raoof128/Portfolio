@@ -1,0 +1,8 @@
+> portfolio@0.1.0 audit:production
+> node scripts/audit-production.mjs http://127.0.0.1:4398
+
+Production audit · http://127.0.0.1:4398
+  · commit identity matches HEAD b4cc49de; exact export bytes need separate validation
+  · www → apex check applies only to the production origin
+
+✔ production audit passed (2 note(s))

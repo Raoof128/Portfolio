@@ -1,0 +1,41 @@
+{
+  "baseline_phase": "round2-before",
+  "original_file_count": 593,
+  "cases": [
+    {
+      "args": [],
+      "exit_code": 1,
+      "expected_error": "Snapshot already exists",
+      "matched": true,
+      "all_original_hashes_unchanged": true
+    },
+    {
+      "args": [
+        "--extend",
+        "--dark"
+      ],
+      "exit_code": 1,
+      "expected_error": "different appearance",
+      "matched": true,
+      "all_original_hashes_unchanged": true
+    },
+    {
+      "args": [
+        "--extend"
+      ],
+      "exit_code": 1,
+      "expected_error": "Cannot downgrade",
+      "matched": true,
+      "all_original_hashes_unchanged": true
+    },
+    {
+      "args": [
+        "--refresh-census"
+      ],
+      "exit_code": 1,
+      "expected_error": "Cannot downgrade",
+      "matched": true,
+      "all_original_hashes_unchanged": true
+    }
+  ]
+}

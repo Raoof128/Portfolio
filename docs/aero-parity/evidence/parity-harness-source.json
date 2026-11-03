@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "path": "scripts/browser-regressions/aero-parity/README.md",
+      "sha256": "2bb1927e358dc8c7ca488f13f6fcf8b23d72ad9a8c50e55fa988de754cfbbb4e",
+      "lines": 38
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/compare.mjs",
+      "sha256": "2e9d5c2c4424f47554394e22a1832b3f3159732a12a596810fc330169310616b",
+      "lines": 724
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.mjs",
+      "sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "lines": 189
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.test.mjs",
+      "sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "lines": 99
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "sha256": "a291c5e0376b5bb82f3679f804b3a5e19e0b0edc1518930a762004389c2a1c82",
+      "lines": 146
+    }
+  ]
+}

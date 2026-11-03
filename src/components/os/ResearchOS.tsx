@@ -21,7 +21,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  Copy,
   ExternalLink,
   BookOpen,
   FileText,
@@ -1039,8 +1038,8 @@ export function ResearchOS({
               <span>{copy.search}</span>
               <kbd aria-hidden="true">{shortcutText}</kbd>
             </button>
-            {/* Theme switch: the thumb carries the glyph for the current theme (sun in
-                light, moon in dark), and the visible state label sits beside it. */}
+            {/* The native-style switch face shows the current theme's sun or moon;
+                aria-checked and the state label preserve the switch semantics. */}
             <button
               type="button"
               role="switch"
@@ -1337,30 +1336,65 @@ export function ResearchOS({
               </span>
             )}
             {!workspaceDisplayed && !isHome && (
-              <div className="os-windowbar os-windowbar--route title-bar">
-                <div className="os-window-navigation">
-                  {/* The name stays "Back" on phones, where the visible word is hidden. */}
-                  <Link
-                    className="os-window-back"
-                    href={parentPath}
-                    aria-label={copy.back}
+              <>
+                <div className="os-windowbar os-windowbar--route title-bar">
+                  <div className="os-window-navigation">
+                    <OSIcon app={activeApp} />
+                  </div>
+                  <span
+                    className={`os-window-title title-bar-text ${reading.desktop ? "os-window-title--movable" : ""}`}
+                    id="os-window-title"
+                    lang={pageEntry?.titleLocale ?? locale}
+                    dir={locales[pageEntry?.titleLocale ?? locale].dir}
+                    onPointerDown={(event) => reading.beginPointer(event, "move")}
+                    {...reading.pointerHandlers}
                   >
+                    {windowTitle}
+                  </span>
+                  <div className="os-window-actions title-bar-controls">
+                    {/* Caption glyphs come from 7.css (is-minimize, is-maximize, is-restore). */}
+                    <button
+                      className="os-control is-minimize"
+                      onClick={minimizeReadingWindow}
+                      aria-label={`${windowCopy.minimize}: ${windowTitle}`}
+                      title={`${windowCopy.minimize}: ${windowTitle}`}
+                    />
+                    <button
+                      className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
+                      onClick={() => {
+                        reading.reset();
+                        setExpanded((value) => !value);
+                      }}
+                      // The name is constant; aria-pressed carries the expanded state.
+                      aria-label={`${windowCopy.fullSize}: ${windowTitle}`}
+                      title={`${windowCopy.fullSize}: ${windowTitle}`}
+                      aria-pressed={expanded}
+                    />
+                    <Link
+                      className="os-control os-window-close is-close"
+                      href={home}
+                      aria-keyshortcuts="Escape"
+                      aria-describedby={isHome ? undefined : "os-escape-hint"}
+                      onClick={enterWorkspace}
+                      // The name contains the visible word "Desktop" (WCAG 2.5.3).
+                      aria-label={`${copy.close}: ${copy.desktop}`}
+                      title={`${copy.close}: ${copy.desktop}`}
+                    >
+                      <X aria-hidden="true" />
+                      <span>{copy.desktop}</span>
+                    </Link>
+                  </div>
+                </div>
+                {/* Match the hydrated workspace's separate command toolbar. The Back and
+                    Close links remain usable in the server-rendered, no-JavaScript page. */}
+                <div className="os-window-toolbar">
+                  <Link className="os-window-back" href={parentPath} aria-label={copy.back}>
                     <ArrowLeft aria-hidden="true" />
                     <span>{copy.back}</span>
                   </Link>
-                  <OSIcon app={activeApp} />
-                </div>
-                <span
-                  className={`os-window-title title-bar-text ${reading.desktop ? "os-window-title--movable" : ""}`}
-                  id="os-window-title"
-                  lang={pageEntry?.titleLocale ?? locale}
-                  dir={locales[pageEntry?.titleLocale ?? locale].dir}
-                  onPointerDown={(event) => reading.beginPointer(event, "move")}
-                  {...reading.pointerHandlers}
-                >
-                  {windowTitle}
-                </span>
-                <div className="os-window-actions title-bar-controls">
+                  <button className="os-control os-window-copy" onClick={copyLink}>
+                    {copy.copyLink}
+                  </button>
                   {reading.desktop && !reading.minimized && !locked && (
                     <ReadingWindowControls
                       locale={locale}
@@ -1370,43 +1404,8 @@ export function ResearchOS({
                       floating={!!reading.rect}
                     />
                   )}
-                  <button
-                    className="os-control"
-                    onClick={copyLink}
-                    aria-label={copy.copyLink}
-                  >
-                    <Copy aria-hidden="true" />
-                  </button>
-                  {/* Caption glyphs come from 7.css (is-minimize, is-maximize, is-restore). */}
-                  <button
-                    className="os-control is-minimize"
-                    onClick={minimizeReadingWindow}
-                    aria-label={windowCopy.minimize}
-                  />
-                  <button
-                    className={`os-control os-expand ${expanded ? "is-restore" : "is-maximize"}`}
-                    onClick={() => {
-                      reading.reset();
-                      setExpanded((value) => !value);
-                    }}
-                    // The name is constant; aria-pressed carries the expanded state.
-                    aria-label={windowCopy.fullSize}
-                    aria-pressed={expanded}
-                  />
-                  <Link
-                    className="os-control os-window-close"
-                    href={home}
-                    aria-keyshortcuts="Escape"
-                    aria-describedby={isHome ? undefined : "os-escape-hint"}
-                    onClick={enterWorkspace}
-                    // The name contains the visible word "Desktop" (WCAG 2.5.3).
-                    aria-label={`${copy.close}: ${copy.desktop}`}
-                  >
-                    <X aria-hidden="true" />
-                    <span>{copy.desktop}</span>
-                  </Link>
                 </div>
-              </div>
+              </>
             )}
             {/* The live region stays mounted so assistive tech announces updates. */}
             <p
@@ -1523,7 +1522,7 @@ export function ResearchOS({
                   ? dockLabel
                   : `${dockLabel} (${copy[app]})`;
               // A minimised app is not the current page: its window is hidden, so the
-              // pressed look and aria-current go, and only the minimised dot remains.
+              // pressed look and aria-current go; the running task button remains to restore it.
               const appWindows = workspaceReady
                 ? workspace.model.windows.filter(
                     (item) => appForDescriptor(item.descriptor) === app,
@@ -1636,7 +1635,6 @@ export function ResearchOS({
             </button>
           </div>
           <div className="os-search-field">
-            <Search aria-hidden="true" />
             {/* A visible label, not only the placeholder, which disappears once text is typed. */}
             <label className="os-search-label" htmlFor="os-search-input">
               {copy.search}

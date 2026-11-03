@@ -1,0 +1,482 @@
+{
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T09:25:26.070Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "browser": "155.0.8059.79",
+  "results": [
+    {
+      "locale": "en",
+      "appearance": "light",
+      "route": "/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "en",
+        "dir": "ltr",
+        "appearance": "light",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/",
+          "/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 35.15625,
+          "width": 288,
+          "height": 497.6875,
+          "top": 35.15625,
+          "right": 304,
+          "bottom": 532.84375,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "fa",
+      "appearance": "light",
+      "route": "/fa/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "fa",
+        "dir": "rtl",
+        "appearance": "light",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/fa",
+          "/fa/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "es",
+        "dir": "ltr",
+        "href": "/es"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 65.15625,
+          "width": 288,
+          "height": 437.671875,
+          "top": 65.15625,
+          "right": 304,
+          "bottom": 502.828125,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "ar",
+      "appearance": "light",
+      "route": "/ar/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "ar",
+        "dir": "rtl",
+        "appearance": "light",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/ar",
+          "/ar/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 39.15625,
+          "width": 288,
+          "height": 489.671875,
+          "top": 39.15625,
+          "right": 304,
+          "bottom": 528.828125,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "zh",
+      "appearance": "light",
+      "route": "/zh/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "zh",
+        "dir": "ltr",
+        "appearance": "light",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/zh",
+          "/zh/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 69.96875,
+          "width": 288,
+          "height": 428.0625,
+          "top": 69.96875,
+          "right": 304,
+          "bottom": 498.03125,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "es",
+      "appearance": "light",
+      "route": "/es/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "es",
+        "dir": "ltr",
+        "appearance": "light",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/es",
+          "/es/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 598,
+        "frame": {
+          "x": 16,
+          "y": 24,
+          "width": 288,
+          "height": 549.984375,
+          "top": 24,
+          "right": 304,
+          "bottom": 573.984375,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "en",
+      "appearance": "dark",
+      "route": "/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "en",
+        "dir": "ltr",
+        "appearance": "dark",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/",
+          "/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 35.15625,
+          "width": 288,
+          "height": 497.6875,
+          "top": 35.15625,
+          "right": 304,
+          "bottom": 532.84375,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "fa",
+      "appearance": "dark",
+      "route": "/fa/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "fa",
+        "dir": "rtl",
+        "appearance": "dark",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/fa",
+          "/fa/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "es",
+        "dir": "ltr",
+        "href": "/es"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 65.15625,
+          "width": 288,
+          "height": 437.671875,
+          "top": 65.15625,
+          "right": 304,
+          "bottom": 502.828125,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "ar",
+      "appearance": "dark",
+      "route": "/ar/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "ar",
+        "dir": "rtl",
+        "appearance": "dark",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/ar",
+          "/ar/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 39.15625,
+          "width": 288,
+          "height": 489.671875,
+          "top": 39.15625,
+          "right": 304,
+          "bottom": 528.828125,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "zh",
+      "appearance": "dark",
+      "route": "/zh/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "zh",
+        "dir": "ltr",
+        "appearance": "dark",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/zh",
+          "/zh/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 568,
+        "frame": {
+          "x": 16,
+          "y": 69.96875,
+          "width": 288,
+          "height": 428.0625,
+          "top": 69.96875,
+          "right": 304,
+          "bottom": 498.03125,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    {
+      "locale": "es",
+      "appearance": "dark",
+      "route": "/es/__aero_reference_missing__",
+      "status": 404,
+      "data": {
+        "lang": "es",
+        "dir": "ltr",
+        "appearance": "dark",
+        "frame": {
+          "padding": "0px",
+          "border": "1px solid rgba(0, 0, 0, 0.7)",
+          "borderRadius": "6px",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "width": 504
+        },
+        "titleHeight": 27,
+        "canonicalTitle": true,
+        "bodyMargin": "0px 6px 6px",
+        "links": [
+          "/es",
+          "/es/projects"
+        ],
+        "overflow": false
+      },
+      "switched": {
+        "lang": "fa",
+        "dir": "rtl",
+        "href": "/fa"
+      },
+      "mobile": {
+        "overflow": false,
+        "bodyHeight": 598,
+        "frame": {
+          "x": 16,
+          "y": 24,
+          "width": 288,
+          "height": 549.984375,
+          "top": 24,
+          "right": 304,
+          "bottom": 573.984375,
+          "left": 16
+        },
+        "select": "44px"
+      },
+      "csp": "default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src 'none'; worker-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; upgrade-insecure-requests"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,59 @@
+{
+  "build_id": "UD_vNX6v9YqmgrvZLWuY7",
+  "reviewed_at": "2026-11-03T10:01:17.135504+00:00",
+  "verdict": "Report claims agree with the recorded evidence within their explicitly bounded scope. Conditional owner-review verdict is justified; universal parity/WCAG/production claims are not made.",
+  "reports_read_completely": [
+    {
+      "path": "docs/aero-parity/round2/README.md",
+      "sha256": "a441aa50b9f7c11eccaaa1138d65913bf3081cdb26470dc417e61b4598a7d274"
+    },
+    {
+      "path": "docs/aero-parity/round2/findings.md",
+      "sha256": "3c1cc41921ce810ccb9c3b72f1ea08436e1c93ce61eeec5e53489261cb53325d"
+    },
+    {
+      "path": "docs/aero-parity/round2/tests.md",
+      "sha256": "38fad158b6fe1fb425e4bca5384c6ba2e3f2154267bcbd16aca4eaf1e15d824b"
+    },
+    {
+      "path": "docs/aero-parity/round2/parity.md",
+      "sha256": "50ab51f728e45822c992522509ebcc88672721975d94bf1a063b25710b40f1f3"
+    },
+    {
+      "path": "docs/aero-parity/round2/coverage.md",
+      "sha256": "93c20637d7ae9781477f8e7b620d3075f51382bfea5555fd629aba17995d404d"
+    },
+    {
+      "path": "docs/aero-parity/round2/source-changes.md",
+      "sha256": "519d3db1f6fe29e7e32af83fc9c1960ada750c194448a6f2cf1f4ed4fe12be7d"
+    },
+    {
+      "path": "docs/aero-parity/round2/evidence/source-review.md",
+      "sha256": "21709d9fc00179f6fcbfe0da641bd5634ab0acef2a70d386237b68892b992eb1"
+    }
+  ],
+  "cross_checked_counts": {
+    "paired_states": 134,
+    "specimens": 38,
+    "exact_pixel_pairs_final": 50,
+    "exact_pixel_pairs_baseline": 28,
+    "standalone_404_sampled_chrome_pixels": 24433,
+    "standalone_404_different_sampled_pixels": 0,
+    "chromium_cases_passed": 32,
+    "firefox_webkit_cases_passed": 12,
+    "unit_tests_passed": 674,
+    "unit_test_files": 51,
+    "responsive_observations": 360,
+    "responsive_horizontal_overflows": 0,
+    "route_axe_scans": 160,
+    "axe_violations": 0,
+    "axe_incomplete_colour_contrast_groups": 158,
+    "source_manifest_files": 274,
+    "current_pass_complete_reviews": 24,
+    "carried_unchanged_complete_reviews": 250,
+    "rendered_census_instances": 568,
+    "census_scenes": 15
+  },
+  "broken_report_links": [],
+  "small_corrections": "Joined the split findings table, clarified final visual/census report links, removed an internal root-agent reference and corrected prose spacing. No application or validation-tool edits."
+}

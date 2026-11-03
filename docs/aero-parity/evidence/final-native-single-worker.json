@@ -1,0 +1,159 @@
+{
+  "source": "artifacts/aero-parity/validation/final-native-single-worker.json",
+  "build_id": "xfHy_bhVfJKii-CA72D9U",
+  "stats": {
+    "startTime": "2026-11-03T07:36:59.065Z",
+    "duration": 85573.889,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9443,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "pointer geometry, search selection, locale and appearance persistence",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7394,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "forced colours preserve caption glyph geometry and language fonts",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2549,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1602,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "keyboard workspace entry and five-language 404 recovery",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3915,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "five-language keyboard search, empty results and dismissal",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7842,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10920,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "pointer geometry, search selection, locale and appearance persistence",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9281,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "forced colours preserve caption glyph geometry and language fonts",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4179,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2292,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "keyboard workspace entry and five-language 404 recovery",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5876,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "five-language keyboard search, empty results and dismissal",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 17709,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

@@ -20,15 +20,11 @@ const osDir = resolve(root, "src/components/os");
 const themeSheet = "win7-theme.css";
 
 const legacyRawColour: Readonly<Record<string, number>> = {
-  "evidence-story-invisible.css": 3,
   "terminal.css": 4,
-  "theme-switch.css": 7,
   "welcome-enter.css": 1,
   "win7-desktop.css": 11,
   "win7-logon.css": 8,
-  "win7-pages.css": 4,
-  "win7-taskbar.css": 26,
-  "win7-windows.css": 3,
+  "win7-taskbar.css": 22,
 };
 
 const tokenOnlySheets = [

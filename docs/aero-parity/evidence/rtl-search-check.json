@@ -1,0 +1,48 @@
+[
+  {
+    "locale": "fa",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:10:47.522Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "before": {
+      "direction": "rtl",
+      "backgroundPosition": "8px 50%",
+      "paddingStart": "6px",
+      "paddingEnd": "26px",
+      "selector": true
+    },
+    "after": {
+      "direction": "rtl",
+      "backgroundPosition": "8px 50%",
+      "paddingStart": "6px",
+      "paddingEnd": "26px",
+      "selector": true
+    }
+  },
+  {
+    "locale": "ar",
+    "build": {
+      "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-03T07:10:47.522Z",
+      "site": "https://raoufabedini.dev"
+    },
+    "before": {
+      "direction": "rtl",
+      "backgroundPosition": "8px 50%",
+      "paddingStart": "6px",
+      "paddingEnd": "26px",
+      "selector": true
+    },
+    "after": {
+      "direction": "rtl",
+      "backgroundPosition": "8px 50%",
+      "paddingStart": "6px",
+      "paddingEnd": "26px",
+      "selector": true
+    }
+  }
+]

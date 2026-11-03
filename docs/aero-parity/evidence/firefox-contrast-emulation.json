@@ -1,0 +1,295 @@
+{
+  "buildId": "xfHy_bhVfJKii-CA72D9U",
+  "applicationVersion": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T07:23:07.345Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "diagnosis": "Bundled Firefox 157 contrast emulation resets across navigation and does not consistently invalidate CSS media evaluation. The minimal fixture reproduces it without portfolio CSS.",
+  "fixtureCorrection": "Navigate first, emulate contrast, assert matchMedia, change viewport width by one pixel and restore it. All application opacity, blur and background assertions remain unchanged.",
+  "isolatedRegression": {
+    "result": "pass",
+    "tests": 1,
+    "artifact": "artifacts/aero-parity/validation/firefox-contrast-rerun.json"
+  },
+  "investigations": {
+    "minimalAndPortfolio": {
+      "version": "157.0",
+      "states": [
+        {
+          "kind": "minimal",
+          "requested": "no-preference",
+          "media": {
+            "more": false,
+            "less": false,
+            "custom": false,
+            "none": true,
+            "forced": false,
+            "reduced": true,
+            "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "style": {
+            "opacity": "0.6",
+            "background": "rgba(255, 255, 255, 0.533)"
+          }
+        },
+        {
+          "kind": "minimal",
+          "requested": "more",
+          "media": {
+            "more": true,
+            "less": false,
+            "custom": false,
+            "none": false,
+            "forced": false,
+            "reduced": true,
+            "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "style": {
+            "opacity": "0.6",
+            "background": "rgba(255, 255, 255, 0.533)"
+          }
+        },
+        {
+          "kind": "minimal",
+          "requested": "no-preference",
+          "media": {
+            "more": false,
+            "less": false,
+            "custom": false,
+            "none": true,
+            "forced": false,
+            "reduced": true,
+            "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "style": {
+            "opacity": "0.6",
+            "background": "rgba(255, 255, 255, 0.533)"
+          }
+        },
+        {
+          "kind": "portfolio",
+          "requested": "more",
+          "media": {
+            "more": false,
+            "less": false,
+            "custom": false,
+            "none": true,
+            "forced": false,
+            "reduced": true,
+            "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0"
+          },
+          "style": {
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)",
+            "blur": "blur(4px)"
+          },
+          "mediaRules": [
+            {
+              "condition": "(prefers-reduced-transparency:reduce), (prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-reduced-transparency:reduce), (prefers-contrast: more) {\n  .glass-strong { background: var(--os-surface); border-color: var(--os-control-line); box-shadow: none; }\n}"
+            },
+            {
+              "condition": "(prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-contrast: more) {\n  :where(.os-shell) :focus-visible:not(h1, .os-main, .os-window) { outline-width: 3px; }\n}"
+            },
+            {
+              "condition": "(prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-contrast: more) {\n  .os-shell { --os-line: #b8d6ff66; }\n  .os-shell:not([data-appearance=\"light\"]) { --os-accent: #a6ecff; --os-accent-hover: #c4f2ff; --os-accent-pressed: #8be6ff; --os-focus: #a6ecff; --os-on-accent: #080d19; --os-control-line: #8aa2bd; --os-control-line-inset: #8aa2bd; --os-muted: var(--os-text); }\n  .os-shell[data-appearance=\"light\"] { --os-line: #244b7c66; --os-accent: #00528f; --os-accent-hover: #00457a; --os-accent-pressed: #003866; --os-focus: #00528f; --os-control-line: #4a6280; --os-control-line-inset: #4a6280; --os-muted: var(--os-text); }\n  .os-shell[data-appearance=\"light\"] .os-welcome { --os-muted: var(--os-text); }\n  .os-search-heading, .os-search-dialog::backdrop { backdrop-filter: none; }\n  .os-search-heading { background: var(--os-surface);"
+            },
+            {
+              "condition": "(prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-contrast: more) {\n  .os-shell .os-search-dialog[open]::after { background: var(--os-rim-solid); opacity: 1; }\n}"
+            },
+            {
+              "condition": "(prefers-reduced-transparency:reduce), (prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-reduced-transparency:reduce), (prefers-contrast: more) {\n  .os-shell, .os-shell[data-appearance=\"light\"] { --os-glass: var(--os-surface); --os-glass-dense: var(--os-surface); }\n  .os-topbar, .os-windowbar, .os-dock { background: var(--os-surface); backdrop-filter: none; border-color: var(--os-control-line); box-shadow: none; }\n}"
+            },
+            {
+              "condition": "(prefers-reduced-transparency:reduce), (prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-reduced-transparency:reduce), (prefers-contrast: more) {\n  .os-shell .os-window-controls-panel, .os-minimized-task { background: var(--os-surface); backdrop-filter: none; border-color: var(--os-control-line); box-shadow: var(--shadow-dock); }\n}"
+            },
+            {
+              "condition": "(prefers-reduced-transparency:reduce), (prefers-contrast: more)",
+              "match": false,
+              "css": "@media (prefers-reduced-transparency:reduce), (prefers-contrast: more) {\n  .win7, .win7[data-appearance=\"dark\"], [data-appearance=\"dark\"] .win7 { --win7-glass-tint: var(--win7-glass-tint-solid); --win7-taskbar-bg: var(--win7-taskbar-solid); --win7-glass-blur: 0px; --win7-title-base: var(--win7-glass-tint-solid); --w7-w-bg: var(--win7-glass-tint-solid); }\n  .win7 *, .win7 ::before, .win7 ::after { backdrop-filter: none !important; }\n  .os-shell.win7 .window.glass::before { background: var(--win7-glass-tint-solid); opacity: 1; }\n}"
+            },
+            {
+              "condition": "(prefers-contrast: more), (forced-colors: active)",
+              "match": false,
+              "css": "@media (prefers-contrast: more), (forced-colors: active) {\n  .proof-atlas--desktop { background: var(--os-surface); }\n  .proof-atlas-node-halo, .proof-atlas-capture rect, .proof-atlas-boundary-plate, .proof-atlas-receipt, .proof-atlas-evidence-collection rect, .proof-atlas-edge, .proof-atlas-axis, .proof-atlas-capture path, .proof-atlas-boundary-glyph, .proof-atlas-evidence-collection path { stroke: currentcolor; }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    "setupVariants": {
+      "engine": "157.0",
+      "results": [
+        {
+          "mode": "context-more",
+          "label": "fixture",
+          "values": {
+            "more": true,
+            "none": false,
+            "opacity": "1",
+            "background": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "mode": "context-more",
+          "label": "portfolio",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "context-more",
+          "label": "portfolio-after-resize",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "page-before-content",
+          "label": "fixture",
+          "values": {
+            "more": true,
+            "none": false,
+            "opacity": "1",
+            "background": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "mode": "page-before-content",
+          "label": "portfolio",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "page-before-content",
+          "label": "portfolio-after-resize",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "page-after-content",
+          "label": "fixture",
+          "values": {
+            "more": true,
+            "none": false,
+            "opacity": "0.6",
+            "background": "rgba(255, 255, 255, 0.533)"
+          }
+        },
+        {
+          "mode": "page-after-content",
+          "label": "portfolio",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "page-after-content",
+          "label": "portfolio-after-resize",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "page-after-navigation",
+          "label": "fixture",
+          "values": {
+            "more": false,
+            "none": true,
+            "opacity": "0.6",
+            "background": "rgba(255, 255, 255, 0.533)"
+          }
+        },
+        {
+          "mode": "page-after-navigation",
+          "label": "portfolio",
+          "values": {
+            "more": true,
+            "none": false,
+            "opacity": "0.6",
+            "background": "rgb(69, 128, 196)"
+          }
+        },
+        {
+          "mode": "page-after-navigation",
+          "label": "portfolio-after-resize",
+          "values": {
+            "more": true,
+            "none": false,
+            "opacity": "1",
+            "background": "rgb(188, 220, 245)"
+          }
+        }
+      ]
+    },
+    "restoredViewport": {
+      "engine": "157.0",
+      "version": {
+        "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+        "contentRevision": "2026-10-11",
+        "builtAt": "2026-11-03T07:23:07.345Z",
+        "site": "https://raoufabedini.dev"
+      },
+      "results": [
+        {
+          "width": 1440,
+          "height": 900,
+          "more": true,
+          "opacity": "1",
+          "blur": "none",
+          "bg": "rgb(188, 220, 245)"
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "more": false,
+          "opacity": "0.6",
+          "blur": "blur(4px)",
+          "bg": "rgb(69, 128, 196)"
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "more": true,
+          "opacity": "1",
+          "blur": "none",
+          "bg": "rgb(188, 220, 245)"
+        }
+      ]
+    }
+  },
+  "limitation": "Native operating-system preference changes were not tested."
+}

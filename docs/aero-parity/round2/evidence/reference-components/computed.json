@@ -1,0 +1,1122 @@
+{
+  "version": {
+    "commit": "b4cc49de662b3013a97d5497f3fd8daed0df1a20",
+    "contentRevision": "2026-10-11",
+    "builtAt": "2026-11-03T08:12:59.751Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "results": [
+    {
+      "route": "/write-ups",
+      "label": "default",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "INPUT",
+          "classes": "",
+          "text": "",
+          "rect": {
+            "x": 332,
+            "y": 414.015625,
+            "width": 642.234375,
+            "height": 24,
+            "top": 414.015625,
+            "right": 974.234375,
+            "bottom": 438.015625,
+            "left": 332
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggc3Ryb2tlPSIjMjA3MGI5IiBkPSJNMTAuNSAxQzguMDIgMSA2IDMuMDIgNiA1LjVhNC40NSA0LjQ1IDAgMCAwIDEgMi43OTNMMi4wMjMgMTMuMjdsLjcwNC43MUw3LjcwNyA5Yy43Ny42MTcgMS43MzQgMSAyLjc5MyAxIDIuNDggMCA0LjUtMi4wMiA0LjUtNC41UzEyLjk4IDEgMTAuNSAxWm0wIDFDMTIuNDM4IDIgMTQgMy41NjMgMTQgNS41IDE0IDcuNDM4IDEyLjQzNyA5IDEwLjUgOUEzLjQ5NCAzLjQ5NCAwIDAgMSA3IDUuNUM3IDMuNTYyIDguNTYzIDIgMTAuNSAyWiIvPjwvc3ZnPg==\") no-repeat scroll calc(100% - 8px) 50% / 14px auto padding-box border-box",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "border-radius": "2px",
+            "box-shadow": "rgb(142, 143, 143) 1px 1px 0px 0px inset, rgb(204, 204, 204) -1px -1px 0px 0px inset",
+            "padding": "3px 26px 3px 6px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "24px",
+            "height": "24px",
+            "width": "642.234px",
+            "position": "static",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "SELECT",
+          "classes": "",
+          "text": "All TopicsAI SecuritySecurity ResearchC++Network SecurityeBPFKotlinElectron",
+          "rect": {
+            "x": 986.234375,
+            "y": 413.8125,
+            "width": 135,
+            "height": 23,
+            "top": 413.8125,
+            "right": 1121.234375,
+            "bottom": 436.8125,
+            "left": 986.234375
+          },
+          "style": {
+            "background": "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTExIDZINHYxaDF2MWgxdjFoMXYxaDFWOWgxVjhoMVY3aDFWNloiIGZpbGw9IiMwMDAiLz48L3N2Zz4=\") no-repeat scroll 100% 50% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207)) no-repeat scroll 100% 50% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(255, 255, 255, 0.8) 0px 0px 0px 1px inset",
+            "padding": "2px 30px 2px 3px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "135px",
+            "position": "relative",
+            "z-index": "auto",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "label": "default",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "INPUT",
+          "classes": "",
+          "text": "",
+          "rect": {
+            "x": 449,
+            "y": 576.515625,
+            "width": 309,
+            "height": 23,
+            "top": 576.515625,
+            "right": 758,
+            "bottom": 599.515625,
+            "left": 449
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "2px",
+            "box-shadow": "none",
+            "padding": "3px 4px 5px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "309px",
+            "position": "static",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "INPUT",
+          "classes": "",
+          "text": "",
+          "rect": {
+            "x": 770,
+            "y": 564.71875,
+            "width": 309,
+            "height": 23,
+            "top": 564.71875,
+            "right": 1079,
+            "bottom": 587.71875,
+            "left": 770
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "2px",
+            "box-shadow": "none",
+            "padding": "3px 4px 5px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "309px",
+            "position": "static",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TEXTAREA",
+          "classes": "",
+          "text": "",
+          "rect": {
+            "x": 449,
+            "y": 649.703125,
+            "width": 630,
+            "height": 78,
+            "top": 649.703125,
+            "right": 1079,
+            "bottom": 727.703125,
+            "left": 449
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "2px",
+            "box-shadow": "none",
+            "padding": "3px 4px 5px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "78px",
+            "width": "630px",
+            "position": "static",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "classes": "os-button",
+          "text": "Prepare email draft",
+          "rect": {
+            "x": 944.21875,
+            "y": 763.296875,
+            "width": 134.78125,
+            "height": 23,
+            "top": 763.296875,
+            "right": 1079,
+            "bottom": 786.296875,
+            "left": 944.21875
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(85, 134, 163)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(255, 255, 255, 0.8) 0px 0px 0px 1px inset",
+            "padding": "0px 12px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "134.781px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/projects/invisible-window-research",
+      "label": "default",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "FIELDSET",
+          "classes": "os-story-platform-picker",
+          "text": "Select a tested platformWindows 10/11macOS 14–26",
+          "rect": {
+            "x": 576,
+            "y": 1486.90625,
+            "width": 616,
+            "height": 59,
+            "top": 1486.90625,
+            "right": 1192,
+            "bottom": 1545.90625,
+            "left": 576
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(205, 215, 219)",
+            "border-radius": "3px",
+            "box-shadow": "rgb(255, 255, 255) 0px 0px 0px 1px inset",
+            "padding": "8px 10px 10px",
+            "margin": "16px 0px 12px",
+            "font": "16px / 26.4px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "59px",
+            "width": "616px",
+            "position": "static",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "classes": "",
+          "text": "Windows 10/11",
+          "rect": {
+            "x": 587,
+            "y": 1511.90625,
+            "width": 112.296875,
+            "height": 23,
+            "top": 1511.90625,
+            "right": 699.296875,
+            "bottom": 1534.90625,
+            "left": 587
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(109, 145, 171)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(0, 0, 0, 0.2) 1px 1px 0px 0px inset, rgba(0, 0, 0, 0.067) -1px 1px 0px 0px inset",
+            "padding": "0px 12px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "112.297px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            }
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "classes": "",
+          "text": "macOS 14–26",
+          "rect": {
+            "x": 705.296875,
+            "y": 1511.90625,
+            "width": 102.25,
+            "height": 23,
+            "top": 1511.90625,
+            "right": 807.546875,
+            "bottom": 1534.90625,
+            "left": 705.296875
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(255, 255, 255, 0.8) 0px 0px 0px 1px inset",
+            "padding": "0px 12px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "102.25px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/projects/invisible-window-research",
+      "label": "macos-selected",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "FIELDSET",
+          "classes": "os-story-platform-picker",
+          "text": "Select a tested platformWindows 10/11macOS 14–26",
+          "rect": {
+            "x": 576,
+            "y": 419.90625,
+            "width": 616,
+            "height": 59,
+            "top": 419.90625,
+            "right": 1192,
+            "bottom": 478.90625,
+            "left": 576
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(205, 215, 219)",
+            "border-radius": "3px",
+            "box-shadow": "rgb(255, 255, 255) 0px 0px 0px 1px inset",
+            "padding": "8px 10px 10px",
+            "margin": "16px 0px 12px",
+            "font": "16px / 26.4px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "59px",
+            "width": "616px",
+            "position": "static",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "classes": "",
+          "text": "Windows 10/11",
+          "rect": {
+            "x": 587,
+            "y": 444.90625,
+            "width": 112.296875,
+            "height": 23,
+            "top": 444.90625,
+            "right": 699.296875,
+            "bottom": 467.90625,
+            "left": 587
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(255, 255, 255, 0.8) 0px 0px 0px 1px inset",
+            "padding": "0px 12px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "112.297px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            }
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "classes": "",
+          "text": "macOS 14–26",
+          "rect": {
+            "x": 705.296875,
+            "y": 444.90625,
+            "width": 102.25,
+            "height": 23,
+            "top": 444.90625,
+            "right": 807.546875,
+            "bottom": 467.90625,
+            "left": 705.296875
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(109, 145, 171)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(0, 0, 0, 0.2) 1px 1px 0px 0px inset, rgba(0, 0, 0, 0.067) -1px 1px 0px 0px inset",
+            "padding": "0px 12px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "102.25px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/projects/project-simurgh",
+      "label": "default",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "DIV",
+          "classes": "os-terminal window glass active",
+          "text": "Reproduce LocallyCopy Commandsgit clone https://github.com/Raoof128/Project-Simurghcd Proj",
+          "rect": {
+            "x": 576,
+            "y": 2092.59375,
+            "width": 616,
+            "height": 138.171875,
+            "top": 2092.59375,
+            "right": 1192,
+            "bottom": 2230.765625,
+            "left": 576
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box",
+            "border": "1px solid rgba(0, 0, 0, 0.7)",
+            "border-radius": "6px",
+            "box-shadow": "rgba(0, 0, 0, 0.7) 2px 2px 10px 1px, rgba(255, 255, 255, 0.667) 0px 0px 0px 1px inset",
+            "padding": "0px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "auto",
+            "height": "138.172px",
+            "width": "616px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.7) 40%, rgba(0, 0, 0, 0) 41%) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)) repeat scroll 0% 0% / auto padding-box border-box, rgb(69, 128, 196) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0.6"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "DIV",
+          "classes": "os-terminal-head title-bar",
+          "text": "Reproduce LocallyCopy Commands",
+          "rect": {
+            "x": 577,
+            "y": 2093.59375,
+            "width": 614,
+            "height": 29,
+            "top": 2093.59375,
+            "right": 1191,
+            "bottom": 2122.59375,
+            "left": 577
+          },
+          "style": {
+            "background": "linear-gradient(135deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, linear-gradient(225deg, rgba(255, 255, 255, 0.333) 70px, rgba(0, 0, 0, 0) 100px) repeat fixed 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(54deg, rgba(0, 0, 0, 0.133) 0px, rgba(0, 0, 0, 0.133) 4%, rgba(102, 102, 102, 0.067) 6%, rgba(102, 102, 102, 0.067) 6%, rgba(0, 0, 0, 0.133) 8%, rgba(0, 0, 0, 0.133) 10%, rgba(0, 0, 0, 0.133) 15%, rgba(0, 0, 0, 0.133) 16%, rgba(170, 170, 170, 0.067) 17%, rgba(170, 170, 170, 0.067) 18%, rgba(0, 0, 0, 0.133) 23%, rgba(0, 0, 0, 0.133) 24%, rgba(187, 187, 187, 0.133) 25%, rgba(187, 187, 187, 0.133) 26%, rgba(0, 0, 0, 0.133) 31%, rgba(0, 0, 0, 0.133) 33%, rgba(0, 0, 0, 0.133) 34%, rgba(0, 0, 0, 0.133) 34.5%, rgba(187, 187, 187, 0.133) 36%, rgba(187, 187, 187, 0.133) 40%, rgba(0, 0, 0, 0.133) 41%, rgba(0, 0, 0, 0.133) 41.5%, rgba(187, 187, 187, 0.133) 44%, rgba(187, 187, 187, 0.133) 45%, rgba(187, 187, 187, 0.133) 46%, rgba(187, 187, 187, 0.133) 47%, rgba(0, 0, 0, 0.133) 48%, rgba(0, 0, 0, 0.133) 49%, rgba(0, 0, 0, 0.133) 50%, rgba(0, 0, 0, 0.133) 50.5%, rgba(0, 0, 0, 0.133) 56%, rgba(0, 0, 0, 0.133) 56.5%, rgba(187, 187, 187, 0.133) 57%, rgba(187, 187, 187, 0.133) 63%, rgba(0, 0, 0, 0.133) 67%, rgba(0, 0, 0, 0.133) 69%, rgba(187, 187, 187, 0.133) 69.5%, rgba(187, 187, 187, 0.133) 70%, rgba(0, 0, 0, 0.133) 73.5%, rgba(0, 0, 0, 0.133) 74%, rgba(187, 187, 187, 0.133) 74.5%, rgba(187, 187, 187, 0.133) 79%, rgba(0, 0, 0, 0.133) 80%, rgba(0, 0, 0, 0.133) 84%, rgba(170, 170, 170, 0.133) 85%, rgba(170, 170, 170, 0.133) 86%, rgba(0, 0, 0, 0.133) 87%, rgba(187, 187, 187, 0.067) 90%) no-repeat fixed 0% 50% / 1440px 900px padding-box border-box",
+            "border": "0px none rgb(0, 0, 0)",
+            "border-radius": "6px 6px 0px 0px",
+            "box-shadow": "rgba(255, 255, 255, 0.867) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.867) 1px 0px 0px 0px inset, rgba(255, 255, 255, 0.867) -1px 0px 0px 0px inset",
+            "padding": "0px 6px 6px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "29px",
+            "width": "614px",
+            "position": "relative",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "classes": "os-button--secondary os-terminal-copy",
+          "text": "Copy Commands",
+          "rect": {
+            "x": 1047.203125,
+            "y": 2093.59375,
+            "width": 137.796875,
+            "height": 23,
+            "top": 2093.59375,
+            "right": 1185,
+            "bottom": 2116.59375,
+            "left": 1047.203125
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(242, 242, 242) 45%, rgb(235, 235, 235) 45%, rgb(207, 207, 207)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(142, 143, 143)",
+            "border-radius": "3px",
+            "box-shadow": "rgba(255, 255, 255, 0.8) 0px 0px 0px 1px inset",
+            "padding": "0px 12px",
+            "margin": "0px",
+            "font": "12px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "23px",
+            "height": "23px",
+            "width": "137.797px",
+            "position": "relative",
+            "z-index": "0",
+            "outline": "rgb(34, 34, 34) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(234, 246, 253) 45%, rgb(190, 230, 253) 0px, rgb(167, 217, 245)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            },
+            "::after": {
+              "content": "\"\"",
+              "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219)) repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/write-ups/invisible-window-research",
+      "label": "default",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "TABLE",
+          "classes": "w-full min-w-[480px] text-sm",
+          "text": "PlatformLaboratory capture outcomeObserved capture artefactsWindows 10Window excludedNoneW",
+          "rect": {
+            "x": 432,
+            "y": 3856.203125,
+            "width": 700.09375,
+            "height": 167,
+            "top": 3856.203125,
+            "right": 1132.09375,
+            "bottom": 4023.203125,
+            "left": 432
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(213, 223, 229)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "167px",
+            "width": "700.094px",
+            "position": "relative",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Platform",
+          "rect": {
+            "x": 432.5,
+            "y": 3856.703125,
+            "width": 121.171875,
+            "height": 22,
+            "top": 3856.703125,
+            "right": 553.671875,
+            "bottom": 3878.703125,
+            "left": 432.5
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "121.172px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Laboratory capture outcome",
+          "rect": {
+            "x": 553.671875,
+            "y": 3856.703125,
+            "width": 382.0625,
+            "height": 22,
+            "top": 3856.703125,
+            "right": 935.734375,
+            "bottom": 3878.703125,
+            "left": 553.671875
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "382.062px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Observed capture artefacts",
+          "rect": {
+            "x": 935.734375,
+            "y": 3856.703125,
+            "width": 195.859375,
+            "height": 22,
+            "top": 3856.703125,
+            "right": 1131.59375,
+            "bottom": 3878.703125,
+            "left": 935.734375
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "195.859px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TABLE",
+          "classes": "w-full min-w-[480px] text-sm",
+          "text": "DateActionJanuary 2026Discovery and verification in a controlled laboratory on Windows 10 ",
+          "rect": {
+            "x": 432,
+            "y": 5164.765625,
+            "width": 670.4375,
+            "height": 143,
+            "top": 5164.765625,
+            "right": 1102.4375,
+            "bottom": 5307.765625,
+            "left": 432
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(213, 223, 229)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "143px",
+            "width": "670.438px",
+            "position": "relative",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Date",
+          "rect": {
+            "x": 432.5,
+            "y": 5165.265625,
+            "width": 111.65625,
+            "height": 22,
+            "top": 5165.265625,
+            "right": 544.15625,
+            "bottom": 5187.265625,
+            "left": 432.5
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "111.656px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Action",
+          "rect": {
+            "x": 544.15625,
+            "y": 5165.265625,
+            "width": 557.78125,
+            "height": 22,
+            "top": 5165.265625,
+            "right": 1101.9375,
+            "bottom": 5187.265625,
+            "left": 544.15625
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "557.781px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/write-ups/project-simurgh-containment",
+      "label": "default",
+      "status": 200,
+      "styles": [
+        {
+          "tag": "TABLE",
+          "classes": "w-full min-w-[480px] text-sm",
+          "text": "BoundaryGuards againstInput firewallDirect prompt injection at the entry pointContext-prov",
+          "rect": {
+            "x": 432,
+            "y": 1058.96875,
+            "width": 669.4375,
+            "height": 119,
+            "top": 1058.96875,
+            "right": 1101.4375,
+            "bottom": 1177.96875,
+            "left": 432
+          },
+          "style": {
+            "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(213, 223, 229)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "119px",
+            "width": "669.438px",
+            "position": "relative",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Boundary",
+          "rect": {
+            "x": 432.5,
+            "y": 1059.46875,
+            "width": 203.515625,
+            "height": 22,
+            "top": 1059.46875,
+            "right": 636.015625,
+            "bottom": 1081.46875,
+            "left": 432.5
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "203.516px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        },
+        {
+          "tag": "TH",
+          "classes": "px-3 py-2 text-start font-semibold",
+          "text": "Guards against",
+          "rect": {
+            "x": 636.015625,
+            "y": 1059.46875,
+            "width": 464.921875,
+            "height": 22,
+            "top": 1059.46875,
+            "right": 1100.9375,
+            "bottom": 1081.46875,
+            "left": 636.015625
+          },
+          "style": {
+            "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(255, 255, 255) 45%, rgb(250, 250, 250) 0px, rgb(240, 240, 240)) repeat scroll 0% 0% / auto padding-box border-box",
+            "border": "1px solid rgb(215, 215, 215)",
+            "border-radius": "0px",
+            "box-shadow": "none",
+            "padding": "0px 8px",
+            "margin": "0px",
+            "font": "14px \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+            "min-height": "0px",
+            "height": "22px",
+            "width": "464.922px",
+            "position": "sticky",
+            "z-index": "auto",
+            "outline": "rgb(0, 0, 0) none 3px"
+          },
+          "pseudo": {
+            "::before": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            },
+            "::after": {
+              "content": "none",
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "opacity": "1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/projects",
+      "label": "default",
+      "status": 200,
+      "styles": []
+    },
+    {
+      "route": "/projects",
+      "label": "controls-open",
+      "status": 200,
+      "styles": []
+    }
+  ],
+  "errors": []
+}

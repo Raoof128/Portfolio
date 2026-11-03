@@ -141,7 +141,7 @@ export function ProjectDetailClient({
   };
   const rtl = locale === "fa" || locale === "ar";
   // Arrow keys, Home and End move between tabs (APG tabs pattern); RTL swaps the arrows.
-  const onTabKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const onTabKeyDown = (event: KeyboardEvent<HTMLMenuElement>) => {
     const index = SECTION_KEYS.indexOf(activeSection);
     let next: number | null = null;
     if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
@@ -302,7 +302,7 @@ export function ProjectDetailClient({
 
         {/* Anchors keep all evidence available to readers and crawlers without JavaScript. */}
         {mounted ? (
-          <div
+          <menu
             role="tablist"
             aria-label={copy.projectArchitecture}
             className="os-project-tablist"
@@ -326,7 +326,7 @@ export function ProjectDetailClient({
                 {sectionLabels[key]}
               </button>
             ))}
-          </div>
+          </menu>
         ) : (
           <nav
             className="os-project-section-nav"

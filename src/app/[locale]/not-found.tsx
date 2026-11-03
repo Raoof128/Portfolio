@@ -21,7 +21,7 @@ export default function NotFound() {
       aria-labelledby="os-not-found-title"
     >
       <div className="title-bar">
-        <p className="os-not-found-code" dir="ltr">
+        <p className="title-bar-text os-not-found-code" dir="ltr">
           404
         </p>
       </div>
