@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-03 (Australia/Sydney) — Production deployment confirmed for the Aero release
+
+- **Scope**: Confirm that `8b7907c` (fix(ui): restore canonical Aero styling and verify component parity) is live, and run an owner-requested production redeploy.
+- **Summary**: The automatic push deploy for `8b7907c` succeeded (run 41616666379: 1,020 files uploaded; CI run 41616666234 also green). At the owner's request, `deploy.yml` was dispatched manually on `main` (run 41625869930). The whole build job passed again (lint, typecheck, tests, schema/HTTP/security regressions, build, static-security and agent audits, runtime dependency audit) and Cloudflare Pages project `raoufabedini` received 967 new files with 103 already uploaded. No application code changed.
+- **Files Changed**: AGENT.md, CHANGELOG.md.
+- **Verification**: `gh run watch 41625869930 --exit-status` exited 0; wrangler reported "Deployment complete" at https://2325e6ac.raoufabedini.pages.dev; https://raoufabedini.pages.dev returned HTTP 200. `main` has no other branches or open PRs.
+- **Follow-ups**: This docs-only push triggers one more automatic deploy, which needs no further action. Future pushes to `main` keep deploying automatically.
+
 ### Raouf: 2026-11-03 (Australia/Sydney) — Owner-authorised Aero commit and push
 
 - **Scope**: Commit all reviewed Aero implementation/evidence changes and push the Portfolio default branch, as explicitly requested by the owner.
