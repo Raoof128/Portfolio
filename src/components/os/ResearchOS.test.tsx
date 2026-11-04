@@ -1211,7 +1211,7 @@ describe("ResearchOS logon session", () => {
     setWelcomeLoaderDuration(3000);
     try {
       const { container } = render(shell());
-      fireEvent.click(screen.getByRole("button", { name: copy.fullName, exact: true }));
+      fireEvent.click(screen.getByRole("button", { name: copy.fullName }));
       expect(screen.getByRole("status")).not.toBeEmptyDOMElement();
       act(() => vi.advanceTimersByTime(2999));
       expect(container.querySelector(".os-content")).toHaveAttribute("hidden");
