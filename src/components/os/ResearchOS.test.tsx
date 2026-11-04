@@ -168,6 +168,17 @@ function flushFrames() {
   });
 }
 
+/** Mount workflow fixtures after the visitor has entered the workspace. */
+function renderWorkspace(ui: Parameters<typeof render>[0]) {
+  const view = render(ui);
+  const entry = view.container.querySelector<HTMLButtonElement>("#os-enter");
+  if (entry) {
+    fireEvent.click(entry);
+    flushFrames();
+  }
+  return view;
+}
+
 function RetainedApp({ title }: { title: string }) {
   const initial = useInitialAppState();
   const contentId = useContentId();
@@ -220,7 +231,7 @@ describe("current application window", () => {
   it("disposes previous pages and their drafts instead of keeping a history", () => {
     desktop();
     navigation.pathname = "/projects";
-    const view = render(registeredShell("/projects", "Project library"));
+    const view = renderWorkspace(registeredShell("/projects", "Project library"));
     const first = view.container.querySelector<HTMLElement>(
       '[data-window-path="/projects"]',
     )!;
@@ -251,7 +262,7 @@ describe("current application window", () => {
   });
 
   it("switches appearance with a power switch that is on in dark mode", () => {
-    render(shell());
+    renderWorkspace(shell());
     // The switch name is static and localised; its state is aria-checked and visible text.
     const toggle = screen.getByRole("switch", {
       name: copy.darkAppearance,
@@ -268,7 +279,7 @@ describe("current application window", () => {
 
   it("accepts a later appearance change from another tab after a manual toggle", () => {
     desktop();
-    render(shell());
+    renderWorkspace(shell());
     fireEvent.click(screen.getByRole("switch", { name: copy.darkAppearance }));
     expect(document.querySelector(".os-shell")).toHaveAttribute(
       "data-appearance",
@@ -298,7 +309,7 @@ describe("current application window", () => {
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new DOMException("Blocked", "SecurityError");
     });
-    const view = render(shell());
+    const view = renderWorkspace(shell());
     fireEvent.click(screen.getByRole("switch", { name: copy.darkAppearance }));
     expect(view.container.querySelector(".os-shell")).toHaveAttribute(
       "data-appearance",
@@ -328,7 +339,7 @@ describe("current application window", () => {
     (attribute) => {
       navigation.pathname = "/about";
       const observed = vi.fn();
-      render(
+      renderWorkspace(
         <ResearchOS
           locale="en"
           role="Researcher"
@@ -368,7 +379,7 @@ describe("current application window", () => {
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
     }));
-    render(shell());
+    renderWorkspace(shell());
     const toggle = screen.getByRole("switch", { name: copy.darkAppearance });
     const shellElement = document.querySelector<HTMLElement>(".os-shell")!;
     fireEvent.click(toggle);
@@ -389,7 +400,7 @@ describe("current application window", () => {
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
     }));
-    render(shell());
+    renderWorkspace(shell());
     const toggle = screen.getByRole("switch", { name: copy.darkAppearance });
     const shellElement = document.querySelector<HTMLElement>(".os-shell")!;
     const before = shellElement.getAttribute("data-appearance");
@@ -401,7 +412,7 @@ describe("current application window", () => {
   it("keeps one window open with its bounds when moving between projects", () => {
     desktop();
     navigation.pathname = "/projects/project-simurgh";
-    const view = render(
+    const view = renderWorkspace(
       registeredShell("/projects/project-simurgh", "Project Simurgh"),
     );
     const frame = view.container.querySelector<HTMLElement>(
@@ -461,7 +472,7 @@ describe("current application window", () => {
         </OSApplicationBridge>
       </ResearchOS>
     );
-    const view = render(appWithLink("/projects/project-simurgh"));
+    const view = renderWorkspace(appWithLink("/projects/project-simurgh"));
     expect(view.container.querySelector(".os-window-scan")).toBeNull();
     fireEvent.click(screen.getByRole("link", { name: "Next project" }));
     expect(view.container.querySelector(".os-window-scan")).not.toBeNull();
@@ -473,7 +484,7 @@ describe("current application window", () => {
   it("keeps only the current minimized page and focuses its restore control", () => {
     desktop();
     navigation.pathname = "/about";
-    const view = render(registeredShell("/about", "About Raouf"));
+    const view = renderWorkspace(registeredShell("/about", "About Raouf"));
     const pane = view.container.querySelector<HTMLElement>(
       '[data-window-path="/about"]',
     )!;
@@ -504,7 +515,7 @@ describe("current application window", () => {
   it("ignores stale publications and clears the current page on recovery or desktop navigation", () => {
     desktop();
     navigation.pathname = "/about";
-    const view = render(registeredShell("/projects", "Stale project"));
+    const view = renderWorkspace(registeredShell("/projects", "Stale project"));
     expect(
       view.container.querySelectorAll(".os-workspace-window"),
     ).toHaveLength(0);
@@ -540,7 +551,7 @@ describe("current application window", () => {
   it("restores the minimized current app from search without duplicating navigation", () => {
     desktop();
     navigation.pathname = "/projects/project-simurgh";
-    const view = render(
+    const view = renderWorkspace(
       registeredShell("/projects/project-simurgh", "Simurgh evidence"),
     );
     const pane = view.container.querySelector<HTMLElement>(
@@ -585,7 +596,7 @@ describe("current application window", () => {
         value: { writeText },
       });
       try {
-        const view = render(
+        const view = renderWorkspace(
           scope === "app"
             ? registeredShell("/about", "About Raouf")
             : shell("About Raouf"),
@@ -622,7 +633,7 @@ describe("current application window", () => {
   it("navigates to a disposed page fragment through the normal route", () => {
     desktop();
     navigation.pathname = "/write-ups";
-    const view = render(registeredShell("/write-ups", "Research papers"));
+    const view = renderWorkspace(registeredShell("/write-ups", "Research papers"));
     navigation.pathname = "/about";
     view.rerender(
       <ResearchOS
@@ -749,7 +760,7 @@ describe("ResearchOS workspace lifecycle", () => {
     "keeps native clocks unnamed with localized reading context in %s",
     (locale) => {
       navigation.pathname = locale === "en" ? "/" : `/${locale}`;
-      const { container } = render(
+      const { container } = renderWorkspace(
         <ResearchOS
           locale={locale}
           role="Researcher"
@@ -796,7 +807,7 @@ describe("ResearchOS workspace lifecycle", () => {
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
     }));
-    const { container } = render(shell("Project explorer"));
+    const { container } = renderWorkspace(shell("Project explorer"));
     const commands = getWindowCopy("en");
     const launcher = screen.getByLabelText(commands.windowControls);
     launcher.focus();
@@ -843,7 +854,7 @@ describe("ResearchOS workspace lifecycle", () => {
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
     }));
-    render(shell("Project explorer"));
+    renderWorkspace(shell("Project explorer"));
     fireEvent.click(screen.getByLabelText(getWindowCopy("en").windowControls));
     await screen.findByRole("button", { name: getWindowCopy("en").moveLeft });
     // No preceding pointerdown: hiding must not depend on the outside-click listener.
@@ -886,7 +897,7 @@ describe("ResearchOS workspace lifecycle", () => {
         </>
       );
     }
-    const { container } = render(
+    const { container } = renderWorkspace(
       <ResearchOS
         locale="en"
         role="Researcher"
@@ -928,7 +939,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
   it("lets the dock link reach the project list while a dossier is open", () => {
     navigation.pathname = "/projects/project-simurgh";
-    const { container } = render(
+    const { container } = renderWorkspace(
       registeredShell("/projects/project-simurgh", "Simurgh evidence"),
     );
     const dock = container.querySelector<HTMLElement>(".os-dock")!;
@@ -938,7 +949,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
   it("restores a minimized current-URL desktop launcher and ignores Escape on its desktop", () => {
     navigation.pathname = "/projects";
-    const { container } = render(shell("Project explorer"));
+    const { container } = renderWorkspace(shell("Project explorer"));
     fireEvent.click(
       screen.getByRole("button", {
         name: `${getWindowCopy("en").minimize}: Projects`,
@@ -964,7 +975,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
   it("does not transfer hidden state to a new route and retains modified dock clicks", () => {
     navigation.pathname = "/projects";
-    const view = render(shell("Project explorer"));
+    const view = renderWorkspace(shell("Project explorer"));
     fireEvent.click(
       screen.getByRole("button", {
         name: `${getWindowCopy("en").minimize}: Projects`,
@@ -987,7 +998,7 @@ describe("ResearchOS workspace lifecycle", () => {
   });
 
   it("exposes one accessible main landmark through initial entry, lock and unlock", () => {
-    render(shell());
+    renderWorkspace(shell());
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
       within(screen.getByRole("main")).getByRole("heading", {
@@ -1019,7 +1030,7 @@ describe("ResearchOS workspace lifecycle", () => {
     "%s: dock accessible names include every visible label on first entry",
     (locale) => {
       navigation.pathname = locale === "en" ? "/" : `/${locale}`;
-      const { container } = render(
+      const { container } = renderWorkspace(
         <ResearchOS
           locale={locale}
           role="Independent researcher"
@@ -1050,12 +1061,19 @@ describe("ResearchOS workspace lifecycle", () => {
   );
 
   it.each(["/", "/en"])(
-    "opens %s immediately and keeps the welcome available on explicit lock",
+    "shows the lock screen on %s until the profile is selected",
     (pathname) => {
       navigation.pathname = pathname;
       const { container } = render(shell());
       const { content, dock } = desktopElements(container);
 
+      expect(content).toHaveAttribute("hidden");
+      expect(content).toHaveAttribute("inert");
+      expect(dock).toHaveAttribute("hidden");
+      fireEvent.click(
+        screen.getByRole("button", { name: copy.fullName }),
+      );
+      flushFrames();
       expect(content).not.toHaveAttribute("hidden");
       expect(content).not.toHaveAttribute("inert");
       expect(dock).not.toHaveAttribute("hidden");
@@ -1084,7 +1102,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
   it("keeps Proof Atlas off the lock screen and interactive on the unlocked desktop", async () => {
     const role = "Independent researcher";
-    const { container } = render(
+    const { container } = renderWorkspace(
       <ResearchOS
         locale="en"
         role={role}
@@ -1121,7 +1139,7 @@ describe("ResearchOS workspace lifecycle", () => {
     });
 
     try {
-      render(shell());
+      renderWorkspace(shell());
       fireEvent.click(screen.getByRole("button", { name: copy.lock }));
       fireEvent.click(
         screen.getByRole("button", {
@@ -1140,7 +1158,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
   it("opens a direct project URL without the intro gate", () => {
     navigation.pathname = "/projects/project-simurgh";
-    const { container } = render(shell("Project evidence"));
+    const { container } = renderWorkspace(shell("Project evidence"));
     const { content, dock } = desktopElements(container);
 
     expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
@@ -1155,7 +1173,7 @@ describe("ResearchOS workspace lifecycle", () => {
   });
 
   it("lets the skip link unlock the desktop and focus its heading", () => {
-    const { container } = render(shell());
+    const { container } = renderWorkspace(shell());
     const { content, dock } = desktopElements(container);
     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     const skip = screen.getByRole("link", { name: "Skip to main content" });
@@ -1177,7 +1195,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
   it("waits for home to render before focusing Enter after locking a detail", () => {
     navigation.pathname = "/projects/project-simurgh";
-    const view = render(shell("Project evidence"));
+    const view = renderWorkspace(shell("Project evidence"));
     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
 
     expect(navigation.push).toHaveBeenCalledWith("/");
@@ -1225,7 +1243,7 @@ describe("ResearchOS logon session", () => {
   });
 
   it("keeps the current logon locked when the brand is opened in another tab", () => {
-    const view = render(shell());
+    const view = renderWorkspace(shell());
     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     // Cancel jsdom's document navigation after React has handled the modified click.
     document.addEventListener("click", (event) => event.preventDefault(), {
@@ -1241,26 +1259,29 @@ describe("ResearchOS logon session", () => {
     expect(navigation.push).not.toHaveBeenCalled();
   });
 
-  it("skips the logon on a return home within the same session", () => {
+  it("shows the logon again when home is reloaded within the same session", () => {
     navigation.pathname = "/";
     const first = render(shell());
+    expect(first.container.querySelector(".os-welcome")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: copy.fullName }));
     expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
     expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
     first.unmount();
 
-    // A later mount of home in this session (a reload or a return) goes straight to the desktop.
-    render(shell());
-    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
+    // The session flag must not silently bypass a new home-page load.
+    const returning = render(shell());
+    expect(returning.container.querySelector(".os-welcome")).toBeVisible();
+    expect(screen.getByRole("button", { name: copy.fullName })).toBeVisible();
     expect(
       document
         .querySelector<HTMLElement>(".os-content")
         ?.hasAttribute("hidden"),
-    ).toBe(false);
+    ).toBe(true);
   });
 
   it("reopens the page a lock left when the visitor unlocks", () => {
     navigation.pathname = "/projects/project-zurvan";
-    const view = render(shell("Project evidence"));
+    const view = renderWorkspace(shell("Project evidence"));
     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     expect(navigation.push).toHaveBeenCalledWith("/");
 
@@ -1280,7 +1301,7 @@ describe("ResearchOS taskbar", () => {
   it("prefetches a dock app's route on hover and press, before the click", () => {
     navigation.pathname = "/";
     navigation.prefetch.mockClear();
-    const { container } = render(
+    const { container } = renderWorkspace(
       <ResearchOS
         locale="en"
         role="Researcher"
@@ -1310,7 +1331,7 @@ describe("ResearchOS taskbar", () => {
     });
     try {
       navigation.pathname = "/about";
-      const { container } = render(shell());
+      const { container } = renderWorkspace(shell());
       const about = container.querySelector<HTMLElement>(
         '.os-dock-app[data-app="about"]',
       )!;
@@ -1335,7 +1356,7 @@ describe("ResearchOS taskbar", () => {
     ["zh", "开始：显示桌面"],
   ])("names the Start orb in %s and keeps it a home link", (locale, name) => {
     navigation.pathname = locale === "en" ? "/" : `/${locale}`;
-    const { container } = render(
+    const { container } = renderWorkspace(
       <ResearchOS
         locale={locale}
         role="Researcher"
@@ -1353,7 +1374,7 @@ describe("ResearchOS taskbar", () => {
 
   it("keeps Lock last in the tray, with a tooltip, away from the pins", () => {
     navigation.pathname = "/about";
-    const { container } = render(shell());
+    const { container } = renderWorkspace(shell());
     const lock = container.querySelector<HTMLElement>(".os-tray-lock")!;
     expect(lock).toHaveAccessibleName(copy.lock);
     expect(lock).toHaveAttribute("title", copy.lock);
@@ -1383,7 +1404,7 @@ describe("ResearchOS taskbar", () => {
     const restore = [layout("scrollWidth"), layout("clientWidth")];
     try {
       navigation.pathname = "/about";
-      const { container } = render(shell());
+      const { container } = renderWorkspace(shell());
       const strip = container.querySelector<HTMLElement>(".os-dock-strip")!;
       let scrollLeft = 0;
       Object.defineProperty(strip, "scrollLeft", {
@@ -1425,7 +1446,7 @@ describe("ResearchOS keyboard and search", () => {
           </ResearchOS>
         </StrictMode>
       );
-      const { container, rerender } = render(localizedShell(source));
+      const { container, rerender } = renderWorkspace(localizedShell(source));
       expect(
         screen.queryByRole("button", { name: orbName(source) }),
       ).toBeNull();
@@ -1440,23 +1461,23 @@ describe("ResearchOS keyboard and search", () => {
       expect(
         window.sessionStorage.getItem("researchos:language-navigation"),
       ).toBeNull();
-      // A return to home in the same session goes straight to the desktop (no logon).
+      // A new page load shows the profile even after this session entered once.
       cleanup();
       const returning = render(localizedShell(destination));
-      expect(returning.container.querySelector(".os-welcome")).toBeNull();
-      // A new session also reaches useful content without a welcome gate.
+      expect(returning.container.querySelector(".os-welcome")).toBeVisible();
+      // A fresh session also starts on the lock screen.
       cleanup();
       window.sessionStorage.clear();
       const fresh = render(localizedShell(destination));
-      expect(fresh.container.querySelector(".os-welcome")).toBeNull();
+      expect(fresh.container.querySelector(".os-welcome")).toBeVisible();
       expect(
-        within(fresh.container).getByRole("heading", { name: "Workspace" }),
-      ).toBeVisible();
+        within(fresh.container).queryByRole("heading", { name: "Workspace" }),
+      ).toBeNull();
     },
   );
 
   it("preserves a deliberately locked language change", () => {
-    const { container, rerender } = render(shell());
+    const { container, rerender } = renderWorkspace(shell());
     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     fireEvent.click(container.querySelector('.os-language a[lang="fa"]')!);
     navigation.pathname = "/fa";
@@ -1481,7 +1502,7 @@ describe("ResearchOS keyboard and search", () => {
       "/projects/project-simurgh?view=evidence#methods",
     );
     navigation.pathname = "/projects/project-simurgh";
-    const { container } = render(shell("Project evidence"));
+    const { container } = renderWorkspace(shell("Project evidence"));
     fireEvent.click(container.querySelector('.os-language a[lang="fa"]')!);
     expect(navigation.push).toHaveBeenCalledWith(
       "/fa/projects/project-simurgh?view=evidence#methods",
@@ -1490,7 +1511,7 @@ describe("ResearchOS keyboard and search", () => {
   });
 
   it("leaves modified language clicks to the browser without a handoff", () => {
-    const { container } = render(shell());
+    const { container } = renderWorkspace(shell());
     fireEvent.click(container.querySelector('.os-language a[lang="fa"]')!, {
       ctrlKey: true,
     });
@@ -1501,7 +1522,7 @@ describe("ResearchOS keyboard and search", () => {
   });
   it("dismisses a populated search on the first Escape without leaving the app", async () => {
     navigation.pathname = "/projects/project-simurgh";
-    render(shell("Project evidence"));
+    renderWorkspace(shell("Project evidence"));
     const { launcher, dialog, input } = openSearch();
     fireEvent.change(input, { target: { value: "Simurgh" } });
     expect(input).toHaveValue("Simurgh");
@@ -1526,7 +1547,7 @@ describe("ResearchOS keyboard and search", () => {
 
   it("keeps IME confirmation and candidate arrows from activating search results", () => {
     navigation.pathname = "/about";
-    render(shell("About Raouf"));
+    renderWorkspace(shell("About Raouf"));
     const { dialog, input } = openSearch();
     const result = within(dialog).getByRole("link", { name: /Simurgh/ });
     const activate = vi.spyOn(result, "click");
@@ -1547,7 +1568,7 @@ describe("ResearchOS keyboard and search", () => {
   });
 
   it("moves between search field and results with arrows and restores the launcher on close", async () => {
-    render(shell());
+    renderWorkspace(shell());
     const { launcher, dialog, input } = openSearch();
     const result = within(dialog).getByRole("link", { name: /Simurgh/ });
 
@@ -1564,7 +1585,7 @@ describe("ResearchOS keyboard and search", () => {
 
   it("returns focus to the Search launcher after Ctrl+K from an unfocused page", async () => {
     navigation.pathname = "/about";
-    render(shell("About Raouf"));
+    renderWorkspace(shell("About Raouf"));
     const launcher = screen.getByRole("button", { name: copy.search });
     (document.activeElement as HTMLElement | null)?.blur();
     expect(document.activeElement).toBe(document.body);
@@ -1582,7 +1603,7 @@ describe("ResearchOS keyboard and search", () => {
   });
 
   it("names the search field by its visible label, and keeps that label once text is typed", () => {
-    render(shell());
+    renderWorkspace(shell());
     const { dialog, input } = openSearch();
     expect(input).toHaveAccessibleName(copy.search);
     fireEvent.change(input, { target: { value: "Simurgh" } });
@@ -1593,7 +1614,7 @@ describe("ResearchOS keyboard and search", () => {
   });
 
   it("names each search result by its kind and title, and describes it by its summary", () => {
-    render(shell());
+    renderWorkspace(shell());
     const { dialog, input } = openSearch();
     fireEvent.change(input, { target: { value: "Simurgh" } });
     const result = within(dialog).getByRole("link", { name: /Simurgh/ });
@@ -1606,7 +1627,7 @@ describe("ResearchOS keyboard and search", () => {
 
   it("closes the language menu with Escape without navigating away from a detail", () => {
     navigation.pathname = "/projects/project-simurgh";
-    const { container } = render(shell("Project evidence"));
+    const { container } = renderWorkspace(shell("Project evidence"));
     const menu = container.querySelector<HTMLDetailsElement>(".os-language")!;
     const summary = menu.querySelector("summary")!;
     fireEvent.click(summary);
@@ -1626,7 +1647,7 @@ describe("ResearchOS keyboard and search", () => {
 
   it("dismisses an open language menu even when pointer activation leaves focus elsewhere", () => {
     navigation.pathname = "/contact";
-    const { container } = render(shell("Contact Raouf"));
+    const { container } = renderWorkspace(shell("Contact Raouf"));
     const menu = container.querySelector<HTMLDetailsElement>(".os-language")!;
     const summary = menu.querySelector("summary")!;
     fireEvent.click(summary);
@@ -1641,7 +1662,7 @@ describe("ResearchOS keyboard and search", () => {
 
   it("closes a page window only from its chrome, never from page content", () => {
     navigation.pathname = "/projects/project-simurgh";
-    const { container } = render(shell("Project evidence"));
+    const { container } = renderWorkspace(shell("Project evidence"));
     const heading = screen.getByRole("heading", { name: "Project evidence" });
     heading.tabIndex = -1;
     heading.focus();
@@ -1659,7 +1680,7 @@ describe("ResearchOS keyboard and search", () => {
 
   it("respects Escape already consumed by another control", () => {
     navigation.pathname = "/contact";
-    render(shell("Contact Raouf"));
+    renderWorkspace(shell("Contact Raouf"));
     const escape = new KeyboardEvent("keydown", {
       key: "Escape",
       bubbles: true,

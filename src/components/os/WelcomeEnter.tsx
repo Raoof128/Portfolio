@@ -9,14 +9,13 @@ import {
   type CSSProperties,
   type MutableRefObject,
   type ReactNode,
+  type Ref,
 } from "react";
 import type { Locale } from "@/i18n";
 import "./welcome-enter.css";
 
-/** How long the first Enter wait runs in a session before the workspace opens. */
+/** How long profile selection waits before the workspace opens. */
 export const WELCOME_LOADER_MS = 3000;
-/** The shorter wait under reduced motion, and for a logon shown again in the session (after Lock). */
-export const WELCOME_SHORT_MS = 600;
 
 /** The logon fades over this many milliseconds at the end of the wait (the hand-off). */
 const HANDOFF_MS = 120;
@@ -40,8 +39,8 @@ export function setWelcomeLoaderDuration(ms: number) {
 }
 
 /**
- * True once the desktop has been shown in this browser session. A reload or a return home then
- * goes straight to the desktop. Blocked storage reads as not seen, so the logon simply shows.
+ * Records that the desktop has been shown in this browser session. This marker
+ * never bypasses the profile screen or shortens its entry delay.
  */
 export function welcomeSeenThisSession(): boolean {
   try {
@@ -51,23 +50,12 @@ export function welcomeSeenThisSession(): boolean {
   }
 }
 
-/** Records that the desktop has been shown this session. A failed write only means the logon shows again. */
+/** Records desktop entry when session storage is available. */
 export function markWelcomeSeen() {
   try {
     window.sessionStorage.setItem(SEEN_KEY, "1");
   } catch {
     // Storage can be blocked; the logon then appears on the next visit.
-  }
-}
-
-function prefersReducedMotion(): boolean {
-  try {
-    return (
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    );
-  } catch {
-    return false;
   }
 }
 
@@ -124,9 +112,8 @@ function afterLogonFade(
 /**
  * The welcome Enter button. Pressing it starts a short wait: focus moves to a polite status
  * line, the rest of the user tile goes inert and a dot-sequence busy indicator runs. The wait
- * is 3s on the first visit of a session and about 0.6s under reduced motion or when the logon is
- * shown again in the session (after Lock). A return home goes straight to the desktop instead.
- * A second press, or Enter or Escape while the wait runs, ends it at once. The logon fades over
+ * is 3s for every selection. Reduced motion changes only the decorative animation.
+ * Repeated selection and keys cannot shorten the wait. The logon fades over
  * the last 120ms of the wait; the desktop mounts only after that fade has painted its last frame.
  */
 export function WelcomeEnter({
@@ -134,6 +121,7 @@ export function WelcomeEnter({
   status,
   children,
   locale = "en",
+  buttonRef,
 }: {
   onEnter: () => void;
   /** Localised status line announced while the wait runs. */
@@ -141,6 +129,8 @@ export function WelcomeEnter({
   /** The lab entry text. It is visually hidden and ends the orb's accessible name. */
   children: ReactNode;
   locale?: Locale;
+  /** The profile tile activates this same entry control. */
+  buttonRef?: Ref<HTMLButtonElement>;
 }) {
   const [loading, setLoading] = useState(false);
   const [waitMs, setWaitMs] = useState(WELCOME_LOADER_MS);
@@ -148,6 +138,7 @@ export function WelcomeEnter({
   const handoffTimer = useRef<number | null>(null);
   const cancelled = useRef(false);
   const handingOff = useRef(false);
+  const entryStarted = useRef(false);
   const statusLine = useRef<HTMLParagraphElement>(null);
   const onEnterRef = useRef(onEnter);
 
@@ -190,8 +181,7 @@ export function WelcomeEnter({
     onEnterRef.current();
   }, []);
 
-  // Ends the wait: the logon fades and the desktop arrives. It runs when the wait finishes, or at
-  // once when the visitor presses the orb again or presses Enter or Escape during the wait.
+  // Hand off only after the complete wait, once the fade's last frame is ready.
   const handOff = useCallback(() => {
     if (handingOff.current) return;
     handingOff.current = true;
@@ -202,32 +192,11 @@ export function WelcomeEnter({
     afterLogonFade(logon, arrive);
   }, [arrive]);
 
-  useEffect(() => {
-    if (!loading) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.defaultPrevented || event.isComposing) return;
-      if (event.key !== "Enter" && event.key !== "Escape") return;
-      // Only keys aimed at the wait skip it; the header controls keep their own keys.
-      const stage = statusLine.current?.closest(".os-enter-stage");
-      const target = event.target;
-      if (
-        target instanceof Node &&
-        target !== document.body &&
-        !stage?.contains(target)
-      )
-        return;
-      event.preventDefault();
-      handOff();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [loading, handOff]);
-
   function enter() {
-    if (loading) {
-      handOff();
-      return;
-    }
+    // A ref also blocks synchronous programmatic double selection before React
+    // has committed the disabled button, keeping one timer and one hand-off.
+    if (entryStarted.current) return;
+    entryStarted.current = true;
     if (loaderMs <= 0) {
       statusLine.current
         ?.closest(".os-shell")
@@ -235,9 +204,7 @@ export function WelcomeEnter({
       onEnterRef.current();
       return;
     }
-    // A logon shown again in the session (after Lock), or reduced motion, takes the short wait.
-    const short = welcomeSeenThisSession() || prefersReducedMotion();
-    const wait = Math.min(loaderMs, short ? WELCOME_SHORT_MS : loaderMs);
+    const wait = loaderMs;
     handingOff.current = false;
     setWaitMs(wait);
     setLoading(true);
@@ -258,10 +225,12 @@ export function WelcomeEnter({
   return (
     <div className="os-enter-stage" data-loading={loading || undefined}>
       <button
+        ref={buttonRef}
         className="os-enter"
         id="os-enter"
         type="button"
         aria-busy={loading || undefined}
+        disabled={loading}
         aria-label={accessibleName(locale, children)}
         onClick={enter}
       >

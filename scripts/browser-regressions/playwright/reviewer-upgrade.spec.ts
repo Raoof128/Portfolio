@@ -30,6 +30,22 @@ async function ready(page: Page, path: string, theme: string = "dark") {
   }
 }
 
+async function enterWorkspace(page: Page) {
+  await expect(page.locator(".os-welcome")).toBeVisible();
+  const profile = page.locator(".os-lock-user");
+  await profile.evaluate((element) => {
+    element.addEventListener("click", () => performance.mark("profile-selected"), { once: true });
+  });
+  await profile.click();
+  await expect(page.locator(".os-enter")).toBeDisabled();
+  await expect(page.locator(".os-enter-status")).not.toBeEmpty();
+  await expect(page.locator(".os-welcome")).not.toBeVisible();
+  const elapsed = await page.evaluate(() =>
+    performance.now() - performance.getEntriesByName("profile-selected")[0].startTime,
+  );
+  expect(elapsed).toBeGreaterThanOrEqual(3000);
+}
+
 async function capture(page: Page, info: TestInfo, name: string) {
   // Actual captures for review; no screenshot is silently accepted as a golden.
   await info.attach(name, {
@@ -56,12 +72,12 @@ async function resizePane(page: Page, width: number) {
 }
 
 for (const theme of themes) {
-  test(`fresh home exposes reviewer actions in all five languages: ${theme}`, async ({ page }, info) => {
+  test(`profile selection opens reviewer actions in all five languages: ${theme}`, async ({ page }, info) => {
     await freshVisitor(page, theme);
     await page.setViewportSize({ width: 390, height: 844 });
     for (const locale of locales) {
       await ready(page, route(locale, "/"), theme);
-      await expect(page.locator(".os-welcome")).not.toBeVisible();
+      await enterWorkspace(page);
       await expect(highlights(page).locator("h1")).toBeVisible();
       await expect(highlights(page).locator(".os-role")).not.toBeEmpty();
       await expect(highlights(page).locator(".os-desktop-summary")).not.toBeEmpty();
@@ -97,7 +113,7 @@ test("reviewer actions and a flagship dossier preserve keyboard focus and histor
   page.on("pageerror", (error) => errors.push(error.message));
   await freshVisitor(page);
   await ready(page, "/");
-  await expect(page.locator(".os-welcome")).not.toBeVisible();
+  await enterWorkspace(page);
   const explore = highlights(page).getByRole("link", { name: "Explore Research", exact: true });
   // The first meaningful action is reachable in the document's native tab order.
   for (let index = 0; index < 40 && !(await explore.evaluate((element) => element === document.activeElement)); index += 1) {

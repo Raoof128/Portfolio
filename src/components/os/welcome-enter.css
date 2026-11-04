@@ -2,8 +2,8 @@
    win7-logon.css, which loads later. This file holds the wait mechanics: the visible
    caption, the busy dots, the status row, the visually hidden label, the focus ring, the
    logon-to-desktop hand-off, the language-switch pending state, and the reduced-motion and
-   forced-colour fallbacks. The wait length (3s first visit, about 0.6s after a Lock or under
-   reduced motion) is set in WelcomeEnter.tsx and passed to the dots as --os-wait. */
+   forced-colour fallbacks. The three-second wait is set in WelcomeEnter.tsx and
+   passed to the dots as --os-wait; reduced motion only changes the animation. */
 .os-enter-stage {
   display: grid;
   justify-items: center;
