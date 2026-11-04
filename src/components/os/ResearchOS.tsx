@@ -413,7 +413,6 @@ export function ResearchOS({
   const [lockedPath, setLockedPath] = useState<string | null>(() =>
     isHome ? pathname : null,
   );
-  const welcomeButton = useRef<HTMLButtonElement>(null);
   // The language being switched to while its route loads. It clears itself when the locale changes.
   const [languageSwitch, setLanguageSwitch] = useState<{
     from: Locale;
@@ -1124,32 +1123,24 @@ export function ResearchOS({
           >
             <SydneyClock locale={locale} welcome />
             <div className="os-lock-profile">
+              <Image
+                src="/images/raouf-welcome-168-2ae922a8.webp"
+                alt=""
+                width={84}
+                height={84}
+                priority
+                className="os-lock-portrait"
+              />
               <h1
                 id="os-lock-name"
                 lang={copy.nameLocale}
                 dir={copy.nameLocale === "en" ? "ltr" : "rtl"}
               >
-                <button
-                  type="button"
-                  className="os-lock-user"
-                  aria-label={copy.fullName}
-                  onClick={() => welcomeButton.current?.click()}
-                >
-                  <Image
-                    src="/images/raouf-welcome-168-2ae922a8.webp"
-                    alt=""
-                    width={84}
-                    height={84}
-                    priority
-                    className="os-lock-portrait"
-                  />
-                  <span>{copy.fullName}</span>
-                </button>
+                {copy.fullName}
               </h1>
               <p className="os-role">{role}</p>
               <p className="os-lock-intro">{copy.intro}</p>
               <WelcomeEnter
-                buttonRef={welcomeButton}
                 onEnter={unlockFromLogon}
                 status={copy.welcomeStatus}
                 locale={locale}

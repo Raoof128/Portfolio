@@ -1061,7 +1061,7 @@ describe("ResearchOS workspace lifecycle", () => {
   );
 
   it.each(["/", "/en"])(
-    "shows the lock screen on %s until the profile is selected",
+    "shows the lock screen on %s until the arrow is activated",
     (pathname) => {
       navigation.pathname = pathname;
       const { container } = render(shell());
@@ -1070,9 +1070,7 @@ describe("ResearchOS workspace lifecycle", () => {
       expect(content).toHaveAttribute("hidden");
       expect(content).toHaveAttribute("inert");
       expect(dock).toHaveAttribute("hidden");
-      fireEvent.click(
-        screen.getByRole("button", { name: copy.fullName }),
-      );
+      fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
       flushFrames();
       expect(content).not.toHaveAttribute("hidden");
       expect(content).not.toHaveAttribute("inert");
@@ -1224,12 +1222,19 @@ describe("ResearchOS logon session", () => {
     expect(screen.queryByRole("heading", { name: "Workspace" })).toBeNull();
   });
 
-  it("opens the desktop three seconds after selecting the user profile", () => {
+  it("enters only through the arrow after its full three-second wait", () => {
     vi.useFakeTimers();
     setWelcomeLoaderDuration(3000);
     try {
       const { container } = render(shell());
-      fireEvent.click(screen.getByRole("button", { name: copy.fullName }));
+      expect(
+        screen.queryByRole("button", { name: copy.fullName }),
+      ).not.toBeInTheDocument();
+      fireEvent.click(screen.getByRole("heading", { name: copy.fullName }));
+      fireEvent.click(container.querySelector(".os-lock-portrait")!);
+      expect(screen.getByRole("status")).toBeEmptyDOMElement();
+      expect(container.querySelector(".os-content")).toHaveAttribute("hidden");
+      fireEvent.click(document.getElementById("os-enter")!);
       expect(screen.getByRole("status")).not.toBeEmptyDOMElement();
       act(() => vi.advanceTimersByTime(2999));
       expect(container.querySelector(".os-content")).toHaveAttribute("hidden");
@@ -1263,7 +1268,7 @@ describe("ResearchOS logon session", () => {
     navigation.pathname = "/";
     const first = render(shell());
     expect(first.container.querySelector(".os-welcome")).toBeVisible();
-    fireEvent.click(screen.getByRole("button", { name: copy.fullName }));
+    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
     expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
     expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
     first.unmount();
@@ -1271,7 +1276,7 @@ describe("ResearchOS logon session", () => {
     // The session flag must not silently bypass a new home-page load.
     const returning = render(shell());
     expect(returning.container.querySelector(".os-welcome")).toBeVisible();
-    expect(screen.getByRole("button", { name: copy.fullName })).toBeVisible();
+    expect(screen.getByRole("heading", { name: copy.fullName })).toBeVisible();
     expect(
       document
         .querySelector<HTMLElement>(".os-content")

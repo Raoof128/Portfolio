@@ -39,7 +39,7 @@ flowchart TD
 
 Detailed design notes are documented in [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
 
-Current application release (4 November 2026): `cadf881` restores the home profile screen, including reloads. Selecting the portrait/name or **Enter workspace** starts a full three-second loader before the desktop opens. Returning sessions and reduced motion retain the delay. The release passed 797 unit tests, required build/security gates, Chrome transition checks and both production HTTP audits, then deployed directly with Wrangler. See the [current release handover](./docs/portfolio-release-handover-2026-11-04.md) for source/deployment identities, local Zurvan source coverage and validation limits.
+Current entry flow (4 November 2026): home loads and reloads show the welcome screen. Use the **Enter workspace** arrow to start the full three-second loader before the desktop opens. The portrait and name are a passive display. Returning sessions and reduced motion retain the delay. See the [current release handover](./docs/portfolio-release-handover-2026-11-04.md) for current behavior, earlier deployment evidence and local Zurvan source coverage.
 
 The [12 October handover](./docs/portfolio-handover-2026-10-12.md), earlier frontend-gauntlet reports and build-10 evidence are historical. Their branch names, counts and no-deployment statements describe their original snapshots. Physical-device, assistive-technology, native-speaker and field Web Vitals verification remain separate; incomplete contrast and PDF-tagging limits are not cleared by deployment. The runtime dependency audit reports zero vulnerabilities; 16 moderate tooling advisories remain in the full audit. See the [maintenance instructions](./docs/dependency-security.md) and [goal checklist](./docs/research-os-goal-checklist.md).
 
@@ -80,7 +80,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-Select the profile portrait/name or **Enter workspace**, wait three seconds, then open Projects, type a search, then open About. Opening another page disposes the previous window; there is no opened-page history strip. Minimize temporarily preserves only the current page, with one restore button and a dock indicator. Desktop title dragging and the resize handle have a **Window controls** menu with click steps and keyboard arrows; phones use ordinary document scrolling. Direct content URLs open immediately. Only the appearance preference persists across reloads; the current page’s filters, geometry and reading position are temporary state that ends when navigating away.
+Select the **Enter workspace** arrow, wait three seconds, then open Projects, type a search, then open About. Opening another page disposes the previous window; there is no opened-page history strip. Minimize temporarily preserves only the current page, with one restore button and a dock indicator. Desktop title dragging and the resize handle have a **Window controls** menu with click steps and keyboard arrows; phones use ordinary document scrolling. Direct content URLs open immediately. Only the appearance preference persists across reloads; the current page’s filters, geometry and reading position are temporary state that ends when navigating away.
 
 ## Quality Commands
 

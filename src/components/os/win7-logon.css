@@ -106,28 +106,6 @@
   text-wrap: balance;
   overflow-wrap: break-word;
 }
-/* The portrait and name form one native, keyboard-reachable profile selection. */
-.os-shell.win7 .os-welcome .os-lock-user {
-  display: grid;
-  justify-items: center;
-  max-width: 100%;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 4px;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  line-height: inherit;
-  text-align: center;
-  text-shadow: inherit;
-  cursor: pointer;
-}
-.os-shell.win7 .os-welcome .os-lock-user:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 8px;
-}
 /* The role line sits under the name, small, and leaves 16px before the sign-in orb. */
 .os-shell.win7 .os-welcome .os-role {
   max-width: 36ch;

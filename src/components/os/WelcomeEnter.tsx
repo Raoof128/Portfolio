@@ -9,12 +9,11 @@ import {
   type CSSProperties,
   type MutableRefObject,
   type ReactNode,
-  type Ref,
 } from "react";
 import type { Locale } from "@/i18n";
 import "./welcome-enter.css";
 
-/** How long profile selection waits before the workspace opens. */
+/** How long arrow activation waits before the workspace opens. */
 export const WELCOME_LOADER_MS = 3000;
 
 /** The logon fades over this many milliseconds at the end of the wait (the hand-off). */
@@ -121,7 +120,6 @@ export function WelcomeEnter({
   status,
   children,
   locale = "en",
-  buttonRef,
 }: {
   onEnter: () => void;
   /** Localised status line announced while the wait runs. */
@@ -129,8 +127,6 @@ export function WelcomeEnter({
   /** The lab entry text. It is visually hidden and ends the orb's accessible name. */
   children: ReactNode;
   locale?: Locale;
-  /** The profile tile activates this same entry control. */
-  buttonRef?: Ref<HTMLButtonElement>;
 }) {
   const [loading, setLoading] = useState(false);
   const [waitMs, setWaitMs] = useState(WELCOME_LOADER_MS);
@@ -225,7 +221,6 @@ export function WelcomeEnter({
   return (
     <div className="os-enter-stage" data-loading={loading || undefined}>
       <button
-        ref={buttonRef}
         className="os-enter"
         id="os-enter"
         type="button"

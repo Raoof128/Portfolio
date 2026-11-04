@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-04 (Australia/Sydney) — Arrow-only welcome entry
+
+- **Scope**: Remove profile login and use only the Enter workspace arrow, as requested by the owner.
+- **Summary**: Make the portrait and name passive again, remove the profile-button styling and cross-component activation ref, and keep the arrow's complete three-second loader. Home loads/reloads, focus/status, reduced-motion handling, artwork, locale copy and direct document access retain their existing behavior. Update current usage instructions and mark profile-click evidence historical.
+- **Files Changed**: ResearchOS, WelcomeEnter, win7-logon.css, ResearchOS unit tests, maintained reviewer browser regression helper, README, current release handover, AGENT.md and CHANGELOG.md; matching parent-workspace records.
+- **Verification**: The new arrow-only regression failed against the old profile button before implementation. After implementation, 89 focused entry tests and all 797 application tests across 52 files passed. Typecheck and changed-source ESLint passed; whitespace check clean. Browser regression coverage now clicks the passive name/portrait before testing the arrow's full delay. Build, production and browser receipts are verified separately at release.
+- **Follow-ups**: Publish the checked static artifact using the owner's existing deployment authority, verify its version and arrow-only behavior, and retain the release receipt. Earlier profile-click reports retain their original scope; the arrow-only flow supersedes their entry trigger.
+
 ### Raouf: 2026-11-04 (Australia/Sydney) — Restore profile lock screen and full entry delay
 
 - **Scope**: Fix the owner-reported home-screen bypass and wait three seconds after user/profile selection, then safely merge, clean up the fix branch and deploy with Wrangler.

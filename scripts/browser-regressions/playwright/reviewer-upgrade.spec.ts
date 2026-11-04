@@ -32,16 +32,22 @@ async function ready(page: Page, path: string, theme: string = "dark") {
 
 async function enterWorkspace(page: Page) {
   await expect(page.locator(".os-welcome")).toBeVisible();
-  const profile = page.locator(".os-lock-user");
-  await profile.evaluate((element) => {
-    element.addEventListener("click", () => performance.mark("profile-selected"), { once: true });
+  await expect(page.locator(".os-lock-profile button")).toHaveCount(1);
+  await page.locator("#os-lock-name").click();
+  await page.locator(".os-lock-portrait").click();
+  await expect(page.locator(".os-enter")).toBeEnabled();
+  await expect(page.locator(".os-enter-status")).toBeEmpty();
+  const arrow = page.locator(".os-enter");
+  await arrow.evaluate((element) => {
+    performance.clearMarks("arrow-selected");
+    element.addEventListener("click", () => performance.mark("arrow-selected"), { once: true });
   });
-  await profile.click();
+  await arrow.click();
   await expect(page.locator(".os-enter")).toBeDisabled();
   await expect(page.locator(".os-enter-status")).not.toBeEmpty();
   await expect(page.locator(".os-welcome")).not.toBeVisible();
   const elapsed = await page.evaluate(() =>
-    performance.now() - performance.getEntriesByName("profile-selected")[0].startTime,
+    performance.now() - performance.getEntriesByName("arrow-selected")[0].startTime,
   );
   expect(elapsed).toBeGreaterThanOrEqual(3000);
 }
@@ -72,7 +78,7 @@ async function resizePane(page: Page, width: number) {
 }
 
 for (const theme of themes) {
-  test(`profile selection opens reviewer actions in all five languages: ${theme}`, async ({ page }, info) => {
+  test(`arrow entry opens reviewer actions in all five languages: ${theme}`, async ({ page }, info) => {
     await freshVisitor(page, theme);
     await page.setViewportSize({ width: 390, height: 844 });
     for (const locale of locales) {

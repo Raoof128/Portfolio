@@ -1,12 +1,30 @@
 # Portfolio release handover — 4 November 2026
 
-This handover records the current lock-screen correction followed by the
-initial release evidence. Earlier audit reports and the
+This handover records the current arrow-only entry flow followed by earlier
+release evidence. Earlier audit reports and the
 [12 October handover](portfolio-handover-2026-10-12.md) retain their original
 builds, measurements and limitations. Their earlier no-deployment statements
 describe those historical stages.
 
-## Current lock-screen release
+## Current arrow-only entry
+
+The owner requested removal of profile login. The portrait and name are now a
+passive display; only the **Enter workspace** arrow starts entry. The full
+three-second loader, welcome screen on home loads/reloads, status/focus,
+reduced-motion behavior, five languages and direct document access remain.
+
+The maintained regression clicks the name and portrait to confirm neither
+starts loading, then checks that the arrow waits the full 3,000 ms. The
+browser helper checks there is one entry button and measures the arrow's wait.
+
+Local verification: all 797 application tests and the 89 focused entry tests
+passed, along with typecheck and changed-source ESLint. Release fingerprints
+and served behavior are checked independently when publishing.
+
+## Earlier profile-click release evidence
+
+The profile-click trigger described below is historical and superseded by the
+arrow-only flow above. Its measurements retain their original build scope.
 
 Application commit `cadf8810535d16feb30fa0a1f94699312705f932` restores the home
 profile screen on loads and reloads. Selecting the portrait/name or **Enter
