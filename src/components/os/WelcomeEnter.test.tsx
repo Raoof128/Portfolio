@@ -11,7 +11,6 @@ import {
   markWelcomeSeen,
   setWelcomeLoaderDuration,
   WELCOME_LOADER_MS,
-  WELCOME_SHORT_MS,
   WelcomeEnter,
   welcomeSeenThisSession,
 } from "./WelcomeEnter";
@@ -55,14 +54,13 @@ describe("WelcomeEnter", () => {
     expect(stage).not.toHaveAttribute("data-loading");
   });
 
-  it("keeps the button busy but pressable, announces the status and enters after three seconds", () => {
+  it("disables repeat selection, announces the status and enters after three seconds", () => {
     const { stage, button, onEnter } = renderEnter();
     fireEvent.click(button);
     expect(stage).toHaveAttribute("data-loading");
     expect(button).toHaveAttribute("aria-busy", "true");
-    // Not disabled: a second press ends the wait (see the next tests).
-    expect(button).not.toBeDisabled();
-    // Focus moves to the polite status line because a disabled button drops focus.
+    expect(button).toBeDisabled();
+    // Focus moves to the polite status line while selection is disabled.
     const statusLine = screen.getByRole("status");
     expect(statusLine).toHaveTextContent(status);
     expect(statusLine).toHaveFocus();
@@ -73,23 +71,28 @@ describe("WelcomeEnter", () => {
     expect(stage).not.toHaveAttribute("data-loading");
   });
 
-  it("ends the wait at once on a second press, and only once", () => {
+  it("keeps the full three-second wait after repeated selection", () => {
     const { button, onEnter } = renderEnter();
     fireEvent.click(button);
     expect(onEnter).not.toHaveBeenCalled();
     fireEvent.click(button);
-    expect(onEnter).toHaveBeenCalledTimes(1);
-    act(() => vi.advanceTimersByTime(WELCOME_LOADER_MS));
+    expect(onEnter).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(2999));
+    expect(onEnter).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(1));
     expect(onEnter).toHaveBeenCalledTimes(1);
   });
 
-  it("ends the wait on Enter or Escape pressed on the status line", () => {
+  it("keeps the full wait when Enter or Escape is pressed on the status line", () => {
     const { button, onEnter } = renderEnter();
     fireEvent.click(button);
     const statusLine = screen.getByRole("status");
     fireEvent.keyDown(statusLine, { key: "Escape" });
-    expect(onEnter).toHaveBeenCalledTimes(1);
-    act(() => vi.advanceTimersByTime(WELCOME_LOADER_MS));
+    fireEvent.keyDown(statusLine, { key: "Enter" });
+    expect(onEnter).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(2999));
+    expect(onEnter).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(1));
     expect(onEnter).toHaveBeenCalledTimes(1);
   });
 
@@ -101,7 +104,7 @@ describe("WelcomeEnter", () => {
     expect(onEnter).not.toHaveBeenCalled();
   });
 
-  it("shortens the first-visit wait to about 0.6 seconds under reduced motion", () => {
+  it("keeps a three-second wait under reduced motion", () => {
     // One reduced-motion answer: enter() asks once. The shared matchMedia mock stays as it is.
     vi.mocked(window.matchMedia).mockImplementationOnce(
       (query: string) =>
@@ -112,18 +115,22 @@ describe("WelcomeEnter", () => {
     );
     const { button, onEnter } = renderEnter();
     fireEvent.click(button);
-    act(() => vi.advanceTimersByTime(WELCOME_SHORT_MS - 1));
+    act(() => vi.advanceTimersByTime(600));
+    expect(onEnter).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(2399));
     expect(onEnter).not.toHaveBeenCalled();
     act(() => vi.advanceTimersByTime(1));
     expect(onEnter).toHaveBeenCalledTimes(1);
   });
 
-  it("takes the short wait on a return within the same session", () => {
+  it("keeps a three-second wait on a return within the same session", () => {
     markWelcomeSeen();
     expect(welcomeSeenThisSession()).toBe(true);
     const { button, onEnter } = renderEnter();
     fireEvent.click(button);
-    act(() => vi.advanceTimersByTime(WELCOME_SHORT_MS));
+    act(() => vi.advanceTimersByTime(2999));
+    expect(onEnter).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(1));
     expect(onEnter).toHaveBeenCalledTimes(1);
   });
 

@@ -1198,6 +1198,32 @@ describe("ResearchOS workspace lifecycle", () => {
 });
 
 describe("ResearchOS logon session", () => {
+  it("shows the lock screen on a fresh home-page load", () => {
+    const { container } = render(shell());
+    expect(container.querySelector(".os-welcome")).toBeVisible();
+    expect(container.querySelector(".os-content")).toHaveAttribute("hidden");
+    expect(screen.getAllByRole("main")).toHaveLength(1);
+    expect(screen.queryByRole("heading", { name: "Workspace" })).toBeNull();
+  });
+
+  it("opens the desktop three seconds after selecting the user profile", () => {
+    vi.useFakeTimers();
+    setWelcomeLoaderDuration(3000);
+    try {
+      const { container } = render(shell());
+      fireEvent.click(screen.getByRole("button", { name: copy.fullName, exact: true }));
+      expect(screen.getByRole("status")).not.toBeEmptyDOMElement();
+      act(() => vi.advanceTimersByTime(2999));
+      expect(container.querySelector(".os-content")).toHaveAttribute("hidden");
+      act(() => vi.advanceTimersByTime(1));
+      expect(container.querySelector(".os-welcome")).toBeNull();
+      expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
+    } finally {
+      cleanup();
+      vi.useRealTimers();
+    }
+  });
+
   it("keeps the current logon locked when the brand is opened in another tab", () => {
     const view = render(shell());
     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
