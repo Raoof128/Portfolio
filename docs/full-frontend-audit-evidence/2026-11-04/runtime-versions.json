@@ -1,0 +1,30 @@
+{
+  "node": "v24.22.1",
+  "packages": [
+    {
+      "name": "next",
+      "version": "16.4.4"
+    },
+    {
+      "name": "react",
+      "version": "19.2.3"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.2.3"
+    },
+    {
+      "name": "7.css",
+      "version": "0.21.1"
+    },
+    {
+      "name": "@playwright/test",
+      "version": "1.64.1"
+    },
+    {
+      "name": "vitest",
+      "version": "4.1.12"
+    }
+  ],
+  "scopedCSSSHA256": "583a27d5dd81875f7e85df65da06451ae4ff6f01aa8687357ebcd0e04cc658f1"
+}

@@ -9,6 +9,14 @@
   --win7-taskbar-h: 40px;
   --win7-pin-h: 36px;
   --win7-orb-size: 36px;
+  --win7-taskbar-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  --win7-taskbar-left: max(8px, env(safe-area-inset-left, 0px));
+  --win7-taskbar-right: max(8px, env(safe-area-inset-right, 0px));
+  --win7-taskbar-end: var(--win7-taskbar-right);
+  --os-dock-clearance: calc(
+    var(--win7-taskbar-h) + 32px + env(safe-area-inset-bottom, 0px)
+  );
+  --win7-tray-w: 440px;
   /* Glass for the bar and the running line. The light values are the Aero day bar; the
      night values are set on the dark shell below. */
   --win7-taskbar-glass: linear-gradient(
@@ -41,6 +49,9 @@
      Aero Night), so the plate is white in Aero and navy in Aero Night. */
   --win7-label-plate: rgb(255 255 255 / 0.7);
 }
+.os-shell.win7:dir(rtl) {
+  --win7-taskbar-end: var(--win7-taskbar-left);
+}
 .os-shell.win7[data-appearance="dark"] {
   --win7-taskbar-glass: linear-gradient(
     180deg,
@@ -70,13 +81,15 @@
    orb and divider stay fixed at the start. */
 .os-shell.win7 .os-dock {
   position: fixed;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
+  inset-inline-start: auto;
+  inset-inline-end: auto;
+  left: var(--win7-taskbar-left);
+  right: var(--win7-taskbar-right);
   inset-block-start: auto;
-  inset-block-end: 0;
+  inset-block-end: var(--win7-taskbar-bottom);
   z-index: 40;
   box-sizing: border-box;
-  width: 100%;
+  width: auto;
   max-width: none;
   height: var(--win7-taskbar-h);
   min-height: 0;
@@ -88,9 +101,8 @@
   align-items: center;
   gap: 4px;
   overflow: hidden;
-  border: 0;
-  border-block-start: 1px solid var(--win7-frame-border);
-  border-radius: 0;
+  border: 1px solid var(--win7-frame-border);
+  border-radius: 18px;
   /* Translucent Aero glass: a gradient fill, a blurred backdrop and a 1px bright top edge. */
   background: var(--win7-taskbar-glass);
   box-shadow:
@@ -372,9 +384,9 @@
 .os-shell.win7 .os-topbar {
   position: fixed;
   inset-inline-start: auto;
-  inset-inline-end: 0;
+  inset-inline-end: var(--win7-taskbar-end);
   inset-block-start: auto;
-  inset-block-end: 0;
+  inset-block-end: var(--win7-taskbar-bottom);
   top: auto;
   z-index: 41;
   box-sizing: border-box;
@@ -676,12 +688,17 @@
   inset-inline-start: 4px;
   inset-inline-end: auto;
   inset-block-start: auto;
-  inset-block-end: calc(var(--win7-taskbar-h) + 6px);
+  inset-block-end: calc(
+    var(--win7-taskbar-h) + var(--win7-taskbar-bottom) + 6px
+  );
   box-sizing: border-box;
   width: min(560px, 100vw - 8px);
   max-width: 100vw;
   height: auto;
-  max-height: min(600px, calc(100dvh - var(--win7-taskbar-h) - 16px));
+  max-height: min(
+    600px,
+    calc(100dvh - var(--win7-taskbar-h) - var(--win7-taskbar-bottom) - 16px)
+  );
   margin: 0;
   padding: 0;
   border: 1px solid var(--win7-frame-border);
@@ -1013,6 +1030,7 @@
     margin-inline-start: 4px;
   }
   .os-shell.win7 .os-search-dialog {
+    inset-inline-start: 0;
     width: 100vw;
     border-inline: 0;
     border-radius: 0;
@@ -1084,7 +1102,7 @@
   }
 }
 
-/* Touch dock: on phones and on any coarse pointer, each pin stacks its icon over a short
+/* Compact dock: below 1280px and on any coarse pointer, each pin stacks its icon over a short
    label, so every app is named on screen and no label collapses to a letter. Pins keep 8px
    between them. The strip keeps the DOM order (Projects first), so what is seen, what is
    read and what keyboard focus visits all run in one sequence. Pins past the edge are
@@ -1095,7 +1113,14 @@
     gap: 8px;
   }
 }
-@media (max-width: 700px), (pointer: coarse) {
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .os-shell.win7 {
+    --win7-taskbar-h: 52px;
+    --win7-pin-h: 44px;
+    --win7-orb-size: 44px;
+  }
+}
+@media (max-width: 1279px), (pointer: coarse) {
   .os-shell.win7 .os-dock .os-dock-strip {
     gap: 8px;
   }
@@ -1106,7 +1131,7 @@
     padding: 3px 4px 5px;
   }
   .os-shell.win7 .os-dock .os-dock-app > span:last-child {
-    max-width: 6.5em;
+    max-width: 8em;
     /* 12px is the floor for dock text. The plate matches the ink: white under dark text in
        Aero, navy under white text in Aero Night (see --win7-label-plate). */
     font-size: 12px;
@@ -1185,6 +1210,116 @@
   }
   .os-shell.win7 .os-search-scopes button {
     min-height: var(--win7-touch-target);
+  }
+}
+
+/* Narrow workspaces use two rows: every app has the full first row, while Start and
+   the tray share the second. Labels wrap rather than disappearing behind the tray.
+   The strip retains local scrolling for enlarged text and longer locale labels. */
+@media (max-width: 1023px) {
+  .os-shell.win7 {
+    --win7-taskbar-h: 112px;
+    --win7-orb-size: 44px;
+  }
+  .os-shell.win7 .os-dock {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) 44px;
+    gap: 0 8px;
+    padding: 4px;
+  }
+  .os-shell.win7 .os-dock .os-dock-home {
+    position: static;
+    grid-column: 1;
+    grid-row: 2;
+    width: 44px;
+    height: 44px;
+    align-self: center;
+  }
+  .os-shell.win7 .os-dock .os-dock-divider {
+    display: none;
+  }
+  .os-shell.win7 .os-dock .os-dock-strip {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    gap: 4px;
+    padding: 0;
+  }
+  .os-shell.win7 .os-dock .os-dock-app {
+    flex: 1 1 0;
+    min-width: 44px;
+    max-width: none;
+    height: 100%;
+    min-height: 44px;
+    flex-direction: column;
+    gap: 1px;
+    padding: 3px 2px;
+  }
+  .os-shell.win7 .os-dock .os-dock-app .os-small-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .os-shell.win7 .os-dock .os-dock-app > span:last-child {
+    max-width: 100%;
+    padding: 1px 2px;
+    border-radius: 3px;
+    background: var(--win7-label-plate);
+    font-size: 12px;
+    line-height: 1.1;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  .os-shell.win7 .os-topbar {
+    width: calc(
+      100% - var(--win7-taskbar-left) - var(--win7-taskbar-right) - 56px
+    );
+    height: 44px;
+    inset-block-end: calc(var(--win7-taskbar-bottom) + 5px);
+    padding-inline: 0 4px;
+    border-inline-start: 0;
+  }
+}
+
+/* Short screens keep the larger bar in document flow so it cannot cover the
+   reading viewport. The tray remains aligned to its second row at the shell end. */
+@media (max-height: 599px) {
+  .os-shell.win7 {
+    /* Keep the dock's bottom margin inside the tray's positioning container. */
+    display: flow-root;
+  }
+  .os-shell.win7 .os-dock {
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin: 8px var(--win7-taskbar-right) var(--win7-taskbar-bottom)
+      var(--win7-taskbar-left);
+  }
+  .os-shell.win7:not(:has(> .os-welcome)) > .os-topbar {
+    position: absolute;
+  }
+  .os-shell.win7 .os-search-dialog {
+    inset-block: 8px;
+    max-height: calc(100dvh - 16px);
+  }
+}
+
+/* At high zoom, keep a complete result row and one scope row available. The dialog
+   itself scrolls when the remaining controls need more room than the short viewport. */
+@media (max-height: 359px) {
+  .os-shell.win7 .os-search-dialog[open] {
+    overflow-y: auto;
+    grid-template-rows: auto auto minmax(44px, 1fr) auto;
+  }
+  .os-shell.win7 .os-search-scopes {
+    min-block-size: 61px;
+    max-block-size: 61px;
+  }
+}
+@media (max-height: 359px) and (max-width: 700px) {
+  .os-shell.win7 .os-search-dialog[open] {
+    grid-template-rows: auto auto auto minmax(44px, 1fr) auto;
   }
 }
 

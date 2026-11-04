@@ -1,0 +1,20 @@
+{
+  "verification_date": "2026-11-04",
+  "status": "pass",
+  "errors": [],
+  "project_objects": 4,
+  "original_leaf_fields_reviewed": 164,
+  "distinct_pinned_repository_files": 44,
+  "capture_hashes_verified": 46,
+  "known_private_phone_copied": false,
+  "artifacts": {
+    "engineering-review.json": "e67303c66415e7a3f72de309c4c75c4e5219fee30ee48124f3ccb2b63e3f53e9",
+    "engineering-review.md": "f5b02c1cfa957bc4c1ae3531b0f9b0ac48827866ed5f265a18fdcdfb9871f0a7",
+    "engineering-replacements.json": "33de1787be66cc3c7a9c2ee9c1f1f6022caeeb217bdf88441694e23010cdf06a",
+    "engineering-own-source-manifest.json": "59c98c10d4b12fc6206e468cc62b8d5b148ffd150d00ff8aba02ab73b69c574a",
+    "nexus-divan-review.json": "016fb716edebab8ab58d7c6a90c3913ba9cb4c4076bbaf33ffed98f341e25499",
+    "nexus-divan-review.md": "06bcb07868f0ec1a58395261ed651786ea9a7c66f70e75c9b8962dca767fb023",
+    "engineering-divan-nexus-replacements.json": "d9940be9a71719c0a482b61fc6926c7301cd24ee46b7c10d0e90c11ac0d8bca6"
+  },
+  "scope": "Artifact integrity/content-source review only. No product test suite, build, browser run or local project benchmark was performed."
+}

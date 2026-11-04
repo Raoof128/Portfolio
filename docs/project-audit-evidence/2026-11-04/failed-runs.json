@@ -1,0 +1,18 @@
+[
+  {
+    "phase": "failed-server-run",
+    "result": "12 connection refusals before page content loaded; local preview process had stopped",
+    "resolution": "Restarted Wrangler, checked served version equals final export, reran all12 browser cases and local HTTP audit successfully.",
+    "evidence": "work/project-audit-2026-11-04/failed-server-run/",
+    "scope": "Environment failure, no application defect inferred"
+  },
+  {
+    "phase": "scratch compilation/lint discovery",
+    "result": "Broad compiler/linter globs discovered copied foreign source and scratch helpers under work/",
+    "resolution": "Excluded work from TypeScript include discovery and ESLint global traversal; src and maintained scripts remain checked. Consulted official references; typecheck, lint and build pass.",
+    "evidence": [
+      "work/project-audit-2026-11-04/typecheck-before-scratch.log",
+      "work/project-audit-2026-11-04/final-lint.log"
+    ]
+  }
+]

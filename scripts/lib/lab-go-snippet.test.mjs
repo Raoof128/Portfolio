@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 // Run with PORTFOLIO_GO_BINARY=/path/to/go node --test scripts/lib/lab-go-snippet.test.mjs.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const compiler = process.env.PORTFOLIO_GO_BINARY || "go";
-const version = spawnSync(compiler, ["version"], { encoding: "utf8" });
+const version = spawnSync(compiler, ["version"], { encoding: "utf8", timeout: 5_000, maxBuffer: 4_096 });
 const available = version.status === 0 && /^go version go\d/.test(version.stdout);
 
 const checks = String.raw`package main

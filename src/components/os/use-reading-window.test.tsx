@@ -121,10 +121,17 @@ function pointerTarget() {
   return target;
 }
 
-function ReadingHarness({ active = true }: { active?: boolean }) {
+function ReadingHarness({
+  active = true,
+  path = "/write-ups/reading-fixture",
+}: {
+  active?: boolean;
+  path?: string;
+}) {
   const content = useRef<HTMLElement>(null);
-  const reading = useReadingWindow("/write-ups/reading-fixture", content, {
+  const reading = useReadingWindow(path, content, {
     active,
+    retainGeometry: true,
   });
   return (
     <>
@@ -138,6 +145,7 @@ function ReadingHarness({ active = true }: { active?: boolean }) {
           Reading fixture
         </header>
         <div
+          key={path}
           className="os-page-content"
           data-testid="reading-content"
           onScroll={reading.onContentScroll}
@@ -457,6 +465,22 @@ describe("expanded window geometry", () => {
 });
 
 describe("reading position across layout and visibility changes", () => {
+  it("starts a new document at its own reading point when a retained frame changes layout", () => {
+    const view = render(<ReadingHarness />);
+    const { page } = mockReadingLayout();
+    fireEvent.click(screen.getByRole("button", { name: "Move" }));
+    page.scrollTop = 275;
+    fireEvent.scroll(page);
+    view.rerender(<ReadingHarness path="/write-ups/next-document" />);
+    const next = mockReadingLayout();
+    expect(next.page).not.toBe(page);
+    expect(next.page.scrollTop).toBe(0);
+    changeViewportWidth(390);
+    expect(next.scrollTo).toHaveBeenLastCalledWith({ top: 85 });
+    changeViewportWidth(1280);
+    expect(next.page.scrollTop).toBe(0);
+  });
+
   it("preserves progress made while expanded when the original geometry returns", () => {
     render(<ReadingHarness />);
     const { page, scrollTo } = mockReadingLayout();

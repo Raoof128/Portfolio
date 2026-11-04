@@ -191,13 +191,25 @@
   grid-column: 1 / -1;
 }
 
-/* Tablet portrait (701px to 1023px): the app row comes first, so the launchers are in the
-   first screen above the windows. At this width the row is one line of five. Landscape
-   keeps the windows first, so the Getting Started buttons stay above the taskbar. */
-@media (orientation: portrait) and (min-width: 701px) and (max-width: 1023px) {
-  .os-shell.win7 .os-desktop .os-apps {
-    order: -1;
-  }
+/* Keep the reviewer introduction first on tablet as well as phone. The direct
+   research, résumé and contact actions are useful before the desktop launchers. */
+
+.os-shell.win7 .os-desktop .os-intro .os-desktop-summary {
+  max-inline-size: 62ch;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.os-shell.win7 .os-desktop .os-direct-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.os-shell.win7 .os-desktop .os-direct-links .os-button {
+  min-block-size: 44px;
+  white-space: normal;
+  text-align: start;
 }
 
 /* Desktop titles may wrap for translations. Frame, reflection, typography and caption
@@ -602,8 +614,7 @@
     padding-inline-start: 16px;
   }
 
-  /* Three columns, so a label such as "conversation" keeps its word at 320px. The
-     Projects tile spans two, which gives its caption room. */
+  /* Three columns on regular phones; compact phones get more label room below. */
   .os-shell.win7 .os-desktop .os-app-grid {
     block-size: auto;
     grid-auto-flow: row;
@@ -635,6 +646,12 @@
   .os-shell.win7 .os-desktop .os-desktop-footer a,
   .os-shell.win7 .os-desktop .os-desktop-restore-button {
     min-height: 44px;
+  }
+}
+
+@media (max-width: 360px) {
+  .os-shell.win7 .os-desktop .os-app-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -710,11 +727,47 @@
   }
 }
 
-/* Keyboard focus and in-page jumps scroll their target clear of the taskbar. The dock is
-   44px to 52px tall, so 72px leaves room above it. The scroll container is the document,
-   so the rule sits on the root and applies only while the desktop is on the page. */
+/* Home windows are consecutive document sections on phones and short screens.
+   Reserve the taskbar clearance once on the desktop, rather than stretching every
+   card to a viewport and leaving a large empty gap before the next research item. */
+@media (max-width: 700px), (max-height: 599px) {
+  .os-shell.win7 .os-desktop-identity--atlas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .os-shell.win7 .os-desktop .os-desktop-identity--atlas > .window.glass {
+    display: block;
+    min-height: 0 !important;
+    max-block-size: none;
+    margin: 0 !important;
+  }
+
+  .os-shell.win7 .os-desktop .os-intro.window > .window-body,
+  .os-shell.win7 .os-desktop .proof-atlas--desktop.window > .proof-atlas-body {
+    overflow: visible;
+    padding-block-end: 24px;
+  }
+}
+
+/* Keyboard focus and in-page jumps clear the single-row or two-row taskbar. */
 html:has(.os-desktop) {
   scroll-padding-block-end: 72px;
+}
+@media (pointer: coarse) {
+  html:has(.os-desktop) {
+    scroll-padding-block-end: 84px;
+  }
+}
+@media (max-width: 1023px) {
+  html:has(.os-desktop) {
+    scroll-padding-block-end: 144px;
+  }
+}
+@media (max-height: 599px) {
+  html:has(.os-desktop) {
+    scroll-padding-block-end: 16px;
+  }
 }
 
 /* Coarse pointers at any width (tablets, touch laptops): the desktop's own controls reach

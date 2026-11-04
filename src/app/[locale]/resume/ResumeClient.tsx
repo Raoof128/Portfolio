@@ -186,7 +186,10 @@ export function ResumeClient() {
                 </bdi>
               </Link>
             </h4>
-            <span className="os-resume-period">{year(2026)}</span>
+            <span className="os-resume-period">
+              <time dateTime="2026-05">{monthYear("2026-05-01")}</time> –{" "}
+              {copy.present}
+            </span>
           </div>
           <p className="os-resume-meta">{t.resume.s02_tech_stack}</p>
           <p>{t.resume.s02_subtitle}</p>
@@ -243,9 +246,11 @@ export function ResumeClient() {
             <span className="os-resume-meta">{copy.university}</span>
           </div>
           <div className="os-resume-period">
-            {monthYear("2024-05-01")} – {t.resume.expected_completion}:{" "}
-            {monthYear("2026-11-01")}
+            <time dateTime="2024-05">{monthYear("2024-05-01")}</time> –{" "}
+            {t.resume.expected_completion}:{" "}
+            <time dateTime="2027-06">{monthYear("2027-06-01")}</time>
           </div>
+          <p>{t.resume.education_final_session}</p>
           <p className="os-resume-meta">
             <span className="os-resume-label">
               {t.resume.s04_coursework_label}
@@ -259,7 +264,8 @@ export function ResumeClient() {
             <span className="os-resume-meta">{copy.university}</span>
           </div>
           <div className="os-resume-period">
-            {monthYear("2023-07-01")} – {monthYear("2024-05-01")}
+            <time dateTime="2023-07">{monthYear("2023-07-01")}</time> –{" "}
+            <time dateTime="2024-05">{monthYear("2024-05-01")}</time>
           </div>
         </div>
       </section>
@@ -343,6 +349,42 @@ export function ResumeClient() {
         </h3>
         <div className="os-resume-item os-resume-timeline">
           <div className="os-resume-entry-head">
+            <h4>{t.resume.exp_alignerr_title}</h4>
+            <span className="os-resume-meta">{t.resume.exp_alignerr_employer}</span>
+          </div>
+          <p className="os-resume-period">
+            <time dateTime="2026-01">{monthYear("2026-01-01")}</time> –{" "}
+            <time dateTime="2026-03">{monthYear("2026-03-01")}</time>
+          </p>
+          <p>{t.resume.s07_bullet1}</p>
+        </div>
+        <div className="os-resume-item os-resume-timeline">
+          <div className="os-resume-entry-head">
+            <h4>{t.resume.exp_syllabus_title}</h4>
+            <span className="os-resume-meta">{t.resume.exp_syllabus_employer}</span>
+          </div>
+          <p className="os-resume-period">
+            <time dateTime="2026-05">{monthYear("2026-05-01")}</time> –{" "}
+            {copy.present}
+          </p>
+          <ul className="os-bullet-list">
+            <li>{t.resume.exp_syllabus_bullet1}</li>
+            <li>{t.resume.exp_syllabus_bullet2}</li>
+          </ul>
+          <p>
+            <a
+              href="https://syllabus-sync.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="os-text-link"
+            >
+              <bdi dir="ltr">syllabus-sync.app</bdi>
+              <span className="sr-only">{copy.opensInNewTab}</span>
+            </a>
+          </p>
+        </div>
+        <div className="os-resume-item os-resume-timeline">
+          <div className="os-resume-entry-head">
             <h4>{t.resume.exp1_title}</h4>
             <span className="os-resume-meta">{t.resume.exp1_employer}</span>
           </div>
@@ -363,12 +405,9 @@ export function ResumeClient() {
         </div>
       </section>
 
-      {/* AI Safety & Community */}
+      {/* Leadership & Community */}
       <section className="os-resume-section">
         <h3 className="os-resume-heading">{t.resume.s07_heading}</h3>
-        <ul className="os-bullet-list">
-          <li>{t.resume.s07_bullet1}</li>
-        </ul>
         {/* Volunteering: Macquarie Persian Students Society */}
         <div className="os-resume-item os-resume-timeline os-resume-volunteer">
           <div className="os-resume-entry-head">

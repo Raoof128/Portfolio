@@ -6,6 +6,7 @@ import {
   type MouseEvent,
 } from "react";
 import Link from "next/link";
+import { renderToStaticMarkup } from "react-dom/server";
 import {
   act,
   cleanup,
@@ -36,6 +37,10 @@ import { getWindowCopy } from "./window-copy";
 import { OSApplicationBridge } from "./OSApplicationBridge";
 import { useContentId, useInitialAppState } from "./application-context";
 import { clearLanguageNavigation } from "./language-navigation";
+import { writeAppearance } from "./appearance";
+import { SecureContactForm } from "@/components/ui/SecureContactForm";
+import { I18nProvider } from "@/i18n/provider";
+import en from "@/i18n/locales/en";
 
 /**
  * The logon orb's accessible name is "Sign in: <lab entry>", so the visible caption is part of it
@@ -134,6 +139,7 @@ beforeEach(() => {
   setWelcomeLoaderDuration(0);
   navigation.pathname = "/";
   navigation.push.mockClear();
+  writeAppearance("dark");
   window.localStorage.clear();
   clearLanguageNavigation();
   window.sessionStorage.clear();
@@ -259,6 +265,97 @@ describe("current application window", () => {
     fireEvent.click(toggle);
     expect(shellElement).toHaveAttribute("data-appearance", "dark");
   });
+
+  it("accepts a later appearance change from another tab after a manual toggle", () => {
+    desktop();
+    render(shell());
+    fireEvent.click(screen.getByRole("switch", { name: copy.darkAppearance }));
+    expect(document.querySelector(".os-shell")).toHaveAttribute(
+      "data-appearance",
+      "light",
+    );
+    act(() => {
+      window.localStorage.setItem("researchos.appearance.v1", "dark");
+      window.dispatchEvent(
+        new StorageEvent("storage", {
+          key: "researchos.appearance.v1",
+          newValue: "dark",
+        }),
+      );
+    });
+    expect(document.querySelector(".os-shell")).toHaveAttribute(
+      "data-appearance",
+      "dark",
+    );
+  });
+
+  it("keeps a manual appearance choice across a locale remount with blocked storage", () => {
+    desktop();
+    writeAppearance("dark");
+    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+      throw new DOMException("Blocked", "SecurityError");
+    });
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new DOMException("Blocked", "SecurityError");
+    });
+    const view = render(shell());
+    fireEvent.click(screen.getByRole("switch", { name: copy.darkAppearance }));
+    expect(view.container.querySelector(".os-shell")).toHaveAttribute(
+      "data-appearance",
+      "light",
+    );
+    navigation.pathname = "/fa";
+    view.rerender(
+      <ResearchOS
+        key="fa"
+        locale="fa"
+        role="Researcher"
+        entries={entries}
+        skipLabel="Skip"
+      >
+        <h1>Workspace</h1>
+      </ResearchOS>,
+    );
+    expect(view.container.querySelector(".os-shell")).toHaveAttribute(
+      "data-appearance",
+      "light",
+    );
+    writeAppearance("dark");
+  });
+
+  it.each(["target", "download"] as const)(
+    "preserves an app link's native %s behavior instead of refocusing the current window",
+    (attribute) => {
+      navigation.pathname = "/about";
+      const observed = vi.fn();
+      render(
+        <ResearchOS
+          locale="en"
+          role="Researcher"
+          entries={entries}
+          skipLabel="Skip"
+        >
+          <OSApplicationBridge locale="en" route="/about">
+            <h1>About Raouf</h1>
+            <a
+              href="/about"
+              target={attribute === "target" ? "_blank" : undefined}
+              download={attribute === "download" ? "about.html" : undefined}
+              onClick={(event) => {
+                observed(event.defaultPrevented);
+                event.preventDefault();
+              }}
+            >
+              Native app link
+            </a>
+          </OSApplicationBridge>
+        </ResearchOS>,
+      );
+      fireEvent.click(screen.getByRole("link", { name: "Native app link" }));
+      expect(observed).toHaveBeenCalledExactlyOnceWith(false);
+      expect(navigation.push).not.toHaveBeenCalled();
+    },
+  );
 
   it("marks the shell for a short colour cross-fade on a theme change, not under reduced motion", async () => {
     vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
@@ -594,6 +691,60 @@ function openSearch() {
 }
 
 describe("ResearchOS workspace lifecycle", () => {
+  it("keeps the native contact submit available in its no-JavaScript document", () => {
+    navigation.pathname = "/contact";
+    const markup = renderToStaticMarkup(
+      <I18nProvider locale="en" dictionary={en}>
+        <ResearchOS
+          locale="en"
+          role="Researcher"
+          entries={entries}
+          skipLabel="Skip"
+        >
+          <SecureContactForm />
+        </ResearchOS>
+      </I18nProvider>,
+    );
+    const root = document.createElement("div");
+    root.innerHTML = markup;
+    const form = root.querySelector<HTMLFormElement>(".os-secure-form")!;
+    const submit = form.querySelector<HTMLButtonElement>(
+      'button[type="submit"]',
+    )!;
+    expect(form.action).toMatch(/^mailto:/);
+    expect(form.method).toBe("post");
+    expect(form.enctype).toBe("text/plain");
+    expect(form.noValidate).toBe(false);
+    expect(form.checkValidity()).toBe(false);
+    for (const [name, value] of [
+      ["name", "Native draft"],
+      ["email", "native@example.invalid"],
+      ["message", "A synthetic draft"],
+    ]) {
+      const field = form.elements.namedItem(name) as
+        HTMLInputElement | HTMLTextAreaElement;
+      expect(field, name).not.toBeNull();
+      field.value = value;
+    }
+    expect(form.checkValidity()).toBe(true);
+    // jsdom does not implement cascade layers. Check the actual SSR fallback
+    // selectors against its real form and chrome; the browser suite covers layout.
+    const fallback = markup.match(
+      /<noscript><style>([\s\S]*?)<\/style><\/noscript>/,
+    )?.[1];
+    expect(fallback).toBeDefined();
+    const hiding = [
+      ...fallback!.matchAll(/([^{}]+)\{display:none!important\}/g),
+    ].map((match) => match[1]);
+    expect(hiding.some((selector) => submit.matches(selector))).toBe(false);
+    const controls = [
+      ...root.querySelectorAll<HTMLButtonElement>(".os-shell button"),
+    ].filter((button) => button !== submit);
+    expect(controls.length).toBeGreaterThan(0);
+    for (const control of controls)
+      expect(hiding.some((selector) => control.matches(selector))).toBe(true);
+  });
+
   it.each<Locale>(["en", "fa", "ar", "zh", "es"])(
     "keeps native clocks unnamed with localized reading context in %s",
     (locale) => {
@@ -607,6 +758,10 @@ describe("ResearchOS workspace lifecycle", () => {
         >
           <h1>Workspace</h1>
         </ResearchOS>,
+      );
+      // The welcome is now optional; open it explicitly to verify both native clocks.
+      fireEvent.click(
+        screen.getByRole("button", { name: getOSCopy(locale).lock }),
       );
       const clocks = container.querySelectorAll(
         ".os-lock-time, .os-top-clock time",
@@ -693,7 +848,9 @@ describe("ResearchOS workspace lifecycle", () => {
     await screen.findByRole("button", { name: getWindowCopy("en").moveLeft });
     // No preceding pointerdown: hiding must not depend on the outside-click listener.
     fireEvent.click(
-      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
+      screen.getByRole("button", {
+        name: `${getWindowCopy("en").minimize}: Projects`,
+      }),
     );
     expect(
       screen.queryByRole("button", { name: getWindowCopy("en").moveLeft }),
@@ -743,7 +900,9 @@ describe("ResearchOS workspace lifecycle", () => {
       target: { value: "Retain these notes" },
     });
     fireEvent.click(
-      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
+      screen.getByRole("button", {
+        name: `${getWindowCopy("en").minimize}: Projects`,
+      }),
     );
     flushFrames();
     const task = screen.getByRole("button", { name: /^Restore Window:/ });
@@ -781,7 +940,9 @@ describe("ResearchOS workspace lifecycle", () => {
     navigation.pathname = "/projects";
     const { container } = render(shell("Project explorer"));
     fireEvent.click(
-      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
+      screen.getByRole("button", {
+        name: `${getWindowCopy("en").minimize}: Projects`,
+      }),
     );
     flushFrames();
     fireEvent.keyDown(document, { key: "Escape" });
@@ -805,7 +966,9 @@ describe("ResearchOS workspace lifecycle", () => {
     navigation.pathname = "/projects";
     const view = render(shell("Project explorer"));
     fireEvent.click(
-      screen.getByRole("button", { name: `${getWindowCopy("en").minimize}: Projects` }),
+      screen.getByRole("button", {
+        name: `${getWindowCopy("en").minimize}: Projects`,
+      }),
     );
     const dock = view.container.querySelector<HTMLElement>(".os-dock")!;
     fireEvent.click(within(dock).getByRole("link", { name: copy.projects }), {
@@ -823,8 +986,18 @@ describe("ResearchOS workspace lifecycle", () => {
     ).toBeNull();
   });
 
-  it("exposes one accessible main landmark through unlock and lock", () => {
+  it("exposes one accessible main landmark through initial entry, lock and unlock", () => {
     render(shell());
+    expect(screen.getAllByRole("main")).toHaveLength(1);
+    expect(
+      within(screen.getByRole("main")).getByRole("heading", {
+        name: "Workspace",
+      }),
+    ).toBeVisible();
+    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
+    flushFrames();
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(
       within(screen.getByRole("main")).getByRole("button", {
@@ -839,20 +1012,11 @@ describe("ResearchOS workspace lifecycle", () => {
       within(screen.getByRole("main")).getByRole("heading", {
         name: "Workspace",
       }),
-    ).toBeVisible();
-
-    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
-    flushFrames();
-    expect(screen.getAllByRole("main")).toHaveLength(1);
-    expect(
-      within(screen.getByRole("main")).getByRole("button", {
-        name: orbName("en"),
-      }),
-    ).toBeVisible();
+    ).toHaveFocus();
   });
 
   it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
-    "%s: dock accessible names include every visible label after unlock",
+    "%s: dock accessible names include every visible label on first entry",
     (locale) => {
       navigation.pathname = locale === "en" ? "/" : `/${locale}`;
       const { container } = render(
@@ -866,15 +1030,9 @@ describe("ResearchOS workspace lifecycle", () => {
         </ResearchOS>,
       );
       const { dock } = desktopElements(container);
-      expect(dock).toHaveAttribute("hidden");
-
-      fireEvent.click(
-        screen.getByRole("button", {
-          name: orbName(locale),
-        }),
-      );
-      flushFrames();
-
+      expect(
+        screen.queryByRole("button", { name: orbName(locale) }),
+      ).toBeNull();
       expect(dock).not.toHaveAttribute("hidden");
       const appLinks = dock.querySelectorAll<HTMLAnchorElement>("a[data-app]");
       expect(appLinks).toHaveLength(5);
@@ -892,32 +1050,35 @@ describe("ResearchOS workspace lifecycle", () => {
   );
 
   it.each(["/", "/en"])(
-    "starts %s locked, then reveals and focuses the desktop on Enter",
+    "opens %s immediately and keeps the welcome available on explicit lock",
     (pathname) => {
       navigation.pathname = pathname;
       const { container } = render(shell());
       const { content, dock } = desktopElements(container);
 
+      expect(content).not.toHaveAttribute("hidden");
+      expect(content).not.toHaveAttribute("inert");
+      expect(dock).not.toHaveAttribute("hidden");
+      expect(dock).not.toHaveAttribute("inert");
+      expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
+      expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
+      expect(
+        within(dock).getByRole("link", { name: copy.projects }),
+      ).toBeVisible();
+
+      fireEvent.click(screen.getByRole("button", { name: copy.lock }));
+      flushFrames();
       expect(content).toHaveAttribute("hidden");
       expect(content).toHaveAttribute("inert");
       expect(dock).toHaveAttribute("hidden");
-      expect(dock).toHaveAttribute("inert");
-      expect(screen.queryByRole("heading", { name: "Workspace" })).toBeNull();
-      expect(
-        within(dock).queryByRole("link", { name: copy.projects }),
-      ).toBeNull();
-
+      expect(screen.getByRole("button", { name: orbName("en") })).toHaveFocus();
       fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
       flushFrames();
 
       expect(content).not.toHaveAttribute("hidden");
       expect(content).not.toHaveAttribute("inert");
       expect(dock).not.toHaveAttribute("hidden");
-      expect(dock).not.toHaveAttribute("inert");
       expect(screen.getByRole("heading", { name: "Workspace" })).toHaveFocus();
-      expect(
-        within(dock).getByRole("link", { name: copy.projects }),
-      ).toBeVisible();
     },
   );
 
@@ -934,6 +1095,11 @@ describe("ResearchOS workspace lifecycle", () => {
       </ResearchOS>,
     );
 
+    expect(container.querySelector(".os-content")).not.toHaveAttribute(
+      "hidden",
+    );
+    expect(container.querySelector(".os-welcome")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     expect(container.querySelector(".os-welcome .proof-atlas")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
     flushFrames();
@@ -956,6 +1122,7 @@ describe("ResearchOS workspace lifecycle", () => {
 
     try {
       render(shell());
+      fireEvent.click(screen.getByRole("button", { name: copy.lock }));
       fireEvent.click(
         screen.getByRole("button", {
           name: orbName("en"),
@@ -990,6 +1157,7 @@ describe("ResearchOS workspace lifecycle", () => {
   it("lets the skip link unlock the desktop and focus its heading", () => {
     const { container } = render(shell());
     const { content, dock } = desktopElements(container);
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     const skip = screen.getByRole("link", { name: "Skip to main content" });
     expect(content).toHaveAttribute("hidden");
     expect(skip.closest("[inert], [hidden]")).toBeNull();
@@ -1030,11 +1198,28 @@ describe("ResearchOS workspace lifecycle", () => {
 });
 
 describe("ResearchOS logon session", () => {
+  it("keeps the current logon locked when the brand is opened in another tab", () => {
+    const view = render(shell());
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
+    // Cancel jsdom's document navigation after React has handled the modified click.
+    document.addEventListener("click", (event) => event.preventDefault(), {
+      once: true,
+    });
+    fireEvent.click(view.container.querySelector(".os-brand")!, {
+      ctrlKey: true,
+    });
+    expect(view.container.querySelector(".os-welcome")).toBeVisible();
+    expect(view.container.querySelector(".os-content")).toHaveAttribute(
+      "hidden",
+    );
+    expect(navigation.push).not.toHaveBeenCalled();
+  });
+
   it("skips the logon on a return home within the same session", () => {
     navigation.pathname = "/";
     const first = render(shell());
-    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
-    flushFrames();
+    expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
     first.unmount();
 
     // A later mount of home in this session (a reload or a return) goes straight to the desktop.
@@ -1215,11 +1400,9 @@ describe("ResearchOS keyboard and search", () => {
         </StrictMode>
       );
       const { container, rerender } = render(localizedShell(source));
-      fireEvent.click(
-        screen.getByRole("button", {
-          name: orbName(source),
-        }),
-      );
+      expect(
+        screen.queryByRole("button", { name: orbName(source) }),
+      ).toBeNull();
       fireEvent.click(
         container.querySelector(`.os-language a[lang="${destination}"]`)!,
       );
@@ -1235,16 +1418,20 @@ describe("ResearchOS keyboard and search", () => {
       cleanup();
       const returning = render(localizedShell(destination));
       expect(returning.container.querySelector(".os-welcome")).toBeNull();
-      // A new session still gets the welcome screen.
+      // A new session also reaches useful content without a welcome gate.
       cleanup();
       window.sessionStorage.clear();
       const fresh = render(localizedShell(destination));
-      expect(fresh.container.querySelector(".os-welcome")).toBeVisible();
+      expect(fresh.container.querySelector(".os-welcome")).toBeNull();
+      expect(
+        within(fresh.container).getByRole("heading", { name: "Workspace" }),
+      ).toBeVisible();
     },
   );
 
   it("preserves a deliberately locked language change", () => {
     const { container, rerender } = render(shell());
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
     fireEvent.click(container.querySelector('.os-language a[lang="fa"]')!);
     navigation.pathname = "/fa";
     rerender(

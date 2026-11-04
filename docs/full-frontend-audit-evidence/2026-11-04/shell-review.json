@@ -1,0 +1,1113 @@
+{
+  "lane": "shell",
+  "status": "review_complete_waiting_parent_browser",
+  "reviewed_at": "2026-11-04T01:58:58.143Z",
+  "scope_files": 29,
+  "initial_lines": 8556,
+  "final_lines": 8793,
+  "changed_files": 11,
+  "files": [
+    {
+      "path": "src/components/os/Desktop.test.tsx",
+      "sha256": "469429ce77f0c167e73b4075b6501b640a939a2a00645eae5a5966355e66b479",
+      "bytes": 1938,
+      "lines": 47,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "469429ce77f0c167e73b4075b6501b640a939a2a00645eae5a5966355e66b479",
+      "initial_lines": 47,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 47
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 72
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read all existing caption/restore-focus and five-locale direct-link assertions. Added five meaningful modified/composing Home regressions; all originally failed and now pass.",
+      "final_lines": 72,
+      "final_bytes": 2675,
+      "final_sha256": "a84380cb2edf440c762ace75e39c9f1355561f91b115925009a0cd1327a69d67",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/Desktop.tsx",
+      "sha256": "7f0d5b90d8f35d9dd6435cf6f0fe4f09202cb67461f2276b1b030380098577c9",
+      "bytes": 13599,
+      "lines": 398,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "7f0d5b90d8f35d9dd6435cf6f0fe4f09202cb67461f2276b1b030380098577c9",
+      "initial_lines": 398,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 220
+        },
+        {
+          "version": "initial",
+          "start": 221,
+          "end": 398
+        },
+        {
+          "version": "final",
+          "start": 188,
+          "end": 221
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Examined local caption hide/restore focus, expansion, keyboard spatial icon selection, localized direct links, and Atlas visibility. Preserved prior Research Highlights/3CTA upgrade. Guarded app-grid navigation against consumed, composing and modified keys.",
+      "final_lines": 407,
+      "final_bytes": 13788,
+      "final_sha256": "8eadde6cdd6630e91affdd06c50ea64f824979defcbc875cee6ea83e65fa828a",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.test.tsx",
+      "sha256": "9ff069ea030743ac29d9d55fd37f215b67af0fc64f596e38437c08078a75fc51",
+      "bytes": 13001,
+      "lines": 376,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "9ff069ea030743ac29d9d55fd37f215b67af0fc64f596e38437c08078a75fc51",
+      "initial_lines": 376,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 200
+        },
+        {
+          "version": "initial",
+          "start": 201,
+          "end": 376
+        },
+        {
+          "version": "final",
+          "start": 75,
+          "end": 100
+        },
+        {
+          "version": "final",
+          "start": 160,
+          "end": 195
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read SSR, immutable registration, pre-hydration DOM/caret/value preservation, real React hydration, disposal, route validation and five-locale ID/reference tests. Enhanced reading-point fixture to include both title and command bars; regression originally captured415 instead of453.",
+      "final_lines": 382,
+      "final_bytes": 13306,
+      "final_sha256": "53b9bba6cfb744ddd25e54c17d9464eb610460fb72de80b277717b8e007e922e",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.tsx",
+      "sha256": "67457714c0c6ca74d568f1788694be642f1a08de419c44fd1f0fc918a5270705",
+      "bytes": 2540,
+      "lines": 77,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "67457714c0c6ca74d568f1788694be642f1a08de419c44fd1f0fc918a5270705",
+      "initial_lines": 77,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 77
+        },
+        {
+          "version": "final",
+          "start": 20,
+          "end": 45
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Examined immutable leaf handover, field bounds, caret capture, ready-state fallback, descriptor validation and effect dependencies. Fixed initial reading offset to use command-toolbar bottom, falling back to titlebar where no toolbar exists.",
+      "final_lines": 80,
+      "final_bytes": 2626,
+      "final_sha256": "3d0d33997f48ae398ae79183857a00acdb4e1b05b9413ce50effbb8eed490663",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/OSIcon.tsx",
+      "sha256": "d4cbbfa99d661aaba5e748d1111037345663f680cdaa0171833619b8e2e3df8e",
+      "bytes": 1457,
+      "lines": 51,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "d4cbbfa99d661aaba5e748d1111037345663f680cdaa0171833619b8e2e3df8e",
+      "initial_lines": 51,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 51
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read all app-icon mappings, decorative aria-hidden treatment, monogram rendering and shared tile variant; no actionable defect found.",
+      "final_lines": 51,
+      "final_bytes": 1457,
+      "final_sha256": "d4cbbfa99d661aaba5e748d1111037345663f680cdaa0171833619b8e2e3df8e",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/ReadingWindowControls.tsx",
+      "sha256": "164029051928af861a8798e22ad6f57b2dd366f796706fd365ce10054a873a98",
+      "bytes": 10444,
+      "lines": 298,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "164029051928af861a8798e22ad6f57b2dd366f796706fd365ce10054a873a98",
+      "initial_lines": 298,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 298
+        },
+        {
+          "version": "final",
+          "start": 166,
+          "end": 190
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read disclosure/portal lifecycle, outside click, viewport reposition, keyboard step controls, non-drag alternatives, Tab/Escape/focus restoration and instance IDs. Removed stale copied appearance attribute; portal already lives inside themed shell and inherits its current theme.",
+      "final_lines": 293,
+      "final_bytes": 10276,
+      "final_sha256": "882825fb49753e0950d7c829dcc58dadd8daf999c06bffdb5a951bb641ba2042",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/ResearchOS.test.tsx",
+      "sha256": "056cca97cfcfba9d444557402c2e1b990a305a95d0af8014b391241b9fe1fe3d",
+      "bytes": 52868,
+      "lines": 1480,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "056cca97cfcfba9d444557402c2e1b990a305a95d0af8014b391241b9fe1fe3d",
+      "initial_lines": 1480,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 300
+        },
+        {
+          "version": "initial",
+          "start": 301,
+          "end": 600
+        },
+        {
+          "version": "initial",
+          "start": 601,
+          "end": 900
+        },
+        {
+          "version": "initial",
+          "start": 901,
+          "end": 1200
+        },
+        {
+          "version": "initial",
+          "start": 1201,
+          "end": 1480
+        },
+        {
+          "version": "final",
+          "start": 130,
+          "end": 150
+        },
+        {
+          "version": "final",
+          "start": 262,
+          "end": 355
+        },
+        {
+          "version": "final",
+          "start": 1140,
+          "end": 1166
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 48
+        },
+        {
+          "version": "final",
+          "start": 690,
+          "end": 758
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read all shell registration/navigation, geometry retention, pending/disposal, clocks, lock/logon, locale, keyboard/search/IME and focus tests. Added cross-tab preference, blocked-storage remount, native target/download and modified-brand regressions. Existing tests preserved. Final no-JavaScript Contact follow-up: native submit excluded from shell button-hiding selector; real server-rendered form validity/action and all JS-only chrome selectors covered by a failing-then-passing SSR integration regression.",
+      "final_lines": 1648,
+      "final_bytes": 58806,
+      "final_sha256": "b6d429d8b424b2a41335eb075ee60358a8eaa12454b5829c5974b314c066380a",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed",
+      "previous_final_sha256": "c0c28c4feeaf6f8749e07c14c22d0ca96c2e229e5902c4278935108bb00bf886"
+    },
+    {
+      "path": "src/components/os/ResearchOS.tsx",
+      "sha256": "1f6002e3eb219c28f00a97d94b971c70ce9a19869be634106b32c65eb7dd969d",
+      "bytes": 66578,
+      "lines": 1796,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "1f6002e3eb219c28f00a97d94b971c70ce9a19869be634106b32c65eb7dd969d",
+      "initial_lines": 1796,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 450
+        },
+        {
+          "version": "initial",
+          "start": 451,
+          "end": 900
+        },
+        {
+          "version": "initial",
+          "start": 901,
+          "end": 1150
+        },
+        {
+          "version": "initial",
+          "start": 1151,
+          "end": 1400
+        },
+        {
+          "version": "initial",
+          "start": 1401,
+          "end": 1600
+        },
+        {
+          "version": "initial",
+          "start": 1601,
+          "end": 1796
+        },
+        {
+          "version": "final",
+          "start": 155,
+          "end": 177
+        },
+        {
+          "version": "final",
+          "start": 390,
+          "end": 407
+        },
+        {
+          "version": "final",
+          "start": 584,
+          "end": 600
+        },
+        {
+          "version": "final",
+          "start": 888,
+          "end": 913
+        },
+        {
+          "version": "final",
+          "start": 997,
+          "end": 1013
+        },
+        {
+          "version": "final",
+          "start": 1040,
+          "end": 1052
+        },
+        {
+          "version": "final",
+          "start": 1146,
+          "end": 1157
+        },
+        {
+          "version": "final",
+          "start": 1176,
+          "end": 1222
+        },
+        {
+          "version": "final",
+          "start": 1545,
+          "end": 1580
+        },
+        {
+          "version": "final",
+          "start": 1760,
+          "end": 1777
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read complete shell including hydration/system preferences, app publication, single-window routing, close/minimize/lock/unlock, language carries, requested heading focus, search/dialog keyboard behavior, native fallback, dock and no-JS styles. Removed sticky component theme override and guarded ordinary primary activation without consuming native target/download behavior. Single route-backed frame and prior first-home upgrade preserved. Final no-JavaScript Contact follow-up: native submit excluded from shell button-hiding selector; real server-rendered form validity/action and all JS-only chrome selectors covered by a failing-then-passing SSR integration regression.",
+      "final_lines": 1777,
+      "final_bytes": 65967,
+      "final_sha256": "2dc51d18731de65a692e8411bb0a3f974d1ec1f5a57c3f0053d121d42e679138",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed",
+      "previous_final_sha256": "cabfd61728826e806657368609d91eb62145db931094fa03c2ac45f75c51819a"
+    },
+    {
+      "path": "src/components/os/WelcomeEnter.test.tsx",
+      "sha256": "05575b7c995da31a46171e5815b489d81391e9d2828d59c80fee1140b8be5a42",
+      "bytes": 6006,
+      "lines": 163,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "05575b7c995da31a46171e5815b489d81391e9d2828d59c80fee1140b8be5a42",
+      "initial_lines": 163,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 163
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read all loader timing, repeated activation, Enter/Escape, reduced motion, session repeat, localized accessible labels, unmount cancellation and decorative-duration tests; no actionable defect found.",
+      "final_lines": 163,
+      "final_bytes": 6006,
+      "final_sha256": "05575b7c995da31a46171e5815b489d81391e9d2828d59c80fee1140b8be5a42",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/WelcomeEnter.tsx",
+      "sha256": "7c34d50f37080fbf7ba6f70ee062056ed91585e2efa7f280a57d82cf2503b7b7",
+      "bytes": 10668,
+      "lines": 314,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "7c34d50f37080fbf7ba6f70ee062056ed91585e2efa7f280a57d82cf2503b7b7",
+      "initial_lines": 314,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 314
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read status focus, inert tile children, timer cleanup, animation settlement cap, skip behavior, session flags and reduced-motion timing. No actionable defect demonstrated; no speculative lifecycle refactor made.",
+      "final_lines": 314,
+      "final_bytes": 10668,
+      "final_sha256": "7c34d50f37080fbf7ba6f70ee062056ed91585e2efa7f280a57d82cf2503b7b7",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.restored.test.tsx",
+      "sha256": "dcdfb0f1ff8c835f7672dfc562231b8b4951df5e34c83c4add2c7469cff93ddb",
+      "bytes": 2107,
+      "lines": 65,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "dcdfb0f1ff8c835f7672dfc562231b8b4951df5e34c83c4add2c7469cff93ddb",
+      "initial_lines": 65,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 65
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read module-time path restoration and initial-focus policy fixture; direct restored window does not steal focus. Preserved.",
+      "final_lines": 65,
+      "final_bytes": 2107,
+      "final_sha256": "dcdfb0f1ff8c835f7672dfc562231b8b4951df5e34c83c4add2c7469cff93ddb",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.test.tsx",
+      "sha256": "984646005a176a3e3c05a5edc7920d4e9872e97e71b778aaad7c1959adaebf0e",
+      "bytes": 6841,
+      "lines": 205,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "984646005a176a3e3c05a5edc7920d4e9872e97e71b778aaad7c1959adaebf0e",
+      "initial_lines": 205,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 205
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read active-window focus, caption labels, parent Back, route-cancelled exits, clipboard success/failure and retained-frame async race coverage. Preserved.",
+      "final_lines": 205,
+      "final_bytes": 6841,
+      "final_sha256": "984646005a176a3e3c05a5edc7920d4e9872e97e71b778aaad7c1959adaebf0e",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/WorkspaceWindows.tsx",
+      "sha256": "ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb",
+      "bytes": 34147,
+      "lines": 953,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb",
+      "initial_lines": 953,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 250
+        },
+        {
+          "version": "initial",
+          "start": 251,
+          "end": 500
+        },
+        {
+          "version": "initial",
+          "start": 501,
+          "end": 730
+        },
+        {
+          "version": "initial",
+          "start": 731,
+          "end": 953
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read complete retained-frame component, immutable document/initial-state handover, Activity visibility, title truncation, enter/exit/FLIP lifecycles, stale clipboard request invalidation, failure recovery focus, native pending links, caption and step controls, desktop/task/undo and localized accessible names. No additional reproducible defect found within this pass.",
+      "final_lines": 953,
+      "final_bytes": 34147,
+      "final_sha256": "ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/appearance.test.ts",
+      "sha256": "3aa5b9500e1ff6cd07f90748cb33fe19f1cd7c79f20b14d99b8bc98fd48686c3",
+      "bytes": 2423,
+      "lines": 62,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "3aa5b9500e1ff6cd07f90748cb33fe19f1cd7c79f20b14d99b8bc98fd48686c3",
+      "initial_lines": 62,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 62
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 79
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read existing storage/default guards. Added read-allowed/write-denied regression and updated blocked-read contract to retain explicit session choice; test teardown resets store state.",
+      "final_lines": 79,
+      "final_bytes": 3053,
+      "final_sha256": "7e17c508ccbd8a271a549d272a286e155c2381f9447d0a73869866a7afec8e2c",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/appearance.ts",
+      "sha256": "ee0678a326adcdfd9bd7e77cbbf269fdd4370b29c650481da7c4aa6a19899659",
+      "bytes": 1712,
+      "lines": 52,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "ee0678a326adcdfd9bd7e77cbbf269fdd4370b29c650481da7c4aa6a19899659",
+      "initial_lines": 52,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 52
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 56
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read full storage parser/store/listener lifecycle. Shared optional manual fallback now survives locale remounts and failed writes while keeping fresh/system preference behavior and accepting relevant cross-tab storage events.",
+      "final_lines": 56,
+      "final_bytes": 1976,
+      "final_sha256": "e9ba6a5bcbb2160b77fc634e497d3f001c2e6bc351eb780a4ea33ed571ab49a1",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/application-context.tsx",
+      "sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "bytes": 1516,
+      "lines": 46,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "initial_lines": 46,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 46
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read all immutable application state, registration and visibility contracts; foreground IDs and inactive namespaces remain consistent. No change.",
+      "final_lines": 46,
+      "final_bytes": 1516,
+      "final_sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/language-navigation.test.ts",
+      "sha256": "f4089702c1bee8f634a8f3b558af805bb25a41c1f9c98bbdba9cbb76ec334add",
+      "bytes": 2405,
+      "lines": 70,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "f4089702c1bee8f634a8f3b558af805bb25a41c1f9c98bbdba9cbb76ec334add",
+      "initial_lines": 70,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 70
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read one-shot destination matching, deliberate lock carry, cross-document handoff, TTL/malformed input and blocked-storage memory coverage; no change.",
+      "final_lines": 70,
+      "final_bytes": 2405,
+      "final_sha256": "f4089702c1bee8f634a8f3b558af805bb25a41c1f9c98bbdba9cbb76ec334add",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/language-navigation.ts",
+      "sha256": "1cc28b424a33bdf8ece9e8454e659665351d13a03ebb130f67171e999ad02d4a",
+      "bytes": 2004,
+      "lines": 72,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "1cc28b424a33bdf8ece9e8454e659665351d13a03ebb130f67171e999ad02d4a",
+      "initial_lines": 72,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 72
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read bounded path/value/TTL validation, storage fallback, destination consume and cleanup. No actionable defect demonstrated.",
+      "final_lines": 72,
+      "final_bytes": 2004,
+      "final_sha256": "1cc28b424a33bdf8ece9e8454e659665351d13a03ebb130f67171e999ad02d4a",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/minute-clock.test.ts",
+      "sha256": "23820cdc2cd5572fe64f55316edcbc8ec5ff29bd611385b18ac94a43396172d6",
+      "bytes": 2190,
+      "lines": 63,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "23820cdc2cd5572fe64f55316edcbc8ec5ff29bd611385b18ac94a43396172d6",
+      "initial_lines": 63,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 63
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read minute-boundary sharing, hidden-page suspension/catch-up and final-subscriber cleanup assertions; no change.",
+      "final_lines": 63,
+      "final_bytes": 2190,
+      "final_sha256": "23820cdc2cd5572fe64f55316edcbc8ec5ff29bd611385b18ac94a43396172d6",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/minute-clock.ts",
+      "sha256": "e6932768845bd4149548806cc057077de1043795a93eb04e8c943af5889c5aff",
+      "bytes": 1253,
+      "lines": 46,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "e6932768845bd4149548806cc057077de1043795a93eb04e8c943af5889c5aff",
+      "initial_lines": 46,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 46
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read shared listener/timer ownership, minute snapshot, visibility suspension and cleanup; no actionable defect found.",
+      "final_lines": 46,
+      "final_bytes": 1253,
+      "final_sha256": "e6932768845bd4149548806cc057077de1043795a93eb04e8c943af5889c5aff",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/spotlight.ts",
+      "sha256": "dae808de0e324451d726e5876bae775efeb7a616e32f27e02ded6d23a838d9ec",
+      "bytes": 1118,
+      "lines": 28,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "dae808de0e324451d726e5876bae775efeb7a616e32f27e02ded6d23a838d9ec",
+      "initial_lines": 28,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 28
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read reduced decorative pointer behavior and root CSS-origin mutation/listener teardown; no perpetual animation loop or actionable lifecycle defect found.",
+      "final_lines": 28,
+      "final_bytes": 1118,
+      "final_sha256": "dae808de0e324451d726e5876bae775efeb7a616e32f27e02ded6d23a838d9ec",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/use-copyright-year.ts",
+      "sha256": "48d28e501715a86d23522112628a5492f9c28981d34d11ebd36b27088949e03d",
+      "bytes": 575,
+      "lines": 15,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "48d28e501715a86d23522112628a5492f9c28981d34d11ebd36b27088949e03d",
+      "initial_lines": 15,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 15
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read SSR-compatible build-year snapshot and UTC browser year helper; no actionable defect found.",
+      "final_lines": 15,
+      "final_bytes": 575,
+      "final_sha256": "48d28e501715a86d23522112628a5492f9c28981d34d11ebd36b27088949e03d",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/use-reading-window.test.tsx",
+      "sha256": "72d8820f14a980a9c6e47629b5be03092376e720369899326fc83d39723fc5a2",
+      "bytes": 18824,
+      "lines": 547,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "72d8820f14a980a9c6e47629b5be03092376e720369899326fc83d39723fc5a2",
+      "initial_lines": 547,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 230
+        },
+        {
+          "version": "initial",
+          "start": 231,
+          "end": 450
+        },
+        {
+          "version": "initial",
+          "start": 451,
+          "end": 547
+        },
+        {
+          "version": "final",
+          "start": 121,
+          "end": 159
+        },
+        {
+          "version": "final",
+          "start": 465,
+          "end": 489
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read all capture/cancel/blur/Escape/unmount, geometry/viewport and reading-position tests. Extended real document-replacement harness and added old-page-offset regression (360 received vs85 expected before fix), preserving same-document progress assertions.",
+      "final_lines": 571,
+      "final_bytes": 19579,
+      "final_sha256": "9d7fa9ae0a7daed29c0180f469a69372572ade04848f2c288edd220ce102db7d",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/use-reading-window.ts",
+      "sha256": "00fae2f7d9648e4966c928f0123292b73fc473f2aabf5d9ca6e1a282c75abd3d",
+      "bytes": 14849,
+      "lines": 459,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "00fae2f7d9648e4966c928f0123292b73fc473f2aabf5d9ca6e1a282c75abd3d",
+      "initial_lines": 459,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 240
+        },
+        {
+          "version": "initial",
+          "start": 241,
+          "end": 459
+        },
+        {
+          "version": "final",
+          "start": 150,
+          "end": 177
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read all breakpoint subscription, document/floating reading point, initial placement, path geometry retention, pointer capture/coalescing/final release, keyboard step, maximize snapshot, viewport clamping and cleanup. Reset saved reading point for a new document while keeping frame bounds.",
+      "final_lines": 464,
+      "final_bytes": 15150,
+      "final_sha256": "a3b32f9e73413069ec403c478f17370f85c3ec864bb443ce9c7845405e729dce",
+      "changed": true,
+      "review_method": "Full initial file read; all owned edits and final changed regions reviewed"
+    },
+    {
+      "path": "src/components/os/window-geometry.test.ts",
+      "sha256": "ce75527ad858b3c53a8abfe7c5ef4035784b8f1fba1e3c7d2dfe9d16ae2012ad",
+      "bytes": 8698,
+      "lines": 277,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "ce75527ad858b3c53a8abfe7c5ef4035784b8f1fba1e3c7d2dfe9d16ae2012ad",
+      "initial_lines": 277,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 277
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read all exact-boundary, RTL physical-delta, finite/extreme input, 320px minimum, immutable-input and deterministic containment tests; no change.",
+      "final_lines": 277,
+      "final_bytes": 8698,
+      "final_sha256": "ce75527ad858b3c53a8abfe7c5ef4035784b8f1fba1e3c7d2dfe9d16ae2012ad",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/window-geometry.ts",
+      "sha256": "4d09d1e3a5a59bb89169bf585630da89f5a3a99b7d86cdc3afdd78a89f705d0a",
+      "bytes": 8575,
+      "lines": 292,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "4d09d1e3a5a59bb89169bf585630da89f5a3a99b7d86cdc3afdd78a89f705d0a",
+      "initial_lines": 292,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 292
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read all viewport/bounds defaults, placement/cascade, clamping, FLIP and move/resize helpers. Existing bounded finite geometry and320px reading minimum preserved; no actionable defect demonstrated.",
+      "final_lines": 292,
+      "final_bytes": 8575,
+      "final_sha256": "4d09d1e3a5a59bb89169bf585630da89f5a3a99b7d86cdc3afdd78a89f705d0a",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/window-motion.test.ts",
+      "sha256": "49e9c8825f47236301a54118ad1b4c61bc011d0df13475f0eb98606fce6e2276",
+      "bytes": 1186,
+      "lines": 28,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "49e9c8825f47236301a54118ad1b4c61bc011d0df13475f0eb98606fce6e2276",
+      "initial_lines": 28,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 28
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read exact uniform-FLIP arithmetic and invalid-rectangle fallback coverage; no change.",
+      "final_lines": 28,
+      "final_bytes": 1186,
+      "final_sha256": "49e9c8825f47236301a54118ad1b4c61bc011d0df13475f0eb98606fce6e2276",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/workspace-model.test.ts",
+      "sha256": "5b7fe06260fd1b694de44a6dc0cc2356149e4a1a2846529e4347b40a8705df27",
+      "bytes": 6808,
+      "lines": 187,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "5b7fe06260fd1b694de44a6dc0cc2356149e4a1a2846529e4347b40a8705df27",
+      "initial_lines": 187,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 187
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "test:mounted-shell",
+      "audit_notes": "Read all approved-route/locale, single-window replacement, stale-action rejection, minimized restore, immutability/identity and deterministic invariant coverage; no change.",
+      "final_lines": 187,
+      "final_bytes": 6808,
+      "final_sha256": "5b7fe06260fd1b694de44a6dc0cc2356149e4a1a2846529e4347b40a8705df27",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    },
+    {
+      "path": "src/components/os/workspace-model.ts",
+      "sha256": "88e9266063f0d73ad981b329696260abeaa58f9dd6865a682391b544053fc838",
+      "bytes": 2547,
+      "lines": 89,
+      "binary": false,
+      "lane": "shell",
+      "initial_sha256": "88e9266063f0d73ad981b329696260abeaa58f9dd6865a682391b544053fc838",
+      "initial_lines": 89,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 89
+        }
+      ],
+      "reader": "/root/review_changes",
+      "mounted_classification": "mounted-shell",
+      "audit_notes": "Read all bounded current-page reducer actions, descriptor/locale validation, immutable copying and no-op identity. Single-window design retained; no defect demonstrated.",
+      "final_lines": 89,
+      "final_bytes": 2547,
+      "final_sha256": "88e9266063f0d73ad981b329696260abeaa58f9dd6865a682391b544053fc838",
+      "changed": false,
+      "review_method": "Full initial file read; final bytes match reviewed initial bytes"
+    }
+  ],
+  "findings": [
+    {
+      "id": "SHELL-01",
+      "severity": "P2",
+      "status": "fixed",
+      "files": [
+        "src/components/os/use-reading-window.ts",
+        "src/components/os/use-reading-window.test.tsx"
+      ],
+      "title": "New documents inherited the previous document reading offset during responsive layout change",
+      "evidence": "Native baseline: Simurgh body.scrollTop600 → Resume body.scrollTop0 →390x844 produced window.scrollY543 and Resume h1 top−408.90625. Focused regression received top360 instead of85. Reset document-owned reading offset on path/initial offset change.",
+      "artifacts": [
+        "shell-reading-baseline.json",
+        "shell-regressions-before.txt",
+        "shell-tests-final.txt"
+      ]
+    },
+    {
+      "id": "SHELL-02",
+      "severity": "P2",
+      "status": "fixed",
+      "files": [
+        "src/components/os/OSApplicationBridge.tsx",
+        "src/components/os/OSApplicationBridge.test.tsx"
+      ],
+      "title": "SSR handover omitted the separate command toolbar from reading-position measurement",
+      "evidence": "Enhanced existing browser-DOM handover fixture with a38px command toolbar. Initial publication was415 rather than453. Bridge now measures bottommost toolbar with titlebar fallback.",
+      "artifacts": [
+        "shell-bridge-before.txt",
+        "shell-tests-final.txt"
+      ]
+    },
+    {
+      "id": "SHELL-03",
+      "severity": "P2",
+      "status": "fixed",
+      "files": [
+        "src/components/os/appearance.ts",
+        "src/components/os/appearance.test.ts",
+        "src/components/os/ResearchOS.tsx",
+        "src/components/os/ResearchOS.test.tsx"
+      ],
+      "title": "Explicit appearance was lost on blocked-storage locale remount and masked later cross-tab changes",
+      "evidence": "Native baseline manual light stayed light after dark storage event; blocked-storage manual light became dark on /fa remount. Shared optional store fallback replaces component override. Failed-write/working-read behavior explicitly preserved.",
+      "artifacts": [
+        "shell-baseline-probe.json",
+        "shell-regressions-before.txt",
+        "shell-tests-final.txt"
+      ]
+    },
+    {
+      "id": "SHELL-04",
+      "severity": "P2",
+      "status": "fixed",
+      "files": [
+        "src/components/os/ResearchOS.tsx",
+        "src/components/os/ResearchOS.test.tsx"
+      ],
+      "title": "Current workspace state changed on modified/native app-link activation",
+      "evidence": "Before fix, Ctrl-click brand removed current logon and app links with target or download reached their click handler already defaultPrevented. Shared ordinary-primary guard preserves target/download and browser modifiers.",
+      "artifacts": [
+        "shell-regressions-before.txt",
+        "shell-tests-final.txt"
+      ]
+    },
+    {
+      "id": "SHELL-05",
+      "severity": "P2",
+      "status": "fixed",
+      "files": [
+        "src/components/os/Desktop.tsx",
+        "src/components/os/Desktop.test.tsx"
+      ],
+      "title": "App-grid Home handling swallowed browser modifiers and composing input",
+      "evidence": "All five Ctrl/Meta/Alt/Shift/composing Home cases were defaultPrevented and moved focus. Guard now leaves native/composition input untouched.",
+      "artifacts": [
+        "shell-desktop-before.txt",
+        "shell-tests-final.txt"
+      ]
+    },
+    {
+      "id": "SHELL-06",
+      "severity": "P3",
+      "status": "fixed",
+      "files": [
+        "src/components/os/ReadingWindowControls.tsx"
+      ],
+      "title": "Window Controls portal retained a stale copied appearance attribute",
+      "evidence": "Native programmatic theme activation while disclosure stayed open left shell light / panel data-appearance dark. Removed unnecessary copied attribute because portal is a child of themed shell. This capture proves stale theme metadata, not a contrast failure (sampled panel background remained white by design).",
+      "artifacts": [
+        "shell-portal-baseline.json"
+      ]
+    },
+    {
+      "id": "SHELL-07",
+      "severity": "P2",
+      "status": "fixed",
+      "files": [
+        "src/components/os/ResearchOS.tsx",
+        "src/components/os/ResearchOS.test.tsx"
+      ],
+      "title": "The no-JavaScript shell hid the native Contact form submit",
+      "evidence": "Compiled build2026-11-04T01:50:13.350Z showed formdisplaygrid and submitdisplaynone. Excluded only .os-secure-form button[type=submit] from the existing base-layer noscript hiding selector. Real SSR form regression failed before/passed after; candidate selector substituted into baseline HTML yields visible submit, native Name validation focus and all other shell buttons hidden. Substitution is not final-export verification.",
+      "artifacts": [
+        "shell-nojs-contact-before.json",
+        "shell-nojs-contact-red.txt",
+        "shell-nojs-contact-green.txt",
+        "shell-nojs-contact-selector-native.json"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "command": "npx vitest run [all13scoped test files] --maxWorkers=1",
+      "exit_code": 0,
+      "files": 13,
+      "tests": 212,
+      "artifact": "shell-tests-final.txt",
+      "notes": "Two pre-existing jsdom document-navigation notices remain in log; no failing assertions."
+    },
+    {
+      "command": "npx eslint [11changed owned source/test files]",
+      "exit_code": 0,
+      "artifact": "shell-eslint.txt"
+    },
+    {
+      "command": "npx prettier --check [11changed owned source/test files]",
+      "exit_code": 0,
+      "artifact": "shell-format.txt"
+    },
+    {
+      "command": "npx vitest run src/components/os/ResearchOS.test.tsx --maxWorkers=1",
+      "exit_code": 0,
+      "files": 1,
+      "tests": 73,
+      "artifact": "shell-nojs-contact-green.txt",
+      "notes": "Final two-file no-JavaScript follow-up; same two existing jsdom document-navigation notices."
+    },
+    {
+      "command": "npx eslint src/components/os/ResearchOS.tsx src/components/os/ResearchOS.test.tsx",
+      "exit_code": 0,
+      "artifact": "shell-nojs-contact-eslint.txt"
+    },
+    {
+      "command": "npx prettier --check src/components/os/ResearchOS.tsx src/components/os/ResearchOS.test.tsx",
+      "exit_code": 0,
+      "artifact": "shell-nojs-contact-format.txt"
+    }
+  ],
+  "baseline_native_artifacts": [
+    "shell-baseline-probe.json",
+    "shell-portal-baseline.json",
+    "shell-reading-baseline.json"
+  ],
+  "limits": [
+    "Candidate native browser results and exact export identity are owned by parent/baseline_review; baseline probes are not final-export verification.",
+    "No shell-lane full build, dependency/config mutation, publication or root log edit. Parent owns integrated checks and protocol postflight.",
+    "Contact viewport-shrink focus defect was coordinated to opening_tests/SecureContactForm; no duplicate shell hook change.",
+    "This source and focused test pass does not certify physical devices, software keyboards, assistive technology or all future routes."
+  ]
+}

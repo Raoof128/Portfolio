@@ -1,0 +1,42 @@
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+ ❯ src/components/os/OSApplicationBridge.test.tsx (14 tests | 1 failed | 13 skipped) 62ms
+     × captures simulated browser values, caret and reading point before handover 59ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/os/OSApplicationBridge.test.tsx > OSApplicationBridge handover contract > captures simulated browser values, caret and reading point before handover
+AssertionError: expected { fields: { …(3) }, …(6) } to match object { …(7) }
+
+- Expected
++ Received
+
+@@ -5,9 +5,9 @@
+      "subject": "Evidence request",
+    },
+    "focusedField": "project-query",
+    "projectCategory": "DEFENSIVE",
+    "projectQuery": "simurgh containment",
+-   "readingOffset": 453,
++   "readingOffset": 415,
+    "selectionEnd": 9,
+    "selectionStart": 2,
+  }
+
+ ❯ src/components/os/OSApplicationBridge.test.tsx:180:21
+    178|     expect(register).toHaveBeenCalledOnce();
+    179|     const initial = register.mock.calls[0][0].initial;
+    180|     expect(initial).toMatchObject({
+       |                     ^
+    181|       projectQuery: "simurgh containment",
+    182|       projectCategory: "DEFENSIVE",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 skipped (14)
+   Start at  01:23:04
+   Duration  1.36s (transform 407ms, setup 100ms, import 605ms, tests 62ms, environment 444ms)
+

@@ -1,0 +1,153 @@
+[
+  {
+    "locale": "en",
+    "width": 320,
+    "scrollWidth": 320,
+    "columns": "141px 141px",
+    "apps": 5,
+    "caption": "Start a conversation",
+    "lineWidths": [
+      42.9375,
+      84.984375
+    ]
+  },
+  {
+    "locale": "en",
+    "mode": "320x225 zoom-equivalent layout viewport; native browser zoom not emulated",
+    "modal": {
+      "dialog": {
+        "top": 8,
+        "bottom": 217,
+        "height": 209
+      },
+      "heading": {
+        "top": 9,
+        "bottom": 72,
+        "height": 63
+      },
+      "scope": {
+        "top": 72,
+        "bottom": 125.953125,
+        "height": 53.953125
+      },
+      "body": {
+        "top": 162.046875,
+        "bottom": 162.046875,
+        "height": 0
+      },
+      "field": {
+        "top": 162.046875,
+        "bottom": 216,
+        "height": 53.953125
+      },
+      "input": {
+        "top": 167.53125,
+        "bottom": 211.53125,
+        "height": 44
+      }
+    }
+  },
+  {
+    "locale": "en",
+    "mode": "short-search-fixed-prototype",
+    "fixed": {
+      "height": 209,
+      "scrollHeight": 235,
+      "overflow": "auto",
+      "results": 44,
+      "scopes": 61
+    }
+  },
+  {
+    "locale": "fa",
+    "width": 320,
+    "scrollWidth": 320,
+    "columns": "141px 141px",
+    "apps": 5,
+    "caption": "شروع یک گفت‌وگو",
+    "lineWidths": [
+      101.046875
+    ]
+  },
+  {
+    "locale": "fa",
+    "mode": "320x225 zoom-equivalent layout viewport; native browser zoom not emulated",
+    "modal": {
+      "dialog": {
+        "top": 8,
+        "bottom": 217,
+        "height": 209
+      },
+      "heading": {
+        "top": 9,
+        "bottom": 72,
+        "height": 63
+      },
+      "scope": {
+        "top": 72,
+        "bottom": 125.953125,
+        "height": 53.953125
+      },
+      "body": {
+        "top": 162.046875,
+        "bottom": 162.046875,
+        "height": 0
+      },
+      "field": {
+        "top": 162.046875,
+        "bottom": 216,
+        "height": 53.953125
+      },
+      "input": {
+        "top": 167.53125,
+        "bottom": 211.53125,
+        "height": 44
+      }
+    }
+  },
+  {
+    "locale": "fa",
+    "mode": "short-search-fixed-prototype",
+    "fixed": {
+      "height": 209,
+      "scrollHeight": 235,
+      "overflow": "auto",
+      "results": 44,
+      "scopes": 61
+    }
+  },
+  {
+    "locale": "ar",
+    "width": 320,
+    "scrollWidth": 320,
+    "columns": "141px 141px",
+    "apps": 5,
+    "caption": "ابدأ حوارًا",
+    "lineWidths": [
+      47.765625
+    ]
+  },
+  {
+    "locale": "zh",
+    "width": 320,
+    "scrollWidth": 320,
+    "columns": "141px 141px",
+    "apps": 5,
+    "caption": "开启对话",
+    "lineWidths": [
+      56
+    ]
+  },
+  {
+    "locale": "es",
+    "width": 320,
+    "scrollWidth": 320,
+    "columns": "141px 141px",
+    "apps": 5,
+    "caption": "Iniciar una conversación",
+    "lineWidths": [
+      69.78125,
+      86.65625
+    ]
+  }
+]

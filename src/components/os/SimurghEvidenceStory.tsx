@@ -20,7 +20,12 @@ export function SimurghEvidenceStory({
   copy: SimurghEvidenceStoryCopy;
 }) {
   const id = useId();
-  const [selectedBoundary, setSelectedBoundary] = useState(0);
+  const [selectedStep, setSelectedStep] = useState(0);
+  const steps = [
+    ...copy.boundaries,
+    { title: copy.signedPack, detail: copy.signedPackDetail },
+    { title: copy.verifier, detail: copy.verifierDetail },
+  ];
 
   return (
     <figure
@@ -46,19 +51,19 @@ export function SimurghEvidenceStory({
           className="os-simurgh-instrument-chain"
           aria-label={copy.proofPathLabel}
         >
-          {copy.boundaries.map((boundary, index) => (
+          {steps.map((step, index) => (
             <li
               className="os-simurgh-instrument-station"
-              data-selected={selectedBoundary === index}
-              data-path-active={index >= selectedBoundary}
-              key={boundary.title}
+              data-selected={selectedStep === index}
+              data-path-active={index >= selectedStep}
+              key={step.title}
             >
               <button
                 type="button"
                 className="os-simurgh-instrument-control"
-                aria-pressed={selectedBoundary === index}
+                aria-pressed={selectedStep === index}
                 aria-describedby={`${id}-detail-${index}`}
-                onClick={() => setSelectedBoundary(index)}
+                onClick={() => setSelectedStep(index)}
               >
                 <span
                   className="os-simurgh-instrument-point"
@@ -69,36 +74,10 @@ export function SimurghEvidenceStory({
                     useGrouping: false,
                   })}
                 </span>
-                <strong>{boundary.title}</strong>
+                <strong>{step.title}</strong>
               </button>
             </li>
           ))}
-          <li
-            className="os-simurgh-instrument-station os-simurgh-instrument-output"
-            data-path-active="true"
-          >
-            <span className="os-simurgh-instrument-point" aria-hidden="true">
-              {formatNumber(copy.boundaries.length + 1, locale, {
-                minimumIntegerDigits: 2,
-                useGrouping: false,
-              })}
-            </span>
-            <strong>{copy.signedPack}</strong>
-            <small>{copy.signedPackDetail}</small>
-          </li>
-          <li
-            className="os-simurgh-instrument-station os-simurgh-instrument-output"
-            data-path-active="true"
-          >
-            <span className="os-simurgh-instrument-point" aria-hidden="true">
-              {formatNumber(copy.boundaries.length + 2, locale, {
-                minimumIntegerDigits: 2,
-                useGrouping: false,
-              })}
-            </span>
-            <strong>{copy.verifier}</strong>
-            <small>{copy.verifierDetail}</small>
-          </li>
         </ol>
       </div>
 
@@ -108,12 +87,12 @@ export function SimurghEvidenceStory({
       >
         <h3 id={`${id}-details-title`}>{copy.detailsTitle}</h3>
         <ol>
-          {copy.boundaries.map((boundary, index) => (
+          {steps.map((step, index) => (
             <li
               id={`${id}-detail-${index}`}
-              data-selected={selectedBoundary === index}
-              aria-current={selectedBoundary === index ? "step" : undefined}
-              key={boundary.title}
+              data-selected={selectedStep === index}
+              aria-current={selectedStep === index ? "step" : undefined}
+              key={step.title}
             >
               <span className="os-simurgh-explanation-index" aria-hidden="true">
                 {formatNumber(index + 1, locale, {
@@ -121,7 +100,7 @@ export function SimurghEvidenceStory({
                   useGrouping: false,
                 })}
               </span>
-              <p>{boundary.detail}</p>
+              <p>{step.detail}</p>
             </li>
           ))}
         </ol>

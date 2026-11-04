@@ -138,8 +138,8 @@
   border-block-start: 1px solid var(--explorer-keyline);
 }
 
-/* Phones: the address field grows with its readable breadcrumb. */
-@media (max-width: 700px) {
+/* Collapsed navigation: the address field grows with its readable breadcrumb. */
+@container explorer-frame (max-width: 880px) {
   .os-shell.win7
     .os-project-explorer
     > .os-explorer-commandbar

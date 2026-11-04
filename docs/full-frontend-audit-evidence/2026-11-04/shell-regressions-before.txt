@@ -1,0 +1,119 @@
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+ ❯ src/components/os/ResearchOS.test.tsx (72 tests | 5 failed | 67 skipped) 822ms
+     × accepts a later appearance change from another tab after a manual toggle 269ms
+     × keeps a manual appearance choice across a locale remount with blocked storage 77ms
+     × preserves an app link's native target behavior instead of refocusing the current window 230ms
+     × preserves an app link's native download behavior instead of refocusing the current window 175ms
+     × keeps the current logon locked when the brand is opened in another tab 68ms
+ ❯ src/components/os/use-reading-window.test.tsx (25 tests | 1 failed | 24 skipped) 196ms
+     × starts a new document at its own reading point when a retained frame changes layout 193ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/os/ResearchOS.test.tsx > current application window > accepts a later appearance change from another tab after a manual toggle
+Error: expect(element).toHaveAttribute("data-appearance", "dark") // element.getAttribute("data-appearance") === "dark"
+
+Expected the element to have attribute:
+  data-appearance="dark"
+Received:
+  data-appearance="light"
+ ❯ src/components/os/ResearchOS.test.tsx:276:49
+    274|       }));
+    275|     });
+    276|     expect(document.querySelector(".os-shell")).toHaveAttribute("data-…
+       |                                                 ^
+    277|   });
+    278|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/components/os/ResearchOS.test.tsx > current application window > keeps a manual appearance choice across a locale remount with blocked storage
+Error: expect(element).toHaveAttribute("data-appearance", "light") // element.getAttribute("data-appearance") === "light"
+
+Expected the element to have attribute:
+  data-appearance="light"
+Received:
+  data-appearance="dark"
+ ❯ src/components/os/ResearchOS.test.tsx:297:55
+    295|       </ResearchOS>,
+    296|     );
+    297|     expect(view.container.querySelector(".os-shell")).toHaveAttribute(…
+       |                                                       ^
+    298|     writeAppearance("dark");
+    299|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/components/os/ResearchOS.test.tsx > current application window > preserves an app link's native target behavior instead of refocusing the current window
+ FAIL  src/components/os/ResearchOS.test.tsx > current application window > preserves an app link's native download behavior instead of refocusing the current window
+AssertionError: expected "vi.fn()" to be called once with arguments: [ false ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   false,
++   true,
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/components/os/ResearchOS.test.tsx:325:24
+    323|       );
+    324|       fireEvent.click(screen.getByRole("link", { name: "Native app lin…
+    325|       expect(observed).toHaveBeenCalledExactlyOnceWith(false);
+       |                        ^
+    326|       expect(navigation.push).not.toHaveBeenCalled();
+    327|     },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/components/os/ResearchOS.test.tsx > ResearchOS logon session > keeps the current logon locked when the brand is opened in another tab
+Error: expect(received).toBeVisible()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/components/os/ResearchOS.test.tsx:1121:57
+    1119|     fireEvent.click(screen.getByRole("button", { name: copy.lock }));
+    1120|     fireEvent.click(view.container.querySelector(".os-brand")!, { ctrl…
+    1121|     expect(view.container.querySelector(".os-welcome")).toBeVisible();
+       |                                                         ^
+    1122|     expect(view.container.querySelector(".os-content")).toHaveAttribut…
+    1123|     expect(navigation.push).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/components/os/use-reading-window.test.tsx > reading position across layout and visibility changes > starts a new document at its own reading point when a retained frame changes layout
+AssertionError: expected last "bound " call to have been called with [ { top: 85 } ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "top": 85,
++     "top": 360,
+    },
+  ]
+
+ ❯ src/components/os/use-reading-window.test.tsx:476:27
+    474|     expect(next.page.scrollTop).toBe(0);
+    475|     changeViewportWidth(390);
+    476|     expect(next.scrollTo).toHaveBeenLastCalledWith({ top: 85 });
+       |                           ^
+    477|     changeViewportWidth(1280);
+    478|     expect(next.page.scrollTop).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 91 skipped (97)
+   Start at  01:18:25
+   Duration  3.75s (transform 912ms, setup 171ms, import 1.22s, tests 1.02s, environment 969ms)
+

@@ -1,0 +1,1002 @@
+[
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.en.signedPackDetail",
+    "initial_line": 106,
+    "final_line": 106,
+    "old": "The architecture describes metadata-only evidence signed with Ed25519.",
+    "new": "This earlier frozen architecture describes metadata-only evidence signed with Ed25519."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.en.sourceNote",
+    "initial_line": 111,
+    "final_line": 111,
+    "old": "The diagram and VCA replay command describe an earlier frozen stage. Current software DOI: 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849. Replaying the frozen VCA evidence does not rerun the October transfer study.",
+    "new": "Current study archives use SHA-256 and replay on native Linux x86_64 with Python 3.12. The diagram and VCA command describe an earlier frozen Ed25519 attestation stage, not a replay of the October transfer study. Current software DOI: 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.fa.signedPackDetail",
+    "initial_line": 149,
+    "final_line": 149,
+    "old": "معماری، شواهد فراداده‌ای و امضاشده با Ed25519 را توصیف می‌کند.",
+    "new": "این معماری تثبیت‌شدهٔ پیشین، شواهد صرفاً فراداده‌ای و امضاشده با Ed25519 را توصیف می‌کند."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.fa.sourceNote",
+    "initial_line": 154,
+    "final_line": 154,
+    "old": "نمودار و فرمان بازاجرای VCA مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند. DOI نرم‌افزار کنونی: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849. بازاجرای شواهد VCA پژوهش انتقال اکتبر را دوباره اجرا نمی‌کند.",
+    "new": "بایگانی پژوهش کنونی از SHA-256 استفاده می‌کند و روی Linux x86_64 بومی با Python 3.12 بازاجرا می‌شود. نمودار و فرمان VCA، گواهی Ed25519 در مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند، نه بازاجرای پژوهش انتقال اکتبر. DOI نرم‌افزار کنونی: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.ar.signedPackDetail",
+    "initial_line": 191,
+    "final_line": 191,
+    "old": "تصف البنية أدلة موقعة بـ Ed25519 وتقتصر على البيانات الوصفية.",
+    "new": "تصف بنية سابقة مجمّدة أدلة موقعة بـ Ed25519 تقتصر على البيانات الوصفية."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.ar.sourceNote",
+    "initial_line": 196,
+    "final_line": 196,
+    "old": "يصف المخطط وأمر إعادة تشغيل VCA مرحلة سابقة مجمّدة. DOI البرنامج الحالي: 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849. إعادة تشغيل أدلة VCA لا تعيد دراسة النقل في أكتوبر.",
+    "new": "تستخدم أرشيفات الدراسة الحالية SHA-256 وتُعاد على Linux x86_64 أصلي مع Python 3.12. يصف المخطط وأمر VCA مرحلة تصديق Ed25519 سابقة مجمّدة، لا إعادة دراسة النقل في أكتوبر. DOI البرنامج الحالي: 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.zh.signedPackDetail",
+    "initial_line": 228,
+    "final_line": 228,
+    "old": "该架构描述使用 Ed25519 签名的元数据证据。",
+    "new": "这份早期冻结架构描述使用 Ed25519 签名的纯元数据证据。"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.zh.sourceNote",
+    "initial_line": 233,
+    "final_line": 233,
+    "old": "图示与 VCA 重放命令描述早期冻结阶段。当前软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。重放冻结的 VCA 证据不会重新执行 10 月的迁移研究。",
+    "new": "当前研究归档使用 SHA-256，可在原生 Linux x86_64 与 Python 3.12 环境重放。图示与 VCA 命令描述早期冻结的 Ed25519 证明凭证阶段，并非重跑10月迁移研究。当前软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.es.signedPackDetail",
+    "initial_line": 272,
+    "final_line": 272,
+    "old": "La arquitectura describe evidencia de metadatos firmada con Ed25519.",
+    "new": "Esta arquitectura anterior congelada describe evidencias de metadatos firmadas con Ed25519."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "simurghEvidenceStoryCopy.es.sourceNote",
+    "initial_line": 277,
+    "final_line": 277,
+    "old": "El esquema y el comando de repetición VCA describen una etapa anterior congelada. DOI del software actual: 10.5281/zenodo.21737792; prepublicación anterior de integridad de dispositivos: 10.5281/zenodo.20374849. Repetir las evidencias VCA no vuelve a ejecutar el estudio de transferencia de octubre.",
+    "new": "Los archivos actuales del estudio usan SHA-256 y se reproducen en Linux x86_64 nativo con Python 3.12. El esquema y el comando VCA describen una etapa anterior congelada de atestaciones Ed25519; no repiten el estudio de transferencia de octubre. DOI del software actual: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.en.sourceDetail",
+    "initial_line": 467,
+    "final_line": 467,
+    "old": "Markdown · PDF · TXT · images",
+    "new": "MD · text PDF · TXT · image stubs"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.en.consumerDetail",
+    "initial_line": 472,
+    "final_line": 472,
+    "old": "Search and context tools for an agent",
+    "new": "Rust read tools · Python write bridge"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.en.limitations",
+    "initial_line": 503,
+    "final_line": 503,
+    "old": "This schematic does not claim complete source fidelity, provenance coverage, or retrieval recall. It shows the documented data model and retrieval stages only.",
+    "new": "This schematic does not claim complete source fidelity, provenance coverage, or retrieval recall. It shows the documented data model and retrieval stages only. Images remain pending-visual stubs without automatic OCR; PDF figures need a separate visual pass."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.en.repositoryNote",
+    "initial_line": 505,
+    "final_line": 505,
+    "old": "Zurvan’s repository is private; this public-facing schema uses generic labels and contains no corpus records.",
+    "new": "Zurvan’s repository is public. This schematic uses generic labels and contains no corpus records; the Rust MCP read server keeps a Python write bridge and reference fallback."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.fa.sourceDetail",
+    "initial_line": 515,
+    "final_line": 515,
+    "old": "Markdown · PDF · TXT · تصویرها",
+    "new": "MD · PDF/TXT متنی · تصویر در انتظار بررسی"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.fa.consumerDetail",
+    "initial_line": 519,
+    "final_line": 519,
+    "old": "ابزارهای جست‌وجو و زمینه برای عامل",
+    "new": "ابزار خواندن Rust · پل نوشتن Python"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.fa.limitations",
+    "initial_line": 550,
+    "final_line": 550,
+    "old": "این طرح‌واره کامل‌بودن وفاداری به منبع، پوشش منشأ یا یادآوری بازیابی را ادعا نمی‌کند؛ فقط مدل داده و مراحل مستند بازیابی را نشان می‌دهد.",
+    "new": "این طرح‌واره کامل‌بودن وفاداری به منبع، پوشش منشأ یا یادآوری بازیابی را ادعا نمی‌کند؛ فقط مدل داده و مراحل مستند بازیابی را نشان می‌دهد. تصویرها بدون OCR خودکار در انتظار بررسی بصری می‌مانند؛ شکل‌های PDF به بررسی بصری جداگانه نیاز دارند."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.fa.repositoryNote",
+    "initial_line": 552,
+    "final_line": 552,
+    "old": "مخزن Zurvan خصوصی است؛ این طرح‌وارهٔ عمومی از برچسب‌های کلی استفاده می‌کند و رکوردی از پیکره ندارد.",
+    "new": "مخزن Zurvan عمومی است. این طرح‌واره برچسب‌های کلی دارد و رکوردی از پیکره نشان نمی‌دهد؛ سرور خواندن MCP با Rust، پل نوشتن و مرجع جایگزین Python را حفظ می‌کند."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.ar.sourceDetail",
+    "initial_line": 561,
+    "final_line": 561,
+    "old": "Markdown · PDF · TXT · صور",
+    "new": "MD · PDF/TXT نصّي · صور معلّقة"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.ar.consumerDetail",
+    "initial_line": 565,
+    "final_line": 565,
+    "old": "أدوات البحث والسياق للوكيل",
+    "new": "أدوات قراءة Rust · جسر كتابة Python"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.ar.limitations",
+    "initial_line": 594,
+    "final_line": 594,
+    "old": "لا يدّعي هذا المخطط اكتمال الأمانة للمصادر أو تغطية المنشأ أو استدعاء الاسترجاع. بل يعرض نموذج البيانات ومراحل الاسترجاع الموثقة فقط.",
+    "new": "لا يدّعي هذا المخطط اكتمال الأمانة للمصادر أو تغطية المنشأ أو استدعاء الاسترجاع. بل يعرض نموذج البيانات ومراحل الاسترجاع الموثقة فقط. تبقى الصور عناصر معلّقة للفحص البصري دون OCR تلقائي؛ وتحتاج أشكال PDF إلى فحص بصري منفصل."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.ar.repositoryNote",
+    "initial_line": 596,
+    "final_line": 596,
+    "old": "مستودع Zurvan خاص؛ يستخدم هذا المخطط العام تسميات عامة ولا يتضمن سجلات من المدونة.",
+    "new": "مستودع Zurvan عام. يستخدم المخطط تسميات عامة ولا يتضمن سجلات من المدونة؛ يحتفظ خادم قراءة MCP بلغة Rust بجسر كتابة ومرجع بديل بلغة Python."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.zh.sourceDetail",
+    "initial_line": 605,
+    "final_line": 605,
+    "old": "Markdown · PDF · TXT · 图像",
+    "new": "MD · 文本 PDF/TXT · 图像占位"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.zh.consumerDetail",
+    "initial_line": 609,
+    "final_line": 609,
+    "old": "供智能体使用的搜索与上下文工具",
+    "new": "Rust 读取工具 · Python 写入桥接"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.zh.limitations",
+    "initial_line": 631,
+    "final_line": 631,
+    "old": "此示意不声称完整保留来源、完整覆盖溯源关系或达到完整检索召回；它只展示文档所述的数据模型和检索阶段。",
+    "new": "此示意不声称完整保留来源、完整覆盖溯源关系或达到完整检索召回；它只展示文档所述的数据模型和检索阶段。 图像仍为待视觉处理的占位条目，不进行自动 OCR；PDF 图表需要单独查看。"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.zh.repositoryNote",
+    "initial_line": 633,
+    "final_line": 633,
+    "old": "Zurvan 仓库为私有；此公开架构使用通用标签，不包含语料记录。",
+    "new": "Zurvan 仓库现为公开。此示意使用通用标签，不含语料记录；Rust MCP 读取服务器保留 Python 写入桥接与参考后备实现。"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.es.sourceDetail",
+    "initial_line": 644,
+    "final_line": 644,
+    "old": "Markdown · PDF · TXT · imágenes",
+    "new": "MD · PDF/TXT con texto · imágenes pendientes"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.es.consumerDetail",
+    "initial_line": 649,
+    "final_line": 649,
+    "old": "Herramientas de búsqueda y contexto para un agente",
+    "new": "Lecturas Rust · puente de escritura Python"
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.es.limitations",
+    "initial_line": 680,
+    "final_line": 680,
+    "old": "Este esquema no afirma fidelidad completa a las fuentes, cobertura completa de procedencia ni recuperación exhaustiva. Solo muestra el modelo de datos y las etapas de recuperación documentadas.",
+    "new": "Este esquema no afirma fidelidad completa a las fuentes, cobertura completa de procedencia ni recuperación exhaustiva. Solo muestra el modelo de datos y las etapas de recuperación documentadas. Las imágenes quedan pendientes de revisión visual, sin OCR automático; las figuras PDF necesitan una revisión visual aparte."
+  },
+  {
+    "file": "src/lib/project-content/evidence-story-copy.ts",
+    "key": "zurvanEvidenceStoryCopy.es.repositoryNote",
+    "initial_line": 682,
+    "final_line": 682,
+    "old": "El repositorio de Zurvan es privado; este esquema público usa etiquetas genéricas y no contiene registros del corpus.",
+    "new": "El repositorio de Zurvan es público. El esquema usa etiquetas genéricas y no contiene registros del corpus; el servidor MCP de lectura en Rust conserva un puente de escritura y una referencia alternativa en Python."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.en.scope.project-simurgh",
+    "initial_line": 15,
+    "final_line": 15,
+    "old": "October 2026 transfer study: 24 tasks, two trials each, three matched controls (credential-only, composed, deny-all) and two models; 288 replayed branches. Llama-3.2-3B restricted-state effects fell from 17/24 to 0/24 with 23/24 useful completions; gpt-6-luna baseline was already 0/24, so its result is null. The 24 restricted trials form six state clusters; per-state Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%, and part of the gap holds by construction. A separate eight-case OpenAI capture initially declined 8/8 because of role placement; the frozen correction completed 2/3 authorised cases and declined 5/5 restricted cases, with one refusal still open. The 39 Lean proofs and 5,171 passing tests refer to the 19 October 2026 smoke run, not universal safety. Earlier classifier/AgentDojo results and the four-boundary schematic are frozen-stage evidence. Software DOI 10.5281/zenodo.21737792 is distinct from device-integrity preprint DOI 10.5281/zenodo.20374849.",
+    "new": "October 2026 transfer study: 24 tasks, two trials each, three matched controls (credential-only, composed, deny-all) and two models; 288 replayed branches. Llama-3.2-3B restricted-state effects fell from 17/24 to 0/24 with 23/24 useful completions; gpt-6-luna baseline was already 0/24, so its result is null. The 24 restricted trials form six state clusters; per-state Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%, and part of the gap holds by construction. A separate eight-case OpenAI capture initially declined 8/8 because of role placement; the frozen correction completed 2/3 authorised cases and declined 5/5 restricted cases, with one refusal still open. The gate checks 39 Lean 4 proof files for selected mathematical models; those proofs do not establish implementation equivalence. The 19 October 2026 smoke run passed 5,171 root tests. Current study archives use SHA-256 and need native Linux x86_64 with Python 3.12 for full replay; earlier attestations use Ed25519. These are scoped records, not universal safety. Earlier classifier/AgentDojo results and the four-boundary schematic are frozen-stage evidence. Software DOI 10.5281/zenodo.21737792 is distinct from device-integrity preprint DOI 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.en.scope.project-zurvan",
+    "initial_line": 17,
+    "final_line": 17,
+    "old": "The test count and integration descriptions are author-reported development evidence, not a retrieval-quality benchmark. The source repository is private. Local storage does not guarantee offline LLM extraction: OpenAI and Anthropic provider options are listed, so external processing depends on configuration.",
+    "new": "The source repository is public and includes a Rust MCP read server with Python writes/reference fallback. The 20 October 2026 merged-main receipt reports 3,334 passed, 1 failed and 8 skipped; Z1b sealed-evaluation closure remains open. Suite counts and integration receipts are dated development evidence, not retrieval-quality scores. Images remain pending-visual stubs, and PDF figures are not automatically transcribed. Local storage does not guarantee offline LLM extraction: external processing depends on the configured provider."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.en.scope.aion",
+    "initial_line": 20,
+    "final_line": 20,
+    "old": "The preprint reports a 40-question pilot benchmark, including zero unsupported citations and 6/6 false-premise refusals in that evaluation. These results do not guarantee that generated answers will always be correct or free of hallucinations. Check citations against the underlying scripture.",
+    "new": "The reported 40-question v3 pilot scores retrieval on 34 answerable questions and tests 6 refusal cases. Recall@5 is 0.941, mean citation_support 0.978 and refusals 6/6. A single Gemini 3.1 Flash Lite judge found no answer rows with citation_support < 0.5, but two partial/wrong-citation rows remained at 0.75 and 0.50. This is not a guarantee of correct or hallucination-free answers; check the underlying scripture. Chat credentials use server-side secrets, while optional native voice expects a client-provided OpenAI credential outside that isolation boundary."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.fa.scope.project-simurgh",
+    "initial_line": 33,
+    "final_line": 33,
+    "old": "پژوهش انتقال اکتبر 2026: 24 وظیفه، هرکدام دو بار، سه کنترل همسان (فقط اعتبارنامه، ترکیبی و رد همه) و دو مدل؛ 288 شاخهٔ بازاجراشده. آثار تازه در حالت محدود Llama-3.2-3B از 17/24 به 0/24 رسید و 23/24 تکمیل مفید حفظ شد؛ خط پایهٔ gpt-6-luna از ابتدا 0/24 بود، پس نتیجهٔ آن بدون اثر افزوده است. 24 آزمون محدود در شش خوشهٔ وضعیت قرار دارند؛ فاصله‌های Wilson 95% برای هر وضعیت 43.6–97.0% در برابر 0.0–39.0% است و بخشی از تفاوت به‌واسطهٔ طراحی برقرار است. در ثبت جداگانهٔ هشت‌موردی OpenAI، خطای جایگاه نقش ابتدا به رد 8/8 مورد انجامید؛ اصلاح تثبیت‌شده 2/3 مورد مجاز را تکمیل و 5/5 مورد محدود را رد کرد و یک امتناع هنوز حل نشده است. 39 اثبات Lean و 5,171 آزمون موفق مربوط به اجرای آزمون اولیهٔ 19 اکتبر 2026 است، نه ایمنی همگانی. نتایج قدیمی دسته‌بند و AgentDojo و نمودار چهارمرزی شواهد مرحلهٔ تثبیت‌شده‌اند. DOI نرم‌افزار 10.5281/zenodo.21737792 با پیش‌چاپ یکپارچگی دستگاه 10.5281/zenodo.20374849 متفاوت است.",
+    "new": "پژوهش انتقال اکتبر 2026: 24 وظیفه، هرکدام دو بار، سه کنترل همسان (فقط اعتبارنامه، ترکیبی و رد همه) و دو مدل؛ 288 شاخهٔ بازاجراشده. آثار تازه در حالت محدود Llama-3.2-3B از 17/24 به 0/24 رسید و 23/24 تکمیل مفید حفظ شد؛ خط پایهٔ gpt-6-luna از ابتدا 0/24 بود، پس نتیجهٔ آن بدون اثر افزوده است. 24 آزمون محدود در شش خوشهٔ وضعیت قرار دارند؛ فاصله‌های Wilson 95% برای هر وضعیت 43.6–97.0% در برابر 0.0–39.0% است و بخشی از تفاوت به‌واسطهٔ طراحی برقرار است. در ثبت جداگانهٔ هشت‌موردی OpenAI، خطای جایگاه نقش ابتدا به رد 8/8 مورد انجامید؛ اصلاح تثبیت‌شده 2/3 مورد مجاز را تکمیل و 5/5 مورد محدود را رد کرد و یک امتناع هنوز حل نشده است. دروازه، 39 فایل اثبات Lean 4 برای مدل‌های ریاضی منتخب را بررسی می‌کند؛ این اثبات‌ها هم‌ارزی پیاده‌سازی را ثابت نمی‌کنند. اجرای اولیهٔ 19 اکتبر 2026، تعداد 5,171 آزمون بستهٔ اصلی را گذراند. بایگانی پژوهش کنونی SHA-256 دارد و بازاجرای کامل به Linux x86_64 بومی با Python 3.12 نیاز دارد؛ گواهی‌های مراحل پیشین از Ed25519 استفاده می‌کنند. این ثبت‌ها محدودند، نه تضمین ایمنی همگانی. نتایج قدیمی دسته‌بند و AgentDojo و نمودار چهارمرزی شواهد مرحلهٔ تثبیت‌شده‌اند. DOI نرم‌افزار 10.5281/zenodo.21737792 با پیش‌چاپ یکپارچگی دستگاه 10.5281/zenodo.20374849 متفاوت است."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.fa.scope.project-zurvan",
+    "initial_line": 35,
+    "final_line": 35,
+    "old": "شمار آزمون‌ها و شرح یکپارچه‌سازی، شواهد توسعهٔ گزارش‌شده توسط نویسنده‌اند، نه بنچمارک کیفیت بازیابی. مخزن کد خصوصی است. ذخیره‌سازی محلی، استخراج کاملاً آفلاین با LLM را تضمین نمی‌کند: گزینه‌های OpenAI و Anthropic وجود دارند و پردازش بیرونی به پیکربندی بستگی دارد.",
+    "new": "مخزن کد عمومی است و سرور خواندن MCP با Rust را همراه نوشتن و مرجع جایگزین Python دارد. ثبت شاخهٔ اصلی ادغام‌شده در 20 اکتبر 2026، تعداد 3,334 موفق، 1 ناموفق و 8 آزمون اجرا نشده را گزارش می‌کند؛ ارزیابی مهروموم‌شدهٔ Z1b هنوز نهایی نشده است. شمار آزمون و ثبت یکپارچه‌سازی، شواهد توسعهٔ تاریخ‌دارند، نه نمرهٔ کیفیت بازیابی. تصویرها در انتظار بررسی بصری می‌مانند و شکل‌های PDF خودکار رونویسی نمی‌شوند. ذخیرهٔ محلی، استخراج آفلاین LLM را تضمین نمی‌کند؛ پردازش بیرونی به ارائه‌دهندهٔ پیکربندی‌شده بستگی دارد."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.fa.scope.aion",
+    "initial_line": 38,
+    "final_line": 38,
+    "old": "پیش‌چاپ، بنچمارک مقدماتی ۴۰ پرسشی را گزارش می‌کند که در همان ارزیابی، ارجاع بی‌پشتوانه‌ای نداشت و 6/6 فرض نادرست را رد کرد. این نتایج درستی همیشگی یا نبود توهم در پاسخ‌های تولیدشده را تضمین نمی‌کنند. ارجاع‌ها را با متن اصلی کتاب مقدس بررسی کنید.",
+    "new": "مطالعهٔ مقدماتی v3 با 40 پرسش، بازیابی را روی 34 پرسش پاسخ‌پذیر و 6 مورد امتناع می‌سنجد. Recall@5 برابر 0.941، میانگین citation_support برابر 0.978 و امتناع 6/6 است. تنها داور Gemini 3.1 Flash Lite هیچ ردیف پاسخی با citation_support < 0.5 گزارش نکرد، اما دو ردیف ارجاع ناقص یا نادرست با نمرهٔ 0.75 و 0.50 باقی ماند. این تضمین درستی یا نبود توهم نیست؛ متن اصلی را بررسی کنید. اعتبارنامه‌های گفت‌وگو در رازهای سمت سرورند، اما صدای بومی اختیاری به اعتبارنامهٔ OpenAI در کلاینت و بیرون از آن مرز جداسازی نیاز دارد."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.ar.scope.project-simurgh",
+    "initial_line": 51,
+    "final_line": 51,
+    "old": "دراسة النقل في أكتوبر 2026: 24 مهمة بتجربتين لكل منها وثلاثة ضوابط مقارنة متطابقة (بيانات الاعتماد فقط، والمركبة، ورفض الجميع) ونموذجين؛ 288 فرعًا أُعيد تشغيله. انخفضت آثار Llama-3.2-3B المقيّدة من 17/24 إلى 0/24 مع 23/24 إكمالًا مفيدًا؛ خط أساس gpt-6-luna كان أصلًا 0/24، فالنتيجة دون أثر إضافي. التجارب المقيّدة الأربع والعشرون موزعة على ست مجموعات حالات؛ فترات Wilson 95% لكل حالة هي 43.6–97.0% مقابل 0.0–39.0%، وجزء من الفارق قائم بحكم التصميم. رفض تسجيل OpenAI منفصل من ثماني حالات 8/8 أولًا بسبب موضع الدور؛ وأكمل التصحيح المجمّد 2/3 حالات مأذونة ورفض 5/5 حالات مقيّدة، وما زال رفض واحد مفتوحًا. تخص براهين Lean وعددها 39 والاختبارات الناجحة البالغ عددها 5,171 تشغيل التحقق الأولي في 19 أكتوبر 2026، لا سلامة عامة. نتائج المصنف وAgentDojo الأقدم والمخطط ذو الحدود الأربعة أدلة مرحلة مجمّدة. DOI البرنامج 10.5281/zenodo.21737792 يختلف عن مسودة سلامة الأجهزة 10.5281/zenodo.20374849.",
+    "new": "دراسة النقل في أكتوبر 2026: 24 مهمة بتجربتين لكل منها وثلاثة ضوابط مقارنة متطابقة (بيانات الاعتماد فقط، والمركبة، ورفض الجميع) ونموذجين؛ 288 فرعًا أُعيد تشغيله. انخفضت آثار Llama-3.2-3B المقيّدة من 17/24 إلى 0/24 مع 23/24 إكمالًا مفيدًا؛ خط أساس gpt-6-luna كان أصلًا 0/24، فالنتيجة دون أثر إضافي. التجارب المقيّدة الأربع والعشرون موزعة على ست مجموعات حالات؛ فترات Wilson 95% لكل حالة هي 43.6–97.0% مقابل 0.0–39.0%، وجزء من الفارق قائم بحكم التصميم. رفض تسجيل OpenAI منفصل من ثماني حالات 8/8 أولًا بسبب موضع الدور؛ وأكمل التصحيح المجمّد 2/3 حالات مأذونة ورفض 5/5 حالات مقيّدة، وما زال رفض واحد مفتوحًا. تفحص البوابة 39 ملف إثبات في Lean 4 لنماذج رياضية مختارة؛ ولا تثبت تكافؤ التنفيذ. نجح 5,171 اختبارًا في حزمة المشروع الرئيسية في فحص 19 أكتوبر 2026. تستخدم أرشيفات الدراسة الحالية SHA-256 وتتطلب إعادة التشغيل الكاملة Linux x86_64 أصليًا مع Python 3.12؛ وتستخدم التصديقات السابقة Ed25519. هذه سجلات محدودة وليست ضمان سلامة عامة. نتائج المصنف وAgentDojo الأقدم والمخطط ذو الحدود الأربعة أدلة مرحلة مجمّدة. DOI البرنامج 10.5281/zenodo.21737792 يختلف عن مسودة سلامة الأجهزة 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.ar.scope.project-zurvan",
+    "initial_line": 53,
+    "final_line": 53,
+    "old": "عدد الاختبارات ووصف التكامل أدلة تطوير يوردها المؤلف، وليسا معيارًا لجودة الاسترجاع. مستودع المصدر خاص. لا يضمن التخزين المحلي استخراجًا دون اتصال عبر LLM: تتضمن الخيارات OpenAI وAnthropic، لذا تعتمد المعالجة الخارجية على الإعداد.",
+    "new": "مستودع المصدر عام، ويضم خادم قراءة MCP بلغة Rust مع كتابة ومرجع بديل بلغة Python. يسجّل فحص الفرع الرئيسي بعد الدمج في 20 أكتوبر 2026 عدد 3,334 اختبارًا ناجحًا و1 فاشلًا و8 اختبارات متخطّاة؛ ولم يُغلق تقييم Z1b المختوم بعد. أعداد الاختبارات وإيصالات التكامل أدلة تطوير مؤرخة وليست درجات جودة استرجاع. تبقى الصور معلّقة للفحص البصري ولا تُنسخ أشكال PDF آليًا. لا يضمن التخزين المحلي استخراج LLM دون اتصال؛ فالمعالجة الخارجية تعتمد على المزوّد المضبوط."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.ar.scope.aion",
+    "initial_line": 56,
+    "final_line": 56,
+    "old": "تورد المسودة معيارًا تجريبيًا من ٤٠ سؤالًا، بلا إحالات غير مسندة ومع رفض 6/6 فرضيات خاطئة ضمن ذلك التقييم. لا تضمن هذه النتائج صحة الإجابات دائمًا أو خلوها من الهلوسة. تحقق من الإحالات مقابل النص الأصلي.",
+    "new": "يقيس اختبار v3 التجريبي من 40 سؤالًا الاسترجاع على 34 سؤالًا قابلًا للإجابة و6 حالات رفض. Recall@5 يساوي 0.941 ومتوسط citation_support يساوي 0.978 والرفض 6/6. لم يسجّل المحكّم الوحيد Gemini 3.1 Flash Lite أي صف إجابة مع citation_support < 0.5، لكن بقي صفّان باستشهاد جزئي أو خاطئ بدرجتي 0.75 و0.50. لا يضمن ذلك الإجابات الصحيحة أو الخالية من الهلوسة؛ راجع النص الأصلي. تستخدم بيانات اعتماد المحادثة أسرار الخادم، بينما يتطلب الصوت الأصلي الاختياري بيانات اعتماد OpenAI لدى العميل خارج حد العزل هذا."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.es.scope.project-simurgh",
+    "initial_line": 69,
+    "final_line": 69,
+    "old": "Estudio de transferencia de octubre de 2026: 24 tareas, dos ensayos cada una, tres controles emparejados (solo credenciales, compuesto y denegar todo) y dos modelos; 288 ramas repetidas. Los efectos restringidos de Llama-3.2-3B bajaron de 17/24 a 0/24 con 23/24 tareas útiles completadas; la base de gpt-6-luna ya era 0/24, por lo que su resultado es nulo. Los 24 ensayos restringidos forman seis grupos de estados; los intervalos Wilson del 95% por estado son 43.6–97.0% frente a 0.0–39.0%, y parte de la diferencia se cumple por construcción. Otra captura OpenAI de ocho casos rechazó inicialmente 8/8 por la ubicación del rol; la corrección congelada completó 2/3 casos autorizados y rechazó 5/5 restringidos, con un rechazo aún abierto. Las 39 pruebas Lean y 5,171 tests superados corresponden a la comprobación del 19 de octubre de 2026, no a seguridad universal. Los resultados anteriores del clasificador/AgentDojo y el esquema de cuatro límites son evidencia de etapas congeladas. El DOI del software 10.5281/zenodo.21737792 es distinto del de integridad de dispositivos 10.5281/zenodo.20374849.",
+    "new": "Estudio de transferencia de octubre de 2026: 24 tareas, dos ensayos cada una, tres controles emparejados (solo credenciales, compuesto y denegar todo) y dos modelos; 288 ramas repetidas. Los efectos restringidos de Llama-3.2-3B bajaron de 17/24 a 0/24 con 23/24 tareas útiles completadas; la base de gpt-6-luna ya era 0/24, por lo que su resultado es nulo. Los 24 ensayos restringidos forman seis grupos de estados; los intervalos Wilson del 95% por estado son 43.6–97.0% frente a 0.0–39.0%, y parte de la diferencia se cumple por construcción. Otra captura OpenAI de ocho casos rechazó inicialmente 8/8 por la ubicación del rol; la corrección congelada completó 2/3 casos autorizados y rechazó 5/5 restringidos, con un rechazo aún abierto. La puerta comprueba 39 archivos de pruebas Lean 4 para modelos matemáticos seleccionados; no establecen equivalencia de implementación. La comprobación del 19 de octubre de 2026 superó 5,171 tests del paquete raíz. Los archivos actuales usan SHA-256 y su reproducción completa requiere Linux x86_64 nativo con Python 3.12; las atestaciones anteriores usan Ed25519. Son registros acotados, no seguridad universal. Los resultados anteriores del clasificador/AgentDojo y el esquema de cuatro límites son evidencia de etapas congeladas. El DOI del software 10.5281/zenodo.21737792 es distinto del de integridad de dispositivos 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.es.scope.project-zurvan",
+    "initial_line": 71,
+    "final_line": 71,
+    "old": "El número de pruebas y las integraciones son evidencias de desarrollo comunicadas por el autor, no un benchmark de calidad de recuperación. El repositorio es privado. El almacenamiento local no garantiza extracción LLM sin conexión: se ofrecen OpenAI y Anthropic, por lo que el procesamiento externo depende de la configuración.",
+    "new": "El repositorio es público e incluye un servidor MCP de lectura en Rust con escrituras y referencia alternativa en Python. El registro de main tras la fusión, del 20 de octubre de 2026, informa de 3,334 superadas, 1 fallida y 8 omitidas; Z1b sigue sin cerrar su evaluación sellada. Los recuentos e integraciones son evidencia de desarrollo fechada, no puntuaciones de calidad de recuperación. Las imágenes quedan pendientes de revisión visual y las figuras PDF no se transcriben automáticamente. El almacenamiento local no garantiza extracción LLM sin conexión: el procesamiento externo depende del proveedor configurado."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.es.scope.aion",
+    "initial_line": 74,
+    "final_line": 74,
+    "old": "La prepublicación describe un benchmark piloto de 40 preguntas, sin citas no sustentadas y con rechazo de 6/6 premisas falsas en esa evaluación. Estos resultados no garantizan que las respuestas generadas sean siempre correctas o estén libres de alucinaciones. Comprueba las citas con el texto original.",
+    "new": "El piloto v3 de 40 preguntas puntúa recuperación en 34 preguntas respondibles y prueba 6 casos de rechazo. Recall@5 es 0.941, citation_support medio 0.978 y rechazos 6/6. Un único juez Gemini 3.1 Flash Lite no registró filas con citation_support < 0.5, pero quedaron dos filas con citas parciales o erróneas a 0.75 y 0.50. No garantiza respuestas correctas ni sin alucinaciones; comprueba el texto original. Las credenciales del chat usan secretos del servidor; la voz nativa opcional necesita una credencial OpenAI del cliente, fuera de ese límite de aislamiento."
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.zh.scope.project-simurgh",
+    "initial_line": 87,
+    "final_line": 87,
+    "old": "2026 年 10 月迁移研究：24 项任务，每项两次试验，三个匹配对照（仅凭证、组合、全部拒绝）与两个模型，共重放 288 个分支。Llama-3.2-3B 受限状态中的新效果由 17/24 降至 0/24，有用任务完成 23/24；gpt-6-luna 基线已为 0/24，因此结果为零增益。24 次受限试验属于六个状态簇；各状态的 Wilson 95% 区间为 43.6–97.0% 与 0.0–39.0%，且部分差异由设计本身保证。另一项含八个案例的 OpenAI 记录最初因角色放置错误拒绝了 8/8；冻结修正版完成了 2/3 个授权案例，并拒绝了 5/5 个受限案例，仍有一次拒绝未解决。39 项 Lean 证明与 5,171 项通过测试仅指 2026 年 10 月 19 日的冒烟运行，并非通用安全保证。较早的分类器/AgentDojo 结果与四边界图属于冻结阶段证据。软件 DOI 10.5281/zenodo.21737792 与设备完整性预印本 DOI 10.5281/zenodo.20374849 不同。",
+    "new": "2026 年 10 月迁移研究：24 项任务，每项两次试验，三个匹配对照（仅凭证、组合、全部拒绝）与两个模型，共重放 288 个分支。Llama-3.2-3B 受限状态中的新效果由 17/24 降至 0/24，有用任务完成 23/24；gpt-6-luna 基线已为 0/24，因此结果为零增益。24 次受限试验属于六个状态簇；各状态的 Wilson 95% 区间为 43.6–97.0% 与 0.0–39.0%，且部分差异由设计本身保证。另一项含八个案例的 OpenAI 记录最初因角色放置错误拒绝了 8/8；冻结修正版完成了 2/3 个授权案例，并拒绝了 5/5 个受限案例，仍有一次拒绝未解决。门控检查39个用于特定数学模型的 Lean 4 证明文件；这些证明不代表实现等价性。2026 年 10 月 19 日冒烟运行通过5,171项项目根包测试。当前研究归档使用 SHA-256，完整重放需要原生 Linux x86_64 与 Python 3.12；早期证明凭证使用 Ed25519。这些是限定范围的记录，并非通用安全保证。较早的分类器/AgentDojo 结果与四边界图属于冻结阶段证据。软件 DOI 10.5281/zenodo.21737792 与设备完整性预印本 DOI 10.5281/zenodo.20374849 不同。"
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.zh.scope.project-zurvan",
+    "initial_line": 89,
+    "final_line": 89,
+    "old": "测试数量与集成说明是作者报告的开发证据，并非检索质量基准。源代码库为私有。本地存储不保证 LLM 提取完全离线：项目列有 OpenAI 和 Anthropic 选项，外部处理取决于配置。",
+    "new": "源仓库已公开，包含 Rust MCP 读取服务器与 Python 写入及参考后备实现。2026年10月20日合并主分支的记录为3,334项通过、1项失败、8项跳过；Z1b 密封评估仍未结项。测试数量与集成记录是有日期的开发证据，并非检索质量分数。图像保持待视觉处理占位状态，PDF 图表不会自动转录。本地存储不保证 LLM 提取完全离线；外部处理取决于所配置的提供方。"
+  },
+  {
+    "file": "src/lib/project-content/dossier-copy.ts",
+    "key": "dossierCopy.zh.scope.aion",
+    "initial_line": 92,
+    "final_line": 92,
+    "old": "预印本报告了 40 道题的试点基准，在该次评估中无不受支持的引文，并拒绝了 6/6 个错误前提。这些结果不保证生成回答始终正确或完全没有幻觉。请对照原文核查引文。",
+    "new": "报告的 v3 试点有40题，其中34题可回答并用于检索评分，6题为拒答案例。Recall@5 为0.941，平均 citation_support 为0.978，拒答6/6。单一 Gemini 3.1 Flash Lite 评审未报告 citation_support < 0.5 的答案行，但仍有两行部分错误或不准确的引用，分数为0.75与0.50。这不保证回答正确或没有幻觉；请核对原文。聊天凭证使用服务器秘密，选配原生语音则需要客户端提供 OpenAI 凭证，处于该隔离边界之外。"
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.en.containmentNote",
+    "initial_line": 16,
+    "final_line": 16,
+    "old": "This earlier frozen architecture links four boundaries to signed evidence and offline review. It is not a current host-authorisation study trace or a benchmark result.",
+    "new": "This earlier frozen architecture links four boundaries to Ed25519 attestations and offline review. Current study archives use SHA-256. This schematic is not a current run trace or benchmark result."
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.en.stages[0][1]",
+    "initial_line": 29,
+    "final_line": 29,
+    "old": "Markdown · PDF · TXT · images",
+    "new": "MD · text PDF · TXT · image stubs"
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.fa.containmentNote",
+    "initial_line": 49,
+    "final_line": 49,
+    "old": "این معماری تثبیت‌شدهٔ پیشین، چهار مرز را به شواهد امضاشده و بازبینی آفلاین پیوند می‌دهد؛ رد اجرای پژوهش کنونی اختیار سمت میزبان یا نتیجهٔ بنچمارک نیست.",
+    "new": "این معماری تثبیت‌شدهٔ پیشین چهار مرز را به گواهی Ed25519 و بازبینی آفلاین پیوند می‌دهد. بایگانی پژوهش کنونی از SHA-256 استفاده می‌کند. این طرح رد اجرای کنونی یا نتیجهٔ بنچمارک نیست."
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.fa.stages[0][1]",
+    "initial_line": 62,
+    "final_line": 62,
+    "old": "Markdown · PDF · TXT · تصویر",
+    "new": "MD · PDF/TXT متنی · تصویر در انتظار بررسی"
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.ar.containmentNote",
+    "initial_line": 82,
+    "final_line": 82,
+    "old": "تربط هذه البنية السابقة المجمّدة أربعة حدود بأدلة موقّعة ومراجعة دون اتصال. ليست سجلًا لدراسة صلاحيات المضيف الحالية أو نتيجة قياس أداء.",
+    "new": "تربط هذه البنية السابقة المجمّدة أربعة حدود بتصديقات Ed25519 ومراجعة دون اتصال. تستخدم أرشيفات الدراسة الحالية SHA-256. ليس المخطط سجل تشغيل حاليًا أو نتيجة قياس أداء."
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.ar.stages[0][1]",
+    "initial_line": 95,
+    "final_line": 95,
+    "old": "Markdown · PDF · TXT · صور",
+    "new": "MD · PDF/TXT نصّي · صور معلّقة"
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.zh.containmentNote",
+    "initial_line": 115,
+    "final_line": 115,
+    "old": "这份早期冻结架构将四道边界连接到签名证据与离线审查，并非当前宿主授权研究的运行轨迹或基准测试结果。",
+    "new": "这份早期冻结架构将四道边界连接到 Ed25519 证明凭证与离线审查。当前研究归档使用 SHA-256。此图并非当前运行轨迹或基准结果。"
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.zh.stages[0][1]",
+    "initial_line": 128,
+    "final_line": 128,
+    "old": "Markdown · PDF · TXT · 图像",
+    "new": "MD · 文本 PDF/TXT · 图像占位"
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.es.containmentNote",
+    "initial_line": 148,
+    "final_line": 148,
+    "old": "Esta arquitectura anterior congelada conecta cuatro límites con evidencias firmadas y revisión sin conexión. No es una traza del estudio actual de autorización en el host ni un resultado de benchmark.",
+    "new": "Esta arquitectura anterior congelada conecta cuatro límites con atestaciones Ed25519 y revisión sin conexión. Los archivos actuales usan SHA-256. El esquema no es una traza actual ni un resultado de benchmark."
+  },
+  {
+    "file": "src/lib/project-content/diagram-copy.ts",
+    "key": "projectDiagramCopy.es.stages[0][1]",
+    "initial_line": 161,
+    "final_line": 161,
+    "old": "Markdown · PDF · TXT · imágenes",
+    "new": "MD · PDF/TXT con texto · imágenes pendientes"
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.seo.home_description",
+    "initial_line": 7,
+    "final_line": 7,
+    "old": "AI security researcher studying adversarial robustness, AI control and empirical safety evaluation. Project Simurgh checks what an agent was allowed to do using host-side controls and signed, offline-replayable evidence. Evaluated Claude in Anthropic’s safety-evaluation program via Alignerr, Jan–Mar 2026. Available full-time from December 2026 for a three- to six-month San Francisco placement; visa sponsorship required.",
+    "new": "AI security researcher studying adversarial robustness, AI control and empirical safety evaluation. Project Simurgh checks what an agent was allowed to do using host-side controls and SHA-256-pinned, replayable study evidence. Evaluated Claude in Anthropic’s safety-evaluation program via Alignerr, Jan–Mar 2026. Available full-time from December 2026 for a three- to six-month San Francisco placement; visa sponsorship required."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.about.bio_2",
+    "initial_line": 97,
+    "final_line": 97,
+    "old": "Project Simurgh is a host-side agent-authorisation prototype. Its October 2026 study used 24 tasks, two trials, three matched controls and two models: 288 replayed branches. On Llama-3.2-3B, restricted-state trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions and no valid proposal blocked. OpenAI gpt-6-luna’s baseline was already 0/24, so no incremental protection was observed. The project reports 39 Lean 4 proofs, 5,171 tests in the 19 October smoke run and 92 releases. Software DOI: 10.5281/zenodo.21737792; the earlier device-integrity preprint is 10.5281/zenodo.20374849.",
+    "new": "Project Simurgh is a host-side agent-authorisation prototype. Its October 2026 study used 24 tasks, two trials, three matched controls and two models: 288 replayed branches. On Llama-3.2-3B, restricted-state trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions and no valid proposal blocked. OpenAI gpt-6-luna’s baseline was already 0/24, so no incremental protection was observed. The project reports 39 Lean 4 proof files, 5,171 tests in the 19 October smoke run and 92 releases. Software DOI: 10.5281/zenodo.21737792; the earlier device-integrity preprint is 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.about.bio_3",
+    "initial_line": 99,
+    "final_line": 99,
+    "old": "I also authored The Invisible Window, which demonstrated screen-capture evasion in the tested Windows/macOS laboratory configurations; Microsoft and Apple classified the disclosed behaviour as by design. Aion-BibleQA evaluates retrieval and citation faithfulness on 40 questions (R@5 0.941; no unsupported citations). I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online.",
+    "new": "I also authored The Invisible Window, which demonstrated screen-capture evasion in the tested Windows/macOS laboratory configurations; Microsoft and Apple classified the disclosed behaviour as by design. Aion-BibleQA evaluates retrieval and citation faithfulness in a 40-question pilot (34 answerable and 6 refusal cases; R@5 0.941; partial citation errors remain). I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.about.spec3_item2",
+    "initial_line": 136,
+    "final_line": 136,
+    "old": "High-Performance C/C++ Systems (1M+ ops/sec)",
+    "new": "C/C++ matching engines and network parsers"
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.s02_tech_stack",
+    "initial_line": 239,
+    "final_line": 239,
+    "old": "Ed25519 evidence · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
+    "new": "Python / React · SHA-256 study archives · earlier Ed25519 attestations · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP"
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.s02_bullet4",
+    "initial_line": 249,
+    "final_line": 249,
+    "old": "Earlier frozen 2026 stages: contained 138/138 malicious cases missed by a Llama Guard 4 12B input classifier, including 120 downstream injections outside its view—a coverage claim, not a classifier ranking. Live Llama-3.3-70B AgentDojo workspace attack success fell from 9/140 to 0/140; the separate four-suite deterministic run recorded 0/949 attacks and 949/949 unattacked utility. Both remain small, scoped experiments.",
+    "new": "Earlier frozen 2026 stages: contained 138/138 malicious cases missed by a Llama Guard 4 12B input classifier, including 120 downstream injections outside its view—a coverage claim, not a classifier ranking. Live Llama-3.3-70B AgentDojo workspace attack success fell from 9/140 to 0/140 while benign utility fell from 7/10 to 6/10. A separate deterministic four-suite run, with no real LLM, recorded attack success 0/949, utility under attack 949/949 and benign utility 97/97. These remain bounded experiments."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.s02_bullet5",
+    "initial_line": 251,
+    "final_line": 251,
+    "old": "Ed25519-signed archives replay offline in one command. The proof gate checks 39 Lean 4 proofs and rejects unproven “sorry” placeholders; 5,171 tests passed in the 19 October 2026 smoke run. 92 releases; software DOI 10.5281/zenodo.21737792, distinct from device-integrity preprint DOI 10.5281/zenodo.20374849.",
+    "new": "Current study archives use SHA-256 and replay on native Linux x86_64 with Python 3.12 after dependency installation. Earlier frozen attestations use Ed25519. The proof gate checks 39 Lean 4 files for selected mathematical models and rejects unproven “sorry” placeholders; model proofs do not establish implementation equivalence. 5,171 root tests passed in the 19 October 2026 smoke run. 92 releases; software DOI 10.5281/zenodo.21737792, distinct from device-integrity preprint DOI 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.proj2_stack",
+    "initial_line": 278,
+    "final_line": 278,
+    "old": "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
+    "new": "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · OpenAI Embeddings · Tauri v2"
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.proj2_desc",
+    "initial_line": 280,
+    "final_line": 280,
+    "old": "Built an AI-powered Bible companion and authored Aion-BibleQA, an 8-page preprint introducing a 40-question benchmark for citation faithfulness and false-premise robustness. Results: R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.",
+    "new": "Built Aion and authored its 8-page pilot preprint: 40 questions, with retrieval scored on 34 answerable questions and 6 refusal cases. Recall@5 = 0.941; mean citation_support = 0.978; 6/6 refusals. A single Gemini 3.1 Flash Lite judge reported no answer rows with citation_support < 0.5, but two partial/wrong-citation rows remained at 0.75 and 0.50. DOI: 10.5281/zenodo.20522874."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.proj3_desc",
+    "initial_line": 284,
+    "final_line": 284,
+    "old": "Engineered a matching engine that processed 1M+ orders/second in a single-thread synthetic benchmark, with sub-microsecond cancellation. Implemented red-black tree price levels, a custom memory-pool allocator, and a test suite with p50/p99 latency benchmarks.",
+    "new": "Built a C++20 matching engine. The repository reports 9.29M mixed add/cancel operations per second in a single-thread synthetic Apple M-series Release benchmark. Expected O(1) order-ID lookup combines with O(log M) price-level cancellation. p50/p99 benchmarks measure insertion latency; the pool allocator has a separate allocation benchmark."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.proj4_desc",
+    "initial_line": 288,
+    "final_line": 288,
+    "old": "Built a real-time network packet-processing engine; a single-thread, pure-parse benchmark over synthetic SYN traffic reached 500K+ packets/second. It dissects Ethernet/IPv4/TCP/UDP/ICMP/DNS, detects signature matches, and analyses stateful patterns such as port scans and SYN floods.",
+    "new": "Built a C++17 IDS with seven protocol parsers, signatures and stateful scan/SYN-flood/DNS-tunnelling heuristics. The repository reports 28.4M packets/second over 5M repeated synthetic packets in a single-thread, pure-parse benchmark; that rate measures the parser, not end-to-end IDS processing."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.proj5_desc",
+    "initial_line": 292,
+    "final_line": 292,
+    "old": "Built a full-stack data platform with an AI recommendation engine, event-driven APIs, rate limiting, and automated security scanning. I handled the work from database schema through deployment.",
+    "new": "Built a personal media vault and job tracker with React, Litestar and Supabase, including AI-assisted recommendations and persistent chat. Added configured CI security checks and Terraform scaffolding; auth-cookie and encryption settings have deployment-dependent limits documented in the project."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.exp_syllabus_bullet1",
+    "initial_line": 331,
+    "final_line": 331,
+    "old": "Led the security backend of a shared Next.js/TypeScript codebase: WebAuthn passkeys, TOTP MFA, Postgres row-level security and tamper-resistant audit logging.",
+    "new": "Co-maintained the security/backend of a shared Next.js/TypeScript codebase: WebAuthn passkeys, TOTP MFA, Postgres row-level security and tamper-resistant audit logging."
+  },
+  {
+    "file": "src/i18n/locales/en.ts",
+    "key": "en.resume.exp_syllabus_bullet2",
+    "initial_line": 333,
+    "final_line": 333,
+    "old": "The campus-AI platform has 503 tests across 92 files. Led product direction, security architecture and technical implementation while participating in the EDUCATE accelerator and startup validation.",
+    "new": "The 17 August 2026 CI test job passed 1,343 tests across 155 files; the separate security job failed. Contributed to product and security work while participating in the EDUCATE accelerator and startup validation."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.seo.home_description",
+    "initial_line": 9,
+    "final_line": 9,
+    "old": "پژوهشگر امنیت هوش مصنوعی با تمرکز بر استحکام در برابر حمله، کنترل هوش مصنوعی و ارزیابی تجربی ایمنی. Project Simurgh اختیارات مجاز عامل را با کنترل‌های سمت میزبان و شواهد امضاشده و قابل بازپخش آفلاین بررسی می‌کند. ارزیابی Claude در برنامه ایمنی Anthropic از طریق Alignerr، ژانویه تا مارس 2026. آماده همکاری تمام‌وقت از دسامبر 2026 برای فرصت پژوهشی سه تا شش‌ماهه در سان‌فرانسیسکو؛ نیازمند حمایت ویزا.",
+    "new": "پژوهشگر امنیت هوش مصنوعی با تمرکز بر استحکام در برابر حمله، کنترل هوش مصنوعی و ارزیابی تجربی ایمنی. Project Simurgh اختیارات مجاز عامل را با کنترل‌های سمت میزبان و شواهد پژوهشی قابل بازپخش با هش SHA-256 بررسی می‌کند. ارزیابی Claude در برنامه ایمنی Anthropic از طریق Alignerr، ژانویه تا مارس 2026. آماده همکاری تمام‌وقت از دسامبر 2026 برای فرصت پژوهشی سه تا شش‌ماهه در سان‌فرانسیسکو؛ نیازمند حمایت ویزا."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.about.bio_2",
+    "initial_line": 98,
+    "final_line": 98,
+    "old": "Project Simurgh نمونه اولیه مجوزدهی عامل در سمت میزبان است. مطالعه اکتبر 2026 شامل 24 وظیفه، دو تکرار، سه کنترل همسان و دو مدل بود: 288 شاخه بازپخش‌شده. در Llama-3.2-3B، آزمون‌های حالت محدودشده با اثر جدید از 17/24 به 0/24 رسید؛ 23/24 تکمیل مفید حفظ شد و هیچ پیشنهاد معتبری مسدود نشد. خط پایه OpenAI gpt-6-luna از ابتدا 0/24 بود، پس حفاظت افزوده‌ای مشاهده نشد. پروژه 39 اثبات Lean 4، تعداد 5,171 آزمون موفق در اجرای بررسی اولیه 19 اکتبر و 92 انتشار گزارش می‌کند. DOI نرم‌افزار: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849.",
+    "new": "Project Simurgh نمونه اولیه مجوزدهی عامل در سمت میزبان است. مطالعه اکتبر 2026 شامل 24 وظیفه، دو تکرار، سه کنترل همسان و دو مدل بود: 288 شاخه بازپخش‌شده. در Llama-3.2-3B، آزمون‌های حالت محدودشده با اثر جدید از 17/24 به 0/24 رسید؛ 23/24 تکمیل مفید حفظ شد و هیچ پیشنهاد معتبری مسدود نشد. خط پایه OpenAI gpt-6-luna از ابتدا 0/24 بود، پس حفاظت افزوده‌ای مشاهده نشد. پروژه 39 فایل اثبات Lean 4، تعداد 5,171 آزمون موفق در اجرای بررسی اولیه 19 اکتبر و 92 انتشار گزارش می‌کند. DOI نرم‌افزار: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.about.bio_3",
+    "initial_line": 100,
+    "final_line": 100,
+    "old": "The Invisible Window را نیز نوشتم؛ پژوهشی که دورزدن ضبط صفحه را در پیکربندی‌های آزمایشگاهی آزموده‌شده Windows و macOS نشان داد. Microsoft و Apple رفتار افشاشده را مطابق طراحی دانستند. Aion-BibleQA بازیابی و وفاداری استناد را روی 40 پرسش می‌سنجد (R@5 برابر 0.941؛ بدون استناد بی‌پشتوانه). هم‌بنیان‌گذار Syllabus-Sync، استارتاپ مرکز رشد دانشگاه مک‌کواری هستم. پایان کارشناسی امنیت سایبری برای ژوئن 2027 پیش‌بینی شده و نیم‌سال پایانی فوریه تا ژوئن 2027 کاملاً آنلاین است.",
+    "new": "The Invisible Window را نیز نوشتم؛ پژوهشی که دورزدن ضبط صفحه را در پیکربندی‌های آزمایشگاهی آزموده‌شده Windows و macOS نشان داد. Microsoft و Apple رفتار افشاشده را مطابق طراحی دانستند. Aion-BibleQA بازیابی و وفاداری استناد را در یک مطالعهٔ مقدماتی 40پرسشی می‌سنجد (34 مورد پاسخ‌پذیر و 6 مورد امتناع؛ R@5 برابر 0.941؛ خطاهای جزئی استناد باقی‌اند). هم‌بنیان‌گذار Syllabus-Sync، استارتاپ مرکز رشد دانشگاه مک‌کواری هستم. پایان کارشناسی امنیت سایبری برای ژوئن 2027 پیش‌بینی شده و نیم‌سال پایانی فوریه تا ژوئن 2027 کاملاً آنلاین است."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.about.spec3_item2",
+    "initial_line": 138,
+    "final_line": 137,
+    "old": "سامانه‌های C/C++ با کارایی بالا (بیش از ۱ میلیون عملیات در ثانیه)",
+    "new": "موتورهای تطبیق و تجزیه‌گرهای شبکه با C/C++"
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.s02_tech_stack",
+    "initial_line": 241,
+    "final_line": 240,
+    "old": "شواهد Ed25519 · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
+    "new": "Python / React · بایگانی پژوهش با SHA-256 · گواهی‌های Ed25519 مراحل پیشین · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP"
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.s02_bullet4",
+    "initial_line": 251,
+    "final_line": 250,
+    "old": "مراحل ثابت‌شده قدیمی در 2026: مهار 138/138 مورد مخرب از دست‌رفته دسته‌بند ورودی Llama Guard 4 12B، شامل 120 تزریق پایین‌دستی خارج از دید آن؛ ادعای پوشش است، نه رتبه‌بندی دسته‌بندها. موفقیت حمله Llama-3.3-70B زنده در فضای کار AgentDojo از 9/140 به 0/140 رسید؛ اجرای قطعی جداگانه چهارمجموعه‌ای، 0/949 حمله موفق و 949/949 کارایی بدون حمله ثبت کرد. هر دو آزمایش کوچک و محدودند.",
+    "new": "مراحل ثابت‌شده قدیمی در 2026: مهار 138/138 مورد مخرب از دست‌رفته دسته‌بند ورودی Llama Guard 4 12B، شامل 120 تزریق پایین‌دستی خارج از دید آن؛ ادعای پوشش است، نه رتبه‌بندی دسته‌بندها. موفقیت حمله Llama-3.3-70B زنده در فضای کار AgentDojo از 9/140 به 0/140 رسید، اما سودمندی در حالت بی‌حمله از 7/10 به 6/10 کاهش یافت. اجرای قطعی جداگانهٔ چهارمجموعه‌ای، بدون LLM واقعی، موفقیت حملهٔ 0/949، سودمندی زیر حملهٔ 949/949 و سودمندی بی‌حملهٔ 97/97 ثبت کرد. این آزمایش‌ها محدودند."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.s02_bullet5",
+    "initial_line": 253,
+    "final_line": 252,
+    "old": "بایگانی‌های امضاشده با Ed25519 با یک فرمان آفلاین بازپخش می‌شوند. دروازه اثبات، 39 اثبات Lean 4 را بررسی و جای‌نگهدار اثبات‌نشده «sorry» را رد می‌کند؛ 5,171 آزمون در اجرای بررسی اولیه 19 اکتبر 2026 موفق بود. تعداد 92 انتشار؛ DOI نرم‌افزار 10.5281/zenodo.21737792 از DOI پیش‌چاپ یکپارچگی دستگاه 10.5281/zenodo.20374849 جداست.",
+    "new": "بایگانی پژوهش کنونی با SHA-256 مقید است و پس از نصب وابستگی‌ها روی Linux x86_64 بومی با Python 3.12 بازاجرا می‌شود. گواهی‌های مراحل تثبیت‌شدهٔ پیشین از Ed25519 استفاده می‌کنند. دروازهٔ اثبات، 39 فایل Lean 4 برای مدل‌های ریاضی منتخب را بررسی و جای‌نگهدار اثبات‌نشدهٔ «sorry» را رد می‌کند؛ اثبات مدل، هم‌ارزی پیاده‌سازی را ثابت نمی‌کند. 5,171 آزمون بستهٔ اصلی در اجرای اولیهٔ 19 اکتبر 2026 موفق بود. 92 انتشار؛ DOI نرم‌افزار 10.5281/zenodo.21737792 از پیش‌چاپ یکپارچگی دستگاه 10.5281/zenodo.20374849 جداست."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.proj2_stack",
+    "initial_line": 280,
+    "final_line": 279,
+    "old": "React Native · Expo · Supabase · pgvector · Gemini · بردارهای تعبیه OpenAI · Tauri v2",
+    "new": "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · بردارهای تعبیه OpenAI · Tauri v2"
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.proj2_desc",
+    "initial_line": 282,
+    "final_line": 281,
+    "old": "همراه هوشمند کتاب مقدس را ساختم و پیش‌چاپ ۸صفحه‌ای Aion-BibleQA را نوشتم؛ معیاری ۴۰پرسشی برای وفاداری استناد و مقاومت در برابر پیش‌فرض نادرست. R@5 برابر ۰٫۹۴۱، میانگین پشتیبانی استناد ۰٫۹۷۸، بدون استناد بی‌پشتوانه و ۶ از ۶ رد پاسخ به پرسش با پیش‌فرض نادرست. DOI: 10.5281/zenodo.20522874.",
+    "new": "Aion را ساختم و پیش‌چاپ مقدماتی 8صفحه‌ای آن را نوشتم: 40 پرسش، شامل 34 پرسش پاسخ‌پذیر برای سنجش بازیابی و 6 مورد امتناع. Recall@5 = 0.941، میانگین citation_support = 0.978 و امتناع 6/6. یک داور Gemini 3.1 Flash Lite هیچ ردیف پاسخی با citation_support < 0.5 گزارش نکرد، اما دو ردیف با ارجاع ناقص یا نادرست و نمره‌های 0.75 و 0.50 باقی ماند. DOI: 10.5281/zenodo.20522874."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.proj3_desc",
+    "initial_line": 286,
+    "final_line": 285,
+    "old": "مهندسی موتور تطبیق پرکارایی که در بنچمارک مصنوعی تک‌ریسمانی بیش از ۱ میلیون سفارش در ثانیه را پردازش می‌کند و لغو سفارش زیر یک میکروثانیه دارد؛ پیاده‌سازی سطوح قیمت با درخت قرمز-سیاه، تخصیص‌دهنده استخر حافظه سفارشی و مجموعه آزمون جامع با محک‌های تأخیر p50/p99.",
+    "new": "موتور تطبیق C++20 را ساختم. مخزن، 9.29M عملیات ترکیبی افزودن/لغو در ثانیه را در بنچمارک مصنوعی تک‌ریسمانی Release روی Apple M-series گزارش می‌کند. جست‌وجوی شناسهٔ سفارش به‌طور مورد انتظار O(1) است و لغو درخت سطح قیمت را با O(log M) می‌پیماید. سنجه‌های p50/p99 برای تأخیر درج‌اند؛ تخصیص‌دهندهٔ استخر حافظه بنچمارک جداگانه دارد."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.proj4_desc",
+    "initial_line": 290,
+    "final_line": 289,
+    "old": "ساخت موتور پردازش بسته شبکه بی‌درنگ؛ بنچمارک تک‌ریسمانی صرفاً تجزیهٔ بسته با ترافیک مصنوعی SYN به بیش از ۵۰۰ هزار بسته در ثانیه رسید. کالبدشکافی پروتکل (Ethernet/IPv4/TCP/UDP/ICMP/DNS)، موتور تشخیص مبتنی بر امضا و تحلیل حالت‌مند (اسکن پورت، سیل SYN).",
+    "new": "سامانهٔ IDS با C++17، هفت تجزیه‌گر پروتکل، امضاها و قواعد حالت‌مند اسکن، سیل SYN و تونل‌سازی DNS را ساختم. مخزن، 28.4M بسته در ثانیه را روی 5M بستهٔ تکراری مصنوعی در بنچمارک تک‌ریسمانی صرفاً تجزیه گزارش می‌کند؛ این نرخ مربوط به تجزیه‌گر است، نه کل پردازش IDS."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.proj5_desc",
+    "initial_line": 294,
+    "final_line": 293,
+    "old": "ارائه‌ی پلتفرم داده‌ی فول‌استک با موتور پیشنهاد مبتنی بر هوش مصنوعی، طراحی API رویدادمحور، محدودسازی نرخ و اسکن امنیتی خودکار — مالکیت سرتاسری از طرح پایگاه‌داده تا زیرساخت استقرار.",
+    "new": "با React، Litestar و Supabase مخزن رسانهٔ شخصی و پیگیری درخواست‌های شغلی را ساختم؛ شامل پیشنهادهای هوش مصنوعی و گفت‌وگوی پایدار. بررسی‌های امنیتی CI و چارچوب Terraform را پیکربندی کردم؛ محدودیت‌های وابسته به استقرارِ کوکی احراز هویت و رمزنگاری در شرح پروژه آمده‌اند."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.exp_syllabus_bullet1",
+    "initial_line": 333,
+    "final_line": 332,
+    "old": "رهبری بک‌اند امنیتی یک پایگاه کد مشترک Next.js/TypeScript: کلیدهای عبور WebAuthn، احراز هویت چندعاملی TOTP، امنیت سطح ردیف Postgres و ثبت ممیزی مقاوم در برابر دستکاری.",
+    "new": "در نگه‌داری مشترک امنیت و بک‌اند یک پایگاه کد Next.js/TypeScript مشارکت کردم: کلیدهای عبور WebAuthn، احراز هویت چندعاملی TOTP، امنیت سطح ردیف Postgres و ثبت ممیزی مقاوم در برابر دستکاری."
+  },
+  {
+    "file": "src/i18n/locales/fa.ts",
+    "key": "fa.resume.exp_syllabus_bullet2",
+    "initial_line": 335,
+    "final_line": 334,
+    "old": "پلتفرم هوش مصنوعی دانشگاهی 503 آزمون در 92 فایل دارد. هم‌زمان با شرکت در شتاب‌دهنده EDUCATE و اعتبارسنجی استارتاپ، جهت محصول، معماری امنیت و پیاده‌سازی فنی را هدایت کردم.",
+    "new": "کار آزمون CI در 17 اوت 2026، تعداد 1,343 آزمون در 155 فایل را گذراند؛ کار امنیتی جداگانه ناموفق بود. هم‌زمان با حضور در شتاب‌دهندهٔ EDUCATE و اعتبارسنجی استارتاپ، در کار محصول و امنیت مشارکت داشتم."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.seo.home_description",
+    "initial_line": 9,
+    "final_line": 9,
+    "old": "باحث في أمن الذكاء الاصطناعي يدرس المتانة ضد الهجمات والتحكم والتقييم التجريبي للسلامة. يتحقق Project Simurgh مما سُمح للوكيل بفعله بضوابط على المضيف وأدلة موقّعة قابلة لإعادة التشغيل دون اتصال. قيّم Claude ضمن برنامج سلامة Anthropic عبر Alignerr، يناير–مارس 2026. متاح بدوام كامل من ديسمبر 2026 لإقامة بحثية من ثلاثة إلى ستة أشهر في سان فرانسيسكو؛ يحتاج إلى رعاية تأشيرة.",
+    "new": "باحث في أمن الذكاء الاصطناعي يدرس المتانة ضد الهجمات والتحكم والتقييم التجريبي للسلامة. يتحقق Project Simurgh مما سُمح للوكيل بفعله بضوابط على المضيف وأدلة دراسة قابلة لإعادة التشغيل ومثبّتة ببصمات SHA-256. قيّم Claude ضمن برنامج سلامة Anthropic عبر Alignerr، يناير–مارس 2026. متاح بدوام كامل من ديسمبر 2026 لإقامة بحثية من ثلاثة إلى ستة أشهر في سان فرانسيسكو؛ يحتاج إلى رعاية تأشيرة."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.about.bio_2",
+    "initial_line": 98,
+    "final_line": 98,
+    "old": "Project Simurgh نموذج أولي لتفويض الوكلاء على المضيف. شملت دراسة أكتوبر 2026 عدد 24 مهمة وتجربتين وثلاثة ضوابط متطابقة ونموذجين: 288 فرعًا معاد تشغيله. في Llama-3.2-3B، انخفضت تجارب الحالات المقيّدة ذات الآثار الجديدة من 17/24 إلى 0/24، مع 23/24 إنجازًا مفيدًا ودون حظر أي مقترح صالح. كان خط أساس OpenAI gpt-6-luna بالفعل 0/24، فلم تُلاحظ حماية إضافية. يذكر المشروع 39 برهانًا في Lean 4 و 5,171 اختبارًا ناجحًا في فحص 19 أكتوبر و 92 إصدارًا. معرّف البرنامج:10.5281/zenodo.21737792؛ ومسودة سلامة الأجهزة السابقة:10.5281/zenodo.20374849.",
+    "new": "Project Simurgh نموذج أولي لتفويض الوكلاء على المضيف. شملت دراسة أكتوبر 2026 عدد 24 مهمة وتجربتين وثلاثة ضوابط متطابقة ونموذجين: 288 فرعًا معاد تشغيله. في Llama-3.2-3B، انخفضت تجارب الحالات المقيّدة ذات الآثار الجديدة من 17/24 إلى 0/24، مع 23/24 إنجازًا مفيدًا ودون حظر أي مقترح صالح. كان خط أساس OpenAI gpt-6-luna بالفعل 0/24، فلم تُلاحظ حماية إضافية. يذكر المشروع 39 ملف إثبات في Lean 4 و 5,171 اختبارًا ناجحًا في فحص 19 أكتوبر و 92 إصدارًا. معرّف البرنامج:10.5281/zenodo.21737792؛ ومسودة سلامة الأجهزة السابقة:10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.about.bio_3",
+    "initial_line": 100,
+    "final_line": 100,
+    "old": "ألّفت أيضًا The Invisible Window، الذي أظهر تجاوز التقاط الشاشة في إعدادات مختبر Windows وmacOS المختبرة؛ وصنّفت Microsoft وApple السلوك المفصح عنه بأنه مقصود بالتصميم. يقيس Aion-BibleQA الاسترجاع وأمانة الاستشهاد في 40 سؤالًا (R@5 يساوي 0.941؛ دون استشهادات غير مدعومة). شاركت في تأسيس Syllabus-Sync، شركة ناشئة في حاضنة جامعة ماكواري. أتوقع إكمال بكالوريوس الأمن السيبراني في يونيو 2027؛ والفصل الأخير من فبراير إلى يونيو 2027 بالكامل عبر الإنترنت.",
+    "new": "ألّفت أيضًا The Invisible Window، الذي أظهر تجاوز التقاط الشاشة في إعدادات مختبر Windows وmacOS المختبرة؛ وصنّفت Microsoft وApple السلوك المفصح عنه بأنه مقصود بالتصميم. يقيس Aion-BibleQA الاسترجاع وأمانة الاستشهاد في دراسة تجريبية من 40 سؤالًا (34 قابلًا للإجابة و6 حالات رفض؛ R@5 يساوي 0.941؛ تبقى أخطاء استشهاد جزئية). شاركت في تأسيس Syllabus-Sync، شركة ناشئة في حاضنة جامعة ماكواري. أتوقع إكمال بكالوريوس الأمن السيبراني في يونيو 2027؛ والفصل الأخير من فبراير إلى يونيو 2027 بالكامل عبر الإنترنت."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.about.spec3_item2",
+    "initial_line": 136,
+    "final_line": 136,
+    "old": "أنظمة C/C++ عالية الأداء (أكثر من مليون عملية في الثانية)",
+    "new": "محركات مطابقة ومحلّلات شبكة بلغة C/C++"
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.s02_tech_stack",
+    "initial_line": 238,
+    "final_line": 238,
+    "old": "أدلة Ed25519 · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
+    "new": "Python / React · أرشيفات دراسة SHA-256 · تصديقات Ed25519 السابقة · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP"
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.s02_bullet4",
+    "initial_line": 248,
+    "final_line": 248,
+    "old": "مراحل سابقة مجمّدة في 2026: احتواء 138/138 حالة خبيثة أغفلها مصنّف المدخلات Llama Guard 4 12B، منها 120 حقنًا لاحقًا خارج رؤيته؛ هذا ادعاء تغطية لا ترتيب للمصنّفات. انخفض نجاح هجوم Llama-3.3-70B الحي في مساحة عمل AgentDojo من 9/140 إلى 0/140؛ وسجّل التشغيل الحتمي المنفصل لأربع مجموعات 0/949 هجومًا ناجحًا و 949/949 منفعة دون هجوم. كلاهما تجربتان صغيرتان محددتا النطاق.",
+    "new": "مراحل سابقة مجمّدة في 2026: احتواء 138/138 حالة خبيثة أغفلها مصنّف المدخلات Llama Guard 4 12B، منها 120 حقنًا لاحقًا خارج رؤيته؛ هذا ادعاء تغطية لا ترتيب للمصنّفات. انخفض نجاح هجوم Llama-3.3-70B الحي في مساحة عمل AgentDojo من 9/140 إلى 0/140، مع انخفاض منفعة الحالات الحميدة من 7/10 إلى 6/10. سجّل تشغيل حتمي منفصل لأربع مجموعات، دون LLM فعلي، نجاح هجوم 0/949 ومنفعة تحت الهجوم 949/949 ومنفعة حميدة 97/97. تبقى هذه تجارب محدودة."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.s02_bullet5",
+    "initial_line": 250,
+    "final_line": 250,
+    "old": "تُعاد الأرشيفات الموقّعة بـEd25519 دون اتصال بأمر واحد. تتحقق بوابة الإثبات من 39 برهانًا في Lean 4 وترفض مواضع «sorry» غير المثبتة؛ نجح 5,171 اختبارًا في الفحص الأولي بتاريخ 19 أكتوبر 2026. عدد 92 إصدارًا؛ معرّف البرنامج 10.5281/zenodo.21737792 منفصل عن معرّف مسودة سلامة الأجهزة 10.5281/zenodo.20374849.",
+    "new": "تستخدم أرشيفات الدراسة الحالية SHA-256 وتُعاد على Linux x86_64 أصلي مع Python 3.12 بعد تثبيت التبعيات. تستخدم تصديقات المراحل السابقة المجمّدة Ed25519. تفحص بوابة الإثبات 39 ملفًا في Lean 4 لنماذج رياضية مختارة وترفض مواضع «sorry» غير المثبتة؛ إثبات النموذج لا يثبت تكافؤ التنفيذ. نجح 5,171 اختبارًا في حزمة المشروع الرئيسية في فحص 19 أكتوبر 2026. عدد 92 إصدارًا؛ DOI البرنامج 10.5281/zenodo.21737792 منفصل عن مسودة سلامة الأجهزة 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.proj2_stack",
+    "initial_line": 277,
+    "final_line": 277,
+    "old": "React Native · Expo · Supabase · pgvector · Gemini · تضمينات OpenAI · Tauri v2",
+    "new": "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · تضمينات OpenAI · Tauri v2"
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.proj2_desc",
+    "initial_line": 279,
+    "final_line": 279,
+    "old": "بنيت تطبيقًا للكتاب المقدس يعمل بالذكاء الاصطناعي وألّفت مسودة Aion-BibleQA من 8 صفحات. تقدّم معيارًا من 40 سؤالًا لقياس دقة دعم الاستشهادات ومقاومة الافتراضات الخاطئة: R@5 يساوي 0.941، ومتوسط دعم الاستشهاد 0.978، دون أي استشهاد غير مدعوم، ورفض في 6 من 6 حالات ذات افتراض خاطئ. DOI: 10.5281/zenodo.20522874.",
+    "new": "بنيت Aion وألّفت مسودته التجريبية من 8 صفحات: 40 سؤالًا، منها 34 سؤالًا قابلًا للإجابة لقياس الاسترجاع و6 حالات رفض. Recall@5 = 0.941 ومتوسط citation_support = 0.978 ورفض 6/6. لم يسجّل محكّم Gemini 3.1 Flash Lite الوحيد أي صف إجابة مع citation_support < 0.5، لكن بقي صفّان باستشهاد جزئي أو خاطئ ودرجتي 0.75 و0.50. DOI: 10.5281/zenodo.20522874."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.proj3_desc",
+    "initial_line": 283,
+    "final_line": 283,
+    "old": "هندسة محرك مطابقة عالي الأداء يعالج أكثر من مليون طلب في الثانية في اختبار اصطناعي أحادي الخيط، مع إلغاء الطلب بأقل من ميكروثانية؛ تنفيذ مستويات أسعار بشجرة حمراء-سوداء، ومخصّص تجمّع ذاكرة مخصص، ومجموعة اختبارات شاملة بمعايير زمن استجابة p50/p99.",
+    "new": "بنيت محرك مطابقة C++20. يورد المستودع 9.29M عملية إضافة/إلغاء مختلطة في الثانية في اختبار اصطناعي أحادي الخيط بوضع Release على Apple M-series. البحث بمعرّف الطلب O(1) متوقّع، ويجتاز الإلغاء شجرة مستوى السعر بكلفة O(log M). تقيس معايير p50/p99 زمن الإدراج؛ ولمخصّص تجمّع الذاكرة اختبار تخصيص منفصل."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.proj4_desc",
+    "initial_line": 287,
+    "final_line": 287,
+    "old": "بناء محرك معالجة حزم شبكة في الوقت الفعلي؛ بلغ اختبار أحادي الخيط للتحليل فقط بحركة SYN اصطناعية أكثر من 500 ألف حزمة في الثانية. تشريح البروتوكولات (Ethernet/IPv4/TCP/UDP/ICMP/DNS)، ومحرك كشف قائم على التوقيعات، وتحليل ذو حالة (فحص المنافذ، فيضانات SYN).",
+    "new": "بنيت IDS بلغة C++17 بسبعة محلّلات بروتوكول وتوقيعات وكشف ذي حالة للمسح وفيضان SYN وأنفاق DNS. يورد المستودع 28.4M حزمة/ثانية على 5M حزمة اصطناعية متكررة في اختبار أحادي الخيط للتحليل فقط؛ المعدّل للمحلّل وليس لمعالجة IDS كاملة."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.proj5_desc",
+    "initial_line": 291,
+    "final_line": 291,
+    "old": "إطلاق منصة بيانات متكاملة مع محرك توصية مدعوم بالذكاء الاصطناعي، وتصميم واجهة برمجة تطبيقات قائم على الأحداث، وتحديد معدل الطلبات، وفحص أمني آلي — ملكية شاملة من مخطط قاعدة البيانات إلى بنية النشر التحتية.",
+    "new": "بنيت مخزن وسائط شخصيًا ومتتبّع طلبات وظائف باستخدام React وLitestar وSupabase، مع توصيات بالذكاء الاصطناعي ومحادثة محفوظة. أعددت فحوص CI الأمنية وهيكل Terraform؛ وتوثّق صفحة المشروع حدود إعدادات ملفات تعريف ارتباط المصادقة والتشفير المعتمدة على النشر."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.exp_syllabus_bullet1",
+    "initial_line": 330,
+    "final_line": 330,
+    "old": "قدت الواجهة الخلفية الأمنية لقاعدة شيفرة Next.js/TypeScript مشتركة: مفاتيح مرور WebAuthn، ومصادقة TOTP متعددة العوامل، وأمن صفوف Postgres وتسجيل تدقيق مقاوم للتلاعب.",
+    "new": "شاركت في صيانة الأمن والواجهة الخلفية لقاعدة Next.js/TypeScript مشتركة: مفاتيح مرور WebAuthn، ومصادقة TOTP متعددة العوامل، وأمن صفوف Postgres وتسجيل تدقيق مقاوم للتلاعب."
+  },
+  {
+    "file": "src/i18n/locales/ar.ts",
+    "key": "ar.resume.exp_syllabus_bullet2",
+    "initial_line": 332,
+    "final_line": 332,
+    "old": "تضم منصة الذكاء الاصطناعي الجامعية 503 اختبارات في 92 ملفًا. قدت توجه المنتج ومعمارية الأمن والتنفيذ التقني مع المشاركة في مسرّعة EDUCATE والتحقق من جدوى الشركة الناشئة.",
+    "new": "نجحت مهمة اختبارات CI في 17 أغسطس 2026: عدد 1,343 اختبارًا عبر 155 ملفًا؛ وفشلت مهمة الأمن المنفصلة. ساهمت في المنتج والأمن مع المشاركة في مسرّعة EDUCATE والتحقق من جدوى الشركة الناشئة."
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.seo.home_description",
+    "initial_line": 9,
+    "final_line": 9,
+    "old": "AI 安全研究员，研究对抗鲁棒性、AI 控制和实证安全评估。Project Simurgh 通过主机侧控制和可离线重放的签名证据，核查智能体获准执行的操作。2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。2026年12月起可全职赴旧金山开展三至六个月研究工作；需要签证担保。",
+    "new": "AI 安全研究员，研究对抗鲁棒性、AI 控制和实证安全评估。Project Simurgh 通过主机侧控制与 SHA-256 固定的可重放研究证据，核查智能体获准执行的操作。2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。2026年12月起可全职赴旧金山开展三至六个月研究工作；需要签证担保。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.about.bio_2",
+    "initial_line": 92,
+    "final_line": 92,
+    "old": "Project Simurgh 是主机侧智能体授权原型。2026年10月研究涵盖24项任务、每项两次试验、三种匹配对照和两个模型，共重放288个分支。Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24，因此未观察到额外保护。项目报告39项 Lean 4 证明、10月19日冒烟测试中通过的5,171项测试和92个发布版本。软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本 DOI：10.5281/zenodo.20374849。",
+    "new": "Project Simurgh 是主机侧智能体授权原型。2026年10月研究涵盖24项任务、每项两次试验、三种匹配对照和两个模型，共重放288个分支。Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24，因此未观察到额外保护。项目报告39个 Lean 4 证明文件、10月19日冒烟测试中通过的5,171项测试和92个发布版本。软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本 DOI：10.5281/zenodo.20374849。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.about.bio_3",
+    "initial_line": 94,
+    "final_line": 94,
+    "old": "我还独立撰写了 The Invisible Window，在受测 Windows/macOS 实验室配置中展示屏幕捕获规避；Microsoft 和 Apple 将已披露行为归类为设计使然。Aion-BibleQA 在40个问题上评估检索和引用忠实度（R@5为0.941；无无依据引用）。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。",
+    "new": "我还独立撰写了 The Invisible Window，在受测 Windows/macOS 实验室配置中展示屏幕捕获规避；Microsoft 和 Apple 将已披露行为归类为设计使然。Aion-BibleQA 以40题试点评估检索和引用忠实度（34题可回答，6题拒答；R@5为0.941；仍有部分引用错误）。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.about.spec3_item2",
+    "initial_line": 129,
+    "final_line": 129,
+    "old": "高性能 C/C++ 系统（100 万+ 操作/秒）",
+    "new": "C/C++ 撮合引擎与网络解析器"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.s02_tech_stack",
+    "initial_line": 229,
+    "final_line": 229,
+    "old": "Ed25519 证据 · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
+    "new": "Python / React · SHA-256 研究归档 · 早期 Ed25519 证明凭证 · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.s02_bullet4",
+    "initial_line": 239,
+    "final_line": 239,
+    "old": "2026年早期冻结阶段：遏制了 Llama Guard 4 12B 输入分类器漏检的138/138个恶意案例，其中120个是其视野之外的下游注入；这是覆盖范围主张，并非分类器排名。实时 Llama-3.3-70B 在 AgentDojo 工作区的攻击成功数从9/140降至0/140；另一次四套件确定性运行记录0/949次成功攻击和949/949项无攻击效用。两者均为小规模、有限范围实验。",
+    "new": "2026年早期冻结阶段：遏制了 Llama Guard 4 12B 输入分类器漏检的138/138个恶意案例，其中120个是其视野之外的下游注入；这是覆盖范围主张，并非分类器排名。实时 Llama-3.3-70B 在 AgentDojo 工作区的攻击成功数从9/140降至0/140，正常任务效用从7/10降至6/10。另一次四套件确定性运行不使用真实 LLM，记录攻击成功0/949、攻击下效用949/949、正常任务效用97/97。这些仍是有限范围实验。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.s02_bullet5",
+    "initial_line": 241,
+    "final_line": 241,
+    "old": "经 Ed25519 签名的归档可用一条命令离线重放。证明门控检查39项 Lean 4 证明，并拒绝未证明的“sorry”占位符；2026年10月19日冒烟测试通过5,171项测试。92个发布版本；软件 DOI 10.5281/zenodo.21737792 与设备完整性预印本 DOI 10.5281/zenodo.20374849 分开列示。",
+    "new": "当前研究归档使用 SHA-256，安装依赖后可在原生 Linux x86_64 与 Python 3.12 环境重放；早期冻结阶段的证明凭证使用 Ed25519。证明门控检查39个用于特定数学模型的 Lean 4 文件，并拒绝未证明的“sorry”占位符；模型证明不代表实现等价性。2026年10月19日冒烟运行通过5,171项项目根包测试。92个发布版本；软件 DOI 10.5281/zenodo.21737792 与设备完整性预印本 DOI 10.5281/zenodo.20374849 分开列示。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.proj2_stack",
+    "initial_line": 268,
+    "final_line": 268,
+    "old": "React Native · Expo · Supabase · pgvector · Gemini · OpenAI 嵌入 · Tauri v2",
+    "new": "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · OpenAI 嵌入 · Tauri v2"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.proj2_desc",
+    "initial_line": 270,
+    "final_line": 270,
+    "old": "构建了人工智能驱动的圣经伴读应用，并撰写了 Aion-BibleQA——一篇 8 页预印本，提出了一个 40 题基准，用于评估引用忠实度与对错误前提的鲁棒性——R@5 = 0.941，平均引用支持度 = 0.978，零无依据引用，且对错误前提的拒答率为 6/6。DOI：10.5281/zenodo.20522874。",
+    "new": "构建 Aion 并撰写8页试点预印本：40个问题，其中34个可回答问题用于检索评分，6个为拒答案例。Recall@5 = 0.941，平均 citation_support = 0.978，拒答6/6。单一 Gemini 3.1 Flash Lite 评审未报告 citation_support < 0.5 的答案行，但仍有两行引用部分错误或不准确，分数为0.75与0.50。DOI：10.5281/zenodo.20522874。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.proj3_desc",
+    "initial_line": 274,
+    "final_line": 274,
+    "old": "设计了高性能撮合引擎，在单线程合成基准中每秒处理 100 万以上订单，取消订单耗时低于一微秒；实现了基于红黑树的价格档位、自定义内存池分配器，以及包含 p50/p99 延迟基准的完整测试套件。",
+    "new": "构建 C++20 撮合引擎。仓库报告在 Apple M-series Release 单线程合成基准中，每秒完成9.29M次混合新增/取消操作。按订单ID查找的预期复杂度为 O(1)，取消还需 O(log M) 的价格档树查找。p50/p99基准测量插入延迟；内存池分配器有独立的分配基准。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.proj4_desc",
+    "initial_line": 278,
+    "final_line": 278,
+    "old": "构建了实时网络数据包处理引擎；单线程、纯解析、合成 SYN 流量基准达到每秒 50 万以上数据包。支持协议解析（Ethernet/IPv4/TCP/UDP/ICMP/DNS）、基于特征的检测引擎，以及有状态分析（端口扫描、SYN 洪泛）。",
+    "new": "构建 C++17 IDS，包含七种协议解析器、特征规则以及端口扫描、SYN洪泛和DNS隧道的有状态启发式检测。仓库报告单线程纯解析合成基准在5M个重复数据包上达到28.4M包/秒；该速率只衡量解析器，并非完整IDS吞吐量。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.proj5_desc",
+    "initial_line": 282,
+    "final_line": 282,
+    "old": "上线了一个全栈数据平台，配备人工智能推荐引擎、事件驱动的 API 设计、速率限制及自动化安全扫描——从数据库架构到部署基础设施的端到端负责。",
+    "new": "使用 React、Litestar 和 Supabase 构建个人媒体库与求职记录工具，提供 AI 推荐和持久聊天。配置了 CI 安全检查与 Terraform 框架；项目页面说明了身份验证 Cookie 与加密设置依赖部署配置的限制。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.exp_syllabus_bullet1",
+    "initial_line": 317,
+    "final_line": 317,
+    "old": "负责共享 Next.js/TypeScript 代码库的安全后端：WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全和防篡改审计日志。",
+    "new": "共同维护共享 Next.js/TypeScript 代码库的安全与后端：WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全和防篡改审计日志。"
+  },
+  {
+    "file": "src/i18n/locales/zh.ts",
+    "key": "zh.resume.exp_syllabus_bullet2",
+    "initial_line": 319,
+    "final_line": 319,
+    "old": "校园 AI 平台在92个文件中拥有503项测试。在参与 EDUCATE 加速器和初创企业验证的同时，负责产品方向、安全架构和技术实现。",
+    "new": "2026年8月17日的 CI 测试任务通过1,343项测试，覆盖155个文件；独立安全任务失败。在参与 EDUCATE 加速器和初创企业验证的同时，参与产品与安全工作。"
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.seo.home_description",
+    "initial_line": 9,
+    "final_line": 9,
+    "old": "Investigador de seguridad de IA centrado en robustez adversarial, control de IA y evaluación empírica de seguridad. Project Simurgh verifica las acciones permitidas mediante controles del anfitrión y evidencia firmada que se reproduce sin conexión. Evaluó Claude en el programa de seguridad de Anthropic a través de Alignerr, enero–marzo de 2026. Disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco; requiere patrocinio de visado.",
+    "new": "Investigador de seguridad de IA centrado en robustez adversarial, control de IA y evaluación empírica de seguridad. Project Simurgh verifica las acciones permitidas mediante controles del anfitrión y evidencia reproducible fijada mediante SHA-256. Evaluó Claude en el programa de seguridad de Anthropic a través de Alignerr, enero–marzo de 2026. Disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco; requiere patrocinio de visado."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.about.bio_2",
+    "initial_line": 99,
+    "final_line": 99,
+    "old": "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos:288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección incremental. El proyecto informa de 39 pruebas Lean 4, 5,171 pruebas superadas en la comprobación básica del 19 de octubre y 92 versiones. DOI del software:10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos:10.5281/zenodo.20374849.",
+    "new": "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos:288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección incremental. El proyecto informa de 39 archivos de pruebas formales en Lean 4, 5,171 pruebas superadas en la comprobación básica del 19 de octubre y 92 versiones. DOI del software:10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos:10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.about.bio_3",
+    "initial_line": 101,
+    "final_line": 101,
+    "old": "También escribí The Invisible Window, que demostró evasión de captura en las configuraciones de laboratorio Windows/macOS probadas; Microsoft y Apple clasificaron el comportamiento divulgado como propio del diseño. Aion-BibleQA evalúa recuperación y fidelidad de citas con 40 preguntas (R@5 de 0.941; sin citas sin respaldo). Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. La licenciatura en ciberseguridad tiene finalización prevista en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
+    "new": "También escribí The Invisible Window, que demostró evasión de captura en las configuraciones de laboratorio Windows/macOS probadas; Microsoft y Apple clasificaron el comportamiento divulgado como propio del diseño. Aion-BibleQA evalúa recuperación y fidelidad de citas en un piloto de 40 preguntas (34 respondibles y 6 casos de rechazo; R@5 de 0.941; quedan errores parciales de citas). Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. La licenciatura en ciberseguridad tiene finalización prevista en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.about.spec3_item2",
+    "initial_line": 140,
+    "final_line": 140,
+    "old": "Sistemas C/C++ de alto rendimiento (más de 1M operaciones/s)",
+    "new": "Motores de emparejamiento y parsers de red en C/C++"
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.s02_tech_stack",
+    "initial_line": 245,
+    "final_line": 245,
+    "old": "Evidencia Ed25519 · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
+    "new": "Python / React · archivos SHA-256 del estudio · atestaciones Ed25519 anteriores · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP"
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.s02_bullet4",
+    "initial_line": 255,
+    "final_line": 255,
+    "old": "Etapas anteriores congeladas de 2026: contención de 138/138 casos maliciosos omitidos por el clasificador de entrada Llama Guard 4 12B, incluidos 120 casos de inyección posterior fuera de su alcance; es cobertura, no una clasificación comparativa. El éxito de ataque de Llama-3.3-70B en vivo en el espacio de trabajo AgentDojo bajó de 9/140 a 0/140; otra ejecución determinista de cuatro suites registró 0/949 ataques y 949/949 de utilidad sin ataque. Ambos son experimentos pequeños y acotados.",
+    "new": "Etapas anteriores congeladas de 2026: contención de 138/138 casos maliciosos omitidos por Llama Guard 4 12B, incluidos 120 casos de inyección posterior fuera de su alcance; es cobertura, no una clasificación comparativa. El éxito de ataque de Llama-3.3-70B en vivo en AgentDojo bajó de 9/140 a 0/140, con utilidad benigna de 7/10 a 6/10. Otra ejecución determinista de cuatro suites, sin LLM real, registró éxito de ataque 0/949, utilidad bajo ataque 949/949 y utilidad benigna 97/97. Siguen siendo experimentos acotados."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.s02_bullet5",
+    "initial_line": 257,
+    "final_line": 257,
+    "old": "Los archivos firmados con Ed25519 se reproducen sin conexión con un comando. La puerta de verificación comprueba 39 pruebas Lean 4 y rechaza marcadores “sorry” sin demostrar;5,171 pruebas superadas en la comprobación básica del 19 de octubre de 2026.92 versiones; DOI del software 10.5281/zenodo.21737792, distinto del preprint de integridad de dispositivos 10.5281/zenodo.20374849.",
+    "new": "Los archivos actuales del estudio usan SHA-256 y se reproducen en Linux x86_64 nativo con Python 3.12 tras instalar las dependencias. Las atestaciones anteriores congeladas usan Ed25519. La puerta comprueba 39 archivos Lean 4 de modelos matemáticos seleccionados y rechaza marcadores “sorry” sin demostrar; las pruebas de modelos no establecen equivalencia de implementación. La comprobación del 19 de octubre de 2026 superó 5,171 tests del paquete raíz. 92 versiones; DOI del software 10.5281/zenodo.21737792, distinto del preprint de integridad de dispositivos 10.5281/zenodo.20374849."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.proj2_stack",
+    "initial_line": 284,
+    "final_line": 284,
+    "old": "React Native · Expo · Supabase · pgvector · Gemini · Embeddings de OpenAI · Tauri v2",
+    "new": "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · Embeddings de OpenAI · Tauri v2"
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.proj2_desc",
+    "initial_line": 286,
+    "final_line": 286,
+    "old": "Construí un compañero bíblico impulsado por IA y redacté Aion-BibleQA, un preprint de 8 páginas que introduce un banco de pruebas de 40 preguntas para la fidelidad de citas y la robustez ante premisas falsas — R@5 = 0.941, soporte medio de citas = 0.978, cero citas sin respaldo y 6 de 6 rechazos de premisas falsas. DOI: 10.5281/zenodo.20522874.",
+    "new": "Construí Aion y escribí su preprint piloto de 8 páginas: 40 preguntas, con recuperación puntuada en 34 preguntas respondibles y 6 casos de rechazo. Recall@5 = 0.941; citation_support medio = 0.978; 6/6 rechazos. Un único juez Gemini 3.1 Flash Lite no registró filas con citation_support < 0.5, pero quedaron dos filas con citas parciales o erróneas, puntuadas con 0.75 y 0.50. DOI: 10.5281/zenodo.20522874."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.proj3_desc",
+    "initial_line": 290,
+    "final_line": 290,
+    "old": "Diseñé un motor de emparejamiento que procesa más de 1M de órdenes por segundo en un benchmark sintético de un solo hilo, con cancelación en menos de un microsegundo. Implementé niveles de precio con árbol rojo-negro, un asignador de memoria personalizado y una suite de pruebas exhaustiva con benchmarks de latencia p50/p99.",
+    "new": "Construí un motor de emparejamiento C++20. El repositorio informa de 9.29M operaciones mixtas de inserción/cancelación por segundo en un benchmark sintético de un solo hilo, Release, sobre Apple M-series. La búsqueda por ID es O(1) esperada; la cancelación recorre además un árbol de niveles de precio en O(log M). Los p50/p99 miden latencia de inserción; el asignador de memoria tiene un benchmark separado."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.proj4_desc",
+    "initial_line": 294,
+    "final_line": 294,
+    "old": "Construí un motor de procesamiento de paquetes de red en tiempo real; un benchmark de análisis puro de un solo hilo con tráfico SYN sintético alcanzó más de 500K paquetes por segundo. Incluye disección de protocolos (Ethernet/IPv4/TCP/UDP/ICMP/DNS), motor de detección basado en firmas y análisis con estado (escaneos de puertos, inundaciones SYN).",
+    "new": "Construí un IDS C++17 con siete parsers de protocolos, firmas y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. El repositorio informa de 28.4M paquetes/s sobre 5M paquetes sintéticos repetidos en un benchmark de un solo hilo de análisis puro; la tasa mide el parser, no el procesamiento IDS completo."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.proj5_desc",
+    "initial_line": 298,
+    "final_line": 298,
+    "old": "Lancé una plataforma de datos full-stack con motor de recomendaciones impulsado por IA, diseño de API basado en eventos, limitación de tasa y análisis de seguridad automatizado — propiedad de extremo a extremo desde el esquema de la base de datos hasta la infraestructura de despliegue.",
+    "new": "Construí una biblioteca multimedia personal y un gestor de candidaturas con React, Litestar y Supabase, recomendaciones con IA y chat persistente. Configuré comprobaciones de seguridad en CI y una base Terraform; la página del proyecto documenta los límites de cookies de autenticación y cifrado que dependen del despliegue."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.exp_syllabus_bullet1",
+    "initial_line": 339,
+    "final_line": 339,
+    "old": "Dirigí el backend de seguridad de una base de código Next.js/TypeScript compartida: passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres y auditoría resistente a manipulaciones.",
+    "new": "Colaboré en la seguridad y el mantenimiento del backend de una base Next.js/TypeScript compartida: passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres y auditoría resistente a manipulaciones."
+  },
+  {
+    "file": "src/i18n/locales/es.ts",
+    "key": "es.resume.exp_syllabus_bullet2",
+    "initial_line": 341,
+    "final_line": 341,
+    "old": "La plataforma universitaria de IA cuenta con 503 pruebas en 92 archivos. Dirigí el producto, la arquitectura de seguridad y la implementación técnica mientras participaba en la aceleradora EDUCATE y en la validación de la startup.",
+    "new": "El job de tests CI del 17 de agosto de 2026 superó 1,343 pruebas en 155 archivos; el job de seguridad separado falló. Contribuí al producto y la seguridad mientras participaba en EDUCATE y la validación de la startup."
+  }
+]

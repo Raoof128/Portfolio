@@ -3,6 +3,11 @@
    The reading body stays solid, and phones keep document flow. */
 
 /* Free geometry is opt-in on desktop; ordinary deep links keep the document layout. */
+.os-page-content {
+  /* The same reading queries apply to the server route and hydrated workspace.
+     Query content width, rather than the surrounding desktop viewport. */
+  container: reading-content / inline-size;
+}
 .os-window--floating {
   position: fixed;
   z-index: 30;

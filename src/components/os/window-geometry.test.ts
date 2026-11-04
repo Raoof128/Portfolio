@@ -158,9 +158,21 @@ describe("window geometry", () => {
     ).toEqual({
       x: 200,
       y: 180,
-      width: 720,
+      width: 320,
       height: 240,
     });
+  });
+
+  it("retains a narrow reading pane through movement and viewport changes", () => {
+    const narrow = resizeWindowRect(initial, { x: -480, y: 0 }, desktop);
+    expect(narrow).toEqual({ ...initial, width: 320 });
+    const moved = moveWindowRect(narrow, { x: 1400, y: 20 }, desktop);
+    expect(moved.width).toBe(320);
+    expectContained(moved, desktop);
+    const smallerDesktop = { width: 1024, height: 768 };
+    const reclamped = clampWindowRect(moved, smallerDesktop);
+    expect(reclamped.width).toBe(320);
+    expectContained(reclamped, smallerDesktop);
   });
 
   it("uses centered bounded defaults for non-finite stored coordinates", () => {

@@ -1,0 +1,15 @@
+{
+  "javaScriptEnabled": false,
+  "initialURL": "http://127.0.0.1:4398/contact",
+  "finalURL": "chrome-error://chromewebdata/",
+  "nativeAttempts": [
+    {
+      "frameId": "7F9B84651812DDE15FA85AB9F6E32A03",
+      "reason": "formSubmissionPost",
+      "url": "mailto:raoof.r12@gmail.com?subject=Contact&body=name%3DAuditBrowserProbe%0D%0Aemail%3Daudit-browser-probe%40example.invalid%0D%0Amessage%3DPRIVATE_DRAFT_PROBE%3A%20a%20synthetic%20browser%20regression%20draft.%0D%0A%0D%0A",
+      "disposition": "currentTab"
+    }
+  ],
+  "httpSubmissions": [],
+  "mailClientLaunchVerified": false
+}

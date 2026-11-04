@@ -1,0 +1,45 @@
+{
+  "projects": [
+    "invisible-window-research",
+    "project-simurgh",
+    "project-zurvan",
+    "gitswitch",
+    "mehr-guard",
+    "syllabus-sync",
+    "divan-open-day",
+    "nexus-archive",
+    "nanomatch",
+    "sentinelflow",
+    "ecrsm",
+    "simurghforge",
+    "aion"
+  ],
+  "writeups": [
+    "project-simurgh-containment",
+    "invisible-window-research",
+    "nanomatch-deep-dive",
+    "sentinelflow-deep-dive",
+    "ecrsm-deep-dive",
+    "kmp-security",
+    "electron-security"
+  ],
+  "matchingCanonical": true,
+  "proposalMatches": {
+    "project-simurgh": true,
+    "invisible-window-research": true,
+    "project-zurvan": true,
+    "aion": true,
+    "gitswitch": true,
+    "syllabus-sync": true,
+    "divan-open-day": true,
+    "nexus-archive": true,
+    "nanomatch": true,
+    "sentinelflow": true,
+    "ecrsm": true,
+    "simurghforge": true,
+    "mehr-guard": true
+  },
+  "publicationIdentityPreserved": true,
+  "originalYearsAndDatesPreserved": true,
+  "otherCodeBlocksPreserved": true
+}

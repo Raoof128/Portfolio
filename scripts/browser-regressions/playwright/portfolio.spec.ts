@@ -282,6 +282,10 @@ test("increased contrast and reduced transparency use opaque window frames", asy
 test("keyboard workspace entry and five-language 404 recovery", async ({ page }, info) => {
   await prepare(page);
   await ready(page, "/");
+  // First entry now shows research immediately. The theatrical logon remains
+  // optional, with its original keyboard path available after an explicit Lock.
+  await expect(page.locator(".os-welcome")).not.toBeVisible();
+  await page.locator(".os-tray-lock").click();
   const enter = page.locator(".os-enter");
   await expect(enter).toHaveAccessibleName(/Enter workspace/);
   // Reach the entry by sequential keyboard navigation, without click/focus injection.

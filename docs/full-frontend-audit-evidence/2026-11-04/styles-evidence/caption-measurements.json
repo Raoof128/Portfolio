@@ -1,0 +1,146 @@
+[
+  {
+    "label": "caption-phone-before",
+    "text": "Research Highlights",
+    "minRatio": 3.555,
+    "glyphInteriorPixels": 50,
+    "worstShadowBackground": [
+      123,
+      137,
+      157
+    ],
+    "textShadow": "rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-phone-before",
+    "text": "Where the evidence connects",
+    "minRatio": 4.081,
+    "glyphInteriorPixels": 60,
+    "worstShadowBackground": [
+      111,
+      127,
+      149
+    ],
+    "textShadow": "rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-phone-after",
+    "text": "Research Highlights",
+    "minRatio": 7.211,
+    "glyphInteriorPixels": 50,
+    "worstShadowBackground": [
+      79,
+      88,
+      100
+    ],
+    "textShadow": "rgb(0, 0, 0) 0px 0px 2px, rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-phone-after",
+    "text": "Where the evidence connects",
+    "minRatio": 9.122,
+    "glyphInteriorPixels": 59,
+    "worstShadowBackground": [
+      64,
+      73,
+      85
+    ],
+    "textShadow": "rgb(0, 0, 0) 0px 0px 2px, rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-compact-before",
+    "text": "Research Highlights",
+    "minRatio": 3.593,
+    "glyphInteriorPixels": 50,
+    "worstShadowBackground": [
+      123,
+      136,
+      156
+    ],
+    "textShadow": "rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-compact-before",
+    "text": "Where the evidence connects",
+    "minRatio": 3.665,
+    "glyphInteriorPixels": 80,
+    "worstShadowBackground": [
+      119,
+      135,
+      156
+    ],
+    "textShadow": "rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-compact-after",
+    "text": "Research Highlights",
+    "minRatio": 7.292,
+    "glyphInteriorPixels": 50,
+    "worstShadowBackground": [
+      79,
+      87,
+      100
+    ],
+    "textShadow": "rgb(0, 0, 0) 0px 0px 2px, rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-compact-after",
+    "text": "Where the evidence connects",
+    "minRatio": 8.554,
+    "glyphInteriorPixels": 78,
+    "worstShadowBackground": [
+      68,
+      77,
+      90
+    ],
+    "textShadow": "rgb(0, 0, 0) 0px 0px 2px, rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-rtl-before",
+    "text": "\u0628\u0631\u06af\u0632\u06cc\u062f\u0647\u200c\u0647\u0627\u06cc \u067e\u0698\u0648\u0647\u0634",
+    "minRatio": 4.746,
+    "glyphInteriorPixels": 31,
+    "worstShadowBackground": [
+      103,
+      116,
+      135
+    ],
+    "textShadow": "rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-rtl-before",
+    "text": "\u067e\u06cc\u0648\u0646\u062f \u0645\u06cc\u0627\u0646 \u0634\u0648\u0627\u0647\u062f",
+    "minRatio": 4.631,
+    "glyphInteriorPixels": 30,
+    "worstShadowBackground": [
+      102,
+      118,
+      140
+    ],
+    "textShadow": "rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-rtl-after",
+    "text": "\u0628\u0631\u06af\u0632\u06cc\u062f\u0647\u200c\u0647\u0627\u06cc \u067e\u0698\u0648\u0647\u0634",
+    "minRatio": 10.133,
+    "glyphInteriorPixels": 30,
+    "worstShadowBackground": [
+      59,
+      66,
+      77
+    ],
+    "textShadow": "rgb(0, 0, 0) 0px 0px 2px, rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  },
+  {
+    "label": "caption-rtl-after",
+    "text": "\u067e\u06cc\u0648\u0646\u062f \u0645\u06cc\u0627\u0646 \u0634\u0648\u0627\u0647\u062f",
+    "minRatio": 9.88,
+    "glyphInteriorPixels": 29,
+    "worstShadowBackground": [
+      58,
+      68,
+      81
+    ],
+    "textShadow": "rgb(0, 0, 0) 0px 0px 2px, rgba(0, 0, 0, 0.85) 0px 1px 2px"
+  }
+]

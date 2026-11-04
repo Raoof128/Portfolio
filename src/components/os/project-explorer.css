@@ -981,7 +981,7 @@
    container and sets --explorer-scroll-h on the explorer root. The pane then
    scrolls inside itself and keeps its heading and category in view. Narrow
    explorers keep the sidebar in flow. */
-@container explorer-frame (min-width: 701px) {
+@container explorer-frame (min-width: 881px) {
   /* The pane is its own scroll port: it is no taller than the window body, every
      link sits inside it, and a keyline closes the port at the bottom edge. The
      scrollbar gutter is reserved so the rows do not shift when it appears. */
@@ -1026,12 +1026,13 @@
   }
 }
 
-/* Narrow explorers (phone viewports, or a reading window of 700px or less): the
+/* Below 881px the sidebar's 240px leaves too little reading space. Collapse it
+   for tablet reading surfaces as well as narrow desktop windows and phones. The
    sidebar stacks above the dossier at full width, as it did before the redesign.
    Order: All Projects, search and category side by side, a horizontally
    scrolling chip row, then the dossier on the 16px gutter. The query is on the
    explorer frame, so a narrow window on a wide screen stacks too. */
-@container explorer-frame (max-width: 700px) {
+@container explorer-frame (max-width: 880px) {
   .os-shell .os-project-explorer > .os-explorer-layout {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1047,7 +1048,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    inline-size: 100%;
+    inline-size: calc(100% - 2 * var(--space-1));
     min-height: 44px;
     margin-inline: var(--space-1);
     padding: 4px 8px;

@@ -60,7 +60,7 @@ describe("complete localized page content", () => {
     const source = writeups.find(
       (post) => post.slug === "invisible-window-research",
     )!;
-    expect(source.updatedAt).toBe("2026-10-10");
+    expect(source.updatedAt).toBe("2026-11-04");
     expect(source.content).toContain(
       "controlled laboratory, not commercial products",
     );
@@ -68,7 +68,17 @@ describe("complete localized page content", () => {
     expect(source.content).toContain("n = 8");
     expect(source.content).toContain("p = 0.41");
     expect(source.content).toContain("not a browser `getDisplayMedia()` call");
-    expect(source.content).toContain("source code is not publicly released");
+    expect(source.content).toContain(
+      "public repository contained Windows and macOS proof-of-concept source",
+    );
+    expect(source.content).toContain("historical publication-time statement");
+    expect(source.content).not.toMatch(/\/\/[^\n]*all (?:screen )?capture/);
+    expect(source.content).toContain(
+      "Request exclusion from compatible screen-capture paths",
+    );
+    expect(source.content).toContain(
+      "Request exclusion from paths that honour the sharing flag",
+    );
     expect(source.content).not.toContain("Linux is not vulnerable");
     expect(source.content).not.toContain(
       "Public disclosure after 90-day window",

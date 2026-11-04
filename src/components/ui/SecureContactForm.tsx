@@ -4,6 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ChangeEvent,
   type FocusEvent,
   type FormEvent,
@@ -28,6 +29,7 @@ type CopyState = "idle" | "copied" | "failed";
    contact_form. Persian and Arabic are written as natural copy, not word-for-word. */
 export interface SecureContactCopy {
   heading: string;
+  noScript: string;
   requiredLegend: string;
   emailHelp: string;
   characters: string;
@@ -54,6 +56,8 @@ export interface SecureContactCopy {
 export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
   en: {
     heading: "Send a message",
+    noScript:
+      "JavaScript is off. This form prepares a draft in your email app. You can also email me directly:",
     requiredLegend: "Fields marked * are required.",
     emailHelp: "Used only so I can reply to you.",
     characters: "{count} of {max} characters used",
@@ -78,6 +82,8 @@ export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
   },
   fa: {
     heading: "ارسال پیام",
+    noScript:
+      "جاوااسکریپت غیرفعال است. این فرم پیش‌نویسی در برنامه ایمیل شما آماده می‌کند. همچنین می‌توانید مستقیماً ایمیل بزنید:",
     requiredLegend: "فیلدهایی که با * مشخص شده‌اند الزامی هستند.",
     emailHelp: "فقط برای پاسخ دادن به شما استفاده می‌شود.",
     characters: "{count} از {max} نویسه استفاده شده",
@@ -102,6 +108,8 @@ export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
   },
   ar: {
     heading: "أرسل رسالة",
+    noScript:
+      "جافاسكريبت معطّل. يجهّز هذا النموذج مسودة في تطبيق البريد لديك. يمكنك أيضًا مراسلتي مباشرةً:",
     requiredLegend: "الحقول المعلَّمة بعلامة * إلزامية.",
     emailHelp: "يُستخدم فقط للرد عليك.",
     characters: "تم استخدام {count} من {max} حرفًا",
@@ -126,6 +134,8 @@ export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
   },
   es: {
     heading: "Enviar un mensaje",
+    noScript:
+      "JavaScript está desactivado. Este formulario prepara un borrador en tu aplicación de correo. También puedes escribirme directamente:",
     requiredLegend: "Los campos marcados con * son obligatorios.",
     emailHelp: "Solo lo uso para responderte.",
     characters: "{count} de {max} caracteres usados",
@@ -151,6 +161,8 @@ export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
   },
   zh: {
     heading: "发送留言",
+    noScript:
+      "JavaScript 已关闭。此表单会在你的邮件应用中准备草稿。你也可以直接发送邮件：",
     requiredLegend: "标有 * 的字段为必填项。",
     emailHelp: "仅用于回复你。",
     characters: "已输入 {count} / {max} 个字符",
@@ -176,6 +188,9 @@ export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
 };
 
 const FIELDS: Field[] = ["name", "email", "message"];
+const subscribeHydration = () => () => {};
+const clientHydration = () => true;
+const serverHydration = () => false;
 
 function validateField(
   field: Field,
@@ -208,6 +223,11 @@ function strings(locale: Locale): SecureContactCopy {
 export function CopyAddressControl() {
   const { locale } = useTranslation();
   const s = strings(locale);
+  const hydrated = useSyncExternalStore(
+    subscribeHydration,
+    clientHydration,
+    serverHydration,
+  );
   const [copyState, setCopyState] = useState<CopyState>("idle");
 
   const copyAddress = async () => {
@@ -225,6 +245,7 @@ export function CopyAddressControl() {
         type="button"
         className="os-button os-button--secondary"
         onClick={copyAddress}
+        disabled={!hydrated}
       >
         <Copy aria-hidden="true" size={14} />
         {s.copyAddress}
@@ -243,6 +264,12 @@ export function CopyAddressControl() {
 export function SecureContactForm() {
   const { t, locale } = useTranslation();
   const s = strings(locale);
+  // Before hydration, native mailto submission and required/email checks still work.
+  const hydrated = useSyncExternalStore(
+    subscribeHydration,
+    clientHydration,
+    serverHydration,
+  );
   const [phase, setPhase] = useState<Phase>("IDLE");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -252,6 +279,67 @@ export function SecureContactForm() {
   const fieldRefs = useRef<
     Partial<Record<Field, HTMLInputElement | HTMLTextAreaElement | null>>
   >({});
+
+  useEffect(() => {
+    let frame: number | null = null;
+    const viewport = window.visualViewport;
+    const revealFocusedField = () => {
+      frame = null;
+      const field = Object.values(fieldRefs.current).find(
+        (element) => element === document.activeElement,
+      );
+      if (!field || field.closest("[hidden], [inert]") || document.hidden)
+        return;
+      const top = (viewport?.offsetTop ?? 0) + 8;
+      let bottom =
+        (viewport?.offsetTop ?? 0) +
+        (viewport?.height ?? window.innerHeight) -
+        8;
+      const dock = document.querySelector<HTMLElement>(
+        ".os-dock:not([hidden])",
+      );
+      const dockBox = dock?.getBoundingClientRect();
+      if (dockBox && dockBox.height > 0 && dockBox.top > top)
+        bottom = Math.min(bottom, dockBox.top - 8);
+      const box = field.getBoundingClientRect();
+      if (!box.height || (box.top >= top && box.bottom <= bottom)) return;
+      // Keep the existing focused control; only the reader's viewport changed.
+      field.scrollIntoView?.({
+        block: "center",
+        inline: "nearest",
+        behavior: "instant",
+      });
+      // A software keyboard can shrink only visualViewport, leaving layout height
+      // unchanged. Correct that remaining offset in the nearest reading scroller.
+      const after = field.getBoundingClientRect();
+      if (after.top < top || after.bottom > bottom) {
+        const shift =
+          after.top - Math.max(top, top + (bottom - top - after.height) / 2);
+        let scroller = field.parentElement;
+        while (scroller && scroller !== document.body) {
+          if (
+            /(auto|scroll)/.test(getComputedStyle(scroller).overflowY) &&
+            scroller.scrollHeight > scroller.clientHeight
+          )
+            break;
+          scroller = scroller.parentElement;
+        }
+        if (scroller && scroller !== document.body) scroller.scrollTop += shift;
+        else window.scrollBy({ top: shift, behavior: "instant" });
+      }
+    };
+    const schedule = () => {
+      if (frame === null)
+        frame = window.requestAnimationFrame(revealFocusedField);
+    };
+    window.addEventListener("resize", schedule, { passive: true });
+    viewport?.addEventListener("resize", schedule, { passive: true });
+    return () => {
+      window.removeEventListener("resize", schedule);
+      viewport?.removeEventListener("resize", schedule);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const clearTimers = () => {
     if (typingTimeoutRef.current) {
@@ -407,7 +495,22 @@ export function SecureContactForm() {
         {statusText[phase]}
       </p>
 
-      <form onSubmit={handleSubmit} noValidate className="os-secure-form">
+      <noscript>
+        <p className="os-secure-note">
+          {s.noScript}{" "}
+          <a href={`mailto:${CONTACT_EMAIL_GMAIL}`} dir="ltr">
+            {CONTACT_EMAIL_GMAIL}
+          </a>
+        </p>
+      </noscript>
+      <form
+        action={`mailto:${CONTACT_EMAIL_GMAIL}?subject=${encodeURIComponent(t.seo.contact_title)}`}
+        method="post"
+        encType="text/plain"
+        onSubmit={handleSubmit}
+        noValidate={hydrated}
+        className="os-secure-form"
+      >
         <p className="os-secure-legend">{s.requiredLegend}</p>
 
         <div className="os-secure-grid">

@@ -1,0 +1,77 @@
+{
+  "method": "Current 4398 static export with owned candidate Zurvan CSS injected after load; final build verification belongs to parent.",
+  "results": [
+    {
+      "appearance": "dark",
+      "label": "Claim",
+      "foreground": "rgb(241, 247, 255)",
+      "background": "rgb(27, 61, 102)",
+      "titleForeground": "rgb(241, 247, 255)",
+      "contrast": 10.225001619273636,
+      "titleContrast": 10.225001619273636
+    },
+    {
+      "appearance": "dark",
+      "label": "Concept",
+      "foreground": "rgb(241, 247, 255)",
+      "background": "rgb(27, 61, 102)",
+      "titleForeground": "rgb(241, 247, 255)",
+      "contrast": 10.225001619273636,
+      "titleContrast": 10.225001619273636
+    },
+    {
+      "appearance": "dark",
+      "label": "Entity",
+      "foreground": "rgb(241, 247, 255)",
+      "background": "rgb(27, 61, 102)",
+      "titleForeground": "rgb(241, 247, 255)",
+      "contrast": 10.225001619273636,
+      "titleContrast": 10.225001619273636
+    },
+    {
+      "appearance": "dark",
+      "label": "Decision",
+      "foreground": "rgb(241, 247, 255)",
+      "background": "rgb(27, 61, 102)",
+      "titleForeground": "rgb(241, 247, 255)",
+      "contrast": 10.225001619273636,
+      "titleContrast": 10.225001619273636
+    },
+    {
+      "appearance": "light",
+      "label": "Claim",
+      "foreground": "rgb(0, 0, 0)",
+      "background": "rgb(229, 243, 252)",
+      "titleForeground": "rgb(0, 0, 0)",
+      "contrast": 18.557494519570188,
+      "titleContrast": 18.557494519570188
+    },
+    {
+      "appearance": "light",
+      "label": "Concept",
+      "foreground": "rgb(0, 0, 0)",
+      "background": "rgb(229, 243, 252)",
+      "titleForeground": "rgb(0, 0, 0)",
+      "contrast": 18.557494519570188,
+      "titleContrast": 18.557494519570188
+    },
+    {
+      "appearance": "light",
+      "label": "Entity",
+      "foreground": "rgb(0, 0, 0)",
+      "background": "rgb(229, 243, 252)",
+      "titleForeground": "rgb(0, 0, 0)",
+      "contrast": 18.557494519570188,
+      "titleContrast": 18.557494519570188
+    },
+    {
+      "appearance": "light",
+      "label": "Decision",
+      "foreground": "rgb(0, 0, 0)",
+      "background": "rgb(229, 243, 252)",
+      "titleForeground": "rgb(0, 0, 0)",
+      "contrast": 18.557494519570188,
+      "titleContrast": 18.557494519570188
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "target": "default",
+    "before": {
+      "action": "mailto:raoof.r12@gmail.com?subject=Contact",
+      "method": "post",
+      "enctype": "text/plain",
+      "noValidate": false,
+      "target": ""
+    },
+    "after": {
+      "url": "chrome-error://chromewebdata/",
+      "pages": [
+        "chrome-error://chromewebdata/"
+      ],
+      "events": [
+        {
+          "event": "frameRequestedNavigation",
+          "frameId": "228E331C3E4CC808CE7F81B567D2C085",
+          "reason": "formSubmissionPost",
+          "url": "mailto:raoof.r12@gmail.com?subject=Contact&body=name%3DNative%20audit%20fixture%0D%0Aemail%3Daudit%40example.invalid%0D%0Amessage%3DLocal%20native%20draft%20probe.%20No%20message%20is%20sent.%0D%0A%0D%0A",
+          "disposition": "currentTab"
+        },
+        {
+          "event": "frameStartedNavigating",
+          "frameId": "228E331C3E4CC808CE7F81B567D2C085",
+          "url": "mailto:raoof.r12@gmail.com?subject=Contact&body=name%3DNative%20audit%20fixture%0D%0Aemail%3Daudit%40example.invalid%0D%0Amessage%3DLocal%20native%20draft%20probe.%20No%20message%20is%20sent.%0D%0A%0D%0A",
+          "loaderId": "4503B5A240A469B30FA0BF1B363B24EA",
+          "navigationType": "differentDocument"
+        },
+        {
+          "event": "main-navigated",
+          "url": "chrome-error://chromewebdata/"
+        }
+      ]
+    }
+  },
+  {
+    "target": "_blank",
+    "before": {
+      "action": "mailto:raoof.r12@gmail.com?subject=Contact",
+      "method": "post",
+      "enctype": "text/plain",
+      "noValidate": false,
+      "target": ""
+    },
+    "after": {
+      "url": "http://127.0.0.1:4398/contact",
+      "pages": [
+        "http://127.0.0.1:4398/contact",
+        "chrome-error://chromewebdata/"
+      ],
+      "events": [],
+      "values": "Local native draft probe. No message is sent."
+    }
+  }
+]

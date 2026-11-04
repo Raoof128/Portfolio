@@ -1,0 +1,79 @@
+{
+  "phase": "complete; product source frozen",
+  "files": [
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "initialSha256": "b5299529e0f3d21038b06614fecfb49dd53577bbd8eca10cf9cd40847e32a17f",
+      "initialLines": 635,
+      "finalSha256": "49c9a157d6474bed7a5b8abd9423eb56385c764438677bd158bccde257dcfb83",
+      "finalLines": 637,
+      "initialReadCoverage": "Complete prior PAGES audit read inherited at matching initial hash; current relevant header/test spans reinspected before edit.",
+      "finalReadSpans": [
+        [
+          1,
+          637
+        ]
+      ]
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+      "initialSha256": "91e984e57ee68e44462e32ac67d9772bb7bc08c1cab26069d0c515fad232045c",
+      "initialLines": 320,
+      "finalSha256": "5d11d42f80b8997b9a9882497305b3ba1d688b861606d71da5dec07c348bfa71",
+      "finalLines": 385,
+      "initialReadCoverage": "Complete prior PAGES audit read inherited at matching initial hash; current relevant header/test spans reinspected before edit.",
+      "finalReadSpans": [
+        [
+          1,
+          385
+        ]
+      ]
+    }
+  ],
+  "updatedAtUTC": "2026-11-04T01:50:49.003815+00:00",
+  "changes": [
+    "Render the translated Software archive DOI label only for links.doiKind=software; retain the generic publication DOI label otherwise.",
+    "Five-locale actual-data regression: current repository is the single primary header action, DOI21737792 uses the software label, older DOI20374849/PDF are absent from header, all three original papers and citation remain reachable in Evidence.",
+    "One valid publication-DOI fixture verifies backward compatibility when software kind is absent."
+  ],
+  "checks": {
+    "red": {
+      "exitCode": 1,
+      "expectedFailures": 5,
+      "log": "pages-simurgh-header-red.txt",
+      "reason": "All five current-source cases fail before product correction because software DOI still has generic label."
+    },
+    "firstGreenAttempt": {
+      "exitCode": 1,
+      "log": "pages-simurgh-header-green-attempt1.txt",
+      "reason": "Test fixture selected a dossier without an optional header DOI. Corrected fixture to supply its real paper DOI; no product change required."
+    },
+    "green": {
+      "exitCode": 0,
+      "tests": 25,
+      "files": 1,
+      "log": "pages-simurgh-header-green.txt"
+    },
+    "lint": {
+      "exitCode": 0,
+      "log": "pages-simurgh-header-lint.txt"
+    },
+    "globalTypecheck": {
+      "exitCode": 0,
+      "command": "tsc --noEmit --incremental false",
+      "log": "pages-simurgh-header-typecheck.txt"
+    },
+    "buildOrBrowser": "Not run in this lane; parent owns final compiled verification."
+  },
+  "dependencyHashesAtChecks": {
+    "src/lib/data.ts": "fdbab5e5dd81996981257364a21997feba5bf96683d9013084b9f742dfb5d3ab",
+    "src/i18n/locales/en.ts": "41fcc36b4da234b13a26f6ca06c4775620053093f9763ed3400cc17db119a456",
+    "src/i18n/locales/fa.ts": "8b9688fade9b51e76cd9f1332d4fb4bff404b65d3573b4b7d401643a24e18698",
+    "src/i18n/locales/ar.ts": "21f144fe37f7faff6a1d77c4e1c6e94d666a196d5234e58b223b7e9d353415d7",
+    "src/i18n/locales/zh.ts": "10f7e45379a6aa40d8c546c72513a1182689dd5924d180cbb7ca419c16c4efbd",
+    "src/i18n/locales/es.ts": "1cb3362477b2c6a254a4d6be4622309756326306eecc6f41b93ea07d59ee1520"
+  },
+  "integrity": {
+    "finalHashesMatchDisk": true
+  }
+}

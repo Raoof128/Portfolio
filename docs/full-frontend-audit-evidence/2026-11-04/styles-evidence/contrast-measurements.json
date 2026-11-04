@@ -1,0 +1,794 @@
+[
+  {
+    "run": "contrast-dark-390-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      0.0,
+      102.0,
+      204.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 1.003,
+    "worst_background": [
+      41,
+      109,
+      156
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-dark-390-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-dark-390-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 312
+  },
+  {
+    "run": "contrast-dark-390-before",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 0.6,
+    "min_ratio": 4.02,
+    "worst_background": [
+      36,
+      85,
+      118
+    ],
+    "samples": 35
+  },
+  {
+    "run": "contrast-dark-390-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 5.582,
+    "worst_background": [
+      41,
+      109,
+      156
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-dark-390-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-dark-390-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 312
+  },
+  {
+    "run": "contrast-dark-390-after",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.967,
+    "worst_background": [
+      36,
+      85,
+      118
+    ],
+    "samples": 35
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 5.838,
+    "worst_background": [
+      38,
+      106,
+      152
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 320
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 0.6,
+    "min_ratio": 3.9,
+    "worst_background": [
+      38,
+      88,
+      120
+    ],
+    "samples": 24
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-theme-state",
+    "text": "Dark",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.849,
+    "worst_background": [
+      31,
+      78,
+      110
+    ],
+    "samples": 42
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-top-clock time",
+    "text": "12:19",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 5.367,
+    "worst_background": [
+      59,
+      112,
+      145
+    ],
+    "samples": 128
+  },
+  {
+    "run": "contrast-dark-1440-before",
+    "selector": ".os-top-date",
+    "text": "4 Nov 2026",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.0,
+    "worst_background": [
+      30,
+      77,
+      108
+    ],
+    "samples": 210
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 5.838,
+    "worst_background": [
+      38,
+      106,
+      152
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.263,
+    "worst_background": [
+      42,
+      94,
+      102
+    ],
+    "samples": 320
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.638,
+    "worst_background": [
+      38,
+      88,
+      120
+    ],
+    "samples": 24
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-theme-state",
+    "text": "Dark",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.849,
+    "worst_background": [
+      31,
+      78,
+      110
+    ],
+    "samples": 42
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-top-clock time",
+    "text": "12:19",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 5.367,
+    "worst_background": [
+      59,
+      112,
+      145
+    ],
+    "samples": 128
+  },
+  {
+    "run": "contrast-dark-1440-after",
+    "selector": ".os-top-date",
+    "text": "4 Nov 2026",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.0,
+    "worst_background": [
+      30,
+      77,
+      108
+    ],
+    "samples": 210
+  },
+  {
+    "run": "contrast-light-390-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      0.0,
+      102.0,
+      204.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 1.089,
+    "worst_background": [
+      44,
+      106,
+      125
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-light-390-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 6.975,
+    "worst_background": [
+      46,
+      99,
+      78
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-light-390-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.024,
+    "worst_background": [
+      44,
+      89,
+      67
+    ],
+    "samples": 312
+  },
+  {
+    "run": "contrast-light-390-before",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 0.6,
+    "min_ratio": 4.201,
+    "worst_background": [
+      123,
+      180,
+      183
+    ],
+    "samples": 35
+  },
+  {
+    "run": "contrast-light-390-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 6.061,
+    "worst_background": [
+      44,
+      106,
+      125
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-light-390-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 6.975,
+    "worst_background": [
+      46,
+      99,
+      78
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-light-390-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.024,
+    "worst_background": [
+      44,
+      89,
+      67
+    ],
+    "samples": 312
+  },
+  {
+    "run": "contrast-light-390-after",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.054,
+    "worst_background": [
+      123,
+      180,
+      183
+    ],
+    "samples": 35
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 6.366,
+    "worst_background": [
+      38,
+      103,
+      121
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.024,
+    "worst_background": [
+      44,
+      89,
+      67
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.024,
+    "worst_background": [
+      44,
+      89,
+      67
+    ],
+    "samples": 320
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 0.6,
+    "min_ratio": 4.24,
+    "worst_background": [
+      125,
+      182,
+      182
+    ],
+    "samples": 24
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-theme-state",
+    "text": "Light",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.984,
+    "worst_background": [
+      107,
+      169,
+      183
+    ],
+    "samples": 42
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-top-clock time",
+    "text": "12:19",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.465,
+    "worst_background": [
+      129,
+      184,
+      182
+    ],
+    "samples": 128
+  },
+  {
+    "run": "contrast-light-1440-before",
+    "selector": ".os-top-date",
+    "text": "4 Nov 2026",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.873,
+    "worst_background": [
+      104,
+      168,
+      183
+    ],
+    "samples": 210
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Lab",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 6.366,
+    "worst_background": [
+      38,
+      103,
+      121
+    ],
+    "samples": 80
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Security & Responsible Disclosure",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.024,
+    "worst_background": [
+      44,
+      89,
+      67
+    ],
+    "samples": 872
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-desktop-footer a",
+    "text": "Hall of Fame",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.024,
+    "worst_background": [
+      44,
+      89,
+      67
+    ],
+    "samples": 320
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.239,
+    "worst_background": [
+      125,
+      182,
+      182
+    ],
+    "samples": 24
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-theme-state",
+    "text": "Light",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.984,
+    "worst_background": [
+      107,
+      169,
+      183
+    ],
+    "samples": 42
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-top-clock time",
+    "text": "12:19",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.465,
+    "worst_background": [
+      129,
+      184,
+      182
+    ],
+    "samples": 128
+  },
+  {
+    "run": "contrast-light-1440-after",
+    "selector": ".os-top-date",
+    "text": "4 Nov 2026",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.873,
+    "worst_background": [
+      104,
+      168,
+      183
+    ],
+    "samples": 210
+  }
+]

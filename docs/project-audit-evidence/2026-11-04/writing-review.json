@@ -1,0 +1,590 @@
+{
+  "lane": "writing-translations",
+  "status": "complete_source_ready",
+  "files": [
+    {
+      "path": "src/lib/writing-translations/fa.json",
+      "sha256": "35fcae901d35a62f106aa8b954b30af4129c51cc9b434b1348128250f22007eb",
+      "bytes": 52837,
+      "lines": 243,
+      "initial_sha256": "86f213ad9194096b7cf9030f35af28499bae6efec1ae68d3bb351c32fa3268c4",
+      "initial_lines": 248,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 65
+        },
+        {
+          "version": "initial",
+          "start": 66,
+          "end": 125
+        },
+        {
+          "version": "initial",
+          "start": 126,
+          "end": 190
+        },
+        {
+          "version": "initial",
+          "start": 191,
+          "end": 248
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 65
+        },
+        {
+          "version": "final",
+          "start": 66,
+          "end": 125
+        },
+        {
+          "version": "final",
+          "start": 126,
+          "end": 190
+        },
+        {
+          "version": "final",
+          "start": 191,
+          "end": 243
+        }
+      ],
+      "status": "fully_read_final_verified",
+      "reader": "/root/review_changes",
+      "article_count": 7,
+      "article_line_counts": {
+        "project-simurgh-containment": 26,
+        "invisible-window-research": 45,
+        "nanomatch-deep-dive": 29,
+        "sentinelflow-deep-dive": 25,
+        "ecrsm-deep-dive": 31,
+        "kmp-security": 18,
+        "electron-security": 18
+      },
+      "audit_notes": "All final values reread in bounded physical-line chunks after assembly. All seven articles match the frozen English evidence scope, current/frozen distinctions and caveats. Source-linked technical tokens, numeric values, links and Markdown structures verified per line; adapter retains canonical fenced examples.",
+      "initial_bytes": 42283,
+      "final_sha256": "35fcae901d35a62f106aa8b954b30af4129c51cc9b434b1348128250f22007eb",
+      "final_bytes": 52837,
+      "final_lines": 243,
+      "initial_article_line_counts": {
+        "project-simurgh-containment": 25,
+        "invisible-window-research": 53,
+        "nanomatch-deep-dive": 32,
+        "sentinelflow-deep-dive": 29,
+        "ecrsm-deep-dive": 23,
+        "kmp-security": 18,
+        "electron-security": 17
+      }
+    },
+    {
+      "path": "src/lib/writing-translations/ar.json",
+      "sha256": "90b4262dc39b93584aa1cd8b70def782a87657d9194d7120c32e6da2c286689c",
+      "bytes": 47700,
+      "lines": 243,
+      "initial_sha256": "3d7ed432a9255dd818296878f1ee7c5493e143c8ae91fd9cead83974f974807a",
+      "initial_lines": 248,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 65
+        },
+        {
+          "version": "initial",
+          "start": 66,
+          "end": 125
+        },
+        {
+          "version": "initial",
+          "start": 126,
+          "end": 190
+        },
+        {
+          "version": "initial",
+          "start": 191,
+          "end": 248
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 65
+        },
+        {
+          "version": "final",
+          "start": 66,
+          "end": 125
+        },
+        {
+          "version": "final",
+          "start": 126,
+          "end": 190
+        },
+        {
+          "version": "final",
+          "start": 191,
+          "end": 243
+        }
+      ],
+      "status": "fully_read_final_verified",
+      "reader": "/root/review_changes",
+      "article_count": 7,
+      "article_line_counts": {
+        "project-simurgh-containment": 26,
+        "invisible-window-research": 45,
+        "nanomatch-deep-dive": 29,
+        "sentinelflow-deep-dive": 25,
+        "ecrsm-deep-dive": 31,
+        "kmp-security": 18,
+        "electron-security": 18
+      },
+      "audit_notes": "All final values reread in bounded physical-line chunks after assembly. All seven articles match the frozen English evidence scope, current/frozen distinctions and caveats. Source-linked technical tokens, numeric values, links and Markdown structures verified per line; adapter retains canonical fenced examples.",
+      "initial_bytes": 39315,
+      "final_sha256": "90b4262dc39b93584aa1cd8b70def782a87657d9194d7120c32e6da2c286689c",
+      "final_bytes": 47700,
+      "final_lines": 243,
+      "initial_article_line_counts": {
+        "project-simurgh-containment": 25,
+        "invisible-window-research": 53,
+        "nanomatch-deep-dive": 32,
+        "sentinelflow-deep-dive": 29,
+        "ecrsm-deep-dive": 23,
+        "kmp-security": 18,
+        "electron-security": 17
+      }
+    },
+    {
+      "path": "src/lib/writing-translations/zh.json",
+      "sha256": "b9e166d9013eb24c78dd472738784aec8bec239eb4e6393f10dc9f190cbcd522",
+      "bytes": 31757,
+      "lines": 243,
+      "initial_sha256": "b08e2543b20322b1fbd05fb14447c3b67dbbf9b82110c5c9b937e7af10321679",
+      "initial_lines": 248,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 85
+        },
+        {
+          "version": "initial",
+          "start": 86,
+          "end": 165
+        },
+        {
+          "version": "initial",
+          "start": 166,
+          "end": 248
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 85
+        },
+        {
+          "version": "final",
+          "start": 86,
+          "end": 165
+        },
+        {
+          "version": "final",
+          "start": 166,
+          "end": 243
+        }
+      ],
+      "status": "fully_read_final_verified",
+      "reader": "/root/review_changes",
+      "article_count": 7,
+      "article_line_counts": {
+        "project-simurgh-containment": 26,
+        "invisible-window-research": 45,
+        "nanomatch-deep-dive": 29,
+        "sentinelflow-deep-dive": 25,
+        "ecrsm-deep-dive": 31,
+        "kmp-security": 18,
+        "electron-security": 18
+      },
+      "audit_notes": "All final values reread in bounded physical-line chunks after assembly. All seven articles match the frozen English evidence scope, current/frozen distinctions and caveats. Source-linked technical tokens, numeric values, links and Markdown structures verified per line; adapter retains canonical fenced examples.",
+      "initial_bytes": 25499,
+      "final_sha256": "b9e166d9013eb24c78dd472738784aec8bec239eb4e6393f10dc9f190cbcd522",
+      "final_bytes": 31757,
+      "final_lines": 243,
+      "initial_article_line_counts": {
+        "project-simurgh-containment": 25,
+        "invisible-window-research": 53,
+        "nanomatch-deep-dive": 32,
+        "sentinelflow-deep-dive": 29,
+        "ecrsm-deep-dive": 23,
+        "kmp-security": 18,
+        "electron-security": 17
+      }
+    },
+    {
+      "path": "src/lib/writing-translations/es.json",
+      "sha256": "418204f4922ce87f1fb4b096993cb7a1b89c85068471d63db1710990fd049e6f",
+      "bytes": 38541,
+      "lines": 243,
+      "initial_sha256": "0e0b54fc83fb0019b8d46f32c37e3281494a1338f25fa4b8f2a8cfdee53332ae",
+      "initial_lines": 248,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 85
+        },
+        {
+          "version": "initial",
+          "start": 86,
+          "end": 165
+        },
+        {
+          "version": "initial",
+          "start": 166,
+          "end": 248
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 85
+        },
+        {
+          "version": "final",
+          "start": 86,
+          "end": 165
+        },
+        {
+          "version": "final",
+          "start": 166,
+          "end": 243
+        }
+      ],
+      "status": "fully_read_final_verified",
+      "reader": "/root/review_changes",
+      "article_count": 7,
+      "article_line_counts": {
+        "project-simurgh-containment": 26,
+        "invisible-window-research": 45,
+        "nanomatch-deep-dive": 29,
+        "sentinelflow-deep-dive": 25,
+        "ecrsm-deep-dive": 31,
+        "kmp-security": 18,
+        "electron-security": 18
+      },
+      "audit_notes": "All final values reread in bounded physical-line chunks after assembly. All seven articles match the frozen English evidence scope, current/frozen distinctions and caveats. Source-linked technical tokens, numeric values, links and Markdown structures verified per line; adapter retains canonical fenced examples.",
+      "initial_bytes": 31171,
+      "final_sha256": "418204f4922ce87f1fb4b096993cb7a1b89c85068471d63db1710990fd049e6f",
+      "final_bytes": 38541,
+      "final_lines": 243,
+      "initial_article_line_counts": {
+        "project-simurgh-containment": 25,
+        "invisible-window-research": 53,
+        "nanomatch-deep-dive": 32,
+        "sentinelflow-deep-dive": 29,
+        "ecrsm-deep-dive": 23,
+        "kmp-security": 18,
+        "electron-security": 17
+      }
+    },
+    {
+      "path": "src/lib/writing-translations/source-revision.json",
+      "sha256": "059ed9ca0228b6ef1821b9bab4331768b854aba169bf872e65a053bda057756e",
+      "bytes": 658,
+      "lines": 9,
+      "initial_sha256": "7adeebe4c7d319b21626b9cd85de7cf1841cedc2ed1b00a397aa36a4bffe8392",
+      "initial_lines": 9,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 9
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "status": "fully_read_final_verified",
+      "reader": "/root/review_changes",
+      "audit_notes": "All seven revision values reread; SHA-256 values cover the final frozen English title, tag, takeaway and content using the existing adapter contract.",
+      "initial_bytes": 658,
+      "final_sha256": "059ed9ca0228b6ef1821b9bab4331768b854aba169bf872e65a053bda057756e",
+      "final_bytes": 658,
+      "final_lines": 9
+    }
+  ],
+  "english_read_spans": [
+    {
+      "path": "src/lib/data.ts",
+      "start": 935,
+      "end": 1010
+    },
+    {
+      "path": "src/lib/data.ts",
+      "start": 1011,
+      "end": 1200
+    },
+    {
+      "path": "src/lib/data.ts",
+      "start": 1201,
+      "end": 1404
+    }
+  ],
+  "contract_reads": [
+    {
+      "path": "src/lib/localized-writing.ts",
+      "start": 1,
+      "end": 79,
+      "sha256": "9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b"
+    },
+    {
+      "path": "src/lib/localized-pages.test.ts",
+      "start": 1,
+      "end": 180,
+      "sha256": "53dd7a4759aa0b065b8a29021c71e7e32ce3d8cff4cde15ca95e567f404e27b4"
+    },
+    {
+      "path": "src/lib/localized-pages.test.ts",
+      "version": "final_parent_guard_update",
+      "start": 1,
+      "end": 183,
+      "sha256": "57d2d04a8928547a1f2787d0ebf37a0fa078bfca3abdb205dd5e662025f4b3ce"
+    }
+  ],
+  "product_edits": true,
+  "initial_article_revisions": {
+    "project-simurgh-containment": "15899682f1211b79968acd721ad94487c60fc63f89ea4321ac593040da320fa4",
+    "invisible-window-research": "1a94a8390114fb011ce8d9a9b9a19d729aa8b479ed8beb6a636dc32a1ed941f6",
+    "nanomatch-deep-dive": "182df96f3afbf071279379d65ec49d4004281e755b2b3f91abe83a7e5b5c0934",
+    "sentinelflow-deep-dive": "b2aa7695b8aa8e1b81f3af4b3a1cd9624ab928c6339a8d0daa5d3fb785ed61e3",
+    "ecrsm-deep-dive": "7a11efad275f58aa63102d4e077901c7e9be3708d009255553c60e09eeae7689",
+    "kmp-security": "be682e8e853134da6ca5f1319f5cf3caa676fee0ff46ed4088449a2d6ae6eefe",
+    "electron-security": "bbc7d3a81e5729fdd384a403026dd59a0e3688f50d8182de7797eda257fde0d5"
+  },
+  "reviewed_translatable_lines_per_locale": 197,
+  "initial_english_snapshot": "work/project-audit-2026-11-04/writing-initial/writeups.json",
+  "proposal_context_reads": [
+    "work/project-audit-2026-11-04/simurgh-live-supplement.md",
+    "work/project-audit-2026-11-04/systems-review.md",
+    "work/project-audit-2026-11-04/surfaces-review.md"
+  ],
+  "completed_at_utc": "2026-11-04T03:09:03.203095+00:00",
+  "owned_product_paths": [
+    "src/lib/writing-translations/fa.json",
+    "src/lib/writing-translations/ar.json",
+    "src/lib/writing-translations/zh.json",
+    "src/lib/writing-translations/es.json",
+    "src/lib/writing-translations/source-revision.json"
+  ],
+  "scope_preserved": "Only four writing translation JSON files and source-revision.json edited in product source for this task. English data, project overlays, dictionaries, runtime components and tests remain with their assigned owners.",
+  "canonical_freeze": {
+    "parent_authorisation": "Canonical seven articles frozen before translation product edits; final source projection compared deeply with canonical-final.json before assembly.",
+    "snapshot": "work/project-audit-2026-11-04/writing-canonical.json",
+    "snapshot_sha256": "cf1d109da94ad43ac2c69dbb7be7feb49a74f8b0f80399743dbb291a9c160ade",
+    "canonical_file": "work/project-audit-2026-11-04/canonical-final.json",
+    "canonical_file_sha256": "42ec417598cd6dc1a7c806264fd78eb0dd5c010e222c53314c55724d61969065",
+    "source_data_sha256_at_completion": "c5f7341453f326a55d95d497efa8b4632c8545f04b383c0264edc844ca71e43a",
+    "source_projection_matches_freeze": true,
+    "read_method": "Complete logical article values read from the final source projection in two bounded article groups (articles 1–3 and 4–7), with original English physical data.ts spans recorded separately in initial ledger. This is an article-content read, not a fresh full-file data.ts claim.",
+    "complete_article_reads": [
+      {
+        "slug": "project-simurgh-containment",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          50
+        ]
+      },
+      {
+        "slug": "invisible-window-research",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          136
+        ]
+      },
+      {
+        "slug": "nanomatch-deep-dive",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          49
+        ]
+      },
+      {
+        "slug": "sentinelflow-deep-dive",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          49
+        ]
+      },
+      {
+        "slug": "ecrsm-deep-dive",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          51
+        ]
+      },
+      {
+        "slug": "kmp-security",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          31
+        ]
+      },
+      {
+        "slug": "electron-security",
+        "metadata": [
+          "title",
+          "tag",
+          "takeaway",
+          "date",
+          "updatedAt"
+        ],
+        "content_line_span": [
+          1,
+          33
+        ]
+      }
+    ]
+  },
+  "final_article_revisions": {
+    "project-simurgh-containment": "925f2c8a83d0d5700bcf031c594e870732df44a978cafd7c60939fc704f726b0",
+    "invisible-window-research": "9044796fb7bca49bb6ce4f0fc31def85a214249157c1e42943b92d5056fb3187",
+    "nanomatch-deep-dive": "bab8fd54ddb0054ce4879b49007fb34d23fa93cc823b890c00d97ed6adea8aef",
+    "sentinelflow-deep-dive": "26a48721f3d2ffc8e1523f2fea9e28380472461bb9451f106b4d889e68a43983",
+    "ecrsm-deep-dive": "1faa849045c344c861539fd3b15ac84c84a9241fb5947c6520c9f79e8c3cb1aa",
+    "kmp-security": "45f191c6a14c682a072b3160658c630d6d507b868126c051d72b0222e04831cb",
+    "electron-security": "389a1cb6a165c4d99587c0886c04749672536eed52a1161b855fbbca6aeac2d8"
+  },
+  "translation_accounting": {
+    "fa": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    },
+    "ar": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    },
+    "zh": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    },
+    "es": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    }
+  },
+  "final_prose_lines_per_locale": 192,
+  "final_prose_lines_all_translated_locales": 768,
+  "changed_prose_values_all_locales": 500,
+  "reused_prose_values_all_locales": 268,
+  "code_example_changes": [
+    {
+      "slug": "sentinelflow-deep-dive",
+      "initial": [
+        "```\nalert tcp any any -> any 22 (msg:\"SSH brute force\"; flags:S; threshold:10,60; sid:2001;)\n```"
+      ],
+      "final": [
+        "```text\nalert tcp any any -> any 22 (msg:\"SSH connection attempt\"; sid:1001;)\n```"
+      ]
+    }
+  ],
+  "code_example_preservation": "Only SentinelFlow changed its canonical source fence, from an unsupported threshold-bearing SSH brute-force rule to a supported simple SSH connection alert. The other six articles have byte-identical fenced-code lists against the initial source snapshot. The adapter injects the same final source fences into all four locales.",
+  "article_review_notes": {
+    "project-simurgh-containment": "Separated current SHA-256 source/member-bound archives from earlier Ed25519 stages; retained positive and null October model results, state-level uncertainty and role-placement failure. Corrected frozen live benign utility 7/10→6/10 and deterministic 949/949 under-attack plus 97/97 benign utility, explicitly without a real LLM. Preserved Linux/Python/full-history/dependency conditions, dated tests/releases, selected earlier-model proof scope, distinct DOI records, current licence and trusted-system/replication caveats.",
+    "invisible-window-research": "Current neutral title, best-effort compatible-path API scope, Windows forensic/browser distinctions, macOS native versus browser/ScreenCaptureKit distinctions and vendor by-design classifications. Current public Windows/macOS PoC sources and harnesses distinguished from the historical withholding statement; lab/product/Linux and n/p limits retained.",
+    "nanomatch-deep-dive": "Expected O(1) identifier lookup distinguished from O(log M) cancellation; cancel/re-add modification and time-priority loss explicit. Standalone allocator does not establish an allocation-free matching path. Repository measurements scoped to insertion versus mixed synthetic workload, with host/compiler/raw-run omissions and no audit rerun or new CI result.",
+    "sentinelflow-deep-dive": "Basic matcher skips threshold-bearing rules; stateful detectors have separate fixed thresholds. Canonical replacement example retained. Repeated 54-byte synthetic parser-only throughput separated from live capture/detection/alerting, test declaration counts separated from a historical pass and a fresh execution.",
+    "ecrsm-deep-dive": "Perf-buffer rather than ring-buffer; missing runtime attach call and intended rather than proven telemetry path. SSE rather than stale WebSocket wording, limited process/Kubernetes metadata attribution, privileged/hostPID/capabilities deployment and educational-only boundaries explicit. No unverified low-overhead, detection or privacy guarantee.",
+    "kmp-security": "Shared source does not prove platform parity. Offline judge runs unit checks without blocking network; no claim of monitored zero-network execution. Desktop-JVM engine median excludes camera/UI; F1/test counts remain scoped, repository-reported and not independently reproduced.",
+    "electron-security": "Current Electron multiprocess boundary and IPC review scope. safeStorage is encrypted application storage backed by available OS protection; local string-reference cleanup is not memory erasure. Multiple cloud/local/offline AI paths, explicit consent, limited redaction and distinct outbound services documented; package versions and residual risks retained."
+  },
+  "verification": [
+    {
+      "check": "Complete draft line contracts",
+      "command": "python3 work/project-audit-2026-11-04/check-writing-draft.py",
+      "result": "500 changed/new prose values checked; zero numeric, inline-code, link, Markdown marker or table-cell errors."
+    },
+    {
+      "check": "All final lines and metadata before product write",
+      "script": "work/project-audit-2026-11-04/finalise-writing.mjs",
+      "result": "All 768 final prose values passed exact per-line contracts; title/tag/takeaway numeric parity checked; no missing translations or concurrent owned-file writes; actual English projection deep-equal to frozen canonical snapshot."
+    },
+    {
+      "check": "Existing meaningful unit regressions",
+      "command": "npx vitest run src/lib/localized-pages.test.ts src/lib/data.test.ts --maxWorkers=1",
+      "log": "work/project-audit-2026-11-04/writing-tests.log",
+      "result": "40/40 tests passed in 2 files. Runtime adapter validates all locales, exact links/inline code/numeric evidence/fences/structure, English identity and fail-closed missing/stale translations."
+    },
+    {
+      "check": "Formatting",
+      "command": "npx prettier --check src/lib/writing-translations/fa.json src/lib/writing-translations/ar.json src/lib/writing-translations/zh.json src/lib/writing-translations/es.json src/lib/writing-translations/source-revision.json",
+      "log": "work/project-audit-2026-11-04/writing-format.log",
+      "result": "All five files pass."
+    },
+    {
+      "check": "Owned-path whitespace",
+      "command": "git diff --check -- src/lib/writing-translations/fa.json src/lib/writing-translations/ar.json src/lib/writing-translations/zh.json src/lib/writing-translations/es.json src/lib/writing-translations/source-revision.json",
+      "result": "Exit 0, no findings."
+    },
+    {
+      "check": "Full final manual reread",
+      "result": "All 981 final physical lines across five product files read in bounded chunks; exact spans and final hashes recorded above."
+    }
+  ],
+  "findings_remaining": [],
+  "test_owner_coordination": "Parent repaired stale public-PoC expectation in localized-pages.test.ts; final 183-line file reread completely. No other stale expectations surfaced.",
+  "limits": [
+    "Translation review is an agent review; no independent native-speaker review is claimed.",
+    "No new upstream project execution, benchmark rerun, full build or browser suite performed in this translation lane. Repository reports retain their explicit source-level and historical scope. Parent owns integrated static build and browser validation."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "purpose": "Remove private upload paths before owner-authorized public commit/push; descriptive source labels preserve provenance without publishing attachment locations.",
+  "changes": [
+    {
+      "path": "content-reconciliation-matrix.json",
+      "privatePathReferencesRemoved": 2,
+      "previousArtifactSHA256": "f35a65293a4f6c62470c3ad62edc7700fcc83434e24b54eb42f69f349f44e6fa",
+      "sanitizedArtifactSHA256": "a509d02bf389492bd06482a6f428f16431e5c5b9c68e734ee3452990b082665e",
+      "preserved": "Source-document hashes and factual/verification records; no source bytes changed."
+    },
+    {
+      "path": "resume-redaction.json",
+      "privatePathReferencesRemoved": 1,
+      "previousArtifactSHA256": "af6e572d1bd0e815bfe4d4adf6dccb743a106a3218f7d7ff01ddb36f17639b72",
+      "sanitizedArtifactSHA256": "c41136cf402166a18f56ff607bfdc63bb181dc29933296e95591de55e1594213",
+      "preserved": "Source-document hashes and factual/verification records; no source bytes changed."
+    }
+  ]
+}

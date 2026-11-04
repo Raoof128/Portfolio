@@ -102,6 +102,33 @@ afterEach(() => {
 });
 
 describe("Proof Atlas", () => {
+  it.each([
+    ["en", /earlier frozen/i],
+    ["fa", /تثبیت‌شدهٔ پیشین/],
+    ["ar", /سابقة مجمّدة/],
+    ["es", /anterior congelada/i],
+    ["zh", /早期冻结/],
+  ] as const)(
+    "shows the published benefit and null result beside the frozen schematic in %s",
+    (locale, earlierFrozen) => {
+      const { container } = render(<ProofAtlas locale={locale} interactive />);
+      expect(container.querySelector(".proof-atlas-summary")).toHaveTextContent(
+        /Llama-3\.2-3B.*17\/24.*0\/24.*23\/24.*gpt-6-luna.*0\/24/,
+      );
+      expect(
+        container.querySelector(".proof-atlas-qualifier"),
+      ).toHaveTextContent(earlierFrozen);
+      expect(container.querySelector("svg desc")).toHaveTextContent(
+        earlierFrozen,
+      );
+      // The drawing remains the historical four-boundary/eight-edge schematic.
+      expect(
+        container.querySelectorAll(".proof-atlas-node--boundary"),
+      ).toHaveLength(4);
+      expect(container.querySelectorAll(".proof-atlas-edge")).toHaveLength(8);
+    },
+  );
+
   it("changes topology and destination for each documented research map", () => {
     const { container } = render(<ProofAtlas locale="en" interactive />);
     const svg = container.querySelector("svg")!;
@@ -211,6 +238,9 @@ describe("Proof Atlas", () => {
       "true",
     );
     expect(svg).toHaveAttribute("aria-hidden", "true");
+    expect(container.querySelector(".proof-atlas-caption")).toHaveTextContent(
+      /earlier frozen architecture/i,
+    );
     expect(container.querySelector("button")).toBeNull();
     expect(container.querySelector(".proof-atlas")).toHaveAttribute(
       "data-interactive",
@@ -232,6 +262,9 @@ describe("Proof Atlas", () => {
     expect(container.querySelector(".proof-atlas")).toHaveAttribute(
       "data-interactive",
       "false",
+    );
+    expect(container.querySelector(".proof-atlas-caption")).toHaveTextContent(
+      /earlier frozen architecture/i,
     );
   });
 

@@ -1,0 +1,217 @@
+{
+  "phase": "authoritative PDF reconciliation",
+  "files": [
+    {
+      "path": "src/lib/writing-translations/ar.json",
+      "prior_candidate_sha256": "cd6c8d6808058e1ad6faaf15508221db64e95fba053d6e35275aa9387ecef92b",
+      "final_read_spans": [
+        [
+          1,
+          89
+        ],
+        [
+          90,
+          190
+        ],
+        [
+          191,
+          248
+        ]
+      ],
+      "final_sha256": "3d7ed432a9255dd818296878f1ee7c5493e143c8ae91fd9cead83974f974807a",
+      "final_lines": 248,
+      "full_read_sha256": "21f342c35d41803fc21b979a453751cec81ae9eee2b181103c99bc84a8a6c8dc",
+      "delta_reviews": [
+        {
+          "from_sha256": "21f342c35d41803fc21b979a453751cec81ae9eee2b181103c99bc84a8a6c8dc",
+          "to_sha256": "3d7ed432a9255dd818296878f1ee7c5493e143c8ae91fd9cead83974f974807a",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "read_complete": true,
+      "notes": "Full current article file read in bounded outputs, followed by explicit complete rereads of the two final technical-clarification deltas and refreshed source hashes. Native prose, metric/API-token parity, chronology, study controls/null result and limits checked; native-speaker certification is not asserted."
+    },
+    {
+      "path": "src/lib/writing-translations/es.json",
+      "prior_candidate_sha256": "d096865cfcfce9d3461b1de463707f2f5dbb536a6093920233f910a90211fb08",
+      "final_read_spans": [
+        [
+          1,
+          71
+        ],
+        [
+          72,
+          152
+        ],
+        [
+          153,
+          240
+        ],
+        [
+          241,
+          248
+        ]
+      ],
+      "final_sha256": "0e0b54fc83fb0019b8d46f32c37e3281494a1338f25fa4b8f2a8cfdee53332ae",
+      "final_lines": 248,
+      "full_read_sha256": "bcbb8cc4648e39392169bd65bd2cba7bbba5aef4ba555005ae5f81ab96a2db02",
+      "delta_reviews": [
+        {
+          "from_sha256": "bcbb8cc4648e39392169bd65bd2cba7bbba5aef4ba555005ae5f81ab96a2db02",
+          "to_sha256": "0e0b54fc83fb0019b8d46f32c37e3281494a1338f25fa4b8f2a8cfdee53332ae",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "read_complete": true,
+      "notes": "Full current article file read in bounded outputs, followed by explicit complete rereads of the two final technical-clarification deltas and refreshed source hashes. Native prose, metric/API-token parity, chronology, study controls/null result and limits checked; native-speaker certification is not asserted."
+    },
+    {
+      "path": "src/lib/writing-translations/fa.json",
+      "prior_candidate_sha256": "a7a0541668179c62f669faeba9dee34bf32d5a5e512d368f37de0d9be55680be",
+      "final_read_spans": [
+        [
+          1,
+          86
+        ],
+        [
+          87,
+          182
+        ],
+        [
+          183,
+          248
+        ]
+      ],
+      "final_sha256": "86f213ad9194096b7cf9030f35af28499bae6efec1ae68d3bb351c32fa3268c4",
+      "final_lines": 248,
+      "full_read_sha256": "5cbe9ba6fa5497783a1e88e7f3319d8bfdcec38792c28e299ddd086a0da78b39",
+      "delta_reviews": [
+        {
+          "from_sha256": "5cbe9ba6fa5497783a1e88e7f3319d8bfdcec38792c28e299ddd086a0da78b39",
+          "to_sha256": "86f213ad9194096b7cf9030f35af28499bae6efec1ae68d3bb351c32fa3268c4",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "read_complete": true,
+      "notes": "Full current article file read in bounded outputs, followed by explicit complete rereads of the two final technical-clarification deltas and refreshed source hashes. Native prose, metric/API-token parity, chronology, study controls/null result and limits checked; native-speaker certification is not asserted."
+    },
+    {
+      "path": "src/lib/writing-translations/zh.json",
+      "prior_candidate_sha256": "28508e1a6dd2edce9fc2f164ec876789e49be8d5c9eb63916ecd347b671fd727",
+      "final_read_spans": [
+        [
+          1,
+          178
+        ],
+        [
+          179,
+          248
+        ]
+      ],
+      "final_sha256": "b08e2543b20322b1fbd05fb14447c3b67dbbf9b82110c5c9b937e7af10321679",
+      "final_lines": 248,
+      "full_read_sha256": "b50f6c3951800106751d29fead606b6510270f87da4d0f2ed442c6c070107592",
+      "delta_reviews": [
+        {
+          "from_sha256": "b50f6c3951800106751d29fead606b6510270f87da4d0f2ed442c6c070107592",
+          "to_sha256": "b08e2543b20322b1fbd05fb14447c3b67dbbf9b82110c5c9b937e7af10321679",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "read_complete": true,
+      "notes": "Full current article file read in bounded outputs, followed by explicit complete rereads of the two final technical-clarification deltas and refreshed source hashes. Native prose, metric/API-token parity, chronology, study controls/null result and limits checked; native-speaker certification is not asserted."
+    },
+    {
+      "path": "src/lib/writing-translations/source-revision.json",
+      "prior_candidate_sha256": "2e4a783af35a97d49e72b56de7370396170f311cbc4c2fc5c58375ca1f28b9ed",
+      "final_read_spans": [
+        [
+          1,
+          9
+        ]
+      ],
+      "final_sha256": "7adeebe4c7d319b21626b9cd85de7cf1841cedc2ed1b00a397aa36a4bffe8392",
+      "final_lines": 9,
+      "full_read_sha256": "6784789be34e785abfd957f3ecbe14873d04f90d1a5ac9d770fcd5a7cfdb93de",
+      "delta_reviews": [
+        {
+          "from_sha256": "6784789be34e785abfd957f3ecbe14873d04f90d1a5ac9d770fcd5a7cfdb93de",
+          "to_sha256": "7adeebe4c7d319b21626b9cd85de7cf1841cedc2ed1b00a397aa36a4bffe8392",
+          "read_spans": [
+            [
+              1,
+              9
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "read_complete": true,
+      "notes": "Full current article file read in bounded outputs, followed by explicit complete rereads of the two final technical-clarification deltas and refreshed source hashes. Native prose, metric/API-token parity, chronology, study controls/null result and limits checked; native-speaker certification is not asserted."
+    },
+    {
+      "path": "src/components/layout/Footer.test.tsx",
+      "prior_candidate_sha256": null,
+      "final_read_spans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "final_sha256": "6b658999be173d919d9784be184738e4240483728a97af348f483bb0e57cce7e",
+      "final_lines": 63,
+      "read_complete": true,
+      "initial_sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+      "notes": "Complete finalFooter test read; currentNovember index assertion verified."
+    }
+  ],
+  "status": "complete",
+  "sources": "work/full-frontend-audit/content-reconciliation-matrix.json",
+  "verification": {
+    "focused_tests": "115/115 in5files",
+    "tests_log": "work/full-frontend-audit/pdf-content-final-tests.log",
+    "targeted_lint": "exit0",
+    "lint_log": "work/full-frontend-audit/pdf-content-lint.log",
+    "format": "cachedPrettier, no dependency changes"
+  }
+}

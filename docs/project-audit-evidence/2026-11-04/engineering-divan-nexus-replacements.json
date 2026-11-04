@@ -1,0 +1,128 @@
+{
+  "divan-open-day": {
+    "slug": "divan-open-day",
+    "title": "Divan — Open Day",
+    "category": "ENGINEERING",
+    "year": "2026",
+    "description": "Bilingual English and Persian Hafez and Rumi poetry experience built for a Persian Society Open Day stall. Visitors receive a source-validated verse, translation, attribution and optional recitation. Offline use follows verified release caching; poem selections stay on-device, while hosting connection data has a separate privacy boundary.",
+    "tags": [
+      "React 19",
+      "Vite",
+      "TypeScript",
+      "Offline-First",
+      "Privacy by Design",
+      "i18n / RTL"
+    ],
+    "links": {
+      "demo": "https://divan.raoufabedini.dev/",
+      "repo": "https://github.com/Raoof128/divan-open-day",
+      "caseStudy": "/projects/divan-open-day"
+    },
+    "build": {
+      "stack": [
+        "Vite",
+        "React 19",
+        "strict TypeScript",
+        "Hand-written service worker",
+        "Web Crypto (shuffle bag)",
+        "Vitest (unit / component / a11y / offline)",
+        "Playwright (Chromium e2e)",
+        "pnpm 10.33 · Node 22.16"
+      ],
+      "features": [
+        "Source-validated bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 records, bound to immutable editions and documented machine-verifiable provenance",
+        "Verse selection uses a Web Crypto shuffle bag computed on-device, without server involvement",
+        "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
+        "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterised images)",
+        "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support"
+      ]
+    },
+    "secure": {
+      "measures": [
+        "No visitor accounts or intention submission; poem choices stay on-device without an application database or tracking cookies",
+        "Static client with no runtime backend, visitor database or application analytics endpoint; hosting providers may process limited technical connection data under their own settings",
+        "sessionStorage holds only public release, poet and poem-selection state; the motion preference is stored locally in localStorage",
+        "Production compiler rejects synthetic/test data before deployment",
+        "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licences, e.g. CC BY-SA)",
+        "Static origin behind an outbound tunnel, with no host-published application ports"
+      ]
+    },
+    "fullDescription": "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention without submitting it, and receives a source-validated verse with its English translation, attribution and optional recitation. A verified, cached release supports offline use. The static application has no accounts, intention form, visitor database or analytics endpoint; limited connection data processed by the hosting provider and network edge remains a separate privacy boundary.",
+    "problem": "A public Open Day stall needs a fast cultural experience that works on unreliable venue Wi-Fi, avoids collecting visitor intentions or poem choices, and presents source-bound Persian poetry with clear attribution and live calligraphy. Engineering source checks must remain distinct from cultural-review sign-off and manual assistive-technology evidence.",
+    "solution": [
+      "Compiled exactly 60 Hafez + 60 Rumi records (120 total), bound to immutable editions with documented, machine-verifiable source provenance",
+      "Built an integrity-checked service worker so a verified, cached release remains usable without a network connection",
+      "The Web Crypto shuffle bag selects verses on-device; no server records what visitors draw",
+      "Rendered live Nastaliq typography and distinct Persian-miniature-inspired art direction for Hafez and Rumi instead of flattened calligraphy images",
+      "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support"
+    ],
+    "proof": [
+      "Application code has no visitor form, tracking cookies, analytics endpoint or backend; sessionStorage holds only public release and poem-selection state",
+      "Offline readiness is established by verified release and cache state, rather than assumed after every initial page load",
+      "Production compilation rejects synthetic fixtures and requires source-bound corpus evidence; the dated July 2026 report records 60 Hafez + 60 Rumi records",
+      "Configured Vitest suites cover unit, component, accessibility, offline, share, performance and security checks, with Playwright Chromium e2e; these are engineering checks, not cultural or manual assistive-technology certification"
+    ]
+  },
+  "nexus-archive": {
+    "slug": "nexus-archive",
+    "title": "Nexus Archive",
+    "category": "ENGINEERING",
+    "year": "2026",
+    "description": "Cyberpunk-styled personal media vault and job tracker with React, Litestar and Supabase. AI-assisted recommendations, persistent chat, configured Fernet encryption for takeaway notes, and backend-issued auth cookies with a refresh flow.",
+    "tags": [
+      "React",
+      "Python",
+      "Litestar",
+      "Supabase",
+      "AI",
+      "Full-Stack"
+    ],
+    "links": {
+      "demo": "https://home-notes-app.uk/",
+      "repo": "https://github.com/Raoof128/Nexus_Archive",
+      "caseStudy": "/projects/nexus-archive"
+    },
+    "build": {
+      "stack": [
+        "React 19",
+        "Vite",
+        "Tailwind CSS 4",
+        "TanStack Query",
+        "Python 3.12",
+        "Litestar",
+        "Supabase PostgreSQL",
+        "Docker",
+        "Terraform"
+      ],
+      "features": [
+        "AI-assisted media recommendations via Gemini with graceful degradation",
+        "Persistent AI chat transcripts with user-scoped sanitisation and query-cache updates",
+        "Status tracking, ratings and reviews for anime, movies and books, plus job-application tracking and job-aware suggestions",
+        "Smart filtering and search across entire media library"
+      ]
+    },
+    "secure": {
+      "measures": [
+        "Backend-issued HttpOnly SameSite=Strict auth cookies; login and refresh responses also expose access tokens to the frontend session",
+        "Cookie-based /auth/refresh flow with silent client retry; short token lifetimes and secure-cookie settings require deployment configuration",
+        "LLM input mitigations use XML delimiters, string scrubbing and pattern-based PII masking; these do not guarantee prompt-injection immunity or complete PII removal",
+        "Fernet encryption for takeaway notes requires TAKEAWAY_ENCRYPTION_KEY; takeaway writes fail closed without the key, while chat encryption is conditional on that configuration",
+        "CI configures Bandit, pip-audit, npm audit and secret scanning; configured checks are distinct from a passing current workflow result"
+      ]
+    },
+    "fullDescription": "Nexus Archive is a cyberpunk-styled personal media vault and job tracker combining a React frontend, a Litestar API and Supabase-backed identity and persistence. Manage books, movies, anime, job applications, ratings, takeaway notes, persistent chat sessions and AI-assisted recommendations from one dashboard. Takeaway writes require a configured Fernet key, and production cookie, token-lifetime and database controls depend on the documented deployment settings.",
+    "problem": "Media trackers split entertainment libraries across platforms and can have weak security controls. Nexus Archive brings titles, ratings, notes, and recommendations into one account with row-level access controls.",
+    "solution": [
+      "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
+      "Implemented backend-issued HttpOnly SameSite=Strict cookies and a refresh flow; access tokens are also returned in frontend-readable session responses",
+      "Integrated Gemini AI for media recommendations with shared per-user rate limiting and local fallback",
+      "Added key-required Fernet encryption for takeaway notes and input scrubbing, XML context delimiters and pattern-based PII masking for model requests"
+    ],
+    "proof": [
+      "Auth code sets HttpOnly SameSite=Strict cookies and implements refresh rotation; production secure-cookie and token-lifetime settings require configuration",
+      "CI definitions include Bandit, pip-audit, npm audit and gitleaks; the presence of these checks does not establish a passing HEAD run",
+      "Locust scenarios exercise authenticated requests to the recommendation endpoint; no measured performance result is claimed",
+      "Terraform IaC scaffold for reproducible Supabase + Vercel deployments"
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "path": "src/components/os/ResearchOS.tsx",
+    "reconstructed_initial_sha256": "1f6002e3eb219c28f00a97d94b971c70ce9a19869be634106b32c65eb7dd969d",
+    "matches_initial_manifest": true,
+    "method": "git HEAD plus saved initial-diff.patch"
+  },
+  {
+    "path": "src/components/os/ResearchOS.test.tsx",
+    "reconstructed_initial_sha256": "056cca97cfcfba9d444557402c2e1b990a305a95d0af8014b391241b9fe1fe3d",
+    "matches_initial_manifest": true,
+    "method": "git HEAD plus saved initial-diff.patch"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+    "reconstructed_initial_sha256": "0f310743a4d14287953b98ee4a744834e8d90e4e4c8b8115ca2e48e2dff9c0df",
+    "matches_initial_manifest": true,
+    "method": "git HEAD plus saved initial-diff.patch"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+    "reconstructed_initial_sha256": "e05f48c0ba50ba03e6be59d729f50fc60ec208aac779ecca2ff532d3863740ba",
+    "matches_initial_manifest": true,
+    "method": "git HEAD plus saved initial-diff.patch"
+  },
+  {
+    "path": "src/components/os/appearance.ts",
+    "reconstructed_initial_sha256": "ee0678a326adcdfd9bd7e77cbbf269fdd4370b29c650481da7c4aa6a19899659",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/appearance.test.ts",
+    "reconstructed_initial_sha256": "3aa5b9500e1ff6cd07f90748cb33fe19f1cd7c79f20b14d99b8bc98fd48686c3",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/ui/SecureContactForm.tsx",
+    "reconstructed_initial_sha256": "1447743d3a06df69ed36ef5809b7367d63707003d864e727e88511a699a15bb3",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/ui/SecureContactForm.test.tsx",
+    "reconstructed_initial_sha256": "ce3ec3410c31e3f4a5266e09497191a9e30f3e5571e0ed762be5a6a8e66abba1",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/OSApplicationBridge.tsx",
+    "reconstructed_initial_sha256": "67457714c0c6ca74d568f1788694be642f1a08de419c44fd1f0fc918a5270705",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/OSApplicationBridge.test.tsx",
+    "reconstructed_initial_sha256": "9ff069ea030743ac29d9d55fd37f215b67af0fc64f596e38437c08078a75fc51",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/use-reading-window.ts",
+    "reconstructed_initial_sha256": "00fae2f7d9648e4966c928f0123292b73fc473f2aabf5d9ca6e1a282c75abd3d",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/use-reading-window.test.tsx",
+    "reconstructed_initial_sha256": "72d8820f14a980a9c6e47629b5be03092376e720369899326fc83d39723fc5a2",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/ReadingWindowControls.tsx",
+    "reconstructed_initial_sha256": "164029051928af861a8798e22ad6f57b2dd366f796706fd365ce10054a873a98",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  },
+  {
+    "path": "src/components/os/reading-window.css",
+    "reconstructed_initial_sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+    "matches_initial_manifest": true,
+    "method": "git HEAD plus saved initial-diff.patch"
+  },
+  {
+    "path": "src/components/os/application-context.tsx",
+    "reconstructed_initial_sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+    "matches_initial_manifest": true,
+    "method": "git HEAD (not changed in saved initial patch)"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "buildID": "wjCAR0MJNHy55zgSNLP6r",
+  "version": {
+    "commit": "2057c9b6d427c8b16544494abb90ed6f4ee2c5d2",
+    "contentRevision": "2026-11-04",
+    "builtAt": "2026-11-04T03:15:09.437Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "baseHEADOnly": "2057c9b6d427c8b16544494abb90ed6f4ee2c5d2",
+  "sourceState": "Uncommitted working tree; exact source/export manifests identify this candidate.",
+  "sourceFiles": 279,
+  "changedFromPriorFrontendAudit": 31,
+  "exportFiles": 1072,
+  "browserReportSHA256": "7aba8d83687674a5ad4dcbe18d92060c794ecddd5dbc01bb40b37662e48f5c90",
+  "sourceManifestSHA256": "01058434332e32c99d4b6c0e9335d0ece886f0354feb53ba2bcb54bfc027971b",
+  "exportManifestSHA256": "338359bf8aa901f7fce4c8f603388b5c8d18ab536d8ba249b9a39861f3ef44d3",
+  "pdfSHA256": "deb6da26ebd0ab540dc6404cca5d49eb7338aba0e4111dccb1686bd620461ece"
+}

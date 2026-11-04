@@ -33,7 +33,7 @@ describe("Footer", () => {
   it("renders last index date", () => {
     renderFooter();
     // Sentence case: the date is no longer literal all-caps UI text.
-    expect(screen.getByText("Jul 2026")).toBeInTheDocument();
+    expect(screen.getByText("Nov 2026")).toBeInTheDocument();
     expect(screen.getByText(/Last Index/i)).toBeInTheDocument();
   });
 

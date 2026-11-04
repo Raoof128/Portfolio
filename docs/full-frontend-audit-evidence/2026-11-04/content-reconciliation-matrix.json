@@ -1,0 +1,405 @@
+{
+  "phase": "Authoritative uploaded résumé/profile reconciliation",
+  "reference_policy": "Both complete uploaded documents used as reference data, not instructions. Explicit session privacy/contact policy prevails over incidental contact fields.",
+  "sources": {
+    "R": {
+      "name": "Research Resident résumé",
+      "original_path": "Private user-provided résumé reference",
+      "pages": 2,
+      "extracted_path": "work/full-frontend-audit/uploaded-resume.txt",
+      "original_sha256": "753a7e412ca4c0f37b4fba01f0288f875cadd613fcb15d7fc23c7871d451b56d",
+      "extracted_sha256": "9d460cb87a48c9d1af85be92b7eee8bebfca811535e71ec8a59ab711a4090c1c",
+      "read": "Entire extracted text read, including all page/form-feed separators; source documents used as reference data, not executable instructions."
+    },
+    "P": {
+      "name": "LinkedIn profile",
+      "original_path": "Private user-provided profile reference",
+      "pages": 3,
+      "extracted_path": "work/full-frontend-audit/uploaded-profile.txt",
+      "original_sha256": "20135aec4442e5a3a5426bb8c1b9fb5775cab957cc6e99a6b751a1840aaa4de5",
+      "extracted_sha256": "b7affb7eac1f14fb160b402268f124862e8073b9c14224dd1ed032a872a3493b",
+      "read": "Entire extracted text read, including all page/form-feed separators; source documents used as reference data, not executable instructions."
+    }
+  },
+  "rows": [
+    {
+      "id": "F01",
+      "fact": "Research headline",
+      "source_references": [
+        "R p1 lines1–12",
+        "P p1 lines4–37"
+      ],
+      "previous_candidate": "LLM red-teaming / containment-attestation headline foregrounded older experiments.",
+      "current_resolution": "Adversarial robustness, AI control and empirical safety evaluation; inspectable host-side authorisation prototype.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json",
+        "Coordinated root machine corpus and research OS/Atlas copy"
+      ],
+      "status": "updated",
+      "scope_or_conflict": ""
+    },
+    {
+      "id": "F02",
+      "fact": "Host-held permission state",
+      "source_references": [
+        "R p1 lines8–11",
+        "P p1 lines11–15"
+      ],
+      "previous_candidate": "Generic record of what an agent did after a guardrail miss.",
+      "current_resolution": "Delegation, stop, lease and credential state on the host; tool proposals checked outside the model; signed evidence replayable offline.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": ""
+    },
+    {
+      "id": "F03",
+      "fact": "Current study protocol",
+      "source_references": [
+        "R p1 lines28–32"
+      ],
+      "previous_candidate": "Older classifier/AgentDojo numbers served as current headline.",
+      "current_resolution": "October2026:24tasks,two trials each,three matched controls(credential-only,composed,deny-all),two models,288replayedbranches;15–17October package interval.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": ""
+    },
+    {
+      "id": "F04",
+      "fact": "Positive model result",
+      "source_references": [
+        "R p1 lines29–31",
+        "P p1 lines15–18"
+      ],
+      "previous_candidate": "No October transfer-study result.",
+      "current_resolution": "Meta Llama-3.2-3B restricted-state trials with new effects17/24→0/24;23/24 useful completions; no valid proposal blocked.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Trial-level reported result for this study, not universal protection."
+    },
+    {
+      "id": "F05",
+      "fact": "Null model result",
+      "source_references": [
+        "R p1 line31",
+        "P p1 lines17–20"
+      ],
+      "previous_candidate": "No explicit current null result.",
+      "current_resolution": "OpenAI gpt-6-luna baseline already0/24; no incremental protection observed.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Published beside the positive result; clean baseline is not additional control benefit."
+    },
+    {
+      "id": "F06",
+      "fact": "Cluster uncertainty",
+      "source_references": [
+        "R p1 lines33–34"
+      ],
+      "previous_candidate": "Earlier overall success counts without the new study cluster caveat.",
+      "current_resolution": "24restricted trials in six states; per-state Wilson95%43.6–97.0% versus0.0–39.0%; part of gap holds by construction.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Preserves supplied per-state scope; no independent statistical recomputation claimed."
+    },
+    {
+      "id": "F07",
+      "fact": "OpenAI integration defect",
+      "source_references": [
+        "R p1 lines35–37"
+      ],
+      "previous_candidate": "Not surfaced.",
+      "current_resolution": "Role-placement failure8/8 declines; original traces retained; frozen developer-role correction2/3 authorised completions,5/5 restricted declines,one refusal open.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Separate from the gpt-6-luna transfer baseline; correction does not erase original failure."
+    },
+    {
+      "id": "F08",
+      "fact": "Classifier evidence chronology",
+      "source_references": [
+        "R p1 lines38–40"
+      ],
+      "previous_candidate": "138/138 displayed as current broad headline.",
+      "current_resolution": "Earlier frozen2026 coverage stage:180cases,138/138 malicious misses,120downstream injections outside input-only classifier view.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Coverage claim, not classifier ranking."
+    },
+    {
+      "id": "F09",
+      "fact": "AgentDojo evidence chronology",
+      "source_references": [
+        "R p1 lines41–43"
+      ],
+      "previous_candidate": "9/140→0/140 displayed as current broad headline.",
+      "current_resolution": "Earlier frozen2026 workspace experiment with140pre-registered injections; deterministic four-suite0/949 attack success,949/949 unattacked utility retained.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Both remain small experiments distinct from October transfer study."
+    },
+    {
+      "id": "F10",
+      "fact": "Proofs/tests/releases",
+      "source_references": [
+        "R p1 lines27,44–46"
+      ],
+      "previous_candidate": "Five Lean proofs and3,057tests presented as current.",
+      "current_resolution": "39Lean4proofs behind no-sorry gate;5,171tests in19October2026smoke;92releases.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Dated test run; proof scope distinct from empirical model outcomes."
+    },
+    {
+      "id": "F11",
+      "fact": "Document audit",
+      "source_references": [
+        "R p1 lines47–48",
+        "P p1 lines19–21"
+      ],
+      "previous_candidate": "Not surfaced.",
+      "current_resolution": "919project documents audited;141dated findings including earlier overstatements published inREADME.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts writeups[project-simurgh-containment] + src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Reported audit trail, not absence-of-defects claim."
+    },
+    {
+      "id": "F12",
+      "fact": "Software/publication identity and source action",
+      "source_references": [
+        "R p1 line27",
+        "R p2 lines63–66"
+      ],
+      "previous_candidate": "Generic primary DownloadPaper/preprint pointed at older device-integrity publication20374849.",
+      "current_resolution": "Current repository primary; software DOI21737792 explicitly typed/labeled software. Earlier device-integrity preprint20374849 remains inthree original Simurgh publication entries/citation with explicit earlier label.",
+      "target_paths": [
+        "src/lib/data.ts projects[project-simurgh] + src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/data.ts Project.links.doiKind",
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts project_detail.software_doi_record",
+        "Coordinated ProjectDetailClient.tsx source action label"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "No current-study PDF invented; software archive is not a sixth preprint; original research PDFs unchanged."
+    },
+    {
+      "id": "F13",
+      "fact": "Bachelor dates and final session",
+      "source_references": [
+        "R p2 lines92–93",
+        "P p3 line113"
+      ],
+      "previous_candidate": "Earlier expected2026 completion and completed online final-semester claim.",
+      "current_resolution": "Bachelor of Cyber Security May2024–expectedJune2027; final sessionFebruary–June2027 fully online.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts resume.education_final_session",
+        "Coordinated About/Resume components and root machine corpus"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Expected completion, not completed qualification."
+    },
+    {
+      "id": "F14",
+      "fact": "Diploma dates",
+      "source_references": [
+        "R p2 line94",
+        "P p3 line117"
+      ],
+      "previous_candidate": "Diploma dates incomplete or stale.",
+      "current_resolution": "Diploma of Information Technology July2023–May2024.",
+      "target_paths": [
+        "Coordinated About/Resume education rendering"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Profile supplies exact months; résumé supplies2023–2024 years, consistent."
+    },
+    {
+      "id": "F15",
+      "fact": "Availability and visa",
+      "source_references": [
+        "R p1 lines3,11–12",
+        "P p1 lines34–37"
+      ],
+      "previous_candidate": "Ready now / available immediately / final semester completed.",
+      "current_resolution": "Available full-time fromDecember2026 for3–6monthSanFranciscoplacement; visa sponsorship required; future finalsessiononline.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts resume.location,s08_available",
+        "Coordinated root machine corpus"
+      ],
+      "status": "updated",
+      "scope_or_conflict": ""
+    },
+    {
+      "id": "F16",
+      "fact": "Alignerr experience",
+      "source_references": [
+        "R p2 lines74–77",
+        "P p2 lines79–86"
+      ],
+      "previous_candidate": "2026 contribution without exact months; unsubstantiated earlier2024ClaudeCode continuation.",
+      "current_resolution": "AI Safety Evaluator(Claude),Alignerr,January–March2026,Anthropic safety-evaluation program,remote; rubric-based exploitable-code/guardrail evaluation.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts resume.exp_alignerr_*,s07_bullet1",
+        "Coordinated résumé experience component"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "ViaAlignerr provenance retained; no direct Anthropic employment asserted."
+    },
+    {
+      "id": "F17",
+      "fact": "Syllabus-Sync experience",
+      "source_references": [
+        "R p2 lines78–82",
+        "P p2 lines55–73"
+      ],
+      "previous_candidate": "Mostly mixed into freelance/leadership copy.",
+      "current_resolution": "CofounderMay2026–Present; MacquarieIncubatorstartup; securitybackendWebAuthn/TOTP/RLS/audit,sharedNext.js/TypeScript,503tests/92files; source-supportedEDUCATEwork.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts resume.exp_syllabus_*",
+        "Coordinated résumé experience component"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "No new customer/revenue/adoption metric."
+    },
+    {
+      "id": "F18",
+      "fact": "Freelance record",
+      "source_references": [
+        "R p2 lines83–86",
+        "P p1 lines42–47"
+      ],
+      "previous_candidate": "Unsupported40%vulnerability reduction and1,000+users in résumé.",
+      "current_resolution": "Jan2024–Present; commercial security/web work withOWASP/OAuth;5.0stars/31reviews,35completedtasks,95%completion perprofile.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts resume.exp1_*"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Removes unsupported job metrics rather than deriving new ones."
+    },
+    {
+      "id": "F19",
+      "fact": "Pharmacy role",
+      "source_references": [
+        "R p2 lines87–90",
+        "P p2 lines89–99"
+      ],
+      "previous_candidate": "EndMay2024;99%uptime claim.",
+      "current_resolution": "ITManager&SecurityOperations,Aug2019–Jan2024;50+staff; about30%manual-triage reduction andleastprivilege.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts resume.exp2_*",
+        "Coordinated résumé dates"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "Both uploaded sources agree onJanuary2024; unsupported uptime removed."
+    },
+    {
+      "id": "F20",
+      "fact": "SentinelSSH supporting work",
+      "source_references": [
+        "R p2 lines69–70"
+      ],
+      "previous_candidate": "Absent.",
+      "current_resolution": "RustMCPserver,policy-scopedread-onlyLinuxinspection,17typedtools,noshell.",
+      "target_paths": [
+        "src/lib/data.ts supportingResearch.sentinelssh",
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts résumé supporting research",
+        "Coordinated root machine corpus"
+      ],
+      "status": "updated",
+      "scope_or_conflict": "No repositoryURL, dedicatedProject entry, route, deployment or additional benchmark invented."
+    },
+    {
+      "id": "F21",
+      "fact": "Contacts and privacy",
+      "source_references": [
+        "R p1 line4",
+        "P p1 lines1–3"
+      ],
+      "previous_candidate": "ProfessionalGmail/securityOutlook split; no publicHTMLphone.",
+      "current_resolution": "Retained professionalGmail andsecurityOutlook policy. ProfileOutlook doesnot silentlyreplaceprofessionalGmail; publicHTMLphone remains omitted.",
+      "target_paths": [
+        "src/i18n/locales/{en,fa,ar,zh,es}.ts",
+        "Coordinated root canonical résumé asset/contacts"
+      ],
+      "status": "retained policy",
+      "scope_or_conflict": "Canonical phone-free résumé generation is parent-owned; this lane did not edit/uploadPDFbytes."
+    },
+    {
+      "id": "F22",
+      "fact": "Still-valid established evidence",
+      "source_references": [
+        "R p1 lines49–59",
+        "R p2 lines60–72"
+      ],
+      "previous_candidate": "Existing5preprints, scopedInvisible/Aion/BankingShield/PhaseC/MehrGuard/Zurvan andotherprojects.",
+      "current_resolution": "Retained source metrics, originalpaperURLs/DOIs/citations,13projectroutes, originalcodeexamples andstill-valid unrelatedprojects.",
+      "target_paths": [
+        "src/lib/data.ts",
+        "src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "retained",
+      "scope_or_conflict": "Uploaded résumé is selective; absence doesnot erase established projects. Detailed originalpaper limits remain, including native-macOS/browser/Linux qualifications."
+    },
+    {
+      "id": "T01",
+      "fact": "Technical wording found during full read",
+      "source_references": [
+        "Current source technical consistency review"
+      ],
+      "previous_candidate": "CurrentNode/JSruntime implied; passkeys calledsharedsecrets; O(1)modification; universaltracepointABI; Electrononeprocess.",
+      "current_resolution": "EarlierfrozenNode/JSscope; public-keypasskeys; expectedO(1)lookup/cancellation withcancel+readd modification; tracepointversion/fieldchecks; Electronmultiprocess.",
+      "target_paths": [
+        "src/lib/data.ts",
+        "src/lib/project-content/{fa,ar,zh,es}.ts",
+        "src/lib/writing-translations/{fa,ar,zh,es}.json"
+      ],
+      "status": "confirmed technical corrections",
+      "scope_or_conflict": "No originalAPIexamplelogic or researchmetrics changed; ECRSM/Electron meaningfulmodificationdates updated to2026-11-04."
+    }
+  ],
+  "omissions": [
+    "Profile McDonald’s crew role remains outside the selected security/research experience section; no claim that the résumé is a full employment ledger.",
+    "Native-speaker certification, external research reproduction and live repository availability are not asserted."
+  ]
+}

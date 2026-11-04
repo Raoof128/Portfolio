@@ -1,0 +1,409 @@
+{
+  "lane": "research",
+  "phase": "user-providedPDFreconciliation",
+  "status": "complete",
+  "reviewed_at": "2026-11-04T01:41:23.447094+00:00",
+  "summary": {
+    "reviewed_files": 9,
+    "initial_lines_read": 3224,
+    "changed_files": 8,
+    "unread_files": 0,
+    "unread_initial_lines": 0
+  },
+  "references": [
+    {
+      "path": "work/full-frontend-audit/uploaded-resume.txt",
+      "sha256": "9d460cb87a48c9d1af85be92b7eee8bebfca811535e71ec8a59ab711a4090c1c",
+      "read_spans": [
+        [
+          1,
+          100
+        ]
+      ],
+      "read_complete": true,
+      "treatment": "User-provided factual reference, not instructions. Entire extraction read before source changes."
+    },
+    {
+      "path": "work/full-frontend-audit/uploaded-profile.txt",
+      "sha256": "b7affb7eac1f14fb160b402268f124862e8073b9c14224dd1ed032a872a3493b",
+      "read_spans": [
+        [
+          1,
+          123
+        ]
+      ],
+      "read_complete": true,
+      "treatment": "User-provided factual reference, not instructions. Entire extraction read before source changes."
+    }
+  ],
+  "source_fact_map": [
+    {
+      "reference": "uploaded-profile.txt:11-20 and uploaded-resume.txt:7-10",
+      "facts": "Host-held authorisation state, matched-control studies, positive and null results."
+    },
+    {
+      "reference": "uploaded-resume.txt:28-34",
+      "facts": "October design,288branches,Llama17/24→0/24/23/24utility,gpt-6-luna0/24null,six-state Wilson/construction caveat."
+    },
+    {
+      "reference": "uploaded-resume.txt:35-37",
+      "facts": "Separate eight-case8/8 role-placement failure; frozen correction2/3authorised,5/5restricted,one refusal open."
+    },
+    {
+      "reference": "uploaded-resume.txt:44-46",
+      "facts": "39Lean proofs and5171tests scoped19Oct2026smoke."
+    },
+    {
+      "reference": "uploaded-resume.txt:27,63-64",
+      "facts": "CurrentsoftwareDOI21737792 distinctearlierdevice-integritypreprint20374849."
+    },
+    {
+      "reference": "uploaded-resume.txt:12-13 and uploaded-profile.txt:36-40",
+      "facts": "Available full-time fromDecember2026/ready torelocate; no ownOSvisibleavailabilityclaims contradicted these. Other page/dictionary agents own the actualavailabilityfields."
+    }
+  ],
+  "validation": [
+    {
+      "command": "npx vitest run src/components/os/ProofAtlas.test.tsx src/components/os/EvidenceStory.test.tsx src/components/os/ProjectExplorer.test.tsx",
+      "result": "3suites/85tests passed on finalcopy, including allfive locales and frozen-scope regressions."
+    },
+    {
+      "command": "npx eslint [the eight changedTypeScript paths]",
+      "result": "Passed."
+    },
+    {
+      "command": "npx prettier --check [the eight changedTypeScript paths]; git diff --check -- [samepaths]",
+      "result": "Passed."
+    }
+  ],
+  "preserved": "Original artwork, map/station geometry, Aero/CSS/motion, native controls, allfive locales andstaticarchitecture. No dependencies/config/build/globalbrowserruns. The existing nativezoom helper was not rerun against stale exports.",
+  "pending": "Parent final rebuilt-export responsive/focus/browser/nativezoom verification; text now flows longer through existingcontainers. No native-language editorialcertification claimed.",
+  "files": [
+    {
+      "path": "src/components/os/os-copy.ts",
+      "sha256": "f4800fdafd086126c0e75fa68da69b5f4bb3f3559f58f523ed4882bb13250574",
+      "bytes": 20942,
+      "lines": 505,
+      "initial_sha256": "f4800fdafd086126c0e75fa68da69b5f4bb3f3559f58f523ed4882bb13250574",
+      "final_sha256": "89abf52c537ac9874d8a8a95817539cd0b921cf0baef26e9a9beb5631b665c18",
+      "initial_lines": 505,
+      "final_lines": 505,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          350
+        ],
+        [
+          351,
+          505
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          88,
+          89
+        ],
+        [
+          193,
+          194
+        ],
+        [
+          290,
+          291
+        ],
+        [
+          386,
+          387
+        ],
+        [
+          486,
+          487
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "All five first-screen summaries now describe host-side permissions and matched-control safety studies, including benefits and null results. No relocation/availability statement is present in this file; Sydney timezone/location remains accurate. No PDF link target/date/availability assertion added."
+    },
+    {
+      "path": "src/components/os/atlas-copy.ts",
+      "sha256": "d7ea99e51b9f201ae96eab07e5d682c4637fe66d4506207786dac262de8b9ec7",
+      "bytes": 15947,
+      "lines": 353,
+      "initial_sha256": "d7ea99e51b9f201ae96eab07e5d682c4637fe66d4506207786dac262de8b9ec7",
+      "final_sha256": "b973208c28982440ae28cd2caa30bb6d4d34dc419d821d2437ba94b6fc724915",
+      "initial_lines": 353,
+      "final_lines": 353,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          353
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          353
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "All five Simurgh summaries show both October model outcomes with correct denominator scope: restricted-state trials with new effects17/24→0/24,23/24 useful completions onLlama-3.2-3B; gpt-6-luna baseline0/24 and no incremental protection. Accessible graph descriptions and visible qualifiers identify the retained four-boundary drawing as earlier frozen architecture, not a current-study trace."
+    },
+    {
+      "path": "src/components/os/ProofAtlas.tsx",
+      "sha256": "123c638912b32b4599b18e2c7a35f667969c6a7072112957377df6ba54bc638c",
+      "bytes": 20746,
+      "lines": 586,
+      "initial_sha256": "123c638912b32b4599b18e2c7a35f667969c6a7072112957377df6ba54bc638c",
+      "final_sha256": "3b925b855518e4f8b54cd6788a8c59d5da97932505d845f79ffb7a81e9a20463",
+      "initial_lines": 586,
+      "final_lines": 588,
+      "read_spans": [
+        [
+          1,
+          102
+        ],
+        [
+          95,
+          140
+        ],
+        [
+          137,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          586
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          574,
+          588
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "Changed only the inactive/decorative caption to reuse the selected project scope qualifier, ensuring the older four-boundary map remains labelled even when controls are absent. Native topology, coordinates, original artwork, CSS, motion, routes and controls are unchanged."
+    },
+    {
+      "path": "src/components/os/SimurghEvidenceStory.tsx",
+      "sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "bytes": 4722,
+      "lines": 139,
+      "initial_sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "final_sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "initial_lines": 139,
+      "final_lines": 139,
+      "read_spans": [
+        [
+          1,
+          139
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          1,
+          139
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": false,
+      "notes": "Read fully for visible source/replay semantics. Existing component renders the newly reconciled introduction, earlier-frozen illustration label and source/replay copy without a structural change. Original six stations and realVCA replay command preserved."
+    },
+    {
+      "path": "src/components/os/ProofAtlas.test.tsx",
+      "sha256": "d838938b71ba6e71e1ab97649281399abe1eadd676dcebadd93514f534ec6ed5",
+      "bytes": 11373,
+      "lines": 319,
+      "initial_sha256": "d838938b71ba6e71e1ab97649281399abe1eadd676dcebadd93514f534ec6ed5",
+      "final_sha256": "289b62eecc6dd202b417f80b645d3a3c54d3c528a5c3d92927af5902f6891e2f",
+      "initial_lines": 319,
+      "final_lines": 352,
+      "read_spans": [
+        [
+          1,
+          185
+        ],
+        [
+          176,
+          319
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          118,
+          146
+        ],
+        [
+          231,
+          269
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "Added five-locale regressions for benefit+null outcomes, frozen scope in visible text/accessibility description and unchanged four-boundary/eight-edge topology. Inactive/decorative captions must also retain the frozen qualifier."
+    },
+    {
+      "path": "src/components/os/EvidenceStory.test.tsx",
+      "sha256": "a5b1c851af80aabd79cf7b1dfd8bdd05a6fcbba9b8df016fe9a71d33fead8bad",
+      "bytes": 13975,
+      "lines": 357,
+      "initial_sha256": "a5b1c851af80aabd79cf7b1dfd8bdd05a6fcbba9b8df016fe9a71d33fead8bad",
+      "final_sha256": "fccbdc3e3cd6d4b27faa10a8e43604e3facfc479a955dba0269f037b763ec9d2",
+      "initial_lines": 357,
+      "final_lines": 403,
+      "read_spans": [
+        [
+          1,
+          190
+        ],
+        [
+          191,
+          357
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          1,
+          18
+        ],
+        [
+          125,
+          206
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "Updated historical/current source labels and preserved the ban on simulated diagram result fields while allowing explicitly sourced outcomes in prose. Added five-locale assertions for both model outcomes, distinct software/device-integrity DOIs, earlier-frozen legacy diagram label and important study/role/uncertainty/smoke-run scope."
+    },
+    {
+      "path": "src/lib/project-content/evidence-story-copy.ts",
+      "sha256": "ae2b41ba8b31a0ae41e81be8263a06a5aad934a1cf5d0dec488580c4e8ee3c62",
+      "bytes": 36198,
+      "lines": 681,
+      "initial_sha256": "ae2b41ba8b31a0ae41e81be8263a06a5aad934a1cf5d0dec488580c4e8ee3c62",
+      "final_sha256": "edb7943aed1271e1df0acb18451a8e7f5c5419c615c3ed73981266610ff91e71",
+      "initial_lines": 681,
+      "final_lines": 684,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          540
+        ],
+        [
+          541,
+          681
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          67,
+          281
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "Updated only Simurgh copy across five locales. Current host-held delegation/stop/lease/credential checks and composed-control October benefit/null results precede an explicitly earlier-frozen architecture. Current software DOI21737792 and earlier device-integrity DOI20374849 remain distinct. FrozenVCA replay is not labelled as rerunning the October transfer study. Invisible/Zurvan copy unchanged."
+    },
+    {
+      "path": "src/lib/project-content/dossier-copy.ts",
+      "sha256": "98cabbb321d0f38df6c9d180a8c2fb0902faf800ed809926ec522eb64bb6021d",
+      "bytes": 10648,
+      "lines": 111,
+      "initial_sha256": "98cabbb321d0f38df6c9d180a8c2fb0902faf800ed809926ec522eb64bb6021d",
+      "final_sha256": "84a84b2a6a4d56dbdb186236ebeb5cdab6b14d33f9c86cce6ee89e1a833c5b56",
+      "initial_lines": 111,
+      "final_lines": 111,
+      "read_spans": [
+        [
+          1,
+          111
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          1,
+          111
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "All five Simurgh scope paragraphs now preserve24tasks×2trials×3namedcontrols×2models/288branches; both model outcomes; six-state clustered Wilson intervals and construction caveat; separate eight-case8/8 role-placement failure and frozen correction2/3authorised+5/5restricted with one refusal open;39Lean proofs/5171tests scoped19Oct2026smoke; frozen-stage classifier/AgentDojo architecture; software/preprint DOI separation. Other dossiers and PDF-accessibility guidance unchanged."
+    },
+    {
+      "path": "src/lib/project-content/diagram-copy.ts",
+      "sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+      "bytes": 9443,
+      "lines": 173,
+      "initial_sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+      "final_sha256": "8a744d3aac3527c84fbaff9abcfdb1868e7b07f4d4e104bb7f592c683b5446ae",
+      "initial_lines": 173,
+      "final_lines": 173,
+      "read_spans": [
+        [
+          1,
+          173
+        ]
+      ],
+      "read_complete": true,
+      "final_changed_span_reads": [
+        [
+          6,
+          16
+        ],
+        [
+          39,
+          49
+        ],
+        [
+          72,
+          82
+        ],
+        [
+          105,
+          115
+        ],
+        [
+          138,
+          148
+        ]
+      ],
+      "final_revision_review": "Full initial source read plus every authored changed field/test hunk and listed final reads; unchanged content covered by the full initial read.",
+      "changed": true,
+      "notes": "All five legacy diagram headings and notes explicitly label the retained four-boundary map as earlier frozen architecture, not a current-study trace or benchmark. Node names, Ed25519 evidence/verifier path and other project diagrams preserved."
+    }
+  ]
+}

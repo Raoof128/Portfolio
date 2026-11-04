@@ -578,7 +578,9 @@ export function ProofAtlas({
             </Link>
           </div>
         ) : (
-          <p className="proof-atlas-caption">{copy.welcomeCaption}</p>
+          <p className="proof-atlas-caption">
+            {copy.qualifier[selected] ?? copy.welcomeCaption}
+          </p>
         )}
       </div>
     </section>

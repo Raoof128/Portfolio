@@ -1,0 +1,54 @@
+[
+  {
+    "name": "desktop",
+    "route": "/",
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "lcp": 344,
+      "cls": 0
+    },
+    "scrollWidth": 1440,
+    "mainText": "Mohammad Raouf Abedini\n\nAI Security Researcher\n\nExplore the Lab\nEnter workspace",
+    "errors": []
+  },
+  {
+    "name": "tablet",
+    "route": "/",
+    "width": 768,
+    "height": 1024,
+    "metrics": {
+      "lcp": 268,
+      "cls": 0
+    },
+    "scrollWidth": 768,
+    "mainText": "Mohammad Raouf Abedini\n\nAI Security Researcher\n\nExplore the Lab\nEnter workspace",
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "route": "/",
+    "width": 390,
+    "height": 844,
+    "metrics": {
+      "lcp": 212,
+      "cls": 0
+    },
+    "scrollWidth": 390,
+    "mainText": "Mohammad Raouf Abedini\n\nAI Security Researcher\n\nExplore the Lab\nEnter workspace",
+    "errors": []
+  },
+  {
+    "name": "rtl",
+    "route": "/fa",
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "lcp": 332,
+      "cls": 0.000025658727575231478
+    },
+    "scrollWidth": 1440,
+    "mainText": "محمد رؤوف عابدینی\n\nپژوهشگر امنیت هوش مصنوعی\n\nکاوش در آزمایشگاه\nورود به فضای کار",
+    "errors": []
+  }
+]

@@ -3,13 +3,14 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Mail } from "lucide-react";
 import type { Locale } from "@/i18n";
 import { projects, type Project } from "@/lib/data";
 import { getOSCopy } from "./os-copy";
 import { getAtlasCopy } from "./atlas-copy";
 import { OSIcon, type PortfolioApp } from "./OSIcon";
 import { getWindowCopy } from "./window-copy";
+import { getReviewerCopy } from "./reviewer-copy";
 
 const ProofAtlas = dynamic(
   () => import("./ProofAtlas").then((module) => module.ProofAtlas),
@@ -112,6 +113,7 @@ export function Desktop({
   interactive?: boolean;
 }) {
   const copy = getOSCopy(locale);
+  const reviewerCopy = getReviewerCopy(locale);
   const windowCopy = getWindowCopy(locale);
   const path = (value: string) =>
     locale === "en" ? value : `/${locale}${value}`;
@@ -122,7 +124,7 @@ export function Desktop({
     resume: copy.appResume,
     contact: copy.appContact,
   };
-  const introTitle = copy.independentResearch;
+  const introTitle = reviewerCopy.highlights;
   const restoreLabels = restoreChipLabels[locale];
 
   // The Getting Started and Proof Atlas windows are not in the window manager, so their
@@ -191,6 +193,15 @@ export function Desktop({
   // right follow the screen, so they mirror on their own in RTL. Home and End go to the
   // first and last icon. Focus and selection move together.
   function moveAppFocus(event: KeyboardEvent<HTMLDivElement>) {
+    if (
+      event.defaultPrevented ||
+      event.nativeEvent.isComposing ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.altKey ||
+      event.shiftKey
+    )
+      return;
     const index = appLinks.current.indexOf(event.target as HTMLAnchorElement);
     if (index < 0) return;
     let next: number;
@@ -290,7 +301,7 @@ export function Desktop({
             <p className="os-desktop-summary">{copy.summary}</p>
             <div className="os-direct-links">
               <Link className="os-button" href={path("/projects")}>
-                {copy.explore}
+                {reviewerCopy.explore}
                 <ArrowRight aria-hidden="true" />
               </Link>
               <a
@@ -302,6 +313,13 @@ export function Desktop({
                 {copy.viewResume}
                 <ExternalLink className="os-external-icon" aria-hidden="true" />
               </a>
+              <Link
+                className="os-button os-button--secondary"
+                href={path("/contact")}
+              >
+                {copy.contact}
+                <Mail aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </section>

@@ -1,0 +1,9 @@
+{
+  "entrySHA256": "e724d80a12ee497ffcf33049fb56bc8471dcd87f07730bf4ec100e8fe9a72d84",
+  "entryIdenticalInBothFiles": true,
+  "reportSHA256": "e087f02b440d7ff6484cdb1768e50462bb387fcd4b949871900690d6c8eaa52e",
+  "governanceFileHashes": {
+    "AGENT.md": "72716f85a4c2e8411b5de73387d49341688ff404616ba6133d946f1b97ccd85b",
+    "CHANGELOG.md": "bbbeb42aa1e1fadbf2105807d2241ee7574ed39e60d26bd7b19fb5ccd7258aae"
+  }
+}

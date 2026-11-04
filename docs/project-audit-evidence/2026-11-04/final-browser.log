@@ -1,0 +1,21 @@
+
+Running 12 tests using 2 workers
+
+(node:67902) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:67901) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on desktop › all thirteen dossiers and seven articles retain reviewed content: en (32.3s)
+  ✓   1 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on desktop › all thirteen dossiers and seven articles retain reviewed content: fa (32.3s)
+  ✓   4 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on desktop › all thirteen dossiers and seven articles retain reviewed content: zh (31.3s)
+  ✓   3 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on desktop › all thirteen dossiers and seven articles retain reviewed content: ar (31.8s)
+  ✓   6 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on phone › all thirteen dossiers and seven articles retain reviewed content: en (22.9s)
+  ✓   5 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on desktop › all thirteen dossiers and seven articles retain reviewed content: es (27.6s)
+  ✓   7 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on phone › all thirteen dossiers and seven articles retain reviewed content: fa (21.6s)
+  ✓   8 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on phone › all thirteen dossiers and seven articles retain reviewed content: ar (21.2s)
+  ✓   9 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on phone › all thirteen dossiers and seven articles retain reviewed content: zh (20.2s)
+  ✓  10 [chromium] › scripts/browser-regressions/playwright/project-content.spec.ts:28:11 › reviewed project content on phone › all thirteen dossiers and seven articles retain reviewed content: es (20.8s)
+  ✓  11 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:145:5 › representative reviewer home and dossier keep accessibility rules intact (6.0s)
+  ✓  12 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:207:5 › Simurgh walkthrough exposes every source-backed stage and the reading path (3.7s)
+
+  12 passed (2.3m)

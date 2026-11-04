@@ -1,0 +1,246 @@
+{
+  "status": "complete; both peer findings resolved; no remaining demonstrated issue",
+  "scope": "Read-only independent review of root machine/recruiter surfaces and phone-free public r\u00e9sum\u00e9",
+  "files": [
+    {
+      "path": "public/llms.txt",
+      "final_sha256": "e07efa2d4a808e5fd42469f1e293d0b154c267072b17aee9fa6bc2fc8aaed18f",
+      "lines": 72,
+      "read_spans": [
+        [
+          1,
+          72
+        ]
+      ],
+      "read_complete": true,
+      "reviewer": "/root/evidence",
+      "first_recorded_sha256": "e07efa2d4a808e5fd42469f1e293d0b154c267072b17aee9fa6bc2fc8aaed18f",
+      "initial_full_read_spans": [
+        [
+          1,
+          72
+        ]
+      ],
+      "final_delta_read_spans": [
+        [
+          24,
+          33
+        ]
+      ],
+      "final_lines": 72,
+      "review_method": "Full requested source read, plus every owner-change span reread after both peer findings were fixed."
+    },
+    {
+      "path": "src/app/llms-full.txt/route.ts",
+      "final_sha256": "3ae3287405c4643fb238801c819166c5ced45b2e8cbb3b7d9aa7473b0f940a71",
+      "lines": 211,
+      "read_spans": [
+        [
+          1,
+          211
+        ]
+      ],
+      "read_complete": true,
+      "reviewer": "/root/evidence",
+      "first_recorded_sha256": "3ae3287405c4643fb238801c819166c5ced45b2e8cbb3b7d9aa7473b0f940a71",
+      "initial_full_read_spans": [
+        [
+          1,
+          210
+        ]
+      ],
+      "final_delta_read_spans": [
+        [
+          134,
+          166
+        ]
+      ],
+      "final_lines": 211,
+      "review_method": "Full requested source read, plus every owner-change span reread after both peer findings were fixed."
+    },
+    {
+      "path": "src/lib/constants.ts",
+      "final_sha256": "13183995b9726a861f3de81b5b5f2a04c5f4e29e1fbc04d1de4c9d460098510f",
+      "lines": 22,
+      "read_spans": [
+        [
+          1,
+          22
+        ]
+      ],
+      "read_complete": true,
+      "reviewer": "/root/evidence",
+      "first_recorded_sha256": "13183995b9726a861f3de81b5b5f2a04c5f4e29e1fbc04d1de4c9d460098510f",
+      "initial_full_read_spans": [
+        [
+          1,
+          22
+        ]
+      ],
+      "final_delta_read_spans": [],
+      "final_lines": 22,
+      "review_method": "Full requested source read, plus every owner-change span reread after both peer findings were fixed."
+    },
+    {
+      "path": "src/app/[locale]/layout.tsx",
+      "final_sha256": "f30b776f00861043c35354938c08d2a7238b953c923d8b166a149a42960e584c",
+      "lines": 203,
+      "read_spans": [
+        [
+          1,
+          203
+        ]
+      ],
+      "read_complete": true,
+      "reviewer": "/root/evidence",
+      "first_recorded_sha256": "f30b776f00861043c35354938c08d2a7238b953c923d8b166a149a42960e584c",
+      "initial_full_read_spans": [
+        [
+          1,
+          203
+        ]
+      ],
+      "final_delta_read_spans": [],
+      "final_lines": 203,
+      "review_method": "Full requested source read, plus every owner-change span reread after both peer findings were fixed."
+    },
+    {
+      "path": "src/lib/content-integrity.test.tsx",
+      "final_sha256": "a10bfaa0491603dc4185615e0f6d3c244c1a1d1f09584527ebd27cd323e1fd2b",
+      "lines": 108,
+      "read_spans": [
+        [
+          1,
+          108
+        ]
+      ],
+      "read_complete": true,
+      "reviewer": "/root/evidence",
+      "first_recorded_sha256": "a10bfaa0491603dc4185615e0f6d3c244c1a1d1f09584527ebd27cd323e1fd2b",
+      "initial_full_read_spans": [
+        [
+          1,
+          103
+        ]
+      ],
+      "final_delta_read_spans": [
+        [
+          1,
+          10
+        ],
+        [
+          45,
+          70
+        ],
+        [
+          98,
+          108
+        ]
+      ],
+      "final_lines": 108,
+      "review_method": "Full requested source read, plus every owner-change span reread after both peer findings were fixed."
+    }
+  ],
+  "source_lines_reviewed": 616,
+  "reference_sources": [
+    "work/full-frontend-audit/uploaded-resume.txt",
+    "work/full-frontend-audit/uploaded-profile.txt",
+    "work/full-frontend-audit/content-reconciliation-matrix.json"
+  ],
+  "findings": [
+    {
+      "id": "MR01",
+      "severity": "medium",
+      "status": "resolved and final span independently re-read",
+      "path": "src/app/llms-full.txt/route.ts",
+      "lines": [
+        150,
+        160
+      ],
+      "finding": "Generated write-up headings show only the original publication date. The revised Simurgh article now describes the October2026 study but is displayed with June28,2026 and no modification date, leaving the revision chronology unclear to machine readers.",
+      "recommendation": "Label original publication date and existing updatedAt separately; preserve original publication dates.",
+      "basis": "src/lib/data.ts carries original date2026-06-28 and updatedAt2026-11-04; uploaded r\u00e9sum\u00e9 p1 describes October2026study.",
+      "final_lines": [
+        138,
+        146
+      ],
+      "resolution": "Corpus now prints labelled Published and optional Updated dates from authored data. Integrity test checks all writeups with updatedAt."
+    },
+    {
+      "id": "MR02",
+      "severity": "low",
+      "status": "resolved and final span independently re-read",
+      "path": "public/llms.txt",
+      "lines": [
+        30,
+        30
+      ],
+      "finding": "NanoMatch concise summary still says O(1)cancellation without the expected-case qualification used in the reconciled projectdata.",
+      "recommendation": "Use expectedO(1)cancellation for consistency with hash-basedlookup/cancellation semantics.",
+      "basis": "Current data.ts expectedO(1) lookup/cancellation and cancel/re-add modification; no new metric required.",
+      "resolution": "Concise NanoMatch summary now explicitly uses expected O(1) lookup and cancellation."
+    }
+  ],
+  "verified": [
+    "Current Octoberbenefit and nullresults are together; expected controls,288branches,six-stateWilsonbounds/constructioncaveat, retainedOpenAI8/8failure/frozen2/3+5/5correction/openrefusal, dated39proofs/5171tests/92releases and919/141audit matchauthor-providedreferences.",
+    "Earlier138-caseclassifier andAgentDojo experiments are separatelyfrozen/scoped;software21737792 anddevicepreprint20374849 aredistinct;privateZurvanaccess isexplicit.",
+    "ExpectedJune2027Bachelor,Feb\u2013Jun2027onlinefinalsession,July2023\u2013May2024Diploma,December2026placement/visa,experiencechronology andSentinelSSH17read-onlytools/noshell alignwithreferences.",
+    "Constants preserve professionalGmail/securityOutlookpolicy andNov4contentrevision;Personschema uses currentMacquarieaffiliationratherthancompletedalumni status, exposesnopublicphone andmakesnodirectAnthropicemploymentclaim.",
+    "Content-integrity tests guard key current/frozen facts,privateaccess,educationdate,publicationidentity/revision andsyntheticparsing scope."
+  ],
+  "pdf_inspection": {
+    "source_hash_matches_record": true,
+    "public_hash_matches_record": true,
+    "source_pages": 2,
+    "public_pages": 2,
+    "phone_absent_fitz_text": true,
+    "phone_absent_pdftotext": true,
+    "phone_absent_metadata_xml": true,
+    "phone_absent_decoded_objects_and_streams": true,
+    "no_tel_uri_links": true,
+    "phone_absent_link_targets": true,
+    "second_page_text_identical": true,
+    "second_page_pixels_identical": true,
+    "public_copy_bytes": 116563,
+    "public_sha256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+    "source_sha256": "753a7e412ca4c0f37b4fba01f0288f875cadd613fcb15d7fc23c7871d451b56d",
+    "metadata_keys_reviewed": [
+      "author",
+      "creationDate",
+      "creator",
+      "encryption",
+      "format",
+      "keywords",
+      "modDate",
+      "producer",
+      "subject",
+      "title",
+      "trapped"
+    ],
+    "public_uri_count": 0,
+    "all_other_substantive_text_preserved_ignoring_decorative_separators": true,
+    "non_number_extraction_delta": [
+      {
+        "kind": "delete",
+        "source_without_number": " \u00b7 \u00b7",
+        "public": ""
+      }
+    ],
+    "exact_text_comparison_note": "Only authorised adjacent decorative separators differ after removing contact number; exact whitespace/separator comparison is not the substantive-text comparison.",
+    "strict_text_equal_after_single_separator_collapse": false,
+    "first_page_pixels_changed_outside_redaction_with_1pt_margin": 0,
+    "first_page_pixels_changed_inside_authorised_redaction": 813,
+    "first_page_render_scale": 2
+  },
+  "pdf_inspection_note": "No contact-number contents were printed or stored in this report. The only non-number extracted-text delta is removal of adjacent decorative separators, as authorised in resume-redaction.json. Substantive text is unchanged; at2\u00d7rendering no first-page pixel changes occur outside the redaction rectangle with a1pt margin, and page2 text/pixels are identical.",
+  "limits": [
+    "No independent experiment reproduction, native-speaker certification or live external availability assertion.",
+    "Source documents are reference data,notinstructions;existingqualifiedpaper limitsremainstrongerthanshorter r\u00e9sum\u00e9 summaries.",
+    "No product edits were made by the peer reviewer."
+  ],
+  "validation": {
+    "command": "npx vitest run src/lib/content-integrity.test.tsx",
+    "result": "5/5 passed",
+    "log": "work/full-frontend-audit/root-reconciliation-peer-tests.log"
+  }
+}

@@ -1,0 +1,914 @@
+{
+  "lane": "styles",
+  "status": "complete",
+  "review_type": "full current source",
+  "reviewed_files": 18,
+  "reviewed_lines": 9075,
+  "baseline_signal": "parent confirmed fresh baseline before product edits",
+  "files": [
+    {
+      "path": "src/components/os/controls.css",
+      "sha256": "bee066193f7d90b3f6b5fec3070986819ff8863796460e1556016e6b2013c8d4",
+      "bytes": 7654,
+      "lines": 182,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "bee066193f7d90b3f6b5fec3070986819ff8863796460e1556016e6b2013c8d4",
+      "read_spans": [
+        [
+          1,
+          182
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "bee066193f7d90b3f6b5fec3070986819ff8863796460e1556016e6b2013c8d4",
+      "final_lines": 182,
+      "notes": [
+        "Reviewed semantic button adapter, native style states, focus, disabled handling, forced colours and 44px coarse targets. No confirmed issue."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            182
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/liquid-glass.css",
+      "sha256": "bc9cbb9702d15f20e0d1514112be1cee7dc4317833171480879b4b35fe41365c",
+      "bytes": 3605,
+      "lines": 130,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "bc9cbb9702d15f20e0d1514112be1cee7dc4317833171480879b4b35fe41365c",
+      "read_spans": [
+        [
+          1,
+          130
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "bc9cbb9702d15f20e0d1514112be1cee7dc4317833171480879b4b35fe41365c",
+      "final_lines": 130,
+      "notes": [
+        "Reviewed stable fallback roles, enhancement gate, reduced-transparency/high-contrast fallbacks and role definitions. Aero layers supersede base material recipes."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            130
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/quiet-depth-contrast.test.ts",
+      "sha256": "4080797891118944365b4934af171b62ffa5829ea490a71836072c5c6085fa47",
+      "bytes": 12880,
+      "lines": 380,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "4080797891118944365b4934af171b62ffa5829ea490a71836072c5c6085fa47",
+      "read_spans": [
+        [
+          1,
+          380
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "4080797891118944365b4934af171b62ffa5829ea490a71836072c5c6085fa47",
+      "final_lines": 380,
+      "notes": [
+        "Reviewed token parser and luminance/alpha checks. Tests validate base token contracts, not current Aero composed pixels; rendered samples required separately."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            380
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/reading-contrast.test.ts",
+      "sha256": "194affd69f9e9ba69d01c42b56c3e537104bd52e270dfe3e477024f4ea6fa2fd",
+      "bytes": 6174,
+      "lines": 197,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "194affd69f9e9ba69d01c42b56c3e537104bd52e270dfe3e477024f4ea6fa2fd",
+      "read_spans": [
+        [
+          1,
+          197
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "194affd69f9e9ba69d01c42b56c3e537104bd52e270dfe3e477024f4ea6fa2fd",
+      "final_lines": 197,
+      "notes": [
+        "Reviewed contrast arithmetic, token selection and sampled base wallpaper checks. No claim that these alone clear current Aero incomplete nodes."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            197
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/reading-window.css",
+      "sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+      "bytes": 7518,
+      "lines": 267,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+      "read_spans": [
+        [
+          1,
+          267
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+      "final_lines": 267,
+      "notes": [
+        "Reviewed window document/single-pane scroll modes, toolbar status, container scope and short-screen/phone flow. Aero overrides must be considered in final cascade."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            267
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/research-os.css",
+      "sha256": "e1e5cfcb622f8a1104f7b65408438119a1c310ca1ef69ef7a4e81a7ee912a67e",
+      "bytes": 56197,
+      "lines": 2192,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "e1e5cfcb622f8a1104f7b65408438119a1c310ca1ef69ef7a4e81a7ee912a67e",
+      "read_spans": [
+        [
+          1,
+          350
+        ],
+        [
+          351,
+          700
+        ],
+        [
+          701,
+          1050
+        ],
+        [
+          1051,
+          1400
+        ],
+        [
+          1401,
+          1800
+        ],
+        [
+          1801,
+          2192
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "e1e5cfcb622f8a1104f7b65408438119a1c310ca1ef69ef7a4e81a7ee912a67e",
+      "final_lines": 2192,
+      "notes": [
+        "Reviewed all base tokens, locale fonts, controls/menu/search, windows, code scroll, responsive flow, preferences and animations. Aero overrides preserve opaque reading surfaces; no pruning based on initial-load coverage."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            350
+          ],
+          [
+            351,
+            700
+          ],
+          [
+            701,
+            1050
+          ],
+          [
+            1051,
+            1400
+          ],
+          [
+            1401,
+            1800
+          ],
+          [
+            1801,
+            2192
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/theme-switch.css",
+      "sha256": "598431defa8a4359fd80b01bb78abfecf70ab06d1e11a7b62c1fce0857741cf8",
+      "bytes": 2999,
+      "lines": 83,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "598431defa8a4359fd80b01bb78abfecf70ab06d1e11a7b62c1fce0857741cf8",
+      "read_spans": [
+        [
+          1,
+          83
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "598431defa8a4359fd80b01bb78abfecf70ab06d1e11a7b62c1fce0857741cf8",
+      "final_lines": 83,
+      "notes": [
+        "Reviewed switch visual/ARIA states, focus target and reduced-motion behavior. Current Aero switch uses later native push-face rules."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            83
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/theme-token-guard.test.ts",
+      "sha256": "22e7420bc33691a7ad25d947ade2f466a5bfc4b66933b1976038989d869f2479",
+      "bytes": 4339,
+      "lines": 114,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "22e7420bc33691a7ad25d947ade2f466a5bfc4b66933b1976038989d869f2479",
+      "read_spans": [
+        [
+          1,
+          114
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "22e7420bc33691a7ad25d947ade2f466a5bfc4b66933b1976038989d869f2479",
+      "final_lines": 114,
+      "notes": [
+        "Reviewed whole-file colour debt census and token-only scopes. Exact literal count policy does not measure rendered accessibility."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/welcome-enter.css",
+      "sha256": "7e83ab17fbe52169e1b5037a8340f46e9189adcbca172a93108ee24b85aa03e0",
+      "bytes": 7023,
+      "lines": 225,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "7e83ab17fbe52169e1b5037a8340f46e9189adcbca172a93108ee24b85aa03e0",
+      "read_spans": [
+        [
+          1,
+          225
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "7e83ab17fbe52169e1b5037a8340f46e9189adcbca172a93108ee24b85aa03e0",
+      "final_lines": 225,
+      "notes": [
+        "Reviewed one-shot Enter feedback, loading-only pulse/dots, persistent labels, coarse targets, reduced motion and forced colours. Pending language dimming candidate in later polish requires rendered verification."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            225
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-desktop.css",
+      "sha256": "d00b5c1135cc8ada5315e0a004d575337aee732c97ffaf261d0e26f90cbdae8e",
+      "bytes": 25472,
+      "lines": 780,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "d00b5c1135cc8ada5315e0a004d575337aee732c97ffaf261d0e26f90cbdae8e",
+      "read_spans": [
+        [
+          1,
+          400
+        ],
+        [
+          401,
+          780
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "1972617bf6a059af65826e7f6ffa85a5060ffaa6a46ab8b6208741d1ddc2ea03",
+      "final_lines": 798,
+      "notes": [
+        "Reviewed complete canonical desktop cards, scrollers, icons, Atlas body, tablet/phone/short-screen overrides and newer research CTAs. Later short-screen flow resolves earlier nested scroll rule.",
+        "Later requested compact launcher fit refinement: two columns<=360 and keyboard/in-page clearance matching the two-row rounded bar."
+      ],
+      "findings": [
+        "STYLE-06"
+      ],
+      "changed_in_lane": true,
+      "final_verification": {
+        "method": "initial full current-file read plus complete final diff and edited source range read",
+        "final_read_spans": [
+          [
+            606,
+            670
+          ],
+          [
+            746,
+            786
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-explorer.css",
+      "sha256": "5975931dcb9cfdf49058f6d439598c92a74b9dd82af32c9ad6c87b04107ef1e7",
+      "bytes": 5342,
+      "lines": 179,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "5975931dcb9cfdf49058f6d439598c92a74b9dd82af32c9ad6c87b04107ef1e7",
+      "read_spans": [
+        [
+          1,
+          179
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "5975931dcb9cfdf49058f6d439598c92a74b9dd82af32c9ad6c87b04107ef1e7",
+      "final_lines": 179,
+      "notes": [
+        "Reviewed canonical tree/detail toolbar, table wrapping, focus/selection and forced colours. Base project-explorer owned by pages/research lane."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            179
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-logon.css",
+      "sha256": "d4643d5f14f819b42a805bebf8a0e91cce04c9fad7fac9d1a14843c649f08523",
+      "bytes": 11653,
+      "lines": 340,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "d4643d5f14f819b42a805bebf8a0e91cce04c9fad7fac9d1a14843c649f08523",
+      "read_spans": [
+        [
+          1,
+          340
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "d4643d5f14f819b42a805bebf8a0e91cce04c9fad7fac9d1a14843c649f08523",
+      "final_lines": 340,
+      "notes": [
+        "Reviewed still wallpaper login layout, labels, theme/language chips, short-screen/coarse rules, forced colours and optional entry screen. Pending opacity candidate in polish requires actual surface sample."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            340
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-pages.css",
+      "sha256": "93182c6f4531cc4da862c240296e821ffe3535695a1ee9fa0b3e32c6db025fd2",
+      "bytes": 17680,
+      "lines": 652,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "93182c6f4531cc4da862c240296e821ffe3535695a1ee9fa0b3e32c6db025fd2",
+      "read_spans": [
+        [
+          1,
+          330
+        ],
+        [
+          331,
+          652
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "93182c6f4531cc4da862c240296e821ffe3535695a1ee9fa0b3e32c6db025fd2",
+      "final_lines": 652,
+      "notes": [
+        "Reviewed full body-token remap, headings/tables, control geometry, code-panel roles, secure form/card layout, errors, container query and preference fallbacks. Content remains opaque in both themes."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            330
+          ],
+          [
+            331,
+            652
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-polish.css",
+      "sha256": "4dcfc95627355e3497e17405142913ba68aeccc15960be048ae802f783c4400c",
+      "bytes": 9078,
+      "lines": 233,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "4dcfc95627355e3497e17405142913ba68aeccc15960be048ae802f783c4400c",
+      "read_spans": [
+        [
+          1,
+          233
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "0e8c2c2bf9d0309914badfd7b01c7ee356801bcc6c23952388adfa2f32a60d42",
+      "final_lines": 233,
+      "notes": [
+        "Reviewed final cascade cleanup, text selection, tooltip/control sizing and preference/hover adaptation. Candidates: overly broad coarse anchor colour reset; language busy opacity. Both pending rendered confirmation.",
+        "Rendered candidates confirmed and fixed: STYLE-01, STYLE-02. See report for method and limits."
+      ],
+      "findings": [
+        "STYLE-01",
+        "STYLE-02"
+      ],
+      "changed_in_lane": true,
+      "final_verification": {
+        "method": "initial full current-file read plus complete final diff and edited source range read",
+        "final_read_spans": [
+          [
+            150,
+            205
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-taskbar.css",
+      "sha256": "f1b51b0fbdd395b070bb4f605873a0b5f05934551af0ebd0c6d9ed193e6b97cd",
+      "bytes": 36646,
+      "lines": 1219,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "f1b51b0fbdd395b070bb4f605873a0b5f05934551af0ebd0c6d9ed193e6b97cd",
+      "read_spans": [
+        [
+          1,
+          350
+        ],
+        [
+          351,
+          700
+        ],
+        [
+          701,
+          970
+        ],
+        [
+          971,
+          1219
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "815a8cc4ca96cb281013eb515c11e80a6d1873b5ea026b82f1aa1cfc5c11e4c6",
+      "final_lines": 1354,
+      "notes": [
+        "Reviewed complete glass/pin/tray/start geometry, native styles, scroll/fade affordance, phone/coarse targets, scoped Start field/menu surfaces and forced colour icons. Potential phone Start offset requires rendered overflow probe.",
+        "Rendered candidates confirmed and fixed: STYLE-03. See report for method and limits.",
+        "Later explicit rounded taskbar request implemented and tested with viewport/locale geometry and new material text samples; short Search row collapse confirmed and fixed.",
+        "Final compiled About resize regression reproduced: dock bottom-margin collapse moved absolute tray8px upward. Short-screen flow-root fixes it. Fine1024 compact stacking also needed; exact source-media-block injection preserves cascade order.38 observations pass, including all32 maintained en/fa geometry conditions."
+      ],
+      "findings": [
+        "STYLE-03",
+        "STYLE-05",
+        "STYLE-07",
+        "STYLE-08"
+      ],
+      "changed_in_lane": true,
+      "final_verification": {
+        "method": "initial full current-file read plus complete final diff and edited source range read",
+        "final_read_spans": [
+          [
+            1,
+            125
+          ],
+          [
+            382,
+            409
+          ],
+          [
+            680,
+            715
+          ],
+          [
+            1030,
+            1037
+          ],
+          [
+            1094,
+            1154
+          ],
+          [
+            1206,
+            1354
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-theme.css",
+      "sha256": "f942a41eefa1fe5a885235a5bbdfc3ce2916418aac5836921576c0261f3cc163",
+      "bytes": 21267,
+      "lines": 577,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "f942a41eefa1fe5a885235a5bbdfc3ce2916418aac5836921576c0261f3cc163",
+      "read_spans": [
+        [
+          1,
+          300
+        ],
+        [
+          301,
+          577
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "fbbcf747684056e3b1038a6e4985d781e145ea8643d2cd3dc562a9d8446043bb",
+      "final_lines": 577,
+      "notes": [
+        "Reviewed full canonical fonts, colour roles, reading-body constants, wallpaper/glass, reset specificity and central reduced-motion/transparency/forced-colour guards. Need actual composed sampling for text on glass.",
+        "Rendered candidates confirmed and fixed: STYLE-04. See report for method and limits."
+      ],
+      "findings": [
+        "STYLE-04"
+      ],
+      "changed_in_lane": true,
+      "final_verification": {
+        "method": "initial full current-file read plus complete final diff and edited source range read",
+        "final_read_spans": [
+          [
+            355,
+            371
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/win7-windows.css",
+      "sha256": "9801490cfa1e365c3bbb432fce3e8e02eadc4f58998bf4c5e7473aca2b383a9e",
+      "bytes": 29775,
+      "lines": 859,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "9801490cfa1e365c3bbb432fce3e8e02eadc4f58998bf4c5e7473aca2b383a9e",
+      "read_spans": [
+        [
+          1,
+          300
+        ],
+        [
+          301,
+          600
+        ],
+        [
+          601,
+          859
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "9801490cfa1e365c3bbb432fce3e8e02eadc4f58998bf4c5e7473aca2b383a9e",
+      "final_lines": 859,
+      "notes": [
+        "Reviewed full frame/titlebar, caption hit extension, toolbar, desktop geometry, tablet/phone/short-screen flow and forced colours. Coarse44px caption target potentially reduced to24px under later forced colours; inspect actual geometry."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            300
+          ],
+          [
+            301,
+            600
+          ],
+          [
+            601,
+            859
+          ]
+        ]
+      }
+    },
+    {
+      "path": "src/components/os/workspace-windows.css",
+      "sha256": "9662ed745105b5c2e710974e781760c07e3f26a435b5bac9795e13bb611ae4b6",
+      "bytes": 15164,
+      "lines": 466,
+      "binary": false,
+      "lane": "styles",
+      "reader": "/root/responsive",
+      "initial_sha256": "9662ed745105b5c2e710974e781760c07e3f26a435b5bac9795e13bb611ae4b6",
+      "read_spans": [
+        [
+          1,
+          260
+        ],
+        [
+          261,
+          466
+        ]
+      ],
+      "read_type": "fresh full current source, line-numbered; no historical credit",
+      "final_sha256": "9662ed745105b5c2e710974e781760c07e3f26a435b5bac9795e13bb611ae4b6",
+      "final_lines": 466,
+      "notes": [
+        "Reviewed complete retained-window controls, tooltip bridge, grip, menu, lab grid, short-screen flow and copy fallback. Logical inline layout and intentional physical resize corner retained."
+      ],
+      "findings": [],
+      "changed_in_lane": false,
+      "final_verification": {
+        "method": "initial full current-file read remains exact final bytes (hash equal)",
+        "final_read_spans": [
+          [
+            1,
+            260
+          ],
+          [
+            261,
+            466
+          ]
+        ]
+      }
+    }
+  ],
+  "final_reviewed_lines": 9228,
+  "findings": [
+    {
+      "id": "STYLE-01",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-polish.css"
+      ],
+      "summary": "Coarse-pointer sticky-hover reset overrode white wallpaper footer link ink.",
+      "evidence": "styles-evidence/contrast-measurements.json; styles-evidence/home-dark.png",
+      "before": "Phone hovered Lab computed rgb(0,102,204); sampled contrast 1.003:1 Night, 1.089:1 Day.",
+      "fix": "Keep hover specificity while putting skip/focus exclusions in :where(), allowing surface-specific ink to win.",
+      "after": "8 locale/theme/320/390 injected-source cases retain white; representative white contrast5.582:1 Night/6.061:1 Day."
+    },
+    {
+      "id": "STYLE-02",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-polish.css"
+      ],
+      "summary": "Language pending-state opacity reduced locale label contrast.",
+      "evidence": "styles-evidence/contrast-measurements.json; styles-evidence/fixed-probe.json",
+      "before": "Opacity0.6; phone locale label sampled4.020:1 Night/4.201:1 Day; desktop3.900/4.240.",
+      "fix": "Keep opacity1 and existing progress cursor and animated/static pending ring.",
+      "after": "8 injected-source cases preserve locale colour and opacity1; phone samples7.967:1 Night/9.054:1 Day."
+    },
+    {
+      "id": "STYLE-03",
+      "severity": "low",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-taskbar.css"
+      ],
+      "summary": "Phone Start dialog retained4px start inset despite100vw width.",
+      "evidence": "styles-evidence/contrast-targets.json; styles-evidence/fixed-probe.json",
+      "before": "390px phone dialog left4/right394 (fixed top layer, so document scrollWidth alone missed it).",
+      "fix": "Reset inset-inline-start to0 in the phone layout.",
+      "after": "8 en/fa Day/Night320/390 source-injected cases fit viewport exactly."
+    },
+    {
+      "id": "STYLE-04",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-theme.css"
+      ],
+      "summary": "Night white caption text crossed bright bitmap glare with insufficient sampled contrast.",
+      "evidence": "styles-evidence/caption-measurements.json; styles-evidence/glyph-contrast-final-measurements.json",
+      "before": "Research Highlights/Atlas caption sampled3.555/4.081:1 at390 and3.593/3.665:1 at320 even retaining authored dark shadow.",
+      "fix": "Add tight2px ink halo ahead of existing Night title shadow; keep bitmap/font/material/text fill unchanged.",
+      "after": "Corresponding sampled glyph interiors7.211/9.122:1 at390 and7.292/8.554:1 at320; fa320 sample9.88+."
+    },
+    {
+      "id": "STYLE-05",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-taskbar.css"
+      ],
+      "summary": "Short Search dialog gave its results body zero height at320x225.",
+      "evidence": "styles-evidence/compact-grid-probe.json",
+      "before": "En/fa209px dialog: results body0px.",
+      "fix": "At<=359px height, preserve44px result track and61px scrolling scopes; allow outer dialog scrolling.",
+      "after": "En/fa prototype matching final source: results44px,scopes61px,dialog209px with235px scrollHeight.",
+      "caveat": "320x225 is a zoom-equivalent layout viewport, not actual native browser zoom."
+    },
+    {
+      "id": "STYLE-06",
+      "severity": "low",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-desktop.css"
+      ],
+      "summary": "Compact home launcher columns forced English conversation into conversatio/n.",
+      "evidence": "styles-evidence/taskbar-en-320.png; styles-evidence/compact-grid-probe.json",
+      "fix": "Use two home app columns at<=360px and retain all five links.",
+      "after": "All five locales320px have five links and no document overflow; en/es captions wrap naturally."
+    },
+    {
+      "id": "STYLE-07",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-taskbar.css"
+      ],
+      "summary": "Compiled short-screen tray overlapped the pin row by8px after desktop-to-phone resize.",
+      "evidence": [
+        "styles-evidence/built-taskbar-repro.json",
+        "styles-evidence/built-taskbar-fixed.json",
+        "../../artifacts/frontend-review/browser-results/full-audit-rounded-taskbar-dfe3a-usable-width-in-LTR-and-RTL-chromium/test-failed-1.png"
+      ],
+      "before": "Build2vswvBMt5k99PcerhH7mV,en320x568 from1440x900: dock last margin collapsed beyond shell; pin row453.19\u2013511.19, tray503.19\u2013547.19.",
+      "fix": "Short-screen os-shell display:flow-root contains the dock margin within the tray positioning container.",
+      "after": "Same compiled app with only changed source media blocks applied: tray511.19\u2013555.19, pin row unchanged;38 geometry observations pass.",
+      "coverage_note": "Earlier17geometry probes checked frame containment and mutual tray overlap but omitted tray-versus-pin overlap. Final probe adds that comparison."
+    },
+    {
+      "id": "STYLE-08",
+      "severity": "low",
+      "status": "fixed",
+      "files": [
+        "src/components/os/win7-taskbar.css"
+      ],
+      "summary": "Compiled fine-pointer1024px taskbar could not contain all inline app pins.",
+      "evidence": [
+        "styles-evidence/built-taskbar-flow-root-only.log",
+        "styles-evidence/built-taskbar-fixed.json"
+      ],
+      "before": "Required exact resize sequence progressed past320 but Contact extended past its strip at1024x768 fine pointer.",
+      "fix": "Use compact stacked pins and52px bar through1279px; allow8em label width. Wide desktop remains inline.",
+      "after": "Required32 en/fa cases plus6 ar/zh/es compact-desktop cases all pass pin/label bounds and text-overflow checks."
+    }
+  ],
+  "verification": {
+    "unit_tests": {
+      "command": "npx vitest run src/components/os/quiet-depth-contrast.test.ts src/components/os/reading-contrast.test.ts src/components/os/theme-token-guard.test.ts",
+      "files": 3,
+      "tests": 32,
+      "result": "pass",
+      "log": "styles-unit.log"
+    },
+    "rendered_diagnostics": {
+      "origin": "http://127.0.0.1:4398",
+      "mode": "existing captured export; revised CSS source injected after removal of superseded selector; final build/browser verification delegated to parent",
+      "root_clip_removed_cases": 7,
+      "fixed_locale_theme_phone_cases": 8,
+      "preference_cases": 4,
+      "current_contrast_scans": 4,
+      "current_incomplete_nodes": 233,
+      "measured_final_text_runs": 240,
+      "historical_incomplete_groups": 160,
+      "historical_node_appearances": 7038,
+      "claim": "Representative current manual samples only; not all 160 historical groups cleared.",
+      "rounded_taskbar_cases": 17,
+      "rounded_taskbar_text_samples": 28,
+      "rounded_taskbar_minimum_sampled_contrast": 4.833,
+      "compact_grid_locales": 5,
+      "short_search_cases": 2,
+      "compiled_taskbar_geometry_cases": 38,
+      "compiled_taskbar_required_cases": 32,
+      "compiled_taskbar_base_build": "2vswvBMt5k99PcerhH7mV",
+      "compiled_taskbar_mode": "compiled app plus changed source media blocks injected in source order; parent rebuilding exact source",
+      "compiled_taskbar_assertions": [
+        "frame inside viewport",
+        "all5pins inside strip",
+        "labels inside pins",
+        "label scrollWidth<=clientWidth+1",
+        "tray inside frame",
+        "tray does not intersect any pin",
+        "tray mutual non-overlap",
+        "document width<=viewport"
+      ]
+    },
+    "diff_check": "pass"
+  },
+  "limits": [
+    "Final rebuilt export validation belongs to parent.",
+    "Only representative incomplete contrast nodes manually sampled; no all-route accessibility certification.",
+    "Native browser text zoom, physical safe-area/device keyboard, Windows font/AA rendering, native forced-colour palettes and assistive speech not certified by these probes."
+  ],
+  "authorized_followup": {
+    "request": "User explicitly requested rounded taskbar covering usable viewport without cut controls.",
+    "source_files": [
+      "src/components/os/win7-taskbar.css",
+      "src/components/os/win7-desktop.css"
+    ],
+    "implementation": "Aero glass in18px rounded frame,8px/safe-area gutters;112px two rows at<=1023;52px compact single row at1024\u20131279 and coarse pointers;40px wide fine-pointer row. Short<=599px bar flows after document and flow-root contains margins for aligned tray. Local scrolling retained; requested pin labels fit tested cases.",
+    "verification": "17 current-export source-injection geometry cases: en/fa at320/390/640/768/1024/1440/1920 plus ar/zh/es320; all pass.28 visible taskbar text samples across phone About/desktop Home in both themes, minimum4.833:1.",
+    "evidence": [
+      "styles-evidence/taskbar-probe.json",
+      "styles-evidence/rounded-contrast-measurements.json"
+    ],
+    "scope_note": "No ResearchOS markup changes; parent maintains final browser regressions."
+  }
+}

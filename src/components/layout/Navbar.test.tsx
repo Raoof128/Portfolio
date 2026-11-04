@@ -72,10 +72,43 @@ describe("Navbar", () => {
     expect(screen.getByLabelText(/open navigation menu/i)).toBeInTheDocument();
   });
 
+  it("closes the mobile disclosure on Escape and restores its toggle", () => {
+    renderNavbar();
+    const toggle = screen.getByLabelText(/open navigation menu/i);
+    fireEvent.click(toggle);
+    const mobile = document.getElementById(
+      toggle.getAttribute("aria-controls")!,
+    )!;
+    const link = mobile.querySelector("a")!;
+    link.focus();
+    fireEvent.keyDown(link, { key: "Escape" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(toggle).toHaveFocus();
+  });
+
+  it("uses distinct language and mobile disclosure IDs across instances", () => {
+    renderNavbar();
+    renderNavbar();
+    const toggles = screen.getAllByLabelText(/open navigation menu/i);
+    toggles.forEach((toggle) => fireEvent.click(toggle));
+    const languages = screen.getAllByRole("button", {
+      name: /select language/i,
+    });
+    languages.forEach((toggle) => fireEvent.click(toggle));
+    const ids = [...document.querySelectorAll("[id]")].map(
+      (element) => element.id,
+    );
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
   it("has correct ARIA attributes for accessibility", () => {
     renderNavbar();
     const toggle = screen.getByLabelText(/open navigation menu/i);
     expect(toggle).toHaveAttribute("aria-expanded", "false");
-    expect(toggle).toHaveAttribute("aria-controls", "mobile-menu");
+    expect(toggle.getAttribute("aria-controls")).toBeTruthy();
+    fireEvent.click(toggle);
+    expect(
+      document.getElementById(toggle.getAttribute("aria-controls")!),
+    ).toHaveAttribute("aria-label", en.nav.mobile_nav_label);
   });
 });

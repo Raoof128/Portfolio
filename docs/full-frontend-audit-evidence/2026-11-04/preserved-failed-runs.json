@@ -1,0 +1,47 @@
+[
+  {
+    "phase": "failed-focused-run1",
+    "buildID": "2vswvBMt5k99PcerhH7mV",
+    "stats": {
+      "startTime": "2026-11-04T01:52:25.019Z",
+      "duration": 70073.6,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 10,
+      "flaky": 0
+    },
+    "rawReportSHA256": "2d463750bc765870cfc9caf25ea59a161cd2309539aef2f5e566170ab5a6e041",
+    "rawEvidenceLocation": "work/full-frontend-audit/failed-focused-run1/",
+    "interpretation": "Focused1: product focus/taskbar/no-JS findings plus wrong footer/same-document fixture assumptions. Focused2:13passed; invalid assumption of an installed external mail client failed. Full1:61passed; old disclaimer-wording guard rejected stronger frozen/current architecture qualification. Corrected guard passed separately before the final full run. Native harness proves mailto POST and no HTTP leak; actual mail-client launch remains unverified."
+  },
+  {
+    "phase": "failed-focused-run2",
+    "buildID": "7ZXmp772g5T8B_eREKvhm",
+    "stats": {
+      "startTime": "2026-11-04T02:03:57.333Z",
+      "duration": 60377.988000000005,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "rawReportSHA256": "9d047ac7475b44dba2ff5f756d00e2da458318307028ab9da647495ac5a67bb9",
+    "rawEvidenceLocation": "work/full-frontend-audit/failed-focused-run2/",
+    "interpretation": "Focused1: product focus/taskbar/no-JS findings plus wrong footer/same-document fixture assumptions. Focused2:13passed; invalid assumption of an installed external mail client failed. Full1:61passed; old disclaimer-wording guard rejected stronger frozen/current architecture qualification. Corrected guard passed separately before the final full run. Native harness proves mailto POST and no HTTP leak; actual mail-client launch remains unverified."
+  },
+  {
+    "phase": "failed-full-run1",
+    "buildID": "7ZXmp772g5T8B_eREKvhm",
+    "stats": {
+      "startTime": "2026-11-04T02:08:44.009Z",
+      "duration": 445044.133,
+      "expected": 61,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "rawReportSHA256": "ed1aeb8ac96cba2e96d1b48373af404ec0dfc588fb407008cff8e9084de55fb1",
+    "rawEvidenceLocation": "work/full-frontend-audit/failed-full-run1/",
+    "interpretation": "Focused1: product focus/taskbar/no-JS findings plus wrong footer/same-document fixture assumptions. Focused2:13passed; invalid assumption of an installed external mail client failed. Full1:61passed; old disclaimer-wording guard rejected stronger frozen/current architecture qualification. Corrected guard passed separately before the final full run. Native harness proves mailto POST and no HTTP leak; actual mail-client launch remains unverified."
+  }
+]

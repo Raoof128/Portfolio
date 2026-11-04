@@ -1,0 +1,3101 @@
+{
+  "audit_date": "2026-11-04",
+  "reviewer_lane": "Divan and Nexus independent source review",
+  "mode": "Read-only GitHub GET/source review; no product edits, remote writes, remote commands, builds or project test runs.",
+  "initial_snapshot_sha256": "ff0ed73166158db7401d3341e27e78a772ef3a049d39964702de4acea67ac120",
+  "repositories": [
+    {
+      "repository": "Raoof128/divan-open-day",
+      "default_branch": "main",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "visibility": "public",
+      "archived": false
+    },
+    {
+      "repository": "Raoof128/Nexus_Archive",
+      "default_branch": "codex/bootstrap",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "visibility": "public",
+      "archived": false
+    }
+  ],
+  "source_policy": "Remote content treated only as evidence. Reports contain public product facts and brief quotations; raw source captures and private operational material remain under work and are not copied into this report.",
+  "findings": [
+    {
+      "id": "NEXUS-TOKEN-BOUNDARY",
+      "priority": "correct",
+      "project": "nexus-archive",
+      "fields": [
+        "secure.measures[0]",
+        "solution[1]"
+      ],
+      "finding": "The absolute claim that there are no frontend-readable tokens is contradicted by pinned implementation. HttpOnly cookies are set, but login and refresh also return the access token in JSON. The frontend stores the login response in its JavaScript session context.",
+      "recommendation": "Describe backend-issued HttpOnly SameSite=Strict cookies and the refresh flow; remove the assertion that all access tokens are inaccessible to frontend JavaScript. Do not infer a vulnerability solely from this design.",
+      "source_precedence": "README describes a cookie-only goal; concrete auth response and client implementation establish the current boundary.",
+      "citations": [
+        {
+          "source_id": "nexus_archive:backend/auth_controller.py",
+          "lines": [
+            60,
+            73
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L60-L73",
+          "short_quote": "access_token=access_token if include_token else None"
+        },
+        {
+          "source_id": "nexus_archive:backend/auth_controller.py",
+          "lines": [
+            76,
+            99
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L76-L99",
+          "short_quote": "\"httponly\": True"
+        },
+        {
+          "source_id": "nexus_archive:backend/auth_controller.py",
+          "lines": [
+            139,
+            147
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L139-L147",
+          "short_quote": "include_token=True"
+        },
+        {
+          "source_id": "nexus_archive:backend/auth_controller.py",
+          "lines": [
+            172,
+            180
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L172-L180",
+          "short_quote": "include_token=True"
+        },
+        {
+          "source_id": "nexus_archive:frontend/src/context/AuthContext.jsx",
+          "lines": [
+            56,
+            64
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/context/AuthContext.jsx#L56-L64",
+          "short_quote": "setSession(authenticatedSession)"
+        }
+      ]
+    },
+    {
+      "id": "NEXUS-ENCRYPTION-CONFIGURATION",
+      "priority": "qualify",
+      "project": "nexus-archive",
+      "fields": [
+        "description",
+        "secure.measures[3]",
+        "solution[3]"
+      ],
+      "finding": "Takeaway encryption is a configured Fernet feature, not evidence that a particular deployment has its key set. Takeaway writes fail closed without the key; chat encryption is separately conditional and returns plaintext when unconfigured.",
+      "recommendation": "Use configured Fernet encryption for takeaway notes, requiring TAKEAWAY_ENCRYPTION_KEY for writes. Do not broaden this to unconditional chat/database encryption or claim a verified production setting.",
+      "citations": [
+        {
+          "source_id": "nexus_archive:backend/data_protection.py",
+          "lines": [
+            92,
+            114
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L92-L114",
+          "short_quote": "TAKEAWAY_ENCRYPTION_KEY must be configured before storing takeaways"
+        },
+        {
+          "source_id": "nexus_archive:backend/data_protection.py",
+          "lines": [
+            117,
+            128
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L117-L128",
+          "short_quote": "Encrypt chat content when a field-level encryption key is configured."
+        },
+        {
+          "source_id": "nexus_archive:docs/operations.md",
+          "lines": [
+            17,
+            18
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/operations.md#L17-L18",
+          "short_quote": "takeaway writes require TAKEAWAY_ENCRYPTION_KEY"
+        }
+      ]
+    },
+    {
+      "id": "NEXUS-JOB-TRACKER",
+      "priority": "update",
+      "project": "nexus-archive",
+      "fields": [
+        "description",
+        "fullDescription",
+        "build.features[2]"
+      ],
+      "finding": "The current repository describes and implements a job-tracking extension in addition to the media vault. Portfolio copy omits this current capability.",
+      "recommendation": "Mention job applications and job-aware suggestions without treating example recommendations in source as actual employment or partnerships.",
+      "citations": [
+        {
+          "source_id": "nexus_archive:README.md",
+          "lines": [
+            1,
+            3
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3",
+          "short_quote": "personal media vault and job tracker"
+        },
+        {
+          "source_id": "nexus_archive:supabase/migrations/20260324000000_add_job_media_type.sql",
+          "lines": [
+            1,
+            3
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/supabase/migrations/20260324000000_add_job_media_type.sql#L1-L3",
+          "short_quote": "ALTER TYPE media_type ADD VALUE IF NOT EXISTS 'job'"
+        },
+        {
+          "source_id": "nexus_archive:backend/services.py",
+          "lines": [
+            207,
+            220
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/services.py#L207-L220",
+          "short_quote": "job applications from my tracker"
+        }
+      ]
+    },
+    {
+      "id": "NEXUS-CHAT-TRANSPORT",
+      "priority": "precision",
+      "project": "nexus-archive",
+      "fields": [
+        "build.features[1]"
+      ],
+      "finding": "The inspected chat path uses HTTP GET/POST requests, TanStack Query, optimistic local updates and cache invalidation. This does not substantiate a realtime subscription or streamed transport claim.",
+      "recommendation": "Use persistent AI chat transcripts with user-scoped sanitisation. User-visible interactive updates are supported; avoid implying a realtime protocol.",
+      "citations": [
+        {
+          "source_id": "nexus_archive:frontend/src/hooks/useChat.js",
+          "lines": [
+            45,
+            77
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/hooks/useChat.js#L45-L77",
+          "short_quote": "apiFetch(`/chat/sessions/${sessionId}/messages`"
+        },
+        {
+          "source_id": "nexus_archive:backend/chat_controller.py",
+          "lines": [
+            153,
+            173
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/chat_controller.py#L153-L173",
+          "short_quote": "@post(\"/sessions/{session_id:str}/messages\")"
+        }
+      ]
+    },
+    {
+      "id": "NEXUS-LOAD-TEST-SCOPE",
+      "priority": "qualify",
+      "project": "nexus-archive",
+      "fields": [
+        "proof[2]"
+      ],
+      "finding": "A Locust scenario is present for authenticated recommendation requests. No benchmark result or measured performance outcome was located in the pinned repository tree and reviewed docs.",
+      "recommendation": "State that Locust scenarios exercise the recommendation endpoint, rather than presenting the scenario itself as performance verification or a measured benchmark.",
+      "citations": [
+        {
+          "source_id": "nexus_archive:loadtests/locustfile.py",
+          "lines": [
+            13,
+            37
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/loadtests/locustfile.py#L13-L37",
+          "short_quote": "Exercise the media suggestion endpoint with authenticated traffic."
+        },
+        {
+          "source_id": "nexus_archive:README.md",
+          "lines": [
+            80,
+            90
+          ],
+          "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L80-L90",
+          "short_quote": "make load-test"
+        }
+      ]
+    },
+    {
+      "id": "DIVAN-APPLICATION-PRIVACY-SCOPE",
+      "priority": "correct",
+      "project": "divan-open-day",
+      "fields": [
+        "description",
+        "secure.measures[0]",
+        "secure.measures[1]",
+        "fullDescription",
+        "problem",
+        "proof[0]"
+      ],
+      "finding": "The application does not collect intentions, transmit poem selections to an app database, or include analytics/tracking code. The same repository explicitly distinguishes provider/edge connection data and a separately governed logging/retention boundary. Absolute nothing-is-transmitted, collecting-nothing and complete-privacy wording overstates that boundary.",
+      "recommendation": "Scope the claim to application collection: no accounts, intention submission, application analytics/tracking cookies or poem-choice database. Acknowledge limited hosting/network connection data and separate provider logging governance. Prefer public release/poem IDs for sessionStorage wording.",
+      "citations": [
+        {
+          "source_id": "divan-open-day:README.md",
+          "lines": [
+            147,
+            154
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154",
+          "short_quote": "A hosting provider and network edge may process limited connection data"
+        },
+        {
+          "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+          "lines": [
+            15,
+            20
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L15-L20",
+          "short_quote": "may process limited technical network information"
+        },
+        {
+          "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+          "lines": [
+            38,
+            41
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L38-L41",
+          "short_quote": "These values are not transmitted by the application."
+        },
+        {
+          "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+          "lines": [
+            54,
+            60
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60",
+          "short_quote": "rather than a zero-logging claim"
+        }
+      ]
+    },
+    {
+      "id": "DIVAN-ORIGIN-PORT-SCOPE",
+      "priority": "precision",
+      "project": "divan-open-day",
+      "fields": [
+        "secure.measures[5]"
+      ],
+      "finding": "The origin is served behind an outbound tunnel and the Compose definition has no host-published application port. The public website still has an inbound HTTPS interface; no inbound surface is broader than the configuration establishes.",
+      "recommendation": "Use static origin behind an outbound tunnel, with no host-published application ports.",
+      "citations": [
+        {
+          "source_id": "divan-open-day:README.md",
+          "lines": [
+            48,
+            52
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L48-L52",
+          "short_quote": "Unprivileged static container behind an outbound tunnel"
+        },
+        {
+          "source_id": "divan-open-day:ops/compose.yml",
+          "lines": [
+            3,
+            20
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/ops/compose.yml#L3-L20",
+          "short_quote": "expose:"
+        },
+        {
+          "source_id": "divan-open-day:docs/deployment-runbook.md",
+          "lines": [
+            169,
+            175
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/deployment-runbook.md#L169-L175"
+        }
+      ]
+    },
+    {
+      "id": "DIVAN-REVIEW-AND-OFFLINE-SCOPE",
+      "priority": "qualify",
+      "project": "divan-open-day",
+      "fields": [
+        "description",
+        "build.features[0]",
+        "fullDescription",
+        "solution[3]",
+        "proof[1]",
+        "proof[2]",
+        "proof[3]"
+      ],
+      "finding": "The 120-record count and engineering source/provenance checks are supported. The dated corpus report explicitly uses machine/source authority rather than human approval; cultural sign-off and manual assistive-technology evidence are not established. Offline readiness is a verified cache/release state, not guaranteed by every initial navigation.",
+      "recommendation": "Retain 60 Hafez +60 Rumi =120, source-bound provenance and optional recitation; label review as engineering/source validation. Describe offline use after a verified release is cached. Treat art direction as design intent and tests as engineering evidence, without cultural/manual-AT certification or future ever-ships guarantees.",
+      "citations": [
+        {
+          "source_id": "divan-open-day:docs/verification/2026-07-16-final-120-corpus-report.md",
+          "lines": [
+            5,
+            13
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/verification/2026-07-16-final-120-corpus-report.md#L5-L13",
+          "short_quote": "All 120 carry current source-bound machine authority"
+        },
+        {
+          "source_id": "divan-open-day:README.md",
+          "lines": [
+            174,
+            182
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L174-L182",
+          "short_quote": "Repository tests and local browser checks are engineering evidence."
+        },
+        {
+          "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+          "lines": [
+            44,
+            51
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L44-L51",
+          "short_quote": "offline readiness must come from the verified application state"
+        },
+        {
+          "source_id": "divan-open-day:README.md",
+          "lines": [
+            11,
+            14
+          ],
+          "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L14",
+          "short_quote": "optional recitation"
+        }
+      ]
+    }
+  ],
+  "field_matrix": {
+    "divan-open-day": [
+      {
+        "field": "slug",
+        "initial_public_value": "divan-open-day",
+        "assessment": "local_editorial_route_or_classification",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "title",
+        "initial_public_value": "Divan — Open Day",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              1,
+              14
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L1-L14"
+          }
+        ]
+      },
+      {
+        "field": "category",
+        "initial_public_value": "ENGINEERING",
+        "assessment": "local_editorial_route_or_classification",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "year",
+        "initial_public_value": "2026",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:docs/verification/2026-07-16-final-120-corpus-report.md",
+            "lines": [
+              1,
+              7
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/verification/2026-07-16-final-120-corpus-report.md#L1-L7"
+          }
+        ]
+      },
+      {
+        "field": "description",
+        "initial_public_value": "Bilingual English and Persian Hafez and Rumi poetry experience built for a Persian Society Open Day stall. Visitors choose a poet and receive one reviewed verse with its translation, source, and recitation. The app works offline and uses no cookies, trackers, or backend.",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-APPLICATION-PRIVACY-SCOPE",
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              11,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L20"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              147,
+              154
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              54,
+              60
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60"
+          }
+        ]
+      },
+      {
+        "field": "tags[0]",
+        "initial_public_value": "React 19",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "tags[1]",
+        "initial_public_value": "Vite",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "tags[2]",
+        "initial_public_value": "TypeScript",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "tags[3]",
+        "initial_public_value": "Offline-First",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "tags[4]",
+        "initial_public_value": "Privacy by Design",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "tags[5]",
+        "initial_public_value": "i18n / RTL",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "links.demo",
+        "initial_public_value": "https://divan.raoufabedini.dev/",
+        "assessment": "source_link_runtime_unverified",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              3,
+              16
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L3-L16"
+          }
+        ]
+      },
+      {
+        "field": "links.repo",
+        "initial_public_value": "https://github.com/Raoof128/divan-open-day",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              8,
+              11
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L8-L11"
+          }
+        ]
+      },
+      {
+        "field": "links.caseStudy",
+        "initial_public_value": "/projects/divan-open-day",
+        "assessment": "local_editorial_route_or_classification",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "build.stack[0]",
+        "initial_public_value": "Vite",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[1]",
+        "initial_public_value": "React 19",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[2]",
+        "initial_public_value": "strict TypeScript",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:tsconfig.json",
+            "lines": [
+              2,
+              15
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/tsconfig.json#L2-L15"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[3]",
+        "initial_public_value": "Hand-written service worker",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[4]",
+        "initial_public_value": "Web Crypto (shuffle bag)",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[5]",
+        "initial_public_value": "Vitest (unit / component / a11y / offline)",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[6]",
+        "initial_public_value": "Playwright (Chromium e2e)",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              57,
+              97
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L57-L97"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[7]",
+        "initial_public_value": "pnpm 10.33 · Node 22.16",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              13,
+              16
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L13-L16"
+          },
+          {
+            "source_id": "divan-open-day:.node-version",
+            "lines": [
+              1,
+              1
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/.node-version#L1-L1"
+          }
+        ]
+      },
+      {
+        "field": "build.features[0]",
+        "initial_public_value": "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
+        "assessment": "supported_with_review_scope",
+        "finding_ids": [
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:docs/verification/2026-07-16-final-120-corpus-report.md",
+            "lines": [
+              5,
+              13
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/verification/2026-07-16-final-120-corpus-report.md#L5-L13"
+          }
+        ]
+      },
+      {
+        "field": "build.features[1]",
+        "initial_public_value": "Verse selection uses a Web Crypto shuffle bag computed on-device, without server involvement",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "build.features[2]",
+        "initial_public_value": "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "build.features[3]",
+        "initial_public_value": "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterised images)",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "build.features[4]",
+        "initial_public_value": "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[0]",
+        "initial_public_value": "Privacy by construction: no cookies, identifiers, trackers, or visitor input; nothing is transmitted",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-APPLICATION-PRIVACY-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              11,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L20"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              147,
+              154
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              54,
+              60
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[1]",
+        "initial_public_value": "The client is static and has no backend, database, or analytics infrastructure",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-APPLICATION-PRIVACY-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              11,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L20"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              147,
+              154
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              54,
+              60
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[2]",
+        "initial_public_value": "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              3,
+              9
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L3-L9"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              23,
+              41
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L23-L41"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[3]",
+        "initial_public_value": "Production compiler rejects synthetic/test data before deployment",
+        "assessment": "supported_control",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              158,
+              165
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L158-L165"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[4]",
+        "initial_public_value": "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licences, e.g. CC BY-SA)",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              195,
+              208
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L195-L208"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[5]",
+        "initial_public_value": "Delivered as a static container behind an outbound tunnel, with no inbound surface",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-ORIGIN-PORT-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              48,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L48-L52"
+          },
+          {
+            "source_id": "divan-open-day:ops/compose.yml",
+            "lines": [
+              3,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/ops/compose.yml#L3-L20"
+          }
+        ]
+      },
+      {
+        "field": "fullDescription",
+        "initial_public_value": "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. The app works offline after its first load and is privacy-first by construction: no cookies, trackers, backend, or visitor input, so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-APPLICATION-PRIVACY-SCOPE",
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              11,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L20"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              147,
+              154
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              54,
+              60
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60"
+          }
+        ]
+      },
+      {
+        "field": "problem",
+        "initial_public_value": "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity: no hallucinated verses, no rasterised calligraphy, no data collection.",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-APPLICATION-PRIVACY-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              11,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L20"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              147,
+              154
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              54,
+              60
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60"
+          }
+        ]
+      },
+      {
+        "field": "solution[0]",
+        "initial_public_value": "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
+        "assessment": "supported_with_review_scope",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:docs/verification/2026-07-16-final-120-corpus-report.md",
+            "lines": [
+              5,
+              13
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/verification/2026-07-16-final-120-corpus-report.md#L5-L13"
+          }
+        ]
+      },
+      {
+        "field": "solution[1]",
+        "initial_public_value": "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "solution[2]",
+        "initial_public_value": "The Web Crypto shuffle bag selects verses on-device; no server records what visitors draw",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "solution[3]",
+        "initial_public_value": "Rendered live Nastaliq typography and per-poet art direction for cultural authenticity instead of flattened images",
+        "assessment": "supported_design_controls",
+        "finding_ids": [
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "solution[4]",
+        "initial_public_value": "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support",
+        "assessment": "supported_design_controls",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              24,
+              40
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L24-L40"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              113,
+              127
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L113-L127"
+          }
+        ]
+      },
+      {
+        "field": "proof[0]",
+        "initial_public_value": "No cookies, trackers, or backend are used. sessionStorage holds only public poem IDs",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-APPLICATION-PRIVACY-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              11,
+              20
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L11-L20"
+          },
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              147,
+              154
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L147-L154"
+          },
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              54,
+              60
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L54-L60"
+          }
+        ]
+      },
+      {
+        "field": "proof[1]",
+        "initial_public_value": "Runs fully offline after first load via the integrity-verified service worker",
+        "assessment": "qualification_needed",
+        "finding_ids": [
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:src/pages/PrivacyPage.tsx",
+            "lines": [
+              44,
+              51
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx#L44-L51"
+          }
+        ]
+      },
+      {
+        "field": "proof[2]",
+        "initial_public_value": "A production compiler rejects synthetic test data before deployment, so only the reviewed corpus ever ships",
+        "assessment": "supported_control_avoid_universal_future_claim",
+        "finding_ids": [
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              158,
+              165
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L158-L165"
+          }
+        ]
+      },
+      {
+        "field": "proof[3]",
+        "initial_public_value": "Tested across unit, component, accessibility, offline, share, performance, and security suites (Vitest) plus Playwright Chromium e2e",
+        "assessment": "configured_suites_and_dated_engineering_evidence_not_current_green_CI",
+        "finding_ids": [
+          "DIVAN-REVIEW-AND-OFFLINE-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "divan-open-day:README.md",
+            "lines": [
+              48,
+              52
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md#L48-L52"
+          },
+          {
+            "source_id": "divan-open-day:package.json",
+            "lines": [
+              28,
+              38
+            ],
+            "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json#L28-L38"
+          }
+        ]
+      }
+    ],
+    "nexus-archive": [
+      {
+        "field": "slug",
+        "initial_public_value": "nexus-archive",
+        "assessment": "local_editorial_route_or_classification",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "title",
+        "initial_public_value": "Nexus Archive",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3"
+          }
+        ]
+      },
+      {
+        "field": "category",
+        "initial_public_value": "ENGINEERING",
+        "assessment": "local_editorial_route_or_classification",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "year",
+        "initial_public_value": "2026",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:supabase/migrations/20260324000000_add_job_media_type.sql",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/supabase/migrations/20260324000000_add_job_media_type.sql#L1-L3"
+          }
+        ]
+      },
+      {
+        "field": "description",
+        "initial_public_value": "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
+        "assessment": "update_job_scope_and_qualify_encryption_as_applicable",
+        "finding_ids": [
+          "NEXUS-ENCRYPTION-CONFIGURATION",
+          "NEXUS-JOB-TRACKER"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3"
+          },
+          {
+            "source_id": "nexus_archive:supabase/migrations/20260324000000_add_job_media_type.sql",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/supabase/migrations/20260324000000_add_job_media_type.sql#L1-L3"
+          },
+          {
+            "source_id": "nexus_archive:backend/data_protection.py",
+            "lines": [
+              92,
+              114
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L92-L114"
+          }
+        ]
+      },
+      {
+        "field": "tags[0]",
+        "initial_public_value": "React",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "tags[1]",
+        "initial_public_value": "Python",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "tags[2]",
+        "initial_public_value": "Litestar",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "tags[3]",
+        "initial_public_value": "Supabase",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "tags[4]",
+        "initial_public_value": "AI",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "tags[5]",
+        "initial_public_value": "Full-Stack",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "links.demo",
+        "initial_public_value": "https://home-notes-app.uk/",
+        "assessment": "runtime_and_repository_documentation_unverified",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "links.repo",
+        "initial_public_value": "https://github.com/Raoof128/Nexus_Archive",
+        "assessment": "supported_public_repository_metadata",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3"
+          }
+        ]
+      },
+      {
+        "field": "links.caseStudy",
+        "initial_public_value": "/projects/nexus-archive",
+        "assessment": "local_editorial_route_or_classification",
+        "finding_ids": [],
+        "citations": []
+      },
+      {
+        "field": "build.stack[0]",
+        "initial_public_value": "React 19",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[1]",
+        "initial_public_value": "Vite",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[2]",
+        "initial_public_value": "Tailwind CSS 4",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[3]",
+        "initial_public_value": "TanStack Query",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[4]",
+        "initial_public_value": "Python 3.12",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[5]",
+        "initial_public_value": "Litestar",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[6]",
+        "initial_public_value": "Supabase PostgreSQL",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[7]",
+        "initial_public_value": "Docker",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.stack[8]",
+        "initial_public_value": "Terraform",
+        "assessment": "supported",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              16,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L16-L22"
+          },
+          {
+            "source_id": "nexus_archive:frontend/package.json",
+            "lines": [
+              15,
+              45
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json#L15-L45"
+          },
+          {
+            "source_id": "nexus_archive:pyproject.toml",
+            "lines": [
+              5,
+              25
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml#L5-L25"
+          }
+        ]
+      },
+      {
+        "field": "build.features[0]",
+        "initial_public_value": "AI-assisted media recommendations via Gemini with graceful degradation",
+        "assessment": "supported_control",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:backend/services.py",
+            "lines": [
+              462,
+              498
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/services.py#L462-L498"
+          }
+        ]
+      },
+      {
+        "field": "build.features[1]",
+        "initial_public_value": "Real-time chat transcripts with user-scoped sanitisation",
+        "assessment": "transport_wording_needs_precision",
+        "finding_ids": [
+          "NEXUS-CHAT-TRANSPORT"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:frontend/src/hooks/useChat.js",
+            "lines": [
+              45,
+              77
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/hooks/useChat.js#L45-L77"
+          },
+          {
+            "source_id": "nexus_archive:backend/chat_controller.py",
+            "lines": [
+              153,
+              173
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/chat_controller.py#L153-L173"
+          }
+        ]
+      },
+      {
+        "field": "build.features[2]",
+        "initial_public_value": "Status tracking, ratings, and reviews for anime, movies, and books",
+        "assessment": "update_job_scope_and_qualify_encryption_as_applicable",
+        "finding_ids": [
+          "NEXUS-JOB-TRACKER"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3"
+          },
+          {
+            "source_id": "nexus_archive:supabase/migrations/20260324000000_add_job_media_type.sql",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/supabase/migrations/20260324000000_add_job_media_type.sql#L1-L3"
+          },
+          {
+            "source_id": "nexus_archive:backend/data_protection.py",
+            "lines": [
+              92,
+              114
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L92-L114"
+          }
+        ]
+      },
+      {
+        "field": "build.features[3]",
+        "initial_public_value": "Smart filtering and search across entire media library",
+        "assessment": "source_described_feature_not_independently_runtime_tested",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:docs/architecture.md",
+            "lines": [
+              19,
+              24
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/architecture.md#L19-L24"
+          },
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[0]",
+        "initial_public_value": "HttpOnly SameSite=Strict auth cookies (no frontend-readable tokens)",
+        "assessment": "contradicted_absolute_token_claim",
+        "finding_ids": [
+          "NEXUS-TOKEN-BOUNDARY"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:backend/auth_controller.py",
+            "lines": [
+              60,
+              99
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L60-L99"
+          },
+          {
+            "source_id": "nexus_archive:backend/auth_controller.py",
+            "lines": [
+              139,
+              147
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L139-L147"
+          },
+          {
+            "source_id": "nexus_archive:frontend/src/context/AuthContext.jsx",
+            "lines": [
+              56,
+              64
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/context/AuthContext.jsx#L56-L64"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[1]",
+        "initial_public_value": "Short-lived access tokens with silent rotation via /auth/refresh",
+        "assessment": "implemented_flow_production_token_lifetime_requires_provider_configuration",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:frontend/src/lib/apiClient.js",
+            "lines": [
+              40,
+              47
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/lib/apiClient.js#L40-L47"
+          },
+          {
+            "source_id": "nexus_archive:frontend/src/lib/apiClient.js",
+            "lines": [
+              66,
+              74
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/lib/apiClient.js#L66-L74"
+          },
+          {
+            "source_id": "nexus_archive:backend/auth_controller.py",
+            "lines": [
+              150,
+              180
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L150-L180"
+          },
+          {
+            "source_id": "nexus_archive:docs/operations.md",
+            "lines": [
+              21,
+              29
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/operations.md#L21-L29"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[2]",
+        "initial_public_value": "AI prompt isolation with XML delimiters, string scrubbing, and PII masking",
+        "assessment": "implemented_mitigation_not_universal_prompt_or_PII_guarantee",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:backend/data_protection.py",
+            "lines": [
+              16,
+              88
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L16-L88"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[3]",
+        "initial_public_value": "Encrypted takeaway persistence (AES via TAKEAWAY_ENCRYPTION_KEY)",
+        "assessment": "configuration_required",
+        "finding_ids": [
+          "NEXUS-ENCRYPTION-CONFIGURATION"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:backend/data_protection.py",
+            "lines": [
+              92,
+              128
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L92-L128"
+          }
+        ]
+      },
+      {
+        "field": "secure.measures[4]",
+        "initial_public_value": "Bandit, pip-audit, npm audit, and secret scanning in CI",
+        "assessment": "configured_CI_checks_not_current_green_CI",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:.github/workflows/ci.yml",
+            "lines": [
+              25,
+              34
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/.github/workflows/ci.yml#L25-L34"
+          },
+          {
+            "source_id": "nexus_archive:.github/workflows/ci.yml",
+            "lines": [
+              56,
+              73
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/.github/workflows/ci.yml#L56-L73"
+          }
+        ]
+      },
+      {
+        "field": "fullDescription",
+        "initial_public_value": "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
+        "assessment": "update_job_scope_and_qualify_encryption_as_applicable",
+        "finding_ids": [
+          "NEXUS-JOB-TRACKER"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L1-L3"
+          },
+          {
+            "source_id": "nexus_archive:supabase/migrations/20260324000000_add_job_media_type.sql",
+            "lines": [
+              1,
+              3
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/supabase/migrations/20260324000000_add_job_media_type.sql#L1-L3"
+          },
+          {
+            "source_id": "nexus_archive:backend/data_protection.py",
+            "lines": [
+              92,
+              114
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L92-L114"
+          }
+        ]
+      },
+      {
+        "field": "problem",
+        "initial_public_value": "Media trackers split entertainment libraries across platforms and can have weak security controls. Nexus Archive brings titles, ratings, notes, and recommendations into one account with row-level access controls.",
+        "assessment": "editorial_motivation_and_source_described_RLS",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              18,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L18-L22"
+          },
+          {
+            "source_id": "nexus_archive:docs/architecture.md",
+            "lines": [
+              63,
+              71
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/architecture.md#L63-L71"
+          }
+        ]
+      },
+      {
+        "field": "solution[0]",
+        "initial_public_value": "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
+        "assessment": "supported_architecture_with_deployment_RLS_prerequisite",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              18,
+              22
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L18-L22"
+          },
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              101,
+              108
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L101-L108"
+          }
+        ]
+      },
+      {
+        "field": "solution[1]",
+        "initial_public_value": "Implemented backend-managed HttpOnly auth cookies replacing frontend-readable Supabase tokens",
+        "assessment": "contradicted_absolute_token_claim",
+        "finding_ids": [
+          "NEXUS-TOKEN-BOUNDARY"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:backend/auth_controller.py",
+            "lines": [
+              60,
+              99
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L60-L99"
+          },
+          {
+            "source_id": "nexus_archive:backend/auth_controller.py",
+            "lines": [
+              139,
+              147
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L139-L147"
+          },
+          {
+            "source_id": "nexus_archive:frontend/src/context/AuthContext.jsx",
+            "lines": [
+              56,
+              64
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/context/AuthContext.jsx#L56-L64"
+          }
+        ]
+      },
+      {
+        "field": "solution[2]",
+        "initial_public_value": "Integrated Gemini AI for media recommendations with shared per-user rate limiting and local fallback",
+        "assessment": "supported_control",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:README.md",
+            "lines": [
+              69,
+              78
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md#L69-L78"
+          },
+          {
+            "source_id": "nexus_archive:backend/services.py",
+            "lines": [
+              462,
+              498
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/services.py#L462-L498"
+          }
+        ]
+      },
+      {
+        "field": "solution[3]",
+        "initial_public_value": "Added encrypted takeaway persistence and AI prompt isolation with PII masking",
+        "assessment": "configuration_required",
+        "finding_ids": [
+          "NEXUS-ENCRYPTION-CONFIGURATION"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:backend/data_protection.py",
+            "lines": [
+              92,
+              128
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py#L92-L128"
+          }
+        ]
+      },
+      {
+        "field": "proof[0]",
+        "initial_public_value": "Hardened auth: HttpOnly + SameSite=Strict cookies with silent token rotation",
+        "assessment": "implemented_flow_production_token_lifetime_requires_provider_configuration",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:frontend/src/lib/apiClient.js",
+            "lines": [
+              40,
+              47
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/lib/apiClient.js#L40-L47"
+          },
+          {
+            "source_id": "nexus_archive:frontend/src/lib/apiClient.js",
+            "lines": [
+              66,
+              74
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/lib/apiClient.js#L66-L74"
+          },
+          {
+            "source_id": "nexus_archive:backend/auth_controller.py",
+            "lines": [
+              150,
+              180
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py#L150-L180"
+          },
+          {
+            "source_id": "nexus_archive:docs/operations.md",
+            "lines": [
+              21,
+              29
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/operations.md#L21-L29"
+          }
+        ]
+      },
+      {
+        "field": "proof[1]",
+        "initial_public_value": "CI security gates: Bandit, pip-audit, npm audit, secret scanning",
+        "assessment": "configured_CI_checks_not_current_green_CI",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:.github/workflows/ci.yml",
+            "lines": [
+              25,
+              34
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/.github/workflows/ci.yml#L25-L34"
+          },
+          {
+            "source_id": "nexus_archive:.github/workflows/ci.yml",
+            "lines": [
+              56,
+              73
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/.github/workflows/ci.yml#L56-L73"
+          }
+        ]
+      },
+      {
+        "field": "proof[2]",
+        "initial_public_value": "Locust load testing for performance verification",
+        "assessment": "scenario_exists_no_measured_result_located",
+        "finding_ids": [
+          "NEXUS-LOAD-TEST-SCOPE"
+        ],
+        "citations": [
+          {
+            "source_id": "nexus_archive:loadtests/locustfile.py",
+            "lines": [
+              13,
+              37
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/loadtests/locustfile.py#L13-L37"
+          }
+        ]
+      },
+      {
+        "field": "proof[3]",
+        "initial_public_value": "Terraform IaC scaffold for reproducible Supabase + Vercel deployments",
+        "assessment": "supported_scaffold_not_deployment_verification",
+        "finding_ids": [],
+        "citations": [
+          {
+            "source_id": "nexus_archive:infra/terraform/README.md",
+            "lines": [
+              1,
+              10
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/infra/terraform/README.md#L1-L10"
+          },
+          {
+            "source_id": "nexus_archive:infra/terraform/README.md",
+            "lines": [
+              26,
+              26
+            ],
+            "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/infra/terraform/README.md#L26-L26"
+          }
+        ]
+      }
+    ]
+  },
+  "field_coverage_counts": {
+    "divan-open-day": 44,
+    "nexus-archive": 42
+  },
+  "source_registry": {
+    "divan-open-day:README.md": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "README.md",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/README.md",
+      "git_blob_sha": "0dc637eed656b994dea30b171ec6360ad77214e5",
+      "local_sha256": "cc8b558714d9f966a3acb88c1561daeabb47657889541f77ce7e78f0fa532467",
+      "source_bytes_sha256": "cc8b558714d9f966a3acb88c1561daeabb47657889541f77ce7e78f0fa532467",
+      "local_path_work_only": "engineering-raw/divan-open-day/README.lines1-240.md",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 215,
+      "reviewed_spans": [
+        [
+          1,
+          215
+        ]
+      ]
+    },
+    "divan-open-day:package.json": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "package.json",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/package.json",
+      "git_blob_sha": "da77b1d0343b029e32de011998322bf0218d8027",
+      "local_sha256": "81bdf9115624c05a2499e9ed7aca48e4350d30085f0fc32ec9aaf33320eb5a0d",
+      "source_bytes_sha256": "351f1c88696c4b555697c7c6bd4d29a15144ab550445b5a0baa33f79387428bc",
+      "local_path_work_only": "engineering-raw/divan-open-day/package.json",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 99,
+      "reviewed_spans": [
+        [
+          1,
+          99
+        ]
+      ]
+    },
+    "divan-open-day:.node-version": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": ".node-version",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/.node-version",
+      "git_blob_sha": "5b540673a82888c11694866137e18f3865890bde",
+      "local_sha256": "177d20030d4dcc37eae9ef92865ec54dadce60e8f19e9a34a5d4f37502195a36",
+      "source_bytes_sha256": "177d20030d4dcc37eae9ef92865ec54dadce60e8f19e9a34a5d4f37502195a36",
+      "local_path_work_only": "engineering-raw/divan-open-day/.node-version",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 1,
+      "reviewed_spans": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "divan-open-day:tsconfig.json": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "tsconfig.json",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/tsconfig.json",
+      "git_blob_sha": "0a3d190b42a5c9c9ef38b5fccaab37beca8c832b",
+      "local_sha256": "81d537352ae6f5853d8fb25bcf266ee8162de22bf2caf6e5c7d66eae73ab77d0",
+      "source_bytes_sha256": "81d537352ae6f5853d8fb25bcf266ee8162de22bf2caf6e5c7d66eae73ab77d0",
+      "local_path_work_only": "engineering-raw/divan-open-day/tsconfig.json",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 34,
+      "reviewed_spans": [
+        [
+          1,
+          34
+        ]
+      ]
+    },
+    "divan-open-day:src/pages/PrivacyPage.tsx": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "src/pages/PrivacyPage.tsx",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/src/pages/PrivacyPage.tsx",
+      "git_blob_sha": "17fd97fb449a66c6d3b399e415691ef5870a3519",
+      "local_sha256": "2630ad9dacc5579d8080513b4afa08f1f2097f345f0d18f5c4ab1fce473c9e8e",
+      "source_bytes_sha256": "9b6b85ca41c3398257bb1dc47ab2cbd2275c314036c6460b8ed4fe23936f0f01",
+      "local_path_work_only": "engineering-raw/divan-open-day/src__pages__PrivacyPage.tsx",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 65,
+      "reviewed_spans": [
+        [
+          1,
+          65
+        ]
+      ]
+    },
+    "divan-open-day:ops/compose.yml": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "ops/compose.yml",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/ops/compose.yml",
+      "git_blob_sha": "5652c935831df5a84e43d07bb72776c4d4959370",
+      "local_sha256": "18d1a756c343748197d88d8c0e0e4290de8f528e2b7ea7cf819b5f679729349c",
+      "source_bytes_sha256": "ebbec75ed381fc1a8f7326b1c8b2c198c8cac496642ef8ab04833b09948cde8a",
+      "local_path_work_only": "engineering-raw/divan-open-day/ops__compose.yml",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 85,
+      "reviewed_spans": [
+        [
+          1,
+          85
+        ]
+      ]
+    },
+    "divan-open-day:docs/deployment-runbook.md": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "docs/deployment-runbook.md",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/deployment-runbook.md",
+      "git_blob_sha": "4ad19322473e0156588045c739d90967f47e0794",
+      "local_sha256": "ce6d668cbcde9ab69623fb70ada3dc0a6bef0cdc8140b8ca552d963e1ce1ed0a",
+      "source_bytes_sha256": "7fa54f509feaba4fde890121c2b3f0d627588eeb41bf7a99909fdd656f915974",
+      "local_path_work_only": "engineering-raw/divan-open-day/docs__deployment-runbook.md",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 194,
+      "reviewed_spans": [
+        [
+          1,
+          194
+        ]
+      ]
+    },
+    "divan-open-day:docs/verification/2026-07-16-final-120-corpus-report.md": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "docs/verification/2026-07-16-final-120-corpus-report.md",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/verification/2026-07-16-final-120-corpus-report.md",
+      "git_blob_sha": "e92e41d337fa1554a7f5f7d965f38c284b0ca11a",
+      "local_sha256": "828f6cdf66242822895b98b03df704dd57c9098de944f4598feea2f5ecfd0294",
+      "source_bytes_sha256": "828f6cdf66242822895b98b03df704dd57c9098de944f4598feea2f5ecfd0294",
+      "local_path_work_only": "engineering-raw/divan-open-day/docs__verification__2026-07-16-final-120-corpus-report.md",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 13,
+      "reviewed_spans": [
+        [
+          1,
+          13
+        ]
+      ]
+    },
+    "divan-open-day:docs/verification/2026-07-18-release-v1-0-7-deployment.md": {
+      "repository": "Raoof128/divan-open-day",
+      "pinned_head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "path": "docs/verification/2026-07-18-release-v1-0-7-deployment.md",
+      "url": "https://github.com/Raoof128/divan-open-day/blob/1f931e7a9491e264b63c13af65cc950bc810383f/docs/verification/2026-07-18-release-v1-0-7-deployment.md",
+      "git_blob_sha": "d06f95addb83858f0eb5d7d9d75bfc4373d06371",
+      "local_sha256": "1c14bb666fcf9f557ca35dc77b7ac0391a07f5c4b3fe55dfb8685e4952144c67",
+      "source_bytes_sha256": "62785fbbfb4b5988efedc3f133617181504e87c8156758bbff3c5a911a4f557a",
+      "local_path_work_only": "engineering-raw/divan-open-day/docs__verification__2026-07-18-release-v1-0-7-deployment.md",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 95,
+      "reviewed_spans": [
+        [
+          1,
+          95
+        ]
+      ]
+    },
+    "nexus_archive:README.md": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "README.md",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/README.md",
+      "git_blob_sha": "48653288dc3ed41c1a6f61a04a86973b7d200202",
+      "local_sha256": "fb710fe0d068fe23d61ec208532438d105850ee05999ef2a5c1b905c6f3c8cb5",
+      "source_bytes_sha256": "fb710fe0d068fe23d61ec208532438d105850ee05999ef2a5c1b905c6f3c8cb5",
+      "local_path_work_only": "engineering-raw/nexus_archive/README.lines1-240.md",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 112,
+      "reviewed_spans": [
+        [
+          1,
+          112
+        ]
+      ]
+    },
+    "nexus_archive:frontend/package.json": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "frontend/package.json",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/package.json",
+      "git_blob_sha": "666d4bcb14edf7a599b838fb49b6d0426a5ecf69",
+      "local_sha256": "6dd5be65fb5a4b49af2d2a16338669d58539263d001ba62c7e4229fd2d82b7e8",
+      "source_bytes_sha256": "e601a7b503da61ada0ea4b116290ec3dec22e3c1e2c1afcbfdae6d5259bafcda",
+      "local_path_work_only": "engineering-raw/nexus_archive/frontend__package.json",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 47,
+      "reviewed_spans": [
+        [
+          1,
+          47
+        ]
+      ]
+    },
+    "nexus_archive:pyproject.toml": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "pyproject.toml",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/pyproject.toml",
+      "git_blob_sha": "63073ef4e26753012e26b6e28164f11a09561e93",
+      "local_sha256": "29142dee4f7f79203b6c0ff5295a501f85f8ed35e05519376b7116c59a4b3216",
+      "source_bytes_sha256": "0e7bdcefd740f1098f069733a15198dccc4697177c291746fd002db3245808e3",
+      "local_path_work_only": "engineering-raw/nexus_archive/pyproject.toml",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 54,
+      "reviewed_spans": [
+        [
+          1,
+          54
+        ]
+      ]
+    },
+    "nexus_archive:docs/operations.md": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "docs/operations.md",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/operations.md",
+      "git_blob_sha": "d6ca310432ed4d72a6149d5c4624be0e8703b31f",
+      "local_sha256": "c245ce2260298fdd5ffb435b90dfaef4de610f1c14df737512c1db56eb50664c",
+      "source_bytes_sha256": "be08fcb856efdeb537b8d87efdaf4433285f1af4679580f30fc8700e34878029",
+      "local_path_work_only": "engineering-raw/nexus_archive/docs__operations.md",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 30,
+      "reviewed_spans": [
+        [
+          1,
+          30
+        ]
+      ]
+    },
+    "nexus_archive:docs/architecture.md": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "docs/architecture.md",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/docs/architecture.md",
+      "git_blob_sha": "efc901ed7c1dc3312863e3c3f91badc8e8995b93",
+      "local_sha256": "fe71e45227cbe22e455f5eae172cc31996848abfc990e14d8e119d5d2305c5c0",
+      "source_bytes_sha256": "612cce972df79cb99ee3ab0e2013f1a8f015bdc28b929ecd46b367f645a46877",
+      "local_path_work_only": "engineering-raw/nexus_archive/docs__architecture.md",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 71,
+      "reviewed_spans": [
+        [
+          1,
+          71
+        ]
+      ]
+    },
+    "nexus_archive:backend/config.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "backend/config.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/config.py",
+      "git_blob_sha": "5ee6d5f92a1f7eb87e5975fdf9c59761f96afa79",
+      "local_sha256": "28025f248de5b680f29d7a4892e38b5db15ee065c4562f0297933cff30610fae",
+      "source_bytes_sha256": "89f11d24179e6552f4fd5e09113d41e128de2aa6cf8a664de24a4fa75b2c37fa",
+      "local_path_work_only": "engineering-raw/nexus_archive/backend__config.py",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 195,
+      "reviewed_spans": [
+        [
+          1,
+          195
+        ]
+      ]
+    },
+    "nexus_archive:backend/security.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "backend/security.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/security.py",
+      "git_blob_sha": "02deaf1394d70d5814482ae48ea9402662d443ed",
+      "local_sha256": "b9293ecf303688a6ebcc7ac70248f97d432e556b44081278f8ac8d26373a111e",
+      "source_bytes_sha256": "8c04f5f267ba3aaa16f20220632626472449b20f36e2f79f21c7418fa8dea7ec",
+      "local_path_work_only": "engineering-raw/nexus_archive/backend__security.py",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 91,
+      "reviewed_spans": [
+        [
+          1,
+          91
+        ]
+      ]
+    },
+    "nexus_archive:backend/chat_controller.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "backend/chat_controller.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/chat_controller.py",
+      "git_blob_sha": "fdd1c35241750b86f1235807cc4093697524839e",
+      "local_sha256": "10790e3f9d8358dc04fc52ee99621321466d0d6b887974372ed9b97cb3774616",
+      "source_bytes_sha256": "641566c408c343dfd38054d7a547c334e6c53f59ffc98a923feb9389b477a88d",
+      "local_path_work_only": "engineering-raw/nexus_archive/backend__chat_controller.py",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 297,
+      "reviewed_spans": [
+        [
+          1,
+          297
+        ]
+      ]
+    },
+    "nexus_archive:backend/data_protection.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "backend/data_protection.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/data_protection.py",
+      "git_blob_sha": "f556337ca8ace1795e1758f7b83f37d8d0816f09",
+      "local_sha256": "4464d7186a30c1e0a7eaa468d388138a883f4588e11b0e636b7ed5f06cfa8012",
+      "source_bytes_sha256": "cf439e6c8b515b899ee060e2cf19a9412d91021363a20a22facaa01095482585",
+      "local_path_work_only": "engineering-raw/nexus_archive/backend__data_protection.py",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 161,
+      "reviewed_spans": [
+        [
+          1,
+          161
+        ]
+      ]
+    },
+    "nexus_archive:frontend/src/context/AuthContext.jsx": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "frontend/src/context/AuthContext.jsx",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/context/AuthContext.jsx",
+      "git_blob_sha": "a7707b7c9c3bc4a3aaf2e6d9e9b23c41ed81d72c",
+      "local_sha256": "1d538b4a023f0f7149ea43588ced7bf1b6fee6c2ec05554ca1fe2cc0b4ec71cc",
+      "source_bytes_sha256": "1d46dccbf8df7b03361a314c61ffa3168187b4d42c1d05f857093bb4e8fb82a1",
+      "local_path_work_only": "engineering-raw/nexus_archive/frontend__src__context__AuthContext.jsx",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 87,
+      "reviewed_spans": [
+        [
+          1,
+          87
+        ]
+      ]
+    },
+    "nexus_archive:frontend/src/lib/apiClient.js": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "frontend/src/lib/apiClient.js",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/lib/apiClient.js",
+      "git_blob_sha": "507d40da5a105f9fdaf9e9c9fb625dd36606a9ad",
+      "local_sha256": "5dc3ed544112316f11d58c959fb45f6f5839b6c40eb9090685e0a3289d97a2c4",
+      "source_bytes_sha256": "5dc3ed544112316f11d58c959fb45f6f5839b6c40eb9090685e0a3289d97a2c4",
+      "local_path_work_only": "engineering-raw/nexus_archive/frontend__src__lib__apiClient.js",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 82,
+      "reviewed_spans": [
+        [
+          1,
+          82
+        ]
+      ]
+    },
+    "nexus_archive:frontend/src/hooks/useChat.js": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "frontend/src/hooks/useChat.js",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/frontend/src/hooks/useChat.js",
+      "git_blob_sha": "e1656c368ac5e1d181c9d959e1e3980ddf42bcb3",
+      "local_sha256": "bbb4b805795f0faa450bd0027b808704dd28995738d75a556d3f70cd5af81465",
+      "source_bytes_sha256": "bbb4b805795f0faa450bd0027b808704dd28995738d75a556d3f70cd5af81465",
+      "local_path_work_only": "engineering-raw/nexus_archive/frontend__src__hooks__useChat.js",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 93,
+      "reviewed_spans": [
+        [
+          1,
+          93
+        ]
+      ]
+    },
+    "nexus_archive:.github/workflows/ci.yml": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": ".github/workflows/ci.yml",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/.github/workflows/ci.yml",
+      "git_blob_sha": "7c4684a9d5ff555bae4fe14e8192f5125f9c08dc",
+      "local_sha256": "7c528f38ecb2996db80193875579f45b601343260bed179d829a500246757229",
+      "source_bytes_sha256": "c0608d1f69e32168dcdc567fe621728fe5897a8218b1fba81679c89c33bca381",
+      "local_path_work_only": "engineering-raw/nexus_archive/.github__workflows__ci.yml",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 85,
+      "reviewed_spans": [
+        [
+          1,
+          85
+        ]
+      ]
+    },
+    "nexus_archive:supabase/migrations/20260324000000_add_job_media_type.sql": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "supabase/migrations/20260324000000_add_job_media_type.sql",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/supabase/migrations/20260324000000_add_job_media_type.sql",
+      "git_blob_sha": "fdaead291b39a215cc5d15e1837d76376ab8fd07",
+      "local_sha256": "4b28f33ec4bd556186a8154110232c3e9112293f103c69179b075011a22754e1",
+      "source_bytes_sha256": "4b28f33ec4bd556186a8154110232c3e9112293f103c69179b075011a22754e1",
+      "local_path_work_only": "engineering-raw/nexus_archive/supabase__migrations__20260324000000_add_job_media_type.sql",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 3,
+      "reviewed_spans": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    "nexus_archive:infra/terraform/README.md": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "infra/terraform/README.md",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/infra/terraform/README.md",
+      "git_blob_sha": "2ee0fa1c1f7a4eea39118804e0a08f6f57800b87",
+      "local_sha256": "cdc4dc4c5d17aa98a8dc0f8e2ca43efbb81fe0fc093cec0bc1dff1ab1c50683d",
+      "source_bytes_sha256": "cdc4dc4c5d17aa98a8dc0f8e2ca43efbb81fe0fc093cec0bc1dff1ab1c50683d",
+      "local_path_work_only": "engineering-raw/nexus_archive/infra__terraform__README.md",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 26,
+      "reviewed_spans": [
+        [
+          1,
+          26
+        ]
+      ]
+    },
+    "nexus_archive:loadtests/locustfile.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "loadtests/locustfile.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/loadtests/locustfile.py",
+      "git_blob_sha": "2a4f4b9d50c228aa3029625645a8201348d6838e",
+      "local_sha256": "6ff5bbf8a9cb7eb1362d9fbc1a923c3c3effda810ce96b078a8837f480e4ac43",
+      "source_bytes_sha256": "6ff5bbf8a9cb7eb1362d9fbc1a923c3c3effda810ce96b078a8837f480e4ac43",
+      "local_path_work_only": "engineering-raw/nexus_archive/loadtests__locustfile.py",
+      "local_capture_note": "Exact Git blob bytes.",
+      "source_line_count": 37,
+      "reviewed_spans": [
+        [
+          1,
+          37
+        ]
+      ]
+    },
+    "nexus_archive:backend/auth_controller.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "backend/auth_controller.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/auth_controller.py",
+      "git_blob_sha": "6e582f9c485fc34c1faec3bf4470f2a246c489de",
+      "local_sha256": "e3c90644a649c48ebb206bd103872ad7a529767b113367eea0a5f40378954f94",
+      "source_bytes_sha256": "d5a999685ff052f862a12247569be07e520e4ee074cc955d9710c8baef1a3100",
+      "local_path_work_only": "engineering-raw/nexus_archive/backend__auth_controller.py",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 312,
+      "reviewed_spans": [
+        [
+          45,
+          105
+        ],
+        [
+          120,
+          182
+        ]
+      ]
+    },
+    "nexus_archive:backend/services.py": {
+      "repository": "Raoof128/Nexus_Archive",
+      "pinned_head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "path": "backend/services.py",
+      "url": "https://github.com/Raoof128/Nexus_Archive/blob/2628e64bb20e7d5c556fd6607d3a9853481fc791/backend/services.py",
+      "git_blob_sha": "c18a8fbb0c98b001f473acf7a469eaff37711af8",
+      "local_sha256": "9206d4e2def45ca897bf8c26f0ded0b339adf202606e792c7eaf2fa6843a94cc",
+      "source_bytes_sha256": "b11e61aa7ce71a8e6ab7c07302bdd1f0a158cd34ce96c2a5f70d635e76b28c09",
+      "local_path_work_only": "engineering-raw/nexus_archive/backend__services.py",
+      "local_capture_note": "Local fetch capture has one extra final LF; removing only that LF reproduces the Git blob SHA.",
+      "source_line_count": 498,
+      "reviewed_spans": [
+        [
+          121,
+          220
+        ],
+        [
+          382,
+          499
+        ]
+      ]
+    }
+  },
+  "observed_head_ci": [
+    {
+      "repository": "Raoof128/divan-open-day",
+      "head": "1f931e7a9491e264b63c13af65cc950bc810383f",
+      "runs": {
+        "query_sha": "1f931e7a9491e264b63c13af65cc950bc810383f",
+        "total_count": 1,
+        "runs": [
+          {
+            "name": "CI",
+            "head_sha": "1f931e7a9491e264b63c13af65cc950bc810383f",
+            "status": "completed",
+            "conclusion": "failure",
+            "html_url": "https://github.com/Raoof128/divan-open-day/actions/runs/29635610906",
+            "created_at": "2026-07-18T07:21:57Z",
+            "updated_at": "2026-07-18T07:25:19Z"
+          }
+        ]
+      },
+      "jobs": {
+        "run_id": 29635610906,
+        "jobs": [
+          {
+            "name": "OSV dependency scan / osv-scan",
+            "conclusion": "success",
+            "html_url": "https://github.com/Raoof128/divan-open-day/actions/runs/29635610906/job/88057297188",
+            "steps": []
+          },
+          {
+            "name": "Quality gate",
+            "conclusion": "failure",
+            "html_url": "https://github.com/Raoof128/divan-open-day/actions/runs/29635610906/job/88057325559",
+            "steps": [
+              {
+                "name": "Run quality gate",
+                "conclusion": "failure",
+                "number": 7
+              }
+            ]
+          }
+        ]
+      },
+      "scope": "Observed GitHub workflow outcome for the pinned head; not an application runtime result or vulnerability finding.",
+      "runs_capture_sha256": "87535642c2e3656f107b9f5e9f01e9207b4f1b7ef527298c40ce7c7ce549aa00",
+      "jobs_capture_sha256": "12d56e0affaa3c364f2836a9ecd8388bdc05e72cd87ddef03f30818c1c80430b"
+    },
+    {
+      "repository": "Raoof128/Nexus_Archive",
+      "head": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+      "runs": {
+        "query_sha": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+        "total_count": 1,
+        "runs": [
+          {
+            "name": "ci",
+            "head_sha": "2628e64bb20e7d5c556fd6607d3a9853481fc791",
+            "status": "completed",
+            "conclusion": "failure",
+            "html_url": "https://github.com/Raoof128/Nexus_Archive/actions/runs/24304573805",
+            "created_at": "2026-04-12T10:29:47Z",
+            "updated_at": "2026-04-12T10:30:24Z"
+          }
+        ]
+      },
+      "jobs": {
+        "run_id": 24304573805,
+        "jobs": [
+          {
+            "name": "backend",
+            "conclusion": "failure",
+            "html_url": "https://github.com/Raoof128/Nexus_Archive/actions/runs/24304573805/job/70963626482",
+            "steps": []
+          },
+          {
+            "name": "operations",
+            "conclusion": "success",
+            "html_url": "https://github.com/Raoof128/Nexus_Archive/actions/runs/24304573805/job/70963626483",
+            "steps": []
+          },
+          {
+            "name": "secrets",
+            "conclusion": "success",
+            "html_url": "https://github.com/Raoof128/Nexus_Archive/actions/runs/24304573805/job/70963626484",
+            "steps": []
+          },
+          {
+            "name": "frontend",
+            "conclusion": "failure",
+            "html_url": "https://github.com/Raoof128/Nexus_Archive/actions/runs/24304573805/job/70963626487",
+            "steps": []
+          }
+        ]
+      },
+      "scope": "Observed GitHub workflow outcome for the pinned head; not an application runtime result or vulnerability finding.",
+      "runs_capture_sha256": "c872586f62bc302b36038a305ee0902b6b8dc6ca4fd49876ce4accd9ae5af4d1",
+      "jobs_capture_sha256": "1760a9b25d832151f7efd1499fa374de9b2529ff89ff56f08b1c8cf6189cd7ec"
+    }
+  ],
+  "demo_checks": {
+    "checks": [
+      {
+        "url": "https://divan.raoufabedini.dev/",
+        "method": "GET",
+        "timeout_seconds": 20,
+        "error_type": "URLError",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://home-notes-app.uk/",
+        "method": "GET",
+        "timeout_seconds": 20,
+        "error_type": "URLError",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    ],
+    "conclusion": "Both GET attempts were blocked by this environment proxy with a tunnel 403 before reaching the site. Live availability is unverified; neither target is labelled broken. Divan URL is repository-documented; Nexus existing demo URL was not found in reviewed repo docs."
+  },
+  "pdf_reference_check": [
+    {
+      "reference_work_file": "work/full-frontend-audit/uploaded-resume.txt",
+      "sha256": "9d460cb87a48c9d1af85be92b7eee8bebfca811535e71ec8a59ab711a4090c1c",
+      "project_keyword_matches": [],
+      "scope": "No project-specific source fact is added from these references; do not infer either project was withdrawn merely because it is absent from a targeted résumé/profile."
+    },
+    {
+      "reference_work_file": "work/full-frontend-audit/uploaded-profile.txt",
+      "sha256": "b7affb7eac1f14fb160b402268f124862e8073b9c14224dd1ed032a872a3493b",
+      "project_keyword_matches": [],
+      "scope": "No project-specific source fact is added from these references; do not infer either project was withdrawn merely because it is absent from a targeted résumé/profile."
+    }
+  ],
+  "retained_facts": [
+    "Both canonical repository URLs resolve to public, unarchived repositories with the pinned default branches.",
+    "Divan retains the exact 60 Hafez +60 Rumi =120 source-bound records, bilingual/RTL architecture, live Nastaliq text, React19/Vite/strict TypeScript, pnpm10.33.0 and Node22.16.0.",
+    "Divan source review does not establish cultural certification, manual AT/device sign-off, university endorsement, provider zero-logging, or present live deployment state.",
+    "Nexus retains React19, Vite, Tailwind4, TanStack Query, Python3.12, Litestar, Supabase/Postgres/RLS architecture, Docker and explicitly scoped Terraform scaffold.",
+    "Nexus Gemini fallback, configured prompt-input mitigations, refresh route, configured CI tools and Locust scenario exist; no fabricated benchmark, test count or deployment result is added.",
+    "Package private=true means package publication metadata, not private GitHub repository visibility; package versions are not assumed to be deployed release identifiers."
+  ],
+  "limitations": [
+    "Not an exhaustive security audit or runtime test of either application.",
+    "Selected code paths are recorded with exact reviewed spans; no claim that all repository source files were read.",
+    "Provider-side settings, live environment keys, current third-party logging and deployment configuration were not inspected.",
+    "README statements contradicted by implementation are identified rather than copied as guarantees.",
+    "No measured benchmark, complete accessibility certification, new affiliation, user count or production security guarantee is inferred."
+  ]
+}

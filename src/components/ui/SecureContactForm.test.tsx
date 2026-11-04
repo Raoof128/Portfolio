@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
 import {
   act,
   cleanup,
@@ -63,6 +64,38 @@ describe("SecureContactForm", () => {
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
   });
+
+  it.each([
+    ["en", en],
+    ["fa", fa],
+    ["ar", ar],
+    ["zh", zh],
+    ["es", es],
+  ] as const)(
+    "keeps a native mail draft fallback before %s hydration",
+    (locale, dictionary) => {
+      const markup = renderToStaticMarkup(
+        <I18nProvider locale={locale} dictionary={dictionary}>
+          <SecureContactForm />
+        </I18nProvider>,
+      );
+      const host = document.createElement("div");
+      host.innerHTML = markup;
+      const form = host.querySelector("form")!;
+      const destination = new URL(form.action);
+      expect(destination.protocol).toBe("mailto:");
+      expect(destination.pathname).toBe(CONTACT_EMAIL_GMAIL);
+      expect(destination.searchParams.get("subject")).toBe(
+        dictionary.seo.contact_title,
+      );
+      expect(form.method).toBe("post");
+      expect(form.enctype).toBe("text/plain");
+      expect(form.noValidate).toBe(false);
+      expect(form.querySelectorAll("[required]")).toHaveLength(3);
+      expect(markup).toContain(SECURE_CONTACT_COPY[locale].noScript);
+      expect(markup).toContain(`href="mailto:${CONTACT_EMAIL_GMAIL}"`);
+    },
+  );
 
   it("does not show a draft reference, since no server record exists", () => {
     renderForm();
@@ -165,6 +198,123 @@ describe("SecureContactForm", () => {
     fireEvent.change(message, { target: { value: "Hello from tests" } });
 
     expect(message).not.toHaveAttribute("aria-invalid");
+  });
+
+  describe("focused fields across viewport changes", () => {
+    let frames: Map<number, FrameRequestCallback>;
+    let viewport: EventTarget;
+    let originalViewport: PropertyDescriptor | undefined;
+
+    beforeEach(() => {
+      frames = new Map();
+      let nextFrame = 0;
+      vi.stubGlobal(
+        "requestAnimationFrame",
+        vi.fn((callback: FrameRequestCallback) => {
+          frames.set(++nextFrame, callback);
+          return nextFrame;
+        }),
+      );
+      vi.stubGlobal(
+        "cancelAnimationFrame",
+        vi.fn((id: number) => frames.delete(id)),
+      );
+      originalViewport = Object.getOwnPropertyDescriptor(
+        window,
+        "visualViewport",
+      );
+      viewport = Object.assign(new EventTarget(), {
+        height: 360,
+        offsetTop: 0,
+      });
+      Object.defineProperty(window, "visualViewport", {
+        configurable: true,
+        value: viewport,
+      });
+      vi.spyOn(window, "scrollBy").mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      cleanup();
+      vi.restoreAllMocks();
+      vi.unstubAllGlobals();
+      if (originalViewport)
+        Object.defineProperty(window, "visualViewport", originalViewport);
+      else Reflect.deleteProperty(window, "visualViewport");
+    });
+
+    const flushViewport = () =>
+      act(() => {
+        const pending = [...frames.values()];
+        frames.clear();
+        pending.forEach((callback) => callback(performance.now()));
+      });
+    const bounds = (top: number) =>
+      ({ top, bottom: top + 98, height: 98 }) as DOMRect;
+
+    it("coalesces resize sources and reveals the same focused field", () => {
+      renderForm();
+      const field = screen.getByLabelText(/message/i);
+      vi.spyOn(field, "getBoundingClientRect")
+        .mockReturnValueOnce(bounds(690))
+        .mockReturnValue(bounds(100));
+      const reveal = vi.fn();
+      Object.defineProperty(field, "scrollIntoView", { value: reveal });
+      field.focus();
+      window.dispatchEvent(new Event("resize"));
+      viewport.dispatchEvent(new Event("resize"));
+      expect(frames.size).toBe(1);
+      flushViewport();
+      expect(reveal).toHaveBeenCalledOnce();
+      expect(field).toHaveFocus();
+      expect(window.scrollBy).not.toHaveBeenCalled();
+    });
+
+    it("corrects a keyboard-only visual viewport offset without changing focus", () => {
+      renderForm();
+      const field = screen.getByLabelText(/message/i);
+      vi.spyOn(field, "getBoundingClientRect").mockReturnValue(bounds(500));
+      Object.defineProperty(field, "scrollIntoView", { value: vi.fn() });
+      field.focus();
+      viewport.dispatchEvent(new Event("resize"));
+      flushViewport();
+      expect(window.scrollBy).toHaveBeenCalledWith({
+        top: expect.any(Number),
+        behavior: "instant",
+      });
+      expect(
+        (vi.mocked(window.scrollBy).mock.calls[0][0] as unknown as ScrollToOptions).top,
+      ).toBeGreaterThan(0);
+      expect(field).toHaveFocus();
+    });
+
+    it("leaves visible fields and unfocused content in place", () => {
+      renderForm();
+      const field = screen.getByLabelText(/message/i);
+      vi.spyOn(field, "getBoundingClientRect").mockReturnValue(bounds(40));
+      const reveal = vi.fn();
+      Object.defineProperty(field, "scrollIntoView", { value: reveal });
+      window.dispatchEvent(new Event("resize"));
+      flushViewport();
+      field.focus();
+      window.dispatchEvent(new Event("resize"));
+      flushViewport();
+      expect(reveal).not.toHaveBeenCalled();
+      expect(window.scrollBy).not.toHaveBeenCalled();
+      expect(field).toHaveFocus();
+    });
+
+    it("cancels queued work and removes both resize listeners on unmount", () => {
+      const { unmount } = renderForm();
+      screen.getByLabelText(/message/i).focus();
+      window.dispatchEvent(new Event("resize"));
+      expect(frames.size).toBe(1);
+      unmount();
+      expect(frames.size).toBe(0);
+      window.dispatchEvent(new Event("resize"));
+      viewport.dispatchEvent(new Event("resize"));
+      expect(frames.size).toBe(0);
+    });
   });
 
   describe("email draft lifecycle", () => {
@@ -359,6 +509,17 @@ describe("SecureContactForm", () => {
       } else {
         delete (navigator as { clipboard?: unknown }).clipboard;
       }
+    });
+
+    it("keeps the script-only clipboard action disabled before hydration", () => {
+      const markup = renderToStaticMarkup(
+        <I18nProvider locale="en" dictionary={en}>
+          <CopyAddressControl />
+        </I18nProvider>,
+      );
+      const host = document.createElement("div");
+      host.innerHTML = markup;
+      expect(host.querySelector("button")).toBeDisabled();
     });
 
     it("copies the address and announces the result", async () => {

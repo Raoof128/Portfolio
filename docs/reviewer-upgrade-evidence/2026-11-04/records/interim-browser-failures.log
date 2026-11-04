@@ -1,0 +1,97 @@
+
+> portfolio@0.1.0 test:browser
+> playwright test scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts --project=chromium
+
+
+Running 16 tests using 2 workers
+
+(node:8232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:59:7 › fresh home exposes reviewer actions in all five languages: light (3.5s)
+  ✘   2 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:59:7 › fresh home exposes reviewer actions in all five languages: dark (3.1s)
+(node:8587) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8615) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:95:5 › reviewer actions and a flagship dossier preserve keyboard focus and history (5.9s)
+  ✓   4 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:145:5 › representative reviewer home and dossier keep accessibility rules intact (7.7s)
+  ✓   6 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:207:5 › Simurgh walkthrough exposes every source-backed stage and the reading path (5.5s)
+  ✓   5 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:164:5 › artwork arrival keeps the Aero frame stable and respects reduced motion (7.3s)
+  ✓   7 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:245:7 › phone reading uses document scrolling at 320x568 (1.7s)
+  ✓   8 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:245:7 › phone reading uses document scrolling at 390x844 (1.7s)
+  ✓   9 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:245:7 › phone reading uses document scrolling at 640x360 (2.0s)
+  ✓  10 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:281:7 › reading reflows inside an independently resized pane: /projects (4.6s)
+  ✓  11 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:281:7 › reading reflows inside an independently resized pane: /about (3.9s)
+  ✓  12 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:281:7 › reading reflows inside an independently resized pane: /resume (4.2s)
+  ✓  13 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:281:7 › reading reflows inside an independently resized pane: /contact (3.7s)
+  ✓  14 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:281:7 › reading reflows inside an independently resized pane: /write-ups (4.0s)
+  ✓  15 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:281:7 › reading reflows inside an independently resized pane: /projects/project-simurgh (4.1s)
+  ✓  16 [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:315:5 › Explorer navigation responds to its own 880/881px boundary (3.9s)
+
+
+  1) [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:59:7 › fresh home exposes reviewer actions in all five languages: light 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 700
+    Received:   792
+
+      80 |       const atlasBox = await atlas.boundingBox();
+      81 |       if (!introBox || !atlasBox) throw new Error("Home research windows have no geometry");
+    > 82 |       expect(introBox.height).toBeLessThan(700);
+         |                               ^
+      83 |       const researchGap = atlasBox.y - (introBox.y + introBox.height);
+      84 |       expect(researchGap).toBeGreaterThanOrEqual(0);
+      85 |       expect(researchGap).toBeLessThanOrEqual(30);
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:82:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-5a2b7-in-all-five-languages-light-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-5a2b7-in-all-five-languages-light-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-5a2b7-in-all-five-languages-light-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-5a2b7-in-all-five-languages-light-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:59:7 › fresh home exposes reviewer actions in all five languages: dark 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 700
+    Received:   792
+
+      80 |       const atlasBox = await atlas.boundingBox();
+      81 |       if (!introBox || !atlasBox) throw new Error("Home research windows have no geometry");
+    > 82 |       expect(introBox.height).toBeLessThan(700);
+         |                               ^
+      83 |       const researchGap = atlasBox.y - (introBox.y + introBox.height);
+      84 |       expect(researchGap).toBeGreaterThanOrEqual(0);
+      85 |       expect(researchGap).toBeLessThanOrEqual(30);
+        at /workspace/Portfolio/scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:82:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-bda51--in-all-five-languages-dark-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-bda51--in-all-five-languages-dark-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-bda51--in-all-five-languages-dark-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/frontend-review/browser-results/reviewer-upgrade-fresh-hom-bda51--in-all-five-languages-dark-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:59:7 › fresh home exposes reviewer actions in all five languages: light 
+    [chromium] › scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts:59:7 › fresh home exposes reviewer actions in all five languages: dark 
+  14 passed (38.3s)

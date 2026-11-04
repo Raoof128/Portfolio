@@ -1,0 +1,5 @@
+# Current Simurgh source action correction
+
+The dossier header now labels the current software archive DOI explicitly in all five languages when `links.doiKind` is `software`. Other DOI links retain the publication label. The content owner removed only Simurgh's duplicate earlier-paper header links, so the existing repository action becomes the single primary action. The original three paper entries, older DOI, PDF paths and citation remain available in the Evidence library.
+
+The five-language actual-data regression verifies those distinctions and reachability. A separate valid publication-DOI fixture covers the existing generic label. All 25 ProjectDetailClient tests pass; targeted ESLint and the global `tsc --noEmit --incremental false` pass. The expected five-case red run and first failed green fixture attempt are retained with their explanations in `pages-simurgh-header-review.json`; final source hashes and complete reread spans are recorded there. No build or browser run was performed in this lane.

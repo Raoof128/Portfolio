@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { getDictionary, type Locale } from "@/i18n";
-import { formatDate } from "@/i18n/format";
+import { formatDate, formatNumber } from "@/i18n/format";
 import { I18nProvider } from "@/i18n/provider";
 import { AboutClient } from "../about/AboutClient";
 import { ResumeClient } from "./ResumeClient";
@@ -99,7 +99,7 @@ describe("expected qualification status", () => {
     "retains the source-backed expected completion date in %s",
     async (locale) => {
       const dictionary = await getDictionary(locale);
-      const expectedDate = formatDate("2026-11-01", locale, {
+      const expectedDate = formatDate("2027-06-01", locale, {
         month: "long",
         year: "numeric",
         calendar: "gregory",
@@ -118,7 +118,22 @@ describe("expected qualification status", () => {
           ) === true,
       );
       expect(note).toHaveTextContent(expectedDate);
-      expect(note.querySelector("time")).toHaveAttribute("datetime", "2026-11");
+      expect(note.querySelector("time")).toHaveAttribute("datetime", "2027-06");
+      const education = screen.getByRole("region", { name: dictionary.about.education });
+      expect(within(education).getByText(dictionary.resume.education_final_session)).toBeVisible();
+      const diploma = within(education).getByRole("heading", { name: dictionary.about.degree_diploma })
+        .closest("article")!;
+      expect(diploma.querySelector('time[datetime="2023-07"]')).toHaveTextContent(
+        formatDate("2023-07-01", locale, { month: "long", year: "numeric", calendar: "gregory" }),
+      );
+      expect(diploma.querySelector('time[datetime="2024-05"]')).toHaveTextContent(
+        formatDate("2024-05-01", locale, { month: "long", year: "numeric", calendar: "gregory" }),
+      );
+      for (const unsupportedMark of [76.27, 71.75]) {
+        expect(education.textContent).not.toContain(
+          formatNumber(unsupportedMark, locale, { minimumFractionDigits: 2 }),
+        );
+      }
       about.unmount();
       render(provider(<ResumeClient />));
       const dates = screen.getByText(
@@ -138,6 +153,44 @@ describe("expected qualification status", () => {
           calendar: "gregory",
         }),
       );
+      expect(dates.querySelector('time[datetime="2027-06"]')).toBeInTheDocument();
+      expect(screen.getByText(dictionary.resume.education_final_session)).toBeVisible();
+    },
+  );
+});
+
+describe("PDF-backed professional experience", () => {
+  it.each(locales)(
+    "separates Alignerr evaluation and the current Syllabus-Sync cofounder role in %s",
+    async (locale) => {
+      const dictionary = await getDictionary(locale);
+      render(
+        <I18nProvider locale={locale} dictionary={dictionary}>
+          <ResumeClient />
+        </I18nProvider>,
+      );
+      const experience = screen.getByRole("region", { name: dictionary.resume.s06_heading });
+      const alignerr = within(experience).getByRole("heading", { name: dictionary.resume.exp_alignerr_title })
+        .closest(".os-resume-item")!;
+      expect(alignerr).toHaveTextContent(dictionary.resume.exp_alignerr_employer);
+      expect(alignerr.querySelector('time[datetime="2026-01"]')).toBeInTheDocument();
+      expect(alignerr.querySelector('time[datetime="2026-03"]')).toBeInTheDocument();
+      expect(alignerr).toHaveTextContent(dictionary.resume.s07_bullet1);
+      expect(screen.getAllByText(dictionary.resume.s07_bullet1)).toHaveLength(1);
+
+      const syllabus = within(experience).getByRole("heading", { name: dictionary.resume.exp_syllabus_title })
+        .closest(".os-resume-item")!;
+      expect(syllabus).toHaveTextContent(dictionary.resume.exp_syllabus_employer);
+      expect(syllabus).toHaveTextContent(dictionary.resume.exp_syllabus_bullet1);
+      expect(syllabus).toHaveTextContent(dictionary.resume.exp_syllabus_bullet2);
+      expect(syllabus.querySelector('time[datetime="2026-05"]')).toHaveTextContent(
+        formatDate("2026-05-01", locale, { month: "long", year: "numeric", calendar: "gregory" }),
+      );
+      const startup = within(syllabus as HTMLElement).getByRole("link", { name: /syllabus-sync\.app/ });
+      expect(startup).toHaveAttribute("href", "https://syllabus-sync.app");
+      expect(startup).toHaveAttribute("target", "_blank");
+      expect(startup).toHaveAttribute("rel", "noopener noreferrer");
+      expect(screen.getByText(dictionary.resume.s08_available)).toBeVisible();
     },
   );
 });

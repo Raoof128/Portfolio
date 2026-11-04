@@ -8,6 +8,8 @@ import {
 } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { Locale } from "@/i18n";
+import { projectDiagramCopy } from "@/lib/project-content/diagram-copy";
+import { getDossierScope } from "@/lib/project-content/dossier-copy";
 import {
   invisibleWindowStoryCopy,
   simurghEvidenceStoryCopy,
@@ -90,31 +92,125 @@ describe("Simurgh evidence walkthrough", () => {
     expect(path[5]).toHaveAttribute("data-path-active", "true");
   });
 
-  it("links to the live VCA sources and labels the bundled preprint as historical lineage", () => {
+  it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
+    "lets readers follow signed evidence through independent verification in %s",
+    (locale) => {
+      const copy = simurghEvidenceStoryCopy[locale];
+      render(<SimurghEvidenceStory locale={locale} copy={copy} />);
+      const path = screen.getByRole("list", { name: copy.proofPathLabel });
+      expect(within(path).getAllByRole("button")).toHaveLength(6);
+      const pack = screen.getByRole("button", { name: copy.signedPack });
+      fireEvent.click(pack);
+      expect(pack).toHaveAttribute("aria-pressed", "true");
+      expect(
+        screen.getByRole("listitem", { current: "step" }),
+      ).toHaveTextContent(copy.signedPackDetail);
+      const verifier = screen.getByRole("button", { name: copy.verifier });
+      fireEvent.click(verifier);
+      expect(verifier).toHaveAttribute("aria-pressed", "true");
+      expect(pack).toHaveAttribute("aria-pressed", "false");
+      expect(
+        screen.getByRole("listitem", { current: "step" }),
+      ).toHaveTextContent(copy.verifierDetail);
+      expect(
+        within(path)
+          .getAllByRole("listitem")
+          .filter((step) => step.dataset.pathActive === "true"),
+      ).toHaveLength(1);
+      for (const boundary of copy.boundaries)
+        expect(screen.getByText(boundary.detail)).toBeVisible();
+    },
+  );
+
+  it("distinguishes current software from the older device-integrity paper and frozen replay", () => {
     render(
       <SimurghEvidenceStory locale="en" copy={simurghEvidenceStoryCopy.en} />,
     );
     expect(
-      screen.getByText(/earlier device-integrity stage/i),
+      screen.getByText(/earlier device-integrity preprint/i),
     ).toBeInTheDocument();
     expect(
       screen.queryByRole("link", { name: /preprint|paper/i }),
     ).not.toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /current vca repository/i }),
+      screen.getByRole("link", { name: /current simurgh repository/i }),
     ).toHaveAttribute("target", "_blank");
     expect(
-      screen.getByRole("link", { name: /reproduce the vca evidence/i }),
+      screen.getByRole("link", { name: /replay earlier frozen vca evidence/i }),
     ).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("contains no simulated measurements or result fields", () => {
+  it.each([
+    ["en", /earlier frozen/i],
+    ["fa", /تثبیت‌شدهٔ پیشین/],
+    ["ar", /سابقة مجمّدة/],
+    ["zh", /早期冻结/],
+    ["es", /anterior congelada/i],
+  ] as const)(
+    "retains both reported October outcomes and frozen architecture scope in %s",
+    (locale, earlierFrozen) => {
+      const copy = simurghEvidenceStoryCopy[locale];
+      const { container } = render(
+        <SimurghEvidenceStory locale={locale} copy={copy} />,
+      );
+      const introduction = container.querySelector(
+        ".os-evidence-story-heading > p[id]",
+      );
+      expect(introduction).toHaveTextContent(
+        /Llama-3\.2-3B.*17\/24.*0\/24.*23\/24.*gpt-6-luna.*0\/24/,
+      );
+      expect(screen.getByText(copy.illustrationLabel)).toHaveTextContent(
+        earlierFrozen,
+      );
+      expect(projectDiagramCopy[locale].boundariesTitle).toMatch(earlierFrozen);
+      expect(copy.sourceNote).toContain("10.5281/zenodo.21737792");
+      expect(copy.sourceNote).toContain("10.5281/zenodo.20374849");
+      for (const token of ["SHA-256", "Ed25519", "Linux x86_64", "Python 3.12"])
+        expect(copy.sourceNote).toContain(token);
+      expect(copy.signedPackDetail).toMatch(earlierFrozen);
+
+      const scope = getDossierScope("project-simurgh", locale);
+      for (const fact of [
+        "288",
+        "Wilson",
+        "43.6–97.0%",
+        "0.0–39.0%",
+        "8/8",
+        "2/3",
+        "5/5",
+        "39",
+        "5,171",
+        "19",
+        "2026",
+      ])
+        expect(scope).toContain(fact);
+      expect(scope).toContain("SHA-256");
+      expect(scope).toContain("Ed25519");
+      const zurvanScope = getDossierScope("project-zurvan", locale);
+      for (const token of ["Rust", "Python", "3,334", "20", "2026", "Z1b"])
+        expect(zurvanScope).toContain(token);
+      const pilotScope = getDossierScope("aion", locale);
+      for (const token of [
+        "40",
+        "34",
+        "6/6",
+        "citation_support < 0.5",
+        "0.75",
+        "0.50",
+        "Gemini 3.1 Flash Lite",
+        "OpenAI",
+      ])
+        expect(pilotScope).toContain(token);
+    },
+  );
+
+  it("keeps reported outcomes outside the illustrative diagram and adds no simulated result fields", () => {
     const { container } = render(
       <SimurghEvidenceStory locale="en" copy={simurghEvidenceStoryCopy.en} />,
     );
-    expect(container.textContent).not.toMatch(
-      /\b\d+\/\d+\b|\b\d+(?:\.\d+)?\s*(?:ms|%)/i,
-    );
+    expect(
+      container.querySelector(".os-simurgh-instrument")?.textContent,
+    ).not.toMatch(/\b\d+\/\d+\b|\b\d+(?:\.\d+)?\s*(?:ms|%)/i);
     expect(
       container.querySelector("[data-result], [data-measurement]"),
     ).toBeNull();
@@ -275,6 +371,24 @@ describe("Simurgh evidence walkthrough", () => {
         expect(screen.getByText(node.detail)).toBeInTheDocument();
       }
       expect(screen.getByText(copy.repositoryNote)).toBeInTheDocument();
+      const publicRepository: Record<Locale, RegExp> = {
+        en: /repository is public/,
+        fa: /مخزن Zurvan عمومی/,
+        ar: /مستودع Zurvan عام/,
+        zh: /Zurvan 仓库现为公开/,
+        es: /repositorio de Zurvan es público/,
+      };
+      const imageStub: Record<Locale, RegExp> = {
+        en: /image stubs/,
+        fa: /تصویر در انتظار بررسی/,
+        ar: /صور معلّقة/,
+        zh: /图像占位/,
+        es: /imágenes pendientes/,
+      };
+      expect(copy.repositoryNote).toMatch(publicRepository[locale]);
+      expect(copy.sourceDetail).toMatch(imageStub[locale]);
+      expect(copy.consumerDetail).toContain("Rust");
+      expect(copy.consumerDetail).toContain("Python");
     },
   );
 

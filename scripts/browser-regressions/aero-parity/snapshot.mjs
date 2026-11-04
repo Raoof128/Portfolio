@@ -4,6 +4,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import path from "node:path";
+import { exportIdentity, assertCaptureCompatibility, extensionRoutes, verifyFrozenCaptures, writeFrozenCapture } from "./snapshot-integrity.mjs";
 const phase = process.argv[2] ?? "before";
 if (!/^[a-z0-9-]+$/.test(phase))
     throw new Error("Use a simple lowercase phase name");
@@ -57,11 +58,11 @@ try {
     });
     await context.addInitScript((theme) => localStorage.setItem("researchos.appearance.v1", theme), appearance);
     const page = await context.newPage();
-    const sourceFiles = execFileSync("git", ["ls-files", "-z"], {
+    const sourceFiles = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard", "-z"], {
         encoding: "utf8",
     })
         .split("\0")
-        .filter((p) => /\.(tsx?|css)$/.test(p));
+        .filter((p) => /\.(tsx?|css)$/.test(p) && !p.startsWith("work/"));
     const sourceHashes = {};
     for (const file of sourceFiles)
         sourceHashes[file] = createHash("sha256")
@@ -70,6 +71,7 @@ try {
     const versionResponse = await page.request.get(`${origin}/version.json`);
     const manifest = {
         phase,
+        origin,
         capturedAt: new Date().toISOString(),
         sourceCommit: execFileSync("git", ["rev-parse", "HEAD"], {
             encoding: "utf8",
@@ -81,18 +83,21 @@ try {
         viewport: { width: 1440, height: 900 },
         deviceScaleFactor: 1,
         locale: "en-AU",
+        timeZone: "Australia/Sydney",
         reducedMotion: "reduce",
         colourScheme: "light",
         appearance,
         expanded,
         version: await versionResponse.json(),
         sourceHashes,
-        pages: [],
+        exportIdentity: await exportIdentity("out"),
+        captureHashes: extend ? { ...original.captureHashes } : {},
+        pages: extend ? [...original.pages] : [],
     };
     // Validate the export before writing ANY route snapshot or screenshot.
     if (extend || refreshCensus) {
-        if (JSON.stringify(original.version) !== JSON.stringify(manifest.version))
-            throw new Error("Cannot extend a snapshot from a different export");
+        assertCaptureCompatibility(original, manifest);
+        await verifyFrozenCaptures(output, original);
         manifest.sourceCommit = original.sourceCommit;
         manifest.sourceStatus = original.sourceStatus;
         manifest.sourceHashes = original.sourceHashes;
@@ -118,7 +123,8 @@ try {
         ] : [])
     ];
     const censusPages = [];
-    for (const [name, route, state] of routes) {
+    const pendingRoutes = extend ? extensionRoutes(routes, original) : routes;
+    for (const [name, route, state] of pendingRoutes) {
         const errors = [];
         const onError = (e) => errors.push(e.message);
         page.on("pageerror", onError);
@@ -225,11 +231,9 @@ try {
                 throw new Error(`CSS ${res.status()} ${url}`);
             sheets.push({ url, css: await res.text() });
         }
-        await writeFile(path.join(output, `${name}.json`), JSON.stringify({ origin, route, ...data, sheets }, null, 2) + "\n");
-        await page.screenshot({
-            path: path.join(output, `${name}-live.png`),
-            animations: "disabled",
-        });
+        const json = JSON.stringify({ origin, route, ...data, sheets }, null, 2) + "\n";
+        const png = await page.screenshot({ animations: "disabled" });
+        Object.assign(manifest.captureHashes, await writeFrozenCapture(output, name, json, png, { replace }));
         manifest.pages.push({ name, route, state: state ?? "default", errors });
         console.log(`Captured ${name}: ${route} (${state ?? "default"})`);
         page.off("pageerror", onError);

@@ -44,11 +44,7 @@ import {
 import { formatDate, formatNumber } from "@/i18n/format";
 import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
-import {
-  markWelcomeSeen,
-  WelcomeEnter,
-  welcomeSeenThisSession,
-} from "./WelcomeEnter";
+import { markWelcomeSeen, WelcomeEnter } from "./WelcomeEnter";
 import "./controls.css";
 import "./theme-switch.css";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
@@ -160,6 +156,18 @@ const lastPathKey = "researchos:last-path";
 /** A path as the shell compares it: the English root has no prefix, other locales keep theirs. */
 function routeKey(href: string): string {
   return href.split(/[?#]/)[0].replace(/^\/en(?=\/|$)/, "") || "/";
+}
+
+/** Only ordinary primary activation changes the current workspace. */
+function isPlainClick(event: MouseEvent<HTMLElement>): boolean {
+  return (
+    !event.defaultPrevented &&
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey
+  );
 }
 
 function rememberLastPath(path: string | null) {
@@ -390,12 +398,9 @@ export function ResearchOS({
     readSystemAppearance,
     serverAppearance,
   );
-  // An explicit choice persists; a first visit follows the system colour scheme.
-  // The session value keeps a toggle working when storage cannot be written.
-  const [sessionAppearance, setSessionAppearance] = useState<Appearance | null>(
-    null,
-  );
-  const appearance = sessionAppearance ?? storedAppearance ?? systemAppearance;
+  // The shared store retains explicit choices even when persistence is blocked,
+  // and still accepts preference changes from another tab.
+  const appearance = storedAppearance ?? systemAppearance;
   const applePlatform = useSyncExternalStore(
     emptySubscribe,
     readApplePlatform,
@@ -403,9 +408,9 @@ export function ResearchOS({
   );
   const shortcutText = applePlatform ? "⌘ K" : "Ctrl K";
   const shortcutKeys = applePlatform ? "Meta+K" : "Control+K";
-  const [lockedPath, setLockedPath] = useState<string | null>(
-    isHome ? pathname : null,
-  );
+  // Research is visible on the very first visit. The logon is an optional
+  // presentation reached through Lock, never a gate in front of the work.
+  const [lockedPath, setLockedPath] = useState<string | null>(null);
   // The language being switched to while its route loads. It clears itself when the locale changes.
   const [languageSwitch, setLanguageSwitch] = useState<{
     from: Locale;
@@ -417,7 +422,6 @@ export function ResearchOS({
   const [focusRequest, setFocusRequest] = useState<{ path: string } | null>(
     null,
   );
-  const firstLayoutPass = useRef(true);
   useLayoutEffect(() => {
     // The shell remounts for the new locale after a language switch: pick up its focus request
     // and the crossfade it was waiting for.
@@ -524,23 +528,15 @@ export function ResearchOS({
     if (!locked) markWelcomeSeen();
   }, [locked]);
   useLayoutEffect(() => {
-    const first = firstLayoutPass.current;
-    firstLayoutPass.current = false;
     if (getLocaleFromPath(pathname) !== locale) return;
     const open = consumeLanguageNavigation(pathname);
     // Restore only an explicit language change before the hydrated shell paints.
-    // Ordinary visits still start on the welcome screen.
+    // A deliberately locked language change retains the optional logon.
     if (open !== null) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot state across a locale-root remount
       setLockedPath(open ? null : home);
-      return;
     }
-    // A return to home in the same session goes straight to the desktop. Only the first render
-    // checks it, so a lock (which also lands on home) still shows the logon.
-    if (first && isHome && welcomeSeenThisSession()) {
-      setLockedPath(null);
-    }
-  }, [home, isHome, locale, pathname]);
+  }, [home, locale, pathname]);
   const activeApp = appForPath(relativePath);
   const getPath = (path: string) =>
     locale === "en" ? path : `/${locale}${path}`;
@@ -590,7 +586,8 @@ export function ResearchOS({
     } else activeContent?.focus({ preventScroll: true });
   }, []);
 
-  function enterWorkspace() {
+  function enterWorkspace(event?: MouseEvent<HTMLAnchorElement>) {
+    if (event && !isPlainClick(event)) return;
     clearLanguageNavigation();
     focusAfterUnlock.current = true;
     setLockedPath(null);
@@ -894,8 +891,7 @@ export function ResearchOS({
   }
 
   function selectResult(event: MouseEvent<HTMLAnchorElement>) {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
-      return;
+    if (!isPlainClick(event)) return;
     setLockedPath(null);
     searchDialog.current?.close();
     const href = event.currentTarget.getAttribute("href");
@@ -1006,7 +1002,7 @@ export function ResearchOS({
           }
           className="os-skip-link"
           onClick={(event) => {
-            if (locked) {
+            if (locked && isPlainClick(event)) {
               event.preventDefault();
               unlockFromLogon();
             }
@@ -1050,7 +1046,6 @@ export function ResearchOS({
                 const next = appearance === "dark" ? "light" : "dark";
                 beginThemeSwitch(event.currentTarget);
                 writeAppearance(next);
-                setSessionAppearance(next);
               }}
             >
               {appearance === "dark" ? (
@@ -1155,7 +1150,7 @@ export function ResearchOS({
                 <Link
                   className="os-text-link"
                   href={getPath("/projects")}
-                  onClick={() => setLockedPath(null)}
+                  onClick={enterWorkspace}
                 >
                   {atlasJourneyCopy.review}
                 </Link>
@@ -1186,30 +1181,25 @@ export function ResearchOS({
           hidden={locked}
           inert={locked && hydrated}
           onClickCapture={(event) => {
-            const plain =
-              !event.ctrlKey &&
-              !event.metaKey &&
-              !event.shiftKey &&
-              !event.altKey;
-            if (plain) {
-              // A link to a window page moves focus into that window once it renders.
-              const link =
-                event.target instanceof Element
-                  ? event.target.closest("a")
-                  : null;
-              const href = link?.getAttribute("href");
-              if (
-                href?.startsWith("/") &&
-                getOSAppDescriptor(href.split("#")[0], locale)
-              )
-                rememberOpenTarget(href);
-            }
-            if (workspaceReady && plain) {
-              const link =
-                event.target instanceof Element
-                  ? event.target.closest("a")
-                  : null;
-              const href = link?.getAttribute("href");
+            const link =
+              event.target instanceof Element
+                ? event.target.closest("a")
+                : null;
+            if (
+              !isPlainClick(event) ||
+              !link ||
+              (link.target && link.target.toLowerCase() !== "_self") ||
+              link.hasAttribute("download")
+            )
+              return;
+            const href = link.getAttribute("href");
+            // A link to a window page moves focus into that window once it renders.
+            if (
+              href?.startsWith("/") &&
+              getOSAppDescriptor(href.split("#")[0], locale)
+            )
+              rememberOpenTarget(href);
+            if (workspaceReady) {
               if (href?.startsWith("/")) {
                 const descriptor = getOSAppDescriptor(
                   href.split("#")[0],
@@ -1222,19 +1212,8 @@ export function ResearchOS({
                 }
               }
             }
-            if (
-              !reading.minimized ||
-              event.ctrlKey ||
-              event.metaKey ||
-              event.shiftKey ||
-              event.altKey
-            )
-              return;
-            const link =
-              event.target instanceof Element
-                ? event.target.closest("a")
-                : null;
-            if (link?.getAttribute("href") === pathname) {
+            if (!reading.minimized) return;
+            if (href === pathname) {
               event.preventDefault();
               restoreReadingWindow();
             }
@@ -1346,7 +1325,9 @@ export function ResearchOS({
                     id="os-window-title"
                     lang={pageEntry?.titleLocale ?? locale}
                     dir={locales[pageEntry?.titleLocale ?? locale].dir}
-                    onPointerDown={(event) => reading.beginPointer(event, "move")}
+                    onPointerDown={(event) =>
+                      reading.beginPointer(event, "move")
+                    }
                     {...reading.pointerHandlers}
                   >
                     {windowTitle}
@@ -1388,11 +1369,18 @@ export function ResearchOS({
                 {/* Match the hydrated workspace's separate command toolbar. The Back and
                     Close links remain usable in the server-rendered, no-JavaScript page. */}
                 <div className="os-window-toolbar">
-                  <Link className="os-window-back" href={parentPath} aria-label={copy.back}>
+                  <Link
+                    className="os-window-back"
+                    href={parentPath}
+                    aria-label={copy.back}
+                  >
                     <ArrowLeft aria-hidden="true" />
                     <span>{copy.back}</span>
                   </Link>
-                  <button className="os-control os-window-copy" onClick={copyLink}>
+                  <button
+                    className="os-control os-window-copy"
+                    onClick={copyLink}
+                  >
                     {copy.copyLink}
                   </button>
                   {reading.desktop && !reading.minimized && !locked && (
@@ -1559,20 +1547,9 @@ export function ResearchOS({
                   aria-current={current ? "page" : undefined}
                   data-minimized={minimized ? "true" : undefined}
                   onClick={(event) => {
-                    if (
-                      !event.ctrlKey &&
-                      !event.metaKey &&
-                      !event.shiftKey &&
-                      !event.altKey
-                    )
-                      rememberOpenTarget(getPath(appPaths[app]));
-                    if (
-                      workspaceReady &&
-                      !event.ctrlKey &&
-                      !event.metaKey &&
-                      !event.shiftKey &&
-                      !event.altKey
-                    ) {
+                    const plain = isPlainClick(event);
+                    if (plain) rememberOpenTarget(getPath(appPaths[app]));
+                    if (workspaceReady && plain) {
                       const openWindow = [...workspace.model.windows]
                         .reverse()
                         .find(
@@ -1590,14 +1567,7 @@ export function ResearchOS({
                         return;
                       }
                     }
-                    if (
-                      reading.minimized &&
-                      activeApp === app &&
-                      !event.ctrlKey &&
-                      !event.metaKey &&
-                      !event.shiftKey &&
-                      !event.altKey
-                    ) {
+                    if (reading.minimized && activeApp === app && plain) {
                       event.preventDefault();
                       restoreReadingWindow();
                     }
@@ -1797,8 +1767,9 @@ export function ResearchOS({
         </dialog>
         <noscript>
           {/* Tailwind's base-layer hidden rule is important. Important layered
-            rules outrank unlayered rules, so the fallback must share its layer. */}
-          <style>{`@layer base{.os-shell .os-welcome{display:none!important}.os-shell .os-content[hidden]{display:block!important}.os-shell .os-dock[hidden]{display:flex!important}.os-shell button{display:none!important}}`}</style>
+            rules outrank unlayered rules, so the fallback must share its layer.
+            Native contact submission remains available without shell scripting. */}
+          <style>{`@layer base{.os-shell .os-welcome{display:none!important}.os-shell .os-content[hidden]{display:block!important}.os-shell .os-dock[hidden]{display:flex!important}.os-shell button:not(.os-secure-form button[type="submit"]){display:none!important}}`}</style>
         </noscript>
       </div>
     </ApplicationRegistrationContext.Provider>

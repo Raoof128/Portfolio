@@ -1,0 +1,58 @@
+{
+  "changedProjects": [
+    "project-simurgh",
+    "invisible-window-research",
+    "project-zurvan",
+    "aion",
+    "gitswitch",
+    "syllabus-sync",
+    "divan-open-day",
+    "nexus-archive",
+    "nanomatch",
+    "sentinelflow",
+    "ecrsm",
+    "simurghforge",
+    "mehr-guard"
+  ],
+  "changedPosts": [
+    "project-simurgh-containment",
+    "invisible-window-research",
+    "electron-security",
+    "nanomatch-deep-dive",
+    "sentinelflow-deep-dive",
+    "ecrsm-deep-dive",
+    "kmp-security"
+  ],
+  "revisedArticleFields": [
+    "project-simurgh-containment.content",
+    "invisible-window-research.title",
+    "invisible-window-research.content",
+    "nanomatch-deep-dive.title",
+    "nanomatch-deep-dive.takeaway",
+    "nanomatch-deep-dive.content",
+    "sentinelflow-deep-dive.takeaway",
+    "sentinelflow-deep-dive.content",
+    "ecrsm-deep-dive.takeaway",
+    "ecrsm-deep-dive.content",
+    "kmp-security.updatedAt",
+    "kmp-security.takeaway",
+    "kmp-security.content",
+    "electron-security.takeaway",
+    "electron-security.content"
+  ],
+  "codeCorrections": [
+    {
+      "slug": "sentinelflow-deep-dive",
+      "reason": "The old SSH brute-force rule parses, but SignatureMatcher skips threshold rules and no SSH brute-force detector executes that threshold. The replacement demonstrates a supported connection alert."
+    }
+  ],
+  "otherFencedExamplesPreserved": true,
+  "categoryCorrection": {
+    "slug": "ecrsm",
+    "from": "OFFENSIVE",
+    "to": "DEFENSIVE",
+    "reason": "Pinned source implements educational runtime observation/detection, not offensive action."
+  },
+  "publicationIdentitiesPreserved": true,
+  "authoredYearsAndPublicationDatesPreserved": true
+}

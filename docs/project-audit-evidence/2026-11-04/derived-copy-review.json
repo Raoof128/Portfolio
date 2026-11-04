@@ -1,0 +1,1028 @@
+{
+  "phase": "Derived source qualifiers after canonical13-project/7-writeup freeze",
+  "status": "complete",
+  "reviewer": "/root/signature_motion",
+  "completed_at_utc": "2026-11-04T03:08:38.830473+00:00",
+  "scope": {
+    "assigned_copy_modules": 11,
+    "test_files": 2,
+    "files_changed": 10,
+    "copy_string_values_changed": 125,
+    "locales": [
+      "en",
+      "fa",
+      "ar",
+      "zh",
+      "es"
+    ],
+    "full_initial_context_reads": 9,
+    "targeted_dictionary_context_reads": 4,
+    "no_full_frontend_or_whole_dictionary_reaudit_claim": true
+  },
+  "preflight": {
+    "agent_rules": [
+      "AGENT.md:1-200",
+      "AGENT.md:250-272"
+    ],
+    "latest_changelog": "CHANGELOG.md:1-135",
+    "skill": "skill://user/6ad012e6f19c8191924efd2c8844b4e8/raouf-change-protocol/SKILL.md",
+    "next_docs": [
+      "node_modules/next/dist/docs/01-app/02-guides/internationalization.md:1-175",
+      "node_modules/next/dist/docs/01-app/01-getting-started/14-metadata-and-og-images.md:1-55"
+    ],
+    "logging": "Parent owns the consolidated AGENT.md/CHANGELOG.md postflight entry; no concurrent root log edits."
+  },
+  "files": [
+    {
+      "path": "src/lib/project-content/evidence-story-copy.ts",
+      "initial_sha256": "edb7943aed1271e1df0acb18451a8e7f5c5419c615c3ed73981266610ff91e71",
+      "initial_lines": 684,
+      "read_spans": [
+        [
+          1,
+          230
+        ],
+        [
+          231,
+          460
+        ],
+        [
+          461,
+          684
+        ]
+      ],
+      "final_sha256": "c7bbb525fc95d9e78ff5306adb6f899bb685ba22190b43c70cef06ef45675bd5",
+      "final_lines": 684,
+      "changed": true,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [
+        [
+          106,
+          106
+        ],
+        [
+          111,
+          111
+        ],
+        [
+          149,
+          149
+        ],
+        [
+          154,
+          154
+        ],
+        [
+          191,
+          191
+        ],
+        [
+          196,
+          196
+        ],
+        [
+          228,
+          228
+        ],
+        [
+          233,
+          233
+        ],
+        [
+          272,
+          272
+        ],
+        [
+          277,
+          277
+        ],
+        [
+          467,
+          467
+        ],
+        [
+          472,
+          472
+        ],
+        [
+          503,
+          503
+        ],
+        [
+          505,
+          505
+        ],
+        [
+          515,
+          515
+        ],
+        [
+          519,
+          519
+        ],
+        [
+          550,
+          550
+        ],
+        [
+          552,
+          552
+        ],
+        [
+          561,
+          561
+        ],
+        [
+          565,
+          565
+        ],
+        [
+          594,
+          594
+        ],
+        [
+          596,
+          596
+        ],
+        [
+          605,
+          605
+        ],
+        [
+          609,
+          609
+        ],
+        [
+          631,
+          631
+        ],
+        [
+          633,
+          633
+        ],
+        [
+          644,
+          644
+        ],
+        [
+          649,
+          649
+        ],
+        [
+          680,
+          680
+        ],
+        [
+          682,
+          682
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 30
+    },
+    {
+      "path": "src/lib/project-content/dossier-copy.ts",
+      "initial_sha256": "84a84b2a6a4d56dbdb186236ebeb5cdab6b14d33f9c86cce6ee89e1a833c5b56",
+      "initial_lines": 111,
+      "read_spans": [
+        [
+          1,
+          111
+        ]
+      ],
+      "final_sha256": "e50b3037f3bcd7774dfe156124dc45cd2869b5c2f9ac9c73ccc71e30fc5caa0d",
+      "final_lines": 111,
+      "changed": true,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [
+        [
+          15,
+          15
+        ],
+        [
+          17,
+          17
+        ],
+        [
+          20,
+          20
+        ],
+        [
+          33,
+          33
+        ],
+        [
+          35,
+          35
+        ],
+        [
+          38,
+          38
+        ],
+        [
+          51,
+          51
+        ],
+        [
+          53,
+          53
+        ],
+        [
+          56,
+          56
+        ],
+        [
+          69,
+          69
+        ],
+        [
+          71,
+          71
+        ],
+        [
+          74,
+          74
+        ],
+        [
+          87,
+          87
+        ],
+        [
+          89,
+          89
+        ],
+        [
+          92,
+          92
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 15
+    },
+    {
+      "path": "src/lib/project-content/diagram-copy.ts",
+      "initial_sha256": "8a744d3aac3527c84fbaff9abcfdb1868e7b07f4d4e104bb7f592c683b5446ae",
+      "initial_lines": 173,
+      "read_spans": [
+        [
+          1,
+          173
+        ]
+      ],
+      "final_sha256": "3819a12377b9a3e6b134546ce4ba89b4832fb2525f1d3bb63444bd8ee49076b6",
+      "final_lines": 173,
+      "changed": true,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [
+        [
+          16,
+          16
+        ],
+        [
+          29,
+          29
+        ],
+        [
+          49,
+          49
+        ],
+        [
+          62,
+          62
+        ],
+        [
+          82,
+          82
+        ],
+        [
+          95,
+          95
+        ],
+        [
+          115,
+          115
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          148,
+          148
+        ],
+        [
+          161,
+          161
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 10
+    },
+    {
+      "path": "src/components/os/atlas-copy.ts",
+      "initial_sha256": "b973208c28982440ae28cd2caa30bb6d4d34dc419d821d2437ba94b6fc724915",
+      "initial_lines": 353,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          353
+        ]
+      ],
+      "final_sha256": "b973208c28982440ae28cd2caa30bb6d4d34dc419d821d2437ba94b6fc724915",
+      "final_lines": 353,
+      "changed": false,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 0
+    },
+    {
+      "path": "src/components/os/os-copy.ts",
+      "initial_sha256": "89abf52c537ac9874d8a8a95817539cd0b921cf0baef26e9a9beb5631b665c18",
+      "initial_lines": 505,
+      "read_spans": [
+        [
+          1,
+          255
+        ],
+        [
+          256,
+          505
+        ]
+      ],
+      "final_sha256": "89abf52c537ac9874d8a8a95817539cd0b921cf0baef26e9a9beb5631b665c18",
+      "final_lines": 505,
+      "changed": false,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 0
+    },
+    {
+      "path": "src/components/os/reviewer-copy.ts",
+      "initial_sha256": "dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c",
+      "initial_lines": 16,
+      "read_spans": [
+        [
+          1,
+          16
+        ]
+      ],
+      "final_sha256": "dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c",
+      "final_lines": 16,
+      "changed": false,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 0
+    },
+    {
+      "path": "src/i18n/locales/en.ts",
+      "initial_sha256": "41fcc36b4da234b13a26f6ca06c4775620053093f9763ed3400cc17db119a456",
+      "initial_lines": 487,
+      "read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          487
+        ]
+      ],
+      "final_sha256": "269419d7fcf1e54c79343973292110b6d4075c52258ae9db3a3f2ddd1d45d3d4",
+      "final_lines": 487,
+      "changed": true,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [
+        [
+          7,
+          7
+        ],
+        [
+          97,
+          97
+        ],
+        [
+          99,
+          99
+        ],
+        [
+          136,
+          136
+        ],
+        [
+          239,
+          239
+        ],
+        [
+          249,
+          249
+        ],
+        [
+          251,
+          251
+        ],
+        [
+          278,
+          278
+        ],
+        [
+          280,
+          280
+        ],
+        [
+          284,
+          284
+        ],
+        [
+          288,
+          288
+        ],
+        [
+          292,
+          292
+        ],
+        [
+          331,
+          331
+        ],
+        [
+          333,
+          333
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 14
+    },
+    {
+      "path": "src/i18n/locales/fa.ts",
+      "initial_sha256": "8b9688fade9b51e76cd9f1332d4fb4bff404b65d3573b4b7d401643a24e18698",
+      "initial_lines": 487,
+      "read_spans": [
+        [
+          1,
+          115
+        ],
+        [
+          137,
+          138
+        ],
+        [
+          225,
+          350
+        ]
+      ],
+      "final_sha256": "dc36bdf7fdade5e66557a3e463eba6611130bfcfc80ffacf2d785e1b349e4df3",
+      "final_lines": 486,
+      "changed": true,
+      "initial_read_scope": "targeted project-specific fields; generic UI strings not re-audited",
+      "final_changed_line_spans_read": [
+        [
+          9,
+          9
+        ],
+        [
+          98,
+          98
+        ],
+        [
+          100,
+          100
+        ],
+        [
+          137,
+          137
+        ],
+        [
+          240,
+          240
+        ],
+        [
+          250,
+          250
+        ],
+        [
+          252,
+          252
+        ],
+        [
+          279,
+          279
+        ],
+        [
+          281,
+          281
+        ],
+        [
+          285,
+          285
+        ],
+        [
+          289,
+          289
+        ],
+        [
+          293,
+          293
+        ],
+        [
+          332,
+          332
+        ],
+        [
+          334,
+          334
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 14
+    },
+    {
+      "path": "src/i18n/locales/ar.ts",
+      "initial_sha256": "21f144fe37f7faff6a1d77c4e1c6e94d666a196d5234e58b223b7e9d353415d7",
+      "initial_lines": 479,
+      "read_spans": [
+        [
+          1,
+          112
+        ],
+        [
+          136,
+          136
+        ],
+        [
+          222,
+          342
+        ]
+      ],
+      "final_sha256": "eca67ccadc9d24117e3d50725a65d842cacb210c50fb60d8fdc629371f5dc40c",
+      "final_lines": 479,
+      "changed": true,
+      "initial_read_scope": "targeted project-specific fields; generic UI strings not re-audited",
+      "final_changed_line_spans_read": [
+        [
+          9,
+          9
+        ],
+        [
+          98,
+          98
+        ],
+        [
+          100,
+          100
+        ],
+        [
+          136,
+          136
+        ],
+        [
+          238,
+          238
+        ],
+        [
+          248,
+          248
+        ],
+        [
+          250,
+          250
+        ],
+        [
+          277,
+          277
+        ],
+        [
+          279,
+          279
+        ],
+        [
+          283,
+          283
+        ],
+        [
+          287,
+          287
+        ],
+        [
+          291,
+          291
+        ],
+        [
+          330,
+          330
+        ],
+        [
+          332,
+          332
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 14
+    },
+    {
+      "path": "src/i18n/locales/zh.ts",
+      "initial_sha256": "10f7e45379a6aa40d8c546c72513a1182689dd5924d180cbb7ca419c16c4efbd",
+      "initial_lines": 462,
+      "read_spans": [
+        [
+          1,
+          107
+        ],
+        [
+          129,
+          129
+        ],
+        [
+          215,
+          330
+        ]
+      ],
+      "final_sha256": "e87fc35864ca185f56efbb788e6eabb812955ac51bb8f702f0d8f4c603729ef2",
+      "final_lines": 462,
+      "changed": true,
+      "initial_read_scope": "targeted project-specific fields; generic UI strings not re-audited",
+      "final_changed_line_spans_read": [
+        [
+          9,
+          9
+        ],
+        [
+          92,
+          92
+        ],
+        [
+          94,
+          94
+        ],
+        [
+          129,
+          129
+        ],
+        [
+          229,
+          229
+        ],
+        [
+          239,
+          239
+        ],
+        [
+          241,
+          241
+        ],
+        [
+          268,
+          268
+        ],
+        [
+          270,
+          270
+        ],
+        [
+          274,
+          274
+        ],
+        [
+          278,
+          278
+        ],
+        [
+          282,
+          282
+        ],
+        [
+          317,
+          317
+        ],
+        [
+          319,
+          319
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 14
+    },
+    {
+      "path": "src/i18n/locales/es.ts",
+      "initial_sha256": "1cb3362477b2c6a254a4d6be4622309756326306eecc6f41b93ea07d59ee1520",
+      "initial_lines": 500,
+      "read_spans": [
+        [
+          1,
+          113
+        ],
+        [
+          140,
+          140
+        ],
+        [
+          230,
+          351
+        ]
+      ],
+      "final_sha256": "ded21ef79de96c7a53f57822b03e303e0095f3991aac61d47df2b5ca959c9287",
+      "final_lines": 500,
+      "changed": true,
+      "initial_read_scope": "targeted project-specific fields; generic UI strings not re-audited",
+      "final_changed_line_spans_read": [
+        [
+          9,
+          9
+        ],
+        [
+          99,
+          99
+        ],
+        [
+          101,
+          101
+        ],
+        [
+          140,
+          140
+        ],
+        [
+          245,
+          245
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          257,
+          257
+        ],
+        [
+          284,
+          284
+        ],
+        [
+          286,
+          286
+        ],
+        [
+          290,
+          290
+        ],
+        [
+          294,
+          294
+        ],
+        [
+          298,
+          298
+        ],
+        [
+          339,
+          339
+        ],
+        [
+          341,
+          341
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 14
+    },
+    {
+      "path": "src/components/os/EvidenceStory.test.tsx",
+      "initial_sha256": "fccbdc3e3cd6d4b27faa10a8e43604e3facfc479a955dba0269f037b763ec9d2",
+      "initial_lines": 403,
+      "read_spans": [
+        [
+          1,
+          210
+        ],
+        [
+          211,
+          403
+        ]
+      ],
+      "final_sha256": "c3c0904435c1d47e1fc6ca49e8587caf0a4c4c0db80d2f6d3a34bef6894cc4bd",
+      "final_lines": 441,
+      "changed": true,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [
+        [
+          168,
+          170
+        ],
+        [
+          187,
+          203
+        ],
+        [
+          374,
+          391
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 0
+    },
+    {
+      "path": "src/i18n/locales/locales.test.ts",
+      "initial_sha256": "deff5feeeff224f919000cfdce9ad6a89e09146cd35f1b8e9f24c3b655d904ca",
+      "initial_lines": 344,
+      "read_spans": [
+        [
+          1,
+          140
+        ],
+        [
+          141,
+          330
+        ],
+        [
+          331,
+          344
+        ]
+      ],
+      "final_sha256": "332ba6fa251ef53ca7d13b1dd95c6e6469cf279bfcf5ebdba25ee3b7e28dbdab",
+      "final_lines": 416,
+      "changed": true,
+      "initial_read_scope": "full file",
+      "final_changed_line_spans_read": [
+        [
+          132,
+          133
+        ],
+        [
+          138,
+          138
+        ],
+        [
+          194,
+          226
+        ],
+        [
+          230,
+          231
+        ],
+        [
+          269,
+          272
+        ],
+        [
+          280,
+          282
+        ],
+        [
+          287,
+          291
+        ],
+        [
+          313,
+          327
+        ],
+        [
+          363,
+          363
+        ],
+        [
+          372,
+          375
+        ],
+        [
+          377,
+          386
+        ]
+      ],
+      "initial_bytes_exactly_verified": true,
+      "changed_string_values": 0
+    }
+  ],
+  "final_added_lines_review": [
+    {
+      "path": "work/project-audit-2026-11-04/derived-final-lines-01.txt",
+      "lines": 33,
+      "sha256": "157b3929a94e40ef0d1fd78d4cae544b6238cb425a18cb59eaf3e17255f83946",
+      "full_read_spans": [
+        [
+          1,
+          33
+        ]
+      ]
+    },
+    {
+      "path": "work/project-audit-2026-11-04/derived-final-lines-02.txt",
+      "lines": 17,
+      "sha256": "c85966c9c1c5b2158c30d1dd67b8ded4a241356fb1f898263b773141e2e841ea",
+      "full_read_spans": [
+        [
+          1,
+          17
+        ]
+      ]
+    },
+    {
+      "path": "work/project-audit-2026-11-04/derived-final-lines-03.txt",
+      "lines": 28,
+      "sha256": "038de3de9679574269aeec66e0a9866f7f055ba17d0f02c81b81c93b43d5f21f",
+      "full_read_spans": [
+        [
+          1,
+          28
+        ]
+      ]
+    },
+    {
+      "path": "work/project-audit-2026-11-04/derived-final-lines-04.txt",
+      "lines": 34,
+      "sha256": "2549d28851bdefc122a310fad46bd7b24b98024016823f71daaa45c4d116bf83",
+      "full_read_spans": [
+        [
+          1,
+          34
+        ]
+      ]
+    },
+    {
+      "path": "work/project-audit-2026-11-04/derived-final-lines-05.txt",
+      "lines": 68,
+      "sha256": "94d915715b60d4ead1eb25b8e00d5c12a98a0628cd923549a246e2e538e67f24",
+      "full_read_spans": [
+        [
+          1,
+          68
+        ]
+      ]
+    },
+    {
+      "path": "work/project-audit-2026-11-04/derived-final-lines-06.txt",
+      "lines": 63,
+      "sha256": "9b7667727630be4026f0241f600c41a34f48359d38eb0b6452af8770fd4e188f",
+      "full_read_spans": [
+        [
+          1,
+          63
+        ]
+      ]
+    }
+  ],
+  "final_strings": "work/project-audit-2026-11-04/derived-copy-final-string-changes.json",
+  "exact_initial_baseline_proof": "work/project-audit-2026-11-04/derived-copy-baseline-proof.json",
+  "lane_only_diff": {
+    "path": "work/project-audit-2026-11-04/derived-copy.diff",
+    "sha256": "91abc0109f336db9357ac097ba47d179fcfb85729ec7f0ce17c5526dc35e7ad3",
+    "lines": 1055,
+    "review_note": "All current added lines were manually read in six small review artifacts; unchanged context uses the initial read spans. Large truncated diagnostic diff output is not credited as a complete read."
+  },
+  "changes": [
+    "Current Simurgh study archives consistently use SHA-256; earlier Ed25519 diagram/attestation stages remain explicitly frozen. Native Linux x86_64 and Python 3.12 replay requirements are scoped in current evidence notes.",
+    "Formal count is 39 Lean 4 proof/model files; selected mathematical models are distinguished from implementation equivalence and the dated 5,171 root tests.",
+    "Frozen deterministic 949/949 utility is labelled under attack, with 97/97 benign utility; the live 140-attack result carries the 7/10 to 6/10 benign-utility cost.",
+    "Zurvan is public, with Rust MCP reads, Python writes/reference fallback, pending-visual images, a dated 3,334 passed / 1 failed / 8 skipped receipt and open Z1b closure. Generic corpus privacy and generic private-repository UI vocabulary stay valid.",
+    "Aion summaries use 34 answerable questions plus 6 refusal cases, strict citation_support < 0.5, residual answer rows scored 0.75 and 0.50, and one Flash Lite judge. The dossier distinguishes backend chat secrets from optional client-credential native voice.",
+    "Five-locale resume summaries align to canonical NanoMatch 9.29M mixed operations, O(log M) cancellation-tree work, a separate allocator benchmark, SentinelFlow 28.4M parser-only scope, Nexus media-vault/job-tracker/configuration limits, and the Syllabus 17 August 2026 test job: 1,343 tests / 155 files with a separate security failure."
+  ],
+  "validation": [
+    {
+      "command": "npx vitest run src/components/os/EvidenceStory.test.tsx src/components/os/ProofAtlas.test.tsx src/i18n/locales/locales.test.ts",
+      "result": "passed",
+      "test_files": 3,
+      "tests": 95,
+      "duration_seconds": 5.41,
+      "exit_code": 0,
+      "note": "Final run after prose refinements; the same 3 suites and 95 tests also passed before refinements."
+    },
+    {
+      "command": "npx eslint (10 changed copy/test paths)",
+      "result": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "npx --no-install prettier --check (10 changed copy/test paths)",
+      "result": "passed",
+      "exit_code": 0
+    },
+    {
+      "check": "TypeScript AST structure/property-name comparison against exact initial bytes",
+      "files": 11,
+      "result": "passed; only string values differ in copy modules",
+      "evidence": "work/project-audit-2026-11-04/derived-copy-shape-check.json"
+    },
+    {
+      "check": "git diff --check on all 10 changed owned paths",
+      "result": "passed",
+      "exit_code": 0
+    }
+  ],
+  "preserved": [
+    "All13 canonical Project objects and7 English writeups; no edits to data.ts or article overlays",
+    "Four localized project overlays owned by baseline lane",
+    "Aero geometry/CSS, artwork, public PDFs, static routes and dependencies",
+    "Current positive/null study outcomes and original frozen experiment dates"
+  ],
+  "handoff": [
+    "Parent owns full coordinated typecheck/build/browser/export verification after other locale lanes freeze.",
+    "Longer translated text requires final production layout inspection; no browser/reflow or native-speaker certification is claimed by this copy lane.",
+    "Parent was notified of old Zurvan private/218 machine-corpus test expectations outside ownership and served-résumé-PDF freshness scope."
+  ]
+}

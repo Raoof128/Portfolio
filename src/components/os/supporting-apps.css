@@ -15,7 +15,7 @@
   margin-inline: auto;
   overflow-wrap: anywhere;
   padding-block: var(--space-8) var(--space-16);
-  padding-inline: clamp(16px, 4vw, 48px);
+  padding-inline: clamp(16px, 4cqi, 48px);
 }
 .os-support:lang(zh) {
   line-height: 1.8;
@@ -1359,8 +1359,8 @@
   padding-block-start: var(--space-6);
 }
 
-/* Phones: the document flows at the 16px gutter and no column reverses. */
-@media (max-width: 900px) {
+/* Reading width controls these layouts, including narrow desktop windows. */
+@container reading-content (max-width: 900px) {
   .os-about-profile {
     grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
   }
@@ -1369,7 +1369,10 @@
   }
 }
 
-@media (max-width: 700px) {
+@container reading-content (max-width: 700px) {
+  .os-support {
+    padding-inline: 16px;
+  }
   .os-about-profile {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1456,7 +1459,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@container reading-content (max-width: 360px) {
   .os-about-identity {
     gap: 0 var(--space-3);
     grid-template-columns: 90px minmax(0, 1fr);

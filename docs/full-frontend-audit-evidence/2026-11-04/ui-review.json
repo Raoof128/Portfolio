@@ -1,0 +1,996 @@
+{
+  "lane": "ui",
+  "status": "review_complete_waiting_parent_browser",
+  "files": [
+    {
+      "path": "src/components/layout/Footer.test.tsx",
+      "sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+      "bytes": 1751,
+      "lines": 63,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 63
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:dormant",
+      "audit_notes": "Covers legacy footer links/status/copyright; all lines examined.",
+      "initial_lines": 63,
+      "final_lines": 63,
+      "final_sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/layout/Footer.tsx",
+      "sha256": "f4b831e2eec2e775543b56ae913ac9cf4f94b09d866551355237d7f87927aa96",
+      "bytes": 5958,
+      "lines": 170,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "f4b831e2eec2e775543b56ae913ac9cf4f94b09d866551355237d7f87927aa96",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "No production importer; legacy footer routes are locale-aware and external links use rel isolation. Current year/date copy is historic authored metadata; no change.",
+      "initial_lines": 170,
+      "final_lines": 170,
+      "final_sha256": "f4b831e2eec2e775543b56ae913ac9cf4f94b09d866551355237d7f87927aa96",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/layout/LanguageSwitcher.tsx",
+      "sha256": "9996fd1cbf37f063aa3efde4c0e2221b1f7a72afe8d806805696fdf65424bec5",
+      "bytes": 3640,
+      "lines": 93,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "9996fd1cbf37f063aa3efde4c0e2221b1f7a72afe8d806805696fdf65424bec5",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 93
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "Imported only by unmounted Navbar. Corrected fixed disclosure ID, advertised unimplemented menu roles, Escape return focus and focus-out closure; locale routes retained.",
+      "initial_lines": 93,
+      "final_lines": 107,
+      "final_sha256": "afe5d8683a43ac1038e8f54cf9317c45d07b44c70131a2297f02568784cee406",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/layout/Navbar.test.tsx",
+      "sha256": "c3f0692e27d04cf517db6ce9094ec6baa8d87d8ff577d2867c64ba9566b7b19a",
+      "bytes": 2585,
+      "lines": 81,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "c3f0692e27d04cf517db6ce9094ec6baa8d87d8ff577d2867c64ba9566b7b19a",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 81
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:dormant",
+      "audit_notes": "Existing link/toggle tests retained; meaningful duplicate-instance and Escape/focus regressions added.",
+      "initial_lines": 81,
+      "final_lines": 114,
+      "final_sha256": "5d014c9a9fab5f9ae69d7d0e3207b83c9c41b5498c1781729d6a67c5363b8d24",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/layout/Navbar.tsx",
+      "sha256": "78b8d1cee68c7dcfaea60ec15a61a5cea1a297f324d27a7db7c718c93b88d6d3",
+      "bytes": 6073,
+      "lines": 170,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "78b8d1cee68c7dcfaea60ec15a61a5cea1a297f324d27a7db7c718c93b88d6d3",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "No production importer. Repaired unique mobile-disclosure ID and Escape focus restoration. Existing legacy appearance remains dormant.",
+      "initial_lines": 170,
+      "final_lines": 181,
+      "final_sha256": "f31ae7ad2932edcbe6a54a34cbcd40e84cd8b24823d78fee3c4bd1ca03a68217",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/ui/AnimatedSection.tsx",
+      "sha256": "f70caf76d527be06067095c38c0815dd791ba759d009bf7fd1f80ab7ba8cfbf5",
+      "bytes": 477,
+      "lines": 13,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "f70caf76d527be06067095c38c0815dd791ba759d009bf7fd1f80ab7ba8cfbf5",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 13
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "No production importer; simple always-visible wrapper has no hidden-content observer or motion work.",
+      "initial_lines": 13,
+      "final_lines": 13,
+      "final_sha256": "f70caf76d527be06067095c38c0815dd791ba759d009bf7fd1f80ab7ba8cfbf5",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/BlueButterfly.tsx",
+      "sha256": "d854f07bb9603d793d7395962d86a2fd6a2b307658dfff76ec499c3db97ae0dc",
+      "bytes": 8493,
+      "lines": 256,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "d854f07bb9603d793d7395962d86a2fd6a2b307658dfff76ec499c3db97ae0dc",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 256
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 256,
+      "final_lines": 256,
+      "final_sha256": "d854f07bb9603d793d7395962d86a2fd6a2b307658dfff76ec499c3db97ae0dc",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/Card.test.tsx",
+      "sha256": "3aebd1f30e261c104bef9e4d58cc64fe6f6b836b33b9d00a331be0c3bf291c59",
+      "bytes": 1358,
+      "lines": 41,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "3aebd1f30e261c104bef9e4d58cc64fe6f6b836b33b9d00a331be0c3bf291c59",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 41
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:dormant",
+      "audit_notes": "Card render/class/prop behavior fully read.",
+      "initial_lines": 41,
+      "final_lines": 41,
+      "final_sha256": "3aebd1f30e261c104bef9e4d58cc64fe6f6b836b33b9d00a331be0c3bf291c59",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/Card.tsx",
+      "sha256": "6d0c32bb9d4d7cc3eeac362fe7b31105812269cc85a5209eae6823b1cb33e586",
+      "bytes": 515,
+      "lines": 27,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "6d0c32bb9d4d7cc3eeac362fe7b31105812269cc85a5209eae6823b1cb33e586",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 27
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "No production importer; forwards DOM props, native div semantics, token CSS and reduced-motion-safe colour transition.",
+      "initial_lines": 27,
+      "final_lines": 27,
+      "final_sha256": "6d0c32bb9d4d7cc3eeac362fe7b31105812269cc85a5209eae6823b1cb33e586",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/CelestialCatcher.tsx",
+      "sha256": "2d054fa4b5c7193a7d85cdcfa1eb633a5e3adf763c88cdfe8b8e0ac920aa9f55",
+      "bytes": 8053,
+      "lines": 258,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "2d054fa4b5c7193a7d85cdcfa1eb633a5e3adf763c88cdfe8b8e0ac920aa9f55",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 258
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 258,
+      "final_lines": 258,
+      "final_sha256": "2d054fa4b5c7193a7d85cdcfa1eb633a5e3adf763c88cdfe8b8e0ac920aa9f55",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/ConstellationOwl.tsx",
+      "sha256": "d9ac37f43d807842e74b034e657ea86314bd599865c856606c5233a30eb0ef1f",
+      "bytes": 11168,
+      "lines": 338,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "d9ac37f43d807842e74b034e657ea86314bd599865c856606c5233a30eb0ef1f",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 338
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 338,
+      "final_lines": 338,
+      "final_sha256": "d9ac37f43d807842e74b034e657ea86314bd599865c856606c5233a30eb0ef1f",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/CosmicLoomCanvas.tsx",
+      "sha256": "b47e04b0e72599d767690c70c6d42b3f951b82f2673a867b9760d717f7b144cb",
+      "bytes": 10087,
+      "lines": 323,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "b47e04b0e72599d767690c70c6d42b3f951b82f2673a867b9760d717f7b144cb",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 323
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded lazily through project-artwork registry. Entire drawing/math/lifecycle/markup source read; bounded DPR, still initial render, active-state playback, visibility/reduced-motion and disposal shared through createCanvasPlayback. Original artwork unchanged; no reproduced defect.",
+      "initial_lines": 323,
+      "final_lines": 323,
+      "final_sha256": "b47e04b0e72599d767690c70c6d42b3f951b82f2673a867b9760d717f7b144cb",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/CosmicOracleEye.tsx",
+      "sha256": "de6f54e58e0451a362568f8b643e311b17145b7e435014212f0a4dcb6b6ae107",
+      "bytes": 6252,
+      "lines": 208,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "de6f54e58e0451a362568f8b643e311b17145b7e435014212f0a4dcb6b6ae107",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 208
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 208,
+      "final_lines": 208,
+      "final_sha256": "de6f54e58e0451a362568f8b643e311b17145b7e435014212f0a4dcb6b6ae107",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/DandelionSpinner.tsx",
+      "sha256": "e10a38efb15744ca42c15e3609c04b8ada13dc0096d45d831826b816ad4ab706",
+      "bytes": 4234,
+      "lines": 121,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "e10a38efb15744ca42c15e3609c04b8ada13dc0096d45d831826b816ad4ab706",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 121
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 121,
+      "final_lines": 121,
+      "final_sha256": "e10a38efb15744ca42c15e3609c04b8ada13dc0096d45d831826b816ad4ab706",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/DnaHelixCanvas.tsx",
+      "sha256": "8b3b12c42a35ac94e538456562b68631663ee38a6d94095060608c4b7bcd4bad",
+      "bytes": 3809,
+      "lines": 132,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "8b3b12c42a35ac94e538456562b68631663ee38a6d94095060608c4b7bcd4bad",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 132
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded lazily through project-artwork registry. Entire drawing/math/lifecycle/markup source read; bounded DPR, still initial render, active-state playback, visibility/reduced-motion and disposal shared through createCanvasPlayback. Original artwork unchanged; no reproduced defect.",
+      "initial_lines": 132,
+      "final_lines": 132,
+      "final_sha256": "8b3b12c42a35ac94e538456562b68631663ee38a6d94095060608c4b7bcd4bad",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/FireShieldCanvas.tsx",
+      "sha256": "3fe5ac53c6ad192dd65ae817f278d4a0a13780b65d34fa00d5b6d7dccd8437b6",
+      "bytes": 8246,
+      "lines": 296,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "3fe5ac53c6ad192dd65ae817f278d4a0a13780b65d34fa00d5b6d7dccd8437b6",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 296
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded lazily through project-artwork registry. Entire drawing/math/lifecycle/markup source read; bounded DPR, still initial render, active-state playback, visibility/reduced-motion and disposal shared through createCanvasPlayback. Original artwork unchanged; no reproduced defect.",
+      "initial_lines": 296,
+      "final_lines": 296,
+      "final_sha256": "3fe5ac53c6ad192dd65ae817f278d4a0a13780b65d34fa00d5b6d7dccd8437b6",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/GlowCard.tsx",
+      "sha256": "f9cd73d6f2edb62b80a4825c3ce97a543b43476e47fedecc716ab9f969cd2875",
+      "bytes": 580,
+      "lines": 22,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "f9cd73d6f2edb62b80a4825c3ce97a543b43476e47fedecc716ab9f969cd2875",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 22
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "No production importer; retired glow prop does not reach DOM; opaque token card.",
+      "initial_lines": 22,
+      "final_lines": 22,
+      "final_sha256": "f9cd73d6f2edb62b80a4825c3ce97a543b43476e47fedecc716ab9f969cd2875",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/HUDFrame.tsx",
+      "sha256": "6d97d63bf3e53b1ea6ee1b40c98211f4bf674fba36fe7869a4608033e9099dfa",
+      "bytes": 872,
+      "lines": 32,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "6d97d63bf3e53b1ea6ee1b40c98211f4bf674fba36fe7869a4608033e9099dfa",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 32
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant dependency",
+      "audit_notes": "Only imported by dormant ProjectCard; retired corners prop intentionally removed before DOM spread.",
+      "initial_lines": 32,
+      "final_lines": 32,
+      "final_sha256": "6d97d63bf3e53b1ea6ee1b40c98211f4bf674fba36fe7869a4608033e9099dfa",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/KineticAstrolabe.tsx",
+      "sha256": "617aaec5d3bf148ad78f0132b4ffb46bda56ad36b72941876d88e7349ce1872f",
+      "bytes": 5753,
+      "lines": 182,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "617aaec5d3bf148ad78f0132b4ffb46bda56ad36b72941876d88e7349ce1872f",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 182
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 182,
+      "final_lines": 182,
+      "final_sha256": "617aaec5d3bf148ad78f0132b4ffb46bda56ad36b72941876d88e7349ce1872f",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/KineticLotus.tsx",
+      "sha256": "13c8819b5a32eee191a33ed34c59dee87d1be8d99808c74514affdfc6ccbde41",
+      "bytes": 4016,
+      "lines": 132,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "13c8819b5a32eee191a33ed34c59dee87d1be8d99808c74514affdfc6ccbde41",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 132
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 132,
+      "final_lines": 132,
+      "final_sha256": "13c8819b5a32eee191a33ed34c59dee87d1be8d99808c74514affdfc6ccbde41",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/KoiPond.tsx",
+      "sha256": "89a20effaa8f02fc79a7866e782375b6f4d236b19fb57c29c6ba3d8088bb41d7",
+      "bytes": 13558,
+      "lines": 337,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "89a20effaa8f02fc79a7866e782375b6f4d236b19fb57c29c6ba3d8088bb41d7",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 337
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 337,
+      "final_lines": 337,
+      "final_sha256": "89a20effaa8f02fc79a7866e782375b6f4d236b19fb57c29c6ba3d8088bb41d7",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/MotionPreferences.tsx",
+      "sha256": "dcbf265bb73a709fa6f3998f3a511341d19b59dc2066511953ef8db88ce111ff",
+      "bytes": 503,
+      "lines": 13,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "dcbf265bb73a709fa6f3998f3a511341d19b59dc2066511953ef8db88ce111ff",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 13
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted",
+      "audit_notes": "Locale root layout wraps app with MotionConfig reducedMotion=user; no focus/scroll mutation.",
+      "initial_lines": 13,
+      "final_lines": 13,
+      "final_sha256": "dcbf265bb73a709fa6f3998f3a511341d19b59dc2066511953ef8db88ce111ff",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/NeonButton.test.tsx",
+      "sha256": "eec3bb12676ad7fcf1c5bd4a0b7ba5b1b296f2a55b1323733eed5e886702eebe",
+      "bytes": 3058,
+      "lines": 105,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "eec3bb12676ad7fcf1c5bd4a0b7ba5b1b296f2a55b1323733eed5e886702eebe",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 105
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:dormant",
+      "audit_notes": "Link/download/attribute forwarding tests fully read.",
+      "initial_lines": 105,
+      "final_lines": 105,
+      "final_sha256": "eec3bb12676ad7fcf1c5bd4a0b7ba5b1b296f2a55b1323733eed5e886702eebe",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/NeonButton.tsx",
+      "sha256": "8a9a5d2e0b414548b51da3967118b17172319f2bdaa577f2679e68b2f01e46dc",
+      "bytes": 2743,
+      "lines": 107,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "8a9a5d2e0b414548b51da3967118b17172319f2bdaa577f2679e68b2f01e46dc",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 107
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant dependency",
+      "audit_notes": "Only imported by dormant ProjectCard; internal/external/download paths and anchor/button prop filtering examined; no reproduced current route defect.",
+      "initial_lines": 107,
+      "final_lines": 107,
+      "final_sha256": "8a9a5d2e0b414548b51da3967118b17172319f2bdaa577f2679e68b2f01e46dc",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/ProjectCard.test.tsx",
+      "sha256": "4e8db40143fe3fc446ebf0d0842b42dbf2971a03d8f74f19022e849ca02020de",
+      "bytes": 4547,
+      "lines": 141,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "4e8db40143fe3fc446ebf0d0842b42dbf2971a03d8f74f19022e849ca02020de",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 141
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:dormant",
+      "audit_notes": "Original rendering/tab/link cases retained; duplicate-title relationship and roving-keyboard regressions added.",
+      "initial_lines": 141,
+      "final_lines": 177,
+      "final_sha256": "1fd0c686c7dc67c90cde008dadba863d5946e7a56959dfa08987ebc16dfc3e83",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/ui/ProjectCard.tsx",
+      "sha256": "558121eadf4f6aee325384eaad3d08625f116e023de175e2429e60d3a8aff804",
+      "bytes": 6523,
+      "lines": 197,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "558121eadf4f6aee325384eaad3d08625f116e023de175e2429e60d3a8aff804",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 197
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "dormant",
+      "audit_notes": "No production importer. Repaired title-derived ID collisions and incomplete ARIA-tab keyboard behavior with unique instance IDs, one tab stop, arrows/Home/End and focusable panel.",
+      "initial_lines": 197,
+      "final_lines": 223,
+      "final_sha256": "2490bbff4dabbaa20e5353b32a993ec23a7d8e2003f6c84fbecc9205412c267f",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/ui/RoyalAbyssCanvas.tsx",
+      "sha256": "e7c58684305b08fa555a6bd9479fdadf98be4e3dd59a9977de1916acc992848d",
+      "bytes": 11313,
+      "lines": 402,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "e7c58684305b08fa555a6bd9479fdadf98be4e3dd59a9977de1916acc992848d",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 402
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded lazily through project-artwork registry. Entire drawing/math/lifecycle/markup source read; bounded DPR, still initial render, active-state playback, visibility/reduced-motion and disposal shared through createCanvasPlayback. Original artwork unchanged; no reproduced defect.",
+      "initial_lines": 402,
+      "final_lines": 402,
+      "final_sha256": "e7c58684305b08fa555a6bd9479fdadf98be4e3dd59a9977de1916acc992848d",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/SecureContactForm.test.tsx",
+      "sha256": "ce3ec3410c31e3f4a5266e09497191a9e30f3e5571e0ed762be5a6a8e66abba1",
+      "bytes": 12772,
+      "lines": 407,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "ce3ec3410c31e3f4a5266e09497191a9e30f3e5571e0ed762be5a6a8e66abba1",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 407
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:mounted",
+      "audit_notes": "Original lifecycle, translation, validation, cancellation and clipboard regressions retained; five-language SSR/native fallback plus pre-hydration clipboard cases added.",
+      "initial_lines": 407,
+      "final_lines": 568,
+      "final_sha256": "14db8dba1243a411dee4fb4c30772d68d3fa84ef14a1ee6205870c6b230e72b8",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/ui/SecureContactForm.tsx",
+      "sha256": "1447743d3a06df69ed36ef5809b7367d63707003d864e727e88511a699a15bb3",
+      "bytes": 21028,
+      "lines": 565,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "1447743d3a06df69ed36ef5809b7367d63707003d864e727e88511a699a15bb3",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 565
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted",
+      "audit_notes": "Mounted by ContactClient. Verified bounded inputs, custom errors/focus, mailto encoding, timer cancellation and truthful handoff. Repaired no-JS default GET by native mailto POST/textplain, server native validation and five-language noscript/direct email. Clipboard action disabled until hydration. Additional native baseline defect fixed: on viewport shrink a focused textarea remained under dock. Scoped window/visualViewport resize reveal is coalesced in rAF, only scrolls focused out-of-bounds field, and cleans up; no focus stealing.",
+      "initial_lines": 565,
+      "final_lines": 668,
+      "final_sha256": "96a629b4b7aca50ecba17fd8bd7a79b4fc6dfdbf0436277bf277941d188979d7",
+      "changed": true,
+      "review_method": "Full initial file read; all subsequent owned edits and final patch reviewed"
+    },
+    {
+      "path": "src/components/ui/SimpleMarkdown.test.tsx",
+      "sha256": "6433a9ccb7ead9c65fc07acdb2f9dd49c0dc1548e7926c7e99d5fdd2ae1ef67f",
+      "bytes": 6410,
+      "lines": 168,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "6433a9ccb7ead9c65fc07acdb2f9dd49c0dc1548e7926c7e99d5fdd2ae1ef67f",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 168
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:mounted",
+      "audit_notes": "Scheme boundary, emphasis, ordered/unordered semantics, localized direction and distinct named overflow-region tests all read.",
+      "initial_lines": 168,
+      "final_lines": 168,
+      "final_sha256": "6433a9ccb7ead9c65fc07acdb2f9dd49c0dc1548e7926c7e99d5fdd2ae1ef67f",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/SimpleMarkdown.tsx",
+      "sha256": "c65b1d27909ef1120aa423bda5c68a57cca47eb144629d5b1a19e91fff2285de",
+      "bytes": 9150,
+      "lines": 325,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "c65b1d27909ef1120aa423bda5c68a57cca47eb144629d5b1a19e91fff2285de",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 325
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted",
+      "audit_notes": "Mounted by writeup reader. All parser branches read: approved scheme boundary/no unsafe HTML, local overflow regions, semantic lists/tables, RTL prose and LTR code, external new-tab labels. Deliberately limited authored markdown dialect; no reproduced current defect.",
+      "initial_lines": 325,
+      "final_lines": 325,
+      "final_sha256": "c65b1d27909ef1120aa423bda5c68a57cca47eb144629d5b1a19e91fff2285de",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/WheelsOfEzekiel.tsx",
+      "sha256": "fcc07541a3d40ad49cf4f3716b845585f798573d03472a4aad61b4f55eaa33cb",
+      "bytes": 7634,
+      "lines": 234,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "fcc07541a3d40ad49cf4f3716b845585f798573d03472a4aad61b4f55eaa33cb",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 234
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted lazy artwork",
+      "audit_notes": "Loaded through project-artwork registry by thumbnails/dossiers. Entire SVG/path/style source read; unique useId references, decorative aria-hidden semantics, inactive/offscreen pause and explicit prefers-reduced-motion still rules verified. Original artwork unchanged.",
+      "initial_lines": 234,
+      "final_lines": 234,
+      "final_sha256": "fcc07541a3d40ad49cf4f3716b845585f798573d03472a4aad61b4f55eaa33cb",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/artwork-pause.ts",
+      "sha256": "8333d19495a4d89b6dcc01d225bae0e61213990e5a20fac5f338470925f12d1c",
+      "bytes": 1232,
+      "lines": 40,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "8333d19495a4d89b6dcc01d225bae0e61213990e5a20fac5f338470925f12d1c",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 40
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted helper",
+      "audit_notes": "CSS/SVG artwork observer lifecycle disconnects on cleanup and marks inactive/offscreen art paused. Individual artworks supply explicit reduced-motion still rules.",
+      "initial_lines": 40,
+      "final_lines": 40,
+      "final_sha256": "8333d19495a4d89b6dcc01d225bae0e61213990e5a20fac5f338470925f12d1c",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/canvas-playback.test.tsx",
+      "sha256": "2e0cb12196326160cfc78bc8db65740fb087c8973b922946487bc05ef5685968",
+      "bytes": 8719,
+      "lines": 266,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "2e0cb12196326160cfc78bc8db65740fb087c8973b922946487bc05ef5685968",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 266
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:mounted",
+      "audit_notes": "Visibility, hidden-document, reduced-motion changes, high-refresh pace, resize/restoration/disposal and four original still-art renders fully read.",
+      "initial_lines": 266,
+      "final_lines": 266,
+      "final_sha256": "2e0cb12196326160cfc78bc8db65740fb087c8973b922946487bc05ef5685968",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/canvas-playback.ts",
+      "sha256": "52247b3cb66c4bfdef9e14a32cb823cec4666139832d308b0a5dbca52b068529",
+      "bytes": 3011,
+      "lines": 100,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "52247b3cb66c4bfdef9e14a32cb823cec4666139832d308b0a5dbca52b068529",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 100
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted helper",
+      "audit_notes": "All lifecycle paths read: still draw, frame step bound, offscreen/document-hidden/reduced-motion stop, resize/context restoration, complete disposal. No reproduced defect.",
+      "initial_lines": 100,
+      "final_lines": 100,
+      "final_sha256": "52247b3cb66c4bfdef9e14a32cb823cec4666139832d308b0a5dbca52b068529",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    },
+    {
+      "path": "src/components/ui/ui-surfaces.css",
+      "sha256": "e60139a0e5b015b2d586f719b51036579c586eed1d61015df056ead50fc78812",
+      "bytes": 4352,
+      "lines": 153,
+      "binary": false,
+      "lane": "ui",
+      "initial_sha256": "e60139a0e5b015b2d586f719b51036579c586eed1d61015df056ead50fc78812",
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 153
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "mounted",
+      "audit_notes": "Shared by artwork and markdown. Token surfaces, reading typography, code/table boundaries, reduced-motion transitions and artwork pause selector read completely.",
+      "initial_lines": 153,
+      "final_lines": 153,
+      "final_sha256": "e60139a0e5b015b2d586f719b51036579c586eed1d61015df056ead50fc78812",
+      "changed": false,
+      "review_method": "Full file read, final bytes match initial review"
+    }
+  ],
+  "findings": [
+    {
+      "id": "UI-01",
+      "priority": "P2",
+      "mount": "active contact",
+      "path": "src/components/ui/SecureContactForm.tsx",
+      "initial_line": 410,
+      "issue": "With JavaScript disabled the form has no action/method and disables native validation; ordinary submit performs default GET to current contact URL with entered fields. Script-only copy button also appears enabled without a handler.",
+      "evidence": "Baseline out/en/contact.html form opening tag: <form noValidate=\"\" class=\"os-secure-form\">. Full component confirms client-only onSubmit. Existing server HTML has no native mail handler target.",
+      "fix": "Native mailto action with localized subject, POST/textplain, native validation until hydration, localized noscript/direct email; disable clipboard action until hydration. Existing CSP already permits mailto.",
+      "status": "fixed; five-language SSR regressions and independent compiled no-JS native mailto attempt verified. Headless handler absence leads to internal browser error; no HTTP navigation containing draft observed."
+    },
+    {
+      "id": "UI-02",
+      "priority": "P3",
+      "mount": "dormant Navbar dependency",
+      "path": "src/components/layout/LanguageSwitcher.tsx",
+      "initial_line": 43,
+      "issue": "Every instance targets language-menu; desktop/mobile instances can collide when both disclosures have been opened. role=menu/menuitem promises navigation keys that were not implemented; no Escape/focus-out closing.",
+      "evidence": "Initial43/54/55/66 fixed ID and menu roles; new regression opens two instances and checks unique targets, ordinary links, Escape and focus-out.",
+      "fix": "Unique useId disclosure target and ordinary navigation/link semantics, explicit Escape restoration and focus-out dismissal.",
+      "status": "fixed; focused tests passed; no live-site defect claimed"
+    },
+    {
+      "id": "UI-03",
+      "priority": "P3",
+      "mount": "dormant Navbar",
+      "path": "src/components/layout/Navbar.tsx",
+      "initial_line": 120,
+      "issue": "Static mobile-menu relationship collides across reused nav instances and mobile popup has no Escape path back to its toggle.",
+      "evidence": "Initial120/134 static aria-controls/id, no key handler in full file. New tests reuse two instances and press Escape from a mobile link.",
+      "fix": "Unique mobileMenuId, Escape closes disclosure and restores toggle focus.",
+      "status": "fixed; focused tests passed; no live-site defect claimed"
+    },
+    {
+      "id": "UI-04",
+      "priority": "P3",
+      "mount": "dormant ProjectCard",
+      "path": "src/components/ui/ProjectCard.tsx",
+      "initial_line": 45,
+      "issue": "Title-derived IDs collide for repeated or similarly sanitized titles; ARIA tabs have no roving tab index or arrow/Home/End activation and panel is not keyboard-focusable.",
+      "evidence": "Initial45/47 IDs and93/116 tab attributes; no keyboard handlers in full file. New tests repeat a title and exercise automatic activation/focus navigation.",
+      "fix": "Unique useId suffix, roving tab stop and arrow/Home/End focus+activation, focusable tabpanel.",
+      "status": "fixed; focused tests passed; no live-site defect claimed"
+    },
+    {
+      "id": "UI-05",
+      "priority": "P2",
+      "mount": "active Contact",
+      "path": "src/components/ui/SecureContactForm.tsx",
+      "issue": "Keyboard-focused message remains at top691.7/bottom789.7 after390x844→390x360 while dock starts308; field no longer visible.",
+      "evidence": "Parent baseline_review nativeKeyboardTab+resize: work/full-frontend-audit/pages-contact-shrink-baseline.json and correspondingPNG; no injected scroll.",
+      "fix": "Scoped resize/visualViewport listener, rAF coalescing, focusedfield bounds vsdock/visualviewport, scroll reveal/correction, cleanup without focus mutation.",
+      "status": "unit30/30passed; native finalcandidate verification owned by parent"
+    }
+  ],
+  "new_files": [
+    {
+      "path": "src/components/layout/LanguageSwitcher.test.tsx",
+      "initial_sha256": null,
+      "final_sha256": "6f2996ee30b527109c09361ba80517e8baa4ec41ef8a310f477bd2977bd368d9",
+      "final_lines": 58,
+      "read_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 58
+        }
+      ],
+      "reader": "/root/opening_tests",
+      "mounted_classification": "test:dormant",
+      "audit_notes": "New disclosure semantics, locale destination, Escape/focus-out and simultaneous-instance ID regression; whole final file read."
+    }
+  ],
+  "coverage": {
+    "assigned_files": 36,
+    "assigned_lines": 6518,
+    "fully_read_files": 36,
+    "unread_spans": [],
+    "new_files": 1,
+    "delegate_reads_counted": 0
+  },
+  "verification": [
+    {
+      "command": "npx vitest run src/components/layout/LanguageSwitcher.test.tsx src/components/layout/Navbar.test.tsx src/components/ui/ProjectCard.test.tsx src/components/ui/SecureContactForm.test.tsx src/components/ui/canvas-playback.test.tsx src/components/ui/SimpleMarkdown.test.tsx src/components/ui/NeonButton.test.tsx src/components/ui/Card.test.tsx src/components/layout/Footer.test.tsx",
+      "log": "work/full-frontend-audit/ui-tests-final.log",
+      "result": "pass: 9 test files,103 tests,12.68s; no warnings/errors in final run"
+    },
+    {
+      "command": "git diff --check -- src/components/layout src/components/ui",
+      "result": "pass"
+    },
+    {
+      "command": "npx prettier --write [eight changed/new owned TSX files]",
+      "result": "pass; final formatting checked while editing"
+    },
+    {
+      "command": "npx vitest run src/components/ui/SecureContactForm.test.tsx",
+      "result": "30passed/1file;1.98s including4viewport behavior/cleanup regressions",
+      "log": "work/full-frontend-audit/ui-viewport-tests.log"
+    },
+    {
+      "command": "npx eslint src/components/ui/SecureContactForm.tsx src/components/ui/SecureContactForm.test.tsx [tooling paths]",
+      "result": "exit0; no errors/warnings",
+      "log": "work/full-frontend-audit/ui-tooling-lint.log"
+    },
+    {
+      "command": "node work/full-frontend-audit/ui-nojs-mailto-probe.mjs",
+      "result": "Independent headless Chromium, scripting disabled, final compiled build7ZXmp772g5T8B_eREKvhm: native POST produced CDP mailto formSubmissionPost with correctly encoded body; no HTTP navigation request. Default target reached browser internal unsupported-handler page. Diagnostic _blank DOM mutation retained original draft and opened separate internal error tab. Product bytes unchanged.",
+      "artifact": "work/full-frontend-audit/ui-nojs-mailto-probe.json"
+    }
+  ],
+  "limitations": [
+    "No full build or broad browser executed in UI lane; root owns final exact-export verification.",
+    "Native email application launch and delivery cannot be verified in headless environment.",
+    "Dormant legacy components tested independently, not represented as mounted route defects.",
+    "Original project artwork unchanged; no new universal art/performance/accessibility claim.",
+    "No package, deployment, source assets or root logs edited.",
+    "A native external mailto submission can leave the current tab on an internal error page when no mail handler works. Same-URL/draft-retention after native submit is not a portable assertion; mailto-attempt proof and absence of HTTP draft navigation are the valid headless checks."
+  ],
+  "diagnostic_attempts": [
+    {
+      "log": "work/full-frontend-audit/ui-tests.log",
+      "result": "50 passed/1 failed: new focus-out test called native focus outside React act, fixed test harness wrapping; no product defect suppressed."
+    }
+  ]
+}

@@ -1,0 +1,3351 @@
+[
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "scrollWidth": 320
+    },
+    "dock": {
+      "x": 8,
+      "y": 448.40625,
+      "left": 8,
+      "right": 312,
+      "top": 448.40625,
+      "bottom": 560.40625,
+      "width": 304,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 453.40625,
+      "left": 13,
+      "right": 307,
+      "top": 453.40625,
+      "bottom": 511.40625,
+      "width": 294,
+      "height": 58,
+      "client": 294,
+      "scroll": 294
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 13,
+        "y": 453.40625,
+        "left": 13,
+        "right": 68.59375,
+        "top": 453.40625,
+        "bottom": 511.40625,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 16.3125,
+          "y": 484.3125,
+          "left": 16.3125,
+          "right": 65.265625,
+          "top": 484.3125,
+          "bottom": 499.5,
+          "width": 48.953125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 72.59375,
+        "y": 453.40625,
+        "left": 72.59375,
+        "right": 128.203125,
+        "top": 453.40625,
+        "bottom": 511.40625,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 75.59375,
+          "y": 477.71875,
+          "left": 75.59375,
+          "right": 125.203125,
+          "top": 477.71875,
+          "bottom": 506.09375,
+          "width": 49.609375,
+          "height": 28.375
+        }
+      },
+      {
+        "label": "About",
+        "x": 132.203125,
+        "y": 453.40625,
+        "left": 132.203125,
+        "right": 187.796875,
+        "top": 453.40625,
+        "bottom": 511.40625,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 140.96875,
+          "y": 484.3125,
+          "left": 140.96875,
+          "right": 179.03125,
+          "top": 484.3125,
+          "bottom": 499.5,
+          "width": 38.0625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 191.796875,
+        "y": 453.40625,
+        "left": 191.796875,
+        "right": 247.40625,
+        "top": 453.40625,
+        "bottom": 511.40625,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 194.90625,
+          "y": 484.3125,
+          "left": 194.90625,
+          "right": 244.296875,
+          "top": 484.3125,
+          "bottom": 499.5,
+          "width": 49.390625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 251.40625,
+        "y": 453.40625,
+        "left": 251.40625,
+        "right": 307,
+        "top": 453.40625,
+        "bottom": 511.40625,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 255.484375,
+          "y": 484.3125,
+          "left": 255.484375,
+          "right": 302.90625,
+          "top": 484.3125,
+          "bottom": 499.5,
+          "width": 47.421875,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 64,
+      "y": 503.40625,
+      "left": 64,
+      "right": 312,
+      "top": 503.40625,
+      "bottom": 547.40625,
+      "width": 248,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 122,
+        "y": 503.40625,
+        "left": 122,
+        "right": 166,
+        "top": 503.40625,
+        "bottom": 547.40625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 168,
+        "y": 503.40625,
+        "left": 168,
+        "right": 212,
+        "top": 503.40625,
+        "bottom": 547.40625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Select Language: English",
+        "x": 214,
+        "y": 503.40625,
+        "left": 214,
+        "right": 258,
+        "top": 503.40625,
+        "bottom": 547.40625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 264,
+        "y": 503.40625,
+        "left": 264,
+        "right": 308,
+        "top": 503.40625,
+        "bottom": 547.40625,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "en",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390
+    },
+    "dock": {
+      "x": 8,
+      "y": 724,
+      "left": 8,
+      "right": 382,
+      "top": 724,
+      "bottom": 836,
+      "width": 374,
+      "height": 112,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 13,
+      "y": 729,
+      "left": 13,
+      "right": 377,
+      "top": 729,
+      "bottom": 787,
+      "width": 364,
+      "height": 58,
+      "client": 364,
+      "scroll": 364
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 13,
+        "y": 729,
+        "left": 13,
+        "right": 82.59375,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.59375,
+        "height": 58,
+        "text": {
+          "x": 23.3125,
+          "y": 759.90625,
+          "left": 23.3125,
+          "right": 72.265625,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 48.953125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 86.59375,
+        "y": 729,
+        "left": 86.59375,
+        "right": 156.203125,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.609375,
+        "height": 58,
+        "text": {
+          "x": 92.09375,
+          "y": 759.90625,
+          "left": 92.09375,
+          "right": 150.703125,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 58.609375,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "About",
+        "x": 160.203125,
+        "y": 729,
+        "left": 160.203125,
+        "right": 229.796875,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.59375,
+        "height": 58,
+        "text": {
+          "x": 175.96875,
+          "y": 759.90625,
+          "left": 175.96875,
+          "right": 214.03125,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 38.0625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 233.796875,
+        "y": 729,
+        "left": 233.796875,
+        "right": 303.40625,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.609375,
+        "height": 58,
+        "text": {
+          "x": 243.90625,
+          "y": 759.90625,
+          "left": 243.90625,
+          "right": 293.296875,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 49.390625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 307.40625,
+        "y": 729,
+        "left": 307.40625,
+        "right": 377,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.59375,
+        "height": 58,
+        "text": {
+          "x": 318.484375,
+          "y": 759.90625,
+          "left": 318.484375,
+          "right": 365.90625,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 47.421875,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 64,
+      "y": 787,
+      "left": 64,
+      "right": 382,
+      "top": 787,
+      "bottom": 831,
+      "width": 318,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 192,
+        "y": 787,
+        "left": 192,
+        "right": 236,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 238,
+        "y": 787,
+        "left": 238,
+        "right": 282,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Select Language: English",
+        "x": 284,
+        "y": 787,
+        "left": 284,
+        "right": 328,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 334,
+        "y": 787,
+        "left": 334,
+        "right": 378,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "en",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 640,
+      "height": 360,
+      "scrollWidth": 640
+    },
+    "dock": {
+      "x": 8,
+      "y": 239.90625,
+      "left": 8,
+      "right": 632,
+      "top": 239.90625,
+      "bottom": 351.90625,
+      "width": 624,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 244.90625,
+      "left": 13,
+      "right": 627,
+      "top": 244.90625,
+      "bottom": 302.90625,
+      "width": 614,
+      "height": 58,
+      "client": 614,
+      "scroll": 614
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 13,
+        "y": 244.90625,
+        "left": 13,
+        "right": 132.59375,
+        "top": 244.90625,
+        "bottom": 302.90625,
+        "width": 119.59375,
+        "height": 58,
+        "text": {
+          "x": 48.3125,
+          "y": 275.8125,
+          "left": 48.3125,
+          "right": 97.265625,
+          "top": 275.8125,
+          "bottom": 291,
+          "width": 48.953125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 136.59375,
+        "y": 244.90625,
+        "left": 136.59375,
+        "right": 256.203125,
+        "top": 244.90625,
+        "bottom": 302.90625,
+        "width": 119.609375,
+        "height": 58,
+        "text": {
+          "x": 167.09375,
+          "y": 275.8125,
+          "left": 167.09375,
+          "right": 225.703125,
+          "top": 275.8125,
+          "bottom": 291,
+          "width": 58.609375,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "About",
+        "x": 260.203125,
+        "y": 244.90625,
+        "left": 260.203125,
+        "right": 379.796875,
+        "top": 244.90625,
+        "bottom": 302.90625,
+        "width": 119.59375,
+        "height": 58,
+        "text": {
+          "x": 300.96875,
+          "y": 275.8125,
+          "left": 300.96875,
+          "right": 339.03125,
+          "top": 275.8125,
+          "bottom": 291,
+          "width": 38.0625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 383.796875,
+        "y": 244.90625,
+        "left": 383.796875,
+        "right": 503.40625,
+        "top": 244.90625,
+        "bottom": 302.90625,
+        "width": 119.609375,
+        "height": 58,
+        "text": {
+          "x": 418.90625,
+          "y": 275.8125,
+          "left": 418.90625,
+          "right": 468.296875,
+          "top": 275.8125,
+          "bottom": 291,
+          "width": 49.390625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 507.40625,
+        "y": 244.90625,
+        "left": 507.40625,
+        "right": 627,
+        "top": 244.90625,
+        "bottom": 302.90625,
+        "width": 119.59375,
+        "height": 58,
+        "text": {
+          "x": 543.484375,
+          "y": 275.8125,
+          "left": 543.484375,
+          "right": 590.90625,
+          "top": 275.8125,
+          "bottom": 291,
+          "width": 47.421875,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 64,
+      "y": 294.90625,
+      "left": 64,
+      "right": 632,
+      "top": 294.90625,
+      "bottom": 338.90625,
+      "width": 568,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 398.203125,
+        "y": 294.90625,
+        "left": 398.203125,
+        "right": 442.203125,
+        "top": 294.90625,
+        "bottom": 338.90625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 444.203125,
+        "y": 294.90625,
+        "left": 444.203125,
+        "right": 488.203125,
+        "top": 294.90625,
+        "bottom": 338.90625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Select Language: English",
+        "x": 490.203125,
+        "y": 294.90625,
+        "left": 490.203125,
+        "right": 534.203125,
+        "top": 294.90625,
+        "bottom": 338.90625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 584,
+        "y": 294.90625,
+        "left": 584,
+        "right": 628,
+        "top": 294.90625,
+        "bottom": 338.90625,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "en",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768
+    },
+    "dock": {
+      "x": 8,
+      "y": 904,
+      "left": 8,
+      "right": 760,
+      "top": 904,
+      "bottom": 1016,
+      "width": 752,
+      "height": 112,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 13,
+      "y": 909,
+      "left": 13,
+      "right": 755,
+      "top": 909,
+      "bottom": 967,
+      "width": 742,
+      "height": 58,
+      "client": 742,
+      "scroll": 742
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 13,
+        "y": 909,
+        "left": 13,
+        "right": 158.1875,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.1875,
+        "height": 58,
+        "text": {
+          "x": 61.109375,
+          "y": 939.90625,
+          "left": 61.109375,
+          "right": 110.0625,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 48.953125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 162.1875,
+        "y": 909,
+        "left": 162.1875,
+        "right": 307.390625,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 205.484375,
+          "y": 939.90625,
+          "left": 205.484375,
+          "right": 264.09375,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 58.609375,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "About",
+        "x": 311.390625,
+        "y": 909,
+        "left": 311.390625,
+        "right": 456.59375,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 364.953125,
+          "y": 939.90625,
+          "left": 364.953125,
+          "right": 403.015625,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 38.0625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 460.59375,
+        "y": 909,
+        "left": 460.59375,
+        "right": 605.796875,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 508.5,
+          "y": 939.90625,
+          "left": 508.5,
+          "right": 557.890625,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 49.390625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 609.796875,
+        "y": 909,
+        "left": 609.796875,
+        "right": 755,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 658.6875,
+          "y": 939.90625,
+          "left": 658.6875,
+          "right": 706.109375,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 47.421875,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 64,
+      "y": 967,
+      "left": 64,
+      "right": 760,
+      "top": 967,
+      "bottom": 1011,
+      "width": 696,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 482.234375,
+        "y": 967,
+        "left": 482.234375,
+        "right": 526.234375,
+        "top": 967,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 528.234375,
+        "y": 967,
+        "left": 528.234375,
+        "right": 572.234375,
+        "top": 967,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Select Language: English",
+        "x": 574.234375,
+        "y": 967,
+        "left": 574.234375,
+        "right": 625.203125,
+        "top": 967,
+        "bottom": 1011,
+        "width": 50.96875,
+        "height": 44
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 712,
+        "y": 967,
+        "left": 712,
+        "right": 756,
+        "top": 967,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "en",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024
+    },
+    "dock": {
+      "x": 8,
+      "y": 708,
+      "left": 8,
+      "right": 1016,
+      "top": 708,
+      "bottom": 760,
+      "width": 1008,
+      "height": 52,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 74,
+      "y": 709,
+      "left": 74,
+      "right": 575,
+      "top": 709,
+      "bottom": 759,
+      "width": 501,
+      "height": 50,
+      "client": 501,
+      "scroll": 501
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 76,
+        "y": 712,
+        "left": 76,
+        "right": 136.953125,
+        "top": 712,
+        "bottom": 756,
+        "width": 60.953125,
+        "height": 44,
+        "text": {
+          "x": 81,
+          "y": 735,
+          "left": 81,
+          "right": 131.953125,
+          "top": 735,
+          "bottom": 750,
+          "width": 50.953125,
+          "height": 15
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 144.953125,
+        "y": 712,
+        "left": 144.953125,
+        "right": 215.5625,
+        "top": 712,
+        "bottom": 756,
+        "width": 70.609375,
+        "height": 44,
+        "text": {
+          "x": 149.953125,
+          "y": 735,
+          "left": 149.953125,
+          "right": 210.5625,
+          "top": 735,
+          "bottom": 750,
+          "width": 60.609375,
+          "height": 15
+        }
+      },
+      {
+        "label": "About",
+        "x": 223.5625,
+        "y": 712,
+        "left": 223.5625,
+        "right": 279.5625,
+        "top": 712,
+        "bottom": 756,
+        "width": 56,
+        "height": 44,
+        "text": {
+          "x": 231.53125,
+          "y": 735,
+          "left": 231.53125,
+          "right": 271.59375,
+          "top": 735,
+          "bottom": 750,
+          "width": 40.0625,
+          "height": 15
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 287.5625,
+        "y": 712,
+        "left": 287.5625,
+        "right": 348.953125,
+        "top": 712,
+        "bottom": 756,
+        "width": 61.390625,
+        "height": 44,
+        "text": {
+          "x": 292.5625,
+          "y": 735,
+          "left": 292.5625,
+          "right": 343.953125,
+          "top": 735,
+          "bottom": 750,
+          "width": 51.390625,
+          "height": 15
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 356.953125,
+        "y": 712,
+        "left": 356.953125,
+        "right": 416.375,
+        "top": 712,
+        "bottom": 756,
+        "width": 59.421875,
+        "height": 44,
+        "text": {
+          "x": 361.953125,
+          "y": 735,
+          "left": 361.953125,
+          "right": 411.375,
+          "top": 735,
+          "bottom": 750,
+          "width": 49.421875,
+          "height": 15
+        }
+      }
+    ],
+    "header": {
+      "x": 576,
+      "y": 708,
+      "left": 576,
+      "right": 1016,
+      "top": 708,
+      "bottom": 760,
+      "width": 440,
+      "height": 52
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 734.234375,
+        "y": 712,
+        "left": 734.234375,
+        "right": 778.234375,
+        "top": 712,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 780.234375,
+        "y": 712,
+        "left": 780.234375,
+        "right": 824.234375,
+        "top": 712,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Select Language: English",
+        "x": 826.234375,
+        "y": 712,
+        "left": 826.234375,
+        "right": 877.203125,
+        "top": 712,
+        "bottom": 756,
+        "width": 50.96875,
+        "height": 44
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 964,
+        "y": 712,
+        "left": 964,
+        "right": 1008,
+        "top": 712,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "en",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "dock": {
+      "x": 8,
+      "y": 852,
+      "left": 8,
+      "right": 1432,
+      "top": 852,
+      "bottom": 892,
+      "width": 1424,
+      "height": 40,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 66,
+      "y": 853,
+      "left": 66,
+      "right": 991,
+      "top": 853,
+      "bottom": 891,
+      "width": 925,
+      "height": 38,
+      "client": 925,
+      "scroll": 925
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 68,
+        "y": 854,
+        "left": 68,
+        "right": 172.4375,
+        "top": 854,
+        "bottom": 890,
+        "width": 104.4375,
+        "height": 36,
+        "text": {
+          "x": 109,
+          "y": 863.59375,
+          "left": 109,
+          "right": 161.4375,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 52.4375,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 176.4375,
+        "y": 854,
+        "left": 176.4375,
+        "right": 292.140625,
+        "top": 854,
+        "bottom": 890,
+        "width": 115.703125,
+        "height": 36,
+        "text": {
+          "x": 217.4375,
+          "y": 863.59375,
+          "left": 217.4375,
+          "right": 281.140625,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 63.703125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "About",
+        "x": 296.140625,
+        "y": 854,
+        "left": 296.140625,
+        "right": 387.875,
+        "top": 854,
+        "bottom": 890,
+        "width": 91.734375,
+        "height": 36,
+        "text": {
+          "x": 337.140625,
+          "y": 863.59375,
+          "left": 337.140625,
+          "right": 376.875,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 39.734375,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 391.875,
+        "y": 854,
+        "left": 391.875,
+        "right": 496.828125,
+        "top": 854,
+        "bottom": 890,
+        "width": 104.953125,
+        "height": 36,
+        "text": {
+          "x": 432.875,
+          "y": 863.59375,
+          "left": 432.875,
+          "right": 485.828125,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 52.953125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 500.828125,
+        "y": 854,
+        "left": 500.828125,
+        "right": 603.484375,
+        "top": 854,
+        "bottom": 890,
+        "width": 102.65625,
+        "height": 36,
+        "text": {
+          "x": 541.828125,
+          "y": 863.59375,
+          "left": 541.828125,
+          "right": 592.484375,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 50.65625,
+          "height": 16.796875
+        }
+      }
+    ],
+    "header": {
+      "x": 992,
+      "y": 852,
+      "left": 992,
+      "right": 1432,
+      "top": 852,
+      "bottom": 892,
+      "width": 440,
+      "height": 40
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 1182.234375,
+        "y": 859.984375,
+        "left": 1182.234375,
+        "right": 1210.234375,
+        "top": 859.984375,
+        "bottom": 883.984375,
+        "width": 28,
+        "height": 24
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 1214.234375,
+        "y": 859.984375,
+        "left": 1214.234375,
+        "right": 1254.234375,
+        "top": 859.984375,
+        "bottom": 883.984375,
+        "width": 40,
+        "height": 24
+      },
+      {
+        "label": "Select Language: English",
+        "x": 1258.234375,
+        "y": 857.984375,
+        "left": 1258.234375,
+        "right": 1309.203125,
+        "top": 857.984375,
+        "bottom": 885.984375,
+        "width": 50.96875,
+        "height": 28
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 1396,
+        "y": 859.984375,
+        "left": 1396,
+        "right": 1424,
+        "top": 859.984375,
+        "bottom": 883.984375,
+        "width": 28,
+        "height": 24
+      }
+    ],
+    "locale": "en",
+    "coarse": false,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920
+    },
+    "dock": {
+      "x": 8,
+      "y": 1032,
+      "left": 8,
+      "right": 1912,
+      "top": 1032,
+      "bottom": 1072,
+      "width": 1904,
+      "height": 40,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 66,
+      "y": 1033,
+      "left": 66,
+      "right": 1471,
+      "top": 1033,
+      "bottom": 1071,
+      "width": 1405,
+      "height": 38,
+      "client": 1405,
+      "scroll": 1405
+    },
+    "pins": [
+      {
+        "label": "Projects",
+        "x": 68,
+        "y": 1034,
+        "left": 68,
+        "right": 172.4375,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 104.4375,
+        "height": 36,
+        "text": {
+          "x": 109,
+          "y": 1043.59375,
+          "left": 109,
+          "right": 161.4375,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 52.4375,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "Write-ups",
+        "x": 176.4375,
+        "y": 1034,
+        "left": 176.4375,
+        "right": 292.140625,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 115.703125,
+        "height": 36,
+        "text": {
+          "x": 217.4375,
+          "y": 1043.59375,
+          "left": 217.4375,
+          "right": 281.140625,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 63.703125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "About",
+        "x": 296.140625,
+        "y": 1034,
+        "left": 296.140625,
+        "right": 387.875,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 91.734375,
+        "height": 36,
+        "text": {
+          "x": 337.140625,
+          "y": 1043.59375,
+          "left": 337.140625,
+          "right": 376.875,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 39.734375,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "Résumé",
+        "x": 391.875,
+        "y": 1034,
+        "left": 391.875,
+        "right": 496.828125,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 104.953125,
+        "height": 36,
+        "text": {
+          "x": 432.875,
+          "y": 1043.59375,
+          "left": 432.875,
+          "right": 485.828125,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 52.953125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "Contact",
+        "x": 500.828125,
+        "y": 1034,
+        "left": 500.828125,
+        "right": 603.484375,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 102.65625,
+        "height": 36,
+        "text": {
+          "x": 541.828125,
+          "y": 1043.59375,
+          "left": 541.828125,
+          "right": 592.484375,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 50.65625,
+          "height": 16.796875
+        }
+      }
+    ],
+    "header": {
+      "x": 1472,
+      "y": 1032,
+      "left": 1472,
+      "right": 1912,
+      "top": 1032,
+      "bottom": 1072,
+      "width": 440,
+      "height": 40
+    },
+    "controls": [
+      {
+        "label": "Search",
+        "x": 1662.234375,
+        "y": 1039.984375,
+        "left": 1662.234375,
+        "right": 1690.234375,
+        "top": 1039.984375,
+        "bottom": 1063.984375,
+        "width": 28,
+        "height": 24
+      },
+      {
+        "label": "Dark Appearance",
+        "x": 1694.234375,
+        "y": 1039.984375,
+        "left": 1694.234375,
+        "right": 1734.234375,
+        "top": 1039.984375,
+        "bottom": 1063.984375,
+        "width": 40,
+        "height": 24
+      },
+      {
+        "label": "Select Language: English",
+        "x": 1738.234375,
+        "y": 1037.984375,
+        "left": 1738.234375,
+        "right": 1789.203125,
+        "top": 1037.984375,
+        "bottom": 1065.984375,
+        "width": 50.96875,
+        "height": 28
+      },
+      {
+        "label": "Lock Desktop",
+        "x": 1876,
+        "y": 1039.984375,
+        "left": 1876,
+        "right": 1904,
+        "top": 1039.984375,
+        "bottom": 1063.984375,
+        "width": 28,
+        "height": 24
+      }
+    ],
+    "locale": "en",
+    "coarse": false,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "scrollWidth": 320
+    },
+    "dock": {
+      "x": 8,
+      "y": 447.921875,
+      "left": 8,
+      "right": 312,
+      "top": 447.921875,
+      "bottom": 559.921875,
+      "width": 304,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 452.921875,
+      "left": 13,
+      "right": 307,
+      "top": 452.921875,
+      "bottom": 510.921875,
+      "width": 294,
+      "height": 58,
+      "client": 294,
+      "scroll": 294
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 251.40625,
+        "y": 452.921875,
+        "left": 251.40625,
+        "right": 307,
+        "top": 452.921875,
+        "bottom": 510.921875,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 260.078125,
+          "y": 483.828125,
+          "left": 260.078125,
+          "right": 298.328125,
+          "top": 483.828125,
+          "bottom": 499.015625,
+          "width": 38.25,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 191.796875,
+        "y": 452.921875,
+        "left": 191.796875,
+        "right": 247.40625,
+        "top": 452.921875,
+        "bottom": 510.921875,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 197.34375,
+          "y": 483.828125,
+          "left": 197.34375,
+          "right": 241.875,
+          "top": 483.828125,
+          "bottom": 499.015625,
+          "width": 44.53125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 132.203125,
+        "y": 452.921875,
+        "left": 132.203125,
+        "right": 187.796875,
+        "top": 452.921875,
+        "bottom": 510.921875,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 136.359375,
+          "y": 483.828125,
+          "left": 136.359375,
+          "right": 183.640625,
+          "top": 483.828125,
+          "bottom": 499.015625,
+          "width": 47.28125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 72.59375,
+        "y": 452.921875,
+        "left": 72.59375,
+        "right": 128.203125,
+        "top": 452.921875,
+        "bottom": 510.921875,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 85.5,
+          "y": 483.828125,
+          "left": 85.5,
+          "right": 115.3125,
+          "top": 483.828125,
+          "bottom": 499.015625,
+          "width": 29.8125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 13,
+        "y": 452.921875,
+        "left": 13,
+        "right": 68.59375,
+        "top": 452.921875,
+        "bottom": 510.921875,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 24.859375,
+          "y": 483.828125,
+          "left": 24.859375,
+          "right": 56.75,
+          "top": 483.828125,
+          "bottom": 499.015625,
+          "width": 31.890625,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 502.921875,
+      "left": 8,
+      "right": 256,
+      "top": 502.921875,
+      "bottom": 546.921875,
+      "width": 248,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 154,
+        "y": 502.921875,
+        "left": 154,
+        "right": 198,
+        "top": 502.921875,
+        "bottom": 546.921875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 108,
+        "y": 502.921875,
+        "left": 108,
+        "right": 152,
+        "top": 502.921875,
+        "bottom": 546.921875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 62,
+        "y": 502.921875,
+        "left": 62,
+        "right": 106,
+        "top": 502.921875,
+        "bottom": 546.921875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 12,
+        "y": 502.921875,
+        "left": 12,
+        "right": 56,
+        "top": 502.921875,
+        "bottom": 546.921875,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "fa",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390
+    },
+    "dock": {
+      "x": 8,
+      "y": 724,
+      "left": 8,
+      "right": 382,
+      "top": 724,
+      "bottom": 836,
+      "width": 374,
+      "height": 112,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 13,
+      "y": 729,
+      "left": 13,
+      "right": 377,
+      "top": 729,
+      "bottom": 787,
+      "width": 364,
+      "height": 58,
+      "client": 364,
+      "scroll": 364
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 307.40625,
+        "y": 729,
+        "left": 307.40625,
+        "right": 377,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.59375,
+        "height": 58,
+        "text": {
+          "x": 323.078125,
+          "y": 759.90625,
+          "left": 323.078125,
+          "right": 361.328125,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 38.25,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 233.796875,
+        "y": 729,
+        "left": 233.796875,
+        "right": 303.40625,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.609375,
+        "height": 58,
+        "text": {
+          "x": 246.34375,
+          "y": 759.90625,
+          "left": 246.34375,
+          "right": 290.875,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 44.53125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 160.203125,
+        "y": 729,
+        "left": 160.203125,
+        "right": 229.796875,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.59375,
+        "height": 58,
+        "text": {
+          "x": 171.359375,
+          "y": 759.90625,
+          "left": 171.359375,
+          "right": 218.640625,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 47.28125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 86.59375,
+        "y": 729,
+        "left": 86.59375,
+        "right": 156.203125,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.609375,
+        "height": 58,
+        "text": {
+          "x": 106.5,
+          "y": 759.90625,
+          "left": 106.5,
+          "right": 136.3125,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 29.8125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 13,
+        "y": 729,
+        "left": 13,
+        "right": 82.59375,
+        "top": 729,
+        "bottom": 787,
+        "width": 69.59375,
+        "height": 58,
+        "text": {
+          "x": 31.859375,
+          "y": 759.90625,
+          "left": 31.859375,
+          "right": 63.75,
+          "top": 759.90625,
+          "bottom": 775.09375,
+          "width": 31.890625,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 787,
+      "left": 8,
+      "right": 326,
+      "top": 787,
+      "bottom": 831,
+      "width": 318,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 154,
+        "y": 787,
+        "left": 154,
+        "right": 198,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 108,
+        "y": 787,
+        "left": 108,
+        "right": 152,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 62,
+        "y": 787,
+        "left": 62,
+        "right": 106,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 12,
+        "y": 787,
+        "left": 12,
+        "right": 56,
+        "top": 787,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "fa",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 640,
+      "height": 360,
+      "scrollWidth": 640
+    },
+    "dock": {
+      "x": 8,
+      "y": 240.109375,
+      "left": 8,
+      "right": 632,
+      "top": 240.109375,
+      "bottom": 352.109375,
+      "width": 624,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 245.109375,
+      "left": 13,
+      "right": 627,
+      "top": 245.109375,
+      "bottom": 303.109375,
+      "width": 614,
+      "height": 58,
+      "client": 614,
+      "scroll": 614
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 507.40625,
+        "y": 245.109375,
+        "left": 507.40625,
+        "right": 627,
+        "top": 245.109375,
+        "bottom": 303.109375,
+        "width": 119.59375,
+        "height": 58,
+        "text": {
+          "x": 548.078125,
+          "y": 276.015625,
+          "left": 548.078125,
+          "right": 586.328125,
+          "top": 276.015625,
+          "bottom": 291.203125,
+          "width": 38.25,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 383.796875,
+        "y": 245.109375,
+        "left": 383.796875,
+        "right": 503.40625,
+        "top": 245.109375,
+        "bottom": 303.109375,
+        "width": 119.609375,
+        "height": 58,
+        "text": {
+          "x": 421.34375,
+          "y": 276.015625,
+          "left": 421.34375,
+          "right": 465.875,
+          "top": 276.015625,
+          "bottom": 291.203125,
+          "width": 44.53125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 260.203125,
+        "y": 245.109375,
+        "left": 260.203125,
+        "right": 379.796875,
+        "top": 245.109375,
+        "bottom": 303.109375,
+        "width": 119.59375,
+        "height": 58,
+        "text": {
+          "x": 296.359375,
+          "y": 276.015625,
+          "left": 296.359375,
+          "right": 343.640625,
+          "top": 276.015625,
+          "bottom": 291.203125,
+          "width": 47.28125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 136.59375,
+        "y": 245.109375,
+        "left": 136.59375,
+        "right": 256.203125,
+        "top": 245.109375,
+        "bottom": 303.109375,
+        "width": 119.609375,
+        "height": 58,
+        "text": {
+          "x": 181.5,
+          "y": 276.015625,
+          "left": 181.5,
+          "right": 211.3125,
+          "top": 276.015625,
+          "bottom": 291.203125,
+          "width": 29.8125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 13,
+        "y": 245.109375,
+        "left": 13,
+        "right": 132.59375,
+        "top": 245.109375,
+        "bottom": 303.109375,
+        "width": 119.59375,
+        "height": 58,
+        "text": {
+          "x": 56.859375,
+          "y": 276.015625,
+          "left": 56.859375,
+          "right": 88.75,
+          "top": 276.015625,
+          "bottom": 291.203125,
+          "width": 31.890625,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 295.109375,
+      "left": 8,
+      "right": 576,
+      "top": 295.109375,
+      "bottom": 339.109375,
+      "width": 568,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 202.6875,
+        "y": 295.109375,
+        "left": 202.6875,
+        "right": 246.6875,
+        "top": 295.109375,
+        "bottom": 339.109375,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 156.6875,
+        "y": 295.109375,
+        "left": 156.6875,
+        "right": 200.6875,
+        "top": 295.109375,
+        "bottom": 339.109375,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 110.6875,
+        "y": 295.109375,
+        "left": 110.6875,
+        "right": 154.6875,
+        "top": 295.109375,
+        "bottom": 339.109375,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 12,
+        "y": 295.109375,
+        "left": 12,
+        "right": 56,
+        "top": 295.109375,
+        "bottom": 339.109375,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "fa",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768
+    },
+    "dock": {
+      "x": 8,
+      "y": 904,
+      "left": 8,
+      "right": 760,
+      "top": 904,
+      "bottom": 1016,
+      "width": 752,
+      "height": 112,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 13,
+      "y": 909,
+      "left": 13,
+      "right": 755,
+      "top": 909,
+      "bottom": 967,
+      "width": 742,
+      "height": 58,
+      "client": 742,
+      "scroll": 742
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 609.8125,
+        "y": 909,
+        "left": 609.8125,
+        "right": 755,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.1875,
+        "height": 58,
+        "text": {
+          "x": 663.28125,
+          "y": 939.90625,
+          "left": 663.28125,
+          "right": 701.53125,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 38.25,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 460.609375,
+        "y": 909,
+        "left": 460.609375,
+        "right": 605.8125,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 510.953125,
+          "y": 939.90625,
+          "left": 510.953125,
+          "right": 555.484375,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 44.53125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 311.40625,
+        "y": 909,
+        "left": 311.40625,
+        "right": 456.609375,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 360.375,
+          "y": 939.90625,
+          "left": 360.375,
+          "right": 407.65625,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 47.28125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 162.203125,
+        "y": 909,
+        "left": 162.203125,
+        "right": 307.40625,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 219.90625,
+          "y": 939.90625,
+          "left": 219.90625,
+          "right": 249.71875,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 29.8125,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 13,
+        "y": 909,
+        "left": 13,
+        "right": 158.203125,
+        "top": 909,
+        "bottom": 967,
+        "width": 145.203125,
+        "height": 58,
+        "text": {
+          "x": 69.65625,
+          "y": 939.90625,
+          "left": 69.65625,
+          "right": 101.546875,
+          "top": 939.90625,
+          "bottom": 955.09375,
+          "width": 31.890625,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 967,
+      "left": 8,
+      "right": 704,
+      "top": 967,
+      "bottom": 1011,
+      "width": 696,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 233.96875,
+        "y": 967,
+        "left": 233.96875,
+        "right": 277.96875,
+        "top": 967,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 187.96875,
+        "y": 967,
+        "left": 187.96875,
+        "right": 231.96875,
+        "top": 967,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 137.875,
+        "y": 967,
+        "left": 137.875,
+        "right": 185.96875,
+        "top": 967,
+        "bottom": 1011,
+        "width": 48.09375,
+        "height": 44
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 12,
+        "y": 967,
+        "left": 12,
+        "right": 56,
+        "top": 967,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "fa",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024
+    },
+    "dock": {
+      "x": 8,
+      "y": 708,
+      "left": 8,
+      "right": 1016,
+      "top": 708,
+      "bottom": 760,
+      "width": 1008,
+      "height": 52,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 449,
+      "y": 709,
+      "left": 449,
+      "right": 950,
+      "top": 709,
+      "bottom": 759,
+      "width": 501,
+      "height": 50,
+      "client": 501,
+      "scroll": 501
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 892,
+        "y": 712,
+        "left": 892,
+        "right": 948,
+        "top": 712,
+        "bottom": 756,
+        "width": 56,
+        "height": 44,
+        "text": {
+          "x": 899.875,
+          "y": 735,
+          "left": 899.875,
+          "right": 940.125,
+          "top": 735,
+          "bottom": 750,
+          "width": 40.25,
+          "height": 15
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 827.46875,
+        "y": 712,
+        "left": 827.46875,
+        "right": 884,
+        "top": 712,
+        "bottom": 756,
+        "width": 56.53125,
+        "height": 44,
+        "text": {
+          "x": 832.46875,
+          "y": 735,
+          "left": 832.46875,
+          "right": 879,
+          "top": 735,
+          "bottom": 750,
+          "width": 46.53125,
+          "height": 15
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 760.1875,
+        "y": 712,
+        "left": 760.1875,
+        "right": 819.46875,
+        "top": 712,
+        "bottom": 756,
+        "width": 59.28125,
+        "height": 44,
+        "text": {
+          "x": 765.1875,
+          "y": 735,
+          "left": 765.1875,
+          "right": 814.46875,
+          "top": 735,
+          "bottom": 750,
+          "width": 49.28125,
+          "height": 15
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 696.1875,
+        "y": 712,
+        "left": 696.1875,
+        "right": 752.1875,
+        "top": 712,
+        "bottom": 756,
+        "width": 56,
+        "height": 44,
+        "text": {
+          "x": 708.28125,
+          "y": 735,
+          "left": 708.28125,
+          "right": 740.09375,
+          "top": 735,
+          "bottom": 750,
+          "width": 31.8125,
+          "height": 15
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 632.1875,
+        "y": 712,
+        "left": 632.1875,
+        "right": 688.1875,
+        "top": 712,
+        "bottom": 756,
+        "width": 56,
+        "height": 44,
+        "text": {
+          "x": 643.25,
+          "y": 735,
+          "left": 643.25,
+          "right": 677.140625,
+          "top": 735,
+          "bottom": 750,
+          "width": 33.890625,
+          "height": 15
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 708,
+      "left": 8,
+      "right": 448,
+      "top": 708,
+      "bottom": 760,
+      "width": 440,
+      "height": 52
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 237.96875,
+        "y": 712,
+        "left": 237.96875,
+        "right": 281.96875,
+        "top": 712,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 191.96875,
+        "y": 712,
+        "left": 191.96875,
+        "right": 235.96875,
+        "top": 712,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 141.875,
+        "y": 712,
+        "left": 141.875,
+        "right": 189.96875,
+        "top": 712,
+        "bottom": 756,
+        "width": 48.09375,
+        "height": 44
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 16,
+        "y": 712,
+        "left": 16,
+        "right": 60,
+        "top": 712,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "fa",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "dock": {
+      "x": 8,
+      "y": 852,
+      "left": 8,
+      "right": 1432,
+      "top": 852,
+      "bottom": 892,
+      "width": 1424,
+      "height": 40,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 449,
+      "y": 853,
+      "left": 449,
+      "right": 1374,
+      "top": 853,
+      "bottom": 891,
+      "width": 925,
+      "height": 38,
+      "client": 925,
+      "scroll": 925
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 1280.046875,
+        "y": 854,
+        "left": 1280.046875,
+        "right": 1372,
+        "top": 854,
+        "bottom": 890,
+        "width": 91.953125,
+        "height": 36,
+        "text": {
+          "x": 1291.046875,
+          "y": 863.59375,
+          "left": 1291.046875,
+          "right": 1331,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 39.953125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 1176.765625,
+        "y": 854,
+        "left": 1176.765625,
+        "right": 1276.046875,
+        "top": 854,
+        "bottom": 890,
+        "width": 99.28125,
+        "height": 36,
+        "text": {
+          "x": 1187.765625,
+          "y": 863.59375,
+          "left": 1187.765625,
+          "right": 1235.046875,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 47.28125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 1070.28125,
+        "y": 854,
+        "left": 1070.28125,
+        "right": 1172.765625,
+        "top": 854,
+        "bottom": 890,
+        "width": 102.484375,
+        "height": 36,
+        "text": {
+          "x": 1081.28125,
+          "y": 863.59375,
+          "left": 1081.28125,
+          "right": 1131.765625,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 50.484375,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 984.15625,
+        "y": 854,
+        "left": 984.15625,
+        "right": 1066.28125,
+        "top": 854,
+        "bottom": 890,
+        "width": 82.125,
+        "height": 36,
+        "text": {
+          "x": 995.15625,
+          "y": 863.59375,
+          "left": 995.15625,
+          "right": 1025.28125,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 30.125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 895.625,
+        "y": 854,
+        "left": 895.625,
+        "right": 980.15625,
+        "top": 854,
+        "bottom": 890,
+        "width": 84.53125,
+        "height": 36,
+        "text": {
+          "x": 906.625,
+          "y": 863.59375,
+          "left": 906.625,
+          "right": 939.15625,
+          "top": 863.59375,
+          "bottom": 880.390625,
+          "width": 32.53125,
+          "height": 16.796875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 852,
+      "left": 8,
+      "right": 448,
+      "top": 852,
+      "bottom": 892,
+      "width": 440,
+      "height": 40
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 221.96875,
+        "y": 859.984375,
+        "left": 221.96875,
+        "right": 249.96875,
+        "top": 859.984375,
+        "bottom": 883.984375,
+        "width": 28,
+        "height": 24
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 177.96875,
+        "y": 859.984375,
+        "left": 177.96875,
+        "right": 217.96875,
+        "top": 859.984375,
+        "bottom": 883.984375,
+        "width": 40,
+        "height": 24
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 125.875,
+        "y": 857.984375,
+        "left": 125.875,
+        "right": 173.96875,
+        "top": 857.984375,
+        "bottom": 885.984375,
+        "width": 48.09375,
+        "height": 28
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 16,
+        "y": 859.984375,
+        "left": 16,
+        "right": 44,
+        "top": 859.984375,
+        "bottom": 883.984375,
+        "width": 28,
+        "height": 24
+      }
+    ],
+    "locale": "fa",
+    "coarse": false,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920
+    },
+    "dock": {
+      "x": 8,
+      "y": 1032,
+      "left": 8,
+      "right": 1912,
+      "top": 1032,
+      "bottom": 1072,
+      "width": 1904,
+      "height": 40,
+      "radius": "18px",
+      "position": "fixed"
+    },
+    "strip": {
+      "x": 449,
+      "y": 1033,
+      "left": 449,
+      "right": 1854,
+      "top": 1033,
+      "bottom": 1071,
+      "width": 1405,
+      "height": 38,
+      "client": 1405,
+      "scroll": 1405
+    },
+    "pins": [
+      {
+        "label": "پروژه‌ها",
+        "x": 1760.046875,
+        "y": 1034,
+        "left": 1760.046875,
+        "right": 1852,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 91.953125,
+        "height": 36,
+        "text": {
+          "x": 1771.046875,
+          "y": 1043.59375,
+          "left": 1771.046875,
+          "right": 1811,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 39.953125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "نوشته‌ها",
+        "x": 1656.765625,
+        "y": 1034,
+        "left": 1656.765625,
+        "right": 1756.046875,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 99.28125,
+        "height": 36,
+        "text": {
+          "x": 1667.765625,
+          "y": 1043.59375,
+          "left": 1667.765625,
+          "right": 1715.046875,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 47.28125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "درباره من",
+        "x": 1550.28125,
+        "y": 1034,
+        "left": 1550.28125,
+        "right": 1652.765625,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 102.484375,
+        "height": 36,
+        "text": {
+          "x": 1561.28125,
+          "y": 1043.59375,
+          "left": 1561.28125,
+          "right": 1611.765625,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 50.484375,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "رزومه",
+        "x": 1464.15625,
+        "y": 1034,
+        "left": 1464.15625,
+        "right": 1546.28125,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 82.125,
+        "height": 36,
+        "text": {
+          "x": 1475.15625,
+          "y": 1043.59375,
+          "left": 1475.15625,
+          "right": 1505.28125,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 30.125,
+          "height": 16.796875
+        }
+      },
+      {
+        "label": "تماس",
+        "x": 1375.625,
+        "y": 1034,
+        "left": 1375.625,
+        "right": 1460.15625,
+        "top": 1034,
+        "bottom": 1070,
+        "width": 84.53125,
+        "height": 36,
+        "text": {
+          "x": 1386.625,
+          "y": 1043.59375,
+          "left": 1386.625,
+          "right": 1419.15625,
+          "top": 1043.59375,
+          "bottom": 1060.390625,
+          "width": 32.53125,
+          "height": 16.796875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 1032,
+      "left": 8,
+      "right": 448,
+      "top": 1032,
+      "bottom": 1072,
+      "width": 440,
+      "height": 40
+    },
+    "controls": [
+      {
+        "label": "جست‌وجو",
+        "x": 221.96875,
+        "y": 1039.984375,
+        "left": 221.96875,
+        "right": 249.96875,
+        "top": 1039.984375,
+        "bottom": 1063.984375,
+        "width": 28,
+        "height": 24
+      },
+      {
+        "label": "ظاهر تیره",
+        "x": 177.96875,
+        "y": 1039.984375,
+        "left": 177.96875,
+        "right": 217.96875,
+        "top": 1039.984375,
+        "bottom": 1063.984375,
+        "width": 40,
+        "height": 24
+      },
+      {
+        "label": "انتخاب زبان: فارسی",
+        "x": 125.875,
+        "y": 1037.984375,
+        "left": 125.875,
+        "right": 173.96875,
+        "top": 1037.984375,
+        "bottom": 1065.984375,
+        "width": 48.09375,
+        "height": 28
+      },
+      {
+        "label": "قفل میز کار",
+        "x": 16,
+        "y": 1039.984375,
+        "left": 16,
+        "right": 44,
+        "top": 1039.984375,
+        "bottom": 1063.984375,
+        "width": 28,
+        "height": 24
+      }
+    ],
+    "locale": "fa",
+    "coarse": false,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "scrollWidth": 320
+    },
+    "dock": {
+      "x": 8,
+      "y": 447.53125,
+      "left": 8,
+      "right": 312,
+      "top": 447.53125,
+      "bottom": 559.53125,
+      "width": 304,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 452.53125,
+      "left": 13,
+      "right": 307,
+      "top": 452.53125,
+      "bottom": 510.53125,
+      "width": 294,
+      "height": 58,
+      "client": 294,
+      "scroll": 294
+    },
+    "pins": [
+      {
+        "label": "المشاريع",
+        "x": 251.40625,
+        "y": 452.53125,
+        "left": 251.40625,
+        "right": 307,
+        "top": 452.53125,
+        "bottom": 510.53125,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 256.15625,
+          "y": 483.4375,
+          "left": 256.15625,
+          "right": 302.25,
+          "top": 483.4375,
+          "bottom": 498.625,
+          "width": 46.09375,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "المقالات",
+        "x": 191.796875,
+        "y": 452.53125,
+        "left": 191.796875,
+        "right": 247.40625,
+        "top": 452.53125,
+        "bottom": 510.53125,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 197.828125,
+          "y": 483.4375,
+          "left": 197.828125,
+          "right": 241.375,
+          "top": 483.4375,
+          "bottom": 498.625,
+          "width": 43.546875,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "نبذة عني",
+        "x": 132.203125,
+        "y": 452.53125,
+        "left": 132.203125,
+        "right": 187.796875,
+        "top": 452.53125,
+        "bottom": 510.53125,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 137.5625,
+          "y": 483.4375,
+          "left": 137.5625,
+          "right": 182.4375,
+          "top": 483.4375,
+          "bottom": 498.625,
+          "width": 44.875,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "السيرة الذاتية",
+        "x": 72.59375,
+        "y": 452.53125,
+        "left": 72.59375,
+        "right": 128.203125,
+        "top": 452.53125,
+        "bottom": 510.53125,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 75.59375,
+          "y": 476.84375,
+          "left": 75.59375,
+          "right": 125.203125,
+          "top": 476.84375,
+          "bottom": 505.21875,
+          "width": 49.609375,
+          "height": 28.375
+        }
+      },
+      {
+        "label": "التواصل",
+        "x": 13,
+        "y": 452.53125,
+        "left": 13,
+        "right": 68.59375,
+        "top": 452.53125,
+        "bottom": 510.53125,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 20.421875,
+          "y": 483.4375,
+          "left": 20.421875,
+          "right": 61.171875,
+          "top": 483.4375,
+          "bottom": 498.625,
+          "width": 40.75,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 8,
+      "y": 502.53125,
+      "left": 8,
+      "right": 256,
+      "top": 502.53125,
+      "bottom": 546.53125,
+      "width": 248,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "بحث",
+        "x": 154,
+        "y": 502.53125,
+        "left": 154,
+        "right": 198,
+        "top": 502.53125,
+        "bottom": 546.53125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "المظهر الداكن",
+        "x": 108,
+        "y": 502.53125,
+        "left": 108,
+        "right": 152,
+        "top": 502.53125,
+        "bottom": 546.53125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "اختيار اللغة: العربية",
+        "x": 62,
+        "y": 502.53125,
+        "left": 62,
+        "right": 106,
+        "top": 502.53125,
+        "bottom": 546.53125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "قفل سطح المكتب",
+        "x": 12,
+        "y": 502.53125,
+        "left": 12,
+        "right": 56,
+        "top": 502.53125,
+        "bottom": 546.53125,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "ar",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "scrollWidth": 320
+    },
+    "dock": {
+      "x": 8,
+      "y": 447.953125,
+      "left": 8,
+      "right": 312,
+      "top": 447.953125,
+      "bottom": 559.953125,
+      "width": 304,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 452.953125,
+      "left": 13,
+      "right": 307,
+      "top": 452.953125,
+      "bottom": 510.953125,
+      "width": 294,
+      "height": 58,
+      "client": 294,
+      "scroll": 294
+    },
+    "pins": [
+      {
+        "label": "项目",
+        "x": 13,
+        "y": 452.953125,
+        "left": 13,
+        "right": 68.59375,
+        "top": 452.953125,
+        "bottom": 510.953125,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 26.78125,
+          "y": 483.859375,
+          "left": 26.78125,
+          "right": 54.796875,
+          "top": 483.859375,
+          "bottom": 499.046875,
+          "width": 28.015625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "文章",
+        "x": 72.59375,
+        "y": 452.953125,
+        "left": 72.59375,
+        "right": 128.203125,
+        "top": 452.953125,
+        "bottom": 510.953125,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 86.390625,
+          "y": 483.859375,
+          "left": 86.390625,
+          "right": 114.40625,
+          "top": 483.859375,
+          "bottom": 499.046875,
+          "width": 28.015625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "关于我",
+        "x": 132.203125,
+        "y": 452.953125,
+        "left": 132.203125,
+        "right": 187.796875,
+        "top": 452.953125,
+        "bottom": 510.953125,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 139.984375,
+          "y": 483.859375,
+          "left": 139.984375,
+          "right": 180,
+          "top": 483.859375,
+          "bottom": 499.046875,
+          "width": 40.015625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "简历",
+        "x": 191.796875,
+        "y": 452.953125,
+        "left": 191.796875,
+        "right": 247.40625,
+        "top": 452.953125,
+        "bottom": 510.953125,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 205.59375,
+          "y": 483.859375,
+          "left": 205.59375,
+          "right": 233.609375,
+          "top": 483.859375,
+          "bottom": 499.046875,
+          "width": 28.015625,
+          "height": 15.1875
+        }
+      },
+      {
+        "label": "联系",
+        "x": 251.40625,
+        "y": 452.953125,
+        "left": 251.40625,
+        "right": 307,
+        "top": 452.953125,
+        "bottom": 510.953125,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 265.1875,
+          "y": 483.859375,
+          "left": 265.1875,
+          "right": 293.203125,
+          "top": 483.859375,
+          "bottom": 499.046875,
+          "width": 28.015625,
+          "height": 15.1875
+        }
+      }
+    ],
+    "header": {
+      "x": 64,
+      "y": 502.953125,
+      "left": 64,
+      "right": 312,
+      "top": 502.953125,
+      "bottom": 546.953125,
+      "width": 248,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "搜索",
+        "x": 122,
+        "y": 502.953125,
+        "left": 122,
+        "right": 166,
+        "top": 502.953125,
+        "bottom": 546.953125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "深色外观",
+        "x": 168,
+        "y": 502.953125,
+        "left": 168,
+        "right": 212,
+        "top": 502.953125,
+        "bottom": 546.953125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "选择语言: 中文",
+        "x": 214,
+        "y": 502.953125,
+        "left": 214,
+        "right": 258,
+        "top": 502.953125,
+        "bottom": 546.953125,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "锁定桌面",
+        "x": 264,
+        "y": 502.953125,
+        "left": 264,
+        "right": 308,
+        "top": 502.953125,
+        "bottom": 546.953125,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "zh",
+    "coarse": true,
+    "failures": []
+  },
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "scrollWidth": 320
+    },
+    "dock": {
+      "x": 8,
+      "y": 447.6875,
+      "left": 8,
+      "right": 312,
+      "top": 447.6875,
+      "bottom": 559.6875,
+      "width": 304,
+      "height": 112,
+      "radius": "18px",
+      "position": "relative"
+    },
+    "strip": {
+      "x": 13,
+      "y": 452.6875,
+      "left": 13,
+      "right": 307,
+      "top": 452.6875,
+      "bottom": 510.6875,
+      "width": 294,
+      "height": 58,
+      "client": 294,
+      "scroll": 294
+    },
+    "pins": [
+      {
+        "label": "Proyectos",
+        "x": 13,
+        "y": 452.6875,
+        "left": 13,
+        "right": 68.59375,
+        "top": 452.6875,
+        "bottom": 510.6875,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 16,
+          "y": 477,
+          "left": 16,
+          "right": 65.59375,
+          "top": 477,
+          "bottom": 505.375,
+          "width": 49.59375,
+          "height": 28.375
+        }
+      },
+      {
+        "label": "Artículos",
+        "x": 72.59375,
+        "y": 452.6875,
+        "left": 72.59375,
+        "right": 128.203125,
+        "top": 452.6875,
+        "bottom": 510.6875,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 75.59375,
+          "y": 477,
+          "left": 75.59375,
+          "right": 125.203125,
+          "top": 477,
+          "bottom": 505.375,
+          "width": 49.609375,
+          "height": 28.375
+        }
+      },
+      {
+        "label": "Sobre mí",
+        "x": 132.203125,
+        "y": 452.6875,
+        "left": 132.203125,
+        "right": 187.796875,
+        "top": 452.6875,
+        "bottom": 510.6875,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 135.203125,
+          "y": 477,
+          "left": 135.203125,
+          "right": 184.796875,
+          "top": 477,
+          "bottom": 505.375,
+          "width": 49.59375,
+          "height": 28.375
+        }
+      },
+      {
+        "label": "Currículum",
+        "x": 191.796875,
+        "y": 452.6875,
+        "left": 191.796875,
+        "right": 247.40625,
+        "top": 452.6875,
+        "bottom": 510.6875,
+        "width": 55.609375,
+        "height": 58,
+        "text": {
+          "x": 194.796875,
+          "y": 477,
+          "left": 194.796875,
+          "right": 244.40625,
+          "top": 477,
+          "bottom": 505.375,
+          "width": 49.609375,
+          "height": 28.375
+        }
+      },
+      {
+        "label": "Contacto",
+        "x": 251.40625,
+        "y": 452.6875,
+        "left": 251.40625,
+        "right": 307,
+        "top": 452.6875,
+        "bottom": 510.6875,
+        "width": 55.59375,
+        "height": 58,
+        "text": {
+          "x": 254.40625,
+          "y": 477,
+          "left": 254.40625,
+          "right": 304,
+          "top": 477,
+          "bottom": 505.375,
+          "width": 49.59375,
+          "height": 28.375
+        }
+      }
+    ],
+    "header": {
+      "x": 64,
+      "y": 502.6875,
+      "left": 64,
+      "right": 312,
+      "top": 502.6875,
+      "bottom": 546.6875,
+      "width": 248,
+      "height": 44
+    },
+    "controls": [
+      {
+        "label": "Buscar",
+        "x": 122,
+        "y": 502.6875,
+        "left": 122,
+        "right": 166,
+        "top": 502.6875,
+        "bottom": 546.6875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Apariencia oscura",
+        "x": 168,
+        "y": 502.6875,
+        "left": 168,
+        "right": 212,
+        "top": 502.6875,
+        "bottom": 546.6875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Seleccionar idioma: Español",
+        "x": 214,
+        "y": 502.6875,
+        "left": 214,
+        "right": 258,
+        "top": 502.6875,
+        "bottom": 546.6875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "label": "Bloquear escritorio",
+        "x": 264,
+        "y": 502.6875,
+        "left": 264,
+        "right": 308,
+        "top": 502.6875,
+        "bottom": 546.6875,
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "locale": "es",
+    "coarse": true,
+    "failures": []
+  }
+]

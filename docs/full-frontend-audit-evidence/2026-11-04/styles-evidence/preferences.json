@@ -1,0 +1,302 @@
+[
+  {
+    "mode": "reduce-motion",
+    "media": {
+      "reduceMotion": true,
+      "reduceTransparency": false,
+      "forcedColors": false
+    },
+    "width": 1440,
+    "scrollWidth": 1440,
+    "body": {
+      "bg": "rgb(255, 255, 255)",
+      "overflowY": "auto",
+      "maxHeight": "none",
+      "height": 615
+    },
+    "dock": {
+      "background": "rgba(0, 0, 0, 0)",
+      "backdrop": "blur(14px) saturate(1.5)"
+    },
+    "animations": [],
+    "captions": [
+      {
+        "cls": "os-control is-minimize",
+        "width": 29,
+        "height": 19,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-expand is-maximize",
+        "width": 29,
+        "height": 19,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-window-close is-close",
+        "width": 48,
+        "height": 19,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      }
+    ],
+    "controls": [
+      {
+        "cls": "os-window-back",
+        "width": 75,
+        "height": 23,
+        "color": "rgb(34, 34, 34)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-window-copy",
+        "width": 80.4375,
+        "height": 23,
+        "color": "rgb(34, 34, 34)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      }
+    ]
+  },
+  {
+    "mode": "reduce-transparency",
+    "media": {
+      "reduceMotion": false,
+      "reduceTransparency": true,
+      "forcedColors": false
+    },
+    "width": 768,
+    "scrollWidth": 768,
+    "body": {
+      "bg": "rgb(255, 255, 255)",
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "height": 3708.40625
+    },
+    "dock": {
+      "background": "rgb(21, 41, 74)",
+      "backdrop": "none"
+    },
+    "animations": [
+      "os-desktop",
+      "os-intro window glass active",
+      "proof-atlas proof-atlas--desktop window glass active",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "captions": [
+      {
+        "cls": "os-control is-minimize",
+        "width": 44,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "1s"
+      },
+      {
+        "cls": "os-control os-expand is-maximize",
+        "width": 44,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0.12s, 0.12s, 0.12s, 0.16s"
+      },
+      {
+        "cls": "os-control os-window-close is-close",
+        "width": 48,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "1s"
+      }
+    ],
+    "controls": [
+      {
+        "cls": "os-window-back",
+        "width": 77.15625,
+        "height": 44,
+        "color": "rgb(34, 34, 34)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-window-copy",
+        "width": 89.515625,
+        "height": 44,
+        "color": "rgb(34, 34, 34)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "1s"
+      }
+    ]
+  },
+  {
+    "mode": "forced-colors",
+    "media": {
+      "reduceMotion": true,
+      "reduceTransparency": false,
+      "forcedColors": true
+    },
+    "width": 390,
+    "scrollWidth": 390,
+    "body": {
+      "bg": "rgb(255, 255, 255)",
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "height": 5852.984375
+    },
+    "dock": {
+      "background": "rgba(255, 255, 255, 0)",
+      "backdrop": "none"
+    },
+    "animations": [],
+    "captions": [
+      {
+        "cls": "os-control is-minimize",
+        "width": 44,
+        "height": 24,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgb(255, 255, 255)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-expand is-maximize",
+        "width": 44,
+        "height": 24,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(255, 255, 255, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-window-close is-close",
+        "width": 48,
+        "height": 24,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgb(255, 255, 255)",
+        "animation": "none",
+        "duration": "0s"
+      }
+    ],
+    "controls": [
+      {
+        "cls": "os-window-back",
+        "width": 44,
+        "height": 44,
+        "color": "rgb(0, 0, 159)",
+        "bg": "rgba(255, 255, 255, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-window-copy",
+        "width": 89.515625,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(255, 255, 255, 0)",
+        "animation": "none",
+        "duration": "0s"
+      }
+    ]
+  },
+  {
+    "mode": "short-flow",
+    "media": {
+      "reduceMotion": false,
+      "reduceTransparency": false,
+      "forcedColors": false
+    },
+    "width": 640,
+    "scrollWidth": 640,
+    "body": {
+      "bg": "rgb(255, 255, 255)",
+      "overflowY": "visible",
+      "maxHeight": "none",
+      "height": 4760.359375
+    },
+    "dock": {
+      "background": "rgba(0, 0, 0, 0)",
+      "backdrop": "blur(8px) saturate(1.5)"
+    },
+    "animations": [
+      "os-desktop",
+      "os-intro window glass active",
+      "proof-atlas proof-atlas--desktop window glass active",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "captions": [
+      {
+        "cls": "os-control is-minimize",
+        "width": 44,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "1s"
+      },
+      {
+        "cls": "os-control os-expand is-maximize",
+        "width": 44,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0.12s, 0.12s, 0.12s, 0.16s"
+      },
+      {
+        "cls": "os-control os-window-close is-close",
+        "width": 48,
+        "height": 44,
+        "color": "rgb(0, 0, 0)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "1s"
+      }
+    ],
+    "controls": [
+      {
+        "cls": "os-window-back",
+        "width": 44,
+        "height": 44,
+        "color": "rgb(34, 34, 34)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "0s"
+      },
+      {
+        "cls": "os-control os-window-copy",
+        "width": 89.515625,
+        "height": 44,
+        "color": "rgb(34, 34, 34)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "animation": "none",
+        "duration": "1s"
+      }
+    ]
+  }
+]

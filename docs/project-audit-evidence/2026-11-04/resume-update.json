@@ -1,0 +1,118 @@
+{
+  "baselineSHA256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+  "candidateSHA256": "deb6da26ebd0ab540dc6404cca5d49eb7338aba0e4111dccb1686bd620461ece",
+  "pages": 2,
+  "fontSize": 9.5,
+  "lineLeading": 10.9,
+  "edits": [
+    {
+      "page": 0,
+      "marker": "Reduced a live Llama",
+      "rect": [
+        56.8,
+        527.1525024414062,
+        565.0,
+        559.754541015625
+      ],
+      "replacement": "Scoped AgentDojo results: live Llama-3.3-70B ASR 9/140 to 0/140; benign utility 7/10 to 6/10. A separate deterministic four-suite run (no real LLM) recorded ASR 0/949, utility under attack 949/949 and benign utility 97/97. These frozen 2026 experiments do not establish general agent safety.",
+      "lines": 3
+    },
+    {
+      "page": 0,
+      "marker": "Built the work to be reproduced",
+      "rect": [
+        56.8,
+        561.3525146484375,
+        565.0,
+        593.9544921875
+      ],
+      "replacement": "Reproducible evidence: current study archives use SHA-256 manifests; earlier attestations use Ed25519. Replay needs native Linux x86_64/Python 3.12 and installed dependencies. 39 Lean 4 model files have a no-sorry gate; they do not prove implementation correctness. 5,171 tests passed in the 19 Oct 2026 smoke run.",
+      "lines": 3
+    },
+    {
+      "page": 0,
+      "marker": "Audited 919 of the project's own documents",
+      "rect": [
+        56.8,
+        595.5525268554687,
+        565.0,
+        617.254541015625
+      ],
+      "replacement": "Published a self-audit: 919 project documents reviewed; all 141 dated findings, including earlier overstatements, are in a public finding register linked from the README.",
+      "lines": 2
+    },
+    {
+      "page": 0,
+      "marker": "Found that documented display-affinity",
+      "rect": [
+        56.8,
+        644.6025146484375,
+        565.0,
+        677.2044921875
+      ],
+      "replacement": "Screen-capture findings: 100% evasion in tested Windows 10/11 and macOS 14-26 laboratory configurations. Simulated proctoring, not commercial products; Linux untested. macOS 26 tests used native capture tools rather than browser getDisplayMedia().",
+      "lines": 3
+    },
+    {
+      "page": 0,
+      "marker": "Disclosed to Microsoft MSRC",
+      "rect": [
+        56.8,
+        678.8025268554687,
+        565.0,
+        700.504541015625
+      ],
+      "replacement": "Coordinated disclosure: Disclosed to MSRC (Feb 2026) and Apple (Mar 2026); both later classified the behavior as by-design/documented, not a security issue. Windows/macOS PoC source is now public.",
+      "lines": 2
+    },
+    {
+      "page": 0,
+      "marker": "Built and scored a 40-question",
+      "rect": [
+        56.8,
+        727.8525146484375,
+        565.0,
+        749.5545288085938
+      ],
+      "replacement": "40-question pilot: 34 answerable questions and 6 refusal cases; Recall@5 = 0.941, mean citation_support = 0.978, 6/6 refusals. One automated judge scored no answer below citation_support < 0.5; two flagged rows scored 0.75 and 0.50. This is not a hallucination-free guarantee.",
+      "lines": 3
+    },
+    {
+      "page": 1,
+      "marker": "Mehr Guard: offline QR",
+      "rect": [
+        56.8,
+        110.70252075195313,
+        565.0,
+        132.40448913574218
+      ],
+      "replacement": "Mehr Guard: Kotlin Multiplatform offline URL analysis; 25+ heuristics and 19 red-team cases. Repository-reported 87% F1 on curated URLs and sub-5ms desktop-JVM engine median exclude camera/UI and unmeasured platforms.",
+      "lines": 2
+    },
+    {
+      "page": 1,
+      "marker": "Systems work (Rust, C++)",
+      "rect": [
+        56.8,
+        134.00250854492188,
+        565.0,
+        177.50452575683593
+      ],
+      "replacement": "Systems work: SentinelSSH, Rust MCP with 17 typed read-only Linux inspection tools and no shell; SentinelFlow, C++17 IDS reporting 28.4M packets/s in a synthetic parser-only benchmark, not full IDS throughput; Zurvan, public Python/Rust MCP knowledge engine. Its 20 Oct 2026 receipt: 3,334 passed, 1 failed, 8 skipped; Z1b closure open.",
+      "lines": 3
+    },
+    {
+      "page": 1,
+      "marker": "Led the security backend",
+      "rect": [
+        56.8,
+        273.75250854492185,
+        565.0,
+        306.3544860839844
+      ],
+      "replacement": "Led security/backend work: WebAuthn passkeys, TOTP MFA, Postgres RLS and audit logging in a shared Next.js/TypeScript student platform. The 17 Aug 2026 CI test job passed 1,343 tests in 155 files; the separate security job failed, so an overall CI pass is not claimed.",
+      "lines": 3
+    }
+  ],
+  "scope": "Nine source-backed project passages updated. Original uploaded PDFs unchanged. Phone remains removed. Layout and all text outside these passages preserved; added one final-page-one line inside existing bottom whitespace. Tagged reading order is not independently certified."
+}

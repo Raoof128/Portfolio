@@ -25,11 +25,9 @@ export interface WorkspaceBounds {
   readonly height: number;
 }
 
-// Existing document grids respond to the viewport rather than their container.
-// Keep desktop reading panes wide enough until they gain container queries. 720px
-// is the narrowest that still fits beside the icon column at 1024px (see
-// createCascadedWindowRect).
-export const WINDOW_MIN_WIDTH = 720;
+// Reading layouts respond to their content container. A narrow desktop pane can
+// therefore use the same 320px reflow layout as a phone, without scaling its text.
+export const WINDOW_MIN_WIDTH = 320;
 export const WINDOW_MIN_HEIGHT = 240;
 export const FLOATING_VIEWPORT_MIN_WIDTH = 1024;
 export const FLOATING_VIEWPORT_MIN_HEIGHT = 600;

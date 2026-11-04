@@ -1,0 +1,865 @@
+{
+  "projects": {
+    "invisible-window-research": {
+      "slug": "invisible-window-research",
+      "title": "Invisible Window Research",
+      "category": "OFFENSIVE",
+      "year": "2026",
+      "description": "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion in tested Windows 10/11 and macOS 14–26 lab configurations using documented OS display APIs. Responsibly disclosed to vendors.",
+      "tags": [
+        "Security Research",
+        "Windows",
+        "macOS",
+        "WebRTC",
+        "Responsible Disclosure",
+        "PoC"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/invisible-window-research",
+        "paper": "/Invisible_Window_Research_Preprint_V2.0.pdf",
+        "preprint": "https://zenodo.org/records/20376495",
+        "caseStudy": "/projects/invisible-window-research"
+      },
+      "papers": [
+        {
+          "title": "The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+          "label": "IEEE-format preprint",
+          "href": "/Invisible_Window_Research_Preprint_V2.0.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "CC BY 4.0 preprint",
+          "description": "13-page research paper documenting cross-platform screen-capture evasion and coordinated vendor disclosure.",
+          "doi": "10.5281/zenodo.20376495"
+        }
+      ],
+      "citation": "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20376495",
+      "build": {
+        "stack": [
+          "Win32 C (Windows PoC)",
+          "Swift / AppKit (macOS PoC)",
+          "Python (pixel-level forensic verification)",
+          "LaTeX (IEEE conference template, 13 pages, 53 references)"
+        ],
+        "features": [
+          "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+): excludes the window from tested Windows screen-capture paths with zero visual artefact",
+          "NSWindow.SharingType.none (macOS 14–26): exclusion was demonstrated in tested native capture paths. macOS 26 used CGWindowListCreateImage and screencapture, not browser getDisplayMedia() or a direct ScreenCaptureKit test",
+          "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Discovery and verification (January 2026)",
+          "Microsoft MSRC was notified in February 2026 and classified the issue as by-design, not a security vulnerability, in April 2026",
+          "Apple Product Security was notified in March 2026 and classified the issue as consistent with documented functionality, not a security issue, that month",
+          "Public release following OS vendor responses (May 2026)",
+          "Proof-of-concept source code withheld; available to verified security researchers on request",
+          "Uses documented, user-level OS APIs. No kernel exploits or privilege escalation are involved",
+          "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines"
+        ]
+      },
+      "fullDescription": "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs, SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS, that let an application exclude its window from tested screen-capture paths while remaining fully visible on the physical display. This challenges the trust assumption in capture-based proctoring. Proof-of-concept implementations achieved 100% evasion across tested Windows and macOS lab configurations, including macOS 26 where the attack was previously assumed mitigated. Configurations were simulated, not commercial proctoring products; macOS 26 used native CGWindowListCreateImage and screencapture rather than browser getDisplayMedia(), and Linux was not tested. Findings reflect the tested software versions as of March 2026 and may change after patches.",
+      "problem": "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. The research demonstrates a gap in that assumption: documented OS display APIs excluded windows in tested capture paths without privilege escalation or kernel modification. These findings concern controlled, simulated Windows and macOS configurations; they do not establish bypass of every browser or commercial proctoring product.",
+      "solution": [
+        "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
+        "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS); both appear in official SDK references",
+        "Built proof-of-concept implementations in Win32 C (Windows) and Swift (macOS) demonstrating full screen-capture evasion",
+        "Evaluated simulated proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26; no commercial products were tested, and macOS 26 used native capture rather than browser getDisplayMedia()",
+        "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
+        "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
+        "Coordinated OS vendor disclosure: Microsoft MSRC (notified Feb 2026, classified Apr 2026) and Apple Product Security (notified and classified Mar 2026) both issued formal classifications"
+      ],
+      "proof": [
+        "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
+        "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
+        "Window exclusion remained effective in tested native capture paths on macOS 26.3.1 despite Apple's documented ScreenCaptureKit changes in macOS 15; no direct ScreenCaptureKit or browser getDisplayMedia() test was performed on macOS 26",
+        "Linux (X11/Wayland) was not evaluated; these results apply to the tested Windows and macOS configurations",
+        "Behavioural detection showed no significant effect at this sample size. Gaze tracking (p = 0.41, n = 8) was underpowered, and mouse dynamics fell within normal exam-behaviour variance. This does not establish that behavioural detection is impossible in all settings",
+        "Published as a Zenodo preprint under CC BY 4.0 (DOI 10.5281/zenodo.20376495), with 13 pages, 53 references, and IEEE conference formatting"
+      ]
+    },
+    "project-simurgh": {
+      "slug": "project-simurgh",
+      "title": "Project Simurgh",
+      "category": "DEFENSIVE",
+      "year": "2026",
+      "description": "Inspectable authorisation and containment prototype for tool-using AI agents. October 2026 matched-control study: Llama-3.2-3B restricted trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions. The gpt-6-luna baseline was already 0/24, so no incremental protection was observed there.",
+      "tags": [
+        "Containment Attestation",
+        "Agentic AI Safety",
+        "Prompt-Injection",
+        "Ed25519",
+        "LLM Red-Teaming",
+        "AGPL-3.0"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/Project-Simurgh",
+        "caseStudy": "/projects/project-simurgh",
+        "doi": "https://doi.org/10.5281/zenodo.21737792",
+        "doiKind": "software"
+      },
+      "papers": [
+        {
+          "title": "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions",
+          "label": "Earlier device-integrity preprint",
+          "href": "/Project_Simurgh_Preprint_v1.0.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "CC BY 4.0 preprint",
+          "description": "12-page defensive follow-up to The Invisible Window, replacing visual surveillance with metadata-only integrity proofs.",
+          "doi": "10.5281/zenodo.20374849"
+        },
+        {
+          "title": "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University",
+          "label": "Supplement preprint",
+          "href": "/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "Phase C preprint",
+          "description": "5-page voting-adjacent pilot reporting 31 consented sessions alongside a Macquarie student-society event, with ballot-choice exclusion, HMAC audit chaining, forbidden-field rejection, and 5/5 collection-closure gates.",
+          "doi": "10.5281/zenodo.20549736"
+        },
+        {
+          "title": "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations",
+          "label": "Banking-adjacent preprint",
+          "href": "/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "Author-prepared preprint",
+          "description": "Fictional, non-bank research prototype that turns privacy and overclaim boundaries into machine-checkable evidence: a 46-name forbidden-field firewall whose rejections become audit events, a deterministic offline AI privacy firewall, and per-response privacy receipts anchored in per-session HMAC audit chains. At the evidence freeze all 417/417 unit tests, 43/43 end-to-end checks, and 27/27 security checks passed across three privacy audits and a no-egress static gate, with a formative five-tester dry run (30 sessions) recording zero sensitive values in evidence and 5/5 non-claim checklist comprehension.",
+          "doi": "10.5281/zenodo.20675513"
+        }
+      ],
+      "citation": "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
+      "build": {
+        "stack": [
+          "Earlier frozen containment gateway (Node.js / JavaScript)",
+          "Ed25519-signed, offline-replayable evidence archives",
+          "OpenAI Responses API with tool calling",
+          "Self-hosted Llama-3.2-3B / Llama-3.3-70B",
+          "Lean 4 proofs"
+        ],
+        "features": [
+          "Host-held delegation, stop, lease and credential state is checked outside the model for every tool proposal",
+          "Matched credential-only, composed and deny-all controls separate host-control effects from the model baseline and useful-task outcomes",
+          "Ed25519-signed evidence archives replay offline in one command; original integration-defect traces are retained",
+          "Earlier frozen architecture used four containment boundaries: input firewall, context-provenance guard, tool-invocation gate and output-leakage firewall"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Host-side state checks govern permitted tool proposals; the prototype and small experiments do not establish a universal safety guarantee",
+          "Positive and null model results are published together, with state-cluster uncertainty and the part of the gap that holds by construction made explicit",
+          "OpenAI role-placement failure and the frozen correction remain visible; one authorised-workflow refusal is still open",
+          "39 Lean 4 proofs are checked behind a gate rejecting unproven “sorry” placeholders; proof scope is distinct from empirical test outcomes",
+          "Earlier frozen containment evidence complements input classifiers; it is not a general jailbreak detector or proof that all unsafe model outputs are prevented"
+        ]
+      },
+      "fullDescription": "Project Simurgh is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state are held on the host; each tool proposal is checked against that state outside the model. Signed Ed25519 evidence archives can be replayed offline. Its October 2026 transfer study reports a benefit on one model and a null result on another. Earlier classifier-miss and AgentDojo results remain separate frozen experiments, while the original device-integrity preprint records the project’s earlier research lineage.",
+      "problem": "A tool-using agent may propose actions after its delegation, stop, lease or credential state has changed. Host controls need to enforce that state outside the model. Evaluating those controls also requires matched baselines, useful-task outcomes and uncertainty reporting: an already-clean model baseline cannot demonstrate additional protection.",
+      "solution": [
+        "Holds delegation, stop, lease and credential state on the host, checks every tool proposal outside the model, and signs replayable evidence with Ed25519",
+        "October 2026 transfer study: 24 tasks, two trials each, three matched controls (credential-only, composed, deny-all), two models and 288 replayed branches; protocol to published package took 15–17 October 2026",
+        "On Meta Llama-3.2-3B, composed host controls cut restricted-state trials with new effects from 17/24 to 0/24, retained 23/24 useful completions and blocked no valid proposal",
+        "On OpenAI gpt-6-luna the baseline was already 0/24; the study reports no incremental protection on that model",
+        "Reports uncertainty per state: 24 restricted trials form six states; Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%, and part of the gap holds by construction"
+      ],
+      "proof": [
+        "October 2026 matched-control transfer study: 24 tasks × two trials × three controls × two models; 288 replayed branches. The positive Llama-3.2-3B result and null gpt-6-luna result are reported together",
+        "Llama-3.2-3B: restricted-state trials with new effects 17/24 → 0/24, useful completions 23/24, no valid proposal blocked; gpt-6-luna: baseline 0/24, no observed incremental protection",
+        "Cluster scope: the 24 restricted trials occupy six states. Per-state Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%; part of the difference holds by construction",
+        "OpenAI Responses API integration defect: a role-placement error caused 8/8 workflow declines. Original traces were retained; a frozen developer-role correction completed 2/3 authorised workflows and declined 5/5 restricted workflows, with one refusal still open",
+        "Earlier frozen classifier stage (2026): real Llama Guard 4 12B over 180 cases; containment evidence covered all 138/138 malicious cases it missed, including 120 downstream injections outside an input-only classifier’s view. This is a coverage claim, not a classifier ranking",
+        "Earlier frozen AgentDojo stage (2026): self-hosted Llama-3.3-70B on 140 pre-registered workspace injections, targeted attack success 9/140 → 0/140; the deterministic four-suite run scored attack success 0/949 with unattacked utility 949/949. Both are scoped as small experiments",
+        "39 Lean 4 proofs behind a gate that rejects unproven “sorry” placeholders; 5,171 tests passed in the 19 October 2026 smoke run; 92 releases; one-command offline replay; AGPL-3.0",
+        "Audited 919 project documents and published all 141 dated findings, including overstatements in earlier closeouts, in the README",
+        "Current software archive DOI 10.5281/zenodo.21737792 is separate from the original device-integrity preprint DOI 10.5281/zenodo.20374849 and the other published preprints"
+      ],
+      "updatedAt": "2026-11-04"
+    },
+    "project-zurvan": {
+      "slug": "project-zurvan",
+      "title": "Project Zurvan",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Local-first LLM knowledge engine. Ingests any document, extracts structured knowledge (claims, concepts, entities, decisions), and exposes it to AI agents via an MCP stdio server. 218 tests passing.",
+      "tags": [
+        "Python",
+        "LLM",
+        "MCP",
+        "Knowledge Graph",
+        "SQLite",
+        "Local-first",
+        "AI Agents"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/Project-Zurvan",
+        "repoVisibility": "private",
+        "caseStudy": "/projects/project-zurvan"
+      },
+      "build": {
+        "stack": [
+          "Python 3.10+",
+          "SQLite FTS5 (hybrid search)",
+          "MCP stdio server",
+          "OpenAI / Anthropic / Mock LLM providers",
+          "Obsidian-compatible vault layout"
+        ],
+        "features": [
+          "Ingests Markdown, PDF, TXT, and images into a linked, searchable, git-friendly wiki",
+          "The LLM extraction layer produces typed knowledge nodes: claims, concepts, entities, and decisions. The knowledge set grows as sources are added",
+          "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces dense context bundles for agent prompts",
+          "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
+          "Multi-project federation supports cross-vault search, contradiction detection, and policy monitoring across independent vaults",
+          "218 tests passing across 18 completed phases"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Document storage is local; LLM extraction may use configured OpenAI or Anthropic providers. External processing depends on the selected provider and configuration",
+          "MCP server is read-only by default; write mode requires explicit opt-in flag",
+          "Project paths are stored in ~/.zurvan/projects.json and are never committed to version control",
+          "Mock LLM provider available for safe dev/test without API key exposure",
+          "Agent memory isolated per vault; cross-vault federation requires explicit registration"
+        ]
+      },
+      "fullDescription": "Project Zurvan is a local-first LLM knowledge engine that turns raw documents into a linked, searchable, git-friendly wiki, then exposes that wiki to AI agents via a Model Context Protocol (MCP) server. Inspired by Andrej Karpathy's personal knowledge management gist, Zurvan is designed for researchers, engineers, and agents that need structured long-term memory without cloud lock-in.",
+      "problem": "LLM agents lack persistent, structured memory that survives between sessions. Existing RAG pipelines either require cloud infrastructure or lose the relational structure of knowledge: which claim supports which decision, which concept contradicts another. A local-first solution needs to ingest arbitrary documents, preserve knowledge relationships as a graph, and present the result to agents in a queryable, privacy-preserving format.",
+      "solution": [
+        "Built a local document ingestion pipeline (MD, PDF, TXT, images) feeding a SQLite-backed knowledge store",
+        "The LLM extraction layer produces typed nodes for claims, concepts, entities, and decisions. The knowledge set grows as the corpus grows",
+        "Hybrid FTS5 + semantic search with graph-neighbour expansion surfaces deep context bundles for agent prompts",
+        "MCP stdio server exposes zurvan_search, zurvan_context, zurvan_remember, zurvan_decision_add, and graph tools to Claude Code and Cursor",
+        "Multi-project federation manages independent vaults with cross-vault search, contradiction detection, and policy drift radar"
+      ],
+      "proof": [
+        "218 tests passing across 18 completed development phases",
+        "MCP server verified with Claude Code and Cursor client setup guides",
+        "Obsidian vault integration with colour-coded 7-type knowledge graph (claims, concepts, entities, decisions, sessions, contradictions, syntheses)",
+        "Evidence pack → report → review → publish pipeline runs fully offline",
+        "Agent workflow orchestration (preflight / postedit / session close) documented for Claude Code and Codex"
+      ]
+    },
+    "gitswitch": {
+      "slug": "gitswitch",
+      "title": "GitSwitch",
+      "category": "ENGINEERING",
+      "year": "2024",
+      "description": "AI-powered Git client for managing multiple identities and generating semantic commits. Built with Electron and React.",
+      "tags": [
+        "Electron",
+        "React",
+        "TypeScript",
+        "AI",
+        "Dev Tool"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/GitSwitch",
+        "caseStudy": "/projects/gitswitch"
+      },
+      "build": {
+        "stack": [
+          "Electron",
+          "React 19",
+          "TypeScript",
+          "Zustand",
+          "Google Gemini AI"
+        ],
+        "features": [
+          "Multi-Account Management (Personal, Work)",
+          "AI Commit Generation (Gemini 3)",
+          "Smart Diff Viewer with syntax highlighting",
+          "Drag & Drop repository management"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "API keys redacted from logs & wiped from memory",
+          "Secure OS-keychain storage for secrets",
+          "Enforced timeouts and input sanitisation",
+          "Privacy-first design"
+        ]
+      },
+      "fullDescription": "Gitswitch is an AI-powered Git client for developers who juggle multiple accounts and repositories. It switches git identities and writes semantic commit messages.",
+      "problem": "Developers often struggle with managing multiple git identities (personal vs work) and writing consistent commit messages.",
+      "solution": [
+        "Built an identity switcher for global and local git config",
+        "Integrated Gemini 3 AI for semantic commit generation",
+        "Built a secure, modern Electron app with strict isolation",
+        "Implemented smart diff viewing for better code review"
+      ],
+      "proof": [
+        "Secure OS-keychain integration",
+        "Memory wiping for API keys",
+        "React 19 + Electron 33 modern stack",
+        "Cyberpunk-inspired UI"
+      ]
+    },
+    "mehr-guard": {
+      "slug": "mehr-guard",
+      "title": "Mehr Guard",
+      "category": "DEFENSIVE",
+      "year": "2024",
+      "description": "Privacy-first offline QR & URL security scanner built with Kotlin Multiplatform. 100% offline analysis with 5 platform targets.",
+      "tags": [
+        "KMP",
+        "Security Tool",
+        "Android",
+        "iOS",
+        "Desktop",
+        "Web"
+      ],
+      "links": {
+        "demo": "https://raoof128.github.io/dashboard.html",
+        "repo": "https://github.com/Raoof128/Raoof128.github.io",
+        "caseStudy": "/projects/mehr-guard"
+      },
+      "build": {
+        "stack": [
+          "Kotlin Multiplatform",
+          "Compose Multiplatform",
+          "SwiftUI",
+          "ML Kit",
+          "SQLDelight"
+        ],
+        "features": [
+          "5 Platform Targets (Android, iOS, JVM, JS, Wasm)",
+          "Ensemble ML Model (Logistic Regression + Gradient Boosting)",
+          "Brand-impersonation, homograph-attack & malicious-redirect detection",
+          "Heuristics Engine (25+ checks)",
+          "Built-in red-team suite (19 curated attack scenarios)"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "100% Offline Analysis (Zero network calls)",
+          "On-device ML & Heuristics",
+          "No data collection",
+          "Privacy by Architecture"
+        ]
+      },
+      "fullDescription": "Mehr Guard is a privacy-first QR code and URL security scanner built with Kotlin Multiplatform. It detects phishing attacks, brand impersonation, and malicious redirects entirely on-device.",
+      "problem": "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
+      "solution": [
+        "Built a 100% offline analysis engine using Kotlin Multiplatform",
+        "Implemented an ensemble ML model with 25+ heuristic checks for threat detection",
+        "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); ~100% of detection logic shared (~52% of the total codebase)",
+        "Achieved <5ms latency for real-time scanning"
+      ],
+      "proof": [
+        "F1 Score: 87% on red team corpus",
+        "Performance: <5ms P99 latency",
+        "1,248+ automated tests plus a built-in red-team suite of 19 curated attack scenarios",
+        "Privacy: Verified 0 network calls via ./judge/verify_offline.sh",
+        "Code Sharing: ~100% of detection logic (~52% of total codebase)"
+      ]
+    },
+    "syllabus-sync": {
+      "slug": "syllabus-sync",
+      "title": "Syllabus-Sync",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "AI-native Campus OS transforming university PDF syllabi into structured, agent-readable data. Accepted into the Macquarie University Incubator as a formal startup. Full student operations suite with 503 tests across 92 files, live at syllabus-sync.app.",
+      "tags": [
+        "MQ Incubator Startup",
+        "Next.js 16",
+        "Supabase",
+        "TypeScript",
+        "AI/LLM",
+        "WebAuthn"
+      ],
+      "links": {
+        "demo": "https://www.syllabus-sync.app/",
+        "repo": "https://github.com/Raoof128/syllabus-sync",
+        "caseStudy": "/projects/syllabus-sync"
+      },
+      "build": {
+        "stack": [
+          "Next.js 16",
+          "TypeScript 5",
+          "Supabase PostgreSQL",
+          "TanStack Query",
+          "Leaflet + Google Maps",
+          "Framer Motion",
+          "Radix UI",
+          "Sentry"
+        ],
+        "features": [
+          "LLM OCR pipeline extracting structured JSON from PDF syllabi",
+          "Syllabus-as-Code: assessments and deadlines are version-controlled artefacts",
+          "Full student OS: calendar, reminders, campus map, notifications",
+          "503 tests across 92 files with CI/CD quality gates"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Zero-Trust proxy middleware authenticates every route by default",
+          "Supabase Row-Level Security enforced at database layer",
+          "WebAuthn/FIDO2 passkey authentication (no passwords stored)",
+          "LLM prompt injection mitigation with schema-constrained output and input sanitisation",
+          "Secrets scanner in CI blocks credential patterns from commits"
+        ]
+      },
+      "fullDescription": "Syllabus Sync is an AI-native Campus OS that transforms static university PDF syllabi into structured, agent-readable data and wraps them in a full student operations suite: calendar, map, notifications, and multi-profile management. It has been accepted into the Macquarie University Incubator as a formal startup and runs in production at syllabus-sync.app.",
+      "problem": "Australian universities publish syllabi as unstructured PDFs. Students manually copy assessment dates into calendars, and AI assistants hallucinate deadlines because no machine-readable source of truth exists.",
+      "solution": [
+        "Built an LLM OCR pipeline that extracts structured JSON from PDF syllabi with Zod schema validation",
+        "Implemented Syllabus-as-Code where assessments and deadlines are version-controlled, diff-able artefacts",
+        "Created a full student OS with calendar, campus navigation (Leaflet + Google Maps), and push notifications",
+        "Designed for other Australian universities to adopt by replacing data/ and setting environment variables"
+      ],
+      "proof": [
+        "Accepted into the Macquarie University Incubator as a formal startup (2026)",
+        "Live in production at syllabus-sync.app",
+        "All 503 tests across 92 files passed in CI",
+        "Zero-Trust proxy catches misconfiguration by default (validated in production)",
+        "Designed to serve ~47,000 MQ students; architected to fork for other Australian universities",
+        "WebAuthn passkeys authenticate with public-key credentials rather than stored passwords"
+      ]
+    },
+    "divan-open-day": {
+      "slug": "divan-open-day",
+      "title": "Divan — Open Day",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Bilingual English and Persian Hafez and Rumi poetry experience built for a Persian Society Open Day stall. Visitors choose a poet and receive one reviewed verse with its translation, source, and recitation. The app works offline and uses no cookies, trackers, or backend.",
+      "tags": [
+        "React 19",
+        "Vite",
+        "TypeScript",
+        "Offline-First",
+        "Privacy by Design",
+        "i18n / RTL"
+      ],
+      "links": {
+        "demo": "https://divan.raoufabedini.dev/",
+        "repo": "https://github.com/Raoof128/divan-open-day",
+        "caseStudy": "/projects/divan-open-day"
+      },
+      "build": {
+        "stack": [
+          "Vite",
+          "React 19",
+          "strict TypeScript",
+          "Hand-written service worker",
+          "Web Crypto (shuffle bag)",
+          "Vitest (unit / component / a11y / offline)",
+          "Playwright (Chromium e2e)",
+          "pnpm 10.33 · Node 22.16"
+        ],
+        "features": [
+          "Reviewed bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 verses, each bound to an immutable edition with documented source provenance",
+          "Verse selection uses a Web Crypto shuffle bag computed on-device, without server involvement",
+          "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
+          "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterised images)",
+          "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Privacy by construction: no cookies, identifiers, trackers, or visitor input; nothing is transmitted",
+          "The client is static and has no backend, database, or analytics infrastructure",
+          "Only public release/poem IDs persisted in sessionStorage; motion preference stored locally only",
+          "Production compiler rejects synthetic/test data before deployment",
+          "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licences, e.g. CC BY-SA)",
+          "Delivered as a static container behind an outbound tunnel, with no inbound surface"
+        ]
+      },
+      "fullDescription": "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention, and receives a single reviewed verse with its English translation, source attribution, and optional recitation. The app works offline after its first load and is privacy-first by construction: no cookies, trackers, backend, or visitor input, so it runs reliably on a venue's unreliable network while collecting nothing about the people who use it.",
+      "problem": "A public Open Day stall needs a fast, delightful cultural experience that works on unreliable venue Wi-Fi, respects visitor privacy completely, and treats Persian poetry with cultural and scholarly integrity: no hallucinated verses, no rasterised calligraphy, no data collection.",
+      "solution": [
+        "Curated exactly 60 Hafez + 60 Rumi verses (120 total), each bound to an immutable edition with documented, verifiable source provenance",
+        "Made the whole app offline-first with a hand-written service worker so the stall keeps working with no network",
+        "The Web Crypto shuffle bag selects verses on-device; no server records what visitors draw",
+        "Rendered live Nastaliq typography and per-poet art direction for cultural authenticity instead of flattened images",
+        "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support"
+      ],
+      "proof": [
+        "No cookies, trackers, or backend are used. sessionStorage holds only public poem IDs",
+        "Runs fully offline after first load via the integrity-verified service worker",
+        "A production compiler rejects synthetic test data before deployment, so only the reviewed corpus ever ships",
+        "Tested across unit, component, accessibility, offline, share, performance, and security suites (Vitest) plus Playwright Chromium e2e"
+      ]
+    },
+    "nexus-archive": {
+      "slug": "nexus-archive",
+      "title": "Nexus Archive",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Cyberpunk-styled personal media vault with React frontend, Litestar API, and Supabase auth. AI-assisted recommendations, encrypted takeaways, and hardened cookie-based auth.",
+      "tags": [
+        "React",
+        "Python",
+        "Litestar",
+        "Supabase",
+        "AI",
+        "Full-Stack"
+      ],
+      "links": {
+        "demo": "https://home-notes-app.uk/",
+        "repo": "https://github.com/Raoof128/Nexus_Archive",
+        "caseStudy": "/projects/nexus-archive"
+      },
+      "build": {
+        "stack": [
+          "React 19",
+          "Vite",
+          "Tailwind CSS 4",
+          "TanStack Query",
+          "Python 3.12",
+          "Litestar",
+          "Supabase PostgreSQL",
+          "Docker",
+          "Terraform"
+        ],
+        "features": [
+          "AI-assisted media recommendations via Gemini with graceful degradation",
+          "Real-time chat transcripts with user-scoped sanitisation",
+          "Status tracking, ratings, and reviews for anime, movies, and books",
+          "Smart filtering and search across entire media library"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "HttpOnly SameSite=Strict auth cookies (no frontend-readable tokens)",
+          "Short-lived access tokens with silent rotation via /auth/refresh",
+          "AI prompt isolation with XML delimiters, string scrubbing, and PII masking",
+          "Encrypted takeaway persistence (AES via TAKEAWAY_ENCRYPTION_KEY)",
+          "Bandit, pip-audit, npm audit, and secret scanning in CI"
+        ]
+      },
+      "fullDescription": "Nexus Archive is a cyberpunk-styled personal media vault combining a React frontend, a Litestar API, and Supabase-backed identity and persistence. Manage books, movies, anime, ratings, takeaways, chat sessions, and AI-assisted recommendations from a single dashboard.",
+      "problem": "Media trackers split entertainment libraries across platforms and can have weak security controls. Nexus Archive brings titles, ratings, notes, and recommendations into one account with row-level access controls.",
+      "solution": [
+        "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
+        "Implemented backend-managed HttpOnly auth cookies replacing frontend-readable Supabase tokens",
+        "Integrated Gemini AI for media recommendations with shared per-user rate limiting and local fallback",
+        "Added encrypted takeaway persistence and AI prompt isolation with PII masking"
+      ],
+      "proof": [
+        "Hardened auth: HttpOnly + SameSite=Strict cookies with silent token rotation",
+        "CI security gates: Bandit, pip-audit, npm audit, secret scanning",
+        "Locust load testing for performance verification",
+        "Terraform IaC scaffold for reproducible Supabase + Vercel deployments"
+      ]
+    },
+    "nanomatch": {
+      "slug": "nanomatch",
+      "title": "NanoMatch",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "High-performance limit order book and matching engine in C++20. Single-thread synthetic benchmark: 1M+ orders/second with sub-microsecond cancellation.",
+      "tags": [
+        "C++20",
+        "CMake",
+        "Google Test",
+        "HFT",
+        "Systems Programming"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/NanoMatch",
+        "caseStudy": "/projects/nanomatch"
+      },
+      "build": {
+        "stack": [
+          "C++20",
+          "CMake 3.20+",
+          "Google Test 1.17",
+          "GitHub Actions CI/CD",
+          "AddressSanitizer",
+          "UBSan"
+        ],
+        "features": [
+          "Price-time priority (FIFO) matching algorithm",
+          "4 order types: Limit, Market, IOC, Fill-or-Kill",
+          "Expected O(1) order lookup/cancellation via hash map; modification uses cancel and re-add",
+          "Custom pool allocator eliminating heap allocation overhead"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "AddressSanitizer and UndefinedBehaviorSanitizer in CI",
+          "60+ unit tests across 18 test suites",
+          "cppcheck static analysis on every push",
+          "No external runtime dependencies"
+        ]
+      },
+      "fullDescription": "NanoMatch is a high-performance limit order book and matching engine built in modern C++20. It simulates a financial exchange's core operations, processing buy/sell orders with price-time priority matching at millions of operations per second.",
+      "problem": "Financial exchanges require ultra-low-latency order matching. Understanding how matching engines work at the systems level demands building one from scratch with real performance constraints.",
+      "solution": [
+        "Implemented price-time priority (FIFO) matching with support for Limit, Market, IOC, and FOK orders",
+        "Designed expected O(1) lookup and cancellation using hash map indexing; modification cancels and re-adds the order",
+        "Built a custom pool allocator to eliminate heap allocation overhead on the hot path",
+        "Added multi-instrument support with independent order books per symbol"
+      ],
+      "proof": [
+        "Throughput: 1M+ orders/second (single-thread, synthetic benchmark)",
+        "Comprehensive test suite with p50/p99 latency benchmarks",
+        "All 60+ unit tests across 18 test suites passed",
+        "CI: ASan, UBSan, cppcheck, clang-format on every push"
+      ]
+    },
+    "sentinelflow": {
+      "slug": "sentinelflow",
+      "title": "SentinelFlow",
+      "category": "DEFENSIVE",
+      "year": "2026",
+      "description": "Real-time network intrusion detection system in C++17. Layered protocol dissection, Snort-inspired rule engine, and stateful threat detection parsing 500K+ packets/second (single-thread, pure-parse, synthetic SYN traffic).",
+      "tags": [
+        "C++17",
+        "libpcap",
+        "IDS",
+        "Network Security",
+        "Systems Programming"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/SentinelFlow",
+        "caseStudy": "/projects/sentinelflow"
+      },
+      "build": {
+        "stack": [
+          "C++17",
+          "libpcap",
+          "CMake",
+          "Google Test",
+          "Snort-inspired Rules",
+          "BPF Filters"
+        ],
+        "features": [
+          "Live network capture via libpcap with configurable BPF filters",
+          "Layered protocol dissection: Ethernet, IPv4, TCP, UDP, ICMP, DNS, ARP",
+          "Snort-inspired configurable rule engine with signature matching",
+          "Stateful threat detection (port scans, SYN floods, DNS tunnelling)"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Colour-coded severity-level alerting (LOW → CRITICAL)",
+          "27 unit/integration tests covering all protocol layers",
+          "CSV export for forensic analysis and SIEM integration",
+          "Configurable BPF filters for targeted capture"
+        ]
+      },
+      "fullDescription": "SentinelFlow is a real-time network intrusion detection system that captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and exports security alerts to console and CSV formats.",
+      "problem": "Network intrusion detection requires deep packet inspection at wire speed. Commercial IDS solutions are opaque; building one from scratch reveals how protocol dissection, signature matching, and stateful analysis actually work.",
+      "solution": [
+        "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
+        "Built a Snort-inspired configurable rule engine for flexible signature matching",
+        "Added stateful threat detection for port scans, SYN floods, and DNS tunnelling",
+        "Engineered for throughput: 500K+ packets/sec (single-thread parse, synthetic SYN)"
+      ],
+      "proof": [
+        "Throughput: 500K+ packets/sec (single-thread parse, synthetic SYN)",
+        "Protocol coverage: 7 protocols across Layers 2-7",
+        "All 27 unit and integration tests passed",
+        "Supports both live capture and pcap file analysis"
+      ]
+    },
+    "ecrsm": {
+      "slug": "ecrsm",
+      "title": "eBPF Cloud Runtime Security Monitor",
+      "category": "OFFENSIVE",
+      "year": "2025",
+      "description": "Synthetic, read-only runtime visibility stack combining kernel eBPF, Go agent, and React dashboard. Educational runtime monitor.",
+      "tags": [
+        "eBPF",
+        "Go",
+        "React",
+        "Kernel",
+        "Runtime Security"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor",
+        "caseStudy": "/projects/ecrsm"
+      },
+      "build": {
+        "stack": [
+          "eBPF (C)",
+          "Go (Agent)",
+          "React (Dashboard)",
+          "Kubernetes (Helm)"
+        ],
+        "features": [
+          "Kernel tracepoints (execve, connect, ptrace, mmap)",
+          "Go agent for enrichment & rules",
+          "Live WebSocket dashboard",
+          "Kubernetes DaemonSet deployment"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Read-only introspection (no kernel writes)",
+          "Metadata only (no payloads/secrets)",
+          "Least privilege (BPF/SYS_ADMIN caps only)",
+          "Safe synthetic simulations"
+        ]
+      },
+      "fullDescription": "ECRSM is an educational eBPF-based Cloud Runtime Security Monitor. It provides a synthetic, read-only runtime visibility stack combining kernel eBPF, a Go agent, and a React dashboard.",
+      "problem": "Understanding runtime security at the kernel level is complex. ECRSM provides a safe, educational platform to learn eBPF-based monitoring.",
+      "solution": [
+        "Implemented eBPF hooks for safe syscall tracepoints",
+        "Built a Go agent to collect and enrich metadata",
+        "Created a real-time React dashboard for visualisation",
+        "Designed safe synthetic attack simulations"
+      ],
+      "proof": [
+        "Detects reverse shells, process injection, suspicious execs",
+        "Low-overhead perf buffer data transmission",
+        "Container/K8s metadata enrichment",
+        "Verifiable via synthetic attack scripts"
+      ]
+    },
+    "simurghforge": {
+      "slug": "simurghforge",
+      "title": "SimurghForge",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "File converter for macOS with 49 formats across images, documents, audio, video, and data. It uses 9 conversion engines, processes files locally, and ships as one .app bundle.",
+      "tags": [
+        "Tauri v2",
+        "Rust",
+        "React",
+        "TypeScript",
+        "FFmpeg",
+        "macOS"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/SimurghForge",
+        "caseStudy": "/projects/simurghforge"
+      },
+      "build": {
+        "stack": [
+          "Tauri v2 (Rust 1.77+)",
+          "React 18",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS v4",
+          "FFmpeg",
+          "LibreOffice",
+          "Pandoc",
+          "Python Pandas",
+          "ImageMagick"
+        ],
+        "features": [
+          "9 conversion engines: 4 native Rust + 5 CLI-bridged (FFmpeg, LibreOffice, Pandoc, Pandas, ImageMagick)",
+          "49 supported formats across images, documents, audio, video, and structured data",
+          "Batch conversion up to 50 files with configurable concurrency (Tokio semaphore)",
+          "MIME-type detection via magic bytes for automatic engine routing"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "100% local processing with no network calls or cloud dependency",
+          "MIME-based magic byte detection prevents extension spoofing",
+          "Path sanitisation for all file operations",
+          "One .app bundle with no background services or daemons"
+        ]
+      },
+      "fullDescription": "SimurghForge is a universal file converter for macOS built with Tauri v2 (Rust backend + React/TypeScript frontend). It converts files across 49 formats spanning images, documents, audio, video, and structured data using 9 specialised conversion engines, 4 native Rust engines for maximum performance and 5 CLI-bridged engines for format breadth. All processing happens locally with zero cloud dependency.",
+      "problem": "File conversion typically requires uploading sensitive documents to cloud services, using multiple specialised tools, or installing bloated Electron apps. Users need a single, fast, privacy-respecting tool that handles all common formats locally.",
+      "solution": [
+        "Built a three-tier engine architecture: native Rust (fastest), CLI tools (feature-rich), and Python (tabular data)",
+        "Implemented MIME-type detection via magic bytes for automatic engine selection",
+        "Designed batch orchestration with Tokio semaphore-based concurrency control",
+        "Shipped as a single .app bundle with quality presets (Low/Medium/High/Lossless)"
+      ],
+      "proof": [
+        "49 formats supported across 5 categories (images, documents, audio, video, data)",
+        "9 conversion engines with automatic routing based on MIME detection",
+        "Batch processing up to 50 files with configurable threading (1-8 threads)",
+        "No network calls; all processing runs locally and offline"
+      ]
+    },
+    "aion": {
+      "slug": "aion",
+      "title": "Aion",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "AI-powered Bible companion using Hybrid RAG. Keyword + semantic vector search (pgvector), real-time SSE streaming via Gemini, and cross-platform support with Tauri v2.",
+      "tags": [
+        "React Native",
+        "Expo",
+        "Supabase",
+        "pgvector",
+        "Gemini AI",
+        "Tauri v2"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/Aion",
+        "caseStudy": "/projects/aion"
+      },
+      "papers": [
+        {
+          "title": "Aion-BibleQA: Evaluating Retrieval and Citation Faithfulness in Verse-Grounded Bible RAG Systems",
+          "label": "Preprint",
+          "href": "/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "Pilot benchmark preprint",
+          "description": "8-page paper introducing a 40-question Bible RAG benchmark for citation faithfulness and false-premise robustness, with v3 retrieval reaching R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals.",
+          "doi": "10.5281/zenodo.20522874"
+        }
+      ],
+      "build": {
+        "stack": [
+          "React Native 0.81",
+          "Expo 54",
+          "TypeScript",
+          "Supabase PostgreSQL",
+          "pgvector",
+          "OpenAI Embeddings",
+          "Gemini 3.1 Flash",
+          "Tauri v2",
+          "TanStack Query v5",
+          "NativeWind"
+        ],
+        "features": [
+          "Hybrid RAG pipeline: regex keyword extraction + OpenAI embedding (1536-dim) + pgvector semantic search",
+          "Real-time SSE streaming from Gemini via Supabase Edge Functions",
+          "Rich inline verse cards with book/chapter/verse attribution",
+          "Cross-platform: React Native (iOS/Android) + Tauri v2 (macOS/Windows/Linux)"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "All API keys (OpenAI, Gemini, service_role) stored server-side only in Edge Function secrets",
+          "IP-based rate limiting: 5/min burst, 30/3hrs per IP, 200/day global cap",
+          "Row-Level Security (RLS) on all Supabase tables",
+          "500-character message length cap to prevent token-stuffing",
+          "Exact-match response cache (zero LLM cost on repeated queries)",
+          "Fail-closed: rate limit errors default to deny"
+        ]
+      },
+      "fullDescription": "Aion is an AI-powered Bible companion that lets users ask questions about scripture in plain language. Responses are grounded in actual Bible data retrieved via a Hybrid RAG pipeline combining keyword matching and semantic vector search (pgvector), then streamed in real time via SSE from Gemini. The app runs on mobile (React Native + Expo) and desktop (Tauri v2).",
+      "problem": "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
+      "solution": [
+        "Built a Hybrid RAG pipeline combining regex-based keyword extraction with OpenAI embedding (1536-dim) + pgvector semantic search",
+        "Implemented real-time SSE streaming from Gemini via Supabase Edge Functions",
+        "Designed rich inline verse cards with full book/chapter/verse attribution for verifiability",
+        "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop"
+      ],
+      "proof": [
+        "Hybrid RAG retrieves source scripture for citation checking; the reported 40-question pilot does not guarantee hallucination-free answers",
+        "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
+        "Exact-match response cache eliminates redundant LLM costs",
+        "Anonymous authentication with no sign-up; Supabase RLS applies to all tables"
+      ]
+    }
+  },
+  "supportingResearch": {
+    "sentinelssh": {
+      "title": "SentinelSSH",
+      "description": "Rust MCP server giving AI agents policy-scoped, read-only inspection of Linux hosts through 17 typed tools and no shell.",
+      "stack": [
+        "Rust",
+        "MCP",
+        "Linux"
+      ],
+      "typedTools": 17
+    }
+  }
+}

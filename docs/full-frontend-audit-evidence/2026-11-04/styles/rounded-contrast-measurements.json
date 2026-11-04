@@ -1,0 +1,506 @@
+[
+  {
+    "run": "rounded-dark-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Projects",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 13.436,
+    "worst_background": [
+      26,
+      48,
+      73
+    ],
+    "samples": 147
+  },
+  {
+    "run": "rounded-dark-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Write-ups",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 13.251,
+    "worst_background": [
+      27,
+      49,
+      74
+    ],
+    "samples": 168
+  },
+  {
+    "run": "rounded-dark-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "About",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 17.105,
+    "worst_background": [
+      5,
+      28,
+      55
+    ],
+    "samples": 112
+  },
+  {
+    "run": "rounded-dark-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "R\u00e9sum\u00e9",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 13.436,
+    "worst_background": [
+      26,
+      48,
+      73
+    ],
+    "samples": 147
+  },
+  {
+    "run": "rounded-dark-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Contact",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 13.436,
+    "worst_background": [
+      26,
+      48,
+      73
+    ],
+    "samples": 140
+  },
+  {
+    "run": "rounded-dark-320",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 4.833,
+    "worst_background": [
+      97,
+      115,
+      141
+    ],
+    "samples": 35
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Projects",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.255,
+    "worst_background": [
+      44,
+      91,
+      124
+    ],
+    "samples": 200
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Write-ups",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.229,
+    "worst_background": [
+      44,
+      91,
+      126
+    ],
+    "samples": 240
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "About",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.218,
+    "worst_background": [
+      45,
+      91,
+      126
+    ],
+    "samples": 144
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "R\u00e9sum\u00e9",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.123,
+    "worst_background": [
+      46,
+      92,
+      126
+    ],
+    "samples": 200
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Contact",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.328,
+    "worst_background": [
+      44,
+      90,
+      125
+    ],
+    "samples": 192
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.847,
+    "worst_background": [
+      37,
+      86,
+      119
+    ],
+    "samples": 24
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-top-clock time",
+    "text": "12:41",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 5.367,
+    "worst_background": [
+      59,
+      112,
+      145
+    ],
+    "samples": 128
+  },
+  {
+    "run": "rounded-dark-1440",
+    "selector": ".os-top-date",
+    "text": "4 Nov 2026",
+    "fg": [
+      255.0,
+      255.0,
+      255.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.125,
+    "worst_background": [
+      30,
+      76,
+      107
+    ],
+    "samples": 210
+  },
+  {
+    "run": "rounded-light-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Projects",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 19.952,
+    "worst_background": [
+      244,
+      250,
+      254
+    ],
+    "samples": 147
+  },
+  {
+    "run": "rounded-light-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Write-ups",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 19.792,
+    "worst_background": [
+      243,
+      249,
+      254
+    ],
+    "samples": 168
+  },
+  {
+    "run": "rounded-light-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "About",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 20.42,
+    "worst_background": [
+      250,
+      252,
+      254
+    ],
+    "samples": 112
+  },
+  {
+    "run": "rounded-light-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "R\u00e9sum\u00e9",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 19.952,
+    "worst_background": [
+      244,
+      250,
+      254
+    ],
+    "samples": 147
+  },
+  {
+    "run": "rounded-light-320",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Contact",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 19.988,
+    "worst_background": [
+      245,
+      250,
+      254
+    ],
+    "samples": 140
+  },
+  {
+    "run": "rounded-light-320",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 13.991,
+    "worst_background": [
+      182,
+      215,
+      242
+    ],
+    "samples": 35
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Projects",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.803,
+    "worst_background": [
+      110,
+      179,
+      184
+    ],
+    "samples": 200
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Write-ups",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 8.918,
+    "worst_background": [
+      112,
+      180,
+      185
+    ],
+    "samples": 240
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "About",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.056,
+    "worst_background": [
+      115,
+      181,
+      187
+    ],
+    "samples": 144
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "R\u00e9sum\u00e9",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.16,
+    "worst_background": [
+      116,
+      182,
+      188
+    ],
+    "samples": 200
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-dock-app > span:last-child",
+    "text": "Contact",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.021,
+    "worst_background": [
+      113,
+      181,
+      186
+    ],
+    "samples": 192
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-language summary",
+    "text": "\"EN\"",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.142,
+    "worst_background": [
+      124,
+      181,
+      182
+    ],
+    "samples": 24
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-top-clock time",
+    "text": "12:41",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 9.45,
+    "worst_background": [
+      128,
+      184,
+      182
+    ],
+    "samples": 128
+  },
+  {
+    "run": "rounded-light-1440",
+    "selector": ".os-top-date",
+    "text": "4 Nov 2026",
+    "fg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "opacity": 1.0,
+    "min_ratio": 7.776,
+    "worst_background": [
+      102,
+      167,
+      183
+    ],
+    "samples": 210
+  }
+]

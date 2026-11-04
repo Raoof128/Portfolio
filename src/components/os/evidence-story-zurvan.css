@@ -111,8 +111,8 @@
   .os-project-section
   .os-zurvan-type-ledger
   li[data-selected="true"] {
-  color: var(--os-text);
-  background: var(--os-accent-tint);
+  color: var(--explorer-active-fg);
+  background: var(--explorer-active-bg);
 }
 
 .os-shell
@@ -123,6 +123,15 @@
   color: var(--os-text);
   font-size: var(--text-s);
   font-weight: 600;
+}
+
+.os-shell
+  .os-project-explorer
+  .os-project-section
+  .os-zurvan-type-ledger
+  li[data-selected="true"]
+  strong {
+  color: inherit;
 }
 
 .os-shell .os-project-explorer .os-project-section .os-zurvan-type-ledger p {

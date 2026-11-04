@@ -1,0 +1,41 @@
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+ ❯ src/components/os/Desktop.test.tsx (11 tests | 5 failed | 6 skipped) 312ms
+     × preserves native or composing Home input {"ctrlKey":true} on desktop app links 156ms
+     × preserves native or composing Home input {"metaKey":true} on desktop app links 44ms
+     × preserves native or composing Home input {"altKey":true} on desktop app links 39ms
+     × preserves native or composing Home input {"shiftKey":true} on desktop app links 47ms
+     × preserves native or composing Home input {"isComposing":true} on desktop app links 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/os/Desktop.test.tsx > desktop window caption controls > preserves native or composing Home input {"ctrlKey":true} on desktop app links
+ FAIL  src/components/os/Desktop.test.tsx > desktop window caption controls > preserves native or composing Home input {"metaKey":true} on desktop app links
+ FAIL  src/components/os/Desktop.test.tsx > desktop window caption controls > preserves native or composing Home input {"altKey":true} on desktop app links
+ FAIL  src/components/os/Desktop.test.tsx > desktop window caption controls > preserves native or composing Home input {"shiftKey":true} on desktop app links
+ FAIL  src/components/os/Desktop.test.tsx > desktop window caption controls > preserves native or composing Home input {"isComposing":true} on desktop app links
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/components/os/Desktop.test.tsx:27:36
+     25|     });
+     26|     fireEvent(last, event);
+     27|     expect(event.defaultPrevented).toBe(false);
+       |                                    ^
+     28|     expect(last).toHaveFocus();
+     29|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 6 skipped (11)
+   Start at  01:21:41
+   Duration  1.63s (transform 413ms, setup 107ms, import 589ms, tests 312ms, environment 460ms)
+

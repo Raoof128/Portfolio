@@ -1,0 +1,1651 @@
+{
+  "lane": "content",
+  "scope_file": "work/full-frontend-audit/content-scope.json",
+  "files": [
+    {
+      "path": "src/i18n/format.test.ts",
+      "sha256": "d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9",
+      "bytes": 1388,
+      "lines": 31,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9",
+      "read_spans": [
+        [
+          1,
+          31
+        ]
+      ],
+      "notes": [
+        "Fully reviewed tests for numeric scripts, timezone-stable dates, invalid inputs and deterministic UTC formatting; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 31,
+      "final_lines": 31,
+      "final_sha256": "d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9"
+    },
+    {
+      "path": "src/i18n/format.ts",
+      "sha256": "70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064",
+      "bytes": 1052,
+      "lines": 34,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064",
+      "read_spans": [
+        [
+          1,
+          34
+        ]
+      ],
+      "notes": [
+        "Fully reviewed finite-number guards, invalid date handling, Australian-English language tag and locale mappings; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 34,
+      "final_lines": 34,
+      "final_sha256": "70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064"
+    },
+    {
+      "path": "src/i18n/index.test.ts",
+      "sha256": "2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9",
+      "bytes": 1071,
+      "lines": 37,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9",
+      "read_spans": [
+        [
+          1,
+          37
+        ]
+      ],
+      "notes": [
+        "Fully reviewed supported/fallback locale cases and prototype-name regressions; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 37,
+      "final_lines": 37,
+      "final_sha256": "2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9"
+    },
+    {
+      "path": "src/i18n/index.ts",
+      "sha256": "78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af",
+      "bytes": 2086,
+      "lines": 70,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af",
+      "read_spans": [
+        [
+          1,
+          70
+        ]
+      ],
+      "notes": [
+        "Fully reviewed all five locale definitions, dictionaries, fonts, fallback and own-property locale recognition; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 70,
+      "final_lines": 70,
+      "final_sha256": "78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af"
+    },
+    {
+      "path": "src/i18n/locales/ar.ts",
+      "sha256": "1506637c441e5c8fa6b69c4b52802c6f23ccc3ea7b0b8ba70dca88d899766f46",
+      "bytes": 38816,
+      "lines": 465,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "1506637c441e5c8fa6b69c4b52802c6f23ccc3ea7b0b8ba70dca88d899766f46",
+      "read_spans": [
+        [
+          1,
+          207
+        ],
+        [
+          208,
+          365
+        ],
+        [
+          366,
+          465
+        ]
+      ],
+      "notes": [
+        "Fully reviewed complete locale dictionary. Added existing Alignerr provenance to preview/intro fields and described attested permissions accurately. Scoped NanoMatch/SentinelFlow resume claims to existing single-thread synthetic benchmark evidence. Updated Last Index month to November 2026, matching the authorised content revision. Retained original verified numbers and technical identifiers.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 465,
+      "final_lines": 479,
+      "final_sha256": "21f144fe37f7faff6a1d77c4e1c6e94d666a196d5234e58b223b7e9d353415d7",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "028572cb7b893eb55403bc137b504b4901f59c45ee875674f4ab11b12ea476e3",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 160
+        },
+        {
+          "version": "initial",
+          "start": 161,
+          "end": 320
+        },
+        {
+          "version": "initial",
+          "start": 321,
+          "end": 465
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/i18n/locales/en.ts",
+      "sha256": "c3b960ecf73b26ac60a7139ffaf0d6cd282c684de4727ac7f570827ec67e91e4",
+      "bytes": 26902,
+      "lines": 472,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "c3b960ecf73b26ac60a7139ffaf0d6cd282c684de4727ac7f570827ec67e91e4",
+      "read_spans": [
+        [
+          1,
+          209
+        ],
+        [
+          210,
+          360
+        ],
+        [
+          361,
+          472
+        ]
+      ],
+      "notes": [
+        "Fully reviewed complete locale dictionary. Added existing Alignerr provenance to preview/intro fields and described attested permissions accurately. Scoped NanoMatch/SentinelFlow resume claims to existing single-thread synthetic benchmark evidence. Updated Last Index month to November 2026, matching the authorised content revision. Retained original verified numbers and technical identifiers.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 472,
+      "final_lines": 487,
+      "final_sha256": "41fcc36b4da234b13a26f6ca06c4775620053093f9763ed3400cc17db119a456",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "d611b3e0e198e8db8c5e5eeea46be8ba671aaf7772a5c8234d3303d8f9986e01",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 340
+        },
+        {
+          "version": "initial",
+          "start": 341,
+          "end": 472
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/i18n/locales/es.ts",
+      "sha256": "d6004973ac9685d44f7fda07aac154cefaf757b41cf969dbac9b34db6ab6b8fa",
+      "bytes": 31809,
+      "lines": 484,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "d6004973ac9685d44f7fda07aac154cefaf757b41cf969dbac9b34db6ab6b8fa",
+      "read_spans": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          306
+        ],
+        [
+          307,
+          484
+        ]
+      ],
+      "notes": [
+        "Fully reviewed complete locale dictionary. Added existing Alignerr provenance to preview/intro fields and described attested permissions accurately. Scoped NanoMatch/SentinelFlow resume claims to existing single-thread synthetic benchmark evidence. Updated Last Index month to November 2026, matching the authorised content revision. Retained original verified numbers and technical identifiers.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 484,
+      "final_lines": 500,
+      "final_sha256": "1cb3362477b2c6a254a4d6be4622309756326306eecc6f41b93ea07d59ee1520",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "4835bd9f256d8a99596d91075ebb0177904c0da90d30dccad1472bb9986b92d8",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 340
+        },
+        {
+          "version": "initial",
+          "start": 341,
+          "end": 484
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/i18n/locales/fa.ts",
+      "sha256": "59c0c5098c832f0beed62b9247d068f7b7dfadfe201e7ce321cd40702bf71578",
+      "bytes": 39145,
+      "lines": 472,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "59c0c5098c832f0beed62b9247d068f7b7dfadfe201e7ce321cd40702bf71578",
+      "read_spans": [
+        [
+          1,
+          214
+        ],
+        [
+          215,
+          373
+        ],
+        [
+          374,
+          472
+        ]
+      ],
+      "notes": [
+        "Fully reviewed complete locale dictionary. Added existing Alignerr provenance to preview/intro fields and described attested permissions accurately. Scoped NanoMatch/SentinelFlow resume claims to existing single-thread synthetic benchmark evidence. Updated Last Index month to November 2026, matching the authorised content revision. Retained original verified numbers and technical identifiers.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 472,
+      "final_lines": 487,
+      "final_sha256": "8b9688fade9b51e76cd9f1332d4fb4bff404b65d3573b4b7d401643a24e18698",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "6a7439e6d83e9f5cf25bc63c1cb9ee2823fe7f103e7dcd1289d06bca0a8d837e",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 340
+        },
+        {
+          "version": "initial",
+          "start": 341,
+          "end": 472
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/i18n/locales/locales.test.ts",
+      "sha256": "ccad9f744054409029227bd1b0e00e40fe02a7842f6af969e6639401391570ec",
+      "bytes": 4548,
+      "lines": 131,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "ccad9f744054409029227bd1b0e00e40fe02a7842f6af969e6639401391570ec",
+      "read_spans": [
+        [
+          1,
+          131
+        ]
+      ],
+      "notes": [
+        "Added all-five-locale regression contracts for evaluation provenance, permission-boundary search metadata and synthetic benchmark scope. Existing complete/nonempty/non-English-fallback/name/count checks preserved.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 131,
+      "final_lines": 344,
+      "final_sha256": "deff5feeeff224f919000cfdce9ad6a89e09146cd35f1b8e9f24c3b655d904ca",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "3a857229c2698e5bb47dc8dbb711b62ed62b638d982d33b6e00de85bccdaf877",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 190
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/i18n/locales/zh.ts",
+      "sha256": "6f1a85be09fc1eb6b6e42ea1d8e3783a776af0e00585baff9fe2dcc171167571",
+      "bytes": 26212,
+      "lines": 454,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "6f1a85be09fc1eb6b6e42ea1d8e3783a776af0e00585baff9fe2dcc171167571",
+      "read_spans": [
+        [
+          1,
+          278
+        ],
+        [
+          279,
+          454
+        ]
+      ],
+      "notes": [
+        "Fully reviewed complete locale dictionary. Added existing Alignerr provenance to preview/intro fields and described attested permissions accurately. Scoped NanoMatch/SentinelFlow resume claims to existing single-thread synthetic benchmark evidence. Updated Last Index month to November 2026, matching the authorised content revision. Retained original verified numbers and technical identifiers.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 2,
+      "review_complete": true,
+      "initial_lines": 454,
+      "final_lines": 462,
+      "final_sha256": "10f7e45379a6aa40d8c546c72513a1182689dd5924d180cbb7ca419c16c4efbd",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "2628088b229f0b5259fdf5451c4ae79dcd0baace596336aa732dcb073edafad0",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 330
+        },
+        {
+          "version": "initial",
+          "start": 331,
+          "end": 454
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/i18n/navigation.ts",
+      "sha256": "aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294",
+      "bytes": 1287,
+      "lines": 42,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294",
+      "read_spans": [
+        [
+          1,
+          42
+        ]
+      ],
+      "notes": [
+        "Fully reviewed locale-prefix replacement, root handling and client navigation adapter; no confirmed actionable defect in current contract."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 42,
+      "final_lines": 42,
+      "final_sha256": "aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294"
+    },
+    {
+      "path": "src/i18n/provider.tsx",
+      "sha256": "1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381",
+      "bytes": 708,
+      "lines": 34,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381",
+      "read_spans": [
+        [
+          1,
+          34
+        ]
+      ],
+      "notes": [
+        "Fully reviewed context, provider value and guarded access; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 34,
+      "final_lines": 34,
+      "final_sha256": "1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381"
+    },
+    {
+      "path": "src/lib/data.test.ts",
+      "sha256": "03a39a087e21fe4b0a5113be5e3392b19177d999dfe15333e24076a9916e156f",
+      "bytes": 9688,
+      "lines": 247,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "03a39a087e21fe4b0a5113be5e3392b19177d999dfe15333e24076a9916e156f",
+      "read_spans": [
+        [
+          1,
+          247
+        ]
+      ],
+      "notes": [
+        "Fully reviewed project inventory, original PDF/DOI/citation identity, links, required fields and revision-date assertions; existing tests used in focused verification.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 247,
+      "final_lines": 299,
+      "final_sha256": "93b9990dbbd82c6c4ace3129104bd789793844b466b1aec6bbad177dae325184",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "03a39a087e21fe4b0a5113be5e3392b19177d999dfe15333e24076a9916e156f",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 299
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/data.ts",
+      "sha256": "99a4fdbaca4567b48bbe8a274b405a175584073e3822171049e796112de7356f",
+      "bytes": 83101,
+      "lines": 1584,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "99a4fdbaca4567b48bbe8a274b405a175584073e3822171049e796112de7356f",
+      "read_spans": [
+        [
+          1,
+          191
+        ],
+        [
+          192,
+          336
+        ],
+        [
+          337,
+          546
+        ],
+        [
+          547,
+          801
+        ],
+        [
+          802,
+          985
+        ],
+        [
+          986,
+          1198
+        ],
+        [
+          1199,
+          1368
+        ],
+        [
+          1369,
+          1584
+        ]
+      ],
+      "notes": [
+        "Scoped Invisible Window illustrative comments to compatible capture paths without changing executable API examples. Qualified NanoMatch cancellation and SentinelFlow synthetic parse-only opening claims. Made Simurgh seven-item attack-class list explicitly illustrative of the existing eight-class claim. Substantive article revisions dated 2026-11-04; publication dates, technical numbers, source URLs, PDFs and experiment code retained.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 8,
+      "review_complete": true,
+      "initial_lines": 1584,
+      "final_lines": 1610,
+      "final_sha256": "fdbab5e5dd81996981257364a21997feba5bf96683d9013084b9f742dfb5d3ab",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "c2cb2725ce6c242835987157bb8e290b7d3e931efc3a11bd49a8634086cc9dba",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 200
+        },
+        {
+          "version": "final",
+          "start": 201,
+          "end": 400
+        },
+        {
+          "version": "final",
+          "start": 401,
+          "end": 600
+        },
+        {
+          "version": "final",
+          "start": 601,
+          "end": 800
+        },
+        {
+          "version": "final",
+          "start": 801,
+          "end": 1000
+        },
+        {
+          "version": "final",
+          "start": 1001,
+          "end": 1200
+        },
+        {
+          "version": "final",
+          "start": 1201,
+          "end": 1400
+        },
+        {
+          "version": "final",
+          "start": 1401,
+          "end": 1610
+        },
+        {
+          "version": "final",
+          "start": 195,
+          "end": 215
+        },
+        {
+          "version": "final",
+          "start": 473,
+          "end": 487
+        },
+        {
+          "version": "final",
+          "start": 625,
+          "end": 660
+        },
+        {
+          "version": "final",
+          "start": 1288,
+          "end": 1303
+        },
+        {
+          "version": "final",
+          "start": 1370,
+          "end": 1384
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 250
+        },
+        {
+          "version": "final",
+          "start": 1272,
+          "end": 1292
+        },
+        {
+          "version": "final",
+          "start": 1358,
+          "end": 1380
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/ar.ts",
+      "sha256": "582c5d4f42ee36a97447834454e9c9cf0636751016196be994d28a365ade33a3",
+      "bytes": 52058,
+      "lines": 531,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "582c5d4f42ee36a97447834454e9c9cf0636751016196be994d28a365ade33a3",
+      "read_spans": [
+        [
+          1,
+          123
+        ],
+        [
+          124,
+          306
+        ],
+        [
+          307,
+          521
+        ],
+        [
+          522,
+          531
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated narrative, stack, feature, measure and paper description. Clarified that the seven named Simurgh attack classes are a subset of the existing eight-class claim. Preserved technical tokens, research metrics, qualified Aion/Zurvan scope, resource identity and thirteen-project coverage.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 4,
+      "review_complete": true,
+      "initial_lines": 531,
+      "final_lines": 534,
+      "final_sha256": "ca66a084b601f1d5b3b75ad176e025562489a04359ede7749c71f40671e769b4",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "cd8aaabf2ec0ff49ca18b7cad2fc5d0d783cf5e191e0ffb5cb7103de20185979",
+      "current_review_evidence": "work/full-frontend-audit/research-project-overlays-peer-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          534
+        ]
+      ],
+      "final_delta_review_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          249,
+          257
+        ],
+        [
+          354,
+          362
+        ],
+        [
+          367,
+          375
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/diagram-copy.ts",
+      "sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+      "bytes": 9443,
+      "lines": 173,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+      "read_spans": [
+        [
+          1,
+          173
+        ]
+      ],
+      "notes": [
+        "Fully reviewed all five language diagrams and explicit schematic/non-benchmark limitations; no confirmed issue.",
+        "Earlier content-lane final hash is superseded by the current research PDF reconciliation ledger; research owner reviewed and edited this file in the authorised source update."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 173,
+      "final_lines": 173,
+      "final_sha256": "8a744d3aac3527c84fbaff9abcfdb1868e7b07f4d4e104bb7f592c683b5446ae",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "a5dc116a63945d595bf57e047f5a29ac5da45125cfa37094cb977de181b392cf",
+      "current_review_evidence": "work/full-frontend-audit/research-pdf-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          173
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/dossier-copy.ts",
+      "sha256": "98cabbb321d0f38df6c9d180a8c2fb0902faf800ed809926ec522eb64bb6021d",
+      "bytes": 10648,
+      "lines": 111,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "98cabbb321d0f38df6c9d180a8c2fb0902faf800ed809926ec522eb64bb6021d",
+      "read_spans": [
+        [
+          1,
+          111
+        ]
+      ],
+      "notes": [
+        "Fully reviewed all five languages, scope/non-claims, private Zurvan source and PDF/HTML explanation wording; no confirmed issue.",
+        "Earlier content-lane final hash is superseded by the current research PDF reconciliation ledger; research owner reviewed and edited this file in the authorised source update."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 111,
+      "final_lines": 111,
+      "final_sha256": "84a84b2a6a4d56dbdb186236ebeb5cdab6b14d33f9c86cce6ee89e1a833c5b56",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "98cabbb321d0f38df6c9d180a8c2fb0902faf800ed809926ec522eb64bb6021d",
+      "current_review_evidence": "work/full-frontend-audit/research-pdf-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          111
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/es.ts",
+      "sha256": "55532bf9c4086035bf478aed31e8b8403d637a3d556fa6bdd595df84a7277c04",
+      "bytes": 40789,
+      "lines": 526,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "55532bf9c4086035bf478aed31e8b8403d637a3d556fa6bdd595df84a7277c04",
+      "read_spans": [
+        [
+          1,
+          93
+        ],
+        [
+          94,
+          241
+        ],
+        [
+          242,
+          399
+        ],
+        [
+          400,
+          526
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated narrative, stack, feature, measure and paper description. Clarified that the seven named Simurgh attack classes are a subset of the existing eight-class claim. Preserved technical tokens, research metrics, qualified Aion/Zurvan scope, resource identity and thirteen-project coverage.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 4,
+      "review_complete": true,
+      "initial_lines": 526,
+      "final_lines": 529,
+      "final_sha256": "c506f0ccf3fab20d1f530d508939324a757a3122773014c704ebcca46df4b189",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "bf6ff4e6a12e296be791147e9e3b865b105419a46bbdc05ba99ec2b29ec76160",
+      "current_review_evidence": "work/full-frontend-audit/research-project-overlays-peer-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          529
+        ]
+      ],
+      "final_delta_review_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          249,
+          257
+        ],
+        [
+          354,
+          362
+        ],
+        [
+          367,
+          375
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/evidence-story-copy.ts",
+      "sha256": "ae2b41ba8b31a0ae41e81be8263a06a5aad934a1cf5d0dec488580c4e8ee3c62",
+      "bytes": 36198,
+      "lines": 681,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "ae2b41ba8b31a0ae41e81be8263a06a5aad934a1cf5d0dec488580c4e8ee3c62",
+      "read_spans": [
+        [
+          1,
+          299
+        ],
+        [
+          300,
+          516
+        ],
+        [
+          517,
+          681
+        ]
+      ],
+      "notes": [
+        "Fully reviewed all Simurgh, Invisible Window and Zurvan walkthrough copy in five languages, controls, illustrative labels and research limits; no new run trace or measurements introduced; no confirmed issue.",
+        "Earlier content-lane final hash is superseded by the current research PDF reconciliation ledger; research owner reviewed and edited this file in the authorised source update."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 681,
+      "final_lines": 684,
+      "final_sha256": "edb7943aed1271e1df0acb18451a8e7f5c5419c615c3ed73981266610ff91e71",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "ae2b41ba8b31a0ae41e81be8263a06a5aad934a1cf5d0dec488580c4e8ee3c62",
+      "current_review_evidence": "work/full-frontend-audit/research-pdf-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          540
+        ],
+        [
+          541,
+          681
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/fa.ts",
+      "sha256": "c1db2e87820156fced3219ae4fc3543f9cd3fa76adffa4aade8751680a31822f",
+      "bytes": 57342,
+      "lines": 526,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "c1db2e87820156fced3219ae4fc3543f9cd3fa76adffa4aade8751680a31822f",
+      "read_spans": [
+        [
+          1,
+          116
+        ],
+        [
+          117,
+          276
+        ],
+        [
+          277,
+          471
+        ],
+        [
+          472,
+          526
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated narrative, stack, feature, measure and paper description. Clarified that the seven named Simurgh attack classes are a subset of the existing eight-class claim. Preserved technical tokens, research metrics, qualified Aion/Zurvan scope, resource identity and thirteen-project coverage.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 4,
+      "review_complete": true,
+      "initial_lines": 526,
+      "final_lines": 529,
+      "final_sha256": "8bd6023a0ec25a73d1f44fc4b13df16877ab840a37d5a4bc970d9d20c2ba8522",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "e38796c94aa389e482fecac47037be86b44f06cf650ae223a583e3bc29c701f4",
+      "current_review_evidence": "work/full-frontend-audit/research-project-overlays-peer-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          75
+        ],
+        [
+          70,
+          100
+        ],
+        [
+          79,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          529
+        ]
+      ],
+      "final_delta_review_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          249,
+          257
+        ],
+        [
+          354,
+          362
+        ],
+        [
+          367,
+          375
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-content/terms.ts",
+      "sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e",
+      "bytes": 4194,
+      "lines": 141,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e",
+      "read_spans": [
+        [
+          1,
+          141
+        ]
+      ],
+      "notes": [
+        "Fully reviewed translated conceptual terms and intentionally retained API/product/license identifiers; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 141,
+      "final_lines": 141,
+      "final_sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e"
+    },
+    {
+      "path": "src/lib/project-content/types.ts",
+      "sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524",
+      "bytes": 1576,
+      "lines": 63,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524",
+      "read_spans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "notes": [
+        "Fully reviewed explicit thirteen-project inventory and narrative/paper translation types that retain publication identity; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 63,
+      "final_lines": 63,
+      "final_sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524"
+    },
+    {
+      "path": "src/lib/project-content/zh.ts",
+      "sha256": "3f3bba7482745f8767819dd46be808163607252282cef5c534d7ffbeb2dce432",
+      "bytes": 35480,
+      "lines": 530,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "3f3bba7482745f8767819dd46be808163607252282cef5c534d7ffbeb2dce432",
+      "read_spans": [
+        [
+          1,
+          268
+        ],
+        [
+          269,
+          530
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated narrative, stack, feature, measure and paper description. Clarified that the seven named Simurgh attack classes are a subset of the existing eight-class claim. Preserved technical tokens, research metrics, qualified Aion/Zurvan scope, resource identity and thirteen-project coverage.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 2,
+      "review_complete": true,
+      "initial_lines": 530,
+      "final_lines": 533,
+      "final_sha256": "c49d83b1db2c92ad7d501d17b86ca471fd0a35ccebdd04ebb9abfe90c6ffe033",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "5b103af1241df8cc527a236e67af8850cfd62c84bd45c4d67fc2baf90f1dac5e",
+      "current_review_evidence": "work/full-frontend-audit/research-project-overlays-peer-review.json",
+      "current_reader": "/root/signature_motion",
+      "final_review_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          533
+        ]
+      ],
+      "final_delta_review_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          248,
+          256
+        ],
+        [
+          353,
+          361
+        ],
+        [
+          366,
+          374
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-localization.test.ts",
+      "sha256": "e0807de59d7d10978ae1c63054156663c3e6668cd77ee0387313c9a31b3af0c2",
+      "bytes": 9166,
+      "lines": 289,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "e0807de59d7d10978ae1c63054156663c3e6668cd77ee0387313c9a31b3af0c2",
+      "read_spans": [
+        [
+          1,
+          289
+        ]
+      ],
+      "notes": [
+        "Fully reviewed complete field/key coverage, source identity, numbers/API tokens, honest processing/generated-answer qualifiers and compact summaries; existing tests passed after all content changes.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 289,
+      "final_lines": 325,
+      "final_sha256": "f6447002a67fbe4619524b7442c8274ccfdc89b118ae7c28dcafed27b01522ba",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "e0807de59d7d10978ae1c63054156663c3e6668cd77ee0387313c9a31b3af0c2",
+      "current_review_evidence": "work/full-frontend-audit/resume-locale-review.json",
+      "current_reader": "/root/review_changes",
+      "final_review_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 200
+        },
+        {
+          "version": "final",
+          "start": 201,
+          "end": 325
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/project-localization.ts",
+      "sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67",
+      "bytes": 2184,
+      "lines": 69,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67",
+      "read_spans": [
+        [
+          1,
+          69
+        ]
+      ],
+      "notes": [
+        "Fully reviewed own-property lookup, fail-closed missing translations, original resource identity and explicit content/title language markers; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 69,
+      "final_lines": 69,
+      "final_sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67"
+    },
+    {
+      "path": "src/lib/project-summaries.ts",
+      "sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a",
+      "bytes": 1010,
+      "lines": 33,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a",
+      "read_spans": [
+        [
+          1,
+          33
+        ]
+      ],
+      "notes": [
+        "Fully reviewed server-only active-locale summary projection, original resource visibility and narrative data minimisation; no confirmed issue."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 33,
+      "final_lines": 33,
+      "final_sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a",
+      "changed_in_lane": false,
+      "pre_pdf_candidate_final_sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a"
+    },
+    {
+      "path": "src/lib/writing-translations/ar.json",
+      "sha256": "7f685a1dda130b0cd612485e53f3abcf0cce25ea1e6ab1a95966c8194414007b",
+      "bytes": 38458,
+      "lines": 244,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "7f685a1dda130b0cd612485e53f3abcf0cce25ea1e6ab1a95966c8194414007b",
+      "read_spans": [
+        [
+          1,
+          101
+        ],
+        [
+          102,
+          222
+        ],
+        [
+          223,
+          244
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated article heading, paragraph, table/list row and takeaway. Aligned NanoMatch cancellation/benchmark scope and SentinelFlow synthetic pure-parse introduction with existing project evidence. Shared original code examples/API tokens remain identical in all locales; source revision accepted only after this review.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 244,
+      "final_lines": 248,
+      "final_sha256": "3d7ed432a9255dd818296878f1ee7c5493e143c8ae91fd9cead83974f974807a",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "cd6c8d6808058e1ad6faaf15508221db64e95fba053d6e35275aa9387ecef92b",
+      "current_review_evidence": "work/full-frontend-audit/pdf-update-review.json",
+      "current_reader": "/root/evidence",
+      "final_review_spans": [
+        [
+          1,
+          89
+        ],
+        [
+          90,
+          190
+        ],
+        [
+          191,
+          248
+        ]
+      ],
+      "final_delta_reviews": [
+        {
+          "from_sha256": "21f342c35d41803fc21b979a453751cec81ae9eee2b181103c99bc84a8a6c8dc",
+          "to_sha256": "3d7ed432a9255dd818296878f1ee7c5493e143c8ae91fd9cead83974f974807a",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/writing-translations/es.json",
+      "sha256": "ee30022c0dd52a2d22a03572a912539423aaf3f46b0df198a9db587f02bbf6d0",
+      "bytes": 30479,
+      "lines": 244,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "ee30022c0dd52a2d22a03572a912539423aaf3f46b0df198a9db587f02bbf6d0",
+      "read_spans": [
+        [
+          1,
+          78
+        ],
+        [
+          79,
+          170
+        ],
+        [
+          171,
+          244
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated article heading, paragraph, table/list row and takeaway. Aligned NanoMatch cancellation/benchmark scope and SentinelFlow synthetic pure-parse introduction with existing project evidence. Shared original code examples/API tokens remain identical in all locales; source revision accepted only after this review.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 244,
+      "final_lines": 248,
+      "final_sha256": "0e0b54fc83fb0019b8d46f32c37e3281494a1338f25fa4b8f2a8cfdee53332ae",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "d096865cfcfce9d3461b1de463707f2f5dbb536a6093920233f910a90211fb08",
+      "current_review_evidence": "work/full-frontend-audit/pdf-update-review.json",
+      "current_reader": "/root/evidence",
+      "final_review_spans": [
+        [
+          1,
+          71
+        ],
+        [
+          72,
+          152
+        ],
+        [
+          153,
+          240
+        ],
+        [
+          241,
+          248
+        ]
+      ],
+      "final_delta_reviews": [
+        {
+          "from_sha256": "bcbb8cc4648e39392169bd65bd2cba7bbba5aef4ba555005ae5f81ab96a2db02",
+          "to_sha256": "0e0b54fc83fb0019b8d46f32c37e3281494a1338f25fa4b8f2a8cfdee53332ae",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/writing-translations/fa.json",
+      "sha256": "4b00928866d61775ef3242498c341da011bca53ed0b1817edff8719fdd2386eb",
+      "bytes": 41235,
+      "lines": 244,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "4b00928866d61775ef3242498c341da011bca53ed0b1817edff8719fdd2386eb",
+      "read_spans": [
+        [
+          1,
+          96
+        ],
+        [
+          97,
+          206
+        ],
+        [
+          207,
+          244
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated article heading, paragraph, table/list row and takeaway. Aligned NanoMatch cancellation/benchmark scope and SentinelFlow synthetic pure-parse introduction with existing project evidence. Shared original code examples/API tokens remain identical in all locales; source revision accepted only after this review.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 3,
+      "review_complete": true,
+      "initial_lines": 244,
+      "final_lines": 248,
+      "final_sha256": "86f213ad9194096b7cf9030f35af28499bae6efec1ae68d3bb351c32fa3268c4",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "a7a0541668179c62f669faeba9dee34bf32d5a5e512d368f37de0d9be55680be",
+      "current_review_evidence": "work/full-frontend-audit/pdf-update-review.json",
+      "current_reader": "/root/evidence",
+      "final_review_spans": [
+        [
+          1,
+          86
+        ],
+        [
+          87,
+          182
+        ],
+        [
+          183,
+          248
+        ]
+      ],
+      "final_delta_reviews": [
+        {
+          "from_sha256": "5cbe9ba6fa5497783a1e88e7f3319d8bfdcec38792c28e299ddd086a0da78b39",
+          "to_sha256": "86f213ad9194096b7cf9030f35af28499bae6efec1ae68d3bb351c32fa3268c4",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/writing-translations/source-revision.json",
+      "sha256": "c0ab53b2eb2a77467f756182730305f80398761c1d83d6a66b0edde0dbba5056",
+      "bytes": 658,
+      "lines": 9,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "c0ab53b2eb2a77467f756182730305f80398761c1d83d6a66b0edde0dbba5056",
+      "read_spans": [
+        [
+          1,
+          9
+        ]
+      ],
+      "notes": [
+        "Reviewed all seven authored-source revision hashes; refreshed four after English/overlay review. Hash recipe excludes publication/modification dates and remains covered by localized-pages tests.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 1,
+      "review_complete": true,
+      "initial_lines": 9,
+      "final_lines": 9,
+      "final_sha256": "7adeebe4c7d319b21626b9cd85de7cf1841cedc2ed1b00a397aa36a4bffe8392",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "2e4a783af35a97d49e72b56de7370396170f311cbc4c2fc5c58375ca1f28b9ed",
+      "current_review_evidence": "work/full-frontend-audit/pdf-update-review.json",
+      "current_reader": "/root/evidence",
+      "final_review_spans": [
+        [
+          1,
+          9
+        ]
+      ],
+      "final_delta_reviews": [
+        {
+          "from_sha256": "6784789be34e785abfd957f3ecbe14873d04f90d1a5ac9d770fcd5a7cfdb93de",
+          "to_sha256": "7adeebe4c7d319b21626b9cd85de7cf1841cedc2ed1b00a397aa36a4bffe8392",
+          "read_spans": [
+            [
+              1,
+              9
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    },
+    {
+      "path": "src/lib/writing-translations/zh.json",
+      "sha256": "5773fd01ca3d8efb8ee0431e268727a0f292d2b9e05b1b214708f5d6047d0eec",
+      "bytes": 24831,
+      "lines": 244,
+      "binary": false,
+      "lane": "content",
+      "initial_sha256": "5773fd01ca3d8efb8ee0431e268727a0f292d2b9e05b1b214708f5d6047d0eec",
+      "read_spans": [
+        [
+          1,
+          204
+        ],
+        [
+          205,
+          244
+        ]
+      ],
+      "notes": [
+        "Fully reviewed every translated article heading, paragraph, table/list row and takeaway. Aligned NanoMatch cancellation/benchmark scope and SentinelFlow synthetic pure-parse introduction with existing project evidence. Shared original code examples/API tokens remain identical in all locales; source revision accepted only after this review.",
+        "Superseded the earlier candidate with authoritative uploaded résumé/profile reconciliation; see current review evidence and 23-row source fact matrix. Final complete source coverage includes full peer/source reads and explicit final authored-delta rereads."
+      ],
+      "chunk_count": 2,
+      "review_complete": true,
+      "initial_lines": 244,
+      "final_lines": 248,
+      "final_sha256": "b08e2543b20322b1fbd05fb14447c3b67dbbf9b82110c5c9b937e7af10321679",
+      "changed_in_lane": true,
+      "pre_pdf_candidate_final_sha256": "28508e1a6dd2edce9fc2f164ec876789e49be8d5c9eb63916ecd347b671fd727",
+      "current_review_evidence": "work/full-frontend-audit/pdf-update-review.json",
+      "current_reader": "/root/evidence",
+      "final_review_spans": [
+        [
+          1,
+          178
+        ],
+        [
+          179,
+          248
+        ]
+      ],
+      "final_delta_reviews": [
+        {
+          "from_sha256": "b50f6c3951800106751d29fead606b6510270f87da4d0f2ed442c6c070107592",
+          "to_sha256": "b08e2543b20322b1fbd05fb14447c3b67dbbf9b82110c5c9b937e7af10321679",
+          "read_spans": [
+            [
+              173,
+              180
+            ],
+            [
+              229,
+              233
+            ]
+          ],
+          "reason": "Verified technical clarification: tracepoint kernel-version compatibility and Electron multiprocess architecture; numeric/API examples unchanged."
+        }
+      ],
+      "current_hash_matches_review_evidence": true
+    }
+  ],
+  "status": "complete; authoritative PDF update supersedes earlier candidate",
+  "baseline_authorisation": "Parent confirmed fresh baseline captured before product edits.",
+  "coverage": {
+    "assigned_files": 31,
+    "assigned_initial_lines": 9215,
+    "all_initial_lines_read": true,
+    "changed_assigned_files": 21,
+    "current_records_matching_final_source": 31
+  },
+  "supplemental_files": [
+    {
+      "path": "src/lib/localized-pages.test.ts",
+      "sha256": "b3a237d4207849afa9f49aec051f6fff5a62944f7b4707c3bfdf5e8740752d20",
+      "bytes": 6925,
+      "lines": 173,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "b3a237d4207849afa9f49aec051f6fff5a62944f7b4707c3bfdf5e8740752d20",
+      "final_sha256": "53dd7a4759aa0b065b8a29021c71e7e32ce3d8cff4cde15ca95e567f404e27b4",
+      "initial_read_spans": [
+        [
+          1,
+          155
+        ],
+        [
+          150,
+          173
+        ]
+      ],
+      "final_lines": 180,
+      "review_complete": true,
+      "notes": [
+        "Parent-authorised cross-lane date assertion updated; compatible-path regression assertions added. Full file read, including source revision hash recipe, original code/numeric/token/structure parity and fail-closed missing/stale translation tests."
+      ]
+    },
+    {
+      "path": "src/components/layout/Footer.test.tsx",
+      "initial_sha256": "13bac1464b7f00f64ab6b27366296415ac4ef742d87c3ac455ad82a3d7586712",
+      "final_sha256": "6b658999be173d919d9784be184738e4240483728a97af348f483bb0e57cce7e",
+      "final_lines": 63,
+      "final_review_spans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "current_review_evidence": "work/full-frontend-audit/pdf-update-review.json",
+      "notes": [
+        "Parent-authorised historical Last Index assertion updated toNovember2026; complete current file read and finalFooter tests passed."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "C01",
+      "status": "fixed",
+      "issue": "Metadata and introductory biography omitted existing Alignerr provenance in all five languages.",
+      "resolution": "Added existing provenance consistently to affected metadata/intro/about fields."
+    },
+    {
+      "id": "C02",
+      "status": "fixed",
+      "issue": "Search previews described an attestation of agent actions rather than the documented permission boundary.",
+      "resolution": "Aligned preview claim to actions an agent was allowed to perform in all five languages."
+    },
+    {
+      "id": "C03",
+      "status": "fixed",
+      "issue": "Resume and article summaries broadened NanoMatch latency and SentinelFlow throughput beyond their existing benchmark conditions.",
+      "resolution": "Kept existing figures with cancellation, single-thread synthetic, SYN and pure-parse scope as applicable in five languages."
+    },
+    {
+      "id": "C04",
+      "status": "fixed",
+      "issue": "Illustrative capture API code comments claimed exclusion from all capture streams despite tested compatible-path limits.",
+      "resolution": "Qualified comments without changing shared executable code/API logic or original PDFs."
+    },
+    {
+      "id": "C05",
+      "status": "fixed",
+      "issue": "A seven-item Simurgh list read as the complete enumeration of an existing eight-class source claim.",
+      "resolution": "Marked named classes as an illustrative subset without inventing an eighth class or changing the source count."
+    },
+    {
+      "id": "C06",
+      "status": "fixed",
+      "issue": "Legacy Last Index labels still said July after the authorised November content revision.",
+      "resolution": "Updated all five month labels to November 2026 at the parent’s direction."
+    }
+  ],
+  "verification": [
+    {
+      "command": "npx vitest run src/i18n/locales/locales.test.ts src/lib/data.test.ts src/lib/project-localization.test.ts src/lib/localized-pages.test.ts",
+      "result": "91 tests passed in 4 files",
+      "log": "work/full-frontend-audit/content-tests-final.log"
+    },
+    {
+      "command": "Targeted ESLint over changed TypeScript source/tests",
+      "result": "exit 0, no diagnostics",
+      "log": "work/full-frontend-audit/content-lint.log"
+    },
+    {
+      "command": "SHA256 comparison of all six original PDFs to fresh initial manifest",
+      "result": "6/6 byte-identical",
+      "evidence": "work/full-frontend-audit/content-assets.json"
+    },
+    {
+      "command": "Focused content/locale/data/article/Footer suites after authorised PDF reconciliation and demonstrated technical fixes",
+      "result": "115/115 tests in 5 files; targeted ESLint exit0; cached Prettier source formatting",
+      "log": "work/full-frontend-audit/pdf-content-final-tests.log"
+    }
+  ],
+  "limits": [
+    "This review checks authored-source consistency, translation/token parity and local resource availability; it is not native-speaker certification or independent reproduction of research metrics.",
+    "No external repository or paper-host availability claim is made by this lane; Zurvan remains explicitly private.",
+    "Broad builds, typecheck and browser/a11y checks belong to the parent integration pass.",
+    "Some large tool batches were truncated; every affected span was re-read in bounded complete outputs before marking coverage complete."
+  ],
+  "current_phase": "Uploaded Research Resident résumé and LinkedIn profile reconciliation",
+  "current_matrix": "work/full-frontend-audit/content-reconciliation-matrix.json",
+  "prior_candidate_ledger": "work/full-frontend-audit/content-review.pre-pdf.json",
+  "current_phase_peer_ledgers": [
+    "work/full-frontend-audit/resume-locale-review.json",
+    "work/full-frontend-audit/research-project-overlays-peer-review.json",
+    "work/full-frontend-audit/research-pdf-review.json",
+    "work/full-frontend-audit/pdf-update-review.json"
+  ],
+  "pdf_asset_scope": "Five original research PDFs remain unchanged. Canonical résumé replacement/redaction is parent-owned; the pre-PDF six-asset snapshot is historical evidence, not a claim that the old résumé remains current."
+}

@@ -1,0 +1,1358 @@
+--- audit-initial/src/components/os/ResearchOS.tsx
++++ peer-current/src/components/os/ResearchOS.tsx
+@@ -44,10 +44,7 @@
+ import { formatDate, formatNumber } from "@/i18n/format";
+ import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
+ import { getOSCopy } from "./os-copy";
+-import {
+-  markWelcomeSeen,
+-  WelcomeEnter,
+-} from "./WelcomeEnter";
++import { markWelcomeSeen, WelcomeEnter } from "./WelcomeEnter";
+ import "./controls.css";
+ import "./theme-switch.css";
+ import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
+@@ -159,6 +156,18 @@
+ /** A path as the shell compares it: the English root has no prefix, other locales keep theirs. */
+ function routeKey(href: string): string {
+   return href.split(/[?#]/)[0].replace(/^\/en(?=\/|$)/, "") || "/";
++}
++
++/** Only ordinary primary activation changes the current workspace. */
++function isPlainClick(event: MouseEvent<HTMLElement>): boolean {
++  return (
++    !event.defaultPrevented &&
++    event.button === 0 &&
++    !event.metaKey &&
++    !event.ctrlKey &&
++    !event.shiftKey &&
++    !event.altKey
++  );
+ }
+ 
+ function rememberLastPath(path: string | null) {
+@@ -389,12 +398,9 @@
+     readSystemAppearance,
+     serverAppearance,
+   );
+-  // An explicit choice persists; a first visit follows the system colour scheme.
+-  // The session value keeps a toggle working when storage cannot be written.
+-  const [sessionAppearance, setSessionAppearance] = useState<Appearance | null>(
+-    null,
+-  );
+-  const appearance = sessionAppearance ?? storedAppearance ?? systemAppearance;
++  // The shared store retains explicit choices even when persistence is blocked,
++  // and still accepts preference changes from another tab.
++  const appearance = storedAppearance ?? systemAppearance;
+   const applePlatform = useSyncExternalStore(
+     emptySubscribe,
+     readApplePlatform,
+@@ -580,7 +586,8 @@
+     } else activeContent?.focus({ preventScroll: true });
+   }, []);
+ 
+-  function enterWorkspace() {
++  function enterWorkspace(event?: MouseEvent<HTMLAnchorElement>) {
++    if (event && !isPlainClick(event)) return;
+     clearLanguageNavigation();
+     focusAfterUnlock.current = true;
+     setLockedPath(null);
+@@ -884,8 +891,7 @@
+   }
+ 
+   function selectResult(event: MouseEvent<HTMLAnchorElement>) {
+-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+-      return;
++    if (!isPlainClick(event)) return;
+     setLockedPath(null);
+     searchDialog.current?.close();
+     const href = event.currentTarget.getAttribute("href");
+@@ -996,7 +1002,7 @@
+           }
+           className="os-skip-link"
+           onClick={(event) => {
+-            if (locked) {
++            if (locked && isPlainClick(event)) {
+               event.preventDefault();
+               unlockFromLogon();
+             }
+@@ -1040,7 +1046,6 @@
+                 const next = appearance === "dark" ? "light" : "dark";
+                 beginThemeSwitch(event.currentTarget);
+                 writeAppearance(next);
+-                setSessionAppearance(next);
+               }}
+             >
+               {appearance === "dark" ? (
+@@ -1145,7 +1150,7 @@
+                 <Link
+                   className="os-text-link"
+                   href={getPath("/projects")}
+-                  onClick={() => setLockedPath(null)}
++                  onClick={enterWorkspace}
+                 >
+                   {atlasJourneyCopy.review}
+                 </Link>
+@@ -1176,30 +1181,25 @@
+           hidden={locked}
+           inert={locked && hydrated}
+           onClickCapture={(event) => {
+-            const plain =
+-              !event.ctrlKey &&
+-              !event.metaKey &&
+-              !event.shiftKey &&
+-              !event.altKey;
+-            if (plain) {
+-              // A link to a window page moves focus into that window once it renders.
+-              const link =
+-                event.target instanceof Element
+-                  ? event.target.closest("a")
+-                  : null;
+-              const href = link?.getAttribute("href");
+-              if (
+-                href?.startsWith("/") &&
+-                getOSAppDescriptor(href.split("#")[0], locale)
+-              )
+-                rememberOpenTarget(href);
+-            }
+-            if (workspaceReady && plain) {
+-              const link =
+-                event.target instanceof Element
+-                  ? event.target.closest("a")
+-                  : null;
+-              const href = link?.getAttribute("href");
++            const link =
++              event.target instanceof Element
++                ? event.target.closest("a")
++                : null;
++            if (
++              !isPlainClick(event) ||
++              !link ||
++              (link.target && link.target.toLowerCase() !== "_self") ||
++              link.hasAttribute("download")
++            )
++              return;
++            const href = link.getAttribute("href");
++            // A link to a window page moves focus into that window once it renders.
++            if (
++              href?.startsWith("/") &&
++              getOSAppDescriptor(href.split("#")[0], locale)
++            )
++              rememberOpenTarget(href);
++            if (workspaceReady) {
+               if (href?.startsWith("/")) {
+                 const descriptor = getOSAppDescriptor(
+                   href.split("#")[0],
+@@ -1212,19 +1212,8 @@
+                 }
+               }
+             }
+-            if (
+-              !reading.minimized ||
+-              event.ctrlKey ||
+-              event.metaKey ||
+-              event.shiftKey ||
+-              event.altKey
+-            )
+-              return;
+-            const link =
+-              event.target instanceof Element
+-                ? event.target.closest("a")
+-                : null;
+-            if (link?.getAttribute("href") === pathname) {
++            if (!reading.minimized) return;
++            if (href === pathname) {
+               event.preventDefault();
+               restoreReadingWindow();
+             }
+@@ -1336,7 +1325,9 @@
+                     id="os-window-title"
+                     lang={pageEntry?.titleLocale ?? locale}
+                     dir={locales[pageEntry?.titleLocale ?? locale].dir}
+-                    onPointerDown={(event) => reading.beginPointer(event, "move")}
++                    onPointerDown={(event) =>
++                      reading.beginPointer(event, "move")
++                    }
+                     {...reading.pointerHandlers}
+                   >
+                     {windowTitle}
+@@ -1378,11 +1369,18 @@
+                 {/* Match the hydrated workspace's separate command toolbar. The Back and
+                     Close links remain usable in the server-rendered, no-JavaScript page. */}
+                 <div className="os-window-toolbar">
+-                  <Link className="os-window-back" href={parentPath} aria-label={copy.back}>
++                  <Link
++                    className="os-window-back"
++                    href={parentPath}
++                    aria-label={copy.back}
++                  >
+                     <ArrowLeft aria-hidden="true" />
+                     <span>{copy.back}</span>
+                   </Link>
+-                  <button className="os-control os-window-copy" onClick={copyLink}>
++                  <button
++                    className="os-control os-window-copy"
++                    onClick={copyLink}
++                  >
+                     {copy.copyLink}
+                   </button>
+                   {reading.desktop && !reading.minimized && !locked && (
+@@ -1549,20 +1547,9 @@
+                   aria-current={current ? "page" : undefined}
+                   data-minimized={minimized ? "true" : undefined}
+                   onClick={(event) => {
+-                    if (
+-                      !event.ctrlKey &&
+-                      !event.metaKey &&
+-                      !event.shiftKey &&
+-                      !event.altKey
+-                    )
+-                      rememberOpenTarget(getPath(appPaths[app]));
+-                    if (
+-                      workspaceReady &&
+-                      !event.ctrlKey &&
+-                      !event.metaKey &&
+-                      !event.shiftKey &&
+-                      !event.altKey
+-                    ) {
++                    const plain = isPlainClick(event);
++                    if (plain) rememberOpenTarget(getPath(appPaths[app]));
++                    if (workspaceReady && plain) {
+                       const openWindow = [...workspace.model.windows]
+                         .reverse()
+                         .find(
+@@ -1580,14 +1567,7 @@
+                         return;
+                       }
+                     }
+-                    if (
+-                      reading.minimized &&
+-                      activeApp === app &&
+-                      !event.ctrlKey &&
+-                      !event.metaKey &&
+-                      !event.shiftKey &&
+-                      !event.altKey
+-                    ) {
++                    if (reading.minimized && activeApp === app && plain) {
+                       event.preventDefault();
+                       restoreReadingWindow();
+                     }
+@@ -1787,8 +1767,9 @@
+         </dialog>
+         <noscript>
+           {/* Tailwind's base-layer hidden rule is important. Important layered
+-            rules outrank unlayered rules, so the fallback must share its layer. */}
+-          <style>{`@layer base{.os-shell .os-welcome{display:none!important}.os-shell .os-content[hidden]{display:block!important}.os-shell .os-dock[hidden]{display:flex!important}.os-shell button{display:none!important}}`}</style>
++            rules outrank unlayered rules, so the fallback must share its layer.
++            Native contact submission remains available without shell scripting. */}
++          <style>{`@layer base{.os-shell .os-welcome{display:none!important}.os-shell .os-content[hidden]{display:block!important}.os-shell .os-dock[hidden]{display:flex!important}.os-shell button:not(.os-secure-form button[type="submit"]){display:none!important}}`}</style>
+         </noscript>
+       </div>
+     </ApplicationRegistrationContext.Provider>
+--- audit-initial/src/components/os/ResearchOS.test.tsx
++++ peer-current/src/components/os/ResearchOS.test.tsx
+@@ -6,6 +6,7 @@
+   type MouseEvent,
+ } from "react";
+ import Link from "next/link";
++import { renderToStaticMarkup } from "react-dom/server";
+ import {
+   act,
+   cleanup,
+@@ -36,6 +37,10 @@
+ import { OSApplicationBridge } from "./OSApplicationBridge";
+ import { useContentId, useInitialAppState } from "./application-context";
+ import { clearLanguageNavigation } from "./language-navigation";
++import { writeAppearance } from "./appearance";
++import { SecureContactForm } from "@/components/ui/SecureContactForm";
++import { I18nProvider } from "@/i18n/provider";
++import en from "@/i18n/locales/en";
+ 
+ /**
+  * The logon orb's accessible name is "Sign in: <lab entry>", so the visible caption is part of it
+@@ -134,6 +139,7 @@
+   setWelcomeLoaderDuration(0);
+   navigation.pathname = "/";
+   navigation.push.mockClear();
++  writeAppearance("dark");
+   window.localStorage.clear();
+   clearLanguageNavigation();
+   window.sessionStorage.clear();
+@@ -259,6 +265,97 @@
+     fireEvent.click(toggle);
+     expect(shellElement).toHaveAttribute("data-appearance", "dark");
+   });
++
++  it("accepts a later appearance change from another tab after a manual toggle", () => {
++    desktop();
++    render(shell());
++    fireEvent.click(screen.getByRole("switch", { name: copy.darkAppearance }));
++    expect(document.querySelector(".os-shell")).toHaveAttribute(
++      "data-appearance",
++      "light",
++    );
++    act(() => {
++      window.localStorage.setItem("researchos.appearance.v1", "dark");
++      window.dispatchEvent(
++        new StorageEvent("storage", {
++          key: "researchos.appearance.v1",
++          newValue: "dark",
++        }),
++      );
++    });
++    expect(document.querySelector(".os-shell")).toHaveAttribute(
++      "data-appearance",
++      "dark",
++    );
++  });
++
++  it("keeps a manual appearance choice across a locale remount with blocked storage", () => {
++    desktop();
++    writeAppearance("dark");
++    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
++      throw new DOMException("Blocked", "SecurityError");
++    });
++    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
++      throw new DOMException("Blocked", "SecurityError");
++    });
++    const view = render(shell());
++    fireEvent.click(screen.getByRole("switch", { name: copy.darkAppearance }));
++    expect(view.container.querySelector(".os-shell")).toHaveAttribute(
++      "data-appearance",
++      "light",
++    );
++    navigation.pathname = "/fa";
++    view.rerender(
++      <ResearchOS
++        key="fa"
++        locale="fa"
++        role="Researcher"
++        entries={entries}
++        skipLabel="Skip"
++      >
++        <h1>Workspace</h1>
++      </ResearchOS>,
++    );
++    expect(view.container.querySelector(".os-shell")).toHaveAttribute(
++      "data-appearance",
++      "light",
++    );
++    writeAppearance("dark");
++  });
++
++  it.each(["target", "download"] as const)(
++    "preserves an app link's native %s behavior instead of refocusing the current window",
++    (attribute) => {
++      navigation.pathname = "/about";
++      const observed = vi.fn();
++      render(
++        <ResearchOS
++          locale="en"
++          role="Researcher"
++          entries={entries}
++          skipLabel="Skip"
++        >
++          <OSApplicationBridge locale="en" route="/about">
++            <h1>About Raouf</h1>
++            <a
++              href="/about"
++              target={attribute === "target" ? "_blank" : undefined}
++              download={attribute === "download" ? "about.html" : undefined}
++              onClick={(event) => {
++                observed(event.defaultPrevented);
++                event.preventDefault();
++              }}
++            >
++              Native app link
++            </a>
++          </OSApplicationBridge>
++        </ResearchOS>,
++      );
++      fireEvent.click(screen.getByRole("link", { name: "Native app link" }));
++      expect(observed).toHaveBeenCalledExactlyOnceWith(false);
++      expect(navigation.push).not.toHaveBeenCalled();
++    },
++  );
+ 
+   it("marks the shell for a short colour cross-fade on a theme change, not under reduced motion", async () => {
+     vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+@@ -594,6 +691,60 @@
+ }
+ 
+ describe("ResearchOS workspace lifecycle", () => {
++  it("keeps the native contact submit available in its no-JavaScript document", () => {
++    navigation.pathname = "/contact";
++    const markup = renderToStaticMarkup(
++      <I18nProvider locale="en" dictionary={en}>
++        <ResearchOS
++          locale="en"
++          role="Researcher"
++          entries={entries}
++          skipLabel="Skip"
++        >
++          <SecureContactForm />
++        </ResearchOS>
++      </I18nProvider>,
++    );
++    const root = document.createElement("div");
++    root.innerHTML = markup;
++    const form = root.querySelector<HTMLFormElement>(".os-secure-form")!;
++    const submit = form.querySelector<HTMLButtonElement>(
++      'button[type="submit"]',
++    )!;
++    expect(form.action).toMatch(/^mailto:/);
++    expect(form.method).toBe("post");
++    expect(form.enctype).toBe("text/plain");
++    expect(form.noValidate).toBe(false);
++    expect(form.checkValidity()).toBe(false);
++    for (const [name, value] of [
++      ["name", "Native draft"],
++      ["email", "native@example.invalid"],
++      ["message", "A synthetic draft"],
++    ]) {
++      const field = form.elements.namedItem(name) as
++        HTMLInputElement | HTMLTextAreaElement;
++      expect(field, name).not.toBeNull();
++      field.value = value;
++    }
++    expect(form.checkValidity()).toBe(true);
++    // jsdom does not implement cascade layers. Check the actual SSR fallback
++    // selectors against its real form and chrome; the browser suite covers layout.
++    const fallback = markup.match(
++      /<noscript><style>([\s\S]*?)<\/style><\/noscript>/,
++    )?.[1];
++    expect(fallback).toBeDefined();
++    const hiding = [
++      ...fallback!.matchAll(/([^{}]+)\{display:none!important\}/g),
++    ].map((match) => match[1]);
++    expect(hiding.some((selector) => submit.matches(selector))).toBe(false);
++    const controls = [
++      ...root.querySelectorAll<HTMLButtonElement>(".os-shell button"),
++    ].filter((button) => button !== submit);
++    expect(controls.length).toBeGreaterThan(0);
++    for (const control of controls)
++      expect(hiding.some((selector) => control.matches(selector))).toBe(true);
++  });
++
+   it.each<Locale>(["en", "fa", "ar", "zh", "es"])(
+     "keeps native clocks unnamed with localized reading context in %s",
+     (locale) => {
+@@ -1047,6 +1198,23 @@
+ });
+ 
+ describe("ResearchOS logon session", () => {
++  it("keeps the current logon locked when the brand is opened in another tab", () => {
++    const view = render(shell());
++    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
++    // Cancel jsdom's document navigation after React has handled the modified click.
++    document.addEventListener("click", (event) => event.preventDefault(), {
++      once: true,
++    });
++    fireEvent.click(view.container.querySelector(".os-brand")!, {
++      ctrlKey: true,
++    });
++    expect(view.container.querySelector(".os-welcome")).toBeVisible();
++    expect(view.container.querySelector(".os-content")).toHaveAttribute(
++      "hidden",
++    );
++    expect(navigation.push).not.toHaveBeenCalled();
++  });
++
+   it("skips the logon on a return home within the same session", () => {
+     navigation.pathname = "/";
+     const first = render(shell());
+--- audit-initial/src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx
++++ peer-current/src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx
+@@ -154,18 +154,23 @@
+   const tabRefs = useRef<Partial<Record<DossierSection, HTMLButtonElement>>>(
+     {},
+   );
+-  const pendingSectionFocus = useRef<number | null>(null);
++  const [sectionFocus, setSectionFocus] = useState<{ id: string } | null>(null);
+   const scheduleSectionFocus = useCallback((id: string) => {
+-    if (pendingSectionFocus.current !== null)
+-      window.cancelAnimationFrame(pendingSectionFocus.current);
+-    pendingSectionFocus.current = window.requestAnimationFrame(() => {
+-      pendingSectionFocus.current = null;
+-      const target = document.getElementById(id);
+-      if (target?.closest("[hidden]")) return;
++    setSectionFocus({ id });
++  }, []);
++  // Concurrent rendering may commit a revealed tab after the next animation
++  // frame. Request focus only once that section's DOM update has committed.
++  useEffect(() => {
++    if (!sectionFocus) return;
++    const frame = window.requestAnimationFrame(() => {
++      setSectionFocus(null);
++      const target = document.getElementById(sectionFocus.id);
++      if (target?.closest("[hidden], [inert]")) return;
+       target?.focus({ preventScroll: true });
+       target?.scrollIntoView?.({ block: "start" });
+     });
+-  }, []);
++    return () => window.cancelAnimationFrame(frame);
++  }, [sectionFocus, activeSection]);
+   const sectionLabels: Record<DossierSection, string> = {
+     overview: copy.overview,
+     evidence: copy.evidence,
+@@ -215,8 +220,6 @@
+     window.addEventListener("hashchange", revealHashTarget);
+     return () => {
+       window.removeEventListener("hashchange", revealHashTarget);
+-      if (pendingSectionFocus.current !== null)
+-        window.cancelAnimationFrame(pendingSectionFocus.current);
+     };
+   }, [scheduleSectionFocus]);
+   const paperEntries: ProjectPaper[] =
+@@ -310,7 +313,9 @@
+               )}
+               {project.links.doi && (
+                 <ResourceLink href={project.links.doi}>
+-                  {t.project_detail.doi_record}
++                  {project.links.doiKind === "software"
++                    ? t.project_detail.software_doi_record
++                    : t.project_detail.doi_record}
+                 </ResourceLink>
+               )}
+               {project.links.caseStudy && (
+@@ -406,6 +411,8 @@
+ 
+         <section
+           id={contentId("overview")}
++          // Fragment navigation can focus the revealed panel without adding a tab stop.
++          tabIndex={-1}
+           data-dossier-section="overview"
+           className="os-project-section"
+           role={mounted ? "tabpanel" : undefined}
+@@ -454,6 +461,7 @@
+ 
+         <section
+           id={contentId("evidence")}
++          tabIndex={-1}
+           data-dossier-section="evidence"
+           className="os-project-section"
+           role={mounted ? "tabpanel" : undefined}
+@@ -508,6 +516,7 @@
+           {paperEntries.length > 0 && (
+             <div
+               id={contentId("research-papers")}
++              tabIndex={-1}
+               className="os-project-paper-library"
+             >
+               <div className="os-project-paper-heading">
+@@ -586,6 +595,7 @@
+ 
+         <section
+           id={contentId("methods")}
++          tabIndex={-1}
+           data-dossier-section="methods"
+           className="os-project-section"
+           role={mounted ? "tabpanel" : undefined}
+@@ -601,7 +611,9 @@
+             })}{" "}
+             / {copy.methods}
+           </p>
+-          <h2 id={contentId("methods-heading")}>{t.project_detail.build}</h2>
++          <h2 id={contentId("methods-heading")} tabIndex={-1}>
++            {t.project_detail.build}
++          </h2>
+           <h3>{t.project_detail.tech_stack}</h3>
+           <ul className="os-project-stack-list">
+             {project.build.stack.map((technology) => (
+--- audit-initial/src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx
++++ peer-current/src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx
+@@ -5,6 +5,7 @@
+   render,
+   screen,
+   waitFor,
++  within,
+ } from "@testing-library/react";
+ import type { ReactNode } from "react";
+ import { getDictionary, type Locale } from "@/i18n";
+@@ -33,6 +34,152 @@
+ afterEach(cleanup);
+ 
+ describe("project source availability", () => {
++  it("waits for the section commit before focusing when an animation frame arrives early", async () => {
++    window.history.replaceState(null, "", "/");
++    const dictionary = await getDictionary("en");
++    const project = getLocalizedProject(projects["project-simurgh"], "en");
++    const frame = vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
++      callback(0);
++      return 1;
++    });
++    const cancel = vi.spyOn(window, "cancelAnimationFrame").mockImplementation(() => {});
++    try {
++      const { container } = render(
++        <I18nProvider locale="en" dictionary={dictionary}>
++          <ProjectDetailClient
++            project={project}
++            slug={project.slug}
++            summaries={[]}
++            diagramCopy={getProjectDiagramCopy("en")}
++            evidenceStory={null}
++          />
++        </I18nProvider>,
++      );
++      const target = container.querySelector("#methods")!;
++      expect(target).not.toBeVisible();
++      window.history.replaceState(null, "", "/#methods");
++      fireEvent(window, new HashChangeEvent("hashchange"));
++      expect(target).toBeVisible();
++      expect(target).toHaveFocus();
++      const methodsTab = container.querySelector<HTMLElement>('[role="tab"][aria-controls="methods"]')!;
++      methodsTab.focus();
++      const tablist = screen.getByRole("tablist");
++      fireEvent.keyDown(tablist, { key: "ArrowLeft" });
++      expect(container.querySelector('[role="tab"][aria-controls="evidence"]')).toHaveFocus();
++      fireEvent.keyDown(tablist, { key: "ArrowRight" });
++      expect(methodsTab).toHaveFocus();
++    } finally {
++      frame.mockRestore();
++      cancel.mockRestore();
++      window.history.replaceState(null, "", "/");
++    }
++  });
++
++  it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
++    "distinguishes current Simurgh software from the earlier source papers in %s",
++    async (locale) => {
++      const dictionary = await getDictionary(locale);
++      const project = getLocalizedProject(projects["project-simurgh"], locale);
++      const { container } = render(
++        <I18nProvider locale={locale} dictionary={dictionary}>
++          <ProjectDetailClient
++            project={project}
++            slug={project.slug}
++            summaries={[]}
++            diagramCopy={getProjectDiagramCopy(locale)}
++            evidenceStory={null}
++          />
++        </I18nProvider>,
++      );
++      const resources = screen.getByRole("group", { name: dictionary.project_detail.project_links });
++      const primary = within(resources).getByRole("link", { name: dictionary.project_detail.source_code });
++      expect(primary).toHaveAttribute("href", "https://github.com/Raoof128/Project-Simurgh");
++      expect(primary).toHaveClass("os-button");
++      expect(resources.querySelectorAll("a.os-button")).toHaveLength(1);
++      expect(within(resources).getByRole("link", { name: dictionary.project_detail.software_doi_record }))
++        .toHaveAttribute("href", "https://doi.org/10.5281/zenodo.21737792");
++      expect(within(resources).queryByRole("link", { name: dictionary.project_detail.download_paper }))
++        .not.toBeInTheDocument();
++      expect(resources.querySelector('a[href="/Project_Simurgh_Preprint_v1.0.pdf"]')).toBeNull();
++      expect(resources.querySelector('a[href="https://doi.org/10.5281/zenodo.20374849"]')).toBeNull();
++
++      fireEvent.click(container.querySelector('[role="tab"][aria-controls="evidence"]')!);
++      const library = container.querySelector(".os-project-paper-library")!;
++      expect(library).toBeVisible();
++      expect(library.querySelectorAll("article")).toHaveLength(3);
++      expect(within(library as HTMLElement).getByText(project.papers![0].label)).toBeVisible();
++      expect(library.querySelector('a[href="/Project_Simurgh_Preprint_v1.0.pdf"]')).toBeVisible();
++      expect(library.querySelector('a[href="https://doi.org/10.5281/zenodo.20374849"]')).toBeVisible();
++      expect(container.querySelector(".os-project-citation")).toHaveTextContent(project.citation!);
++    },
++  );
++
++  it("keeps the publication DOI label when no software kind is supplied", async () => {
++    const dictionary = await getDictionary("en");
++    const base = getLocalizedProject(projects["invisible-window-research"], "en");
++    const project = {
++      ...base,
++      links: { ...base.links, doi: "https://doi.org/10.5281/zenodo.20376495" },
++    };
++    render(
++      <I18nProvider locale="en" dictionary={dictionary}>
++        <ProjectDetailClient
++          project={project}
++          slug={project.slug}
++          summaries={[]}
++          diagramCopy={getProjectDiagramCopy("en")}
++          evidenceStory={null}
++        />
++      </I18nProvider>,
++    );
++    const resources = screen.getByRole("group", { name: dictionary.project_detail.project_links });
++    expect(within(resources).getByRole("link", { name: dictionary.project_detail.doi_record }))
++      .toHaveAttribute("href", project.links.doi);
++    expect(within(resources).queryByRole("link", { name: dictionary.project_detail.software_doi_record }))
++      .not.toBeInTheDocument();
++  });
++
++  it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
++    "moves focus into direct section fragments in %s",
++    async (locale) => {
++      window.history.replaceState(null, "", "/");
++      const dictionary = await getDictionary(locale);
++      const project = getLocalizedProject(projects["project-simurgh"], locale);
++      const { container } = render(
++        <I18nProvider locale={locale} dictionary={dictionary}>
++          <ProjectDetailClient
++            project={project}
++            slug={project.slug}
++            summaries={[]}
++            diagramCopy={getProjectDiagramCopy(locale)}
++            evidenceStory={null}
++          />
++        </I18nProvider>,
++      );
++      try {
++        for (const [id, section] of [
++          ["methods", "methods"],
++          ["methods-heading", "methods"],
++          ["research-papers", "evidence"],
++          ["evidence", "evidence"],
++          ["overview", "overview"],
++        ]) {
++          window.history.replaceState(null, "", `/#${id}`);
++          fireEvent(window, new HashChangeEvent("hashchange"));
++          const target = container.querySelector(`#${id}`)!;
++          await waitFor(() => expect(target).toHaveFocus());
++          expect(target).toBeVisible();
++          expect(target).toHaveAttribute("tabindex", "-1");
++          expect(
++            container.querySelector(`[data-dossier-section="${section}"]`),
++          ).not.toHaveAttribute("hidden");
++        }
++      } finally {
++        window.history.replaceState(null, "", "/");
++      }
++    },
++  );
++
+   it("preserves the current reading tab and focus when opening anchors in another context", async () => {
+     window.history.replaceState(null, "", "/");
+     const dictionary = await getDictionary("en");
+--- audit-initial/src/components/os/appearance.ts
++++ peer-current/src/components/os/appearance.ts
+@@ -2,7 +2,8 @@
+ export const DEFAULT_APPEARANCE: Appearance = "dark";
+ /** localStorage key for an explicit appearance choice. Shared by the shell and tests. */
+ export const appearanceStorageKey = "researchos.appearance.v1";
+-let fallback: Appearance = DEFAULT_APPEARANCE;
++let fallback: Appearance | null = null;
++let writeBlocked = false;
+ 
+ function parseAppearance(value: string | null): Appearance | null {
+   return value === "light" || value === "dark" ? value : null;
+@@ -10,33 +11,34 @@
+ 
+ /**
+  * The visitor's explicit choice, or null on a fresh visit, for an unrecognised
+- * value, or when storage cannot be read. Callers decide what a missing choice means.
++ * value. When storage is blocked, keep the last manual choice across shell remounts.
++ * Callers decide what a missing choice means.
+  */
+ export function readStoredAppearance(): Appearance | null {
++  // Reads can remain available after a quota or policy error blocks writes.
++  if (writeBlocked) return fallback;
+   try {
+     return parseAppearance(window.localStorage.getItem(appearanceStorageKey));
+-  } catch {
+-    return null;
+-  }
+-}
+-
+-export function readAppearance(): Appearance {
+-  try {
+-    // A missing preference is a fresh visit, even after storage was cleared.
+-    return (
+-      parseAppearance(window.localStorage.getItem(appearanceStorageKey)) ??
+-      DEFAULT_APPEARANCE
+-    );
+   } catch {
+     return fallback;
+   }
+ }
+ 
++export function readAppearance(): Appearance {
++  return readStoredAppearance() ?? DEFAULT_APPEARANCE;
++}
++
+ export function subscribeAppearance(callback: () => void) {
+-  window.addEventListener("storage", callback);
++  const onStorage = (event: StorageEvent) => {
++    if (event.key !== appearanceStorageKey && event.key !== null) return;
++    fallback = parseAppearance(event.newValue);
++    writeBlocked = false;
++    callback();
++  };
++  window.addEventListener("storage", onStorage);
+   window.addEventListener("researchos:appearance", callback);
+   return () => {
+-    window.removeEventListener("storage", callback);
++    window.removeEventListener("storage", onStorage);
+     window.removeEventListener("researchos:appearance", callback);
+   };
+ }
+@@ -45,8 +47,10 @@
+   fallback = appearance;
+   try {
+     window.localStorage.setItem(appearanceStorageKey, appearance);
++    writeBlocked = false;
+   } catch {
+     // Appearance remains usable for this visit when storage is unavailable.
++    writeBlocked = true;
+   }
+   window.dispatchEvent(new Event("researchos:appearance"));
+ }
+--- audit-initial/src/components/os/appearance.test.ts
++++ peer-current/src/components/os/appearance.test.ts
+@@ -8,7 +8,11 @@
+ } from "./appearance";
+ 
+ beforeEach(() => window.localStorage.clear());
+-afterEach(() => vi.restoreAllMocks());
++afterEach(() => {
++  vi.restoreAllMocks();
++  writeAppearance("dark");
++  window.localStorage.clear();
++});
+ 
+ describe("workspace appearance", () => {
+   it("starts fresh visits in dark, including after a light preference is removed", () => {
+@@ -53,10 +57,23 @@
+     expect(readStoredAppearance()).toBeNull();
+   });
+ 
+-  it("reports no stored choice when storage cannot be read", () => {
++  it("keeps a manual choice when reads work but writes are blocked", () => {
++    window.localStorage.setItem(appearanceStorageKey, "dark");
++    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
++      throw new DOMException("Quota exceeded", "QuotaExceededError");
++    });
++    writeAppearance("light");
++    expect(window.localStorage.getItem(appearanceStorageKey)).toBe("dark");
++    expect(readStoredAppearance()).toBe("light");
++    expect(readAppearance()).toBe("light");
++  });
++
++  it("retains the last explicit choice when storage cannot be read", () => {
++    writeAppearance("light");
+     vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+       throw new DOMException("Storage unavailable", "SecurityError");
+     });
+-    expect(readStoredAppearance()).toBeNull();
++    expect(readStoredAppearance()).toBe("light");
++    writeAppearance("dark");
+   });
+ });
+--- audit-initial/src/components/ui/SecureContactForm.tsx
++++ peer-current/src/components/ui/SecureContactForm.tsx
+@@ -4,6 +4,7 @@
+   useEffect,
+   useRef,
+   useState,
++  useSyncExternalStore,
+   type ChangeEvent,
+   type FocusEvent,
+   type FormEvent,
+@@ -28,6 +29,7 @@
+    contact_form. Persian and Arabic are written as natural copy, not word-for-word. */
+ export interface SecureContactCopy {
+   heading: string;
++  noScript: string;
+   requiredLegend: string;
+   emailHelp: string;
+   characters: string;
+@@ -54,6 +56,8 @@
+ export const SECURE_CONTACT_COPY: Record<Locale, SecureContactCopy> = {
+   en: {
+     heading: "Send a message",
++    noScript:
++      "JavaScript is off. This form prepares a draft in your email app. You can also email me directly:",
+     requiredLegend: "Fields marked * are required.",
+     emailHelp: "Used only so I can reply to you.",
+     characters: "{count} of {max} characters used",
+@@ -78,6 +82,8 @@
+   },
+   fa: {
+     heading: "ارسال پیام",
++    noScript:
++      "جاوااسکریپت غیرفعال است. این فرم پیش‌نویسی در برنامه ایمیل شما آماده می‌کند. همچنین می‌توانید مستقیماً ایمیل بزنید:",
+     requiredLegend: "فیلدهایی که با * مشخص شده‌اند الزامی هستند.",
+     emailHelp: "فقط برای پاسخ دادن به شما استفاده می‌شود.",
+     characters: "{count} از {max} نویسه استفاده شده",
+@@ -102,6 +108,8 @@
+   },
+   ar: {
+     heading: "أرسل رسالة",
++    noScript:
++      "جافاسكريبت معطّل. يجهّز هذا النموذج مسودة في تطبيق البريد لديك. يمكنك أيضًا مراسلتي مباشرةً:",
+     requiredLegend: "الحقول المعلَّمة بعلامة * إلزامية.",
+     emailHelp: "يُستخدم فقط للرد عليك.",
+     characters: "تم استخدام {count} من {max} حرفًا",
+@@ -126,6 +134,8 @@
+   },
+   es: {
+     heading: "Enviar un mensaje",
++    noScript:
++      "JavaScript está desactivado. Este formulario prepara un borrador en tu aplicación de correo. También puedes escribirme directamente:",
+     requiredLegend: "Los campos marcados con * son obligatorios.",
+     emailHelp: "Solo lo uso para responderte.",
+     characters: "{count} de {max} caracteres usados",
+@@ -151,6 +161,8 @@
+   },
+   zh: {
+     heading: "发送留言",
++    noScript:
++      "JavaScript 已关闭。此表单会在你的邮件应用中准备草稿。你也可以直接发送邮件：",
+     requiredLegend: "标有 * 的字段为必填项。",
+     emailHelp: "仅用于回复你。",
+     characters: "已输入 {count} / {max} 个字符",
+@@ -176,6 +188,9 @@
+ };
+ 
+ const FIELDS: Field[] = ["name", "email", "message"];
++const subscribeHydration = () => () => {};
++const clientHydration = () => true;
++const serverHydration = () => false;
+ 
+ function validateField(
+   field: Field,
+@@ -208,6 +223,11 @@
+ export function CopyAddressControl() {
+   const { locale } = useTranslation();
+   const s = strings(locale);
++  const hydrated = useSyncExternalStore(
++    subscribeHydration,
++    clientHydration,
++    serverHydration,
++  );
+   const [copyState, setCopyState] = useState<CopyState>("idle");
+ 
+   const copyAddress = async () => {
+@@ -225,6 +245,7 @@
+         type="button"
+         className="os-button os-button--secondary"
+         onClick={copyAddress}
++        disabled={!hydrated}
+       >
+         <Copy aria-hidden="true" size={14} />
+         {s.copyAddress}
+@@ -243,6 +264,12 @@
+ export function SecureContactForm() {
+   const { t, locale } = useTranslation();
+   const s = strings(locale);
++  // Before hydration, native mailto submission and required/email checks still work.
++  const hydrated = useSyncExternalStore(
++    subscribeHydration,
++    clientHydration,
++    serverHydration,
++  );
+   const [phase, setPhase] = useState<Phase>("IDLE");
+   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+   const [submitted, setSubmitted] = useState(false);
+@@ -252,6 +279,67 @@
+   const fieldRefs = useRef<
+     Partial<Record<Field, HTMLInputElement | HTMLTextAreaElement | null>>
+   >({});
++
++  useEffect(() => {
++    let frame: number | null = null;
++    const viewport = window.visualViewport;
++    const revealFocusedField = () => {
++      frame = null;
++      const field = Object.values(fieldRefs.current).find(
++        (element) => element === document.activeElement,
++      );
++      if (!field || field.closest("[hidden], [inert]") || document.hidden)
++        return;
++      const top = (viewport?.offsetTop ?? 0) + 8;
++      let bottom =
++        (viewport?.offsetTop ?? 0) +
++        (viewport?.height ?? window.innerHeight) -
++        8;
++      const dock = document.querySelector<HTMLElement>(
++        ".os-dock:not([hidden])",
++      );
++      const dockBox = dock?.getBoundingClientRect();
++      if (dockBox && dockBox.height > 0 && dockBox.top > top)
++        bottom = Math.min(bottom, dockBox.top - 8);
++      const box = field.getBoundingClientRect();
++      if (!box.height || (box.top >= top && box.bottom <= bottom)) return;
++      // Keep the existing focused control; only the reader's viewport changed.
++      field.scrollIntoView?.({
++        block: "center",
++        inline: "nearest",
++        behavior: "instant",
++      });
++      // A software keyboard can shrink only visualViewport, leaving layout height
++      // unchanged. Correct that remaining offset in the nearest reading scroller.
++      const after = field.getBoundingClientRect();
++      if (after.top < top || after.bottom > bottom) {
++        const shift =
++          after.top - Math.max(top, top + (bottom - top - after.height) / 2);
++        let scroller = field.parentElement;
++        while (scroller && scroller !== document.body) {
++          if (
++            /(auto|scroll)/.test(getComputedStyle(scroller).overflowY) &&
++            scroller.scrollHeight > scroller.clientHeight
++          )
++            break;
++          scroller = scroller.parentElement;
++        }
++        if (scroller && scroller !== document.body) scroller.scrollTop += shift;
++        else window.scrollBy({ top: shift, behavior: "instant" });
++      }
++    };
++    const schedule = () => {
++      if (frame === null)
++        frame = window.requestAnimationFrame(revealFocusedField);
++    };
++    window.addEventListener("resize", schedule, { passive: true });
++    viewport?.addEventListener("resize", schedule, { passive: true });
++    return () => {
++      window.removeEventListener("resize", schedule);
++      viewport?.removeEventListener("resize", schedule);
++      if (frame !== null) window.cancelAnimationFrame(frame);
++    };
++  }, []);
+ 
+   const clearTimers = () => {
+     if (typingTimeoutRef.current) {
+@@ -407,7 +495,22 @@
+         {statusText[phase]}
+       </p>
+ 
+-      <form onSubmit={handleSubmit} noValidate className="os-secure-form">
++      <noscript>
++        <p className="os-secure-note">
++          {s.noScript}{" "}
++          <a href={`mailto:${CONTACT_EMAIL_GMAIL}`} dir="ltr">
++            {CONTACT_EMAIL_GMAIL}
++          </a>
++        </p>
++      </noscript>
++      <form
++        action={`mailto:${CONTACT_EMAIL_GMAIL}?subject=${encodeURIComponent(t.seo.contact_title)}`}
++        method="post"
++        encType="text/plain"
++        onSubmit={handleSubmit}
++        noValidate={hydrated}
++        className="os-secure-form"
++      >
+         <p className="os-secure-legend">{s.requiredLegend}</p>
+ 
+         <div className="os-secure-grid">
+--- audit-initial/src/components/ui/SecureContactForm.test.tsx
++++ peer-current/src/components/ui/SecureContactForm.test.tsx
+@@ -1,4 +1,5 @@
+ import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
++import { renderToStaticMarkup } from "react-dom/server";
+ import {
+   act,
+   cleanup,
+@@ -64,6 +65,38 @@
+     expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
+   });
+ 
++  it.each([
++    ["en", en],
++    ["fa", fa],
++    ["ar", ar],
++    ["zh", zh],
++    ["es", es],
++  ] as const)(
++    "keeps a native mail draft fallback before %s hydration",
++    (locale, dictionary) => {
++      const markup = renderToStaticMarkup(
++        <I18nProvider locale={locale} dictionary={dictionary}>
++          <SecureContactForm />
++        </I18nProvider>,
++      );
++      const host = document.createElement("div");
++      host.innerHTML = markup;
++      const form = host.querySelector("form")!;
++      const destination = new URL(form.action);
++      expect(destination.protocol).toBe("mailto:");
++      expect(destination.pathname).toBe(CONTACT_EMAIL_GMAIL);
++      expect(destination.searchParams.get("subject")).toBe(
++        dictionary.seo.contact_title,
++      );
++      expect(form.method).toBe("post");
++      expect(form.enctype).toBe("text/plain");
++      expect(form.noValidate).toBe(false);
++      expect(form.querySelectorAll("[required]")).toHaveLength(3);
++      expect(markup).toContain(SECURE_CONTACT_COPY[locale].noScript);
++      expect(markup).toContain(`href="mailto:${CONTACT_EMAIL_GMAIL}"`);
++    },
++  );
++
+   it("does not show a draft reference, since no server record exists", () => {
+     renderForm();
+ 
+@@ -165,6 +198,123 @@
+     fireEvent.change(message, { target: { value: "Hello from tests" } });
+ 
+     expect(message).not.toHaveAttribute("aria-invalid");
++  });
++
++  describe("focused fields across viewport changes", () => {
++    let frames: Map<number, FrameRequestCallback>;
++    let viewport: EventTarget;
++    let originalViewport: PropertyDescriptor | undefined;
++
++    beforeEach(() => {
++      frames = new Map();
++      let nextFrame = 0;
++      vi.stubGlobal(
++        "requestAnimationFrame",
++        vi.fn((callback: FrameRequestCallback) => {
++          frames.set(++nextFrame, callback);
++          return nextFrame;
++        }),
++      );
++      vi.stubGlobal(
++        "cancelAnimationFrame",
++        vi.fn((id: number) => frames.delete(id)),
++      );
++      originalViewport = Object.getOwnPropertyDescriptor(
++        window,
++        "visualViewport",
++      );
++      viewport = Object.assign(new EventTarget(), {
++        height: 360,
++        offsetTop: 0,
++      });
++      Object.defineProperty(window, "visualViewport", {
++        configurable: true,
++        value: viewport,
++      });
++      vi.spyOn(window, "scrollBy").mockImplementation(() => {});
++    });
++
++    afterEach(() => {
++      cleanup();
++      vi.restoreAllMocks();
++      vi.unstubAllGlobals();
++      if (originalViewport)
++        Object.defineProperty(window, "visualViewport", originalViewport);
++      else Reflect.deleteProperty(window, "visualViewport");
++    });
++
++    const flushViewport = () =>
++      act(() => {
++        const pending = [...frames.values()];
++        frames.clear();
++        pending.forEach((callback) => callback(performance.now()));
++      });
++    const bounds = (top: number) =>
++      ({ top, bottom: top + 98, height: 98 }) as DOMRect;
++
++    it("coalesces resize sources and reveals the same focused field", () => {
++      renderForm();
++      const field = screen.getByLabelText(/message/i);
++      vi.spyOn(field, "getBoundingClientRect")
++        .mockReturnValueOnce(bounds(690))
++        .mockReturnValue(bounds(100));
++      const reveal = vi.fn();
++      Object.defineProperty(field, "scrollIntoView", { value: reveal });
++      field.focus();
++      window.dispatchEvent(new Event("resize"));
++      viewport.dispatchEvent(new Event("resize"));
++      expect(frames.size).toBe(1);
++      flushViewport();
++      expect(reveal).toHaveBeenCalledOnce();
++      expect(field).toHaveFocus();
++      expect(window.scrollBy).not.toHaveBeenCalled();
++    });
++
++    it("corrects a keyboard-only visual viewport offset without changing focus", () => {
++      renderForm();
++      const field = screen.getByLabelText(/message/i);
++      vi.spyOn(field, "getBoundingClientRect").mockReturnValue(bounds(500));
++      Object.defineProperty(field, "scrollIntoView", { value: vi.fn() });
++      field.focus();
++      viewport.dispatchEvent(new Event("resize"));
++      flushViewport();
++      expect(window.scrollBy).toHaveBeenCalledWith({
++        top: expect.any(Number),
++        behavior: "instant",
++      });
++      expect(
++        (vi.mocked(window.scrollBy).mock.calls[0][0] as unknown as ScrollToOptions).top,
++      ).toBeGreaterThan(0);
++      expect(field).toHaveFocus();
++    });
++
++    it("leaves visible fields and unfocused content in place", () => {
++      renderForm();
++      const field = screen.getByLabelText(/message/i);
++      vi.spyOn(field, "getBoundingClientRect").mockReturnValue(bounds(40));
++      const reveal = vi.fn();
++      Object.defineProperty(field, "scrollIntoView", { value: reveal });
++      window.dispatchEvent(new Event("resize"));
++      flushViewport();
++      field.focus();
++      window.dispatchEvent(new Event("resize"));
++      flushViewport();
++      expect(reveal).not.toHaveBeenCalled();
++      expect(window.scrollBy).not.toHaveBeenCalled();
++      expect(field).toHaveFocus();
++    });
++
++    it("cancels queued work and removes both resize listeners on unmount", () => {
++      const { unmount } = renderForm();
++      screen.getByLabelText(/message/i).focus();
++      window.dispatchEvent(new Event("resize"));
++      expect(frames.size).toBe(1);
++      unmount();
++      expect(frames.size).toBe(0);
++      window.dispatchEvent(new Event("resize"));
++      viewport.dispatchEvent(new Event("resize"));
++      expect(frames.size).toBe(0);
++    });
+   });
+ 
+   describe("email draft lifecycle", () => {
+@@ -361,6 +511,17 @@
+       }
+     });
+ 
++    it("keeps the script-only clipboard action disabled before hydration", () => {
++      const markup = renderToStaticMarkup(
++        <I18nProvider locale="en" dictionary={en}>
++          <CopyAddressControl />
++        </I18nProvider>,
++      );
++      const host = document.createElement("div");
++      host.innerHTML = markup;
++      expect(host.querySelector("button")).toBeDisabled();
++    });
++
+     it("copies the address and announces the result", async () => {
+       const writeText = vi.fn().mockResolvedValue(undefined);
+       Object.defineProperty(navigator, "clipboard", {
+--- audit-initial/src/components/os/OSApplicationBridge.tsx
++++ peer-current/src/components/os/OSApplicationBridge.tsx
+@@ -28,7 +28,10 @@
+         ? focused
+         : null;
+     const page = element?.closest<HTMLElement>(".os-page-content");
+-    const toolbar = page?.parentElement?.querySelector(".os-windowbar");
++    const chrome = page?.parentElement;
++    const toolbar =
++      chrome?.querySelector(".os-window-toolbar") ??
++      chrome?.querySelector(".os-windowbar");
+     const fields: Record<string, string> = {};
+     // Browser autofill or typing before hydration must survive the initial handover.
+     element
+--- audit-initial/src/components/os/OSApplicationBridge.test.tsx
++++ peer-current/src/components/os/OSApplicationBridge.test.tsx
+@@ -80,11 +80,16 @@
+     const page = element.closest<HTMLElement>(".os-page-content")!;
+     const toolbar =
+       page.parentElement!.querySelector<HTMLElement>(".os-windowbar")!;
++    const commands =
++      page.parentElement!.querySelector<HTMLElement>(".os-window-toolbar")!;
+     vi.spyOn(page, "getBoundingClientRect").mockReturnValue(
+       DOMRect.fromRect({ x: 0, y: -300, width: 1000, height: 2000 }),
+     );
+     vi.spyOn(toolbar, "getBoundingClientRect").mockReturnValue(
+       DOMRect.fromRect({ x: 0, y: 58, width: 1000, height: 57 }),
++    );
++    vi.spyOn(commands, "getBoundingClientRect").mockReturnValue(
++      DOMRect.fromRect({ x: 0, y: 115, width: 1000, height: 38 }),
+     );
+   }, []);
+   return (
+@@ -164,6 +169,7 @@
+     render(
+       <section>
+         <header className="os-windowbar">Toolbar</header>
++        <nav className="os-window-toolbar">Back and Copy Link</nav>
+         <div className="os-page-content">
+           {registrationProvider(<BrowserPopulatedLeaf />, register)}
+         </div>
+@@ -177,7 +183,7 @@
+       focusedField: "project-query",
+       selectionStart: 2,
+       selectionEnd: 9,
+-      readingOffset: 415,
++      readingOffset: 453,
+       fields: {
+         "project-query": "simurgh containment",
+         subject: "Evidence request",
+--- audit-initial/src/components/os/use-reading-window.ts
++++ peer-current/src/components/os/use-reading-window.ts
+@@ -157,6 +157,11 @@
+     null,
+   );
+   const readingOffset = useRef(options.initialReadingOffset ?? 0);
++  // A retained frame changes documents without remounting this hook. Its geometry
++  // follows the frame; the saved reading point belongs to the document being shown.
++  useLayoutEffect(() => {
++    readingOffset.current = options.initialReadingOffset ?? 0;
++  }, [path, options.initialReadingOffset]);
+   const previousLayout = useRef({
+     path,
+     floating: false,
+--- audit-initial/src/components/os/use-reading-window.test.tsx
++++ peer-current/src/components/os/use-reading-window.test.tsx
+@@ -121,10 +121,17 @@
+   return target;
+ }
+ 
+-function ReadingHarness({ active = true }: { active?: boolean }) {
++function ReadingHarness({
++  active = true,
++  path = "/write-ups/reading-fixture",
++}: {
++  active?: boolean;
++  path?: string;
++}) {
+   const content = useRef<HTMLElement>(null);
+-  const reading = useReadingWindow("/write-ups/reading-fixture", content, {
++  const reading = useReadingWindow(path, content, {
+     active,
++    retainGeometry: true,
+   });
+   return (
+     <>
+@@ -138,6 +145,7 @@
+           Reading fixture
+         </header>
+         <div
++          key={path}
+           className="os-page-content"
+           data-testid="reading-content"
+           onScroll={reading.onContentScroll}
+@@ -457,6 +465,22 @@
+ });
+ 
+ describe("reading position across layout and visibility changes", () => {
++  it("starts a new document at its own reading point when a retained frame changes layout", () => {
++    const view = render(<ReadingHarness />);
++    const { page } = mockReadingLayout();
++    fireEvent.click(screen.getByRole("button", { name: "Move" }));
++    page.scrollTop = 275;
++    fireEvent.scroll(page);
++    view.rerender(<ReadingHarness path="/write-ups/next-document" />);
++    const next = mockReadingLayout();
++    expect(next.page).not.toBe(page);
++    expect(next.page.scrollTop).toBe(0);
++    changeViewportWidth(390);
++    expect(next.scrollTo).toHaveBeenLastCalledWith({ top: 85 });
++    changeViewportWidth(1280);
++    expect(next.page.scrollTop).toBe(0);
++  });
++
+   it("preserves progress made while expanded when the original geometry returns", () => {
+     render(<ReadingHarness />);
+     const { page, scrollTo } = mockReadingLayout();
+--- audit-initial/src/components/os/ReadingWindowControls.tsx
++++ peer-current/src/components/os/ReadingWindowControls.tsx
+@@ -176,12 +176,7 @@
+         createPortal(
+           <div
+             className="os-window-controls-panel os-menu-popover win7"
+-            // The shell's appearance, read on open, so the Night tokens apply in the portal.
+-            data-appearance={
+-              portalHost.getAttribute("data-appearance") === "light"
+-                ? "light"
+-                : "dark"
+-            }
++            // The portal stays inside the themed shell and inherits its live appearance.
+             ref={panel}
+           >
+             {/* Step buttons show their words, so the visible text is also the

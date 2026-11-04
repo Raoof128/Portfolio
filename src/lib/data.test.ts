@@ -3,6 +3,7 @@ import {
   projects,
   writeups,
   labExperiments,
+  supportingResearch,
   type Project,
   type Writeup,
   type LabExperiment,
@@ -50,7 +51,7 @@ describe("Data Layer", () => {
 
     it("should have ECRSM project", () => {
       expect(projects["ecrsm"]).toBeDefined();
-      expect(projects["ecrsm"].category).toBe("OFFENSIVE");
+      expect(projects["ecrsm"].category).toBe("DEFENSIVE");
     });
 
     it("should publish the Invisible Window preprint and paper", () => {
@@ -70,7 +71,7 @@ describe("Data Layer", () => {
       );
     });
 
-    it("should list Project Simurgh directly after Invisible Window with its preprint, papers, and citation", () => {
+    it("lists current Simurgh software first while retaining its earlier publications", () => {
       const projectKeys = Object.keys(projects);
       const invisibleWindowIndex = projectKeys.indexOf(
         "invisible-window-research",
@@ -80,19 +81,19 @@ describe("Data Layer", () => {
       expect(projects["project-simurgh"]?.links.repo).toBe(
         "https://github.com/Raoof128/Project-Simurgh",
       );
-      expect(projects["project-simurgh"]?.links.doi).toBeUndefined();
-      expect(projects["project-simurgh"]?.links.preprint).toBe(
-        "https://zenodo.org/records/20374849",
+      expect(projects["project-simurgh"]?.links.doi).toBe(
+        "https://doi.org/10.5281/zenodo.21737792",
       );
-      expect(projects["project-simurgh"]?.links.paper).toBe(
-        "/Project_Simurgh_Preprint_v1.0.pdf",
-      );
+      expect(projects["project-simurgh"]?.links.doiKind).toBe("software");
+      expect(projects["project-simurgh"]?.links.preprint).toBeUndefined();
+      expect(projects["project-simurgh"]?.links.paper).toBeUndefined();
       expect(projects["project-simurgh"]?.papers).toHaveLength(3);
       expect(projects["project-simurgh"]?.papers).toEqual([
         expect.objectContaining({
           title:
             "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions",
           href: "/Project_Simurgh_Preprint_v1.0.pdf",
+          label: "Earlier device-integrity preprint",
           kind: "download",
           doi: "10.5281/zenodo.20374849",
         }),
@@ -115,8 +116,64 @@ describe("Data Layer", () => {
         "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
       );
       expect(projects["project-simurgh"]?.description).toContain(
-        "verifiable containment-attestation framework for agentic AI",
+        "Inspectable authorisation and containment prototype",
       );
+    });
+
+    it("keeps current positive and null study results distinct from frozen evidence", () => {
+      const simurgh = projects["project-simurgh"];
+      expect(simurgh.description).toContain("Llama-3.2-3B");
+      expect(simurgh.description).toContain("17/24 to 0/24");
+      expect(simurgh.description).toContain("23/24");
+      expect(simurgh.description).toContain("gpt-6-luna");
+      expect(simurgh.description).toContain("no incremental protection");
+      const evidence = simurgh.proof.join(" ");
+      for (const token of [
+        "288",
+        "six states",
+        "Wilson 95%",
+        "43.6–97.0%",
+        "0.0–39.0%",
+        "by construction",
+        "8/8",
+        "2/3",
+        "5/5",
+        "one refusal still open",
+        "39 Lean 4 proof files",
+        "5,171",
+        "19 October 2026",
+        "92 published releases",
+        "919",
+        "141",
+        "10.5281/zenodo.21737792",
+      ])
+        expect(evidence).toContain(token);
+      expect(simurgh.proof[4]).toContain("Earlier frozen classifier stage");
+      expect(simurgh.proof[4]).toContain("138/138");
+      expect(simurgh.proof[5]).toContain("Earlier frozen AgentDojo stage");
+      expect(simurgh.proof[5]).toContain("9/140 to 0/140");
+      expect(simurgh.proof[5]).toContain(
+        "benign utility fell from 7/10 to 6/10",
+      );
+      expect(simurgh.proof[5]).toContain("utility under attack 949/949");
+      expect(simurgh.proof[5]).toContain("benign utility 97/97");
+      expect(simurgh.papers?.[0].doi).toBe("10.5281/zenodo.20374849");
+      expect(evidence).not.toContain("3,057");
+    });
+
+    it("describes passkeys as public-key authentication", () => {
+      const passkeys = projects["syllabus-sync"].proof.join(" ");
+      expect(passkeys).toContain("public-key credentials");
+      expect(passkeys).not.toContain("shared secrets");
+    });
+
+    it("records sourced supporting work without inventing a repository or route", () => {
+      expect(supportingResearch.sentinelssh.title).toBe("SentinelSSH");
+      expect(supportingResearch.sentinelssh.typedTools).toBe(17);
+      expect(supportingResearch.sentinelssh.description).toContain("read-only");
+      expect(supportingResearch.sentinelssh.description).toContain("no shell");
+      expect(supportingResearch.sentinelssh).not.toHaveProperty("repo");
+      expect(projects).not.toHaveProperty("sentinelssh");
     });
 
     it("should list Project Zurvan directly after Project Simurgh", () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { cn, hoverSpring } from "@/lib/utils";
 import { HUDFrame } from "./HUDFrame";
 import { NeonButton } from "./NeonButton";
@@ -42,10 +42,26 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<"build" | "secure">("build");
-  const idBase = toDomId(title) || "project";
+  const instanceId = useId();
+  const tabs = useRef<
+    Partial<Record<"build" | "secure", HTMLButtonElement | null>>
+  >({});
+  const idBase = `${toDomId(title) || "project"}-${instanceId}`;
   const buildTabId = `${idBase}-tab-build`;
   const secureTabId = `${idBase}-tab-secure`;
   const panelId = `${idBase}-tab-panel`;
+
+  function moveTab(event: KeyboardEvent<HTMLDivElement>) {
+    let next: "build" | "secure";
+    if (event.key === "Home") next = "build";
+    else if (event.key === "End") next = "secure";
+    else if (event.key === "ArrowLeft" || event.key === "ArrowRight")
+      next = activeTab === "build" ? "secure" : "build";
+    else return;
+    event.preventDefault();
+    setActiveTab(next);
+    tabs.current[next]?.focus();
+  }
 
   return (
     <motion.div
@@ -91,11 +107,16 @@ export function ProjectCard({
           <div
             className="mt-6 flex border-b border-cyan/12"
             role="tablist"
+            onKeyDown={moveTab}
             aria-label={t.project_card.tab_details_aria}
           >
             <button
               id={buildTabId}
+              ref={(element) => {
+                tabs.current.build = element;
+              }}
               role="tab"
+              tabIndex={activeTab === "build" ? 0 : -1}
               aria-selected={activeTab === "build"}
               aria-controls={panelId}
               onClick={() => setActiveTab("build")}
@@ -111,7 +132,11 @@ export function ProjectCard({
             </button>
             <button
               id={secureTabId}
+              ref={(element) => {
+                tabs.current.secure = element;
+              }}
               role="tab"
+              tabIndex={activeTab === "secure" ? 0 : -1}
               aria-selected={activeTab === "secure"}
               aria-controls={panelId}
               onClick={() => setActiveTab("secure")}
@@ -131,6 +156,7 @@ export function ProjectCard({
           <div
             className="h-40 overflow-y-auto pe-2 custom-scrollbar pt-4"
             role="tabpanel"
+            tabIndex={0}
             id={panelId}
             aria-labelledby={activeTab === "build" ? buildTabId : secureTabId}
           >

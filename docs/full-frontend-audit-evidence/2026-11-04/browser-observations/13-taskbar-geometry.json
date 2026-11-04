@@ -1,0 +1,2706 @@
+[
+  {
+    "locale": "en",
+    "width": 320,
+    "height": 568,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 448.1875,
+      "right": 312,
+      "bottom": 560.1875,
+      "width": 304,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 453.1875,
+      "right": 307,
+      "bottom": 511.1875,
+      "width": 294,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 13,
+          "top": 453.1875,
+          "right": 68.59375,
+          "bottom": 511.1875,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 16.3125,
+          "top": 484.09375,
+          "right": 65.265625,
+          "bottom": 499.28125,
+          "width": 48.953125,
+          "height": 15.1875
+        },
+        "text": "Projects",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 72.59375,
+          "top": 453.1875,
+          "right": 128.203125,
+          "bottom": 511.1875,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 75.59375,
+          "top": 477.5,
+          "right": 125.203125,
+          "bottom": 505.875,
+          "width": 49.609375,
+          "height": 28.375
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 50,
+        "labelScrollWidth": 50
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 132.203125,
+          "top": 453.1875,
+          "right": 187.796875,
+          "bottom": 511.1875,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 140.96875,
+          "top": 484.09375,
+          "right": 179.03125,
+          "bottom": 499.28125,
+          "width": 38.0625,
+          "height": 15.1875
+        },
+        "text": "About",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 191.796875,
+          "top": 453.1875,
+          "right": 247.40625,
+          "bottom": 511.1875,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 194.90625,
+          "top": 484.09375,
+          "right": 244.296875,
+          "bottom": 499.28125,
+          "width": 49.390625,
+          "height": 15.1875
+        },
+        "text": "Résumé",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 251.40625,
+          "top": 453.1875,
+          "right": 307,
+          "bottom": 511.1875,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 255.484375,
+          "top": 484.09375,
+          "right": 302.90625,
+          "bottom": 499.28125,
+          "width": 47.421875,
+          "height": 15.1875
+        },
+        "text": "Contact",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      }
+    ],
+    "tray": [
+      {
+        "left": 122,
+        "top": 511.1875,
+        "right": 166,
+        "bottom": 555.1875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 168,
+        "top": 511.1875,
+        "right": 212,
+        "bottom": 555.1875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 214,
+        "top": 511.1875,
+        "right": 258,
+        "bottom": 555.1875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 264,
+        "top": 511.1875,
+        "right": 308,
+        "bottom": 555.1875,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "height": 844,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 724,
+      "right": 382,
+      "bottom": 836,
+      "width": 374,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 729,
+      "right": 377,
+      "bottom": 787,
+      "width": 364,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 13,
+          "top": 729,
+          "right": 82.59375,
+          "bottom": 787,
+          "width": 69.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 23.3125,
+          "top": 759.90625,
+          "right": 72.265625,
+          "bottom": 775.09375,
+          "width": 48.953125,
+          "height": 15.1875
+        },
+        "text": "Projects",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 86.59375,
+          "top": 729,
+          "right": 156.203125,
+          "bottom": 787,
+          "width": 69.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 92.09375,
+          "top": 759.90625,
+          "right": 150.703125,
+          "bottom": 775.09375,
+          "width": 58.609375,
+          "height": 15.1875
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 59,
+        "labelScrollWidth": 59
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 160.203125,
+          "top": 729,
+          "right": 229.796875,
+          "bottom": 787,
+          "width": 69.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 175.96875,
+          "top": 759.90625,
+          "right": 214.03125,
+          "bottom": 775.09375,
+          "width": 38.0625,
+          "height": 15.1875
+        },
+        "text": "About",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 233.796875,
+          "top": 729,
+          "right": 303.40625,
+          "bottom": 787,
+          "width": 69.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 243.90625,
+          "top": 759.90625,
+          "right": 293.296875,
+          "bottom": 775.09375,
+          "width": 49.390625,
+          "height": 15.1875
+        },
+        "text": "Résumé",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 307.40625,
+          "top": 729,
+          "right": 377,
+          "bottom": 787,
+          "width": 69.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 318.484375,
+          "top": 759.90625,
+          "right": 365.90625,
+          "bottom": 775.09375,
+          "width": 47.421875,
+          "height": 15.1875
+        },
+        "text": "Contact",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      }
+    ],
+    "tray": [
+      {
+        "left": 192,
+        "top": 787,
+        "right": 236,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 238,
+        "top": 787,
+        "right": 282,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 284,
+        "top": 787,
+        "right": 328,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 334,
+        "top": 787,
+        "right": 378,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 640,
+    "height": 360,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 240.34375,
+      "right": 632,
+      "bottom": 352.34375,
+      "width": 624,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 245.34375,
+      "right": 627,
+      "bottom": 303.34375,
+      "width": 614,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 13,
+          "top": 245.34375,
+          "right": 132.59375,
+          "bottom": 303.34375,
+          "width": 119.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 48.3125,
+          "top": 276.25,
+          "right": 97.265625,
+          "bottom": 291.4375,
+          "width": 48.953125,
+          "height": 15.1875
+        },
+        "text": "Projects",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 136.59375,
+          "top": 245.34375,
+          "right": 256.203125,
+          "bottom": 303.34375,
+          "width": 119.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 167.09375,
+          "top": 276.25,
+          "right": 225.703125,
+          "bottom": 291.4375,
+          "width": 58.609375,
+          "height": 15.1875
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 59,
+        "labelScrollWidth": 59
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 260.203125,
+          "top": 245.34375,
+          "right": 379.796875,
+          "bottom": 303.34375,
+          "width": 119.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 300.96875,
+          "top": 276.25,
+          "right": 339.03125,
+          "bottom": 291.4375,
+          "width": 38.0625,
+          "height": 15.1875
+        },
+        "text": "About",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 383.796875,
+          "top": 245.34375,
+          "right": 503.40625,
+          "bottom": 303.34375,
+          "width": 119.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 418.90625,
+          "top": 276.25,
+          "right": 468.296875,
+          "bottom": 291.4375,
+          "width": 49.390625,
+          "height": 15.1875
+        },
+        "text": "Résumé",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 507.40625,
+          "top": 245.34375,
+          "right": 627,
+          "bottom": 303.34375,
+          "width": 119.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 543.484375,
+          "top": 276.25,
+          "right": 590.90625,
+          "bottom": 291.4375,
+          "width": 47.421875,
+          "height": 15.1875
+        },
+        "text": "Contact",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      }
+    ],
+    "tray": [
+      {
+        "left": 398.203125,
+        "top": 303.34375,
+        "right": 442.203125,
+        "bottom": 347.34375,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 444.203125,
+        "top": 303.34375,
+        "right": 488.203125,
+        "bottom": 347.34375,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 490.203125,
+        "top": 303.34375,
+        "right": 534.203125,
+        "bottom": 347.34375,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 584,
+        "top": 303.34375,
+        "right": 628,
+        "bottom": 347.34375,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 768,
+    "height": 1024,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 904,
+      "right": 760,
+      "bottom": 1016,
+      "width": 752,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 909,
+      "right": 755,
+      "bottom": 967,
+      "width": 742,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 13,
+          "top": 909,
+          "right": 158.1875,
+          "bottom": 967,
+          "width": 145.1875,
+          "height": 58
+        },
+        "label": {
+          "left": 61.109375,
+          "top": 939.90625,
+          "right": 110.0625,
+          "bottom": 955.09375,
+          "width": 48.953125,
+          "height": 15.1875
+        },
+        "text": "Projects",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 162.1875,
+          "top": 909,
+          "right": 307.390625,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 205.484375,
+          "top": 939.90625,
+          "right": 264.09375,
+          "bottom": 955.09375,
+          "width": 58.609375,
+          "height": 15.1875
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 59,
+        "labelScrollWidth": 59
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 311.390625,
+          "top": 909,
+          "right": 456.59375,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 364.953125,
+          "top": 939.90625,
+          "right": 403.015625,
+          "bottom": 955.09375,
+          "width": 38.0625,
+          "height": 15.1875
+        },
+        "text": "About",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 460.59375,
+          "top": 909,
+          "right": 605.796875,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 508.5,
+          "top": 939.90625,
+          "right": 557.890625,
+          "bottom": 955.09375,
+          "width": 49.390625,
+          "height": 15.1875
+        },
+        "text": "Résumé",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 609.796875,
+          "top": 909,
+          "right": 755,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 658.6875,
+          "top": 939.90625,
+          "right": 706.109375,
+          "bottom": 955.09375,
+          "width": 47.421875,
+          "height": 15.1875
+        },
+        "text": "Contact",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      }
+    ],
+    "tray": [
+      {
+        "left": 482.234375,
+        "top": 967,
+        "right": 526.234375,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 528.234375,
+        "top": 967,
+        "right": 572.234375,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 574.234375,
+        "top": 967,
+        "right": 625.203125,
+        "bottom": 1011,
+        "width": 50.96875,
+        "height": 44
+      },
+      {
+        "left": 712,
+        "top": 967,
+        "right": 756,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1024,
+    "height": 768,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 708,
+      "right": 1016,
+      "bottom": 760,
+      "width": 1008,
+      "height": 52
+    },
+    "strip": {
+      "left": 74,
+      "top": 709,
+      "right": 575,
+      "bottom": 759,
+      "width": 501,
+      "height": 50
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 76,
+          "top": 712,
+          "right": 136.953125,
+          "bottom": 756,
+          "width": 60.953125,
+          "height": 44
+        },
+        "label": {
+          "left": 81,
+          "top": 735,
+          "right": 131.953125,
+          "bottom": 750,
+          "width": 50.953125,
+          "height": 15
+        },
+        "text": "Projects",
+        "labelClientWidth": 51,
+        "labelScrollWidth": 51
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 144.953125,
+          "top": 712,
+          "right": 215.5625,
+          "bottom": 756,
+          "width": 70.609375,
+          "height": 44
+        },
+        "label": {
+          "left": 149.953125,
+          "top": 735,
+          "right": 210.5625,
+          "bottom": 750,
+          "width": 60.609375,
+          "height": 15
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 61,
+        "labelScrollWidth": 61
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 223.5625,
+          "top": 712,
+          "right": 279.5625,
+          "bottom": 756,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 231.53125,
+          "top": 735,
+          "right": 271.59375,
+          "bottom": 750,
+          "width": 40.0625,
+          "height": 15
+        },
+        "text": "About",
+        "labelClientWidth": 40,
+        "labelScrollWidth": 40
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 287.5625,
+          "top": 712,
+          "right": 348.953125,
+          "bottom": 756,
+          "width": 61.390625,
+          "height": 44
+        },
+        "label": {
+          "left": 292.5625,
+          "top": 735,
+          "right": 343.953125,
+          "bottom": 750,
+          "width": 51.390625,
+          "height": 15
+        },
+        "text": "Résumé",
+        "labelClientWidth": 51,
+        "labelScrollWidth": 51
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 356.953125,
+          "top": 712,
+          "right": 416.375,
+          "bottom": 756,
+          "width": 59.421875,
+          "height": 44
+        },
+        "label": {
+          "left": 361.953125,
+          "top": 735,
+          "right": 411.375,
+          "bottom": 750,
+          "width": 49.421875,
+          "height": 15
+        },
+        "text": "Contact",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      }
+    ],
+    "tray": [
+      {
+        "left": 734.234375,
+        "top": 712,
+        "right": 778.234375,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 780.234375,
+        "top": 712,
+        "right": 824.234375,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 826.234375,
+        "top": 712,
+        "right": 877.203125,
+        "bottom": 756,
+        "width": 50.96875,
+        "height": 44
+      },
+      {
+        "left": 964,
+        "top": 712,
+        "right": 1008,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "height": 900,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 840,
+      "right": 1432,
+      "bottom": 892,
+      "width": 1424,
+      "height": 52
+    },
+    "strip": {
+      "left": 74,
+      "top": 841,
+      "right": 991,
+      "bottom": 891,
+      "width": 917,
+      "height": 50
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 76,
+          "top": 844,
+          "right": 136.953125,
+          "bottom": 888,
+          "width": 60.953125,
+          "height": 44
+        },
+        "label": {
+          "left": 81,
+          "top": 867,
+          "right": 131.953125,
+          "bottom": 882,
+          "width": 50.953125,
+          "height": 15
+        },
+        "text": "Projects",
+        "labelClientWidth": 51,
+        "labelScrollWidth": 51
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 144.953125,
+          "top": 844,
+          "right": 215.5625,
+          "bottom": 888,
+          "width": 70.609375,
+          "height": 44
+        },
+        "label": {
+          "left": 149.953125,
+          "top": 867,
+          "right": 210.5625,
+          "bottom": 882,
+          "width": 60.609375,
+          "height": 15
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 61,
+        "labelScrollWidth": 61
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 223.5625,
+          "top": 844,
+          "right": 279.5625,
+          "bottom": 888,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 231.53125,
+          "top": 867,
+          "right": 271.59375,
+          "bottom": 882,
+          "width": 40.0625,
+          "height": 15
+        },
+        "text": "About",
+        "labelClientWidth": 40,
+        "labelScrollWidth": 40
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 287.5625,
+          "top": 844,
+          "right": 348.953125,
+          "bottom": 888,
+          "width": 61.390625,
+          "height": 44
+        },
+        "label": {
+          "left": 292.5625,
+          "top": 867,
+          "right": 343.953125,
+          "bottom": 882,
+          "width": 51.390625,
+          "height": 15
+        },
+        "text": "Résumé",
+        "labelClientWidth": 51,
+        "labelScrollWidth": 51
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 356.953125,
+          "top": 844,
+          "right": 416.375,
+          "bottom": 888,
+          "width": 59.421875,
+          "height": 44
+        },
+        "label": {
+          "left": 361.953125,
+          "top": 867,
+          "right": 411.375,
+          "bottom": 882,
+          "width": 49.421875,
+          "height": 15
+        },
+        "text": "Contact",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      }
+    ],
+    "tray": [
+      {
+        "left": 1150.234375,
+        "top": 844,
+        "right": 1194.234375,
+        "bottom": 888,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 1196.234375,
+        "top": 844,
+        "right": 1240.234375,
+        "bottom": 888,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 1242.234375,
+        "top": 844,
+        "right": 1293.203125,
+        "bottom": 888,
+        "width": 50.96875,
+        "height": 44
+      },
+      {
+        "left": 1380,
+        "top": 844,
+        "right": 1424,
+        "bottom": 888,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 1920,
+    "height": 1080,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 1020,
+      "right": 1912,
+      "bottom": 1072,
+      "width": 1904,
+      "height": 52
+    },
+    "strip": {
+      "left": 74,
+      "top": 1021,
+      "right": 1471,
+      "bottom": 1071,
+      "width": 1397,
+      "height": 50
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 76,
+          "top": 1024,
+          "right": 136.953125,
+          "bottom": 1068,
+          "width": 60.953125,
+          "height": 44
+        },
+        "label": {
+          "left": 81,
+          "top": 1047,
+          "right": 131.953125,
+          "bottom": 1062,
+          "width": 50.953125,
+          "height": 15
+        },
+        "text": "Projects",
+        "labelClientWidth": 51,
+        "labelScrollWidth": 51
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 144.953125,
+          "top": 1024,
+          "right": 215.5625,
+          "bottom": 1068,
+          "width": 70.609375,
+          "height": 44
+        },
+        "label": {
+          "left": 149.953125,
+          "top": 1047,
+          "right": 210.5625,
+          "bottom": 1062,
+          "width": 60.609375,
+          "height": 15
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 61,
+        "labelScrollWidth": 61
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 223.5625,
+          "top": 1024,
+          "right": 279.5625,
+          "bottom": 1068,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 231.53125,
+          "top": 1047,
+          "right": 271.59375,
+          "bottom": 1062,
+          "width": 40.0625,
+          "height": 15
+        },
+        "text": "About",
+        "labelClientWidth": 40,
+        "labelScrollWidth": 40
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 287.5625,
+          "top": 1024,
+          "right": 348.953125,
+          "bottom": 1068,
+          "width": 61.390625,
+          "height": 44
+        },
+        "label": {
+          "left": 292.5625,
+          "top": 1047,
+          "right": 343.953125,
+          "bottom": 1062,
+          "width": 51.390625,
+          "height": 15
+        },
+        "text": "Résumé",
+        "labelClientWidth": 51,
+        "labelScrollWidth": 51
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 356.953125,
+          "top": 1024,
+          "right": 416.375,
+          "bottom": 1068,
+          "width": 59.421875,
+          "height": 44
+        },
+        "label": {
+          "left": 361.953125,
+          "top": 1047,
+          "right": 411.375,
+          "bottom": 1062,
+          "width": 49.421875,
+          "height": 15
+        },
+        "text": "Contact",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      }
+    ],
+    "tray": [
+      {
+        "left": 1630.234375,
+        "top": 1024,
+        "right": 1674.234375,
+        "bottom": 1068,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 1676.234375,
+        "top": 1024,
+        "right": 1720.234375,
+        "bottom": 1068,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 1722.234375,
+        "top": 1024,
+        "right": 1773.203125,
+        "bottom": 1068,
+        "width": 50.96875,
+        "height": 44
+      },
+      {
+        "left": 1860,
+        "top": 1024,
+        "right": 1904,
+        "bottom": 1068,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 320,
+    "height": 225,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 105.1875,
+      "right": 312,
+      "bottom": 217.1875,
+      "width": 304,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 110.1875,
+      "right": 307,
+      "bottom": 168.1875,
+      "width": 294,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 13,
+          "top": 110.1875,
+          "right": 68.59375,
+          "bottom": 168.1875,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 16.3125,
+          "top": 141.09375,
+          "right": 65.265625,
+          "bottom": 156.28125,
+          "width": 48.953125,
+          "height": 15.1875
+        },
+        "text": "Projects",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 72.59375,
+          "top": 110.1875,
+          "right": 128.203125,
+          "bottom": 168.1875,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 75.59375,
+          "top": 134.5,
+          "right": 125.203125,
+          "bottom": 162.875,
+          "width": 49.609375,
+          "height": 28.375
+        },
+        "text": "Write-ups",
+        "labelClientWidth": 50,
+        "labelScrollWidth": 50
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 132.203125,
+          "top": 110.1875,
+          "right": 187.796875,
+          "bottom": 168.1875,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 140.96875,
+          "top": 141.09375,
+          "right": 179.03125,
+          "bottom": 156.28125,
+          "width": 38.0625,
+          "height": 15.1875
+        },
+        "text": "About",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 191.796875,
+          "top": 110.1875,
+          "right": 247.40625,
+          "bottom": 168.1875,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 194.90625,
+          "top": 141.09375,
+          "right": 244.296875,
+          "bottom": 156.28125,
+          "width": 49.390625,
+          "height": 15.1875
+        },
+        "text": "Résumé",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 251.40625,
+          "top": 110.1875,
+          "right": 307,
+          "bottom": 168.1875,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 255.484375,
+          "top": 141.09375,
+          "right": 302.90625,
+          "bottom": 156.28125,
+          "width": 47.421875,
+          "height": 15.1875
+        },
+        "text": "Contact",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      }
+    ],
+    "tray": [
+      {
+        "left": 122,
+        "top": 168.1875,
+        "right": 166,
+        "bottom": 212.1875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 168,
+        "top": 168.1875,
+        "right": 212,
+        "bottom": 212.1875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 214,
+        "top": 168.1875,
+        "right": 258,
+        "bottom": 212.1875,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 264,
+        "top": 168.1875,
+        "right": 308,
+        "bottom": 212.1875,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 320,
+    "height": 568,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 447.890625,
+      "right": 312,
+      "bottom": 559.890625,
+      "width": 304,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 452.890625,
+      "right": 307,
+      "bottom": 510.890625,
+      "width": 294,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 251.40625,
+          "top": 452.890625,
+          "right": 307,
+          "bottom": 510.890625,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 260.078125,
+          "top": 483.796875,
+          "right": 298.328125,
+          "bottom": 498.984375,
+          "width": 38.25,
+          "height": 15.1875
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 191.796875,
+          "top": 452.890625,
+          "right": 247.40625,
+          "bottom": 510.890625,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 197.34375,
+          "top": 483.796875,
+          "right": 241.875,
+          "bottom": 498.984375,
+          "width": 44.53125,
+          "height": 15.1875
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 45,
+        "labelScrollWidth": 45
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 132.203125,
+          "top": 452.890625,
+          "right": 187.796875,
+          "bottom": 510.890625,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 136.359375,
+          "top": 483.796875,
+          "right": 183.640625,
+          "bottom": 498.984375,
+          "width": 47.28125,
+          "height": 15.1875
+        },
+        "text": "درباره من",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 72.59375,
+          "top": 452.890625,
+          "right": 128.203125,
+          "bottom": 510.890625,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 85.5,
+          "top": 483.796875,
+          "right": 115.3125,
+          "bottom": 498.984375,
+          "width": 29.8125,
+          "height": 15.1875
+        },
+        "text": "رزومه",
+        "labelClientWidth": 30,
+        "labelScrollWidth": 30
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 13,
+          "top": 452.890625,
+          "right": 68.59375,
+          "bottom": 510.890625,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 24.859375,
+          "top": 483.796875,
+          "right": 56.75,
+          "bottom": 498.984375,
+          "width": 31.890625,
+          "height": 15.1875
+        },
+        "text": "تماس",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      }
+    ],
+    "tray": [
+      {
+        "left": 154,
+        "top": 510.890625,
+        "right": 198,
+        "bottom": 554.890625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 108,
+        "top": 510.890625,
+        "right": 152,
+        "bottom": 554.890625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 62,
+        "top": 510.890625,
+        "right": 106,
+        "bottom": 554.890625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 12,
+        "top": 510.890625,
+        "right": 56,
+        "bottom": 554.890625,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 390,
+    "height": 844,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 724,
+      "right": 382,
+      "bottom": 836,
+      "width": 374,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 729,
+      "right": 377,
+      "bottom": 787,
+      "width": 364,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 307.40625,
+          "top": 729,
+          "right": 377,
+          "bottom": 787,
+          "width": 69.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 323.078125,
+          "top": 759.90625,
+          "right": 361.328125,
+          "bottom": 775.09375,
+          "width": 38.25,
+          "height": 15.1875
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 233.796875,
+          "top": 729,
+          "right": 303.40625,
+          "bottom": 787,
+          "width": 69.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 246.34375,
+          "top": 759.90625,
+          "right": 290.875,
+          "bottom": 775.09375,
+          "width": 44.53125,
+          "height": 15.1875
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 45,
+        "labelScrollWidth": 45
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 160.203125,
+          "top": 729,
+          "right": 229.796875,
+          "bottom": 787,
+          "width": 69.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 171.359375,
+          "top": 759.90625,
+          "right": 218.640625,
+          "bottom": 775.09375,
+          "width": 47.28125,
+          "height": 15.1875
+        },
+        "text": "درباره من",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 86.59375,
+          "top": 729,
+          "right": 156.203125,
+          "bottom": 787,
+          "width": 69.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 106.5,
+          "top": 759.90625,
+          "right": 136.3125,
+          "bottom": 775.09375,
+          "width": 29.8125,
+          "height": 15.1875
+        },
+        "text": "رزومه",
+        "labelClientWidth": 30,
+        "labelScrollWidth": 30
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 13,
+          "top": 729,
+          "right": 82.59375,
+          "bottom": 787,
+          "width": 69.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 31.859375,
+          "top": 759.90625,
+          "right": 63.75,
+          "bottom": 775.09375,
+          "width": 31.890625,
+          "height": 15.1875
+        },
+        "text": "تماس",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      }
+    ],
+    "tray": [
+      {
+        "left": 154,
+        "top": 787,
+        "right": 198,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 108,
+        "top": 787,
+        "right": 152,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 62,
+        "top": 787,
+        "right": 106,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 12,
+        "top": 787,
+        "right": 56,
+        "bottom": 831,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 640,
+    "height": 360,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 239.640625,
+      "right": 632,
+      "bottom": 351.640625,
+      "width": 624,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 244.640625,
+      "right": 627,
+      "bottom": 302.640625,
+      "width": 614,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 507.40625,
+          "top": 244.640625,
+          "right": 627,
+          "bottom": 302.640625,
+          "width": 119.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 548.078125,
+          "top": 275.546875,
+          "right": 586.328125,
+          "bottom": 290.734375,
+          "width": 38.25,
+          "height": 15.1875
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 383.796875,
+          "top": 244.640625,
+          "right": 503.40625,
+          "bottom": 302.640625,
+          "width": 119.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 421.34375,
+          "top": 275.546875,
+          "right": 465.875,
+          "bottom": 290.734375,
+          "width": 44.53125,
+          "height": 15.1875
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 45,
+        "labelScrollWidth": 45
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 260.203125,
+          "top": 244.640625,
+          "right": 379.796875,
+          "bottom": 302.640625,
+          "width": 119.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 296.359375,
+          "top": 275.546875,
+          "right": 343.640625,
+          "bottom": 290.734375,
+          "width": 47.28125,
+          "height": 15.1875
+        },
+        "text": "درباره من",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 136.59375,
+          "top": 244.640625,
+          "right": 256.203125,
+          "bottom": 302.640625,
+          "width": 119.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 181.5,
+          "top": 275.546875,
+          "right": 211.3125,
+          "bottom": 290.734375,
+          "width": 29.8125,
+          "height": 15.1875
+        },
+        "text": "رزومه",
+        "labelClientWidth": 30,
+        "labelScrollWidth": 30
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 13,
+          "top": 244.640625,
+          "right": 132.59375,
+          "bottom": 302.640625,
+          "width": 119.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 56.859375,
+          "top": 275.546875,
+          "right": 88.75,
+          "bottom": 290.734375,
+          "width": 31.890625,
+          "height": 15.1875
+        },
+        "text": "تماس",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      }
+    ],
+    "tray": [
+      {
+        "left": 202.6875,
+        "top": 302.640625,
+        "right": 246.6875,
+        "bottom": 346.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 156.6875,
+        "top": 302.640625,
+        "right": 200.6875,
+        "bottom": 346.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 110.6875,
+        "top": 302.640625,
+        "right": 154.6875,
+        "bottom": 346.640625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 12,
+        "top": 302.640625,
+        "right": 56,
+        "bottom": 346.640625,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 768,
+    "height": 1024,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 904,
+      "right": 760,
+      "bottom": 1016,
+      "width": 752,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 909,
+      "right": 755,
+      "bottom": 967,
+      "width": 742,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 609.8125,
+          "top": 909,
+          "right": 755,
+          "bottom": 967,
+          "width": 145.1875,
+          "height": 58
+        },
+        "label": {
+          "left": 663.28125,
+          "top": 939.90625,
+          "right": 701.53125,
+          "bottom": 955.09375,
+          "width": 38.25,
+          "height": 15.1875
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 460.609375,
+          "top": 909,
+          "right": 605.8125,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 510.953125,
+          "top": 939.90625,
+          "right": 555.484375,
+          "bottom": 955.09375,
+          "width": 44.53125,
+          "height": 15.1875
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 45,
+        "labelScrollWidth": 45
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 311.40625,
+          "top": 909,
+          "right": 456.609375,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 360.375,
+          "top": 939.90625,
+          "right": 407.65625,
+          "bottom": 955.09375,
+          "width": 47.28125,
+          "height": 15.1875
+        },
+        "text": "درباره من",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 162.203125,
+          "top": 909,
+          "right": 307.40625,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 219.90625,
+          "top": 939.90625,
+          "right": 249.71875,
+          "bottom": 955.09375,
+          "width": 29.8125,
+          "height": 15.1875
+        },
+        "text": "رزومه",
+        "labelClientWidth": 30,
+        "labelScrollWidth": 30
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 13,
+          "top": 909,
+          "right": 158.203125,
+          "bottom": 967,
+          "width": 145.203125,
+          "height": 58
+        },
+        "label": {
+          "left": 69.65625,
+          "top": 939.90625,
+          "right": 101.546875,
+          "bottom": 955.09375,
+          "width": 31.890625,
+          "height": 15.1875
+        },
+        "text": "تماس",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      }
+    ],
+    "tray": [
+      {
+        "left": 233.96875,
+        "top": 967,
+        "right": 277.96875,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 187.96875,
+        "top": 967,
+        "right": 231.96875,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 137.875,
+        "top": 967,
+        "right": 185.96875,
+        "bottom": 1011,
+        "width": 48.09375,
+        "height": 44
+      },
+      {
+        "left": 12,
+        "top": 967,
+        "right": 56,
+        "bottom": 1011,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 1024,
+    "height": 768,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 708,
+      "right": 1016,
+      "bottom": 760,
+      "width": 1008,
+      "height": 52
+    },
+    "strip": {
+      "left": 449,
+      "top": 709,
+      "right": 950,
+      "bottom": 759,
+      "width": 501,
+      "height": 50
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 892,
+          "top": 712,
+          "right": 948,
+          "bottom": 756,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 899.875,
+          "top": 735,
+          "right": 940.125,
+          "bottom": 750,
+          "width": 40.25,
+          "height": 15
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 40,
+        "labelScrollWidth": 40
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 827.46875,
+          "top": 712,
+          "right": 884,
+          "bottom": 756,
+          "width": 56.53125,
+          "height": 44
+        },
+        "label": {
+          "left": 832.46875,
+          "top": 735,
+          "right": 879,
+          "bottom": 750,
+          "width": 46.53125,
+          "height": 15
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 760.1875,
+          "top": 712,
+          "right": 819.46875,
+          "bottom": 756,
+          "width": 59.28125,
+          "height": 44
+        },
+        "label": {
+          "left": 765.1875,
+          "top": 735,
+          "right": 814.46875,
+          "bottom": 750,
+          "width": 49.28125,
+          "height": 15
+        },
+        "text": "درباره من",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 696.1875,
+          "top": 712,
+          "right": 752.1875,
+          "bottom": 756,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 708.28125,
+          "top": 735,
+          "right": 740.09375,
+          "bottom": 750,
+          "width": 31.8125,
+          "height": 15
+        },
+        "text": "رزومه",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 632.1875,
+          "top": 712,
+          "right": 688.1875,
+          "bottom": 756,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 643.25,
+          "top": 735,
+          "right": 677.140625,
+          "bottom": 750,
+          "width": 33.890625,
+          "height": 15
+        },
+        "text": "تماس",
+        "labelClientWidth": 34,
+        "labelScrollWidth": 34
+      }
+    ],
+    "tray": [
+      {
+        "left": 237.96875,
+        "top": 712,
+        "right": 281.96875,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 191.96875,
+        "top": 712,
+        "right": 235.96875,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 141.875,
+        "top": 712,
+        "right": 189.96875,
+        "bottom": 756,
+        "width": 48.09375,
+        "height": 44
+      },
+      {
+        "left": 16,
+        "top": 712,
+        "right": 60,
+        "bottom": 756,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 1440,
+    "height": 900,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 840,
+      "right": 1432,
+      "bottom": 892,
+      "width": 1424,
+      "height": 52
+    },
+    "strip": {
+      "left": 449,
+      "top": 841,
+      "right": 1366,
+      "bottom": 891,
+      "width": 917,
+      "height": 50
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 1308,
+          "top": 844,
+          "right": 1364,
+          "bottom": 888,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 1315.875,
+          "top": 867,
+          "right": 1356.125,
+          "bottom": 882,
+          "width": 40.25,
+          "height": 15
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 40,
+        "labelScrollWidth": 40
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 1243.46875,
+          "top": 844,
+          "right": 1300,
+          "bottom": 888,
+          "width": 56.53125,
+          "height": 44
+        },
+        "label": {
+          "left": 1248.46875,
+          "top": 867,
+          "right": 1295,
+          "bottom": 882,
+          "width": 46.53125,
+          "height": 15
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 1176.1875,
+          "top": 844,
+          "right": 1235.46875,
+          "bottom": 888,
+          "width": 59.28125,
+          "height": 44
+        },
+        "label": {
+          "left": 1181.1875,
+          "top": 867,
+          "right": 1230.46875,
+          "bottom": 882,
+          "width": 49.28125,
+          "height": 15
+        },
+        "text": "درباره من",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 1112.1875,
+          "top": 844,
+          "right": 1168.1875,
+          "bottom": 888,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 1124.28125,
+          "top": 867,
+          "right": 1156.09375,
+          "bottom": 882,
+          "width": 31.8125,
+          "height": 15
+        },
+        "text": "رزومه",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 1048.1875,
+          "top": 844,
+          "right": 1104.1875,
+          "bottom": 888,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 1059.25,
+          "top": 867,
+          "right": 1093.140625,
+          "bottom": 882,
+          "width": 33.890625,
+          "height": 15
+        },
+        "text": "تماس",
+        "labelClientWidth": 34,
+        "labelScrollWidth": 34
+      }
+    ],
+    "tray": [
+      {
+        "left": 237.96875,
+        "top": 844,
+        "right": 281.96875,
+        "bottom": 888,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 191.96875,
+        "top": 844,
+        "right": 235.96875,
+        "bottom": 888,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 141.875,
+        "top": 844,
+        "right": 189.96875,
+        "bottom": 888,
+        "width": 48.09375,
+        "height": 44
+      },
+      {
+        "left": 16,
+        "top": 844,
+        "right": 60,
+        "bottom": 888,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 1920,
+    "height": 1080,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 1020,
+      "right": 1912,
+      "bottom": 1072,
+      "width": 1904,
+      "height": 52
+    },
+    "strip": {
+      "left": 449,
+      "top": 1021,
+      "right": 1846,
+      "bottom": 1071,
+      "width": 1397,
+      "height": 50
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 1788,
+          "top": 1024,
+          "right": 1844,
+          "bottom": 1068,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 1795.875,
+          "top": 1047,
+          "right": 1836.125,
+          "bottom": 1062,
+          "width": 40.25,
+          "height": 15
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 40,
+        "labelScrollWidth": 40
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 1723.46875,
+          "top": 1024,
+          "right": 1780,
+          "bottom": 1068,
+          "width": 56.53125,
+          "height": 44
+        },
+        "label": {
+          "left": 1728.46875,
+          "top": 1047,
+          "right": 1775,
+          "bottom": 1062,
+          "width": 46.53125,
+          "height": 15
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 1656.1875,
+          "top": 1024,
+          "right": 1715.46875,
+          "bottom": 1068,
+          "width": 59.28125,
+          "height": 44
+        },
+        "label": {
+          "left": 1661.1875,
+          "top": 1047,
+          "right": 1710.46875,
+          "bottom": 1062,
+          "width": 49.28125,
+          "height": 15
+        },
+        "text": "درباره من",
+        "labelClientWidth": 49,
+        "labelScrollWidth": 49
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 1592.1875,
+          "top": 1024,
+          "right": 1648.1875,
+          "bottom": 1068,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 1604.28125,
+          "top": 1047,
+          "right": 1636.09375,
+          "bottom": 1062,
+          "width": 31.8125,
+          "height": 15
+        },
+        "text": "رزومه",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 1528.1875,
+          "top": 1024,
+          "right": 1584.1875,
+          "bottom": 1068,
+          "width": 56,
+          "height": 44
+        },
+        "label": {
+          "left": 1539.25,
+          "top": 1047,
+          "right": 1573.140625,
+          "bottom": 1062,
+          "width": 33.890625,
+          "height": 15
+        },
+        "text": "تماس",
+        "labelClientWidth": 34,
+        "labelScrollWidth": 34
+      }
+    ],
+    "tray": [
+      {
+        "left": 237.96875,
+        "top": 1024,
+        "right": 281.96875,
+        "bottom": 1068,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 191.96875,
+        "top": 1024,
+        "right": 235.96875,
+        "bottom": 1068,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 141.875,
+        "top": 1024,
+        "right": 189.96875,
+        "bottom": 1068,
+        "width": 48.09375,
+        "height": 44
+      },
+      {
+        "left": 16,
+        "top": 1024,
+        "right": 60,
+        "bottom": 1068,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  },
+  {
+    "locale": "fa",
+    "width": 320,
+    "height": 225,
+    "hasTouch": true,
+    "radius": 18,
+    "dock": {
+      "left": 8,
+      "top": 104.890625,
+      "right": 312,
+      "bottom": 216.890625,
+      "width": 304,
+      "height": 112
+    },
+    "strip": {
+      "left": 13,
+      "top": 109.890625,
+      "right": 307,
+      "bottom": 167.890625,
+      "width": 294,
+      "height": 58
+    },
+    "pins": [
+      {
+        "app": "projects",
+        "box": {
+          "left": 251.40625,
+          "top": 109.890625,
+          "right": 307,
+          "bottom": 167.890625,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 260.078125,
+          "top": 140.796875,
+          "right": 298.328125,
+          "bottom": 155.984375,
+          "width": 38.25,
+          "height": 15.1875
+        },
+        "text": "پروژه‌ها",
+        "labelClientWidth": 38,
+        "labelScrollWidth": 38
+      },
+      {
+        "app": "research",
+        "box": {
+          "left": 191.796875,
+          "top": 109.890625,
+          "right": 247.40625,
+          "bottom": 167.890625,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 197.34375,
+          "top": 140.796875,
+          "right": 241.875,
+          "bottom": 155.984375,
+          "width": 44.53125,
+          "height": 15.1875
+        },
+        "text": "نوشته‌ها",
+        "labelClientWidth": 45,
+        "labelScrollWidth": 45
+      },
+      {
+        "app": "about",
+        "box": {
+          "left": 132.203125,
+          "top": 109.890625,
+          "right": 187.796875,
+          "bottom": 167.890625,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 136.359375,
+          "top": 140.796875,
+          "right": 183.640625,
+          "bottom": 155.984375,
+          "width": 47.28125,
+          "height": 15.1875
+        },
+        "text": "درباره من",
+        "labelClientWidth": 47,
+        "labelScrollWidth": 47
+      },
+      {
+        "app": "resume",
+        "box": {
+          "left": 72.59375,
+          "top": 109.890625,
+          "right": 128.203125,
+          "bottom": 167.890625,
+          "width": 55.609375,
+          "height": 58
+        },
+        "label": {
+          "left": 85.5,
+          "top": 140.796875,
+          "right": 115.3125,
+          "bottom": 155.984375,
+          "width": 29.8125,
+          "height": 15.1875
+        },
+        "text": "رزومه",
+        "labelClientWidth": 30,
+        "labelScrollWidth": 30
+      },
+      {
+        "app": "contact",
+        "box": {
+          "left": 13,
+          "top": 109.890625,
+          "right": 68.59375,
+          "bottom": 167.890625,
+          "width": 55.59375,
+          "height": 58
+        },
+        "label": {
+          "left": 24.859375,
+          "top": 140.796875,
+          "right": 56.75,
+          "bottom": 155.984375,
+          "width": 31.890625,
+          "height": 15.1875
+        },
+        "text": "تماس",
+        "labelClientWidth": 32,
+        "labelScrollWidth": 32
+      }
+    ],
+    "tray": [
+      {
+        "left": 154,
+        "top": 167.890625,
+        "right": 198,
+        "bottom": 211.890625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 108,
+        "top": 167.890625,
+        "right": 152,
+        "bottom": 211.890625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 62,
+        "top": 167.890625,
+        "right": 106,
+        "bottom": 211.890625,
+        "width": 44,
+        "height": 44
+      },
+      {
+        "left": 12,
+        "top": 167.890625,
+        "right": 56,
+        "bottom": 211.890625,
+        "width": 44,
+        "height": 44
+      }
+    ]
+  }
+]

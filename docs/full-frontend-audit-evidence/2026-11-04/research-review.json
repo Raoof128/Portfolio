@@ -1,0 +1,1397 @@
+{
+  "lane": "research",
+  "status": "complete",
+  "reviewed_at": "2026-11-04T01:27:00.843987+00:00",
+  "method": "Fresh full-source line-by-line read of all 38 assigned files, using bounded nl/sed outputs during this audit. Read-span overlaps fill portions truncated by combined tool output. No credit taken for earlier feature review. Initial hashes are the parent-provided fresh scope snapshot; final hashes are computed from the reviewed working tree.",
+  "baseline": "Parent confirmed fresh baseline captured before these product edits. Suspected contrast and clipboard behavior additionally reproduced against current static export on 127.0.0.1:4398.",
+  "summary": {
+    "files": 39,
+    "initial_lines": 10611,
+    "final_lines": 11015,
+    "changed_files": 9,
+    "unread_files": 0,
+    "unread_lines": 0,
+    "initial_files": 38,
+    "additional_files": 1
+  },
+  "findings": [
+    {
+      "id": "research-clipboard-race",
+      "status": "fixed",
+      "severity": "medium",
+      "files": [
+        "src/components/os/TerminalCommand.tsx",
+        "src/components/os/TerminalCommand.test.tsx"
+      ],
+      "problem": "An older clipboard request can overwrite the latest copy feedback; a pending successful copy after unmount also creates an orphan timeout.",
+      "proof": "Three new deferred-promise cases failed on baseline; fresh 4398 browser reproduction shows latest failure replaced by stale success.",
+      "fix": "Per-attempt request generation, invalidated on unmount, guards both success and failure settlements.",
+      "validation": "All seven TerminalCommand/SignalVortex cases pass; entire research lane 113 tests pass."
+    },
+    {
+      "id": "research-zurvan-night-contrast",
+      "status": "fixed",
+      "severity": "medium",
+      "files": [
+        "src/components/os/evidence-story-zurvan.css"
+      ],
+      "problem": "Selected Zurvan ledger body and strong title use black on #1b3d66 in Aero Night.",
+      "proof": "Fresh 4398 computed styles; related selected controls checked before touching palette.",
+      "fix": "Selected ledger uses existing explorer active foreground/background and title inherits row foreground.",
+      "validation": "Candidate CSS on fresh export: all four types in both themes; title and body contrast10.23:1 dark /18.56:1 light. Parent will verify rebuilt export."
+    }
+  ],
+  "observations_not_promoted": [
+    {
+      "file": "src/components/os/ProjectExplorer.tsx",
+      "note": "The module navigation-focus marker is also set on modified clicks. Native default navigation is not intercepted, and no user-visible focus/history failure was proved in this lane; no speculative change made."
+    }
+  ],
+  "validation": [
+    {
+      "command": "npx vitest run src/components/os/TerminalCommand.test.tsx (new tests before production fix)",
+      "result": "Expected red:3 failed,4 passed. Both stale-result cases and post-unmount timer reproduced."
+    },
+    {
+      "command": "npx vitest run src/components/os/TerminalCommand.test.tsx src/components/os/ProofAtlas.test.tsx src/components/os/ProjectExplorer.test.tsx src/components/os/ProjectMotion.test.tsx src/components/os/ProjectThumbnail.test.tsx src/components/os/EvidenceStory.test.tsx src/components/os/GlobalNotFoundContent.test.tsx",
+      "result": "7 suites,113 tests passed."
+    },
+    {
+      "command": "npx prettier --check src/components/os/TerminalCommand.tsx src/components/os/TerminalCommand.test.tsx src/components/os/evidence-story-zurvan.css",
+      "result": "Passed after formatting owned test."
+    },
+    {
+      "command": "npx eslint src/components/os/TerminalCommand.tsx src/components/os/TerminalCommand.test.tsx",
+      "result": "Passed."
+    },
+    {
+      "command": "git diff --check -- src/components/os/TerminalCommand.tsx src/components/os/TerminalCommand.test.tsx src/components/os/evidence-story-zurvan.css",
+      "result": "Passed."
+    },
+    {
+      "command": "node scripts/browser-regressions/native-zoom.mjs http://127.0.0.1:4398 work/full-frontend-audit/native-zoom-maintained / /projects /projects/project-simurgh",
+      "result": "Six real native zoom observations passed at200/400%;12 viewport/scrolled screenshots saved. Baseline1280x1024/DPR1,200%640x512/DPR2,400%320x256/DPR4; visual scale1 throughout. No horizontal document/pane overflow. No build performed."
+    },
+    {
+      "command": "npx eslint scripts/browser-regressions/native-zoom.mjs; npx prettier --check scripts/browser-regressions/native-zoom.mjs; git diff --check -- scripts/browser-regressions/native-zoom.mjs",
+      "result": "All passed."
+    }
+  ],
+  "live_artifacts": [
+    "work/full-frontend-audit/research-live-baseline.json",
+    "work/full-frontend-audit/research-live-candidate.json",
+    "work/full-frontend-audit/research-terminal-baseline.json",
+    "work/full-frontend-audit/native-zoom-maintained/geometry.json"
+  ],
+  "limits": "This lane did not run a build, change config/root logs, or run the full browser matrix. Candidate contrast check injected the owned CSS into the unchanged4398 baseline; broad final-build/browser validation remains with parent. Translation dictionaries were read in full; this is not a native-language editorial certification. Parent subsequently authorized a maintained native zoom helper; this additional source is separately marked new_file with no pre-audit SHA. Earlier extension serviceworker timeouts and Playwright native-zoom screenshot clipping are harness limitations, not application defects.",
+  "files": [
+    {
+      "path": "src/components/os/EvidenceStory.test.tsx",
+      "sha256": "a5b1c851af80aabd79cf7b1dfd8bdd05a6fcbba9b8df016fe9a71d33fead8bad",
+      "bytes": 13975,
+      "lines": 357,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "a5b1c851af80aabd79cf7b1dfd8bdd05a6fcbba9b8df016fe9a71d33fead8bad",
+      "final_sha256": "fccbdc3e3cd6d4b27faa10a8e43604e3facfc479a955dba0269f037b763ec9d2",
+      "initial_lines": 357,
+      "final_lines": 403,
+      "read_spans": [
+        [
+          1,
+          190
+        ],
+        [
+          191,
+          357
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          190
+        ],
+        [
+          191,
+          357
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Read all story fixtures and interactions: six Simurgh stages, platform alternatives, typed-node selection, source/limit visibility, and locale semantics. Existing focused tests pass. Subsequently reconciled to the new user-providedPDFsources; see research-pdf-review.json.",
+      "pdf_revision_review": "See research-pdf-review.json for fresh initial/final hashes, full initial reads and final changed-span reads."
+    },
+    {
+      "path": "src/components/os/GlobalNotFoundContent.test.tsx",
+      "sha256": "acb4a4dff4d67d94ee89f7e920f20c548a242bb14d7637b674ca57401b808640",
+      "bytes": 5747,
+      "lines": 152,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "acb4a4dff4d67d94ee89f7e920f20c548a242bb14d7637b674ca57401b808640",
+      "final_sha256": "acb4a4dff4d67d94ee89f7e920f20c548a242bb14d7637b674ca57401b808640",
+      "initial_lines": 152,
+      "final_lines": 152,
+      "read_spans": [
+        [
+          1,
+          152
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          152
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read all recovery, locale, appearance, document metadata, and cleanup cases. Existing focused tests pass."
+    },
+    {
+      "path": "src/components/os/GlobalNotFoundContent.tsx",
+      "sha256": "a1ab484dd285f5fbf72c6b5e6de11d792b5a3be79f3693733c1f68a9204e9491",
+      "bytes": 6845,
+      "lines": 207,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "a1ab484dd285f5fbf72c6b5e6de11d792b5a3be79f3693733c1f68a9204e9491",
+      "final_sha256": "a1ab484dd285f5fbf72c6b5e6de11d792b5a3be79f3693733c1f68a9204e9491",
+      "initial_lines": 207,
+      "final_lines": 207,
+      "read_spans": [
+        [
+          1,
+          207
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          207
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed static English fallback, locale hydration/manual choice, native recovery anchors, document language/direction/appearance cleanup, and accessible controls. No concrete defect established."
+    },
+    {
+      "path": "src/components/os/InvisibleWindowEvidenceStory.tsx",
+      "sha256": "9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6",
+      "bytes": 5455,
+      "lines": 152,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6",
+      "final_sha256": "9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6",
+      "initial_lines": 152,
+      "final_lines": 152,
+      "read_spans": [
+        [
+          1,
+          76
+        ],
+        [
+          70,
+          115
+        ],
+        [
+          96,
+          152
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          76
+        ],
+        [
+          70,
+          115
+        ],
+        [
+          96,
+          152
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed native platform buttons, controlled paired-display schematic, technical LTR identifiers, persistent platform limits, source links, and figure structure. No fabricated capture or measurement claim found."
+    },
+    {
+      "path": "src/components/os/ProjectDiagram.tsx",
+      "sha256": "3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0",
+      "bytes": 5218,
+      "lines": 179,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0",
+      "final_sha256": "3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0",
+      "initial_lines": 179,
+      "final_lines": 179,
+      "read_spans": [
+        [
+          1,
+          179
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          179
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read dormant/legacy architecture helper completely, including all three project branches. Static nodes and arrows remain explanatory diagrams with visible scope notes."
+    },
+    {
+      "path": "src/components/os/ProjectExplorer.test.tsx",
+      "sha256": "4624805bb7503bed600b3a5de1b2fdbbc9e7b90bd86a1bde8e39fab35b16af9d",
+      "bytes": 21787,
+      "lines": 610,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "4624805bb7503bed600b3a5de1b2fdbbc9e7b90bd86a1bde8e39fab35b16af9d",
+      "final_sha256": "4624805bb7503bed600b3a5de1b2fdbbc9e7b90bd86a1bde8e39fab35b16af9d",
+      "initial_lines": 610,
+      "final_lines": 610,
+      "read_spans": [
+        [
+          1,
+          200
+        ],
+        [
+          201,
+          410
+        ],
+        [
+          411,
+          610
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          200
+        ],
+        [
+          201,
+          410
+        ],
+        [
+          411,
+          610
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read all filtering, locale, sidebar, focus, source-link, artwork import/failure/retry, own-property slug, and SSR cases. Existing focused tests pass."
+    },
+    {
+      "path": "src/components/os/ProjectExplorer.tsx",
+      "sha256": "b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18",
+      "bytes": 16305,
+      "lines": 423,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18",
+      "final_sha256": "b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18",
+      "initial_lines": 423,
+      "final_lines": 423,
+      "read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          423
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          423
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed native links, selected-project retention during filtering, announcement debounce cleanup, initial-query bounds, category validation, navigation heading focus, responsive disclosure, and scroll-port measurement cleanup. Modified clicks retain native link behavior; global focus marker observation was not reproduced as a user-visible defect."
+    },
+    {
+      "path": "src/components/os/ProjectMotion.test.tsx",
+      "sha256": "3c95e7d2f0cafc52bcf83cdf87c388bfbe8f77e9e61d571bcc66394b0a086f9c",
+      "bytes": 12625,
+      "lines": 371,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "3c95e7d2f0cafc52bcf83cdf87c388bfbe8f77e9e61d571bcc66394b0a086f9c",
+      "final_sha256": "3c95e7d2f0cafc52bcf83cdf87c388bfbe8f77e9e61d571bcc66394b0a086f9c",
+      "initial_lines": 371,
+      "final_lines": 371,
+      "read_spans": [
+        [
+          1,
+          190
+        ],
+        [
+          191,
+          274
+        ],
+        [
+          270,
+          371
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          190
+        ],
+        [
+          191,
+          274
+        ],
+        [
+          270,
+          371
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read all lazy loading, retry, original-artwork mapping, active/visibility/reduced-motion/pause, stale-import disposal, and artwork-ready tests. Existing focused tests pass."
+    },
+    {
+      "path": "src/components/os/ProjectMotion.tsx",
+      "sha256": "7228505b5a0db85c7e679aadc445432288a7a92a4b5f87f4762c1147f9d64461",
+      "bytes": 5986,
+      "lines": 196,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "7228505b5a0db85c7e679aadc445432288a7a92a4b5f87f4762c1147f9d64461",
+      "final_sha256": "7228505b5a0db85c7e679aadc445432288a7a92a4b5f87f4762c1147f9d64461",
+      "initial_lines": 196,
+      "final_lines": 196,
+      "read_spans": [
+        [
+          1,
+          196
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          196
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed keyed slug state, own-property validation, deferred import disposal/retry, document/app/stage motion gates, pause controls, and error recovery accessibility. Original artwork and reduced-motion handling preserved."
+    },
+    {
+      "path": "src/components/os/ProjectThumbnail.test.tsx",
+      "sha256": "9f0ec898b41f811edf7220a0611698f563a9d3151de55738580570e7e4ce1a27",
+      "bytes": 3020,
+      "lines": 105,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "9f0ec898b41f811edf7220a0611698f563a9d3151de55738580570e7e4ce1a27",
+      "final_sha256": "9f0ec898b41f811edf7220a0611698f563a9d3151de55738580570e7e4ce1a27",
+      "initial_lines": 105,
+      "final_lines": 105,
+      "read_spans": [
+        [
+          1,
+          105
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          105
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read nearby/visible loading, offscreen disposal, retry and slug-safety coverage. Existing focused tests pass."
+    },
+    {
+      "path": "src/components/os/ProjectThumbnail.tsx",
+      "sha256": "9e228028898a0a90203d531b6fbe1017dfeca82efd1ee3d2429d70e08e96c060",
+      "bytes": 2540,
+      "lines": 73,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "9e228028898a0a90203d531b6fbe1017dfeca82efd1ee3d2429d70e08e96c060",
+      "final_sha256": "9e228028898a0a90203d531b6fbe1017dfeca82efd1ee3d2429d70e08e96c060",
+      "initial_lines": 73,
+      "final_lines": 73,
+      "read_spans": [
+        [
+          1,
+          15
+        ],
+        [
+          11,
+          73
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          15
+        ],
+        [
+          11,
+          73
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed near-viewport import, actual-visibility render disposal, cancelled promises, invalid slug fallback, and active=false original-artwork previews. No continuous thumbnail animation introduced."
+    },
+    {
+      "path": "src/components/os/ProofAtlas.test.tsx",
+      "sha256": "d838938b71ba6e71e1ab97649281399abe1eadd676dcebadd93514f534ec6ed5",
+      "bytes": 11373,
+      "lines": 319,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "d838938b71ba6e71e1ab97649281399abe1eadd676dcebadd93514f534ec6ed5",
+      "final_sha256": "289b62eecc6dd202b417f80b645d3a3c54d3c528a5c3d92927af5902f6891e2f",
+      "initial_lines": 319,
+      "final_lines": 352,
+      "read_spans": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          319
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          319
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Read all project selection, five-locale data, native source/dossier links, motion eligibility, reduced-motion, pointer RAF and cleanup cases. Existing focused tests pass. Subsequently reconciled to the new user-providedPDFsources; see research-pdf-review.json.",
+      "pdf_revision_review": "See research-pdf-review.json for fresh initial/final hashes, full initial reads and final changed-span reads."
+    },
+    {
+      "path": "src/components/os/ProofAtlas.tsx",
+      "sha256": "123c638912b32b4599b18e2c7a35f667969c6a7072112957377df6ba54bc638c",
+      "bytes": 20746,
+      "lines": 586,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "123c638912b32b4599b18e2c7a35f667969c6a7072112957377df6ba54bc638c",
+      "final_sha256": "3b925b855518e4f8b54cd6788a8c59d5da97932505d845f79ffb7a81e9a20463",
+      "initial_lines": 586,
+      "final_lines": 588,
+      "read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          586
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          586
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Reviewed architecture-only topology labels, selection state and real routes, SVG accessible naming, native keyboard controls, pointer RAF coalescing/cancellation, capability checks, and media listener cleanup. All evidence qualifiers remain visible. Subsequently reconciled to the new user-providedPDFsources; see research-pdf-review.json.",
+      "pdf_revision_review": "See research-pdf-review.json for fresh initial/final hashes, full initial reads and final changed-span reads."
+    },
+    {
+      "path": "src/components/os/SignalVortex.tsx",
+      "sha256": "dd083499784ce344ed4bfcebba6d3c56172e0a7d02886e4c3d46e7907c05ef38",
+      "bytes": 451,
+      "lines": 15,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "dd083499784ce344ed4bfcebba6d3c56172e0a7d02886e4c3d46e7907c05ef38",
+      "final_sha256": "dd083499784ce344ed4bfcebba6d3c56172e0a7d02886e4c3d46e7907c05ef38",
+      "initial_lines": 15,
+      "final_lines": 15,
+      "read_spans": [
+        [
+          1,
+          15
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          15
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read decorative DOM helper and aria-hidden behavior. No interactive content or evidence claim."
+    },
+    {
+      "path": "src/components/os/SimurghEvidenceStory.tsx",
+      "sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "bytes": 4722,
+      "lines": 139,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "final_sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "initial_lines": 139,
+      "final_lines": 139,
+      "read_spans": [
+        [
+          1,
+          139
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          139
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed six native stage controls, aria-pressed/describedby, current-step descriptions, signed evidence/verifier stages, source/reproduce links and real shell commands. All explanatory/limitation text remains in the document."
+    },
+    {
+      "path": "src/components/os/TerminalCommand.test.tsx",
+      "sha256": "d2ec4f9684080576da928353766cd16287e299017487ddb826fd144797f27c8c",
+      "bytes": 3269,
+      "lines": 87,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "d2ec4f9684080576da928353766cd16287e299017487ddb826fd144797f27c8c",
+      "final_sha256": "2ec5e5f8c3f5d0280601e3e84af262a55d39e0c0b1884db2254149d33d65cb48",
+      "initial_lines": 87,
+      "final_lines": 146,
+      "read_spans": [
+        [
+          1,
+          87
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          146
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Read original tests, then added deferred clipboard regressions for both out-of-order success/failure combinations and settlement after unmount. Three failures reproduced before the fix; all seven component/decorative tests pass after it."
+    },
+    {
+      "path": "src/components/os/TerminalCommand.tsx",
+      "sha256": "8144c28d6a9785d6c38994ab8224444f8c6ffac2f09fa96f46bb1cc23c8fb694",
+      "bytes": 4311,
+      "lines": 142,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "8144c28d6a9785d6c38994ab8224444f8c6ffac2f09fa96f46bb1cc23c8fb694",
+      "final_sha256": "eba0fd1e129de7ec9e326a2f5f47521fd062be50922e4c69ba71c63c851501ab",
+      "initial_lines": 142,
+      "final_lines": 149,
+      "read_spans": [
+        [
+          1,
+          142
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          149
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Confirmed async clipboard race and orphan confirmation timer after unmount. Fixed with a request generation counter invalidated on each attempt and unmount; stale settlements now leave the latest feedback alone. Command text, native selection and five-locale visible recovery instructions preserved."
+    },
+    {
+      "path": "src/components/os/ZurvanEvidenceStory.tsx",
+      "sha256": "b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178",
+      "bytes": 3651,
+      "lines": 109,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178",
+      "final_sha256": "b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178",
+      "initial_lines": 109,
+      "final_lines": 109,
+      "read_spans": [
+        [
+          1,
+          109
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          109
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed four native typed-node controls, selected ledger/edge announcements, synthetic graph scope, private-corpus limitations and source note. Selection logic and source content preserved."
+    },
+    {
+      "path": "src/components/os/atlas-copy.ts",
+      "sha256": "d7ea99e51b9f201ae96eab07e5d682c4637fe66d4506207786dac262de8b9ec7",
+      "bytes": 15947,
+      "lines": 353,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "d7ea99e51b9f201ae96eab07e5d682c4637fe66d4506207786dac262de8b9ec7",
+      "final_sha256": "b973208c28982440ae28cd2caa30bb6d4d34dc419d821d2437ba94b6fc724915",
+      "initial_lines": 353,
+      "final_lines": 353,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          353
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          353
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Read complete five-locale atlas copy and types, including source/scope language and topology labels. Architecture/illustrative and controlled-capture qualifications remain explicit; no new evidence asserted. Subsequently reconciled to the new user-providedPDFsources; see research-pdf-review.json.",
+      "pdf_revision_review": "See research-pdf-review.json for fresh initial/final hashes, full initial reads and final changed-span reads."
+    },
+    {
+      "path": "src/components/os/atlas-journey-copy.ts",
+      "sha256": "3f93fdf191820e62e6ca9799e82b4876d62c0e22955e76e3b27b069460ce10ed",
+      "bytes": 345,
+      "lines": 8,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "3f93fdf191820e62e6ca9799e82b4876d62c0e22955e76e3b27b069460ce10ed",
+      "final_sha256": "3f93fdf191820e62e6ca9799e82b4876d62c0e22955e76e3b27b069460ce10ed",
+      "initial_lines": 8,
+      "final_lines": 8,
+      "read_spans": [
+        [
+          1,
+          8
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          8
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read complete existing journey-copy facade and typed locale contract; no change required."
+    },
+    {
+      "path": "src/components/os/dossier-reader.css",
+      "sha256": "dcf878f7c904679e7400a8f76073a755e000a6ef00829cab9f7262ba20f806ea",
+      "bytes": 1463,
+      "lines": 57,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "dcf878f7c904679e7400a8f76073a755e000a6ef00829cab9f7262ba20f806ea",
+      "final_sha256": "dcf878f7c904679e7400a8f76073a755e000a6ef00829cab9f7262ba20f806ea",
+      "initial_lines": 57,
+      "final_lines": 57,
+      "read_spans": [
+        [
+          1,
+          57
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          57
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed opaque reading surfaces, long text wrapping, measured prose, LTR code and 44px section anchors. No motion or glass added to reading content."
+    },
+    {
+      "path": "src/components/os/evidence-story-common.css",
+      "sha256": "55cc4c46c155140c02b78cb2aec32d845e7f7f8ecab5fbdf0a93117af016aba2",
+      "bytes": 9061,
+      "lines": 319,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "55cc4c46c155140c02b78cb2aec32d845e7f7f8ecab5fbdf0a93117af016aba2",
+      "final_sha256": "55cc4c46c155140c02b78cb2aec32d845e7f7f8ecab5fbdf0a93117af016aba2",
+      "initial_lines": 319,
+      "final_lines": 319,
+      "read_spans": [
+        [
+          1,
+          170
+        ],
+        [
+          171,
+          319
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          170
+        ],
+        [
+          171,
+          319
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed story containment, native controls, focus states, live copy, source/limit blocks, RTL arrows, forced colours and final canonical button overrides. Later overrides explain why Zurvan type buttons were already readable."
+    },
+    {
+      "path": "src/components/os/evidence-story-invisible.css",
+      "sha256": "cbe57ff69c35f52865cc635bd2cfccb555a44453a7e5cf5eeb23354bb7722f93",
+      "bytes": 7306,
+      "lines": 244,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "cbe57ff69c35f52865cc635bd2cfccb555a44453a7e5cf5eeb23354bb7722f93",
+      "final_sha256": "cbe57ff69c35f52865cc635bd2cfccb555a44453a7e5cf5eeb23354bb7722f93",
+      "initial_lines": 244,
+      "final_lines": 244,
+      "read_spans": [
+        [
+          1,
+          150
+        ],
+        [
+          151,
+          244
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          150
+        ],
+        [
+          151,
+          244
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed both platform selection states, paired screen layout, reserved simulated desktop geometry, labels, containment and narrow stacked container layout. Live checks found selected platform controls readable in both themes."
+    },
+    {
+      "path": "src/components/os/evidence-story-simurgh.css",
+      "sha256": "c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98",
+      "bytes": 6276,
+      "lines": 261,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98",
+      "final_sha256": "c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98",
+      "initial_lines": 261,
+      "final_lines": 261,
+      "read_spans": [
+        [
+          1,
+          140
+        ],
+        [
+          141,
+          261
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          140
+        ],
+        [
+          141,
+          261
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed six-station instrument, all selected text/marker rules, ledger, responsive container layout and forced colours. Live selected station/explanation foregrounds already use the correct theme pair; left unchanged."
+    },
+    {
+      "path": "src/components/os/evidence-story-zurvan.css",
+      "sha256": "52eab4b696ad6cead6fa4dd7b33adcee0caa67348f71856ec72892302fb01440",
+      "bytes": 3629,
+      "lines": 138,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "52eab4b696ad6cead6fa4dd7b33adcee0caa67348f71856ec72892302fb01440",
+      "final_sha256": "e022294d6c01f4856101f35b4dec50f7e78fda57756dcf62f134ab6b41a992f8",
+      "initial_lines": 138,
+      "final_lines": 147,
+      "read_spans": [
+        [
+          1,
+          138
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          147
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Confirmed selected ledger body/title black on dark blue in Aero Night in fresh export. Switched only selected ledger to explorer active foreground/background and made its strong label inherit. All four types measured 10.23:1 dark /18.56:1 light with candidate CSS; final export check delegated to parent."
+    },
+    {
+      "path": "src/components/os/os-copy.ts",
+      "sha256": "f4800fdafd086126c0e75fa68da69b5f4bb3f3559f58f523ed4882bb13250574",
+      "bytes": 20942,
+      "lines": 505,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "f4800fdafd086126c0e75fa68da69b5f4bb3f3559f58f523ed4882bb13250574",
+      "final_sha256": "89abf52c537ac9874d8a8a95817539cd0b921cf0baef26e9a9beb5631b665c18",
+      "initial_lines": 505,
+      "final_lines": 505,
+      "read_spans": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          350
+        ],
+        [
+          351,
+          505
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          350
+        ],
+        [
+          351,
+          505
+        ]
+      ],
+      "changed_during_audit": true,
+      "notes": "Read all five localized OS dictionaries and common typed label contracts. Existing keys, paths, counts and localized action labels preserved. Subsequently reconciled to the new user-providedPDFsources; see research-pdf-review.json.",
+      "pdf_revision_review": "See research-pdf-review.json for fresh initial/final hashes, full initial reads and final changed-span reads."
+    },
+    {
+      "path": "src/components/os/project-artwork.ts",
+      "sha256": "0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7",
+      "bytes": 3293,
+      "lines": 123,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7",
+      "final_sha256": "0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7",
+      "initial_lines": 123,
+      "final_lines": 123,
+      "read_spans": [
+        [
+          1,
+          123
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          123
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read every original-artwork import mapping, own-property guard, promise cache and rejection invalidation. Failed loads remain retryable; no private/new artwork implementation substituted."
+    },
+    {
+      "path": "src/components/os/project-explorer.css",
+      "sha256": "57d60282f46595737a1329b4fdb73a64e472c5359f29868b899b29b45a3a6f14",
+      "bytes": 36685,
+      "lines": 1168,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "57d60282f46595737a1329b4fdb73a64e472c5359f29868b899b29b45a3a6f14",
+      "final_sha256": "57d60282f46595737a1329b4fdb73a64e472c5359f29868b899b29b45a3a6f14",
+      "initial_lines": 1168,
+      "final_lines": 1168,
+      "read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          660
+        ],
+        [
+          661,
+          920
+        ],
+        [
+          921,
+          1168
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          660
+        ],
+        [
+          661,
+          920
+        ],
+        [
+          921,
+          1168
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read every rule including dormant legacy diagrams, current Aero/Night tokens, focus/native controls, footer, sticky scroll ports, RTL arrows and narrow container disclosure. Canonical overrides and container-based layouts preserved."
+    },
+    {
+      "path": "src/components/os/project-motion.css",
+      "sha256": "c858ca095f944894995fc33865c3654291157a470dd8ea422d641ab180e49002",
+      "bytes": 5777,
+      "lines": 220,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "c858ca095f944894995fc33865c3654291157a470dd8ea422d641ab180e49002",
+      "final_sha256": "c858ca095f944894995fc33865c3654291157a470dd8ea422d641ab180e49002",
+      "initial_lines": 220,
+      "final_lines": 220,
+      "read_spans": [
+        [
+          1,
+          220
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          220
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed arrival reveal, stage geometry, paused state, errors, controls, contrast and explicit reduced-motion media gating. Finite artwork-only arrival reveal remains intact."
+    },
+    {
+      "path": "src/components/os/project-thumbnails.css",
+      "sha256": "ff7ac7a54de76d1182ae89a59b47e5e3445ebadc2156ecb188dad6ce1131f964",
+      "bytes": 4074,
+      "lines": 135,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "ff7ac7a54de76d1182ae89a59b47e5e3445ebadc2156ecb188dad6ce1131f964",
+      "final_sha256": "ff7ac7a54de76d1182ae89a59b47e5e3445ebadc2156ecb188dad6ce1131f964",
+      "initial_lines": 135,
+      "final_lines": 135,
+      "read_spans": [
+        [
+          1,
+          135
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          135
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed original-artwork preview sizing, inert/decorative layers, still pose treatment and narrow-card behavior. No animation or new observer introduced."
+    },
+    {
+      "path": "src/components/os/proof-atlas-context.ts",
+      "sha256": "e755fb58a72486307edc477b3896049e808e73d145a40266e6a6f6ba228859bc",
+      "bytes": 119,
+      "lines": 5,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "e755fb58a72486307edc477b3896049e808e73d145a40266e6a6f6ba228859bc",
+      "final_sha256": "e755fb58a72486307edc477b3896049e808e73d145a40266e6a6f6ba228859bc",
+      "initial_lines": 5,
+      "final_lines": 5,
+      "read_spans": [
+        [
+          1,
+          5
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          5
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read context default contract in full. No state ownership or lifecycle defect established."
+    },
+    {
+      "path": "src/components/os/proof-atlas.css",
+      "sha256": "0e9d191dda00e6db3d17d59855af63c356112fc25619bf3ecad1dd346664369f",
+      "bytes": 19314,
+      "lines": 714,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "0e9d191dda00e6db3d17d59855af63c356112fc25619bf3ecad1dd346664369f",
+      "final_sha256": "0e9d191dda00e6db3d17d59855af63c356112fc25619bf3ecad1dd346664369f",
+      "initial_lines": 714,
+      "final_lines": 714,
+      "read_spans": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          714
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          714
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read all topology marks, compact labels, selection/focus, pointer transform custom properties, reduced-motion, forced colours and desktop wallpaper rules. No continuous loop added; labels retain wrapping and compact fallbacks."
+    },
+    {
+      "path": "src/components/os/reviewer-copy.ts",
+      "sha256": "dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c",
+      "bytes": 617,
+      "lines": 16,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c",
+      "final_sha256": "dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c",
+      "initial_lines": 16,
+      "final_lines": 16,
+      "read_spans": [
+        [
+          1,
+          16
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          16
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read shared reviewer copy facade/type contract. Five-locale upstream content remains reused."
+    },
+    {
+      "path": "src/components/os/signal-vortex.css",
+      "sha256": "d8dd2b44e5c01b90aa9e21f020e7e7a04681044f07de816ee7bfb9ff0f1de799",
+      "bytes": 2983,
+      "lines": 88,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "d8dd2b44e5c01b90aa9e21f020e7e7a04681044f07de816ee7bfb9ff0f1de799",
+      "final_sha256": "d8dd2b44e5c01b90aa9e21f020e7e7a04681044f07de816ee7bfb9ff0f1de799",
+      "initial_lines": 88,
+      "final_lines": 88,
+      "read_spans": [
+        [
+          1,
+          88
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          88
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed finite total animation duration, pause on hover/focus, explicit reduced-motion still state and forced-colour boundary. No endless decorative activity."
+    },
+    {
+      "path": "src/components/os/supporting-apps.css",
+      "sha256": "390abc3e2a1fd49b938c7308de824cfd7ea448cdf33d61280fbdc800205e760a",
+      "bytes": 39061,
+      "lines": 1661,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "390abc3e2a1fd49b938c7308de824cfd7ea448cdf33d61280fbdc800205e760a",
+      "final_sha256": "390abc3e2a1fd49b938c7308de824cfd7ea448cdf33d61280fbdc800205e760a",
+      "initial_lines": 1661,
+      "final_lines": 1661,
+      "read_spans": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          720
+        ],
+        [
+          721,
+          960
+        ],
+        [
+          961,
+          1200
+        ],
+        [
+          1201,
+          1440
+        ],
+        [
+          1441,
+          1661
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          720
+        ],
+        [
+          721,
+          960
+        ],
+        [
+          961,
+          1200
+        ],
+        [
+          1201,
+          1440
+        ],
+        [
+          1441,
+          1661
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read all 1661 lines, including dormant/supporting pages, about/contact/library/resume/lab/policy/writeup primitives, code/table overflow wrappers, reading-content container queries, gradient fallbacks, RTL fonts and forced colours. No concrete standalone defect proved in owned CSS; parent lanes cover associated page/component markup."
+    },
+    {
+      "path": "src/components/os/terminal.css",
+      "sha256": "8954a7d39b88c5b46625f9ceb03a59f04d58e00ca66b40ec8ac810897c059916",
+      "bytes": 3311,
+      "lines": 124,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "8954a7d39b88c5b46625f9ceb03a59f04d58e00ca66b40ec8ac810897c059916",
+      "final_sha256": "8954a7d39b88c5b46625f9ceb03a59f04d58e00ca66b40ec8ac810897c059916",
+      "initial_lines": 124,
+      "final_lines": 124,
+      "read_spans": [
+        [
+          1,
+          124
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          124
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed readable command wrapping and LTR region, native card/button geometry, visible feedback and RTL header layout. No CSS fix needed for clipboard lifecycle issue."
+    },
+    {
+      "path": "src/components/os/use-stage-visibility.ts",
+      "sha256": "e1227e061acbdf8466bbd44b80856be143425de618fdfa5a3ca7548192d04917",
+      "bytes": 4126,
+      "lines": 116,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "e1227e061acbdf8466bbd44b80856be143425de618fdfa5a3ca7548192d04917",
+      "final_sha256": "e1227e061acbdf8466bbd44b80856be143425de618fdfa5a3ca7548192d04917",
+      "initial_lines": 116,
+      "final_lines": 116,
+      "read_spans": [
+        [
+          1,
+          116
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          116
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Reviewed IntersectionObserver near/visible separation, ancestor clipping fallback, coalesced scroll/resize measurement, ResizeObserver cleanup and sticky loading state. No offscreen loop or stale listener defect established."
+    },
+    {
+      "path": "src/components/os/window-copy.ts",
+      "sha256": "c6444925aa5410e597f4ebe77f7ab31d7b97356bd4cce4bfedd1d6142a205dcc",
+      "bytes": 5050,
+      "lines": 134,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": "c6444925aa5410e597f4ebe77f7ab31d7b97356bd4cce4bfedd1d6142a205dcc",
+      "final_sha256": "c6444925aa5410e597f4ebe77f7ab31d7b97356bd4cce4bfedd1d6142a205dcc",
+      "initial_lines": 134,
+      "final_lines": 134,
+      "read_spans": [
+        [
+          1,
+          134
+        ]
+      ],
+      "read_complete": true,
+      "final_read_spans": [
+        [
+          1,
+          134
+        ]
+      ],
+      "changed_during_audit": false,
+      "notes": "Read complete five-locale window-control dictionaries, project summary and utility labels. Native control names and localized forms preserved."
+    },
+    {
+      "path": "scripts/browser-regressions/native-zoom.mjs",
+      "sha256": "e003fd7d0dd600cb4dcc63d62db233c381d84536a694a94f99cce98c3d160095",
+      "bytes": 9113,
+      "lines": 248,
+      "binary": false,
+      "lane": "research",
+      "initial_sha256": null,
+      "final_sha256": "e003fd7d0dd600cb4dcc63d62db233c381d84536a694a94f99cce98c3d160095",
+      "initial_lines": 0,
+      "final_lines": 248,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          247
+        ]
+      ],
+      "final_read_spans": [
+        [
+          1,
+          150
+        ],
+        [
+          151,
+          248
+        ]
+      ],
+      "read_complete": true,
+      "changed_during_audit": true,
+      "new_file": true,
+      "notes": "Parent-authorized additional maintained test helper, added after the original38-file research review. Full247-line first read, followed by message/comment spacing edits and a complete248-line final read after formatting. Uses native Chromium Page zoom UI in a fresh temporary persistent profile; explicitly asserts baseline100%, native DPR2/4, CSS width/height division, unchanged outer window, visualViewport.scale1, document/pane horizontal reflow and native scrolling. Captures via read-only CDP without zoom/emulation changes because Playwright screenshot clipping was verified to return blank pixels after native zoom scrolling. Six live smoke observations and12 screenshots on current4398 baseline pass; ESLint/Prettier/scoped diff checks pass. Initial SHA is null because this source did not exist in the initial audit manifest."
+    }
+  ],
+  "pdf_reconciliation": "research-pdf-review.json"
+}

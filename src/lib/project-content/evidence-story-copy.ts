@@ -69,16 +69,16 @@ export const simurghEvidenceStoryCopy: Record<
   SimurghEvidenceStoryCopy
 > = {
   en: {
-    eyebrow: "Architecture walkthrough",
+    eyebrow: "Current study and earlier architecture",
     title: "A receipt that can be checked again",
     introduction:
-      "Explore the documented containment boundaries and the verification path. This is an illustrative architecture view, not a run trace or a research result.",
+      "The current prototype checks tool proposals against host-held delegation, stop, lease and credential state. In the October 2026 matched-control study, composed host controls reduced Llama-3.2-3B restricted-state trials with new effects from 17/24 to 0/24, with 23/24 useful completions. gpt-6-luna already had a 0/24 baseline, so no incremental protection was found.",
     illustrationLabel:
-      "Illustrative architecture · no run trace or result shown",
-    boundariesLabel: "Select a containment boundary",
+      "Earlier frozen four-boundary architecture · not a current study run trace",
+    boundariesLabel: "Select a step in the evidence path",
     proofPathLabel:
       "Path from a selected boundary to signed evidence and verification",
-    detailsTitle: "Boundary explanations",
+    detailsTitle: "Evidence path explanations",
     boundaries: [
       {
         title: "Input firewall",
@@ -103,24 +103,25 @@ export const simurghEvidenceStoryCopy: Record<
     ],
     signedPack: "Signed evidence pack",
     signedPackDetail:
-      "The architecture describes metadata-only evidence signed with Ed25519.",
+      "This earlier frozen architecture describes metadata-only evidence signed with Ed25519.",
     verifier: "Offline verifier",
     verifierDetail:
       "A producer-independent reviewer can replay decisions offline and check evidence completeness without producer access.",
     sourceNote:
-      "The linked VCA repository and reproduction command describe the current agent-containment work. The bundled Simurgh preprint documents an earlier device-integrity stage in the project lineage.",
-    repositoryLink: "Current VCA repository",
-    reproduceLink: "Reproduce the VCA evidence",
+      "Current study archives use SHA-256 and replay on native Linux x86_64 with Python 3.12. The diagram and VCA command describe an earlier frozen Ed25519 attestation stage, not a replay of the October transfer study. Current software DOI: 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849.",
+    repositoryLink: "Current Simurgh repository",
+    reproduceLink: "Replay earlier frozen VCA evidence",
   },
   fa: {
-    eyebrow: "مرور معماری",
+    eyebrow: "پژوهش کنونی و معماری پیشین",
     title: "رسیدی که می‌توان دوباره بررسی کرد",
     introduction:
-      "مرزهای مستند مهار و مسیر راستی‌آزمایی را بررسی کنید. این نمایی توضیحی از معماری است، نه رد اجرای واقعی یا نتیجهٔ پژوهش.",
-    illustrationLabel: "معماری توضیحی · بدون نمایش رد اجرا یا نتیجه",
-    boundariesLabel: "یک مرز مهار را انتخاب کنید",
+      "نمونهٔ کنونی، پیشنهادهای ابزار را با وضعیت اختیار واگذارشده، توقف، مهلت و اعتبارنامهٔ نگه‌داری‌شده در میزبان می‌سنجد. در پژوهش اکتبر 2026 با کنترل‌های همسان، کنترل‌های ترکیبی میزبان آزمون‌های Llama-3.2-3B در حالت محدود با آثار تازه را از 17/24 به 0/24 رساند و 23/24 تکمیل مفید حفظ شد. خط پایهٔ gpt-6-luna از ابتدا 0/24 بود؛ حفاظت افزوده‌ای یافت نشد.",
+    illustrationLabel:
+      "معماری چهارمرزی تثبیت‌شدهٔ پیشین · نه رد اجرای پژوهش کنونی",
+    boundariesLabel: "یک گام از مسیر شواهد را انتخاب کنید",
     proofPathLabel: "مسیر از مرز انتخاب‌شده تا شواهد امضاشده و راستی‌آزمایی",
-    detailsTitle: "توضیح مرزها",
+    detailsTitle: "توضیح مسیر شواهد",
     boundaries: [
       {
         title: "فایروال ورودی",
@@ -145,24 +146,25 @@ export const simurghEvidenceStoryCopy: Record<
     ],
     signedPack: "بستهٔ شواهد امضاشده",
     signedPackDetail:
-      "معماری، شواهد فراداده‌ای و امضاشده با Ed25519 را توصیف می‌کند.",
+      "این معماری تثبیت‌شدهٔ پیشین، شواهد صرفاً فراداده‌ای و امضاشده با Ed25519 را توصیف می‌کند.",
     verifier: "اعتبارسنج آفلاین",
     verifierDetail:
       "بازبین مستقل از تولیدکننده می‌تواند تصمیم‌ها را آفلاین بازاجرا کند و بدون دسترسی به تولیدکننده، کامل‌بودن شواهد را بسنجد.",
     sourceNote:
-      "مخزن VCA و فرمان بازتولیدِ پیوندشده، کار کنونیِ مهار عامل را توضیح می‌دهند. پیش‌چاپ Simurgh همراه سایت، مرحلهٔ قدیمی‌تری از یکپارچگی دستگاه در مسیر تکامل پروژه را ثبت می‌کند.",
-    repositoryLink: "مخزن کنونی VCA",
-    reproduceLink: "بازتولید شواهد VCA",
+      "بایگانی پژوهش کنونی از SHA-256 استفاده می‌کند و روی Linux x86_64 بومی با Python 3.12 بازاجرا می‌شود. نمودار و فرمان VCA، گواهی Ed25519 در مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند، نه بازاجرای پژوهش انتقال اکتبر. DOI نرم‌افزار کنونی: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849.",
+    repositoryLink: "مخزن کنونی Simurgh",
+    reproduceLink: "بازاجرای شواهد VCA تثبیت‌شدهٔ پیشین",
   },
   ar: {
-    eyebrow: "جولة في البنية المعمارية",
+    eyebrow: "الدراسة الحالية والبنية السابقة",
     title: "إيصال يمكن التحقق منه مجددًا",
     introduction:
-      "استكشف حدود الاحتواء الموثقة ومسار التحقق. هذا عرض توضيحي للبنية المعمارية، وليس سجل تشغيل أو نتيجة بحثية.",
-    illustrationLabel: "بنية توضيحية · لا يعرض سجل تشغيل أو نتيجة",
-    boundariesLabel: "اختر حدًا للاحتواء",
+      "يفحص النموذج الحالي مقترحات الأدوات مقابل حالة التفويض والإيقاف والمهلة وبيانات الاعتماد المحفوظة على المضيف. في دراسة أكتوبر 2026 بضوابط مقارنة متطابقة، خفّضت ضوابط المضيف المركبة تجارب Llama-3.2-3B المقيّدة ذات الآثار الجديدة من 17/24 إلى 0/24 مع 23/24 إكمالًا مفيدًا. كان خط أساس gpt-6-luna أصلًا 0/24، لذا لم تُرصد حماية إضافية.",
+    illustrationLabel:
+      "بنية سابقة مجمّدة بأربعة حدود · ليست سجل تشغيل الدراسة الحالية",
+    boundariesLabel: "اختر خطوة في مسار الأدلة",
     proofPathLabel: "المسار من الحد المحدد إلى الأدلة الموقعة والتحقق",
-    detailsTitle: "شرح الحدود",
+    detailsTitle: "شرح مسار الأدلة",
     boundaries: [
       {
         title: "جدار حماية المدخلات",
@@ -186,24 +188,24 @@ export const simurghEvidenceStoryCopy: Record<
     ],
     signedPack: "حزمة أدلة موقعة",
     signedPackDetail:
-      "تصف البنية أدلة موقعة بـ Ed25519 وتقتصر على البيانات الوصفية.",
+      "تصف بنية سابقة مجمّدة أدلة موقعة بـ Ed25519 تقتصر على البيانات الوصفية.",
     verifier: "مدقق دون اتصال",
     verifierDetail:
       "يمكن لمراجع مستقل عن الجهة المنتجة إعادة تشغيل القرارات دون اتصال والتحقق من اكتمال الأدلة دون الوصول إلى الجهة المنتجة.",
     sourceNote:
-      "يصف مستودع VCA المرتبط وأمر إعادة الإنتاج عمل الاحتواء الحالي للوكلاء. أما المسودة المرفقة لمشروع Simurgh فتوثق مرحلة أقدم من سلامة الأجهزة ضمن تطور المشروع.",
-    repositoryLink: "مستودع VCA الحالي",
-    reproduceLink: "إعادة إنتاج أدلة VCA",
+      "تستخدم أرشيفات الدراسة الحالية SHA-256 وتُعاد على Linux x86_64 أصلي مع Python 3.12. يصف المخطط وأمر VCA مرحلة تصديق Ed25519 سابقة مجمّدة، لا إعادة دراسة النقل في أكتوبر. DOI البرنامج الحالي: 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849.",
+    repositoryLink: "مستودع Simurgh الحالي",
+    reproduceLink: "إعادة تشغيل أدلة VCA السابقة المجمّدة",
   },
   zh: {
-    eyebrow: "架构导览",
+    eyebrow: "当前研究与早期架构",
     title: "可再次核验的凭证",
     introduction:
-      "浏览已记录的遏制边界与核验路径。这是架构示意，不是运行轨迹或研究结果。",
-    illustrationLabel: "架构示意 · 未展示运行轨迹或结果",
-    boundariesLabel: "选择一个遏制边界",
+      "当前原型依据宿主保存的委派、停止、租期及凭证状态检查工具提案。2026 年 10 月的匹配对照研究中，组合宿主控制将 Llama-3.2-3B 在受限状态下产生新效果的试验从 17/24 降至 0/24，并保留 23/24 次有用任务完成。gpt-6-luna 的基线已为 0/24，因此未发现额外保护。",
+    illustrationLabel: "早期冻结的四边界架构 · 并非当前研究的运行轨迹",
+    boundariesLabel: "选择证据路径中的步骤",
     proofPathLabel: "从所选边界到签名证据与验证的路径",
-    detailsTitle: "边界说明",
+    detailsTitle: "证据路径说明",
     boundaries: [
       {
         title: "输入防火墙",
@@ -223,25 +225,26 @@ export const simurghEvidenceStoryCopy: Record<
       },
     ],
     signedPack: "签名证据包",
-    signedPackDetail: "该架构描述使用 Ed25519 签名的元数据证据。",
+    signedPackDetail: "这份早期冻结架构描述使用 Ed25519 签名的纯元数据证据。",
     verifier: "离线验证器",
     verifierDetail:
       "独立于生成方的审查者可以离线重放决策，并在不接触生成方的情况下检查证据是否完整。",
     sourceNote:
-      "链接的 VCA 仓库和复现命令描述当前的智能体遏制工作。随附的 Simurgh 预印本记录了项目演进中的早期设备完整性阶段。",
-    repositoryLink: "当前 VCA 仓库",
-    reproduceLink: "复现 VCA 证据",
+      "当前研究归档使用 SHA-256，可在原生 Linux x86_64 与 Python 3.12 环境重放。图示与 VCA 命令描述早期冻结的 Ed25519 证明凭证阶段，并非重跑10月迁移研究。当前软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。",
+    repositoryLink: "当前 Simurgh 仓库",
+    reproduceLink: "重放早期冻结的 VCA 证据",
   },
   es: {
-    eyebrow: "Recorrido por la arquitectura",
+    eyebrow: "Estudio actual y arquitectura anterior",
     title: "Un recibo que se puede verificar de nuevo",
     introduction:
-      "Explore los límites de contención documentados y la ruta de verificación. Es una vista ilustrativa de la arquitectura, no un registro de ejecución ni un resultado de investigación.",
-    illustrationLabel: "Arquitectura ilustrativa · sin registros ni resultados",
-    boundariesLabel: "Seleccione un límite de contención",
+      "El prototipo actual comprueba cada propuesta de herramienta frente al estado de delegación, parada, vigencia y credenciales conservado en el host. En el estudio de octubre de 2026 con controles emparejados, los controles compuestos del host redujeron los ensayos restringidos de Llama-3.2-3B con efectos nuevos de 17/24 a 0/24, con 23/24 tareas útiles completadas. gpt-6-luna ya tenía una base de 0/24, por lo que no se observó protección incremental.",
+    illustrationLabel:
+      "Arquitectura anterior congelada de cuatro límites · no es una traza del estudio actual",
+    boundariesLabel: "Selecciona un paso del recorrido de evidencias",
     proofPathLabel:
       "Ruta desde el límite seleccionado hasta la evidencia firmada y su verificación",
-    detailsTitle: "Explicación de los límites",
+    detailsTitle: "Explicación del recorrido de evidencias",
     boundaries: [
       {
         title: "Cortafuegos de entrada",
@@ -266,14 +269,14 @@ export const simurghEvidenceStoryCopy: Record<
     ],
     signedPack: "Paquete de evidencia firmado",
     signedPackDetail:
-      "La arquitectura describe evidencia de metadatos firmada con Ed25519.",
+      "Esta arquitectura anterior congelada describe evidencias de metadatos firmadas con Ed25519.",
     verifier: "Verificador sin conexión",
     verifierDetail:
       "Una persona revisora independiente del productor puede reproducir las decisiones sin conexión y comprobar que la evidencia esté completa sin acceder al productor.",
     sourceNote:
-      "El repositorio de VCA y el comando de reproducción enlazados describen el trabajo actual de contención de agentes. La prepublicación de Simurgh incluida documenta una etapa anterior de integridad de dispositivos en la evolución del proyecto.",
-    repositoryLink: "Repositorio actual de VCA",
-    reproduceLink: "Reproducir la evidencia de VCA",
+      "Los archivos actuales del estudio usan SHA-256 y se reproducen en Linux x86_64 nativo con Python 3.12. El esquema y el comando VCA describen una etapa anterior congelada de atestaciones Ed25519; no repiten el estudio de transferencia de octubre. DOI del software actual: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
+    repositoryLink: "Repositorio actual de Simurgh",
+    reproduceLink: "Repetir las evidencias VCA anteriores congeladas",
   },
 };
 
@@ -461,12 +464,12 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
       illustrationLabel:
         "Illustrative schema · no corpus records or retrieval results shown",
       sourceNode: "Source document",
-      sourceDetail: "Markdown · PDF · TXT · images",
+      sourceDetail: "MD · text PDF · TXT · image stubs",
       retrievalNode: "Hybrid retrieval",
       retrievalDetail:
         "FTS5 + semantic search · optional graph-neighbour expansion",
       consumerNode: "MCP context",
-      consumerDetail: "Search and context tools for an agent",
+      consumerDetail: "Rust read tools · Python write bridge",
       nodeTypesLabel: "Select a typed knowledge node",
       nodeTypes: [
         {
@@ -497,9 +500,9 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         "retrieved by hybrid search; graph neighbours can add related context",
       detailsTitle: "What the selected type means",
       limitations:
-        "This schematic does not claim complete source fidelity, provenance coverage, or retrieval recall. It shows the documented data model and retrieval stages only.",
+        "This schematic does not claim complete source fidelity, provenance coverage, or retrieval recall. It shows the documented data model and retrieval stages only. Images remain pending-visual stubs without automatic OCR; PDF figures need a separate visual pass.",
       repositoryNote:
-        "Zurvan’s repository is private; this public-facing schema uses generic labels and contains no corpus records.",
+        "Zurvan’s repository is public. This schematic uses generic labels and contains no corpus records; the Rust MCP read server keeps a Python write bridge and reference fallback.",
     },
     fa: {
       eyebrow: "دانش و بازیابی",
@@ -509,11 +512,11 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
       illustrationLabel:
         "طرح‌وارهٔ توضیحی · بدون نمایش رکوردهای پیکره یا نتیجهٔ بازیابی",
       sourceNode: "سند منبع",
-      sourceDetail: "Markdown · PDF · TXT · تصویرها",
+      sourceDetail: "MD · PDF/TXT متنی · تصویر در انتظار بررسی",
       retrievalNode: "بازیابی ترکیبی",
       retrievalDetail: "FTS5 + جست‌وجوی معنایی · گسترش اختیاری همسایه‌های گراف",
       consumerNode: "زمینهٔ MCP",
-      consumerDetail: "ابزارهای جست‌وجو و زمینه برای عامل",
+      consumerDetail: "ابزار خواندن Rust · پل نوشتن Python",
       nodeTypesLabel: "یک گرهٔ دانشِ نوع‌دار را انتخاب کنید",
       nodeTypes: [
         {
@@ -544,9 +547,9 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         "بازیابی با جست‌وجوی ترکیبی؛ همسایه‌های گراف می‌توانند زمینهٔ مرتبط بیفزایند",
       detailsTitle: "معنای نوع انتخاب‌شده",
       limitations:
-        "این طرح‌واره کامل‌بودن وفاداری به منبع، پوشش منشأ یا یادآوری بازیابی را ادعا نمی‌کند؛ فقط مدل داده و مراحل مستند بازیابی را نشان می‌دهد.",
+        "این طرح‌واره کامل‌بودن وفاداری به منبع، پوشش منشأ یا یادآوری بازیابی را ادعا نمی‌کند؛ فقط مدل داده و مراحل مستند بازیابی را نشان می‌دهد. تصویرها بدون OCR خودکار در انتظار بررسی بصری می‌مانند؛ شکل‌های PDF به بررسی بصری جداگانه نیاز دارند.",
       repositoryNote:
-        "مخزن Zurvan خصوصی است؛ این طرح‌وارهٔ عمومی از برچسب‌های کلی استفاده می‌کند و رکوردی از پیکره ندارد.",
+        "مخزن Zurvan عمومی است. این طرح‌واره برچسب‌های کلی دارد و رکوردی از پیکره نشان نمی‌دهد؛ سرور خواندن MCP با Rust، پل نوشتن و مرجع جایگزین Python را حفظ می‌کند.",
     },
     ar: {
       eyebrow: "المعرفة والاسترجاع",
@@ -555,11 +558,11 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         "اختر نوعًا معرفيًا لتتبّع علاقته التخطيطية من مستند المصدر مرورًا بالاسترجاع. تصف التسميات أدناه البنية، لا مثالًا من مدونة خاصة.",
       illustrationLabel: "مخطط توضيحي · لا يعرض سجلات مدونة أو نتائج استرجاع",
       sourceNode: "مستند مصدر",
-      sourceDetail: "Markdown · PDF · TXT · صور",
+      sourceDetail: "MD · PDF/TXT نصّي · صور معلّقة",
       retrievalNode: "استرجاع هجين",
       retrievalDetail: "FTS5 + بحث دلالي · توسيع اختياري لجيران الرسم البياني",
       consumerNode: "سياق MCP",
-      consumerDetail: "أدوات البحث والسياق للوكيل",
+      consumerDetail: "أدوات قراءة Rust · جسر كتابة Python",
       nodeTypesLabel: "اختر عقدة معرفة مصنّفة",
       nodeTypes: [
         {
@@ -588,9 +591,9 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         "استرجاع عبر البحث الهجين؛ وقد يضيف جيران الرسم سياقًا ذا صلة",
       detailsTitle: "معنى النوع المحدد",
       limitations:
-        "لا يدّعي هذا المخطط اكتمال الأمانة للمصادر أو تغطية المنشأ أو استدعاء الاسترجاع. بل يعرض نموذج البيانات ومراحل الاسترجاع الموثقة فقط.",
+        "لا يدّعي هذا المخطط اكتمال الأمانة للمصادر أو تغطية المنشأ أو استدعاء الاسترجاع. بل يعرض نموذج البيانات ومراحل الاسترجاع الموثقة فقط. تبقى الصور عناصر معلّقة للفحص البصري دون OCR تلقائي؛ وتحتاج أشكال PDF إلى فحص بصري منفصل.",
       repositoryNote:
-        "مستودع Zurvan خاص؛ يستخدم هذا المخطط العام تسميات عامة ولا يتضمن سجلات من المدونة.",
+        "مستودع Zurvan عام. يستخدم المخطط تسميات عامة ولا يتضمن سجلات من المدونة؛ يحتفظ خادم قراءة MCP بلغة Rust بجسر كتابة ومرجع بديل بلغة Python.",
     },
     zh: {
       eyebrow: "知识与检索",
@@ -599,11 +602,11 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         "选择一种知识类型，查看它从来源文档到检索的示意关系。以下标签描述架构，不包含私有语料示例。",
       illustrationLabel: "示意架构 · 未展示语料记录或检索结果",
       sourceNode: "来源文档",
-      sourceDetail: "Markdown · PDF · TXT · 图像",
+      sourceDetail: "MD · 文本 PDF/TXT · 图像占位",
       retrievalNode: "混合检索",
       retrievalDetail: "FTS5 + 语义搜索 · 可选图邻居扩展",
       consumerNode: "MCP 上下文",
-      consumerDetail: "供智能体使用的搜索与上下文工具",
+      consumerDetail: "Rust 读取工具 · Python 写入桥接",
       nodeTypesLabel: "选择一种类型化知识节点",
       nodeTypes: [
         {
@@ -625,9 +628,9 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
       retrievalRelationship: "由混合搜索检索；图邻居可补充相关上下文",
       detailsTitle: "所选类型的含义",
       limitations:
-        "此示意不声称完整保留来源、完整覆盖溯源关系或达到完整检索召回；它只展示文档所述的数据模型和检索阶段。",
+        "此示意不声称完整保留来源、完整覆盖溯源关系或达到完整检索召回；它只展示文档所述的数据模型和检索阶段。 图像仍为待视觉处理的占位条目，不进行自动 OCR；PDF 图表需要单独查看。",
       repositoryNote:
-        "Zurvan 仓库为私有；此公开架构使用通用标签，不包含语料记录。",
+        "Zurvan 仓库现为公开。此示意使用通用标签，不含语料记录；Rust MCP 读取服务器保留 Python 写入桥接与参考后备实现。",
     },
     es: {
       eyebrow: "Conocimiento y recuperación",
@@ -638,12 +641,12 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
       illustrationLabel:
         "Esquema ilustrativo · sin registros del corpus ni resultados de recuperación",
       sourceNode: "Documento fuente",
-      sourceDetail: "Markdown · PDF · TXT · imágenes",
+      sourceDetail: "MD · PDF/TXT con texto · imágenes pendientes",
       retrievalNode: "Recuperación híbrida",
       retrievalDetail:
         "FTS5 + búsqueda semántica · expansión opcional de vecinos del grafo",
       consumerNode: "Contexto MCP",
-      consumerDetail: "Herramientas de búsqueda y contexto para un agente",
+      consumerDetail: "Lecturas Rust · puente de escritura Python",
       nodeTypesLabel: "Seleccione un nodo de conocimiento tipado",
       nodeTypes: [
         {
@@ -674,8 +677,8 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         "recuperado mediante búsqueda híbrida; los vecinos del grafo pueden añadir contexto relacionado",
       detailsTitle: "Qué significa el tipo seleccionado",
       limitations:
-        "Este esquema no afirma fidelidad completa a las fuentes, cobertura completa de procedencia ni recuperación exhaustiva. Solo muestra el modelo de datos y las etapas de recuperación documentadas.",
+        "Este esquema no afirma fidelidad completa a las fuentes, cobertura completa de procedencia ni recuperación exhaustiva. Solo muestra el modelo de datos y las etapas de recuperación documentadas. Las imágenes quedan pendientes de revisión visual, sin OCR automático; las figuras PDF necesitan una revisión visual aparte.",
       repositoryNote:
-        "El repositorio de Zurvan es privado; este esquema público usa etiquetas genéricas y no contiene registros del corpus.",
+        "El repositorio de Zurvan es público. El esquema usa etiquetas genéricas y no contiene registros del corpus; el servidor MCP de lectura en Rust conserva un puente de escritura y una referencia alternativa en Python.",
     },
   };

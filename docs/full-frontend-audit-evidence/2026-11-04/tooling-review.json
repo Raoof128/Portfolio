@@ -1,0 +1,620 @@
+{
+  "lane": "supporting frontend verification tooling",
+  "status": "complete source review and authorized targeted corrections",
+  "scope": "All scripts/** entries from root-scope.json except two explicitly parent-reviewed Playwright specs",
+  "files": [
+    {
+      "path": "scripts/audit-agents.mjs",
+      "sha256": "390a62275e6e48c853dd7f3e0387cd8ebe35efe9e9f069c2ab3badba378021da",
+      "bytes": 16039,
+      "lines": 395,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "390a62275e6e48c853dd7f3e0387cd8ebe35efe9e9f069c2ab3badba378021da",
+      "final_sha256": "390a62275e6e48c853dd7f3e0387cd8ebe35efe9e9f069c2ab3badba378021da",
+      "current_lines": 395,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          395
+        ]
+      ],
+      "classification": "current export gate",
+      "notes": "Reads generated sitemap/route inventory, RSC host rewrites, metadata/language/schema/discoverability/disclosure/version identity. It is a static generated-file audit; H1/metadata existence is not rendered visibility or accessibility proof. Fixed 9 static routes/locale is an intentional inventory expectation. No execution in this read-only lane."
+    },
+    {
+      "path": "scripts/audit-production.mjs",
+      "sha256": "0647ec9d19203f9dec5e8c11410f5368d4bdb9d812eb238b5282614b6e260a3c",
+      "bytes": 8355,
+      "lines": 235,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "0647ec9d19203f9dec5e8c11410f5368d4bdb9d812eb238b5282614b6e260a3c",
+      "final_sha256": "0647ec9d19203f9dec5e8c11410f5368d4bdb9d812eb238b5282614b6e260a3c",
+      "current_lines": 235,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          235
+        ]
+      ],
+      "classification": "current explicit HTTP gate",
+      "notes": "Read-only HTTP runner with explicit origin parsing, direct-response/header/redirect/bot/schema/version checks; staging avoids unrelated production www request. HEAD equality explicitly does not certify exact export bytes. Current source samples three detail families per locale; not a whole-route/browser audit."
+    },
+    {
+      "path": "scripts/audit-static-security.mjs",
+      "sha256": "f2e3ca420e31defece9b748e2775ffad377602bc947c1da49b10d2f35a0c1133",
+      "bytes": 542,
+      "lines": 15,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "f2e3ca420e31defece9b748e2775ffad377602bc947c1da49b10d2f35a0c1133",
+      "final_sha256": "f2e3ca420e31defece9b748e2775ffad377602bc947c1da49b10d2f35a0c1133",
+      "current_lines": 15,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          15
+        ]
+      ],
+      "classification": "current export gate wrapper",
+      "notes": "Passes chosen local export path to bounded static artifact validator and sets nonzero result on issues. No runtime server introduced."
+    },
+    {
+      "path": "scripts/generate-glass-lens-map.mjs",
+      "sha256": "0afbb352342c285ade5a916e0cf66320adedaf0afc666d04b4d6e6c0eb437980",
+      "bytes": 4347,
+      "lines": 133,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "0afbb352342c285ade5a916e0cf66320adedaf0afc666d04b4d6e6c0eb437980",
+      "final_sha256": "0afbb352342c285ade5a916e0cf66320adedaf0afc666d04b4d6e6c0eb437980",
+      "current_lines": 133,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          133
+        ]
+      ],
+      "classification": "offline asset authoring utility",
+      "notes": "Bounded rounded-rect normal geometry and dependency-free PNG encode. Writes exactly public/brand/glass-lens-map.png with8KiB budget if explicitly invoked. Read but not run; original asset unchanged."
+    },
+    {
+      "path": "scripts/browser-regressions/researchos-navigation.cua.mjs",
+      "sha256": "0c8421e977cb514b000d518c143f19582e6690bc00abf32359732b6800065ac3",
+      "bytes": 11875,
+      "lines": 330,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "0c8421e977cb514b000d518c143f19582e6690bc00abf32359732b6800065ac3",
+      "final_sha256": "0c8421e977cb514b000d518c143f19582e6690bc00abf32359732b6800065ac3",
+      "current_lines": 330,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          330
+        ]
+      ],
+      "classification": "explicitly historical",
+      "notes": "Header explicitly deprecates earlier multiple-retained-app assertions and old captions; points to maintained Playwright. Local-origin validation, collected observations and historical failure diagnostics read fully. Never run as current acceptance."
+    },
+    {
+      "path": "scripts/browser-regressions/researchos-workspace.cua.mjs",
+      "sha256": "fec5b9de3c40cb1e6247f78f7bc57e0faa836661572fa7b02b8df33b7eea8acd",
+      "bytes": 5787,
+      "lines": 163,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "fec5b9de3c40cb1e6247f78f7bc57e0faa836661572fa7b02b8df33b7eea8acd",
+      "final_sha256": "fec5b9de3c40cb1e6247f78f7bc57e0faa836661572fa7b02b8df33b7eea8acd",
+      "current_lines": 163,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          163
+        ]
+      ],
+      "classification": "explicitly historical",
+      "notes": "Header explicitly deprecates old two-retained-app/query-preservation behavior. Caller-owned local CUA helper is neither imported nor run by maintained gate. Entire old workflow read, no current coverage inferred."
+    },
+    {
+      "path": "scripts/lib/braces-guard.test.mjs",
+      "sha256": "933f9313a8bf5ed7b04de3dd983c69ddfd703bf8f360ad3d707505ec1b218bbf",
+      "bytes": 7397,
+      "lines": 136,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "933f9313a8bf5ed7b04de3dd983c69ddfd703bf8f360ad3d707505ec1b218bbf",
+      "final_sha256": "933f9313a8bf5ed7b04de3dd983c69ddfd703bf8f360ad3d707505ec1b218bbf",
+      "current_lines": 136,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          136
+        ]
+      ],
+      "classification": "current dependency gate",
+      "notes": "Installed real Next→fast-glob→micromatch→braces chain, exact vendor/tar/source provenance and locked integrity, bounded tar read and memory/time bounded worker scenarios. Positive consumer rule must remain enabled. Does not certify arbitrary external callbacks; no security exploit execution performed here."
+    },
+    {
+      "path": "scripts/lib/braces-guard.worker.mjs",
+      "sha256": "e0a6b3f815b9254a7612ad9ff277f5a84cdde0afe8b3f858718fc14707810418",
+      "bytes": 6098,
+      "lines": 130,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "e0a6b3f815b9254a7612ad9ff277f5a84cdde0afe8b3f858718fc14707810418",
+      "final_sha256": "e0a6b3f815b9254a7612ad9ff277f5a84cdde0afe8b3f858718fc14707810418",
+      "current_lines": 130,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          130
+        ]
+      ],
+      "classification": "current dependency fixture helper",
+      "notes": "Explicit scenario map, real ESLint consumer fixture, recursive/coercion/output limits and bounded JSON diagnostics. Hostile test inputs are fixed in source; each worker owns temporary tree and removes it. Read only."
+    },
+    {
+      "path": "scripts/lib/lab-go-snippet.test.mjs",
+      "sha256": "5e99e45d9836ab5a0e4ef07ab76d021d7375dfec8e07193d24996add1a790ab7",
+      "bytes": 4926,
+      "lines": 112,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "5e99e45d9836ab5a0e4ef07ab76d021d7375dfec8e07193d24996add1a790ab7",
+      "final_sha256": "13634db1bce7cd71347c9a66fbf0c08fd31b6efb73f6f94b82e4e06db8964223",
+      "current_lines": 112,
+      "changed_by_this_lane": true,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          112
+        ]
+      ],
+      "classification": "optional manual executable-content gate",
+      "notes": "Full original112lines read; compiler availability probe now has5000ms timeout/4096byte output cap. Actual stalled syntheticcompiler probe skipped cleanly after5133.4ms; original publishedGo source/test behavior unchanged.",
+      "final_review": "Full original read plus complete final patch reviewed"
+    },
+    {
+      "path": "scripts/lib/production-audit.mjs",
+      "sha256": "38f133360c6f47ce37627ad053d6a63c1b188879da8a3b5720be4af6a719d214",
+      "bytes": 8736,
+      "lines": 264,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "38f133360c6f47ce37627ad053d6a63c1b188879da8a3b5720be4af6a719d214",
+      "final_sha256": "38f133360c6f47ce37627ad053d6a63c1b188879da8a3b5720be4af6a719d214",
+      "current_lines": 264,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          264
+        ]
+      ],
+      "classification": "current audit primitives",
+      "notes": "Origin validation; network headers/body share finite deadline and byte cap; late/oversize bodies cancelled. Explicit fixed security expectations prevent policy certifying itself; redirects/expiry/version checks reject malformed values. Full code read; exact final bytes unchanged."
+    },
+    {
+      "path": "scripts/lib/production-audit.test.mjs",
+      "sha256": "af38b07481c3866b22d096c60e0dacedddc70804bda7bf5409c201272dd7a9a4",
+      "bytes": 10489,
+      "lines": 356,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "af38b07481c3866b22d096c60e0dacedddc70804bda7bf5409c201272dd7a9a4",
+      "final_sha256": "af38b07481c3866b22d096c60e0dacedddc70804bda7bf5409c201272dd7a9a4",
+      "current_lines": 356,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          356
+        ]
+      ],
+      "classification": "current audit regressions",
+      "notes": "Fixtures cover stalled/late headers and body, body cancellation/byte bound, invalid origins, cross-origin redirects, expiry, every fixed header/CSP directive, duplicate/override directives and version validity. Pure/mock transport tests; not remote production evidence."
+    },
+    {
+      "path": "scripts/lib/schema-language-audit.mjs",
+      "sha256": "f548ca84c75d4b7114941fef7b7baf1d38bcdbb7dc6638ac64975f3fcb813562",
+      "bytes": 1809,
+      "lines": 55,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "f548ca84c75d4b7114941fef7b7baf1d38bcdbb7dc6638ac64975f3fcb813562",
+      "final_sha256": "f548ca84c75d4b7114941fef7b7baf1d38bcdbb7dc6638ac64975f3fcb813562",
+      "current_lines": 55,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          55
+        ]
+      ],
+      "classification": "current schema helper",
+      "notes": "Collects primary route identity and language separately from original English DOI publication; recursively flattens JSON-LD graphs/arrays and rejects parse/missing identity. Works over authored generated HTML, not a general document sanitizer."
+    },
+    {
+      "path": "scripts/lib/schema-language-audit.test.mjs",
+      "sha256": "2b3adb2542a608ae8470c8acf2bf925c04aa436ba3293a06444106078daf6f58",
+      "bytes": 2620,
+      "lines": 105,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "2b3adb2542a608ae8470c8acf2bf925c04aa436ba3293a06444106078daf6f58",
+      "final_sha256": "2b3adb2542a608ae8470c8acf2bf925c04aa436ba3293a06444106078daf6f58",
+      "current_lines": 105,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          105
+        ]
+      ],
+      "classification": "current schema regressions",
+      "notes": "Positive translated body/original English DOI, false fallback/DOI localization, nested graph/array, malformed/missing and project/lab identity fixtures fully read."
+    },
+    {
+      "path": "scripts/lib/static-security.mjs",
+      "sha256": "3c6771153e033d4dd351439f810055d9d83a59d83a9d6d8514f7706f542d5139",
+      "bytes": 10198,
+      "lines": 326,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "3c6771153e033d4dd351439f810055d9d83a59d83a9d6d8514f7706f542d5139",
+      "final_sha256": "3c6771153e033d4dd351439f810055d9d83a59d83a9d6d8514f7706f542d5139",
+      "current_lines": 326,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          326
+        ]
+      ],
+      "classification": "current export security gate",
+      "notes": "Bounds real-directory traversal/depth/entries, rejects symlinks/private/source/advanced execution paths, explicit authored assets/generated namespaces, protected security-header overrides and unsafe redirects. Disclosure copies independently validated. Separate audit:agents owns HTML semantics; allowed file bytes are not malware scanned."
+    },
+    {
+      "path": "scripts/lib/static-security.test.mjs",
+      "sha256": "686bad051c36b8274a3c2132667610744154947a0f009dba7fff55c33773c4d0",
+      "bytes": 8362,
+      "lines": 273,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "686bad051c36b8274a3c2132667610744154947a0f009dba7fff55c33773c4d0",
+      "final_sha256": "686bad051c36b8274a3c2132667610744154947a0f009dba7fff55c33773c4d0",
+      "current_lines": 273,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          273
+        ]
+      ],
+      "classification": "current export regressions",
+      "notes": "Synthetic temporary artifact fixtures exercise allowlist/private files/symlinks/source maps, execution namespaces, missing hidden disclosure, weakened headers and duplicate/stale/wrong disclosure. Fixture placeholder HTML is deliberate structural-gate isolation, not a claim of valid app content."
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/README.md",
+      "sha256": "d167b0c8d17363b54a18ed458a8f157fed51dc1594fb34bce0ffc9fb6d672cda",
+      "bytes": 8446,
+      "lines": 81,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "d167b0c8d17363b54a18ed458a8f157fed51dc1594fb34bce0ffc9fb6d672cda",
+      "final_sha256": "b5f75d29e31ba0bb26915f5edead1f3fbed1ddddf25ea9a2af0bf8b8c59ca311",
+      "current_lines": 81,
+      "changed_by_this_lane": true,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          81
+        ]
+      ],
+      "classification": "current optional visual diagnostic documentation",
+      "notes": "Full original81lines read; precise new extension/digest/environment/legacyphase contract and Node test command documented. Historical reports/data untouched.",
+      "final_review": "Full original read plus complete final patch reviewed"
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/compare.mjs",
+      "sha256": "7dc3677b2896211f910db16ae35b35369a2801e127a204c11abbf485741c6767",
+      "bytes": 31646,
+      "lines": 817,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "7dc3677b2896211f910db16ae35b35369a2801e127a204c11abbf485741c6767",
+      "final_sha256": "7dc3677b2896211f910db16ae35b35369a2801e127a204c11abbf485741c6767",
+      "current_lines": 817,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          300
+        ],
+        [
+          301,
+          600
+        ],
+        [
+          601,
+          817
+        ]
+      ],
+      "classification": "current optional visual diagnostic",
+      "notes": "Every line read in3chunks1–300/301–600/601–817. Frozen candidate DOM/CSS/font resources compared to installed scoped reference using disclosed camera isolation. Actual hover/focus/pressed sentinels and native scrollbar press paint checked. Raw geometry preserved independently from chrome mask. Reference package label hardcoded, CSS hash recorded; caller must keep package/browser/font cohorts controlled."
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.mjs",
+      "sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "bytes": 6666,
+      "lines": 189,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "final_sha256": "e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22",
+      "current_lines": 189,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          189
+        ]
+      ],
+      "classification": "current local measurement utility",
+      "notes": "RGB/RGBA Chromium PNG decode/encode, raw exact differences,16 band, unequal-extent difference, overlay and separate chrome mask all read. Alpha intentionally outside opaque capture scope. Parser assumes trusted locally generated supported PNGs and is not an untrusted-media validator."
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/png-diff.test.mjs",
+      "sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "bytes": 3633,
+      "lines": 99,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "final_sha256": "21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b",
+      "current_lines": 99,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          99
+        ]
+      ],
+      "classification": "current metric regression fixtures",
+      "notes": "Independent Pillow-encoded small PNGs assert exact black/white values, geometry discrepancy even equal paddedRGB, encoded overlays/diffs and mask scope. No image metric automatically grants acceptance."
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/round2-specimens.mjs",
+      "sha256": "59ff59ad64da007bb77186c8303210b34ce0c32250d58128c7c2ee300b2dd147",
+      "bytes": 9743,
+      "lines": 302,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "59ff59ad64da007bb77186c8303210b34ce0c32250d58128c7c2ee300b2dd147",
+      "final_sha256": "59ff59ad64da007bb77186c8303210b34ce0c32250d58128c7c2ee300b2dd147",
+      "current_lines": 302,
+      "changed_by_this_lane": false,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          302
+        ]
+      ],
+      "classification": "current optional visual specimen inventory",
+      "notes": "All25 additional mounted-family definitions and meaningful state sets read; metadata explicitly separates native canonical control faces from extension composition/application state. Not per-instance/full-state coverage."
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "sha256": "76ce4e65462d5f1093bd7a5e14b55c03f5e3403718976ddf04ae1cd8582dc086",
+      "bytes": 13156,
+      "lines": 264,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "76ce4e65462d5f1093bd7a5e14b55c03f5e3403718976ddf04ae1cd8582dc086",
+      "final_sha256": "caf0a3b5a4140d4d3b2cd9d5b868cb07899a3a7c762cfa6f0135f8755f093f8f",
+      "current_lines": 268,
+      "changed_by_this_lane": true,
+      "reader": "/root/opening_tests",
+      "read_spans": [
+        [
+          1,
+          264
+        ]
+      ],
+      "classification": "current optional capture utility",
+      "notes": "Full original264lines read; correctedextension preserves original sceneJSON/PNG and page entries, verifies localexportbyte digest/capture hashes and origin/browser/env, exclusive newscene writes, includes untracked TS/CSS excludingwork. Complete final patch reviewed; tested realCLI with explicit syntheticbrowserfacade.",
+      "final_review": "Full original read plus complete final patch reviewed"
+    }
+  ],
+  "excluded_with_parent_provenance": [
+    {
+      "path": "scripts/browser-regressions/playwright/portfolio.spec.ts",
+      "sha256": "b0b9930c090812e60b580c18e2bf70546c5d139976664324b68924ab182a3b75",
+      "bytes": 20127,
+      "lines": 382,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "b0b9930c090812e60b580c18e2bf70546c5d139976664324b68924ab182a3b75",
+      "final_sha256": "b0b9930c090812e60b580c18e2bf70546c5d139976664324b68924ab182a3b75",
+      "current_lines": 382,
+      "changed_by_this_lane": false,
+      "reader": "/root",
+      "provenance": "Explicit parent task says both native Playwright specs already fully read; excluded from this lane to avoid duplicate review. Parent must account any subsequent edits.",
+      "read_spans": [],
+      "parent_declared_read_spans": [
+        [
+          1,
+          382
+        ]
+      ],
+      "classification": "current maintained browser regression; parent-reviewed"
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts",
+      "sha256": "693375a94069e9d5566d4bbf917925a19163c12198e3e0de1b78da0b1020567a",
+      "bytes": 16569,
+      "lines": 345,
+      "binary": false,
+      "lane": "root",
+      "initial_sha256": "693375a94069e9d5566d4bbf917925a19163c12198e3e0de1b78da0b1020567a",
+      "final_sha256": "693375a94069e9d5566d4bbf917925a19163c12198e3e0de1b78da0b1020567a",
+      "current_lines": 345,
+      "changed_by_this_lane": false,
+      "reader": "/root",
+      "provenance": "Explicit parent task says both native Playwright specs already fully read; excluded from this lane to avoid duplicate review. Parent must account any subsequent edits.",
+      "read_spans": [],
+      "parent_declared_read_spans": [
+        [
+          1,
+          345
+        ]
+      ],
+      "classification": "current maintained browser regression; parent-reviewed"
+    }
+  ],
+  "coverage": {
+    "scope_files": 23,
+    "scope_lines": 5507,
+    "personally_fully_read_files": 21,
+    "personally_fully_read_lines": 4780,
+    "parent_reviewed_files": 2,
+    "parent_reviewed_initial_lines": 727,
+    "unread_assigned_spans": [],
+    "new_fully_read_files": 2,
+    "new_fully_read_lines": 353
+  },
+  "findings": [
+    {
+      "id": "TK-01",
+      "priority": "P3 tooling integrity",
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "lines": [
+        119,
+        249
+      ],
+      "title": "Extend rewrites existing captured scene bytes despite add-only documentation",
+      "evidence": "--extend validates version metadata then unconditionally iterates all base routes plus expanded routes; writeFile(name.json) and screenshot(name-live.png) replace existing files. README17 describes extend as adding routes, and protection promise suggests originals frozen absent explicit replace. Re-running same version at different clock time/browser can mutate existing captures.",
+      "reproduction_status": "Source-confirmed write-path mismatch; not executed against retained baseline to avoid modifying evidence",
+      "disposition": "Skip frozen scenes while carrying original page entries/hashes forward; verify exact localexport digest, existing capture bytes and matching origin/browser/capture settings; exclusive newscene writes protect partial captures. Legacy snapshots without byteidentity require newphase; historical captureddata untouched. RealCLI facade regression verifies original8sceneJSON/PNGbytes preserved when4scenesextendto15.",
+      "status": "fixed"
+    }
+  ],
+  "limits": [
+    {
+      "id": "TL-01",
+      "path": "scripts/browser-regressions/aero-parity/snapshot.mjs",
+      "description": "Corrected for new snapshots: local out/file digest plus existing capture hashes and explicit capture conditions accompany version identity. Served origin must still be the matching local export as documented; no remote asset-byte verifier is claimed.",
+      "status": "corrected scoped identity guard"
+    },
+    {
+      "id": "TL-02",
+      "path": "scripts/lib/lab-go-snippet.test.mjs",
+      "description": "Corrected: compiler version probe now has5000ms timeout and4096byte output cap. Stalled syntheticcompiler run returned explicit optional skip in5133.4ms; publishedGo sample unmodified.",
+      "status": "fixed and bounded probe verified"
+    },
+    {
+      "id": "TL-03",
+      "path": "scripts/audit-agents.mjs",
+      "description": "Regex metadata/schema/discoverability checks do not establish rendered accessibility or meaningful visibility; maintained browser and manual checks remain separate."
+    }
+  ],
+  "commands_run_for_validation": [
+    {
+      "command": "node --test scripts/browser-regressions/aero-parity/snapshot-integrity.test.mjs scripts/browser-regressions/aero-parity/png-diff.test.mjs",
+      "result": "8passed/0failed;1060.7ms; realCLI writes with syntheticbrowserfacade only",
+      "log": "work/full-frontend-audit/tooling-tests.log"
+    },
+    {
+      "command": "npx eslint [changed UI form and snapshot helper/CLI/Go-probe files]",
+      "result": "exit0,emptylog",
+      "log": "work/full-frontend-audit/ui-tooling-lint.log"
+    },
+    {
+      "command": "node --check scripts/browser-regressions/aero-parity/snapshot.mjs; node --check scripts/lib/lab-go-snippet.test.mjs",
+      "result": "pass"
+    },
+    {
+      "command": "Synthetic stalled Go compiler availability probe through actual optional test CLI",
+      "result": "explicit skip/exit0 after5133.4ms; no real compiler or sample build",
+      "log": "work/full-frontend-audit/go-probe-timeout.log"
+    }
+  ],
+  "not_executed": [
+    "No historical CUA helper",
+    "No asset generator",
+    "No native parity capture/compare or prior evidence overwrite",
+    "No remote production HTTP audit",
+    "No application build/fullbrowser/dependency change"
+  ],
+  "product_or_tool_edits": [
+    "scripts/browser-regressions/aero-parity/README.md",
+    "scripts/browser-regressions/aero-parity/snapshot.mjs",
+    "scripts/lib/lab-go-snippet.test.mjs",
+    "scripts/browser-regressions/aero-parity/snapshot-integrity.mjs",
+    "scripts/browser-regressions/aero-parity/snapshot-integrity.test.mjs"
+  ],
+  "new_files": [
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot-integrity.mjs",
+      "initial_sha256": null,
+      "final_sha256": "9db690424e4c17095a7e35d0aab91cc803e1641c0ba2ce5d9ae4d694a4105725",
+      "current_lines": 122,
+      "read_spans": [
+        [
+          1,
+          122
+        ]
+      ],
+      "reader": "/root/opening_tests",
+      "classification": "current snapshot identity helper",
+      "changed_by_this_lane": true,
+      "notes": "Entire final new file read after formatting;8combined Node regressions pass."
+    },
+    {
+      "path": "scripts/browser-regressions/aero-parity/snapshot-integrity.test.mjs",
+      "initial_sha256": null,
+      "final_sha256": "8b2a33dd1902d854e48ef57433f70fa749bb12da4e35549b0c5650518b99798d",
+      "current_lines": 231,
+      "read_spans": [
+        [
+          1,
+          231
+        ]
+      ],
+      "reader": "/root/opening_tests",
+      "classification": "current synthetic CLI regression; no native-browser claim",
+      "changed_by_this_lane": true,
+      "notes": "Entire final new file read after formatting;8combined Node regressions pass."
+    }
+  ]
+}

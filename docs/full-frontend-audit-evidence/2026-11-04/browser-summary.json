@@ -1,0 +1,607 @@
+{
+  "stats": {
+    "startTime": "2026-11-04T02:17:38.767Z",
+    "duration": 442216.70900000003,
+    "expected": 62,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "observationTotals": {
+    "zurvan-selected-ledger-contrast-light": 4,
+    "zurvan-selected-ledger-contrast-dark": 4,
+    "native-contact-observation": 1,
+    "taskbar-geometry": 32,
+    "responsive-observations": 360,
+    "route-observations": 160,
+    "route-axe-violations": 0,
+    "incomplete-node-appearances": 7046,
+    "representative-accessibility-observations": 2,
+    "independent-pane-observations": 18
+  },
+  "routeAxeIncompleteGroups": {
+    "color-contrast": 160
+  },
+  "tests": [
+    {
+      "title": "direct dossier fragments reveal and focus their initial section: en",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 6358,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "direct dossier fragments reveal and focus their initial section: fa",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 7441,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "direct dossier fragments reveal and focus their initial section: ar",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 8088,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "direct dossier fragments reveal and focus their initial section: zh",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 6451,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "direct dossier fragments reveal and focus their initial section: es",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 7224,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "every selected Zurvan ledger type keeps body and strong text contrast: light",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 3819,
+      "project": "chromium",
+      "observations": [
+        "05-zurvan-selected-ledger-contrast-light.json"
+      ]
+    },
+    {
+      "title": "every selected Zurvan ledger type keeps body and strong text contrast: dark",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 3281,
+      "project": "chromium",
+      "observations": [
+        "06-zurvan-selected-ledger-contrast-dark.json",
+        "06-zurvan-selected-ledger-dark.png"
+      ]
+    },
+    {
+      "title": "a new document does not inherit the old reading offset on a phone resize",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 3068,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "required fields block empty submission and a valid draft stays out of HTTP URLs",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 1758,
+      "project": "chromium",
+      "observations": [
+        "08-contact-native-valid-draft.png",
+        "08-native-contact-observation.json"
+      ]
+    },
+    {
+      "title": "wallpaper footer, pending language and Start search stay readable and contained: light",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 4827,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "wallpaper footer, pending language and Start search stay readable and contained: dark",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 4668,
+      "project": "chromium",
+      "observations": [
+        "10-short-search-fa-dark.png"
+      ]
+    },
+    {
+      "title": "Contact keeps keyboard focus visible when the available viewport shrinks",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 1733,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "all five labelled pins and tray controls fit the usable width in LTR and RTL",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 8457,
+      "project": "chromium",
+      "observations": [
+        "12-taskbar-en-320x568-fine.png",
+        "12-taskbar-en-1440x900-fine.png",
+        "12-taskbar-fa-320x568-fine.png",
+        "12-taskbar-fa-1440x900-fine.png",
+        "12-taskbar-geometry.json"
+      ]
+    },
+    {
+      "title": "all five labelled pins and tray controls fit the usable width in LTR and RTL",
+      "file": "full-audit.spec.ts",
+      "status": "passed",
+      "duration": 8092,
+      "project": "chromium",
+      "observations": [
+        "13-taskbar-geometry.json"
+      ]
+    },
+    {
+      "title": "reviewer journey, window controls, history, search and contact",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 5385,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "pointer geometry, search selection, locale and appearance persistence",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 5959,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "forced colours preserve caption glyph geometry and language fonts",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 5475,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "increased contrast and reduced transparency use opaque window frames",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 2106,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "keyboard workspace entry and five-language 404 recovery",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 7556,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "five-language keyboard search, empty results and dismissal",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 12275,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "responsive en light",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 35245,
+      "project": "chromium",
+      "observations": [
+        "20-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive fa light",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 36840,
+      "project": "chromium",
+      "observations": [
+        "21-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive ar light",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 36814,
+      "project": "chromium",
+      "observations": [
+        "22-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive zh light",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 34783,
+      "project": "chromium",
+      "observations": [
+        "23-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive es light",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 35706,
+      "project": "chromium",
+      "observations": [
+        "24-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive en dark",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 35105,
+      "project": "chromium",
+      "observations": [
+        "25-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive fa dark",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 37906,
+      "project": "chromium",
+      "observations": [
+        "26-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive ar dark",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 34758,
+      "project": "chromium",
+      "observations": [
+        "27-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive zh dark",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 34418,
+      "project": "chromium",
+      "observations": [
+        "28-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "responsive es dark",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 34294,
+      "project": "chromium",
+      "observations": [
+        "29-responsive-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 1-10",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 21384,
+      "project": "chromium",
+      "observations": [
+        "30-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 11-20",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 21658,
+      "project": "chromium",
+      "observations": [
+        "31-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 21-30",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 20975,
+      "project": "chromium",
+      "observations": [
+        "32-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 31-40",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 17968,
+      "project": "chromium",
+      "observations": [
+        "33-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 41-50",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 22123,
+      "project": "chromium",
+      "observations": [
+        "34-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 51-60",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 25933,
+      "project": "chromium",
+      "observations": [
+        "35-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 61-70",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 23667,
+      "project": "chromium",
+      "observations": [
+        "36-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 71-80",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 24054,
+      "project": "chromium",
+      "observations": [
+        "37-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 81-90",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 23590,
+      "project": "chromium",
+      "observations": [
+        "38-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 91-100",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 23736,
+      "project": "chromium",
+      "observations": [
+        "39-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 101-110",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 24218,
+      "project": "chromium",
+      "observations": [
+        "40-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 111-120",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 19915,
+      "project": "chromium",
+      "observations": [
+        "41-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 121-130",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 20630,
+      "project": "chromium",
+      "observations": [
+        "42-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 131-140",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 20208,
+      "project": "chromium",
+      "observations": [
+        "43-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 141-150",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 19004,
+      "project": "chromium",
+      "observations": [
+        "44-route-observations.json"
+      ]
+    },
+    {
+      "title": "exported route audit 151-160",
+      "file": "portfolio.spec.ts",
+      "status": "passed",
+      "duration": 18808,
+      "project": "chromium",
+      "observations": [
+        "45-route-observations.json"
+      ]
+    },
+    {
+      "title": "fresh home exposes reviewer actions in all five languages: light",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 4891,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "fresh home exposes reviewer actions in all five languages: dark",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 5001,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "reviewer actions and a flagship dossier preserve keyboard focus and history",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3668,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "representative reviewer home and dossier keep accessibility rules intact",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 5613,
+      "project": "chromium",
+      "observations": [
+        "49-representative-accessibility-observations.json"
+      ]
+    },
+    {
+      "title": "artwork arrival keeps the Aero frame stable and respects reduced motion",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 5849,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "Simurgh walkthrough exposes every source-backed stage and the reading path",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 4651,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "phone reading uses document scrolling at 320x568",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 1275,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "phone reading uses document scrolling at 390x844",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 1906,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "phone reading uses document scrolling at 640x360",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 2047,
+      "project": "chromium",
+      "observations": []
+    },
+    {
+      "title": "reading reflows inside an independently resized pane: /projects",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3859,
+      "project": "chromium",
+      "observations": [
+        "55-independent-pane-observations.json"
+      ]
+    },
+    {
+      "title": "reading reflows inside an independently resized pane: /about",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3648,
+      "project": "chromium",
+      "observations": [
+        "56-independent-pane-observations.json"
+      ]
+    },
+    {
+      "title": "reading reflows inside an independently resized pane: /resume",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3784,
+      "project": "chromium",
+      "observations": [
+        "57-independent-pane-observations.json"
+      ]
+    },
+    {
+      "title": "reading reflows inside an independently resized pane: /contact",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3336,
+      "project": "chromium",
+      "observations": [
+        "58-independent-pane-observations.json"
+      ]
+    },
+    {
+      "title": "reading reflows inside an independently resized pane: /write-ups",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3642,
+      "project": "chromium",
+      "observations": [
+        "59-independent-pane-observations.json"
+      ]
+    },
+    {
+      "title": "reading reflows inside an independently resized pane: /projects/project-simurgh",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 4128,
+      "project": "chromium",
+      "observations": [
+        "60-independent-pane-observations.json"
+      ]
+    },
+    {
+      "title": "Explorer navigation responds to its own 880/881px boundary",
+      "file": "reviewer-upgrade.spec.ts",
+      "status": "passed",
+      "duration": 3112,
+      "project": "chromium",
+      "observations": []
+    }
+  ]
+}

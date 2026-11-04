@@ -1,0 +1,28 @@
+{
+  "buildID": "7ZXmp772g5T8B_eREKvhm",
+  "version": {
+    "commit": "2057c9b6d427c8b16544494abb90ed6f4ee2c5d2",
+    "contentRevision": "2026-11-04",
+    "builtAt": "2026-11-04T02:03:27.478Z",
+    "site": "https://raoufabedini.dev"
+  },
+  "sourceFiles": 278,
+  "exportFiles": 1072,
+  "sourceManifestSHA256": "4365f517dd6e3d72b4639d06bbb1ec58d084bbf13d8b34fbfe24f2ddac34f214",
+  "exportManifestSHA256": "2cc70a9297fc38887e1ec5ecf2d9cfc1b0a4f6e1a1c7e51ce3ad616dffe10203",
+  "browserReportSHA256": "12681174ead26721c5fd00c986b4529208b878dde8cff8e3b42a15b36144a8ee",
+  "coverage": {
+    "initial_files": 273,
+    "initial_manual_text_files": 259,
+    "initial_manually_reviewed_text_lines": 57933,
+    "final_files": 278,
+    "final_manual_text_files": 264,
+    "final_manual_text_lines": 60736,
+    "binary_assets": 13,
+    "new_files": 5,
+    "current_hashes_without_review_evidence": [],
+    "method": "Full initial current-source reads plus all final authored/peer-reviewed deltas; matching current hashes required. Generated dependency lock structurally verified. Binary metadata/hash/representative visual inspection is not line reading. Third-party package implementation sources, generated export/chunks, documentation and scratch evidence are outside authored-source line census."
+  },
+  "sourceState": "Dirty working tree; commit field identifies base HEAD only. Exact reviewed source and export hashes identify this candidate.",
+  "nativeCohort": "native-zoom-final-build: exported candidate remained frozen during this run; final served version agrees with the hashed export."
+}

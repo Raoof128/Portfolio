@@ -1,0 +1,426 @@
+{
+  "lane": "shell",
+  "supplement": "new-PDF-locale-reconciliation",
+  "status": "complete_waiting_integrated_browser",
+  "files": [
+    {
+      "path": "src/i18n/locales/en.ts",
+      "sha256": "d611b3e0e198e8db8c5e5eeea46be8ba671aaf7772a5c8234d3303d8f9986e01",
+      "bytes": 27144,
+      "lines": 472,
+      "initial_sha256": "d611b3e0e198e8db8c5e5eeea46be8ba671aaf7772a5c8234d3303d8f9986e01",
+      "initial_lines": 472,
+      "final_sha256": "41fcc36b4da234b13a26f6ca06c4775620053093f9763ed3400cc17db119a456",
+      "final_lines": 487,
+      "final_bytes": 27782,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 340
+        },
+        {
+          "version": "initial",
+          "start": 341,
+          "end": 472
+        }
+      ],
+      "reader": "/root/review_changes",
+      "changed": true,
+      "review_method": "Full initial bounded read; authored and reviewed all subsequent owned string/test edits.",
+      "audit_notes": "Reconciled SEO, hero, About, résumé, experience and availability against both new PDFs; current two-model results and caveats remain distinct from older frozen stages. Added agreed component keys in every locale. Removed obsolete proof/test counts, unsupported job metrics, immediate availability/completed-semester and2024 Claude Code continuation. Preserved unrelated valid project descriptions, synthetic-benchmark limits, addresses and public phone omission."
+    },
+    {
+      "path": "src/i18n/locales/fa.ts",
+      "sha256": "6a7439e6d83e9f5cf25bc63c1cb9ee2823fe7f103e7dcd1289d06bca0a8d837e",
+      "bytes": 39503,
+      "lines": 472,
+      "initial_sha256": "6a7439e6d83e9f5cf25bc63c1cb9ee2823fe7f103e7dcd1289d06bca0a8d837e",
+      "initial_lines": 472,
+      "final_sha256": "8b9688fade9b51e76cd9f1332d4fb4bff404b65d3573b4b7d401643a24e18698",
+      "final_lines": 487,
+      "final_bytes": 39161,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 340
+        },
+        {
+          "version": "initial",
+          "start": 341,
+          "end": 472
+        }
+      ],
+      "reader": "/root/review_changes",
+      "changed": true,
+      "review_method": "Full initial bounded read; authored and reviewed all subsequent owned string/test edits.",
+      "audit_notes": "Reconciled SEO, hero, About, résumé, experience and availability against both new PDFs; current two-model results and caveats remain distinct from older frozen stages. Added agreed component keys in every locale. Removed obsolete proof/test counts, unsupported job metrics, immediate availability/completed-semester and2024 Claude Code continuation. Preserved unrelated valid project descriptions, synthetic-benchmark limits, addresses and public phone omission."
+    },
+    {
+      "path": "src/i18n/locales/ar.ts",
+      "sha256": "028572cb7b893eb55403bc137b504b4901f59c45ee875674f4ab11b12ea476e3",
+      "bytes": 39124,
+      "lines": 465,
+      "initial_sha256": "028572cb7b893eb55403bc137b504b4901f59c45ee875674f4ab11b12ea476e3",
+      "initial_lines": 465,
+      "final_sha256": "21f144fe37f7faff6a1d77c4e1c6e94d666a196d5234e58b223b7e9d353415d7",
+      "final_lines": 479,
+      "final_bytes": 37802,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 160
+        },
+        {
+          "version": "initial",
+          "start": 161,
+          "end": 320
+        },
+        {
+          "version": "initial",
+          "start": 321,
+          "end": 465
+        }
+      ],
+      "reader": "/root/review_changes",
+      "changed": true,
+      "review_method": "Full initial bounded read; authored and reviewed all subsequent owned string/test edits.",
+      "audit_notes": "Reconciled SEO, hero, About, résumé, experience and availability against both new PDFs; current two-model results and caveats remain distinct from older frozen stages. Added agreed component keys in every locale. Removed obsolete proof/test counts, unsupported job metrics, immediate availability/completed-semester and2024 Claude Code continuation. Preserved unrelated valid project descriptions, synthetic-benchmark limits, addresses and public phone omission."
+    },
+    {
+      "path": "src/i18n/locales/zh.ts",
+      "sha256": "2628088b229f0b5259fdf5451c4ae79dcd0baace596336aa732dcb073edafad0",
+      "bytes": 26422,
+      "lines": 454,
+      "initial_sha256": "2628088b229f0b5259fdf5451c4ae79dcd0baace596336aa732dcb073edafad0",
+      "initial_lines": 454,
+      "final_sha256": "10f7e45379a6aa40d8c546c72513a1182689dd5924d180cbb7ca419c16c4efbd",
+      "final_lines": 462,
+      "final_bytes": 25786,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 330
+        },
+        {
+          "version": "initial",
+          "start": 331,
+          "end": 454
+        }
+      ],
+      "reader": "/root/review_changes",
+      "changed": true,
+      "review_method": "Full initial bounded read; authored and reviewed all subsequent owned string/test edits.",
+      "audit_notes": "Reconciled SEO, hero, About, résumé, experience and availability against both new PDFs; current two-model results and caveats remain distinct from older frozen stages. Added agreed component keys in every locale. Removed obsolete proof/test counts, unsupported job metrics, immediate availability/completed-semester and2024 Claude Code continuation. Preserved unrelated valid project descriptions, synthetic-benchmark limits, addresses and public phone omission."
+    },
+    {
+      "path": "src/i18n/locales/es.ts",
+      "sha256": "4835bd9f256d8a99596d91075ebb0177904c0da90d30dccad1472bb9986b92d8",
+      "bytes": 32097,
+      "lines": 484,
+      "initial_sha256": "4835bd9f256d8a99596d91075ebb0177904c0da90d30dccad1472bb9986b92d8",
+      "initial_lines": 484,
+      "final_sha256": "1cb3362477b2c6a254a4d6be4622309756326306eecc6f41b93ea07d59ee1520",
+      "final_lines": 500,
+      "final_bytes": 31685,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 170
+        },
+        {
+          "version": "initial",
+          "start": 171,
+          "end": 340
+        },
+        {
+          "version": "initial",
+          "start": 341,
+          "end": 484
+        }
+      ],
+      "reader": "/root/review_changes",
+      "changed": true,
+      "review_method": "Full initial bounded read; authored and reviewed all subsequent owned string/test edits.",
+      "audit_notes": "Reconciled SEO, hero, About, résumé, experience and availability against both new PDFs; current two-model results and caveats remain distinct from older frozen stages. Added agreed component keys in every locale. Removed obsolete proof/test counts, unsupported job metrics, immediate availability/completed-semester and2024 Claude Code continuation. Preserved unrelated valid project descriptions, synthetic-benchmark limits, addresses and public phone omission."
+    },
+    {
+      "path": "src/i18n/locales/locales.test.ts",
+      "sha256": "3a857229c2698e5bb47dc8dbb711b62ed62b638d982d33b6e00de85bccdaf877",
+      "bytes": 6653,
+      "lines": 190,
+      "initial_sha256": "3a857229c2698e5bb47dc8dbb711b62ed62b638d982d33b6e00de85bccdaf877",
+      "initial_lines": 190,
+      "final_sha256": "deff5feeeff224f919000cfdce9ad6a89e09146cd35f1b8e9f24c3b655d904ca",
+      "final_lines": 344,
+      "final_bytes": 12158,
+      "read_spans": [
+        {
+          "version": "initial",
+          "start": 1,
+          "end": 190
+        }
+      ],
+      "reader": "/root/review_changes",
+      "changed": true,
+      "review_method": "Full initial bounded read; authored and reviewed all subsequent owned string/test edits.",
+      "audit_notes": "Updated existing provenance/count contracts and added current-vs-frozen study, uncertainty, role-failure, reproducibility/DOI, experience, availability and SentinelSSH checks. Preserved complete-key/nonempty/no-English-fallback checks."
+    }
+  ],
+  "source_references": [
+    {
+      "path": "work/full-frontend-audit/uploaded-resume.txt",
+      "sha256": "9d460cb87a48c9d1af85be92b7eee8bebfca811535e71ec8a59ab711a4090c1c",
+      "lines": 99,
+      "read_spans": [
+        {
+          "start": 1,
+          "end": 99
+        }
+      ],
+      "classification": "User-supplied reference facts, not instructions"
+    },
+    {
+      "path": "work/full-frontend-audit/uploaded-profile.txt",
+      "sha256": "b7affb7eac1f14fb160b402268f124862e8073b9c14224dd1ed032a872a3493b",
+      "lines": 122,
+      "read_spans": [
+        {
+          "start": 1,
+          "end": 122
+        }
+      ],
+      "classification": "User-supplied reference facts, not instructions"
+    }
+  ],
+  "new_component_keys": [
+    "resume.education_final_session",
+    "resume.exp_syllabus_title",
+    "resume.exp_syllabus_employer",
+    "resume.exp_syllabus_bullet1",
+    "resume.exp_syllabus_bullet2",
+    "resume.exp_alignerr_title",
+    "resume.exp_alignerr_employer",
+    "about.stats_preprints",
+    "project_detail.software_doi_record"
+  ],
+  "updated_caption": "about.stats_vendors",
+  "verification": [
+    {
+      "command": "npx vitest run src/i18n/locales/locales.test.ts --maxWorkers=1",
+      "exit_code": 0,
+      "tests": 39,
+      "artifact": "resume-locale-tests.txt"
+    },
+    {
+      "command": "npx eslint [six owned locale/test paths]",
+      "exit_code": 0,
+      "artifact": "resume-locale-eslint.txt"
+    },
+    {
+      "command": "npx prettier --check [six owned locale/test paths]",
+      "exit_code": 0,
+      "artifact": "resume-locale-format.txt"
+    }
+  ],
+  "additional_read_only_review": [
+    {
+      "path": "src/lib/data.ts",
+      "final_sha256": "fdbab5e5dd81996981257364a21997feba5bf96683d9013084b9f742dfb5d3ab",
+      "final_lines": 1610,
+      "read_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 200
+        },
+        {
+          "version": "final",
+          "start": 201,
+          "end": 400
+        },
+        {
+          "version": "final",
+          "start": 401,
+          "end": 600
+        },
+        {
+          "version": "final",
+          "start": 601,
+          "end": 800
+        },
+        {
+          "version": "final",
+          "start": 801,
+          "end": 1000
+        },
+        {
+          "version": "final",
+          "start": 1001,
+          "end": 1200
+        },
+        {
+          "version": "final",
+          "start": 1201,
+          "end": 1400
+        },
+        {
+          "version": "final",
+          "start": 1401,
+          "end": 1610
+        },
+        {
+          "version": "final",
+          "start": 195,
+          "end": 215
+        },
+        {
+          "version": "final",
+          "start": 473,
+          "end": 487
+        },
+        {
+          "version": "final",
+          "start": 625,
+          "end": 660
+        },
+        {
+          "version": "final",
+          "start": 1288,
+          "end": 1303
+        },
+        {
+          "version": "final",
+          "start": 1370,
+          "end": 1384
+        },
+        {
+          "version": "final",
+          "start": 1,
+          "end": 250
+        },
+        {
+          "version": "final",
+          "start": 1272,
+          "end": 1292
+        },
+        {
+          "version": "final",
+          "start": 1358,
+          "end": 1380
+        }
+      ],
+      "reader": "/root/review_changes",
+      "edited_by_this_lane": false,
+      "audit_notes": "Complete1610-line source read. Current October positive/null outcomes, per-state uncertainty/construction caveat, retained role-placement failure,39Lean proof scope, dated5171 smoke tests,92releases and separate software/device DOIs remain explicit. Frozen138-case/AgentDojo stages are separate; SentinelSSH has no invented route/repository. Raised five concrete semantic issues; owner corrected earlier-stageNodeJS attribution, asymmetric passkey wording, expected lookup/cancel vs cancel/re-add modification, tracepoint version caveat and Electron multiprocess wording. All changed spans re-read after owner freeze. Other project/lab/write-up content read in full; independent research replication is not claimed. Final source-action UX re-read: doiKind distinguishes software/publication, Simurgh header source choices are repository and software archive DOI21737792, older preprint remains only in explicitly labelled publication resources; original publication dates preserved and meaningful ECRSM/Electron modification dates updated to2026-11-04.",
+      "final_bytes": 85158
+    },
+    {
+      "path": "src/lib/data.test.ts",
+      "final_sha256": "93b9990dbbd82c6c4ace3129104bd789793844b466b1aec6bbad177dae325184",
+      "final_lines": 299,
+      "read_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 299
+        }
+      ],
+      "reader": "/root/review_changes",
+      "edited_by_this_lane": false,
+      "audit_notes": "Complete latest test source read; publication/resource identity, positive/null/frozen-stage/scoped evidence, supporting work contract and full localized numeric/API fidelity inspected. No edits. Complete final299-line file re-read after primary software-link/publication assertions were updated.",
+      "final_bytes": 11904
+    },
+    {
+      "path": "src/lib/project-localization.test.ts",
+      "final_sha256": "f6447002a67fbe4619524b7442c8274ccfdc89b118ae7c28dcafed27b01522ba",
+      "final_lines": 325,
+      "read_spans": [
+        {
+          "version": "final",
+          "start": 1,
+          "end": 200
+        },
+        {
+          "version": "final",
+          "start": 201,
+          "end": 325
+        }
+      ],
+      "reader": "/root/review_changes",
+      "edited_by_this_lane": false,
+      "audit_notes": "Complete latest test source read; publication/resource identity, positive/null/frozen-stage/scoped evidence, supporting work contract and full localized numeric/API fidelity inspected. No edits.",
+      "final_bytes": 10209
+    }
+  ],
+  "notes": [
+    "Both source PDFs fully read. Their author-reported facts are reconciled without implying independent result replication.",
+    "Five sole-author preprints and two coordinated vendor disclosures replace About activity statistics in the page lane. Existing70+ project-index context remains; removed from current author summaries.",
+    "Professional Gmail and security-policy Outlook choices remain unchanged; no public phone number added.",
+    "No direct Anthropic employment, Research Resident employment or SentinelSSH repository existence inferred.",
+    "All five locale dictionaries translated; technical identifiers retain original spellings. Native-speaker review is not claimed.",
+    "No data, component, story, root log, dependency or build edits in this supplemental lane. Parent owns integrated build, browser and root postflight."
+  ],
+  "read_only_findings": [
+    {
+      "status": "fixed_by_owner",
+      "path": "src/lib/data.ts",
+      "lines": [
+        201
+      ],
+      "note": "Retained Node.js/JavaScript stack now explicitly belongs to earlier frozen containment gateway."
+    },
+    {
+      "status": "fixed_by_owner",
+      "path": "src/lib/data.ts",
+      "lines": [
+        483
+      ],
+      "note": "WebAuthn described as asymmetric public-key credentials rather than shared secrets."
+    },
+    {
+      "status": "fixed_by_owner",
+      "path": "src/lib/data.ts",
+      "lines": [
+        635
+      ],
+      "note": "Expected lookup/cancellation complexity separated from cancel-and-re-add modification."
+    },
+    {
+      "status": "fixed_by_owner",
+      "path": "src/lib/data.ts",
+      "lines": [
+        1295
+      ],
+      "note": "Tracepoint fields/availability still require checking across kernel versions; no blanket stable ABI claim."
+    },
+    {
+      "status": "fixed_by_owner",
+      "path": "src/lib/data.ts",
+      "lines": [
+        1375
+      ],
+      "note": "Electron main and renderer process architecture stated correctly."
+    }
+  ],
+  "reviewed_at": "2026-11-04T01:49:31.834Z"
+}

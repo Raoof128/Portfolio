@@ -82,6 +82,42 @@ describe("ProjectCard", () => {
     expect(panel.getAttribute("id")).not.toContain(" ");
   });
 
+  it("moves and activates tabs with arrows, Home and End while using one Tab stop", () => {
+    renderCard(mockProject);
+    const build = screen.getByRole("tab", { name: /build/i });
+    const secure = screen.getByRole("tab", { name: "Security" });
+    expect(build).toHaveAttribute("tabindex", "0");
+    expect(secure).toHaveAttribute("tabindex", "-1");
+    build.focus();
+    fireEvent.keyDown(build, { key: "ArrowRight" });
+    expect(secure).toHaveFocus();
+    expect(secure).toHaveAttribute("aria-selected", "true");
+    expect(build).toHaveAttribute("tabindex", "-1");
+    fireEvent.keyDown(secure, { key: "Home" });
+    expect(build).toHaveFocus();
+    fireEvent.keyDown(build, { key: "End" });
+    expect(secure).toHaveFocus();
+    fireEvent.keyDown(secure, { key: "ArrowLeft" });
+    expect(build).toHaveFocus();
+    expect(screen.getByRole("tabpanel")).toHaveAttribute("tabindex", "0");
+  });
+
+  it("keeps IDs unique when project titles repeat", () => {
+    renderCard(mockProject);
+    renderCard(mockProject);
+    const panels = screen.getAllByRole("tabpanel");
+    expect(panels[0].id).not.toBe(panels[1].id);
+    const ids = [...document.querySelectorAll("[id]")].map(
+      (element) => element.id,
+    );
+    expect(new Set(ids).size).toBe(ids.length);
+    panels.forEach((panel) => {
+      expect(
+        document.getElementById(panel.getAttribute("aria-labelledby")!),
+      ).toHaveAttribute("aria-controls", panel.id);
+    });
+  });
+
   it("renders demo link when provided", () => {
     renderCard(mockProject);
     const demoLink = screen.getByRole("link", { name: /watch demo/i });

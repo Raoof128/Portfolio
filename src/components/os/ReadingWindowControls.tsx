@@ -176,12 +176,7 @@ export function ReadingWindowControls({
         createPortal(
           <div
             className="os-window-controls-panel os-menu-popover win7"
-            // The shell's appearance, read on open, so the Night tokens apply in the portal.
-            data-appearance={
-              portalHost.getAttribute("data-appearance") === "light"
-                ? "light"
-                : "dark"
-            }
+            // The portal stays inside the themed shell and inherits its live appearance.
             ref={panel}
           >
             {/* Step buttons show their words, so the visible text is also the

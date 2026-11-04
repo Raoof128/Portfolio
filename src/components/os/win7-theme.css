@@ -359,11 +359,11 @@
   --win7-font: var(--win7-font-zh);
 }
 
-/* Night title text. 7.css sets the title colour and glow directly, not through a token. */
+/* Night title text. A tight dark halo keeps white labels readable across the bitmap glare. */
 .win7[data-appearance="dark"] .title-bar-text,
 [data-appearance="dark"] .win7 .title-bar-text {
   color: var(--w7-title-c);
-  text-shadow: var(--win7-text-shadow);
+  text-shadow: 0 0 2px var(--win7-ink), var(--win7-text-shadow);
 }
 
 /* Baseline shell. */

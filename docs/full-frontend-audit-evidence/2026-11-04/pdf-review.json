@@ -1,0 +1,44 @@
+[
+  {
+    "path": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+    "pages": "6",
+    "tagged": "no",
+    "encrypted": "no",
+    "title": ""
+  },
+  {
+    "path": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+    "pages": "13",
+    "tagged": "no",
+    "encrypted": "no",
+    "title": "The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems"
+  },
+  {
+    "path": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+    "pages": "2",
+    "tagged": "yes",
+    "encrypted": "no",
+    "title": null
+  },
+  {
+    "path": "public/Project_Simurgh_Preprint_v1.0.pdf",
+    "pages": "12",
+    "tagged": "no",
+    "encrypted": "no",
+    "title": "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions"
+  },
+  {
+    "path": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+    "pages": "5",
+    "tagged": "no",
+    "encrypted": "no",
+    "title": ""
+  },
+  {
+    "path": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+    "pages": "8",
+    "tagged": "no",
+    "encrypted": "no",
+    "title": "Aion-BibleQA: Evaluating Retrieval and Citation Faithfulness in Verse-Grounded Bible RAG Systems"
+  }
+]

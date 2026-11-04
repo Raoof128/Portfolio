@@ -1,0 +1,85 @@
+{
+  "status": "review complete; no remaining data/PDF/privacy/census wording concern demonstrated before final curation",
+  "reviewed_template": "work/full-frontend-audit/report-template.md",
+  "template_sha256": "ef61162146424fcb5160f253e40b13ec8913dfa549822b842bbb484c58b0e81d",
+  "template_lines": 116,
+  "read_spans": [
+    [
+      1,
+      116
+    ]
+  ],
+  "subsequent_rechecks": [
+    "Updated finalmanualextent60736 andcurationlinkhandling reread after owner edits."
+  ],
+  "supported_claims": {
+    "initial_census": {
+      "files": 273,
+      "manually_reviewed_text_files": 259,
+      "manually_reviewed_text_lines": 57933,
+      "binary_assets": 13,
+      "structurally_verified_generated_lock_files": 1,
+      "generated_lock_lines": 9803
+    },
+    "final_current_census": {
+      "files": 278,
+      "manually_reviewed_text_files": 264,
+      "current_manual_line_extent": 60736,
+      "binary_assets": 13,
+      "generated_lock_files": 1,
+      "added_tests_helpers": 5
+    },
+    "src_scope": {
+      "current_paths": 216,
+      "text_files": 215,
+      "remaining_binary": "src/app/favicon.ico",
+      "paths_missing_from_ledger": [],
+      "text_records_without_matching_span_evidence": []
+    },
+    "data_reconciliation": "23-rowmatrix andfinalsource/peerledgers support current/frozenstudy,positive/null,uncertainty,OpenAIfailure/correction,datedproof/testsnapshot,separateDOIs,education/availability/chronology,SentinelSSHandretainedqualifiedevidence.",
+    "pdf": "ExactpublicSHAagreeswithredactionrecordandindependentcheck;allother substantive text,pixelbounds,andfiveoriginalresearchPDFbyteidentity claims match independent records."
+  },
+  "resolved_review_concerns": [
+    {
+      "id": "RT01",
+      "issue": "Earlier coverageledger reflected60708lines and404-linefull-audit.spec.ts while finalsourcehad431(+27). Newlastfixtureguardadds1line, so currentextent60736.",
+      "resolution": "Template now says60736. Curation rebuildscoverage/hashmanifest fromcurrentbytes andrequiresmatchingreviewevidence beforepublishing."
+    },
+    {
+      "id": "RT02",
+      "issue": "Template linked final-peer-review.md but priorcurationglobswouldnotcopyit.",
+      "resolution": "Owneradded*review.md curationpluslocal-linktraversal. All36currentlyplannedreport/reviewinputs scanwithout unresolvedlocal links or private-source links."
+    }
+  ],
+  "privacy_plan_review": {
+    "curation_script": "work/full-frontend-audit/curate.py",
+    "destination_exists_at_review": false,
+    "planned_files_currently_present": 103,
+    "planned_text_files_scanned": 62,
+    "known_phone_matches": [],
+    "inline_json_attachments_scanned": 38,
+    "attachment_phone_matches": [],
+    "excluded_source_extracts": true,
+    "excluded_original_uploaded_resume_rasters": true,
+    "phone_free_preview": {
+      "width": 918,
+      "height": 1188,
+      "scale": 1.5,
+      "matches_verified_public_pdf": true,
+      "sha256": "c704cad2e9b1e407fa5f2d22b74c4950bf6e917b976296c1402d292b03bc367a"
+    },
+    "limit": "This validates the current copy plan and existing inputs. The final copied evidence directory must be re-scanned after curation; no number contents are emitted."
+  },
+  "additional_updated_plan_checks": {
+    "planned_report_review_inputs": 36,
+    "known_phone_matches": 0,
+    "unresolved_local_markdown_links": 0,
+    "private_source_links": 0,
+    "phone_free_preview_matches_verified_public_pdf": true
+  },
+  "pending_final_evidence": "Finaldestinationhasnotbeencreatedatthisreview. Curatorisgatedon62successfulbrowsercases andwillscanactualcopiedtext. Browser/axe/postflightplaceholderswereexplicitlypendingandwerenottreatedascompletedgates.",
+  "limits": [
+    "This review independently checked reconciliation/PDFclaims,census extent/coverage paths,andexistingcurationinputs. OtherUI/contrast/browserclaimsremainwiththeiractualmeasuringowners andfinalgate evidence.",
+    "No product,templateorcurator edits by this reviewer. No contact-number contents emitted."
+  ]
+}

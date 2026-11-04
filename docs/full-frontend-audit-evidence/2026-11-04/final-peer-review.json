@@ -1,0 +1,457 @@
+{
+  "phase": "Independent final shell/pages/UI source review",
+  "reviewer": "/root/signature_motion",
+  "completed_at_utc": "2026-11-04T02:09:30.725883+00:00",
+  "status": "complete",
+  "product_edits": false,
+  "scope": {
+    "full_files": 15,
+    "full_lines": 7965,
+    "requested_focus": [
+      "ResearchOS no-JavaScript selector",
+      "ProjectDetail post-commit fragment focus",
+      "shared appearance store",
+      "Contact focus/resize/native fallback",
+      "OSApplicationBridge handover and reading offsets"
+    ]
+  },
+  "baseline": {
+    "source_manifest": "work/full-frontend-audit/initial-manifest.json",
+    "reconstruction": "git HEAD bytes plus saved initial-diff.patch, applying original hunks in memory; all 15 resulting SHA256 values equal initial-manifest values",
+    "proof": "work/full-frontend-audit/final-peer-baseline-proof.json",
+    "audit_only_diff": "work/full-frontend-audit/final-peer-audit-only.diff",
+    "audit_only_diff_sha256": "c51b671c9a7f3af253a627e204a0fc1c062360e40fd2574b04684648edddef48",
+    "audit_only_diff_lines": 1358,
+    "audit_only_diff_full_read_spans": [
+      [
+        1,
+        300
+      ],
+      [
+        301,
+        600
+      ],
+      [
+        601,
+        900
+      ],
+      [
+        901,
+        1150
+      ],
+      [
+        1151,
+        1358
+      ]
+    ],
+    "first_upgrade_context": "Initial manifest and saved patch already contain the earlier reviewer upgrade. Audit-only reconstruction prevents attributing that earlier upgrade to current fixes."
+  },
+  "files": [
+    {
+      "path": "src/components/os/ResearchOS.tsx",
+      "initial_audit_sha256": "1f6002e3eb219c28f00a97d94b971c70ce9a19869be634106b32c65eb7dd969d",
+      "peer_start_sha256": "2dc51d18731de65a692e8411bb0a3f974d1ec1f5a57c3f0053d121d42e679138",
+      "lines": 1777,
+      "read_spans": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          720
+        ],
+        [
+          721,
+          960
+        ],
+        [
+          961,
+          1200
+        ],
+        [
+          1201,
+          1440
+        ],
+        [
+          1441,
+          1640
+        ],
+        [
+          1641,
+          1777
+        ]
+      ],
+      "final_sha256": "2dc51d18731de65a692e8411bb0a3f974d1ec1f5a57c3f0053d121d42e679138",
+      "final_lines": 1777,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Audited click interception, modifiers/button/target/download preservation, search/IME/dialog focus, optional lock and locale handoff, active application lifecycle, shared appearance, native no-JavaScript submit exception and reading chrome."
+    },
+    {
+      "path": "src/components/os/ResearchOS.test.tsx",
+      "initial_audit_sha256": "056cca97cfcfba9d444557402c2e1b990a305a95d0af8014b391241b9fe1fe3d",
+      "peer_start_sha256": "b6d429d8b424b2a41335eb075ee60358a8eaa12454b5829c5974b314c066380a",
+      "lines": 1648,
+      "read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          660
+        ],
+        [
+          661,
+          880
+        ],
+        [
+          881,
+          1100
+        ],
+        [
+          1101,
+          1320
+        ],
+        [
+          1321,
+          1540
+        ],
+        [
+          1541,
+          1648
+        ]
+      ],
+      "final_sha256": "b6d429d8b424b2a41335eb075ee60358a8eaa12454b5829c5974b314c066380a",
+      "final_lines": 1648,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full test file read including SSR native selector validity, native form validation, same-frame lifecycle, appearance cross-tab/blocked-storage remount, target/download, modified clicks, all-locale first entry, keyboard/IME/search and lock behavior."
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "initial_audit_sha256": "0f310743a4d14287953b98ee4a744834e8d90e4e4c8b8115ca2e48e2dff9c0df",
+      "peer_start_sha256": "ee682256b7535dfa5a9e91859a7f9620c26fc78aa2cf64b761944223806998bc",
+      "lines": 640,
+      "read_spans": [
+        [
+          1,
+          230
+        ],
+        [
+          231,
+          460
+        ],
+        [
+          461,
+          640
+        ]
+      ],
+      "final_sha256": "ee682256b7535dfa5a9e91859a7f9620c26fc78aa2cf64b761944223806998bc",
+      "final_lines": 640,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Focus scheduled in effect after section commit; stale animation frame cleanup, hidden/inert guards, decoded fragment target containment, focusable fragment destinations, native modified anchors and current software DOI label inspected."
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+      "initial_audit_sha256": "e05f48c0ba50ba03e6be59d729f50fc60ec208aac779ecca2ff532d3863740ba",
+      "peer_start_sha256": "876e345d2949a4056efe46bc000ef0a06fc1a11832bae440c93b94f7cc964978",
+      "lines": 426,
+      "read_spans": [
+        [
+          1,
+          210
+        ],
+        [
+          211,
+          426
+        ]
+      ],
+      "final_sha256": "876e345d2949a4056efe46bc000ef0a06fc1a11832bae440c93b94f7cc964978",
+      "final_lines": 426,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full tests read: early synchronous RAF reproduction, five-locale direct fragments, keyboard/reading paths and native modified anchors; current software DOI versus historical source library also validated."
+    },
+    {
+      "path": "src/components/os/appearance.ts",
+      "initial_audit_sha256": "ee0678a326adcdfd9bd7e77cbbf269fdd4370b29c650481da7c4aa6a19899659",
+      "peer_start_sha256": "e9ba6a5bcbb2160b77fc634e497d3f001c2e6bc351eb780a4ea33ed571ab49a1",
+      "lines": 56,
+      "read_spans": [
+        [
+          1,
+          56
+        ]
+      ],
+      "final_sha256": "e9ba6a5bcbb2160b77fc634e497d3f001c2e6bc351eb780a4ea33ed571ab49a1",
+      "final_lines": 56,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Shared nullable fallback retains manual choice after blocked writes, including readable stale storage; relevant storage events reset fallback and notify consumers; subscription cleanup inspected."
+    },
+    {
+      "path": "src/components/os/appearance.test.ts",
+      "initial_audit_sha256": "3aa5b9500e1ff6cd07f90748cb33fe19f1cd7c79f20b14d99b8bc98fd48686c3",
+      "peer_start_sha256": "7e17c508ccbd8a271a549d272a286e155c2381f9447d0a73869866a7afec8e2c",
+      "lines": 79,
+      "read_spans": [
+        [
+          1,
+          79
+        ]
+      ],
+      "final_sha256": "7e17c508ccbd8a271a549d272a286e155c2381f9447d0a73869866a7afec8e2c",
+      "final_lines": 79,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full persisted/default/invalid/unavailable/readable-but-unwritable cases read; cleanup resets module fallback between test cases."
+    },
+    {
+      "path": "src/components/ui/SecureContactForm.tsx",
+      "initial_audit_sha256": "1447743d3a06df69ed36ef5809b7367d63707003d864e727e88511a699a15bb3",
+      "peer_start_sha256": "96a629b4b7aca50ecba17fd8bd7a79b4fc6dfdbf0436277bf277941d188979d7",
+      "lines": 668,
+      "read_spans": [
+        [
+          1,
+          230
+        ],
+        [
+          231,
+          460
+        ],
+        [
+          461,
+          668
+        ]
+      ],
+      "final_sha256": "96a629b4b7aca50ecba17fd8bd7a79b4fc6dfdbf0436277bf277941d188979d7",
+      "final_lines": 668,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Inspected required/email/maxlength native fallback, localized noscript instructions, disabled pre-hydration clipboard, JS validation/timer cancellation, draft-only wording and bounded metadata; coalesced resize handler retains focused control, checks hidden/inert/document state and corrects visual viewport/nearest scroller."
+    },
+    {
+      "path": "src/components/ui/SecureContactForm.test.tsx",
+      "initial_audit_sha256": "ce3ec3410c31e3f4a5266e09497191a9e30f3e5571e0ed762be5a6a8e66abba1",
+      "peer_start_sha256": "14db8dba1243a411dee4fb4c30772d68d3fa84ef14a1ee6205870c6b230e72b8",
+      "lines": 568,
+      "read_spans": [
+        [
+          1,
+          205
+        ],
+        [
+          206,
+          420
+        ],
+        [
+          421,
+          568
+        ]
+      ],
+      "final_sha256": "14db8dba1243a411dee4fb4c30772d68d3fa84ef14a1ee6205870c6b230e72b8",
+      "final_lines": 568,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full tests read including five-locale SSR native form, validation, deferred draft lifecycle, pre-hydration copy, resize coalescing, visual viewport correction, visible/unfocused no-op and cleanup."
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.tsx",
+      "initial_audit_sha256": "67457714c0c6ca74d568f1788694be642f1a08de419c44fd1f0fc918a5270705",
+      "peer_start_sha256": "3d0d33997f48ae398ae79183857a00acdb4e1b05b9413ce50effbb8eed490663",
+      "lines": 80,
+      "read_spans": [
+        [
+          1,
+          80
+        ]
+      ],
+      "final_sha256": "3d0d33997f48ae398ae79183857a00acdb4e1b05b9413ce50effbb8eed490663",
+      "final_lines": 80,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Snapshot reads lower command-toolbar edge before title-bar fallback, captures bounded pre-hydration field/filter/caret state, and publishes concrete route view through layout effect without retaining server fallback."
+    },
+    {
+      "path": "src/components/os/OSApplicationBridge.test.tsx",
+      "initial_audit_sha256": "9ff069ea030743ac29d9d55fd37f215b67af0fc64f596e38437c08078a75fc51",
+      "peer_start_sha256": "53b9bba6cfb744ddd25e54c17d9464eb610460fb72de80b277717b8e007e922e",
+      "lines": 382,
+      "read_spans": [
+        [
+          1,
+          205
+        ],
+        [
+          206,
+          382
+        ]
+      ],
+      "final_sha256": "53b9bba6cfb744ddd25e54c17d9464eb610460fb72de80b277717b8e007e922e",
+      "final_lines": 382,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full tests read including real hydrateRoot synthetic pre-hydration input/caret preservation and toolbar reading offset; this is not a claim about native autofill."
+    },
+    {
+      "path": "src/components/os/use-reading-window.ts",
+      "initial_audit_sha256": "00fae2f7d9648e4966c928f0123292b73fc473f2aabf5d9ca6e1a282c75abd3d",
+      "peer_start_sha256": "a3b32f9e73413069ec403c478f17370f85c3ec864bb443ce9c7845405e729dce",
+      "lines": 464,
+      "read_spans": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          464
+        ]
+      ],
+      "final_sha256": "a3b32f9e73413069ec403c478f17370f85c3ec864bb443ce9c7845405e729dce",
+      "final_lines": 464,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Document-scoped reading offset reset audited with retained frame geometry; pointer/resize/minimize/restore, layout translation, observer/listener lifecycle and reading offsets reviewed."
+    },
+    {
+      "path": "src/components/os/use-reading-window.test.tsx",
+      "initial_audit_sha256": "72d8820f14a980a9c6e47629b5be03092376e720369899326fc83d39723fc5a2",
+      "peer_start_sha256": "9d7fa9ae0a7daed29c0180f469a69372572ade04848f2c288edd220ce102db7d",
+      "lines": 571,
+      "read_spans": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          571
+        ]
+      ],
+      "final_sha256": "9d7fa9ae0a7daed29c0180f469a69372572ade04848f2c288edd220ce102db7d",
+      "final_lines": 571,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full tests read; retained-frame next-document regression uses keyed content like production, ensures scroll zero and no stale reading offset across mobile/desktop transitions."
+    },
+    {
+      "path": "src/components/os/ReadingWindowControls.tsx",
+      "initial_audit_sha256": "164029051928af861a8798e22ad6f57b2dd366f796706fd365ce10054a873a98",
+      "peer_start_sha256": "882825fb49753e0950d7c829dcc58dadd8daf999c06bffdb5a951bb641ba2042",
+      "lines": 293,
+      "read_spans": [
+        [
+          1,
+          170
+        ],
+        [
+          171,
+          293
+        ]
+      ],
+      "final_sha256": "882825fb49753e0950d7c829dcc58dadd8daf999c06bffdb5a951bb641ba2042",
+      "final_lines": 293,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Portal remains inside themed shell to inherit live appearance; keyboard composition/modifiers, focus movement, outside/scroll/resize cleanup and pointer controls inspected."
+    },
+    {
+      "path": "src/components/os/reading-window.css",
+      "initial_audit_sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+      "peer_start_sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+      "lines": 267,
+      "read_spans": [
+        [
+          1,
+          267
+        ]
+      ],
+      "final_sha256": "f9a14bf548c19321123f976d348152608303941a45067a2d9ba22935d22bb13d",
+      "final_lines": 267,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full CSS read for floating frame geometry, resizing controls, control-panel positioning/scroll limits, responsive container behavior and reduced-motion rules; file unchanged since audit initial snapshot."
+    },
+    {
+      "path": "src/components/os/application-context.tsx",
+      "initial_audit_sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "peer_start_sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "lines": 46,
+      "read_spans": [
+        [
+          1,
+          46
+        ]
+      ],
+      "final_sha256": "76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e",
+      "final_lines": 46,
+      "unchanged_during_peer_review": true,
+      "initial_baseline_reconstructed_and_sha256_verified": true,
+      "notes": "Full registration, content-ID and initial application state context definitions read; file unchanged since audit initial snapshot."
+    }
+  ],
+  "supplemental_dependency_reads": [
+    {
+      "path": "src/components/os/WorkspaceWindows.tsx",
+      "sha256": "ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb",
+      "read_spans": [
+        [
+          185,
+          215
+        ],
+        [
+          765,
+          795
+        ]
+      ],
+      "full_file_review": false,
+      "note": "Confirmed retained frame hook configuration and production scroll body keyed by descriptor.id; disconfirms stale DOM-scroll concern when changing documents."
+    }
+  ],
+  "findings": [],
+  "review_conclusion": "No demonstrated new regression or blocking finding in the reviewed current bytes.",
+  "validated_observations": [
+    "No-JavaScript hide selector excludes only native Contact submit while hiding scripted shell controls; server form retains native required/email checks.",
+    "Fragment focus now follows committed panel visibility, with stale frame cancellation and keyboard/native anchor behavior preserved.",
+    "Manual appearance survives blocked persistence/remount while later cross-tab changes propagate to shell and portaled controls.",
+    "Contact resize work is coalesced and cleaned up, retains the focused field, and does not move visible or unfocused controls.",
+    "Bridge uses command toolbar lower edge; production reading body key plus hook offset reset prevents prior document progress leaking into a replacement document."
+  ],
+  "validation": [
+    {
+      "command": "npx vitest run src/components/os/ResearchOS.test.tsx 'src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx' src/components/os/appearance.test.ts src/components/ui/SecureContactForm.test.tsx src/components/os/OSApplicationBridge.test.tsx src/components/os/use-reading-window.test.tsx",
+      "result": "passed",
+      "test_files": 6,
+      "tests": 174,
+      "duration_seconds": 20.05,
+      "exit_code": 0,
+      "runner": "vitest 4.1.12",
+      "console_notes": [
+        "Two jsdom notices: Not implemented: navigation to another Document. These are environment navigation notices; no assertion failures."
+      ]
+    }
+  ],
+  "limits": [
+    "This review performs no production build or broad browser run; parent owns final export, route, native zoom and visual validation after remaining taskbar CSS.",
+    "jsdom SSR selector/native-validity checks do not execute browser cascade layers or a native mail client. Native email-handler behavior depends on the visitor device and configuration.",
+    "Visual viewport resize tests use deterministic geometry; physical-device software keyboards, native autofill, screen-reader behavior and native-speaker translation review are not certified by this review.",
+    "Supplemental WorkspaceWindows reads cover only specified dependency excerpts, not a second full audit of that file."
+  ]
+}

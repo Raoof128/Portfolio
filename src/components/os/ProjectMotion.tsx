@@ -125,6 +125,7 @@ function ArtworkPanel({ slug, locale }: { slug: ArtworkSlug; locale: Locale }) {
       <div
         ref={stageRef}
         className="os-motion-stage"
+        data-artwork-ready={Artwork !== null}
         style={{ background: artworkRegistry[slug].background }}
         aria-hidden={artwork.failed ? undefined : true}
       >

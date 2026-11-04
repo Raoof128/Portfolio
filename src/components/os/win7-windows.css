@@ -522,6 +522,33 @@
   font-size: var(--win7-small-size);
 }
 
+/* Below the floating-workspace threshold, keep one generous reading surface.
+   Secondary Explorer navigation responds to this surface's own container width. */
+@media (min-width: 701px) and (max-width: 1023px) and (min-height: 600px) {
+  .os-shell.win7 :is(.os-workspace-window, main.os-window) {
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    min-height: calc(100dvh - var(--os-dock-clearance) - 32px);
+    margin: 16px auto 0;
+    padding-bottom: 0;
+  }
+}
+
+/* A short viewport needs document scrolling even when its width looks like a
+   desktop. No fixed-height inner scroller competes with the software keyboard. */
+@media (max-height: 599px) {
+  .os-shell.win7 :is(.os-workspace-window, main.os-window) {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+  .os-shell.win7 :is(.os-workspace-window, main.os-window) > .window-body {
+    overflow: visible;
+    max-height: none;
+  }
+}
+
 /* Phones (700px and below): full-width windows with no radius. The inline rect is beaten
    with !important. Height is a minimum, so long reading text scrolls with the page and is
    not clipped by the frame's overflow. The body keeps clear of the taskbar. */
@@ -541,7 +568,8 @@
   .os-shell.win7 .window.glass > .title-bar {
     height: auto;
     min-height: var(--win7-title-h);
-    padding-inline: 4px 0;
+    padding-left: max(4px, env(safe-area-inset-left, 0px));
+    padding-right: env(safe-area-inset-right, 0px);
   }
   .os-shell.win7 .window.glass > .title-bar .title-bar-text {
     line-height: var(--win7-caption-w);
@@ -570,7 +598,16 @@
     padding-inline: 8px 12px;
   }
   .os-shell.win7 .window.glass > .window-body {
+    margin-left: max(var(--w7-w-space), env(safe-area-inset-left, 0px));
+    margin-right: max(var(--w7-w-space), env(safe-area-inset-right, 0px));
     padding-block-end: var(--os-dock-clearance);
+  }
+  .os-shell.win7 .window.glass > .os-window-toolbar {
+    margin-left: max(var(--w7-w-space), env(safe-area-inset-left, 0px));
+    margin-right: max(var(--w7-w-space), env(safe-area-inset-right, 0px));
+  }
+  .os-shell.win7 .os-workspace-window {
+    padding-bottom: 0;
   }
 }
 

@@ -2,34 +2,34 @@ const en = {
   seo: {
     skip_to_content: "Skip to main content",
     home_title_default:
-      "Mohammad Raouf Abedini | AI Security Research & LLM Agent Red-Teaming",
+      "Mohammad Raouf Abedini | AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation",
     home_description:
-      "Security researcher building systems that measure and contain the cyber capabilities of frontier AI. Creator of Project Simurgh, an open-source containment-attestation framework that red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent did after a guardrail miss. Evaluated Claude in Anthropic's safety-evaluation program. Also authored The Invisible Window (100% screen-capture evasion in tested Windows/macOS laboratory configurations, responsibly disclosed).",
+      "AI security researcher studying adversarial robustness, AI control and empirical safety evaluation. Project Simurgh checks what an agent was allowed to do using host-side controls and SHA-256-pinned, replayable study evidence. Evaluated Claude in Anthropic’s safety-evaluation program via Alignerr, Jan–Mar 2026. Available full-time from December 2026 for a three- to six-month San Francisco placement; visa sponsorship required.",
     home_og_description:
-      "LLM agent red-teaming and verifiable containment attestation. Creator of Project Simurgh. Anthropic safety-evaluation contributor. Author of The Invisible Window.",
+      "Adversarial robustness, AI control and empirical safety evaluation. Creator of Project Simurgh; evaluated Claude in Anthropic’s safety-evaluation program via Alignerr, Jan–Mar 2026.",
     keyword_1: "AI Security Research",
-    keyword_2: "LLM Agent Red-Teaming",
+    keyword_2: "Adversarial Robustness",
     keyword_3: "Responsible Disclosure",
-    keyword_4: "LLM Security Evaluation",
+    keyword_4: "Empirical Safety Evaluation",
     keyword_5: "Cross-Platform Exploit Development",
     keyword_6: "AI Safety",
     keyword_7: "Screen Capture Evasion",
     keyword_8: "Offensive Security",
-    keyword_9: "Verifiable Containment Attestation",
+    keyword_9: "AI Control",
     about_title: "About",
     about_description:
-      "Security researcher focused on measuring and containing the cyber capabilities of frontier AI: LLM agent red-teaming, verifiable containment attestation, vulnerability research, and responsible disclosure. Anthropic safety-evaluation contributor.",
+      "AI security researcher focused on adversarial robustness, AI control and empirical safety evaluation. Creator of Project Simurgh; Claude safety evaluation via Alignerr for Anthropic, Jan–Mar 2026.",
     about_og_description:
-      "AI security research, LLM agent red-teaming, and verifiable containment attestation. Creator of Project Simurgh.",
+      "Adversarial robustness, AI control and empirical safety evaluation. Creator of Project Simurgh; evaluated Claude in Anthropic’s safety-evaluation program via Alignerr, Jan–Mar 2026.",
     contact_title: "Contact",
     lab_title: "Lab",
     lab_description:
       "Experimental code, PoCs, and cybersecurity research snippets.",
     resume_title: "Résumé",
     resume_description:
-      "Résumé of Mohammad Raouf Abedini: AI security research, LLM agent red-teaming, verifiable containment attestation, and security engineering.",
+      "Résumé of Mohammad Raouf Abedini: adversarial robustness, AI control, empirical safety evaluation and security engineering. Available full-time from December 2026.",
     resume_og_description:
-      "Résumé of Mohammad Raouf Abedini: AI security research, LLM agent red-teaming, and security engineering.",
+      "Résumé of Mohammad Raouf Abedini: adversarial robustness, AI control, empirical safety evaluation and security engineering. Available full-time from December 2026.",
     security_policy_title: "Security Policy",
     security_policy_description:
       "Security vulnerability disclosure policy and responsible disclosure guidelines.",
@@ -62,15 +62,16 @@ const en = {
   },
   hero: {
     intro:
-      "I build systems to measure and contain the cyber capabilities of frontier AI. I created Project Simurgh, which red-teams LLM agents and produces signed, offline-verifiable evidence of what an agent was allowed to do after a guardrail miss. It contained 138/138 cases missed by the classifier and reduced a live agent's attack success on AgentDojo from 9/140 to 0/140. I evaluated Claude in Anthropic's safety-evaluation program. My current work focuses on defensive tools for advanced-AI cyber risk.",
-    researcher: "AI Security Researcher",
+      "I build and test host-side controls for tool-using AI agents. In Project Simurgh’s October 2026 matched-control study, restricted-state trials with new effects fell from 17/24 to 0/24 on Llama-3.2-3B, with 23/24 useful completions; gpt-6-luna’s baseline was already 0/24, so it showed no incremental protection. I evaluated Claude in Anthropic’s safety-evaluation program via Alignerr from January to March 2026.",
+    researcher:
+      "AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation",
   },
   lab: {
     enter_lab: "Explore the Lab",
   },
   footer: {
     last_index: "Last Index",
-    last_index_value: "Jul 2026",
+    last_index_value: "Nov 2026",
     status: "Status",
     environment: "Environment",
     built_with: "Built with",
@@ -89,16 +90,16 @@ const en = {
     identity_record: "Profile",
     hero_title: "Mohammad Raouf Abedini",
     hero_subtitle:
-      "AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering",
+      "AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation",
     bio_1:
-      "I research ways to measure and contain the cyber capabilities of frontier AI, and I am ready to relocate. My public work includes an open-source containment-attestation framework and five DOI-archived Zenodo preprints indexed under ORCID. I also evaluated Claude in Anthropic's safety-evaluation program.",
+      "I research adversarial robustness, AI control and empirical safety evaluation for tool-using agents. I am the sole author of Project Simurgh and five Zenodo preprints, and evaluated Claude in Anthropic’s safety-evaluation program via Alignerr from January to March 2026. I am available full-time from December 2026 for a three- to six-month San Francisco research placement; visa sponsorship is required.",
     bio_2:
-      "I created Project Simurgh, a provider-agnostic framework that red-teams LLM agents under a dishonest-producer threat model. It produces Ed25519-signed, offline-verifiable evidence of what an agent did after a guardrail miss. In reported tests, it contained 138/138 cases missed by Llama Guard 4 and reduced a live agent's attack success on AgentDojo from 9/140 to 0/140. The project includes five machine-checked Lean theorems, is licensed under AGPL-3.0, and has 3,057 tests.",
+      "Project Simurgh is a host-side agent-authorisation prototype. Its October 2026 study used 24 tasks, two trials, three matched controls and two models: 288 replayed branches. On Llama-3.2-3B, restricted-state trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions and no valid proposal blocked. OpenAI gpt-6-luna’s baseline was already 0/24, so no incremental protection was observed. The project reports 39 Lean 4 proof files, 5,171 tests in the 19 October smoke run and 92 releases. Software DOI: 10.5281/zenodo.21737792; the earlier device-integrity preprint is 10.5281/zenodo.20374849.",
     bio_3:
-      "I am also the lead author of The Invisible Window, which found 100% screen-capture evasion in the tested Windows and macOS laboratory configurations and was responsibly disclosed under OWASP/FIRST/CISA guidance. I authored Aion-BibleQA, a citation-faithfulness benchmark for retrieval-augmented LLMs (R@5 0.941; zero unsupported citations). Via Alignerr, I evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program in 2026. I co-founded an incubator-backed campus AI startup and work on measuring capability uplift, characterising safety boundaries, and building defensive tools to reduce advanced AI risks.",
+      "I also authored The Invisible Window, which demonstrated screen-capture evasion in the tested Windows/macOS laboratory configurations; Microsoft and Apple classified the disclosed behaviour as by design. Aion-BibleQA evaluates retrieval and citation faithfulness in a 40-question pilot (34 answerable and 6 refusal cases; R@5 0.941; partial citation errors remain). I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online.",
     stats_projects: "Projects",
     stats_evasion: "Evasion in Tested Lab Configurations",
-    stats_vendors: "Vendors notified",
+    stats_vendors: "Coordinated vendor disclosures",
     connect: "Let's Connect",
     view_resume: "View Résumé",
     specializations: "Specialisations",
@@ -130,8 +131,9 @@ const en = {
     spec2_item4: "Dual-Use Risk Assessment",
     spec2_item5: "Intent-vs-Artefact Safety Boundary Characterisation",
     spec3_label: "Python & Systems Programming",
-    spec3_item1: "Python (Primary), C, C++, TypeScript, Swift",
-    spec3_item2: "High-Performance C/C++ Systems (1M+ ops/sec)",
+    spec3_item1:
+      "Python (primary) · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash",
+    spec3_item2: "C/C++ matching engines and network parsers",
     spec3_item3: "Network Packet Processing (libpcap)",
     spec3_item4: "Linux (Ubuntu/Kali), CMake, Docker",
     spec3_item5: "GitHub Actions CI/CD, Google Test",
@@ -147,11 +149,11 @@ const en = {
     skill_group1_3: "C++",
     skill_group1_4: "TypeScript",
     skill_group1_5: "JavaScript",
-    skill_group1_6: "Swift",
+    skill_group1_6: "Rust",
     skill_group1_7: "Kotlin",
     skill_group1_8: "Bash",
     skill_group1_9: "SQL",
-    skill_group1_10: "Go (familiar)",
+    skill_group1_10: "Lean 4 (formal proofs)",
     skill_group2_label: "Security",
     skill_group2_1: "Vulnerability Research",
     skill_group2_2: "Cross-Platform Exploit Development",
@@ -194,6 +196,7 @@ const en = {
     ops_lab5_title: "LEO Satellite Cyber Lab",
     ops_lab6_title: "Malware Analysis Sandbox",
     ops_lab7_title: "PQC Migration Auditor",
+    stats_preprints: "Sole-author preprints",
   },
   lab_page: {
     experimental_division: "Experimental research",
@@ -223,42 +226,42 @@ const en = {
   resume: {
     expected_completion: "Expected completion",
     tagline:
-      "AI Security Research · LLM Agent Red-Teaming · Offensive & Defensive Security Engineering",
+      "AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation",
     location:
-      "Sydney, Australia · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC) · Visa sponsorship required",
+      "Sydney, Australia · Relocating to San Francisco, CA · Visa sponsorship required",
     linkedin_profile: "LinkedIn Profile",
     orcid_id: "ORCID iD",
     s01_heading: "About",
     s01_bio:
-      "I build systems to measure and contain the cyber capabilities of frontier AI. I created Project Simurgh, a provider-agnostic framework that red-teams LLM agents under a dishonest-producer threat model and produces Ed25519-signed, offline-verifiable evidence after a guardrail miss. In reported tests, it contained 138/138 classifier-missed cases and reduced AgentDojo attack success from 9/140 to 0/140; five Lean theorems are machine-checked. Via Alignerr, I evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program. Simurgh complements inline classifiers by recording what an agent was allowed to do. My detection work includes on-device phishing ML at 87% F1 and intrusion detection at 500K+ packets/sec. I co-founded an incubator-backed campus AI startup and have shipped 70+ projects.",
+      "I research adversarial robustness, AI control and empirical safety evaluation for tool-using agents. I am the sole author of Project Simurgh and five Zenodo preprints, and evaluated Claude in Anthropic’s safety-evaluation program via Alignerr from January to March 2026. I am available full-time from December 2026 for a three- to six-month San Francisco research placement; visa sponsorship is required. I co-founded Syllabus-Sync, a Macquarie University Incubator startup, after seven years in security operations and engineering.",
     s02_heading: "Security Research",
     s02_tech_stack:
-      "Node.js · Ed25519 attestation · Lean 4 · AgentDojo · Llama Guard 4 · Llama-3.3-70B · JS↔Python parity",
+      "Python / React · SHA-256 study archives · earlier Ed25519 attestations · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
     s02_subtitle:
-      "Project Simurgh: Verifiable Containment Attestation for Agentic AI (Creator · AGPL-3.0)",
+      "Project Simurgh: Inspectable Authorisation and Containment for AI Agents (Sole Author)",
     s02_bullet1:
-      "Built a provider-agnostic framework that produces Ed25519-signed, offline-reproducible evidence of what an AI agent did after a guardrail miss across four containment boundaries: input firewall, context-provenance guard, tool-invocation gate, and output-leakage firewall. The threat model assumes an adversarial, dishonest producer.",
+      "October 2026 transfer study: 24 tasks × two trials × three matched controls (credential-only, composed, deny-all) × two models; 288 replayed branches. On Llama-3.2-3B, composed controls reduced restricted-state trials with new effects from 17/24 to 0/24, kept 23/24 useful completions and blocked no valid proposal. OpenAI gpt-6-luna’s baseline was already 0/24: no incremental protection. Protocol to published package: 15–17 October 2026.",
     s02_bullet2:
-      "Guardrail-miss containment: captured a real Llama Guard 4 (12B) input classifier over a 180-case run-set and contained 138/138 malicious cases the classifier missed (120 downstream-injection cases an input-only classifier structurally cannot see, 18 direct-input misses); combined targeted attack-success 0/150, with zero unsafe tool executions or exports",
+      "The 24 restricted trials fall into six states. Wilson 95% intervals are reported per state: 43.6–97.0% versus 0.0–39.0%; part of the gap holds by construction. These scoped experiments do not establish general model safety.",
     s02_bullet3:
-      "Live-agent containment: drove a self-hosted Llama-3.3-70B through AgentDojo's workspace suite (140 pre-registered injection cases); the tool-authority gate cut targeted attack success from 9/140 to 0/140 with benign utility held",
+      "Preserved an eight-case live OpenAI integration failure caused by role placement (8/8 declined). A frozen developer-role correction completed 2/3 authorised workflows and declined 5/5 restricted workflows; one refusal remains open, with original traces retained.",
     s02_bullet4:
-      "Complements Anthropic's inline classifier: the classifier governs what a model may say, while the attestation records what an agent was allowed to do. The signed non-claims state that Simurgh would not have caught the June 2026 content-generation bypass itself.",
+      "Earlier frozen 2026 stages: contained 138/138 malicious cases missed by a Llama Guard 4 12B input classifier, including 120 downstream injections outside its view—a coverage claim, not a classifier ranking. Live Llama-3.3-70B AgentDojo workspace attack success fell from 9/140 to 0/140 while benign utility fell from 7/10 to 6/10. A separate deterministic four-suite run, with no real LLM, recorded attack success 0/949, utility under attack 949/949 and benign utility 97/97. These remain bounded experiments.",
     s02_bullet5:
-      "Attacked its own proof (red-team sweep across eight attack classes → detector-v2) and formally checked oversight with five machine-checked Lean theorems; one-command offline reproduction of a 12-rung signed release ladder; 3,057 automated tests",
+      "Current study archives use SHA-256 and replay on native Linux x86_64 with Python 3.12 after dependency installation. Earlier frozen attestations use Ed25519. The proof gate checks 39 Lean 4 files for selected mathematical models and rejects unproven “sorry” placeholders; model proofs do not establish implementation equivalence. 5,171 root tests passed in the 19 October 2026 smoke run. 92 releases; software DOI 10.5281/zenodo.21737792, distinct from device-integrity preprint DOI 10.5281/zenodo.20374849.",
     s03_heading: "Technical Proficiencies",
     s03_cat1_label: "Languages",
     s03_cat1_desc:
-      "Python (primary), C, C++, TypeScript, JavaScript, Swift, Kotlin, Bash, SQL, Go (familiar)",
+      "Python (primary) · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash",
     s03_cat2_label: "Security & Offensive",
     s03_cat2_desc:
       "Vulnerability research, cross-platform exploit development (Win32 API, macOS ScreenCaptureKit), threat modelling, secure code review, penetration testing, responsible disclosure (OWASP/FIRST/CISA), Wireshark, Nmap, Burp Suite",
     s03_cat3_label: "AI & ML",
     s03_cat3_desc:
-      "Large Language Model (LLM) integration & evaluation, Retrieval-Augmented Generation (RAG) evaluation, citation-faithfulness benchmarking, AI-assisted vulnerability research, Natural Language Processing (NLP), generative AI tooling, ML model evaluation, dual-use risk assessment",
+      "Matched-control experiment design, adversarial robustness and AI control, prompt-injection and authority containment, guardrail/classifier evaluation, uncertainty reporting, Claude API/Claude Code, OpenAI Responses API, self-hosted Llama, Llama Guard 4, AgentDojo and MCP servers",
     s03_cat4_label: "Systems & Tools",
     s03_cat4_desc:
-      "Linux (Ubuntu/Kali), CMake, Docker, Git/GitHub, GitHub Actions CI/CD, Google Test, FastAPI, Cloudflare Workers, libpcap",
+      "Linux · eBPF · Docker · GitHub Actions · PostgreSQL · MCP servers",
     s03_cat5_label: "Frameworks",
     s03_cat5_desc:
       "Open Web Application Security Project (OWASP) Top 10, MITRE ATT&CK, National Institute of Standards and Technology (NIST) Framework, W3C Screen Capture Specification",
@@ -272,43 +275,43 @@ const en = {
       "IEEE-format vulnerability research: independently discovered and responsibly disclosed a screen-capture evasion class using documented Windows/macOS display APIs. Achieved 100% evasion in tested laboratory configurations with zero visual artefacts over 10,000+ analysed frames. Commercial proctoring products and Linux were not tested; macOS 26 used native capture tools rather than browser getDisplayMedia(). Findings reflect software versions tested as of March 2026. Coordinated disclosure to OS vendors. DOI: 10.5281/zenodo.20376495.",
     proj2_tag: "Bible RAG",
     proj2_stack:
-      "React Native · Expo · Supabase · pgvector · Gemini · OpenAI Embeddings · Tauri v2",
+      "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · OpenAI Embeddings · Tauri v2",
     proj2_desc:
-      "Built an AI-powered Bible companion and authored Aion-BibleQA, an 8-page preprint introducing a 40-question benchmark for citation faithfulness and false-premise robustness. Results: R@5 = 0.941, mean citation_support = 0.978, zero unsupported citations, and 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.",
+      "Built Aion and authored its 8-page pilot preprint: 40 questions, with retrieval scored on 34 answerable questions and 6 refusal cases. Recall@5 = 0.941; mean citation_support = 0.978; 6/6 refusals. A single Gemini 3.1 Flash Lite judge reported no answer rows with citation_support < 0.5, but two partial/wrong-citation rows remained at 0.75 and 0.50. DOI: 10.5281/zenodo.20522874.",
     proj3_tag: "Systems",
     proj3_stack: "C++20 · CMake · Google Test",
     proj3_desc:
-      "Engineered a matching engine that processed 1M+ orders/second with sub-microsecond latency. Implemented red-black tree price levels, a custom memory-pool allocator, and a test suite with p50/p99 latency benchmarks.",
+      "Built a C++20 matching engine. The repository reports 9.29M mixed add/cancel operations per second in a single-thread synthetic Apple M-series Release benchmark. Expected O(1) order-ID lookup combines with O(log M) price-level cancellation. p50/p99 benchmarks measure insertion latency; the pool allocator has a separate allocation benchmark.",
     proj4_tag: "IDS",
     proj4_stack: "C++17 · libpcap · CMake · Google Test · Linux",
     proj4_desc:
-      "Built a real-time network packet-processing engine that parsed 500K+ packets/second. It dissects Ethernet/IPv4/TCP/UDP/ICMP/DNS, detects signature matches, and analyses stateful patterns such as port scans and SYN floods.",
+      "Built a C++17 IDS with seven protocol parsers, signatures and stateful scan/SYN-flood/DNS-tunnelling heuristics. The repository reports 28.4M packets/second over 5M repeated synthetic packets in a single-thread, pure-parse benchmark; that rate measures the parser, not end-to-end IDS processing.",
     proj5_tag: "Full-Stack",
     proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
     proj5_desc:
-      "Built a full-stack data platform with an AI recommendation engine, event-driven APIs, rate limiting, and automated security scanning. I handled the work from database schema through deployment.",
+      "Built a personal media vault and job tracker with React, Litestar and Supabase, including AI-assisted recommendations and persistent chat. Added configured CI security checks and Terraform scaffolding; auth-cookie and encryption settings have deployment-dependent limits documented in the project.",
     proj6_tag: "KotlinConf",
     proj6_stack: "Kotlin Multiplatform · Local ML · Android & iOS",
     proj6_desc:
       "Built a cross-platform offline threat-detection tool with local ML classification. Submitted it to the KotlinConf global developer conference.",
     s05_more_projects:
-      "70+ additional public projects on GitHub covering vulnerability research, systems programming, AI/ML tooling, and cloud infrastructure:",
+      "SentinelSSH is a Rust MCP server for policy-scoped, read-only Linux host inspection through 17 typed tools and no shell. I also have 70+ public projects on GitHub covering security research, systems programming, AI/ML tooling and cloud infrastructure:",
     s06_heading: "Professional Experience",
     exp1_title: "Freelance Security Engineer & Full-Stack Developer",
     exp1_employer: "Self-Employed · Jan 2024 – Present",
     exp1_bullet1:
-      "Architected security backends for production, multi-frontend platforms on Supabase: WebAuthn passkeys, TOTP/SMS MFA, zero-trust edge middleware, distributed rate limiting, strict Postgres Row-Level Security, and tamper-resistant audit logging via SECURITY DEFINER RPCs",
+      "Delivered secure web applications for commercial clients with OWASP Top 10 controls and OAuth 2.0.",
     exp1_bullet2:
-      "Engineered CI/CD with 500+ automated security tests (GitHub Actions), cutting deployment vulnerabilities ~40%; shipped security-first apps for 1,000+ users with OWASP Top 10 controls and OAuth 2.0",
+      "Maintained a 5.0-star rating across 31 client reviews on Airtasker.",
     exp1_bullet3:
-      "Sustained a 5.0-star rating across 31 client reviews and 35 completed tasks (95% completion, ID-verified) on Airtasker, delivering web development, Python, API integration, and IT/security work for paying clients",
-    exp2_title: "IT Manager",
-    exp2_employer: "Iran Pharmacy · Aug 2019 – May 2024",
+      "Completed 35 Airtasker tasks with a 95% completion rate and verified identity, delivering web development, Python, API integration and IT/security work for paying clients.",
+    exp2_title: "IT Manager & Security Operations",
+    exp2_employer: "Iran Pharmacy · Aug 2019 – Jan 2024",
     exp2_bullet1:
-      "Managed technology infrastructure across a multi-site organisation for five years. Maintained 99% system uptime, enforced role-based access control (RBAC), and automated workflows with Python and Bash, reducing manual tasks by about 30%.",
-    s07_heading: "AI Safety, Leadership & Community",
+      "Ran IT and security operations for a multi-site organisation with 50+ staff. Investigated unauthorised-access incidents, automated detection workflows to reduce manual triage by about 30%, and enforced role-based, least-privilege access.",
+    s07_heading: "Leadership & Community",
     s07_bullet1:
-      "AI Safety Evaluator, Claude (Alignerr, Anthropic AI safety-evaluation program, 2026): assessed Claude outputs for exploitable code and analysed how safety guardrails can be circumvented, delivering structured, rubric-based findings (continues earlier 2024 Claude Code evaluation work)",
+      "Stress-tested Claude’s safety guardrails in Anthropic’s safety-evaluation program via Alignerr: assessed outputs for exploitable code and harmful patterns, analysed circumvention methods and delivered structured, rubric-based findings.",
     s07_bullet2:
       "I founded and help run the university's Persian student community, organising events, peer support, and cultural programming.",
     certs_heading: "Licences & Certifications",
@@ -317,9 +320,20 @@ const en = {
     volunteer_label: "Volunteering",
     s08_heading: "Additional Information",
     s08_available:
-      "Ready to relocate now to San Francisco; available to start immediately (final semester completed online). Visa sponsorship required.",
+      "Available full-time from December 2026 for a three- to six-month research placement in San Francisco. Visa sponsorship required. The final February–June 2027 university session is fully online.",
     s08_languages:
       "English (Professional Working) · Persian / Farsi (Native) · Japanese (Elementary)",
+    education_final_session: "Final session: February–June 2027, fully online.",
+    exp_syllabus_title: "Cofounder",
+    exp_syllabus_employer:
+      "Syllabus-Sync · Macquarie University Incubator startup · Sydney",
+    exp_syllabus_bullet1:
+      "Co-maintained the security/backend of a shared Next.js/TypeScript codebase: WebAuthn passkeys, TOTP MFA, Postgres row-level security and tamper-resistant audit logging.",
+    exp_syllabus_bullet2:
+      "The 17 August 2026 CI test job passed 1,343 tests across 155 files; the separate security job failed. Contributed to product and security work while participating in the EDUCATE accelerator and startup validation.",
+    exp_alignerr_title: "AI Safety Evaluator (Claude)",
+    exp_alignerr_employer:
+      "Alignerr · Anthropic safety-evaluation program · Remote",
   },
   not_found: {
     description:
@@ -356,6 +370,7 @@ const en = {
     demo: "Demo",
     read_preprint: "Read the Preprint",
     cite_this_work: "Cite This Work",
+    software_doi_record: "Software archive DOI",
   },
   writeups_detail: {
     end_transmission: "End of article",

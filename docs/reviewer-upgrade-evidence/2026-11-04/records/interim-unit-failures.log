@@ -1,0 +1,3480 @@
+
+> portfolio@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+Not implemented: navigation to another Document
+Not implemented: navigation to another Document
+ ❯ src/lib/project-localization.test.ts (20 tests | 3 failed) 111ms
+     × preserves evidence numbers and technical tokens in fa 12ms
+     × preserves evidence numbers and technical tokens in ar 7ms
+     × preserves evidence numbers and technical tokens in es 7ms
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx (13 tests | 4 failed) 2952ms
+     × opens the scoped reading path and HTML summary in fa 586ms
+     × opens the scoped reading path and HTML summary in ar 462ms
+     × opens the scoped reading path and HTML summary in zh 443ms
+     × opens the scoped reading path and HTML summary in es 417ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/project-localization.test.ts > Complete project localization > preserves evidence numbers and technical tokens in fa
+AssertionError: fa/aion: Hybrid RAG retrieves source scripture for citation checking; the reported 40-question pilot does not guarantee hallucination-free answers: expected [] to include '40'
+ ❯ src/lib/project-localization.test.ts:191:15
+    189|               numericValues(translated),
+    190|               `${locale}/${source.slug}: ${original}`,
+    191|             ).toContain(value);
+       |               ^
+    192|           }
+    193|           for (const token of invariantTokens) {
+ ❯ src/lib/project-localization.test.ts:186:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/lib/project-localization.test.ts > Complete project localization > preserves evidence numbers and technical tokens in ar
+AssertionError: ar/aion: Hybrid RAG retrieves source scripture for citation checking; the reported 40-question pilot does not guarantee hallucination-free answers: expected [] to include '40'
+ ❯ src/lib/project-localization.test.ts:191:15
+    189|               numericValues(translated),
+    190|               `${locale}/${source.slug}: ${original}`,
+    191|             ).toContain(value);
+       |               ^
+    192|           }
+    193|           for (const token of invariantTokens) {
+ ❯ src/lib/project-localization.test.ts:186:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/lib/project-localization.test.ts > Complete project localization > preserves evidence numbers and technical tokens in es
+AssertionError: es/aion: Hybrid RAG retrieves source scripture for citation checking; the reported 40-question pilot does not guarantee hallucination-free answers: expected [] to include '40'
+ ❯ src/lib/project-localization.test.ts:191:15
+    189|               numericValues(translated),
+    190|               `${locale}/${source.slug}: ${original}`,
+    191|             ).toContain(value);
+       |               ^
+    192|           }
+    193|           for (const token of invariantTokens) {
+ ❯ src/lib/project-localization.test.ts:186:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx > project source availability > opens the scoped reading path and HTML summary in fa
+TestingLibraryElementError: Unable to find an element with the role "tab" and name "Overview"
+
+Here are the available roles:
+
+  article:
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-dossier"[39m
+    [33mdir[39m=[32m"rtl"[39m
+    [33mlang[39m=[32m"fa"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"os-project-dossier-header"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  time:
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Project Simurgh":
+  [36m<h1[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "مسئله":
+  [36m<h2[39m
+    [33mid[39m=[32m"overview-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "سهم من در پروژه":
+  [36m<h3[39m
+    [33mid[39m=[32m"contribution-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "شواهد و راستی‌آزمایی":
+  [36m<h2[39m
+    [33mid[39m=[32m"evidence-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "دامنه و محدودیت‌ها":
+  [36m<h3[39m
+    [33mid[39m=[32m"limitations-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "منابع":
+  [36m<h3[39m
+    [33mid[39m=[32m"sources-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "مقاله‌های پژوهشی":
+  [36m<h3 />[39m
+
+  Name "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "استناد به این اثر":
+  [36m<h3[39m
+    [33mid[39m=[32m"citation-heading"[39m
+  [36m/>[39m
+
+  Name "پیاده‌سازی":
+  [36m<h2[39m
+    [33mid[39m=[32m"methods-heading"[39m
+  [36m/>[39m
+
+  Name "پشته فناوری":
+  [36m<h3 />[39m
+
+  Name "امنیت":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-lead"[39m
+    [33mdir[39m=[32m"rtl"[39m
+    [33mlang[39m=[32m"fa"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-dossier-pdf-note"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-tags"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ol />[39m
+
+  Name "":
+  [36m<ol[39m
+    [33mclass[39m=[32m"os-project-numbered-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-evidence-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-stack-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "پیوندهای پروژه":
+  [36m<div[39m
+    [33maria-label[39m=[32m"پیوندهای پروژه"[39m
+    [33mclass[39m=[32m"os-project-resources"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "دریافت مقاله":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-button"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "کد منبع":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "خواندن پیش‌چاپ":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "مطالعه موردی":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/fa/projects/project-simurgh"[39m
+  [36m/>[39m
+
+  Name "مسئله":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "سهم من در پروژه":
+  [36m<a[39m
+    [33mhref[39m=[32m"#contribution-heading"[39m
+  [36m/>[39m
+
+  Name "شواهد":
+  [36m<a[39m
+    [33mhref[39m=[32m"#evidence-heading"[39m
+  [36m/>[39m
+
+  Name "دامنه و محدودیت‌ها":
+  [36m<a[39m
+    [33mhref[39m=[32m"#limitations-heading"[39m
+  [36m/>[39m
+
+  Name "منابع":
+  [36m<a[39m
+    [33mhref[39m=[32m"#sources-heading"[39m
+  [36m/>[39m
+
+  Name "منابع: کد منبع":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "مطالعهٔ خلاصهٔ پژوهش در HTML":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20374849":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "دریافت مقاله":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20549736":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20549736"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "دریافت مقاله":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20675513":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20675513"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "دریافت مقاله":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "مسیر مطالعهٔ پژوهش":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"مسیر مطالعهٔ پژوهش"[39m
+    [33mclass[39m=[32m"os-dossier-reading-path"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tablist:
+
+  Name "معماری پروژه":
+  [36m<menu[39m
+    [33maria-label[39m=[32m"معماری پروژه"[39m
+    [33mclass[39m=[32m"os-project-tablist"[39m
+    [33mrole[39m=[32m"tablist"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tab:
+
+  Name "نمای کلی":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"overview"[39m
+    [33maria-selected[39m=[32m"true"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-overview"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "شواهد":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"evidence"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-evidence"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "روش‌ها":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"methods"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-methods"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tabpanel:
+
+  Name "نمای کلی":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-overview"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"overview"[39m
+    [33mid[39m=[32m"overview"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-evidence"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"evidence"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"evidence"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-methods"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"methods"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"methods"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  complementary:
+
+  Name "دامنه و محدودیت‌ها":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"limitations-heading"[39m
+    [33mclass[39m=[32m"os-dossier-scope"[39m
+  [36m/>[39m
+
+  Name "استناد به این اثر":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"citation-heading"[39m
+    [33mclass[39m=[32m"os-project-citation"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"os-project-dossier"[39m
+        [33mdir[39m=[32m"rtl"[39m
+        [33mlang[39m=[32m"fa"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"os-project-intro"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"os-project-dossier-header"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-project-row-meta"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mامنیت دفاعی[0m
+              [36m</span>[39m
+              [36m<time[39m
+                [33mdatetime[39m=[32m"2026"[39m
+              [36m>[39m
+                [0m۲۰۲۶[0m
+              [36m</time>[39m
+            [36m</div>[39m
+            [36m<h1[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"en"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mProject Simurgh[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-project-lead"[39m
+              [33mdir[39m=[32m"rtl"[39m
+              [33mlang[39m=[32m"fa"[39m
+            [36m>[39m
+              [0mProject Simurgh چارچوبی مستقل از ارائه‌دهنده برای گواهی مهار عامل‌های هوش مصنوعی است. این پروژه از لایهٔ یکپارچگی مبتنی بر فرادادهٔ The Invisible Window برای نشست‌های حساس آغاز شد و به سامانه‌ای تبدیل شد که ثبت می‌کند عامل مستقر پس از شکست یک حفاظ مجاز به انجام چه کارهایی بوده است. Simurgh رکوردی امضاشده و قابل بازتولید آفلاین از اقدامات مجاز پس از اتصال عامل به ابزارها، فایل‌ها، زمینه و سامانه‌های بیرونی تولید می‌کند. بازبین مستقل می‌تواند این رکورد را بدون دسترسی به تولیدکنندهٔ شواهد راستی‌آزمایی کند.[0m
+            [36m</p>[39m
+            [36m<ul[39m
+              [33mclass[39m=[32m"os-project-tags"[39m
+            [36m>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mگواهی مهار[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mایمنی عامل‌های هوش مصنوعی[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mتزریق دستور[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mEd25519[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mآزمون هجومی LLM[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mAGPL-3.0[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"پیوندهای پروژه"[39m
+              [33mclass[39m=[32m"os-project-resources"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button"[39m
+                [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mدریافت مقاله[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mکد منبع[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mخواندن پیش‌چاپ[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx:49:21
+     50|   );
+     51|
+     52|   it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
+       |        ^
+     53|     "labels private source honestly and provides an email request in %…
+     54|     async (locale) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx > project source availability > opens the scoped reading path and HTML summary in ar
+TestingLibraryElementError: Unable to find an element with the role "tab" and name "Overview"
+
+Here are the available roles:
+
+  article:
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-dossier"[39m
+    [33mdir[39m=[32m"rtl"[39m
+    [33mlang[39m=[32m"ar"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"os-project-dossier-header"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  time:
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Project Simurgh":
+  [36m<h1[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "المشكلة":
+  [36m<h2[39m
+    [33mid[39m=[32m"overview-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "مساهمتي":
+  [36m<h3[39m
+    [33mid[39m=[32m"contribution-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "الإثبات والتحقق":
+  [36m<h2[39m
+    [33mid[39m=[32m"evidence-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "النطاق والقيود":
+  [36m<h3[39m
+    [33mid[39m=[32m"limitations-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "المصادر":
+  [36m<h3[39m
+    [33mid[39m=[32m"sources-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "الأوراق البحثية":
+  [36m<h3 />[39m
+
+  Name "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "استشهد بهذا العمل":
+  [36m<h3[39m
+    [33mid[39m=[32m"citation-heading"[39m
+  [36m/>[39m
+
+  Name "البناء":
+  [36m<h2[39m
+    [33mid[39m=[32m"methods-heading"[39m
+  [36m/>[39m
+
+  Name "مكدس التقنيات":
+  [36m<h3 />[39m
+
+  Name "الأمان":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-lead"[39m
+    [33mdir[39m=[32m"rtl"[39m
+    [33mlang[39m=[32m"ar"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-dossier-pdf-note"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-tags"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ol />[39m
+
+  Name "":
+  [36m<ol[39m
+    [33mclass[39m=[32m"os-project-numbered-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-evidence-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-stack-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "روابط المشروع":
+  [36m<div[39m
+    [33maria-label[39m=[32m"روابط المشروع"[39m
+    [33mclass[39m=[32m"os-project-resources"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "تحميل الورقة":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-button"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "الكود المصدري":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "قراءة نسخة ما قبل النشر":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "دراسة حالة":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/ar/projects/project-simurgh"[39m
+  [36m/>[39m
+
+  Name "المشكلة":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "مساهمتي":
+  [36m<a[39m
+    [33mhref[39m=[32m"#contribution-heading"[39m
+  [36m/>[39m
+
+  Name "الأدلة":
+  [36m<a[39m
+    [33mhref[39m=[32m"#evidence-heading"[39m
+  [36m/>[39m
+
+  Name "النطاق والقيود":
+  [36m<a[39m
+    [33mhref[39m=[32m"#limitations-heading"[39m
+  [36m/>[39m
+
+  Name "المصادر":
+  [36m<a[39m
+    [33mhref[39m=[32m"#sources-heading"[39m
+  [36m/>[39m
+
+  Name "المصادر: الكود المصدري":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "قراءة ملخص البحث بصيغة HTML":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20374849":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "تحميل الورقة":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20549736":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20549736"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "تحميل الورقة":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20675513":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20675513"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "تحميل الورقة":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "مسار قراءة البحث":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"مسار قراءة البحث"[39m
+    [33mclass[39m=[32m"os-dossier-reading-path"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tablist:
+
+  Name "بنية المشروع":
+  [36m<menu[39m
+    [33maria-label[39m=[32m"بنية المشروع"[39m
+    [33mclass[39m=[32m"os-project-tablist"[39m
+    [33mrole[39m=[32m"tablist"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tab:
+
+  Name "نظرة عامة":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"overview"[39m
+    [33maria-selected[39m=[32m"true"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-overview"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "الأدلة":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"evidence"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-evidence"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "المنهجية":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"methods"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-methods"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tabpanel:
+
+  Name "نظرة عامة":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-overview"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"overview"[39m
+    [33mid[39m=[32m"overview"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-evidence"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"evidence"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"evidence"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-methods"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"methods"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"methods"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  complementary:
+
+  Name "النطاق والقيود":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"limitations-heading"[39m
+    [33mclass[39m=[32m"os-dossier-scope"[39m
+  [36m/>[39m
+
+  Name "استشهد بهذا العمل":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"citation-heading"[39m
+    [33mclass[39m=[32m"os-project-citation"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"os-project-dossier"[39m
+        [33mdir[39m=[32m"rtl"[39m
+        [33mlang[39m=[32m"ar"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"os-project-intro"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"os-project-dossier-header"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-project-row-meta"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mالأمن الدفاعي[0m
+              [36m</span>[39m
+              [36m<time[39m
+                [33mdatetime[39m=[32m"2026"[39m
+              [36m>[39m
+                [0m٢٠٢٦[0m
+              [36m</time>[39m
+            [36m</div>[39m
+            [36m<h1[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"en"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mProject Simurgh[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-project-lead"[39m
+              [33mdir[39m=[32m"rtl"[39m
+              [33mlang[39m=[32m"ar"[39m
+            [36m>[39m
+              [0mProject Simurgh إطار مستقل عن المزوّد لإثبات احتواء وكلاء الذكاء الاصطناعي. نشأ من طبقة النزاهة القائمة على البيانات الوصفية فقط في The Invisible Window للجلسات عالية المخاطر، ثم تطوّر إلى نظام يسجّل ما سُمح للوكيل المنشور بفعله بعد فشل أحد الحواجز. يوقّع Simurgh سجلًا قابلًا لإعادة الإنتاج دون اتصال للأفعال المسموح بها بعد اتصال الوكيل بالأدوات والملفات والسياق والأنظمة الخارجية. ويستطيع مراجع مستقل التحقق من ذلك السجل دون الوصول إلى منتج الأدلة.[0m
+            [36m</p>[39m
+            [36m<ul[39m
+              [33mclass[39m=[32m"os-project-tags"[39m
+            [36m>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mإثبات الاحتواء[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mسلامة وكلاء الذكاء الاصطناعي[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mحقن التعليمات[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mEd25519[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mاختبارات هجومية للـLLM[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mAGPL-3.0[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"روابط المشروع"[39m
+              [33mclass[39m=[32m"os-project-resources"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button"[39m
+                [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mتحميل الورقة[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mالكود المصدري[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mقراءة نسخة ما قبل النشر[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [3...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx:49:21
+     50|   );
+     51|
+     52|   it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
+       |        ^
+     53|     "labels private source honestly and provides an email request in %…
+     54|     async (locale) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx > project source availability > opens the scoped reading path and HTML summary in zh
+TestingLibraryElementError: Unable to find an element with the role "tab" and name "Overview"
+
+Here are the available roles:
+
+  article:
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-dossier"[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"zh"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"os-project-dossier-header"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  time:
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Project Simurgh":
+  [36m<h1[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "问题":
+  [36m<h2[39m
+    [33mid[39m=[32m"overview-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "我的贡献":
+  [36m<h3[39m
+    [33mid[39m=[32m"contribution-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "证明与验证":
+  [36m<h2[39m
+    [33mid[39m=[32m"evidence-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "范围与局限":
+  [36m<h3[39m
+    [33mid[39m=[32m"limitations-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "来源":
+  [36m<h3[39m
+    [33mid[39m=[32m"sources-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "研究论文":
+  [36m<h3 />[39m
+
+  Name "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "引用本作品":
+  [36m<h3[39m
+    [33mid[39m=[32m"citation-heading"[39m
+  [36m/>[39m
+
+  Name "构建":
+  [36m<h2[39m
+    [33mid[39m=[32m"methods-heading"[39m
+  [36m/>[39m
+
+  Name "技术栈":
+  [36m<h3 />[39m
+
+  Name "安全":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-lead"[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"zh"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-dossier-pdf-note"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-tags"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ol />[39m
+
+  Name "":
+  [36m<ol[39m
+    [33mclass[39m=[32m"os-project-numbered-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-evidence-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-stack-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "项目链接":
+  [36m<div[39m
+    [33maria-label[39m=[32m"项目链接"[39m
+    [33mclass[39m=[32m"os-project-resources"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "下载论文":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-button"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "源代码":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "阅读预印本":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "案例研究":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/zh/projects/project-simurgh"[39m
+  [36m/>[39m
+
+  Name "问题":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "我的贡献":
+  [36m<a[39m
+    [33mhref[39m=[32m"#contribution-heading"[39m
+  [36m/>[39m
+
+  Name "证据":
+  [36m<a[39m
+    [33mhref[39m=[32m"#evidence-heading"[39m
+  [36m/>[39m
+
+  Name "范围与局限":
+  [36m<a[39m
+    [33mhref[39m=[32m"#limitations-heading"[39m
+  [36m/>[39m
+
+  Name "来源":
+  [36m<a[39m
+    [33mhref[39m=[32m"#sources-heading"[39m
+  [36m/>[39m
+
+  Name "来源: 源代码":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "阅读 HTML 研究摘要":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20374849":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "下载论文":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20549736":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20549736"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "下载论文":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20675513":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20675513"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "下载论文":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "研究阅读路径":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"研究阅读路径"[39m
+    [33mclass[39m=[32m"os-dossier-reading-path"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tablist:
+
+  Name "项目架构":
+  [36m<menu[39m
+    [33maria-label[39m=[32m"项目架构"[39m
+    [33mclass[39m=[32m"os-project-tablist"[39m
+    [33mrole[39m=[32m"tablist"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tab:
+
+  Name "概览":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"overview"[39m
+    [33maria-selected[39m=[32m"true"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-overview"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "证据":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"evidence"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-evidence"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "方法":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"methods"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-methods"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tabpanel:
+
+  Name "概览":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-overview"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"overview"[39m
+    [33mid[39m=[32m"overview"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-evidence"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"evidence"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"evidence"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-methods"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"methods"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"methods"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  complementary:
+
+  Name "范围与局限":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"limitations-heading"[39m
+    [33mclass[39m=[32m"os-dossier-scope"[39m
+  [36m/>[39m
+
+  Name "引用本作品":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"citation-heading"[39m
+    [33mclass[39m=[32m"os-project-citation"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"os-project-dossier"[39m
+        [33mdir[39m=[32m"ltr"[39m
+        [33mlang[39m=[32m"zh"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"os-project-intro"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"os-project-dossier-header"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-project-row-meta"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0m防御性安全[0m
+              [36m</span>[39m
+              [36m<time[39m
+                [33mdatetime[39m=[32m"2026"[39m
+              [36m>[39m
+                [0m2026[0m
+              [36m</time>[39m
+            [36m</div>[39m
+            [36m<h1[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"en"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mProject Simurgh[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-project-lead"[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"zh"[39m
+            [36m>[39m
+              [0mProject Simurgh 是与提供方无关的智能体 AI 遏制证明框架。它源自 The Invisible Window 面向高风险会话、仅使用元数据的完整性层，发展为一个记录系统：记录部署中的智能体在某道防护失效后被允许执行的操作。Simurgh 对智能体接入工具、文件、上下文和外部系统后获准执行的操作生成签名且可离线复现的记录。独立审查者无需访问证据生产方即可验证该记录。[0m
+            [36m</p>[39m
+            [36m<ul[39m
+              [33mclass[39m=[32m"os-project-tags"[39m
+            [36m>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0m遏制证明[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0m智能体 AI 安全[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0m提示注入[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mEd25519[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mLLM 红队测试[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mAGPL-3.0[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"项目链接"[39m
+              [33mclass[39m=[32m"os-project-resources"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button"[39m
+                [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0m下载论文[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0m源代码[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0m阅读预印本[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx:49:21
+     50|   );
+     51|
+     52|   it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
+       |        ^
+     53|     "labels private source honestly and provides an email request in %…
+     54|     async (locale) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx > project source availability > opens the scoped reading path and HTML summary in es
+TestingLibraryElementError: Unable to find an element with the role "tab" and name "Overview"
+
+Here are the available roles:
+
+  article:
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-dossier"[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"es"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"os-project-paper"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"os-project-dossier-header"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  time:
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<time[39m
+    [33mdatetime[39m=[32m"2026"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Project Simurgh":
+  [36m<h1[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Problema":
+  [36m<h2[39m
+    [33mid[39m=[32m"overview-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Mi contribución":
+  [36m<h3[39m
+    [33mid[39m=[32m"contribution-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Pruebas y verificación":
+  [36m<h2[39m
+    [33mid[39m=[32m"evidence-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Alcance y limitaciones":
+  [36m<h3[39m
+    [33mid[39m=[32m"limitations-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Fuentes":
+  [36m<h3[39m
+    [33mid[39m=[32m"sources-heading"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Publicaciones de investigación":
+  [36m<h3 />[39m
+
+  Name "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations":
+  [36m<h4[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "Citar este trabajo":
+  [36m<h3[39m
+    [33mid[39m=[32m"citation-heading"[39m
+  [36m/>[39m
+
+  Name "Construcción":
+  [36m<h2[39m
+    [33mid[39m=[32m"methods-heading"[39m
+  [36m/>[39m
+
+  Name "Tecnologías":
+  [36m<h3 />[39m
+
+  Name "Seguro":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-lead"[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"es"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-dossier-pdf-note"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mdir[39m=[32m"ltr"[39m
+    [33mlang[39m=[32m"en"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"os-project-eyebrow"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-tags"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ol />[39m
+
+  Name "":
+  [36m<ol[39m
+    [33mclass[39m=[32m"os-project-numbered-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-evidence-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-stack-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"os-project-method-list"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "Enlaces del proyecto":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Enlaces del proyecto"[39m
+    [33mclass[39m=[32m"os-project-resources"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Descargar publicación":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-button"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Código fuente":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Leer prepublicación":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Estudio de caso":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/es/projects/project-simurgh"[39m
+  [36m/>[39m
+
+  Name "Problema":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "Mi contribución":
+  [36m<a[39m
+    [33mhref[39m=[32m"#contribution-heading"[39m
+  [36m/>[39m
+
+  Name "Evidencia":
+  [36m<a[39m
+    [33mhref[39m=[32m"#evidence-heading"[39m
+  [36m/>[39m
+
+  Name "Alcance y limitaciones":
+  [36m<a[39m
+    [33mhref[39m=[32m"#limitations-heading"[39m
+  [36m/>[39m
+
+  Name "Fuentes":
+  [36m<a[39m
+    [33mhref[39m=[32m"#sources-heading"[39m
+  [36m/>[39m
+
+  Name "Fuentes: Código fuente":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Leer el resumen de investigación en HTML":
+  [36m<a[39m
+    [33mhref[39m=[32m"#overview-heading"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20374849":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20374849"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Descargar publicación":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20549736":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20549736"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Descargar publicación":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "10.5281/zenodo.20675513":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://doi.org/10.5281/zenodo.20675513"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Descargar publicación":
+  [36m<a[39m
+    [33mclass[39m=[32m"os-project-resource"[39m
+    [33mhref[39m=[32m"/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "Leer la investigación":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"Leer la investigación"[39m
+    [33mclass[39m=[32m"os-dossier-reading-path"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tablist:
+
+  Name "Arquitectura del proyecto":
+  [36m<menu[39m
+    [33maria-label[39m=[32m"Arquitectura del proyecto"[39m
+    [33mclass[39m=[32m"os-project-tablist"[39m
+    [33mrole[39m=[32m"tablist"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tab:
+
+  Name "Resumen":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"overview"[39m
+    [33maria-selected[39m=[32m"true"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-overview"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Evidencia":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"evidence"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-evidence"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Métodos":
+  [36m<button[39m
+    [33maria-controls[39m=[32m"methods"[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m"os-project-tab"[39m
+    [33mid[39m=[32m"tab-methods"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tabpanel:
+
+  Name "Resumen":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-overview"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"overview"[39m
+    [33mid[39m=[32m"overview"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-evidence"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"evidence"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"evidence"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"tab-methods"[39m
+    [33mclass[39m=[32m"os-project-section"[39m
+    [33mdata-dossier-section[39m=[32m"methods"[39m
+    [33mhidden[39m=[32m""[39m
+    [33mid[39m=[32m"methods"[39m
+    [33mrole[39m=[32m"tabpanel"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  complementary:
+
+  Name "Alcance y limitaciones":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"limitations-heading"[39m
+    [33mclass[39m=[32m"os-dossier-scope"[39m
+  [36m/>[39m
+
+  Name "Citar este trabajo":
+  [36m<aside[39m
+    [33maria-labelledby[39m=[32m"citation-heading"[39m
+    [33mclass[39m=[32m"os-project-citation"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"os-project-dossier"[39m
+        [33mdir[39m=[32m"ltr"[39m
+        [33mlang[39m=[32m"es"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"os-project-intro"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"os-project-dossier-header"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"os-project-row-meta"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mSeguridad defensiva[0m
+              [36m</span>[39m
+              [36m<time[39m
+                [33mdatetime[39m=[32m"2026"[39m
+              [36m>[39m
+                [0m2026[0m
+              [36m</time>[39m
+            [36m</div>[39m
+            [36m<h1[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"en"[39m
+              [33mtabindex[39m=[32m"-1"[39m
+            [36m>[39m
+              [0mProject Simurgh[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"os-project-lead"[39m
+              [33mdir[39m=[32m"ltr"[39m
+              [33mlang[39m=[32m"es"[39m
+            [36m>[39m
+              [0mProject Simurgh es un marco de atestación de contención para IA agéntica, independiente del proveedor. Nació de la capa de integridad basada solo en metadatos de The Invisible Window para sesiones de alto riesgo y evolucionó hacia un sistema que registra lo que un agente desplegado tuvo permitido hacer después de fallar una salvaguarda. Simurgh firma un registro reproducible sin conexión de las acciones permitidas tras conectar el agente con herramientas, archivos, contexto y sistemas externos. Un revisor independiente puede verificar ese registro sin acceso al productor de las pruebas.[0m
+            [36m</p>[39m
+            [36m<ul[39m
+              [33mclass[39m=[32m"os-project-tags"[39m
+            [36m>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mAtestación de contención[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mSeguridad de agentes de IA[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mInyección de instrucciones[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mEd25519[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mPruebas adversariales de LLM[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<bdi>[39m
+                  [0mAGPL-3.0[0m
+                [36m</bdi>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Enlaces del proyecto"[39m
+              [33mclass[39m=[32m"os-project-resources"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-button"[39m
+                [33mhref[39m=[32m"/Project_Simurgh_Preprint_v1.0.pdf"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mDescargar publicación[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://github.com/Raoof128/Project-Simurgh"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mCódigo fuente[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"15"[39m
+                  [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 7h10v10"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M7 17 17 7"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"os-project-resource"[39m
+                [33mhref[39m=[32m"https://zenodo.org/records/20374849"[39m
+                [33mrel[39m=[32m"noopener noreferrer"[39m
+                [33mtarget[39m=[32m"_blank"[39m
+              [36m>[39m
+                [0mLeer prepublicación[0m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"lucide lucide-arrow-up-right os-icon-flip"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mheight[39m=[32m"15"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx:49:21
+     50|   );
+     51|
+     52|   it.each(["en", "fa", "ar", "zh", "es"] as Locale[])(
+       |        ^
+     53|     "labels private source honestly and provides an email request in %…
+     54|     async (locale) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 24 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: heading?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:326:32
+    324|                       const heading = document.getElementById(contentI…
+    325|                       heading?.focus({ preventScroll: true });
+    326|                       heading?.scrollIntoView({ block: "start" });
+       |                                ^
+    327|                     });
+    328|                   }}>{label}</a>
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in en". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in en". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in fa". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: heading?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:326:32
+    324|                       const heading = document.getElementById(contentI…
+    325|                       heading?.focus({ preventScroll: true });
+    326|                       heading?.scrollIntoView({ block: "start" });
+       |                                ^
+    327|                     });
+    328|                   }}>{label}</a>
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in fa". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in fa". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in fa". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in ar". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: heading?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:326:32
+    324|                       const heading = document.getElementById(contentI…
+    325|                       heading?.focus({ preventScroll: true });
+    326|                       heading?.scrollIntoView({ block: "start" });
+       |                                ^
+    327|                     });
+    328|                   }}>{label}</a>
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in ar". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in ar". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in zh". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: heading?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:326:32
+    324|                       const heading = document.getElementById(contentI…
+    325|                       heading?.focus({ preventScroll: true });
+    326|                       heading?.scrollIntoView({ block: "start" });
+       |                                ^
+    327|                     });
+    328|                   }}>{label}</a>
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in zh". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in zh". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in zh". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in es". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: heading?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:326:32
+    324|                       const heading = document.getElementById(contentI…
+    325|                       heading?.focus({ preventScroll: true });
+    326|                       heading?.scrollIntoView({ block: "start" });
+       |                                ^
+    327|                     });
+    328|                   }}>{label}</a>
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in es". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in es". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "opens the scoped reading path and HTML summary in es". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout._onTimeout node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: target?.scrollIntoView is not a function
+ ❯ src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx:187:19
+    185|         {
+    186|           target?.focus({ preventScroll: true });
+    187|           target?.scrollIntoView({ block: "start" });
+       |                   ^
+    188|         },
+    189|       );
+ ❯ invokeTheCallbackFunction node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26
+ ❯ runAnimationFrameCallbacks node_modules/jsdom/lib/jsdom/browser/Window.js:688:13
+ ❯ Timeout.<anonymous> node_modules/jsdom/lib/jsdom/browser/Window.js:666:11
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+This error originated in "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 failed | 49 passed (51)
+      Tests  7 failed | 683 passed (690)
+     Errors  24 errors
+   Start at  00:49:39
+   Duration  69.64s (transform 1.91s, setup 2.90s, import 7.17s, tests 28.11s, environment 24.16s)
+

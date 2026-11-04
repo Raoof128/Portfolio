@@ -1,0 +1,542 @@
+[
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 568,
+    "width": 320,
+    "scrollWidth": 320,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 816,
+      "cls": 0.000956819001182491
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 568,
+    "width": 320,
+    "scrollWidth": 320,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 336,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 568,
+    "width": 320,
+    "scrollWidth": 320,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 604,
+      "cls": 0.0899557224509026
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 568,
+    "width": 320,
+    "scrollWidth": 320,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 188,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 740,
+    "width": 360,
+    "scrollWidth": 360,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 272,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 740,
+    "width": 360,
+    "scrollWidth": 360,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 236,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 740,
+    "width": 360,
+    "scrollWidth": 360,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 300,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 740,
+    "width": 360,
+    "scrollWidth": 360,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 268,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 844,
+    "width": 390,
+    "scrollWidth": 390,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 332,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 844,
+    "width": 390,
+    "scrollWidth": 390,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 380,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 844,
+    "width": 390,
+    "scrollWidth": 390,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 288,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 844,
+    "width": 390,
+    "scrollWidth": 390,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 280,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 1024,
+    "width": 768,
+    "scrollWidth": 768,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 464,
+      "cls": 0.00021079838431129855
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 1024,
+    "width": 768,
+    "scrollWidth": 768,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 908,
+      "cls": 0.0316009521484375
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 1024,
+    "width": 768,
+    "scrollWidth": 768,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 508,
+      "cls": 0.0316009521484375
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 1024,
+    "width": 768,
+    "scrollWidth": 768,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 532,
+      "cls": 0.0316009521484375
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 768,
+    "width": 1024,
+    "scrollWidth": 1024,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 396,
+      "cls": 0.00021079838431129855
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 768,
+    "width": 1024,
+    "scrollWidth": 1024,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 412,
+      "cls": 0.00021079838431129855
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 768,
+    "width": 1024,
+    "scrollWidth": 1024,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.00021079838431129855
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 768,
+    "width": 1024,
+    "scrollWidth": 1024,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.00021079838431129855
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 720,
+    "width": 1280,
+    "scrollWidth": 1280,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.00014390503035651312
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 720,
+    "width": 1280,
+    "scrollWidth": 1280,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 756,
+      "cls": 0.00014390503035651312
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 720,
+    "width": 1280,
+    "scrollWidth": 1280,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 720,
+      "cls": 0.00014390503035651312
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 720,
+    "width": 1280,
+    "scrollWidth": 1280,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 404,
+      "cls": 0.00014390503035651312
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 900,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.00009096219202782066
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 900,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 896,
+      "cls": 0.00009096219202782066
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 900,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 536,
+      "cls": 0.00009096219202782066
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 900,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 484,
+      "cls": 0.00009096219202782066
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 1080,
+    "width": 1920,
+    "scrollWidth": 1920,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.000042638527513040926
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 1080,
+    "width": 1920,
+    "scrollWidth": 1920,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 644,
+      "cls": 0.000042638527513040926
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 1080,
+    "width": 1920,
+    "scrollWidth": 1920,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.000042638527513040926
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 1080,
+    "width": 1920,
+    "scrollWidth": 1920,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 0,
+      "cls": 0.000042638527513040926
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/",
+    "height": 360,
+    "width": 640,
+    "scrollWidth": 640,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 680,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/projects",
+    "height": 360,
+    "width": 640,
+    "scrollWidth": 640,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 208,
+      "cls": 0
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/lab/001",
+    "height": 360,
+    "width": 640,
+    "scrollWidth": 640,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 256,
+      "cls": 0.04432291666666667
+    }
+  },
+  {
+    "locale": "ar",
+    "theme": "dark",
+    "path": "/contact",
+    "height": 360,
+    "width": 640,
+    "scrollWidth": 640,
+    "mainCount": 1,
+    "duplicateIds": [],
+    "brokenImages": [],
+    "metrics": {
+      "lcp": 296,
+      "cls": 0
+    }
+  }
+]

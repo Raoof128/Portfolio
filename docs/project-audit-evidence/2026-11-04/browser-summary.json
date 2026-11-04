@@ -1,0 +1,3383 @@
+{
+  "stats": {
+    "startTime": "2026-11-04T03:18:47.047Z",
+    "duration": 137976.161,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: en",
+      "status": "passed",
+      "duration": 32304
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: fa",
+      "status": "passed",
+      "duration": 32310
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: ar",
+      "status": "passed",
+      "duration": 31800
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: zh",
+      "status": "passed",
+      "duration": 31297
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: es",
+      "status": "passed",
+      "duration": 27563
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: en",
+      "status": "passed",
+      "duration": 22931
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: fa",
+      "status": "passed",
+      "duration": 21602
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: ar",
+      "status": "passed",
+      "duration": 21153
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: zh",
+      "status": "passed",
+      "duration": 20178
+    },
+    {
+      "title": "all thirteen dossiers and seven articles retain reviewed content: es",
+      "status": "passed",
+      "duration": 20846
+    },
+    {
+      "title": "representative reviewer home and dossier keep accessibility rules intact",
+      "status": "passed",
+      "duration": 6001
+    },
+    {
+      "title": "Simurgh walkthrough exposes every source-backed stage and the reading path",
+      "status": "passed",
+      "duration": 3668
+    }
+  ],
+  "projectSectionObservations": 390,
+  "articleObservations": 70,
+  "uniqueRoutes": 100,
+  "axeObservations": [
+    {
+      "path": "/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<time dir=\"ltr\" datetime=\"2026-11-04T03:20:00.000Z\">14:20</time>",
+              "target": [
+                "time"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"os-top-date\">4 Nov 2026</span>",
+              "target": [
+                ".os-top-date"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"os-intro window glass active\">",
+                      "target": [
+                        ".os-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"os-eyebrow title-bar-text\">Research Highlights</p>",
+              "target": [
+                ".os-eyebrow"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "30.0pt (40px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"os-intro window glass active\">",
+                      "target": [
+                        ".os-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<h1 tabindex=\"-1\" lang=\"en\" dir=\"ltr\">Mohammad <span>Raouf Abedini.</span></h1>",
+              "target": [
+                "h1"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "30.0pt (40px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"os-intro window glass active\">",
+                      "target": [
+                        ".os-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Raouf Abedini.</span>",
+              "target": [
+                "h1 > span"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"os-intro window glass active\">",
+                      "target": [
+                        ".os-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"os-role\">AI Security Researcher · Adversarial Robustness &amp; AI Control · Empirical Safety Evaluation</p>",
+              "target": [
+                ".os-role"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"os-intro window glass active\">",
+                      "target": [
+                        ".os-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"os-desktop-summary\">I build and test host-side controls for what tool-using AI agents are permitted to do. I publish matched-control safety studies, including benefits and null results.</p>",
+              "target": [
+                ".os-desktop-summary"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-button\" href=\"/projects\">",
+                      "target": [
+                        ".os-button[href$=\"projects\"]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-button\" href=\"/projects\">",
+              "target": [
+                ".os-button[href$=\"projects\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-button os-button--secondary\" href=\"/Mohammad_Raouf_Abedini_Resume.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">",
+                      "target": [
+                        ".os-button--secondary.os-button[target=\"_blank\"]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-button os-button--secondary\" href=\"/Mohammad_Raouf_Abedini_Resume.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">",
+              "target": [
+                ".os-button--secondary.os-button[target=\"_blank\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-button os-button--secondary\" href=\"/contact\">",
+                      "target": [
+                        ".os-button--secondary.os-button[href$=\"contact\"]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-button os-button--secondary\" href=\"/contact\">",
+              "target": [
+                ".os-button--secondary.os-button[href$=\"contact\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<h2 id=\"_r_0_\" class=\"title-bar-text\" tabindex=\"-1\">Where the evidence connects</h2>",
+              "target": [
+                "#_r_0_"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"proof-atlas-eyebrow proof-atlas-kicker\">Proof Atlas · Selected research</p>",
+              "target": [
+                ".proof-atlas-eyebrow"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<text x=\"0\" y=\"32\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"plaintext\">Agent</text>",
+              "target": [
+                "text[y=\"32\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<text x=\"0\" y=\"43\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"plaintext\">Input</text>",
+              "target": [
+                "g[transform=\"translate(145 75)\"] > text[y=\"43\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<text x=\"0\" y=\"43\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"plaintext\">Context</text>",
+              "target": [
+                "g[transform=\"translate(276 54)\"] > text[y=\"43\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<text x=\"0\" y=\"-36\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"plaintext\">Tool gate</text>",
+              "target": [
+                "text[y=\"-36\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<text x=\"0\" y=\"43\" text-anchor=\"middle\" direction=\"ltr\" unicode-bidi=\"plaintext\">Output</text>",
+              "target": [
+                "g[transform=\"translate(500 123)\"] > text[y=\"43\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<button type=\"button\" class=\"proof-atlas-option\" aria-pressed=\"true\">Project Simurgh</button>",
+                      "target": [
+                        ".proof-atlas-option[type=\"button\"]:nth-child(1)"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<button type=\"button\" class=\"proof-atlas-option\" aria-pressed=\"true\">Project Simurgh</button>",
+              "target": [
+                ".proof-atlas-option[type=\"button\"]:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<button type=\"button\" class=\"proof-atlas-option\" aria-pressed=\"false\">Invisible Window</button>",
+                      "target": [
+                        ".proof-atlas-option[type=\"button\"]:nth-child(2)"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<button type=\"button\" class=\"proof-atlas-option\" aria-pressed=\"false\">Invisible Window</button>",
+              "target": [
+                ".proof-atlas-option[type=\"button\"]:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<button type=\"button\" class=\"proof-atlas-option\" aria-pressed=\"false\">Project Zurvan</button>",
+                      "target": [
+                        ".proof-atlas-option[type=\"button\"]:nth-child(3)"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<button type=\"button\" class=\"proof-atlas-option\" aria-pressed=\"false\">Project Zurvan</button>",
+              "target": [
+                ".proof-atlas-option[type=\"button\"]:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"proof-atlas-summary\">Oct 2026 matched controls: Llama-3.2-3B restricted trials with new effects 17/24 → 0/24, useful completions 23/24; gpt-6-luna baseline 0/24, no incremental protection.</p>",
+              "target": [
+                ".proof-atlas-summary"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"proof-atlas-qualifier\">Earlier frozen architecture schematic; no current study run trace is shown.</p>",
+              "target": [
+                ".proof-atlas-qualifier"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"proof-atlas proof-atlas--desktop window glass active\" lang=\"en\" dir=\"ltr\" data-project=\"project-simurgh\" data-interactive=\"true\" data-motion-enabled=\"false\" aria-labelledby=\"_r_0_\">",
+                      "target": [
+                        ".proof-atlas"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"proof-atlas-link\" href=\"/projects/project-simurgh\">",
+              "target": [
+                ".proof-atlas-link"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<p class=\"os-section-label\">Open an app to explore my work.<span class=\"os-app-stat\">Offensive security 1 · Defensive security 4 · Engineering 8</span></p>",
+                      "target": [
+                        ".os-section-label"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"os-section-label\">Open an app to explore my work.<span class=\"os-app-stat\">Offensive security 1 · Defensive security 4 · Engineering 8</span></p>",
+              "target": [
+                ".os-section-label"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<p class=\"os-section-label\">Open an app to explore my work.<span class=\"os-app-stat\">Offensive security 1 · Defensive security 4 · Engineering 8</span></p>",
+                      "target": [
+                        ".os-section-label"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"os-app-stat\">Offensive security 1 · Defensive security 4 · Engineering 8</span>",
+              "target": [
+                ".os-app-stat"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<strong>Projects</strong>",
+                      "target": [
+                        ".os-app[data-app=\"projects\"][href$=\"projects\"] > strong"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<strong>Projects</strong>",
+              "target": [
+                ".os-app[data-app=\"projects\"][href$=\"projects\"] > strong"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<small>Selected engineering</small>",
+                      "target": [
+                        ".os-app[data-app=\"projects\"][href$=\"projects\"] > small"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Selected engineering</small>",
+              "target": [
+                ".os-app[data-app=\"projects\"][href$=\"projects\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<strong>Write-ups</strong>",
+                      "target": [
+                        ".os-app[data-app=\"research\"][href$=\"write-ups\"] > strong"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<strong>Write-ups</strong>",
+              "target": [
+                ".os-app[data-app=\"research\"][href$=\"write-ups\"] > strong"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<small>Papers and write-ups</small>",
+                      "target": [
+                        ".os-app[data-app=\"research\"][href$=\"write-ups\"] > small"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Papers and write-ups</small>",
+              "target": [
+                ".os-app[data-app=\"research\"][href$=\"write-ups\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<strong>About</strong>",
+                      "target": [
+                        ".os-app[data-app=\"about\"][href$=\"about\"] > strong"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<strong>About</strong>",
+              "target": [
+                ".os-app[data-app=\"about\"][href$=\"about\"] > strong"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<small>Behind the work</small>",
+                      "target": [
+                        ".os-app[data-app=\"about\"][href$=\"about\"] > small"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Behind the work</small>",
+              "target": [
+                ".os-app[data-app=\"about\"][href$=\"about\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<strong>Résumé</strong>",
+                      "target": [
+                        ".os-app[data-app=\"resume\"][href$=\"resume\"] > strong"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<strong>Résumé</strong>",
+              "target": [
+                ".os-app[data-app=\"resume\"][href$=\"resume\"] > strong"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<small>Experience and skills</small>",
+                      "target": [
+                        ".os-app[data-app=\"resume\"][href$=\"resume\"] > small"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Experience and skills</small>",
+              "target": [
+                ".os-app[data-app=\"resume\"][href$=\"resume\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<strong>Contact</strong>",
+                      "target": [
+                        ".os-app[data-app=\"contact\"][href$=\"contact\"] > strong"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<strong>Contact</strong>",
+              "target": [
+                ".os-app[data-app=\"contact\"][href$=\"contact\"] > strong"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<small>Start a conversation</small>",
+                      "target": [
+                        ".os-app[data-app=\"contact\"][href$=\"contact\"] > small"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Start a conversation</small>",
+              "target": [
+                ".os-app[data-app=\"contact\"][href$=\"contact\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a href=\"/lab\">",
+                      "target": [
+                        "a[href$=\"lab\"]"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a href=\"/lab\">",
+              "target": [
+                "a[href$=\"lab\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a href=\"/security-policy\">Security &amp; Responsible Disclosure</a>",
+                      "target": [
+                        "a[href$=\"security-policy\"]"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a href=\"/security-policy\">Security &amp; Responsible Disclosure</a>",
+              "target": [
+                "a[href$=\"security-policy\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a href=\"/hall-of-fame\">Hall of Fame</a>",
+                      "target": [
+                        "a[href$=\"hall-of-fame\"]"
+                      ]
+                    },
+                    {
+                      "html": "<div class=\"os-wallpaper\" aria-hidden=\"true\"></div>",
+                      "target": [
+                        ".os-wallpaper"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a href=\"/hall-of-fame\">Hall of Fame</a>",
+              "target": [
+                "a[href$=\"hall-of-fame\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Projects</span>",
+              "target": [
+                "a[aria-label=\"Projects\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Write-ups</span>",
+              "target": [
+                "a[aria-label=\"Write-ups\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>About</span>",
+              "target": [
+                "a[aria-label=\"About\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Résumé</span>",
+              "target": [
+                "a[aria-label=\"Résumé\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Contact</span>",
+              "target": [
+                "a[aria-label=\"Contact\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ],
+      "passingRuleCount": 25
+    },
+    {
+      "path": "/projects/project-simurgh",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<time dir=\"ltr\" datetime=\"2026-11-04T03:21:00.000Z\">14:21</time>",
+              "target": [
+                "time[datetime=\"2026-11-04T03:21:00.000Z\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"os-top-date\">4 Nov 2026</span>",
+              "target": [
+                ".os-top-date"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<div id=\"_r_d_-title\" class=\"os-window-title title-bar-text os-window-title--movable\" title=\"Project Simurgh · Move Window\" lang=\"en\" dir=\"ltr\">Project Simurgh</div>",
+              "target": [
+                "#_r_d_-title"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Back</span>",
+              "target": [
+                ".os-window-back > span"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<button type=\"button\" class=\"os-control os-window-copy\" tabindex=\"0\">Copy Link</button>",
+                      "target": [
+                        ".os-window-copy"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<button type=\"button\" class=\"os-control os-window-copy\" tabindex=\"0\">Copy Link</button>",
+              "target": [
+                ".os-window-copy"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<summary class=\"os-control\" aria-label=\"Move and Resize\">Move and Resize</summary>",
+              "target": [
+                "summary[aria-label=\"Move and Resize\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-explorer-crumb-link\" href=\"/projects\">Projects</a>",
+              "target": [
+                ".os-explorer-crumb-link"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"os-explorer-crumb-current\" aria-current=\"page\" lang=\"en\" dir=\"ltr\">Project Simurgh</span>",
+              "target": [
+                ".os-explorer-crumb-current"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>All Projects</span>",
+              "target": [
+                ".os-explorer-index-link > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"os-explorer-count\">13</span>",
+              "target": [
+                ".os-explorer-index-link > .os-explorer-count"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<label for=\"_r_g_-search\">Search Projects</label>",
+              "target": [
+                "label[for=\"_r_g_-search\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<input id=\"_r_g_-search\" maxlength=\"100\" placeholder=\"Search Projects\" autocomplete=\"off\" type=\"search\" value=\"\">",
+              "target": [
+                "#_r_g_-search"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<label for=\"_r_g_-category\">Category</label>",
+              "target": [
+                "label[for=\"_r_g_-category\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<select id=\"_r_g_-category\"><option value=\"ALL\">All Categories</option><option value=\"ENGINEERING\">Engineering</option><option value=\"DEFENSIVE\">Defensive security</option><option value=\"OFFENSIVE\">Offensive security</option></select>",
+              "target": [
+                "#_r_g_-category"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Invisible Window Research</span>",
+              "target": [
+                ".os-explorer-project-link:nth-child(1) > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Offensive security</small>",
+              "target": [
+                ".os-explorer-project-link:nth-child(1) > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Project Simurgh</span>",
+              "target": [
+                ".os-explorer-project-link[aria-current=\"page\"][href$=\"project-simurgh\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Defensive security</small>",
+              "target": [
+                ".os-explorer-project-link[aria-current=\"page\"][href$=\"project-simurgh\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Project Zurvan</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"project-zurvan\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"project-zurvan\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">GitSwitch</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"gitswitch\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"gitswitch\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Mehr Guard</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"mehr-guard\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Defensive security</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"mehr-guard\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Syllabus-Sync</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"syllabus-sync\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"syllabus-sync\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Divan — Open Day</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"divan-open-day\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"divan-open-day\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Nexus Archive</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"nexus-archive\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"nexus-archive\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">NanoMatch</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"nanomatch\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"nanomatch\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">SentinelFlow</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"sentinelflow\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Defensive security</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"sentinelflow\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">eBPF Cloud Runtime Security Monitor</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"ecrsm\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Defensive security</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"ecrsm\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">SimurghForge</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"simurghforge\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"simurghforge\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span lang=\"en\" dir=\"ltr\">Aion</span>",
+              "target": [
+                ".os-explorer-project-link[href$=\"aion\"] > span[lang=\"en\"][dir=\"ltr\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<small>Engineering</small>",
+              "target": [
+                ".os-explorer-project-link[href$=\"aion\"] > small"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Defensive security</span>",
+              "target": [
+                ".os-project-dossier-header > .os-project-row-meta > span"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<time datetime=\"2026\">2026</time>",
+              "target": [
+                ".os-project-dossier-header > .os-project-row-meta > time[datetime=\"2026\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "21.0pt (28px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<h1 tabindex=\"-1\" lang=\"en\" dir=\"ltr\">Project Simurgh</h1>",
+              "target": [
+                ".os-project-dossier-header > h1"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p class=\"os-project-lead\" lang=\"en\" dir=\"ltr\">",
+              "target": [
+                ".os-project-lead"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<bdi>Containment Attestation</bdi>",
+              "target": [
+                ".os-project-tags > li:nth-child(1) > bdi"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<bdi>Agentic AI Safety</bdi>",
+              "target": [
+                ".os-project-tags > li:nth-child(2) > bdi"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<bdi>Prompt-Injection</bdi>",
+              "target": [
+                ".os-project-tags > li:nth-child(3) > bdi"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<bdi>Ed25519</bdi>",
+              "target": [
+                ".os-project-tags > li:nth-child(4) > bdi"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<bdi>LLM Red-Teaming</bdi>",
+              "target": [
+                ".os-project-tags > li:nth-child(5) > bdi"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section id=\"main-content\" role=\"main\" aria-labelledby=\"_r_d_-title\" tabindex=\"-1\" class=\"os-window os-workspace-window window glass active os-window--floating\" data-window-path=\"/projects/project-simurgh\" data-active=\"true\" ...>",
+                      "target": [
+                        "#main-content"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<bdi>AGPL-3.0</bdi>",
+              "target": [
+                ".os-project-tags > li:nth-child(6) > bdi"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-button\" href=\"https://github.com/Raoof128/Project-Simurgh\" target=\"_blank\" rel=\"noopener noreferrer\">",
+                      "target": [
+                        ".os-project-resources > .os-button[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-button\" href=\"https://github.com/Raoof128/Project-Simurgh\" target=\"_blank\" rel=\"noopener noreferrer\">",
+              "target": [
+                ".os-project-resources > .os-button[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-project-resource\" href=\"https://doi.org/10.5281/zenodo.21737792\" target=\"_blank\" rel=\"noopener noreferrer\">",
+                      "target": [
+                        ".os-project-resources > .os-project-resource[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-project-resource\" href=\"https://doi.org/10.5281/zenodo.21737792\" target=\"_blank\" rel=\"noopener noreferrer\">",
+              "target": [
+                ".os-project-resources > .os-project-resource[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-project-resource\" href=\"/projects/project-simurgh\">",
+                      "target": [
+                        ".os-project-resource[href$=\"project-simurgh\"]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"os-project-resource\" href=\"/projects/project-simurgh\">",
+              "target": [
+                ".os-project-resource[href$=\"project-simurgh\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<a class=\"os-dock-app is-running\" data-app=\"projects\" aria-label=\"Projects\" aria-current=\"page\" href=\"/projects\">",
+                      "target": [
+                        ".is-running"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Projects</span>",
+              "target": [
+                ".is-running > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Write-ups</span>",
+              "target": [
+                "a[aria-label=\"Write-ups\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>About</span>",
+              "target": [
+                "a[aria-label=\"About\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Résumé</span>",
+              "target": [
+                "a[aria-label=\"Résumé\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<nav class=\"os-dock\" aria-label=\"Portfolio Applications\">",
+                      "target": [
+                        ".os-dock"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span>Contact</span>",
+              "target": [
+                "a[aria-label=\"Contact\"] > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ],
+      "passingRuleCount": 33
+    }
+  ]
+}

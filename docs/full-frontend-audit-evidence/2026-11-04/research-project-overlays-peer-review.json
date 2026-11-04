@@ -1,0 +1,249 @@
+{
+  "status": "complete",
+  "files": [
+    {
+      "path": "src/lib/project-content/fa.ts",
+      "initial_sha256": "af37d0fa590c36fec67b1206560918006f8431503f8c5da1ae0b75c815b8eb4e",
+      "lines": 529,
+      "read_spans": [
+        [
+          1,
+          75
+        ],
+        [
+          70,
+          100
+        ],
+        [
+          79,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          529
+        ]
+      ],
+      "read_complete": true,
+      "peer_read_sha256": "00967eec640f15e32d4b3971f8bd12182f212dba57950f408bd452d2f6280547",
+      "notes": "Complete final-source coverage via initial full bounded read plus reread of all four author-changed lines with context. Currentstudypositive/null/controlconditions, clusteruncertainty, separate roledefect/frozen correction,39Lean/5171Oct19/92releases/919documents141findings and distinctDOIs align with suppliedPDFs. Syllabus503tests/92files andZurvan218tests align. Author’s frozenNodeJS,public-keypasskey,andNanoMatchlookup/cancel-vs-modification corrections reviewed. No additional material new-PDFsemantic mismatch identified. Final parent-authorized source-action clarification: line105 explicitly labels the original paper an earlier device-integrity preprint in each locale; lines100–110 reread after this one-line delta. No PDF/citation identity was changed.",
+      "final_sha256": "8bd6023a0ec25a73d1f44fc4b13df16877ab840a37d5a4bc970d9d20c2ba8522",
+      "final_lines": 529,
+      "final_delta_read_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          249,
+          257
+        ],
+        [
+          354,
+          362
+        ],
+        [
+          367,
+          375
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "author_changed_lines": [
+        84,
+        253,
+        358,
+        371,
+        105
+      ],
+      "previous_final_sha256": "868a7bd89741ab1ce75e45db00b60434b1675fc63f1cc28196451ed90b4697f6"
+    },
+    {
+      "path": "src/lib/project-content/ar.ts",
+      "initial_sha256": "3f03aab97c88eab602f4c0145092540eff8fdbb2d152558645db040652c9819e",
+      "lines": 534,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          534
+        ]
+      ],
+      "read_complete": true,
+      "peer_read_sha256": "bc9d9e56965d0fac94f027eb424ef2b87e11d17b7bb92f45c377a86f116e3747",
+      "notes": "Complete final-source coverage via initial full bounded read plus reread of all four author-changed lines with context. Currentstudypositive/null/controlconditions, clusteruncertainty, separate roledefect/frozen correction,39Lean/5171Oct19/92releases/919documents141findings and distinctDOIs align with suppliedPDFs. Syllabus503tests/92files andZurvan218tests align. Author’s frozenNodeJS,public-keypasskey,andNanoMatchlookup/cancel-vs-modification corrections reviewed. No additional material new-PDFsemantic mismatch identified. Final parent-authorized source-action clarification: line105 explicitly labels the original paper an earlier device-integrity preprint in each locale; lines100–110 reread after this one-line delta. No PDF/citation identity was changed.",
+      "final_sha256": "ca66a084b601f1d5b3b75ad176e025562489a04359ede7749c71f40671e769b4",
+      "final_lines": 534,
+      "final_delta_read_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          249,
+          257
+        ],
+        [
+          354,
+          362
+        ],
+        [
+          367,
+          375
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "author_changed_lines": [
+        84,
+        253,
+        358,
+        371,
+        105
+      ],
+      "previous_final_sha256": "4b4b6717c0c975da2b5f3cc412e43aea9a80bcb20f01f49bad60968722662615"
+    },
+    {
+      "path": "src/lib/project-content/zh.ts",
+      "initial_sha256": "b087fe6791b4f6946c9561755dc596cf892ece16b72cc11c2a1b7bafc90c7df6",
+      "lines": 533,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          533
+        ]
+      ],
+      "read_complete": true,
+      "peer_read_sha256": "560569dac0cfa2b39bfbb14a332bc8566e6fba997441740cc0539cb219c25199",
+      "notes": "Complete final-source coverage via initial full bounded read plus reread of all four author-changed lines with context. Currentstudypositive/null/controlconditions, clusteruncertainty, separate roledefect/frozen correction,39Lean/5171Oct19/92releases/919documents141findings and distinctDOIs align with suppliedPDFs. Syllabus503tests/92files andZurvan218tests align. Author’s frozenNodeJS,public-keypasskey,andNanoMatchlookup/cancel-vs-modification corrections reviewed. No additional material new-PDFsemantic mismatch identified. Final parent-authorized source-action clarification: line105 explicitly labels the original paper an earlier device-integrity preprint in each locale; lines100–110 reread after this one-line delta. No PDF/citation identity was changed.",
+      "final_sha256": "c49d83b1db2c92ad7d501d17b86ca471fd0a35ccebdd04ebb9abfe90c6ffe033",
+      "final_lines": 533,
+      "final_delta_read_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          248,
+          256
+        ],
+        [
+          353,
+          361
+        ],
+        [
+          366,
+          374
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "author_changed_lines": [
+        84,
+        252,
+        357,
+        370,
+        105
+      ],
+      "previous_final_sha256": "0725528d789ca9ba8bc3e314497851c1192e6c93a46257036816864ba4ff549f"
+    },
+    {
+      "path": "src/lib/project-content/es.ts",
+      "initial_sha256": "356a8e994dd2e0fabf5c8388ba3ed4c77351ae0392a25d2ee961a8c9d2337e81",
+      "lines": 529,
+      "read_spans": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          529
+        ]
+      ],
+      "read_complete": true,
+      "peer_read_sha256": "257c4b323ae02bac954db8c2e2fb66cb2e342fc2487a81107ab8915d9db92a3c",
+      "notes": "Complete final-source coverage via initial full bounded read plus reread of all four author-changed lines with context. Currentstudypositive/null/controlconditions, clusteruncertainty, separate roledefect/frozen correction,39Lean/5171Oct19/92releases/919documents141findings and distinctDOIs align with suppliedPDFs. Syllabus503tests/92files andZurvan218tests align. Author’s frozenNodeJS,public-keypasskey,andNanoMatchlookup/cancel-vs-modification corrections reviewed. No additional material new-PDFsemantic mismatch identified. Final parent-authorized source-action clarification: line105 explicitly labels the original paper an earlier device-integrity preprint in each locale; lines100–110 reread after this one-line delta. No PDF/citation identity was changed.",
+      "final_sha256": "c506f0ccf3fab20d1f530d508939324a757a3122773014c704ebcca46df4b189",
+      "final_lines": 529,
+      "final_delta_read_spans": [
+        [
+          80,
+          88
+        ],
+        [
+          249,
+          257
+        ],
+        [
+          354,
+          362
+        ],
+        [
+          367,
+          375
+        ],
+        [
+          100,
+          110
+        ]
+      ],
+      "author_changed_lines": [
+        84,
+        253,
+        358,
+        371,
+        105
+      ],
+      "previous_final_sha256": "5df00087d57bdf170c193236f766600307dcc8f3d2d09274f51268916f092980"
+    }
+  ],
+  "summary": {
+    "files": 4,
+    "lines": 2125,
+    "unread_lines": 0
+  },
+  "changes_by_peer_reviewer": false,
+  "announced_author_corrections": [
+    "Mark Node.js/JavaScript gateway stack as earlier frozen, since currentruntime is not established by suppliedPDFs.",
+    "Describe WebAuthn public-key credentials without the misleading shared-secret phrase."
+  ],
+  "limitations": "Read-only source peer review against suppliedPDFfacts; no additional app/browser runs and no native-language editorial certification. Additional source-specific claims outside the PDFs were read for coherence, not externally re-proved.",
+  "reviewed_at": "2026-11-04T01:52:15.116879+00:00",
+  "author_corrections_reviewed": [
+    "SimurghNode.js/JavaScript stack nowexplicitlyearlierfrozen gateway ratherthanimplyingcurrentruntime.",
+    "WebAuthnpasskeys nowpublic-keycredentialsinsteadofmisleading sharedsecretphrase.",
+    "NanoMatchexpectedO(1)applieslookup/cancellation; modificationiscancel+readd,notclaimedconstanttime.",
+    "Originalpaperlabelnowexplicitlyearlierdevice-integritypreprint;currentsoftwarepublicationseparatefromhistoricalpaper."
+  ],
+  "findings": [],
+  "additional_material_mismatches": 0
+}

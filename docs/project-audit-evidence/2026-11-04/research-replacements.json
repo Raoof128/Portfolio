@@ -1,0 +1,361 @@
+{
+  "schema": "project-audit-replacements/v1",
+  "created_at_utc": "2026-11-04T02:42:39.197137+00:00",
+  "scope": "Proposed English objects only; no product edits or remote execution",
+  "projects": {
+    "project-simurgh": {
+      "slug": "project-simurgh",
+      "title": "Project Simurgh",
+      "category": "DEFENSIVE",
+      "year": "2026",
+      "description": "Inspectable authorisation and containment prototype for tool-using AI agents. October 2026 matched-control study: Llama-3.2-3B restricted trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions. The gpt-6-luna baseline was already 0/24, so no incremental protection was observed there.",
+      "tags": [
+        "Containment Attestation",
+        "Agentic AI Safety",
+        "Prompt-Injection",
+        "Ed25519",
+        "LLM Red-Teaming",
+        "AGPL-3.0"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/Project-Simurgh",
+        "caseStudy": "/projects/project-simurgh",
+        "doi": "https://doi.org/10.5281/zenodo.21737792",
+        "doiKind": "software"
+      },
+      "papers": [
+        {
+          "title": "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions",
+          "label": "Earlier device-integrity preprint",
+          "href": "/Project_Simurgh_Preprint_v1.0.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "CC BY 4.0 preprint",
+          "description": "12-page defensive follow-up to The Invisible Window, replacing visual surveillance with metadata-only integrity proofs.",
+          "doi": "10.5281/zenodo.20374849"
+        },
+        {
+          "title": "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University",
+          "label": "Supplement preprint",
+          "href": "/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "Phase C preprint",
+          "description": "5-page voting-adjacent pilot reporting 31 consented sessions alongside a Macquarie student-society event, with ballot-choice exclusion, HMAC audit chaining, forbidden-field rejection, and 5/5 collection-closure gates.",
+          "doi": "10.5281/zenodo.20549736"
+        },
+        {
+          "title": "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations",
+          "label": "Banking-adjacent preprint",
+          "href": "/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "Author-prepared preprint",
+          "description": "Fictional, non-bank research prototype that turns privacy and overclaim boundaries into machine-checkable evidence: a 46-name forbidden-field firewall whose rejections become audit events, a deterministic offline AI privacy firewall, and per-response privacy receipts anchored in per-session HMAC audit chains. At the evidence freeze all 417/417 unit tests, 43/43 end-to-end checks, and 27/27 security checks passed across three privacy audits and a no-egress static gate, with a formative five-tester dry run (30 sessions) recording zero sensitive values in evidence and 5/5 non-claim checklist comprehension.",
+          "doi": "10.5281/zenodo.20675513"
+        }
+      ],
+      "citation": "Abedini, M. R. (2026). Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions. Zenodo. https://doi.org/10.5281/zenodo.20374849",
+      "build": {
+        "stack": [
+          "Python 3.12 composed authorisation controls and replay harnesses",
+          "React evidence explorer and shared JSON CLI",
+          "SHA-256-pinned, source-bound current study archives; Ed25519 attestations in earlier frozen stages",
+          "OpenAI Responses API with tool calling",
+          "Self-hosted Llama-3.2-3B / Llama-3.3-70B",
+          "Lean 4 models of selected properties",
+          "Earlier frozen containment gateway (Node.js / JavaScript)"
+        ],
+        "features": [
+          "Host-held delegation, stop, lease and credential state is checked outside the model for every tool proposal",
+          "Matched credential-only, composed and deny-all controls separate host-control effects from the model baseline and useful-task outcomes",
+          "Current study archives bind files and source revisions with SHA-256 and replay through fresh local services on native Linux x86_64 with Python 3.12; earlier frozen attestation stages use Ed25519",
+          "Earlier frozen architecture used four containment boundaries: input firewall, context-provenance guard, tool-invocation gate and output-leakage firewall"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Host-side state checks govern permitted tool proposals; the prototype and small experiments do not establish a universal safety guarantee",
+          "Positive and null model results are published together, with state-cluster uncertainty and the part of the gap that holds by construction made explicit",
+          "OpenAI role-placement failure and the frozen correction remain visible; one authorised-workflow refusal is still open",
+          "39 Lean 4 proof files model selected earlier-stage mathematical properties behind a gate rejecting unproven “sorry” placeholders; they do not prove implementation equivalence or whole-agent safety",
+          "Earlier frozen containment evidence complements input classifiers; it is not a general jailbreak detector or proof that all unsafe model outputs are prevented"
+        ]
+      },
+      "fullDescription": "Project Simurgh is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state are held on the host; each tool proposal is checked against that state outside the model. Current study evidence uses SHA-256-pinned, source-bound archives and fresh local replay; earlier frozen attestation stages use Ed25519. Its October 2026 transfer study reports a benefit on one model and a null result on another. Earlier classifier-miss and AgentDojo results remain separate frozen experiments, while the original device-integrity preprint records the project’s earlier research lineage.",
+      "problem": "A tool-using agent may propose actions after its delegation, stop, lease or credential state has changed. Host controls need to enforce that state outside the model. Evaluating those controls also requires matched baselines, useful-task outcomes and uncertainty reporting: an already-clean model baseline cannot demonstrate additional protection.",
+      "solution": [
+        "Holds delegation, stop, lease and credential state on the host and checks every tool proposal outside the model; current evidence archives bind retained files and source revisions with SHA-256 for local replay",
+        "October 2026 transfer study: 24 tasks, two trials each, three matched controls (credential-only, composed, deny-all), two models and 288 replayed branches; protocol to published package took 15–17 October 2026",
+        "On Meta Llama-3.2-3B, composed host controls cut restricted-state trials with new effects from 17/24 to 0/24, retained 23/24 useful completions and blocked no valid proposal",
+        "On OpenAI gpt-6-luna the baseline was already 0/24; the study reports no incremental protection on that model",
+        "Reports uncertainty per state: 24 restricted trials form six states; Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%, and part of the gap holds by construction"
+      ],
+      "proof": [
+        "October 2026 matched-control transfer study: 24 tasks × two trials × three controls × two models; 288 replayed branches. The positive Llama-3.2-3B result and null gpt-6-luna result are reported together",
+        "Llama-3.2-3B: restricted-state trials with new effects 17/24 → 0/24, useful completions 23/24, no valid proposal blocked; gpt-6-luna: baseline 0/24, no observed incremental protection",
+        "Cluster scope: the 24 restricted trials occupy six states. Per-state Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%; part of the difference holds by construction",
+        "OpenAI Responses API integration defect: a role-placement error caused 8/8 workflow declines. Original traces were retained; a frozen developer-role correction completed 2/3 authorised workflows and declined 5/5 restricted workflows, with one refusal still open",
+        "Earlier frozen classifier stage (2026): real Llama Guard 4 12B over 180 cases; containment evidence covered all 138/138 malicious cases it missed, including 120 downstream injections outside an input-only classifier’s view. This is a coverage claim, not a classifier ranking",
+        "Earlier frozen AgentDojo stages (2026): live Llama-3.3-70B on 140 pre-registered workspace injections cut targeted attack success from 9/140 to 0/140 while benign utility fell from 7/10 to 6/10. A separate deterministic four-suite run, with no real LLM, recorded attack success 0/949, utility under attack 949/949 and benign utility 97/97. These are bounded experiments, not the October transfer study",
+        "39 Lean 4 proof files for selected mathematical models, checked by a gate rejecting unproven “sorry” placeholders; 5,171 root tests passed in the 19 October 2026 smoke run; 92 published releases. Full current replay requires native Linux x86_64 and Python 3.12; dependency installation needs package-index access. The root package declares AGPL-3.0-or-later",
+        "Audited 919 project documents and published 141 dated findings, including earlier closeout overstatements, in a public finding register linked from the README",
+        "Current software archive DOI 10.5281/zenodo.21737792 is separate from the original device-integrity preprint DOI 10.5281/zenodo.20374849 and the other published preprints"
+      ],
+      "updatedAt": "2026-11-04"
+    },
+    "invisible-window-research": {
+      "slug": "invisible-window-research",
+      "title": "Invisible Window Research",
+      "category": "OFFENSIVE",
+      "year": "2026",
+      "description": "IEEE-format research paper exposing a structural vulnerability in WebRTC-based exam proctoring. 100% evasion in tested Windows 10/11 and macOS 14–26 lab configurations using documented OS display APIs. Responsibly disclosed to vendors.",
+      "tags": [
+        "Security Research",
+        "Windows",
+        "macOS",
+        "WebRTC",
+        "Responsible Disclosure",
+        "PoC"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/invisible-window-research",
+        "paper": "/Invisible_Window_Research_Preprint_V2.0.pdf",
+        "preprint": "https://zenodo.org/records/20376495",
+        "caseStudy": "/projects/invisible-window-research"
+      },
+      "papers": [
+        {
+          "title": "The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+          "label": "IEEE-format preprint",
+          "href": "/Invisible_Window_Research_Preprint_V2.0.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "CC BY 4.0 preprint",
+          "description": "13-page research paper documenting cross-platform screen-capture evasion and coordinated vendor disclosure.",
+          "doi": "10.5281/zenodo.20376495"
+        }
+      ],
+      "citation": "Abedini, M. R. (2026). The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems. Zenodo. https://doi.org/10.5281/zenodo.20376495",
+      "build": {
+        "stack": [
+          "Win32 C (Windows PoC)",
+          "Swift / AppKit (macOS PoC)",
+          "Python (pixel-level forensic verification)",
+          "LaTeX (IEEE conference template, 13 pages, 53 references)"
+        ],
+        "features": [
+          "SetWindowDisplayAffinity + WDA_EXCLUDEFROMCAPTURE (Windows 10 v2004+): excludes the window from tested Windows screen-capture paths with zero visual artefact",
+          "NSWindow.SharingType.none (macOS 14–26): exclusion was demonstrated in tested native capture paths. macOS 26 used CGWindowListCreateImage and screencapture, not browser getDisplayMedia() or a direct ScreenCaptureKit test",
+          "Pixel-level forensic verification: 80.27% pixel difference in Windows capture footprint; 1,170,560-pixel macOS capture returned fully transparent"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Discovery and verification (January 2026)",
+          "Microsoft MSRC was notified in February 2026 and classified the issue as by-design, not a security vulnerability, in April 2026",
+          "Apple Product Security was notified in March 2026 and classified the issue as consistent with documented functionality, not a security issue, that month",
+          "Public release following OS vendor responses (May 2026)",
+          "The public repository now includes Windows and macOS proof-of-concept source and evaluation harnesses; the paper’s earlier source-withheld statement does not describe current repository availability",
+          "Uses documented, user-level OS APIs. No kernel exploits or privilege escalation are involved",
+          "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines"
+        ]
+      },
+      "fullDescription": "A 13-page IEEE-format research paper documenting a structural vulnerability in WebRTC-based exam proctoring. Operating systems expose documented APIs, SetWindowDisplayAffinity on Windows and NSWindow.SharingType.none on macOS, that let an application exclude its window from tested screen-capture paths while remaining fully visible on the physical display. This challenges the trust assumption in capture-based proctoring. Proof-of-concept implementations achieved 100% evasion across tested Windows and macOS lab configurations, including macOS 26 where the attack was previously assumed mitigated. Configurations were simulated, not commercial proctoring products; macOS 26 used native CGWindowListCreateImage and screencapture rather than browser getDisplayMedia(), and Linux was not tested. Findings reflect the tested software versions as of March 2026 and may change after patches.",
+      "problem": "Remote proctoring systems detect prohibited content by capturing the student's screen via the WebRTC getDisplayMedia() API. The implicit security assumption is that the captured frame faithfully represents the physical display. The research demonstrates a gap in that assumption: documented OS display APIs excluded windows in tested capture paths without privilege escalation or kernel modification. These findings concern controlled, simulated Windows and macOS configurations; they do not establish bypass of every browser or commercial proctoring product.",
+      "solution": [
+        "Formalised the trust-boundary violation between the W3C Screen Capture API and the OS compositing pipeline",
+        "Surveyed SetWindowDisplayAffinity (Win32) and NSWindow.SharingType.none (macOS); both appear in official SDK references",
+        "Built proof-of-concept implementations in Win32 C (Windows) and Swift (macOS) demonstrating full screen-capture evasion",
+        "Evaluated simulated proctoring configurations in a controlled lab on Windows 10/11 and macOS 14–26; no commercial products were tested, and macOS 26 used native capture rather than browser getDisplayMedia()",
+        "Analysed which behavioural detection mechanisms (gaze tracking, mouse dynamics, process enumeration) can and cannot detect the attack",
+        "Proposed and assessed five countermeasures, ranging from deployable (flag enumeration) to long-term (hardware attestation)",
+        "Coordinated OS vendor disclosure: Microsoft MSRC (notified Feb 2026, classified Apr 2026) and Apple Product Security (notified and classified Mar 2026) both issued formal classifications"
+      ],
+      "proof": [
+        "100% evasion rate across Windows 10/11 and macOS 14–26, measured over 10,000+ frames per configuration",
+        "Zero visual artefacts detected in captured frames (no black rectangles, compositing errors, or flicker)",
+        "Window exclusion remained effective in tested native capture paths on macOS 26.3.1 despite Apple's documented ScreenCaptureKit changes in macOS 15; no direct ScreenCaptureKit or browser getDisplayMedia() test was performed on macOS 26",
+        "Linux (X11/Wayland) was not evaluated; these results apply to the tested Windows and macOS configurations",
+        "Behavioural detection showed no significant effect at this sample size. Gaze tracking (p = 0.41, n = 8) was underpowered, and mouse dynamics fell within normal exam-behaviour variance. This does not establish that behavioural detection is impossible in all settings",
+        "Published as a Zenodo preprint under CC BY 4.0 (DOI 10.5281/zenodo.20376495), with 13 pages, 53 references, and IEEE conference formatting"
+      ],
+      "updatedAt": "2026-11-04"
+    },
+    "project-zurvan": {
+      "slug": "project-zurvan",
+      "title": "Project Zurvan",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Local-first document knowledge engine with Python ingestion, SQLite FTS5/vector retrieval and a Rust MCP stdio server backed by Python writes. Current sealed-evaluation work remains open.",
+      "tags": [
+        "Python",
+        "Rust",
+        "LLM",
+        "MCP",
+        "Knowledge Graph",
+        "SQLite",
+        "Local-first",
+        "AI Agents"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/Project-Zurvan",
+        "repoVisibility": "public",
+        "caseStudy": "/projects/project-zurvan"
+      },
+      "build": {
+        "stack": [
+          "Python 3.10+ ingestion and write bridge",
+          "Rust native MCP server; Python reference and fallback",
+          "SQLite FTS5 + sqlite-vec 0.1.6",
+          "Local MiniLM embeddings for semantic retrieval",
+          "MCP stdio: 15 tools, 7 resources and 4 prompts",
+          "OpenAI / Anthropic / Ollama / Mock LLM providers",
+          "Obsidian-compatible vault layout"
+        ],
+        "features": [
+          "Ingests Markdown, text-bearing PDF and TXT into a linked, searchable wiki; images become pending-visual stubs, with no automatic OCR or visual extraction",
+          "The LLM extraction layer produces typed claims, concepts, entities and decisions; unextracted sources and untranscribed PDF figures remain explicitly marked",
+          "Hybrid FTS5 + local semantic retrieval and graph-neighbour expansion assemble context bundles with index/ledger freshness stamps",
+          "The Rust MCP stdio server serves native reads; writes and evaluation use a Python bridge, preserving the reference implementation and opt-in write boundary",
+          "Multi-project federation supports registered cross-vault search, contradiction detection and policy monitoring",
+          "20 October 2026 merged-main receipt: 3,334 passed, 1 failed and 8 skipped; the live operator test remained failed and Z1b sealed-evaluation closure remained open"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Documents and local embedding retrieval stay on the configured store; LLM extraction can use local/mock or configured OpenAI/Anthropic providers, so external processing depends on the chosen provider",
+          "MCP writes are disabled by default and require explicit opt-in; the read allow-list and raw-source restrictions apply to both Rust and Python servers",
+          "User vault registrations live in ~/.zurvan/projects.json outside the project tree; publication and evidence output have separate local redaction boundaries",
+          "Mock LLM provider available for safe dev/test without API key exposure",
+          "Agent memory isolated per vault; cross-vault federation requires explicit registration"
+        ]
+      },
+      "fullDescription": "Project Zurvan is a local-first knowledge engine that turns supported text documents into a linked, searchable, git-friendly wiki and exposes it to agents through MCP. Python handles ingestion and authoritative writes; a native Rust server serves reads, with the Python server retained as reference and fallback. Hybrid retrieval uses SQLite FTS5, local embeddings and graph expansion. Images are tracked as pending-visual stubs rather than automatically interpreted. Its public repository includes ongoing sealed-evaluation research; the latest merged-main receipt does not claim Z1b closure.",
+      "problem": "Agents need persistent, structured memory that preserves how claims, sources and decisions relate. A useful local-first system must also show when its index is stale, when source material has not been extracted, and what its retrieval evaluation has actually established.",
+      "solution": [
+        "Built a Python ingestion pipeline for Markdown, text-bearing PDF and TXT; images create pending-visual stubs and PDF figures are marked untranscribed",
+        "Extracts typed claims, concepts, entities and decisions into a linked wiki; authoritative writes pass through the knowledge ledger",
+        "Combines SQLite FTS5, local semantic embeddings and graph-neighbour expansion, with explicit index/ledger freshness information",
+        "Added a Rust MCP stdio read server with Python-backed writes and evaluation; the Python server remains the reference and fallback",
+        "Federates explicitly registered vaults for cross-project search, decision memory, contradiction detection and policy monitoring"
+      ],
+      "proof": [
+        "Latest merged-main suite receipt, 20 October 2026: 3,334 passed, 1 failed, 8 skipped. The failure needs operator sudo context; it was recorded as failed rather than converted to a pass",
+        "20 October Rust/Python live parity receipt: 314 cases per protocol, 312 PASS, 2 expected divergences and 0 FAIL on MCP 2025-11-25 and 2026-07-28; these are repository-reported measurements",
+        "Obsidian-compatible vault with seven documented graph node types: claims, concepts, entities, decisions, sessions, contradictions and syntheses",
+        "Evidence pack → report → review → publish can run locally; extraction’s network use still depends on the configured LLM provider",
+        "The earlier 18-phase feature history is retained; subsequent retrieval, Rust MCP and sealed-evaluation work has its own dated records. Z1b was merged before closure and remains explicitly NOT CLOSED"
+      ],
+      "updatedAt": "2026-11-04"
+    },
+    "aion": {
+      "slug": "aion",
+      "title": "Aion",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Reference-aware Bible Q&A using direct verse/chapter lookup, keyword + pgvector semantic retrieval, and real-time Gemini 3.1 Flash Lite streaming. React Native/Expo mobile app with a Tauri v2 desktop wrapper.",
+      "tags": [
+        "React Native",
+        "Expo",
+        "Supabase",
+        "pgvector",
+        "Gemini AI",
+        "Tauri v2"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/Aion",
+        "caseStudy": "/projects/aion"
+      },
+      "papers": [
+        {
+          "title": "Aion-BibleQA: Evaluating Retrieval and Citation Faithfulness in Verse-Grounded Bible RAG Systems",
+          "label": "Preprint",
+          "href": "/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+          "kind": "download",
+          "venue": "Zenodo",
+          "year": "2026",
+          "status": "Pilot benchmark preprint",
+          "description": "8-page pilot preprint: 40 questions, with retrieval scored on 34 answerable questions and 6 refusal cases. v3 reports Recall@5 = 0.941, mean citation_support = 0.978 and 6/6 refusals. A single Gemini 3.1 Flash Lite judge found no rows below citation_support < 0.5; two partial/wrong-citation rows remained at 0.75 and 0.50.",
+          "doi": "10.5281/zenodo.20522874"
+        }
+      ],
+      "build": {
+        "stack": [
+          "React Native 0.81",
+          "Expo 54",
+          "TypeScript",
+          "Supabase PostgreSQL",
+          "pgvector",
+          "OpenAI Embeddings",
+          "Gemini 3.1 Flash Lite",
+          "Tauri v2",
+          "TanStack Query v5",
+          "React Native StyleSheet"
+        ],
+        "features": [
+          "Reference-aware retrieval: direct verse/chapter lookups plus regex keyword extraction, OpenAI 1536-dimension embeddings and pgvector semantic search",
+          "Real-time SSE streaming from Gemini via Supabase Edge Functions",
+          "Rich inline verse cards with book/chapter/verse attribution",
+          "Cross-platform: React Native (iOS/Android) + Tauri v2 (macOS/Windows/Linux)"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Chat and embedding credentials (OpenAI, Gemini and service_role) use Edge Function secrets. Optional native voice instead expects a client-provided OpenAI credential for direct Whisper calls and is outside that server-side isolation boundary",
+          "IP-based rate limiting: 5/min burst, 30/3hrs per IP, 200/day global cap",
+          "Row-Level Security (RLS) on all Supabase tables",
+          "500-character message length cap to prevent token-stuffing",
+          "Exact-match response cache (zero LLM cost on repeated queries)",
+          "Fail-closed: rate limit errors default to deny"
+        ]
+      },
+      "fullDescription": "Aion is a Bible companion with reference-aware retrieval: direct verse/chapter lookup, keyword filtering and pgvector semantic search provide context, and Gemini 3.1 Flash Lite streams answers through Supabase Edge Functions. It includes attributed verse cards, a React Native/Expo mobile client and a Tauri v2 desktop wrapper. Its reported 40-question v3 pilot measures retrieval and citation support within that small benchmark; it does not guarantee hallucination-free answers. Optional native voice has a separate client-credential limitation.",
+      "problem": "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
+      "solution": [
+        "Built reference-aware retrieval combining direct verse/chapter lookups with keyword filtering, OpenAI 1536-dimension embeddings and pgvector semantic ranking",
+        "Implemented real-time SSE streaming from Gemini via Supabase Edge Functions",
+        "Designed rich inline verse cards with full book/chapter/verse attribution for verifiability",
+        "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop"
+      ],
+      "proof": [
+        "Reported v3 pilot: 40 questions comprising 34 answerable retrieval questions and 6 false-premise/adversarial refusals; Recall@5 0.941, mean citation_support 0.978 and 6/6 refusals. Zero rows scored below the unsupported threshold (citation_support < 0.5), while two answer rows were flagged at 0.75 and 0.50; this is not a hallucination-free guarantee",
+        "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
+        "Exact-match response cache eliminates redundant LLM costs",
+        "Anonymous authentication with no sign-up; Supabase RLS applies to all tables"
+      ],
+      "updatedAt": "2026-11-04"
+    }
+  },
+  "writeups": {
+    "project-simurgh-containment": {
+      "slug": "project-simurgh-containment",
+      "title": "Testing Host-Side Authorisation Across Two Models",
+      "date": "2026-06-28",
+      "updatedAt": "2026-11-04",
+      "tag": "AI Security",
+      "takeaway": "October 2026 matched-control study: Llama-3.2-3B restricted-state trials with new effects 17/24 → 0/24, with 23/24 useful completions; no incremental protection on an already-clean gpt-6-luna baseline.",
+      "content": "\n## What the prototype controls\n\n**Project Simurgh** is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state live on the host. Every tool proposal is checked against that state outside the model. Current study archives bind retained files and source revisions with SHA-256 and can be replayed through fresh local services. Ed25519-signed attestations belong to earlier frozen stages.\n\nThe current question is empirical: do composed host controls improve restricted-state behaviour while retaining useful work, compared with matched controls and the model’s own baseline?\n\n### The October 2026 transfer protocol\n\nThe study used **24 tasks**, **two trials** per task, **three matched controls** and **two models**, producing **288 replayed branches**. Protocol to published package took three days, **15–17 October 2026**.\n\n| Control | Purpose |\n|---------|---------|\n| **Credential-only** | Compare against credential checks without the composed host-state controls |\n| **Composed** | Check host-held delegation, stop, lease and credential state outside the model |\n| **Deny-all** | Compare with a control that denies proposals rather than preserving useful work |\n\n### A benefit and a null result\n\nOn **Meta Llama-3.2-3B**, composed controls cut restricted-state trials with new effects from **17/24 to 0/24**, retained **23/24 useful completions** and blocked no valid proposal. These are trial-level outcomes in this study, not a general safety guarantee.\n\nOn **OpenAI gpt-6-luna**, the baseline was already **0/24**. The study therefore reports **no incremental protection** on that model. A clean baseline is part of the result, not evidence that composed controls added protection there.\n\n### Uncertainty belongs to states\n\nThe **24 restricted trials** fall into **six states**. Wilson **95%** intervals are reported per state: **43.6–97.0% versus 0.0–39.0%**. Trials are not presented as independent state-level replications, and part of the gap holds by construction.\n\n### A live integration failure remains visible\n\nAn eight-case **OpenAI Responses API** workflow exposed a role-placement error: **8/8 declined**. The original traces were retained. A frozen developer-role correction completed **2/3 authorised workflows** and declined **5/5 restricted workflows**, with **one refusal still open**. The corrected run does not erase the original failure or establish that every authorised workflow succeeds.\n\n### Earlier frozen experiments\n\nA separate frozen 2026 stage used a real **Llama Guard 4 12B** classifier over **180 cases**. Simurgh produced containment evidence for all **138/138** malicious cases it missed, including **120 downstream injections** outside an input-only classifier’s view. This is a coverage claim, not a ranking of classifiers.\n\nAnother frozen 2026 stage drove a self-hosted **Llama-3.3-70B** through AgentDojo’s workspace suite with **140 pre-registered injections**. Targeted attack success fell from **9/140 to 0/140**, while benign utility fell from **7/10 to 6/10**. A separate deterministic four-suite run, with **no real LLM**, recorded **0/949** attack success, **949/949 utility under attack** and **97/97 benign utility**. Both remain bounded experiments; they are not the October transfer study.\n\n### What can be inspected\n\nCurrent SHA-256-pinned study archives replay locally on **native Linux x86_64 with Python 3.12**, a full Git history and installed dependencies. Dependency installation needs package-index access; replay itself uses local services without fresh model calls. Repository-supplied hashes establish byte consistency, not independent custody.\n\nThe current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. **39 Lean 4 proof files** model selected earlier-stage mathematical properties behind a gate that rejects unproven “sorry” placeholders. They do not establish implementation equivalence or whole-agent safety. **5,171 root tests** passed in the **19 October 2026 smoke run**; **92 published releases** were visible at the audit snapshot. These are dated receipts, not fresh test execution at the current head.\n\nThe author audited **919 project documents** and published **141 dated findings**, including overstatements in earlier closeouts, in a public finding register linked from the README. This is part of the evidence trail, not a claim that the prototype has no remaining defects.\n\n### Sources and limits\n\nThe current software archive has DOI **10.5281/zenodo.21737792**. The earlier device-integrity preprint has a different DOI, **10.5281/zenodo.20374849**; it records the project’s original high-stakes-session research and is not the current software study. The root package declares **AGPL-3.0-or-later**.\n\nThe October results describe this protocol, these controls and two tested models. They include a null result, state-cluster uncertainty, a gap that partly holds by construction and an unresolved authorised-workflow refusal. The host, provisioning, storage and receiver remain trusted; the two models use different tool interfaces, the tasks are internally authored, and independent outside reproduction remains open. The study does not establish universal containment, model ranking or prevention of every unsafe model output.\n"
+    },
+    "invisible-window-research": {
+      "slug": "invisible-window-research",
+      "title": "Testing What Screen Capture Can Miss",
+      "date": "2026-03-20",
+      "updatedAt": "2026-11-04",
+      "tag": "Security Research",
+      "takeaway": "Documented window-capture settings achieved 100% evasion without capture artefacts in controlled laboratory simulations on tested Windows and macOS versions. Commercial proctoring products and Linux were not tested.",
+      "content": "\n## The Vulnerability in One Sentence\n\nWindows and macOS expose documented window-sharing or capture-affinity settings that can keep an application's window visible on the physical display while excluding it from capture paths that honour those settings. The study demonstrates the resulting gap in screen-capture-based proctoring using controlled laboratory simulations.\n\n---\n\n## Background: How Proctoring Works\n\nWebRTC-based remote proctoring systems, the kind deployed by universities worldwide since 2020, work by capturing the student's screen during an exam session. The browser extension or native client requests a `getDisplayMedia()` stream, transmits it to the proctor's server, and flags anomalies: opened windows, visible applications, clipboard activity. The implicit security model is:\n\n> **If I capture your screen, I can see everything on it.**\n\nThis assumption is wrong on Windows and macOS.\n\n---\n\n## The Windows Side: `SetWindowDisplayAffinity`\n\nWindows documents display affinity as a best-effort control over compatible capture paths. Microsoft explicitly says it is not a security feature or a Digital Rights Management guarantee. The paper examines the downstream risk when capture consumers assume those frames show everything on the physical display. The API signature is:\n\n```c\nBOOL SetWindowDisplayAffinity(HWND hWnd, DWORD dwAffinity);\n```\n\nThe study reports exclusion in its tested Windows 10/11 browser configurations. The retained Windows 10 forensic harness separately tested `BitBlt` and .NET `CopyFromScreen`. Those observations do not establish identical behaviour for every Windows capture API or later browser version.\n\nIn those tested configurations, the window remained visible on the physical display while its content was absent from capture.\n\n**No administrator privileges are required.** The API operates on windows owned by the calling process, which is entirely within normal user-space operation. No kernel modifications, no driver signing bypass, no privilege escalation.\n\n### PoC (Win32 C)\n\n```c\n#include <windows.h>\n\nint main() {\n    HWND hwnd = CreateWindowEx(/* ... window params ... */);\n\n    // Request exclusion from compatible screen-capture paths\n    SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);\n\n    ShowWindow(hwnd, SW_SHOW);\n    // Window is visible on physical display\n    // Tested compatible capture paths exclude the window\n\n    MSG msg;\n    while (GetMessage(&msg, NULL, 0, 0)) {\n        TranslateMessage(&msg);\n        DispatchMessage(&msg);\n    }\n    return 0;\n}\n```\n\n---\n\n## The macOS Side: `NSWindow.SharingType.none`\n\nApple's equivalent is found in AppKit. Every `NSWindow` instance has a `sharingType` property, documented in the AppKit reference since macOS 10.6 (2009):\n\n```swift\nimport AppKit\n\nlet window = NSWindow(\n    contentRect: NSRect(x: 100, y: 100, width: 800, height: 600),\n    styleMask: [.titled, .closable, .resizable],\n    backing: .buffered,\n    defer: false\n)\n\n// Request exclusion from paths that honour the sharing flag\nwindow.sharingType = .none\n\nwindow.makeKeyAndOrderFront(nil)\n```\n\nSetting `sharingType` to `.none` requests exclusion from paths that respect the window-sharing flag. On macOS 26.3.1, the retained tests used `CGWindowListCreateImage` and the `screencapture` utility. They did not directly test ScreenCaptureKit or browser `getDisplayMedia()` on macOS 26. The paper separately reports browser results on macOS 14.3.\n\n**Tested macOS 26.3.1 native captures remained affected.** Despite Apple's documented ScreenCaptureKit changes in macOS 15, the study observed capture exclusion with `.none` using native capture tools. It did not test browser-based capture on macOS 26 or establish the behaviour of every ScreenCaptureKit client.\n\n---\n\n## Test Results\n\n| Platform | Laboratory capture outcome | Observed capture artefacts |\n|----------|-----------------------------|---------------------------|\n| Windows 10 | Window excluded | None |\n| Windows 11 | Window excluded | None |\n| macOS 14 | Window excluded | None |\n| macOS 26.3.1 | Excluded in native captures; browser capture not tested | None |\n| Linux (X11) | Not tested | Not tested |\n| Linux (Wayland) | Not tested | Not tested |\n\nThese results concern simulated proctoring in a controlled laboratory, not commercial products. The macOS 26 evaluation used `CGWindowListCreateImage` and the `screencapture` utility, not a browser `getDisplayMedia()` call. Linux X11 and Wayland were not tested. The behavioural study involved n = 8 consenting research-team members; p = 0.41 does not prove that behavioural detection is impossible. The findings reflect tested software versions as of March 2026; later versions may behave differently.\n\n---\n\n## Why This Is Structurally Hard to Fix\n\nThe vulnerability is a design conflict between two legitimate OS features:\n\n1. **Capture-exclusion settings**: Operating systems expose window-sharing and display-affinity settings that compatible capture paths may honour. These settings do not constitute a universal content-protection guarantee.\n\n2. **Exam Integrity**: Proctoring systems assume that capturing the screen gives a complete view of the user's desktop.\n\nWhen a tested capture path honours exclusion while the window stays visible, that stream alone is insufficient evidence of the complete physical display. The study establishes this mismatch in its stated configurations; it does not establish that every capture implementation shares it.\n\n**Mitigation options have trade-offs and do not establish a universal integrity guarantee:**\n\n- Native capture-exclusion flag enumeration and window-focus monitoring can provide additional signals, subject to the limitations discussed in the paper\n- Move to hardware-attested environment proofs (TPM, Secure Enclave) rather than screen content analysis\n- Advocate for OS-level capture-integrity APIs and assess residual risks rather than assuming capture alone proves integrity\n\n---\n\n## Responsible Disclosure Timeline\n\n| Date | Action |\n|------|--------|\n| January 2026 | Discovery and verification in a controlled laboratory on Windows 10 and macOS 14 |\n| February 2026 | Extended native-capture testing to macOS 26.3.1; Microsoft notified |\n| March 2026 | Apple notified and responded |\n| April 2026 | Microsoft responded with its security-boundary classification |\n| May 2026 | Public disclosure following OS vendor responses; preprint published (CC BY 4.0) |\n\nApple classified the behaviour as consistent with documented functionality and not an Apple security issue; Microsoft classified it as by-design and not a security vulnerability. The research frames the concern as a downstream display-fidelity failure, not an OS zero-day.\n\n---\n\n## Takeaway\n\nThe tested Windows and macOS capture paths can omit an application window while it remains visible to the user, without elevated privileges or observed capture artefacts. This exposes a mismatch between content-protection features and the assumption that captured pixels fully represent the physical display. The study establishes that gap within its tested laboratory scope; it does not establish that every commercial proctoring product or every capture API can be bypassed.\n\nThe full 13-page IEEE-format preprint is linked from the project page (DOI **10.5281/zenodo.20376495**, CC BY 4.0). At the **4 November 2026** source audit, the public repository contained Windows and macOS proof-of-concept source and evaluation harnesses. The paper’s earlier source-withheld statement is a historical publication-time statement, not the repository’s current availability. The illustrative API examples above remain illustrations rather than fresh test evidence.\n    "
+    }
+  },
+  "evidence": [
+    "research-review.json",
+    "simurgh-live-supplement.json",
+    "research-source-index.json",
+    "zurvan-public-readme-verification.json",
+    "invisible-window-public-poc-verification.json"
+  ]
+}

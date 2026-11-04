@@ -70,21 +70,28 @@ export function TerminalCommand({
   const labels = terminalCopy[locale];
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const copyRequest = useRef(0);
 
   useEffect(
     () => () => {
+      copyRequest.current += 1;
       if (timer.current) clearTimeout(timer.current);
+      timer.current = null;
     },
     [],
   );
 
   async function copyCommands() {
+    const request = ++copyRequest.current;
     if (timer.current) clearTimeout(timer.current);
+    timer.current = null;
     try {
       await navigator.clipboard.writeText(commands.join("\n"));
+      if (request !== copyRequest.current) return;
       setStatus("copied");
       timer.current = setTimeout(() => setStatus("idle"), 2500);
     } catch {
+      if (request !== copyRequest.current) return;
       // Keep the recovery instruction visible until the next attempt. A short
       // confirmation timeout would remove it before the commands are selected.
       setStatus("failed");

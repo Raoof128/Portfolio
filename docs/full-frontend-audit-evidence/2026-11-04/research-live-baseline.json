@@ -1,0 +1,182 @@
+[
+  {
+    "appearance": "dark",
+    "slug": "project-zurvan",
+    "http": 200,
+    "actualAppearance": "dark",
+    "elements": [
+      {
+        "selector": "BUTTON.os-zurvan-graph-node os-zurvan-typed",
+        "text": "Claim",
+        "foreground": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(rgb(44, 93, 150) 0%, rgb(26, 66, 117) 100%)",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#f1f7ff",
+        "activeBg": "#1b3d66",
+        "activeFg": "#f1f7ff"
+      },
+      {
+        "selector": "LI.",
+        "text": "ClaimA claim node preserves a statement as structured knowledge linked back to source mate",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgb(27, 61, 102)",
+        "backgroundImage": "none",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#f1f7ff",
+        "activeBg": "#1b3d66",
+        "activeFg": "#f1f7ff"
+      },
+      {
+        "selector": "STRONG.",
+        "text": "Claim",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "parentBackground": "rgb(27, 61, 102)",
+        "onTint": "#f1f7ff",
+        "activeBg": "#1b3d66",
+        "activeFg": "#f1f7ff"
+      }
+    ]
+  },
+  {
+    "appearance": "dark",
+    "slug": "project-simurgh",
+    "http": 200,
+    "actualAppearance": "dark",
+    "elements": [
+      {
+        "selector": "STRONG.",
+        "text": "Input firewall",
+        "foreground": "rgb(241, 247, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#f1f7ff",
+        "activeBg": "#1b3d66",
+        "activeFg": "#f1f7ff"
+      },
+      {
+        "selector": "LI.",
+        "text": "01The first boundary screens incoming instructions before they reach the agent.",
+        "foreground": "rgb(241, 247, 255)",
+        "background": "rgb(27, 61, 102)",
+        "backgroundImage": "none",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#f1f7ff",
+        "activeBg": "#1b3d66",
+        "activeFg": "#f1f7ff"
+      }
+    ]
+  },
+  {
+    "appearance": "dark",
+    "slug": "invisible-window-research",
+    "http": 200,
+    "actualAppearance": "dark",
+    "elements": [
+      {
+        "selector": "BUTTON.",
+        "text": "Windows 10/11",
+        "foreground": "rgb(34, 34, 34)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219))",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#f1f7ff",
+        "activeBg": "#1b3d66",
+        "activeFg": "#f1f7ff"
+      }
+    ]
+  },
+  {
+    "appearance": "light",
+    "slug": "project-zurvan",
+    "http": 200,
+    "actualAppearance": "light",
+    "elements": [
+      {
+        "selector": "BUTTON.os-zurvan-graph-node os-zurvan-typed",
+        "text": "Claim",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(rgba(204, 236, 252, 0.95), rgba(144, 205, 245, 0.9))",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#000",
+        "activeBg": "#e5f3fc",
+        "activeFg": "#000"
+      },
+      {
+        "selector": "LI.",
+        "text": "ClaimA claim node preserves a statement as structured knowledge linked back to source mate",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgb(229, 243, 252)",
+        "backgroundImage": "none",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#000",
+        "activeBg": "#e5f3fc",
+        "activeFg": "#000"
+      },
+      {
+        "selector": "STRONG.",
+        "text": "Claim",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "parentBackground": "rgb(229, 243, 252)",
+        "onTint": "#000",
+        "activeBg": "#e5f3fc",
+        "activeFg": "#000"
+      }
+    ]
+  },
+  {
+    "appearance": "light",
+    "slug": "project-simurgh",
+    "http": 200,
+    "actualAppearance": "light",
+    "elements": [
+      {
+        "selector": "STRONG.",
+        "text": "Input firewall",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#000",
+        "activeBg": "#e5f3fc",
+        "activeFg": "#000"
+      },
+      {
+        "selector": "LI.",
+        "text": "01The first boundary screens incoming instructions before they reach the agent.",
+        "foreground": "rgb(0, 0, 0)",
+        "background": "rgb(229, 243, 252)",
+        "backgroundImage": "none",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#000",
+        "activeBg": "#e5f3fc",
+        "activeFg": "#000"
+      }
+    ]
+  },
+  {
+    "appearance": "light",
+    "slug": "invisible-window-research",
+    "http": 200,
+    "actualAppearance": "light",
+    "elements": [
+      {
+        "selector": "BUTTON.",
+        "text": "Windows 10/11",
+        "foreground": "rgb(34, 34, 34)",
+        "background": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(rgb(229, 244, 252), rgb(196, 229, 246) 30%, rgb(196, 229, 246) 50%, rgb(152, 209, 239) 50%, rgb(104, 179, 219))",
+        "parentBackground": "rgba(0, 0, 0, 0)",
+        "onTint": "#000",
+        "activeBg": "#e5f3fc",
+        "activeFg": "#000"
+      }
+    ]
+  }
+]

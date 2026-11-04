@@ -80,11 +80,16 @@ function BrowserPopulatedLeaf() {
     const page = element.closest<HTMLElement>(".os-page-content")!;
     const toolbar =
       page.parentElement!.querySelector<HTMLElement>(".os-windowbar")!;
+    const commands =
+      page.parentElement!.querySelector<HTMLElement>(".os-window-toolbar")!;
     vi.spyOn(page, "getBoundingClientRect").mockReturnValue(
       DOMRect.fromRect({ x: 0, y: -300, width: 1000, height: 2000 }),
     );
     vi.spyOn(toolbar, "getBoundingClientRect").mockReturnValue(
       DOMRect.fromRect({ x: 0, y: 58, width: 1000, height: 57 }),
+    );
+    vi.spyOn(commands, "getBoundingClientRect").mockReturnValue(
+      DOMRect.fromRect({ x: 0, y: 115, width: 1000, height: 38 }),
     );
   }, []);
   return (
@@ -164,6 +169,7 @@ describe("OSApplicationBridge handover contract", () => {
     render(
       <section>
         <header className="os-windowbar">Toolbar</header>
+        <nav className="os-window-toolbar">Back and Copy Link</nav>
         <div className="os-page-content">
           {registrationProvider(<BrowserPopulatedLeaf />, register)}
         </div>
@@ -177,7 +183,7 @@ describe("OSApplicationBridge handover contract", () => {
       focusedField: "project-query",
       selectionStart: 2,
       selectionEnd: 9,
-      readingOffset: 415,
+      readingOffset: 453,
       fields: {
         "project-query": "simurgh containment",
         subject: "Evidence request",

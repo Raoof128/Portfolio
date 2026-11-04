@@ -3,11 +3,13 @@
 import { useContentId } from "@/components/os/application-context";
 
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
   useSyncExternalStore,
   type KeyboardEvent,
+  type MouseEvent,
   type ReactNode,
 } from "react";
 import Link from "next/link";
@@ -33,6 +35,11 @@ import { ProjectDiagram } from "@/components/os/ProjectDiagram";
 import "@/components/os/evidence-story-common.css";
 import { ProjectMotion } from "@/components/os/ProjectMotion";
 import { getOSCopy } from "@/components/os/os-copy";
+import {
+  dossierCopy,
+  getDossierScope,
+} from "@/lib/project-content/dossier-copy";
+import "@/components/os/dossier-reader.css";
 
 const SimurghEvidenceStory = dynamic(
   () =>
@@ -59,6 +66,17 @@ const ZurvanEvidenceStory = dynamic(
 type DossierSection = "overview" | "evidence" | "methods";
 const SECTION_KEYS: DossierSection[] = ["overview", "evidence", "methods"];
 const subscribeNothing = () => () => {};
+
+function isPrimaryLinkClick(event: MouseEvent<HTMLAnchorElement>) {
+  return (
+    !event.defaultPrevented &&
+    event.button === 0 &&
+    !event.ctrlKey &&
+    !event.metaKey &&
+    !event.shiftKey &&
+    !event.altKey
+  );
+}
 
 type EvidenceStory =
   | { kind: "simurgh"; copy: SimurghEvidenceStoryCopy }
@@ -113,6 +131,8 @@ export function ProjectDetailClient({
   const { locale, t } = useTranslation();
   const contentId = useContentId();
   const copy = getOSCopy(locale);
+  const readerCopy = dossierCopy[locale];
+  const scope = getDossierScope(slug, locale);
   const getPath = (path: string) =>
     locale === defaultLocale ? path : `/${locale}${path}`;
   const categoryLabels = {
@@ -134,6 +154,23 @@ export function ProjectDetailClient({
   const tabRefs = useRef<Partial<Record<DossierSection, HTMLButtonElement>>>(
     {},
   );
+  const [sectionFocus, setSectionFocus] = useState<{ id: string } | null>(null);
+  const scheduleSectionFocus = useCallback((id: string) => {
+    setSectionFocus({ id });
+  }, []);
+  // Concurrent rendering may commit a revealed tab after the next animation
+  // frame. Request focus only once that section's DOM update has committed.
+  useEffect(() => {
+    if (!sectionFocus) return;
+    const frame = window.requestAnimationFrame(() => {
+      setSectionFocus(null);
+      const target = document.getElementById(sectionFocus.id);
+      if (target?.closest("[hidden], [inert]")) return;
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView?.({ block: "start" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [sectionFocus, activeSection]);
   const sectionLabels: Record<DossierSection, string> = {
     overview: copy.overview,
     evidence: copy.evidence,
@@ -177,14 +214,14 @@ export function ProjectDetailClient({
       );
       if (!key) return;
       setActiveSection(key);
-      window.requestAnimationFrame(() =>
-        target?.scrollIntoView({ block: "start" }),
-      );
+      scheduleSectionFocus(id);
     };
     revealHashTarget();
     window.addEventListener("hashchange", revealHashTarget);
-    return () => window.removeEventListener("hashchange", revealHashTarget);
-  }, []);
+    return () => {
+      window.removeEventListener("hashchange", revealHashTarget);
+    };
+  }, [scheduleSectionFocus]);
   const paperEntries: ProjectPaper[] =
     project.papers ??
     (project.links.paper
@@ -276,7 +313,9 @@ export function ProjectDetailClient({
               )}
               {project.links.doi && (
                 <ResourceLink href={project.links.doi}>
-                  {t.project_detail.doi_record}
+                  {project.links.doiKind === "software"
+                    ? t.project_detail.software_doi_record
+                    : t.project_detail.doi_record}
                 </ResourceLink>
               )}
               {project.links.caseStudy && (
@@ -299,6 +338,38 @@ export function ProjectDetailClient({
           </header>
           <ProjectMotion slug={slug} locale={locale} />
         </div>
+
+        {scope && (
+          <nav
+            className="os-dossier-reading-path"
+            aria-label={readerCopy.readingPath}
+          >
+            <ol>
+              {(
+                [
+                  ["overview", "overview-heading", t.project_detail.problem],
+                  ["overview", "contribution-heading", readerCopy.contribution],
+                  ["evidence", "evidence-heading", copy.evidence],
+                  ["evidence", "limitations-heading", readerCopy.limitations],
+                  ["evidence", "sources-heading", readerCopy.sources],
+                ] as const
+              ).map(([section, target, label]) => (
+                <li key={target}>
+                  <a
+                    href={`#${contentId(target)}`}
+                    onClick={(event) => {
+                      if (!isPrimaryLinkClick(event)) return;
+                      setActiveSection(section);
+                      scheduleSectionFocus(contentId(target));
+                    }}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
 
         {/* Anchors keep all evidence available to readers and crawlers without JavaScript. */}
         {mounted ? (
@@ -340,6 +411,8 @@ export function ProjectDetailClient({
 
         <section
           id={contentId("overview")}
+          // Fragment navigation can focus the revealed panel without adding a tab stop.
+          tabIndex={-1}
           data-dossier-section="overview"
           className="os-project-section"
           role={mounted ? "tabpanel" : undefined}
@@ -355,6 +428,18 @@ export function ProjectDetailClient({
             })}{" "}
             / {copy.overview}
           </p>
+          <h2 id={contentId("overview-heading")} tabIndex={-1}>
+            {t.project_detail.problem}
+          </h2>
+          <p>{project.problem}</p>
+          <h3 id={contentId("contribution-heading")} tabIndex={-1}>
+            {readerCopy.contribution}
+          </h3>
+          <ol className="os-project-numbered-list">
+            {project.solution.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ol>
           {evidenceStory?.kind === "simurgh" ? (
             <SimurghEvidenceStory locale={locale} copy={evidenceStory.copy} />
           ) : evidenceStory?.kind === "invisible-window" ? (
@@ -372,18 +457,11 @@ export function ProjectDetailClient({
               locale={locale}
             />
           )}
-          <h2 id={contentId("overview-heading")}>{t.project_detail.problem}</h2>
-          <p>{project.problem}</p>
-          <h3>{t.project_detail.solution_overview}</h3>
-          <ol className="os-project-numbered-list">
-            {project.solution.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ol>
         </section>
 
         <section
           id={contentId("evidence")}
+          tabIndex={-1}
           data-dossier-section="evidence"
           className="os-project-section"
           role={mounted ? "tabpanel" : undefined}
@@ -399,15 +477,46 @@ export function ProjectDetailClient({
             })}{" "}
             / {copy.evidence}
           </p>
-          <h2 id={contentId("evidence-heading")}>{t.project_detail.proof}</h2>
+          <h2 id={contentId("evidence-heading")} tabIndex={-1}>
+            {t.project_detail.proof}
+          </h2>
           <ul className="os-project-evidence-list">
             {project.proof.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
+          {scope && (
+            <aside
+              className="os-dossier-scope"
+              aria-labelledby={contentId("limitations-heading")}
+            >
+              <h3 id={contentId("limitations-heading")} tabIndex={-1}>
+                {readerCopy.limitations}
+              </h3>
+              <p>{scope}</p>
+            </aside>
+          )}
+          <h3 id={contentId("sources-heading")} tabIndex={-1}>
+            {readerCopy.sources}
+          </h3>
+          {project.links.repo && (
+            <ResourceLink
+              href={
+                project.links.repoVisibility === "private"
+                  ? `mailto:${CONTACT_EMAIL_GMAIL}?subject=${encodeURIComponent(`${t.project_detail.request_source}: ${project.title}`)}`
+                  : project.links.repo
+              }
+            >
+              {readerCopy.sources}:{" "}
+              {project.links.repoVisibility === "private"
+                ? t.project_detail.request_source
+                : t.project_detail.source_code}
+            </ResourceLink>
+          )}
           {paperEntries.length > 0 && (
             <div
               id={contentId("research-papers")}
+              tabIndex={-1}
               className="os-project-paper-library"
             >
               <div className="os-project-paper-heading">
@@ -417,6 +526,17 @@ export function ProjectDetailClient({
                   <bdi>{formatNumber(paperEntries.length, locale)}</bdi>
                 </span>
               </div>
+              <p className="os-dossier-pdf-note">{readerCopy.pdfNote}</p>
+              <a
+                href={`#${contentId("overview-heading")}`}
+                onClick={(event) => {
+                  if (!isPrimaryLinkClick(event)) return;
+                  setActiveSection("overview");
+                  scheduleSectionFocus(contentId("overview-heading"));
+                }}
+              >
+                {readerCopy.htmlSummary}
+              </a>
               {paperEntries.map((paper, index) => (
                 <article
                   key={`${index}-${paper.href}`}
@@ -475,6 +595,7 @@ export function ProjectDetailClient({
 
         <section
           id={contentId("methods")}
+          tabIndex={-1}
           data-dossier-section="methods"
           className="os-project-section"
           role={mounted ? "tabpanel" : undefined}
@@ -490,7 +611,9 @@ export function ProjectDetailClient({
             })}{" "}
             / {copy.methods}
           </p>
-          <h2 id={contentId("methods-heading")}>{t.project_detail.build}</h2>
+          <h2 id={contentId("methods-heading")} tabIndex={-1}>
+            {t.project_detail.build}
+          </h2>
           <h3>{t.project_detail.tech_stack}</h3>
           <ul className="os-project-stack-list">
             {project.build.stack.map((technology) => (

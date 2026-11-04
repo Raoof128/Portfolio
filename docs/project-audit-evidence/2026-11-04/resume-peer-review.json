@@ -1,0 +1,288 @@
+{
+  "audit_date": "2026-11-04",
+  "mode": "Independent read-only pre-publication PDF/source review. Public PDF not edited.",
+  "status": "pass",
+  "baseline_sha256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+  "candidate_sha256": "deb6da26ebd0ab540dc6404cca5d49eb7338aba0e4111dccb1686bd620461ece",
+  "candidate_bytes": 629750,
+  "region_record_sha256": "3db2e02650dc97e1eca969ae5fa37f0d423da3dd3c0b7b295fb4bc0ddb301f0f",
+  "paragraph_region_count": 9,
+  "authorised_additional_area": "One extra Aion paragraph line in existing first-page bottom whitespace, extending its original region by 10.9pt. A 1pt raster margin accounts for glyph antialiasing.",
+  "checks": {
+    "candidate_hash_matches_region_record": true,
+    "baseline_hash_matches_region_record": true,
+    "baseline_matches_prior_phone_free_public_copy": true,
+    "two_pages_preserved": true,
+    "nine_paragraph_regions_recorded": true,
+    "all_replacement_strings_present": true,
+    "selected_facts_source_aligned": true,
+    "text_outside_authorised_regions_identical": true,
+    "pixels_outside_authorised_regions_unchanged": true,
+    "no_edited_preserved_text_overlap": true,
+    "edited_glyphs_within_pages": true,
+    "phone_absence": true,
+    "source_snapshots_preserved": true
+  },
+  "facts": [
+    {
+      "claim": "current archives versus earlier attestations",
+      "present": true
+    },
+    {
+      "claim": "replay/proof/test scope",
+      "present": true
+    },
+    {
+      "claim": "live and deterministic utility denominators",
+      "present": true
+    },
+    {
+      "claim": "screen-capture scope and current source",
+      "present": true
+    },
+    {
+      "claim": "pilot denominator and judge threshold",
+      "present": true
+    },
+    {
+      "claim": "Mehr scoped median",
+      "present": true
+    },
+    {
+      "claim": "SentinelFlow parser benchmark",
+      "present": true
+    },
+    {
+      "claim": "Zurvan complete dated receipt",
+      "present": true
+    },
+    {
+      "claim": "Syllabus dated test job and failure",
+      "present": true
+    },
+    {
+      "claim": "finding-register location",
+      "present": true
+    }
+  ],
+  "paragraph_replacement_checks": [
+    {
+      "marker": "Reduced a live Llama",
+      "replacement_present": true
+    },
+    {
+      "marker": "Built the work to be reproduced",
+      "replacement_present": true
+    },
+    {
+      "marker": "Audited 919 of the project's own documents",
+      "replacement_present": true
+    },
+    {
+      "marker": "Found that documented display-affinity",
+      "replacement_present": true
+    },
+    {
+      "marker": "Disclosed to Microsoft MSRC",
+      "replacement_present": true
+    },
+    {
+      "marker": "Built and scored a 40-question",
+      "replacement_present": true
+    },
+    {
+      "marker": "Mehr Guard: offline QR",
+      "replacement_present": true
+    },
+    {
+      "marker": "Systems work (Rust, C++)",
+      "replacement_present": true
+    },
+    {
+      "marker": "Led the security backend",
+      "replacement_present": true
+    }
+  ],
+  "text_preservation": [
+    {
+      "page": 1,
+      "outside_region_characters_before": 3850,
+      "outside_region_characters_after": 3850,
+      "removed_or_moved_characters_outside_regions": 0,
+      "added_or_moved_characters_outside_regions": 0,
+      "text_and_character_origins_outside_regions_identical": true
+    },
+    {
+      "page": 2,
+      "outside_region_characters_before": 1975,
+      "outside_region_characters_after": 1975,
+      "removed_or_moved_characters_outside_regions": 0,
+      "added_or_moved_characters_outside_regions": 0,
+      "text_and_character_origins_outside_regions_identical": true
+    }
+  ],
+  "pixel_preservation": [
+    {
+      "page": 1,
+      "render_scale": 2,
+      "changed_pixels_inside_authorised_regions": 121881,
+      "changed_pixels_outside_authorised_regions_with_1pt_antialias_margin": 0
+    },
+    {
+      "page": 2,
+      "render_scale": 2,
+      "changed_pixels_inside_authorised_regions": 70103,
+      "changed_pixels_outside_authorised_regions_with_1pt_antialias_margin": 0
+    }
+  ],
+  "geometry": [
+    {
+      "page": 1,
+      "before_box": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "after_box": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "edited_glyph_boxes_within_page": true,
+      "minimum_bottom_space_after_edited_text_pt": 31.646,
+      "nonempty_edited_preserved_character_intersections": 0
+    },
+    {
+      "page": 2,
+      "before_box": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "after_box": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "edited_glyph_boxes_within_page": true,
+      "minimum_bottom_space_after_edited_text_pt": 485.746,
+      "nonempty_edited_preserved_character_intersections": 0
+    }
+  ],
+  "privacy": {
+    "fitz_text_phone_absent": true,
+    "pdftotext_phone_absent": true,
+    "metadata_phone_absent": true,
+    "xml_metadata_phone_absent": true,
+    "decoded_objects_and_streams_phone_absent": true,
+    "hex_encoded_phone_absent": true,
+    "decoded_object_stream_hit_count": 0,
+    "hex_string_hit_count": 0,
+    "xref_objects_inspected": 525,
+    "decoded_streams_inspected": 371,
+    "telephone_uri_absent": true,
+    "link_targets_phone_absent": true,
+    "metadata_keys_inspected": [
+      "format",
+      "title",
+      "author",
+      "subject",
+      "keywords",
+      "creator",
+      "producer",
+      "creationDate",
+      "modDate",
+      "trapped",
+      "encryption"
+    ],
+    "public_uri_count": 0
+  },
+  "visual_review": {
+    "page1_png": "resume-updated-page1.png",
+    "page1_sha256": "a5f8349766a793757918ce19176db640e8b53b1300d1d397d327cd9317b03d6b",
+    "page2_png": "resume-updated-page2.png",
+    "page2_sha256": "1bd0d41501a720fa853ccc4691ef1a15a8fbad9b18723f7d454a4543a67ec65e",
+    "result": "Both pages inspected visually. Final page-one date/register corrections reread; columns, headings, paragraphs and Aion bottom line have no visible collisions or clipping. Page two preserves clear section spacing."
+  },
+  "resolved_findings": [
+    {
+      "id": "RESUME-PEER-01",
+      "issue": "Parenthesised notification dates could be read as classification dates.",
+      "resolution": "The final disclosure sentence says Disclosed to MSRC/Apple and both later classified, preserving notification/response distinction."
+    },
+    {
+      "id": "RESUME-PEER-02",
+      "issue": "Unchanged audit bullet placed all findings literally in README.",
+      "resolution": "A ninth region now specifies a public finding register linked from README."
+    }
+  ],
+  "source_reference_artifacts": [
+    {
+      "artifact": "research-review.json",
+      "sha256": "75302a218593d14e34a55d0d2d9bf411148b79e2f013bf16deb144d93072637d"
+    },
+    {
+      "artifact": "engineering-review.json",
+      "sha256": "e67303c66415e7a3f72de309c4c75c4e5219fee30ee48124f3ccb2b63e3f53e9"
+    },
+    {
+      "artifact": "systems-review.json",
+      "sha256": "ba39ee8239a80b0efca8798fc5d56eee79e4a18ec28a3a12057427328c1360b3"
+    },
+    {
+      "artifact": "mehr-review.json",
+      "sha256": "5f2cae56e4a98a561d87e7f4d993b84bbb268ea6a7824988c004474ab69a9dcc"
+    },
+    {
+      "artifact": "canonical-final.json",
+      "sha256": "42ec417598cd6dc1a7c806264fd78eb0dd5c010e222c53314c55724d61969065"
+    }
+  ],
+  "limitations": [
+    "This verifies selected source claims, spatial text preservation, finite raster comparison and phone absence in the inspected representations; it is not complete PDF accessibility certification.",
+    "Tagged PDF logical reading order, structure-tree correctness and screen-reader output were not independently validated. Source PDF tagging is not certified by the visual checks.",
+    "Research metrics are dated repository/source reports, not newly executed experiments, benchmarks or whole-pipeline passes.",
+    "Original supplied PDFs remain immutable references. Their old factual snapshots are not rewritten by this derived public résumé update."
+  ],
+  "source_snapshot_checks": [
+    {
+      "reference": "Research Resident résumé",
+      "current_sha256": "753a7e412ca4c0f37b4fba01f0288f875cadd613fcb15d7fc23c7871d451b56d",
+      "matches_recorded_original": true
+    },
+    {
+      "reference": "LinkedIn profile",
+      "current_sha256": "20135aec4442e5a3a5426bb8c1b9fb5775cab957cc6e99a6b751a1840aaa4de5",
+      "matches_recorded_original": true
+    },
+    {
+      "reference": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+      "current_sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+      "matches_recorded_original": true
+    },
+    {
+      "reference": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+      "current_sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+      "matches_recorded_original": true
+    },
+    {
+      "reference": "public/Project_Simurgh_Preprint_v1.0.pdf",
+      "current_sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+      "matches_recorded_original": true
+    },
+    {
+      "reference": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+      "current_sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+      "matches_recorded_original": true
+    },
+    {
+      "reference": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+      "current_sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+      "matches_recorded_original": true
+    }
+  ]
+}

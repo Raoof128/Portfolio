@@ -35,6 +35,28 @@
   overflow: hidden;
 }
 
+/* React 19.2 has no stable ViewTransition component. Reveal just the original
+   artwork when its lazy module is ready, without intercepting navigation or
+   moving the retained Aero frame. The reserved stage never changes size, and
+   unsupported animation simply leaves the complete artwork visible. */
+@media (prefers-reduced-motion: no-preference) {
+  .os-shell .os-project-motion .os-motion-stage[data-artwork-ready="true"] {
+    animation: os-project-artwork-arrival 220ms cubic-bezier(0.2, 0, 0, 1)
+      backwards;
+  }
+}
+
+@keyframes os-project-artwork-arrival {
+  from {
+    clip-path: inset(24% 30% round 3px);
+    opacity: 0.55;
+  }
+  to {
+    clip-path: inset(0% 0% round 0px);
+    opacity: 1;
+  }
+}
+
 .os-shell
   .os-project-motion
   .os-motion-stage

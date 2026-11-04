@@ -1,0 +1,15 @@
+
+> portfolio@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v4.1.12 /workspace/Portfolio
+
+Not implemented: navigation to another Document
+Not implemented: navigation to another Document
+
+ Test Files  52 passed (52)
+      Tests  791 passed (791)
+   Start at  02:03:14
+   Duration  105.30s (transform 2.78s, setup 4.70s, import 10.58s, tests 38.79s, environment 39.08s)
+

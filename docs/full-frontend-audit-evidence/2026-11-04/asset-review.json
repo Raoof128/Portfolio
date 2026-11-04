@@ -1,0 +1,93 @@
+[
+  {
+    "path": "src/app/favicon.ico",
+    "bytes": 3651,
+    "sha256": "56c7c2c1b014f515f0e00ef10d5a824ae991c4a5227c7be4f718ac67578b08ca",
+    "sameAsInitial": true,
+    "format": "MS Windows icon resource - 4 icons, 16x16 with PNG image data, 16 x 16, 8-bit/color RGBA, non-interlaced, 32 bits/pixel, 32x32 with \\012- PNG image data, 32 x 32, 8-bit/color RGBA, non-interlaced, 32 bits/pixel"
+  },
+  {
+    "path": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+    "bytes": 170083,
+    "sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+    "sameAsInitial": true,
+    "format": "PDF document, version 1.5"
+  },
+  {
+    "path": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+    "bytes": 320653,
+    "sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+    "sameAsInitial": true,
+    "format": "PDF document, version 1.5"
+  },
+  {
+    "path": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+    "bytes": 112307,
+    "sha256": "ff757111b7c3b3c30785a91a661155cd0a8fa744b804fd9d5bd8af053bab3927",
+    "sameAsInitial": true,
+    "format": "PDF document, version 1.7, 2 page(s)"
+  },
+  {
+    "path": "public/Project_Simurgh_Preprint_v1.0.pdf",
+    "bytes": 250477,
+    "sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+    "sameAsInitial": true,
+    "format": "PDF document, version 1.5"
+  },
+  {
+    "path": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+    "bytes": 132302,
+    "sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+    "sameAsInitial": true,
+    "format": "PDF document, version 1.5"
+  },
+  {
+    "path": "public/Raouf_2.jpg",
+    "bytes": 270547,
+    "sha256": "e877a6226aa840cb91421816150e576ca82c7833738f970a6e9b1fa9c77cebe1",
+    "sameAsInitial": true,
+    "format": "JPEG image data, JFIF standard 1.01, aspect ratio, density 96x96, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=4, xresolution=62, yresolution=70, resolutionunit=2], baseline, precision 8, 1200x1200, components 3"
+  },
+  {
+    "path": "public/Raouf_2.png",
+    "bytes": 538062,
+    "sha256": "de8e0a5462074b394c7f8e58e62fb88af1904c54a5259db5fca18c6eb6c06a23",
+    "sameAsInitial": true,
+    "format": "PNG image data, 1200 x 1200, 8-bit colormap, non-interlaced"
+  },
+  {
+    "path": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+    "bytes": 173492,
+    "sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+    "sameAsInitial": true,
+    "format": "PDF document, version 1.5"
+  },
+  {
+    "path": "public/brand/glass-lens-map.png",
+    "bytes": 6134,
+    "sha256": "10af03c332eb58291e9f9c1561968beb4165d93c7b015632760d54af5b7af1ee",
+    "sameAsInitial": true,
+    "format": "PNG image data, 768 x 128, 8-bit/color RGB, non-interlaced"
+  },
+  {
+    "path": "public/images/raouf-about-600-7d22ea07.webp",
+    "bytes": 26336,
+    "sha256": "7d22ea07eb3973b9ce66366721af4f7cfcc7c5df07cd8f83048e52113a69d50b",
+    "sameAsInitial": true,
+    "format": "RIFF (little-endian) data, Web/P image, VP8 encoding, 600x750, Scaling: [none]x[none], YUV color, decoders should clamp"
+  },
+  {
+    "path": "public/images/raouf-welcome-168-2ae922a8.webp",
+    "bytes": 4840,
+    "sha256": "2ae922a82ad917c02253d9c0f92f685787bd7b3e43e0dceabd7ce02301f8e610",
+    "sameAsInitial": true,
+    "format": "RIFF (little-endian) data, Web/P image, VP8 encoding, 168x168, Scaling: [none]x[none], YUV color, decoders should clamp"
+  },
+  {
+    "path": "public/og.png",
+    "bytes": 161455,
+    "sha256": "ba146e7e4d80f9b42b5bf873d29236653e48958fcd929f9e2902ff92193f650a",
+    "sameAsInitial": true,
+    "format": "PNG image data, 1200 x 630, 8-bit/color RGB, non-interlaced"
+  }
+]

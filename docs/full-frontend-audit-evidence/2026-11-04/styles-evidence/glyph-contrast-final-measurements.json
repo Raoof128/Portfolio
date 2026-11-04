@@ -1,0 +1,4842 @@
+[
+  {
+    "name": "final-home-dark",
+    "route": "/en",
+    "theme": "dark",
+    "width": 390,
+    "axeIncompleteNodes": 26,
+    "measuredTextRuns": 26,
+    "measured": [
+      {
+        "selector": ".os-eyebrow",
+        "text": "Research Highlights",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 7.211,
+        "worst_shadow_background": [
+          79,
+          88,
+          100
+        ],
+        "glyphInteriorPixels": 50
+      },
+      {
+        "selector": "h1",
+        "text": "Mohammad",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "28px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 548
+      },
+      {
+        "selector": "h1",
+        "text": "Raouf Abedini",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "28px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 615
+      },
+      {
+        "selector": "h1",
+        "text": ".",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "28px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 4
+      },
+      {
+        "selector": "h1 > span",
+        "text": "Raouf Abedini",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "28px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 615
+      },
+      {
+        "selector": "h1 > span",
+        "text": ".",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "28px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 4
+      },
+      {
+        "selector": ".os-role",
+        "text": "AI Security Researcher",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 166
+      },
+      {
+        "selector": ".os-desktop-summary",
+        "text": "I build systems to understand and contain the risks of agentic AI. This is my workspace for research",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 673
+      },
+      {
+        "selector": ".os-button[href$=\"projects\"]",
+        "text": "Explore Research",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.571,
+        "worst_shadow_background": [
+          183,
+          226,
+          250
+        ],
+        "glyphInteriorPixels": 62
+      },
+      {
+        "selector": ".os-button--secondary.os-button[target=\"_blank\"]",
+        "text": "View R\u00e9sum\u00e9 PDF",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.397,
+        "worst_shadow_background": [
+          227,
+          227,
+          227
+        ],
+        "glyphInteriorPixels": 52
+      },
+      {
+        "selector": ".os-button--secondary.os-button[href$=\"contact\"]",
+        "text": "Contact",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.397,
+        "worst_shadow_background": [
+          227,
+          227,
+          227
+        ],
+        "glyphInteriorPixels": 15
+      },
+      {
+        "selector": "#_r_0_",
+        "text": "Where the evidence connects",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.109,
+        "worst_shadow_background": [
+          64,
+          73,
+          86
+        ],
+        "glyphInteriorPixels": 59
+      },
+      {
+        "selector": ".proof-atlas-eyebrow",
+        "text": "Proof Atlas \u00b7 Selected research",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 361
+      },
+      {
+        "selector": ".proof-atlas-node-labels > li:nth-child(1)",
+        "text": "Agent",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 28
+      },
+      {
+        "selector": ".proof-atlas-node-labels > li:nth-child(2)",
+        "text": "Input",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 21
+      },
+      {
+        "selector": ".proof-atlas-node-labels > li:nth-child(3)",
+        "text": "Context",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 22
+      },
+      {
+        "selector": ".proof-atlas-node-labels > li:nth-child(4)",
+        "text": "Tool gate",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 44
+      },
+      {
+        "selector": ".proof-atlas-node-labels > li:nth-child(5)",
+        "text": "Output",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 32
+      },
+      {
+        "selector": ".proof-atlas-option[type=\"button\"]:nth-child(1)",
+        "text": "Project Simurgh",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 6.413,
+        "worst_shadow_background": [
+          92,
+          149,
+          180
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": ".proof-atlas-option[type=\"button\"]:nth-child(2)",
+        "text": "Invisible Window",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.42,
+        "worst_shadow_background": [
+          191,
+          191,
+          191
+        ],
+        "glyphInteriorPixels": 54
+      },
+      {
+        "selector": ".proof-atlas-option[type=\"button\"]:nth-child(3)",
+        "text": "Project Zurvan",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 15.461,
+        "worst_shadow_background": [
+          221,
+          221,
+          221
+        ],
+        "glyphInteriorPixels": 61
+      },
+      {
+        "selector": ".proof-atlas-summary",
+        "text": "An agent passes four defensive boundaries. Each emits signed evidence for an independent offline rev",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 8.306,
+        "worst_shadow_background": [
+          225,
+          225,
+          225
+        ],
+        "glyphInteriorPixels": 232
+      },
+      {
+        "selector": ".proof-atlas-qualifier",
+        "text": "Architecture schematic based on documented components; no run trace is shown.",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 497
+      },
+      {
+        "selector": ".proof-atlas-link",
+        "text": "Open Project Evidence",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 81
+      },
+      {
+        "selector": "a[aria-label=\"Projects\"] > span:nth-child(2)",
+        "text": "Projects",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 15.916,
+        "worst_shadow_background": [
+          17,
+          35,
+          55
+        ],
+        "glyphInteriorPixels": 18
+      },
+      {
+        "selector": "a[aria-label=\"Write-ups\"] > span:nth-child(2)",
+        "text": "Write-ups",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 16.057,
+        "worst_shadow_background": [
+          17,
+          34,
+          55
+        ],
+        "glyphInteriorPixels": 15
+      }
+    ]
+  },
+  {
+    "name": "final-home-light",
+    "route": "/en",
+    "theme": "light",
+    "width": 1440,
+    "axeIncompleteNodes": 43,
+    "measuredTextRuns": 46,
+    "measured": [
+      {
+        "selector": "time",
+        "text": "12:24",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.932,
+        "worst_shadow_background": [
+          91,
+          126,
+          123
+        ],
+        "glyphInteriorPixels": 19
+      },
+      {
+        "selector": ".os-top-date",
+        "text": "4 Nov 2026",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 8.084,
+        "worst_shadow_background": [
+          73,
+          114,
+          122
+        ],
+        "glyphInteriorPixels": 20
+      },
+      {
+        "selector": ".os-eyebrow",
+        "text": "Research Highlights",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.714,
+        "worst_shadow_background": [
+          188,
+          203,
+          220
+        ],
+        "glyphInteriorPixels": 38
+      },
+      {
+        "selector": "h1",
+        "text": "Mohammad",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "40px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1379
+      },
+      {
+        "selector": "h1",
+        "text": "Raouf Abedini",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "40px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1564
+      },
+      {
+        "selector": "h1",
+        "text": ".",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "40px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 13
+      },
+      {
+        "selector": "h1 > span",
+        "text": "Raouf Abedini",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "40px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1564
+      },
+      {
+        "selector": "h1 > span",
+        "text": ".",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "40px",
+        "fontWeight": "300",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 13
+      },
+      {
+        "selector": ".os-role",
+        "text": "AI Security Researcher",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 166
+      },
+      {
+        "selector": ".os-desktop-summary",
+        "text": "I build systems to understand and contain the risks of agentic AI. This is my workspace for research",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 652
+      },
+      {
+        "selector": ".os-button[href$=\"projects\"]",
+        "text": "Explore Research",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.452,
+        "worst_shadow_background": [
+          181,
+          225,
+          250
+        ],
+        "glyphInteriorPixels": 45
+      },
+      {
+        "selector": ".os-button--secondary.os-button[target=\"_blank\"]",
+        "text": "View R\u00e9sum\u00e9 PDF",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.513,
+        "worst_shadow_background": [
+          228,
+          228,
+          228
+        ],
+        "glyphInteriorPixels": 64
+      },
+      {
+        "selector": ".os-button--secondary.os-button[href$=\"contact\"]",
+        "text": "Contact",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.513,
+        "worst_shadow_background": [
+          228,
+          228,
+          228
+        ],
+        "glyphInteriorPixels": 20
+      },
+      {
+        "selector": "#_r_0_",
+        "text": "Where the evidence connects",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.311,
+        "worst_shadow_background": [
+          174,
+          192,
+          214
+        ],
+        "glyphInteriorPixels": 53
+      },
+      {
+        "selector": ".proof-atlas-eyebrow",
+        "text": "Proof Atlas \u00b7 Selected research",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 361
+      },
+      {
+        "selector": "text[y=\"32\"]",
+        "text": "Agent",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 5
+      },
+      {
+        "selector": "g[transform=\"translate(145 75)\"] > text[y=\"43\"]",
+        "text": "Input",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 2
+      },
+      {
+        "selector": "text[y=\"-36\"]",
+        "text": "Tool gate",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 7
+      },
+      {
+        "selector": "g[transform=\"translate(500 123)\"] > text[y=\"43\"]",
+        "text": "Output",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1
+      },
+      {
+        "selector": ".proof-atlas-option[type=\"button\"]:nth-child(1)",
+        "text": "Project Simurgh",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.138,
+        "worst_shadow_background": [
+          133,
+          197,
+          231
+        ],
+        "glyphInteriorPixels": 65
+      },
+      {
+        "selector": ".proof-atlas-option[type=\"button\"]:nth-child(2)",
+        "text": "Invisible Window",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 15.609,
+        "worst_shadow_background": [
+          222,
+          222,
+          222
+        ],
+        "glyphInteriorPixels": 64
+      },
+      {
+        "selector": ".proof-atlas-option[type=\"button\"]:nth-child(3)",
+        "text": "Project Zurvan",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 15.609,
+        "worst_shadow_background": [
+          222,
+          222,
+          222
+        ],
+        "glyphInteriorPixels": 48
+      },
+      {
+        "selector": ".proof-atlas-summary",
+        "text": "An agent passes four defensive boundaries. Each emits signed evidence for an independent offline rev",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 678
+      },
+      {
+        "selector": ".proof-atlas-qualifier",
+        "text": "Architecture schematic based on documented components; no run trace is shown.",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 497
+      },
+      {
+        "selector": ".proof-atlas-link",
+        "text": "Open Project Evidence",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 81
+      },
+      {
+        "selector": ".os-section-label",
+        "text": "Open an app to explore my work.",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.281,
+        "worst_shadow_background": [
+          35,
+          66,
+          102
+        ],
+        "glyphInteriorPixels": 136
+      },
+      {
+        "selector": ".os-section-label",
+        "text": "Offensive security 2 \u00b7 Defensive security 3 \u00b7 Engineering 8",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.751,
+        "worst_shadow_background": [
+          31,
+          63,
+          100
+        ],
+        "glyphInteriorPixels": 137
+      },
+      {
+        "selector": ".os-app-stat",
+        "text": "Offensive security 2 \u00b7 Defensive security 3 \u00b7 Engineering 8",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.751,
+        "worst_shadow_background": [
+          31,
+          63,
+          100
+        ],
+        "glyphInteriorPixels": 137
+      },
+      {
+        "selector": ".os-app[data-app=\"projects\"][href$=\"projects\"] > strong",
+        "text": "Projects",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.098,
+        "worst_shadow_background": [
+          19,
+          55,
+          94
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": ".os-app[data-app=\"projects\"][href$=\"projects\"] > small",
+        "text": "Selected engineering",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.431,
+        "worst_shadow_background": [
+          16,
+          53,
+          93
+        ],
+        "glyphInteriorPixels": 43
+      },
+      {
+        "selector": ".os-app[data-app=\"research\"][href$=\"write-ups\"] > strong",
+        "text": "Write-ups",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.662,
+        "worst_shadow_background": [
+          12,
+          57,
+          104
+        ],
+        "glyphInteriorPixels": 59
+      },
+      {
+        "selector": ".os-app[data-app=\"research\"][href$=\"write-ups\"] > small",
+        "text": "Papers and write-ups",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.678,
+        "worst_shadow_background": [
+          13,
+          57,
+          103
+        ],
+        "glyphInteriorPixels": 36
+      },
+      {
+        "selector": ".os-app[data-app=\"about\"][href$=\"about\"] > strong",
+        "text": "About",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.709,
+        "worst_shadow_background": [
+          15,
+          57,
+          101
+        ],
+        "glyphInteriorPixels": 17
+      },
+      {
+        "selector": ".os-app[data-app=\"about\"][href$=\"about\"] > small",
+        "text": "Behind the work",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.946,
+        "worst_shadow_background": [
+          19,
+          68,
+          117
+        ],
+        "glyphInteriorPixels": 58
+      },
+      {
+        "selector": ".os-app[data-app=\"resume\"][href$=\"resume\"] > strong",
+        "text": "R\u00e9sum\u00e9",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.398,
+        "worst_shadow_background": [
+          23,
+          72,
+          120
+        ],
+        "glyphInteriorPixels": 47
+      },
+      {
+        "selector": ".os-app[data-app=\"resume\"][href$=\"resume\"] > small",
+        "text": "Experience and skills",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.569,
+        "worst_shadow_background": [
+          23,
+          71,
+          117
+        ],
+        "glyphInteriorPixels": 55
+      },
+      {
+        "selector": ".os-app[data-app=\"contact\"][href$=\"contact\"] > strong",
+        "text": "Contact",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 8.302,
+        "worst_shadow_background": [
+          39,
+          81,
+          119
+        ],
+        "glyphInteriorPixels": 24
+      },
+      {
+        "selector": ".os-app[data-app=\"contact\"][href$=\"contact\"] > small",
+        "text": "Start a conversation",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 7.733,
+        "worst_shadow_background": [
+          42,
+          86,
+          123
+        ],
+        "glyphInteriorPixels": 42
+      },
+      {
+        "selector": "a[href$=\"lab\"]",
+        "text": "Lab",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.168,
+        "worst_shadow_background": [
+          30,
+          73,
+          56
+        ],
+        "glyphInteriorPixels": 12
+      },
+      {
+        "selector": "a[href$=\"security-policy\"]",
+        "text": "Security & Responsible Disclosure",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.251,
+        "worst_shadow_background": [
+          39,
+          79,
+          60
+        ],
+        "glyphInteriorPixels": 96
+      },
+      {
+        "selector": "a[href$=\"hall-of-fame\"]",
+        "text": "Hall of Fame",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.251,
+        "worst_shadow_background": [
+          39,
+          79,
+          60
+        ],
+        "glyphInteriorPixels": 66
+      },
+      {
+        "selector": "a[aria-label=\"Projects\"] > span:nth-child(2)",
+        "text": "Projects",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.208,
+        "worst_shadow_background": [
+          82,
+          130,
+          131
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": "a[aria-label=\"Write-ups\"] > span:nth-child(2)",
+        "text": "Write-ups",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 8.931,
+        "worst_shadow_background": [
+          79,
+          126,
+          130
+        ],
+        "glyphInteriorPixels": 36
+      },
+      {
+        "selector": "a[aria-label=\"About\"] > span:nth-child(2)",
+        "text": "About",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.479,
+        "worst_shadow_background": [
+          85,
+          132,
+          133
+        ],
+        "glyphInteriorPixels": 17
+      },
+      {
+        "selector": "a[aria-label=\"R\u00e9sum\u00e9\"] > span:nth-child(2)",
+        "text": "R\u00e9sum\u00e9",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.577,
+        "worst_shadow_background": [
+          89,
+          138,
+          139
+        ],
+        "glyphInteriorPixels": 38
+      },
+      {
+        "selector": "a[aria-label=\"Contact\"] > span:nth-child(2)",
+        "text": "Contact",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.35,
+        "worst_shadow_background": [
+          94,
+          146,
+          148
+        ],
+        "glyphInteriorPixels": 29
+      }
+    ]
+  },
+  {
+    "name": "final-about-dark",
+    "route": "/en/about",
+    "theme": "dark",
+    "width": 1440,
+    "axeIncompleteNodes": 24,
+    "measuredTextRuns": 23,
+    "measured": [
+      {
+        "selector": "time[datetime=\"2026-11-04T01:17:00.000Z\"]",
+        "text": "12:24",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.465,
+        "worst_shadow_background": [
+          28,
+          67,
+          92
+        ],
+        "glyphInteriorPixels": 19
+      },
+      {
+        "selector": ".os-top-date",
+        "text": "4 Nov 2026",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 13.079,
+        "worst_shadow_background": [
+          19,
+          51,
+          76
+        ],
+        "glyphInteriorPixels": 20
+      },
+      {
+        "selector": ".os-window-back > span",
+        "text": "Back",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.826,
+        "worst_shadow_background": [
+          222,
+          222,
+          222
+        ],
+        "glyphInteriorPixels": 10
+      },
+      {
+        "selector": ".os-window-copy",
+        "text": "Copy Link",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.054,
+        "worst_shadow_background": [
+          215,
+          215,
+          215
+        ],
+        "glyphInteriorPixels": 24
+      },
+      {
+        "selector": "summary[aria-label=\"Move and Resize\"]",
+        "text": "Move and Resize",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.826,
+        "worst_shadow_background": [
+          222,
+          222,
+          222
+        ],
+        "glyphInteriorPixels": 48
+      },
+      {
+        "selector": ".os-about-intro > .os-support-eyebrow",
+        "text": "Profile",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 32
+      },
+      {
+        "selector": "#about-heading",
+        "text": "Mohammad Raouf Abedini",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "32px",
+        "fontWeight": "600",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 3219
+      },
+      {
+        "selector": ".os-about-role",
+        "text": "AI Security Research \u00b7 LLM Agent Red-Teaming \u00b7 Offensive & Defensive Security Engineering",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 642
+      },
+      {
+        "selector": ".os-about-bio > p:nth-child(1)",
+        "text": "I research ways to measure and contain the cyber capabilities of frontier AI, and I am ready to relo",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1663
+      },
+      {
+        "selector": ".os-about-bio > p:nth-child(2)",
+        "text": "I created Project Simurgh, a provider-agnostic framework that red-teams LLM agents under a dishonest",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 3225
+      },
+      {
+        "selector": ".os-about-bio > p:nth-child(3)",
+        "text": "I am also the lead author of The Invisible Window, which found 100% screen-capture evasion in the te",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1570
+      },
+      {
+        "selector": ".os-about-location > span:nth-child(1)",
+        "text": "Name: Raouf Abedini",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 81
+      },
+      {
+        "selector": ".os-about-location > span:nth-child(2)",
+        "text": "Profile: AI security researcher",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 120
+      },
+      {
+        "selector": ".os-about-location > span:nth-child(3)",
+        "text": "Location: Sydney, NSW",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 64
+      },
+      {
+        "selector": "a[href$=\"Raoof128\"] > span:nth-child(2)",
+        "text": "github.com/Raoof128",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 147
+      },
+      {
+        "selector": "a[target=\"_blank\"][rel=\"noopener noreferrer\"]:nth-child(2) > span:nth-child(2)",
+        "text": "LinkedIn",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 100
+      },
+      {
+        "selector": "a[target=\"_blank\"][rel=\"noopener noreferrer\"]:nth-child(3) > span:nth-child(2)",
+        "text": "ORCID",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 47
+      },
+      {
+        "selector": "a[href=\"mailto:raoof.r12@gmail.com\"] > span[dir=\"ltr\"]",
+        "text": "raoof.r12@gmail.com",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 67
+      },
+      {
+        "selector": "a[aria-label=\"Projects\"] > span:nth-child(2)",
+        "text": "Projects",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.235,
+        "worst_shadow_background": [
+          29,
+          68,
+          97
+        ],
+        "glyphInteriorPixels": 31
+      },
+      {
+        "selector": "a[aria-label=\"Write-ups\"] > span:nth-child(2)",
+        "text": "Write-ups",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.487,
+        "worst_shadow_background": [
+          33,
+          73,
+          103
+        ],
+        "glyphInteriorPixels": 36
+      },
+      {
+        "selector": ".is-running > span:nth-child(2)",
+        "text": "About",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 13.897,
+        "worst_shadow_background": [
+          22,
+          45,
+          75
+        ],
+        "glyphInteriorPixels": 17
+      },
+      {
+        "selector": "a[aria-label=\"R\u00e9sum\u00e9\"] > span:nth-child(2)",
+        "text": "R\u00e9sum\u00e9",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.949,
+        "worst_shadow_background": [
+          31,
+          70,
+          98
+        ],
+        "glyphInteriorPixels": 38
+      },
+      {
+        "selector": "a[aria-label=\"Contact\"] > span:nth-child(2)",
+        "text": "Contact",
+        "fg": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.729,
+        "worst_shadow_background": [
+          27,
+          65,
+          92
+        ],
+        "glyphInteriorPixels": 31
+      }
+    ]
+  },
+  {
+    "name": "final-about-light",
+    "route": "/en/about",
+    "theme": "light",
+    "width": 390,
+    "axeIncompleteNodes": 140,
+    "measuredTextRuns": 145,
+    "measured": [
+      {
+        "selector": ".os-window-copy",
+        "text": "Copy Link",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.166,
+        "worst_shadow_background": [
+          225,
+          225,
+          225
+        ],
+        "glyphInteriorPixels": 42
+      },
+      {
+        "selector": ".os-about-intro > .os-support-eyebrow",
+        "text": "Profile",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 32
+      },
+      {
+        "selector": "#about-heading",
+        "text": "Mohammad Raouf Abedini",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "threshold": 3,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1500
+      },
+      {
+        "selector": ".os-about-role",
+        "text": "AI Security Research \u00b7 LLM Agent Red-Teaming \u00b7 Offensive & Defensive Security Engineering",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 685
+      },
+      {
+        "selector": ".os-about-bio > p:nth-child(1)",
+        "text": "I research ways to measure and contain the cyber capabilities of frontier AI, and I am ready to relo",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 1704
+      },
+      {
+        "selector": ".os-about-bio > p:nth-child(2)",
+        "text": "I created Project Simurgh, a provider-agnostic framework that red-teams LLM agents under a dishonest",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 9.447,
+        "worst_shadow_background": [
+          239,
+          239,
+          239
+        ],
+        "glyphInteriorPixels": 2758
+      },
+      {
+        "selector": ".os-about-bio > p:nth-child(3)",
+        "text": "I am also the lead author of The Invisible Window, which found 100% screen-capture evasion in the te",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 4423
+      },
+      {
+        "selector": ".os-support-actions > .os-button[href$=\"contact\"]",
+        "text": "Let's Connect",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 11.599,
+        "worst_shadow_background": [
+          184,
+          226,
+          251
+        ],
+        "glyphInteriorPixels": 38
+      },
+      {
+        "selector": ".os-button--secondary[href$=\"resume\"]",
+        "text": "View R\u00e9sum\u00e9",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.513,
+        "worst_shadow_background": [
+          228,
+          228,
+          228
+        ],
+        "glyphInteriorPixels": 32
+      },
+      {
+        "selector": ".os-about-location > span:nth-child(1)",
+        "text": "Name: Raouf Abedini",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 65
+      },
+      {
+        "selector": ".os-about-location > span:nth-child(2)",
+        "text": "Profile: AI security researcher",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 123
+      },
+      {
+        "selector": ".os-about-location > span:nth-child(3)",
+        "text": "Location: Sydney, NSW",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 74
+      },
+      {
+        "selector": "a[href$=\"Raoof128\"] > span:nth-child(2)",
+        "text": "github.com/Raoof128",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 147
+      },
+      {
+        "selector": "a[target=\"_blank\"][rel=\"noopener noreferrer\"]:nth-child(2) > span:nth-child(2)",
+        "text": "LinkedIn",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 99
+      },
+      {
+        "selector": "a[target=\"_blank\"][rel=\"noopener noreferrer\"]:nth-child(3) > span:nth-child(2)",
+        "text": "ORCID",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 54
+      },
+      {
+        "selector": "a[href=\"mailto:raoof.r12@gmail.com\"] > span[dir=\"ltr\"]",
+        "text": "raoof.r12@gmail.com",
+        "fg": [
+          0.0,
+          102.0,
+          204.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 5.567,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 106
+      },
+      {
+        "selector": ".os-about-stats > div:nth-child(1) > dt",
+        "text": "Projects",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 34
+      },
+      {
+        "selector": ".os-about-stats > div:nth-child(1) > dd",
+        "text": "70+",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 116
+      },
+      {
+        "selector": ".os-about-stats > div:nth-child(2) > dt",
+        "text": "Evasion in Tested Lab Configurations",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 159
+      },
+      {
+        "selector": ".os-about-stats > div:nth-child(2) > dd",
+        "text": "100%",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 212
+      },
+      {
+        "selector": ".os-about-stats > div:nth-child(3) > dt",
+        "text": "Vendors notified",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 56
+      },
+      {
+        "selector": ".os-about-stats > div:nth-child(3) > dd",
+        "text": "3+2",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 113
+      },
+      {
+        "selector": "#about-specializations",
+        "text": "Specialisations",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 186
+      },
+      {
+        "selector": ".os-about-spec:nth-child(1) > h3",
+        "text": "Vulnerability Research & Disclosure",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 690
+      },
+      {
+        "selector": ".os-about-spec:nth-child(1) > ul > li:nth-child(1)",
+        "text": "Cross-Platform Exploit Development (Win32 API, macOS ScreenCaptureKit)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 304
+      },
+      {
+        "selector": ".os-about-spec:nth-child(1) > ul > li:nth-child(2)",
+        "text": "Responsible Disclosure (OWASP/FIRST/CISA Frameworks)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 237
+      },
+      {
+        "selector": ".os-about-spec:nth-child(1) > ul > li:nth-child(3)",
+        "text": "IEEE-Format Security Research",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 152
+      },
+      {
+        "selector": ".os-about-spec:nth-child(1) > ul > li:nth-child(4)",
+        "text": "Penetration Testing & Secure Code Review",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 169
+      },
+      {
+        "selector": ".os-about-spec:nth-child(1) > ul > li:nth-child(5)",
+        "text": "W3C Screen Capture Specification",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 117
+      },
+      {
+        "selector": ".os-about-spec:nth-child(2) > h3",
+        "text": "AI Safety & LLM Security",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 498
+      },
+      {
+        "selector": ".os-about-spec:nth-child(2) > ul > li:nth-child(1)",
+        "text": "LLM Integration & Evaluation (Claude, via Alignerr)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 202
+      },
+      {
+        "selector": ".os-about-spec:nth-child(2) > ul > li:nth-child(2)",
+        "text": "AI-Assisted Vulnerability Research",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 160
+      },
+      {
+        "selector": ".os-about-spec:nth-child(2) > ul > li:nth-child(3)",
+        "text": "AI Capability Uplift Measurement",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 132
+      },
+      {
+        "selector": ".os-about-spec:nth-child(2) > ul > li:nth-child(4)",
+        "text": "Dual-Use Risk Assessment",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 102
+      },
+      {
+        "selector": ".os-about-spec:nth-child(2) > ul > li:nth-child(5)",
+        "text": "Intent-vs-Artefact Safety Boundary Characterisation",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 242
+      },
+      {
+        "selector": ".os-about-spec:nth-child(3) > h3",
+        "text": "Python & Systems Programming",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 691
+      },
+      {
+        "selector": ".os-about-spec:nth-child(3) > ul > li:nth-child(1)",
+        "text": "Python (Primary), C, C++, TypeScript, Swift",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 181
+      },
+      {
+        "selector": ".os-about-spec:nth-child(3) > ul > li:nth-child(2)",
+        "text": "High-Performance C/C++ Systems (1M+ ops/sec)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 180
+      },
+      {
+        "selector": ".os-about-spec:nth-child(3) > ul > li:nth-child(3)",
+        "text": "Network Packet Processing (libpcap)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 138
+      },
+      {
+        "selector": ".os-about-spec:nth-child(3) > ul > li:nth-child(4)",
+        "text": "Linux (Ubuntu/Kali), CMake, Docker",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 144
+      },
+      {
+        "selector": ".os-about-spec:nth-child(3) > ul > li:nth-child(5)",
+        "text": "GitHub Actions CI/CD, Google Test",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 153
+      },
+      {
+        "selector": ".os-about-spec:nth-child(4) > h3",
+        "text": "Offensive Security",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 333
+      },
+      {
+        "selector": ".os-about-spec:nth-child(4) > ul > li:nth-child(1)",
+        "text": "Threat Modelling (MITRE ATT&CK, OWASP Top 10)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 218
+      },
+      {
+        "selector": ".os-about-spec:nth-child(4) > ul > li:nth-child(2)",
+        "text": "Network Intrusion Detection Systems",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 164
+      },
+      {
+        "selector": ".os-about-spec:nth-child(4) > ul > li:nth-child(3)",
+        "text": "Wireshark, Nmap, Burp Suite",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 105
+      },
+      {
+        "selector": ".os-about-spec:nth-child(4) > ul > li:nth-child(4)",
+        "text": "NLP-Powered Phishing Simulation",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 132
+      },
+      {
+        "selector": ".os-about-spec:nth-child(4) > ul > li:nth-child(5)",
+        "text": "NIST Framework & Compliance",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 107
+      },
+      {
+        "selector": "#about-skills",
+        "text": "Skills",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 78
+      },
+      {
+        "selector": ".os-about-skills > div:nth-child(1) > dt",
+        "text": "Languages",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 42
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(1)",
+        "text": "Python (primary)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 71
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(2)",
+        "text": "C",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 6
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(3)",
+        "text": "C++",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 18
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(4)",
+        "text": "TypeScript",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 52
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(5)",
+        "text": "JavaScript",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 38
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(6)",
+        "text": "Swift",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 25
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(7)",
+        "text": "Kotlin",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 26
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(8)",
+        "text": "Bash",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 24
+      },
+      {
+        "selector": "div:nth-child(1) > dd > span:nth-child(9)",
+        "text": "SQL",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 28
+      },
+      {
+        "selector": "span:nth-child(10)",
+        "text": "Go (familiar)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 53
+      },
+      {
+        "selector": ".os-about-skills > div:nth-child(2) > dt",
+        "text": "Security",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 29
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(1)",
+        "text": "Vulnerability Research",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 97
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(2)",
+        "text": "Cross-Platform Exploit Development",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 150
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(3)",
+        "text": "Threat Modelling",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 81
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(4)",
+        "text": "Secure Code Review",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 84
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(5)",
+        "text": "Penetration Testing",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 90
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(6)",
+        "text": "Responsible Disclosure",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 88
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(7)",
+        "text": "Wireshark",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 49
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(8)",
+        "text": "Nmap",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 24
+      },
+      {
+        "selector": "div:nth-child(2) > dd > span:nth-child(9)",
+        "text": "Burp Suite",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 58
+      },
+      {
+        "selector": ".os-about-skills > div:nth-child(3) > dt",
+        "text": "AI & ML",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 32
+      },
+      {
+        "selector": "div:nth-child(3) > dd > span:nth-child(1)",
+        "text": "LLM Integration & Evaluation",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 134
+      },
+      {
+        "selector": "div:nth-child(3) > dd > span:nth-child(2)",
+        "text": "AI-Assisted Vulnerability Research",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 160
+      },
+      {
+        "selector": "div:nth-child(3) > dd > span:nth-child(3)",
+        "text": "NLP",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 20
+      },
+      {
+        "selector": "div:nth-child(3) > dd > span:nth-child(4)",
+        "text": "Generative AI Tooling",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 101
+      },
+      {
+        "selector": "div:nth-child(3) > dd > span:nth-child(5)",
+        "text": "ML Model Evaluation",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 111
+      },
+      {
+        "selector": "div:nth-child(3) > dd > span:nth-child(6)",
+        "text": "Dual-Use Risk Assessment",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 102
+      },
+      {
+        "selector": "div:nth-child(4) > dt",
+        "text": "Systems",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 33
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(1)",
+        "text": "Linux (Ubuntu/Kali)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 79
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(2)",
+        "text": "CMake",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 23
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(3)",
+        "text": "Docker",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 34
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(4)",
+        "text": "Git/GitHub",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 52
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(5)",
+        "text": "GitHub Actions CI/CD",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 114
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(6)",
+        "text": "Google Test",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 52
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(7)",
+        "text": "FastAPI",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(8)",
+        "text": "Cloudflare Workers",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 84
+      },
+      {
+        "selector": "div:nth-child(4) > dd > span:nth-child(9)",
+        "text": "libpcap",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 25
+      },
+      {
+        "selector": "div:nth-child(5) > dt",
+        "text": "Frameworks",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": "div:nth-child(5) > dd > span:nth-child(1)",
+        "text": "OWASP Top 10",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 48
+      },
+      {
+        "selector": "div:nth-child(5) > dd > span:nth-child(2)",
+        "text": "MITRE ATT&CK",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 112
+      },
+      {
+        "selector": "div:nth-child(5) > dd > span:nth-child(3)",
+        "text": "NIST",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 14
+      },
+      {
+        "selector": "div:nth-child(5) > dd > span:nth-child(4)",
+        "text": "W3C Screen Capture Spec",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 95
+      },
+      {
+        "selector": "#about-operations",
+        "text": "Current work",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 174
+      },
+      {
+        "selector": ".os-button--secondary[href$=\"lab\"]",
+        "text": "Explore the Lab",
+        "fg": [
+          34.0,
+          34.0,
+          34.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 12.397,
+        "worst_shadow_background": [
+          227,
+          227,
+          227
+        ],
+        "glyphInteriorPixels": 45
+      },
+      {
+        "selector": "article:nth-child(1) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-01",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": "article:nth-child(1) > div > h3",
+        "text": "AD Attack & Defence Lab",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 506
+      },
+      {
+        "selector": "article:nth-child(1) > div > p",
+        "text": "Purple Team \u00b7 Kerberoasting \u00b7 DC-Sync",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 138
+      },
+      {
+        "selector": "article:nth-child(1) > .os-status[data-state=\"active\"]",
+        "text": "Active",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": "article:nth-child(2) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-02",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": "article:nth-child(2) > div > h3",
+        "text": "SOC Automation Platform",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 520
+      },
+      {
+        "selector": "article:nth-child(2) > div > p",
+        "text": "SOAR \u00b7 KQL \u00b7 E8 Maturity",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 99
+      },
+      {
+        "selector": "article:nth-child(2) > .os-status[data-state=\"active\"]",
+        "text": "Active",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": "article:nth-child(3) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-03",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 41
+      },
+      {
+        "selector": "article:nth-child(3) > div > h3",
+        "text": "AI Red Team Framework",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 487
+      },
+      {
+        "selector": "article:nth-child(3) > div > p",
+        "text": "LLM \u00b7 Jailbreak \u00b7 Adversarial",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 116
+      },
+      {
+        "selector": "article:nth-child(3) > .os-status[data-state=\"active\"]",
+        "text": "Active",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": "article:nth-child(4) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-04",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 44
+      },
+      {
+        "selector": "article:nth-child(4) > div > h3",
+        "text": "ML Anomaly Detection Pipeline",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 662
+      },
+      {
+        "selector": "article:nth-child(4) > div > p",
+        "text": "Zeek \u00b7 Suricata \u00b7 Isolation Forest",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 135
+      },
+      {
+        "selector": "article:nth-child(4) > .os-status[data-state=\"active\"]",
+        "text": "Active",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": "article:nth-child(5) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-05",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": "article:nth-child(5) > div > h3",
+        "text": "LEO Satellite Cyber Lab",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 493
+      },
+      {
+        "selector": "article:nth-child(5) > div > p",
+        "text": "Uplink Jamming \u00b7 Spoofing \u00b7 Telemetry",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 139
+      },
+      {
+        "selector": "article:nth-child(5) > .os-status[data-state=\"inactive\"]",
+        "text": "Archived",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 28
+      },
+      {
+        "selector": "article:nth-child(6) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-06",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 34
+      },
+      {
+        "selector": "article:nth-child(6) > div > h3",
+        "text": "Malware Analysis Sandbox",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 533
+      },
+      {
+        "selector": "article:nth-child(6) > div > p",
+        "text": "RE \u00b7 YARA \u00b7 API Hooking",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 119
+      },
+      {
+        "selector": "article:nth-child(6) > .os-status[data-state=\"inactive\"]",
+        "text": "Archived",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 28
+      },
+      {
+        "selector": "article:nth-child(7) > .os-about-lab-id[dir=\"ltr\"]",
+        "text": "OPS-07",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 40
+      },
+      {
+        "selector": "article:nth-child(7) > div > h3",
+        "text": "PQC Migration Auditor",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 453
+      },
+      {
+        "selector": "article:nth-child(7) > div > p",
+        "text": "Post-Quantum \u00b7 Crypto Inventory",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 115
+      },
+      {
+        "selector": "article:nth-child(7) > .os-status[data-state=\"inactive\"]",
+        "text": "Concept",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 30
+      },
+      {
+        "selector": "#about-education",
+        "text": "Education",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "20px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 158
+      },
+      {
+        "selector": "article:nth-child(1) > .os-support-eyebrow[dir=\"ltr\"]",
+        "text": "2024",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 26
+      },
+      {
+        "selector": "article:nth-child(1) > .os-support-eyebrow[dir=\"ltr\"]",
+        "text": "\u2013",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 5
+      },
+      {
+        "selector": "article:nth-child(1) > .os-support-eyebrow[dir=\"ltr\"]",
+        "text": "2026",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 25
+      },
+      {
+        "selector": ".os-about-education > article:nth-child(1) > h3",
+        "text": "Bachelor of Cyber Security",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 534
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(3)",
+        "text": "Expected completion",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 74
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(3)",
+        "text": "November 2026",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 64
+      },
+      {
+        "selector": "time[datetime=\"2026-11\"]",
+        "text": "November 2026",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 64
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(4)",
+        "text": "Macquarie University",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 75
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(4)",
+        "text": "Weighted average mark (WAM)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 141
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(4)",
+        "text": "76.27",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 21
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(4) > bdi",
+        "text": "76.27",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 21
+      },
+      {
+        "selector": "article:nth-child(1) > p:nth-child(5)",
+        "text": "Digital Forensics \u00b7 Network Security \u00b7 Systems Security \u00b7 NLP & Machine Learning \u00b7 Privacy-Preservin",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 475
+      },
+      {
+        "selector": "article:nth-child(2) > .os-support-eyebrow[dir=\"ltr\"]",
+        "text": "2023",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 26
+      },
+      {
+        "selector": "article:nth-child(2) > .os-support-eyebrow[dir=\"ltr\"]",
+        "text": "\u2013",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 5
+      },
+      {
+        "selector": "article:nth-child(2) > .os-support-eyebrow[dir=\"ltr\"]",
+        "text": "2024",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 26
+      },
+      {
+        "selector": ".os-about-education > article:nth-child(2) > h3",
+        "text": "Diploma of Information Technology",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "threshold": 4.5,
+        "min_ratio": 21.0,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 789
+      },
+      {
+        "selector": "article:nth-child(2) > p:nth-child(3)",
+        "text": "Macquarie University",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 75
+      },
+      {
+        "selector": "article:nth-child(2) > p:nth-child(3)",
+        "text": "Weighted average mark (WAM)",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 141
+      },
+      {
+        "selector": "article:nth-child(2) > p:nth-child(3)",
+        "text": "71.75",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 31
+      },
+      {
+        "selector": "p:nth-child(3) > bdi",
+        "text": "71.75",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 31
+      },
+      {
+        "selector": "article:nth-child(2) > p:nth-child(4)",
+        "text": "Foundations in systems, networking, and software engineering.",
+        "fg": [
+          61.0,
+          61.0,
+          61.0
+        ],
+        "opacity": 1,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 10.862,
+        "worst_shadow_background": [
+          255,
+          255,
+          255
+        ],
+        "glyphInteriorPixels": 242
+      },
+      {
+        "selector": "a[aria-label=\"Write-ups\"] > span:nth-child(2)",
+        "text": "Write-ups",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 18.832,
+        "worst_shadow_background": [
+          169,
+          175,
+          181
+        ],
+        "glyphInteriorPixels": 15
+      },
+      {
+        "selector": ".is-running > span:nth-child(2)",
+        "text": "About",
+        "fg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "opacity": 1,
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "threshold": 4.5,
+        "min_ratio": 20.011,
+        "worst_shadow_background": [
+          172,
+          175,
+          178
+        ],
+        "glyphInteriorPixels": 8
+      }
+    ]
+  }
+]

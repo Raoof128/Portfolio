@@ -164,7 +164,8 @@
    The 7.css button border and glow are reset in win7-theme.css. Pointer hover rules in the
    other win7 lanes are wrapped in (hover: hover) in those files. */
 @media (hover: none), (pointer: coarse) {
-  .os-shell.win7 a:not(.os-skip-link):hover:not(:focus-visible) {
+  /* Surface-specific ink (wallpaper labels and native button faces) must still win. */
+  .os-shell.win7 a:hover:where(:not(.os-skip-link):not(:focus-visible)) {
     color: var(--win7-link);
   }
 }
@@ -190,10 +191,9 @@
   }
 }
 
-/* Language switch pending: the summary dims and shows a wait cursor until the new locale
-   renders (the route change is the wait). */
+/* Keep the locale label readable while the existing ring and wait cursor show progress. */
 .os-shell.win7 .os-language summary[aria-busy="true"] {
-  opacity: 0.6;
+  opacity: 1;
   cursor: progress;
 }
 

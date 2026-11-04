@@ -1,0 +1,9 @@
+{
+  "url": "https://github.com/eslint/eslint/blob/main/docs/src/use/configure/ignore.md",
+  "blobSHA": "c843f8e96ce18c273775a6c00312ca31c66c8714",
+  "readLines": [
+    1,
+    90
+  ],
+  "decision": "Add work/** to existing globalIgnores. Downloaded repository captures and scratch translation helpers are audit inputs; src and maintained scripts retain all lint rules."
+}

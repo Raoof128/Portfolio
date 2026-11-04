@@ -1,0 +1,440 @@
+{
+  "method": "Real Chromium global Page zoom selected via chrome://settings/appearance select#zoomLevel, in a fresh temporary persistent context.",
+  "notUsed": [
+    "extension",
+    "browser policy override",
+    "CDP pageScaleFactor/pinch",
+    "CSS zoom",
+    "viewport resizing"
+  ],
+  "baseURL": "http://127.0.0.1:4398",
+  "physicalViewport": {
+    "width": 1280,
+    "height": 1024
+  },
+  "browserVersion": "155.0.8059.79",
+  "samples": [
+    {
+      "factor": 2,
+      "percent": 200,
+      "route": "/",
+      "status": 200,
+      "screenshot": "200-home.png",
+      "geometry": {
+        "innerWidth": 640,
+        "innerHeight": 512,
+        "devicePixelRatio": 2,
+        "visualScale": 1,
+        "outerWidth": 1280,
+        "outerHeight": 1024,
+        "documentWidth": 640,
+        "documentHeight": 1394,
+        "bodyWidth": 640,
+        "appearance": "light",
+        "heading": [
+          {
+            "text": "Mohammad Raouf Abedini.",
+            "box": {
+              "x": 23,
+              "y": 89,
+              "width": 594,
+              "height": 64.390625
+            }
+          }
+        ],
+        "activePane": []
+      },
+      "scrolled": {
+        "scrollX": 0,
+        "scrollY": 882,
+        "innerWidth": 640,
+        "innerHeight": 512,
+        "documentWidth": 640,
+        "devicePixelRatio": 2,
+        "visualScale": 1
+      },
+      "scrolledScreenshot": "200-home-scrolled.png"
+    },
+    {
+      "factor": 2,
+      "percent": 200,
+      "route": "/projects",
+      "status": 200,
+      "screenshot": "200-projects.png",
+      "geometry": {
+        "innerWidth": 640,
+        "innerHeight": 512,
+        "devicePixelRatio": 2,
+        "visualScale": 1,
+        "outerWidth": 1280,
+        "outerHeight": 1024,
+        "documentWidth": 640,
+        "documentHeight": 3328,
+        "bodyWidth": 640,
+        "appearance": "light",
+        "heading": [
+          {
+            "text": "Projects",
+            "box": {
+              "x": 23,
+              "y": 259,
+              "width": 1,
+              "height": 1
+            }
+          }
+        ],
+        "activePane": [
+          {
+            "route": "/projects",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 3328.34375
+            },
+            "content": [
+              {
+                "box": {
+                  "x": 6,
+                  "y": 103,
+                  "width": 628,
+                  "height": 3218.34375
+                },
+                "clientWidth": 626,
+                "scrollWidth": 626,
+                "clientHeight": 3216,
+                "scrollHeight": 3216
+              }
+            ]
+          }
+        ]
+      },
+      "scrolled": {
+        "scrollX": 0,
+        "scrollY": 1024,
+        "innerWidth": 640,
+        "innerHeight": 512,
+        "documentWidth": 640,
+        "devicePixelRatio": 2,
+        "visualScale": 1
+      },
+      "scrolledScreenshot": "200-projects-scrolled.png"
+    },
+    {
+      "factor": 2,
+      "percent": 200,
+      "route": "/projects/project-simurgh",
+      "status": 200,
+      "screenshot": "200-projects-project-simurgh.png",
+      "geometry": {
+        "innerWidth": 640,
+        "innerHeight": 512,
+        "devicePixelRatio": 2,
+        "visualScale": 1,
+        "outerWidth": 1280,
+        "outerHeight": 1024,
+        "documentWidth": 640,
+        "documentHeight": 3699,
+        "bodyWidth": 640,
+        "appearance": "light",
+        "heading": [
+          {
+            "text": "Project Simurgh",
+            "box": {
+              "x": 23,
+              "y": 259,
+              "width": 594,
+              "height": 26.3984375
+            }
+          }
+        ],
+        "activePane": [
+          {
+            "route": "/projects/project-simurgh",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 3699.453125
+            },
+            "content": [
+              {
+                "box": {
+                  "x": 6,
+                  "y": 103,
+                  "width": 628,
+                  "height": 3589.453125
+                },
+                "clientWidth": 626,
+                "scrollWidth": 626,
+                "clientHeight": 3587,
+                "scrollHeight": 3587
+              }
+            ]
+          }
+        ]
+      },
+      "scrolled": {
+        "scrollX": 0,
+        "scrollY": 1024,
+        "innerWidth": 640,
+        "innerHeight": 512,
+        "documentWidth": 640,
+        "devicePixelRatio": 2,
+        "visualScale": 1
+      },
+      "scrolledScreenshot": "200-projects-project-simurgh-scrolled.png"
+    },
+    {
+      "factor": 4,
+      "percent": 400,
+      "route": "/",
+      "status": 200,
+      "screenshot": "400-home.png",
+      "geometry": {
+        "innerWidth": 320,
+        "innerHeight": 256,
+        "devicePixelRatio": 4,
+        "visualScale": 1,
+        "outerWidth": 1280,
+        "outerHeight": 1024,
+        "documentWidth": 320,
+        "documentHeight": 1751,
+        "bodyWidth": 320,
+        "appearance": "light",
+        "heading": [
+          {
+            "text": "Mohammad Raouf Abedini.",
+            "box": {
+              "x": 23,
+              "y": 73,
+              "width": 274,
+              "height": 55.1953125
+            }
+          }
+        ],
+        "activePane": []
+      },
+      "scrolled": {
+        "scrollX": 0,
+        "scrollY": 512,
+        "innerWidth": 320,
+        "innerHeight": 256,
+        "documentWidth": 320,
+        "devicePixelRatio": 4,
+        "visualScale": 1
+      },
+      "scrolledScreenshot": "400-home-scrolled.png"
+    },
+    {
+      "factor": 4,
+      "percent": 400,
+      "route": "/projects",
+      "status": 200,
+      "screenshot": "400-projects.png",
+      "geometry": {
+        "innerWidth": 320,
+        "innerHeight": 256,
+        "devicePixelRatio": 4,
+        "visualScale": 1,
+        "outerWidth": 1280,
+        "outerHeight": 1024,
+        "documentWidth": 320,
+        "documentHeight": 7303,
+        "bodyWidth": 320,
+        "appearance": "light",
+        "heading": [
+          {
+            "text": "Projects",
+            "box": {
+              "x": 23,
+              "y": 259,
+              "width": 1,
+              "height": 1
+            }
+          }
+        ],
+        "activePane": [
+          {
+            "route": "/projects",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 7283.15625
+            },
+            "content": [
+              {
+                "box": {
+                  "x": 6,
+                  "y": 103,
+                  "width": 308,
+                  "height": 7173.15625
+                },
+                "clientWidth": 306,
+                "scrollWidth": 306,
+                "clientHeight": 7171,
+                "scrollHeight": 7171
+              }
+            ]
+          }
+        ]
+      },
+      "scrolled": {
+        "scrollX": 0,
+        "scrollY": 512,
+        "innerWidth": 320,
+        "innerHeight": 256,
+        "documentWidth": 320,
+        "devicePixelRatio": 4,
+        "visualScale": 1
+      },
+      "scrolledScreenshot": "400-projects-scrolled.png"
+    },
+    {
+      "factor": 4,
+      "percent": 400,
+      "route": "/projects/project-simurgh",
+      "status": 200,
+      "screenshot": "400-projects-project-simurgh.png",
+      "geometry": {
+        "innerWidth": 320,
+        "innerHeight": 256,
+        "devicePixelRatio": 4,
+        "visualScale": 1,
+        "outerWidth": 1280,
+        "outerHeight": 1024,
+        "documentWidth": 320,
+        "documentHeight": 6296,
+        "bodyWidth": 320,
+        "appearance": "light",
+        "heading": [
+          {
+            "text": "Project Simurgh",
+            "box": {
+              "x": 23,
+              "y": 259,
+              "width": 274,
+              "height": 26.3984375
+            }
+          }
+        ],
+        "activePane": [
+          {
+            "route": "/projects/project-simurgh",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 6275.93359375
+            },
+            "content": [
+              {
+                "box": {
+                  "x": 6,
+                  "y": 103,
+                  "width": 308,
+                  "height": 6165.93359375
+                },
+                "clientWidth": 306,
+                "scrollWidth": 306,
+                "clientHeight": 6164,
+                "scrollHeight": 6164
+              }
+            ]
+          }
+        ]
+      },
+      "scrolled": {
+        "scrollX": 0,
+        "scrollY": 512,
+        "innerWidth": 320,
+        "innerHeight": 256,
+        "documentWidth": 320,
+        "devicePixelRatio": 4,
+        "visualScale": 1
+      },
+      "scrolledScreenshot": "400-projects-project-simurgh-scrolled.png"
+    }
+  ],
+  "screenshotMethod": "Read-only CDP Page.captureScreenshot without clip/emulation options. Playwright page.screenshot clips incorrectly after native-zoom document scrolling in this Chromium environment.",
+  "nativeZoomOptions": [
+    {
+      "label": "25%",
+      "value": "0.25"
+    },
+    {
+      "label": "33%",
+      "value": "0.3333333333333333"
+    },
+    {
+      "label": "50%",
+      "value": "0.5"
+    },
+    {
+      "label": "67%",
+      "value": "0.6666666666666666"
+    },
+    {
+      "label": "75%",
+      "value": "0.75"
+    },
+    {
+      "label": "80%",
+      "value": "0.8"
+    },
+    {
+      "label": "90%",
+      "value": "0.9"
+    },
+    {
+      "label": "100%",
+      "value": "1"
+    },
+    {
+      "label": "110%",
+      "value": "1.1"
+    },
+    {
+      "label": "125%",
+      "value": "1.25"
+    },
+    {
+      "label": "150%",
+      "value": "1.5"
+    },
+    {
+      "label": "175%",
+      "value": "1.75"
+    },
+    {
+      "label": "200%",
+      "value": "2"
+    },
+    {
+      "label": "250%",
+      "value": "2.5"
+    },
+    {
+      "label": "300%",
+      "value": "3"
+    },
+    {
+      "label": "400%",
+      "value": "4"
+    },
+    {
+      "label": "500%",
+      "value": "5"
+    }
+  ],
+  "baseline100": {
+    "innerWidth": 1280,
+    "innerHeight": 1024,
+    "devicePixelRatio": 1,
+    "visualScale": 1,
+    "outerWidth": 1280,
+    "outerHeight": 1024
+  },
+  "success": true
+}

@@ -1,0 +1,10 @@
+{
+  "sourceHashesVerified": 278,
+  "exportHashesVerified": 1072,
+  "knownPhoneAbsentFromCuratedTextFiles": 147,
+  "allLocalMarkdownLinksExist": true,
+  "nativeNonblankPNGs": 32,
+  "postflightEntryVerbatimInBothFilesAndReport": true,
+  "noUnresolvedReportPlaceholders": true,
+  "publicResumeSHA256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827"
+}

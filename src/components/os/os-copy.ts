@@ -86,7 +86,7 @@ const en = {
   results: "Results",
   libraryTopic: "Filter by Topic",
   summary:
-    "I build systems to understand and contain the risks of agentic AI. This is my workspace for research, engineering, and ideas.",
+    "I build and test host-side controls for what tool-using AI agents are permitted to do. I publish matched-control safety studies, including benefits and null results.",
   independentResearch: "Independent research · Sydney",
   personalPortfolio: "A personal portfolio",
   appNavigation: "Portfolio Applications",
@@ -191,7 +191,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     results: "نتیجه‌ها",
     libraryTopic: "فیلتر بر اساس موضوع",
     summary:
-      "سیستم‌هایی می‌سازم تا خطرهای هوش مصنوعی عامل‌محور را بشناسم و مهار کنم. اینجا فضای کار من برای پژوهش، مهندسی و ایده‌هاست.",
+      "کنترل‌های سمت میزبان را برای تعیین اختیار عامل‌های هوش مصنوعی ابزارمحور می‌سازم و می‌آزمایم. پژوهش‌های ایمنی با گروه‌های کنترل همسان، شامل نتایج مثبت و بدون اثر افزوده، منتشر می‌کنم.",
     independentResearch: "پژوهش مستقل · سیدنی",
     personalPortfolio: "مجموعه کارهای من",
     appNavigation: "برنامه‌های مجموعه کارها",
@@ -288,7 +288,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     results: "النتائج",
     libraryTopic: "التصفية حسب الموضوع",
     summary:
-      "أبني أنظمة لفهم مخاطر الذكاء الاصطناعي القائم على الوكلاء واحتوائها. هذه مساحة عملي للبحث والهندسة والأفكار.",
+      "أبني وأختبر ضوابط على المضيف تحدد ما يُسمح لوكلاء الذكاء الاصطناعي المستخدمين للأدوات بفعله. أنشر دراسات سلامة بضوابط مقارنة متطابقة، بما فيها الفوائد والنتائج دون أثر إضافي.",
     independentResearch: "بحث مستقل · سيدني",
     personalPortfolio: "ملف أعمال شخصي",
     appNavigation: "تطبيقات ملف الأعمال",
@@ -384,7 +384,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     results: "结果",
     libraryTopic: "按主题筛选",
     summary:
-      "我构建系统，研究并控制 AI 智能体的风险。这里汇集了我的研究、工程实践和想法。",
+      "我构建并测试宿主侧控制，限定使用工具的 AI 智能体可以执行哪些操作，并发表采用匹配对照的安全研究，同时报告收益与零增益结果。",
     independentResearch: "独立研究 · 悉尼",
     personalPortfolio: "个人作品集",
     appNavigation: "作品集应用",
@@ -484,7 +484,7 @@ const copy: Readonly<Record<Locale, OSCopy>> = {
     results: "Resultados",
     libraryTopic: "Filtrar por tema",
     summary:
-      "Construyo sistemas para comprender y contener los riesgos de la IA agéntica. Este es mi espacio de trabajo para la investigación, la ingeniería y las ideas.",
+      "Diseño y pruebo controles en el host que delimitan lo que pueden hacer los agentes de IA con herramientas. Publico estudios de seguridad con controles emparejados, con beneficios y resultados nulos.",
     independentResearch: "Investigación independiente · Sídney",
     personalPortfolio: "Un portafolio personal",
     appNavigation: "Aplicaciones del portafolio",

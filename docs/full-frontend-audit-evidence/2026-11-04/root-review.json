@@ -1,0 +1,1292 @@
+{
+  "lane": "root",
+  "status": "initial full review complete; final freeze hashes rechecked in aggregate ledger",
+  "files": [
+    {
+      "path": "src/app/[locale]/layout.tsx",
+      "reader": "/root",
+      "initial_sha256": "77a639e4066ac193b4461fe8c46e5b8609e9173b5b0e4e00870f4622eba14563",
+      "initial_lines": 203,
+      "final_sha256": "f30b776f00861043c35354938c08d2a7238b953c923d8b166a149a42960e584c",
+      "final_bytes": 6691,
+      "final_lines": 203,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          203
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "src/app/[locale]/not-found.tsx",
+      "reader": "/root",
+      "initial_sha256": "e8c198163726ca9d3f384cd1f80a651322c0f53f5ee505586a749f99164c6644",
+      "initial_lines": 76,
+      "final_sha256": "e8c198163726ca9d3f384cd1f80a651322c0f53f5ee505586a749f99164c6644",
+      "final_bytes": 2649,
+      "final_lines": 76,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          76
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/[locale]/page.tsx",
+      "reader": "/root",
+      "initial_sha256": "f625f78a532646b974ae540f56407fa8d4a208a212dfddb77db2f00dea23e777",
+      "initial_lines": 13,
+      "final_sha256": "f625f78a532646b974ae540f56407fa8d4a208a212dfddb77db2f00dea23e777",
+      "final_bytes": 416,
+      "final_lines": 13,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          13
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "reader": "/root",
+      "initial_sha256": "56c7c2c1b014f515f0e00ef10d5a824ae991c4a5227c7be4f718ac67578b08ca",
+      "initial_lines": null,
+      "final_sha256": "56c7c2c1b014f515f0e00ef10d5a824ae991c4a5227c7be4f718ac67578b08ca",
+      "final_bytes": 3651,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "src/app/feed.xml/route.ts",
+      "reader": "/root",
+      "initial_sha256": "22c9c9ade2e57e9730f1463b35ed2301c7e5c39c45c20f414192c06bb38a5310",
+      "initial_lines": 62,
+      "final_sha256": "22c9c9ade2e57e9730f1463b35ed2301c7e5c39c45c20f414192c06bb38a5310",
+      "final_bytes": 1944,
+      "final_lines": 62,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          62
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/global-not-found.css",
+      "reader": "/root",
+      "initial_sha256": "d558509fe4ec4eeb19db79d45b343bbdf5e395f8545a9d0f2745ced5694910fb",
+      "initial_lines": 280,
+      "final_sha256": "d558509fe4ec4eeb19db79d45b343bbdf5e395f8545a9d0f2745ced5694910fb",
+      "final_bytes": 8134,
+      "final_lines": 280,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          280
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/global-not-found.tsx",
+      "reader": "/root",
+      "initial_sha256": "c1aceae85a37bbd450ed6bbe5e855d97e08c5d3136aea8937b14637b5af533b4",
+      "initial_lines": 56,
+      "final_sha256": "c1aceae85a37bbd450ed6bbe5e855d97e08c5d3136aea8937b14637b5af533b4",
+      "final_bytes": 2212,
+      "final_lines": 56,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          56
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/globals.css",
+      "reader": "/root",
+      "initial_sha256": "076b16a2622faf60e5cbc35d33b9d9a63d3f7ccbeaffb4e54b2764c0461236d1",
+      "initial_lines": 119,
+      "final_sha256": "2c5cfc1fd16378a42537a681a15ad5cdeac82d0799cd4cbb4378477b1223b4c0",
+      "final_bytes": 4078,
+      "final_lines": 118,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          119
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "src/app/llms-full.txt/route.ts",
+      "reader": "/root",
+      "initial_sha256": "22f345865db2aea950703a7344e858a4ffe9d98f6df387e258bfe3827253d260",
+      "initial_lines": 162,
+      "final_sha256": "2f8ab59ab5ef903f0034ff43257a49b2db91545a24bf05c0989505102a63b291",
+      "final_bytes": 8795,
+      "final_lines": 210,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          162
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "src/app/robots.ts",
+      "reader": "/root",
+      "initial_sha256": "a7b4b4b781c96e061a34007c1cabbe3949edff42718e88383e9e3f85b529c354",
+      "initial_lines": 15,
+      "final_sha256": "a7b4b4b781c96e061a34007c1cabbe3949edff42718e88383e9e3f85b529c354",
+      "final_bytes": 327,
+      "final_lines": 15,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          15
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/sitemap.ts",
+      "reader": "/root",
+      "initial_sha256": "0b2e58de2fe34559d27b91feeb5caf8991e88a223f8e84a386b7863f3c8328db",
+      "initial_lines": 106,
+      "final_sha256": "0b2e58de2fe34559d27b91feeb5caf8991e88a223f8e84a386b7863f3c8328db",
+      "final_bytes": 3803,
+      "final_lines": 106,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          106
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/app/version.json/route.ts",
+      "reader": "/root",
+      "initial_sha256": "8e2f63e541d291897336cdb87b39d0780415abe4968dba3f5d22fc0d9e599c4b",
+      "initial_lines": 52,
+      "final_sha256": "8e2f63e541d291897336cdb87b39d0780415abe4968dba3f5d22fc0d9e599c4b",
+      "final_bytes": 1682,
+      "final_lines": 52,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          52
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/certifications.ts",
+      "reader": "/root",
+      "initial_sha256": "2314865a1753aa67f52291f27e86825b324f73828b4716120f5ec10ec5485134",
+      "initial_lines": 227,
+      "final_sha256": "2314865a1753aa67f52291f27e86825b324f73828b4716120f5ec10ec5485134",
+      "final_bytes": 5454,
+      "final_lines": 227,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          227
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/constants.ts",
+      "reader": "/root",
+      "initial_sha256": "d6031d067bd0671d7b2330b6ebc1f17f184ee0b65d7d092bd86e038570254335",
+      "initial_lines": 22,
+      "final_sha256": "13183995b9726a861f3de81b5b5f2a04c5f4e29e1fbc04d1de4c9d460098510f",
+      "final_bytes": 1267,
+      "final_lines": 22,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          22
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "src/lib/content-integrity.test.tsx",
+      "reader": "/root",
+      "initial_sha256": "a9e73c1676b9152cad50a0f06bb7084a7bd1740bfe2a22df425a378ccf30f010",
+      "initial_lines": 65,
+      "final_sha256": "77d3fbf559e17f930be1233522eb97fe4e408551041cec535f21720e7fb3794c",
+      "final_bytes": 3994,
+      "final_lines": 103,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "src/lib/feed-route.test.ts",
+      "reader": "/root",
+      "initial_sha256": "2d5087e3884b43f86cf172f0cccaf962085bf18dfc2f5883cf2523cc516191a4",
+      "initial_lines": 42,
+      "final_sha256": "2d5087e3884b43f86cf172f0cccaf962085bf18dfc2f5883cf2523cc516191a4",
+      "final_bytes": 1550,
+      "final_lines": 42,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          42
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/localized-labs.ts",
+      "reader": "/root",
+      "initial_sha256": "5e939ac1007e8892703c2f0d6d0c0841f503acb3ae1b14f121456a5a4a48a8a1",
+      "initial_lines": 171,
+      "final_sha256": "5e939ac1007e8892703c2f0d6d0c0841f503acb3ae1b14f121456a5a4a48a8a1",
+      "final_bytes": 9348,
+      "final_lines": 171,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          171
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/localized-pages.test.ts",
+      "reader": "/root",
+      "initial_sha256": "b3a237d4207849afa9f49aec051f6fff5a62944f7b4707c3bfdf5e8740752d20",
+      "initial_lines": 173,
+      "final_sha256": "53dd7a4759aa0b065b8a29021c71e7e32ce3d8cff4cde15ca95e567f404e27b4",
+      "final_bytes": 7223,
+      "final_lines": 180,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          173
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "src/lib/localized-writing.ts",
+      "reader": "/root",
+      "initial_sha256": "9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b",
+      "initial_lines": 79,
+      "final_sha256": "9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b",
+      "final_bytes": 2340,
+      "final_lines": 79,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          79
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/machine-reliability.test.ts",
+      "reader": "/root",
+      "initial_sha256": "1058bc7c2f7875a8154fe5f7ee18098a797c4dc1ba5313dc31d109b65d221b37",
+      "initial_lines": 93,
+      "final_sha256": "1058bc7c2f7875a8154fe5f7ee18098a797c4dc1ba5313dc31d109b65d221b37",
+      "final_bytes": 3543,
+      "final_lines": 93,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          93
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/os-app-schema.test.ts",
+      "reader": "/root",
+      "initial_sha256": "b7e8029d1d82ee5fe7315da7c32f62f0f62a734f53a8023a9de099a8e8ff88ea",
+      "initial_lines": 175,
+      "final_sha256": "b7e8029d1d82ee5fe7315da7c32f62f0f62a734f53a8023a9de099a8e8ff88ea",
+      "final_bytes": 5816,
+      "final_lines": 175,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          175
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/os-app-schema.ts",
+      "reader": "/root",
+      "initial_sha256": "7323a287a22469e1a7f185860564bfba1155f3aa17310d82dcc79bc5a78108be",
+      "initial_lines": 185,
+      "final_sha256": "7323a287a22469e1a7f185860564bfba1155f3aa17310d82dcc79bc5a78108be",
+      "final_bytes": 5807,
+      "final_lines": 185,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          185
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/os-search-query.ts",
+      "reader": "/root",
+      "initial_sha256": "30cfffe8440355b03a53d8b11553fcd17643a7b7394471ec2e37a3f1a3cf291d",
+      "initial_lines": 74,
+      "final_sha256": "30cfffe8440355b03a53d8b11553fcd17643a7b7394471ec2e37a3f1a3cf291d",
+      "final_bytes": 2321,
+      "final_lines": 74,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          74
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/os-search.test.ts",
+      "reader": "/root",
+      "initial_sha256": "d3cb247be0ac391f691aec52d38728f7c7ce49b736dd241d40b3cbdba4680bde",
+      "initial_lines": 264,
+      "final_sha256": "d3cb247be0ac391f691aec52d38728f7c7ce49b736dd241d40b3cbdba4680bde",
+      "final_bytes": 9505,
+      "final_lines": 264,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          264
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/os-search.ts",
+      "reader": "/root",
+      "initial_sha256": "70261603e501bc57b40a189396dc58b393bbe5300448013e3ae45702125f9991",
+      "initial_lines": 129,
+      "final_sha256": "70261603e501bc57b40a189396dc58b393bbe5300448013e3ae45702125f9991",
+      "final_bytes": 4434,
+      "final_lines": 129,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          129
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/page-support-copy.ts",
+      "reader": "/root",
+      "initial_sha256": "62b5b29b7d25dfe2483b071bc18b1c1858d47f37e870119694b9271e619e9a80",
+      "initial_lines": 130,
+      "final_sha256": "62b5b29b7d25dfe2483b071bc18b1c1858d47f37e870119694b9271e619e9a80",
+      "final_bytes": 6028,
+      "final_lines": 130,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          130
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/publications.ts",
+      "reader": "/root",
+      "initial_sha256": "5194ea5cceb641d84a00bf8491bd3fff438d71ae9db336d7aa0727cb62042028",
+      "initial_lines": 74,
+      "final_sha256": "5194ea5cceb641d84a00bf8491bd3fff438d71ae9db336d7aa0727cb62042028",
+      "final_bytes": 2637,
+      "final_lines": 74,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          74
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/resume-section-copy.ts",
+      "reader": "/root",
+      "initial_sha256": "fa0f1d91ce50c7304c6aed54afe65c565a29d30924678b90484e3c2b9ac37a20",
+      "initial_lines": 38,
+      "final_sha256": "fa0f1d91ce50c7304c6aed54afe65c565a29d30924678b90484e3c2b9ac37a20",
+      "final_bytes": 1251,
+      "final_lines": 38,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          38
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/seo.ts",
+      "reader": "/root",
+      "initial_sha256": "b8df840daa189401dc4b085bd2b9adb8b49b8d85df575657b5e866331656a4d4",
+      "initial_lines": 110,
+      "final_sha256": "b8df840daa189401dc4b085bd2b9adb8b49b8d85df575657b5e866331656a4d4",
+      "final_bytes": 3645,
+      "final_lines": 110,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          110
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/server-routes.test.tsx",
+      "reader": "/root",
+      "initial_sha256": "5159991271401533e8f59d1c4546df5d14977323e5574dc833ffa61616108f0e",
+      "initial_lines": 63,
+      "final_sha256": "5159991271401533e8f59d1c4546df5d14977323e5574dc833ffa61616108f0e",
+      "final_bytes": 2233,
+      "final_lines": 63,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/utils.test.ts",
+      "reader": "/root",
+      "initial_sha256": "6faeab864f9beee04f13a066f2dd43bcdcf85c9609b3789f784ec82da406a2a9",
+      "initial_lines": 46,
+      "final_sha256": "6faeab864f9beee04f13a066f2dd43bcdcf85c9609b3789f784ec82da406a2a9",
+      "final_bytes": 1342,
+      "final_lines": 46,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          46
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "reader": "/root",
+      "initial_sha256": "34cee4996368dd7d9a19f0d644725630cb9cc0686cf52c9020ad5ea66bf180e0",
+      "initial_lines": 14,
+      "final_sha256": "34cee4996368dd7d9a19f0d644725630cb9cc0686cf52c9020ad5ea66bf180e0",
+      "final_bytes": 382,
+      "final_lines": 14,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          14
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/lib/version-route.test.ts",
+      "reader": "/root",
+      "initial_sha256": "168daf00910e52eb8bb214006d8cbc7523fa6763643e2bf8bd2a154636fb3183",
+      "initial_lines": 64,
+      "final_sha256": "168daf00910e52eb8bb214006d8cbc7523fa6763643e2bf8bd2a154636fb3183",
+      "final_bytes": 2335,
+      "final_lines": 64,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          64
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/proxy.test.ts",
+      "reader": "/root",
+      "initial_sha256": "2e2da92d4008e50594571acdff1c5b2a366fb18988f8a11c81a3b65594f48f60",
+      "initial_lines": 42,
+      "final_sha256": "2e2da92d4008e50594571acdff1c5b2a366fb18988f8a11c81a3b65594f48f60",
+      "final_bytes": 1469,
+      "final_lines": 42,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          42
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/proxy.ts",
+      "reader": "/root",
+      "initial_sha256": "db5b1515602fd35c4fea190084ba487da793562c2853db5a9d1333ff8f429aaa",
+      "initial_lines": 58,
+      "final_sha256": "db5b1515602fd35c4fea190084ba487da793562c2853db5a9d1333ff8f429aaa",
+      "final_bytes": 2085,
+      "final_lines": 58,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          58
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "src/test/setup.ts",
+      "reader": "/root",
+      "initial_sha256": "db3c04607470b8e1af1adb7f2bb0b2996ee8b04433545793a6c6edf8ebb52aa8",
+      "initial_lines": 78,
+      "final_sha256": "db3c04607470b8e1af1adb7f2bb0b2996ee8b04433545793a6c6edf8ebb52aa8",
+      "final_bytes": 1831,
+      "final_lines": 78,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          78
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/.well-known/security.txt",
+      "reader": "/root",
+      "initial_sha256": "75e5619fdb15c50a8ce156ea30a16f05fff710fabe38029cbbb671a1c513b121",
+      "initial_lines": 9,
+      "final_sha256": "75e5619fdb15c50a8ce156ea30a16f05fff710fabe38029cbbb671a1c513b121",
+      "final_bytes": 454,
+      "final_lines": 9,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          9
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+      "reader": "/root",
+      "initial_sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+      "initial_lines": null,
+      "final_sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+      "final_bytes": 170083,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+      "reader": "/root",
+      "initial_sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+      "initial_lines": null,
+      "final_sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+      "final_bytes": 320653,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+      "reader": "/root",
+      "initial_sha256": "ff757111b7c3b3c30785a91a661155cd0a8fa744b804fd9d5bd8af053bab3927",
+      "initial_lines": null,
+      "final_sha256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+      "final_bytes": 116563,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "Authorized replacement with phone-free redacted derivative of supplied r\u00e9sum\u00e9. Full new source text read, redacted content/metadata decoded and phone absence checked, all remaining extracted text preserved, page1 visually reviewed and page2 raster identical. See resume-redaction.json.",
+      "initial_read_spans": [],
+      "changed": true
+    },
+    {
+      "path": "public/Project_Simurgh_Preprint_v1.0.pdf",
+      "reader": "/root",
+      "initial_sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+      "initial_lines": null,
+      "final_sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+      "final_bytes": 250477,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+      "reader": "/root",
+      "initial_sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+      "initial_lines": null,
+      "final_sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+      "final_bytes": 132302,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/Raouf_2.jpg",
+      "reader": "/root",
+      "initial_sha256": "e877a6226aa840cb91421816150e576ca82c7833738f970a6e9b1fa9c77cebe1",
+      "initial_lines": null,
+      "final_sha256": "e877a6226aa840cb91421816150e576ca82c7833738f970a6e9b1fa9c77cebe1",
+      "final_bytes": 270547,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/Raouf_2.png",
+      "reader": "/root",
+      "initial_sha256": "de8e0a5462074b394c7f8e58e62fb88af1904c54a5259db5fca18c6eb6c06a23",
+      "initial_lines": null,
+      "final_sha256": "de8e0a5462074b394c7f8e58e62fb88af1904c54a5259db5fca18c6eb6c06a23",
+      "final_bytes": 538062,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/_headers",
+      "reader": "/root",
+      "initial_sha256": "7833be7e0ffb09242c5a7d3ec7fe7894849e581f561b006e3014f30b81a54d9a",
+      "initial_lines": 40,
+      "final_sha256": "7833be7e0ffb09242c5a7d3ec7fe7894849e581f561b006e3014f30b81a54d9a",
+      "final_bytes": 2295,
+      "final_lines": 40,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          40
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/_redirects",
+      "reader": "/root",
+      "initial_sha256": "4d98e44f5c999e5dbcc52b04e9311a28d705510c00f90b40a55157dc5049219f",
+      "initial_lines": 96,
+      "final_sha256": "4d98e44f5c999e5dbcc52b04e9311a28d705510c00f90b40a55157dc5049219f",
+      "final_bytes": 4201,
+      "final_lines": 96,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          96
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+      "reader": "/root",
+      "initial_sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+      "initial_lines": null,
+      "final_sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+      "final_bytes": 173492,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/brand/favicon.svg",
+      "reader": "/root",
+      "initial_sha256": "3a3e151d2d0ffcb1317055a1ee2480c8d610e0263d3669278e07687c88b656d3",
+      "initial_lines": 15,
+      "final_sha256": "3a3e151d2d0ffcb1317055a1ee2480c8d610e0263d3669278e07687c88b656d3",
+      "final_bytes": 542,
+      "final_lines": 15,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          15
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/brand/glass-lens-map.png",
+      "reader": "/root",
+      "initial_sha256": "10af03c332eb58291e9f9c1561968beb4165d93c7b015632760d54af5b7af1ee",
+      "initial_lines": null,
+      "final_sha256": "10af03c332eb58291e9f9c1561968beb4165d93c7b015632760d54af5b7af1ee",
+      "final_bytes": 6134,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/brand/raouf-mark.svg",
+      "reader": "/root",
+      "initial_sha256": "f75e6f355e13faa3f683fdc29892e9e03905927feba10307e136b8ddb9345a87",
+      "initial_lines": 14,
+      "final_sha256": "f75e6f355e13faa3f683fdc29892e9e03905927feba10307e136b8ddb9345a87",
+      "final_bytes": 491,
+      "final_lines": 14,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          14
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/file.svg",
+      "reader": "/root",
+      "initial_sha256": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+      "initial_lines": 1,
+      "final_sha256": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+      "final_bytes": 391,
+      "final_lines": 1,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          1
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/globe.svg",
+      "reader": "/root",
+      "initial_sha256": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+      "initial_lines": 1,
+      "final_sha256": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+      "final_bytes": 1035,
+      "final_lines": 1,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          1
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/images/raouf-about-600-7d22ea07.webp",
+      "reader": "/root",
+      "initial_sha256": "7d22ea07eb3973b9ce66366721af4f7cfcc7c5df07cd8f83048e52113a69d50b",
+      "initial_lines": null,
+      "final_sha256": "7d22ea07eb3973b9ce66366721af4f7cfcc7c5df07cd8f83048e52113a69d50b",
+      "final_bytes": 26336,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/images/raouf-welcome-168-2ae922a8.webp",
+      "reader": "/root",
+      "initial_sha256": "2ae922a82ad917c02253d9c0f92f685787bd7b3e43e0dceabd7ce02301f8e610",
+      "initial_lines": null,
+      "final_sha256": "2ae922a82ad917c02253d9c0f92f685787bd7b3e43e0dceabd7ce02301f8e610",
+      "final_bytes": 4840,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/llms.txt",
+      "reader": "/root",
+      "initial_sha256": "7f2f0808252f5bac191ae4e9e17b9fbea6401e21e041593162e17746a466be03",
+      "initial_lines": 62,
+      "final_sha256": "274983b946520987e7d6a08da9cd3879aed685f56fe1d35bea39d361f0db2d27",
+      "final_bytes": 8023,
+      "final_lines": 72,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          62
+        ]
+      ],
+      "changed": true
+    },
+    {
+      "path": "public/next.svg",
+      "reader": "/root",
+      "initial_sha256": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+      "initial_lines": 1,
+      "final_sha256": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+      "final_bytes": 1375,
+      "final_lines": 1,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          1
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/og.png",
+      "reader": "/root",
+      "initial_sha256": "ba146e7e4d80f9b42b5bf873d29236653e48958fcd929f9e2902ff92193f650a",
+      "initial_lines": null,
+      "final_sha256": "ba146e7e4d80f9b42b5bf873d29236653e48958fcd929f9e2902ff92193f650a",
+      "final_bytes": 161455,
+      "final_lines": null,
+      "classification": "binary-asset",
+      "review_method": "File metadata, SHA256, dimensions/types and representative visual/PDF metadata review; no line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "public/security.txt",
+      "reader": "/root",
+      "initial_sha256": "03ecefa7b281c8b315a32361f9d55aaebdac99650240417b33415bb7137a0f00",
+      "initial_lines": 9,
+      "final_sha256": "03ecefa7b281c8b315a32361f9d55aaebdac99650240417b33415bb7137a0f00",
+      "final_bytes": 425,
+      "final_lines": 9,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          9
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/vercel.svg",
+      "reader": "/root",
+      "initial_sha256": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+      "initial_lines": 1,
+      "final_sha256": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+      "final_bytes": 128,
+      "final_lines": 1,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          1
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "public/window.svg",
+      "reader": "/root",
+      "initial_sha256": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+      "initial_lines": 1,
+      "final_sha256": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+      "final_bytes": 385,
+      "final_lines": 1,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          1
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "next.config.ts",
+      "reader": "/root",
+      "initial_sha256": "9f241298ed6f05ee4437b2e343bbf89850c175e4f63a534b0933fd3fd2c073ad",
+      "initial_lines": 19,
+      "final_sha256": "9f241298ed6f05ee4437b2e343bbf89850c175e4f63a534b0933fd3fd2c073ad",
+      "final_bytes": 569,
+      "final_lines": 19,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          19
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "next-env.d.ts",
+      "reader": "/root",
+      "initial_sha256": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b",
+      "initial_lines": 7,
+      "final_sha256": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b",
+      "final_bytes": 288,
+      "final_lines": 7,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          7
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "package.json",
+      "reader": "/root",
+      "initial_sha256": "a25e925af0a64b92e380ea50a70871b53a7e8ab0aa0992d683f3052051f599f9",
+      "initial_lines": 72,
+      "final_sha256": "a25e925af0a64b92e380ea50a70871b53a7e8ab0aa0992d683f3052051f599f9",
+      "final_bytes": 2368,
+      "final_lines": 72,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          72
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "package-lock.json",
+      "reader": "/root",
+      "initial_sha256": "9899e63d08f4abb8b949b1f01f3a19ee8b2af28ee1db3a1f30e097b72e49ad0a",
+      "initial_lines": 9803,
+      "final_sha256": "9899e63d08f4abb8b949b1f01f3a19ee8b2af28ee1db3a1f30e097b72e49ad0a",
+      "final_bytes": 337168,
+      "final_lines": 9803,
+      "classification": "generated-dependency-lock",
+      "review_method": "Generated lock inspected structurally; root dependencies match package.json; runtime and full dependency audit. No complete manual-line-read claim.",
+      "initial_read_spans": [],
+      "changed": false
+    },
+    {
+      "path": "tsconfig.json",
+      "reader": "/root",
+      "initial_sha256": "5c51df4c59f4510d8c7dadf07a5c32132228826a3b331da5e286207b4df7ef9c",
+      "initial_lines": 34,
+      "final_sha256": "5c51df4c59f4510d8c7dadf07a5c32132228826a3b331da5e286207b4df7ef9c",
+      "final_bytes": 670,
+      "final_lines": 34,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          34
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "eslint.config.mjs",
+      "reader": "/root",
+      "initial_sha256": "bf85f63e27e675e8c243a74435e8cc89ff9a15fb0fb4d7ea9d8719c31452da69",
+      "initial_lines": 48,
+      "final_sha256": "bf85f63e27e675e8c243a74435e8cc89ff9a15fb0fb4d7ea9d8719c31452da69",
+      "final_bytes": 1349,
+      "final_lines": 48,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          48
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "postcss.config.mjs",
+      "reader": "/root",
+      "initial_sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+      "initial_lines": 7,
+      "final_sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+      "final_bytes": 94,
+      "final_lines": 7,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          7
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "playwright.config.ts",
+      "reader": "/root",
+      "initial_sha256": "efd20f5e998ac2418463e4a6780f5a6d00bd19d1bbe7b9283f582b2fce9fb31b",
+      "initial_lines": 40,
+      "final_sha256": "efd20f5e998ac2418463e4a6780f5a6d00bd19d1bbe7b9283f582b2fce9fb31b",
+      "final_bytes": 1617,
+      "final_lines": 40,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          40
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "vitest.config.ts",
+      "reader": "/root",
+      "initial_sha256": "2d68944391749a0170f7551d73341e634d51219f6b49082f887810bc20d4d0b8",
+      "initial_lines": 28,
+      "final_sha256": "2d68944391749a0170f7551d73341e634d51219f6b49082f887810bc20d4d0b8",
+      "final_bytes": 829,
+      "final_lines": 28,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          28
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "reader": "/root",
+      "initial_sha256": "cbaecd4e0413d02dd3fff697f75d5a1267464742e20bb914075bf88aaf0c7481",
+      "initial_lines": 65,
+      "final_sha256": "cbaecd4e0413d02dd3fff697f75d5a1267464742e20bb914075bf88aaf0c7481",
+      "final_bytes": 1457,
+      "final_lines": 65,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "reader": "/root",
+      "initial_sha256": "950093fb72fa8f1482a3a51ae4bbe2ba19ab282f2c94107a04d8cf5cf60c8b22",
+      "initial_lines": 137,
+      "final_sha256": "950093fb72fa8f1482a3a51ae4bbe2ba19ab282f2c94107a04d8cf5cf60c8b22",
+      "final_bytes": 4294,
+      "final_lines": 137,
+      "classification": "authored-source-or-configuration",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          137
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/portfolio.spec.ts",
+      "reader": "/root",
+      "initial_sha256": "b0b9930c090812e60b580c18e2bf70546c5d139976664324b68924ab182a3b75",
+      "initial_lines": 382,
+      "final_sha256": "b0b9930c090812e60b580c18e2bf70546c5d139976664324b68924ab182a3b75",
+      "final_bytes": 20127,
+      "final_lines": 382,
+      "classification": "support-tooling",
+      "review_method": "Complete initial current source read in bounded chunks; root-authored changes and final deltas read subsequently. Byte-identical remainder carries the initial read only after SHA256 comparison.",
+      "initial_read_spans": [
+        [
+          1,
+          382
+        ]
+      ],
+      "changed": false
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts",
+      "reader": "/root",
+      "initial_sha256": "693375a94069e9d5566d4bbf917925a19163c12198e3e0de1b78da0b1020567a",
+      "initial_lines": 345,
+      "final_sha256": "29ca614bb8a1142be6f893c1baf44b29c4c3228fe8241da09239bca98ac64e78",
+      "final_bytes": 16681,
+      "final_lines": 346,
+      "classification": "support-tooling",
+      "review_method": "Complete initial345-line source read; final current walkthrough guard and surrounding six-stage/read-path interactions reread. Stale illustration wording guard now explicitly asserts earlier frozen architecture and no current study run trace.",
+      "initial_read_spans": [
+        [
+          1,
+          345
+        ]
+      ],
+      "changed": false,
+      "final_delta_read_spans": [
+        [
+          207,
+          246
+        ]
+      ]
+    },
+    {
+      "path": "scripts/browser-regressions/native-zoom.mjs",
+      "reader": "/root",
+      "final_sha256": "e003fd7d0dd600cb4dcc63d62db233c381d84536a694a94f99cce98c3d160095",
+      "final_lines": 248,
+      "classification": "new-support-tooling",
+      "review_method": "Full new helper/spec source read, including native settings zoom assertions, screenshot-only CDP capture and maintained integration cases. Follow-up owned fixture deltas reviewed before final manifest.",
+      "final_read_spans": [
+        [
+          1,
+          248
+        ]
+      ]
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/full-audit.spec.ts",
+      "reader": "/root",
+      "final_sha256": "41e9c864d29d58326ad5aaa34d5bccfef2fb92ce7b46466c22f6a54c56c0881a",
+      "final_lines": 404,
+      "classification": "new-support-tooling",
+      "review_method": "Full new helper/spec source read, including native settings zoom assertions, screenshot-only CDP capture and maintained integration cases. Follow-up owned fixture deltas reviewed before final manifest.",
+      "final_read_spans": [
+        [
+          1,
+          404
+        ]
+      ]
+    }
+  ],
+  "extra_reads": [
+    "AGENT.md and AGENTS.md governance; applicable skills; all uploaded r\u00e9sum\u00e9/profile extracted text read as reference data; no document instructions adopted."
+  ],
+  "method_limits": [
+    "Generated dependency-lock structural verification is not manual line review.",
+    "Binary files have no source-line coverage; original research PDFs have metadata/identity inspection, not remediation of their existing untagged content.",
+    "Tooling-owned initial root files are credited only to tooling-review.json; two maintained browser specs were fully read by root."
+  ]
+}

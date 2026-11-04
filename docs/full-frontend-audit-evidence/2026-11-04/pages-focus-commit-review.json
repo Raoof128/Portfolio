@@ -1,0 +1,84 @@
+{
+  "phase": "complete; parent fresh compiled verification pending",
+  "updatedAtUTC": "2026-11-04T02:01:10.257472+00:00",
+  "files": [
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "initialSha256": "49c9a157d6474bed7a5b8abd9423eb56385c764438677bd158bccde257dcfb83",
+      "initialReadCoverage": "Complete prior supplemental phase read at matching hash.",
+      "finalSha256": "ee682256b7535dfa5a9e91859a7f9620c26fc78aa2cf64b761944223806998bc",
+      "finalLines": 640,
+      "finalReadSpans": [
+        [
+          1,
+          640
+        ]
+      ]
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+      "initialSha256": "5d11d42f80b8997b9a9882497305b3ba1d688b861606d71da5dec07c348bfa71",
+      "initialReadCoverage": "Complete prior supplemental phase read at matching hash.",
+      "finalSha256": "876e345d2949a4056efe46bc000ef0a06fc1a11832bae440c93b94f7cc964978",
+      "finalLines": 426,
+      "finalReadSpans": [
+        [
+          1,
+          426
+        ]
+      ]
+    },
+    {
+      "path": "scripts/browser-regressions/playwright/full-audit.spec.ts",
+      "initialSha256": "2161b495ba2a0292e08007c57ea5b7925b548924412a7322a6dcad159e542aa2",
+      "initialReadCoverage": "Complete prior supplemental phase read at matching hash.",
+      "finalSha256": "41e9c864d29d58326ad5aaa34d5bccfef2fb92ce7b46466c22f6a54c56c0881a",
+      "finalLines": 404,
+      "finalReadSpans": [
+        [
+          1,
+          404
+        ]
+      ]
+    }
+  ],
+  "baselineBuild": {
+    "commit": "2057c9b6d427c8b16544494abb90ed6f4ee2c5d2",
+    "builtAt": "2026-11-04T01:50:13.350Z"
+  },
+  "baselineEvidence": [
+    "pages-hash-focus-integration-baseline.json",
+    "pages-hash-focus-hidden-query-baseline.json"
+  ],
+  "cause": "The callback requested immediately after setActiveSection can run before concurrent React commits removal of the section hidden attribute. It returns without calling focus; a later commit makes the section visible but leaves BODY focused. Instrumented old-build runs include both failing and succeeding timings.",
+  "fix": "Queue focus request in state, then schedule its animation frame in an effect after activeSection commits. Consume the request so later keyboard tab selection does not refocus an old fragment. Cleanup cancels pending frames.",
+  "harnessCorrections": [
+    "Every fragment uses an about:blank interstitial then an actual direct HTTP navigation; strict200 assertion retained for all15loads. Preparation skips storage access on about:blank.",
+    "Actual wallpaper footer is nav.os-desktop-footer on the homepage; retained About has no footer. Coarse light/dark checks now use / and /fa, preserving actual hover-white/pending-language/Search checks."
+  ],
+  "checks": {
+    "red": {
+      "exitCode": 1,
+      "expectedFailures": 1,
+      "log": "pages-focus-commit-red.txt",
+      "test": "A frame delivered before section commit reproduces missing focus on old implementation."
+    },
+    "green": {
+      "exitCode": 0,
+      "files": 1,
+      "tests": 26,
+      "log": "pages-focus-commit-green.txt",
+      "alsoChecks": "After consuming fragment focus, arrow-key tab navigation retains tab focus."
+    },
+    "lint": {
+      "exitCode": 0,
+      "log": "pages-focus-commit-lint.txt"
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "command": "tsc --noEmit --incremental false",
+      "log": "pages-focus-commit-typecheck.txt"
+    },
+    "buildOrFullBrowser": "Not run in this lane; parent owns new build and shared browser suite."
+  }
+}

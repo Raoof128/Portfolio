@@ -1,0 +1,38 @@
+{
+  "phase": "complete; parent shared browser execution pending",
+  "updatedAtUTC": "2026-11-04T02:08:28.042538+00:00",
+  "file": {
+    "path": "scripts/browser-regressions/playwright/full-audit.spec.ts",
+    "initialSha256": "41e9c864d29d58326ad5aaa34d5bccfef2fb92ce7b46466c22f6a54c56c0881a",
+    "finalSha256": "14487c174f957e84265b213ef1f76af9ef5d102ca055bd3de868757c0a77b6ef",
+    "finalLines": 431,
+    "finalReadSpans": [
+      [
+        1,
+        431
+      ]
+    ]
+  },
+  "independentNativeEvidence": "ui-nojs-mailto-probe.json",
+  "diagnosis": "Correct native mailto POST navigates to Chromium internal protocol-error document when no external mail handler is available. Original same-URL and retained-field assumptions after valid submission were unsupported. Empty-submit native required validation remains correct.",
+  "maintainedOracle": [
+    "Read-only Chromium CDP Page.frameRequestedNavigation must report formSubmissionPost/currentTab to the actual mailto action recipient and subject, with the exact three synthetic form field values encoded in body.",
+    "Empty submission must focus required name, fail native validity, keep original URL, and emit no mailto attempt.",
+    "Valid native submission must emit a proven mailto POST. Only then may the page remain at original URL or show chrome-error://chromewebdata/.",
+    "No HTTP navigation or request URL/body containing synthetic draft markers is permitted. Mail application launch or message delivery remains unverified.",
+    "Capture filled draft before handoff and actual browser outcome after handoff.",
+    "Skip only this CDP-based native oracle on non-Chromium with explicit reason; all other maintained cases remain enabled."
+  ],
+  "checks": {
+    "eslint": {
+      "exitCode": 0,
+      "log": "pages-native-handoff-lint.txt"
+    },
+    "globalTypecheck": {
+      "exitCode": 0,
+      "command": "tsc --noEmit --incremental false",
+      "log": "pages-native-handoff-typecheck.txt"
+    },
+    "browserExecution": "Not run in this lane; parent owns shared maintained-suite execution."
+  }
+}

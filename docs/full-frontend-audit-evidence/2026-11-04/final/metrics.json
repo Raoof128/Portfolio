@@ -1,0 +1,54 @@
+[
+  {
+    "name": "desktop",
+    "route": "/",
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "lcp": 460,
+      "cls": 0.0002864384403935185
+    },
+    "scrollWidth": 1440,
+    "mainText": "Research Highlights\n\nMohammad\nRaouf Abedini.\n\nAI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation\n\nI build and test host-side controls for what tool-using AI agents are permitted to do. I publish matched-control safety studies, including benefits and null results.\n\nExplore Research\nView Résumé PDF\nContact\nWhere the evidence connects\n\nProof Atlas · Selected research\n\nAgent\nInput\nContext\nTool gate\nOutput\nProject Simurgh\nInvisible Window\nProject Zurvan\n\nOct 20",
+    "errors": []
+  },
+  {
+    "name": "tablet",
+    "route": "/",
+    "width": 768,
+    "height": 1024,
+    "metrics": {
+      "lcp": 348,
+      "cls": 0.0006638006307184696
+    },
+    "scrollWidth": 768,
+    "mainText": "Research Highlights\n\nMohammad\nRaouf Abedini.\n\nAI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation\n\nI build and test host-side controls for what tool-using AI agents are permitted to do. I publish matched-control safety studies, including benefits and null results.\n\nExplore Research\nView Résumé PDF\nContact\nWhere the evidence connects\n\nProof Atlas · Selected research\n\nAgent\nInput\nContext\nTool gate\nOutput\nProject Simurgh\nInvisible Window\nProject Zurvan\n\nOct 20",
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "route": "/",
+    "width": 390,
+    "height": 844,
+    "metrics": {
+      "lcp": 1120,
+      "cls": 0
+    },
+    "scrollWidth": 390,
+    "mainText": "Research Highlights\n\nMohammad\nRaouf Abedini.\n\nAI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation\n\nI build and test host-side controls for what tool-using AI agents are permitted to do. I publish matched-control safety studies, including benefits and null results.\n\nExplore Research\nView Résumé PDF\nContact\nWhere the evidence connects\n\nProof Atlas · Selected research\n\nAgent\nInput\nContext\nTool gate\nOutput\nProject Simurgh\nInvisible Window\nProject Zurvan\n\nOct 20",
+    "errors": []
+  },
+  {
+    "name": "rtl",
+    "route": "/fa",
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "lcp": 588,
+      "cls": 0.001000597541714892
+    },
+    "scrollWidth": 1440,
+    "mainText": "برگزیده‌های پژوهش\n\nمحمد\nرؤوف عابدینی.\n\nپژوهشگر امنیت هوش مصنوعی · استحکام در برابر حمله و کنترل هوش مصنوعی · ارزیابی تجربی ایمنی\n\nکنترل‌های سمت میزبان را برای تعیین اختیار عامل‌های هوش مصنوعی ابزارمحور می‌سازم و می‌آزمایم. پژوهش‌های ایمنی با گروه‌های کنترل همسان، شامل نتایج مثبت و بدون اثر افزوده، منتشر می‌کنم.\n\nکاوش در پژوهش‌ها\nرزومه انگلیسی (PDF)\nتماس\nپیوند میان شواهد\n\nاطلس شواهد · پژوهش منتخب\n\nعامل\nورودی\nزمینه\nدروازه ابزار\nخروجی\nپروژه سیمرغ\nپنجره نامرئی\nپروژه زروان\n\nکنترل‌های همسان، اکتبر 202",
+    "errors": []
+  }
+]

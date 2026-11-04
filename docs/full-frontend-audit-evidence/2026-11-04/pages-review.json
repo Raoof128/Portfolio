@@ -1,0 +1,678 @@
+{
+  "lane": "pages",
+  "reviewType": "full-source",
+  "initialSource": "inherited working tree after reviewer upgrade",
+  "files": [
+    {
+      "path": "src/app/[locale]/about/AboutClient.test.tsx",
+      "initialSha256": "f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f",
+      "initialLines": 65,
+      "initialReadSpans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Read stable heading/profile rendering, all three image fallbacks, final unavailable state and retry regression. Existing tests use the live I18n provider and source-backed photo paths."
+      ],
+      "findings": [],
+      "finalSha256": "f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f",
+      "finalLines": 65,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/about/AboutClient.tsx",
+      "initialSha256": "ecfcf45cb2c2e92bc04a68f7338dcb3bc052eff7620f4ce7aa43af5569b70e2b",
+      "initialLines": 425,
+      "initialReadSpans": [
+        [
+          1,
+          425
+        ]
+      ],
+      "finalReadSpans": [
+        [
+          1,
+          418
+        ]
+      ],
+      "reviewNotes": [
+        "Reviewed all 425 lines: translated biography/specialisation/skill data; fallback state transitions; same-origin locale links; external-link safeguards/new-tab cues; email fallback; heading/section/dl semantics; English technical identifiers and RTL isolation; Gregorian expected completion and source-backed education values. Responsive surfaces are owned by the styles lane. No confirmed owned defect."
+      ],
+      "findings": [],
+      "finalSha256": "b698d008c8c12016daa344f60238eb01bd227e1feebbf7a2651b2e905568a6cc",
+      "finalLines": 418,
+      "changedDuringLane": true,
+      "finalCoverage": "Complete final source reread after the supplemental PDF reconciliation/current-software-header correction; exact phase evidence linked in supplementalReviews."
+    },
+    {
+      "path": "src/app/[locale]/about/page.tsx",
+      "initialSha256": "b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5",
+      "initialLines": 89,
+      "initialReadSpans": [
+        [
+          1,
+          89
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed async locale resolution, metadata alternates/OpenGraph/Twitter, safe serialised ProfilePage/Person JSON-LD, original identity/source URLs and OS application bridge. No runtime-server dependency introduced."
+      ],
+      "findings": [],
+      "finalSha256": "b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5",
+      "finalLines": 89,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/contact/ContactClient.tsx",
+      "initialSha256": "f17128f0728a3c179eae2a995090e0e2cb4af31d23d9fdbe650edafd8dca1fbb",
+      "initialLines": 105,
+      "initialReadSpans": [
+        [
+          1,
+          105
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed translated contact introduction, delegated SecureContactForm/CopyAddressControl integration, explicit mail-client fallback, truthful email-draft note, locale security link, external social-link cues and LTR email display. Form implementation is the UI lane; no duplicate contact submission path added."
+      ],
+      "findings": [],
+      "finalSha256": "f17128f0728a3c179eae2a995090e0e2cb4af31d23d9fdbe650edafd8dca1fbb",
+      "finalLines": 105,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/contact/page.tsx",
+      "initialSha256": "c0d2339ea1055d2177991846c4f2d837873cb8c8c6264ca01d667dac120503da",
+      "initialLines": 56,
+      "initialReadSpans": [
+        [
+          1,
+          56
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed locale-aware route bridge and metadata; description explicitly combines the contact purpose and draft note instead of claiming backend delivery."
+      ],
+      "findings": [],
+      "finalSha256": "c0d2339ea1055d2177991846c4f2d837873cb8c8c6264ca01d667dac120503da",
+      "finalLines": 56,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/hall-of-fame/HallOfFameClient.tsx",
+      "initialSha256": "50f75119738012d9e763e8d7443bbfd6d795ecb78bf626776d85aea5673dfc9c",
+      "initialLines": 86,
+      "initialReadSpans": [
+        [
+          1,
+          86
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed honest empty state, reporting guidance/Outlook security address, localised security-policy route, criteria list, decorative icons and heading hierarchy. Its single static empty-state ID is not a reproduced duplicate under the current one-route reading model."
+      ],
+      "findings": [],
+      "finalSha256": "50f75119738012d9e763e8d7443bbfd6d795ecb78bf626776d85aea5673dfc9c",
+      "finalLines": 86,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/hall-of-fame/page.tsx",
+      "initialSha256": "4ebad9649324ce670d3fead33e357cca0c9f088c3032c4c0802574513cab315d",
+      "initialLines": 53,
+      "initialReadSpans": [
+        [
+          1,
+          53
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed locale metadata/alternate/canonical image contracts and route bridge. No confirmed owned defect."
+      ],
+      "findings": [],
+      "finalSha256": "4ebad9649324ce670d3fead33e357cca0c9f088c3032c4c0802574513cab315d",
+      "finalLines": 53,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/lab/LabClient.tsx",
+      "initialSha256": "02a7c6026725f124519a5c08b889a903a938651c49fda241601d52a99bed14a0",
+      "initialLines": 97,
+      "initialReadSpans": [
+        [
+          1,
+          97
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed translated card labels/status mapping, stable experiment keys, real locale detail links, technical-token bidi, original GitHub destination/new-tab cue and safety footnote. No hover-only or drag-only navigation."
+      ],
+      "findings": [],
+      "finalSha256": "02a7c6026725f124519a5c08b889a903a938651c49fda241601d52a99bed14a0",
+      "finalLines": 97,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/lab/[id]/LabDetailClient.test.tsx",
+      "initialSha256": "f49438cc052ecee7b5bbbe2faa7778f0d7210181d1a639769051348cf770c6e5",
+      "initialLines": 41,
+      "initialReadSpans": [
+        [
+          1,
+          41
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed all five locale regressions for named keyboard-reachable code region, LTR/en source listing, original line text and hidden decorative line numbers."
+      ],
+      "findings": [],
+      "finalSha256": "f49438cc052ecee7b5bbbe2faa7778f0d7210181d1a639769051348cf770c6e5",
+      "finalLines": 41,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/lab/[id]/LabDetailClient.tsx",
+      "initialSha256": "c4ae50674a01b12ddeceecfdb63b4a0647ca5b9815541d1e1932b75f36361129",
+      "initialLines": 120,
+      "initialReadSpans": [
+        [
+          1,
+          120
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed filename extension fallback, locale exit link, source-backed experiment status/objective/constraints, semantic headings, keyboard-accessible local code scroller, code LTR/language and hidden line numbers. Code content is never executed by the page."
+      ],
+      "findings": [],
+      "finalSha256": "c4ae50674a01b12ddeceecfdb63b4a0647ca5b9815541d1e1932b75f36361129",
+      "finalLines": 120,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/lab/[id]/page.tsx",
+      "initialSha256": "b1f450724644126ad5129dc7a3886d9281ded1efb37a124dfb2638681cc2d84b",
+      "initialLines": 153,
+      "initialReadSpans": [
+        [
+          1,
+          153
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed full static parameter generation/dynamicParams=false, unknown-ID rejection, server localisation, metadata and TechArticle/WebPage/breadcrumb JSON-LD; absent publication dates are deliberately omitted."
+      ],
+      "findings": [],
+      "finalSha256": "b1f450724644126ad5129dc7a3886d9281ded1efb37a124dfb2638681cc2d84b",
+      "finalLines": 153,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/lab/page.tsx",
+      "initialSha256": "99a3a6a8d50b8a84b07573348f839c8007fc9a4fbe042a1f886329871b237ca3",
+      "initialLines": 65,
+      "initialReadSpans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed localised list metadata and server payload shaping; code snippets are omitted from index props while authored objectives/constraints remain."
+      ],
+      "findings": [],
+      "finalSha256": "99a3a6a8d50b8a84b07573348f839c8007fc9a4fbe042a1f886329871b237ca3",
+      "finalLines": 65,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+      "initialSha256": "e05f48c0ba50ba03e6be59d729f50fc60ec208aac779ecca2ff532d3863740ba",
+      "initialLines": 279,
+      "initialReadSpans": [
+        [
+          1,
+          279
+        ]
+      ],
+      "finalReadSpans": [
+        [
+          1,
+          426
+        ]
+      ],
+      "reviewNotes": [
+        "Read all original 279 lines: five-language reading path/private-source handling, modified-link clicks, truthful source requests and PDF/external record semantics. Added a five-language behavioural regression for real hashchange-driven section/heading/paper-library focus; red before product fix, green afterward."
+      ],
+      "findings": [
+        "PAGES-01"
+      ],
+      "finalSha256": "876e345d2949a4056efe46bc000ef0a06fc1a11832bae440c93b94f7cc964978",
+      "finalLines": 426,
+      "changedDuringLane": true,
+      "finalCoverage": "Complete final reread after compiled fragment-focus race correction; latest phase in pages-focus-commit-review.json."
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "initialSha256": "0f310743a4d14287953b98ee4a744834e8d90e4e4c8b8115ca2e48e2dff9c0df",
+      "initialLines": 628,
+      "initialReadSpans": [
+        [
+          1,
+          628
+        ]
+      ],
+      "finalReadSpans": [
+        [
+          1,
+          640
+        ]
+      ],
+      "reviewNotes": [
+        "Read all original 628 lines: hydrated APG-style tabs and RTL arrows, all-content/no-JavaScript anchor fallback, cancelled pending fragment focus, primary-only link activation, resource source/private distinctions, research proof/scope/citations and original paper language/identities. Confirmed PAGES-01: common hash targets revealed their panel but could not receive the focus this component requested. Added tabindex=-1 only to the three section targets, Methods heading and paper-library target; sequential tab order stays unchanged."
+      ],
+      "findings": [
+        "PAGES-01"
+      ],
+      "finalSha256": "ee682256b7535dfa5a9e91859a7f9620c26fc78aa2cf64b761944223806998bc",
+      "finalLines": 640,
+      "changedDuringLane": true,
+      "finalCoverage": "Complete final reread after compiled fragment-focus race correction; latest phase in pages-focus-commit-review.json."
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/page.tsx",
+      "initialSha256": "7670190e84a5740728a04502ab889dd18a8ccbffff037c355f4c8d3b0f409c20",
+      "initialLines": 213,
+      "initialReadSpans": [
+        [
+          1,
+          213
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed own-property project lookup/404, generated static slugs, server-localised summaries/content, per-project metadata, scoped private repository conditions and original DOI paper records/date/language. Research fact verification belongs to content lane; no source bytes or metrics changed here."
+      ],
+      "findings": [],
+      "finalSha256": "7670190e84a5740728a04502ab889dd18a8ccbffff037c355f4c8d3b0f409c20",
+      "finalLines": 213,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/projects/layout.tsx",
+      "initialSha256": "6d3487de97f6931c40780b6e3586545b53975a035198cdad94ca232e2d5940fd",
+      "initialLines": 50,
+      "initialReadSpans": [
+        [
+          1,
+          50
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed nested metadata title template preservation, locale alternates and canonical/OG/Twitter URLs, child pass-through and static layout contract."
+      ],
+      "findings": [],
+      "finalSha256": "6d3487de97f6931c40780b6e3586545b53975a035198cdad94ca232e2d5940fd",
+      "finalLines": 50,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/projects/page.tsx",
+      "initialSha256": "bd6dcbae32e5ec0392649345d2191d33a5baa136e07704b22c109070ba9c341a",
+      "initialLines": 18,
+      "initialReadSpans": [
+        [
+          1,
+          18
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed locale-aware project summary build and existing route-backed Explorer bridge. No duplicate archive/content system introduced."
+      ],
+      "findings": [],
+      "finalSha256": "bd6dcbae32e5ec0392649345d2191d33a5baa136e07704b22c109070ba9c341a",
+      "finalLines": 18,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/resume/ResumeClient.test.tsx",
+      "initialSha256": "edb54d951d7138d116b42daf7d9fde45cb328332c6fdac31a69cf25b2bffb36a",
+      "initialLines": 143,
+      "initialReadSpans": [
+        [
+          1,
+          143
+        ]
+      ],
+      "finalReadSpans": [
+        [
+          1,
+          196
+        ]
+      ],
+      "reviewNotes": [
+        "Reviewed all locale section-fragment/ARIA namespacing, static HTML resource/content fallback and expected-qualification date regressions. These tests are retained and included in this lane test run."
+      ],
+      "findings": [],
+      "finalSha256": "ec130c85b6333565193b74465c9e25f45027506aacc39cbb7f30f958286e4ada",
+      "finalLines": 196,
+      "changedDuringLane": true,
+      "finalCoverage": "Complete final source reread after the supplemental PDF reconciliation/current-software-header correction; exact phase evidence linked in supplementalReviews."
+    },
+    {
+      "path": "src/app/[locale]/resume/ResumeClient.tsx",
+      "initialSha256": "08054382b6a59d7a06d4952d307dd6232504c2ea9928f1342a75c56b3b588881",
+      "initialLines": 451,
+      "initialReadSpans": [
+        [
+          1,
+          451
+        ]
+      ],
+      "finalReadSpans": [
+        [
+          1,
+          490
+        ]
+      ],
+      "reviewNotes": [
+        "Reviewed full 451-line document: same-origin PDF download with separate-document fallback, identity/email/social links, heading/section structure, locale fragment IDs, original project links, Gregorian education/credential month formatting, expected status, English credential/title bidi and source-backed work/community facts. No confirmed owned functional defect. Exact browser/assistive PDF download behaviour is not certified by source review."
+      ],
+      "findings": [],
+      "finalSha256": "cb4968632041874805e56c59fb902fc43b534838e9c28cc2234cd8fcacd5981c",
+      "finalLines": 490,
+      "changedDuringLane": true,
+      "finalCoverage": "Complete final source reread after the supplemental PDF reconciliation/current-software-header correction; exact phase evidence linked in supplementalReviews."
+    },
+    {
+      "path": "src/app/[locale]/resume/page.tsx",
+      "initialSha256": "591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30",
+      "initialLines": 53,
+      "initialReadSpans": [
+        [
+          1,
+          53
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed locale route bridge, translated SEO and canonical alternates/OG/Twitter image contracts."
+      ],
+      "findings": [],
+      "finalSha256": "591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30",
+      "finalLines": 53,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/security-policy/SecurityPolicyClient.tsx",
+      "initialSha256": "7cb75c75930ba53555bd342408377426c62ae0cdd7091f20fa255ff0ee0037af",
+      "initialLines": 181,
+      "initialReadSpans": [
+        [
+          1,
+          181
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed full reporting route and Outlook address, localised scope/timeline/guidelines, repository/domain technical direction, honest no-PGP surface, semantic lists and localised Hall of Fame link. No backend or reporting submission is implied."
+      ],
+      "findings": [],
+      "finalSha256": "7cb75c75930ba53555bd342408377426c62ae0cdd7091f20fa255ff0ee0037af",
+      "finalLines": 181,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/security-policy/page.tsx",
+      "initialSha256": "50a5a53e9af797d5a3ee2efc06328261b10df7df490cb4e91d0b4e611d7c429b",
+      "initialLines": 53,
+      "initialReadSpans": [
+        [
+          1,
+          53
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed locale-specific metadata and existing static route bridge."
+      ],
+      "findings": [],
+      "finalSha256": "50a5a53e9af797d5a3ee2efc06328261b10df7df490cb4e91d0b4e611d7c429b",
+      "finalLines": 53,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/write-ups/WriteUpsClient.test.tsx",
+      "initialSha256": "cbff7282cf078e565386304ed52e7ba0dcf3f31549c90322c7f390afe84dcad4",
+      "initialLines": 209,
+      "initialReadSpans": [
+        [
+          1,
+          209
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed all 209 lines: five-language title/search/date/count/topic behaviour, independent publications, original paper identity/source links, source-language descriptions and no-JavaScript publication/section links."
+      ],
+      "findings": [],
+      "finalSha256": "cbff7282cf078e565386304ed52e7ba0dcf3f31549c90322c7f390afe84dcad4",
+      "finalLines": 209,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/write-ups/WriteUpsClient.tsx",
+      "initialSha256": "031dc11c6664a957467787a3dd3c5cc00520979bdbd2b57c575f6e273237aa7f",
+      "initialLines": 248,
+      "initialReadSpans": [
+        [
+          1,
+          248
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed locale-normalised local article filtering, labelled search/topic controls, live result count/empty state, real locale article/source-project links, article/publication separation, translated descriptions and English original titles/DOIs, named new-tab descriptions and server-visible publication content. No confirmed owned defect."
+      ],
+      "findings": [],
+      "finalSha256": "031dc11c6664a957467787a3dd3c5cc00520979bdbd2b57c575f6e273237aa7f",
+      "finalLines": 248,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/write-ups/[slug]/WriteupDetailClient.tsx",
+      "initialSha256": "3ae8fa9752ce5820b49cf31cfa6d431a38e2c4e8986f942cc0ea457518857114",
+      "initialLines": 63,
+      "initialReadSpans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed semantic article/title/time/body/footer, localised back link, original stable slug bidi and SimpleMarkdown integration. Markdown rendering itself is owned by UI lane."
+      ],
+      "findings": [],
+      "finalSha256": "3ae8fa9752ce5820b49cf31cfa6d431a38e2c4e8986f942cc0ea457518857114",
+      "finalLines": 63,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/write-ups/[slug]/page.tsx",
+      "initialSha256": "b6e6304d46bd5dfc52385ecf9438743fdbd0f33686d796fe05d78417301400e0",
+      "initialLines": 166,
+      "initialReadSpans": [
+        [
+          1,
+          166
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed complete static slug generation/unknown-slug rejection, server-localised source article, metadata/updated timestamps and localised TechArticle/WebPage/breadcrumb JSON-LD with original author identity."
+      ],
+      "findings": [],
+      "finalSha256": "b6e6304d46bd5dfc52385ecf9438743fdbd0f33686d796fe05d78417301400e0",
+      "finalLines": 166,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    },
+    {
+      "path": "src/app/[locale]/write-ups/page.tsx",
+      "initialSha256": "20f5c7d5a3bff662067e5b6c2d5a4e5082df832609186537e88d8bedf2b7d39c",
+      "initialLines": 74,
+      "initialReadSpans": [
+        [
+          1,
+          74
+        ]
+      ],
+      "finalReadSpans": [],
+      "reviewNotes": [
+        "Reviewed route metadata, locale article/publication assembly and index payload that omits full article bodies while preserving canonical source identity and active-locale descriptions."
+      ],
+      "findings": [],
+      "finalSha256": "20f5c7d5a3bff662067e5b6c2d5a4e5082df832609186537e88d8bedf2b7d39c",
+      "finalLines": 74,
+      "changedDuringLane": false,
+      "finalCoverage": "Complete initial read carried forward after exact SHA-256 equality; no fresh final-read claim."
+    }
+  ],
+  "readCoverage": {
+    "files": 27,
+    "initialLines": 4184,
+    "initialCompleteRead": true
+  },
+  "findings": [
+    {
+      "id": "PAGES-01",
+      "priority": "P2",
+      "status": "fixed; final browser verification pending parent build",
+      "title": "Dossier fragment targets reveal content without accepting requested focus",
+      "paths": [
+        "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+        "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx"
+      ],
+      "evidence": [
+        "pages-hash-focus-baseline.json",
+        "pages-fragment-red.txt",
+        "pages-fragment-green.txt"
+      ],
+      "baselineResult": "Native Chromium #methods/#methods-heading/#research-papers reveal the intended tab but leave activeElement=BODY; #limitations-heading is the passing focusable control.",
+      "fix": "Explicit tabindex=-1 on the three existing section fragment targets, Methods heading and paper-library fragment.",
+      "verification": "Five locales \u00d7 five targets test actual hashchange, panel visibility and focus, without adding sequential tab stops."
+    }
+  ],
+  "updatedAtAustraliaSydney": "2026-11-04T13:01:10.258858+11:00",
+  "verification": [
+    {
+      "command": "npx vitest run 'src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx' -t 'direct section fragments'",
+      "result": "Expected red: 5 failed, 14 unrelated skipped; all five failures are missing focus on #methods.",
+      "log": "pages-fragment-red.txt"
+    },
+    {
+      "command": "npx vitest run 'src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx'",
+      "result": "Pass: 19 tests / 1 file.",
+      "log": "pages-fragment-green.txt"
+    },
+    {
+      "command": "node_modules/.bin/eslint <all 27 paths from pages-scope.json>",
+      "result": "Pass: exit 0, no warnings/errors.",
+      "log": "pages-lint.txt"
+    },
+    {
+      "command": "node_modules/.bin/vitest run <all 5 .test.tsx paths from pages-scope.json>",
+      "result": "Pass: 59 tests / 5 files.",
+      "log": "pages-tests.txt"
+    },
+    {
+      "command": "git diff --check -- 'src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx' 'src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx'",
+      "result": "Pass: exit 0."
+    }
+  ],
+  "nativeBaseline": {
+    "engine": "system Chromium, executable /usr/bin/chromium",
+    "origin": "http://127.0.0.1:4398",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "reducedMotion": "reduce",
+    "evidence": "pages-hash-focus-baseline.json",
+    "previewVersionObservedAfterProbe": {
+      "commit": "2057c9b6d427c8b16544494abb90ed6f4ee2c5d2",
+      "contentRevision": "2026-10-11",
+      "builtAt": "2026-11-04T00:56:40.512Z"
+    },
+    "limits": "Four direct-fragment diagnostic navigations only. Final compiled-browser proof belongs to the parent after its new build."
+  },
+  "integrity": {
+    "initialHashesMatchAssignedScope": true,
+    "finalHashesMatchDisk": true,
+    "changedFiles": [
+      "src/app/[locale]/about/AboutClient.tsx",
+      "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+      "src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx",
+      "src/app/[locale]/resume/ResumeClient.test.tsx",
+      "src/app/[locale]/resume/ResumeClient.tsx"
+    ]
+  },
+  "supplementalReviews": [
+    "pages-reconciliation-review.json",
+    "pages-reconciliation-report.md",
+    "pages-simurgh-header-review.json",
+    "pages-simurgh-header-report.md",
+    "pages-focus-commit-review.json",
+    "pages-focus-commit-report.md",
+    "pages-native-handoff-review.json",
+    "pages-native-handoff-report.md"
+  ],
+  "verificationScopeNote": "Original verification entries below retain their historical phase identity. Current supplementary checks are recorded separately in supplementalReviews; parent owns final integrated build/browser verification.",
+  "latestMaintainedHarness": {
+    "path": "scripts/browser-regressions/playwright/full-audit.spec.ts",
+    "initialSha256": "41e9c864d29d58326ad5aaa34d5bccfef2fb92ce7b46466c22f6a54c56c0881a",
+    "finalSha256": "14487c174f957e84265b213ef1f76af9ef5d102ca055bd3de868757c0a77b6ef",
+    "finalLines": 431,
+    "finalReadSpans": [
+      [
+        1,
+        431
+      ]
+    ]
+  }
+}

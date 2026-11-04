@@ -1,0 +1,50 @@
+[
+  {
+    "reference": "Research Resident r\u00e9sum\u00e9",
+    "sha256": "753a7e412ca4c0f37b4fba01f0288f875cadd613fcb15d7fc23c7871d451b56d",
+    "matches_recorded_original": true,
+    "role": "Immutable supplied reference; current repository findings update derived web text without rewriting this PDF."
+  },
+  {
+    "reference": "LinkedIn profile",
+    "sha256": "20135aec4442e5a3a5426bb8c1b9fb5775cab957cc6e99a6b751a1840aaa4de5",
+    "matches_recorded_original": true,
+    "role": "Immutable supplied reference; current repository findings update derived web text without rewriting this PDF."
+  },
+  {
+    "reference": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+    "sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559",
+    "matches_recorded_original": true,
+    "role": "Original published research PDF retained byte-identically."
+  },
+  {
+    "reference": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+    "sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c",
+    "matches_recorded_original": true,
+    "role": "Original published research PDF retained byte-identically."
+  },
+  {
+    "reference": "public/Project_Simurgh_Preprint_v1.0.pdf",
+    "sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc",
+    "matches_recorded_original": true,
+    "role": "Original published research PDF retained byte-identically."
+  },
+  {
+    "reference": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+    "sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc",
+    "matches_recorded_original": true,
+    "role": "Original published research PDF retained byte-identically."
+  },
+  {
+    "reference": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+    "sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f",
+    "matches_recorded_original": true,
+    "role": "Original published research PDF retained byte-identically."
+  },
+  {
+    "reference": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+    "sha256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+    "matches_recorded_original": true,
+    "role": "Already-authorised phone-free r\u00e9sum\u00e9 copy unchanged during repository reconciliation; older source factual snapshots intentionally preserved."
+  }
+]

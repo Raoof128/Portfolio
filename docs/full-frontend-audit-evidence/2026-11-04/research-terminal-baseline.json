@@ -1,0 +1,8 @@
+{
+  "origin": "http://127.0.0.1:4398",
+  "route": "/projects/project-simurgh",
+  "method": "Override Clipboard API with two controlled promises; reject latest request, then resolve earlier request. Wait for each React render before observation.",
+  "latestResult": "Select the commands to copy them",
+  "staleResult": "Commands copied",
+  "raceReproduced": true
+}

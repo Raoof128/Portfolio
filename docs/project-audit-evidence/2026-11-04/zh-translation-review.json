@@ -1,0 +1,431 @@
+{
+  "phase": "final",
+  "path": "src/lib/project-content/zh.ts",
+  "initialSha256": "c49d83b1db2c92ad7d501d17b86ca471fd0a35ccebdd04ebb9abfe90c6ffe033",
+  "initialLines": 533,
+  "initialReadSpans": [
+    [
+      1,
+      533
+    ]
+  ],
+  "initialReadEvidence": "Complete initial source read recorded in surfaces-review.json; canonical delta now being reconciled.",
+  "locale": "zh",
+  "finalSha256": "856f76e7ad64ab8c56e3873e2851ed015615d52050f54355befc09a7d6e4c37d",
+  "finalLines": 580,
+  "projectCount": 13,
+  "canonicalSha256": "42ec417598cd6dc1a7c806264fd78eb0dd5c010e222c53314c55724d61969065",
+  "projectCoverage": [
+    {
+      "slug": "invisible-window-research",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 7,
+          "translated": 7
+        },
+        "proof": {
+          "canonical": 6,
+          "translated": 6
+        },
+        "features": {
+          "canonical": 3,
+          "translated": 3
+        },
+        "measures": {
+          "canonical": 7,
+          "translated": 7
+        },
+        "stack": {
+          "canonical": 4,
+          "translated": 4
+        }
+      },
+      "paperCount": {
+        "canonical": 1,
+        "translated": 1
+      }
+    },
+    {
+      "slug": "project-simurgh",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "proof": {
+          "canonical": 9,
+          "translated": 9
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "stack": {
+          "canonical": 7,
+          "translated": 7
+        }
+      },
+      "paperCount": {
+        "canonical": 3,
+        "translated": 3
+      }
+    },
+    {
+      "slug": "project-zurvan",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "proof": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "features": {
+          "canonical": 6,
+          "translated": 6
+        },
+        "measures": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "stack": {
+          "canonical": 7,
+          "translated": 7
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "gitswitch",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "stack": {
+          "canonical": 6,
+          "translated": 6
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "mehr-guard",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "features": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "measures": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "stack": {
+          "canonical": 5,
+          "translated": 5
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "syllabus-sync",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 6,
+          "translated": 6
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "stack": {
+          "canonical": 8,
+          "translated": 8
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "divan-open-day",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "measures": {
+          "canonical": 6,
+          "translated": 6
+        },
+        "stack": {
+          "canonical": 8,
+          "translated": 8
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "nexus-archive",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 5,
+          "translated": 5
+        },
+        "stack": {
+          "canonical": 9,
+          "translated": 9
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "nanomatch",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "stack": {
+          "canonical": 6,
+          "translated": 6
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "sentinelflow",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "stack": {
+          "canonical": 6,
+          "translated": 6
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "ecrsm",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "stack": {
+          "canonical": 4,
+          "translated": 4
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "simurghforge",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "stack": {
+          "canonical": 10,
+          "translated": 10
+        }
+      },
+      "paperCount": {
+        "canonical": 0,
+        "translated": 0
+      }
+    },
+    {
+      "slug": "aion",
+      "arrayLengths": {
+        "solution": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "proof": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "features": {
+          "canonical": 4,
+          "translated": 4
+        },
+        "measures": {
+          "canonical": 6,
+          "translated": 6
+        },
+        "stack": {
+          "canonical": 10,
+          "translated": 10
+        }
+      },
+      "paperCount": {
+        "canonical": 1,
+        "translated": 1
+      }
+    }
+  ],
+  "finalReadSpans": [
+    [
+      1,
+      185
+    ],
+    [
+      186,
+      390
+    ],
+    [
+      391,
+      580
+    ]
+  ],
+  "finalReadNote": "All spans read in full after Prettier; final small local-first and a11y/e2e correction read verbatim in patch. Independent semantic review of applied preformat content completed by sibling reviewer.",
+  "verification": [
+    "vitest run src/lib/project-localization.test.ts: 30/30 passed",
+    "eslint four project overlays: exit 0",
+    "git diff --check four project overlays: exit 0"
+  ],
+  "semanticNotes": [
+    "All 13 project overlays aligned to the frozen canonical source. All solution, proof, feature, measure, stack and paper arrays retain canonical length and order. Omitted stack overlays inherit unchanged technical names verbatim.",
+    "Invisible Window now describes public Windows/macOS PoC source and evaluation harnesses, distinguishing the older withheld-source paper statement.",
+    "Simurgh distinguishes current SHA-256-pinned source-bound local replay from earlier frozen Ed25519 stages; 39 Lean 4 proof source files are not 39 theorems or a whole-agent proof. Native Linux/Python/package-index requirements and the SPDX licence are retained.",
+    "Earlier AgentDojo live and deterministic stages retain the benign-utility decline, no-real-LLM condition, 949/949 utility under attack and 97/97 benign denominator; October positive/null results and open authorised refusal remain separate.",
+    "Zurvan preserves the dated 3,334 passed / 1 failed / 8 skipped receipt, both MCP parity protocols, Python-backed writes, pending-visual limits, provider-dependent network use and explicit Z1b NOT CLOSED.",
+    "GitSwitch, Mehr Guard and Syllabus-Sync retain the limited claims for credential storage, memory clearing, offline unit evidence, scoped JVM performance, independent affiliation, test-job pass and separate security failure.",
+    "Divan distinguishes verified cached-release readiness, on-device selections, hosting connection data, source provenance and engineering checks from cultural/manual accessibility certification.",
+    "Nexus retains frontend-readable tokens, Fernet key dependency, conditional chat encryption and configured CI versus measured pass status.",
+    "NanoMatch and SentinelFlow retain repository-reported benchmark scope, exact numeric evidence, source-defined test counts and no fresh local rerun. ECRSM retains SSE transport, unmeasured runtime evidence and privileged isolated-lab deployment scope.",
+    "SimurghForge retains 49-advertised versus 44-key registry mismatch, native/CLI engine tiers, local tool dependencies, extension fallback and lack of egress validation.",
+    "Aion retains 34-answerable / 6-refusal pilot scope, Recall@5 and citation_support thresholds/partial citations, single Gemini judge and client-provided native-voice credential limitation. Publication title/href/DOI metadata is inherited untouched."
+  ],
+  "typecheckObservation": "npm run typecheck reported only audit scratch .ts/.tsx copied from external repositories plus initial translation snapshots. Own initial snapshots renamed to .txt; parent notified to coordinate external-source snapshots. Product overlays had no reported errors."
+}

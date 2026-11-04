@@ -141,6 +141,16 @@ function buildProjectJsonLd(
     keywords: localizedProject.tags.join(", "),
     author: AUTHOR,
     ...(project.links.repo ? { codeRepository: project.links.repo } : {}),
+    ...(project.links.doiKind === "software" && project.links.doi
+      ? {
+          sameAs: project.links.doi,
+          identifier: {
+            "@type": "PropertyValue",
+            propertyID: "DOI",
+            value: project.links.doi.replace(/^https:\/\/doi\.org\//, ""),
+          },
+        }
+      : {}),
     ...(project.links.repoVisibility === "private"
       ? { conditionsOfAccess: crumbs.conditionsOfAccess }
       : {}),

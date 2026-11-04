@@ -162,9 +162,18 @@ describe("project artwork loading and controls", () => {
     expect(
       container.querySelector(".os-motion-placeholder"),
     ).toBeInTheDocument();
+    // Arrival belongs to the loaded original artwork, never to its placeholder.
+    expect(container.querySelector(".os-motion-stage")).toHaveAttribute(
+      "data-artwork-ready",
+      "false",
+    );
     await revealArtwork(container, "shield");
     expect(requests.names).toEqual(["shield"]);
     expect(container.querySelectorAll("[data-artwork]")).toHaveLength(1);
+    expect(container.querySelector(".os-motion-stage")).toHaveAttribute(
+      "data-artwork-ready",
+      "true",
+    );
   });
 
   it("pauses the current pose, then resumes without replacing the artwork", async () => {
@@ -312,6 +321,10 @@ describe("project artwork loading and controls", () => {
     expect(
       screen.getByRole("heading", { name: "GitSwitch dossier" }),
     ).toBeInTheDocument();
+    expect(container.querySelector(".os-motion-stage")).toHaveAttribute(
+      "data-artwork-ready",
+      "false",
+    );
     // Title case for the English retry label, per the ResearchOS spec.
     fireEvent.click(screen.getByRole("button", { name: "Try Again" }));
     await waitFor(() =>
@@ -320,6 +333,10 @@ describe("project artwork loading and controls", () => {
       ).toBeInTheDocument(),
     );
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(container.querySelector(".os-motion-stage")).toHaveAttribute(
+      "data-artwork-ready",
+      "true",
+    );
   });
 
   it("rejects unknown and inherited object keys without requesting artwork", () => {

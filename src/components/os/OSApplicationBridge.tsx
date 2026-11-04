@@ -28,7 +28,10 @@ export function OSApplicationBridge({
         ? focused
         : null;
     const page = element?.closest<HTMLElement>(".os-page-content");
-    const toolbar = page?.parentElement?.querySelector(".os-windowbar");
+    const chrome = page?.parentElement;
+    const toolbar =
+      chrome?.querySelector(".os-window-toolbar") ??
+      chrome?.querySelector(".os-windowbar");
     const fields: Record<string, string> = {};
     // Browser autofill or typing before hydration must survive the initial handover.
     element

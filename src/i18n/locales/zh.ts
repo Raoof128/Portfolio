@@ -4,33 +4,33 @@ const zh: Dictionary = {
   seo: {
     skip_to_content: "跳转到主要内容",
     home_title_default:
-      "Mohammad Raouf Abedini | 人工智能安全研究与大语言模型智能体红队测试",
+      "Mohammad Raouf Abedini | AI 安全研究员 · 对抗鲁棒性与 AI 控制 · 实证安全评估",
     home_description:
-      "安全研究员，构建用于测量和遏制前沿 AI 网络能力的系统。Project Simurgh 的创建者；这是一个开源遏制证明框架，对 LLM 智能体开展红队测试，并生成签名、可离线验证的证据，记录防护漏检后智能体的行为。曾在 Anthropic 安全评估项目中评估 Claude。还著有 The Invisible Window：在受测 Windows/macOS 实验室配置中实现 100% 屏幕捕获规避，并负责任地披露。",
+      "AI 安全研究员，研究对抗鲁棒性、AI 控制和实证安全评估。Project Simurgh 通过主机侧控制与 SHA-256 固定的可重放研究证据，核查智能体获准执行的操作。2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。2026年12月起可全职赴旧金山开展三至六个月研究工作；需要签证担保。",
     home_og_description:
-      "大语言模型智能体红队测试与可验证的遏制证明。Project Simurgh 的创建者。Anthropic 安全评估贡献者。《The Invisible Window》的作者。",
+      "对抗鲁棒性、AI 控制和实证安全评估。Project Simurgh 的创建者；2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。",
     keyword_1: "人工智能安全研究",
-    keyword_2: "大语言模型智能体红队测试",
+    keyword_2: "对抗鲁棒性",
     keyword_3: "负责任披露",
-    keyword_4: "大语言模型安全评估",
+    keyword_4: "实证安全评估",
     keyword_5: "跨平台漏洞开发",
     keyword_6: "人工智能安全",
     keyword_7: "屏幕捕获规避",
     keyword_8: "攻击性安全",
-    keyword_9: "可验证的遏制证明",
+    keyword_9: "AI 控制",
     about_title: "关于",
     about_description:
-      "安全研究员，专注于测量和遏制前沿人工智能的网络能力：大语言模型智能体红队测试、可验证的遏制证明、漏洞研究以及负责任披露。Anthropic 安全评估贡献者。",
+      "AI 安全研究员，专注于对抗鲁棒性、AI 控制和实证安全评估。Project Simurgh 的创建者；2026年1月至3月通过 Alignerr 为 Anthropic 评估 Claude。",
     about_og_description:
-      "人工智能安全研究、大语言模型智能体红队测试以及可验证的遏制证明。Project Simurgh 的创建者。",
+      "对抗鲁棒性、AI 控制和实证安全评估。Project Simurgh 的创建者；2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。",
     contact_title: "联系",
     lab_title: "实验室",
     lab_description: "网络安全研究的实验性代码、概念验证及代码片段。",
     resume_title: "简历",
     resume_description:
-      "Mohammad Raouf Abedini 的简历——人工智能安全研究、大语言模型智能体红队测试、可验证的遏制证明，以及攻击性与防御性安全工程。",
+      "Mohammad Raouf Abedini 的简历：对抗鲁棒性、AI 控制、实证安全评估和安全工程。2026年12月起可全职工作。",
     resume_og_description:
-      "Mohammad Raouf Abedini 的简历——人工智能安全研究、大语言模型智能体红队测试以及安全工程。",
+      "Mohammad Raouf Abedini 的简历：对抗鲁棒性、AI 控制、实证安全评估和安全工程。2026年12月起可全职工作。",
     security_policy_title: "安全政策",
     security_policy_description: "安全漏洞披露政策及负责任披露指南。",
     hall_of_fame_title: "荣誉殿堂",
@@ -59,15 +59,15 @@ const zh: Dictionary = {
   },
   hero: {
     intro:
-      "构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个遏制证明框架，对 LLM 智能体进行红队测试，并生成经签名、可离线验证的证据，记录智能体在越过防护后被允许执行的操作：遏制了分类器漏判的 138/138 个案例，并在 AgentDojo 上将运行中的智能体的攻击成功率从 9/140 降至 0/140。在 Anthropic 的安全评估项目中评估 Claude 的输出。致力于让防御方在应对前沿 AI 网络风险时占据优势。",
-    researcher: "AI 安全研究员",
+      "我构建并测试面向工具型 AI 智能体的主机侧控制。在 Project Simurgh 2026年10月的匹配对照研究中，Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，同时保留23/24项有效完成；gpt-6-luna 的基线已为0/24，因此未观察到额外保护。2026年1月至3月，我通过 Alignerr 参与 Anthropic 的 Claude 安全评估。",
+    researcher: "AI 安全研究员 · 对抗鲁棒性与 AI 控制 · 实证安全评估",
   },
   lab: {
     enter_lab: "进入实验室",
   },
   footer: {
     last_index: "最后索引",
-    last_index_value: "2026年7月",
+    last_index_value: "2026年11月",
     status: "状态",
     environment: "环境",
     built_with: "构建工具",
@@ -85,17 +85,16 @@ const zh: Dictionary = {
   about: {
     identity_record: "个人简介",
     hero_title: "Mohammad Raouf Abedini",
-    hero_subtitle:
-      "人工智能安全研究 · 大语言模型智能体红队测试 · 攻击性与防御性安全工程",
+    hero_subtitle: "AI 安全研究员 · 对抗鲁棒性与 AI 控制 · 实证安全评估",
     bio_1:
-      "安全研究员，专注于测量和遏制前沿人工智能的网络能力，现可搬迁。相关工作公开、经过签名且可复现：一个开源的遏制证明框架、五篇带 DOI 存档的 Zenodo 预印本（已在 ORCID 下编入索引），以及在 Anthropic 安全评估项目内的评估工作。",
+      "我研究工具型智能体的对抗鲁棒性、AI 控制和实证安全评估，是 Project Simurgh 和五篇 Zenodo 预印本的独立作者。2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。2026年12月起可全职赴旧金山开展三至六个月研究工作；需要签证担保。",
     bio_2:
-      "Project Simurgh 的创建者——一个与提供方无关的遏制证明框架，在对抗性的、不诚实生产者威胁模型下对大语言模型智能体进行红队测试，并生成经 Ed25519 签名、可离线验证的证据，记录智能体在护栏失效后的行为：针对真实的 Llama Guard 4 遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将运行中的智能体的攻击成功率从 9/140 降至 0/140，以及五个经机器验证的 Lean 定理。AGPL-3.0，3,057 项测试。",
+      "Project Simurgh 是主机侧智能体授权原型。2026年10月研究涵盖24项任务、每项两次试验、三种匹配对照和两个模型，共重放288个分支。Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24，因此未观察到额外保护。项目报告39个 Lean 4 证明文件、10月19日冒烟测试中通过的5,171项测试和92个发布版本。软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本 DOI：10.5281/zenodo.20374849。",
     bio_3:
-      "也是 The Invisible Window 的主要作者：在受测 Windows/macOS 实验室配置中实现 100% 屏幕捕获规避，并依据 OWASP/FIRST/CISA 指南负责任地披露。还著有 Aion-BibleQA，一项检索增强 LLM 的引用忠实度基准：R@5 为 0.941，零无依据引用。在 Anthropic 安全评估项目中，通过 Alignerr 于 2026 年评估 Claude 输出的可利用代码与防护绕过情况。是一家孵化器支持的校园 AI 初创公司的联合创始人，专注于通过测量能力提升、界定安全边界和构建防御工具，降低先进 AI 的灾难性风险。",
+      "我还独立撰写了 The Invisible Window，在受测 Windows/macOS 实验室配置中展示屏幕捕获规避；Microsoft 和 Apple 将已披露行为归类为设计使然。Aion-BibleQA 以40题试点评估检索和引用忠实度（34题可回答，6题拒答；R@5为0.941；仍有部分引用错误）。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。",
     stats_projects: "项目",
     stats_evasion: "测试实验室配置中的规避率",
-    stats_vendors: "已通知的厂商",
+    stats_vendors: "协调披露的厂商案例",
     connect: "联系我",
     view_resume: "查看简历",
     specializations: "专业领域",
@@ -125,8 +124,9 @@ const zh: Dictionary = {
     spec2_item4: "双重用途风险评估",
     spec2_item5: "意图与产物安全边界界定",
     spec3_label: "Python 与系统编程",
-    spec3_item1: "Python（主要）、C、C++、TypeScript、Swift",
-    spec3_item2: "高性能 C/C++ 系统（100 万+ 操作/秒）",
+    spec3_item1:
+      "Python（主要） · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash",
+    spec3_item2: "C/C++ 撮合引擎与网络解析器",
     spec3_item3: "网络数据包处理（libpcap）",
     spec3_item4: "Linux（Ubuntu/Kali）、CMake、Docker",
     spec3_item5: "GitHub Actions CI/CD、Google Test",
@@ -142,11 +142,11 @@ const zh: Dictionary = {
     skill_group1_3: "C++",
     skill_group1_4: "TypeScript",
     skill_group1_5: "JavaScript",
-    skill_group1_6: "Swift",
+    skill_group1_6: "Rust",
     skill_group1_7: "Kotlin",
     skill_group1_8: "Bash",
     skill_group1_9: "SQL",
-    skill_group1_10: "Go（熟悉）",
+    skill_group1_10: "Lean 4（形式化证明）",
     skill_group2_label: "安全",
     skill_group2_1: "漏洞研究",
     skill_group2_2: "跨平台漏洞开发",
@@ -189,6 +189,7 @@ const zh: Dictionary = {
     ops_lab5_title: "LEO 卫星网络安全实验室",
     ops_lab6_title: "恶意软件分析沙箱",
     ops_lab7_title: "后量子迁移审计工具",
+    stats_preprints: "独立作者预印本",
   },
   lab_page: {
     experimental_division: "实验部门",
@@ -216,43 +217,41 @@ const zh: Dictionary = {
   },
   resume: {
     expected_completion: "预计毕业",
-    tagline:
-      "人工智能安全研究 · 大语言模型智能体红队测试 · 攻击性与防御性安全工程",
-    location:
-      "澳大利亚悉尼 · 现可搬迁至加州 San Francisco · 可随时出差（Washington, DC） · 需要签证担保",
+    tagline: "AI 安全研究员 · 对抗鲁棒性与 AI 控制 · 实证安全评估",
+    location: "澳大利亚悉尼 · 计划搬迁至加州旧金山 · 需要签证担保",
     linkedin_profile: "领英主页",
     orcid_id: "ORCID 编号",
     s01_heading: "关于",
     s01_bio:
-      "安全研究员，致力于构建用于测量和遏制前沿人工智能网络能力的系统。Project Simurgh 的创建者——一个与提供方无关的遏制证明框架，在对抗性的、不诚实生产者威胁模型下对大语言模型智能体进行红队测试，并生成经 Ed25519 签名、可离线验证的证据，记录智能体在护栏失效后的行为：遏制了 138/138 个分类器漏检的案例，在 AgentDojo 上将运行中的智能体的攻击成功率从 9/140 降至 0/140，五个经机器验证的 Lean 定理。在 Anthropic 的安全评估项目中（通过 Alignerr）评估了 Claude 输出的可利用代码与护栏绕过情况。定位为与内联分类器互补的纵深防御层：分类器管控模型可以说什么，而本框架则证明智能体被允许做什么。端到端交付检测能力：设备端钓鱼检测机器学习模型达到 87% F1，实时入侵检测达到每秒 500K+ 数据包。一家孵化器支持的校园人工智能初创公司的联合创始人；已发布 70+ 个项目。",
+      "我研究工具型智能体的对抗鲁棒性、AI 控制和实证安全评估，是 Project Simurgh 和五篇 Zenodo 预印本的独立作者。2026年1月至3月通过 Alignerr 参与 Anthropic 的 Claude 安全评估。2026年12月起可全职赴旧金山开展三至六个月研究工作；需要签证担保。 在七年的安全运营和工程工作之后，我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。",
     s02_heading: "安全研究",
     s02_tech_stack:
-      "Node.js · Ed25519 证明 · Lean 4 · AgentDojo · Llama Guard 4 · Llama-3.3-70B · JS↔Python 一致性",
+      "Python / React · SHA-256 研究归档 · 早期 Ed25519 证明凭证 · Lean 4 · OpenAI Responses API · Llama-3.2-3B · Llama-3.3-70B · AgentDojo · MCP",
     s02_subtitle:
-      "Project Simurgh —— 面向智能体型人工智能的可验证遏制证明（创建者 · AGPL-3.0）",
+      "Project Simurgh：面向 AI 智能体的可检查授权与遏制（独立作者）",
     s02_bullet1:
-      "构建了一个与提供方无关的框架，生成经 Ed25519 签名、可离线复现的证据，记录人工智能智能体在护栏失效后的行为，覆盖四个遏制边界：输入防火墙、上下文来源守卫、工具调用门控，以及输出泄露防火墙——均在对抗性的、不诚实生产者威胁模型下进行",
+      "2026年10月迁移研究：24项任务 × 每项两次试验 × 三种匹配对照（仅凭据、组合、全部拒绝）× 两个模型；重放288个分支。组合控制将 Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24：无额外保护。协议至发布包用时为2026年10月15日至17日。",
     s02_bullet2:
-      "护栏失效遏制：在一个 180 案例的运行集上捕获了真实的 Llama Guard 4（12B）输入分类器，并遏制了该分类器漏检的 138/138 个恶意案例（其中 120 个是仅检查输入的分类器在结构上无法看到的下游注入案例，18 个是直接输入漏检）；综合目标攻击成功率为 0/150，且零不安全工具执行或数据导出",
+      "24次受限试验分为六种状态。Wilson 95%区间按状态报告：43.6–97.0%与0.0–39.0%；部分差异由控制结构本身决定。这些限定范围的实验不能证明模型具有普遍安全性。",
     s02_bullet3:
-      "运行中的智能体遏制：驱动一个自托管的 Llama-3.3-70B 通过 AgentDojo 的工作区套件（140 个预注册注入案例）；工具权限门控将目标攻击成功率从 9/140 降至 0/140，同时保持了良性任务的可用性",
+      "保留了实时 OpenAI 集成中由角色位置错误导致的八案例失败（8/8均拒绝）。冻结的 developer 角色修正完成2/3项授权工作流，并拒绝5/5项受限工作流；仍有一次拒绝未解决，原始轨迹予以保留。",
     s02_bullet4:
-      "定位为与 Anthropic 内联分类器互补的纵深防御层——分类器管控模型可以说什么，而证明则管控智能体被允许做什么（非主张部分经签名并明确说明，包括它本身无法捕获 2026 年 6 月的内容生成绕过）",
+      "2026年早期冻结阶段：遏制了 Llama Guard 4 12B 输入分类器漏检的138/138个恶意案例，其中120个是其视野之外的下游注入；这是覆盖范围主张，并非分类器排名。实时 Llama-3.3-70B 在 AgentDojo 工作区的攻击成功数从9/140降至0/140，正常任务效用从7/10降至6/10。另一次四套件确定性运行不使用真实 LLM，记录攻击成功0/949、攻击下效用949/949、正常任务效用97/97。这些仍是有限范围实验。",
     s02_bullet5:
-      "对自身的证明发起攻击（覆盖八类攻击的红队扫描 → detector-v2），并以五个经机器验证的 Lean 定理对监督机制进行形式化检验；以单条命令即可离线复现一个 12 级的签名发布阶梯；3,057 项自动化测试",
+      "当前研究归档使用 SHA-256，安装依赖后可在原生 Linux x86_64 与 Python 3.12 环境重放；早期冻结阶段的证明凭证使用 Ed25519。证明门控检查39个用于特定数学模型的 Lean 4 文件，并拒绝未证明的“sorry”占位符；模型证明不代表实现等价性。2026年10月19日冒烟运行通过5,171项项目根包测试。92个发布版本；软件 DOI 10.5281/zenodo.21737792 与设备完整性预印本 DOI 10.5281/zenodo.20374849 分开列示。",
     s03_heading: "技术能力",
     s03_cat1_label: "编程语言",
     s03_cat1_desc:
-      "Python（主要）、C、C++、TypeScript、JavaScript、Swift、Kotlin、Bash、SQL、Go（熟悉）",
+      "Python（主要） · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash",
     s03_cat2_label: "安全与攻击性",
     s03_cat2_desc:
       "漏洞研究、跨平台漏洞开发（Win32 API、macOS ScreenCaptureKit）、威胁建模、安全代码审查、渗透测试、负责任披露（OWASP/FIRST/CISA）、Wireshark、Nmap、Burp Suite",
     s03_cat3_label: "人工智能与机器学习",
     s03_cat3_desc:
-      "大语言模型（LLM）集成与评估、检索增强生成（RAG）评估、引用忠实度基准测试、人工智能辅助漏洞研究、自然语言处理（NLP）、生成式人工智能工具、机器学习模型评估、双重用途风险评估",
+      "匹配对照实验设计、对抗鲁棒性与 AI 控制、提示注入与权限遏制、防护与分类器评估、不确定性报告、Claude API 与 Claude Code、OpenAI Responses API、自托管 Llama、Llama Guard 4、AgentDojo 和 MCP 服务器",
     s03_cat4_label: "系统与工具",
     s03_cat4_desc:
-      "Linux（Ubuntu/Kali）、CMake、Docker、Git/GitHub、GitHub Actions CI/CD、Google Test、FastAPI、Cloudflare Workers、libpcap",
+      "Linux · eBPF · Docker · GitHub Actions · PostgreSQL · MCP 服务器",
     s03_cat5_label: "框架",
     s03_cat5_desc:
       "OWASP Top 10、MITRE ATT&CK、NIST 框架、W3C Screen Capture 规范",
@@ -266,43 +265,42 @@ const zh: Dictionary = {
       "IEEE 格式漏洞研究：独立发现并负责任地披露了一类使用 Windows/macOS 公开显示 API 的屏幕捕获规避方法。在受测实验室配置中实现 100% 规避，在超过 10,000 帧分析中未见视觉伪影。未测试商用监考产品或 Linux；macOS 26 使用原生捕获工具，而非浏览器 getDisplayMedia()。结论反映截至 2026 年 3 月的受测软件版本。已与操作系统厂商协调披露。DOI：10.5281/zenodo.20376495。",
     proj2_tag: "圣经 RAG",
     proj2_stack:
-      "React Native · Expo · Supabase · pgvector · Gemini · OpenAI 嵌入 · Tauri v2",
+      "React Native · Expo · Supabase · pgvector · Gemini 3.1 Flash Lite · OpenAI 嵌入 · Tauri v2",
     proj2_desc:
-      "构建了人工智能驱动的圣经伴读应用，并撰写了 Aion-BibleQA——一篇 8 页预印本，提出了一个 40 题基准，用于评估引用忠实度与对错误前提的鲁棒性——R@5 = 0.941，平均引用支持度 = 0.978，零无依据引用，且对错误前提的拒答率为 6/6。DOI：10.5281/zenodo.20522874。",
+      "构建 Aion 并撰写8页试点预印本：40个问题，其中34个可回答问题用于检索评分，6个为拒答案例。Recall@5 = 0.941，平均 citation_support = 0.978，拒答6/6。单一 Gemini 3.1 Flash Lite 评审未报告 citation_support < 0.5 的答案行，但仍有两行引用部分错误或不准确，分数为0.75与0.50。DOI：10.5281/zenodo.20522874。",
     proj3_tag: "系统",
     proj3_stack: "C++20 · CMake · Google Test",
     proj3_desc:
-      "设计了高性能撮合引擎，以亚微秒级延迟处理每秒 100 万以上订单——实现了基于红黑树的价格档位、自定义内存池分配器，以及包含 p50/p99 延迟基准的完整测试套件。",
+      "构建 C++20 撮合引擎。仓库报告在 Apple M-series Release 单线程合成基准中，每秒完成9.29M次混合新增/取消操作。按订单ID查找的预期复杂度为 O(1)，取消还需 O(log M) 的价格档树查找。p50/p99基准测量插入延迟；内存池分配器有独立的分配基准。",
     proj4_tag: "IDS",
     proj4_stack: "C++17 · libpcap · CMake · Google Test · Linux",
     proj4_desc:
-      "构建了实时网络数据包处理引擎，每秒解析 50 万以上数据包——支持协议解析（Ethernet/IPv4/TCP/UDP/ICMP/DNS）、基于特征的检测引擎，以及有状态分析（端口扫描、SYN 洪泛）。",
+      "构建 C++17 IDS，包含七种协议解析器、特征规则以及端口扫描、SYN洪泛和DNS隧道的有状态启发式检测。仓库报告单线程纯解析合成基准在5M个重复数据包上达到28.4M包/秒；该速率只衡量解析器，并非完整IDS吞吐量。",
     proj5_tag: "全栈",
     proj5_stack: "Python/Litestar · React · PostgreSQL · Docker · Terraform",
     proj5_desc:
-      "上线了一个全栈数据平台，配备人工智能推荐引擎、事件驱动的 API 设计、速率限制及自动化安全扫描——从数据库架构到部署基础设施的端到端负责。",
+      "使用 React、Litestar 和 Supabase 构建个人媒体库与求职记录工具，提供 AI 推荐和持久聊天。配置了 CI 安全检查与 Terraform 框架；项目页面说明了身份验证 Cookie 与加密设置依赖部署配置的限制。",
     proj6_tag: "KotlinConf",
     proj6_stack: "Kotlin Multiplatform · 本地机器学习 · Android 与 iOS",
     proj6_desc:
       "构建了具备本地机器学习分类能力的跨平台离线威胁检测工具——已提交至 KotlinConf 全球开发者大会。",
     s05_more_projects:
-      "GitHub 上另有 70 多个公开项目，涵盖漏洞研究、系统编程、人工智能/机器学习工具及云基础设施：",
+      "SentinelSSH 是 Rust 编写的 MCP 服务器，通过17种类型化工具按策略对 Linux 主机进行只读检查，不提供 shell。我还在 GitHub 上发布了70多个公开项目，涵盖安全研究、系统编程、AI/ML 工具和云基础设施：",
     s06_heading: "职业经历",
     exp1_title: "自由职业安全工程师与全栈开发者",
     exp1_employer: "自雇 · 2024年1月 – 至今",
     exp1_bullet1:
-      "在 Supabase 上为生产级、多前端平台架构安全后端：WebAuthn 通行密钥、TOTP/短信多因素认证（MFA）、零信任边缘中间件、分布式速率限制、严格的 Postgres 行级安全（RLS），以及通过 SECURITY DEFINER RPC 实现的防篡改审计日志",
-    exp1_bullet2:
-      "构建了包含 500 多项自动化安全测试的 CI/CD（GitHub Actions），将部署漏洞减少约 40%；为 1,000 名以上用户交付了以安全为先的应用，采用 OWASP Top 10 控制措施与 OAuth 2.0",
+      "为商业客户交付采用 OWASP Top 10 控制和 OAuth 2.0 的安全 Web 应用。",
+    exp1_bullet2: "在 Airtasker 的31条客户评价中保持5.0星评分。",
     exp1_bullet3:
-      "在 Airtasker 上，31 条客户评价与 35 项已完成任务中保持 5.0 星评分（95% 完成率，已通过身份验证），为付费客户提供 Web 开发、Python、API 集成以及 IT/安全工作",
-    exp2_title: "IT 经理",
-    exp2_employer: "伊朗药房 · 2019年8月 – 2024年5月",
+      "完成35项 Airtasker 任务，完成率95%，身份已验证；为付费客户提供 Web 开发、Python、API 集成以及 IT/安全服务。",
+    exp2_title: "IT 经理与安全运营负责人",
+    exp2_employer: "伊朗药房 · 2019年8月 – 2024年1月",
     exp2_bullet1:
-      "在一个多站点组织中管理技术基础设施长达 5 年——维持 99% 的系统正常运行时间，实施基于角色的访问控制（RBAC），并通过 Python/Bash 脚本自动化运营工作流（人工任务减少约 30%）",
-    s07_heading: "人工智能安全、领导力与社区",
+      "为拥有50多名员工的多站点组织管理 IT 和安全运营。调查未授权访问事件，以自动化检测工作流将人工初步分诊减少约30%，并实施基于角色和最小权限的访问控制。",
+    s07_heading: "领导力与社区",
     s07_bullet1:
-      "人工智能安全评估员，Claude（Alignerr，Anthropic 人工智能安全评估项目，2026 年）：评估 Claude 输出的可利用代码，并分析安全护栏如何被绕过，提供结构化、基于评分标准的发现（延续先前 2024 年 Claude Code 评估工作）",
+      "通过 Alignerr 在 Anthropic 安全评估项目中对 Claude 的安全护栏开展压力测试：评估可利用代码和有害模式，分析绕过方法，并提交结构化、基于评分标准的发现。",
     s07_bullet2: "创立并协助运营大学的波斯学生社区——活动、同伴支持和文化项目。",
     certs_heading: "许可证与认证",
     certs_issued: "颁发日期",
@@ -310,8 +308,17 @@ const zh: Dictionary = {
     volunteer_label: "志愿服务",
     s08_heading: "补充信息",
     s08_available:
-      "现可搬迁至 San Francisco；可立即入职（最后一个学期已在线完成）。需要签证担保。",
+      "2026年12月起可全职赴旧金山开展三至六个月研究工作。需要签证担保。2027年2月至6月的最后一个大学学期全程在线。",
     s08_languages: "英语（专业工作水平） · 波斯语/Farsi（母语） · 日语（初级）",
+    education_final_session: "最后一个学期：2027年2月至6月，全程在线。",
+    exp_syllabus_title: "联合创始人",
+    exp_syllabus_employer: "Syllabus-Sync · 麦考瑞大学孵化器初创企业 · 悉尼",
+    exp_syllabus_bullet1:
+      "共同维护共享 Next.js/TypeScript 代码库的安全与后端：WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全和防篡改审计日志。",
+    exp_syllabus_bullet2:
+      "2026年8月17日的 CI 测试任务通过1,343项测试，覆盖155个文件；独立安全任务失败。在参与 EDUCATE 加速器和初创企业验证的同时，参与产品与安全工作。",
+    exp_alignerr_title: "AI 安全评估员（Claude）",
+    exp_alignerr_employer: "Alignerr · Anthropic 安全评估项目 · 远程",
   },
   not_found: {
     description: "找不到这个页面。页面可能已移至其他位置，或地址有误。",
@@ -346,6 +353,7 @@ const zh: Dictionary = {
     demo: "演示",
     read_preprint: "阅读预印本",
     cite_this_work: "引用本作品",
+    software_doi_record: "软件归档 DOI",
   },
   writeups_detail: {
     end_transmission: "文章结束",

@@ -1,0 +1,265 @@
+{
+  "projects": {
+    "gitswitch": {
+      "slug": "gitswitch",
+      "title": "GitSwitch",
+      "category": "ENGINEERING",
+      "year": "2024",
+      "description": "Cross-platform Git client for multiple developer identities, repository review and AI-assisted commits, with cloud, local-model and offline generation modes.",
+      "tags": [
+        "Electron",
+        "React",
+        "TypeScript",
+        "AI",
+        "Dev Tool"
+      ],
+      "links": {
+        "repo": "https://github.com/Raoof128/GitSwitch",
+        "caseStudy": "/projects/gitswitch"
+      },
+      "build": {
+        "stack": [
+          "Electron 39",
+          "React 19",
+          "TypeScript 5.9",
+          "Zustand 5",
+          "Gemini / OpenAI / Anthropic / local LLMs",
+          "Vitest + Playwright"
+        ],
+        "features": [
+          "Multi-account SSH and Git identity management",
+          "Commit generation through Gemini, OpenAI, Anthropic, local LLMs or offline heuristics",
+          "Repository-aware diff viewer and GitHub/GitLab pull-request workflows",
+          "Cloud-AI consent gate, optional diff redaction and bounded requests"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Secrets encrypted at rest with Electron safeStorage; storage fails when encryption is unavailable",
+          "Sandboxed renderer with context isolation and Node integration disabled",
+          "Validated IPC boundaries, input limits and operation timeouts",
+          "Cloud-AI consent and optional diff redaction; JavaScript reference clearing does not guarantee memory erasure"
+        ]
+      },
+      "fullDescription": "GitSwitch is a cross-platform Electron and React Git client for developers managing several identities and repositories. It combines SSH/account management, diff review, GitHub/GitLab workflows and configurable commit-message generation through cloud providers, local models or offline heuristics. Privileged operations and decrypted credentials are handled in the main process.",
+      "problem": "Developers managing personal and work repositories need consistent Git identities, useful diff review and deliberate control over the code sent to AI services.",
+      "solution": [
+        "Built account and SSH management around global and repository-local Git identities",
+        "Added interchangeable Gemini, OpenAI, Anthropic and local-model providers with an offline heuristic mode",
+        "Separated the renderer from privileged main-process operations through a constrained IPC bridge",
+        "Added explicit cloud-AI consent, optional diff redaction and repository-aware commit validation"
+      ],
+      "proof": [
+        "Pinned package manifest declares Electron ^39.2.6 and React ^19.2.1",
+        "Source configures contextIsolation and sandbox on, with nodeIntegration off",
+        "safeStorage encrypts credential files and refuses storage when encryption is unavailable",
+        "Provider code implements cloud consent, local/offline choices and a configurable generation timeout"
+      ]
+    },
+    "syllabus-sync": {
+      "slug": "syllabus-sync",
+      "title": "Syllabus-Sync",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Independent student experience platform for planning, deadlines and campus navigation. Co-founded within the Macquarie University Incubator, with security/backend co-maintainer responsibilities. A 17 August 2026 CI test job passed 1,343 tests across 155 files.",
+      "tags": [
+        "MQ Incubator Startup",
+        "Next.js 16",
+        "Supabase",
+        "TypeScript",
+        "AI/LLM",
+        "WebAuthn"
+      ],
+      "links": {
+        "demo": "https://www.syllabus-sync.app/",
+        "repo": "https://github.com/Raoof128/Syllabus-Sync",
+        "caseStudy": "/projects/syllabus-sync"
+      },
+      "build": {
+        "stack": [
+          "Next.js 16 + React 19",
+          "TypeScript 5",
+          "Supabase PostgreSQL",
+          "TanStack Query + Zustand",
+          "Leaflet + Google Maps",
+          "Framer Motion + Radix UI",
+          "Cloudflare Workers / OpenNext",
+          "Upstash Redis + Sentry"
+        ],
+        "features": [
+          "Academic planning, assessment deadlines, calendar, campus navigation and notifications",
+          "Documented PDF-to-structured-data workflow; a standalone extractor remains on the repository roadmap",
+          "Multi-profile student tools and institution-specific academic datasets",
+          "1,343 tests across 155 files passed in the 17 August 2026 CI test job; this is not an overall pipeline pass"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Middleware protects configured page routes and non-public APIs, with explicit public exceptions and fail-closed handling of unresolved API authentication",
+          "Supabase Row-Level Security and user-scoped database access",
+          "WebAuthn/FIDO2 passkeys alongside supported password and MFA flows",
+          "Schema validation, CSRF controls, audit logging and route-specific rate limiting",
+          "Configured CI secret scanning; the reviewed run's separate security job failed at npm audit before later checks"
+        ]
+      },
+      "fullDescription": "Syllabus-Sync is an independent student experience platform initially built for Macquarie University students, covering academic planning, assessment deadlines, campus navigation, notifications and profile management. Raouf's role is co-founder and security/backend co-maintainer. Acceptance into the Macquarie University Incubator is recorded in the supplied professional references; the repository explicitly describes the project as independent and not officially affiliated with the university. Current code and CI evidence support the student platform and its security work. The repository also documents a PDF-extraction direction, with a standalone extractor listed on its roadmap.",
+      "problem": "Students need a consistent place for assessment deadlines, academic planning and campus information, with account security and clear boundaries around personal data.",
+      "solution": [
+        "Co-founded the platform and contributed security/backend work alongside the lead architecture and infrastructure maintainer",
+        "Implemented protected-route middleware, passkeys, MFA, user-scoped data access and audit controls",
+        "Integrated planning, calendars, campus navigation and notifications around configurable academic datasets",
+        "Documented structured syllabus extraction and adaptation to other universities without presenting roadmap work as independently verified implementation"
+      ],
+      "proof": [
+        "Macquarie University Incubator startup acceptance and co-founder role are recorded in the supplied résumé and profile",
+        "At revision 0fecd030, the 17 August 2026 CI test job passed 1,343 tests in 155 files; the separate security job failed",
+        "A separate Cloudflare Worker deployment job succeeded at the same revision; current demo availability was not independently verified",
+        "Middleware source returns 503 for unresolved protected API authentication and 401 for unauthenticated protected APIs",
+        "README identifies Raouf as security/backend co-maintainer and states the project's independent university affiliation status",
+        "Passkeys use public-key credentials; this does not mean every supported authentication flow is passwordless"
+      ]
+    },
+    "divan-open-day": {
+      "slug": "divan-open-day",
+      "title": "Divan — Open Day",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Bilingual English and Persian Hafez and Rumi poetry experience built for a Persian Society Open Day stall. Visitors receive a source-validated verse, translation, attribution and optional recitation. Offline use follows verified release caching; poem selections stay on-device, while hosting connection data has a separate privacy boundary.",
+      "tags": [
+        "React 19",
+        "Vite",
+        "TypeScript",
+        "Offline-First",
+        "Privacy by Design",
+        "i18n / RTL"
+      ],
+      "links": {
+        "demo": "https://divan.raoufabedini.dev/",
+        "repo": "https://github.com/Raoof128/divan-open-day",
+        "caseStudy": "/projects/divan-open-day"
+      },
+      "build": {
+        "stack": [
+          "Vite",
+          "React 19",
+          "strict TypeScript",
+          "Hand-written service worker",
+          "Web Crypto (shuffle bag)",
+          "Vitest (unit / component / a11y / offline)",
+          "Playwright (Chromium e2e)",
+          "pnpm 10.33 · Node 22.16"
+        ],
+        "features": [
+          "Source-validated bilingual corpus: exactly 60 Hafez + 60 Rumi = 120 records, bound to immutable editions and documented machine-verifiable provenance",
+          "Verse selection uses a Web Crypto shuffle bag computed on-device, without server involvement",
+          "Offline-first: a hand-written service worker with integrity verification keeps the stall running on flaky venue networks",
+          "Culturally distinct art direction per poet with live Nastaliq typography (real Persian script, never rasterised images)",
+          "Bilingual markup with directional text handling, bidirectional isolation, live regions, forced-colors and reduced-motion support"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "No visitor accounts or intention submission; poem choices stay on-device without an application database or tracking cookies",
+          "Static client with no runtime backend, visitor database or application analytics endpoint; hosting providers may process limited technical connection data under their own settings",
+          "sessionStorage holds only public release, poet and poem-selection state; the motion preference is stored locally in localStorage",
+          "Production compiler rejects synthetic/test data before deployment",
+          "Source-bound attribution with rights verification (MIT for code; poetry and translations retain their own licences, e.g. CC BY-SA)",
+          "Static origin behind an outbound tunnel, with no host-published application ports"
+        ]
+      },
+      "fullDescription": "Divan is a bilingual Persian-poetry experience built for a Persian Society Open Day stall. A visitor selects Hafez or Rumi, holds an intention without submitting it, and receives a source-validated verse with its English translation, attribution and optional recitation. A verified, cached release supports offline use. The static application has no accounts, intention form, visitor database or analytics endpoint; limited connection data processed by the hosting provider and network edge remains a separate privacy boundary.",
+      "problem": "A public Open Day stall needs a fast cultural experience that works on unreliable venue Wi-Fi, avoids collecting visitor intentions or poem choices, and presents source-bound Persian poetry with clear attribution and live calligraphy. Engineering source checks must remain distinct from cultural-review sign-off and manual assistive-technology evidence.",
+      "solution": [
+        "Compiled exactly 60 Hafez + 60 Rumi records (120 total), bound to immutable editions with documented, machine-verifiable source provenance",
+        "Built an integrity-checked service worker so a verified, cached release remains usable without a network connection",
+        "The Web Crypto shuffle bag selects verses on-device; no server records what visitors draw",
+        "Rendered live Nastaliq typography and distinct Persian-miniature-inspired art direction for Hafez and Rumi instead of flattened calligraphy images",
+        "Built accessibility in from the start: bilingual/RTL markup, bidirectional isolation, live regions, forced-colors and reduced-motion support"
+      ],
+      "proof": [
+        "Application code has no visitor form, tracking cookies, analytics endpoint or backend; sessionStorage holds only public release and poem-selection state",
+        "Offline readiness is established by verified release and cache state, rather than assumed after every initial page load",
+        "Production compilation rejects synthetic fixtures and requires source-bound corpus evidence; the dated July 2026 report records 60 Hafez + 60 Rumi records",
+        "Configured Vitest suites cover unit, component, accessibility, offline, share, performance and security checks, with Playwright Chromium e2e; these are engineering checks, not cultural or manual assistive-technology certification"
+      ]
+    },
+    "nexus-archive": {
+      "slug": "nexus-archive",
+      "title": "Nexus Archive",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "description": "Cyberpunk-styled personal media vault and job tracker with React, Litestar and Supabase. AI-assisted recommendations, persistent chat, configured Fernet encryption for takeaway notes, and backend-issued auth cookies with a refresh flow.",
+      "tags": [
+        "React",
+        "Python",
+        "Litestar",
+        "Supabase",
+        "AI",
+        "Full-Stack"
+      ],
+      "links": {
+        "demo": "https://home-notes-app.uk/",
+        "repo": "https://github.com/Raoof128/Nexus_Archive",
+        "caseStudy": "/projects/nexus-archive"
+      },
+      "build": {
+        "stack": [
+          "React 19",
+          "Vite",
+          "Tailwind CSS 4",
+          "TanStack Query",
+          "Python 3.12",
+          "Litestar",
+          "Supabase PostgreSQL",
+          "Docker",
+          "Terraform"
+        ],
+        "features": [
+          "AI-assisted media recommendations via Gemini with graceful degradation",
+          "Persistent AI chat transcripts with user-scoped sanitisation and query-cache updates",
+          "Status tracking, ratings and reviews for anime, movies and books, plus job-application tracking and job-aware suggestions",
+          "Smart filtering and search across entire media library"
+        ]
+      },
+      "secure": {
+        "measures": [
+          "Backend-issued HttpOnly SameSite=Strict auth cookies; login and refresh responses also expose access tokens to the frontend session",
+          "Cookie-based /auth/refresh flow with silent client retry; short token lifetimes and secure-cookie settings require deployment configuration",
+          "LLM input mitigations use XML delimiters, string scrubbing and pattern-based PII masking; these do not guarantee prompt-injection immunity or complete PII removal",
+          "Fernet encryption for takeaway notes requires TAKEAWAY_ENCRYPTION_KEY; takeaway writes fail closed without the key, while chat encryption is conditional on that configuration",
+          "CI configures Bandit, pip-audit, npm audit and secret scanning; configured checks are distinct from a passing current workflow result"
+        ]
+      },
+      "fullDescription": "Nexus Archive is a cyberpunk-styled personal media vault and job tracker combining a React frontend, a Litestar API and Supabase-backed identity and persistence. Manage books, movies, anime, job applications, ratings, takeaway notes, persistent chat sessions and AI-assisted recommendations from one dashboard. Takeaway writes require a configured Fernet key, and production cookie, token-lifetime and database controls depend on the documented deployment settings.",
+      "problem": "Media trackers split entertainment libraries across platforms and can have weak security controls. Nexus Archive brings titles, ratings, notes, and recommendations into one account with row-level access controls.",
+      "solution": [
+        "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
+        "Implemented backend-issued HttpOnly SameSite=Strict cookies and a refresh flow; access tokens are also returned in frontend-readable session responses",
+        "Integrated Gemini AI for media recommendations with shared per-user rate limiting and local fallback",
+        "Added key-required Fernet encryption for takeaway notes and input scrubbing, XML context delimiters and pattern-based PII masking for model requests"
+      ],
+      "proof": [
+        "Auth code sets HttpOnly SameSite=Strict cookies and implements refresh rotation; production secure-cookie and token-lifetime settings require configuration",
+        "CI definitions include Bandit, pip-audit, npm audit and gitleaks; the presence of these checks does not establish a passing HEAD run",
+        "Locust scenarios exercise authenticated requests to the recommendation endpoint; no measured performance result is claimed",
+        "Terraform IaC scaffold for reproducible Supabase + Vercel deployments"
+      ]
+    }
+  },
+  "writeups": {
+    "electron-security": {
+      "slug": "electron-security",
+      "title": "Securing Electron Apps: A Practical Guide",
+      "date": "2024-12-20",
+      "updatedAt": "2026-11-04",
+      "tag": "Electron",
+      "takeaway": "Separating renderer privileges, credential storage and deliberate AI data sharing in a desktop Git client.",
+      "content": "\n## Why Electron needs explicit boundaries\n\nAn Electron application combines Chromium renderer processes with a privileged Node.js main process. A renderer compromise can become much more damaging when it can call filesystem or process APIs. GitSwitch uses this boundary for a Git client that manages SSH identities, hosting tokens and AI-assisted commits. This article describes the public source snapshot reviewed on 4 November 2026, rather than claiming that these controls make every build or deployment secure.\n\n### The isolation contract\n\n| Setting | Source configuration | Purpose |\n|---------|----------------------|---------|\n| `contextIsolation` | `true` | Separate the page and preload JavaScript contexts |\n| `sandbox` | `true` | Restrict the renderer's operating-system access |\n| `nodeIntegration` | `false` | Keep Node.js built-ins out of the page |\n| Privileged operations | Main process and a constrained IPC bridge | Validate requests before Git, filesystem, credential or network work |\n\nThese settings are visible in GitSwitch's main-window configuration. They reduce the renderer's direct privileges; the preload bridge, main-process handlers and dependencies still require review. The repository's threat model documents validation, approved repository paths, timeouts and request limits as further controls, rather than treating isolation as a complete security proof.\n\n### Storing credentials accurately\n\nThe main process encrypts credential files using Electron `safeStorage`. It checks `safeStorage.isEncryptionAvailable()` before writing and throws when encryption is unavailable. This is encrypted application storage backed by the platform's available protection, rather than a claim that every token is stored directly as a native keychain entry.\n\nThe implementation decrypts credentials into JavaScript strings when needed. After a successful AI request, it assigns an empty string to its local `apiKey` variable. That drops a reference; it does not prove that immutable string contents have been overwritten, removed from crash dumps or erased from every memory copy. A portfolio should describe this as limited reference cleanup, not guaranteed secret wiping.\n\n### AI data sharing is a separate decision\n\nThe current client supports Gemini, OpenAI, Anthropic and local-model endpoints, plus offline heuristic commit generation. Cloud generation checks an explicit consent setting before proceeding. The source also bounds the diff context, supports optional pattern-based redaction and passes a configured timeout to the selected provider.\n\nThose controls govern this AI workflow. They do not make Gemini the application's only outbound connection: Git hosting, remotes, other configured providers and update services have their own network paths. Pattern-based redaction can miss sensitive material, and a local endpoint's privacy depends on where and how it runs. Offline heuristics avoid a model request for that generation path but do not imply that every other Git operation is offline.\n\n### Evidence and limits\n\nAt the reviewed revision, the package manifest declares Electron ^39.2.6 and React ^19.2.1. The threat model records remaining constraints, including dependence on available OS-backed storage, process-local rate limits and release-signing/notarisation requirements. These are implementation controls with a defined scope, not a guarantee against arbitrary code execution or all credential disclosure.\n\nSources: [main-window configuration](https://github.com/Raoof128/GitSwitch/blob/5161409a0bc640b105c2a5438055b009425d6843/src/main/index.ts#L87-L106), [credential storage](https://github.com/Raoof128/GitSwitch/blob/5161409a0bc640b105c2a5438055b009425d6843/src/main/secure/key-manager.ts#L96-L132), [AI orchestration](https://github.com/Raoof128/GitSwitch/blob/5161409a0bc640b105c2a5438055b009425d6843/src/main/ai/commit-generate.ts#L163-L306), [manifest](https://github.com/Raoof128/GitSwitch/blob/5161409a0bc640b105c2a5438055b009425d6843/package.json#L71-L86) and [documented residual risks](https://github.com/Raoof128/GitSwitch/blob/5161409a0bc640b105c2a5438055b009425d6843/THREAT_MODEL.md#L216-L225).\n"
+    }
+  },
+  "notes": [
+    "Original project display years and article publication date retained; repository creation dates alone do not establish first development.",
+    "CI counts are historical executed-job results at pinned default-branch revisions, not new local test runs or an overall green pipeline.",
+    "Demo requests were blocked by the execution environment before origin; availability was not disproved."
+  ]
+}

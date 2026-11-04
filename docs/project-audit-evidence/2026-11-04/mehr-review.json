@@ -1,0 +1,165 @@
+{
+  "project": "mehr-guard",
+  "repository": "Raoof128/Raoof128.github.io",
+  "visibility": "public",
+  "head": "efa15aa4a854f68130f34fb37afbbf1a98af1571",
+  "headDateUTC": "2026-01-03T20:37:54Z",
+  "fieldAudit": {
+    "title": "retain",
+    "category": "retain",
+    "year": "original authored displayyear retained; startyear not inferred from copyright/commitdate",
+    "updatedAt": "set for substantive portfolio copy revision",
+    "links": "README andpinnedtree include publicwebdemo; remote HTTPcheckpending",
+    "stack": "retain names",
+    "features": "add decisionrule ensemblemodel; retain25+heuristics/19scenarios/5targets",
+    "problem": "retain",
+    "fullDescription": "scope on-device toanalysiscore",
+    "solution": "qualifybenchmarkscope",
+    "proof": "qualifyreportedresultsandofflineverification"
+  },
+  "sources": [
+    {
+      "path": "work/project-audit-2026-11-04/mehr-readme.md",
+      "repositoryPath": "README.md",
+      "sha256": "6aeafdac478be7ad0dfb5ecb6d91ca69311b03252675f163c26c7b1c2c7e43d0",
+      "lines": 460,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/README.md",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-docs-BENCHMARKS.md",
+      "repositoryPath": "docs/BENCHMARKS.md",
+      "sha256": "d3a054159dd363497e2a7cb83515f6254c780a445ad44f1645e01b2e527c7145",
+      "lines": 242,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/docs/BENCHMARKS.md",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-docs-EVALUATION.md",
+      "repositoryPath": "docs/EVALUATION.md",
+      "sha256": "9e1a39ed5849c1fbe438b3f830491774c60dcf4470bf10a2813b27255c5b693a",
+      "lines": 258,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/docs/EVALUATION.md",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-docs-SHARED_CODE_REPORT.md",
+      "repositoryPath": "docs/SHARED_CODE_REPORT.md",
+      "sha256": "4a6e6abc114ce7248b0fa89a7fc82f0443d53712b1269d06bd878ae70acbe712",
+      "lines": 205,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/docs/SHARED_CODE_REPORT.md",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-docs-ML_EVALUATION_METRICS.md",
+      "repositoryPath": "docs/ML_EVALUATION_METRICS.md",
+      "sha256": "977fa0fb4de37893f9c75cf206a48aa990395e52e00dfd1ad9b6832388de2b9a",
+      "lines": 222,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/docs/ML_EVALUATION_METRICS.md",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-judge-verify_offline.sh",
+      "repositoryPath": "judge/verify_offline.sh",
+      "sha256": "62c5799c40c11b3cc230e3cbd2208d5ec5673d7457035077663e3809a87b4329",
+      "lines": 36,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/judge/verify_offline.sh",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-offline-test.kt",
+      "repositoryPath": "common/src/commonTest/kotlin/com/raouf/mehrguard/core/OfflineOnlyTest.kt",
+      "sha256": "e80036b5dde4c11345ff02eb674bfafe09e9f9ab32f2437c648b734dcea3d88f",
+      "lines": 277,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/common/src/commonTest/kotlin/com/raouf/mehrguard/core/OfflineOnlyTest.kt",
+      "readCoverage": "full current pinned file read"
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-judge-verify_accuracy.sh",
+      "repositoryPath": "judge/verify_accuracy.sh",
+      "sha256": "a191560028c93d6cdc6a35dfd94d604e310e12e1fcd9670ba8342a8a46335d49",
+      "lines": 45,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/judge/verify_accuracy.sh",
+      "readCoverage": "Full pinned source read; script was not executed."
+    },
+    {
+      "path": "work/project-audit-2026-11-04/mehr-judge-verify_performance.sh",
+      "repositoryPath": "judge/verify_performance.sh",
+      "sha256": "e8f6268a9f2a0f0c20c3cef8d76d23df506ed64b51aec5399ed5e9876b887523",
+      "lines": 42,
+      "url": "https://github.com/Raoof128/Raoof128.github.io/blob/efa15aa4a854f68130f34fb37afbbf1a98af1571/judge/verify_performance.sh",
+      "readCoverage": "Full pinned source read; script was not executed."
+    }
+  ],
+  "findings": [
+    {
+      "id": "MG01",
+      "fields": [
+        "solution",
+        "proof",
+        "writeups.kmp-security",
+        "public/llms.txt",
+        "translated variants"
+      ],
+      "issue": "Latency is stated as <5msP99 across scans/platforms. Performance docs scope benchmarks to desktopJVM; judge performance script claims median<5ms andP99<50ms.",
+      "resolution": "Use reported sub-5ms desktop-JVM engine median; exclude camera/UI/end-to-end andunmeasuredplatforms. Do not assert universalP99."
+    },
+    {
+      "id": "MG02",
+      "fields": [
+        "secure.measures",
+        "proof",
+        "writeups.kmp-security"
+      ],
+      "issue": "OfflineOnlyTest explicitly cannot block/monitor network; it checks completion/consistency/timing. Currentarticle saysscriptassertszerooutboundconnections.",
+      "resolution": "Keep locallydesignedanalysiscore; describe verify_offline as shared-engine unit checks, not independent network-traffic attestation or whole-app network guarantee."
+    },
+    {
+      "id": "MG03",
+      "fields": [
+        "proof",
+        "writeup table",
+        "llms summary"
+      ],
+      "issue": "87%F1 is a repository-reported curated/synthetic URL corpus result. Other ML documentation reports conflicting0.905/0.96 scores.",
+      "resolution": "Attribute87% to README/EVALUATION curated corpus, no real-world/generalizationclaim; state source-metric inconsistency in audit, do not substitute larger metrics."
+    },
+    {
+      "id": "MG04",
+      "fields": [
+        "features",
+        "writeups.kmp-security"
+      ],
+      "issue": "Ensemble list omits decisionrules thirdmodel.",
+      "resolution": "Include logisticregression,gradientboostinganddecisionrules; sourceREADME."
+    }
+  ],
+  "proposedPatch": {
+    "updatedAt": "2026-11-04",
+    "description": "Offline QR and URL analysis core built with Kotlin Multiplatform for five platform targets. Local heuristics and an ensemble model inspect URL patterns without a cloud lookup during analysis.",
+    "solution": [
+      "Built a local URL-analysis core using Kotlin Multiplatform",
+      "Combined logistic regression, gradient boosting and decision rules with 25+ heuristic checks",
+      "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); the repository reports ~100% shared detection logic (~52% of total code)",
+      "Repository desktop-JVM benchmarks report sub-5ms median engine analysis; camera/UI latency and other platforms are outside that result"
+    ],
+    "proof": [
+      "Repository reports 87% F1 on a curated URL corpus; constructed patterns do not establish real-world detection accuracy",
+      "Performance evidence covers desktop-JVM engine analysis; sub-5ms median is not an all-platform or end-to-end P99 guarantee",
+      "Repository reports 1,248+ automated tests and 19 curated built-in red-team scenarios; counts were not rerun in this portfolio audit",
+      "./judge/verify_offline.sh invokes shared-engine unit checks; these tests are not an independent capture of outbound network traffic",
+      "Repository reports ~100% shared detection logic (~52% of total codebase)"
+    ],
+    "measures": [
+      "Local PhishingEngine analysis is designed without cloud URL lookups",
+      "On-device ML and heuristic scoring",
+      "Analysis does not require uploading the scanned URL",
+      "Offline unit checks exercise completion, determinism and timing; network interception is not independently verified"
+    ]
+  },
+  "limits": [
+    "No remote code executed or benchmarks independently reproduced.",
+    "ML source documentation internally inconsistent; conservative currentheadline attributed asreported.",
+    "Original projectstartyear is authored history, not inferred from sourcecommitdate."
+  ]
+}

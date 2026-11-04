@@ -1,0 +1,29 @@
+[
+  {
+    "path": "/contact",
+    "paneWidth": 320,
+    "browserWidth": 1440,
+    "contentWidth": 304,
+    "contentScrollWidth": 304,
+    "pageScrollWidth": 1440,
+    "headings": 1
+  },
+  {
+    "path": "/contact",
+    "paneWidth": 560,
+    "browserWidth": 1440,
+    "contentWidth": 544,
+    "contentScrollWidth": 544,
+    "pageScrollWidth": 1440,
+    "headings": 1
+  },
+  {
+    "path": "/contact",
+    "paneWidth": 800,
+    "browserWidth": 1440,
+    "contentWidth": 784,
+    "contentScrollWidth": 784,
+    "pageScrollWidth": 1440,
+    "headings": 1
+  }
+]

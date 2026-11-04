@@ -1,0 +1,50 @@
+{
+  "summary": {
+    "fa": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    },
+    "ar": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    },
+    "zh": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    },
+    "es": {
+      "articles": 7,
+      "proseLines": 192,
+      "changedLines": 125,
+      "reusedUnchangedLines": 67
+    }
+  },
+  "sourceRevisions": {
+    "project-simurgh-containment": "925f2c8a83d0d5700bcf031c594e870732df44a978cafd7c60939fc704f726b0",
+    "invisible-window-research": "9044796fb7bca49bb6ce4f0fc31def85a214249157c1e42943b92d5056fb3187",
+    "nanomatch-deep-dive": "bab8fd54ddb0054ce4879b49007fb34d23fa93cc823b890c00d97ed6adea8aef",
+    "sentinelflow-deep-dive": "26a48721f3d2ffc8e1523f2fea9e28380472461bb9451f106b4d889e68a43983",
+    "ecrsm-deep-dive": "1faa849045c344c861539fd3b15ac84c84a9241fb5947c6520c9f79e8c3cb1aa",
+    "kmp-security": "45f191c6a14c682a072b3160658c630d6d507b868126c051d72b0222e04831cb",
+    "electron-security": "389a1cb6a165c4d99587c0886c04749672536eed52a1161b855fbbca6aeac2d8"
+  },
+  "sourceProjectionMatchesFreeze": true,
+  "allDraftChecksPassed": true,
+  "codeExampleChanges": [
+    {
+      "slug": "sentinelflow-deep-dive",
+      "initial": [
+        "```\nalert tcp any any -> any 22 (msg:\"SSH brute force\"; flags:S; threshold:10,60; sid:2001;)\n```"
+      ],
+      "final": [
+        "```text\nalert tcp any any -> any 22 (msg:\"SSH connection attempt\"; sid:1001;)\n```"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "source_hash_matches_record": true,
+  "public_hash_matches_record": true,
+  "source_pages": 2,
+  "public_pages": 2,
+  "phone_absent_fitz_text": true,
+  "phone_absent_pdftotext": true,
+  "phone_absent_metadata_xml": true,
+  "phone_absent_decoded_objects_and_streams": true,
+  "no_tel_uri_links": true,
+  "phone_absent_link_targets": true,
+  "second_page_text_identical": true,
+  "second_page_pixels_identical": true,
+  "public_copy_bytes": 116563,
+  "public_sha256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+  "source_sha256": "753a7e412ca4c0f37b4fba01f0288f875cadd613fcb15d7fc23c7871d451b56d",
+  "metadata_keys_reviewed": [
+    "author",
+    "creationDate",
+    "creator",
+    "encryption",
+    "format",
+    "keywords",
+    "modDate",
+    "producer",
+    "subject",
+    "title",
+    "trapped"
+  ],
+  "public_uri_count": 0,
+  "all_other_substantive_text_preserved_ignoring_decorative_separators": true,
+  "non_number_extraction_delta": [
+    {
+      "kind": "delete",
+      "source_without_number": " \u00b7 \u00b7",
+      "public": ""
+    }
+  ],
+  "exact_text_comparison_note": "Only authorised adjacent decorative separators differ after removing contact number; exact whitespace/separator comparison is not the substantive-text comparison.",
+  "strict_text_equal_after_single_separator_collapse": false,
+  "first_page_pixels_changed_outside_redaction_with_1pt_margin": 0,
+  "first_page_pixels_changed_inside_authorised_redaction": 813,
+  "first_page_render_scale": 2
+}

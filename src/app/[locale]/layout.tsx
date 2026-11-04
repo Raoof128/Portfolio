@@ -132,7 +132,7 @@ export default async function RootLayout({
           addressRegion: "NSW",
           addressCountry: "AU",
         },
-        // Currently enrolled (degree runs to Nov 2026) → `affiliation`, not
+        // Currently enrolled (degree expected June 2027) → `affiliation`, not
         // `alumniOf`. Switch to `alumniOf` after graduation so machine facts
         // never claim a completed degree ahead of time.
         affiliation: {

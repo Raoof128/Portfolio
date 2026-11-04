@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 import { defaultLocale } from "@/i18n";
-import { formatDate, formatNumber } from "@/i18n/format";
+import { formatDate } from "@/i18n/format";
 import { getPageSupportCopy } from "@/lib/page-support-copy";
 import "@/components/os/supporting-apps.css";
 
@@ -41,6 +41,12 @@ export function AboutClient() {
   const { locale, t } = useTranslation();
   const contentId = useContentId();
   const copy = getPageSupportCopy(locale);
+  const monthYear = (date: string) =>
+    formatDate(date, locale, {
+      month: "long",
+      year: "numeric",
+      calendar: "gregory",
+    });
   const [photoSourceIndex, setPhotoSourceIndex] = useState(0);
   const [photoLoadFailed, setPhotoLoadFailed] = useState(false);
   const photoSource = PROFILE_PHOTO_SOURCES[photoSourceIndex];
@@ -286,9 +292,9 @@ export function AboutClient() {
 
       <dl className="os-about-stats">
         {[
-          { value: "70+", label: t.about.stats_projects },
+          { value: "5", label: t.about.stats_preprints },
           { value: "100%", label: t.about.stats_evasion },
-          { value: "3+2", label: t.about.stats_vendors },
+          { value: "2", label: t.about.stats_vendors },
         ].map((stat) => (
           <div key={stat.label}>
             <dt>{stat.label}</dt>
@@ -381,41 +387,28 @@ export function AboutClient() {
         <h2 id={contentId("about-education")}>{t.about.education}</h2>
         <div className="os-about-education">
           <article>
-            <span className="os-support-eyebrow" dir="ltr">
-              {formatNumber(2024, locale, { useGrouping: false })}–
-              {formatNumber(2026, locale, { useGrouping: false })}
+            <span className="os-support-eyebrow">
+              <time dateTime="2024-05">{monthYear("2024-05-01")}</time> –{" "}
+              <time dateTime="2027-06">{monthYear("2027-06-01")}</time>
             </span>
             <h3>{t.about.degree_bachelor}</h3>
             <p>
               {t.resume.expected_completion}:{" "}
-              <time dateTime="2026-11">
-                {formatDate("2026-11-01", locale, {
-                  month: "long",
-                  year: "numeric",
-                  calendar: "gregory",
-                })}
+              <time dateTime="2027-06">
+                {monthYear("2027-06-01")}
               </time>
             </p>
-            <p>
-              {copy.university} · {copy.weightedAverage}{" "}
-              <bdi>
-                {formatNumber(76.27, locale, { minimumFractionDigits: 2 })}
-              </bdi>
-            </p>
+            <p>{copy.university}</p>
+            <p>{t.resume.education_final_session}</p>
             <p>{t.about.degree_bachelor_courses}</p>
           </article>
           <article>
-            <span className="os-support-eyebrow" dir="ltr">
-              {formatNumber(2023, locale, { useGrouping: false })}–
-              {formatNumber(2024, locale, { useGrouping: false })}
+            <span className="os-support-eyebrow">
+              <time dateTime="2023-07">{monthYear("2023-07-01")}</time> –{" "}
+              <time dateTime="2024-05">{monthYear("2024-05-01")}</time>
             </span>
             <h3>{t.about.degree_diploma}</h3>
-            <p>
-              {copy.university} · {copy.weightedAverage}{" "}
-              <bdi>
-                {formatNumber(71.75, locale, { minimumFractionDigits: 2 })}
-              </bdi>
-            </p>
+            <p>{copy.university}</p>
             <p>{t.about.degree_diploma_desc}</p>
           </article>
         </div>

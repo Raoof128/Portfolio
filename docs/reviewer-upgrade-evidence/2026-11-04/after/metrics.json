@@ -1,0 +1,54 @@
+[
+  {
+    "name": "desktop",
+    "route": "/",
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "lcp": 392,
+      "cls": 0.0002493075314536179
+    },
+    "scrollWidth": 1440,
+    "mainText": "Research Highlights\n\nMohammad\nRaouf Abedini.\n\nAI Security Researcher\n\nI build systems to understand and contain the risks of agentic AI. This is my workspace for research, engineering, and ideas.\n\nExplore Research\nView Résumé PDF\nContact\nWhere the evidence connects\n\nProof Atlas · Selected research\n\nAgent\nInput\nContext\nTool gate\nOutput\nProject Simurgh\nInvisible Window\nProject Zurvan\n\nAn agent passes four defensive boundaries. Each emits signed evidence for an independent offline review.\n\nArchitec",
+    "errors": []
+  },
+  {
+    "name": "tablet",
+    "route": "/",
+    "width": 768,
+    "height": 1024,
+    "metrics": {
+      "lcp": 300,
+      "cls": 0.0005777524008105199
+    },
+    "scrollWidth": 768,
+    "mainText": "Research Highlights\n\nMohammad\nRaouf Abedini.\n\nAI Security Researcher\n\nI build systems to understand and contain the risks of agentic AI. This is my workspace for research, engineering, and ideas.\n\nExplore Research\nView Résumé PDF\nContact\nWhere the evidence connects\n\nProof Atlas · Selected research\n\nAgent\nInput\nContext\nTool gate\nOutput\nProject Simurgh\nInvisible Window\nProject Zurvan\n\nAn agent passes four defensive boundaries. Each emits signed evidence for an independent offline review.\n\nArchitec",
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "route": "/",
+    "width": 390,
+    "height": 844,
+    "metrics": {
+      "lcp": 260,
+      "cls": 0
+    },
+    "scrollWidth": 390,
+    "mainText": "Research Highlights\n\nMohammad\nRaouf Abedini.\n\nAI Security Researcher\n\nI build systems to understand and contain the risks of agentic AI. This is my workspace for research, engineering, and ideas.\n\nExplore Research\nView Résumé PDF\nContact\nWhere the evidence connects\n\nProof Atlas · Selected research\n\nAgent\nInput\nContext\nTool gate\nOutput\nProject Simurgh\nInvisible Window\nProject Zurvan\n\nAn agent passes four defensive boundaries. Each emits signed evidence for an independent offline review.\n\nArchitec",
+    "errors": []
+  },
+  {
+    "name": "rtl",
+    "route": "/fa",
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "lcp": 604,
+      "cls": 0.000916015105908136
+    },
+    "scrollWidth": 1440,
+    "mainText": "برگزیده‌های پژوهش\n\nمحمد\nرؤوف عابدینی.\n\nپژوهشگر امنیت هوش مصنوعی\n\nسیستم‌هایی می‌سازم تا خطرهای هوش مصنوعی عامل‌محور را بشناسم و مهار کنم. اینجا فضای کار من برای پژوهش، مهندسی و ایده‌هاست.\n\nکاوش در پژوهش‌ها\nرزومه انگلیسی (PDF)\nتماس\nپیوند میان شواهد\n\nاطلس شواهد · پژوهش منتخب\n\nعامل\nورودی\nزمینه\nدروازه ابزار\nخروجی\nپروژه سیمرغ\nپنجره نامرئی\nپروژه زروان\n\nعامل از چهار مرز دفاعی عبور می‌کند. هر مرز شواهدی امضاشده برای بازبینی مستقل آفلاین ارائه می‌دهد.\n\nنقشه‌ای از معماری و اجزای مستند است؛ هیچ رد اجرای واق",
+    "errors": []
+  }
+]

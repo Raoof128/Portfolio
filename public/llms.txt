@@ -1,42 +1,65 @@
 # Mohammad Raouf Abedini - AI Security Research Portfolio
 
-> Last updated: 2026-10-11. Full machine-readable corpus (every project, write-up,
+> Last updated: 2026-11-04. Full machine-readable corpus (every project, write-up,
 > lab experiment, paper): https://raoufabedini.dev/llms-full.txt
 
 ## Identity
+
 Name: Mohammad Raouf Abedini (Raouf)
-Role: AI Security Researcher · LLM Agent Red-Teaming · Offensive and Defensive Security Engineering
-Location: Sydney, Australia · Ready to relocate now to San Francisco, CA · Travel-ready (Washington, DC) · Visa sponsorship required
-Focus: Measuring and containing the cyber capabilities of frontier AI; verifiable containment attestation for agentic AI; LLM agent red-teaming; offensive and defensive security engineering.
+Role: AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation
+Location: Sydney, Australia · Relocating to San Francisco, CA · Visa sponsorship required
+Availability: Full-time from December 2026 for a three- to six-month San Francisco research placement
+Focus: Host-side authorisation for tool-using AI agents, matched-control safety evaluation, adversarial robustness and AI control.
 
 ## Summary
-Raouf builds systems to measure and contain frontier AI's cyber capabilities. He created Project Simurgh, a provider-agnostic framework that red-teams LLM agents and produces Ed25519-signed, offline-verifiable evidence after a guardrail miss. Reported tests contained 138/138 cases missed by Llama Guard 4 and reduced a live AgentDojo agent's targeted attack success from 9/140 to 0/140. He evaluated Claude outputs for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program via Alignerr. His detection work includes on-device phishing ML at 87% F1 and real-time intrusion detection at 500K+ packets/sec. He co-founded an incubator-backed campus AI startup and has shipped 70+ projects.
+
+Raouf builds and tests controls for what an AI agent is permitted to do. He is the sole author of Project Simurgh, an inspectable host-side authorisation prototype. Its October 2026 transfer study reports a benefit on Llama-3.2-3B and a null result on gpt-6-luna; those results are published together. He evaluated Claude for exploitable code and guardrail circumvention in Anthropic's safety-evaluation program via Alignerr. He reports five sole-author preprints, coordinated disclosures to Microsoft and Apple, and seven years in security operations and engineering. Cofounder of Syllabus-Sync, a Macquarie University Incubator startup, leading its security backend.
 
 ## Core Competencies (Keywords)
+
 - AI / Agent Security: LLM agent red-teaming, prompt-injection & jailbreak-consequence containment, tool-use authority gating, guardrail & classifier evaluation, adversarial test generation, AgentDojo, Claude Computer Use.
 - Security Research: vulnerability research and responsible disclosure, exploit-chain replay, threat modelling, threat-actor TTP profiling, MITRE ATT&CK, digital forensics, OSINT.
 - Engineering: C/C++17/20, TypeScript, Python, Bash, Docker, Terraform, PostgreSQL, GitHub Actions CI/CD, Linux, Ed25519 attestation.
 
 ## Featured Research & Projects
-1. Project Simurgh (FLAGSHIP): Provider-agnostic verifiable containment-attestation framework for agentic AI. Ed25519-signed, offline-reproducible evidence across four containment boundaries (input firewall, context-provenance guard, tool-invocation gate, output-leakage firewall) under a dishonest-producer threat model. Contained 138/138 classifier-missed cases against a real Llama Guard 4 (12B); cut a live Llama-3.3-70B agent's attack success from 9/140 to 0/140 on AgentDojo (0/949 attack-success on the full four-suite deterministic run); five machine-checked Lean theorems; 3,057 tests. AGPL-3.0. DOI: 10.5281/zenodo.20374849.
-2. The Invisible Window: IEEE-format vulnerability research demonstrating 100% screen-capture evasion in tested Windows 10/11 and macOS 14-26 laboratory configurations using documented display-affinity APIs; responsibly disclosed. Configurations were simulated; commercial proctoring products and Linux were not tested. macOS 26 used native capture tools rather than browser getDisplayMedia(). Findings reflect versions tested as of March 2026. DOI: 10.5281/zenodo.20376495.
-3. Aion-BibleQA: RAG citation-faithfulness & adversarial-robustness benchmark (40 questions); R@5 = 0.941, zero unsupported citations, 6/6 false-premise refusals. DOI: 10.5281/zenodo.20522874.
-4. Project Zurvan: Local-first LLM knowledge engine extracting structured claims, concepts, entities, and decisions from documents, exposed to AI agents via an MCP stdio server. Python, SQLite FTS5 + embeddings, 218 tests. Source repository is private; contact the author to request access.
-5. Syllabus-Sync: Agent-readable campus-AI platform accepted into the Macquarie University startup incubator as a formal startup. Next.js 16, Supabase, WebAuthn passkeys, 503 tests across 92 files. Live at syllabus-sync.app.
-6. Mehr Guard: Privacy-first offline phishing & QR/URL threat scanner. Kotlin Multiplatform (5 targets), ensemble ML + 25+ heuristics, 87% F1, sub-5ms latency, 1,248+ tests, and a 19-scenario built-in red-team suite.
-7. SentinelFlow: Real-time C++ intrusion detection system parsing 500K+ packets/sec (single-thread parse) with signature and stateful detection of port scans, SYN floods, and DNS tunnelling.
-8. NanoMatch: C++20 limit-order-book matching engine at 1M+ orders/sec (single-thread, synthetic benchmark) with O(1) cancellation.
-9. eBPF Cloud Runtime Security Monitor (ECRSM): Educational read-only runtime visibility stack using kernel eBPF tracepoints, a Go agent, and a React dashboard.
+
+1. Project Simurgh (FLAGSHIP): Host-side agent authorisation. October 2026 transfer study: 24 tasks, two trials, three controls, two models, 288 replayed branches. Llama-3.2-3B restricted trials with new effects 17/24→0/24 and useful completions 23/24; gpt-6-luna baseline 0/24, no incremental protection. Six-state clustering, Wilson 95% intervals 43.6–97.0% versus 0.0–39.0%, and partly-by-construction differences limit inference. OpenAI role defect declined 8/8 workflows; frozen correction completed 2/3 authorised and declined 5/5 restricted, one refusal open. Current archives use SHA-256 file/source manifests; earlier frozen attestations use Ed25519. Repository has 39 Lean 4 proof-model files, not 39 implementation-correctness theorems; 5,171 tests passed on 19 Oct 2026, 92 releases. Current replay needs native Linux x86_64 and Python 3.12, with dependencies installed before offline replay. Software DOI 10.5281/zenodo.21737792 differs from original preprint 10.5281/zenodo.20374849. Earlier live AgentDojo 140-case attack success 9/140→0/140 came with benign utility 7/10→6/10. Separate deterministic run: attack success 0/949, utility under attack 949/949, benign utility 97/97.
+2. The Invisible Window: IEEE-format research reporting 100% capture evasion in tested Windows 10/11 and macOS 14–26 laboratory configurations. Configurations were simulated; commercial proctoring products and Linux were not tested. macOS 26 used native capture tools rather than browser getDisplayMedia(). Results reflect March 2026 versions. Microsoft and Apple classified the reported behavior as by-design/documented functionality, not a security vulnerability. The current public repository contains Windows/macOS PoC source and harnesses; the original paper retains its historical source-withheld text. DOI 10.5281/zenodo.20376495.
+3. Aion-BibleQA: Reference-aware Bible RAG with Gemini 3.1 Flash Lite. Reported 40-question pilot: 34 answerable retrieval questions and 6 refusals, R@5 = 0.941, mean citation_support = 0.978, 6/6 refusals. A single automated judge scored no answer rows below citation_support < 0.5; two flagged rows remained at 0.75 and 0.50. This does not establish hallucination-free answers. Chat/embedding credentials are server-side; optional native voice uses a separate client credential. DOI 10.5281/zenodo.20522874.
+4. Project Zurvan: Public local-first knowledge engine with Python ingestion/write bridge, Rust MCP reads, SQLite FTS5/vector retrieval and configured local or cloud LLM extraction. Images are pending-visual stubs, not automatic OCR. The 20 October 2026 merged-main receipt reports 3,334 passed, 1 failed, 8 skipped; Z1b sealed-evaluation closure remains open. These are committed receipts, not a fresh test run.
+5. Syllabus-Sync: Independent student planning/campus platform co-founded through the Macquarie University Incubator. Next.js 16, React 19, Supabase and WebAuthn. The 17 August 2026 CI test job passed 1,343 tests across 155 files; its separate security job failed, so this is not an overall pipeline pass. Configured page routes/non-public APIs have authentication gates with explicit public exceptions. Demo URL: https://www.syllabus-sync.app/.
+6. Mehr Guard: Local QR/URL analysis core for 5 Kotlin Multiplatform targets, ensemble model and 25+ heuristics. Repository reports 87% F1 on a curated corpus, 1,248+ tests and 19 red-team scenarios. Sub-5 ms median applies to desktop-JVM engine analysis, excluding camera/UI and unmeasured platforms. Offline unit checks are not independent network-traffic attestation.
+7. SentinelFlow: C++17/libpcap IDS with 7 protocol parsers and fixed stateful scan/SYN-flood/DNS heuristics. Reported 28.4M packets/s is a single-thread synthetic SYN-ACK packet-header parsing benchmark over 5M repeated packets, not full IDS throughput. Threshold options parse but their rules are skipped by the signature matcher; the published example demonstrates a supported connection alert.
+8. NanoMatch: C++20 matching engine. Repository reports 9.29M mixed add/cancel operations/s over 5M synthetic operations, single thread, Apple M-series Release build. Order-ID lookup is expected O(1); end-to-end cancellation includes an O(log M) price-level lookup. Reported insertion-latency percentiles time add_order, not cancellation; the standalone pool benchmark is not a zero-allocation hot-path guarantee.
+9. ECRSM: Defensive educational eBPF/perf-event/Go/SSE/React scaffold. The current Go entrypoint loads the event map but does not attach the kernel hooks; complete live capture is not established. Helm deployment is privileged and uses hostPID and BPF/SYS_ADMIN/SYS_PTRACE capabilities; this is not a capabilities-only least-privilege deployment.
+10. GitSwitch: Multi-identity Git client with declared Electron 39/React 19 dependencies. Gemini, OpenAI, Anthropic, local-model and offline commit generation. Main-process safeStorage encrypts credential files when available; cloud consent/redaction and bounded requests are implemented. JavaScript reference clearing is best effort, not secure memory erasure.
+11. Divan Open Day: English/Persian poetry experience for a Persian Society stall. Verified release/cache state enables offline use. Application code has no visitor form, tracking cookies or analytics endpoint; hosting/network connection data is a separate boundary. The July 2026 corpus report records 60 Hafez and 60 Rumi records; this is not cultural or manual accessibility certification.
+12. Nexus Archive: React/Litestar/Supabase media vault and job tracker. Takeaway-note Fernet encryption requires configuration. Backend HttpOnly cookies coexist with browser-visible bearer tokens; no whole-app frontend-token-isolation claim is made. CI definitions are evidence of configured checks, not a demonstrated green HEAD run.
+13. SimurghForge: Tauri v2/Rust/React 19 local file converter with 9 engine variants. CLI-backed conversions require installed tools. Backend limits: 50 files and 1–8 concurrent jobs. Supported conversions depend on the input/output pair and available engines; no blanket 49-format guarantee is asserted.
 
 ## Professional Experience
+
 - AI Safety Evaluator, Claude, Alignerr (Anthropic AI safety-evaluation program), Jan–Mar 2026.
+- Cofounder, Syllabus-Sync, Macquarie University Incubator startup, May 2026 – Present; security backend including WebAuthn, TOTP MFA, Postgres RLS and audit logging.
 - Freelance Security Engineer & Full-Stack Developer, Self-Employed, Jan 2024 – Present.
-- IT Manager & Security Operations, Iran Pharmacy, 2019–2024.
+- IT Manager & Security Operations, Iran Pharmacy, Aug 2019 – Jan 2024.
+
+## Education
+
+- Bachelor of Cyber Security, Macquarie University; expected June 2027. Final session February–June 2027 is fully online.
+- Diploma of Information Technology, Macquarie University, July 2023 – May 2024.
+
+## Further systems work
+
+- SentinelSSH: Rust MCP server for policy-scoped, read-only Linux-host inspection through 17 typed tools and no shell; no repository URL asserted.
+- Self-audit: 919 Simurgh documents reviewed and all 141 dated findings published, including prior overstatements.
 
 ## Philosophy
+
 Focus: privacy by design, local-first processing, and security from design through deployment. Current work measures and contains the cyber capabilities of frontier AI.
 
 ## Contact
+
 Website: https://raoufabedini.dev
 Email (professional): raoof.r12@gmail.com
 Security reports (RFC 9116): raoof.r999@outlook.com · https://raoufabedini.dev/.well-known/security.txt
@@ -46,6 +69,7 @@ X (Twitter): https://x.com/Raoofr12
 ORCID: https://orcid.org/0009-0000-6214-258X
 
 ## Canonical Links (Markdown)
+
 - [Homepage](https://raoufabedini.dev/)
 - [Résumé](https://raoufabedini.dev/resume) · [Résumé PDF](https://raoufabedini.dev/Mohammad_Raouf_Abedini_Resume.pdf)
 - [Projects](https://raoufabedini.dev/projects) · [Write-ups](https://raoufabedini.dev/write-ups) · [Lab](https://raoufabedini.dev/lab)
@@ -53,7 +77,7 @@ ORCID: https://orcid.org/0009-0000-6214-258X
 - [GitHub](https://github.com/Raoof128) · [LinkedIn](https://linkedin.com/in/mohammad-raouf-abedini-885a9226a) · [ORCID](https://orcid.org/0009-0000-6214-258X)
 
 ### Flagship projects
-- [Project Simurgh](https://raoufabedini.dev/projects/project-simurgh) · repo https://github.com/Raoof128/Project-Simurgh · DOI [10.5281/zenodo.20374849](https://doi.org/10.5281/zenodo.20374849)
+- [Project Simurgh](https://raoufabedini.dev/projects/project-simurgh) · repo https://github.com/Raoof128/Project-Simurgh · software DOI [10.5281/zenodo.21737792](https://doi.org/10.5281/zenodo.21737792) · original device-integrity preprint DOI [10.5281/zenodo.20374849](https://doi.org/10.5281/zenodo.20374849)
 - [The Invisible Window](https://raoufabedini.dev/projects/invisible-window-research) · DOI [10.5281/zenodo.20376495](https://doi.org/10.5281/zenodo.20376495)
 - [Aion-BibleQA](https://raoufabedini.dev/projects/aion) · DOI [10.5281/zenodo.20522874](https://doi.org/10.5281/zenodo.20522874)
 - [Project Zurvan](https://raoufabedini.dev/projects/project-zurvan)

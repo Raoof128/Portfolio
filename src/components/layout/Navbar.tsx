@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Terminal, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useId, useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/i18n/provider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -14,6 +14,8 @@ export function Navbar() {
   const pathname = usePathname();
   const { locale, t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileMenuId = useId();
+  const mobileToggle = useRef<HTMLButtonElement>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -47,6 +49,13 @@ export function Navbar() {
 
   return (
     <nav
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && mobileOpen) {
+          event.preventDefault();
+          setMobileOpen(false);
+          mobileToggle.current?.focus();
+        }
+      }}
       className={cn(
         "fixed top-0 left-0 right-0 z-40 border-b h-16 transition-all duration-300",
         scrolled
@@ -112,11 +121,13 @@ export function Navbar() {
         <div className="flex items-center gap-4 md:hidden">
           <LanguageSwitcher />
           <button
+            ref={mobileToggle}
+            type="button"
             className="p-2 text-text-body hover:text-cyan"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? t.nav.close_menu : t.nav.open_menu}
             aria-expanded={mobileOpen}
-            aria-controls="mobile-menu"
+            aria-controls={mobileMenuId}
           >
             {mobileOpen ? (
               <X aria-hidden="true" />
@@ -131,7 +142,7 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            id="mobile-menu"
+            id={mobileMenuId}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

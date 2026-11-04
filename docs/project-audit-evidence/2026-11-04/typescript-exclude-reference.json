@@ -1,0 +1,6 @@
+{
+  "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/tsconfig-reference/copy/en/options/exclude.md",
+  "blobSHA": "23f921c0abcd87444fe7c102d13539e3e00a3b47",
+  "content": "---\ndisplay: \"Exclude\"\noneline: \"Filters results from the [`include`](#include) option.\"\n---\n\nSpecifies an array of filenames or patterns that should be skipped when resolving [`include`](#include).\n\n**Important**: `exclude` _only_ changes which files are included as a result of the [`include`](#include) setting.\nA file specified by `exclude` can still become part of your codebase due to an `import` statement in your code, a `types` inclusion, a `/// <reference` directive, or being specified in the [`files`](#files) list.\n\nIt is not a mechanism that **prevents** a file from being included in the codebase - it simply changes what the [`include`](#include) setting finds.\n",
+  "decision": "Exclude local work scratch directory from broad TypeScript include discovery. Application imports remain checked. Aligns with existing ESLint/Vitest scratch boundaries; source/audit captures are not application modules."
+}

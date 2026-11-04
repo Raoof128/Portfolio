@@ -1,0 +1,157 @@
+[
+  {
+    "path": "eslint.config.mjs",
+    "bytes": 1383,
+    "sha256": "16e9c408053f73749310e259131778f0c4bc44953bdff951d7ef3c7d30240070"
+  },
+  {
+    "path": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+    "bytes": 629750,
+    "sha256": "deb6da26ebd0ab540dc6404cca5d49eb7338aba0e4111dccb1686bd620461ece"
+  },
+  {
+    "path": "public/llms.txt",
+    "bytes": 11071,
+    "sha256": "692a010c0c05eb5997813297bfde4be5bea3aa2eb5bf4366c4b4bbcb57317782"
+  },
+  {
+    "path": "scripts/browser-regressions/playwright/project-content.spec.ts",
+    "bytes": 7263,
+    "sha256": "feabb77768acdff11a1dccb90e136dc01f37a454189397067ffb17cbf390d005"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx",
+    "bytes": 16793,
+    "sha256": "aa96f2af0e2f8d1780d504569e72ccf472b199d24e452a89abbc5ca859ee346c"
+  },
+  {
+    "path": "src/app/[locale]/projects/[slug]/page.tsx",
+    "bytes": 7271,
+    "sha256": "d9b590fbfb19af66bd463469266d542159abab0c59a5c985deff7c60f5059424"
+  },
+  {
+    "path": "src/app/llms-full.txt/route.ts",
+    "bytes": 9629,
+    "sha256": "a80d5e296037810ae45f4da194767e1097d932a92859b83437ac839e351923ab"
+  },
+  {
+    "path": "src/components/os/EvidenceStory.test.tsx",
+    "bytes": 17111,
+    "sha256": "c3c0904435c1d47e1fc6ca49e8587caf0a4c4c0db80d2f6d3a34bef6894cc4bd"
+  },
+  {
+    "path": "src/i18n/locales/ar.ts",
+    "bytes": 38387,
+    "sha256": "eca67ccadc9d24117e3d50725a65d842cacb210c50fb60d8fdc629371f5dc40c"
+  },
+  {
+    "path": "src/i18n/locales/en.ts",
+    "bytes": 28483,
+    "sha256": "269419d7fcf1e54c79343973292110b6d4075c52258ae9db3a3f2ddd1d45d3d4"
+  },
+  {
+    "path": "src/i18n/locales/es.ts",
+    "bytes": 32222,
+    "sha256": "ded21ef79de96c7a53f57822b03e303e0095f3991aac61d47df2b5ca959c9287"
+  },
+  {
+    "path": "src/i18n/locales/fa.ts",
+    "bytes": 40174,
+    "sha256": "dc36bdf7fdade5e66557a3e463eba6611130bfcfc80ffacf2d785e1b349e4df3"
+  },
+  {
+    "path": "src/i18n/locales/locales.test.ts",
+    "bytes": 14335,
+    "sha256": "332ba6fa251ef53ca7d13b1dd95c6e6469cf279bfcf5ebdba25ee3b7e28dbdab"
+  },
+  {
+    "path": "src/i18n/locales/zh.ts",
+    "bytes": 26325,
+    "sha256": "e87fc35864ca185f56efbb788e6eabb812955ac51bb8f702f0d8f4c603729ef2"
+  },
+  {
+    "path": "src/lib/content-integrity.test.tsx",
+    "bytes": 4505,
+    "sha256": "67ab6877c2b90ec8a6bc296ddaeffc09ec48e3b24904170e90ad5c879453c7f5"
+  },
+  {
+    "path": "src/lib/data.test.ts",
+    "bytes": 12158,
+    "sha256": "c5ccca86497f9ea0e51f0b6319b98476c3ea30a91c137f762c839aaa97b60679"
+  },
+  {
+    "path": "src/lib/data.ts",
+    "bytes": 102558,
+    "sha256": "c5f7341453f326a55d95d497efa8b4632c8545f04b383c0264edc844ca71e43a"
+  },
+  {
+    "path": "src/lib/localized-pages.test.ts",
+    "bytes": 7348,
+    "sha256": "57d2d04a8928547a1f2787d0ebf37a0fa078bfca3abdb205dd5e662025f4b3ce"
+  },
+  {
+    "path": "src/lib/project-content/ar.ts",
+    "bytes": 71090,
+    "sha256": "10ef607b1bfd5ef9e1318c63ab81456aed79abf105a58369698de0d098b04ef0"
+  },
+  {
+    "path": "src/lib/project-content/diagram-copy.ts",
+    "bytes": 10152,
+    "sha256": "3819a12377b9a3e6b134546ce4ba89b4832fb2525f1d3bb63444bd8ee49076b6"
+  },
+  {
+    "path": "src/lib/project-content/dossier-copy.ts",
+    "bytes": 19485,
+    "sha256": "e50b3037f3bcd7774dfe156124dc45cd2869b5c2f9ac9c73ccc71e30fc5caa0d"
+  },
+  {
+    "path": "src/lib/project-content/es.ts",
+    "bytes": 57290,
+    "sha256": "66d674199a97de1e44cb4248a7ef95223eca4726d36e464e8324af0139359649"
+  },
+  {
+    "path": "src/lib/project-content/evidence-story-copy.ts",
+    "bytes": 39988,
+    "sha256": "c7bbb525fc95d9e78ff5306adb6f899bb685ba22190b43c70cef06ef45675bd5"
+  },
+  {
+    "path": "src/lib/project-content/fa.ts",
+    "bytes": 76943,
+    "sha256": "473df0748e5fe47301e41cdb0f62ac04ba553cbbbc141c6c6d1c05186c8ce6e7"
+  },
+  {
+    "path": "src/lib/project-content/zh.ts",
+    "bytes": 46031,
+    "sha256": "856f76e7ad64ab8c56e3873e2851ed015615d52050f54355befc09a7d6e4c37d"
+  },
+  {
+    "path": "src/lib/writing-translations/ar.json",
+    "bytes": 47700,
+    "sha256": "90b4262dc39b93584aa1cd8b70def782a87657d9194d7120c32e6da2c286689c"
+  },
+  {
+    "path": "src/lib/writing-translations/es.json",
+    "bytes": 38541,
+    "sha256": "418204f4922ce87f1fb4b096993cb7a1b89c85068471d63db1710990fd049e6f"
+  },
+  {
+    "path": "src/lib/writing-translations/fa.json",
+    "bytes": 52837,
+    "sha256": "35fcae901d35a62f106aa8b954b30af4129c51cc9b434b1348128250f22007eb"
+  },
+  {
+    "path": "src/lib/writing-translations/source-revision.json",
+    "bytes": 658,
+    "sha256": "059ed9ca0228b6ef1821b9bab4331768b854aba169bf872e65a053bda057756e"
+  },
+  {
+    "path": "src/lib/writing-translations/zh.json",
+    "bytes": 31757,
+    "sha256": "b9e166d9013eb24c78dd472738784aec8bec239eb4e6393f10dc9f190cbcd522"
+  },
+  {
+    "path": "tsconfig.json",
+    "bytes": 678,
+    "sha256": "a60ea1aba9a9241999d11525cbb0aff6b6a4b462819399fd32981de773ef2677"
+  }
+]

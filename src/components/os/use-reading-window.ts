@@ -157,6 +157,11 @@ export function useReadingWindow(
     null,
   );
   const readingOffset = useRef(options.initialReadingOffset ?? 0);
+  // A retained frame changes documents without remounting this hook. Its geometry
+  // follows the frame; the saved reading point belongs to the document being shown.
+  useLayoutEffect(() => {
+    readingOffset.current = options.initialReadingOffset ?? 0;
+  }, [path, options.initialReadingOffset]);
   const previousLayout = useRef({
     path,
     floating: false,

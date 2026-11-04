@@ -1,0 +1,270 @@
+{
+  "phase": "complete; parent final build/browser integration pending",
+  "files": [
+    {
+      "path": "work/full-frontend-audit/uploaded-resume.txt",
+      "sha256": "9d460cb87a48c9d1af85be92b7eee8bebfca811535e71ec8a59ab711a4090c1c",
+      "bytes": 8848,
+      "lines": 100,
+      "initialReadSpans": [
+        [
+          1,
+          100
+        ]
+      ],
+      "finalSha256": "9d460cb87a48c9d1af85be92b7eee8bebfca811535e71ec8a59ab711a4090c1c",
+      "finalLines": 100,
+      "changed": false,
+      "finalReadSpans": [],
+      "finalCoverage": "Initial complete read carried forward only after identical SHA-256."
+    },
+    {
+      "path": "work/full-frontend-audit/uploaded-profile.txt",
+      "sha256": "b7affb7eac1f14fb160b402268f124862e8073b9c14224dd1ed032a872a3493b",
+      "bytes": 7604,
+      "lines": 123,
+      "initialReadSpans": [
+        [
+          1,
+          123
+        ]
+      ],
+      "finalSha256": "b7affb7eac1f14fb160b402268f124862e8073b9c14224dd1ed032a872a3493b",
+      "finalLines": 123,
+      "changed": false,
+      "finalReadSpans": [],
+      "finalCoverage": "Initial complete read carried forward only after identical SHA-256."
+    },
+    {
+      "path": "src/app/[locale]/resume/ResumeClient.tsx",
+      "sha256": "08054382b6a59d7a06d4952d307dd6232504c2ea9928f1342a75c56b3b588881",
+      "bytes": 15080,
+      "lines": 451,
+      "initialReadSpans": [
+        [
+          1,
+          451
+        ]
+      ],
+      "finalSha256": "cb4968632041874805e56c59fb902fc43b534838e9c28cc2234cd8fcacd5981c",
+      "finalLines": 490,
+      "changed": true,
+      "finalReadSpans": [
+        [
+          1,
+          490
+        ]
+      ],
+      "finalCoverage": "Full changed source reread after editing."
+    },
+    {
+      "path": "src/app/[locale]/resume/ResumeClient.test.tsx",
+      "sha256": "edb54d951d7138d116b42daf7d9fde45cb328332c6fdac31a69cf25b2bffb36a",
+      "bytes": 5571,
+      "lines": 143,
+      "initialReadSpans": [
+        [
+          1,
+          143
+        ]
+      ],
+      "finalSha256": "ec130c85b6333565193b74465c9e25f45027506aacc39cbb7f30f958286e4ada",
+      "finalLines": 196,
+      "changed": true,
+      "finalReadSpans": [
+        [
+          1,
+          196
+        ]
+      ],
+      "finalCoverage": "Full changed source reread after editing."
+    },
+    {
+      "path": "src/app/[locale]/resume/page.tsx",
+      "sha256": "591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30",
+      "bytes": 1476,
+      "lines": 53,
+      "initialReadSpans": [
+        [
+          1,
+          53
+        ]
+      ],
+      "finalSha256": "591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30",
+      "finalLines": 53,
+      "changed": false,
+      "finalReadSpans": [],
+      "finalCoverage": "Initial complete read carried forward only after identical SHA-256."
+    },
+    {
+      "path": "src/app/[locale]/about/AboutClient.tsx",
+      "sha256": "ecfcf45cb2c2e92bc04a68f7338dcb3bc052eff7620f4ce7aa43af5569b70e2b",
+      "bytes": 13679,
+      "lines": 425,
+      "initialReadSpans": [
+        [
+          1,
+          425
+        ]
+      ],
+      "finalSha256": "b698d008c8c12016daa344f60238eb01bd227e1feebbf7a2651b2e905568a6cc",
+      "finalLines": 418,
+      "changed": true,
+      "finalReadSpans": [
+        [
+          1,
+          418
+        ]
+      ],
+      "finalCoverage": "Full changed source reread after editing."
+    },
+    {
+      "path": "src/app/[locale]/about/AboutClient.test.tsx",
+      "sha256": "f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f",
+      "bytes": 1877,
+      "lines": 65,
+      "initialReadSpans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "finalSha256": "f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f",
+      "finalLines": 65,
+      "changed": false,
+      "finalReadSpans": [],
+      "finalCoverage": "Initial complete read carried forward only after identical SHA-256."
+    },
+    {
+      "path": "src/app/[locale]/about/page.tsx",
+      "sha256": "b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5",
+      "bytes": 2436,
+      "lines": 89,
+      "initialReadSpans": [
+        [
+          1,
+          89
+        ]
+      ],
+      "finalSha256": "b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5",
+      "finalLines": 89,
+      "changed": false,
+      "finalReadSpans": [],
+      "finalCoverage": "Initial complete read carried forward only after identical SHA-256."
+    }
+  ],
+  "updatedAtUTC": "2026-11-04T01:41:44.214460+00:00",
+  "lineCountMethod": "Python bytes.splitlines(), including PDF form-feed boundaries; full document content read.",
+  "decisions": [
+    {
+      "fact": "Bachelor of Cyber Security",
+      "before": "Expected November 2026",
+      "after": "May 2024\u2013expected June 2027; final February\u2013June 2027 session fully online",
+      "source": "Uploaded r\u00e9sum\u00e9 EDUCATION; uploaded profile Education and Summary"
+    },
+    {
+      "fact": "Diploma of IT",
+      "after": "July 2023\u2013May 2024 with semantic month-level time elements on both pages",
+      "source": "Uploaded profile Education; r\u00e9sum\u00e9 agrees on 2023\u20132024"
+    },
+    {
+      "fact": "Alignerr experience",
+      "after": "AI Safety Evaluator (Claude), January\u2013March 2026, Alignerr contractor for Anthropic evaluation program; professional experience, not research-resident employment",
+      "source": "Both uploaded documents"
+    },
+    {
+      "fact": "Syllabus-Sync experience",
+      "after": "Cofounder May 2026\u2013Present, Macquarie University Incubator startup; sourced security backend and product work",
+      "source": "Both uploaded documents"
+    },
+    {
+      "fact": "Availability",
+      "after": "Dictionary-owned December 2026 full-time three-to-six-month San Francisco placement; visa sponsorship required",
+      "source": "Uploaded r\u00e9sum\u00e9 summary and profile Summary"
+    },
+    {
+      "fact": "About statistics",
+      "after": "Five sole-author preprints and two coordinated vendor disclosures replace broad 70+ projects and ambiguous 3+2 vendors; tested-lab evasion remains scoped",
+      "source": "Both uploaded documents; existing research scope limitations retained"
+    },
+    {
+      "fact": "WAM",
+      "before": "76.27 and 71.75",
+      "after": "Removed precise public figures because no transcript or independent source found; omission from PDFs is not treated as evidence of falsity",
+      "source": "Neither uploaded document supplies WAM; repository search found figures only in AboutClient.tsx"
+    },
+    {
+      "fact": "Certifications",
+      "after": "Existing structured credential records and IDs retained, not fabricated from uploads; new r\u00e9sum\u00e9 corroborates20AnthropicJul2026courses and Macquarie2026microcredentials93\u2013100%; individual IDs not newly verified by PDFs",
+      "source": "Existing src/lib/certifications.ts and uploaded r\u00e9sum\u00e9 CERTIFICATIONS & CREDENTIALS"
+    },
+    {
+      "fact": "Phone",
+      "after": "No public HTML phone added while parent awaits user preference",
+      "source": "Parent instruction"
+    },
+    {
+      "fact": "Metadata",
+      "after": "No structural change: existing server templates derive normal/OG/Twitter copy and ProfilePage Person description from translated SEO dictionary keys; dictionary owner updating copy",
+      "source": "Full reads of about/page.tsx and resume/page.tsx"
+    }
+  ],
+  "checks": {
+    "focusedTests": {
+      "command": "vitest run 'src/app/[locale]/resume/ResumeClient.test.tsx' 'src/app/[locale]/about/AboutClient.test.tsx'",
+      "exitCode": 0,
+      "files": 2,
+      "tests": 23,
+      "log": "pages-reconciliation-tests.txt",
+      "startedAtUTC": "2026-11-04T01:40:27Z"
+    },
+    "targetedLint": {
+      "command": "eslint (six About/Resume page-family paths and full-audit.spec.ts)",
+      "exitCode": 0,
+      "log": "pages-reconciliation-lint.txt"
+    },
+    "finalHarnessLint": {
+      "exitCode": 0,
+      "log": "pages-reconciliation-harness-lint.txt"
+    },
+    "globalTypecheck": {
+      "command": "tsc --noEmit --incremental false",
+      "exitCode": 0,
+      "log": "pages-reconciliation-typecheck.txt"
+    },
+    "diffCheck": {
+      "command": "git diff --check (owned About/Resume families and new maintained harness)",
+      "exitCode": 0
+    },
+    "buildOrFullBrowser": "Not run in this lane; parent owns final compiled candidate validation."
+  },
+  "coordinatedDictionaryHashesAtChecks": {
+    "src/i18n/locales/en.ts": "3bf79ed46b0b6a7feb5f35416dc807091c8b7dfed036922b2f1d778dc9d653e0",
+    "src/i18n/locales/fa.ts": "638a2fab38d36282ab25e50accb159ea1b488faf0e3c3f41a8cc7de6f567100b",
+    "src/i18n/locales/ar.ts": "aedbb34eb9c5afc2fe8f007aeaee20cf5ee65391f55601ea4fd07d556771093b",
+    "src/i18n/locales/zh.ts": "ec26bef802b3eacc24ae70a627a890a354f3857be71b6ab5fdfa09d852f428e2",
+    "src/i18n/locales/es.ts": "6a604648f8c346320f4e6f9fd0de87bbc3f476307dbbf607a133d771fc695683"
+  },
+  "maintainedHarness": {
+    "path": "scripts/browser-regressions/playwright/full-audit.spec.ts",
+    "sha256": "2161b495ba2a0292e08007c57ea5b7925b548924412a7322a6dcad159e542aa2",
+    "lines": 396,
+    "readSpans": [
+      [
+        1,
+        396
+      ]
+    ],
+    "testCases": 14,
+    "addedCoverage": "32 rounded-taskbar geometry observations, en/fa normal+320x225 short Search keyboard reachability; existing six confirmed audit behavior groups preserved",
+    "browserExecution": "Pending parent final build"
+  },
+  "integrity": {
+    "finalHashesMatchDisk": true,
+    "changedPageFiles": [
+      "src/app/[locale]/resume/ResumeClient.tsx",
+      "src/app/[locale]/resume/ResumeClient.test.tsx",
+      "src/app/[locale]/about/AboutClient.tsx"
+    ]
+  }
+}

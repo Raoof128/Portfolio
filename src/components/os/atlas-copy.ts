@@ -55,7 +55,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "Project Simurgh",
         summary:
-          "An agent passes four defensive boundaries. Each emits signed evidence for an independent offline review.",
+          "Oct 2026 matched controls: Llama-3.2-3B restricted trials with new effects 17/24 → 0/24, useful completions 23/24; gpt-6-luna baseline 0/24, no incremental protection.",
       },
       "invisible-window-research": {
         title: "Invisible Window",
@@ -70,7 +70,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     diagramDescription: {
       "project-simurgh":
-        "The agent crosses the input firewall, context-provenance guard, tool-invocation gate, and output-leakage firewall. Each boundary branches to its own signed evidence receipt.",
+        "Earlier frozen four-boundary architecture: input firewall, context-provenance guard, tool-invocation gate and output-leakage firewall, each linked to a signed evidence receipt. This is not a trace of the October 2026 host-authorisation study.",
       "invisible-window-research":
         "Two separate planes compare the physical display, where a window remains visible, with a tested capture path that can exclude it.",
       "project-zurvan":
@@ -78,7 +78,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "Architecture schematic based on documented components; no run trace is shown.",
+        "Earlier frozen architecture schematic; no current study run trace is shown.",
       "invisible-window-research":
         "Controlled simulated configurations only; no commercial proctoring products were tested. macOS 26 used native capture paths.",
       "project-zurvan":
@@ -121,7 +121,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "پروژه سیمرغ",
         summary:
-          "عامل از چهار مرز دفاعی عبور می‌کند. هر مرز شواهدی امضاشده برای بازبینی مستقل آفلاین ارائه می‌دهد.",
+          "کنترل‌های همسان، اکتبر 2026: آزمون‌های محدود Llama-3.2-3B با آثار تازه از 17/24 به 0/24؛ تکمیل مفید 23/24. خط پایهٔ gpt-6-luna برابر 0/24 بود؛ حفاظت افزوده‌ای گزارش نشد.",
       },
       "invisible-window-research": {
         title: "پنجره نامرئی",
@@ -136,7 +136,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     diagramDescription: {
       "project-simurgh":
-        "عامل از فایروال ورودی، نگهبان منشأ زمینه، دروازه فراخوانی ابزار و فایروال نشت خروجی عبور می‌کند. هر مرز به رسید شواهد امضاشده خود پیوند دارد.",
+        "معماری تثبیت‌شدهٔ پیشین با چهار مرز: فایروال ورودی، نگهبان منشأ زمینه، دروازهٔ فراخوانی ابزار و فایروال نشت خروجی؛ هر کدام به رسید شواهد امضاشده پیوند دارد. این رد اجرای پژوهش اختیار سمت میزبان در اکتبر 2026 نیست.",
       "invisible-window-research":
         "دو صفحه جداگانه نمایشگر فیزیکی را که پنجره در آن دیده می‌شود با مسیر ضبط آزموده‌شده‌ای مقایسه می‌کنند که ممکن است آن را حذف کند.",
       "project-zurvan":
@@ -144,7 +144,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "نقشه‌ای از معماری و اجزای مستند است؛ هیچ رد اجرای واقعی نمایش داده نمی‌شود.",
+        "نمودار معماری تثبیت‌شدهٔ پیشین؛ رد اجرای پژوهش کنونی نمایش داده نمی‌شود.",
       "invisible-window-research":
         "فقط پیکربندی‌های شبیه‌سازی‌شده کنترل‌شده آزموده شدند؛ محصول تجاری نظارت بر آزمون ارزیابی نشد. در macOS 26 از مسیرهای ضبط بومی استفاده شد.",
       "project-zurvan":
@@ -187,7 +187,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "مشروع سيمرغ",
         summary:
-          "يعبر الوكيل أربعة حدود دفاعية، ويقدّم كل حد دليلاً موقّعاً يمكن لمراجع مستقل التحقق منه دون اتصال.",
+          "ضوابط مقارنة متطابقة، أكتوبر 2026: تجارب Llama-3.2-3B المقيّدة ذات آثار جديدة 17/24 → 0/24، وإكمال مفيد 23/24؛ خط أساس gpt-6-luna هو 0/24، دون حماية إضافية.",
       },
       "invisible-window-research": {
         title: "النافذة غير المرئية",
@@ -202,7 +202,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     diagramDescription: {
       "project-simurgh":
-        "يعبر الوكيل جدار الإدخال وحارس منشأ السياق وبوابة استدعاء الأدوات وجدار تسرب الإخراج. ويرتبط كل حد بإيصال أدلة موقّع خاص به.",
+        "بنية سابقة مجمّدة بأربعة حدود: جدار الإدخال وحارس منشأ السياق وبوابة الأدوات وجدار تسرب الإخراج، ولكل منها إيصال أدلة موقّع. ليست سجلًا لدراسة صلاحيات المضيف في أكتوبر 2026.",
       "invisible-window-research":
         "تقارن لوحتان منفصلتان بين الشاشة الفعلية، حيث تبقى النافذة مرئية، ومسار التقاط مختبر قد يستبعدها.",
       "project-zurvan":
@@ -210,7 +210,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "مخطط للبنية والمكونات الموثقة؛ لا يعرض سجلاً لتشغيل فعلي.",
+        "مخطط لبنية سابقة مجمّدة؛ لا يعرض سجل تشغيل الدراسة الحالية.",
       "invisible-window-research":
         "اقتصر الاختبار على إعدادات محاكاة مضبوطة؛ ولم تُختبر منتجات مراقبة تجارية. استخدم macOS 26 مسارات التقاط أصلية.",
       "project-zurvan":
@@ -254,7 +254,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "Proyecto Simurgh",
         summary:
-          "Un agente cruza cuatro límites defensivos. Cada uno genera evidencia firmada para una revisión independiente sin conexión.",
+          "Controles emparejados, oct. 2026: ensayos restringidos con efectos nuevos en Llama-3.2-3B 17/24 → 0/24, tareas útiles completadas 23/24; base gpt-6-luna 0/24, sin protección incremental.",
       },
       "invisible-window-research": {
         title: "Ventana Invisible",
@@ -269,7 +269,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     diagramDescription: {
       "project-simurgh":
-        "El agente cruza el firewall de entrada, el control de procedencia del contexto, la puerta de herramientas y el firewall de salida. Cada límite genera su propio recibo de evidencia firmada.",
+        "Arquitectura anterior congelada de cuatro límites: cortafuegos de entrada, procedencia del contexto, puerta de herramientas y cortafuegos de salida, con recibos firmados. No es una traza del estudio de autorización en el host de octubre de 2026.",
       "invisible-window-research":
         "Dos planos separados comparan la pantalla física, donde la ventana sigue visible, con una ruta de captura probada que puede excluirla.",
       "project-zurvan":
@@ -277,7 +277,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "Esquema de la arquitectura documentada; no muestra una ejecución real.",
+        "Esquema de una arquitectura anterior congelada; no muestra una ejecución del estudio actual.",
       "invisible-window-research":
         "Solo se probaron configuraciones simuladas y controladas; no se evaluaron productos comerciales. macOS 26 usó rutas de captura nativas.",
       "project-zurvan":
@@ -320,7 +320,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "Simurgh 项目",
         summary:
-          "智能体经过四道防护边界，每道边界都会生成供独立离线审查的签名证据。",
+          "2026 年 10 月匹配对照：Llama-3.2-3B 受限状态中新产生效果的试验由 17/24 降至 0/24，有用任务完成 23/24；gpt-6-luna 基线已为 0/24，未见额外保护。",
       },
       "invisible-window-research": {
         title: "隐形窗口",
@@ -333,14 +333,14 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     diagramDescription: {
       "project-simurgh":
-        "智能体依次经过输入防火墙、上下文来源防护、工具调用关口和输出防火墙。每道边界都分支生成独立的签名证据回执。",
+        "早期冻结的四边界架构：输入防火墙、上下文来源防护、工具调用关口与输出防火墙，各自连接签名证据回执。这不是 2026 年 10 月宿主授权研究的运行轨迹。",
       "invisible-window-research":
         "两个独立平面对比物理显示器（窗口仍然可见）与可能排除该窗口的已测试捕获路径。",
       "project-zurvan":
         "文档分支提取为声明、概念、实体和决策；这些分类节点连接到本地知识库，再连接混合检索、图邻居扩展和 MCP 工具。",
     },
     qualifier: {
-      "project-simurgh": "依据已记录组件绘制的架构示意图，不展示实际运行轨迹。",
+      "project-simurgh": "早期冻结架构示意；未展示当前研究的运行轨迹。",
       "invisible-window-research":
         "仅测试受控的模拟配置，未测试商业监考产品。macOS 26 使用原生捕获路径。",
       "project-zurvan": "这是基于已记录架构的示意图，不代表任何私有语料库。",

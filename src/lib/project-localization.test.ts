@@ -96,6 +96,55 @@ function numericValues(text: string): string[] {
 }
 
 describe("Complete project localization", () => {
+  it.each(["en", ...translatedLocales] as Locale[])(
+    "qualifies cloud processing and generated-answer claims in %s",
+    (locale) => {
+      const zurvan = getLocalizedProject(projects["project-zurvan"], locale);
+      expect(zurvan.secure.measures[0]).toContain("OpenAI");
+      expect(zurvan.secure.measures[0]).toContain("Anthropic");
+      const aion = getLocalizedProject(projects.aion, locale);
+      expect(aion.proof[0]).toContain("40");
+      expect(aion.papers?.[0].description).toContain("0.978");
+      expect(aion.papers?.[0].description).toContain("6/6");
+    },
+  );
+
+  it.each(["en", ...translatedLocales] as Locale[])(
+    "%s retains positive/null model outcomes and dated current evidence",
+    (locale) => {
+      const result = getLocalizedProject(projects["project-simurgh"], locale);
+      const preview = result.description;
+      for (const token of [
+        "Llama-3.2-3B",
+        "gpt-6-luna",
+        "17/24",
+        "0/24",
+        "23/24",
+      ])
+        expect(preview).toContain(token);
+      const evidence = result.proof.join(" ");
+      for (const token of [
+        "Wilson 95%",
+        "43.6–97.0%",
+        "0.0–39.0%",
+        "8/8",
+        "2/3",
+        "5/5",
+        "39",
+        "5,171",
+        "92",
+        "138/138",
+        "9/140",
+        "10.5281/zenodo.21737792",
+        "10.5281/zenodo.20374849",
+      ])
+        expect(evidence).toContain(token);
+      expect(evidence).not.toContain("3,057");
+      expect(result.links.doi).toBe("https://doi.org/10.5281/zenodo.21737792");
+      expect(result.papers?.[0].doi).toBe("10.5281/zenodo.20374849");
+    },
+  );
+
   it("keeps an explicit complete inventory rather than silently omitting new projects", () => {
     expect([...projectSlugs].sort()).toEqual(Object.keys(projects).sort());
     for (const project of Object.values(projects)) {

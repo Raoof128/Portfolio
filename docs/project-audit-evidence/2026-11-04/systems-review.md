@@ -1,0 +1,53 @@
+# Systems project source reconciliation — 2026-11-04
+
+Read-only audit of every scalar field in the four assigned entries of `initial-projects.json`, plus the six existing SentinelSSH supporting-research fields. No product, translation or remote repository changes were made.
+
+Compared **153 scalar fields** and propose **54 changes**. The ledger records 73 complete text reads (6,101 lines) and 164 explicit test-declaration line reads across 28 additional files. All 101 fetched file byte sequences match their GitHub blob SHA. No repository code or tests were executed.
+
+| Repository | Default branch | Pinned HEAD |
+|---|---|---|
+| [Raoof128/NanoMatch](https://github.com/Raoof128/NanoMatch) | main | [`b92593f4593c`](https://github.com/Raoof128/NanoMatch/commit/b92593f4593c504029626619bd936a36fc157208) |
+| [Raoof128/SentinelFlow](https://github.com/Raoof128/SentinelFlow) | main | [`91e195204505`](https://github.com/Raoof128/SentinelFlow/commit/91e195204505e30008d17a1d0dd6d637a7e3ecf3) |
+| [Raoof128/eBPF-Cloud-Runtime-Security-Monitor](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor) | master | [`40a88a63d06e`](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/commit/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2) |
+| [Raoof128/SimurghForge](https://github.com/Raoof128/SimurghForge) | main | [`b964df8ef6e7`](https://github.com/Raoof128/SimurghForge/commit/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2) |
+
+## Corrections that matter
+
+- **NanoMatch:** replace unmeasured sub-microsecond cancellation with qualified repository-reported mixed-operation throughput (9.29M operations/s, synthetic Apple M-series Release). The latency benchmark times `add_order`. Cancellation performs a tree lookup, so only the ID lookup is expected O(1). The pool allocator is standalone; default standard-library containers remain in matching storage. Source defines **137 tests across 18 test files / 20 actual Google Test suite names**; no fresh pass is claimed.
+- **SentinelFlow:** latest README reports **28,409,090 packets/s**, measured only by Ethernet/IPv4/TCP parsing over repeated synthetic **SYN-ACK** packets. It excludes capture, detection and alert output. Source defines **27 cases across 10 test files**; remove “all protocol layers” coverage and fresh-pass implications. Its basic Snort-inspired signature rules coexist with fixed stateful detector thresholds; do not imply full Snort compatibility.
+- **ECRSM:** correct **WebSocket → SSE**. Correct least-privilege copy: the Helm agent is **privileged**, uses hostPID and requests **BPF/SYS_ADMIN/SYS_PTRACE**. The startup source has no tracepoint attach call, so describe a source prototype rather than verified live detection. Metadata capture does not guarantee secret absence. Container lookup and agent environment pod hints do not prove per-process Kubernetes attribution. Perf-buffer and script presence do not prove low overhead or reproduced detections. Defensive monitoring is the supported category.
+- **SimurghForge:** update **React 18 → React 19.2.4**. Nine engine variants and backend **50-file / 1–8 concurrent-job** limits are verified in source. The README advertises 49 formats, while the UI contains **44 input extension keys / 45 input-output labels including aliases**; omit the advertised total from concise public claims until reconciled with a tested matrix. File-header sniffing uses extension fallback and cannot guarantee spoof prevention. Describe conversion as local-first without required cloud APIs, not audited zero-egress. The .app target depends on separately installed CLI tools.
+- **SentinelSSH:** exact `Raoof128/SentinelSSH` lookup returned **404**. No repository link, project route or new public-project claim is proposed. The existing 17-tool/no-shell description needs separate owner-CV provenance; it was not live-source verified.
+
+## Exact integration proposals
+
+`systems-review.json` contains `field_reviews` for all 153 scalar fields and a complete `suggested_projects` object for the four entries. Every changed value includes a reason and full-SHA source citations. Stable slugs, existing case-study routes, project years, artwork associations and other supported values are retained. Parent owns product and translation integration.
+
+Representative pinned implementation evidence:
+
+- NanoMatch measured workload: [source 1](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/README.md#L12-L24); [source 2](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/docs/benchmarks.md#L16-L29); [source 3](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/bench/bench_throughput.cpp#L10-L68); [source 4](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/bench/bench_latency.cpp#L31-L45).
+- NanoMatch tree cancellation and storage: [source 1](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/include/nanomatch/book/book_side.hpp#L39-L49); [source 2](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/include/nanomatch/core/price_level.hpp#L18-L26); [source 3](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/include/nanomatch/core/price_level.hpp#L62-L65); [source 4](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/include/nanomatch/book/order_book.hpp#L62-L75).
+- SentinelFlow parser fixture: [source 1](https://github.com/Raoof128/SentinelFlow/blob/91e195204505e30008d17a1d0dd6d637a7e3ecf3/README.md#L178-L193); [source 2](https://github.com/Raoof128/SentinelFlow/blob/91e195204505e30008d17a1d0dd6d637a7e3ecf3/bench/benchmark_throughput.cpp#L13-L57).
+- ECRSM SSE and privileges: [source 1](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/docs/API.md#L3-L7); [source 2](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/agent/server.go#L37-L67); [source 3](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/dashboard/src/App.jsx#L4-L23); [source 4](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/deploy/helm/templates/daemonset.yaml#L13-L27).
+- ECRSM agent startup: [source 1](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/agent/main.go#L63-L80); [source 2](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/agent/main.go#L91-L121).
+- SimurghForge manifests, registry and MIME: [source 1](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/package.json#L30-L53); [source 2](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/src-tauri/Cargo.toml#L8-L39); [source 3](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/README.md#L31-L36); [source 4](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/src/lib/formatMap.ts#L9-L64); [source 5](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/src-tauri/src/utils/mime.rs#L5-L54).
+- SimurghForge installed tool dependencies: [source 1](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/README.md#L95-L105); [source 2](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/README.md#L117-L123); [source 3](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/src-tauri/tauri.conf.json#L27-L36); [source 4](https://github.com/Raoof128/SimurghForge/blob/b964df8ef6e7d47a60303e8d0a4789a130ef9fa2/src-tauri/src/commands/engines/pandas.rs#L6-L23).
+
+## Limits
+
+- Read-only source/claim reconciliation, not a full security audit of these repositories.
+- Only the 73 full-read files and explicit test-declaration lines in the source ledger were inspected. Remaining repository files, commit history and unlisted documents were not reviewed.
+- No repository code, simulation, build, test suite, benchmark or deployment was executed. No live CI outcome was fetched. Source counts and repository-reported historical measurements are separate from reproduced results.
+- Repository documentation was treated as reference data. Conflicts were resolved against inspected implementation where possible and otherwise disclosed.
+- NanoMatch README does not give exact Apple CPU model, OS, compiler version or raw benchmark artifacts; reported numbers are not portable performance guarantees.
+- SentinelFlow throughput is three parser calls over a repeated 54-byte SYN-ACK fixture; no live capture, rule/stateful detection, alerting, hostile-traffic robustness or IDS accuracy is measured by it.
+- ECRSM supplied agent startup contains no tracepoint link/attach call; program-source presence does not prove live telemetry. Probe PPID is hardcoded zero; pod hints come from the agent environment. No production readiness, detection accuracy, secret absence or least-privilege assurance is established.
+- SimurghForge documentation advertises 49 formats, but registry inspection finds 44 input extension labels and 45 unique input/output labels (aliases included). This is not an executed support count; no complete conversion-pair, external CLI, offline-egress, package-install or macOS runtime verification was performed.
+- SentinelSSH exact lookup returned 404; this audit does not verify the CV-reported 17-tool/no-shell claim and does not establish absence of a private or renamed repository.
+- All fetched project content was public at lookup. Reports contain selected claims and pinned public citations, not connector permission fields, credentials, repository dumps or private-source claims.
+
+The full source ledger is embedded in `systems-review.json`; `systems-source-manifest.json` is a compact companion. Raw public source copies remain local working material under `private-raw/systems/` and are not intended for publication or inclusion in product content.
+
+## Write-up proposals
+
+`systems-replacements.json` adds full NanoMatch, SentinelFlow and ECRSM write-up replacements after reading all seven fields and the complete original content for each (55,55,39 lines). It preserves original authored dates and sets the substantive copy revision date to2026-11-04. The same artifact contains complete four-project objects with unchanged years and updatedAt=2026-11-04. Product integration remains with the parent.

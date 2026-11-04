@@ -1,0 +1,19 @@
+{
+  "curation_script": "work/full-frontend-audit/curate.py",
+  "destination_exists_at_review": false,
+  "planned_files_currently_present": 103,
+  "planned_text_files_scanned": 62,
+  "known_phone_matches": [],
+  "inline_json_attachments_scanned": 38,
+  "attachment_phone_matches": [],
+  "excluded_source_extracts": true,
+  "excluded_original_uploaded_resume_rasters": true,
+  "phone_free_preview": {
+    "width": 918,
+    "height": 1188,
+    "scale": 1.5,
+    "matches_verified_public_pdf": true,
+    "sha256": "c704cad2e9b1e407fa5f2d22b74c4950bf6e917b976296c1402d292b03bc367a"
+  },
+  "limit": "This validates the current copy plan and existing inputs. The final copied evidence directory must be re-scanned after curation; no number contents are emitted."
+}

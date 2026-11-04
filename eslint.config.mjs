@@ -33,7 +33,7 @@ const eslintConfig = defineConfig([
       "no-new-func": "error",
     },
   },
-  // Preserve the existing generated-output exclusions.
+  // Generated output and local audit captures are not application source.
   globalIgnores([
     ".next/**",
     "out/**",
@@ -41,6 +41,7 @@ const eslintConfig = defineConfig([
     "coverage/**",
     ".wrangler/**",
     ".remember/**",
+    "work/**",
     "next-env.d.ts",
   ]),
 ]);

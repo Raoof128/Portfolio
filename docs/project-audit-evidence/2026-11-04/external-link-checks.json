@@ -1,0 +1,68 @@
+[
+  {
+    "url": "https://zenodo.org/records/20376495",
+    "fields": [
+      [
+        "invisible-window-research",
+        "preprint"
+      ]
+    ],
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+    "observation": "Availability unverified; proxy/network response is not proof of an origin defect"
+  },
+  {
+    "url": "https://doi.org/10.5281/zenodo.21737792",
+    "fields": [
+      [
+        "project-simurgh",
+        "doi"
+      ]
+    ],
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+    "observation": "Availability unverified; proxy/network response is not proof of an origin defect"
+  },
+  {
+    "url": "https://raoof128.github.io/dashboard.html",
+    "fields": [
+      [
+        "mehr-guard",
+        "demo"
+      ]
+    ],
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+    "observation": "Availability unverified; proxy/network response is not proof of an origin defect"
+  },
+  {
+    "url": "https://www.syllabus-sync.app/",
+    "fields": [
+      [
+        "syllabus-sync",
+        "demo"
+      ]
+    ],
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+    "observation": "Availability unverified; proxy/network response is not proof of an origin defect"
+  },
+  {
+    "url": "https://divan.raoufabedini.dev/",
+    "fields": [
+      [
+        "divan-open-day",
+        "demo"
+      ]
+    ],
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+    "observation": "Availability unverified; proxy/network response is not proof of an origin defect"
+  },
+  {
+    "url": "https://home-notes-app.uk/",
+    "fields": [
+      [
+        "nexus-archive",
+        "demo"
+      ]
+    ],
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+    "observation": "Availability unverified; proxy/network response is not proof of an origin defect"
+  }
+]

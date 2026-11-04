@@ -10,12 +10,12 @@ node scripts/browser-regressions/aero-parity/compare.mjs before
 # Make the implementation change, rebuild, and serve the new export.
 node scripts/browser-regressions/aero-parity/snapshot.mjs final
 node scripts/browser-regressions/aero-parity/compare.mjs final
-node --test scripts/browser-regressions/aero-parity/png-diff.test.mjs
+node --test scripts/browser-regressions/aero-parity/*.test.mjs
 ```
 
 `PORTFOLIO_PREVIEW_ORIGIN` defaults to `http://127.0.0.1:4398`. Chromium's executable can be selected with `PORTFOLIO_CHROMIUM_PATH`. The browser must be able to launch in the execution environment. No additional image-processing dependency is required. Use `AERO_COMPONENT=close` to rerun a single component; that writes a separate results file and does not replace the full matrix result.
 
-The snapshot stores four actual routes, their rendered HTML and stylesheet text, whole-page screenshots, application source hashes, Git identity, exported version identity, browser version and capture conditions. Existing phase snapshots are protected from accidental overwrite. Choose a new phase name, or use `--replace` explicitly. `--extend` may add routes to a snapshot only when its export identity still matches; the identity is checked before any route or screenshot write. Font assets are copied into the snapshot's `fonts/` directory by the comparison pass; run that pass while the matching export is available. Subsequent comparisons use those frozen bytes and record their hashes.
+The snapshot stores four actual routes, their rendered HTML and stylesheet text, whole-page screenshots, tracked and untracked TypeScript/CSS source hashes (excluding `work/` scratch), Git identity, exported version identity, browser version and capture conditions. Existing phase snapshots are protected from accidental overwrite. Choose a new phase name, or use `--replace` explicitly. `--extend` adds only uncaptured routes and preserves every frozen route JSON/PNG and page record. It requires matching version metadata, an exact local `out/` file digest, browser/capture conditions and hashes of the existing captures; those checks run before route writes. Snapshots made before these byte-identity fields were recorded require a new phase. New scene files use exclusive creation unless `--replace` is explicit. Font assets are copied into the snapshot's `fonts/` directory by the comparison pass; run that pass while the matching export is available. Subsequent comparisons use those frozen bytes and record their hashes.
 
 The comparison writes 56 reference/candidate pairs across 13 component families, plus 50:50 overlays, highlighted differences and JSON measurements under `artifacts/aero-parity/<phase>/comparisons/`. This directory is intentionally ignored. Curated report evidence belongs under `docs/aero-parity/`.
 
@@ -55,7 +55,7 @@ node scripts/browser-regressions/aero-parity/snapshot.mjs round2-final --expande
 
 An expanded phase cannot be downgraded by a later `--extend` lacking `--expanded`.
 An appearance mismatch is also rejected before capture. `--refresh-census` requires
-an existing matching export/appearance and writes only `interactive-census.json`;
+an existing matching export/capture cohort and writes only `interactive-census.json`;
 it never rewrites frozen HTML, stylesheets, PNGs or their manifest. It cannot combine
 with `--extend` or `--replace`.
 

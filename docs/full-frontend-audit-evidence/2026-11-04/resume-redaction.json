@@ -1,0 +1,21 @@
+{
+  "source": "Private user-provided résumé reference",
+  "sourceSHA256": "753a7e412ca4c0f37b4fba01f0288f875cadd613fcb15d7fc23c7871d451b56d",
+  "publicCopy": "public/Mohammad_Raouf_Abedini_Resume.pdf",
+  "publicSHA256": "e0a41eee56fe67d165619b73e42b0681a72c011044d5bb750046b002e1254827",
+  "edit": "True content redaction of phone and adjacent separators; original uploaded file unchanged",
+  "redactionRect": [
+    206.46852111816406,
+    77.85749053955078,
+    285.52703857421875,
+    87.34349060058594
+  ],
+  "checks": {
+    "phoneAbsentFromExtractedText": true,
+    "noPhoneOrTelephoneLinksInPDFObjects": true,
+    "allOtherTextPreserved": true,
+    "secondPagePixelsIdentical": true,
+    "noPhoneInDecodedPDFTextMetadataOrProperties": true
+  },
+  "pages": 2
+}

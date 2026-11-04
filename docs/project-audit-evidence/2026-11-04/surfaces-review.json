@@ -1,0 +1,2258 @@
+{
+  "phase": "pre-canonical-update read-only surface audit",
+  "recordedAt": "2026-11-04T02:40:15.044Z",
+  "scope": {
+    "projects": 13,
+    "locales": [
+      "en",
+      "fa",
+      "ar",
+      "zh",
+      "es"
+    ],
+    "projectLocaleCopies": 65,
+    "researchPapers": 5,
+    "writeups": 7,
+    "supportingOnly": [
+      "SentinelSSH"
+    ],
+    "productEdits": false,
+    "browserOrFullSuiteRerun": false
+  },
+  "files": [
+    {
+      "path": "src/lib/data.ts",
+      "sha256": "fdbab5e5dd81996981257364a21997feba5bf96683d9013084b9f742dfb5d3ab",
+      "lines": 1610,
+      "readSpans": [
+        [
+          1,
+          1405
+        ]
+      ],
+      "coverage": "All project and write-up source blocks read; unrelated lab tail not part of this project audit."
+    },
+    {
+      "path": "src/lib/project-localization.ts",
+      "sha256": "61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67",
+      "lines": 69,
+      "readSpans": [
+        [
+          1,
+          69
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-summaries.ts",
+      "sha256": "7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a",
+      "lines": 33,
+      "readSpans": [
+        [
+          1,
+          33
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/fa.ts",
+      "sha256": "8bd6023a0ec25a73d1f44fc4b13df16877ab840a37d5a4bc970d9d20c2ba8522",
+      "lines": 529,
+      "readSpans": [
+        [
+          1,
+          529
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/ar.ts",
+      "sha256": "ca66a084b601f1d5b3b75ad176e025562489a04359ede7749c71f40671e769b4",
+      "lines": 534,
+      "readSpans": [
+        [
+          1,
+          534
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/zh.ts",
+      "sha256": "c49d83b1db2c92ad7d501d17b86ca471fd0a35ccebdd04ebb9abfe90c6ffe033",
+      "lines": 533,
+      "readSpans": [
+        [
+          1,
+          533
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/es.ts",
+      "sha256": "c506f0ccf3fab20d1f530d508939324a757a3122773014c704ebcca46df4b189",
+      "lines": 529,
+      "readSpans": [
+        [
+          1,
+          529
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/types.ts",
+      "sha256": "65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524",
+      "lines": 63,
+      "readSpans": [
+        [
+          1,
+          63
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/terms.ts",
+      "sha256": "a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e",
+      "lines": 141,
+      "readSpans": [
+        [
+          1,
+          141
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/diagram-copy.ts",
+      "sha256": "8a744d3aac3527c84fbaff9abcfdb1868e7b07f4d4e104bb7f592c683b5446ae",
+      "lines": 173,
+      "readSpans": [
+        [
+          1,
+          173
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/dossier-copy.ts",
+      "sha256": "84a84b2a6a4d56dbdb186236ebeb5cdab6b14d33f9c86cce6ee89e1a833c5b56",
+      "lines": 111,
+      "readSpans": [
+        [
+          1,
+          111
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-content/evidence-story-copy.ts",
+      "sha256": "edb7943aed1271e1df0acb18451a8e7f5c5419c615c3ed73981266610ff91e71",
+      "lines": 684,
+      "readSpans": [
+        [
+          1,
+          684
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/project-localization.test.ts",
+      "sha256": "f6447002a67fbe4619524b7442c8274ccfdc89b118ae7c28dcafed27b01522ba",
+      "lines": 325,
+      "readSpans": [
+        [
+          1,
+          325
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/data.test.ts",
+      "sha256": "93b9990dbbd82c6c4ace3129104bd789793844b466b1aec6bbad177dae325184",
+      "lines": 299,
+      "readSpans": [
+        [
+          1,
+          299
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/content-integrity.test.tsx",
+      "sha256": "a10bfaa0491603dc4185615e0f6d3c244c1a1d1f09584527ebd27cd323e1fd2b",
+      "lines": 108,
+      "readSpans": [
+        [
+          1,
+          108
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/localized-pages.test.ts",
+      "sha256": "53dd7a4759aa0b065b8a29021c71e7e32ce3d8cff4cde15ca95e567f404e27b4",
+      "lines": 180,
+      "readSpans": [
+        [
+          1,
+          180
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/localized-writing.ts",
+      "sha256": "9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b",
+      "lines": 79,
+      "readSpans": [
+        [
+          1,
+          79
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/ProjectExplorer.tsx",
+      "sha256": "b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18",
+      "lines": 423,
+      "readSpans": [
+        [
+          1,
+          423
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/ProofAtlas.tsx",
+      "sha256": "3b925b855518e4f8b54cd6788a8c59d5da97932505d845f79ffb7a81e9a20463",
+      "lines": 588,
+      "readSpans": [
+        [
+          1,
+          588
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/ProjectDiagram.tsx",
+      "sha256": "3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0",
+      "lines": 179,
+      "readSpans": [
+        [
+          1,
+          179
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/ProjectMotion.tsx",
+      "sha256": "7228505b5a0db85c7e679aadc445432288a7a92a4b5f87f4762c1147f9d64461",
+      "lines": 196,
+      "readSpans": [
+        [
+          1,
+          196
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/project-artwork.ts",
+      "sha256": "0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7",
+      "lines": 123,
+      "readSpans": [
+        [
+          1,
+          123
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/SimurghEvidenceStory.tsx",
+      "sha256": "46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9",
+      "lines": 139,
+      "readSpans": [
+        [
+          1,
+          139
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/InvisibleWindowEvidenceStory.tsx",
+      "sha256": "9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6",
+      "lines": 152,
+      "readSpans": [
+        [
+          1,
+          152
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/ZurvanEvidenceStory.tsx",
+      "sha256": "b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178",
+      "lines": 109,
+      "readSpans": [
+        [
+          1,
+          109
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/atlas-copy.ts",
+      "sha256": "b973208c28982440ae28cd2caa30bb6d4d34dc419d821d2437ba94b6fc724915",
+      "lines": 353,
+      "readSpans": [
+        [
+          1,
+          353
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/os-copy.ts",
+      "sha256": "89abf52c537ac9874d8a8a95817539cd0b921cf0baef26e9a9beb5631b665c18",
+      "lines": 505,
+      "readSpans": [
+        [
+          1,
+          505
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/components/os/reviewer-copy.ts",
+      "sha256": "dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c",
+      "lines": 16,
+      "readSpans": [
+        [
+          1,
+          16
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/lib/os-search.ts",
+      "sha256": "70261603e501bc57b40a189396dc58b393bbe5300448013e3ae45702125f9991",
+      "lines": 129,
+      "readSpans": [
+        [
+          1,
+          129
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/app/[locale]/projects/[slug]/page.tsx",
+      "sha256": "7670190e84a5740728a04502ab889dd18a8ccbffff037c355f4c8d3b0f409c20",
+      "lines": 213,
+      "readSpans": [
+        [
+          1,
+          213
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/app/[locale]/projects/layout.tsx",
+      "sha256": "6d3487de97f6931c40780b6e3586545b53975a035198cdad94ca232e2d5940fd",
+      "lines": 50,
+      "readSpans": [
+        [
+          1,
+          50
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/app/[locale]/projects/page.tsx",
+      "sha256": "bd6dcbae32e5ec0392649345d2191d33a5baa136e07704b22c109070ba9c341a",
+      "lines": 18,
+      "readSpans": [
+        [
+          1,
+          18
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/app/llms-full.txt/route.ts",
+      "sha256": "3ae3287405c4643fb238801c819166c5ced45b2e8cbb3b7d9aa7473b0f940a71",
+      "lines": 211,
+      "readSpans": [
+        [
+          1,
+          211
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "public/llms.txt",
+      "sha256": "e07efa2d4a808e5fd42469f1e293d0b154c267072b17aee9fa6bc2fc8aaed18f",
+      "lines": 72,
+      "readSpans": [
+        [
+          1,
+          72
+        ]
+      ],
+      "coverage": "Complete source read."
+    },
+    {
+      "path": "src/app/sitemap.ts",
+      "sha256": "0b2e58de2fe34559d27b91feeb5caf8991e88a223f8e84a386b7863f3c8328db",
+      "lines": 106,
+      "readSpans": [
+        [
+          1,
+          106
+        ]
+      ],
+      "coverage": "Complete source read."
+    }
+  ],
+  "projectCoverage": [
+    {
+      "slug": "invisible-window-research",
+      "title": "Invisible Window Research",
+      "category": "OFFENSIVE",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 7,
+            "proof": 6,
+            "features": 3,
+            "measures": 7,
+            "stack": 4
+          },
+          "paperEntries": 1
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 7,
+            "proof": 6,
+            "features": 3,
+            "measures": 7,
+            "stack": 4
+          },
+          "paperEntries": 1
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 7,
+            "proof": 6,
+            "features": 3,
+            "measures": 7,
+            "stack": 4
+          },
+          "paperEntries": 1
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 7,
+            "proof": 6,
+            "features": 3,
+            "measures": 7,
+            "stack": 4
+          },
+          "paperEntries": 1
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 7,
+            "proof": 6,
+            "features": 3,
+            "measures": 7,
+            "stack": 4
+          },
+          "paperEntries": 1
+        }
+      },
+      "artwork": true,
+      "atlas": true,
+      "diagram": "dedicated architecture/evidence story",
+      "links": {
+        "repo": "https://github.com/Raoof128/invisible-window-research",
+        "paper": "/Invisible_Window_Research_Preprint_V2.0.pdf",
+        "preprint": "https://zenodo.org/records/20376495",
+        "caseStudy": "/projects/invisible-window-research"
+      },
+      "papers": [
+        {
+          "title": "The Invisible Window: Exploiting OS-Level Display Affinity to Bypass WebRTC Proctoring Systems",
+          "href": "/Invisible_Window_Research_Preprint_V2.0.pdf",
+          "doi": "10.5281/zenodo.20376495",
+          "label": "IEEE-format preprint"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "public/Invisible_Window_Research_Preprint_V2.0.pdf",
+          "exists": true,
+          "bytes": 320653,
+          "sha256": "c02dfff5616f2473e212049508794e271ffeca18b71f05ac59b7fee6f84f125c"
+        }
+      ],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          51,
+          134
+        ],
+        "src/lib/project-content/fa.ts": [
+          4,
+          57
+        ],
+        "src/lib/project-content/ar.ts": [
+          4,
+          57
+        ],
+        "src/lib/project-content/zh.ts": [
+          4,
+          57
+        ],
+        "src/lib/project-content/es.ts": [
+          4,
+          57
+        ]
+      },
+      "relatedWriteups": [
+        "invisible-window-research"
+      ],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "All5 dedicated selected-research summaries/qualifiers reviewed."
+      }
+    },
+    {
+      "slug": "project-simurgh",
+      "title": "Project Simurgh",
+      "category": "DEFENSIVE",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 9,
+            "features": 4,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 3
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 9,
+            "features": 4,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 3
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 9,
+            "features": 4,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 3
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 9,
+            "features": 4,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 3
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 9,
+            "features": 4,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 3
+        }
+      },
+      "artwork": true,
+      "atlas": true,
+      "diagram": "dedicated architecture/evidence story",
+      "links": {
+        "repo": "https://github.com/Raoof128/Project-Simurgh",
+        "caseStudy": "/projects/project-simurgh",
+        "doi": "https://doi.org/10.5281/zenodo.21737792",
+        "doiKind": "software"
+      },
+      "papers": [
+        {
+          "title": "Project Simurgh: Privacy-Preserving Device Integrity Proofs for Capture-Resistant High-Stakes Sessions",
+          "href": "/Project_Simurgh_Preprint_v1.0.pdf",
+          "doi": "10.5281/zenodo.20374849",
+          "label": "Earlier device-integrity preprint"
+        },
+        {
+          "title": "Privacy-Preserving Integrity Evidence for Student-Society Voting-Adjacent Workflows: A Phase C Pilot of Project Simurgh at Macquarie University",
+          "href": "/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+          "doi": "10.5281/zenodo.20549736",
+          "label": "Supplement preprint"
+        },
+        {
+          "title": "Banking Shield: Machine-Checked Absence Claims for Privacy-Sensitive AI Explanations",
+          "href": "/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+          "doi": "10.5281/zenodo.20675513",
+          "label": "Banking-adjacent preprint"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "public/Project_Simurgh_Preprint_v1.0.pdf",
+          "exists": true,
+          "bytes": 250477,
+          "sha256": "1cc7c02948884cba5aa225cb4a3ef986ab1f5849103da4128dec9f3f3b4e81cc"
+        },
+        {
+          "path": "public/Project_Simurgh_Voting_Adjacent_Supplement_Phase_C_Preprint_v1.0.pdf",
+          "exists": true,
+          "bytes": 132302,
+          "sha256": "2e5b43d7aacce55aa929ade17c19162f19e997859bd62e43e5ffeca7099cd5dc"
+        },
+        {
+          "path": "public/Banking_Shield_Machine_Checked_Absence_Claims_Preprint_v1.2.pdf",
+          "exists": true,
+          "bytes": 170083,
+          "sha256": "ab60c67d0f7c3b49a54f7343842c03e022323417710a6d0f69dd64d7421a2559"
+        }
+      ],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          135,
+          246
+        ],
+        "src/lib/project-content/fa.ts": [
+          58,
+          123
+        ],
+        "src/lib/project-content/ar.ts": [
+          58,
+          123
+        ],
+        "src/lib/project-content/zh.ts": [
+          58,
+          123
+        ],
+        "src/lib/project-content/es.ts": [
+          58,
+          123
+        ]
+      },
+      "relatedWriteups": [
+        "project-simurgh-containment"
+      ],
+      "findings": [
+        "SURF-05"
+      ],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "All5 dedicated selected-research summaries/qualifiers reviewed."
+      }
+    },
+    {
+      "slug": "project-zurvan",
+      "title": "Project Zurvan",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 5,
+            "features": 6,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 5,
+            "features": 6,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 5,
+            "features": 6,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 5,
+            "features": 6,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 5,
+            "features": 6,
+            "measures": 5,
+            "stack": 5
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": true,
+      "diagram": "dedicated architecture/evidence story",
+      "links": {
+        "repo": "https://github.com/Raoof128/Project-Zurvan",
+        "repoVisibility": "private",
+        "caseStudy": "/projects/project-zurvan"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          247,
+          312
+        ],
+        "src/lib/project-content/fa.ts": [
+          124,
+          167
+        ],
+        "src/lib/project-content/ar.ts": [
+          124,
+          167
+        ],
+        "src/lib/project-content/zh.ts": [
+          124,
+          167
+        ],
+        "src/lib/project-content/es.ts": [
+          124,
+          167
+        ]
+      },
+      "relatedWriteups": [],
+      "findings": [
+        "SURF-01"
+      ],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "All5 dedicated selected-research summaries/qualifiers reviewed."
+      }
+    },
+    {
+      "slug": "gitswitch",
+      "title": "GitSwitch",
+      "category": "ENGINEERING",
+      "year": "2024",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "repo": "https://github.com/Raoof128/GitSwitch",
+        "caseStudy": "/projects/gitswitch"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          313,
+          364
+        ],
+        "src/lib/project-content/fa.ts": [
+          168,
+          199
+        ],
+        "src/lib/project-content/ar.ts": [
+          168,
+          199
+        ],
+        "src/lib/project-content/zh.ts": [
+          168,
+          198
+        ],
+        "src/lib/project-content/es.ts": [
+          168,
+          199
+        ]
+      },
+      "relatedWriteups": [
+        "electron-security"
+      ],
+      "findings": [
+        "SURF-03"
+      ],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "mehr-guard",
+      "title": "Mehr Guard",
+      "category": "DEFENSIVE",
+      "year": "2024",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 5,
+            "features": 5,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 5,
+            "features": 5,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 5,
+            "features": 5,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 5,
+            "features": 5,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 5,
+            "features": 5,
+            "measures": 4,
+            "stack": 5
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "demo": "https://raoof128.github.io/dashboard.html",
+        "repo": "https://github.com/Raoof128/Raoof128.github.io",
+        "caseStudy": "/projects/mehr-guard"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          365,
+          419
+        ],
+        "src/lib/project-content/fa.ts": [
+          200,
+          233
+        ],
+        "src/lib/project-content/ar.ts": [
+          200,
+          233
+        ],
+        "src/lib/project-content/zh.ts": [
+          199,
+          232
+        ],
+        "src/lib/project-content/es.ts": [
+          200,
+          233
+        ]
+      },
+      "relatedWriteups": [
+        "kmp-security"
+      ],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "syllabus-sync",
+      "title": "Syllabus-Sync",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 6,
+            "features": 4,
+            "measures": 5,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 6,
+            "features": 4,
+            "measures": 5,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 6,
+            "features": 4,
+            "measures": 5,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 6,
+            "features": 4,
+            "measures": 5,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 6,
+            "features": 4,
+            "measures": 5,
+            "stack": 8
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "demo": "https://www.syllabus-sync.app/",
+        "repo": "https://github.com/Raoof128/syllabus-sync",
+        "caseStudy": "/projects/syllabus-sync"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          420,
+          485
+        ],
+        "src/lib/project-content/fa.ts": [
+          234,
+          268
+        ],
+        "src/lib/project-content/ar.ts": [
+          234,
+          268
+        ],
+        "src/lib/project-content/zh.ts": [
+          233,
+          267
+        ],
+        "src/lib/project-content/es.ts": [
+          234,
+          268
+        ]
+      },
+      "relatedWriteups": [],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "divan-open-day",
+      "title": "Divan — Open Day",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 4,
+            "features": 5,
+            "measures": 6,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 4,
+            "features": 5,
+            "measures": 6,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 4,
+            "features": 5,
+            "measures": 6,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 4,
+            "features": 5,
+            "measures": 6,
+            "stack": 8
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 5,
+            "proof": 4,
+            "features": 5,
+            "measures": 6,
+            "stack": 8
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "demo": "https://divan.raoufabedini.dev/",
+        "repo": "https://github.com/Raoof128/divan-open-day",
+        "caseStudy": "/projects/divan-open-day"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          486,
+          552
+        ],
+        "src/lib/project-content/fa.ts": [
+          269,
+          315
+        ],
+        "src/lib/project-content/ar.ts": [
+          269,
+          315
+        ],
+        "src/lib/project-content/zh.ts": [
+          268,
+          314
+        ],
+        "src/lib/project-content/es.ts": [
+          269,
+          315
+        ]
+      },
+      "relatedWriteups": [],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "nexus-archive",
+      "title": "Nexus Archive",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 5,
+            "stack": 9
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 5,
+            "stack": 9
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 5,
+            "stack": 9
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 5,
+            "stack": 9
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 5,
+            "stack": 9
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "demo": "https://home-notes-app.uk/",
+        "repo": "https://github.com/Raoof128/Nexus_Archive",
+        "caseStudy": "/projects/nexus-archive"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          553,
+          610
+        ],
+        "src/lib/project-content/fa.ts": [
+          316,
+          348
+        ],
+        "src/lib/project-content/ar.ts": [
+          316,
+          348
+        ],
+        "src/lib/project-content/zh.ts": [
+          315,
+          347
+        ],
+        "src/lib/project-content/es.ts": [
+          316,
+          348
+        ]
+      },
+      "relatedWriteups": [],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "nanomatch",
+      "title": "NanoMatch",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "repo": "https://github.com/Raoof128/NanoMatch",
+        "caseStudy": "/projects/nanomatch"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          611,
+          663
+        ],
+        "src/lib/project-content/fa.ts": [
+          349,
+          380
+        ],
+        "src/lib/project-content/ar.ts": [
+          349,
+          380
+        ],
+        "src/lib/project-content/zh.ts": [
+          348,
+          379
+        ],
+        "src/lib/project-content/es.ts": [
+          349,
+          380
+        ]
+      },
+      "relatedWriteups": [
+        "nanomatch-deep-dive"
+      ],
+      "findings": [
+        "SURF-02"
+      ],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "sentinelflow",
+      "title": "SentinelFlow",
+      "category": "DEFENSIVE",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 6
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "repo": "https://github.com/Raoof128/SentinelFlow",
+        "caseStudy": "/projects/sentinelflow"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          664,
+          722
+        ],
+        "src/lib/project-content/fa.ts": [
+          381,
+          420
+        ],
+        "src/lib/project-content/ar.ts": [
+          381,
+          420
+        ],
+        "src/lib/project-content/zh.ts": [
+          380,
+          419
+        ],
+        "src/lib/project-content/es.ts": [
+          381,
+          420
+        ]
+      },
+      "relatedWriteups": [
+        "sentinelflow-deep-dive"
+      ],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "ecrsm",
+      "title": "eBPF Cloud Runtime Security Monitor",
+      "category": "OFFENSIVE",
+      "year": "2025",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 4
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 4
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 4
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 4
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 4
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "repo": "https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor",
+        "caseStudy": "/projects/ecrsm"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          723,
+          773
+        ],
+        "src/lib/project-content/fa.ts": [
+          421,
+          454
+        ],
+        "src/lib/project-content/ar.ts": [
+          421,
+          459
+        ],
+        "src/lib/project-content/zh.ts": [
+          420,
+          458
+        ],
+        "src/lib/project-content/es.ts": [
+          421,
+          454
+        ]
+      },
+      "relatedWriteups": [
+        "ecrsm-deep-dive"
+      ],
+      "findings": [
+        "SURF-04"
+      ],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "simurghforge",
+      "title": "SimurghForge",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 10
+          },
+          "paperEntries": 0
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 10
+          },
+          "paperEntries": 0
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 10
+          },
+          "paperEntries": 0
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 10
+          },
+          "paperEntries": 0
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 4,
+            "stack": 10
+          },
+          "paperEntries": 0
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "repo": "https://github.com/Raoof128/SimurghForge",
+        "caseStudy": "/projects/simurghforge"
+      },
+      "papers": [],
+      "pdfs": [],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          774,
+          830
+        ],
+        "src/lib/project-content/fa.ts": [
+          455,
+          486
+        ],
+        "src/lib/project-content/ar.ts": [
+          460,
+          491
+        ],
+        "src/lib/project-content/zh.ts": [
+          459,
+          490
+        ],
+        "src/lib/project-content/es.ts": [
+          455,
+          486
+        ]
+      },
+      "relatedWriteups": [],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    },
+    {
+      "slug": "aion",
+      "title": "Aion",
+      "category": "ENGINEERING",
+      "year": "2026",
+      "locales": {
+        "en": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 6,
+            "stack": 10
+          },
+          "paperEntries": 1
+        },
+        "fa": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 6,
+            "stack": 10
+          },
+          "paperEntries": 1
+        },
+        "ar": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 6,
+            "stack": 10
+          },
+          "paperEntries": 1
+        },
+        "zh": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 6,
+            "stack": 10
+          },
+          "paperEntries": 1
+        },
+        "es": {
+          "fieldsNonblank": true,
+          "arrayLengths": {
+            "solution": 4,
+            "proof": 4,
+            "features": 4,
+            "measures": 6,
+            "stack": 10
+          },
+          "paperEntries": 1
+        }
+      },
+      "artwork": true,
+      "atlas": false,
+      "diagram": "derived localized documented stack",
+      "links": {
+        "repo": "https://github.com/Raoof128/Aion",
+        "caseStudy": "/projects/aion"
+      },
+      "papers": [
+        {
+          "title": "Aion-BibleQA: Evaluating Retrieval and Citation Faithfulness in Verse-Grounded Bible RAG Systems",
+          "href": "/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+          "doi": "10.5281/zenodo.20522874",
+          "label": "Preprint"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "public/aion-bibleqa-citation-faithfulness-bible-rag.pdf",
+          "exists": true,
+          "bytes": 173492,
+          "sha256": "7ebb1bc33471969055fe9a1a970226d18148f78804a5b4f743a18e840662f50f"
+        }
+      ],
+      "sourceSpans": {
+        "src/lib/data.ts": [
+          831,
+          911
+        ],
+        "src/lib/project-content/fa.ts": [
+          487,
+          528
+        ],
+        "src/lib/project-content/ar.ts": [
+          492,
+          533
+        ],
+        "src/lib/project-content/zh.ts": [
+          491,
+          532
+        ],
+        "src/lib/project-content/es.ts": [
+          487,
+          528
+        ]
+      },
+      "relatedWriteups": [],
+      "findings": [],
+      "derivedSurfaceCoverage": {
+        "explorer": "Localized summary adapter; inventory and counts generated from canonical source.",
+        "search": "Localized project description; original source title aliases and paper identities preserved.",
+        "dossier": "Current source fields, preserved resource links, and localized copy; root routes unchanged.",
+        "seo": "Localized title/description, reciprocal canonical alternates, and original-English paper entities.",
+        "corpus": "All13 generated project blocks; concise corpus is intentionally selected projects.",
+        "atlas": "Not featured in intentional3project atlas; generic artwork/stack coverage exists."
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "SURF-01",
+      "priority": "P2",
+      "project": "project-zurvan",
+      "status": "confirmed internal semantic drift",
+      "finding": "Persian/Spanish full descriptions strengthen no cloud lock-in to no cloud dependence, while the source and the same dossier limits allow configured OpenAI/Anthropic extraction.",
+      "locations": [
+        {
+          "path": "src/lib/project-content/fa.ts",
+          "line": 128
+        },
+        {
+          "path": "src/lib/project-content/es.ts",
+          "line": 128
+        },
+        {
+          "path": "src/lib/data.ts",
+          "line": 295
+        }
+      ],
+      "recommendation": "Translate vendor lock-in/local storage precisely and retain the external-provider caveat; do not promise offline extraction."
+    },
+    {
+      "id": "SURF-02",
+      "priority": "P2",
+      "project": "nanomatch",
+      "status": "confirmed cross-surface qualifier drift",
+      "finding": "Dossier correctly qualifies hash lookup/cancellation as expected O(1); article takeaway, direct-lookup paragraph and unordered_map table omit the expected/average-case qualifier in English and all four translations. Machine corpus/search inherit the article takeaway.",
+      "locations": [
+        {
+          "path": "src/lib/data.ts",
+          "line": 635
+        },
+        {
+          "path": "src/lib/data.ts",
+          "line": 1157
+        },
+        {
+          "path": "src/lib/data.ts",
+          "line": 1167
+        },
+        {
+          "path": "src/lib/data.ts",
+          "line": 1175
+        }
+      ],
+      "translationLocations": [
+        {
+          "path": "src/lib/writing-translations/fa.json",
+          "lines": [
+            97,
+            103,
+            108
+          ]
+        },
+        {
+          "path": "src/lib/writing-translations/ar.json",
+          "lines": [
+            97,
+            103,
+            108
+          ]
+        },
+        {
+          "path": "src/lib/writing-translations/zh.json",
+          "lines": [
+            97,
+            103,
+            108
+          ]
+        },
+        {
+          "path": "src/lib/writing-translations/es.json",
+          "lines": [
+            97,
+            103,
+            108
+          ]
+        }
+      ],
+      "recommendation": "Use expected/average hash complexity consistently; keep list erase and free-list operations distinct from hash worst-case behavior."
+    },
+    {
+      "id": "SURF-03",
+      "priority": "P2",
+      "project": "gitswitch",
+      "status": "high-confidence source-verification candidate",
+      "finding": "Security article states Gemini is the only outbound egress, despite the same article discussing GitHub tokens and the product being a remote Git client. This exclusivity is absent from the dossier and needs checking against pinned Git/GitHub integration.",
+      "locations": [
+        {
+          "path": "src/lib/data.ts",
+          "line": 1396
+        }
+      ],
+      "translationLocations": [
+        {
+          "path": "src/lib/writing-translations/fa.json",
+          "line": 243
+        },
+        {
+          "path": "src/lib/writing-translations/ar.json",
+          "line": 243
+        },
+        {
+          "path": "src/lib/writing-translations/zh.json",
+          "line": 243
+        },
+        {
+          "path": "src/lib/writing-translations/es.json",
+          "line": 243
+        }
+      ],
+      "recommendation": "Remove exclusivity or enumerate actual Git/GitHub/provider egress after source-owner verification; do not assert network isolation from token storage controls."
+    },
+    {
+      "id": "SURF-04",
+      "priority": "P2",
+      "project": "ecrsm",
+      "status": "confirmed wording disagreement; actual implementation deferred to source owner",
+      "finding": "Dossier proof names perf-buffer transport; article data path says ring buffer twice. These can mean different BPF transports, so source should decide which description is current.",
+      "locations": [
+        {
+          "path": "src/lib/data.ts",
+          "line": 769
+        },
+        {
+          "path": "src/lib/data.ts",
+          "line": 1306
+        },
+        {
+          "path": "src/lib/data.ts",
+          "line": 1307
+        }
+      ],
+      "recommendation": "Use the actual pinned transport consistently, or explain separate stages if both are used. Do not infer a runtime benchmark from the terminology."
+    },
+    {
+      "id": "SURF-05",
+      "priority": "P3",
+      "project": "project-simurgh",
+      "status": "structured-identity completeness observation",
+      "finding": "Header and machine prose distinguish current software DOI21737792 from older paper20374849, but the SoftwareSourceCode JSON-LD node has no identifier/sameAs for links.doi; only older ScholarlyArticle DOI nodes are modeled.",
+      "locations": [
+        {
+          "path": "src/app/[locale]/projects/[slug]/page.tsx",
+          "line": 134
+        },
+        {
+          "path": "src/app/[locale]/projects/[slug]/page.tsx",
+          "line": 143
+        }
+      ],
+      "recommendation": "If extending machine identity, add the software DOI as the software entity identifier/sameAs without recasting it as a ScholarlyArticle or changing original paper dates."
+    }
+  ],
+  "writingParity": [
+    {
+      "path": "src/lib/writing-translations/fa.json",
+      "sha256": "86f213ad9194096b7cf9030f35af28499bae6efec1ae68d3bb351c32fa3268c4",
+      "coverage": "All JSON records parsed and all prose-line counts/numeric evidence/nonblank values checked; semantic spot-read of relevant article disagreements, not a claimed complete native-speaker translation review.",
+      "observations": [
+        {
+          "slug": "project-simurgh-containment",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "invisible-window-research",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "nanomatch-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "sentinelflow-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "ecrsm-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "kmp-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "electron-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        }
+      ]
+    },
+    {
+      "path": "src/lib/writing-translations/ar.json",
+      "sha256": "3d7ed432a9255dd818296878f1ee7c5493e143c8ae91fd9cead83974f974807a",
+      "coverage": "All JSON records parsed and all prose-line counts/numeric evidence/nonblank values checked; semantic spot-read of relevant article disagreements, not a claimed complete native-speaker translation review.",
+      "observations": [
+        {
+          "slug": "project-simurgh-containment",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "invisible-window-research",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "nanomatch-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "sentinelflow-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "ecrsm-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "kmp-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "electron-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        }
+      ]
+    },
+    {
+      "path": "src/lib/writing-translations/zh.json",
+      "sha256": "b08e2543b20322b1fbd05fb14447c3b67dbbf9b82110c5c9b937e7af10321679",
+      "coverage": "All JSON records parsed and all prose-line counts/numeric evidence/nonblank values checked; semantic spot-read of relevant article disagreements, not a claimed complete native-speaker translation review.",
+      "observations": [
+        {
+          "slug": "project-simurgh-containment",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "invisible-window-research",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "nanomatch-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "sentinelflow-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "ecrsm-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "kmp-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "electron-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        }
+      ]
+    },
+    {
+      "path": "src/lib/writing-translations/es.json",
+      "sha256": "0e0b54fc83fb0019b8d46f32c37e3281494a1338f25fa4b8f2a8cfdee53332ae",
+      "coverage": "All JSON records parsed and all prose-line counts/numeric evidence/nonblank values checked; semantic spot-read of relevant article disagreements, not a claimed complete native-speaker translation review.",
+      "observations": [
+        {
+          "slug": "project-simurgh-containment",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "invisible-window-research",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "nanomatch-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "sentinelflow-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "ecrsm-deep-dive",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "kmp-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        },
+        {
+          "slug": "electron-security",
+          "lineCountMatches": true,
+          "numericEvidenceMatches": true,
+          "noBlankScalarOrLine": true
+        }
+      ]
+    }
+  ],
+  "structuralEvidence": "surfaces-structural-evidence.json",
+  "externalSourceProposalsRead": [
+    "research-proposals-early.json",
+    "mehr-review.json"
+  ],
+  "externalSourceBoundary": "Pinned repository/HTTP verification belongs to source owners and is not certified here. Their proposed updates may intentionally change current source arrays/counts; preserve receipt pass/fail/skip outcomes.",
+  "nextAuthorizedWork": "Own only4 project overlays after root explicitly sends canonical data freeze; no overlay product edits yet."
+}

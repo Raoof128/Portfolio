@@ -8,7 +8,11 @@ import {
 } from "./appearance";
 
 beforeEach(() => window.localStorage.clear());
-afterEach(() => vi.restoreAllMocks());
+afterEach(() => {
+  vi.restoreAllMocks();
+  writeAppearance("dark");
+  window.localStorage.clear();
+});
 
 describe("workspace appearance", () => {
   it("starts fresh visits in dark, including after a light preference is removed", () => {
@@ -53,10 +57,23 @@ describe("workspace appearance", () => {
     expect(readStoredAppearance()).toBeNull();
   });
 
-  it("reports no stored choice when storage cannot be read", () => {
+  it("keeps a manual choice when reads work but writes are blocked", () => {
+    window.localStorage.setItem(appearanceStorageKey, "dark");
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new DOMException("Quota exceeded", "QuotaExceededError");
+    });
+    writeAppearance("light");
+    expect(window.localStorage.getItem(appearanceStorageKey)).toBe("dark");
+    expect(readStoredAppearance()).toBe("light");
+    expect(readAppearance()).toBe("light");
+  });
+
+  it("retains the last explicit choice when storage cannot be read", () => {
+    writeAppearance("light");
     vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
       throw new DOMException("Storage unavailable", "SecurityError");
     });
-    expect(readStoredAppearance()).toBeNull();
+    expect(readStoredAppearance()).toBe("light");
+    writeAppearance("dark");
   });
 });
