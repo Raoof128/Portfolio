@@ -39,9 +39,9 @@ flowchart TD
 
 Detailed design notes are documented in [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
 
-Current handover (12 October 2026): work is on `main-proof-atlas-2026-10-11` with local export `RAlsc85jKQO_lr4A2e_Ie` at `00ce522dc4c247a15a0fcfb42a280c20c1935cf4`. All five languages remain; Australian English spelling applies to English copy only. The lock screen no longer renders Proof Atlas; the unlocked Atlas and evidence remain. Current tests, build and browser evidence, historical performance identities, limitations and outstanding acceptance work are recorded in the [Portfolio handover](./docs/portfolio-handover-2026-10-12.md). No performance rerun was made on this export. Production has not been reverified or updated, and field CWV, physical-device, screen-reader and remote CI proof remain absent. No listener is currently running on the previously used preview address `127.0.0.1:4398`. The prior frontend-gauntlet and build-10 paragraph below is retained as historical context.
+Current application release (4 November 2026): `cadf881` restores the home profile screen, including reloads. Selecting the portrait/name or **Enter workspace** starts a full three-second loader before the desktop opens. Returning sessions and reduced motion retain the delay. The release passed 797 unit tests, required build/security gates, Chrome transition checks and both production HTTP audits, then deployed directly with Wrangler. See the [current release handover](./docs/portfolio-release-handover-2026-11-04.md) for source/deployment identities, local Zurvan source coverage and validation limits.
 
-The independent-window continuation is implemented on `main-frontend-gauntlet-2026-10-10`. Frozen build 10 passes 468 tests in 33 files, lint, typecheck, 168 generated pages and the 160-route export audit. It improves Light Welcome text contrast while preserving layout and stronger-contrast preferences. The scoped native review covers 1,280 default frames across 160 routes plus 40 unlocked-home frames, retaining actual build 6/8 capture identities and qualified later projections. Build 9 actual zoom/reflow and five-language window checks retain their separate identities. Original project previews, five languages and research evidence are preserved. The reviewed private development dependency is now installed. Fresh local integration passes ordinary `npm ci`, lint with zero errors and one existing local temporary-file warning, typecheck, 468 application tests in 33 files, three dependency-security tests, six schema tests, 168 generated pages, the 160-route export audit and full/runtime audits with zero advisories. The final frozen-source/export report records the exact handoff identity; historical captures and results keep their original build labels. Publication still requires explicit approval. Field performance, physical-device, screen-reader and remote CI proof remain separate. See the [maintenance instructions](./docs/dependency-security.md) and [goal checklist](./docs/research-os-goal-checklist.md). No push, merge or deployment has occurred.
+The [12 October handover](./docs/portfolio-handover-2026-10-12.md), earlier frontend-gauntlet reports and build-10 evidence are historical. Their branch names, counts and no-deployment statements describe their original snapshots. Physical-device, assistive-technology, native-speaker and field Web Vitals verification remain separate; incomplete contrast and PDF-tagging limits are not cleared by deployment. The runtime dependency audit reports zero vulnerabilities; 16 moderate tooling advisories remain in the full audit. See the [maintenance instructions](./docs/dependency-security.md) and [goal checklist](./docs/research-os-goal-checklist.md).
 
 ## Repository Structure
 
@@ -80,7 +80,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-Choose **Enter workspace**, open Projects, type a search, then open About. Opening another page disposes the previous window; there is no opened-page history strip. Minimize temporarily preserves only the current page, with one restore button and a dock indicator. Desktop title dragging and the resize handle have a **Window controls** menu with click steps and keyboard arrows; phones use ordinary document scrolling. Direct content URLs open immediately. Only the appearance preference persists across reloads; the current page’s filters, geometry and reading position are temporary state that ends when navigating away.
+Select the profile portrait/name or **Enter workspace**, wait three seconds, then open Projects, type a search, then open About. Opening another page disposes the previous window; there is no opened-page history strip. Minimize temporarily preserves only the current page, with one restore button and a dock indicator. Desktop title dragging and the resize handle have a **Window controls** menu with click steps and keyboard arrows; phones use ordinary document scrolling. Direct content URLs open immediately. Only the appearance preference persists across reloads; the current page’s filters, geometry and reading position are temporary state that ends when navigating away.
 
 ## Quality Commands
 
@@ -138,6 +138,7 @@ This repository is deployed to Cloudflare Pages:
 
 ## Documentation Index
 
+- [Current release handover and Zurvan coverage](./docs/portfolio-release-handover-2026-11-04.md)
 - [Architecture](./docs/ARCHITECTURE.md)
 - [ResearchOS experience and verification](./docs/research-os-implementation.md)
 - [ResearchOS goal and acceptance checklist](./docs/research-os-goal-checklist.md)

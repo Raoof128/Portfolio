@@ -1,5 +1,9 @@
 # Portfolio handover — 12 October 2026
 
+Historical snapshot. For the latest production identity and full local Zurvan
+ingestion, use the [4 November release handover](portfolio-release-handover-2026-11-04.md).
+The original state, evidence and limitations below retain their original scope.
+
 This handover records the current local state of the Portfolio work on
 `main-proof-atlas-2026-10-11`. It consolidates the dated logs and evidence
 without replacing their original identities. The working tree is intentionally
