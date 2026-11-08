@@ -343,9 +343,10 @@ export function Desktop({
       <section className="os-apps" aria-label={copy.appNavigation}>
         <p className="os-section-label">
           {copy.workspaceHint}
-          {/* One caption line with the count per category, after the hint. */}
+          {/* One caption line with the project count per category, after the hint. The count
+              sits in parentheses so it cannot read as a rank ("Offensive security 1"). */}
           <span className="os-app-stat">
-            {`${copy.categoryOffensive} ${projectCounts.OFFENSIVE} · ${copy.categoryDefensive} ${projectCounts.DEFENSIVE} · ${copy.categoryEngineering} ${projectCounts.ENGINEERING}`}
+            {`${copy.categoryOffensive} (${projectCounts.OFFENSIVE}) · ${copy.categoryDefensive} (${projectCounts.DEFENSIVE}) · ${copy.categoryEngineering} (${projectCounts.ENGINEERING})`}
           </span>
         </p>
         <div className="os-app-grid" onKeyDown={moveAppFocus}>

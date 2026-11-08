@@ -981,14 +981,25 @@ export function ResearchOS({
     };
   }, [locale]);
 
-  // The strip starts at the first pin, so a later page's pin can begin off screen. Scrolling
-  // the pressed pin in (nearest edge) keeps the page the visitor is on visible in the bar.
+  // The strip starts at the first pin, so a later page's pin can begin off screen. Only the strip
+  // scrolls to bring the pressed pin in. The bar sits in normal flow after the page on short
+  // screens, so scrollIntoView would also scroll the window to the bottom and hide the heading.
   useEffect(() => {
-    const current = dockStrip.current?.querySelector<HTMLElement>(
+    const strip = dockStrip.current;
+    const current = strip?.querySelector<HTMLElement>(
       ".os-dock-app[aria-current='page']",
     );
-    if (current && typeof current.scrollIntoView === "function")
-      current.scrollIntoView({ block: "nearest", inline: "nearest" });
+    if (!strip || !current || typeof strip.scrollBy !== "function") return;
+    // Physical deltas: positive scrolls right in both LTR and RTL.
+    const stripBox = strip.getBoundingClientRect();
+    const pinBox = current.getBoundingClientRect();
+    const delta =
+      pinBox.left < stripBox.left
+        ? pinBox.left - stripBox.left
+        : pinBox.right > stripBox.right
+          ? pinBox.right - stripBox.right
+          : 0;
+    if (delta !== 0) strip.scrollBy({ left: delta });
   }, [pathname, locale]);
 
   return (

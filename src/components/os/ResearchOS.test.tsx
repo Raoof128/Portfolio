@@ -1302,6 +1302,15 @@ describe("ResearchOS logon session", () => {
   });
 });
 
+/** Saves an own property so a test can replace it and restore exactly what was there. */
+function saveProperty(target: object, name: PropertyKey) {
+  const original = Object.getOwnPropertyDescriptor(target, name);
+  return () => {
+    if (original) Object.defineProperty(target, name, original);
+    else Reflect.deleteProperty(target, name);
+  };
+}
+
 describe("ResearchOS taskbar", () => {
   it("prefetches a dock app's route on hover and press, before the click", () => {
     navigation.pathname = "/";
@@ -1324,34 +1333,59 @@ describe("ResearchOS taskbar", () => {
     expect(navigation.prefetch).toHaveBeenCalledWith("/projects");
   });
 
-  it("brings the pressed pin into the strip, so the current page is never off screen", () => {
-    const original = Object.getOwnPropertyDescriptor(
-      Element.prototype,
-      "scrollIntoView",
-    );
-    const scroll = vi.fn();
-    Object.defineProperty(Element.prototype, "scrollIntoView", {
-      configurable: true,
-      value: scroll,
-    });
-    try {
-      navigation.pathname = "/about";
-      const { container } = renderWorkspace(shell());
-      const about = container.querySelector<HTMLElement>(
-        '.os-dock-app[data-app="about"]',
-      )!;
-      expect(about).toHaveAttribute("aria-current", "page");
-      expect(scroll).toHaveBeenCalledWith({
-        block: "nearest",
-        inline: "nearest",
+  it.each<[string, { strip: [number, number]; pin: [number, number] }, number]>([
+    ["past the right edge", { strip: [0, 200], pin: [250, 330] }, 130],
+    ["before the left edge", { strip: [100, 300], pin: [40, 120] }, -60],
+  ])(
+    "reveals the pressed pin by scrolling only the strip (%s), never the window",
+    (_name, box, delta) => {
+      const edges = [
+        [".os-dock-strip", box.strip],
+        [".os-dock-app[aria-current='page']", box.pin],
+      ] as const;
+      const rectOf = (element: Element) => {
+        const hit = edges.find(([selector]) => element.matches(selector));
+        const [left, right] = hit ? hit[1] : [0, 0];
+        return { x: left, left, right, top: 0, bottom: 0, y: 0, width: right - left, height: 0, toJSON: () => ({}) };
+      };
+      const restore = [
+        saveProperty(Element.prototype, "getBoundingClientRect"),
+        saveProperty(Element.prototype, "scrollIntoView"),
+        saveProperty(HTMLElement.prototype, "scrollBy"),
+      ];
+      const scrollIntoView = vi.fn();
+      const scrollBy = vi.fn();
+      Object.defineProperty(Element.prototype, "getBoundingClientRect", {
+        configurable: true,
+        value(this: Element) {
+          return rectOf(this);
+        },
       });
-      expect(scroll.mock.contexts).toContain(about);
-    } finally {
-      if (original)
-        Object.defineProperty(Element.prototype, "scrollIntoView", original);
-      else Reflect.deleteProperty(Element.prototype, "scrollIntoView");
-    }
-  });
+      Object.defineProperty(Element.prototype, "scrollIntoView", {
+        configurable: true,
+        value: scrollIntoView,
+      });
+      Object.defineProperty(HTMLElement.prototype, "scrollBy", {
+        configurable: true,
+        value: scrollBy,
+      });
+      try {
+        navigation.pathname = "/projects";
+        const { container } = renderWorkspace(shell());
+        const strip = container.querySelector<HTMLElement>(".os-dock-strip")!;
+        const pin = container.querySelector<HTMLElement>(
+          ".os-dock-app[aria-current='page']",
+        )!;
+        expect(pin).toHaveAttribute("data-app", "projects");
+        expect(scrollIntoView.mock.contexts).not.toContain(pin);
+        expect(scrollBy.mock.contexts).toEqual([strip]);
+        expect(scrollBy).toHaveBeenCalledTimes(1);
+        expect(scrollBy).toHaveBeenCalledWith({ left: delta });
+      } finally {
+        restore.forEach((undo) => undo());
+      }
+    },
+  );
 
   it.each<[Locale, string]>([
     ["en", "Start: show desktop"],

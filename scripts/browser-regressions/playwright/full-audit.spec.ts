@@ -437,3 +437,24 @@ for (const hasTouch of [false, true]) {
     });
   });
 }
+
+test.describe("short viewport entry", () => {
+  // On short screens the taskbar sits in normal flow after the page. Revealing the pressed dock
+  // pin must scroll only its strip, never the window, so a cold visit opens at the heading.
+  for (const [width, height] of [[320, 568], [640, 360]] as const) {
+    test.describe(`${width}x${height}`, () => {
+      test.use({ hasTouch: true, viewport: { width, height } });
+
+      for (const path of ["/projects", "/projects/project-simurgh"]) {
+        test(`cold load of ${path} keeps the window at the top with the heading in view`, async ({ page }) => {
+          await prepare(page, "light");
+          await page.goto(path, { waitUntil: "networkidle" });
+          await page.waitForTimeout(600);
+          await expect(pane(page).locator("h1")).toBeVisible();
+          expect(await page.evaluate(() => window.scrollY)).toBe(0);
+          await expect(pane(page).locator("h1")).toBeInViewport();
+        });
+      }
+    });
+  }
+});
