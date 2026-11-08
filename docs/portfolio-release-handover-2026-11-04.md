@@ -1,4 +1,4 @@
-# Portfolio release handover — 4 November 2026
+# Portfolio release handover — 4 November 2026 (updated 9 November)
 
 This handover records the current arrow-only entry flow followed by earlier
 release evidence. Earlier audit reports and the
@@ -6,7 +6,28 @@ release evidence. Earlier audit reports and the
 builds, measurements and limitations. Their earlier no-deployment statements
 describe those historical stages.
 
-## Current arrow-only entry
+## Current release: reviewer readiness and Aero round 3 (9 November 2026)
+
+`main` is at `e7de6a8461076fb7dc232138e5887ca16d4a1641`, a fast-forward of
+the `claude/dazzling-feynman-cp1q08` branch (15 commits from `38842e2`). It is
+live on both production origins, deployed by GitHub workflow
+[42534569341](https://github.com/Raoof128/Portfolio/actions/runs/42534569341)
+as https://ba41077e.raoufabedini.pages.dev; `version.json` reports build time
+`2026-11-08T23:20:47.560Z`.
+
+- Changes: third Aero parity pass, short-screen dock scroll fix, whole dock
+  labels with locale hyphenation, corrected vendor wording and qualified
+  claims, redirect-loop and hreflang audit checks, dead modules and starter
+  SVGs removed. Details: [Aero round 3](aero-parity/round3/final-verdict.md)
+  and [reviewer readiness](audits/reviewer-readiness/final-verdict.md).
+- Verification: 753/753 unit tests, all required node suites, build, static
+  and agent audits locally; CI and deploy workflows passed; the production
+  audit passed on both origins.
+- Open: the owner-decision list and verification gaps in
+  [unresolved risks](audits/reviewer-readiness/unresolved-risks.md). Entry
+  behavior is unchanged: only the **Enter workspace** arrow opens the desktop.
+
+## Arrow-only entry (4 November 2026)
 
 The owner requested removal of profile login. The portrait and name are now a
 passive display; only the **Enter workspace** arrow starts entry. The full

@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-09 (Australia/Sydney) — Reviewer-readiness and Aero round-3 release deployed
+
+- **Scope**: Owner asked to fetch the `claude/dazzling-feynman-cp1q08` work, redeploy it and update all logs and Zurvan.
+- **Summary**: Fast-forward merged 15 commits (`3358b96` → `e7de6a8`) into `main` without rewriting history and pushed. Ships the third Aero 7.css parity pass (four measured deviations removed, RTL window cascade mirrored, legend padding, taskbar search placeholder) and the reviewer-readiness pass: short-screen dock reveal no longer scrolls the page, narrow dock labels stay whole with locale hyphenation, Apple/Microsoft vendor wording corrected and absolute claims qualified, audit scripts now detect redirect loops and verify hreflang URLs, 17 verified-dead modules and five unused starter SVGs removed. Deployed by GitHub workflow `42534569341` to Cloudflare Pages as https://ba41077e.raoufabedini.pages.dev. The branch's own verdict is CONDITIONAL PASS; its owner-decision list stays open in `docs/audits/reviewer-readiness/unresolved-risks.md`.
+- **Files Changed**: 121 application, test, tooling and documentation files from the merged branch; this release's `AGENT.md`, `CHANGELOG.md`, `README.md` and the current release handover.
+- **Verification**: Local gates on `e7de6a8`: dependency-security 3/3, typecheck, 753/753 unit tests in 45 files, schemas 6/6, audit-http 17/17, security 14/14, tooling 16 passed + 1 skipped (optional Go compiler), build, static security audit (1,067 files), agent audit (0 warnings), runtime `npm audit` 0 vulnerabilities. ESLint is clean on every tracked file; a whole-tree run reports 22 errors only inside ignored local `artifacts/` bundles. CI `42534569340` and deploy `42534569341` passed. Both origins serve `version.json` commit `e7de6a8` built `2026-11-08T23:20:47.560Z`; `scripts/audit-production.mjs` passed on both. Removed starter SVGs return 404; `/`, `/projects`, `/fa`, `/resume` return 200; unknown paths return 404. Firefox/WebKit, real devices and screen readers remain unverified, as the branch documented.
+- **Follow-ups**: Owner decisions in the unresolved-risks list (Nexus Archive year, unsourced metrics, Lab 001 policy, "Anthropic" keyword, security-policy response times). P2: hydration remount delays mobile LCP. The merged branch remains on the remote until the owner asks for cleanup.
+
 ### Raouf: 2026-11-04 (Australia/Sydney) — Arrow-only welcome entry
 
 - **Scope**: Remove profile login and use only the Enter workspace arrow, as requested by the owner.

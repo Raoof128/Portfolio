@@ -39,7 +39,7 @@ flowchart TD
 
 Detailed design notes are documented in [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
 
-Current entry flow (4 November 2026): home loads and reloads show the welcome screen. Use the **Enter workspace** arrow to start the full three-second loader before the desktop opens. The portrait and name are a passive display. Returning sessions and reduced motion retain the delay. See the [current release handover](./docs/portfolio-release-handover-2026-11-04.md) for current behavior, earlier deployment evidence and local Zurvan source coverage.
+Current release (9 November 2026): `e7de6a8`, the reviewer-readiness and Aero round-3 pass, is live. Entry flow (unchanged since 4 November 2026): home loads and reloads show the welcome screen. Use the **Enter workspace** arrow to start the full three-second loader before the desktop opens. The portrait and name are a passive display. Returning sessions and reduced motion retain the delay. See the [current release handover](./docs/portfolio-release-handover-2026-11-04.md) for current behavior, earlier deployment evidence and local Zurvan source coverage.
 
 The [12 October handover](./docs/portfolio-handover-2026-10-12.md), earlier frontend-gauntlet reports and build-10 evidence are historical. Their branch names, counts and no-deployment statements describe their original snapshots. Physical-device, assistive-technology, native-speaker and field Web Vitals verification remain separate; incomplete contrast and PDF-tagging limits are not cleared by deployment. The runtime dependency audit reports zero vulnerabilities; 16 moderate tooling advisories remain in the full audit. See the [maintenance instructions](./docs/dependency-security.md) and [goal checklist](./docs/research-os-goal-checklist.md).
 
