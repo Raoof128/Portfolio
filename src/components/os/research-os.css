@@ -14,12 +14,6 @@ html:has(.os-shell[data-appearance="light"]) {
 }
 /* The theme flip is instant. No code sets a switching window (the old cross-fade rule
    was dead), so the wallpaper and the windows change together. */
-/* Dormant: the View Transitions path is off until a frame-cost trace clears it. */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 240ms;
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
 .os-shell {
   /* Colour, dark (default). Values follow the design system, section 3.1. */
   --os-bg: #080d19;

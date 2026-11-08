@@ -235,41 +235,8 @@
   }
 }
 
-/* Static rim on the evidence figure frame (v2.0 rim recipe; the Intelligence Glow layer is retired). The
-   frame keeps its solid surface and hairline; the rim is a 1px edge painted once on
-   ::after and never animates. Text and links carry no gradient. */
 .os-shell .os-project-explorer .os-project-section .os-evidence-story {
   position: relative;
-}
-.os-shell .os-project-explorer .os-project-section .os-evidence-story::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: var(--os-rim-gradient);
-  pointer-events: none;
-  opacity: var(--os-rim-opacity);
-  /* Aero stories use the group-box edge instead of the rim. */
-  display: none;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-}
-@media (prefers-contrast: more) {
-  .os-shell .os-project-explorer .os-project-section .os-evidence-story::after {
-    background: var(--os-rim-solid);
-    opacity: 1;
-  }
-}
-@media (forced-colors: active) {
-  .os-shell .os-project-explorer .os-project-section .os-evidence-story::after {
-    display: none;
-  }
 }
 
 /* Evidence reveal: a story card eases up 12px and fades in over 200ms, once.

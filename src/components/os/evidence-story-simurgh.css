@@ -26,7 +26,7 @@
 .os-shell
   .os-project-explorer
   .os-project-section
-  :is(.os-simurgh-instrument-control, .os-simurgh-instrument-output) {
+  .os-simurgh-instrument-control {
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr);
   align-items: center;
@@ -60,20 +60,7 @@
 .os-shell
   .os-project-explorer
   .os-project-section
-  .os-simurgh-instrument-output {
-  border-style: dashed;
-  border-color: var(--os-control-line);
-}
-
-.os-shell
-  .os-project-explorer
-  .os-project-section
   .os-simurgh-instrument-control
-  strong,
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-output
   strong {
   min-width: 0;
   color: var(--os-text);
@@ -81,27 +68,6 @@
   font-weight: 500;
   line-height: 1.45;
   overflow-wrap: anywhere;
-}
-
-/* The output marker spans both rows so the title and detail sit beside it. */
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-output
-  .os-simurgh-instrument-point {
-  grid-row: 1 / span 2;
-  align-self: start;
-}
-
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-output
-  small {
-  grid-column: 2;
-  color: var(--os-muted);
-  font-size: var(--text-s);
-  line-height: 1.55;
 }
 
 .os-shell .os-project-explorer .os-project-section .os-simurgh-instrument-point,
@@ -231,20 +197,13 @@
   .os-shell
     .os-project-explorer
     .os-project-section
-    :is(.os-simurgh-instrument-control, .os-simurgh-instrument-output) {
+    .os-simurgh-instrument-control {
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: flex-start;
     min-height: 112px;
     gap: var(--space-2);
-  }
-  .os-shell
-    .os-project-explorer
-    .os-project-section
-    .os-simurgh-instrument-output
-    small {
-    grid-column: auto;
   }
 }
 

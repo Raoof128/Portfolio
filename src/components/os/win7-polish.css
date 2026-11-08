@@ -26,11 +26,6 @@
 .os-shell.win7 .os-welcome a {
   color: var(--win7-text-on-wallpaper);
 }
-.os-shell.win7 .os-welcome #os-lock-name {
-  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
-  font-weight: 400;
-  letter-spacing: 0;
-}
 
 /* Desktop text sits straight on the wallpaper, white with a shadow, as desktop icon
    labels do. */
@@ -103,7 +98,6 @@
 .os-shell.win7 .os-topbar .os-brand {
   display: none;
 }
-.os-shell.win7 .os-topbar .os-theme-label,
 .os-shell.win7 .os-topbar .os-theme-state {
   position: absolute;
   inline-size: 1px;
