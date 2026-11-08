@@ -1,0 +1,254 @@
+lane	path	lines	sha256_at_263a0e5	read_completely	disposition
+RR-L1	src/components/os/Desktop.tsx	407	8eadde6cdd6630e91affdd06c50ea64f824979defcbc875cee6ea83e65fa828a	yes	findings
+RR-L1	src/components/os/GlobalNotFoundContent.tsx	207	a1ab484dd285f5fbf72c6b5e6de11d792b5a3be79f3693733c1f68a9204e9491	yes	findings
+RR-L1	src/components/os/InvisibleWindowEvidenceStory.tsx	152	9c0167889cd3ecf18261c2ddd5f8770a78f39ebe899c3823578f7e5f4480b0c6	yes	findings
+RR-L1	src/components/os/OSApplicationBridge.tsx	80	3d0d33997f48ae398ae79183857a00acdb4e1b05b9413ce50effbb8eed490663	yes	findings
+RR-L1	src/components/os/OSIcon.tsx	51	d4cbbfa99d661aaba5e748d1111037345663f680cdaa0171833619b8e2e3df8e	yes	clean
+RR-L1	src/components/os/ProjectDiagram.tsx	179	3376e794a8e6df4e3c3b85b5e3e133324e340b9bcbec31087678e47df1ca22d0	yes	clean
+RR-L1	src/components/os/ProjectExplorer.tsx	423	b9dfb80274d8d98540d29f25eaf628a09b600b78da5e6e91bf86107a3fec5a18	yes	findings
+RR-L1	src/components/os/ProjectMotion.tsx	196	7228505b5a0db85c7e679aadc445432288a7a92a4b5f87f4762c1147f9d64461	yes	clean
+RR-L1	src/components/os/ProjectThumbnail.tsx	73	9e228028898a0a90203d531b6fbe1017dfeca82efd1ee3d2429d70e08e96c060	yes	clean
+RR-L1	src/components/os/ProofAtlas.tsx	588	3b925b855518e4f8b54cd6788a8c59d5da97932505d845f79ffb7a81e9a20463	yes	dead-code
+RR-L1	src/components/os/ReadingWindowControls.tsx	293	882825fb49753e0950d7c829dcc58dadd8daf999c06bffdb5a951bb641ba2042	yes	findings
+RR-L1	src/components/os/ResearchOS.tsx	1779	bb887dc180c3f18f0050c54ccd75d274e3e87b5b6c636ab02c82f4dadab1999f	yes	findings
+RR-L1	src/components/os/SignalVortex.tsx	15	dd083499784ce344ed4bfcebba6d3c56172e0a7d02886e4c3d46e7907c05ef38	yes	clean
+RR-L1	src/components/os/SimurghEvidenceStory.tsx	139	46351540bf0d528b1d239c70b90741a081644d2ef53e0a567f6ec66ca5d85bf9	yes	clean
+RR-L1	src/components/os/TerminalCommand.tsx	149	eba0fd1e129de7ec9e326a2f5f47521fd062be50922e4c69ba71c63c851501ab	yes	clean
+RR-L1	src/components/os/WelcomeEnter.tsx	278	85d7ad23cc228046fef1c9503ccf4a0c14fa61653a5f3e29008e186aed24f68f	yes	dead-code
+RR-L1	src/components/os/WorkspaceWindows.tsx	953	ea1d2bbbd065ed7c3fa1f5947821e4d5a653b4c084faed06f1729b27327f17bb	yes	findings
+RR-L1	src/components/os/ZurvanEvidenceStory.tsx	109	b6f66d66632f8dcadac47917b379578ca4a7cc3d1718760db1ff1b1555931178	yes	clean
+RR-L1	src/components/os/appearance.ts	56	e9ba6a5bcbb2160b77fc634e497d3f001c2e6bc351eb780a4ea33ed571ab49a1	yes	clean
+RR-L1	src/components/os/application-context.tsx	46	76449904ea772c33688673b141e6bf75ce5412436669ac16da4856083dde274e	yes	dead-code
+RR-L1	src/components/os/atlas-copy.ts	353	b973208c28982440ae28cd2caa30bb6d4d34dc419d821d2437ba94b6fc724915	yes	clean
+RR-L1	src/components/os/atlas-journey-copy.ts	8	3f93fdf191820e62e6ca9799e82b4876d62c0e22955e76e3b27b069460ce10ed	yes	clean
+RR-L1	src/components/os/language-navigation.ts	72	1cc28b424a33bdf8ece9e8454e659665351d13a03ebb130f67171e999ad02d4a	yes	clean
+RR-L1	src/components/os/minute-clock.ts	46	e6932768845bd4149548806cc057077de1043795a93eb04e8c943af5889c5aff	yes	clean
+RR-L1	src/components/os/os-copy.ts	505	89abf52c537ac9874d8a8a95817539cd0b921cf0baef26e9a9beb5631b665c18	yes	dead-code
+RR-L1	src/components/os/project-artwork.ts	123	0350d9c450d2b51b5a6dc6a6fb3eda269a022ebc33c39be2b8bd6ec772395ed7	yes	clean
+RR-L1	src/components/os/proof-atlas-context.ts	5	e755fb58a72486307edc477b3896049e808e73d145a40266e6a6f6ba228859bc	yes	clean
+RR-L1	src/components/os/reviewer-copy.ts	16	dd9814f2c1b0dab2b74c3d5d29f8c18aa48c9dd517909fdd7b13044afc0fde1c	yes	clean
+RR-L1	src/components/os/spotlight.ts	28	dae808de0e324451d726e5876bae775efeb7a616e32f27e02ded6d23a838d9ec	yes	findings
+RR-L1	src/components/os/use-copyright-year.ts	15	48d28e501715a86d23522112628a5492f9c28981d34d11ebd36b27088949e03d	yes	clean
+RR-L1	src/components/os/use-reading-window.ts	484	b93c33491701efc049bd758152545190cc8db77b143d7e7066d3bd15213a448d	yes	findings
+RR-L1	src/components/os/use-stage-visibility.ts	116	e1227e061acbdf8466bbd44b80856be143425de618fdfa5a3ca7548192d04917	yes	clean
+RR-L1	src/components/os/window-copy.ts	134	c6444925aa5410e597f4ebe77f7ab31d7b97356bd4cce4bfedd1d6142a205dcc	yes	clean
+RR-L1	src/components/os/window-geometry.ts	302	10e17b84649649a934d896ba9d422beb90ecb7eedc716aae0062536b3017ccbe	yes	clean
+RR-L1	src/components/os/workspace-model.ts	89	88e9266063f0d73ad981b329696260abeaa58f9dd6865a682391b544053fc838	yes	clean
+RR-L2	src/app/[locale]/about/AboutClient.tsx	418	b698d008c8c12016daa344f60238eb01bd227e1feebbf7a2651b2e905568a6cc	yes	findings
+RR-L2	src/app/[locale]/about/page.tsx	89	b9a45e0ef92af79405fe04a3adb0d9b95785a5030137be72965e377a004632d5	yes	clean
+RR-L2	src/app/[locale]/contact/ContactClient.tsx	105	f17128f0728a3c179eae2a995090e0e2cb4af31d23d9fdbe650edafd8dca1fbb	yes	clean
+RR-L2	src/app/[locale]/contact/page.tsx	56	c0d2339ea1055d2177991846c4f2d837873cb8c8c6264ca01d667dac120503da	yes	clean
+RR-L2	src/app/[locale]/hall-of-fame/HallOfFameClient.tsx	86	50f75119738012d9e763e8d7443bbfd6d795ecb78bf626776d85aea5673dfc9c	yes	clean
+RR-L2	src/app/[locale]/hall-of-fame/page.tsx	53	4ebad9649324ce670d3fead33e357cca0c9f088c3032c4c0802574513cab315d	yes	clean
+RR-L2	src/app/[locale]/lab/LabClient.tsx	97	02a7c6026725f124519a5c08b889a903a938651c49fda241601d52a99bed14a0	yes	findings
+RR-L2	src/app/[locale]/lab/[id]/LabDetailClient.tsx	120	c4ae50674a01b12ddeceecfdb63b4a0647ca5b9815541d1e1932b75f36361129	yes	findings
+RR-L2	src/app/[locale]/lab/[id]/page.tsx	153	b1f450724644126ad5129dc7a3886d9281ded1efb37a124dfb2638681cc2d84b	yes	clean
+RR-L2	src/app/[locale]/lab/page.tsx	65	99a3a6a8d50b8a84b07573348f839c8007fc9a4fbe042a1f886329871b237ca3	yes	clean
+RR-L2	src/app/[locale]/layout.tsx	203	f30b776f00861043c35354938c08d2a7238b953c923d8b166a149a42960e584c	yes	findings
+RR-L2	src/app/[locale]/not-found.tsx	76	e8c198163726ca9d3f384cd1f80a651322c0f53f5ee505586a749f99164c6644	yes	clean
+RR-L2	src/app/[locale]/page.tsx	13	f625f78a532646b974ae540f56407fa8d4a208a212dfddb77db2f00dea23e777	yes	clean
+RR-L2	src/app/[locale]/projects/[slug]/ProjectDetailClient.tsx	640	ee682256b7535dfa5a9e91859a7f9620c26fc78aa2cf64b761944223806998bc	yes	findings
+RR-L2	src/app/[locale]/projects/[slug]/page.tsx	223	d9b590fbfb19af66bd463469266d542159abab0c59a5c985deff7c60f5059424	yes	findings
+RR-L2	src/app/[locale]/projects/layout.tsx	50	6d3487de97f6931c40780b6e3586545b53975a035198cdad94ca232e2d5940fd	yes	clean
+RR-L2	src/app/[locale]/projects/page.tsx	18	bd6dcbae32e5ec0392649345d2191d33a5baa136e07704b22c109070ba9c341a	yes	clean
+RR-L2	src/app/[locale]/resume/ResumeClient.tsx	490	cb4968632041874805e56c59fb902fc43b534838e9c28cc2234cd8fcacd5981c	yes	findings
+RR-L2	src/app/[locale]/resume/page.tsx	53	591c1256449d6342df692ecbbfb80cd7b8a82f3beb8b7ccc26a883423b3fef30	yes	clean
+RR-L2	src/app/[locale]/security-policy/SecurityPolicyClient.tsx	181	7cb75c75930ba53555bd342408377426c62ae0cdd7091f20fa255ff0ee0037af	yes	clean
+RR-L2	src/app/[locale]/security-policy/page.tsx	53	50a5a53e9af797d5a3ee2efc06328261b10df7df490cb4e91d0b4e611d7c429b	yes	clean
+RR-L2	src/app/[locale]/write-ups/WriteUpsClient.tsx	248	031dc11c6664a957467787a3dd3c5cc00520979bdbd2b57c575f6e273237aa7f	yes	clean
+RR-L2	src/app/[locale]/write-ups/[slug]/WriteupDetailClient.tsx	63	3ae8fa9752ce5820b49cf31cfa6d431a38e2c4e8986f942cc0ea457518857114	yes	clean
+RR-L2	src/app/[locale]/write-ups/[slug]/page.tsx	166	b6e6304d46bd5dfc52385ecf9438743fdbd0f33686d796fe05d78417301400e0	yes	clean
+RR-L2	src/app/[locale]/write-ups/page.tsx	74	20f5c7d5a3bff662067e5b6c2d5a4e5082df832609186537e88d8bedf2b7d39c	yes	clean
+RR-L2	src/app/feed.xml/route.ts	62	22c9c9ade2e57e9730f1463b35ed2301c7e5c39c45c20f414192c06bb38a5310	yes	clean
+RR-L2	src/app/global-not-found.css	280	d558509fe4ec4eeb19db79d45b343bbdf5e395f8545a9d0f2745ced5694910fb	yes	needs-runtime-check
+RR-L2	src/app/global-not-found.tsx	56	c1aceae85a37bbd450ed6bbe5e855d97e08c5d3136aea8937b14637b5af533b4	yes	needs-runtime-check
+RR-L2	src/app/globals.css	118	2c5cfc1fd16378a42537a681a15ad5cdeac82d0799cd4cbb4378477b1223b4c0	yes	dead-code
+RR-L2	src/app/llms-full.txt/route.ts	223	a80d5e296037810ae45f4da194767e1097d932a92859b83437ac839e351923ab	yes	findings
+RR-L2	src/app/robots.ts	15	a7b4b4b781c96e061a34007c1cabbe3949edff42718e88383e9e3f85b529c354	yes	clean
+RR-L2	src/app/sitemap.ts	106	0b2e58de2fe34559d27b91feeb5caf8991e88a223f8e84a386b7863f3c8328db	yes	findings
+RR-L2	src/app/version.json/route.ts	52	8e2f63e541d291897336cdb87b39d0780415abe4968dba3f5d22fc0d9e599c4b	yes	clean
+RR-L2	src/components/layout/Footer.tsx	170	f4b831e2eec2e775543b56ae913ac9cf4f94b09d866551355237d7f87927aa96	yes	dead-code
+RR-L2	src/components/layout/LanguageSwitcher.tsx	107	afe5d8683a43ac1038e8f54cf9317c45d07b44c70131a2297f02568784cee406	yes	dead-code
+RR-L2	src/components/layout/Navbar.tsx	181	f31ae7ad2932edcbe6a54a34cbcd40e84cd8b24823d78fee3c4bd1ca03a68217	yes	dead-code
+RR-L2	src/components/ui/AnimatedSection.tsx	13	f70caf76d527be06067095c38c0815dd791ba759d009bf7fd1f80ab7ba8cfbf5	yes	dead-code
+RR-L2	src/components/ui/BlueButterfly.tsx	256	d854f07bb9603d793d7395962d86a2fd6a2b307658dfff76ec499c3db97ae0dc	yes	clean
+RR-L2	src/components/ui/Card.tsx	27	6d0c32bb9d4d7cc3eeac362fe7b31105812269cc85a5209eae6823b1cb33e586	yes	dead-code
+RR-L2	src/components/ui/CelestialCatcher.tsx	258	2d054fa4b5c7193a7d85cdcfa1eb633a5e3adf763c88cdfe8b8e0ac920aa9f55	yes	clean
+RR-L2	src/components/ui/ConstellationOwl.tsx	338	d9ac37f43d807842e74b034e657ea86314bd599865c856606c5233a30eb0ef1f	yes	clean
+RR-L2	src/components/ui/CosmicLoomCanvas.tsx	323	b47e04b0e72599d767690c70c6d42b3f951b82f2673a867b9760d717f7b144cb	yes	findings
+RR-L2	src/components/ui/CosmicOracleEye.tsx	208	de6f54e58e0451a362568f8b643e311b17145b7e435014212f0a4dcb6b6ae107	yes	clean
+RR-L2	src/components/ui/DandelionSpinner.tsx	121	e10a38efb15744ca42c15e3609c04b8ada13dc0096d45d831826b816ad4ab706	yes	clean
+RR-L2	src/components/ui/DnaHelixCanvas.tsx	132	8b3b12c42a35ac94e538456562b68631663ee38a6d94095060608c4b7bcd4bad	yes	findings
+RR-L2	src/components/ui/FireShieldCanvas.tsx	296	3fe5ac53c6ad192dd65ae817f278d4a0a13780b65d34fa00d5b6d7dccd8437b6	yes	findings
+RR-L2	src/components/ui/GlowCard.tsx	22	f9cd73d6f2edb62b80a4825c3ce97a543b43476e47fedecc716ab9f969cd2875	yes	dead-code
+RR-L2	src/components/ui/HUDFrame.tsx	32	6d97d63bf3e53b1ea6ee1b40c98211f4bf674fba36fe7869a4608033e9099dfa	yes	dead-code
+RR-L2	src/components/ui/KineticAstrolabe.tsx	182	617aaec5d3bf148ad78f0132b4ffb46bda56ad36b72941876d88e7349ce1872f	yes	clean
+RR-L2	src/components/ui/KineticLotus.tsx	132	13c8819b5a32eee191a33ed34c59dee87d1be8d99808c74514affdfc6ccbde41	yes	clean
+RR-L2	src/components/ui/KoiPond.tsx	337	89a20effaa8f02fc79a7866e782375b6f4d236b19fb57c29c6ba3d8088bb41d7	yes	findings
+RR-L2	src/components/ui/MotionPreferences.tsx	13	dcbf265bb73a709fa6f3998f3a511341d19b59dc2066511953ef8db88ce111ff	yes	clean
+RR-L2	src/components/ui/NeonButton.tsx	107	8a9a5d2e0b414548b51da3967118b17172319f2bdaa577f2679e68b2f01e46dc	yes	dead-code
+RR-L2	src/components/ui/ProjectCard.tsx	223	2490bbff4dabbaa20e5353b32a993ec23a7d8e2003f6c84fbecc9205412c267f	yes	dead-code
+RR-L2	src/components/ui/RoyalAbyssCanvas.tsx	402	e7c58684305b08fa555a6bd9479fdadf98be4e3dd59a9977de1916acc992848d	yes	findings
+RR-L2	src/components/ui/SecureContactForm.tsx	668	96a629b4b7aca50ecba17fd8bd7a79b4fc6dfdbf0436277bf277941d188979d7	yes	findings
+RR-L2	src/components/ui/SimpleMarkdown.tsx	325	c65b1d27909ef1120aa423bda5c68a57cca47eb144629d5b1a19e91fff2285de	yes	findings
+RR-L2	src/components/ui/WheelsOfEzekiel.tsx	234	fcc07541a3d40ad49cf4f3716b845585f798573d03472a4aad61b4f55eaa33cb	yes	clean
+RR-L2	src/components/ui/artwork-pause.ts	40	8333d19495a4d89b6dcc01d225bae0e61213990e5a20fac5f338470925f12d1c	yes	clean
+RR-L2	src/components/ui/canvas-playback.ts	100	52247b3cb66c4bfdef9e14a32cb823cec4666139832d308b0a5dbca52b068529	yes	findings
+RR-L2	src/components/ui/ui-surfaces.css	153	e60139a0e5b015b2d586f719b51036579c586eed1d61015df056ead50fc78812	yes	clean
+RR-L2	src/i18n/format.ts	34	70460256c731c59cfd048a002dfa723e88ac942730a0151fd3f756936a5da064	yes	findings
+RR-L2	src/i18n/index.ts	70	78f16fc1d1474d1dccfb6e6bdcd1236a69c5f8c54dfd79f16ed3f6ab9b0f23af	yes	dead-code
+RR-L2	src/i18n/navigation.ts	42	aeb65ac2cd1b72f13dd60d1c4e39a7bbd787b8b6580f19ecc1a2c2d9f393d294	yes	clean
+RR-L2	src/i18n/provider.tsx	34	1a2e6a9a8bc6b740390968e36cd204daf9e0b7c1a8e20cfa8517561f7280a381	yes	clean
+RR-L2	src/lib/certifications.ts	227	2314865a1753aa67f52291f27e86825b324f73828b4716120f5ec10ec5485134	yes	clean
+RR-L2	src/lib/constants.ts	22	13183995b9726a861f3de81b5b5f2a04c5f4e29e1fbc04d1de4c9d460098510f	yes	clean
+RR-L2	src/lib/localized-labs.ts	171	5e939ac1007e8892703c2f0d6d0c0841f503acb3ae1b14f121456a5a4a48a8a1	yes	clean
+RR-L2	src/lib/localized-writing.ts	79	9d7959896ef32e5650fcf5c587a86d002e7fa1069e6aea43f18f2bb4e99e3a7b	yes	clean
+RR-L2	src/lib/os-app-schema.ts	185	7323a287a22469e1a7f185860564bfba1155f3aa17310d82dcc79bc5a78108be	yes	clean
+RR-L2	src/lib/os-search-query.ts	74	30cfffe8440355b03a53d8b11553fcd17643a7b7394471ec2e37a3f1a3cf291d	yes	clean
+RR-L2	src/lib/os-search.ts	129	70261603e501bc57b40a189396dc58b393bbe5300448013e3ae45702125f9991	yes	findings
+RR-L2	src/lib/page-support-copy.ts	130	62b5b29b7d25dfe2483b071bc18b1c1858d47f37e870119694b9271e619e9a80	yes	clean
+RR-L2	src/lib/project-localization.ts	69	61a240acd4b21c181ae71a3f99f86538ea4917ef592771c0bce1fe2a60d01e67	yes	clean
+RR-L2	src/lib/project-summaries.ts	33	7276c3178c309fd7afda16bf9862449e8a7b3f9e504dd016ebfd703abecce82a	yes	clean
+RR-L2	src/lib/publications.ts	74	5194ea5cceb641d84a00bf8491bd3fff438d71ae9db336d7aa0727cb62042028	yes	clean
+RR-L2	src/lib/resume-section-copy.ts	38	fa0f1d91ce50c7304c6aed54afe65c565a29d30924678b90484e3c2b9ac37a20	yes	clean
+RR-L2	src/lib/seo.ts	110	b8df840daa189401dc4b085bd2b9adb8b49b8d85df575657b5e866331656a4d4	yes	clean
+RR-L2	src/lib/utils.ts	14	34cee4996368dd7d9a19f0d644725630cb9cc0686cf52c9020ad5ea66bf180e0	yes	dead-code
+RR-L2	src/proxy.ts	58	db5b1515602fd35c4fea190084ba487da793562c2853db5a9d1333ff8f429aaa	yes	needs-runtime-check
+RR-L3	src/components/os/controls.css	182	8b33056a9d0ebeb8c9530d9043d59f548c1eb9c1ae0d969cdf106806396ae27a	yes	clean
+RR-L3	src/components/os/dossier-reader.css	57	dcf878f7c904679e7400a8f76073a755e000a6ef00829cab9f7262ba20f806ea	yes	clean
+RR-L3	src/components/os/evidence-story-common.css	319	55cc4c46c155140c02b78cb2aec32d845e7f7f8ecab5fbdf0a93117af016aba2	yes	dead-code
+RR-L3	src/components/os/evidence-story-invisible.css	244	cbe57ff69c35f52865cc635bd2cfccb555a44453a7e5cf5eeb23354bb7722f93	yes	findings
+RR-L3	src/components/os/evidence-story-simurgh.css	261	c959ea9a69de4ce9d30b8bf8b405d56e41834e4a9c6a25e5636aa782a8732f98	yes	dead-code
+RR-L3	src/components/os/evidence-story-zurvan.css	147	e022294d6c01f4856101f35b4dec50f7e78fda57756dcf62f134ab6b41a992f8	yes	clean
+RR-L3	src/components/os/liquid-glass.css	130	bc9cbb9702d15f20e0d1514112be1cee7dc4317833171480879b4b35fe41365c	yes	clean
+RR-L3	src/components/os/project-explorer.css	1166	3bbd914a98cfc79ffb3b0b7fb25d7812a1fc19d8cfa7cf64a585c971c4fc44e0	yes	needs-runtime-check
+RR-L3	src/components/os/project-motion.css	220	c858ca095f944894995fc33865c3654291157a470dd8ea422d641ab180e49002	yes	clean
+RR-L3	src/components/os/project-thumbnails.css	135	ff7ac7a54de76d1182ae89a59b47e5e3445ebadc2156ecb188dad6ce1131f964	yes	clean
+RR-L3	src/components/os/proof-atlas.css	714	0e9d191dda00e6db3d17d59855af63c356112fc25619bf3ecad1dd346664369f	yes	clean
+RR-L3	src/components/os/reading-window.css	262	72ebe8c18e4ff1fb7cd0b442d848e34a5a78f100c724d6d5bae96f15a7a3bae1	yes	clean
+RR-L3	src/components/os/research-os.css	2192	663a32330c4e0d3533e083f44bd258ea8495eec7ca505b13f1cd8a27c48647be	yes	dead-code
+RR-L3	src/components/os/signal-vortex.css	88	d8dd2b44e5c01b90aa9e21f020e7e7a04681044f07de816ee7bfb9ff0f1de799	yes	clean
+RR-L3	src/components/os/supporting-apps.css	1661	480a7d6e16c881f7c932bf8d5fe7f558a0edf80b8fb4b5fb2a074a9b8bc8866f	yes	dead-code
+RR-L3	src/components/os/terminal.css	124	8954a7d39b88c5b46625f9ceb03a59f04d58e00ca66b40ec8ac810897c059916	yes	clean
+RR-L3	src/components/os/theme-switch.css	83	598431defa8a4359fd80b01bb78abfecf70ab06d1e11a7b62c1fce0857741cf8	yes	dead-code
+RR-L3	src/components/os/welcome-enter.css	225	a79fb03495b083fa6fcfe8eb51258a078a578a6225611464c9c3b6804a0ba2fd	yes	clean
+RR-L3	src/components/os/win7-desktop.css	798	1972617bf6a059af65826e7f6ffa85a5060ffaa6a46ab8b6208741d1ddc2ea03	yes	findings
+RR-L3	src/components/os/win7-explorer.css	179	5975931dcb9cfdf49058f6d439598c92a74b9dd82af32c9ad6c87b04107ef1e7	yes	clean
+RR-L3	src/components/os/win7-logon.css	340	673f44394c723d16c3f2b4efe5249516e836097c8c4172810a0dc310f25274d4	yes	clean
+RR-L3	src/components/os/win7-pages.css	658	750e81b0e86d3bbdc8c737c57008979d65510a6b36e631a95ac4884d5ca65e0a	yes	findings
+RR-L3	src/components/os/win7-polish.css	233	0e8c2c2bf9d0309914badfd7b01c7ee356801bcc6c23952388adfa2f32a60d42	yes	dead-code
+RR-L3	src/components/os/win7-taskbar.css	1354	1c121134cf763fc4fc59afb9de2e1606c587fa3d4ea6cdf05c9488c1080c69fa	yes	needs-runtime-check
+RR-L3	src/components/os/win7-theme.css	587	c692f2b361c5b4e9e98f5e273fe7649015cdd18383e05911af3bdb5387aa5ee9	yes	findings
+RR-L3	src/components/os/win7-windows.css	859	9801490cfa1e365c3bbb432fce3e8e02eadc4f58998bf4c5e7473aca2b383a9e	yes	findings
+RR-L3	src/components/os/workspace-windows.css	466	9662ed745105b5c2e710974e781760c07e3f26a435b5bac9795e13bb611ae4b6	yes	clean
+RR-L4	src/i18n/locales/ar.ts	479	eca67ccadc9d24117e3d50725a65d842cacb210c50fb60d8fdc629371f5dc40c	yes	findings
+RR-L4	src/i18n/locales/en.ts	487	269419d7fcf1e54c79343973292110b6d4075c52258ae9db3a3f2ddd1d45d3d4	yes	findings
+RR-L4	src/i18n/locales/es.ts	500	ded21ef79de96c7a53f57822b03e303e0095f3991aac61d47df2b5ca959c9287	yes	findings
+RR-L4	src/i18n/locales/fa.ts	486	dc36bdf7fdade5e66557a3e463eba6611130bfcfc80ffacf2d785e1b349e4df3	yes	findings
+RR-L4	src/i18n/locales/zh.ts	462	e87fc35864ca185f56efbb788e6eabb812955ac51bb8f702f0d8f4c603729ef2	yes	findings
+RR-L4	src/lib/data.ts	1629	c5f7341453f326a55d95d497efa8b4632c8545f04b383c0264edc844ca71e43a	yes	findings
+RR-L4	src/lib/project-content/ar.ts	494	10ef607b1bfd5ef9e1318c63ab81456aed79abf105a58369698de0d098b04ef0	yes	findings
+RR-L4	src/lib/project-content/diagram-copy.ts	173	3819a12377b9a3e6b134546ce4ba89b4832fb2525f1d3bb63444bd8ee49076b6	yes	clean
+RR-L4	src/lib/project-content/dossier-copy.ts	111	e50b3037f3bcd7774dfe156124dc45cd2869b5c2f9ac9c73ccc71e30fc5caa0d	yes	findings
+RR-L4	src/lib/project-content/es.ts	575	66d674199a97de1e44cb4248a7ef95223eca4726d36e464e8324af0139359649	yes	findings
+RR-L4	src/lib/project-content/evidence-story-copy.ts	684	c7bbb525fc95d9e78ff5306adb6f899bb685ba22190b43c70cef06ef45675bd5	yes	findings
+RR-L4	src/lib/project-content/fa.ts	546	473df0748e5fe47301e41cdb0f62ac04ba553cbbbc141c6c6d1c05186c8ce6e7	yes	findings
+RR-L4	src/lib/project-content/terms.ts	141	a8074bdee2b3680702cf81309b87d664c9d99d335829bac51d717c16c3eed97e	yes	clean
+RR-L4	src/lib/project-content/types.ts	63	65457e7cf7d3f659ff1cf5f6de9c5de0ab4d282f061a2fd87869b1e29e810524	yes	clean
+RR-L4	src/lib/project-content/zh.ts	580	856f76e7ad64ab8c56e3873e2851ed015615d52050f54355befc09a7d6e4c37d	yes	findings
+RR-L4	src/lib/writing-translations/ar.json	243	90b4262dc39b93584aa1cd8b70def782a87657d9194d7120c32e6da2c286689c	yes	findings
+RR-L4	src/lib/writing-translations/es.json	243	418204f4922ce87f1fb4b096993cb7a1b89c85068471d63db1710990fd049e6f	yes	findings
+RR-L4	src/lib/writing-translations/fa.json	243	35fcae901d35a62f106aa8b954b30af4129c51cc9b434b1348128250f22007eb	yes	findings
+RR-L4	src/lib/writing-translations/source-revision.json	9	059ed9ca0228b6ef1821b9bab4331768b854aba169bf872e65a053bda057756e	yes	clean
+RR-L4	src/lib/writing-translations/zh.json	243	b9e166d9013eb24c78dd472738784aec8bec239eb4e6393f10dc9f190cbcd522	yes	findings
+RR-L5	eslint.config.mjs	49	16e9c408053f73749310e259131778f0c4bc44953bdff951d7ef3c7d30240070	yes	clean	vendor lint scope matches vendor/braces-guard
+RR-L5	next.config.ts	19	9f241298ed6f05ee4437b2e343bbf89850c175e4f63a534b0933fd3fd2c073ad	yes	clean	static export; cpus pinned
+RR-L5	package.json	72	a25e925af0a64b92e380ea50a70871b53a7e8ab0aa0992d683f3052051f599f9	yes	findings	F-08 F-09 unwired test scripts; test:backend redundant with test:ci
+RR-L5	playwright.config.ts	40	efd20f5e998ac2418463e4a6780f5a6d00bd19d1bbe7b9283f582b2fce9fb31b	yes	findings	F-01 not in CI; no webServer; firefox/webkit require installs
+RR-L5	postcss.config.mjs	7	dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde	yes	clean	
+RR-L5	scripts/audit-agents.mjs	395	390a62275e6e48c853dd7f3e0387cd8ebe35efe9e9f069c2ab3badba378021da	yes	findings	F-04 hreflang reciprocity not checked; F-05 no unit test
+RR-L5	scripts/audit-production.mjs	235	0647ec9d19203f9dec5e8c11410f5368d4bdb9d812eb238b5282614b6e260a3c	yes	findings	F-06 not gated in CI; main body untested; git-optional freshness
+RR-L5	scripts/audit-static-security.mjs	15	f2e3ca420e31defece9b748e2775ffad377602bc947c1da49b10d2f35a0c1133	yes	clean	exit code correct; thin wrapper
+RR-L5	scripts/browser-regressions/aero-parity/compare.mjs	817	7dc3677b2896211f910db16ae35b35369a2801e127a204c11abbf485741c6767	yes	findings	F-14 measurement-only, never fails on pixel diff; F-15 manifest typos
+RR-L5	scripts/browser-regressions/aero-parity/png-diff.mjs	189	e2a5a329e600cc10a92cb0e2af82e0f5fbc4466669759f430c73cd57ab120e22	yes	clean	
+RR-L5	scripts/browser-regressions/aero-parity/png-diff.test.mjs	99	21fef81ecf7cb863a99bfc2b3af56a130bed9df91f3f46a1975a594e8f19411b	yes	dead-code	F-09 not wired to any npm script or CI
+RR-L5	scripts/browser-regressions/aero-parity/round2-specimens.mjs	302	59ff59ad64da007bb77186c8303210b34ce0c32250d58128c7c2ee300b2dd147	yes	clean	data only
+RR-L5	scripts/browser-regressions/aero-parity/snapshot-integrity.mjs	122	9db690424e4c17095a7e35d0aab91cc803e1641c0ba2ce5d9ae4d694a4105725	yes	clean	exclusive writes; identity checks
+RR-L5	scripts/browser-regressions/aero-parity/snapshot-integrity.test.mjs	231	8b2a33dd1902d854e48ef57433f70fa749bb12da4e35549b0c5650518b99798d	yes	dead-code	F-09 not wired; guards frozen evidence
+RR-L5	scripts/browser-regressions/aero-parity/snapshot.mjs	268	caf0a3b5a4140d4d3b2cd9d5b868cb07899a3a7c762cfa6f0135f8755f093f8f	yes	findings	F-16 pageerror recorded, never fails; /usr/bin/chromium default
+RR-L5	scripts/browser-regressions/native-zoom.mjs	248	e003fd7d0dd600cb4dcc63d62db233c381d84536a694a94f99cce98c3d160095	yes	findings	F-16 hard-coded /usr/bin/chromium; manual only
+RR-L5	scripts/browser-regressions/playwright/full-audit.spec.ts	439	ee6b10dfb67c7f2ed2e70fea5c635c9b12e8737b2e60e1571d75df90e0e444fe	yes	findings	F-01 not in CI; reads out/sitemap.xml at load
+RR-L5	scripts/browser-regressions/playwright/portfolio.spec.ts	380	41b752aaac88eaec758d82b1a322b3d173bcf97f0c9f7ff0d16c91b96cc0fe9f	yes	findings	F-01 covers Back/Forward (lines 105-107,158-161) but not run in CI
+RR-L5	scripts/browser-regressions/playwright/project-content.spec.ts	181	feabb77768acdff11a1dccb90e136dc01f37a454189397067ffb17cbf390d005	yes	findings	F-01; slug-conditional check at 157-163 is silent if slug renamed
+RR-L5	scripts/browser-regressions/playwright/reviewer-upgrade.spec.ts	368	4a5495f937e42d89c43fd41781bc7a5fbe6afe7bd4e6ca9307b48c9dbd4c5acd	yes	findings	F-01; CSS-coupled 0.22s at 218
+RR-L5	scripts/browser-regressions/researchos-navigation.cua.mjs	330	0c8421e977cb514b000d518c143f19582e6690bc00abf32359732b6800065ac3	yes	dead-code	F-10 deprecated; asserts retired two-app model
+RR-L5	scripts/browser-regressions/researchos-workspace.cua.mjs	163	fec5b9de3c40cb1e6247f78f7bc57e0faa836661572fa7b02b8df33b7eea8acd	yes	dead-code	F-10 deprecated; asserts retired two-app model
+RR-L5	scripts/generate-glass-lens-map.mjs	133	0afbb352342c285ade5a916e0cf66320adedaf0afc666d04b4d6e6c0eb437980	yes	clean	manual generator; budget check present
+RR-L5	scripts/lib/braces-guard.test.mjs	136	933f9313a8bf5ed7b04de3dd983c69ddfd703bf8f360ad3d707505ec1b218bbf	yes	clean	vendor hash and tarball parity checks
+RR-L5	scripts/lib/braces-guard.worker.mjs	130	e0a6b3f815b9254a7612ad9ff277f5a84cdde0afe8b3f858718fc14707810418	yes	clean	
+RR-L5	scripts/lib/lab-go-snippet.test.mjs	112	13634db1bce7cd71347c9a66fbf0c08fd31b6efb73f6f94b82e4e06db8964223	yes	dead-code	F-09 not wired; silently skips without Go
+RR-L5	scripts/lib/production-audit.mjs	264	38f133360c6f47ce37627ad053d6a63c1b188879da8a3b5720be4af6a719d214	yes	findings	F-03 no CORP/COEP; CSP has no reporting directive
+RR-L5	scripts/lib/production-audit.test.mjs	356	af38b07481c3866b22d096c60e0dacedddc70804bda7bf5409c201272dd7a9a4	yes	clean	good bounded-fetch and header-weakening coverage
+RR-L5	scripts/lib/schema-language-audit.mjs	55	f548ca84c75d4b7114941fef7b7baf1d38bcdbb7dc6638ac64975f3fcb813562	yes	clean	
+RR-L5	scripts/lib/schema-language-audit.test.mjs	105	2b3adb2542a608ae8470c8acf2bf925c04aa436ba3293a06444106078daf6f58	yes	clean	
+RR-L5	scripts/lib/static-security.mjs	326	3c6771153e033d4dd351439f810055d9d83a59d83a9d6d8514f7706f542d5139	yes	findings	F-07 redirect loops pass; syntax-only redirect audit
+RR-L5	scripts/lib/static-security.test.mjs	273	686bad051c36b8274a3c2132667610744154947a0f009dba7fff55c33773c4d0	yes	findings	F-07 no loop tests; F-28 expiry fixtures tied to 2027-07-01 disclosure
+RR-L5	src/app/[locale]/about/AboutClient.test.tsx	65	f1d408c96bf85290ec147198e6da9c80e26da464927cef31a92222409f37c80f	yes	clean	
+RR-L5	src/app/[locale]/lab/[id]/LabDetailClient.test.tsx	41	f49438cc052ecee7b5bbbe2faa7778f0d7210181d1a639769051348cf770c6e5	yes	clean	
+RR-L5	src/app/[locale]/projects/[slug]/ProjectDetailClient.test.tsx	485	aa96f2af0e2f8d1780d504569e72ccf472b199d24e452a89abbc5ca859ee346c	yes	findings	F-22 toBeTruthy on bitmask; document-level click suppression hack
+RR-L5	src/app/[locale]/resume/ResumeClient.test.tsx	196	ec130c85b6333565193b74465c9e25f45027506aacc39cbb7f30f958286e4ada	yes	clean	
+RR-L5	src/app/[locale]/write-ups/WriteUpsClient.test.tsx	209	cbff7282cf078e565386304ed52e7ba0dcf3f31549c90322c7f390afe84dcad4	yes	clean	hard-coded counts (5 publications) acceptable
+RR-L5	src/components/layout/Footer.test.tsx	63	6b658999be173d919d9784be184738e4240483728a97af348f483bb0e57cce7e	yes	findings	F-23 pins hard-coded 2026 year and Nov 2026
+RR-L5	src/components/layout/LanguageSwitcher.test.tsx	58	6f2996ee30b527109c09361ba80517e8baa4ec41ef8a310f477bd2977bd368d9	yes	clean	
+RR-L5	src/components/layout/Navbar.test.tsx	114	5d014c9a9fab5f9ae69d7d0e3207b83c9c41b5498c1781729d6a67c5363b8d24	yes	findings	F-22 getAllByText(/contact/)[0] index-brittle
+RR-L5	src/components/os/Desktop.test.tsx	72	a84380cb2edf440c762ace75e39c9f1355561f91b115925009a0cd1327a69d67	yes	clean	
+RR-L5	src/components/os/EvidenceStory.test.tsx	441	c3c0904435c1d47e1fc6ca49e8587caf0a4c4c0db80d2f6d3a34bef6894cc4bd	yes	clean	content-lock assertions are intentional
+RR-L5	src/components/os/GlobalNotFoundContent.test.tsx	152	acb4a4dff4d67d94ee89f7e920f20c548a242bb14d7637b674ca57401b808640	yes	clean	client-side 404 only; server-level gap in F-18
+RR-L5	src/components/os/OSApplicationBridge.test.tsx	382	53b9bba6cfb744ddd25e54c17d9464eb610460fb72de80b277717b8e007e922e	yes	clean	real hydrate test
+RR-L5	src/components/os/ProjectExplorer.test.tsx	610	4624805bb7503bed600b3a5de1b2fdbbc9e7b90bd86a1bde8e39fab35b16af9d	yes	findings	F-21 module-level requests counter order dependence
+RR-L5	src/components/os/ProjectMotion.test.tsx	371	3c95e7d2f0cafc52bcf83cdf87c388bfbe8f77e9e61d571bcc66394b0a086f9c	yes	findings	F-21 module-level requests counter order dependence
+RR-L5	src/components/os/ProjectThumbnail.test.tsx	105	9f0ec898b41f811edf7220a0611698f563a9d3151de55738580570e7e4ce1a27	yes	clean	
+RR-L5	src/components/os/ProofAtlas.test.tsx	352	289b62eecc6dd202b417f80b645d3a3c54d3c528a5c3d92927af5902f6891e2f	yes	findings	F-22 toBeTruthy on bitmask (171-173)
+RR-L5	src/components/os/ResearchOS.test.tsx	1700	b4319d597cc211cdd64bdc9f4e5b04fede989c5bb20a936e7a2408e1da1aa647	yes	findings	F-22 toBeTruthy on href (1377); F-19 no popstate or Back/Forward coverage in jsdom; 1700-line file
+RR-L5	src/components/os/TerminalCommand.test.tsx	146	2ec5e5f8c3f5d0280601e3e84af262a55d39e0c0b1884db2254149d33d65cb48	yes	clean	
+RR-L5	src/components/os/WelcomeEnter.test.tsx	170	34724ef410aa021d53cfeba86878d8dce5bd364e451113a3e8f82344e403e152	yes	findings	F-24 mockImplementationOnce on matchMedia order-dependent (107-124)
+RR-L5	src/components/os/WorkspaceWindows.restored.test.tsx	65	dcdfb0f1ff8c835f7672dfc562231b8b4951df5e34c83c4add2c7469cff93ddb	yes	findings	F-22 weak not.toBe(heading) (63)
+RR-L5	src/components/os/WorkspaceWindows.test.tsx	205	984646005a176a3e3c05a5edc7920d4e9872e97e71b778aaad7c1959adaebf0e	yes	clean	
+RR-L5	src/components/os/appearance.test.ts	79	7e17c508ccbd8a271a549d272a286e155c2381f9447d0a73869866a7afec8e2c	yes	clean	
+RR-L5	src/components/os/language-navigation.test.ts	70	f4089702c1bee8f634a8f3b558af805bb25a41c1f9c98bbdba9cbb76ec334add	yes	clean	
+RR-L5	src/components/os/minute-clock.test.ts	63	23820cdc2cd5572fe64f55316edcbc8ec5ff29bd611385b18ac94a43396172d6	yes	clean	
+RR-L5	src/components/os/quiet-depth-contrast.test.ts	380	4080797891118944365b4934af171b62ffa5829ea490a71836072c5c6085fa47	yes	findings	F-26 contrast computed from CSS text, not computed style
+RR-L5	src/components/os/reading-contrast.test.ts	197	194affd69f9e9ba69d01c42b56c3e537104bd52e270dfe3e477024f4ea6fa2fd	yes	findings	F-26 same method
+RR-L5	src/components/os/theme-token-guard.test.ts	114	0bc6fb148c75ed8474812cd7221485b028ac9cc256619f6c20b1ecd2d2d1f492	yes	findings	F-13 colour guard only checks color: and named colours
+RR-L5	src/components/os/use-reading-window.test.tsx	628	b597b8d5416bb4246c9dc20d274d596eead3344b097b0a4d92875676d52441cc	yes	findings	F-22 typo comment (179-180); otherwise strong
+RR-L5	src/components/os/window-geometry.test.ts	317	8e17a8951c5670bf61a7a0cd2f85110396092ab097a935980a8dbfb11e817c18	yes	clean	
+RR-L5	src/components/os/window-motion.test.ts	28	49e9c8825f47236301a54118ad1b4c61bc011d0df13475f0eb98606fce6e2276	yes	clean	
+RR-L5	src/components/os/workspace-model.test.ts	187	5b7fe06260fd1b694de44a6dc0cc2356149e4a1a2846529e4347b40a8705df27	yes	clean	single-window model; no history asserted
+RR-L5	src/components/ui/Card.test.tsx	41	3aebd1f30e261c104bef9e4d58cc64fe6f6b836b33b9d00a331be0c3bf291c59	yes	dead-code	F-11 Card has no non-test importer
+RR-L5	src/components/ui/NeonButton.test.tsx	105	eec3bb12676ad7fcf1c5bd4a0b7ba5b1b296f2a55b1323733eed5e886702eebe	yes	dead-code	F-11 only ProjectCard uses NeonButton
+RR-L5	src/components/ui/ProjectCard.test.tsx	177	1fd0c686c7dc67c90cde008dadba863d5946e7a56959dfa08987ebc16dfc3e83	yes	dead-code	F-11 ProjectCard has no app importer
+RR-L5	src/components/ui/SecureContactForm.test.tsx	568	14db8dba1243a411dee4fb4c30772d68d3fa84ef14a1ee6205870c6b230e72b8	yes	findings	F-12 no over-length/encoded-URL budget test
+RR-L5	src/components/ui/SimpleMarkdown.test.tsx	168	6433a9ccb7ead9c65fc07acdb2f9dd49c0dc1548e7926c7e99d5fdd2ae1ef67f	yes	clean	good URL-scheme boundary tests
+RR-L5	src/components/ui/canvas-playback.test.tsx	266	2e0cb12196326160cfc78bc8db65740fb087c8973b922946487bc05ef5685968	yes	clean	
+RR-L5	src/i18n/format.test.ts	31	d4a908dd73f1ade95331bc98b51ab45993577f8e44d870576f6aa07503ab46c9	yes	clean	formatDate pins timeZone UTC
+RR-L5	src/i18n/index.test.ts	37	2dc534013e8ceeb3cfa4d2abc9f736f8cad1cafecdce6e86354a747ffd93a2b9	yes	clean	
+RR-L5	src/i18n/locales/locales.test.ts	416	332ba6fa251ef53ca7d13b1dd95c6e6469cf279bfcf5ebdba25ee3b7e28dbdab	yes	findings	F-22 toBeTruthy (33); content-lock tests brittle to copy edits
+RR-L5	src/lib/content-integrity.test.tsx	115	67ab6877c2b90ec8a6bc296ddaeffc09ec48e3b24904170e90ad5c879453c7f5	yes	findings	F-22 pins a failing-test count; brittle first-script JSON-LD match
+RR-L5	src/lib/data.test.ts	304	c5ccca86497f9ea0e51f0b6319b98476c3ea30a91c137f762c839aaa97b60679	yes	findings	F-22 toBeDefined-only field checks (29-39, 236-244)
+RR-L5	src/lib/feed-route.test.ts	42	2d5087e3884b43f86cf172f0cccaf962085bf18dfc2f5883cf2523cc516191a4	yes	clean	
+RR-L5	src/lib/localized-pages.test.ts	183	57d2d04a8928547a1f2787d0ebf37a0fa078bfca3abdb205dd5e662025f4b3ce	yes	clean	source-revision guard
+RR-L5	src/lib/machine-reliability.test.ts	93	1058bc7c2f7875a8154fe5f7ee18098a797c4dc1ba5313dc31d109b65d221b37	yes	findings	F-28 security.txt Expires expires 2027-07-01 and fails the suite
+RR-L5	src/lib/os-app-schema.test.ts	175	b7e8029d1d82ee5fe7315da7c32f62f0f62a734f53a8023a9de099a8e8ff88ea	yes	clean	
+RR-L5	src/lib/os-search.test.ts	264	d3cb247be0ac391f691aec52d38728f7c7ce49b736dd241d40b3cbdba4680bde	yes	clean	
+RR-L5	src/lib/project-localization.test.ts	325	f6447002a67fbe4619524b7442c8274ccfdc89b118ae7c28dcafed27b01522ba	yes	clean	
+RR-L5	src/lib/server-routes.test.tsx	63	5159991271401533e8f59d1c4546df5d14977323e5574dc833ffa61616108f0e	yes	findings	F-18 404 only for en unpublished projects; unknown write-up/lab slugs untested
+RR-L5	src/lib/utils.test.ts	46	6faeab864f9beee04f13a066f2dd43bcdcf85c9609b3789f784ec82da406a2a9	yes	clean	
+RR-L5	src/lib/version-route.test.ts	64	168daf00910e52eb8bb214006d8cbc7523fa6763643e2bf8bd2a154636fb3183	yes	clean	
+RR-L5	src/proxy.test.ts	42	2e2da92d4008e50594571acdff1c5b2a366fb18988f8a11c81a3b65594f48f60	yes	clean	
+RR-L5	tsconfig.json	34	a60ea1aba9a9241999d11525cbb0aff6b6a4b462819399fd32981de773ef2677	yes	clean	
+RR-L5	vitest.config.ts	28	2d68944391749a0170f7551d73341e634d51219f6b49082f887810bc20d4d0b8	yes	findings	F-27 no coverage threshold; test:coverage not gated
+RR-L5	src/test/setup.ts	78	db3c04607470b8e1af1adb7f2bb0b2996ee8b04433545793a6c6edf8ebb52aa8	yes	findings	F-25 router/IO/pathname mocks mask behaviour
+RR-L5	.github/workflows/ci.yml	65	cbaecd4e0413d02dd3fff697f75d5a1267464742e20bb914075bf88aaf0c7481	yes	findings	F-01 no browser job; F-06 no post-deploy audit; positives: read-only perms, pinned SHAs
+RR-L5	.github/workflows/deploy.yml	137	950093fb72fa8f1482a3a51ae4bbe2ba19ab282f2c94107a04d8cf5cf60c8b22	yes	findings	F-02 verifier captured after untrusted install; F-17 silent skip without token; F-06 no post-deploy gate
+RR-L5	public/_headers	40	7833be7e0ffb09242c5a7d3ec7fe7894849e581f561b006e3014f30b81a54d9a	yes	findings	F-03 unsafe-inline (documented); no report-to; no CORP; cache merge needs runtime check
+RR-L5	public/_redirects	96	4d98e44f5c999e5dbcc52b04e9311a28d705510c00f90b40a55157dc5049219f	yes	needs-runtime-check	F-29 targets such as /en/__next.*.txt not verified against out/; rule order relies on Pages precedence

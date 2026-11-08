@@ -60,11 +60,6 @@ const publicAssets = new Set([
   "brand/favicon.svg",
   "brand/glass-lens-map.png",
   "brand/raouf-mark.svg",
-  "file.svg",
-  "globe.svg",
-  "next.svg",
-  "vercel.svg",
-  "window.svg",
   "images/raouf-welcome-168-2ae922a8.webp",
   "images/raouf-about-600-7d22ea07.webp",
 ]);
