@@ -1259,14 +1259,19 @@
     width: 18px;
     height: 18px;
   }
+  /* Narrow pins (56px at 320px) leave about 48px for the label. A 1px plate inset keeps
+     "Projects" whole; long Spanish words hyphenate by locale ("Pro-yectos") instead of
+     splitting mid-word. overflow-wrap stays as the last resort where no dictionary exists. */
   .os-shell.win7 .os-dock .os-dock-app > span:last-child {
     max-width: 100%;
-    padding: 1px 2px;
+    padding: 1px;
     border-radius: 3px;
     background: var(--win7-label-plate);
     font-size: 12px;
     line-height: 1.1;
     white-space: normal;
+    -webkit-hyphens: auto;
+    hyphens: auto;
     overflow-wrap: anywhere;
     overflow: visible;
     text-overflow: clip;
