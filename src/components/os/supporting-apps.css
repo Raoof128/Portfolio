@@ -521,7 +521,7 @@
   inline-size: 100%;
 }
 .os-library-search input::placeholder {
-  color: var(--os-muted);
+  color: var(--win7-field-placeholder);
   opacity: 1;
 }
 /* The input keeps the global :focus-visible ring. No outline is removed here. */

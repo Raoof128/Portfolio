@@ -74,11 +74,6 @@
   padding: 0;
   border: 0;
 }
-.os-window-controls-panel legend {
-  padding: 0;
-  font-size: var(--text-s);
-  font-weight: 600;
-}
 .os-window-controls-panel p {
   margin: 4px 0 8px;
   color: var(--os-muted);

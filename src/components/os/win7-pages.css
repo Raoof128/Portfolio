@@ -128,7 +128,6 @@
   box-shadow: inset 0 0 0 2px #98d1ef;
 }
 .win7 .os-library-topic select {
-  min-block-size: 23px;
   padding-inline: 3px 30px;
   font-family: var(--win7-font);
 }
@@ -244,10 +243,17 @@
   .os-support
   :is(
     input:not([type="checkbox"], [type="radio"], [type="range"]),
-    select,
     textarea
   ):not(.os-library-search *) {
   min-block-size: 23px;
+}
+.os-shell.win7
+  .os-support
+  :is(
+    input:not([type="checkbox"], [type="radio"], [type="range"]),
+    select,
+    textarea
+  ):not(.os-library-search *) {
   font: var(--w7-font);
   font-family: var(--win7-font);
 }

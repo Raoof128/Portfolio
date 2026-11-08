@@ -13,9 +13,11 @@
      white plate with black text in both themes; the ring is blue inside and white outside. */
   --win7-paper: #ffffff;
   --win7-ink: #000000;
-  /* Canonical 7.css push-button ink and static default-button outline. */
+  /* Canonical 7.css push-button ink. */
   --win7-button-text: #222222;
-  --win7-button-default-border: #5586a3;
+  /* Field placeholder ink: the UA placeholder colour canonical 7.css fields show in Chromium
+     (4.61:1 on the white field). Opacity stays 1 so Firefox does not fade it below AA. */
+  --win7-field-placeholder: #757575;
   --win7-console-feedback: #f2f2f2;
   --win7-ring-inner: #0066cc;
   --win7-ring-outer: #ffffff;

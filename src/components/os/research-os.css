@@ -1276,7 +1276,7 @@ html:has(.os-shell[data-appearance="light"]) {
   outline: none;
 }
 .os-search-field input::placeholder {
-  color: var(--os-muted);
+  color: var(--win7-field-placeholder);
   opacity: 1;
 }
 .os-search-field input::-webkit-search-cancel-button {

@@ -64,11 +64,11 @@
   background: var(--w7-el-grad-a);
   transition: opacity 0.3s;
 }
-/* A primary link takes the canonical default-button face without the pulsing loop. */
+/* A primary link takes the canonical default-button face: the hover gradient on the grey
+   resting border (upstream :not(:hover) keeps .default grey), without the pulsing loop. */
 .os-shell.win7
   :is(.os-button:not(.os-button--secondary), .os-document-button[data-variant="primary"]):not(.os-welcome *) {
   background: var(--w7-el-grad-h);
-  border-color: var(--win7-button-default-border);
 }
 @media (hover: hover) {
   .os-shell.win7
@@ -94,7 +94,6 @@
 .os-shell.win7
   :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):focus {
   background: var(--w7-el-grad-h);
-  border-color: var(--win7-button-default-border);
   animation: none;
 }
 .os-shell.win7
