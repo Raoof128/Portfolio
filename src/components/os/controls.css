@@ -64,8 +64,9 @@
   background: var(--w7-el-grad-a);
   transition: opacity 0.3s;
 }
-/* A primary link takes the canonical default-button face: the hover gradient on the grey
-   resting border (upstream :not(:hover) keeps .default grey), without the pulsing loop. */
+/* A primary link reproduces how 7.css renders a default button: the hover gradient on the
+   grey resting border (upstream's :not(:hover) rule outranks .default's blue), without the
+   pulsing loop. Links get no canonical button rules, so this adapter supplies the face. */
 .os-shell.win7
   :is(.os-button:not(.os-button--secondary), .os-document-button[data-variant="primary"]):not(.os-welcome *) {
   background: var(--w7-el-grad-h);

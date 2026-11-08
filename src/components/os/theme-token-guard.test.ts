@@ -24,7 +24,7 @@ const legacyRawColour: Readonly<Record<string, number>> = {
   "welcome-enter.css": 1,
   "win7-desktop.css": 11,
   "win7-logon.css": 8,
-  "win7-taskbar.css": 22,
+  "win7-taskbar.css": 21,
 };
 
 const tokenOnlySheets = [

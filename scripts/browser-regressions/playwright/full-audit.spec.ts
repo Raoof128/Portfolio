@@ -21,7 +21,15 @@ async function ready(page: Page, path: string, theme: string = "dark") {
   expect(response?.status(), path).toBe(200);
   await expect(page.locator(".os-shell")).toHaveAttribute("data-appearance", theme);
   if (locales.some((locale) => path === route(locale, "/"))) {
-    await expect(page.locator(".os-desktop:visible")).toBeVisible();
+    // The root opens on the lock screen and enters only through the arrow (38842e2).
+    // A press before hydration does nothing, so retry until the orb starts its wait;
+    // it is disabled while waiting, so a second press is never sent.
+    const desktop = page.locator(".os-desktop:visible");
+    const enter = page.locator(".os-enter");
+    await expect(async () => {
+      if ((await enter.isVisible()) && (await enter.isEnabled())) await enter.click({ timeout: 1_000 });
+      await expect(desktop).toBeVisible({ timeout: 4_500 });
+    }).toPass({ timeout: 20_000 });
   } else {
     await expect(pane(page)).toBeVisible();
     await expect(pane(page).locator("h1")).toBeVisible();

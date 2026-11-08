@@ -816,7 +816,7 @@
   background-position: 8px center;
 }
 .os-shell.win7 .os-search-field input::placeholder {
-  color: #5a5a5a;
+  color: var(--win7-field-placeholder);
   opacity: 1;
 }
 .os-shell.win7 .os-search-dialog .os-control {
