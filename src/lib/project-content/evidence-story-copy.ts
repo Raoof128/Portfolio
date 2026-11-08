@@ -628,7 +628,7 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
       retrievalRelationship: "由混合搜索检索；图邻居可补充相关上下文",
       detailsTitle: "所选类型的含义",
       limitations:
-        "此示意不声称完整保留来源、完整覆盖溯源关系或达到完整检索召回；它只展示文档所述的数据模型和检索阶段。 图像仍为待视觉处理的占位条目，不进行自动 OCR；PDF 图表需要单独查看。",
+        "此示意不声称完整保留来源、完整覆盖溯源关系或达到完整检索召回；它只展示文档所述的数据模型和检索阶段。图像仍为待视觉处理的占位条目，不进行自动 OCR；PDF 图表需要单独查看。",
       repositoryNote:
         "Zurvan 仓库现为公开。此示意使用通用标签，不含语料记录；Rust MCP 读取服务器保留 Python 写入桥接与参考后备实现。",
     },

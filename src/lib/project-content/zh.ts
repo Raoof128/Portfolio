@@ -539,7 +539,7 @@ export const zhProjects = {
     proof: [
       "已报告的 v3 试点：40 个问题，包括 34 个可回答的检索问题和 6 个错误前提/对抗性拒答；Recall@5 0.941、平均 citation_support 0.978、6/6 拒答。没有行低于不受支持阈值（citation_support < 0.5），但两条答案被标记为 0.75 和 0.50；这不保证无幻觉",
       "基于 IP 限流（5/min 突发、30/3hrs、200/day），默认拒绝",
-      "精确匹配响应缓存消除重复 LLM 成本",
+      "精确匹配响应缓存可避免相同查询重复调用 LLM",
       "无需注册的匿名认证；Supabase RLS 应用于所有表",
     ],
     features: [
@@ -553,7 +553,7 @@ export const zhProjects = {
       "基于 IP 限流：5/min 突发、每 IP 30/3hrs、全局 200/day 上限",
       "所有 Supabase 表启用 Row-Level Security（RLS）",
       "消息长度上限 500 字符，以防令牌填塞",
-      "精确匹配响应缓存（重复查询的 LLM 成本为零）",
+      "精确匹配响应缓存（相同的重复查询不会新增 LLM 调用）",
       "失败关闭：限流错误默认拒绝",
     ],
     papers: [

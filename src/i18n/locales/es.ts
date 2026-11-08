@@ -96,9 +96,9 @@ const es: Dictionary = {
     bio_1:
       "Investigo la robustez adversarial, el control de IA y la evaluación empírica de seguridad de agentes que usan herramientas. Soy el único autor de Project Simurgh y cinco preprints de Zenodo, y evalué Claude en el programa de seguridad de Anthropic a través de Alignerr de enero a marzo de 2026. Estoy disponible a tiempo completo desde diciembre de 2026 para una estancia de investigación de tres a seis meses en San Francisco; necesito patrocinio de visado.",
     bio_2:
-      "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos:288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección incremental. El proyecto informa de 39 archivos de pruebas formales en Lean 4, 5,171 pruebas superadas en la comprobación básica del 19 de octubre y 92 versiones. DOI del software:10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos:10.5281/zenodo.20374849.",
+      "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos: 288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección incremental. El proyecto informa de 39 archivos de pruebas formales en Lean 4, 5,171 pruebas superadas en la comprobación básica del 19 de octubre y 92 versiones. DOI del software: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
     bio_3:
-      "También escribí The Invisible Window, que demostró evasión de captura en las configuraciones de laboratorio Windows/macOS probadas; Microsoft y Apple clasificaron el comportamiento divulgado como propio del diseño. Aion-BibleQA evalúa recuperación y fidelidad de citas en un piloto de 40 preguntas (34 respondibles y 6 casos de rechazo; R@5 de 0.941; quedan errores parciales de citas). Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. La licenciatura en ciberseguridad tiene finalización prevista en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
+      "También escribí The Invisible Window, que demostró evasión de captura en las configuraciones de laboratorio Windows/macOS probadas; Microsoft clasificó el comportamiento divulgado como propio del diseño, y Apple como coherente con su funcionalidad documentada. Aion-BibleQA evalúa recuperación y fidelidad de citas en un piloto de 40 preguntas (34 respondibles y 6 casos de rechazo; R@5 de 0.941; quedan errores parciales de citas). Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. La licenciatura en ciberseguridad tiene finalización prevista en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
     stats_projects: "Proyectos",
     stats_evasion: "Evasión en configuraciones de laboratorio probadas",
     stats_vendors: "Divulgaciones coordinadas a proveedores",
@@ -246,9 +246,9 @@ const es: Dictionary = {
     s02_subtitle:
       "Project Simurgh: autorización y contención inspeccionables para agentes de IA (único autor)",
     s02_bullet1:
-      "Estudio de transferencia de octubre de 2026:24 tareas × dos ensayos × tres controles emparejados (solo credencial, compuesto, denegar todo) × dos modelos;288 ramas reproducidas. Los controles compuestos redujeron los ensayos restringidos con efectos nuevos de 17/24 a 0/24 en Llama-3.2-3B, conservaron 23/24 finalizaciones útiles y no bloquearon propuestas válidas. OpenAI gpt-6-luna ya tenía una línea base de 0/24: sin protección incremental. Del protocolo al paquete publicado:15–17 de octubre de 2026.",
+      "Estudio de transferencia de octubre de 2026: 24 tareas × dos ensayos × tres controles emparejados (solo credencial, compuesto, denegar todo) × dos modelos; 288 ramas reproducidas. Los controles compuestos redujeron los ensayos restringidos con efectos nuevos de 17/24 a 0/24 en Llama-3.2-3B, conservaron 23/24 finalizaciones útiles y no bloquearon propuestas válidas. OpenAI gpt-6-luna ya tenía una línea base de 0/24: sin protección incremental. Del protocolo al paquete publicado: 15–17 de octubre de 2026.",
     s02_bullet2:
-      "Los 24 ensayos restringidos se agrupan en seis estados. Los intervalos Wilson del 95% se informan por estado:43.6–97.0% frente a 0.0–39.0%; parte de la diferencia se cumple por construcción. Estos experimentos acotados no establecen la seguridad general del modelo.",
+      "Los 24 ensayos restringidos se agrupan en seis estados. Los intervalos Wilson del 95% se informan por estado: 43.6–97.0% frente a 0.0–39.0%; parte de la diferencia se cumple por construcción. Estos experimentos acotados no establecen la seguridad general del modelo.",
     s02_bullet3:
       "Conservé un fallo de ocho casos de la integración en vivo con OpenAI causado por la ubicación del rol (8/8 rechazos). Una corrección congelada del rol developer completó 2/3 flujos autorizados y rechazó 5/5 restringidos; queda un rechazo abierto y se conservan las trazas originales.",
     s02_bullet4:
@@ -300,7 +300,7 @@ const es: Dictionary = {
     proj6_stack:
       "Kotlin Multiplatform · Aprendizaje automático local · Android e iOS",
     proj6_desc:
-      "Construí una herramienta de detección de amenazas sin conexión y multiplataforma con clasificación basada en ML local — presentada en la conferencia mundial de desarrolladores KotlinConf.",
+      "Construí una herramienta de detección de amenazas sin conexión y multiplataforma con clasificación basada en ML local — enviada a la conferencia mundial de desarrolladores KotlinConf.",
     s05_more_projects:
       "SentinelSSH es un servidor MCP en Rust para inspeccionar anfitriones Linux en modo de solo lectura y según la política, mediante 17 herramientas tipadas y sin shell. También tengo más de 70 proyectos públicos en GitHub sobre investigación de seguridad, programación de sistemas, herramientas de IA/ML e infraestructura en la nube:",
     s06_heading: "Experiencia profesional",
@@ -406,7 +406,7 @@ const es: Dictionary = {
     criteria_4:
       "No divulgar públicamente la vulnerabilidad antes de la coordinación",
     bounty_note:
-      "Este es un proyecto de portafolio personal. Aunque aprecio profundamente los esfuerzos de los investigadores de seguridad, no se ofrecen recompensas monetarias. El reconocimiento en este Salón de la Fama es el principal agradecimiento por los informes válidos.",
+      "Este es un proyecto de portafolio personal. No se ofrecen recompensas monetarias; los informes válidos pueden ser reconocidos aquí.",
     note_label: "Nota:",
   },
   security_policy: {

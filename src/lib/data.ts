@@ -905,7 +905,7 @@ export const projects: Record<string, Project> = {
         "IP-based rate limiting: 5/min burst, 30/3hrs per IP, 200/day global cap",
         "Row-Level Security (RLS) on all Supabase tables",
         "500-character message length cap to prevent token-stuffing",
-        "Exact-match response cache (zero LLM cost on repeated queries)",
+        "Exact-match response cache (no new LLM call for an identical repeated query)",
         "Fail-closed: rate limit errors default to deny",
       ],
     },
@@ -922,7 +922,7 @@ export const projects: Record<string, Project> = {
     proof: [
       "Reported v3 pilot: 40 questions comprising 34 answerable retrieval questions and 6 false-premise/adversarial refusals; Recall@5 0.941, mean citation_support 0.978 and 6/6 refusals. Zero rows scored below the unsupported threshold (citation_support < 0.5), while two answer rows were flagged at 0.75 and 0.50; this is not a hallucination-free guarantee",
       "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
-      "Exact-match response cache eliminates redundant LLM costs",
+      "Exact-match response cache avoids repeat LLM calls for identical queries",
       "Anonymous authentication with no sign-up; Supabase RLS applies to all tables",
     ],
     updatedAt: "2026-11-04",
@@ -1540,7 +1540,7 @@ if __name__ == "__main__":
       "LSB (Least Significant Bit) image steganography in Go. Embeds a length-prefixed payload into the red channel of PNG pixels.",
     tech: ["Go", "Cryptography", "Image Processing"],
     objective:
-      "Implement a covert channel by modifying the least significant bits of image pixel data, then verify extraction round-trips cleanly.",
+      "Implement a covert channel by modifying the least significant bits of image pixel data to embed a length-prefixed payload.",
     constraints:
       "Payload size limited to (width × height) / 8 bytes minus the 4-byte length header. Not robust against JPEG re-encoding or image resizing.",
     codeSnippet: `package main

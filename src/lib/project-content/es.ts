@@ -245,7 +245,7 @@ export const esProjects = {
   },
   "syllabus-sync": {
     description:
-      "Plataforma independiente para la experiencia estudiantil: planificación, plazos y orientación por el campus. Cofundada dentro de Macquarie University Incubator, con responsabilidades de comantenimiento de seguridad/backend. Un trabajo de pruebas de CI del 17 de agosto de 2026 superó 1,343 pruebas en 155 archivos.",
+      "Plataforma independiente para la experiencia estudiantil: planificación, plazos y orientación por el campus. Cofundada dentro de Macquarie University Incubator, con responsabilidades de co-mantenimiento de seguridad/backend. Un trabajo de pruebas de CI del 17 de agosto de 2026 superó 1,343 pruebas en 155 archivos.",
     fullDescription:
       "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University: planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador y comantenedor de seguridad/backend. La aceptación en Macquarie University Incubator figura en las referencias profesionales aportadas; el repositorio describe expresamente el proyecto como independiente y sin afiliación oficial a la universidad. El código y la evidencia de CI actuales respaldan la plataforma estudiantil y su trabajo de seguridad. El repositorio también documenta una línea de extracción de PDF y mantiene un extractor independiente en su hoja de ruta.",
     problem:
@@ -534,7 +534,7 @@ export const esProjects = {
     proof: [
       "Piloto v3 declarado: 40 preguntas, con 34 preguntas de recuperación contestables y 6 rechazos de premisas falsas/adversariales; Recall@5 0.941, citation_support medio 0.978 y 6/6 rechazos. Ninguna fila quedó por debajo del umbral sin respaldo (citation_support < 0.5), pero dos respuestas se señalaron con 0.75 y 0.50; no es una garantía de ausencia de alucinaciones",
       "Limitación por IP (ráfaga de 5/min, 30/3hrs, 200/day) con denegación por defecto",
-      "La caché de respuestas por coincidencia exacta elimina costes LLM redundantes",
+      "La caché de respuestas por coincidencia exacta evita llamadas LLM repetidas para consultas idénticas",
       "Autenticación anónima sin registro; Supabase RLS se aplica a todas las tablas",
     ],
     features: [
@@ -548,7 +548,7 @@ export const esProjects = {
       "Limitación por IP: ráfaga de 5/min, 30/3hrs por IP y máximo global de 200/day",
       "Row-Level Security (RLS) en todas las tablas Supabase",
       "Límite de 500 caracteres por mensaje para evitar relleno de tokens",
-      "Caché de respuestas por coincidencia exacta (coste LLM cero en consultas repetidas)",
+      "Caché de respuestas por coincidencia exacta (sin nueva llamada LLM para una consulta repetida idéntica)",
       "Rechazo seguro: los errores de limitación de frecuencia deniegan por defecto",
     ],
     papers: [
