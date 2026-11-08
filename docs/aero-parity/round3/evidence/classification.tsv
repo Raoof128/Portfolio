@@ -70,11 +70,11 @@ simurgh-station-selected	focus	34919/34250	34919/34250	255	DIFF
 contact-submit	default	318/310	0/0	0	EXACT
 contact-submit	hover	0/0	0/0	0	EXACT
 contact-submit	pressed	0/0	0/0	0	EXACT
-contact-submit	focus	318/310	10/0	1	TOL
+contact-submit	focus	318/310	0/0	0	EXACT
 contact-copy-address	default	639/520	639/520	208	DIFF
 contact-copy-address	hover	640/528	640/528	219	DIFF
 contact-copy-address	pressed	640/521	640/521	214	DIFF
-contact-copy-address	focus	922/803	644/523	219	DIFF
+contact-copy-address	focus	922/803	634/523	219	DIFF
 contact-email	default	1228/682	1228/682	96	DIFF
 contact-email	hover	542/0	542/0	14	DIFF
 contact-email	focus	872/330	872/330	255	DIFF
@@ -102,7 +102,7 @@ not-found-select	disabled	0/0	0/0	0	EXACT
 not-found-action	default	250/242	0/0	0	EXACT
 not-found-action	hover	0/0	0/0	0	EXACT
 not-found-action	pressed	0/0	0/0	0	EXACT
-not-found-action	focus	250/242	5/0	1	TOL
+not-found-action	focus	250/242	0/0	0	EXACT
 global-search-field	default	0/0	0/0	0	EXACT
 global-search-field	hover	56/40	56/40	216	DIFF
 global-search-field	focus	2134/2117	2134/2117	255	DIFF
@@ -126,7 +126,7 @@ evidence-toggle-selected	focus	1105/479	1105/479	70	DIFF
 terminal-copy	default	846/710	846/710	208	DIFF
 terminal-copy	hover	846/722	846/722	219	DIFF
 terminal-copy	pressed	846/715	846/715	216	DIFF
-terminal-copy	focus	1164/1033	844/711	219	DIFF
+terminal-copy	focus	1164/1033	834/711	219	DIFF
 markdown-table-header	default	429/394	429/394	255	DIFF
 markdown-table-cell	default	860/794	860/794	255	DIFF
 window-scrollbar	default	1706/100	1706/100	188	DIFF

@@ -12,6 +12,9 @@ Each finding was reproduced on the HEAD export (`38842e2`) before a change was m
 | R3-06 | Medium layout (RTL) | In Persian/Arabic the first workspace window opened at the LTR position (x 264–1264 at 1440px) and covered ~90px of the desktop intro on the right. `createCascadedWindowRect` and the icon-column measurement assumed the column is on the left. | Test-first mirror for RTL; LTR unchanged. Verified in browser: `fa`/`ar` 176–1176 at 1440, 656–1656 at 1920 (R3-F1, Haiku) |
 | R3-07 | Documentation | `win7-logon.css` said a second press ends the lock-screen wait; commit `38842e2` intentionally disables the orb and moves focus to the status line (`WelcomeEnter.tsx:156`). R3-B's focus-loss concern was checked and is not a defect. | Comment corrected (Opus) |
 
+| R3-12 | Low visual, caught by independent review | Taskbar search still painted `#5a5a5a`: a hard-coded rule in `win7-taskbar.css` outranked the R3-04 change in `research-os.css`. | Uses the token; the guard's legacy allowance for that sheet tightened 22 → 21. All four search fields measure `rgb(117,117,117)` in the final export (Opus) |
+| R3-13 | Test debt (pre-existing) | Two coarse-pointer audit tests expected the desktop at `/`, but `/` opens the lock screen since `38842e2`. Same 2 failures reproduce on the untouched `38842e2` export. | Helper enters through the arrow, retrying only until hydration starts the wait; no assertion changed (Opus) |
+
 ## Recorded, not changed
 
 | ID | Severity | Observation | Reason |
