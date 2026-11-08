@@ -144,11 +144,18 @@ const PREFERRED_WIDTH = 1000;
  * edge plus a gutter, so no window opens over the icons. Its width shrinks to the room
  * left after that offset, and the result is clamped, so a short or narrow viewport still
  * keeps the window inside the work area.
+ *
+ * `iconColumnEdge` is an inline-start extent: a distance from the document's start edge,
+ * which is the left in LTR and the right in RTL. In RTL the LTR rectangle is mirrored
+ * across the viewport's vertical centre line, so the cascade starts at the right, steps
+ * left and down, and clears the icon column on the right. Mirroring a contained rectangle
+ * keeps it contained, because the workspace bounds are symmetric.
  */
 export function createCascadedWindowRect(
   viewport: WindowViewport,
   placement: number,
   iconColumnEdge: number = ICON_COLUMN_EDGE_FALLBACK,
+  direction: "ltr" | "rtl" = "ltr",
 ): WindowRect {
   const bounds = getWorkspaceBounds(viewport);
   const defaults = createDefaultWindowRect(viewport);
@@ -166,8 +173,7 @@ export function createCascadedWindowRect(
     bounds.width,
   );
   const height = Math.max(WINDOW_MIN_HEIGHT, defaults.height - 32);
-
-  return clampWindowRect(
+  const rect = clampWindowRect(
     {
       x,
       y: bounds.top + 16 + offset,
@@ -176,6 +182,10 @@ export function createCascadedWindowRect(
     },
     viewport,
   );
+  if (direction !== "rtl") return rect;
+  // The workspace is symmetric about the centre line, so this mirror stays contained
+  // (asserted in window-geometry.test.ts).
+  return { ...rect, x: viewport.width - (rect.x + rect.width) };
 }
 
 /**

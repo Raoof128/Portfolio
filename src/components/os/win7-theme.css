@@ -577,3 +577,11 @@
     color: HighlightText;
   }
 }
+
+/* Foundation reset repair. Tailwind preflight zeroes every element's padding; canonical
+   7.css styles fieldset/table/tab/menu padding itself but leaves the group-box legend on
+   the UA default (2px inline). Revert only that, at zero specificity so any classed
+   legend in the app keeps its own spacing. */
+:where(.win7) legend {
+  padding-inline: revert;
+}

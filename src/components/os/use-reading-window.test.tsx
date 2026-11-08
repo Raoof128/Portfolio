@@ -464,6 +464,63 @@ describe("expanded window geometry", () => {
   });
 });
 
+describe("desktop text direction", () => {
+  function mockShellDirection(direction: "ltr" | "rtl") {
+    const original = window.getComputedStyle.bind(window);
+    vi.spyOn(window, "getComputedStyle").mockImplementation(
+      (element, pseudo) => {
+        const style = original(element, pseudo);
+        Object.defineProperty(style, "direction", { value: direction });
+        return style;
+      },
+    );
+  }
+
+  it("places the first window clear of the start edge in an RTL shell", () => {
+    mockShellDirection("rtl");
+    render(
+      <div className="os-shell">
+        <Harness initialFloating />
+      </div>,
+    );
+    // Fallback edge 240 plus a 24px gutter, mirrored across a 1280px viewport.
+    expect(rect()).toMatchObject({ x: 16, width: 1000 });
+    expect(rect().x + rect().width).toBeLessThanOrEqual(1280 - 264);
+  });
+
+  it("measures the RTL icon column from the right edge of the viewport", () => {
+    mockShellDirection("rtl");
+    // The icon's left edge sits at x=1100, so its inline-start extent is 180px.
+    vi.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(
+      function (this: Element) {
+        return this.classList.contains("os-app")
+          ? DOMRect.fromRect({ x: 1100, y: 40, width: 100, height: 80 })
+          : DOMRect.fromRect({ x: 0, y: 0, width: 0, height: 0 });
+      },
+    );
+    // Icons are mounted before the window opens, as in the desktop shell. The
+    // measurement runs during render, so a same-pass mount would not be visible.
+    const view = render(
+      <div className="os-shell">
+        <div className="os-desktop">
+          <span className="os-app" />
+        </div>
+      </div>,
+    );
+    view.rerender(
+      <div className="os-shell">
+        <div className="os-desktop">
+          <span className="os-app" />
+        </div>
+        <Harness initialFloating />
+      </div>,
+    );
+    // Start gutter at 180 + 24 = 204 from the right, so the right edge is 1280 - 204 = 1076.
+    expect(rect().x + rect().width).toBe(1076);
+    expect(rect().x + rect().width).toBeLessThanOrEqual(1100 - 24);
+  });
+});
+
 describe("reading position across layout and visibility changes", () => {
   it("starts a new document at its own reading point when a retained frame changes layout", () => {
     const view = render(<ReadingHarness />);

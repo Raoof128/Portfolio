@@ -91,6 +91,46 @@ describe("window geometry", () => {
     expectContained(second, desktop);
   });
 
+  it("mirrors the first placement in RTL so it clears the icon column on the right", () => {
+    const wide = { width: 1440, height: 900 };
+    const ltr = createCascadedWindowRect(wide, 0, 240, "ltr");
+    const rtl = createCascadedWindowRect(wide, 0, 240, "rtl");
+    expect(rtl.x).toBe(wide.width - (ltr.x + ltr.width));
+    expect(rtl.y).toBe(ltr.y);
+    expect(rtl.width).toBe(ltr.width);
+    expect(rtl.height).toBe(ltr.height);
+    expect(rtl.x + rtl.width).toBeLessThanOrEqual(wide.width - (240 + 24));
+    expectContained(rtl, wide);
+  });
+
+  it("keeps the default direction identical to an explicit LTR call", () => {
+    const wide = { width: 1440, height: 900 };
+    for (let placement = 0; placement < 8; placement++) {
+      expect(createCascadedWindowRect(wide, placement, 240, "ltr")).toEqual(
+        createCascadedWindowRect(wide, placement, 240),
+      );
+    }
+  });
+
+  it("steps RTL placements left and down, mirroring the LTR cascade", () => {
+    // 1920x1080 leaves room for the full vertical step, as the LTR cascade test does.
+    const roomy = { width: 1920, height: 1080 };
+    const first = createCascadedWindowRect(roomy, 0, 250, "rtl");
+    const second = createCascadedWindowRect(roomy, 1, 250, "rtl");
+    expect(first.x - second.x).toBe(CASCADE_STEP);
+    expect(second.y - first.y).toBe(CASCADE_STEP);
+    expectContained(second, roomy);
+  });
+
+  it("keeps every RTL placement contained and clear of the icon column", () => {
+    const wide = { width: 1440, height: 900 };
+    for (let placement = 0; placement < 12; placement++) {
+      const rect = createCascadedWindowRect(wide, placement, 240, "rtl");
+      expectContained(rect, wide);
+      expect(rect.x + rect.width).toBeLessThanOrEqual(wide.width - (240 + 24));
+    }
+  });
+
   it("caps the first placement so a 1024 desktop keeps clear of the icons", () => {
     const narrow = { width: 1024, height: 768 };
     const rect = createCascadedWindowRect(narrow, 0, 250);

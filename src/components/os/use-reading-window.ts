@@ -72,18 +72,33 @@ function readReadingOffset(document: HTMLElement | null, floating: boolean) {
       );
 }
 
-/**
- * The desktop icon column's right edge. The shared token wins when a stylesheet sets
- * --win7-icon-column-edge; otherwise the rightmost desktop icon is measured, so the first
- * placement clears the icons at any width. The fallback applies only when neither reads.
- */
-function readIconColumnEdge(): number {
+function layoutShell(): HTMLElement {
+  return (
+    document.querySelector<HTMLElement>(".os-shell") ?? document.documentElement
+  );
+}
+
+/** The document direction of the desktop shell; LTR when it cannot be read. */
+function readDirection(): "ltr" | "rtl" {
   try {
-    const shell =
-      document.querySelector<HTMLElement>(".os-shell") ??
-      document.documentElement;
+    return getComputedStyle(layoutShell()).direction === "rtl" ? "rtl" : "ltr";
+  } catch {
+    return "ltr";
+  }
+}
+
+/**
+ * The desktop icon column's inline-start extent: its edge measured from the start side,
+ * which is the left in LTR and the right in RTL. The shared token wins when a stylesheet
+ * sets --win7-icon-column-edge; otherwise the outermost desktop icon is measured, so the
+ * first placement clears the icons at any width. The fallback applies only when neither reads.
+ */
+function readIconColumnEdge(direction: "ltr" | "rtl"): number {
+  try {
     const value = parseFloat(
-      getComputedStyle(shell).getPropertyValue("--win7-icon-column-edge"),
+      getComputedStyle(layoutShell()).getPropertyValue(
+        "--win7-icon-column-edge",
+      ),
     );
     if (Number.isFinite(value)) return value;
     let edge = Number.NaN;
@@ -91,7 +106,10 @@ function readIconColumnEdge(): number {
       .querySelectorAll<HTMLElement>(".os-desktop .os-app")
       .forEach((icon) => {
         const box = icon.getBoundingClientRect();
-        if (box.width > 0 && !(edge >= box.right)) edge = box.right;
+        // In RTL the start edge is the right, so the extent runs from the viewport's right.
+        const extent =
+          direction === "rtl" ? window.innerWidth - box.left : box.right;
+        if (box.width > 0 && !(edge >= extent)) edge = extent;
       });
     return Number.isFinite(edge) ? edge : ICON_COLUMN_EDGE_FALLBACK;
   } catch {
@@ -234,13 +252,15 @@ export function useReadingWindow(
   }, [path, floating, current.minimized, content, active]);
 
   if (options.initialFloating && desktop && !current.rect) {
+    const direction = readDirection();
     setState({
       path,
       minimized: current.minimized,
       rect: createCascadedWindowRect(
         viewport(),
         options.placement ?? 0,
-        readIconColumnEdge(),
+        readIconColumnEdge(direction),
+        direction,
       ),
     });
   }
