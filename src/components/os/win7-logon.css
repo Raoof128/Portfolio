@@ -90,9 +90,9 @@
   object-position: center 30%;
 }
 
-/* Name. About 20px white with a 1px shadow. win7-polish.css sets the name by ID (a clamp
-   from 2rem to 2.75rem), so this rule carries the ID too, to outrank it. The Persian and
-   Arabic steps match the Latin size, since the name is a single line of display text. */
+/* Name. About 20px white with a 1px shadow; this rule owns the name's size, weight and
+   tracking. The Persian and Arabic steps match the Latin size, since the name is a single
+   line of display text. */
 .os-shell.win7 .os-welcome .os-lock-profile h1#os-lock-name {
   max-width: 100%;
   margin: 0 0 4px;

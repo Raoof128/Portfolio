@@ -450,9 +450,11 @@ test.describe("short viewport entry", () => {
           await prepare(page, "light");
           await page.goto(path, { waitUntil: "networkidle" });
           await page.waitForTimeout(600);
-          await expect(pane(page).locator("h1")).toBeVisible();
+          // /projects names its window with a screen-reader-only h1, so the visible top of the
+          // page is the window title bar; it must be on screen and the window unscrolled.
+          await expect(pane(page).locator("h1")).toBeAttached();
           expect(await page.evaluate(() => window.scrollY)).toBe(0);
-          await expect(pane(page).locator("h1")).toBeInViewport();
+          await expect(pane(page).locator(".os-window-title")).toBeInViewport();
         });
       }
     });
