@@ -86,6 +86,35 @@ test("static redirects reject authority-position splats and external destination
   );
 });
 
+test("static redirect chains that revisit a path are reported as loops", () => {
+  for (const rules of [
+    "/x /y 301\n/y /x 301",
+    "/a /a 301",
+    "/p /q 302\n/q /r 302\n/r /p 302",
+    "/lead /x 308\n/x /y 308\n/y /x 308",
+  ]) {
+    const issues = auditRedirectRules(rules);
+    assert.ok(
+      issues.some((issue) => issue.endsWith(": redirect loop")),
+      rules,
+    );
+  }
+  const selfLoop = auditRedirectRules("/a /a 301");
+  assert.ok(selfLoop.includes("/a: redirect loop"));
+  const pair = auditRedirectRules("/x /y 301\n/y /x 301");
+  assert.ok(pair.includes("/x: redirect loop"));
+  assert.ok(pair.includes("/y: redirect loop"));
+});
+
+test("non-looping redirect chains, 200 rewrites and placeholder rules are not reported as loops", () => {
+  assert.deepEqual(auditRedirectRules("/a /b 301\n/b /c 301"), []);
+  assert.deepEqual(auditRedirectRules("/a /b 301\n/b /c 301\n/c /c2 200"), []);
+  assert.deepEqual(auditRedirectRules("/x /y 200\n/y /x 200"), []);
+  assert.deepEqual(auditRedirectRules("/x/* /x/:splat 301"), []);
+  assert.deepEqual(auditRedirectRules("/x/:id /y/:id 301\n/y/:id /x/:id 301"), []);
+  assert.deepEqual(auditRedirectRules(redirects), []);
+});
+
 test("specific path rules cannot detach or override any global security header", () => {
   for (const name of [
     "Content-Security-Policy",

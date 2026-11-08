@@ -186,6 +186,8 @@ export function parseGlobalSecurityHeaders(text) {
 
 export function auditRedirectRules(text) {
   const issues = [];
+  // First matching rule wins, so only the first rule for each source counts.
+  const firstRuleBySource = new Map();
   for (const line of text.split(/\r?\n/)) {
     if (!line.trim() || line.trim().startsWith("#")) continue;
     const [source, destination, status = "302", extra] = line
@@ -211,6 +213,35 @@ export function auditRedirectRules(text) {
       const prefix = destination.slice(0, placeholder.index);
       if (!/^\/[a-z0-9][a-z0-9._-]*\//i.test(prefix))
         issues.push(`${source}: redirect splat has no fixed section prefix`);
+    }
+    if (!firstRuleBySource.has(source))
+      firstRuleBySource.set(source, { status, destination });
+  }
+  issues.push(...redirectLoopIssues(firstRuleBySource));
+  return issues;
+}
+
+// Follows literal, non-200 redirects only. Rewrites end a chain, and splat or
+// placeholder rules cannot be resolved without a concrete request path.
+function redirectLoopIssues(firstRuleBySource) {
+  const next = new Map();
+  for (const [source, { status, destination }] of firstRuleBySource) {
+    if (status === "200") continue;
+    if (/[*]|:[a-z]/i.test(source) || /[*]|:[a-z]/i.test(destination))
+      continue;
+    next.set(source, destination);
+  }
+  const issues = [];
+  for (const source of next.keys()) {
+    const visited = new Set([source]);
+    let current = next.get(source);
+    while (current !== undefined) {
+      if (visited.has(current)) {
+        issues.push(`${source}: redirect loop`);
+        break;
+      }
+      visited.add(current);
+      current = next.get(current);
     }
   }
   return issues;

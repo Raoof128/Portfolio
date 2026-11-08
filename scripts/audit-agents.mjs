@@ -14,6 +14,7 @@ import {
   auditSecurityExpiry,
   auditDeploymentVersion,
 } from "./lib/production-audit.mjs";
+import { auditHreflang } from "./lib/hreflang-audit.mjs";
 
 const OUT = "out";
 const ORIGIN = "https://raoufabedini.dev";
@@ -176,12 +177,10 @@ for (const url of sitemapUrls) {
   else if (canonical.replace(/\/$/, "") !== url.replace(/\/$/, ""))
     fail(`canonical ≠ self: ${url} → ${canonical}`);
 
-  // hreflang reciprocity + x-default. React serializes the attribute as
-  // `hrefLang` (camelCase), so match case-insensitively.
-  const alts = [...html.matchAll(/hreflang="([^"]+)"/gi)].map((m) => m[1]);
-  for (const l of LOCALES)
-    if (!alts.includes(l)) fail(`missing hreflang="${l}": ${url}`);
-  if (!alts.includes("x-default")) fail(`missing hreflang="x-default": ${url}`);
+  // hreflang: every alternate must be exactly this page's URL in each locale,
+  // with x-default equal to the English URL. Presence alone is not enough.
+  // Rules and parsing live in lib/hreflang-audit.mjs (React emits `hrefLang`).
+  for (const issue of auditHreflang(html, url)) fail(`${issue}: ${url}`);
 
   // noindex must not appear on public pages
   if (/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html))

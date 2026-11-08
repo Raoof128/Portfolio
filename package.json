@@ -16,6 +16,7 @@
     "test:schemas": "node --test scripts/lib/schema-language-audit.test.mjs",
     "test:audit-http": "node --test scripts/lib/production-audit.test.mjs",
     "test:security": "node --test scripts/lib/static-security.test.mjs",
+    "test:tooling": "node --test scripts/browser-regressions/aero-parity/png-diff.test.mjs scripts/browser-regressions/aero-parity/snapshot-integrity.test.mjs scripts/lib/lab-go-snippet.test.mjs scripts/lib/hreflang-audit.test.mjs",
     "audit:security": "node scripts/audit-static-security.mjs",
     "test:backend": "npm run test:audit-http && vitest run src/i18n/index.test.ts src/lib/server-routes.test.tsx src/lib/data.test.ts src/lib/machine-reliability.test.ts src/lib/content-integrity.test.tsx src/lib/version-route.test.ts src/lib/feed-route.test.ts",
     "test:coverage": "vitest run --coverage",
