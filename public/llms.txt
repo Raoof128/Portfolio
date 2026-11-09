@@ -8,7 +8,7 @@
 Name: Mohammad Raouf Abedini (Raouf)
 Role: AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation
 Location: Sydney · Relocating to San Francisco, CA · Visa sponsorship required
-Availability: Full-time from December 2026 for a three- to six-month San Francisco research placement
+Availability: Full-time from December 2026 for a three- to six-month San Francisco placement
 Focus: Host-side authorisation for tool-using AI agents, matched-control safety evaluation, adversarial robustness and AI control.
 
 ## Summary

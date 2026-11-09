@@ -6,7 +6,7 @@ const es: Dictionary = {
     home_title_default:
       "Mohammad Raouf Abedini | Investigador de seguridad de IA · Robustez adversarial y control de IA · Evaluación empírica de seguridad",
     home_description:
-      "Investigador de seguridad de IA centrado en robustez adversarial, control de IA y evaluación empírica de seguridad. Project Simurgh construye controles en el anfitrión sobre lo que se permite hacer a un agente, con archivos de evidencia firmados con Ed25519 que se reproducen sin conexión con un solo comando. Evaluó Claude en el programa de seguridad de Anthropic a través de Alignerr, enero–marzo de 2026. Disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco; requiere patrocinio de visado.",
+      "Investigador de seguridad de IA centrado en robustez adversarial, control de IA y evaluación empírica de seguridad. Project Simurgh construye controles en el anfitrión sobre lo que se permite hacer a un agente, con archivos de evidencia firmados con Ed25519 que se reproducen sin conexión con un solo comando. Evaluó Claude en el programa de evaluación de seguridad de Anthropic a través de Alignerr, de enero a marzo de 2026. Disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco; requiere patrocinio de visado.",
     home_og_description:
       "Robustez adversarial, control de IA y evaluación empírica de seguridad. Creador de Project Simurgh; evaluó Claude para Anthropic a través de Alignerr, enero–marzo de 2026.",
     keyword_1: "Investigación de Seguridad de IA",
@@ -64,7 +64,7 @@ const es: Dictionary = {
   },
   hero: {
     intro:
-      "Construyo y pruebo controles del anfitrión para agentes de IA que usan herramientas. En el estudio de controles emparejados de Project Simurgh de octubre de 2026, los ensayos en estados restringidos con efectos nuevos bajaron de 17/24 a 0/24 en Llama-3.2-3B, conservando 23/24 finalizaciones útiles; la línea base de gpt-6-luna ya era 0/24, por lo que no mostró protección incremental. Evalué Claude en el programa de seguridad de Anthropic a través de Alignerr de enero a marzo de 2026.",
+      "Construyo y pruebo controles del anfitrión para agentes de IA que usan herramientas. En el estudio de controles emparejados de Project Simurgh de octubre de 2026, los ensayos en estados restringidos con efectos nuevos bajaron de 17/24 a 0/24 en Llama-3.2-3B, conservando 23/24 finalizaciones útiles; la línea base de gpt-6-luna ya era 0/24, por lo que no mostró protección adicional. Evalué Claude en el programa de seguridad de Anthropic a través de Alignerr de enero a marzo de 2026.",
     researcher:
       "Investigador de seguridad de IA · Robustez adversarial y control de IA · Evaluación empírica de seguridad",
   },
@@ -96,9 +96,9 @@ const es: Dictionary = {
     bio_1:
       "Soy investigador de seguridad centrado en mantener seguros y beneficiosos a los agentes de IA que usan herramientas: construyo controles en el anfitrión sobre lo que se permite hacer a un agente y los someto a pruebas de estrés con experimentos de control emparejado contra modelos en vivo. Evalué Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic a través de Alignerr. Tengo cinco preprints de autor único y dos divulgaciones coordinadas a proveedores (Microsoft, Apple) tras siete años en operaciones e ingeniería de seguridad, y estoy disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco; necesito patrocinio de visado.",
     bio_2:
-      "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos: 288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección incremental. Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. DOI del software: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
+      "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos: 288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección adicional. Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. DOI del software: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
     bio_3:
-      "También escribí The Invisible Window: las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla, con evasión del 100% de la supervisión de exámenes por WebRTC en todas las plataformas probadas, incluido macOS 26. Microsoft MSRC y Apple Product Security clasificaron ambos el comportamiento como propio del diseño. Aion-BibleQA puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas en un benchmark de 40 preguntas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. La licenciatura en ciberseguridad tiene finalización prevista en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
+      "También escribí The Invisible Window: las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla, con evasión del 100% de la supervisión de exámenes por WebRTC en todas las plataformas probadas, incluido macOS 26. Microsoft MSRC y Apple Product Security clasificaron ambos el comportamiento como diseño previsto (by design). Aion-BibleQA puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas en un benchmark de 40 preguntas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. Mi licenciatura en ciberseguridad finalizará, según lo previsto, en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
     stats_projects: "Proyectos",
     stats_evasion: "Evasión en configuraciones de laboratorio probadas",
     stats_vendors: "Divulgaciones coordinadas a proveedores",
@@ -236,14 +236,14 @@ const es: Dictionary = {
     tagline:
       "Investigador de seguridad de IA · Robustez adversarial y control de IA · Evaluación empírica de seguridad",
     location:
-      "Sídney · Reubicación a San Francisco, CA · Requiere patrocinio de visado",
+      "Sídney · Traslado a San Francisco, CA · Requiere patrocinio de visado",
     summary_heading: "Resumen profesional",
     summary:
       "Investigador de seguridad centrado en mantener seguros y beneficiosos a los agentes de IA que usan herramientas: construye controles en el anfitrión sobre lo que se permite hacer a un agente y los somete a pruebas de estrés con experimentos de control emparejado contra modelos en vivo. Único autor de Project Simurgh, un prototipo de código abierto de autorización de agentes cuyo estudio de octubre de 2026 informa de un beneficio en un modelo y de un resultado nulo en otro. Evaluó Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic a través de Alignerr. Cinco preprints de autor único y dos divulgaciones coordinadas a proveedores (Microsoft, Apple) tras siete años en operaciones e ingeniería de seguridad. Disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco.",
     s03_heading: "Habilidades de investigación y técnicas",
     skill1_label: "Seguridad y alineamiento empíricos de la IA:",
     skill1_desc:
-      "diseño de experimentos de control emparejado · robustez adversarial y control de IA para agentes que usan herramientas · contención de inyecciones de instrucciones y de autoridad · evaluación de barreras de seguridad y clasificadores · comunicación de incertidumbre · estado de supervisión humana conservado en el anfitrión (delegación, parada, vigencia)",
+      "diseño de experimentos de control emparejado · robustez adversarial y control de IA para agentes que usan herramientas · contención de inyección de prompts y de autoridad · evaluación de barreras de seguridad y clasificadores · comunicación de incertidumbre · estado de supervisión humana conservado en el anfitrión (delegación, parada, concesión temporal (lease))",
     skill2_label:
       "Modelos de lenguaje de gran tamaño (LLM) y herramientas para agentes:",
     skill2_desc:
@@ -261,17 +261,17 @@ const es: Dictionary = {
     simurgh_meta:
       "github.com/Raoof128/Project-Simurgh · 92 versiones · DOI del software 10.5281/zenodo.21737792",
     simurgh_b1:
-      "Diseñé y ejecuté un estudio de transferencia (oct. 2026): 24 tareas, dos ensayos cada una, tres controles emparejados (solo credencial, compuesto, denegar todo) y dos modelos; 288 ramas reproducidas. En Meta Llama-3.2-3B, los controles compuestos del anfitrión redujeron los ensayos restringidos con efectos nuevos de 17/24 a 0/24, conservaron 23/24 finalizaciones útiles y no bloquearon ninguna propuesta válida. En OpenAI gpt-6-luna la línea base ya era 0/24, por lo que el estudio no informa de protección incremental en ese modelo. Del protocolo al paquete publicado pasaron tres días (15–17 oct. 2026).",
+      "Diseñé y ejecuté un estudio de transferencia (oct. 2026): 24 tareas, dos ensayos cada una, tres controles emparejados (solo credencial, compuesto, denegar todo) y dos modelos; 288 ramas reproducidas. En Meta Llama-3.2-3B, los controles compuestos del anfitrión redujeron los ensayos restringidos con efectos nuevos de 17/24 a 0/24, conservaron 23/24 finalizaciones útiles y no bloquearon ninguna propuesta válida. En OpenAI gpt-6-luna la línea base ya era 0/24, por lo que el estudio no informa de protección adicional en ese modelo. Del protocolo al paquete publicado pasaron tres días (del 15 al 17 de oct. 2026).",
     simurgh_b2:
-      "Informé de la incertidumbre por clúster: los 24 ensayos restringidos se agrupan en seis estados, por lo que los intervalos son por estado (Wilson 95%: 43.6–97.0% frente a 0.0–39.0%); parte de la diferencia se cumple por construcción.",
+      "Informé de la incertidumbre por clúster: los 24 ensayos restringidos se agrupan en seis estados, por lo que los intervalos son por estado (Wilson 95%: 43.6–97.0% frente a 0.0–39.0%); parte de la diferencia se da por construcción.",
     simurgh_b3:
       "Detecté y mitigué un defecto en la integración en vivo con OpenAI: un flujo de ocho casos de la Responses API expuso un error de ubicación del rol (8/8 rechazados). Conservé las trazas originales; una corrección congelada del rol developer completó 2/3 flujos autorizados y rechazó 5/5 restringidos, con un rechazo aún abierto.",
     simurgh_b4:
-      "Registré en vivo un clasificador de entrada Llama Guard 4 12B sobre un conjunto de 180 casos (etapa congelada, 2026) y generé evidencia de contención para los 138 casos maliciosos que omitió, 120 de ellos inyecciones posteriores fuera del alcance de un clasificador solo de entrada; es una afirmación de cobertura, no un ranking de clasificadores.",
+      "Registré en vivo un clasificador de entrada Llama Guard 4 12B sobre un conjunto de 180 casos (etapa congelada, 2026) y generé evidencia de contención para los 138 casos maliciosos que omitió, 120 de ellos inyecciones en etapas posteriores del flujo fuera del alcance de un clasificador solo de entrada; es una afirmación de cobertura, no un ranking de clasificadores.",
     simurgh_b5:
       "Reduje el éxito de ataque dirigido de un agente Llama-3.3-70B en vivo en AgentDojo de 9/140 a 0/140 con inyecciones preregistradas en la suite workspace (etapa congelada, 2026); la ejecución determinista completa de las cuatro suites registró 0/949 de éxito de ataque con 949/949 de utilidad sin ataque (ambos acotados a experimentos pequeños).",
     simurgh_b6:
-      "Construí el trabajo para que sea reproducible: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 oct. 2026.",
+      "Construí el trabajo para que pueda reproducirse: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 oct. 2026.",
     simurgh_b7:
       "Audité 919 de los documentos propios del proyecto y publiqué los 141 hallazgos fechados, incluidas exageraciones en cierres anteriores, en el README.",
     iw_title:
@@ -282,7 +282,7 @@ const es: Dictionary = {
     iw_b1:
       "Descubrí que las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla: evasión del 100% de la supervisión de exámenes por WebRTC en todas las plataformas probadas, incluido macOS 26.",
     iw_b2:
-      "Divulgué a Microsoft MSRC (feb. 2026) y a Apple Product Security (mar. 2026) antes de la publicación; ambos clasificaron el comportamiento como propio del diseño. El código de prueba de concepto se retiene por motivos de doble uso.",
+      "Notifiqué de forma coordinada a Microsoft MSRC (feb. 2026) y a Apple Product Security (mar. 2026) antes de la publicación; ambos clasificaron el comportamiento como diseño previsto (by design). El código de prueba de concepto se retiene por motivos de doble uso.",
     aion_title:
       "Aion-BibleQA — Recuperación y fidelidad de citas en un sistema RAG (único autor)",
     aion_period: "jun. 2026",
@@ -294,13 +294,13 @@ const es: Dictionary = {
     further_b1:
       "Banking Shield (DOI 10.5281/zenodo.20675513): demostraciones verificadas por máquina de que los valores sensibles para la privacidad nunca llegan a las explicaciones generadas por IA; ensayo con cinco evaluadores, cero filtraciones.",
     further_b2:
-      "Pruebas de integridad de dispositivos de Simurgh (DOI 10.5281/zenodo.20374849): preprint sobre pruebas de integridad de dispositivos que preservan la privacidad para sesiones de alto riesgo.",
+      "Pruebas de integridad de dispositivos de Simurgh (DOI 10.5281/zenodo.20374849): preprint sobre pruebas de integridad de dispositivos que preservan la privacidad para sesiones de alto impacto.",
     further_b3:
-      "Piloto de eventos de una asociación estudiantil (DOI 10.5281/zenodo.20549736): 31 sesiones con consentimiento; elecciones de voto excluidas de los registros; registros de auditoría encadenados con HMAC.",
+      "Piloto de eventos de una asociación estudiantil (DOI 10.5281/zenodo.20549736): 31 sesiones con consentimiento; opciones votadas excluidas de los registros; registros de auditoría encadenados con HMAC.",
     further_b4:
-      "Mehr Guard: escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform; ML de conjunto más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
+      "Mehr Guard: escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform; ML de ensamble (ensemble) más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
     further_b5:
-      "Trabajo de sistemas (Rust, C++): SentinelSSH, un servidor MCP en Rust que da a los agentes de IA inspección de solo lectura, limitada por políticas, de anfitriones Linux mediante 17 herramientas tipadas y sin shell; SentinelFlow, detección de intrusiones en C++17 (500,000+ paquetes/s, benchmark sintético de un solo hilo); Project Zurvan, motor de conocimiento local que sirve afirmaciones y decisiones a agentes mediante MCP (218 pruebas).",
+      "Trabajo de sistemas (Rust, C++): SentinelSSH, un servidor MCP en Rust que da a los agentes de IA inspección de solo lectura, limitada por políticas, de anfitriones Linux mediante 17 herramientas tipadas y sin shell; SentinelFlow, detección de intrusiones en C++17 (500,000+ paquetes/s, benchmark sintético de un solo hilo); Project Zurvan, motor de conocimiento local-first (con prioridad local) que sirve afirmaciones y decisiones a agentes mediante MCP (218 pruebas).",
     s06_heading: "Experiencia profesional",
     alignerr_title: "Evaluador de seguridad de IA (Claude) — Alignerr",
     alignerr_period: "ene. 2026 – mar. 2026",
@@ -312,14 +312,14 @@ const es: Dictionary = {
     syllabus_meta:
       "Startup de la incubadora de Macquarie University · Sídney · syllabus-sync.app",
     syllabus_b1:
-      "Dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres, auditoría resistente a manipulaciones) de una base de código Next.js/TypeScript compartida que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
+      "Dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría resistente a manipulaciones) de una base de código Next.js/TypeScript compartida que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
     freelance_title:
-      "Ingeniero de seguridad y desarrollador integral — Autónomo (freelance)",
+      "Ingeniero de seguridad y desarrollador full stack — Autónomo (freelance)",
     freelance_period: "ene. 2024 – actualidad",
     freelance_meta: "Sídney",
     freelance_b1:
       "Entregué aplicaciones web seguras a clientes comerciales con controles OWASP Top 10 y OAuth 2.0; valoración de 5.0 estrellas en 31 reseñas de Airtasker.",
-    pharmacy_title: "Responsable de TI y operaciones de seguridad — Farmacia Irán",
+    pharmacy_title: "Responsable de TI y operaciones de seguridad — Iran Pharmacy",
     pharmacy_period: "ago. 2019 – ene. 2024",
     pharmacy_meta: "Más de 50 empleados · Irán",
     pharmacy_b1:

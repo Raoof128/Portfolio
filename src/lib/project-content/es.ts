@@ -6,7 +6,7 @@ export const esProjects = {
     description:
       "Artículo en formato IEEE sobre una vulnerabilidad estructural en la supervisión con WebRTC. Evasión del 100% en configuraciones de laboratorio probadas con Windows 10/11 y macOS 14–26, mediante APIs documentadas y con divulgación responsable.",
     fullDescription:
-      "Artículo de 13 páginas en formato IEEE que documenta una vulnerabilidad estructural en la supervisión de exámenes con WebRTC. SetWindowDisplayAffinity de Windows y NSWindow.SharingType.none de macOS permiten excluir una ventana de las rutas de captura probadas mientras sigue visible en la pantalla física. Esto cuestiona la premisa de confianza de la supervisión basada en capturas. Las pruebas de concepto lograron evasión del 100% en configuraciones de laboratorio probadas con Windows y macOS, incluido macOS 26, donde se suponía mitigado el ataque. Las configuraciones eran simuladas, no productos comerciales; macOS 26 usó CGWindowListCreateImage y screencapture nativos en lugar de getDisplayMedia() del navegador, y Linux no se probó. Los hallazgos reflejan las versiones probadas hasta marzo de 2026 y pueden cambiar con futuras correcciones.",
+      "Artículo de 13 páginas en formato IEEE que documenta una vulnerabilidad estructural en la supervisión de exámenes con WebRTC. SetWindowDisplayAffinity de Windows y NSWindow.SharingType.none de macOS permiten excluir una ventana de las rutas de captura probadas mientras sigue visible en la pantalla física. Esto cuestiona la premisa de confianza de la supervisión basada en capturas. Las pruebas de concepto lograron evasión del 100% en configuraciones de laboratorio probadas con Windows y macOS, incluido macOS 26, donde se suponía mitigado el ataque. Las configuraciones eran simuladas, no productos comerciales; macOS 26 usó CGWindowListCreateImage y screencapture nativos en lugar de getDisplayMedia() del navegador, y Linux no se probó. Los hallazgos reflejan las versiones probadas a marzo de 2026 y pueden cambiar con futuras correcciones.",
     problem:
       "La supervisión remota detecta contenido prohibido capturando la pantalla mediante getDisplayMedia() de WebRTC y presupone que el fotograma refleja la pantalla física. La investigación demuestra una brecha: APIs de pantalla documentadas excluyeron ventanas de las rutas probadas sin elevar privilegios ni modificar el kernel. Los resultados corresponden a configuraciones controladas y simuladas de Windows y macOS; no demuestran eludir todos los navegadores o productos comerciales.",
     solution: [
@@ -14,8 +14,8 @@ export const esProjects = {
       "Estudio de SetWindowDisplayAffinity en Win32 y NSWindow.SharingType.none en macOS, ambas documentadas en los SDK oficiales.",
       "Pruebas de concepto en Win32 C y Swift que demuestran la evasión completa de la captura.",
       "Evaluación de configuraciones simuladas en un laboratorio controlado con Windows 10/11 y macOS 14–26; no se probaron productos comerciales, y macOS 26 usó captura nativa en lugar de getDisplayMedia() del navegador.",
-      "Análisis de las capacidades y limitaciones del seguimiento de la mirada, los movimientos del ratón y la enumeración de procesos.",
-      "Propuesta y evaluación de cinco contramedidas, desde enumerar indicadores hasta la atestación de hardware a largo plazo.",
+      "Análisis de qué mecanismos de detección conductual (seguimiento de la mirada, dinámica del ratón, enumeración de procesos) pueden y no pueden detectar el ataque.",
+      "Propuesta y evaluación de cinco contramedidas, desde medidas desplegables (enumeración de indicadores) hasta soluciones a largo plazo (atestación de hardware).",
       "Divulgación coordinada con los fabricantes: Microsoft MSRC (notificado en febrero de 2026, clasificado en abril de 2026) y Apple Product Security (notificado y clasificado en marzo de 2026); ambos emitieron clasificaciones formales.",
     ],
     proof: [
@@ -39,8 +39,8 @@ export const esProjects = {
     ],
     measures: [
       "Descubrimiento y verificación en enero de 2026.",
-      "Notificación a Microsoft MSRC en febrero de 2026; en abril de 2026 se clasificó como comportamiento previsto, no como vulnerabilidad de seguridad.",
-      "Notificación a Apple Product Security en marzo de 2026; ese mes se clasificó como comportamiento coherente con la documentación, no como problema de seguridad.",
+      "Notificación a Microsoft MSRC en febrero de 2026; en abril de 2026 se clasificó como diseño previsto (by design), no como vulnerabilidad de seguridad.",
+      "Notificación a Apple Product Security en marzo de 2026; ese mes se clasificó como diseño previsto (by design), no como problema de seguridad.",
       "Publicación tras las respuestas de los proveedores en mayo de 2026.",
       "El código de prueba de concepto se retiene por motivos de doble uso.",
       "Solo APIs documentadas de usuario, sin explotación del kernel ni elevación de privilegios.",
@@ -64,19 +64,19 @@ export const esProjects = {
       "Un agente con herramientas puede proponer acciones después de cambiar su estado de delegación, parada, vigencia o credenciales. Los controles del anfitrión deben aplicar ese estado fuera del modelo. Evaluarlos exige bases emparejadas, resultados de tareas útiles e incertidumbre: una base ya limpia no demuestra protección adicional.",
     solution: [
       "Conserva en el anfitrión el estado de delegación, parada, vigencia y credenciales y comprueba cada propuesta fuera del modelo; los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando.",
-      "Estudio de transferencia de octubre de 2026: 24 tareas, dos ensayos por tarea, tres controles emparejados (solo credenciales, compuesto, denegar todo), dos modelos y 288 ramas reproducidas; del protocolo al paquete publicado entre el 15–17 de octubre de 2026",
+      "Estudio de transferencia de octubre de 2026: 24 tareas, dos ensayos por tarea, tres controles emparejados (solo credenciales, compuesto, denegar todo), dos modelos y 288 ramas reproducidas; del protocolo al paquete publicado del 15 al 17 de octubre de 2026",
       "En Meta Llama-3.2-3B los controles compuestos redujeron los ensayos restringidos con efectos nuevos de 17/24 a 0/24, conservaron 23/24 finalizaciones útiles y no bloquearon ninguna propuesta válida",
       "La base de OpenAI gpt-6-luna ya era 0/24; el estudio no informa de protección adicional en ese modelo",
-      "Incertidumbre por estado: los 24 ensayos restringidos se agrupan en seis estados; los intervalos Wilson 95% son 43.6–97.0% frente a 0.0–39.0%, y parte de la diferencia se mantiene por construcción",
+      "Incertidumbre por estado: los 24 ensayos restringidos se agrupan en seis estados; los intervalos Wilson 95% son 43.6–97.0% frente a 0.0–39.0%, y parte de la diferencia se da por construcción",
     ],
     proof: [
       "Estudio de transferencia con controles emparejados de octubre de 2026: 24 tareas × dos ensayos × tres controles × dos modelos; 288 ramas reproducidas. Se publican juntos el resultado positivo de Llama-3.2-3B y el nulo de gpt-6-luna",
       "Llama-3.2-3B: ensayos restringidos con efectos nuevos 17/24 → 0/24, finalizaciones útiles 23/24, ninguna propuesta válida bloqueada; gpt-6-luna: base 0/24, sin protección adicional observada",
-      "Alcance de los grupos: 24 ensayos restringidos en seis estados. Intervalos Wilson 95% por estado de 43.6–97.0% frente a 0.0–39.0%; parte de la diferencia se mantiene por construcción",
+      "Alcance de los grupos: 24 ensayos restringidos en seis estados. Intervalos Wilson 95% por estado de 43.6–97.0% frente a 0.0–39.0%; parte de la diferencia se da por construcción",
       "Defecto de integración de OpenAI Responses API: un error de ubicación del rol provocó 8/8 rechazos de flujos. Se conservaron las trazas originales; una corrección congelada del rol developer completó 2/3 flujos autorizados y rechazó 5/5 restringidos, con un rechazo aún abierto",
-      "Etapa anterior congelada del clasificador (2026): Llama Guard 4 12B real sobre 180 casos; las pruebas de contención cubrieron los 138/138 casos maliciosos omitidos, incluidos 120 de inyección posterior fuera de la visión de un clasificador de entrada. Es una afirmación de cobertura, no una clasificación de detectores",
+      "Etapa anterior congelada del clasificador (2026): Llama Guard 4 12B real sobre 180 casos; la evidencia de contención cubrió los 138/138 casos maliciosos omitidos, incluidos 120 de inyección en etapas posteriores del flujo fuera de la visión de un clasificador de entrada. Es una afirmación de cobertura, no un ranking de clasificadores",
       "Reduje el éxito de ataque dirigido de un agente Llama-3.3-70B en vivo en AgentDojo de 9/140 a 0/140 con inyecciones preregistradas en la suite workspace (etapa congelada, 2026); la ejecución determinista completa de las cuatro suites registró 0/949 de éxito de ataque con 949/949 de utilidad sin ataque (ambos acotados a experimentos pequeños)",
-      "Construí el trabajo para que sea reproducible: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. El paquete raíz declara AGPL-3.0-or-later.",
+      "Construí el trabajo para que pueda reproducirse: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. El paquete raíz declara AGPL-3.0-or-later.",
       "Auditoría de 919 de los documentos propios del proyecto y publicación de los 141 hallazgos fechados, incluidas exageraciones de cierres anteriores, en el README.",
       "El DOI del archivo de software actual 10.5281/zenodo.21737792 se distingue del DOI de la prepublicación original de integridad del dispositivo 10.5281/zenodo.20374849 y de las demás prepublicaciones",
     ],
@@ -92,15 +92,15 @@ export const esProjects = {
     features: [
       "El estado de delegación, parada, vigencia y credenciales del anfitrión se comprueba fuera del modelo para cada propuesta de herramienta",
       "Los controles emparejados de solo credenciales, compuesto y denegar todo separan el efecto del anfitrión de la base del modelo y de las tareas útiles",
-      "Construí el trabajo para que sea reproducible: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando",
-      "La arquitectura anterior congelada usaba cuatro límites: cortafuegos de entrada, guardia de procedencia del contexto, puerta de herramientas y cortafuegos de fugas de salida",
+      "Construí el trabajo para que pueda reproducirse: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando",
+      "La arquitectura anterior congelada usaba cuatro límites: cortafuegos de entrada, guardia de procedencia del contexto, compuerta de invocación de herramientas y cortafuegos de fugas de salida",
     ],
     measures: [
       "Las comprobaciones del anfitrión gobiernan las propuestas permitidas; el prototipo y sus experimentos pequeños no establecen una garantía universal de seguridad",
-      "Los resultados positivos y nulos se publican juntos, con incertidumbre por grupos de estados y la parte de la diferencia que se mantiene por construcción explícitas",
+      "Los resultados positivos y nulos se publican juntos, con incertidumbre por grupos de estados y la parte de la diferencia que se da por construcción explícitas",
       "El fallo de ubicación del rol OpenAI y su corrección congelada siguen visibles; un rechazo de un flujo autorizado permanece abierto",
-      "39 demostraciones en Lean 4 están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar",
-      "Las pruebas anteriores congeladas complementan los clasificadores de entrada; no son un detector general de jailbreak ni demuestran impedir toda salida insegura del modelo",
+      "39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar",
+      "La evidencia de contención anterior congelada complementa los clasificadores de entrada; no son un detector general de jailbreak ni demuestran impedir toda salida insegura del modelo",
     ],
     papers: [
       {
@@ -119,7 +119,7 @@ export const esProjects = {
         label: "Prepublicación relacionada con banca",
         status: "Prepublicación preparada por el autor",
         description:
-          "Prototipo ficticio de investigación, ajeno a un banco, que convierte límites de privacidad y de afirmaciones excesivas en pruebas comprobables por máquina: cortafuegos de 46 nombres de campo prohibidos cuyos rechazos se auditan, cortafuegos determinista de privacidad de IA sin conexión y recibos por respuesta anclados en cadenas HMAC por sesión. Al congelar las pruebas pasaron 417/417 tests unitarios, 43/43 controles de extremo a extremo y 27/27 controles de seguridad en tres auditorías de privacidad y una puerta estática sin salida de datos. Una prueba formativa con cinco evaluadores y 30 sesiones registró cero valores sensibles y una comprensión de la lista de limitaciones de 5/5.",
+          "Prototipo ficticio de investigación, ajeno a un banco, que convierte límites de privacidad y de afirmaciones excesivas en pruebas comprobables por máquina: cortafuegos de 46 nombres de campo prohibidos cuyos rechazos se auditan, cortafuegos determinista de privacidad de IA sin conexión y recibos por respuesta anclados en cadenas HMAC por sesión. En el congelamiento de la evidencia pasaron 417/417 tests unitarios, 43/43 controles de extremo a extremo y 27/27 controles de seguridad en tres auditorías de privacidad y una compuerta estática sin salida de datos. Una prueba formativa con cinco evaluadores y 30 sesiones registró cero valores sensibles en la evidencia y una comprensión de la lista de limitaciones de 5/5.",
       },
     ],
   },
@@ -211,19 +211,19 @@ export const esProjects = {
   },
   "mehr-guard": {
     description:
-      "Escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform: ML de conjunto más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
+      "Escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform: ML de ensamble más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
     fullDescription:
-      "Mehr Guard es un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas: ML de conjunto más 25 heurísticas con 87% de F1 y menos de 5 ms, con un modo red team de 19 escenarios.",
+      "Mehr Guard es un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas: ML de ensamble más 25 heurísticas con 87% de F1 y menos de 5 ms, con un modo red team de 19 escenarios.",
     problem:
-      "Los QR son una vía frecuente de phishing, pero muchos escáneres suben datos a la nube. Hace falta verificar URL sin filtrar el historial de navegación.",
+      "Los QR son un vector frecuente de phishing, pero la mayoría de los escáneres suben datos a la nube, comprometiendo la privacidad. Los usuarios necesitan verificar URL sin filtrar su historial de navegación.",
     solution: [
       "Creé un núcleo local de análisis de URL con Kotlin Multiplatform",
-      "Combiné ML de conjunto (regresión logística, gradient boosting y reglas de decisión) con 25 heurísticas",
+      "Combiné ML de ensamble (regresión logística, gradient boosting y reglas de decisión) con 25 heurísticas",
       "Orientado a 5 plataformas (Android, iOS, JVM, JS, Wasm); el repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
       "El análisis se completa en menos de 5 ms",
     ],
     proof: [
-      "ML de conjunto más 25 heurísticas con 87% de F1",
+      "ML de ensamble más 25 heurísticas con 87% de F1",
       "Análisis en menos de 5 ms",
       "Modo red team de 19 escenarios",
       "./judge/verify_offline.sh ejecuta pruebas unitarias del motor compartido; no constituyen una captura independiente del tráfico de red saliente",
@@ -231,7 +231,7 @@ export const esProjects = {
     ],
     features: [
       "5 plataformas de destino (Android, iOS, JVM, JS, Wasm)",
-      "Modelo de conjunto: regresión logística, gradient boosting y reglas de decisión",
+      "Modelo de ensamble: regresión logística, gradient boosting y reglas de decisión",
       "Detección de suplantación de marcas, ataques homógrafos y redirecciones maliciosas",
       "Motor heurístico (25 heurísticas)",
       "Modo red team de 19 escenarios",
@@ -247,11 +247,11 @@ export const esProjects = {
     description:
       "Startup de Macquarie University Incubator: una base de código Next.js/TypeScript compartida que convierte programas de asignaturas universitarias en datos estructurados. Raouf es cofundador y dirigió el backend de seguridad; 503 pruebas en 92 archivos.",
     fullDescription:
-      "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University, que abarca planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador de esta startup de Macquarie University Incubator y dirigió el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres, auditoría resistente a manipulaciones) de su base de código Next.js/TypeScript compartida, que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
+      "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University, que abarca planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador de esta startup de Macquarie University Incubator y dirigió el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría resistente a manipulaciones) de su base de código Next.js/TypeScript compartida, que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
     problem:
       "Los estudiantes necesitan un lugar coherente para plazos de evaluación, planificación académica e información del campus, con seguridad de cuentas y límites claros para los datos personales.",
     solution: [
-      "Cofundé la startup y dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres, auditoría resistente a manipulaciones) de la base de código Next.js/TypeScript compartida",
+      "Cofundé la startup y dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría resistente a manipulaciones) de la base de código Next.js/TypeScript compartida",
       "Implementé middleware de rutas protegidas, passkeys, MFA, acceso a datos limitado al usuario y controles de auditoría",
       "Integré planificación, calendarios, orientación por el campus y notificaciones sobre conjuntos de datos académicos configurables",
       "Convierte programas de asignaturas universitarias en datos estructurados",
@@ -261,7 +261,7 @@ export const esProjects = {
       "503 pruebas en 92 archivos",
       "Desplegado con Cloudflare Workers; la disponibilidad actual de la demo no se verificó de forma independiente",
       "El código del middleware devuelve 503 si no se resuelve la autenticación de una API protegida y 401 para API protegidas sin autenticación",
-      "Raouf dirigió el backend de seguridad: passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres y auditoría resistente a manipulaciones",
+      "Raouf dirigió el backend de seguridad: passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres y registro de auditoría resistente a manipulaciones",
       "Las passkeys usan credenciales de clave pública; esto no significa que todos los flujos de autenticación compatibles prescindan de contraseñas",
     ],
     features: [
@@ -370,7 +370,7 @@ export const esProjects = {
   },
   nanomatch: {
     description:
-      "Motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo. El repositorio declara 9.29M operaciones mixtas de alta/cancelación por segundo en un benchmark sintético monohilo en Apple M-series, compilado en Release.",
+      "Motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo. El repositorio declara 9.29M operaciones mixtas de alta/cancelación por segundo en un benchmark sintético de un solo hilo en Apple M-series, compilado en Release.",
     fullDescription:
       "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks sintéticos de rendimiento con operaciones mixtas y latencia de inserción. README declara 9.29M operaciones/s en Apple M-series en modo Release; esta auditoría no volvió a ejecutar ese resultado.",
     problem:
@@ -382,7 +382,7 @@ export const esProjects = {
       "Añadí múltiples instrumentos con libros de órdenes independientes por símbolo",
     ],
     proof: [
-      "Rendimiento declarado por el repositorio: 9.29M operaciones mixtas de alta/cancelación/s en Apple M-series, Release -O3 -march=native; 5M operaciones sintéticas, semilla fija 42",
+      "Rendimiento declarado por el repositorio: 9.29M operaciones mixtas de alta/cancelación/s en Apple M-series, Release -O3 -march=native; 5 millones de operaciones sintéticas, semilla fija 42",
       "El benchmark de latencia de inserción informa p50/p99/p99.9 para add_order; no son medidas de latencia de cancelación",
       "El código define 137 casos de Google Test en 18 archivos de pruebas; esta auditoría no volvió a comprobar su estado de aprobación actual",
       "La configuración de CI incluye ASan, UBSan, cppcheck y clang-format para envíos a main y pull requests",
@@ -404,14 +404,14 @@ export const esProjects = {
     description:
       "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Procesa 500,000+ paquetes/s en un benchmark sintético de un solo hilo.",
     fullDescription:
-      "SentinelFlow captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y exporta alertas a consola y CSV.",
+      "SentinelFlow es un sistema de detección de intrusiones de red en tiempo real que captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y exporta alertas a consola y CSV.",
     problem:
       "Comprender la detección de intrusiones de red exige seguir por separado la captura de paquetes, el análisis de protocolos, las comprobaciones de firmas y las heurísticas con estado, ya que tienen costes de rendimiento distintos.",
     solution: [
       "Implementé análisis por capas de Ethernet, IPv4, TCP, UDP, ICMP, DNS y ARP",
       "Creé un motor de reglas configurable inspirado en Snort para coincidencias flexibles de firmas",
       "Añadí detección de amenazas con estado para escaneos de puertos, inundaciones SYN y túneles DNS",
-      "Añadí un microbenchmark monohilo del analizador sobre 5M paquetes sintéticos Ethernet/IPv4/TCP SYN-ACK repetidos; excluye captura, detección y alertas",
+      "Añadí un microbenchmark de un solo hilo del analizador sobre 5 millones de paquetes sintéticos Ethernet/IPv4/TCP SYN-ACK repetidos; excluye captura, detección y alertas",
     ],
     proof: [
       "500,000+ paquetes/s en un benchmark sintético de un solo hilo",
@@ -526,14 +526,14 @@ export const esProjects = {
     problem:
       "Las herramientas de estudio bíblico buscan solo palabras clave y pierden el sentido, o usan chatbots que inventan versículos. Hace falta conversación basada en las Escrituras con citas verificables.",
     solution: [
-      "Creé recuperación con reconocimiento de referencias combinando consulta directa de versículos/capítulos, filtrado por palabras clave, embeddings OpenAI de 1536 dimensiones y clasificación semántica pgvector",
+      "Creé recuperación con reconocimiento de referencias combinando consulta directa de versículos/capítulos, filtrado por palabras clave, embeddings OpenAI de 1536 dimensiones y ordenación (ranking) semántica pgvector",
       "Implementé streaming SSE en tiempo real desde Gemini mediante Supabase Edge Functions",
       "Diseñé tarjetas enriquecidas de versículos en línea con atribución completa de libro/capítulo/versículo para su verificación",
       "Añadí soporte multiplataforma: React Native para móvil + Tauri v2 para escritorio nativo",
     ],
     proof: [
       "Construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas",
-      "Limitación por IP (ráfaga de 5/min, 30/3hrs, 200/day) con denegación por defecto",
+      "Limitación por IP (ráfaga de 5/min, 30/3 h, 200/día) con denegación por defecto",
       "La caché de respuestas por coincidencia exacta evita llamadas LLM repetidas para consultas idénticas",
       "Autenticación anónima sin registro; Supabase RLS se aplica a todas las tablas",
     ],

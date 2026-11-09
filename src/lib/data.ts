@@ -103,7 +103,7 @@ export const projects: Record<string, Project> = {
       measures: [
         "Discovery and verification (January 2026)",
         "Microsoft MSRC was notified in February 2026 and classified the issue as by-design, not a security vulnerability, in April 2026",
-        "Apple Product Security was notified in March 2026 and classified the issue as consistent with documented functionality, not a security issue, that month",
+        "Apple Product Security was notified in March 2026 and classified the behavior as by design, not a security issue, that month",
         "Public release following OS vendor responses (May 2026)",
         "Proof-of-concept code is withheld on dual-use grounds",
         "Uses documented, user-level OS APIs. No kernel exploits or privilege escalation are involved",
@@ -1050,7 +1050,7 @@ In those tested configurations, the window remained visible on the physical disp
 
 **No administrator privileges are required.** The API operates on windows owned by the calling process, which is entirely within normal user-space operation. No kernel modifications, no driver signing bypass, no privilege escalation.
 
-### PoC (Win32 C)
+### Illustrative API call (Win32 C)
 
 \`\`\`c
 #include <windows.h>
@@ -1145,7 +1145,7 @@ When a tested capture path honours exclusion while the window stays visible, tha
 | April 2026 | Microsoft responded with its security-boundary classification |
 | May 2026 | Public disclosure following OS vendor responses; preprint published (CC BY 4.0) |
 
-Apple classified the behaviour as consistent with documented functionality and not an Apple security issue; Microsoft classified it as by-design and not a security vulnerability. The research frames the concern as a downstream display-fidelity failure, not an OS zero-day.
+Both vendors classified the behavior as by design: Apple as not an Apple security issue, Microsoft as not a security vulnerability. The research frames the concern as a downstream display-fidelity failure, not an OS zero-day.
 
 ---
 
