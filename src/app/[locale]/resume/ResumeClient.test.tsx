@@ -85,11 +85,25 @@ describe("discoverable résumé interfaces", () => {
       expect(
         container.querySelector('a[href="/Mohammad_Raouf_Abedini_Resume.pdf"]'),
       ).not.toBeNull();
-      expect(container.textContent).toContain(dictionary.resume.s03_cat1_desc);
-      expect(container.textContent).toContain(dictionary.resume.exp1_bullet1);
-      expect(container.textContent).toContain(
-        dictionary.resume.expected_completion,
+      // Every résumé line appears once, in the PDF's order. Screen-reader-only
+      // "opens in a new tab" notes are not part of the visible résumé text.
+      const visible = container.cloneNode(true) as HTMLElement;
+      visible.querySelectorAll(".sr-only").forEach((node) => node.remove());
+      const text = visible.textContent ?? "";
+      let cursor = -1;
+      for (const [key, value] of Object.entries(dictionary.resume)) {
+        if (key === "expected_completion" || key === "education_final_session") continue;
+        const at = text.indexOf(value, cursor + 1);
+        expect(at, `${locale}: resume.${key} in order`).toBeGreaterThan(cursor);
+        cursor = at;
+      }
+      expect(text).toContain(
+        "raoof.r12@gmail.com · linkedin.com/in/mohammad-raouf-abedini-885a9226a",
       );
+      expect(text).toContain(
+        "github.com/Raoof128 · raoufabedini.dev · ORCID 0009-0000-6214-258X",
+      );
+      expect(text).not.toMatch(/\+61|402 310 686/);
     },
   );
 });
@@ -136,25 +150,10 @@ describe("expected qualification status", () => {
       }
       about.unmount();
       render(provider(<ResumeClient />));
-      const dates = screen.getByText(
-        (_, element) =>
-          // The Apple 2026 redesign replaced Tailwind class strings with os-resume-* classes.
-          element?.tagName === "DIV" &&
-          element.classList.contains("os-resume-period") &&
-          element.textContent?.includes(
-            dictionary.resume.expected_completion,
-          ) === true,
-      );
-      expect(dates).toHaveTextContent(expectedDate);
-      expect(dates).toHaveTextContent(
-        formatDate("2024-05-01", locale, {
-          month: "long",
-          year: "numeric",
-          calendar: "gregory",
-        }),
-      );
-      expect(dates.querySelector('time[datetime="2027-06"]')).toBeInTheDocument();
-      expect(screen.getByText(dictionary.resume.education_final_session)).toBeVisible();
+      const degree = screen.getByRole("heading", { name: dictionary.resume.edu1_title })
+        .closest(".os-resume-item")!;
+      expect(degree).toHaveTextContent(dictionary.resume.edu1_period);
+      expect(degree).toHaveTextContent(dictionary.resume.edu1_meta);
     },
   );
 });
@@ -170,27 +169,20 @@ describe("PDF-backed professional experience", () => {
         </I18nProvider>,
       );
       const experience = screen.getByRole("region", { name: dictionary.resume.s06_heading });
-      const alignerr = within(experience).getByRole("heading", { name: dictionary.resume.exp_alignerr_title })
-        .closest(".os-resume-item")!;
-      expect(alignerr).toHaveTextContent(dictionary.resume.exp_alignerr_employer);
-      expect(alignerr.querySelector('time[datetime="2026-01"]')).toBeInTheDocument();
-      expect(alignerr.querySelector('time[datetime="2026-03"]')).toBeInTheDocument();
-      expect(alignerr).toHaveTextContent(dictionary.resume.s07_bullet1);
-      expect(screen.getAllByText(dictionary.resume.s07_bullet1)).toHaveLength(1);
-
-      const syllabus = within(experience).getByRole("heading", { name: dictionary.resume.exp_syllabus_title })
-        .closest(".os-resume-item")!;
-      expect(syllabus).toHaveTextContent(dictionary.resume.exp_syllabus_employer);
-      expect(syllabus).toHaveTextContent(dictionary.resume.exp_syllabus_bullet1);
-      expect(syllabus).toHaveTextContent(dictionary.resume.exp_syllabus_bullet2);
-      expect(syllabus.querySelector('time[datetime="2026-05"]')).toHaveTextContent(
-        formatDate("2026-05-01", locale, { month: "long", year: "numeric", calendar: "gregory" }),
-      );
-      const startup = within(syllabus as HTMLElement).getByRole("link", { name: /syllabus-sync\.app/ });
-      expect(startup).toHaveAttribute("href", "https://syllabus-sync.app");
-      expect(startup).toHaveAttribute("target", "_blank");
-      expect(startup).toHaveAttribute("rel", "noopener noreferrer");
-      expect(screen.getByText(dictionary.resume.s08_available)).toBeVisible();
+      const roles = within(experience).getAllByRole("heading", { level: 4 });
+      expect(roles.map((role) => role.textContent)).toEqual([
+        dictionary.resume.alignerr_title,
+        dictionary.resume.syllabus_title,
+        dictionary.resume.freelance_title,
+        dictionary.resume.pharmacy_title,
+      ]);
+      const alignerr = roles[0].closest(".os-resume-item")!;
+      expect(alignerr).toHaveTextContent(dictionary.resume.alignerr_period);
+      expect(alignerr).toHaveTextContent(dictionary.resume.alignerr_meta);
+      expect(alignerr).toHaveTextContent(dictionary.resume.alignerr_b1);
+      const syllabus = roles[1].closest(".os-resume-item")!;
+      expect(syllabus).toHaveTextContent(dictionary.resume.syllabus_period);
+      expect(syllabus).toHaveTextContent(dictionary.resume.syllabus_b1);
     },
   );
 });

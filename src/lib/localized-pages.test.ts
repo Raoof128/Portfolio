@@ -69,9 +69,8 @@ describe("complete localized page content", () => {
     expect(source.content).toContain("p = 0.41");
     expect(source.content).toContain("not a browser `getDisplayMedia()` call");
     expect(source.content).toContain(
-      "public repository contained Windows and macOS proof-of-concept source",
+      "Proof-of-concept code is withheld on dual-use grounds.",
     );
-    expect(source.content).toContain("historical publication-time statement");
     expect(source.content).not.toMatch(/\/\/[^\n]*all (?:screen )?capture/);
     expect(source.content).toContain(
       "Request exclusion from compatible screen-capture paths",

@@ -45,29 +45,27 @@ describe("research and qualification integrity", () => {
     const invisible = concise
       .split("2. The Invisible Window:")[1]
       .split("\n")[0];
-    expect(invisible).toContain("100%");
-    expect(invisible).toContain("laboratory configurations");
     expect(invisible).toContain(
-      "commercial proctoring products and Linux were not tested",
+      "100% evasion of WebRTC proctoring on every platform tested, including macOS 26",
     );
     expect(invisible).toContain(
-      "native capture tools rather than browser getDisplayMedia()",
+      "Proof-of-concept code is withheld on dual-use grounds.",
     );
-    expect(invisible).toContain("March 2026");
     expect(invisible).toContain("10.5281/zenodo.20376495");
   });
 
   it("states expected education and current public source access in the machine corpus", async () => {
     const corpus = await fullCorpus().text();
     expect(corpus).toMatch(
-      /Bachelor of Cyber Security, Macquarie University, Sydney[;—] expected June 2027/,
+      /Bachelor of Cyber Security — Macquarie University, Sydney · Expected Jun 2027/,
     );
     expect(corpus).not.toContain("Bachelor of IT (Cyber Security)");
     expect(corpus).toContain(`Repo: ${projects["project-zurvan"].links.repo}`);
     expect(corpus).not.toContain(
       `Repo (private; contact the author to request access): ${projects["project-zurvan"].links.repo}`,
     );
-    expect(corpus).toContain("3,334 passed, 1 failed, 8 skipped");
+    expect(corpus).toContain("decisions to agents over MCP (218 tests)");
+    expect(corpus).toContain("503 tests across\n  92 files");
     for (const writeup of writeups.filter((entry) => entry.updatedAt)) {
       expect(corpus).toContain(
         `Published: ${writeup.date} · Updated: ${writeup.updatedAt}`,
@@ -90,7 +88,7 @@ describe("research and qualification integrity", () => {
         "21737792",
         "20374849",
         "December 2026",
-        "June 2027",
+        "Jun 2027",
         "SentinelSSH",
         "17 typed tools",
       ]) {
@@ -107,9 +105,9 @@ describe("research and qualification integrity", () => {
     const corpus = await fullCorpus().text();
     for (const text of [concise, corpus]) {
       expect(text).toMatch(
-        /single-thread synthetic\s+SYN-ACK packet-header parsing benchmark/,
+        /500,000\+\s+packets\/sec, synthetic single-thread benchmark/,
       );
-      expect(text).not.toContain("real-time intrusion detection at 500K+");
+      expect(text).not.toMatch(/28\.4M|3,334|1,343/);
     }
   });
 });

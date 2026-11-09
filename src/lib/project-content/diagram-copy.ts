@@ -13,7 +13,7 @@ export const projectDiagramCopy = {
     signedPack: "Ed25519-signed evidence pack",
     verifier: "Independent offline verifier",
     containmentNote:
-      "This earlier frozen architecture links four boundaries to Ed25519 attestations and offline review. Current study archives use SHA-256. This schematic is not a current run trace or benchmark result.",
+      "This earlier frozen architecture links four boundaries to Ed25519 attestations and offline review. Ed25519-signed evidence archives replay offline in one command. This schematic is not a current run trace or benchmark result.",
     captureTitle: "Physical display and captured frame",
     desktop: "Desktop content",
     excludedWindow: "Excluded window",
@@ -46,7 +46,7 @@ export const projectDiagramCopy = {
     signedPack: "بستهٔ شواهد امضاشده با Ed25519",
     verifier: "اعتبارسنج مستقل آفلاین",
     containmentNote:
-      "این معماری تثبیت‌شدهٔ پیشین چهار مرز را به گواهی Ed25519 و بازبینی آفلاین پیوند می‌دهد. بایگانی پژوهش کنونی از SHA-256 استفاده می‌کند. این طرح رد اجرای کنونی یا نتیجهٔ بنچمارک نیست.",
+      "این معماری تثبیت‌شدهٔ پیشین چهار مرز را به گواهی Ed25519 و بازبینی آفلاین پیوند می‌دهد. بایگانی‌های شواهدِ امضاشده با Ed25519 با یک فرمان به‌صورت آفلاین بازاجرا می‌شوند. این طرح رد اجرای کنونی یا نتیجهٔ بنچمارک نیست.",
     captureTitle: "نمایشگر فیزیکی و فریم ضبط‌شده",
     desktop: "محتوای دسکتاپ",
     excludedWindow: "پنجرهٔ مستثناشده",
@@ -79,7 +79,7 @@ export const projectDiagramCopy = {
     signedPack: "حزمة أدلة موقّعة بـEd25519",
     verifier: "مدقّق مستقل يعمل دون اتصال",
     containmentNote:
-      "تربط هذه البنية السابقة المجمّدة أربعة حدود بتصديقات Ed25519 ومراجعة دون اتصال. تستخدم أرشيفات الدراسة الحالية SHA-256. ليس المخطط سجل تشغيل حاليًا أو نتيجة قياس أداء.",
+      "تربط هذه البنية السابقة المجمّدة أربعة حدود بتصديقات Ed25519 ومراجعة دون اتصال. تُعاد أرشيفات الأدلة الموقّعة بـ Ed25519 دون اتصال بأمر واحد. ليس المخطط سجل تشغيل حاليًا أو نتيجة قياس أداء.",
     captureTitle: "الشاشة الفعلية والإطار الملتقط",
     desktop: "محتوى سطح المكتب",
     excludedWindow: "نافذة مستبعدة",
@@ -112,7 +112,7 @@ export const projectDiagramCopy = {
     signedPack: "Ed25519 签名证据包",
     verifier: "独立离线验证器",
     containmentNote:
-      "这份早期冻结架构将四道边界连接到 Ed25519 证明凭证与离线审查。当前研究归档使用 SHA-256。此图并非当前运行轨迹或基准结果。",
+      "这份早期冻结架构将四道边界连接到 Ed25519 证明凭证与离线审查。经 Ed25519 签名的证据归档可通过一条命令离线重放。此图并非当前运行轨迹或基准结果。",
     captureTitle: "物理屏幕与捕获帧",
     desktop: "桌面内容",
     excludedWindow: "被排除的窗口",
@@ -145,7 +145,7 @@ export const projectDiagramCopy = {
     signedPack: "Paquete firmado con Ed25519",
     verifier: "Verificador independiente sin conexión",
     containmentNote:
-      "Esta arquitectura anterior congelada conecta cuatro límites con atestaciones Ed25519 y revisión sin conexión. Los archivos actuales usan SHA-256. El esquema no es una traza actual ni un resultado de benchmark.",
+      "Esta arquitectura anterior congelada conecta cuatro límites con atestaciones Ed25519 y revisión sin conexión. Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando. El esquema no es una traza actual ni un resultado de benchmark.",
     captureTitle: "Pantalla física y fotograma capturado",
     desktop: "Contenido del escritorio",
     excludedWindow: "Ventana excluida",

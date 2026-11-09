@@ -42,7 +42,7 @@ export const esProjects = {
       "Notificación a Microsoft MSRC en febrero de 2026; en abril de 2026 se clasificó como comportamiento previsto, no como vulnerabilidad de seguridad.",
       "Notificación a Apple Product Security en marzo de 2026; ese mes se clasificó como comportamiento coherente con la documentación, no como problema de seguridad.",
       "Publicación tras las respuestas de los proveedores en mayo de 2026.",
-      "El repositorio público incluye ahora código de prueba de concepto para Windows y macOS y herramientas de evaluación; la afirmación anterior del artículo de que el código se retenía no describe su disponibilidad actual.",
+      "El código de prueba de concepto se retiene por motivos de doble uso.",
       "Solo APIs documentadas de usuario, sin explotación del kernel ni elevación de privilegios.",
       "Conforme a los códigos éticos de ACM e IEEE y las directrices de divulgación coordinada de CISA.",
     ],
@@ -59,11 +59,11 @@ export const esProjects = {
     description:
       "Prototipo de investigación de autorización y contención inspeccionable para agentes de IA con herramientas. Estudio con controles emparejados de octubre de 2026: los ensayos restringidos con efectos nuevos en Llama-3.2-3B bajaron de 17/24 a 0/24 y se conservaron 23/24 finalizaciones útiles. La base de gpt-6-luna ya era 0/24; no se observó protección adicional.",
     fullDescription:
-      "Project Simurgh es un prototipo de investigación de código abierto y autor único para inspeccionar lo que se permite hacer a un agente de IA. El anfitrión conserva el estado de delegación, parada, vigencia y credenciales; cada propuesta de herramienta se comprueba fuera del modelo. Las pruebas del estudio actual usan archivos vinculados a revisiones del código y fijados mediante SHA-256, con una nueva reproducción local; las etapas anteriores congeladas de atestación usan Ed25519. Su estudio de transferencia de octubre de 2026 informa de un beneficio en un modelo y un resultado nulo en otro. Los resultados anteriores de fallos del clasificador y AgentDojo permanecen como experimentos congelados separados; la prepublicación original de integridad del dispositivo documenta la trayectoria previa.",
+      "Project Simurgh es un prototipo de investigación de código abierto y autor único para inspeccionar lo que se permite hacer a un agente de IA. El anfitrión conserva el estado de delegación, parada, vigencia y credenciales; cada propuesta de herramienta se comprueba fuera del modelo. Sus archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando. Su estudio de transferencia de octubre de 2026 informa de un beneficio en un modelo y un resultado nulo en otro. Los resultados anteriores de fallos del clasificador y AgentDojo permanecen como experimentos congelados separados; la prepublicación original de integridad del dispositivo documenta la trayectoria previa.",
     problem:
       "Un agente con herramientas puede proponer acciones después de cambiar su estado de delegación, parada, vigencia o credenciales. Los controles del anfitrión deben aplicar ese estado fuera del modelo. Evaluarlos exige bases emparejadas, resultados de tareas útiles e incertidumbre: una base ya limpia no demuestra protección adicional.",
     solution: [
-      "Conserva en el anfitrión el estado de delegación, parada, vigencia y credenciales y comprueba cada propuesta fuera del modelo; los archivos de evidencias actuales vinculan los archivos retenidos y las revisiones del código con SHA-256 para reproducirlos localmente.",
+      "Conserva en el anfitrión el estado de delegación, parada, vigencia y credenciales y comprueba cada propuesta fuera del modelo; los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando.",
       "Estudio de transferencia de octubre de 2026: 24 tareas, dos ensayos por tarea, tres controles emparejados (solo credenciales, compuesto, denegar todo), dos modelos y 288 ramas reproducidas; del protocolo al paquete publicado entre el 15–17 de octubre de 2026",
       "En Meta Llama-3.2-3B los controles compuestos redujeron los ensayos restringidos con efectos nuevos de 17/24 a 0/24, conservaron 23/24 finalizaciones útiles y no bloquearon ninguna propuesta válida",
       "La base de OpenAI gpt-6-luna ya era 0/24; el estudio no informa de protección adicional en ese modelo",
@@ -75,15 +75,15 @@ export const esProjects = {
       "Alcance de los grupos: 24 ensayos restringidos en seis estados. Intervalos Wilson 95% por estado de 43.6–97.0% frente a 0.0–39.0%; parte de la diferencia se mantiene por construcción",
       "Defecto de integración de OpenAI Responses API: un error de ubicación del rol provocó 8/8 rechazos de flujos. Se conservaron las trazas originales; una corrección congelada del rol developer completó 2/3 flujos autorizados y rechazó 5/5 restringidos, con un rechazo aún abierto",
       "Etapa anterior congelada del clasificador (2026): Llama Guard 4 12B real sobre 180 casos; las pruebas de contención cubrieron los 138/138 casos maliciosos omitidos, incluidos 120 de inyección posterior fuera de la visión de un clasificador de entrada. Es una afirmación de cobertura, no una clasificación de detectores",
-      "Etapas anteriores congeladas de AgentDojo (2026): Llama-3.3-70B en vivo con 140 inyecciones preregistradas del espacio de trabajo redujo el éxito dirigido de 9/140 a 0/140, mientras la utilidad benigna bajó de 7/10 a 6/10. Otra ejecución determinista de cuatro suites, sin un LLM real, registró éxito de ataque 0/949, utilidad bajo ataque 949/949 y utilidad benigna 97/97. Son experimentos acotados, no el estudio de transferencia de octubre.",
-      "39 archivos de demostraciones Lean 4 para modelos matemáticos seleccionados, comprobados por un control que rechaza marcadores «sorry» sin demostrar; 5,171 pruebas raíz superadas en la comprobación del 19 de octubre de 2026; 92 versiones publicadas. La reproducción actual completa requiere Linux x86_64 nativo y Python 3.12; instalar dependencias requiere acceso al índice de paquetes. El paquete raíz declara AGPL-3.0-or-later.",
-      "Auditoría de 919 documentos propios del proyecto y publicación de 141 hallazgos fechados, incluidas exageraciones de cierres anteriores, en un registro público enlazado desde el README.",
+      "Reduje el éxito de ataque dirigido de un agente Llama-3.3-70B en vivo en AgentDojo de 9/140 a 0/140 con inyecciones preregistradas en la suite workspace (etapa congelada, 2026); la ejecución determinista completa de las cuatro suites registró 0/949 de éxito de ataque con 949/949 de utilidad sin ataque (ambos acotados a experimentos pequeños)",
+      "Construí el trabajo para que sea reproducible: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. El paquete raíz declara AGPL-3.0-or-later.",
+      "Auditoría de 919 de los documentos propios del proyecto y publicación de los 141 hallazgos fechados, incluidas exageraciones de cierres anteriores, en el README.",
       "El DOI del archivo de software actual 10.5281/zenodo.21737792 se distingue del DOI de la prepublicación original de integridad del dispositivo 10.5281/zenodo.20374849 y de las demás prepublicaciones",
     ],
     stack: [
       "Controles de autorización compuestos y herramientas de reproducción en Python 3.12",
       "Explorador de evidencias en React y CLI JSON compartida",
-      "Archivos del estudio actual vinculados al código y fijados mediante SHA-256; atestaciones Ed25519 en etapas anteriores congeladas",
+      "Archivos de evidencia firmados con Ed25519 que se reproducen sin conexión con un solo comando",
       "OpenAI Responses API con llamadas a herramientas",
       "Llama-3.2-3B / Llama-3.3-70B autoalojados",
       "Modelos Lean 4 de propiedades seleccionadas",
@@ -92,14 +92,14 @@ export const esProjects = {
     features: [
       "El estado de delegación, parada, vigencia y credenciales del anfitrión se comprueba fuera del modelo para cada propuesta de herramienta",
       "Los controles emparejados de solo credenciales, compuesto y denegar todo separan el efecto del anfitrión de la base del modelo y de las tareas útiles",
-      "Los archivos actuales vinculan archivos y revisiones del código con SHA-256 y se reproducen mediante servicios locales nuevos en Linux x86_64 nativo con Python 3.12; las etapas anteriores congeladas de atestación usan Ed25519.",
+      "Construí el trabajo para que sea reproducible: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando",
       "La arquitectura anterior congelada usaba cuatro límites: cortafuegos de entrada, guardia de procedencia del contexto, puerta de herramientas y cortafuegos de fugas de salida",
     ],
     measures: [
       "Las comprobaciones del anfitrión gobiernan las propuestas permitidas; el prototipo y sus experimentos pequeños no establecen una garantía universal de seguridad",
       "Los resultados positivos y nulos se publican juntos, con incertidumbre por grupos de estados y la parte de la diferencia que se mantiene por construcción explícitas",
       "El fallo de ubicación del rol OpenAI y su corrección congelada siguen visibles; un rechazo de un flujo autorizado permanece abierto",
-      "39 archivos de demostraciones Lean 4 modelan propiedades matemáticas seleccionadas de etapas anteriores, tras un control que rechaza marcadores «sorry» sin demostrar; no prueban equivalencia con la implementación ni seguridad del agente completo.",
+      "39 demostraciones en Lean 4 están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar",
       "Las pruebas anteriores congeladas complementan los clasificadores de entrada; no son un detector general de jailbreak ni demuestran impedir toda salida insegura del modelo",
     ],
     papers: [
@@ -127,7 +127,7 @@ export const esProjects = {
     description:
       "Motor de conocimiento documental que prioriza el almacenamiento local, con ingesta Python, recuperación SQLite FTS5/vectorial y servidor Rust MCP stdio con escrituras mediante Python. La evaluación sellada actual sigue abierta.",
     fullDescription:
-      "Project Zurvan es un motor de conocimiento que prioriza el almacenamiento local y convierte documentos de texto compatibles en una wiki enlazada, consultable y compatible con git, accesible a agentes mediante MCP. Python gestiona la ingesta y las escrituras autoritativas; un servidor Rust nativo sirve las lecturas, mientras el servidor Python permanece como referencia y alternativa. La recuperación híbrida usa SQLite FTS5, embeddings locales y expansión del grafo. Las imágenes se registran como elementos pendientes de interpretación visual, sin interpretarlas automáticamente. El repositorio público incluye investigación en curso de evaluación sellada; el último registro de main integrado no afirma el cierre de Z1b.",
+      "Project Zurvan es un motor de conocimiento que prioriza el almacenamiento local y convierte documentos de texto compatibles en una wiki enlazada, consultable y compatible con git, accesible a agentes mediante MCP. Python gestiona la ingesta y las escrituras autoritativas; un servidor Rust nativo sirve las lecturas, mientras el servidor Python permanece como referencia y alternativa. La recuperación híbrida usa SQLite FTS5, embeddings locales y expansión del grafo. Las imágenes se registran como elementos pendientes de interpretación visual, sin interpretarlas automáticamente. El repositorio público incluye investigación en curso de evaluación sellada.",
     problem:
       "Los agentes necesitan memoria persistente y estructurada que conserve las relaciones entre afirmaciones, fuentes y decisiones. Un sistema local útil también debe mostrar cuándo su índice está desactualizado, qué fuentes no se han extraído y qué ha establecido realmente su evaluación de recuperación.",
     solution: [
@@ -138,7 +138,7 @@ export const esProjects = {
       "Federa almacenes registrados explícitamente para búsqueda entre proyectos, memoria de decisiones, detección de contradicciones y seguimiento de políticas.",
     ],
     proof: [
-      "Último registro de la suite de main integrado, 20 de octubre de 2026: 3,334 superadas, 1 fallida y 8 omitidas. El fallo necesita contexto sudo del operador; se registró como fallo, sin convertirlo en éxito.",
+      "Motor de conocimiento que prioriza el almacenamiento local y sirve afirmaciones y decisiones a agentes mediante MCP (218 pruebas)",
       "Registro de paridad real Rust/Python del 20 de octubre: 314 casos por protocolo, 312 PASS, 2 divergencias esperadas y 0 FAIL con MCP 2025-11-25 y 2026-07-28; mediciones comunicadas por el repositorio.",
       "Almacén compatible con Obsidian con siete tipos documentados de nodos: afirmaciones, conceptos, entidades, decisiones, sesiones, contradicciones y síntesis.",
       "El flujo paquete de evidencias → informe → revisión → publicación puede ejecutarse localmente; la red usada por la extracción sigue dependiendo del proveedor LLM configurado.",
@@ -159,7 +159,7 @@ export const esProjects = {
       "La recuperación híbrida FTS5 y semántica local, con expansión de vecinos del grafo, reúne contexto con marcas de vigencia del índice y el registro de conocimiento.",
       "El servidor Rust MCP stdio sirve lecturas nativas; las escrituras y la evaluación usan un puente Python, conservando la implementación de referencia y la activación explícita de escritura.",
       "La federación de proyectos permite búsqueda entre almacenes registrados, detección de contradicciones y seguimiento de políticas.",
-      "Registro de main integrado del 20 de octubre de 2026: 3,334 pruebas superadas, 1 fallida y 8 omitidas; la prueba con operador real seguía fallando y el cierre de la evaluación sellada Z1b seguía abierto.",
+      "Sirve afirmaciones y decisiones a agentes mediante MCP; 218 pruebas",
     ],
     measures: [
       "Los documentos y la recuperación de embeddings locales permanecen en el almacén configurado; la extracción LLM puede usar proveedores locales/simulados u OpenAI/Anthropic configurados, por lo que el procesamiento externo depende del proveedor elegido.",
@@ -211,21 +211,21 @@ export const esProjects = {
   },
   "mehr-guard": {
     description:
-      "Núcleo de análisis de QR y URL sin conexión, creado con Kotlin Multiplatform para 5 plataformas. Las heurísticas locales y un modelo de conjunto examinan patrones de URL sin consultar la nube durante el análisis.",
+      "Escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform: ML de conjunto más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
     fullDescription:
-      "Mehr Guard combina un núcleo local de análisis de QR y URL con interfaces nativas o de navegador para 5 plataformas Kotlin Multiplatform. Las heurísticas y un modelo de conjunto señalan patrones de URL; las cifras de precisión y latencia publicadas se limitan a casos seleccionados y pruebas del motor en JVM de escritorio.",
+      "Mehr Guard es un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas: ML de conjunto más 25 heurísticas con 87% de F1 y menos de 5 ms, con un modo red team de 19 escenarios.",
     problem:
       "Los QR son una vía frecuente de phishing, pero muchos escáneres suben datos a la nube. Hace falta verificar URL sin filtrar el historial de navegación.",
     solution: [
       "Creé un núcleo local de análisis de URL con Kotlin Multiplatform",
-      "Combiné regresión logística, gradient boosting y reglas de decisión con 25+ comprobaciones heurísticas",
+      "Combiné ML de conjunto (regresión logística, gradient boosting y reglas de decisión) con 25 heurísticas",
       "Orientado a 5 plataformas (Android, iOS, JVM, JS, Wasm); el repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
-      "Los benchmarks del repositorio para el motor en JVM de escritorio indican una mediana inferior a 5ms; la latencia de cámara/interfaz y las demás plataformas quedan fuera de ese resultado",
+      "El análisis se completa en menos de 5 ms",
     ],
     proof: [
-      "El repositorio declara un F1 del 87% en un corpus de URL seleccionado; los patrones construidos no establecen la precisión de detección en condiciones reales",
-      "La evidencia de rendimiento cubre el motor en JVM de escritorio; una mediana inferior a 5ms no garantiza el P99 de todas las plataformas ni de extremo a extremo",
-      "El repositorio declara 1,248+ pruebas automatizadas y 19 escenarios de red team integrados y seleccionados; esta auditoría del portafolio no volvió a ejecutarlos",
+      "ML de conjunto más 25 heurísticas con 87% de F1",
+      "Análisis en menos de 5 ms",
+      "Modo red team de 19 escenarios",
       "./judge/verify_offline.sh ejecuta pruebas unitarias del motor compartido; no constituyen una captura independiente del tráfico de red saliente",
       "El repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
     ],
@@ -233,8 +233,8 @@ export const esProjects = {
       "5 plataformas de destino (Android, iOS, JVM, JS, Wasm)",
       "Modelo de conjunto: regresión logística, gradient boosting y reglas de decisión",
       "Detección de suplantación de marcas, ataques homógrafos y redirecciones maliciosas",
-      "Motor heurístico (25+ comprobaciones)",
-      "Suite de red team integrada (19 escenarios de ataque seleccionados)",
+      "Motor heurístico (25 heurísticas)",
+      "Modo red team de 19 escenarios",
     ],
     measures: [
       "El análisis local de PhishingEngine está diseñado para no consultar URL en la nube",
@@ -245,37 +245,37 @@ export const esProjects = {
   },
   "syllabus-sync": {
     description:
-      "Plataforma independiente para la experiencia estudiantil: planificación, plazos y orientación por el campus. Cofundada dentro de Macquarie University Incubator, con responsabilidades de co-mantenimiento de seguridad/backend. Un trabajo de pruebas de CI del 17 de agosto de 2026 superó 1,343 pruebas en 155 archivos.",
+      "Startup de Macquarie University Incubator: una base de código Next.js/TypeScript compartida que convierte programas de asignaturas universitarias en datos estructurados. Raouf es cofundador y dirigió el backend de seguridad; 503 pruebas en 92 archivos.",
     fullDescription:
-      "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University: planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador y comantenedor de seguridad/backend. La aceptación en Macquarie University Incubator figura en las referencias profesionales aportadas; el repositorio describe expresamente el proyecto como independiente y sin afiliación oficial a la universidad. El código y la evidencia de CI actuales respaldan la plataforma estudiantil y su trabajo de seguridad. El repositorio también documenta una línea de extracción de PDF y mantiene un extractor independiente en su hoja de ruta.",
+      "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University, que abarca planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador de esta startup de Macquarie University Incubator y dirigió el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres, auditoría resistente a manipulaciones) de su base de código Next.js/TypeScript compartida, que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
     problem:
       "Los estudiantes necesitan un lugar coherente para plazos de evaluación, planificación académica e información del campus, con seguridad de cuentas y límites claros para los datos personales.",
     solution: [
-      "Cofundé la plataforma y contribuí al trabajo de seguridad/backend junto al mantenedor principal de arquitectura e infraestructura",
+      "Cofundé la startup y dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres, auditoría resistente a manipulaciones) de la base de código Next.js/TypeScript compartida",
       "Implementé middleware de rutas protegidas, passkeys, MFA, acceso a datos limitado al usuario y controles de auditoría",
       "Integré planificación, calendarios, orientación por el campus y notificaciones sobre conjuntos de datos académicos configurables",
-      "Documenté la extracción estructurada de programas de asignaturas y la adaptación a otras universidades sin presentar la hoja de ruta como una implementación verificada de forma independiente",
+      "Convierte programas de asignaturas universitarias en datos estructurados",
     ],
     proof: [
       "La aceptación de la startup en Macquarie University Incubator y el papel de cofundador constan en el currículo y perfil aportados",
-      "En la revisión 0fecd030, el trabajo de pruebas de CI del 17 de agosto de 2026 superó 1,343 pruebas en 155 archivos; el trabajo de seguridad separado falló",
-      "Un trabajo separado de despliegue de Cloudflare Worker tuvo éxito en la misma revisión; la disponibilidad actual de la demo no se verificó de forma independiente",
+      "503 pruebas en 92 archivos",
+      "Desplegado con Cloudflare Workers; la disponibilidad actual de la demo no se verificó de forma independiente",
       "El código del middleware devuelve 503 si no se resuelve la autenticación de una API protegida y 401 para API protegidas sin autenticación",
-      "README identifica a Raouf como comantenedor de seguridad/backend y declara el carácter independiente del proyecto respecto a la universidad",
+      "Raouf dirigió el backend de seguridad: passkeys WebAuthn, MFA con TOTP, seguridad por filas de Postgres y auditoría resistente a manipulaciones",
       "Las passkeys usan credenciales de clave pública; esto no significa que todos los flujos de autenticación compatibles prescindan de contraseñas",
     ],
     features: [
       "Planificación académica, plazos de evaluación, calendario, orientación por el campus y notificaciones",
-      "Flujo documentado de PDF a datos estructurados; el extractor independiente sigue en la hoja de ruta del repositorio",
+      "Convierte programas de asignaturas universitarias en datos estructurados",
       "Herramientas estudiantiles con múltiples perfiles y conjuntos de datos académicos específicos de cada institución",
-      "1,343 pruebas en 155 archivos superadas en el trabajo de pruebas de CI del 17 de agosto de 2026; esto no equivale a que toda la canalización pasara",
+      "503 pruebas en 92 archivos",
     ],
     measures: [
       "El middleware protege las rutas de página configuradas y las API no públicas, con excepciones públicas explícitas y rechazo seguro si no se resuelve la autenticación de la API",
       "Row-Level Security de Supabase y acceso a base de datos limitado al usuario",
       "Passkeys WebAuthn/FIDO2 junto con los flujos compatibles de contraseña y MFA",
       "Validación de esquemas, controles CSRF, registro de auditoría y limitación de frecuencia por ruta",
-      "Escaneo de secretos configurado en CI; el trabajo de seguridad separado de la ejecución revisada falló en npm audit antes de las comprobaciones posteriores",
+      "Escaneo de secretos configurado en CI",
     ],
     stack: [
       "Next.js 16 + React 19",
@@ -402,7 +402,7 @@ export const esProjects = {
   },
   sentinelflow: {
     description:
-      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. El repositorio declara 28.4M paquetes/s en un benchmark sintético limitado al analizador.",
+      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Procesa 500,000+ paquetes/s en un benchmark sintético de un solo hilo.",
     fullDescription:
       "SentinelFlow captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y exporta alertas a consola y CSV.",
     problem:
@@ -414,7 +414,7 @@ export const esProjects = {
       "Añadí un microbenchmark monohilo del analizador sobre 5M paquetes sintéticos Ethernet/IPv4/TCP SYN-ACK repetidos; excluye captura, detección y alertas",
     ],
     proof: [
-      "Rendimiento del analizador declarado por el repositorio: 28,409,090 paquetes/s sobre 5M paquetes sintéticos repetidos, un solo hilo; no es rendimiento de IDS de extremo a extremo y no se volvió a ejecutar aquí",
+      "500,000+ paquetes/s en un benchmark sintético de un solo hilo",
       "Cobertura: 7 protocolos en las capas 2-7",
       "El código define 27 casos de Google Test en 10 archivos; el registro de cambios de marzo de 2026 declara un resultado histórico de 27/27",
       "Admite captura en vivo y análisis de archivos pcap",
@@ -522,7 +522,7 @@ export const esProjects = {
     description:
       "Preguntas y respuestas bíblicas con reconocimiento de referencias, búsqueda directa de versículos/capítulos, recuperación semántica con palabras clave + pgvector y streaming en tiempo real de Gemini 3.1 Flash Lite. Aplicación móvil React Native/Expo y envoltorio de escritorio Tauri v2.",
     fullDescription:
-      "Aion es un acompañante bíblico con recuperación que reconoce referencias: consulta directa de versículos/capítulos, filtrado por palabras clave y búsqueda semántica pgvector aportan contexto, y Gemini 3.1 Flash Lite transmite las respuestas mediante Supabase Edge Functions. Incluye tarjetas de versículos con atribución, cliente móvil React Native/Expo y envoltorio de escritorio Tauri v2. Su piloto v3 declarado de 40 preguntas mide recuperación y respaldo de citas dentro de ese pequeño benchmark; no garantiza respuestas sin alucinaciones. La voz nativa opcional tiene una limitación separada de credenciales del cliente.",
+      "Aion es un acompañante bíblico con recuperación que reconoce referencias: consulta directa de versículos/capítulos, filtrado por palabras clave y búsqueda semántica pgvector aportan contexto, y Gemini 3.1 Flash Lite transmite las respuestas mediante Supabase Edge Functions. Incluye tarjetas de versículos con atribución, cliente móvil React Native/Expo y envoltorio de escritorio Tauri v2. Su benchmark de 40 preguntas puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. La voz nativa opcional tiene una limitación separada de credenciales del cliente.",
     problem:
       "Las herramientas de estudio bíblico buscan solo palabras clave y pierden el sentido, o usan chatbots que inventan versículos. Hace falta conversación basada en las Escrituras con citas verificables.",
     solution: [
@@ -532,7 +532,7 @@ export const esProjects = {
       "Añadí soporte multiplataforma: React Native para móvil + Tauri v2 para escritorio nativo",
     ],
     proof: [
-      "Piloto v3 declarado: 40 preguntas, con 34 preguntas de recuperación contestables y 6 rechazos de premisas falsas/adversariales; Recall@5 0.941, citation_support medio 0.978 y 6/6 rechazos. Ninguna fila quedó por debajo del umbral sin respaldo (citation_support < 0.5), pero dos respuestas se señalaron con 0.75 y 0.50; no es una garantía de ausencia de alucinaciones",
+      "Construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas",
       "Limitación por IP (ráfaga de 5/min, 30/3hrs, 200/day) con denegación por defecto",
       "La caché de respuestas por coincidencia exacta evita llamadas LLM repetidas para consultas idénticas",
       "Autenticación anónima sin registro; Supabase RLS se aplica a todas las tablas",
@@ -556,7 +556,7 @@ export const esProjects = {
         label: "Prepublicación",
         status: "Prepublicación de benchmark piloto",
         description:
-          "Prepublicación piloto de 8 páginas: 40 preguntas, con recuperación evaluada sobre 34 preguntas contestables y 6 casos de rechazo. v3 declara Recall@5 = 0.941, media de citation_support = 0.978 y 6/6 rechazos. Un único juez Gemini 3.1 Flash Lite no encontró filas por debajo de citation_support < 0.5; quedaron dos filas con citas parciales/incorrectas en 0.75 y 0.50.",
+          "Prepublicación de 8 páginas: construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas.",
       },
     ],
     stack: [

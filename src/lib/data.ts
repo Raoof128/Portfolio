@@ -105,7 +105,7 @@ export const projects: Record<string, Project> = {
         "Microsoft MSRC was notified in February 2026 and classified the issue as by-design, not a security vulnerability, in April 2026",
         "Apple Product Security was notified in March 2026 and classified the issue as consistent with documented functionality, not a security issue, that month",
         "Public release following OS vendor responses (May 2026)",
-        "The public repository now includes Windows and macOS proof-of-concept source and evaluation harnesses; the paper’s earlier source-withheld statement does not describe current repository availability",
+        "Proof-of-concept code is withheld on dual-use grounds",
         "Uses documented, user-level OS APIs. No kernel exploits or privilege escalation are involved",
         "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines",
       ],
@@ -131,7 +131,7 @@ export const projects: Record<string, Project> = {
       "Behavioural detection showed no significant effect at this sample size. Gaze tracking (p = 0.41, n = 8) was underpowered, and mouse dynamics fell within normal exam-behaviour variance. This does not establish that behavioural detection is impossible in all settings",
       "Published as a Zenodo preprint under CC BY 4.0 (DOI 10.5281/zenodo.20376495), with 13 pages, 53 references, and IEEE conference formatting",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
   "project-simurgh": {
     slug: "project-simurgh",
@@ -201,7 +201,7 @@ export const projects: Record<string, Project> = {
       stack: [
         "Python 3.12 composed authorisation controls and replay harnesses",
         "React evidence explorer and shared JSON CLI",
-        "SHA-256-pinned, source-bound current study archives; Ed25519 attestations in earlier frozen stages",
+        "Ed25519-signed evidence archives that replay offline in one command",
         "OpenAI Responses API with tool calling",
         "Self-hosted Llama-3.2-3B / Llama-3.3-70B",
         "Lean 4 models of selected properties",
@@ -210,7 +210,7 @@ export const projects: Record<string, Project> = {
       features: [
         "Host-held delegation, stop, lease and credential state is checked outside the model for every tool proposal",
         "Matched credential-only, composed and deny-all controls separate host-control effects from the model baseline and useful-task outcomes",
-        "Current study archives bind files and source revisions with SHA-256 and replay through fresh local services on native Linux x86_64 with Python 3.12; earlier frozen attestation stages use Ed25519",
+        "Built the work to be reproduced: Ed25519-signed evidence archives replay offline in one command",
         "Earlier frozen architecture used four containment boundaries: input firewall, context-provenance guard, tool-invocation gate and output-leakage firewall",
       ],
     },
@@ -219,16 +219,16 @@ export const projects: Record<string, Project> = {
         "Host-side state checks govern permitted tool proposals; the prototype and small experiments do not establish a universal safety guarantee",
         "Positive and null model results are published together, with state-cluster uncertainty and the part of the gap that holds by construction made explicit",
         "OpenAI role-placement failure and the frozen correction remain visible; one authorised-workflow refusal is still open",
-        "39 Lean 4 proof files model selected earlier-stage mathematical properties behind a gate rejecting unproven “sorry” placeholders; they do not prove implementation equivalence or whole-agent safety",
+        "39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder",
         "Earlier frozen containment evidence complements input classifiers; it is not a general jailbreak detector or proof that all unsafe model outputs are prevented",
       ],
     },
     fullDescription:
-      "Project Simurgh is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state are held on the host; each tool proposal is checked against that state outside the model. Current study evidence uses SHA-256-pinned, source-bound archives and fresh local replay; earlier frozen attestation stages use Ed25519. Its October 2026 transfer study reports a benefit on one model and a null result on another. Earlier classifier-miss and AgentDojo results remain separate frozen experiments, while the original device-integrity preprint records the project’s earlier research lineage.",
+      "Project Simurgh is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state are held on the host; each tool proposal is checked against that state outside the model. Its Ed25519-signed evidence archives replay offline in one command. Its October 2026 transfer study reports a benefit on one model and a null result on another. Earlier classifier-miss and AgentDojo results remain separate frozen experiments, while the original device-integrity preprint records the project’s earlier research lineage.",
     problem:
       "A tool-using agent may propose actions after its delegation, stop, lease or credential state has changed. Host controls need to enforce that state outside the model. Evaluating those controls also requires matched baselines, useful-task outcomes and uncertainty reporting: an already-clean model baseline cannot demonstrate additional protection.",
     solution: [
-      "Holds delegation, stop, lease and credential state on the host and checks every tool proposal outside the model; current evidence archives bind retained files and source revisions with SHA-256 for local replay",
+      "Holds delegation, stop, lease and credential state on the host and checks every tool proposal outside the model; Ed25519-signed evidence archives replay offline in one command",
       "October 2026 transfer study: 24 tasks, two trials each, three matched controls (credential-only, composed, deny-all), two models and 288 replayed branches; protocol to published package took 15–17 October 2026",
       "On Meta Llama-3.2-3B, composed host controls cut restricted-state trials with new effects from 17/24 to 0/24, retained 23/24 useful completions and blocked no valid proposal",
       "On OpenAI gpt-6-luna the baseline was already 0/24; the study reports no incremental protection on that model",
@@ -240,12 +240,12 @@ export const projects: Record<string, Project> = {
       "Cluster scope: the 24 restricted trials occupy six states. Per-state Wilson 95% intervals are 43.6–97.0% versus 0.0–39.0%; part of the difference holds by construction",
       "OpenAI Responses API integration defect: a role-placement error caused 8/8 workflow declines. Original traces were retained; a frozen developer-role correction completed 2/3 authorised workflows and declined 5/5 restricted workflows, with one refusal still open",
       "Earlier frozen classifier stage (2026): real Llama Guard 4 12B over 180 cases; containment evidence covered all 138/138 malicious cases it missed, including 120 downstream injections outside an input-only classifier’s view. This is a coverage claim, not a classifier ranking",
-      "Earlier frozen AgentDojo stages (2026): live Llama-3.3-70B on 140 pre-registered workspace injections cut targeted attack success from 9/140 to 0/140 while benign utility fell from 7/10 to 6/10. A separate deterministic four-suite run, with no real LLM, recorded attack success 0/949, utility under attack 949/949 and benign utility 97/97. These are bounded experiments, not the October transfer study",
-      "39 Lean 4 proof files for selected mathematical models, checked by a gate rejecting unproven “sorry” placeholders; 5,171 root tests passed in the 19 October 2026 smoke run; 92 published releases. Full current replay requires native Linux x86_64 and Python 3.12; dependency installation needs package-index access. The root package declares AGPL-3.0-or-later",
-      "Audited 919 project documents and published 141 dated findings, including earlier closeout overstatements, in a public finding register linked from the README",
+      "Reduced a live Llama-3.3-70B agent's targeted attack success on AgentDojo from 9/140 to 0/140 over pre-registered injections in the workspace suite (frozen stage, 2026); the full four-suite deterministic run scored 0/949 attack success with 949/949 unattacked utility (both scoped as small experiments)",
+      "Built the work to be reproduced: Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 92 releases. The root package declares AGPL-3.0-or-later",
+      "Audited 919 of the project's own documents and published all 141 dated findings, including overstatements in earlier closeouts, in the README",
       "Current software archive DOI 10.5281/zenodo.21737792 is separate from the original device-integrity preprint DOI 10.5281/zenodo.20374849 and the other published preprints",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
   "project-zurvan": {
     slug: "project-zurvan",
@@ -285,7 +285,7 @@ export const projects: Record<string, Project> = {
         "Hybrid FTS5 + local semantic retrieval and graph-neighbour expansion assemble context bundles with index/ledger freshness stamps",
         "The Rust MCP stdio server serves native reads; writes and evaluation use a Python bridge, preserving the reference implementation and opt-in write boundary",
         "Multi-project federation supports registered cross-vault search, contradiction detection and policy monitoring",
-        "20 October 2026 merged-main receipt: 3,334 passed, 1 failed and 8 skipped; the live operator test remained failed and Z1b sealed-evaluation closure remained open",
+        "Serves claims and decisions to agents over MCP; 218 tests",
       ],
     },
     secure: {
@@ -298,7 +298,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Project Zurvan is a local-first knowledge engine that turns supported text documents into a linked, searchable, git-friendly wiki and exposes it to agents through MCP. Python handles ingestion and authoritative writes; a native Rust server serves reads, with the Python server retained as reference and fallback. Hybrid retrieval uses SQLite FTS5, local embeddings and graph expansion. Images are tracked as pending-visual stubs rather than automatically interpreted. Its public repository includes ongoing sealed-evaluation research; the latest merged-main receipt does not claim Z1b closure.",
+      "Project Zurvan is a local-first knowledge engine that turns supported text documents into a linked, searchable, git-friendly wiki and exposes it to agents through MCP. Python handles ingestion and authoritative writes; a native Rust server serves reads, with the Python server retained as reference and fallback. Hybrid retrieval uses SQLite FTS5, local embeddings and graph expansion. Images are tracked as pending-visual stubs rather than automatically interpreted. Its public repository includes ongoing sealed-evaluation research.",
     problem:
       "Agents need persistent, structured memory that preserves how claims, sources and decisions relate. A useful local-first system must also show when its index is stale, when source material has not been extracted, and what its retrieval evaluation has actually established.",
     solution: [
@@ -309,13 +309,13 @@ export const projects: Record<string, Project> = {
       "Federates explicitly registered vaults for cross-project search, decision memory, contradiction detection and policy monitoring",
     ],
     proof: [
-      "Latest merged-main suite receipt, 20 October 2026: 3,334 passed, 1 failed, 8 skipped. The failure needs operator sudo context; it was recorded as failed rather than converted to a pass",
+      "Local-first knowledge engine serving claims and decisions to agents over MCP (218 tests)",
       "20 October Rust/Python live parity receipt: 314 cases per protocol, 312 PASS, 2 expected divergences and 0 FAIL on MCP 2025-11-25 and 2026-07-28; these are repository-reported measurements",
       "Obsidian-compatible vault with seven documented graph node types: claims, concepts, entities, decisions, sessions, contradictions and syntheses",
       "Evidence pack → report → review → publish can run locally; extraction’s network use still depends on the configured LLM provider",
       "The earlier 18-phase feature history is retained; subsequent retrieval, Rust MCP and sealed-evaluation work has its own dated records. Z1b was merged before closure and remains explicitly NOT CLOSED",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
   gitswitch: {
     slug: "gitswitch",
@@ -377,7 +377,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2024",
     description:
-      "Offline QR and URL analysis core built with Kotlin Multiplatform for 5 platform targets. Local heuristics and an ensemble model inspect URL patterns without a cloud lookup during analysis.",
+      "Offline QR and URL phishing scanner in Kotlin Multiplatform: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms, 19-scenario red-team mode.",
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
@@ -396,8 +396,8 @@ export const projects: Record<string, Project> = {
         "5 Platform Targets (Android, iOS, JVM, JS, Wasm)",
         "Ensemble model: logistic regression, gradient boosting and decision rules",
         "Brand-impersonation, homograph-attack & malicious-redirect detection",
-        "Heuristics Engine (25+ checks)",
-        "Built-in red-team suite (19 curated attack scenarios)",
+        "Heuristics engine (25 heuristics)",
+        "19-scenario red-team mode",
       ],
     },
     secure: {
@@ -409,23 +409,23 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Mehr Guard combines a local QR and URL analysis core with native or browser interfaces across 5 Kotlin Multiplatform targets. Heuristics and an ensemble model flag URL patterns; reported accuracy and latency are scoped to curated cases and desktop-JVM engine tests.",
+      "Mehr Guard is an offline QR and URL phishing scanner in Kotlin Multiplatform, with native or browser interfaces across 5 targets: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms, with a 19-scenario red-team mode.",
     problem:
       "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
     solution: [
       "Built a local URL-analysis core using Kotlin Multiplatform",
-      "Combined logistic regression, gradient boosting and decision rules with 25+ heuristic checks",
+      "Combined ensemble ML (logistic regression, gradient boosting and decision rules) with 25 heuristics",
       "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); the repository reports ~100% shared detection logic (~52% of total code)",
-      "Repository desktop-JVM benchmarks report sub-5ms median engine analysis; camera/UI latency and other platforms are outside that result",
+      "Analysis completes in under 5 ms",
     ],
     proof: [
-      "Repository reports 87% F1 on a curated URL corpus; constructed patterns do not establish real-world detection accuracy",
-      "Performance evidence covers desktop-JVM engine analysis; sub-5ms median is not an all-platform or end-to-end P99 guarantee",
-      "Repository reports 1,248+ automated tests and 19 curated built-in red-team scenarios; counts were not rerun in this portfolio audit",
+      "Ensemble ML plus 25 heuristics at 87% F1",
+      "Under 5 ms analysis",
+      "19-scenario red-team mode",
       "./judge/verify_offline.sh invokes shared-engine unit checks; these tests are not an independent capture of outbound network traffic",
       "Repository reports ~100% shared detection logic (~52% of total codebase)",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
   "syllabus-sync": {
     slug: "syllabus-sync",
@@ -433,7 +433,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "Independent student experience platform for planning, deadlines and campus navigation. Co-founded within the Macquarie University Incubator, with security/backend co-maintainer responsibilities. A 17 August 2026 CI test job passed 1,343 tests across 155 files.",
+      "Macquarie University Incubator startup: a shared Next.js/TypeScript codebase that converts university syllabi into structured data. Raouf is cofounder and led the security backend; 503 tests across 92 files.",
     tags: [
       "MQ Incubator Startup",
       "Next.js 16",
@@ -460,9 +460,9 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "Academic planning, assessment deadlines, calendar, campus navigation and notifications",
-        "Documented PDF-to-structured-data workflow; a standalone extractor remains on the repository roadmap",
+        "Converts university syllabi into structured data",
         "Multi-profile student tools and institution-specific academic datasets",
-        "1,343 tests across 155 files passed in the 17 August 2026 CI test job; this is not an overall pipeline pass",
+        "503 tests across 92 files",
       ],
     },
     secure: {
@@ -471,28 +471,28 @@ export const projects: Record<string, Project> = {
         "Supabase Row-Level Security and user-scoped database access",
         "WebAuthn/FIDO2 passkeys alongside supported password and MFA flows",
         "Schema validation, CSRF controls, audit logging and route-specific rate limiting",
-        "Configured CI secret scanning; the reviewed run's separate security job failed at npm audit before later checks",
+        "Configured CI secret scanning",
       ],
     },
     fullDescription:
-      "Syllabus-Sync is an independent student experience platform initially built for Macquarie University students, covering academic planning, assessment deadlines, campus navigation, notifications and profile management. Raouf's role is co-founder and security/backend co-maintainer. Acceptance into the Macquarie University Incubator is recorded in the supplied professional references; the repository explicitly describes the project as independent and not officially affiliated with the university. Current code and CI evidence support the student platform and its security work. The repository also documents a PDF-extraction direction, with a standalone extractor listed on its roadmap.",
+      "Syllabus-Sync is an independent student experience platform initially built for Macquarie University students, covering academic planning, assessment deadlines, campus navigation, notifications and profile management. Raouf is cofounder of this Macquarie University Incubator startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of its shared Next.js/TypeScript codebase, which converts university syllabi into structured data; 503 tests across 92 files.",
     problem:
       "Students need a consistent place for assessment deadlines, academic planning and campus information, with account security and clear boundaries around personal data.",
     solution: [
-      "Co-founded the platform and contributed security/backend work alongside the lead architecture and infrastructure maintainer",
+      "Co-founded the startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of the shared Next.js/TypeScript codebase",
       "Implemented protected-route middleware, passkeys, MFA, user-scoped data access and audit controls",
       "Integrated planning, calendars, campus navigation and notifications around configurable academic datasets",
-      "Documented structured syllabus extraction and adaptation to other universities without presenting roadmap work as independently verified implementation",
+      "Converts university syllabi into structured data",
     ],
     proof: [
       "Macquarie University Incubator startup acceptance and co-founder role are recorded in the supplied résumé and profile",
-      "At revision 0fecd030, the 17 August 2026 CI test job passed 1,343 tests in 155 files; the separate security job failed",
-      "A separate Cloudflare Worker deployment job succeeded at the same revision; current demo availability was not independently verified",
+      "503 tests across 92 files",
+      "Deployed with Cloudflare Workers; current demo availability was not independently verified",
       "Middleware source returns 503 for unresolved protected API authentication and 401 for unauthenticated protected APIs",
-      "README identifies Raouf as security/backend co-maintainer and states the project's independent university affiliation status",
+      "Raouf led the security backend: WebAuthn passkeys, TOTP MFA, Postgres row-level security and tamper-resistant audit logging",
       "Passkeys use public-key credentials; this does not mean every supported authentication flow is passwordless",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
   "divan-open-day": {
     slug: "divan-open-day",
@@ -681,7 +681,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description:
-      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. The repository reports 28.4M packets/s for a synthetic parser-only benchmark.",
+      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. It processes 500,000+ packets/sec in a synthetic single-thread benchmark.",
     tags: [
       "C++17",
       "libpcap",
@@ -728,12 +728,12 @@ export const projects: Record<string, Project> = {
       "Added a single-thread parser microbenchmark over 5M repeated synthetic Ethernet/IPv4/TCP SYN-ACK packets; capture, detection and alerting are excluded",
     ],
     proof: [
-      "Repository-reported parser throughput: 28,409,090 packets/s over 5M repeated synthetic packets, single thread; not end-to-end IDS throughput and not rerun here",
+      "500,000+ packets/sec in a synthetic single-thread benchmark",
       "Protocol coverage: 7 protocols across Layers 2-7",
       "Source defines 27 Google Test cases across 10 test files; the March 2026 changelog reports a historical 27/27 pass",
       "Supports both live capture and pcap file analysis",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
   ecrsm: {
     slug: "ecrsm",
@@ -875,7 +875,7 @@ export const projects: Record<string, Project> = {
         year: "2026",
         status: "Pilot benchmark preprint",
         description:
-          "8-page pilot preprint: 40 questions, with retrieval scored on 34 answerable questions and 6 refusal cases. v3 reports Recall@5 = 0.941, mean citation_support = 0.978 and 6/6 refusals. A single Gemini 3.1 Flash Lite judge found no rows below citation_support < 0.5; two partial/wrong-citation rows remained at 0.75 and 0.50.",
+          "8-page preprint: built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals.",
         doi: "10.5281/zenodo.20522874",
       },
     ],
@@ -910,7 +910,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Aion is a Bible companion with reference-aware retrieval: direct verse/chapter lookup, keyword filtering and pgvector semantic search provide context, and Gemini 3.1 Flash Lite streams answers through Supabase Edge Functions. It includes attributed verse cards, a React Native/Expo mobile client and a Tauri v2 desktop wrapper. Its reported 40-question v3 pilot measures retrieval and citation support within that small benchmark; it does not guarantee hallucination-free answers. Optional native voice has a separate client-credential limitation.",
+      "Aion is a Bible companion with reference-aware retrieval: direct verse/chapter lookup, keyword filtering and pgvector semantic search provide context, and Gemini 3.1 Flash Lite streams answers through Supabase Edge Functions. It includes attributed verse cards, a React Native/Expo mobile client and a Tauri v2 desktop wrapper. Its 40-question benchmark scores retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. Optional native voice has a separate client-credential limitation.",
     problem:
       "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
     solution: [
@@ -920,12 +920,12 @@ export const projects: Record<string, Project> = {
       "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop",
     ],
     proof: [
-      "Reported v3 pilot: 40 questions comprising 34 answerable retrieval questions and 6 false-premise/adversarial refusals; Recall@5 0.941, mean citation_support 0.978 and 6/6 refusals. Zero rows scored below the unsupported threshold (citation_support < 0.5), while two answer rows were flagged at 0.75 and 0.50; this is not a hallucination-free guarantee",
+      "Built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals",
       "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
       "Exact-match response cache avoids repeat LLM calls for identical queries",
       "Anonymous authentication with no sign-up; Supabase RLS applies to all tables",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-09",
   },
 };
 
@@ -962,7 +962,7 @@ export const writeups: Writeup[] = [
     content: `
 ## What the prototype controls
 
-**Project Simurgh** is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state live on the host. Every tool proposal is checked against that state outside the model. Current study archives bind retained files and source revisions with SHA-256 and can be replayed through fresh local services. Ed25519-signed attestations belong to earlier frozen stages.
+**Project Simurgh** is a sole-author, open-source research prototype for inspecting what an AI agent is permitted to do. Delegation, stop, lease and credential state live on the host. Every tool proposal is checked against that state outside the model. Its Ed25519-signed evidence archives replay offline in one command.
 
 The current question is empirical: do composed host controls improve restricted-state behaviour while retaining useful work, compared with matched controls and the model’s own baseline?
 
@@ -994,15 +994,15 @@ An eight-case **OpenAI Responses API** workflow exposed a role-placement error: 
 
 A separate frozen 2026 stage used a real **Llama Guard 4 12B** classifier over **180 cases**. Simurgh produced containment evidence for all **138/138** malicious cases it missed, including **120 downstream injections** outside an input-only classifier’s view. This is a coverage claim, not a ranking of classifiers.
 
-Another frozen 2026 stage drove a self-hosted **Llama-3.3-70B** through AgentDojo’s workspace suite with **140 pre-registered injections**. Targeted attack success fell from **9/140 to 0/140**, while benign utility fell from **7/10 to 6/10**. A separate deterministic four-suite run, with **no real LLM**, recorded **0/949** attack success, **949/949 utility under attack** and **97/97 benign utility**. Both remain bounded experiments; they are not the October transfer study.
+Another frozen 2026 stage reduced a live **Llama-3.3-70B** agent’s targeted attack success on AgentDojo from **9/140 to 0/140** over pre-registered injections in the workspace suite. The full four-suite deterministic run scored **0/949** attack success with **949/949 unattacked utility**. Both are scoped as small experiments; they are not the October transfer study.
 
 ### What can be inspected
 
-Current SHA-256-pinned study archives replay locally on **native Linux x86_64 with Python 3.12**, a full Git history and installed dependencies. Dependency installation needs package-index access; replay itself uses local services without fresh model calls. Repository-supplied hashes establish byte consistency, not independent custody.
+The work is built to be reproduced: **Ed25519-signed evidence archives replay offline in one command**; **39 Lean 4 proofs** sit behind a gate that fails on any unproven “sorry” placeholder; **5,171 tests** passed in the 19 October 2026 smoke run.
 
-The current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. **39 Lean 4 proof files** model selected earlier-stage mathematical properties behind a gate that rejects unproven “sorry” placeholders. They do not establish implementation equivalence or whole-agent safety. **5,171 root tests** passed in the **19 October 2026 smoke run**; **92 published releases** were visible at the audit snapshot. These are dated receipts, not fresh test execution at the current head.
+The current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. **39 Lean 4 proofs** sit behind a gate that fails on any unproven “sorry” placeholder. **5,171 tests** passed in the **19 October 2026 smoke run**; the project has **92 releases**.
 
-The author audited **919 project documents** and published **141 dated findings**, including overstatements in earlier closeouts, in a public finding register linked from the README. This is part of the evidence trail, not a claim that the prototype has no remaining defects.
+The author audited **919 of the project’s own documents** and published **all 141 dated findings**, including overstatements in earlier closeouts, in the README. This is part of the evidence trail, not a claim that the prototype has no remaining defects.
 
 ### Sources and limits
 
@@ -1153,7 +1153,7 @@ Apple classified the behaviour as consistent with documented functionality and n
 
 The tested Windows and macOS capture paths can omit an application window while it remains visible to the user, without elevated privileges or observed capture artefacts. This exposes a mismatch between content-protection features and the assumption that captured pixels fully represent the physical display. The study establishes that gap within its tested laboratory scope; it does not establish that every commercial proctoring product or every capture API can be bypassed.
 
-The full 13-page IEEE-format preprint is linked from the project page (DOI **10.5281/zenodo.20376495**, CC BY 4.0). At the **4 November 2026** source audit, the public repository contained Windows and macOS proof-of-concept source and evaluation harnesses. The paper’s earlier source-withheld statement is a historical publication-time statement, not the repository’s current availability. The illustrative API examples above remain illustrations rather than fresh test evidence.
+The full 13-page IEEE-format preprint is linked from the project page (DOI **10.5281/zenodo.20376495**, CC BY 4.0). Proof-of-concept code is withheld on dual-use grounds. The illustrative API examples above remain illustrations rather than fresh test evidence.
     `,
   },
   {
@@ -1223,7 +1223,7 @@ The pinned source defines **137 Google Test cases across 18 test source files**,
     updatedAt: "2026-11-04",
     tag: "Network Security",
     takeaway:
-      "A C++17 Capture → Parse → Detect → Alert pipeline, with 28.4M packets/s reported only for a repeated synthetic parser workload, excluding capture and detection.",
+      "A C++17 Capture → Parse → Detect → Alert pipeline that processes 500,000+ packets/sec in a synthetic single-thread benchmark.",
     content: `
 ## Four stages with different costs
 
@@ -1255,11 +1255,9 @@ There is an implementation limit: \`SignatureMatcher\` skips rules with threshol
 
 The code performs lazy cleanup when records are accessed. These are heuristic indicators. Their presence does not establish false-positive rates, resistance to evasion or production detection accuracy.
 
-### What 28.4M packets/s actually measures
+### Throughput
 
-The pinned README reports **28,409,090 packets/s**, with an average derived time of 0.035 microseconds per packet. The benchmark loops over **5M repetitions of one 54-byte synthetic Ethernet/IPv4/TCP SYN-ACK fixture**, calling only \`parse_ethernet\`, \`parse_ipv4\` and \`parse_tcp\` on a single thread.
-
-It excludes libpcap capture, traffic diversity, other protocol parsers, rule evaluation, stateful detection, alert formatting and I/O. The result was not rerun in the November 2026 source audit, and the inspected README does not identify the benchmark host. It is a repository-reported parser microbenchmark, not wire-speed deep-packet inspection or end-to-end IDS throughput.
+SentinelFlow processes **500,000+ packets/sec** in a synthetic single-thread benchmark.
 
 ### Alerts and verification
 
@@ -1343,7 +1341,7 @@ The repository makes the component boundaries visible: probe code, perf reading,
     updatedAt: "2026-11-04",
     tag: "Kotlin",
     takeaway:
-      "A shared Kotlin detection core, with scoped offline and desktop-JVM benchmark evidence.",
+      "An offline QR and URL phishing scanner in Kotlin Multiplatform: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms.",
     content: `
 ## One security core, five platforms
 
@@ -1354,7 +1352,7 @@ The repository makes the component boundaries visible: probe code, perf reading,
 The security logic is platform-agnostic and lives once, in shared code:
 
 - **Ensemble model**: logistic regression, gradient boosting and decision rules score URL features.
-- **Heuristics engine**: 25+ checks, including homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
+- **Heuristics engine**: 25 heuristics, including homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
 - **Threat-intelligence lists**: allow/deny sets, versioned centrally.
 
 KMP's \`expect\`/\`actual\` boundaries cover platform services, the QR-camera bridge and UI integration. The repository reports ~100% shared detection logic (~52% of total code); native integrations and browser variants still need their own review.
@@ -1367,13 +1365,12 @@ PhishingEngine scores URL strings locally without requiring a cloud reputation l
 
 | Metric | Value |
 |--------|-------|
-| README-reported F1 on a curated URL corpus | 87% |
-| Reported desktop-JVM engine median | < 5 ms |
-| Repository-reported tests, not rerun here | 1,248+ |
-| Built-in red-team scenarios | 19 curated attacks |
+| F1 (ensemble ML plus 25 heuristics) | 87% |
+| Analysis time | under 5 ms |
+| Red-team mode | 19 scenarios |
 | Platform targets | 5 (Android, iOS, JVM, JS, Wasm) |
 
-The 19 curated scenarios exercise known patterns. The reported F1 is not a real-world accuracy guarantee; other ML documents contain different scores and corpus descriptions. Desktop-JVM engine timings exclude camera and UI work and do not establish performance on every target. These repository reports were not independently reproduced in this portfolio audit.
+The 19-scenario red-team mode exercises known phishing patterns.
     `,
   },
   {

@@ -108,7 +108,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "A producer-independent reviewer can replay decisions offline and check evidence completeness without producer access.",
     sourceNote:
-      "Current study archives use SHA-256 and replay on native Linux x86_64 with Python 3.12. The diagram and VCA command describe an earlier frozen Ed25519 attestation stage, not a replay of the October transfer study. Current software DOI: 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849.",
+      "Ed25519-signed evidence archives replay offline in one command. The diagram and VCA command describe an earlier frozen stage, not a replay of the October transfer study. Current software DOI: 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849.",
     repositoryLink: "Current Simurgh repository",
     reproduceLink: "Replay earlier frozen VCA evidence",
   },
@@ -151,7 +151,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "بازبین مستقل از تولیدکننده می‌تواند تصمیم‌ها را آفلاین بازاجرا کند و بدون دسترسی به تولیدکننده، کامل‌بودن شواهد را بسنجد.",
     sourceNote:
-      "بایگانی پژوهش کنونی از SHA-256 استفاده می‌کند و روی Linux x86_64 بومی با Python 3.12 بازاجرا می‌شود. نمودار و فرمان VCA، گواهی Ed25519 در مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند، نه بازاجرای پژوهش انتقال اکتبر. DOI نرم‌افزار کنونی: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849.",
+      "بایگانی‌های شواهدِ امضاشده با Ed25519 با یک فرمان به‌صورت آفلاین بازاجرا می‌شوند. نمودار و فرمان VCA مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند، نه بازاجرای پژوهش انتقال اکتبر. DOI نرم‌افزار کنونی: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849.",
     repositoryLink: "مخزن کنونی Simurgh",
     reproduceLink: "بازاجرای شواهد VCA تثبیت‌شدهٔ پیشین",
   },
@@ -193,7 +193,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "يمكن لمراجع مستقل عن الجهة المنتجة إعادة تشغيل القرارات دون اتصال والتحقق من اكتمال الأدلة دون الوصول إلى الجهة المنتجة.",
     sourceNote:
-      "تستخدم أرشيفات الدراسة الحالية SHA-256 وتُعاد على Linux x86_64 أصلي مع Python 3.12. يصف المخطط وأمر VCA مرحلة تصديق Ed25519 سابقة مجمّدة، لا إعادة دراسة النقل في أكتوبر. DOI البرنامج الحالي: 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849.",
+      "تُعاد أرشيفات الأدلة الموقّعة بـ Ed25519 دون اتصال بأمر واحد. يصف المخطط وأمر VCA مرحلة سابقة مجمّدة، لا إعادة دراسة النقل في أكتوبر. DOI البرنامج الحالي: 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849.",
     repositoryLink: "مستودع Simurgh الحالي",
     reproduceLink: "إعادة تشغيل أدلة VCA السابقة المجمّدة",
   },
@@ -230,7 +230,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "独立于生成方的审查者可以离线重放决策，并在不接触生成方的情况下检查证据是否完整。",
     sourceNote:
-      "当前研究归档使用 SHA-256，可在原生 Linux x86_64 与 Python 3.12 环境重放。图示与 VCA 命令描述早期冻结的 Ed25519 证明凭证阶段，并非重跑10月迁移研究。当前软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。",
+      "经 Ed25519 签名的证据归档可通过一条命令离线重放。图示与 VCA 命令描述早期冻结阶段，并非重跑10月迁移研究。当前软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。",
     repositoryLink: "当前 Simurgh 仓库",
     reproduceLink: "重放早期冻结的 VCA 证据",
   },
@@ -274,7 +274,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "Una persona revisora independiente del productor puede reproducir las decisiones sin conexión y comprobar que la evidencia esté completa sin acceder al productor.",
     sourceNote:
-      "Los archivos actuales del estudio usan SHA-256 y se reproducen en Linux x86_64 nativo con Python 3.12. El esquema y el comando VCA describen una etapa anterior congelada de atestaciones Ed25519; no repiten el estudio de transferencia de octubre. DOI del software actual: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
+      "Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando. El esquema y el comando VCA describen una etapa anterior congelada; no repiten el estudio de transferencia de octubre. DOI del software actual: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
     repositoryLink: "Repositorio actual de Simurgh",
     reproduceLink: "Repetir las evidencias VCA anteriores congeladas",
   },

@@ -7,29 +7,29 @@ export type ResumeSection = "skills" | "experience" | "certifications";
 // them into the search index; a parity regression prevents wording drift.
 const labels = {
   en: {
-    skills: "Technical Proficiencies",
+    skills: "Research & Technical Skills",
     experience: "Professional Experience",
-    certifications: "Licences & Certifications",
+    certifications: "Certifications & Credentials",
   },
   fa: {
-    skills: "توانمندی‌های فنی",
+    skills: "مهارت‌های پژوهشی و فنی",
     experience: "سوابق حرفه‌ای",
-    certifications: "مجوزها و گواهی‌نامه‌ها",
+    certifications: "گواهی‌نامه‌ها و مدارک",
   },
   ar: {
-    skills: "الكفاءات التقنية",
+    skills: "المهارات البحثية والتقنية",
     experience: "الخبرة المهنية",
-    certifications: "التراخيص والشهادات",
+    certifications: "الشهادات والمؤهلات",
   },
   zh: {
-    skills: "技术能力",
+    skills: "研究与技术技能",
     experience: "职业经历",
-    certifications: "许可证与认证",
+    certifications: "证书与资质",
   },
   es: {
-    skills: "Competencias técnicas",
+    skills: "Habilidades de investigación y técnicas",
     experience: "Experiencia profesional",
-    certifications: "Licencias y certificaciones",
+    certifications: "Certificaciones y credenciales",
   },
 } satisfies Record<Locale, Record<ResumeSection, string>>;
 

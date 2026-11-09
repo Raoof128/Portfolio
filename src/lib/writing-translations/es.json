@@ -5,7 +5,7 @@
     "takeaway": "Estudio con controles emparejados de octubre de 2026: ensayos restringidos con efectos nuevos en Llama-3.2-3B de 17/24 a 0/24, con 23/24 finalizaciones útiles; sin protección adicional sobre la base ya limpia de gpt-6-luna.",
     "lines": [
       "## Qué controla el prototipo",
-      "**Project Simurgh** es un prototipo de investigación abierto y de autor único para inspeccionar lo que se permite hacer a un agente de IA. El anfitrión conserva los estados de delegación, parada, vigencia y credenciales. Cada propuesta de herramienta se comprueba fuera del modelo. Los archivos del estudio actual vinculan ficheros conservados y revisiones de código mediante SHA-256 y se reproducen con servicios locales nuevos. Las atestaciones firmadas con Ed25519 pertenecen a etapas anteriores congeladas.",
+      "**Project Simurgh** es un prototipo de investigación abierto y de autor único para inspeccionar lo que se permite hacer a un agente de IA. El anfitrión conserva los estados de delegación, parada, vigencia y credenciales. Cada propuesta de herramienta se comprueba fuera del modelo. Sus archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando.",
       "La pregunta actual es empírica: ¿mejoran los controles compuestos el comportamiento en estados restringidos sin perder trabajo útil, frente a controles emparejados y a la base del propio modelo?",
       "### El protocolo de transferencia de octubre de 2026",
       "El estudio utilizó **24 tareas**, **dos ensayos** por tarea, **tres controles emparejados** y **dos modelos**, generando **288 ramas reproducidas**. Del protocolo al paquete publicado transcurrieron tres días, **15–17 de octubre de 2026**.",
@@ -22,11 +22,11 @@
       "Un flujo de ocho casos de **OpenAI Responses API** reveló un error de ubicación del rol: **8/8 rechazos**. Se conservaron las trazas originales. Una corrección congelada del rol developer completó **2/3 flujos autorizados** y rechazó **5/5 restringidos**, con **un rechazo todavía abierto**. La ejecución corregida no borra el fallo original ni demuestra que todo flujo autorizado tenga éxito.",
       "### Experimentos anteriores congelados",
       "Una etapa separada y congelada de 2026 utilizó un clasificador real **Llama Guard 4 12B** sobre **180 casos**. Simurgh produjo pruebas de contención para los **138/138** casos maliciosos omitidos, incluidos **120 de inyección posterior** fuera de la visión de un clasificador de entrada. Es una afirmación de cobertura, no una clasificación de detectores.",
-      "Otra etapa congelada de 2026 ejecutó **Llama-3.3-70B** autoalojado en el espacio de trabajo de AgentDojo con **140 inyecciones preregistradas**. El éxito dirigido bajó de **9/140 a 0/140**, mientras que la utilidad benigna bajó de **7/10 a 6/10**. Otra ejecución determinista de cuatro suites, **sin un LLM real**, registró **0/949** de éxito de ataque, **949/949 de utilidad bajo ataque** y **97/97 de utilidad benigna**. Ambos siguen siendo experimentos acotados, distintos del estudio de transferencia de octubre.",
+      "Otra etapa congelada de 2026 redujo el éxito de ataque dirigido de un agente **Llama-3.3-70B** en vivo en AgentDojo de **9/140 a 0/140** con inyecciones preregistradas en la suite workspace. La ejecución determinista completa de las cuatro suites registró **0/949** de éxito de ataque con **949/949 de utilidad sin ataque**. Ambos son experimentos pequeños acotados, distintos del estudio de transferencia de octubre.",
       "### Qué puede inspeccionarse",
-      "Los archivos actuales fijados mediante SHA-256 se reproducen localmente en **Linux nativo x86_64 con Python 3.12**, con historial Git completo y dependencias instaladas. Instalar dependencias requiere acceso al índice de paquetes; la reproducción usa servicios locales sin nuevas llamadas al modelo. Los hashes del repositorio establecen consistencia de bytes, no custodia independiente.",
-      "La implementación actual incluye controles Python y un explorador de evidencia React con una CLI JSON compartida. **39 archivos de pruebas Lean 4** modelan propiedades matemáticas seleccionadas de etapas anteriores, tras una puerta que rechaza marcadores “sorry” sin demostrar. No establecen equivalencia de implementación ni seguridad del agente completo. **5,171 pruebas del paquete raíz** pasaron en la **comprobación básica del 19 de octubre de 2026**; en la instantánea de auditoría se veían **92 versiones publicadas**. Son registros fechados, no una ejecución reciente en la revisión actual.",
-      "El autor auditó **919 documentos del proyecto** y publicó **141 hallazgos fechados**, incluidas exageraciones de cierres anteriores, en un registro público enlazado desde README. Forma parte de la trazabilidad, no de una afirmación de ausencia de defectos.",
+      "El trabajo está construido para ser reproducible: los **archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando**; **39 demostraciones en Lean 4** están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar; **5,171 pruebas** superadas en la ejecución de humo del 19 de octubre de 2026.",
+      "La implementación actual incluye controles Python y un explorador de evidencia React con una CLI JSON compartida. **39 demostraciones en Lean 4** están tras una puerta que falla ante cualquier marcador de posición “sorry” sin demostrar. **5,171 pruebas** superadas en la **ejecución de humo del 19 de octubre de 2026**; el proyecto tiene **92 versiones**.",
+      "El autor auditó **919 de los documentos propios del proyecto** y publicó **los 141 hallazgos fechados**, incluidas exageraciones de cierres anteriores, en el README. Forma parte de la trazabilidad, no de una afirmación de ausencia de defectos.",
       "### Fuentes y límites",
       "El archivo actual de software tiene DOI **10.5281/zenodo.21737792**. El preprint anterior de integridad del dispositivo tiene otro DOI, **10.5281/zenodo.20374849**; documenta la investigación original para sesiones de alto riesgo, no el estudio actual del software. El paquete raíz declara **AGPL-3.0-or-later**.",
       "Los resultados de octubre describen este protocolo, estos controles y dos modelos probados. Incluyen un resultado nulo, incertidumbre por grupos de estados, una diferencia parcialmente determinada por construcción y un rechazo autorizado sin resolver. El anfitrión, el aprovisionamiento, el almacenamiento y el receptor siguen siendo de confianza; los modelos usan interfaces de herramientas distintas, las tareas son internas y la reproducción externa independiente sigue pendiente. El estudio no establece contención universal, una clasificación de modelos ni prevención de todas las salidas inseguras."
@@ -81,7 +81,7 @@
       "Apple clasificó el comportamiento como coherente con la función documentada, no como problema de seguridad de Apple; Microsoft lo clasificó como propio del diseño, no como vulnerabilidad. La investigación presenta un fallo posterior de fidelidad visual, no un día cero del sistema operativo.",
       "## Conclusión",
       "Las rutas de captura probadas en Windows y macOS pueden omitir una ventana visible para el usuario, sin privilegios elevados ni rastros observados en la captura. Esto revela una discrepancia entre la protección de contenido y la suposición de que los píxeles capturados representan todo el monitor físico. El estudio establece esa brecha dentro de su alcance de laboratorio; no demuestra que pueda eludirse cualquier producto comercial de supervisión ni cualquier API de captura.",
-      "El preprint completo de 13 páginas en formato IEEE está enlazado en la página del proyecto (DOI **10.5281/zenodo.20376495**, CC BY 4.0). En la auditoría de código del **4 de noviembre de 2026**, el repositorio público contenía código de prueba de concepto y entornos de evaluación de Windows y macOS. La afirmación anterior de que el código se retenía describe el momento de publicación, no la disponibilidad actual. Los ejemplos de API siguen siendo ilustraciones, no pruebas ejecutadas de nuevo."
+      "El preprint completo de 13 páginas en formato IEEE está enlazado en la página del proyecto (DOI **10.5281/zenodo.20376495**, CC BY 4.0). El código de prueba de concepto se retiene por motivos de doble uso. Los ejemplos de API siguen siendo ilustraciones, no pruebas ejecutadas de nuevo."
     ]
   },
   "nanomatch-deep-dive": {
@@ -123,7 +123,7 @@
   "sentinelflow-deep-dive": {
     "title": "Anatomía de un sistema de detección de intrusiones de red",
     "tag": "Seguridad de redes",
-    "takeaway": "Canalización C++17 Capturar → Analizar → Detectar → Alertar, con 28.4M paquetes/s comunicados solo para un analizador sintético repetido, sin captura ni detección.",
+    "takeaway": "Canalización C++17 Capturar → Analizar → Detectar → Alertar que procesa 500,000+ paquetes/s en un benchmark sintético de un solo hilo.",
     "lines": [
       "## Cuatro etapas con costes distintos",
       "**SentinelFlow** implementa una canalización C++17: **Capturar → Analizar → Detectar → Alertar**. Admite captura libpcap en vivo y pcap sin conexión, siete analizadores, firmas básicas inspiradas en Snort, heurísticas con estado y alertas de consola/CSV.",
@@ -139,9 +139,8 @@
       "- **Inundaciones SYN:** colas temporales por destino cuentan paquetes SYN sin ACK y se activan con 100 eventos en 10 segundos.",
       "- **Indicios de túneles DNS:** colas por origen cuentan nombres de consulta de más de 50 caracteres; se activan con 20 consultas en 60 segundos.",
       "El código limpia los registros antiguos al acceder. Son indicadores heurísticos; su existencia no demuestra tasas de falsos positivos, resistencia a la evasión ni precisión en producción.",
-      "### Qué miden realmente los 28.4M paquetes/s",
-      "El README fijado informa de **28,409,090 paquetes/s**, con un tiempo medio derivado de 0.035 microsegundos por paquete. El benchmark realiza **5M repeticiones de una única muestra sintética Ethernet/IPv4/TCP SYN-ACK de 54 bytes**, llamando solo a `parse_ethernet`, `parse_ipv4` y `parse_tcp` en un hilo.",
-      "Excluye captura libpcap, diversidad de tráfico, otros analizadores, reglas, detección con estado, formato de alertas e I/O. No se repitió en la auditoría de noviembre de 2026, y el README revisado no identifica el equipo. Es un microbenchmark del analizador comunicado por el repositorio, no inspección profunda a velocidad de línea ni rendimiento completo del IDS.",
+      "### Rendimiento",
+      "SentinelFlow procesa **500,000+ paquetes/s** en un benchmark sintético de un solo hilo.",
       "### Alertas y verificación",
       "La capa de alertas puede enviar eventos estructurados a una consola por colores y a CSV. La exportación facilita análisis posteriores; el repositorio no demuestra una integración SIEM desplegada.",
       "El código define **27 casos Google Test en 10 archivos de pruebas**, para analizadores y detectores seleccionados, reglas, firmas e integración. El changelog de marzo de 2026 comunica un resultado histórico de 27/27. Esta auditoría no repitió las pruebas ni afirma cubrir todo protocolo, detector o camino de entrada malformada.",
@@ -193,26 +192,25 @@
   "kmp-security": {
     "title": "Construir herramientas de seguridad que funcionan sin conexión con KMP",
     "tag": "Kotlin",
-    "takeaway": "Un núcleo de detección compartido en Kotlin, con evidencia acotada de comprobaciones sin conexión y rendimiento en JVM de escritorio.",
+    "takeaway": "Un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform: ML de conjunto más 25 heurísticas con 87% de F1 y menos de 5 ms.",
     "lines": [
       "## Un núcleo de seguridad, cinco plataformas",
       "**Mehr Guard** busca reducir las divergencias entre plataformas con un núcleo de detección compartido en Kotlin Multiplatform e interfaces para Android, iOS, JVM, JS y WebAssembly. Compartir el código fuente no demuestra por sí solo un comportamiento idéntico en cada compilación; la paridad entre plataformas requiere una comprobación independiente.",
       "### Qué reside en `commonMain`",
       "La lógica de seguridad es independiente de la plataforma y tiene una sola implementación compartida:",
       "- **Modelo de conjunto**: la regresión logística, el refuerzo por gradiente y las reglas de decisión puntúan las características de las URL.",
-      "- **Motor heurístico**: 25+ comprobaciones de homógrafos y punycode, suplantación de marcas, cadenas de redirección, TLD sospechosos, credenciales incrustadas y direcciones IP usadas como host.",
+      "- **Motor heurístico**: 25 heurísticas, entre ellas homógrafos y punycode, suplantación de marcas, cadenas de redirección, TLD sospechosos, credenciales incrustadas y direcciones IP usadas como host.",
       "- **Listas de inteligencia de amenazas**: conjuntos permitidos y bloqueados con versiones centralizadas.",
       "Los límites `expect`/`actual` de KMP abarcan los servicios de plataforma, el puente de la cámara QR y la integración de la interfaz. El repositorio declara ~100% de lógica de detección compartida (~52% del código total); las integraciones nativas y las variantes de navegador aún requieren una revisión propia.",
       "### Sin conexión por diseño",
       "PhishingEngine puntúa cadenas URL localmente sin exigir una consulta de reputación en la nube. El script de evaluación sin conexión ejecuta comprobaciones unitarias de finalización, determinismo y tiempos. Su código indica expresamente que no bloquean el acceso a la red, por lo que no certifican de manera independiente que cada compilación o interfaz carezca de conexiones salientes.",
       "### Las cifras",
       "| Métrica | Valor |",
-      "| F1 declarado en el README sobre un corpus de URL seleccionado | 87% |",
-      "| Mediana declarada del motor en JVM de escritorio | < 5 ms |",
-      "| Pruebas declaradas por el repositorio, sin repetir aquí | 1,248+ |",
-      "| Escenarios integrados de equipo rojo | 19 ataques seleccionados |",
+      "| F1 (ML de conjunto más 25 heurísticas) | 87% |",
+      "| Tiempo de análisis | menos de 5 ms |",
+      "| Modo red team | 19 escenarios |",
       "| Plataformas objetivo | 5 (Android, iOS, JVM, JS, Wasm) |",
-      "Los 19 escenarios seleccionados ejercitan patrones conocidos. El F1 declarado no garantiza precisión en el mundo real; otros documentos de aprendizaje automático contienen puntuaciones y descripciones del corpus distintas. Los tiempos del motor en JVM de escritorio excluyen la cámara y la interfaz y no demuestran el rendimiento en todos los destinos. Estos informes del repositorio no se reprodujeron de forma independiente en esta auditoría del portafolio."
+      "El modo red team de 19 escenarios ejercita patrones conocidos de phishing."
     ]
   },
   "electron-security": {

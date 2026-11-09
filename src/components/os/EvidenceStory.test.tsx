@@ -165,8 +165,8 @@ describe("Simurgh evidence walkthrough", () => {
       expect(projectDiagramCopy[locale].boundariesTitle).toMatch(earlierFrozen);
       expect(copy.sourceNote).toContain("10.5281/zenodo.21737792");
       expect(copy.sourceNote).toContain("10.5281/zenodo.20374849");
-      for (const token of ["SHA-256", "Ed25519", "Linux x86_64", "Python 3.12"])
-        expect(copy.sourceNote).toContain(token);
+      expect(copy.sourceNote).toContain("Ed25519");
+      expect(copy.sourceNote).not.toMatch(/SHA-256|x86_64/);
       expect(copy.signedPackDetail).toMatch(earlierFrozen);
 
       const scope = getDossierScope("project-simurgh", locale);
@@ -184,23 +184,23 @@ describe("Simurgh evidence walkthrough", () => {
         "2026",
       ])
         expect(scope).toContain(fact);
-      expect(scope).toContain("SHA-256");
       expect(scope).toContain("Ed25519");
+      expect(scope).toContain("Lean 4");
+      expect(scope).not.toMatch(/SHA-256|x86_64/);
       const zurvanScope = getDossierScope("project-zurvan", locale);
-      for (const token of ["Rust", "Python", "3,334", "20", "2026", "Z1b"])
+      for (const token of ["Rust", "Python", "MCP", "218"])
         expect(zurvanScope).toContain(token);
       const pilotScope = getDossierScope("aion", locale);
       for (const token of [
         "40",
-        "34",
+        "0.941",
+        "0.978",
         "6/6",
-        "citation_support < 0.5",
-        "0.75",
-        "0.50",
-        "Gemini 3.1 Flash Lite",
+        "Aion-BibleQA",
         "OpenAI",
       ])
         expect(pilotScope).toContain(token);
+      expect(pilotScope).not.toMatch(/0\.75|citation_support/);
     },
   );
 

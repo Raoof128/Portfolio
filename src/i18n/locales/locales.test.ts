@@ -46,13 +46,12 @@ const sourceIdentifiers = new Set([
   "about.skill_group5_2",
   "about.skill_group5_3",
   "lab_page.id_label",
-  "resume.s03_cat4_desc",
-  "resume.proj1_stack",
-  "resume.proj3_stack",
-  "resume.proj4_tag",
-  "resume.proj4_stack",
-  "resume.proj5_stack",
-  "resume.proj6_tag",
+  // Résumé lines made only of names, years or code identifiers.
+  "resume.skill4_desc",
+  "resume.further_period",
+  "resume.edu2_period",
+  // "Preprint · DOI …" is the same word in Spanish.
+  "resume.aion_meta",
   "contact_form.email_placeholder",
   // Sentence-closing punctuation; identical in several scripts.
   "security_policy.ack_desc_suffix",
@@ -96,11 +95,11 @@ describe("translation contracts", () => {
   );
 
   const permissionScope: Record<Locale, RegExp> = {
-    en: /was allowed to do/,
+    en: /is permitted to do/,
     fa: /اختیارات مجاز/,
-    ar: /سُمح للوكيل بفعله/,
+    ar: /يُسمح للوكيل بفعله/,
     zh: /获准执行/,
-    es: /acciones permitidas/,
+    es: /lo que se permite hacer a un agente/,
   };
 
   it.each(supportedLocales)(
@@ -109,34 +108,6 @@ describe("translation contracts", () => {
       expect(dictionaries[locale].seo.home_description).toMatch(
         permissionScope[locale],
       );
-    },
-  );
-
-  const benchmarkScope: Record<Locale, [RegExp, RegExp, RegExp, RegExp]> = {
-    en: [/single-thread/, /synthetic/, /cancellation/, /pure-parse/],
-    fa: [/تک‌ریسمانی/, /مصنوعی/, /لغو/, /صرفاً تجزیه/],
-    ar: [/أحادي الخيط/, /اصطناعي/, /إلغاء/, /للتحليل فقط/],
-    zh: [/单线程/, /合成/, /取消/, /纯解析/],
-    es: [/un solo hilo/, /sintético/, /cancelación/, /análisis puro/],
-  };
-
-  it.each(supportedLocales)(
-    "%s distinguishes synthetic benchmarks from end-to-end processing claims",
-    (locale) => {
-      const { proj3_desc, proj4_desc } = dictionaries[locale].resume;
-      const [singleThread, synthetic, cancellation, pureParse] =
-        benchmarkScope[locale];
-      expect(proj3_desc).toMatch(singleThread);
-      expect(proj3_desc).toMatch(synthetic);
-      expect(proj3_desc).toMatch(cancellation);
-      expect(proj3_desc).toContain("9.29M");
-      expect(proj3_desc).toContain("O(log M)");
-      expect(proj3_desc).toContain("p50/p99");
-      expect(proj4_desc).toMatch(singleThread);
-      expect(proj4_desc).toMatch(synthetic);
-      expect(proj4_desc).toMatch(pureParse);
-      expect(proj4_desc).toContain("28.4M");
-      expect(proj4_desc).toContain("SYN");
     },
   );
 
@@ -191,226 +162,92 @@ describe("translation contracts", () => {
     },
   );
 
-  const studyScope: Record<
-    Locale,
-    {
-      nullResult: RegExp;
-      frozen: RegExp;
-      proofFiles: RegExp;
-      underAttack: RegExp;
-    }
-  > = {
-    en: {
-      nullResult: /no incremental protection/i,
-      frozen: /earlier frozen/i,
-      proofFiles: /39 Lean 4 proof files/,
-      underAttack: /utility under attack 949\/949/,
-    },
-    fa: {
-      nullResult: /بدون حفاظت افزوده/,
-      frozen: /مراحل ثابت‌شده قدیمی/,
-      proofFiles: /39 فایل اثبات Lean 4/,
-      underAttack: /سودمندی زیر حملهٔ 949\/949/,
-    },
-    ar: {
-      nullResult: /لا حماية إضافية/,
-      frozen: /مراحل سابقة مجمّدة/,
-      proofFiles: /39 ملف إثبات في Lean 4/,
-      underAttack: /منفعة تحت الهجوم 949\/949/,
-    },
-    zh: {
-      nullResult: /无额外保护/,
-      frozen: /早期冻结/,
-      proofFiles: /39个 Lean 4 证明文件/,
-      underAttack: /攻击下效用949\/949/,
-    },
-    es: {
-      nullResult: /sin protección incremental/i,
-      frozen: /etapas anteriores congeladas/i,
-      proofFiles: /39 archivos de pruebas formales en Lean 4/,
-      underAttack: /utilidad bajo ataque 949\/949/,
-    },
-  };
+  // The web résumé mirrors the PDF line by line. Every translated line must keep
+  // each number, DOI and named system that its English line states, so a
+  // translation can neither drop nor alter a résumé fact.
+  const namedTokens = [
+    "Project Simurgh",
+    "Invisible Window",
+    "Aion-BibleQA",
+    "Banking Shield",
+    "Mehr Guard",
+    "SentinelSSH",
+    "SentinelFlow",
+    "Project Zurvan",
+    "Syllabus-Sync",
+    "Alignerr",
+    "Anthropic",
+    "Claude",
+    "OpenAI",
+    "Llama-3.2-3B",
+    "Llama-3.3-70B",
+    "Llama Guard 4",
+    "gpt-6-luna",
+    "AgentDojo",
+    "MCP",
+    "Ed25519",
+    "Lean 4",
+    "WebAuthn",
+    "TOTP",
+    "Postgres",
+    "OWASP Top 10",
+    "OAuth 2.0",
+    "Airtasker",
+    "MITRE ATT&CK",
+    "MSRC",
+    "Kotlin Multiplatform",
+    "HMAC",
+    "Wilson",
+    "R@5",
+    "F1",
+    "sorry",
+  ];
 
-  it.each(supportedLocales)(
-    "%s distinguishes the current two-model study, uncertainty and older frozen evidence",
+  it.each(supportedLocales.filter((locale) => locale !== "en"))(
+    "%s résumé keeps every number, DOI and named system of each English line",
     (locale) => {
-      const resume = dictionaries[locale].resume;
-      const transfer = normalizeDigits(resume.s02_bullet1);
-      for (const token of [
-        "24",
-        "288",
-        "17/24",
-        "0/24",
-        "23/24",
-        "Llama-3.2-3B",
-        "OpenAI",
-        "gpt-6-luna",
-        "2026",
-      ]) {
-        expect(transfer, `${locale}: current transfer result`).toContain(token);
+      const english = en.resume as Record<string, string>;
+      const translated = dictionaries[locale].resume as Record<string, string>;
+      for (const [key, value] of Object.entries(english)) {
+        if (key === "expected_completion") continue;
+        const target = normalizeDigits(translated[key]);
+        for (const doi of value.match(/10\.5281\/zenodo\.\d+/g) ?? [])
+          expect(target, `${locale}: resume.${key} DOI`).toContain(doi);
+        for (const name of namedTokens.filter((token) => value.includes(token)))
+          expect(target, `${locale}: resume.${key} ${name}`).toContain(name);
+        const numbers = value
+          .replace(/10\.5281\/zenodo\.\d+/g, "")
+          .match(/\d+(?:\.\d+)?/g);
+        for (const number of numbers ?? [])
+          expect(
+            target.replace(/(\d),(?=\d{3}\b)/g, "$1"),
+            `${locale}: resume.${key} number ${number}`,
+          ).toContain(number);
       }
-      expect(transfer).toMatch(studyScope[locale].nullResult);
-      const uncertainty = normalizeDigits(resume.s02_bullet2);
-      for (const token of ["Wilson", "95%", "43.6–97.0%", "0.0–39.0%"]) {
-        expect(uncertainty, `${locale}: per-state uncertainty`).toContain(
-          token,
-        );
-      }
-      const integration = normalizeDigits(resume.s02_bullet3);
-      for (const token of ["OpenAI", "8/8", "2/3", "5/5", "developer"]) {
-        expect(
-          integration,
-          `${locale}: preserved integration failure`,
-        ).toContain(token);
-      }
-      const frozen = normalizeDigits(resume.s02_bullet4);
-      expect(frozen).toMatch(studyScope[locale].frozen);
-      expect(frozen).toMatch(studyScope[locale].underAttack);
-      expect(normalizeDigits(dictionaries[locale].about.bio_2)).toMatch(
-        studyScope[locale].proofFiles,
-      );
-      for (const token of [
-        "138/138",
-        "120",
-        "9/140",
-        "0/140",
-        "0/949",
-        "949/949",
-        "97/97",
-        "7/10",
-        "6/10",
-      ]) {
-        expect(frozen, `${locale}: frozen stage`).toContain(token);
-      }
-      const reproduction = normalizeDigits(resume.s02_bullet5);
-      for (const token of ["SHA-256", "Ed25519", "Linux x86_64", "Python 3.12"])
-        expect(
-          reproduction,
-          `${locale}: current and frozen archive scope`,
-        ).toContain(token);
-      const softwareDoiLabel =
-        dictionaries[locale].project_detail.software_doi_record;
-      expect(softwareDoiLabel).toContain("DOI");
-      expect(softwareDoiLabel).not.toBe(
-        dictionaries[locale].project_detail.doi_record,
-      );
-      for (const token of [
-        "39",
-        "Lean 4",
-        "5,171",
-        "19",
-        "2026",
-        "92",
-        "10.5281/zenodo.21737792",
-        "10.5281/zenodo.20374849",
-      ]) {
-        expect(
-          reproduction,
-          `${locale}: reproducibility and DOI provenance`,
-        ).toContain(token);
-      }
-      const pilot = normalizeDigits(resume.proj2_desc);
-      for (const token of [
-        "40",
-        "34",
-        "6/6",
-        "0.941",
-        "0.978",
-        "citation_support < 0.5",
-        "0.75",
-        "0.50",
-        "Gemini 3.1 Flash Lite",
-      ])
-        expect(pilot, `${locale}: pilot denominator and judge scope`).toContain(
-          token,
-        );
     },
   );
 
-  const employmentDates: Record<
-    Locale,
-    { pharmacyEnd: RegExp; available: RegExp; online: RegExp }
-  > = {
-    en: {
-      pharmacyEnd: /Jan 2024/,
-      available: /December 2026/,
-      online: /fully online/,
-    },
-    fa: {
-      pharmacyEnd: /ژانویه 2024/,
-      available: /دسامبر 2026/,
-      online: /کاملاً آنلاین/,
-    },
-    ar: {
-      pharmacyEnd: /يناير 2024/,
-      available: /ديسمبر 2026/,
-      online: /بالكامل عبر الإنترنت/,
-    },
-    zh: {
-      pharmacyEnd: /2024年1月/,
-      available: /2026年12月/,
-      online: /全程在线/,
-    },
-    es: {
-      pharmacyEnd: /enero de 2024/,
-      available: /diciembre de 2026/,
-      online: /totalmente en línea/,
-    },
-  };
-
   it.each(supportedLocales)(
-    "%s keeps profile facts and the dated CI test receipt scoped correctly",
+    "%s states the résumé's figures for the facts that changed",
     (locale) => {
-      const { about, resume } = dictionaries[locale];
-      expect(about.stats_preprints.trim()).not.toBe("");
-      expect(about.stats_vendors.trim()).not.toBe("");
-      expect(resume.exp_syllabus_employer).toContain("Syllabus-Sync");
-      expect(resume.exp_syllabus_bullet1).toContain("WebAuthn");
-      expect(resume.exp_syllabus_bullet1).toContain("TOTP");
-      expect(resume.exp_syllabus_bullet1).toContain("Postgres");
-      expect(resume.exp_syllabus_bullet2).toContain("1,343");
-      expect(resume.exp_syllabus_bullet2).toContain("155");
-      expect(resume.exp_syllabus_bullet2).toContain("17");
-      expect(resume.exp_syllabus_bullet2).toContain("2026");
-      expect(resume.exp_syllabus_bullet2).toContain("EDUCATE");
-      const separateSecurityFailure: Record<Locale, RegExp> = {
-        en: /separate security job failed/,
-        fa: /کار امنیتی جداگانه ناموفق/,
-        ar: /فشلت مهمة الأمن المنفصلة/,
-        zh: /独立安全任务失败/,
-        es: /job de seguridad separado falló/,
-      };
-      expect(resume.exp_syllabus_bullet2).toMatch(
-        separateSecurityFailure[locale],
-      );
-      expect(resume.exp_alignerr_employer).toContain("Alignerr");
-      expect(resume.exp_alignerr_employer).toContain("Anthropic");
-      expect(resume.s07_bullet1).not.toContain("2024");
-      expect(normalizeDigits(resume.exp2_employer)).toMatch(
-        employmentDates[locale].pharmacyEnd,
-      );
-      expect(normalizeDigits(resume.s08_available)).toMatch(
-        employmentDates[locale].available,
-      );
+      const resume = dictionaries[locale].resume;
+      const facts: Array<[string, string[]]> = [
+        [resume.syllabus_b1, ["503", "92", "WebAuthn", "TOTP", "Postgres"]],
+        [resume.further_b5, ["500,000+", "218", "17", "SentinelSSH"]],
+        [resume.further_b4, ["25", "87%", "5", "19"]],
+        [resume.aion_b1, ["40", "0.941", "0.978", "6/6"]],
+        [resume.simurgh_b5, ["9/140", "0/140", "0/949", "949/949"]],
+        [resume.simurgh_b6, ["Ed25519", "39", "Lean 4", "5,171"]],
+        [resume.simurgh_b7, ["919", "141", "README"]],
+        [resume.freelance_b1, ["OWASP Top 10", "OAuth 2.0", "5.0", "31"]],
+        [resume.pharmacy_b1, ["30%"]],
+      ];
+      for (const [line, tokens] of facts) {
+        const text = normalizeDigits(line);
+        for (const token of tokens) expect(text).toContain(token);
+        expect(text).not.toMatch(/1,343|155|28\.4|3,334|0\.75|97\/97|7\/10|x86_64|SHA-256/);
+      }
       expect(resume.education_final_session).toContain("2027");
-      expect(resume.education_final_session).toMatch(
-        employmentDates[locale].online,
-      );
-      const experience = normalizeDigits(
-        [
-          resume.exp1_bullet1,
-          resume.exp1_bullet2,
-          resume.exp1_bullet3,
-          resume.exp2_bullet1,
-        ].join(" "),
-      );
-      expect(experience).not.toMatch(/40\s*[%٪]|1,?000|99\s*[%٪]/);
-      for (const token of ["31", "35", "95%", "50", "30%"])
-        expect(experience).toContain(token);
-      const tooling = normalizeDigits(resume.s05_more_projects);
-      for (const token of ["SentinelSSH", "Rust", "MCP", "17", "Linux"])
-        expect(tooling).toContain(token);
     },
   );
 });

@@ -139,10 +139,10 @@ describe("Data Layer", () => {
         "2/3",
         "5/5",
         "one refusal still open",
-        "39 Lean 4 proof files",
+        "39 Lean 4 proofs",
         "5,171",
         "19 October 2026",
-        "92 published releases",
+        "92 releases",
         "919",
         "141",
         "10.5281/zenodo.21737792",
@@ -150,13 +150,14 @@ describe("Data Layer", () => {
         expect(evidence).toContain(token);
       expect(simurgh.proof[4]).toContain("Earlier frozen classifier stage");
       expect(simurgh.proof[4]).toContain("138/138");
-      expect(simurgh.proof[5]).toContain("Earlier frozen AgentDojo stage");
+      expect(simurgh.proof[5]).toContain("frozen stage, 2026");
       expect(simurgh.proof[5]).toContain("9/140 to 0/140");
       expect(simurgh.proof[5]).toContain(
-        "benign utility fell from 7/10 to 6/10",
+        "0/949 attack success with 949/949 unattacked utility",
       );
-      expect(simurgh.proof[5]).toContain("utility under attack 949/949");
-      expect(simurgh.proof[5]).toContain("benign utility 97/97");
+      expect(evidence).toContain(
+        "Ed25519-signed evidence archives replay offline in one command",
+      );
       expect(simurgh.papers?.[0].doi).toBe("10.5281/zenodo.20374849");
       expect(evidence).not.toContain("3,057");
     });

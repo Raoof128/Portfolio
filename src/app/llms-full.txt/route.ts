@@ -25,78 +25,109 @@ const HEADER = `# Mohammad Raouf Abedini: Full Machine-Readable Corpus
 ## Identity
 Name: Mohammad Raouf Abedini (Raouf)
 Role: AI Security Researcher · Adversarial Robustness & AI Control · Empirical Safety Evaluation
-Location: Sydney, Australia · relocating to San Francisco, CA · visa sponsorship required
-Availability: Full-time from December 2026 for a three- to six-month San Francisco research placement
-ORCID: 0009-0000-6214-258X
+Location: Sydney · Relocating to San Francisco, CA · Visa sponsorship required
+Contact: raoof.r12@gmail.com · linkedin.com/in/mohammad-raouf-abedini-885a9226a
+Links: github.com/Raoof128 · raoufabedini.dev · ORCID 0009-0000-6214-258X
 
 ## Professional Summary
-Raouf builds and tests host-side controls for what tool-using AI agents are permitted
-to do. He is the sole author of Project Simurgh, an inspectable agent-authorisation
-prototype evaluated with matched controls. Its October 2026 transfer study reports
-a benefit on Llama-3.2-3B and no incremental protection on gpt-6-luna, whose baseline
-was already clean. He evaluated Claude for exploitable code and guardrail
-circumvention in Anthropic's safety-evaluation program via Alignerr (Jan–Mar 2026).
-He reports five sole-author preprints and coordinated disclosures to Microsoft and
-Apple, following seven years in security operations and engineering.
+Security researcher focused on keeping tool-using AI agents safe and beneficial: builds host-side controls for what an
+agent is permitted to do and stress-tests them with matched-control experiments against live models. Sole author of
+Project Simurgh, an open-source agent-authorization prototype whose October 2026 study reports a benefit on one
+model and a null result on another. Evaluated Claude for exploitable code and guardrail circumvention in Anthropic's
+safety-evaluation program via Alignerr. Five sole-author preprints and two coordinated vendor disclosures (Microsoft,
+Apple) after seven years in security operations and engineering. Available full-time from December 2026 for a three- to
+six-month San Francisco placement.
 
-## Current Simurgh evidence — author-reported October 2026 study
-- Design: 24 tasks, two trials each, three matched controls (credential-only,
-  composed, deny-all), two models and 288 replayed branches.
-- Llama-3.2-3B: composed host controls reduced restricted-state trials with new
-  effects from 17/24 to 0/24, retained 23/24 useful completions and blocked no valid
-  proposal in that study.
-- OpenAI gpt-6-luna: the baseline was already 0/24; no incremental protection
-  was demonstrated on this model in this experiment.
-- Uncertainty: 24 restricted trials fall into six states. Per-state Wilson 95%
-  intervals were 43.6–97.0% versus 0.0–39.0%; part of the gap holds by construction.
-- Integration limitation: an eight-case OpenAI Responses API workflow exposed a
-  role-placement error (8/8 declined). Original traces were retained. A frozen
-  developer-role correction completed 2/3 authorised workflows and declined 5/5
-  restricted workflows, with one refusal still open.
-- Reproducibility: current study archives bind files and source revisions with
-  SHA-256; earlier frozen attestations use Ed25519. Current replay needs native
-  Linux x86_64 and Python 3.12, with dependencies installed before offline use.
-  The repository has 39 Lean 4 proof-model files, not 39 implementation-correctness
-  theorems; its gate rejects unproven “sorry” placeholders. The 19 Oct 2026 smoke
-  run passed 5,171 tests. The reported snapshot contains 92 releases.
-- Software DOI: 10.5281/zenodo.21737792. This software record is distinct from the
-  earlier device-integrity preprint, DOI 10.5281/zenodo.20374849.
-- Self-audit: 919 project documents audited; 141 dated findings published,
-  including overstatements in earlier closeouts.
+## Research & Technical Skills
+- Empirical AI safety and alignment: matched-control experiment design · adversarial robustness and AI control for tool-using agents · prompt-injection and authority containment · guardrail and classifier evaluation · uncertainty reporting · host-held human-oversight state (delegation, stop, lease)
+- Large language models (LLMs) and agent tooling: Claude API and Claude Code · OpenAI Responses API with tool calling · self-hosted Llama (3.2-3B, 3.3-70B) · Llama Guard 4 · AgentDojo · MCP servers
+- AI security, safeguards and red-teaming: guardrail-circumvention analysis · red-team scenario design · vulnerability research and coordinated disclosure · offensive proofs of concept · intrusion detection · phishing-detection ML · incident response · MITRE ATT&CK
+- Languages and systems: Python · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash · Docker · GitHub Actions · PostgreSQL · Linux · eBPF
 
-## Earlier frozen Simurgh stages — separate scoped experiments
-- A 180-case Llama Guard 4 12B input-classifier capture missed 138 malicious cases;
-  containment evidence covers all 138. Of these, 120 were downstream injections
-  outside an input-only classifier's view. This is coverage evidence, not a ranking
-  of classifiers.
-- The AgentDojo workspace experiment reduced targeted attack success on a live
-  Llama-3.3-70B agent from 9/140 to 0/140, while benign utility fell from 7/10 to
-  6/10. The separate four-suite deterministic run, without a real LLM, reported
-  0/949 attack success, 949/949 utility under attack and 97/97 benign utility.
-  These are scoped experiments, not guarantees for arbitrary agents or attacks.
+## Research & Open Source
+### Project Simurgh — Inspectable Authorization and Containment for AI Agents (Sole Author) · May 2026 – Present
+github.com/Raoof128/Project-Simurgh · 92 releases · software DOI 10.5281/zenodo.21737792
+- Designed and ran a transfer study (Oct 2026): 24 tasks, two trials each, three matched controls (credential-only,
+  composed, deny-all) and two models; 288 replayed branches. On Meta Llama-3.2-3B, composed host controls cut
+  restricted-state trials with new effects from 17/24 to 0/24, kept 23/24 useful completions and blocked no valid
+  proposal. On OpenAI gpt-6-luna the baseline was already 0/24, so the study reports no incremental protection there.
+  Protocol to published package took three days (15–17 Oct 2026).
+- Reported uncertainty per cluster: the 24 restricted trials fall into six states, so intervals are per state (Wilson 95%:
+  43.6–97.0% versus 0.0–39.0%); part of the gap holds by construction.
+- Detected and mitigated a defect in the live OpenAI integration: an eight-case Responses API workflow exposed a
+  role-placement error (8/8 declined). Retained the original traces; a frozen developer-role correction completed 2/3
+  authorized workflows and declined 5/5 restricted ones, with one refusal still open.
+- Captured a live Llama Guard 4 12B input classifier over a 180-case set (frozen stage, 2026) and produced
+  containment evidence for all 138 malicious cases it missed, 120 of them downstream injections outside an input-only
+  classifier's view; a coverage claim, not a ranking of classifiers.
+- Reduced a live Llama-3.3-70B agent's targeted attack success on AgentDojo from 9/140 to 0/140 over pre-
+  registered injections in the workspace suite (frozen stage, 2026); the full four-suite deterministic run scored 0/949
+  attack success with 949/949 unattacked utility (both scoped as small experiments).
+- Built the work to be reproduced: Ed25519-signed evidence archives replay offline in one command; 39 Lean 4
+  proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 Oct 2026 smoke
+  run.
+- Audited 919 of the project's own documents and published all 141 dated findings, including overstatements in
+  earlier closeouts, in the README.
 
-## Experience
-- AI Safety Evaluator (Claude), Alignerr: Anthropic safety-evaluation program, Jan–Mar 2026.
-- Cofounder, Syllabus-Sync: Macquarie University Incubator startup, May 2026 – Present;
-  security backend including WebAuthn, TOTP MFA, Postgres RLS and audit logging;
-  the 17 August 2026 CI test job passed 1,343 tests across 155 files; its separate
-  security job failed, so this is not a claim that the overall pipeline passed.
-- Security Engineer & Full-Stack Developer, Self-Employed (Freelance), Jan 2024 – Present;
-  5.0-star rating across 31 Airtasker reviews (profile reports 35 completed tasks).
-- IT Manager & Security Operations, Iran Pharmacy, Aug 2019 – Jan 2024; 50+ staff;
-  automated workflows reduced manual triage by about 30%.
+### The Invisible Window — Screen-Capture Evasion in WebRTC Proctoring (Sole Author) · Feb 2026 – May 2026
+github.com/Raoof128/invisible-window-research · IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495
+- Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while
+  contributing zero pixels to screen capture: 100% evasion of WebRTC proctoring on every platform tested, including
+  macOS 26.
+- Disclosed to Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) before publication; both classified
+  the behavior as by design. Proof-of-concept code is withheld on dual-use grounds.
+
+### Aion-BibleQA — Retrieval and Citation Faithfulness in a RAG System (Sole Author) · Jun 2026
+Preprint · DOI 10.5281/zenodo.20522874
+- Built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of
+  0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals.
+
+### Further Preprints and Shipped Security Tooling · 2024 – 2026
+- Banking Shield (DOI 10.5281/zenodo.20675513): machine-checked proofs that privacy-sensitive values never reach
+  AI-generated explanations; five-tester dry run, zero leaks.
+- Simurgh device-integrity proofs (DOI 10.5281/zenodo.20374849): preprint on privacy-preserving device integrity
+  proofs for high-stakes sessions.
+- Student-society event pilot (DOI 10.5281/zenodo.20549736): 31 consented sessions; ballot choices excluded from
+  records; HMAC-chained audit logs.
+- Mehr Guard: offline QR and URL phishing scanner in Kotlin Multiplatform; ensemble ML plus 25 heuristics at 87% F1
+  and under 5 ms, 19-scenario red-team mode.
+- Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only
+  inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (500,000+
+  packets/sec, synthetic single-thread benchmark); Project Zurvan, local-first knowledge engine serving claims and
+  decisions to agents over MCP (218 tests).
+
+## Professional Experience
+### AI Safety Evaluator (Claude) — Alignerr · Jan 2026 – Mar 2026
+Anthropic safety-evaluation program · Remote
+- Stress-tested Claude's safety guardrails: assessed outputs for exploitable code and harmful patterns, analyzed
+  circumvention methods, and delivered rubric-based findings.
+
+### Cofounder — Syllabus-Sync · May 2026 – Present
+Macquarie University Incubator startup · Sydney · syllabus-sync.app
+- Led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit
+  logging) of a shared Next.js/TypeScript codebase that converts university syllabi into structured data; 503 tests across
+  92 files.
+
+### Security Engineer & Full-Stack Developer — Self-Employed (Freelance) · Jan 2024 – Present
+Sydney
+- Delivered secure web applications for commercial clients with OWASP Top 10 controls and OAuth 2.0; 5.0-star rating
+  across 31 Airtasker reviews.
+
+### IT Manager & Security Operations — Iran Pharmacy · Aug 2019 – Jan 2024
+50+ staff · Iran
+- Investigated unauthorized-access incidents, built automated detection workflows that cut manual triage by about 30%,
+  and enforced least-privilege access.
 
 ## Education
-- Bachelor of Cyber Security, Macquarie University, Sydney; expected June 2027.
-  Final session February–June 2027 is fully online; coursework includes Natural
-  Language Processing and Machine Learning.
-- Diploma of Information Technology, Macquarie University, July 2023 – May 2024.
+- Bachelor of Cyber Security — Macquarie University, Sydney · Expected Jun 2027
+  Final session Feb–Jun 2027 is fully online · Coursework: Natural Language Processing & Machine Learning
+- Diploma of Information Technology — Macquarie University · 2023 – 2024
 
-## Further systems work
-- SentinelSSH: Rust MCP server for policy-scoped, read-only Linux-host inspection
-  through 17 typed tools and no shell. No repository URL is asserted here.
-- SentinelFlow: repository-reported 28.4M packets/sec in a single-thread synthetic
-  SYN-ACK packet-header parsing benchmark over 5M repeated packets, not full IDS throughput.
+## Certifications & Credentials
+- Anthropic (Jul 2026), 20 courses including: Building with the Claude API · Claude Code in Action · Model Context
+  Protocol
+- Macquarie University micro-credentials (2026, 93–100%): Security of AI · Application of AI · Data Security &
+  Information Privacy · DevSecOps · Identity & Access Management
 
 ## Languages available
 Published in 5 languages: English (/), Persian (/fa), Arabic (/ar), Chinese (/zh), Spanish (/es).
