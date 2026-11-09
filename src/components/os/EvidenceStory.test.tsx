@@ -259,12 +259,10 @@ describe("Simurgh evidence walkthrough", () => {
       expect(
         screen.getByRole("link", { name: copy.paperLink }),
       ).toHaveAttribute("href", "https://doi.org/10.5281/zenodo.20376495");
+      // The research repository is private; the paper is the public source.
       expect(
-        screen.getByRole("link", { name: copy.repositoryLink }),
-      ).toHaveAttribute(
-        "href",
-        "https://github.com/Raoof128/invisible-window-research",
-      );
+        document.querySelector('a[href*="github.com/Raoof128/invisible-window-research"]'),
+      ).toBeNull();
     },
   );
 

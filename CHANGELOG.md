@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-09 (Australia/Sydney) — Invisible Window repository made private
+
+- **Scope**: Owner decision after the résumé alignment: make `github.com/Raoof128/invisible-window-research` private so the résumé line "Proof-of-concept code is withheld on dual-use grounds" is true. Owner accepted the 92.8% micro-credential grade against the résumé's 93–100% range and the About-page lab list as they are.
+- **Summary**: The repository is now private (it had 4 stars, 0 watchers, 0 forks; GitHub erases stars when a repository goes private). The site marks it `repoVisibility: "private"`, so the project page shows "Request source" by email and the private-source note, and JSON-LD carries `conditionsOfAccess`. The Invisible Window evidence story no longer links to the repository; its paper link remains. The résumé's plain-text line naming the repository stays verbatim.
+- **Files Changed**: `src/lib/data.ts`, `src/components/os/InvisibleWindowEvidenceStory.tsx`, `src/lib/project-content/evidence-story-copy.ts`, `src/components/os/EvidenceStory.test.tsx`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: `gh repo view` reports PRIVATE and an anonymous request returns 404. 747/747 unit tests, lint, typecheck, schema/HTTP/security/tooling/dependency suites, build, static security and agent audits passed. The built project page has no direct repository link.
+- **Follow-ups**: None for the owner decisions above.
+
 ### Raouf: 2026-11-09 (Australia/Sydney) — Site aligned line by line with the Anthropic Research Resident résumé
 
 - **Scope**: Owner required the whole site to be 100% based on `Mohammad_Raouf_Abedini_Resume_Anthropic_Research_Resident.pdf`, line by line. Owner decisions: apply the résumé's figures site-wide (including project pages and write-ups), use its proof-of-concept wording verbatim, and omit the phone number from the web page and the downloadable PDF.

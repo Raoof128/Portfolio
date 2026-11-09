@@ -65,6 +65,7 @@ export const projects: Record<string, Project> = {
     ],
     links: {
       repo: "https://github.com/Raoof128/invisible-window-research",
+      repoVisibility: "private",
       paper: "/Invisible_Window_Research_Preprint_V2.0.pdf",
       preprint: "https://zenodo.org/records/20376495",
       caseStudy: "/projects/invisible-window-research",

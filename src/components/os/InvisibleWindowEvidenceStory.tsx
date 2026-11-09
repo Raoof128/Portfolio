@@ -5,8 +5,6 @@ import type { Locale } from "@/i18n";
 import type { InvisibleWindowStoryCopy } from "@/lib/project-content/evidence-story-copy";
 import "./evidence-story-invisible.css";
 
-const invisibleWindowRepository =
-  "https://github.com/Raoof128/invisible-window-research";
 const invisibleWindowPaper = "https://doi.org/10.5281/zenodo.20376495";
 
 /** Paired schematic showing a display/capture discrepancy within stated test scope. */
@@ -137,13 +135,6 @@ export function InvisibleWindowEvidenceStory({
             rel="noopener noreferrer"
           >
             {copy.paperLink}
-          </a>
-          <a
-            href={invisibleWindowRepository}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {copy.repositoryLink}
           </a>
         </div>
       </figcaption>

@@ -40,7 +40,6 @@ export interface InvisibleWindowStoryCopy {
   limitations: string[];
   sourceNote: string;
   paperLink: string;
-  repositoryLink: string;
 }
 
 export interface ZurvanEvidenceStoryCopy {
@@ -316,7 +315,6 @@ export const invisibleWindowStoryCopy: Record<
     sourceNote:
       "The diagram explains a documented display/capture boundary; the panels contain no measured or recorded output.",
     paperLink: "Read the research preprint",
-    repositoryLink: "View the research repository",
   },
   fa: {
     eyebrow: "مشاهده‌پذیری ضبط",
@@ -351,7 +349,6 @@ export const invisibleWindowStoryCopy: Record<
     sourceNote:
       "نمودار مرز مستند میان نمایش و ضبط را توضیح می‌دهد؛ پنل‌ها خروجی اندازه‌گیری‌شده یا ضبط‌شده ندارند.",
     paperLink: "خواندن پیش‌چاپ پژوهش",
-    repositoryLink: "مشاهدهٔ مخزن پژوهش",
   },
   ar: {
     eyebrow: "قابلية رصد الالتقاط",
@@ -384,7 +381,6 @@ export const invisibleWindowStoryCopy: Record<
     sourceNote:
       "يوضح الرسم حدًا موثقًا بين العرض والالتقاط؛ ولا تعرض اللوحتان مخرجات مقاسة أو مسجلة.",
     paperLink: "اقرأ المسودة البحثية",
-    repositoryLink: "عرض مستودع البحث",
   },
   zh: {
     eyebrow: "捕获可观测性",
@@ -416,7 +412,6 @@ export const invisibleWindowStoryCopy: Record<
     ],
     sourceNote: "图示解释文档记录的显示与捕获边界；面板不展示测量或录制输出。",
     paperLink: "阅读研究预印本",
-    repositoryLink: "查看研究仓库",
   },
   es: {
     eyebrow: "Observabilidad de captura",
@@ -450,7 +445,6 @@ export const invisibleWindowStoryCopy: Record<
     sourceNote:
       "El esquema explica una frontera documentada entre visualización y captura; los paneles no contienen salidas medidas ni grabadas.",
     paperLink: "Leer la prepublicación de investigación",
-    repositoryLink: "Ver el repositorio de investigación",
   },
 };
 
