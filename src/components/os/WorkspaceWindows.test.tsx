@@ -203,3 +203,101 @@ describe("Copy Link feedback", () => {
     },
   );
 });
+
+describe("Full Screen command", () => {
+  const original = {
+    enabled: Object.getOwnPropertyDescriptor(document, "fullscreenEnabled"),
+    element: Object.getOwnPropertyDescriptor(document, "fullscreenElement"),
+    exit: Object.getOwnPropertyDescriptor(document, "exitFullscreen"),
+    request: Object.getOwnPropertyDescriptor(
+      Element.prototype,
+      "requestFullscreen",
+    ),
+  };
+  function restore(
+    target: object,
+    key: string,
+    descriptor: PropertyDescriptor | undefined,
+  ) {
+    if (descriptor) Object.defineProperty(target, key, descriptor);
+    else Reflect.deleteProperty(target, key);
+  }
+  afterEach(() => {
+    restore(document, "fullscreenEnabled", original.enabled);
+    restore(document, "fullscreenElement", original.element);
+    restore(document, "exitFullscreen", original.exit);
+    restore(Element.prototype, "requestFullscreen", original.request);
+  });
+
+  /** A minimal Fullscreen API: the requesting element becomes the fullscreen element. */
+  function installFullScreen() {
+    let current: Element | null = null;
+    const setCurrent = (element: Element | null) => {
+      current = element;
+    };
+    const change = () => document.dispatchEvent(new Event("fullscreenchange"));
+    Object.defineProperty(document, "fullscreenEnabled", {
+      configurable: true,
+      value: true,
+    });
+    Object.defineProperty(document, "fullscreenElement", {
+      configurable: true,
+      get: () => current,
+    });
+    Object.defineProperty(document, "exitFullscreen", {
+      configurable: true,
+      value: vi.fn(async () => {
+        current = null;
+        change();
+      }),
+    });
+    Object.defineProperty(Element.prototype, "requestFullscreen", {
+      configurable: true,
+      value: vi.fn(async function (this: Element) {
+        setCurrent(this);
+        change();
+      }),
+    });
+  }
+
+  it("is not offered where the browser cannot enter full screen", () => {
+    Object.defineProperty(document, "fullscreenEnabled", {
+      configurable: true,
+      value: false,
+    });
+    renderWindow();
+    expect(screen.queryByRole("button", { name: "Full Screen" })).toBeNull();
+  });
+
+  it("puts the window frame in full screen and back, reporting the state", async () => {
+    installFullScreen();
+    const { container } = renderWindow();
+    const frame = container.querySelector("[data-window-path]");
+    const enter = screen.getByRole("button", { name: "Full Screen" });
+    expect(enter).toHaveAttribute("aria-pressed", "false");
+
+    fireEvent.click(enter);
+    const exit = await screen.findByRole("button", { name: "Exit Full Screen" });
+    expect(document.fullscreenElement).toBe(frame);
+    expect(frame).toHaveAttribute("data-fullscreen", "true");
+    expect(exit).toHaveAttribute("aria-pressed", "true");
+
+    fireEvent.click(exit);
+    expect(
+      await screen.findByRole("button", { name: "Full Screen" }),
+    ).toBeVisible();
+    expect(document.fullscreenElement).toBeNull();
+    expect(frame).not.toHaveAttribute("data-fullscreen");
+  });
+
+  it("follows a full screen exit made outside the button, such as Esc", async () => {
+    installFullScreen();
+    renderWindow();
+    fireEvent.click(screen.getByRole("button", { name: "Full Screen" }));
+    await screen.findByRole("button", { name: "Exit Full Screen" });
+    await act(async () => {
+      await document.exitFullscreen();
+    });
+    expect(screen.getByRole("button", { name: "Full Screen" })).toBeVisible();
+  });
+});

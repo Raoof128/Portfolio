@@ -260,3 +260,42 @@
     }
   }
 }
+
+/* Full screen (toolbar command, browser Fullscreen API). The frame becomes the top layer:
+   it fills the display in every layout (floating, expanded or phone document flow), keeps
+   its title bar and toolbar, and its body is the only scroller. The inline geometry of a
+   floating window is overridden for the duration; leaving full screen restores it. */
+.os-workspace-window:fullscreen {
+  position: fixed;
+  inset: 0 !important;
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
+  transform: none !important;
+  overflow: hidden;
+}
+.os-workspace-window:fullscreen > .os-windowbar,
+.os-workspace-window:fullscreen > .os-window-toolbar {
+  flex: 0 0 auto;
+}
+.os-workspace-window:fullscreen > .os-page-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 24px;
+}
+/* Nothing to drag or size while the frame owns the screen. */
+.os-shell.win7 .os-workspace-window:fullscreen > .os-window-resize,
+.os-shell.win7 .os-workspace-window:fullscreen .title-bar-controls > .os-expand {
+  /* Caption buttons set their own display at higher specificity; this is a state override. */
+  display: none !important;
+}
+.os-workspace-window:fullscreen .os-window-title--movable {
+  cursor: default;
+}

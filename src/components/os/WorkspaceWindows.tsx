@@ -7,10 +7,11 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type KeyboardEvent,
 } from "react";
 import Link from "next/link";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, Check, Maximize2, Minimize2 } from "lucide-react";
 import { locales, type Locale } from "@/i18n";
 import type { SearchEntry } from "@/lib/os-search-query";
 import type { OSAppDescriptor } from "@/lib/os-app-schema";
@@ -37,6 +38,20 @@ import "./workspace-windows.css";
  * Strings this component owns. They are not in window-copy or os-copy so the window
  * controls can name the window they act on. `{title}` is replaced with the window title.
  */
+function subscribeNever() {
+  return () => {};
+}
+function fullScreenSupported() {
+  return (
+    document.fullscreenEnabled === true &&
+    typeof document.documentElement.requestFullscreen === "function"
+  );
+}
+function subscribeFullScreen(notify: () => void) {
+  document.addEventListener("fullscreenchange", notify);
+  return () => document.removeEventListener("fullscreenchange", notify);
+}
+
 type LocalWindowCopy = {
   minimizeWindow: string;
   fullSizeWindow: string;
@@ -47,6 +62,9 @@ type LocalWindowCopy = {
   reopen: string;
   /** Accessible name of the read-only field that shows a link that could not be copied. */
   addressLabel: string;
+  /** Toolbar command that fills the whole screen with this window (browser full screen). */
+  fullScreen: string;
+  exitFullScreen: string;
 };
 
 const localWindowCopy: Record<Locale, LocalWindowCopy> = {
@@ -59,6 +77,8 @@ const localWindowCopy: Record<Locale, LocalWindowCopy> = {
     closedNotice: "Closed {title}.",
     reopen: "Reopen",
     addressLabel: "Address to copy",
+    fullScreen: "Full Screen",
+    exitFullScreen: "Exit Full Screen",
   },
   fa: {
     minimizeWindow: "کمینه کردن: {title}",
@@ -69,6 +89,8 @@ const localWindowCopy: Record<Locale, LocalWindowCopy> = {
     closedNotice: "{title} بسته شد.",
     reopen: "بازگشایی",
     addressLabel: "نشانی برای کپی کردن",
+    fullScreen: "تمام‌صفحه",
+    exitFullScreen: "خروج از تمام‌صفحه",
   },
   ar: {
     minimizeWindow: "تصغير: {title}",
@@ -79,6 +101,8 @@ const localWindowCopy: Record<Locale, LocalWindowCopy> = {
     closedNotice: "تم إغلاق {title}.",
     reopen: "إعادة فتح",
     addressLabel: "العنوان للنسخ",
+    fullScreen: "ملء الشاشة",
+    exitFullScreen: "الخروج من ملء الشاشة",
   },
   es: {
     minimizeWindow: "Minimizar: {title}",
@@ -89,6 +113,8 @@ const localWindowCopy: Record<Locale, LocalWindowCopy> = {
     closedNotice: "Se cerró {title}.",
     reopen: "Reabrir",
     addressLabel: "Dirección para copiar",
+    fullScreen: "Pantalla completa",
+    exitFullScreen: "Salir de pantalla completa",
   },
   zh: {
     minimizeWindow: "最小化：{title}",
@@ -99,6 +125,8 @@ const localWindowCopy: Record<Locale, LocalWindowCopy> = {
     closedNotice: "已关闭{title}。",
     reopen: "重新打开",
     addressLabel: "要复制的地址",
+    fullScreen: "全屏",
+    exitFullScreen: "退出全屏",
   },
 };
 
@@ -524,6 +552,38 @@ function ApplicationWindow({
   }
 
   const hidden = minimized || locked || (!reading.desktop && !active);
+
+  // Full screen uses the browser Fullscreen API on the window frame, so the frame, its
+  // toolbar and its own scrollbar fill the display and Esc leaves it. Support is read after
+  // mount (it is unknown on the server), and the command is not rendered without it.
+  const canFullScreen = useSyncExternalStore(
+    subscribeNever,
+    fullScreenSupported,
+    () => false,
+  );
+  const fullScreen = useSyncExternalStore(
+    subscribeFullScreen,
+    () => !!pane.current && document.fullscreenElement === pane.current,
+    () => false,
+  );
+  // A window that is minimised, locked away or no longer the active page must not stay on
+  // top of the screen.
+  useEffect(() => {
+    if (
+      (hidden || !active) &&
+      pane.current &&
+      document.fullscreenElement === pane.current
+    )
+      void document.exitFullscreen().catch(() => {});
+  }, [hidden, active]);
+  function toggleFullScreen() {
+    const frame = pane.current;
+    if (!frame) return;
+    // A refusal (permissions policy, embedded frame) leaves the window as it was.
+    if (document.fullscreenElement === frame)
+      void document.exitFullscreen().catch(() => {});
+    else void frame.requestFullscreen().catch(() => {});
+  }
   // A user-initiated show runs the one-shot open animation (research-os.css). Windows
   // already open at load never set it, so the first paint is not delayed by an
   // opacity-zero window. A window that mounts after load was opened by the user, so it
@@ -556,6 +616,7 @@ function ApplicationWindow({
       data-opening={opening ? "true" : undefined}
       data-state={leaving ?? undefined}
       data-expanded={expanded ? "true" : undefined}
+      data-fullscreen={fullScreen ? "true" : undefined}
       onAnimationEnd={(event) => {
         // Animations on children bubble up to the frame, so only the frame's own count.
         if (event.target !== event.currentTarget) return;
@@ -624,7 +685,10 @@ function ApplicationWindow({
           data-truncated={truncated ? "true" : undefined}
           lang={titleLocale}
           dir={locales[titleLocale].dir}
-          onPointerDown={(event) => reading.beginPointer(event, "move")}
+          onPointerDown={(event) => {
+            // The frame owns the screen in full screen; there is nowhere to drag it.
+            if (!fullScreen) reading.beginPointer(event, "move");
+          }}
           {...reading.pointerHandlers}
         >
           {title}
@@ -714,7 +778,23 @@ function ApplicationWindow({
             copy.copyLink
           )}
         </button>
-        {active && reading.desktop && !hidden && (
+        {canFullScreen && (
+          <button
+            type="button"
+            className="os-control os-window-copy os-window-fullscreen"
+            onClick={toggleFullScreen}
+            aria-pressed={fullScreen}
+            tabIndex={active ? 0 : -1}
+          >
+            {fullScreen ? (
+              <Minimize2 aria-hidden="true" />
+            ) : (
+              <Maximize2 aria-hidden="true" />
+            )}
+            <span>{fullScreen ? local.exitFullScreen : local.fullScreen}</span>
+          </button>
+        )}
+        {active && reading.desktop && !hidden && !fullScreen && (
           <ReadingWindowControls
             locale={locale}
             onMove={(delta) => {

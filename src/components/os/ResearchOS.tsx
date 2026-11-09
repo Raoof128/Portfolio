@@ -630,6 +630,9 @@ export function ResearchOS({
   const openSearch = useCallback(() => {
     const dialog = searchDialog.current;
     if (!dialog || dialog.open) return;
+    // Search lives outside a full-screen window, so it would open unseen behind it.
+    if (document.fullscreenElement)
+      void document.exitFullscreen().catch(() => {});
     // BODY is what focus rests on when nothing is focused (Ctrl/Cmd+K from a bare page). It
     // is not a useful place to return to, so restoreSearchFocus falls back to the launcher.
     const active = document.activeElement;
@@ -776,6 +779,11 @@ export function ResearchOS({
       ) {
         event.preventDefault();
         openSearch();
+      } else if (event.key === "Escape" && document.fullscreenElement) {
+        // A full-screen window leaves full screen on Escape and stays open. Browsers
+        // usually consume this key themselves; this covers the ones that deliver it.
+        event.preventDefault();
+        void document.exitFullscreen().catch(() => {});
       } else if (
         event.key === "Escape" &&
         !isHome &&
