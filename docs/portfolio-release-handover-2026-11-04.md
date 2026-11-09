@@ -6,7 +6,24 @@ release evidence. Earlier audit reports and the
 builds, measurements and limitations. Their earlier no-deployment statements
 describe those historical stages.
 
-## Current release: reviewer readiness and Aero round 3 (9 November 2026)
+## Current release: résumé alignment (9 November 2026)
+
+`main` is at `16cc419485385a343da079428cd8de94186c0e09`, live on both
+production origins (deploy workflow
+[42541382082](https://github.com/Raoof128/Portfolio/actions/runs/42541382082),
+https://3e4b1102.raoufabedini.pages.dev, content revision 2026-11-09).
+
+- The whole site follows the Anthropic Research Resident résumé. /resume
+  mirrors the PDF line by line in five languages, and the downloadable PDF is
+  that résumé without the phone number.
+- Conflicting figures and wording elsewhere (projects, write-ups, About,
+  llms files) now use the résumé's; see the 9 November entry in
+  [CHANGELOG](../CHANGELOG.md) for the list.
+- Open for the owner: the public `poc/` folder in invisible-window-research
+  contradicts "withheld"; one 92.8% micro-credential grade sits under the
+  résumé's 93–100%; About-page lab list is not on the résumé.
+
+## Reviewer readiness and Aero round 3 (9 November 2026)
 
 `main` is at `e7de6a8461076fb7dc232138e5887ca16d4a1641`, a fast-forward of
 the `claude/dazzling-feynman-cp1q08` branch (15 commits from `38842e2`). It is
