@@ -279,6 +279,35 @@ test("increased contrast and reduced transparency use opaque window frames", asy
   }
 });
 
+test("Full Size fills the screen down to the taskbar on every window", async ({ page }, info) => {
+  await prepare(page);
+  const dockTop = () => page.locator(".os-dock").evaluate((e) => Math.round(e.getBoundingClientRect().top));
+  const box = (selector: string) => page.locator(selector).first().evaluate((e) => {
+    const r = e.getBoundingClientRect();
+    return { top: Math.round(r.top), left: Math.round(r.left), right: Math.round(r.right), bottom: Math.round(r.bottom) };
+  });
+  const width = page.viewportSize()!.width;
+  // Home desktop windows: Full Size used to widen the grid cell only, so the Proof Atlas ran
+  // under the taskbar and Research Highlights barely changed.
+  await ready(page, "/");
+  await page.locator(".os-enter").click();
+  await expect(page.locator(".os-welcome")).not.toBeVisible();
+  for (const [title, selector] of [["Where the evidence connects", ".proof-atlas--desktop"], ["Research Highlights", ".os-intro"]]) {
+    const toggle = page.getByRole("button", { name: `Full Size: ${title}`, exact: true });
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-pressed", "true");
+    expect(await box(selector)).toEqual({ top: 0, left: 0, right: width, bottom: await dockTop() });
+    await capture(page, info, `full-size-${selector.slice(1)}`);
+    await toggle.click();
+  }
+  // App windows: maximise used to stop 64px short of the taskbar.
+  await ready(page, "/projects");
+  await pane(page).locator(".os-expand").click();
+  await expect(pane(page)).toHaveAttribute("data-expanded", "true");
+  expect(await box('[data-window-path][data-active="true"]:not([hidden])'))
+    .toEqual({ top: 0, left: 0, right: width, bottom: await dockTop() });
+});
+
 test("keyboard workspace entry and five-language 404 recovery", async ({ page }, info) => {
   await prepare(page);
   await ready(page, "/");

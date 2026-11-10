@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-10 (Australia/Sydney) — Full Size fills the screen on every window
+
+- **Scope**: Owner reported, tested on different machines, that the Proof Atlas window on the home desktop goes under the screen when made full size, and that the other windows never fill the screen.
+- **Summary**: The title-bar Full Size button (not the toolbar Full Screen command, which was fine) was the cause. On the home desktop it only widened the window across its grid row, so the Proof Atlas stayed in place and ran under the taskbar, and Research Highlights barely changed. App windows (Projects, Write-ups, About, Résumé, Contact, project pages) stopped 64px above the taskbar to keep the shortcut row clear. Both now fill the screen from the top edge down to the top of the floating taskbar, edge to edge, with the window body as the only scroller. Phones keep the page flow. Drag and resize bounds (`window-geometry.ts`) are unchanged.
+- **Files Changed**: `src/components/os/win7-desktop.css`, `src/components/os/win7-windows.css`, `scripts/browser-regressions/playwright/portfolio.spec.ts`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: Measured at 1440x900 (taskbar top 721px): live Atlas 474→971, Research Highlights 24→371 and project window 0→665; fixed build 0→721 for all three, full width. New Playwright test "Full Size fills the screen down to the taskbar on every window" passes in Chromium and Firefox; existing window-control and full-screen tests still pass. Typecheck, source lint and 750/750 unit tests passed. WebKit could not be run against the local `wrangler pages dev` preview (it loaded no CSS or JS for any test, including untouched ones), so WebKit is checked against the deployed site instead.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-11-09 (Australia/Sydney) — Invisible Window repository made private
 
 - **Scope**: Owner decision after the résumé alignment: make `github.com/Raoof128/invisible-window-research` private so the résumé line "Proof-of-concept code is withheld on dual-use grounds" is true. Owner accepted the 92.8% micro-credential grade against the résumé's 93–100% range and the About-page lab list as they are.

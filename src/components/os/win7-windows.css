@@ -36,15 +36,16 @@
   max-width: none;
   margin-inline: 0;
 }
-/* Maximise: the frame fills the viewport edge to edge, stopping above the taskbar and the desktop
-   shortcut row (48px plus a 16px gap, as FOOTER_RESERVE in window-geometry.ts). It has no radius
-   or shadow. The stored normal rectangle is untouched, so Restore size returns to it. */
+/* Maximise: the frame fills the screen edge to edge and stops at the top of the floating
+   taskbar, covering the desktop shortcut row as a maximised window does. (Dragging and resizing
+   still keep normal frames above that row: FOOTER_RESERVE in window-geometry.ts.) It has no
+   radius or shadow. The stored normal rectangle is untouched, so Restore size returns to it. */
 .os-shell.win7 .os-workspace-window.os-window--floating[data-expanded="true"] {
   --w7-w-bdr: 0px;
   left: 0 !important;
   top: 0 !important;
   width: 100% !important;
-  height: calc(100% - var(--win7-taskbar-h) - 64px) !important;
+  height: calc(100% - var(--win7-taskbar-h) - var(--win7-taskbar-bottom)) !important;
   border-radius: 0;
   box-shadow: none;
 }

@@ -191,6 +191,28 @@
   grid-column: 1 / -1;
 }
 
+/* Where the desktop windows scroll inside their frames (the band above), Full Size fills the
+   screen down to the top of the taskbar, as the app windows' maximise does. The frame is
+   fixed to the viewport, so it neither runs under the taskbar nor depends on where the window
+   sat in the grid; its body is the only scroller. Phones keep the page flow. */
+@media (min-width: 701px), (max-height: 500px) {
+  .os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window.is-expanded {
+    --w7-w-bdr: 0px;
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 30;
+    box-sizing: border-box;
+    inline-size: auto;
+    max-inline-size: none;
+    block-size: calc(100dvh - var(--win7-taskbar-h) - var(--win7-taskbar-bottom));
+    max-block-size: none;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
 /* Keep the reviewer introduction first on tablet as well as phone. The direct
    research, résumé and contact actions are useful before the desktop launchers. */
 
