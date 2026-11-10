@@ -64,6 +64,25 @@
   background: var(--w7-el-grad-a);
   transition: opacity 0.3s;
 }
+/* A control that holds an icon uses canonical inline formatting, as a 7.css button does
+   for the same markup: one line box with the svg sitting on the text baseline, centred as
+   a whole. A flex row centred each child on its own and moved the icon 1.5px. Tailwind
+   preflight makes every svg a block, so the icon is returned to inline here. align-content
+   centres the line in a link, which (unlike a button) does not centre its own content.
+   Text-only controls keep the adapter's flex row; their geometry is unchanged. */
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *):has(> svg) {
+  display: inline-block;
+  align-content: center;
+  white-space: normal;
+  overflow-wrap: normal;
+}
+.os-shell.win7
+  :is(.os-button, .os-button--secondary, .os-project-resource, .os-document-button, .os-contact-socials a, .os-evidence-story-links a):not(.os-welcome *)
+  > svg {
+  display: inline;
+  vertical-align: baseline;
+}
 /* A primary link reproduces how 7.css renders a default button: the hover gradient on the
    grey resting border (upstream's :not(:hover) rule outranks .default's blue), without the
    pulsing loop. Links get no canonical button rules, so this adapter supplies the face. */

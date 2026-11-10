@@ -186,14 +186,16 @@ export function ReadingWindowControls({
               onKeyDown={(event) => keys(event, "move")}
             >
               <legend>{copy.moveWindow}</legend>
-              <p id={moveHintId}>{copy.moveHint}</p>
+              <p className="os-window-hint" id={moveHintId}>
+                {copy.moveHint}
+              </p>
               <div className="os-window-step-controls">
                 <button
                   type="button"
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: -24, y: 0 })}
                 >
-                  <ArrowLeft aria-hidden="true" />
+                  <ArrowLeft size={16} aria-hidden="true" />{" "}
                   <span>{copy.moveLeft}</span>
                 </button>
                 <button
@@ -201,7 +203,7 @@ export function ReadingWindowControls({
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: 0, y: -24 })}
                 >
-                  <ArrowUp aria-hidden="true" />
+                  <ArrowUp size={16} aria-hidden="true" />{" "}
                   <span>{copy.moveUp}</span>
                 </button>
                 <button
@@ -209,7 +211,7 @@ export function ReadingWindowControls({
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: 0, y: 24 })}
                 >
-                  <ArrowDown aria-hidden="true" />
+                  <ArrowDown size={16} aria-hidden="true" />{" "}
                   <span>{copy.moveDown}</span>
                 </button>
                 <button
@@ -217,7 +219,7 @@ export function ReadingWindowControls({
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onMove({ x: 24, y: 0 })}
                 >
-                  <ArrowRight aria-hidden="true" />
+                  <ArrowRight size={16} aria-hidden="true" />{" "}
                   <span>{copy.moveRight}</span>
                 </button>
               </div>
@@ -227,14 +229,16 @@ export function ReadingWindowControls({
               onKeyDown={(event) => keys(event, "resize")}
             >
               <legend>{copy.resizeWindow}</legend>
-              <p id={resizeHintId}>{copy.resizeHint}</p>
+              <p className="os-window-hint" id={resizeHintId}>
+                {copy.resizeHint}
+              </p>
               <div className="os-window-step-controls">
                 <button
                   type="button"
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: -24, y: 0 })}
                 >
-                  <ChevronsLeftRight aria-hidden="true" />
+                  <ChevronsLeftRight size={16} aria-hidden="true" />{" "}
                   <span>{copy.narrower}</span>
                 </button>
                 <button
@@ -242,7 +246,7 @@ export function ReadingWindowControls({
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: 24, y: 0 })}
                 >
-                  <ChevronsLeftRight aria-hidden="true" />
+                  <ChevronsLeftRight size={16} aria-hidden="true" />{" "}
                   <span>{copy.wider}</span>
                 </button>
                 <button
@@ -250,7 +254,7 @@ export function ReadingWindowControls({
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: 0, y: -24 })}
                 >
-                  <ChevronsUpDown aria-hidden="true" />
+                  <ChevronsUpDown size={16} aria-hidden="true" />{" "}
                   <span>{copy.shorter}</span>
                 </button>
                 <button
@@ -258,7 +262,7 @@ export function ReadingWindowControls({
                   className="os-button os-button--secondary os-window-step"
                   onClick={() => onResize({ x: 0, y: 24 })}
                 >
-                  <ChevronsUpDown aria-hidden="true" />
+                  <ChevronsUpDown size={16} aria-hidden="true" />{" "}
                   <span>{copy.taller}</span>
                 </button>
               </div>

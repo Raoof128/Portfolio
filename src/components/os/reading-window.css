@@ -69,31 +69,39 @@
   white-space: normal;
   text-align: start;
 }
+/* The group box takes the canonical 7.css font (9pt, normal line height), as 7.css's own
+   fieldset does; the locale face follows the shell token as the other controls do. */
 .os-window-controls-panel fieldset {
   margin: 0 0 16px;
   padding: 0;
   border: 0;
+  font: var(--w7-font);
+  font-family: var(--win7-font);
 }
-.os-window-controls-panel p {
+/* Hint text is marked with a class, so the panel does not restyle paragraphs in the group
+   box. The size stays on the readable --text-xs step (12px by default). */
+.os-window-controls-panel .os-window-hint {
   margin: 4px 0 8px;
   color: var(--os-muted);
   font-size: var(--text-xs);
   line-height: 1.5;
 }
+/* Step buttons are intrinsic width and wrap as a row on fine pointers. Their icons carry
+   their size as attributes (size={16} in ReadingWindowControls.tsx), so the canonical button
+   metrics apply and the reference copy matches. Coarse pointers keep the two-column grid. */
 .os-window-step-controls {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
-.os-shell .os-window-controls-panel .os-window-step {
-  gap: 6px;
-  min-width: 0;
-  padding-inline: 10px;
-  font-size: var(--text-s);
-}
-.os-window-controls-panel .os-window-step svg {
-  width: 16px;
-  height: 16px;
+@media (pointer: coarse) {
+  .os-window-step-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .os-shell .os-window-controls-panel .os-window-step {
+    min-width: 0;
+  }
 }
 .os-window-controls-footer {
   display: grid;
