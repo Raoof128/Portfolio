@@ -809,6 +809,13 @@
 .os-shell.win7 .os-search-field:focus-within {
   outline: none;
 }
+/* The visible "Search" label is underlined while the field has focus: a cue beside the
+   control, which itself stays as 7.css draws it. */
+.os-shell.win7 .os-search-field:has(input:focus-visible) .os-search-label {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
 @media (prefers-contrast: more), (forced-colors: active) {
   .os-shell.win7 .os-search-field:focus-within {
     outline: 2px solid #0066cc;

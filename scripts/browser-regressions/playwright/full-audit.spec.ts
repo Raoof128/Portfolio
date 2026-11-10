@@ -438,6 +438,43 @@ for (const hasTouch of [false, true]) {
   });
 }
 
+// The 7.css fields are left as they ship, so their rows carry the state the canonical edge
+// does not: an underlined label while the field has focus, and a marked label with an error
+// badge when it is invalid. These assertions fail if the cues beside the control go missing.
+test.describe("cues beside canonical fields", () => {
+  test("a focused field underlines its label and an invalid one is marked without colour alone", async ({ page }) => {
+    await prepare(page, "light");
+    await ready(page, "/contact", "light");
+    const label = page.locator('label[for="contact-name"]');
+    const decoration = () => label.evaluate((element) => getComputedStyle(element).textDecorationLine);
+    expect(await decoration()).toBe("none");
+    await page.locator("#contact-name").focus();
+    expect(await decoration()).toBe("underline");
+    await page.locator('.os-secure-form button[type="submit"]').click();
+    const error = page.locator("#contact-name-error");
+    await expect(error).toBeVisible();
+    await expect(page.locator("#contact-name")).toHaveAttribute("aria-invalid", "true");
+    const badge = await error.evaluate((element) => {
+      const style = getComputedStyle(element, "::before");
+      return { content: style.content, width: parseFloat(style.inlineSize) };
+    });
+    expect(badge.content).toContain("!");
+    expect(badge.width).toBeGreaterThanOrEqual(12);
+    expect(await label.evaluate((element) => Number(getComputedStyle(element).fontWeight))).toBeGreaterThanOrEqual(600);
+  });
+
+  test("the Projects search label is underlined while its field has focus", async ({ page }) => {
+    await prepare(page, "light");
+    await ready(page, "/projects", "light");
+    const field = pane(page).locator('.os-explorer-search input[type="search"]');
+    const label = pane(page).locator(".os-explorer-controls label").first();
+    expect(await label.evaluate((element) => getComputedStyle(element).textDecorationLine)).toBe("none");
+    await field.focus();
+    expect(await label.evaluate((element) => getComputedStyle(element).textDecorationLine)).toBe("underline");
+  });
+});
+
+
 test.describe("short viewport entry", () => {
   // On short screens the taskbar sits in normal flow after the page. Revealing the pressed dock
   // pin must scroll only its strip, never the window, so a cold visit opens at the heading.

@@ -272,7 +272,13 @@
   padding-inline-start: 6px;
 }
 /* 7.css gives a focused search field the caret only; the ring for visitors who ask for
-   more contrast is in win7-theme.css. */
+   more contrast is in win7-theme.css. The field's visible label is underlined while the
+   field has focus, so the cue sits beside the control and the control stays canonical. */
+.os-shell .os-project-explorer .os-explorer-controls label:has(+ .os-explorer-search input:focus-visible) {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
 .os-shell .os-project-explorer .os-explorer-controls select {
   width: 100%;
   min-width: 0;
