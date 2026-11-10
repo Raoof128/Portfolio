@@ -247,7 +247,7 @@ export function CopyAddressControl() {
         onClick={copyAddress}
         disabled={!hydrated}
       >
-        <Copy aria-hidden="true" size={14} />
+        <Copy aria-hidden="true" size={14} />{" "}
         {s.copyAddress}
       </button>
       <span role="status" className="os-secure-copy-status">

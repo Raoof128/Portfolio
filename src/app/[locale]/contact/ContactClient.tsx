@@ -73,13 +73,13 @@ export function ContactClient() {
         <h2 id={contentId("contact-elsewhere")}>{copy.contactElsewhere}</h2>
         <div>
           <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-            <Github aria-hidden="true" size={20} />
+            <Github aria-hidden="true" size={20} />{" "}
             <span>GitHub</span>
             <span className="sr-only">{supportCopy.opensInNewTab}</span>
             <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />
           </a>
           <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-            <Linkedin aria-hidden="true" size={20} />
+            <Linkedin aria-hidden="true" size={20} />{" "}
             <span>LinkedIn</span>
             <span className="sr-only">{supportCopy.opensInNewTab}</span>
             <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />
@@ -87,7 +87,7 @@ export function ContactClient() {
           <a href={ORCID_URL} target="_blank" rel="noopener noreferrer">
             <span className="os-contact-orcid" aria-hidden="true">
               iD
-            </span>
+            </span>{" "}
             <span>ORCID</span>
             <span className="sr-only">{supportCopy.opensInNewTab}</span>
             <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />

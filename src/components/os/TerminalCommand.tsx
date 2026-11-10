@@ -117,7 +117,7 @@ export function TerminalCommand({
             <Check size={16} aria-hidden="true" />
           ) : (
             <Copy size={16} aria-hidden="true" />
-          )}
+          )}{" "}
           {status === "copied" ? labels.copied : labels.copy}
         </button>
       </div>

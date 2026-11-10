@@ -11,7 +11,10 @@
   font-size: var(--win7-body-size, 16px);
   line-height: 1.6;
   min-inline-size: 0;
-  max-inline-size: 960px;
+  /* The reading column's width. A page narrows it by setting the variable, so a window's
+     full-width sheet (win7-windows.css) can centre the same column with padding. */
+  --os-page-max: 960px;
+  max-inline-size: var(--os-page-max);
   margin-inline: auto;
   overflow-wrap: anywhere;
   padding-block: var(--space-8) var(--space-16);
@@ -404,7 +407,7 @@
 
 /* ===== Contact ===== */
 .os-contact {
-  max-inline-size: 760px;
+  --os-page-max: 760px;
   padding-block: clamp(32px, 6vw, 72px);
   text-align: center;
 }
@@ -1202,8 +1205,8 @@
 
 /* ===== Write-up reading view ===== */
 .os-writeup {
+  --os-page-max: 760px;
   margin-inline: auto;
-  max-inline-size: 760px;
 }
 .os-writeup-meta {
   align-items: center;

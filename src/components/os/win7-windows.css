@@ -607,6 +607,17 @@
   box-sizing: border-box;
   min-block-size: 100%;
 }
+/* The sheet spans the window's full width, so no grey shows beside a centred column.
+   The column keeps its width: the gutter that margin-inline: auto used to supply becomes
+   padding on the sheet. */
+.os-shell.win7 .window.glass > .os-page-content.window-body > .os-support {
+  max-inline-size: none;
+  margin-inline: 0;
+  padding-inline: max(
+    clamp(16px, 4cqi, 48px),
+    calc((100% - var(--os-page-max)) / 2 + clamp(16px, 4cqi, 48px))
+  );
+}
 
 /* Window Controls popover: a white Win7 panel with the frame edge. The panel is portalled
    into the shell and carries the win7 class, so the tokens apply there. Its text roles are
