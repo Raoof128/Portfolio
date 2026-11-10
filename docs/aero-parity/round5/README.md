@@ -40,6 +40,8 @@ The stronger versions were kept, not deleted. They apply under `prefers-contrast
 
 ## The one remaining state
 
+Closed in the [sixth pass](../round6/README.md), which also adds accessibility cues beside the controls.
+
 `titlebar` (active, isolated crop): 1,736 pixels differ by at most 6/255, none above the 16/255 reporting band. Cause: the title text is lifted above the isolated window body so its glow lies over the body's top edge, as in 7.css. That makes the full window pixel-exact in both states, but in the isolated title-bar crop the lifted text composites slightly differently. Removing the lift returns 25 pixels (≤8/255) to both window states instead. A clean fix means making the title bar non-positioned, which its hairline and the phone sticky layout depend on.
 
 ## Verification
