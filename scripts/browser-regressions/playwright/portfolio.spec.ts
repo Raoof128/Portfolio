@@ -279,6 +279,30 @@ test("increased contrast and reduced transparency use opaque window frames", asy
   }
 });
 
+test("side-by-side desktop windows stop above the taskbar in every language", async ({ page }) => {
+  // The height limit ignored the Atlas window's cascade step and the taskbar's float, so the
+  // longest project description ran under the taskbar on laptop-height screens.
+  await prepare(page);
+  for (const [width, height] of [[1280, 720], [1366, 768], [1440, 780], [1536, 730]]) {
+    await page.setViewportSize({ width, height });
+    for (const locale of locales) {
+      await ready(page, route(locale, "/"));
+      const enter = page.locator(".os-enter");
+      await expect(async () => {
+        if ((await enter.isVisible()) && (await enter.isEnabled())) await enter.click({ timeout: 1_000 });
+        await expect(page.locator(".os-welcome")).not.toBeVisible({ timeout: 4_500 });
+      }).toPass({ timeout: 20_000 });
+      const atlas = page.locator(".proof-atlas--desktop:visible").first();
+      await expect(atlas.locator(".proof-atlas-option").first()).toBeVisible();
+      const dockTop = await page.locator(".os-dock").evaluate((e) => e.getBoundingClientRect().top);
+      for (const selector of [".proof-atlas--desktop:visible", ".os-intro:visible"]) {
+        const bottom = await page.locator(selector).first().evaluate((e) => e.getBoundingClientRect().bottom);
+        expect(bottom, `${selector} ${locale} ${width}x${height}`).toBeLessThanOrEqual(dockTop);
+      }
+    }
+  }
+});
+
 test("Full Size fills the screen down to the taskbar on every window", async ({ page }, info) => {
   await prepare(page);
   const dockTop = () => page.locator(".os-dock").evaluate((e) => Math.round(e.getBoundingClientRect().top));

@@ -136,7 +136,9 @@
   .os-shell.win7 .os-desktop :is(.os-intro, .proof-atlas--desktop).window {
     display: flex;
     flex-direction: column;
-    max-block-size: calc(100dvh - var(--win7-taskbar-h) - 24px);
+    /* Viewport, less the 24px the window starts below the top, the taskbar, the gap the
+       taskbar floats above the bottom edge, and 8px of air between the two. */
+    max-block-size: calc(100dvh - 24px - var(--win7-taskbar-h) - var(--win7-taskbar-bottom) - 8px);
   }
 
   .os-shell.win7
@@ -169,6 +171,11 @@
   .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop {
     margin-block-start: var(--os-cascade-step);
     margin-inline-start: var(--os-cascade-step);
+  }
+  /* The Atlas starts one cascade step lower, so its height limit drops by the same step.
+     Without this a long project description ran under the taskbar. Full Size sets its own. */
+  .os-shell.win7 .os-desktop .os-desktop-identity--atlas .proof-atlas--desktop.window:not(.is-expanded) {
+    max-block-size: calc(100dvh - 24px - var(--os-cascade-step) - var(--win7-taskbar-h) - var(--win7-taskbar-bottom) - 8px);
   }
 }
 

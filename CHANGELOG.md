@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-11 (Australia/Sydney) — Desktop windows stop above the taskbar
+
+- **Scope**: Owner reported that the Simurgh description in the Proof Atlas ran under the taskbar after the Atlas redraw.
+- **Summary**: Two causes. (1) The side-by-side windows' height limit was the viewport less the taskbar and 24px. It left out the 8px the taskbar floats above the bottom edge and the 28px cascade step the Atlas window starts lower by, so a tall Atlas could always overrun; the earlier, shorter text never reached the limit. The limit now subtracts both, plus 8px of air, and the Atlas has its own limit one cascade step lower. Past the limit the window body scrolls inside its frame, as designed. (2) The new Simurgh summary and qualifier were nine lines; they are cut to about six in all five languages (the replay sentence is tighter, and the qualifier keeps "not a run trace", "by construction" and the three small local models).
+- **Files Changed**: `src/components/os/win7-desktop.css`, `src/components/os/atlas-copy.ts`, `scripts/browser-regressions/playwright/portfolio.spec.ts`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: Measured on the live site before the fix: at 1366×768 the English Atlas ended at 741px with the taskbar at 720px (Spanish 756px; 1280×720 and 1280×800 ended 36px under). After: at 1280×720, 1366×768, 1440×780, 1536×730, 1440×900 and 1920×1080 the Atlas and Research Highlights windows end at or above the taskbar in English, Persian and Spanish. New browser regression covers four laptop sizes in five languages; it fails against the pre-fix live site and passes on the fixed export. 759/759 unit tests, typecheck, static build and 81/81 earlier Chromium regressions passed with the fix.
+- **Follow-ups**: From 1024px to 1279px and on phones the windows stack and the page scrolls, as before. Firefox and WebKit were not run.
+
 ### Raouf: 2026-11-11 (Australia/Sydney) — Proof Atlas redrawn from current repository evidence
 
 - **Scope**: Owner asked to update and enhance the three Atlas diagrams from the new GitHub evidence and the Anthropic residency résumé.

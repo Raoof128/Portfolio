@@ -60,7 +60,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "Project Simurgh",
         summary:
-          "Oct 2026 matched controls: Llama-3.2-3B restricted trials with new effects 17/24 → 0/24, useful completions 23/24; gpt-6-luna baseline 0/24, no incremental protection. Nov 2026 replay: of 269 recorded restricted-state sends, 0 landed behind composed controls and 220 behind the credential gate alone.",
+          "Oct 2026 matched controls: Llama-3.2-3B restricted trials with new effects 17/24 → 0/24, useful completions 23/24; gpt-6-luna baseline 0/24, no incremental protection. Nov 2026 replay: 269 recorded restricted sends, 0 landed behind composed controls, 220 behind the credential gate alone.",
       },
       "invisible-window-research": {
         title: "Invisible Window",
@@ -83,7 +83,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "Schematic of the documented control boundary, not a run trace. The credential-only arm cannot see stop, lease or alert state, so part of the gap holds by construction. The replay used recorded proposals from three small local models; no model was asked to defeat the gate.",
+        "Schematic of the control boundary, not a run trace. Part of the gap holds by construction, and the replay used recorded proposals from three small local models.",
       "invisible-window-research":
         "Controlled simulated configurations only; no commercial proctoring products were tested. macOS 26 used native capture paths.",
       "project-zurvan":
@@ -126,7 +126,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "پروژه سیمرغ",
         summary:
-          "کنترل‌های همسان، اکتبر 2026: آزمون‌های محدود Llama-3.2-3B با آثار تازه از 17/24 به 0/24؛ تکمیل مفید 23/24. خط پایهٔ gpt-6-luna برابر 0/24 بود؛ حفاظت افزوده‌ای گزارش نشد. بازپخش نوامبر 2026: از 269 ارسالِ ثبت‌شده در وضعیت محدود، پشت کنترل‌های ترکیبی هیچ‌کدام اثر نگذاشت و پشت دروازهٔ اعتبارنامه به‌تنهایی 220 مورد اثر گذاشت.",
+          "کنترل‌های همسان، اکتبر 2026: آزمون‌های محدود Llama-3.2-3B با آثار تازه از 17/24 به 0/24؛ تکمیل مفید 23/24. خط پایهٔ gpt-6-luna برابر 0/24 بود؛ حفاظت افزوده‌ای گزارش نشد. بازپخش نوامبر 2026: 269 ارسالِ ثبت‌شده در وضعیت محدود؛ پشت کنترل‌های ترکیبی 0 و پشت دروازهٔ اعتبارنامه به‌تنهایی 220 مورد اثر گذاشت.",
       },
       "invisible-window-research": {
         title: "پنجره نامرئی",
@@ -149,7 +149,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "طرح‌وارهٔ مرز کنترل مستند است؛ رد اجرا نیست. شاخهٔ «فقط اعتبارنامه» وضعیت توقف، مهلت و هشدار را نمی‌بیند، پس بخشی از این فاصله از خودِ طراحی می‌آید. بازپخش از پیشنهادهای ثبت‌شدهٔ سه مدل کوچک محلی استفاده کرد و از هیچ مدلی خواسته نشد دروازه را دور بزند.",
+        "طرح‌وارهٔ مرز کنترل است؛ رد اجرا نیست. بخشی از این فاصله از خودِ طراحی می‌آید و بازپخش از پیشنهادهای ثبت‌شدهٔ سه مدل کوچک محلی استفاده کرد.",
       "invisible-window-research":
         "فقط پیکربندی‌های شبیه‌سازی‌شده کنترل‌شده آزموده شدند؛ محصول تجاری نظارت بر آزمون ارزیابی نشد. در macOS 26 از مسیرهای ضبط بومی استفاده شد.",
       "project-zurvan":
@@ -192,7 +192,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "مشروع سيمرغ",
         summary:
-          "ضوابط مقارنة متطابقة، أكتوبر 2026: تجارب Llama-3.2-3B المقيّدة ذات آثار جديدة 17/24 → 0/24، وإكمال مفيد 23/24؛ خط أساس gpt-6-luna هو 0/24، دون حماية إضافية. إعادة تشغيل نوفمبر 2026: من 269 إرسالًا مسجّلًا في حالة مقيّدة، لم يُحدث أيٌّ منها أثرًا خلف الضوابط المركّبة، وأحدث 220 أثرًا خلف بوابة بيانات الاعتماد وحدها.",
+          "ضوابط مقارنة متطابقة، أكتوبر 2026: تجارب Llama-3.2-3B المقيّدة ذات آثار جديدة 17/24 → 0/24، وإكمال مفيد 23/24؛ خط أساس gpt-6-luna هو 0/24، دون حماية إضافية. إعادة تشغيل نوفمبر 2026: 269 إرسالًا مقيّدًا مسجّلًا؛ أحدث 0 منها أثرًا خلف الضوابط المركّبة و220 خلف بوابة بيانات الاعتماد وحدها.",
       },
       "invisible-window-research": {
         title: "النافذة غير المرئية",
@@ -215,7 +215,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "مخطط لحدّ التحكم الموثّق وليس سجل تشغيل. ذراع «بيانات الاعتماد فقط» لا يرى حالة الإيقاف أو المهلة أو التنبيه، لذا يعود جزء من الفارق إلى التصميم نفسه. استخدمت إعادة التشغيل اقتراحات مسجّلة من ثلاثة نماذج محلية صغيرة، ولم يُطلب من أي نموذج تجاوز البوابة.",
+        "مخطط لحدّ التحكم وليس سجل تشغيل. يعود جزء من الفارق إلى التصميم نفسه، واستخدمت إعادة التشغيل اقتراحات مسجّلة من ثلاثة نماذج محلية صغيرة.",
       "invisible-window-research":
         "اقتصر الاختبار على إعدادات محاكاة مضبوطة؛ ولم تُختبر منتجات مراقبة تجارية. استخدم macOS 26 مسارات التقاط أصلية.",
       "project-zurvan":
@@ -259,7 +259,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "Proyecto Simurgh",
         summary:
-          "Controles emparejados, oct. 2026: ensayos restringidos con efectos nuevos en Llama-3.2-3B 17/24 → 0/24, tareas útiles completadas 23/24; base gpt-6-luna 0/24, sin protección incremental. Reproducción de nov. 2026: de 269 envíos registrados en estado restringido, ninguno surtió efecto tras los controles compuestos y 220 lo hicieron tras la puerta de credenciales sola.",
+          "Controles emparejados, oct. 2026: ensayos restringidos con efectos nuevos en Llama-3.2-3B 17/24 → 0/24, tareas útiles completadas 23/24; base gpt-6-luna 0/24, sin protección incremental. Reproducción de nov. 2026: 269 envíos restringidos registrados; 0 surtieron efecto tras los controles compuestos y 220 tras la puerta de credenciales sola.",
       },
       "invisible-window-research": {
         title: "Ventana Invisible",
@@ -282,7 +282,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "Esquema del límite de control documentado, no una traza de ejecución. El brazo de solo credenciales no ve el estado de parada, vigencia ni alerta, así que parte de la diferencia se debe al propio diseño. La reproducción usó propuestas registradas de tres modelos locales pequeños; a ningún modelo se le pidió vencer la puerta.",
+        "Esquema del límite de control, no una traza de ejecución. Parte de la diferencia se debe al propio diseño, y la reproducción usó propuestas registradas de tres modelos locales pequeños.",
       "invisible-window-research":
         "Solo se probaron configuraciones simuladas y controladas; no se evaluaron productos comerciales. macOS 26 usó rutas de captura nativas.",
       "project-zurvan":
@@ -325,7 +325,7 @@ const copy: Record<Locale, AtlasCopy> = {
       "project-simurgh": {
         title: "Simurgh 项目",
         summary:
-          "2026 年 10 月匹配对照：Llama-3.2-3B 受限状态中新产生效果的试验由 17/24 降至 0/24，有用任务完成 23/24；gpt-6-luna 基线已为 0/24，未见额外保护。2026 年 11 月重放：在 269 次已记录的受限状态发送中，组合控制之后无一产生效果，仅凭证关口之后有 220 次产生效果。",
+          "2026 年 10 月匹配对照：Llama-3.2-3B 受限状态中新产生效果的试验由 17/24 降至 0/24，有用任务完成 23/24；gpt-6-luna 基线已为 0/24，未见额外保护。2026 年 11 月重放：269 次已记录的受限发送，组合控制之后 0 次产生效果，仅凭证关口之后 220 次。",
       },
       "invisible-window-research": {
         title: "隐形窗口",
@@ -348,7 +348,7 @@ const copy: Record<Locale, AtlasCopy> = {
     },
     qualifier: {
       "project-simurgh":
-        "这是已记录控制边界的示意图，不是运行轨迹。仅凭证对照组看不到停止、租约或告警状态，因此部分差距源于设计本身。重放使用三个小型本地模型的已记录提案；没有要求任何模型去攻破关口。",
+        "这是控制边界的示意图，不是运行轨迹。部分差距源于设计本身，重放使用三个小型本地模型的已记录提案。",
       "invisible-window-research":
         "仅测试受控的模拟配置，未测试商业监考产品。macOS 26 使用原生捕获路径。",
       "project-zurvan": "这是基于已记录架构的示意图，不代表任何私有语料库。",
