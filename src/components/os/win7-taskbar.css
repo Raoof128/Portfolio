@@ -804,7 +804,11 @@
   line-height: 1;
   white-space: nowrap;
 }
-/* 7.css draws no focus on a search field; this ring is for more-contrast and forced colours. */
+/* 7.css draws no focus on a search field, so the shell's field ring is off by default;
+   the ring below is for more-contrast and forced colours. */
+.os-shell.win7 .os-search-field:focus-within {
+  outline: none;
+}
 @media (prefers-contrast: more), (forced-colors: active) {
   .os-shell.win7 .os-search-field:focus-within {
     outline: 2px solid #0066cc;
