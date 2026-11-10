@@ -178,13 +178,14 @@
   --win7-chrome-bg: var(--os-surface, #111b2b);
   --win7-command-ink: var(--os-text, #f1f7ff);
 }
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back,
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy,
-.os-shell.win7
-  .window.glass
-  > .os-window-toolbar
-  > .os-window-controls
-  > summary {
+/* Native Copy Link and Full Screen buttons. They are <button>s, so 7.css's `.win7 button` rules
+   paint the border colour (rest, hover, pressed, disabled), the hover and pressed overlays, the
+   disabled state and the keyboard ring. This block keeps only toolbar geometry, the border
+   width and style, and the two declarations the shell would otherwise win over canonical:
+   research-os.css `.os-shell .os-control` (0,2,0) resets background to transparent and border
+   to 0. Those are restated below with the 7.css values. Hover and pressed paint are never set
+   here, so the overlays show. */
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy {
   box-sizing: border-box;
   display: inline-flex;
   flex: 0 0 auto;
@@ -195,40 +196,31 @@
   min-height: 23px;
   margin: 0;
   padding: 0 12px;
-  border: 1px solid var(--w7-el-bd);
-  border-radius: 3px;
-  background: var(--w7-el-grad);
-  box-shadow: var(--w7-el-sd);
-  color: var(--win7-button-text);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--w7-el-bdr);
   font: var(--w7-font);
   text-decoration: none;
   text-shadow: none;
   cursor: pointer;
 }
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover,
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:hover,
-.os-shell.win7
-  .window.glass
-  > .os-window-toolbar
-  > .os-window-controls
-  > summary:hover {
-  background: var(--w7-el-grad-h);
-  border-color: var(--w7-el-bd-h);
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:not(:disabled) {
+  background: var(--w7-el-grad);
+  color: var(--win7-button-text);
 }
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:active,
-.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:active,
-.os-shell.win7
-  .window.glass
-  > .os-window-toolbar
-  > .os-window-controls
-  > summary:active {
-  background: var(--w7-el-grad-a);
-  border-color: var(--w7-el-bd-a);
+/* Focused face. 7.css gives a focused button the hover gradient (`.win7 button:focus`), but the
+   `.os-control:focus-visible` reset would set background-image to none, so it is restated. */
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:focus {
+  background-image: var(--w7-el-grad-h);
+}
+/* Keyboard ring. The theme's `.os-shell.win7 :focus-visible` (win7-theme.css, 0,3,0) outranks
+   7.css's button outline (0,2,1), so the 7.css outline values are restated here. The inset
+   ring (box-shadow) is left to `.win7 button:focus-visible`. */
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:focus-visible {
+  outline: 1px dotted var(--win7-focus-inner);
+  outline-offset: -4px;
 }
 .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-copy:disabled {
-  background: var(--w7-el-bg-d);
-  border-color: var(--w7-el-bd-d);
-  color: var(--w7-el-c-d);
   cursor: default;
 }
 .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back svg,
@@ -242,10 +234,164 @@
   width: 16px;
   height: 16px;
 }
-.os-shell.win7 .window.glass > .os-window-toolbar > :focus-visible {
-  outline: 2px solid var(--win7-focus-inner);
-  outline-offset: -2px;
-  box-shadow: inset 0 0 0 1px var(--win7-focus-outer);
+/* Non-button toolbar controls: the Back link and the Window Controls summary. They cannot take
+   `.win7 button`, so this block reproduces the 7.css button mechanism on the element (7.scoped.css
+   lines 9-21, the same approach as controls.css for links): the base face and border, a ::before
+   hover overlay, a ::after pressed overlay, the state border colours with their transitions, and
+   the focused face and ring. The summary's disclosure triangle (7.css details>summary:before) is
+   the overlay's pseudo-element, so its border, position and transform are reset here. */
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary {
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 75px;
+  min-height: 23px;
+  margin: 0;
+  padding: 0 12px;
+  border: 1px solid var(--w7-el-bd);
+  border-radius: var(--w7-el-bdr);
+  background: var(--w7-el-grad);
+  box-shadow: var(--w7-el-sd);
+  color: var(--win7-button-text);
+  font: var(--w7-font);
+  text-decoration: none;
+  text-shadow: none;
+  cursor: pointer;
+  transition: border-color 1s linear;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back::before,
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back::after,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary::before,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transform: none;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back::before,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary::before {
+  background: var(--w7-el-grad-h);
+  border-radius: var(--w7-el-bdr);
+  box-shadow: var(--w7-el-sd);
+  transition: opacity 1s linear;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back::after,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary::after {
+  background: var(--w7-el-grad-a);
+  border-radius: 2px;
+  box-shadow: var(--w7-el-sd-a);
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:hover {
+  border-color: var(--w7-el-bd-h);
+  transition: border-color 0.3s;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover::before,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:hover::before {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:active,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:active {
+  border-color: var(--w7-el-bd-a);
+  transition: border-color 0.3s;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:active::after,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:active::after {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+/* Focused face: the hover gradient, with no pulse loop (as controls.css does for links). */
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:focus,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:focus {
+  background: var(--w7-el-grad-h);
+  animation: none;
+}
+.os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:focus-visible,
+.os-shell.win7
+  .window.glass
+  > .os-window-toolbar
+  > .os-window-controls
+  > summary:focus-visible {
+  outline: 1px dotted var(--win7-focus-inner);
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px var(--win7-focus-ring);
+}
+/* A tap leaves :hover lit on touch screens. 7.css's reset (win7-theme.css) is mirrored here for
+   these two controls, so the hover border and overlay drop back unless the control is pressed. */
+@media (hover: none), (pointer: coarse) {
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover:not(:active),
+  .os-shell.win7
+    .window.glass
+    > .os-window-toolbar
+    > .os-window-controls
+    > summary:hover:not(:active) {
+    border-color: var(--w7-el-bd);
+  }
+  .os-shell.win7 .window.glass > .os-window-toolbar > .os-window-back:hover::before,
+  .os-shell.win7
+    .window.glass
+    > .os-window-toolbar
+    > .os-window-controls
+    > summary:hover::before {
+    opacity: 0;
+  }
 }
 :dir(rtl)
   .os-shell.win7
@@ -259,17 +405,6 @@
   display: block;
   flex: 0 0 auto;
 }
-/* 7.css draws a disclosure triangle beside every details summary, outside its box. Here it
-   would sit on the end of Copy Link, so the Window Controls summary drops it. */
-.os-shell.win7
-  .window.glass
-  > .os-window-toolbar
-  > .os-window-controls
-  > summary::before {
-  content: none;
-  display: none;
-}
-
 /* Caption fill and ink. The 7.css caption glyphs are dark strokes (#535666), so they cannot
    sit on the dark Aero Night glass. Night gives the caption group a light glass fill, and the
    dark ink and glyphs keep 3:1 on both themes (WCAG 1.4.11). */
