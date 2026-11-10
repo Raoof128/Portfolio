@@ -6,6 +6,11 @@ measurements below belong to the earlier `T36VJ57GLEBYrLGFmDAY1` export and
 were not rerun on the final lock-screen export. This ledger retains its original
 historical evidence and partial lifecycle coverage.
 
+Update, 11 November 2026: the three maps were redrawn (`fff79bc`). The Simurgh map no
+longer shows the four-boundary schematic this ledger describes; it draws the
+current control boundary and cites the Phase 19j replay. See the dated entries in
+`CHANGELOG.md`. Everything below is the October 2026 record, unchanged.
+
 This is the acceptance ledger for the ResearchOS V2 Proof Atlas work. A checked item requires current build or test evidence; baseline captures alone do not count as implementation approval. This plan is intentionally concise and remains open until every required gate is reviewed.
 
 ## Baseline and scope

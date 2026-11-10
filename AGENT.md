@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-11 (Australia/Sydney) — Release record: Aero parity branch, Atlas redraw and taskbar fix all live
+
+- **Scope**: Owner asked to bring every log and Zurvan up to date after the day's three releases.
+- **Summary**: (1) `claude/dazzling-feynman-cp1q08` had been pushed to GitHub again, 20 commits ahead of `main` (Aero parity fixes, an accessibility change, parity passes five and six, a test fix); `main` was fast-forwarded to `e28a8f6` and deployed. (2) The Proof Atlas redraw was committed as `fff79bc` and deployed. (3) The taskbar-overlap fix was committed as `34d03c8` and deployed. The earlier Atlas entry's "Not committed or deployed" note is superseded by this record.
+- **Files Changed**: `AGENT.md`, `CHANGELOG.md` (this entry only).
+- **Verification**: Deploy runs `42890240862` (`e28a8f6`), `42894737670` (`fff79bc`) and `42898770527` (`34d03c8`) passed, with CI green on each commit. After the last one, `raoufabedini.dev` and `raoufabedini.pages.dev` returned 200, the served JavaScript carried the new Atlas labels, and the taskbar regression passed against the live site in five languages at 1280×720, 1366×768, 1440×780 and 1536×730 (Chromium).
+- **Follow-ups**: The remote branch `claude/dazzling-feynman-cp1q08` still exists on GitHub (fully merged). The Simurgh project page and evidence story stop at October 2026; Phase 19 appears on the Atlas only. Atlas translations have had no native-speaker review. Firefox and WebKit were not run for either Atlas change.
+
 ### Raouf: 2026-11-11 (Australia/Sydney) — Desktop windows stop above the taskbar
 
 - **Scope**: Owner reported that the Simurgh description in the Proof Atlas ran under the taskbar after the Atlas redraw.
@@ -16,7 +24,7 @@ This file provides context and rules for AI coding assistants (agents) working o
 - **Summary**: The Simurgh map showed the earlier frozen four-boundary architecture. It now draws the control boundary the repository README documents: a model proposal and host-held state meet at the composed gate; an admitted action reaches the receiver and a restricted one stops; the decision record and receiver snapshots feed the offline replay. Its summary keeps the October 2026 result and adds the Phase 19j replay pushed on 10 November 2026 (269 recorded restricted-state sends: 0 landed behind composed controls, 220 behind the credential gate alone), with its limits in the qualifier (credential-only arm cannot see stop, lease or alert state; proposals came from three small local models; no model was asked to defeat the gate). The Invisible Window map now shows the mechanism (flagged window → compositor → display and capture path) instead of two unconnected planes. The Zurvan map adds the opt-in write path back to the store and the audit trace, both from its README. Node names, summaries, screen-reader descriptions and qualifiers were rewritten in all five languages. The drawing code lost its Invisible Window special case: every map now renders through the same node and edge loop, with new node kinds (stop, window, archive, note, plane).
 - **Files Changed**: `src/components/os/ProofAtlas.tsx`, `src/components/os/atlas-copy.ts`, `src/components/os/proof-atlas.css`, `src/components/os/ProofAtlas.test.tsx`, `AGENT.md`, `CHANGELOG.md`.
 - **Verification**: 759/759 unit tests (25 in the Atlas file, including new checks that every drawn node is named in every language and that the replay name sits beside its pack in right-to-left text), typecheck, lint and Prettier on the changed files, static build, and 81/81 Chromium browser regressions against the export on `127.0.0.1:4398`. Screenshots reviewed for all three maps in English, Persian, Arabic, Spanish and Chinese at 1440×900, plus 390×844 and 1024×768. Firefox and WebKit were not run.
-- **Follow-ups**: The project dossier and its evidence story still describe Simurgh through October 2026 only; Phase 19 is on the Atlas alone. The Persian, Arabic, Spanish and Chinese strings have had no native-speaker review. SentinelSSH (public since 4 November 2026) has no project page, so it has no map. Not committed or deployed.
+- **Follow-ups**: The project dossier and its evidence story still describe Simurgh through October 2026 only; Phase 19 is on the Atlas alone. The Persian, Arabic, Spanish and Chinese strings have had no native-speaker review. SentinelSSH (public since 4 November 2026) has no project page, so it has no map. Committed as `fff79bc` and deployed the same day (see the release record above).
 
 ### Raouf: 2026-11-10 (Australia/Sydney) — Cloudflare Web Analytics disabled; CSP back to 'self' only
 
