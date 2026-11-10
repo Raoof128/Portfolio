@@ -44,4 +44,16 @@ The stronger versions were kept, not deleted. They apply under `prefers-contrast
 
 ## Verification
 
-Results on the final commit are recorded in the summary below this pass's commits and in `artifacts/aero-parity/round5/` (ignored). Independent review (Haiku) found no P0 or P1 defect; its findings (grey side gutters beside the sheet, icons flush against labels, and the caption-focus correction above) are fixed or recorded here. Not verified: Firefox, WebKit, real devices, screen readers. Not deployed.
+Run on the final code commit `de69591` (build `2026-11-10T09:31:03Z`):
+
+| Gate | Result |
+| --- | --- |
+| Parity (134 states) | 131 exact, 2 within 1/255, 1 differing |
+| Lint, typecheck | pass |
+| Unit tests | 755 of 755 (46 files) |
+| Schema, tooling, security, HTTP audit, dependency security | 6/6, 17/17, 14/14, 17/17, 3/3 |
+| Static artifact audit, agent audit | pass (1,067 files), pass |
+| Playwright (Chromium only) | 79 of 79 |
+| Local production audit | reports the build as stale, because documentation commits follow it; not a defect in the build |
+
+Raw harness output is in `artifacts/aero-parity/round5/` (ignored). Independent review (Haiku) found no P0 or P1 defect; its findings (grey side gutters beside the sheet, icons flush against labels, and the caption-focus correction above) are fixed or recorded here. Not verified: Firefox, WebKit, real devices, screen readers. Not deployed.

@@ -1,6 +1,6 @@
 # Operation Aero
 
-Latest completed review: [fourth parity pass](round4/README.md) (2026-11-10). Earlier: [third parity pass](round3/README.md) (2026-11-08). The [second pass](round2/README.md) and the first-pass build and evidence below remain historical.
+Latest completed review: [fifth parity pass](round5/README.md) (2026-11-10). Earlier: [fourth parity pass](round4/README.md) (2026-11-10) and [third parity pass](round3/README.md) (2026-11-08). The [second pass](round2/README.md) and the first-pass build and evidence below remain historical.
 
 **CONDITIONAL PASS for owner review.** The reviewed local export is `xfHy_bhVfJKii-CA72D9U`, built `2026-11-03T07:23:07.345Z` from checkpoint `b4cc49de662b3013a97d5497f3fd8daed0df1a20` plus the documented working-tree changes. It has not been committed, pushed, merged, deployed or published by this pass.
 
