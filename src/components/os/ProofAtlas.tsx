@@ -49,107 +49,98 @@ type Point = { x: number; y: number };
 type AtlasNode = Point & {
   id: string;
   label: string;
-  kind?: "boundary" | "evidence";
+  /**
+   * boundary: a plate with a glyph. evidence: a signed record. stop: a refused action.
+   * window: the flagged window. archive: the replayable pack. note: a label on its own.
+   * plane: an output surface drawn by the project's own group; the node anchors its edge.
+   */
+  kind?:
+    "boundary" | "evidence" | "stop" | "window" | "archive" | "note" | "plane";
   /** Baseline of the label relative to the node. Defaults to below the node. */
   labelY?: number;
 };
-type AtlasEdge = { id: string; from: string; to: string; kind?: "evidence" };
+type AtlasEdge = {
+  id: string;
+  from: string;
+  to: string;
+  kind?: "evidence" | "blocked";
+};
 type AtlasMap = { nodes: AtlasNode[]; edges: AtlasEdge[] };
 
 const maps: Record<AtlasProject, AtlasMap> = {
+  // The control boundary the repository documents today: a proposal and host-held state
+  // meet at the composed gate; decisions and receiver snapshots feed the offline replay.
   "project-simurgh": {
     nodes: [
-      { id: "agent", label: "Agent", x: 38, y: 123 },
-      { id: "input", label: "Input firewall", x: 145, y: 75, kind: "boundary" },
+      { id: "proposal", label: "Proposal", x: 60, y: 190 },
+      { id: "host", label: "Host state", x: 60, y: 70, kind: "boundary" },
       {
-        id: "context",
-        label: "Context guard",
-        x: 276,
-        y: 54,
+        id: "gate",
+        label: "Composed gate",
+        x: 220,
+        y: 128,
         kind: "boundary",
-      },
-      {
-        id: "tool",
-        label: "Tool gate",
-        x: 407,
-        y: 75,
-        kind: "boundary",
-        // Above the plate: below it, the longer Spanish label runs under the Output plate at x 500.
+        // Above the plate: the decision record drops from the gate's lower edge.
         labelY: -36,
       },
       {
-        id: "output",
-        label: "Output firewall",
-        x: 500,
-        y: 123,
+        id: "receiver",
+        label: "Receiver",
+        x: 400,
+        y: 128,
         kind: "boundary",
+        labelY: -36,
       },
+      { id: "blocked", label: "Blocked", x: 310, y: 206, kind: "stop" },
+      { id: "decision", label: "Decision", x: 220, y: 206, kind: "evidence" },
+      { id: "snapshot", label: "Snapshot", x: 400, y: 206, kind: "evidence" },
       {
-        id: "input-proof",
-        label: "Signed receipt",
-        x: 145,
-        y: 194,
-        kind: "evidence",
-      },
-      {
-        id: "context-proof",
-        label: "Signed receipt",
-        x: 276,
-        y: 194,
-        kind: "evidence",
-      },
-      {
-        id: "tool-proof",
-        label: "Signed receipt",
-        x: 407,
-        y: 194,
-        kind: "evidence",
-      },
-      {
-        id: "output-proof",
-        label: "Signed receipt",
-        x: 500,
-        y: 194,
-        kind: "evidence",
+        id: "replay",
+        label: "Offline replay",
+        x: 310,
+        y: 290,
+        kind: "archive",
       },
     ],
     edges: [
-      { id: "agent-input", from: "agent", to: "input" },
-      { id: "input-context", from: "input", to: "context" },
-      { id: "context-tool", from: "context", to: "tool" },
-      { id: "tool-output", from: "tool", to: "output" },
-      { id: "input-proof", from: "input", to: "input-proof", kind: "evidence" },
+      { id: "proposal-gate", from: "proposal", to: "gate" },
+      { id: "host-gate", from: "host", to: "gate" },
+      { id: "gate-receiver", from: "gate", to: "receiver" },
+      { id: "gate-blocked", from: "gate", to: "blocked", kind: "blocked" },
+      { id: "gate-decision", from: "gate", to: "decision", kind: "evidence" },
       {
-        id: "context-proof",
-        from: "context",
-        to: "context-proof",
-        kind: "evidence",
-      },
-      { id: "tool-proof", from: "tool", to: "tool-proof", kind: "evidence" },
-      {
-        id: "output-proof",
-        from: "output",
-        to: "output-proof",
+        id: "receiver-snapshot",
+        from: "receiver",
+        to: "snapshot",
         kind: "evidence",
       },
     ],
   },
+  // One flagged window, one compositor, two outputs that disagree.
   "invisible-window-research": {
     nodes: [
-      { id: "screen", label: "Physical display", x: 139, y: 102 },
-      { id: "visible", label: "Visible window", x: 139, y: 139 },
-      { id: "capture", label: "Capture path", x: 413, y: 102 },
+      { id: "window", label: "Flagged window", x: 64, y: 150, kind: "window" },
       {
-        id: "frame",
-        label: "Captured frame",
-        x: 413,
-        y: 139,
-        kind: "evidence",
+        id: "compositor",
+        label: "Compositor",
+        x: 176,
+        y: 150,
+        kind: "boundary",
+        // Above the plate, clear of the flagged window's name beside it.
+        labelY: -36,
       },
+      { id: "screen", label: "Physical display", x: 280, y: 82, kind: "plane" },
+      { id: "capture", label: "Capture path", x: 280, y: 232, kind: "plane" },
     ],
     edges: [
-      { id: "screen-visible", from: "screen", to: "visible" },
-      { id: "capture-frame", from: "capture", to: "frame", kind: "evidence" },
+      { id: "window-compositor", from: "window", to: "compositor" },
+      { id: "compositor-screen", from: "compositor", to: "screen" },
+      {
+        id: "compositor-capture",
+        from: "compositor",
+        to: "capture",
+        kind: "evidence",
+      },
     ],
   },
   "project-zurvan": {
@@ -163,6 +154,9 @@ const maps: Record<AtlasProject, AtlasMap> = {
       { id: "search", label: "Hybrid search", x: 407, y: 82 },
       { id: "neighbors", label: "Graph neighbours", x: 407, y: 168 },
       { id: "mcp", label: "MCP tools", x: 516, y: 125, kind: "evidence" },
+      // The dashed return path from MCP tools to the store carries this name.
+      { id: "write", label: "Opt-in write", x: 402, y: 24, kind: "note" },
+      { id: "trace", label: "Audit trace", x: 407, y: 250, kind: "evidence" },
     ],
     edges: [
       { id: "documents-claim", from: "documents", to: "claim" },
@@ -177,6 +171,12 @@ const maps: Record<AtlasProject, AtlasMap> = {
       { id: "vault-neighbors", from: "vault", to: "neighbors" },
       { id: "search-mcp", from: "search", to: "mcp", kind: "evidence" },
       { id: "neighbors-mcp", from: "neighbors", to: "mcp", kind: "evidence" },
+      {
+        id: "neighbors-trace",
+        from: "neighbors",
+        to: "trace",
+        kind: "evidence",
+      },
     ],
   },
 };
@@ -188,13 +188,15 @@ const projectOrder: AtlasProject[] = [
 ];
 
 const boundaryGlyphs: Record<string, string> = {
-  input:
-    "M -17 -10 H -6 M -17 0 H -6 M -17 10 H -6 M -2 -16 V 16 M 3 -10 H 16 M 3 0 H 16 M 3 10 H 16",
-  context:
-    "M -11 -15 H 3 L 11 -7 V 15 H -11 Z M 3 -15 V -7 H 11 M -5 -1 H 5 M -5 5 H 5 M -5 10 H 2",
-  tool: "M -13 14 V -5 A 13 13 0 0 1 13 -5 V 14 M -6 14 V 1 H 6 V 14 M 0 -2 V 1",
-  output:
-    "M 0 -16 L 13 -10 V 1 C 13 9 0 16 0 16 C 0 16 -13 9 -13 1 V -10 Z M -6 0 L -2 4 L 6 -5",
+  // Host state: three checked lifecycle rows (delegation, stop, lease).
+  host: "M -14 -9 L -11 -6 L -6 -12 M -1 -9 H 14 M -14 1 L -11 4 L -6 -2 M -1 1 H 14 M -14 11 L -11 14 L -6 8 M -1 11 H 14",
+  gate: "M -13 14 V -5 A 13 13 0 0 1 13 -5 V 14 M -6 14 V 1 H 6 V 14 M 0 -2 V 1",
+  // Receiver: an action arriving in an owned tray.
+  receiver:
+    "M -14 3 V 13 H 14 V 3 M -14 3 H -6 L -3 7 H 3 L 6 3 H 14 M 0 -15 V -3 M -5 -8 L 0 -3 L 5 -8",
+  // Compositor: stacked layers.
+  compositor:
+    "M 0 -14 L 15 -6 L 0 2 L -15 -6 Z M -15 1 L 0 9 L 15 1 M -15 8 L 0 16 L 15 8",
 };
 
 export function ProofAtlas({
@@ -243,16 +245,12 @@ export function ProofAtlas({
   const positions = new Map(atlas.nodes.map((node) => [node.id, node]));
   const selectedCopy = copy.projects[selected];
   const href = `${locale === "en" ? "" : `/${locale}`}/projects/${selected}`;
-  // The names the figure draws, in order. Receipts stay unlabelled in the figure, so they
-  // are left out here too. Phones hide the figure's text and list these beneath it.
-  const figureLabels =
-    selected === "invisible-window-research"
-      ? [copy.nodeLabels.screen, copy.nodeLabels.capture]
-      : atlas.nodes
-          .filter(
-            (node) => !(node.kind === "evidence" && node.id.endsWith("-proof")),
-          )
-          .map((node) => copy.nodeLabels[node.id] ?? node.label);
+  const rtl = locale === "fa" || locale === "ar";
+  // The names the figure draws, in order. Phones hide the figure's text and list these
+  // beneath it.
+  const figureLabels = atlas.nodes.map(
+    (node) => copy.nodeLabels[node.id] ?? node.label,
+  );
 
   function moveWithPointer(event: PointerEvent<SVGSVGElement>) {
     // motionEnabled already reflects reduced motion and pointer capability.
@@ -360,10 +358,7 @@ export function ProofAtlas({
               </desc>
             </>
           )}
-          <g
-            className={`proof-atlas-lines${selected === "invisible-window-research" ? " proof-atlas-lines--comparison" : ""}`}
-            aria-hidden="true"
-          >
+          <g className="proof-atlas-lines" aria-hidden="true">
             {atlas.edges.map((edge) => {
               const from = positions.get(edge.from)!;
               const to = positions.get(edge.to)!;
@@ -371,7 +366,7 @@ export function ProofAtlas({
               return (
                 <path
                   key={`${selected}-${edge.id}`}
-                  className={`proof-atlas-edge${edge.kind ? " proof-atlas-edge--evidence" : ""}`}
+                  className={`proof-atlas-edge${edge.kind ? ` proof-atlas-edge--${edge.kind}` : ""}`}
                   d={`M ${from.x} ${from.y} C ${midpoint} ${from.y - 18}, ${midpoint} ${to.y - 18}, ${to.x} ${to.y}`}
                   pathLength="1"
                 />
@@ -379,82 +374,97 @@ export function ProofAtlas({
             })}
           </g>
           {selected === "project-simurgh" && (
+            // Both records drop to one bus that feeds the replayable archive.
             <g className="proof-atlas-evidence-collection" aria-hidden="true">
-              <path d="M 145 214 V 250 M 276 214 V 250 M 407 214 V 250 M 500 214 V 250 M 145 250 H 500 M 276 250 V 270" />
-              <rect x="245" y="270" width="62" height="36" rx="4" />
-              <path d="M 255 279 H 287 M 255 285 H 287 M 255 291 H 279" />
+              <path d="M 220 221 V 262 M 400 221 V 262 M 220 262 H 400 M 310 262 V 274" />
+            </g>
+          )}
+          {selected === "project-zurvan" && (
+            // Opt-in write mode: MCP tools back to the local store.
+            <g className="proof-atlas-return" aria-hidden="true">
+              <path d="M 516 108 C 516 12, 288 12, 288 106" />
+              <path d="M 282 98 L 288 106 L 294 98" />
             </g>
           )}
           {selected === "invisible-window-research" && (
             <g className="proof-atlas-capture" aria-hidden="true">
               <rect
                 className="proof-atlas-plane"
-                x="24"
-                y="30"
-                width="230"
-                height="230"
+                x="280"
+                y="22"
+                width="240"
+                height="120"
                 rx="5"
               />
               <rect
                 className="proof-atlas-plane"
-                x="298"
-                y="30"
-                width="230"
-                height="230"
+                x="280"
+                y="172"
+                width="240"
+                height="120"
                 rx="5"
               />
               <path
                 className="proof-atlas-plane-grid"
-                d="M 40 57 H 238 M 40 238 H 238 M 314 57 H 512 M 314 238 H 512"
+                d="M 294 40 H 506 M 294 128 H 506 M 294 190 H 506 M 294 278 H 506"
               />
               <rect
                 className="proof-atlas-visible-window"
-                x="79"
-                y="76"
+                x="340"
+                y="51"
                 width="120"
-                height="70"
+                height="66"
                 rx="3"
               />
               <path
                 className="proof-atlas-window-light"
-                d="M 92 90 H 186 M 92 132 H 186"
+                d="M 353 65 H 447 M 353 103 H 447"
               />
               <rect
                 className="proof-atlas-excluded-window"
-                x="353"
-                y="76"
+                x="340"
+                y="201"
                 width="120"
-                height="70"
+                height="66"
                 rx="3"
               />
-              <path className="proof-atlas-absence" d="M 378 111 H 448" />
-              <path
-                className="proof-atlas-comparison-arrow"
-                d="M 258 111 H 291 M 283 104 L 291 111 L 283 118"
-              />
+              <path className="proof-atlas-absence" d="M 370 234 H 430" />
               <text
                 className="proof-atlas-plane-label"
-                x="139"
-                y="285"
+                x="400"
+                y="161"
                 textAnchor="middle"
               >
                 {copy.nodeLabels.screen}
               </text>
               <text
                 className="proof-atlas-plane-label"
-                x="413"
-                y="285"
+                x="400"
+                y="311"
                 textAnchor="middle"
               >
                 {copy.nodeLabels.capture}
               </text>
             </g>
           )}
-          {selected !== "invisible-window-research" &&
-            atlas.nodes.map((node, index) => (
+          {atlas.nodes.map((node, index) => {
+            if (node.kind === "plane") return null;
+            const name = copy.nodeLabels[node.id] ?? node.label;
+            const label = (y: number) => (
+              <text
+                x="0"
+                y={y}
+                textAnchor="middle"
+                direction={rtl ? "rtl" : "ltr"}
+                unicodeBidi="plaintext"
+              >
+                {name}
+              </text>
+            );
+            return (
               <g
                 key={index}
-                className={`proof-atlas-node${node.kind === "evidence" ? " proof-atlas-node--evidence" : ""}${node.kind === "boundary" ? " proof-atlas-node--boundary" : ""}`}
+                className={`proof-atlas-node${node.kind ? ` proof-atlas-node--${node.kind}` : ""}`}
                 transform={`translate(${node.x} ${node.y})`}
               >
                 {node.kind === "boundary" ? (
@@ -471,17 +481,7 @@ export function ProofAtlas({
                       className="proof-atlas-boundary-glyph"
                       d={boundaryGlyphs[node.id]}
                     />
-                    <text
-                      x="0"
-                      y={node.labelY ?? 43}
-                      textAnchor="middle"
-                      direction={
-                        locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-                      }
-                      unicodeBidi="plaintext"
-                    >
-                      {copy.nodeLabels[node.id] ?? node.label}
-                    </text>
+                    {label(node.labelY ?? 43)}
                   </>
                 ) : node.kind === "evidence" ? (
                   <>
@@ -495,42 +495,77 @@ export function ProofAtlas({
                       cy="10"
                       r="2.3"
                     />
-                    {!node.id.endsWith("-proof") && (
-                      <text
-                        x="0"
-                        y="32"
-                        textAnchor="middle"
-                        direction={
-                          locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-                        }
-                        unicodeBidi="plaintext"
-                      >
-                        {copy.nodeLabels[node.id] ?? node.label}
-                      </text>
-                    )}
+                    {label(32)}
                   </>
+                ) : node.kind === "stop" ? (
+                  <>
+                    <circle className="proof-atlas-stop" r="11" />
+                    <path className="proof-atlas-stop-bar" d="M -7 7 L 7 -7" />
+                    {label(32)}
+                  </>
+                ) : node.kind === "window" ? (
+                  <>
+                    <rect
+                      className="proof-atlas-flagged-window"
+                      x="-20"
+                      y="-15"
+                      width="40"
+                      height="30"
+                      rx="3"
+                    />
+                    <path
+                      className="proof-atlas-flagged-window-bar"
+                      d="M -20 -7 H 20"
+                    />
+                    <circle
+                      className="proof-atlas-flag"
+                      cx="20"
+                      cy="-15"
+                      r="4.5"
+                    />
+                    {label(42)}
+                  </>
+                ) : node.kind === "archive" ? (
+                  <>
+                    <rect
+                      className="proof-atlas-archive"
+                      x="-31"
+                      y="-16"
+                      width="62"
+                      height="32"
+                      rx="4"
+                    />
+                    <path
+                      className="proof-atlas-archive-lines"
+                      d="M -21 -6 H 11 M -21 0 H 11 M -21 6 H 3"
+                    />
+                    {/* Beside the pack, where the figure has room. In a right-to-left
+                        run `end` is the left edge, so the name still starts at x 40. */}
+                    <text
+                      x="40"
+                      y="5"
+                      textAnchor={rtl ? "end" : "start"}
+                      direction={rtl ? "rtl" : "ltr"}
+                      unicodeBidi="plaintext"
+                    >
+                      {name}
+                    </text>
+                  </>
+                ) : node.kind === "note" ? (
+                  label(0)
                 ) : (
                   <>
                     <circle className="proof-atlas-node-halo" r="16" />
                     <circle className="proof-atlas-node-core" r="3.5" />
-                    <text
-                      x="0"
-                      y="32"
-                      textAnchor="middle"
-                      direction={
-                        locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-                      }
-                      unicodeBidi="plaintext"
-                    >
-                      {copy.nodeLabels[node.id] ?? node.label}
-                    </text>
+                    {label(32)}
                   </>
                 )}
                 {index === 0 && (
                   <circle className="proof-atlas-node-ring" r="27" />
                 )}
               </g>
-            ))}
+            );
+          })}
           <path className="proof-atlas-axis" d="M 28 311 H 524" />
         </svg>
         {isInteractive && (

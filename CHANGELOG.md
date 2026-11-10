@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-11 (Australia/Sydney) — Proof Atlas redrawn from current repository evidence
+
+- **Scope**: Owner asked to update and enhance the three Atlas diagrams from the new GitHub evidence and the Anthropic residency résumé.
+- **Summary**: The Simurgh map showed the earlier frozen four-boundary architecture. It now draws the control boundary the repository README documents: a model proposal and host-held state meet at the composed gate; an admitted action reaches the receiver and a restricted one stops; the decision record and receiver snapshots feed the offline replay. Its summary keeps the October 2026 result and adds the Phase 19j replay pushed on 10 November 2026 (269 recorded restricted-state sends: 0 landed behind composed controls, 220 behind the credential gate alone), with its limits in the qualifier (credential-only arm cannot see stop, lease or alert state; proposals came from three small local models; no model was asked to defeat the gate). The Invisible Window map now shows the mechanism (flagged window → compositor → display and capture path) instead of two unconnected planes. The Zurvan map adds the opt-in write path back to the store and the audit trace, both from its README. Node names, summaries, screen-reader descriptions and qualifiers were rewritten in all five languages. The drawing code lost its Invisible Window special case: every map now renders through the same node and edge loop, with new node kinds (stop, window, archive, note, plane).
+- **Files Changed**: `src/components/os/ProofAtlas.tsx`, `src/components/os/atlas-copy.ts`, `src/components/os/proof-atlas.css`, `src/components/os/ProofAtlas.test.tsx`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: 759/759 unit tests (25 in the Atlas file, including new checks that every drawn node is named in every language and that the replay name sits beside its pack in right-to-left text), typecheck, lint and Prettier on the changed files, static build, and 81/81 Chromium browser regressions against the export on `127.0.0.1:4398`. Screenshots reviewed for all three maps in English, Persian, Arabic, Spanish and Chinese at 1440×900, plus 390×844 and 1024×768. Firefox and WebKit were not run.
+- **Follow-ups**: The project dossier and its evidence story still describe Simurgh through October 2026 only; Phase 19 is on the Atlas alone. The Persian, Arabic, Spanish and Chinese strings have had no native-speaker review. SentinelSSH (public since 4 November 2026) has no project page, so it has no map. Not committed or deployed.
+
 ### Raouf: 2026-11-10 (Australia/Sydney) — Cloudflare Web Analytics disabled; CSP back to 'self' only
 
 - **Scope**: Owner asked to shut down Cloudflare Web Analytics after the runtime audit showed its injected beacon ran on every in-app navigation.

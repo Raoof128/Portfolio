@@ -103,29 +103,38 @@ afterEach(() => {
 
 describe("Proof Atlas", () => {
   it.each([
-    ["en", /earlier frozen/i],
-    ["fa", /تثبیت‌شدهٔ پیشین/],
-    ["ar", /سابقة مجمّدة/],
-    ["es", /anterior congelada/i],
-    ["zh", /早期冻结/],
+    ["en", /not a run trace/i],
+    ["fa", /رد اجرا نیست/],
+    ["ar", /ليس سجل تشغيل/],
+    ["es", /no una traza de ejecución/i],
+    ["zh", /不是运行轨迹/],
   ] as const)(
-    "shows the published benefit and null result beside the frozen schematic in %s",
-    (locale, earlierFrozen) => {
+    "shows the published benefit, null result and replay beside the control-boundary schematic in %s",
+    (locale, notARunTrace) => {
       const { container } = render(<ProofAtlas locale={locale} interactive />);
       expect(container.querySelector(".proof-atlas-summary")).toHaveTextContent(
-        /Llama-3\.2-3B.*17\/24.*0\/24.*23\/24.*gpt-6-luna.*0\/24/,
+        /Llama-3\.2-3B.*17\/24.*0\/24.*23\/24.*gpt-6-luna.*0\/24.*269.*220/,
       );
       expect(
         container.querySelector(".proof-atlas-qualifier"),
-      ).toHaveTextContent(earlierFrozen);
+      ).toHaveTextContent(notARunTrace);
       expect(container.querySelector("svg desc")).toHaveTextContent(
-        earlierFrozen,
+        notARunTrace,
       );
-      // The drawing remains the historical four-boundary/eight-edge schematic.
+      // Host state, composed gate and receiver; one refused path and two evidence drops.
       expect(
         container.querySelectorAll(".proof-atlas-node--boundary"),
-      ).toHaveLength(4);
-      expect(container.querySelectorAll(".proof-atlas-edge")).toHaveLength(8);
+      ).toHaveLength(3);
+      expect(container.querySelectorAll(".proof-atlas-edge")).toHaveLength(6);
+      expect(
+        container.querySelectorAll(".proof-atlas-edge--blocked"),
+      ).toHaveLength(1);
+      expect(
+        container.querySelectorAll(".proof-atlas-edge--evidence"),
+      ).toHaveLength(2);
+      expect(container.querySelectorAll(".proof-atlas-archive")).toHaveLength(
+        1,
+      );
     },
   );
 
@@ -133,7 +142,7 @@ describe("Proof Atlas", () => {
     const { container } = render(<ProofAtlas locale="en" interactive />);
     const svg = container.querySelector("svg")!;
     const simurghPathCount = svg.querySelectorAll(".proof-atlas-edge").length;
-    expect(simurghPathCount).toBe(8);
+    expect(simurghPathCount).toBe(6);
     expect(
       screen.getByRole("link", { name: /open project evidence/i }),
     ).toHaveAttribute("href", "/projects/project-simurgh");
@@ -142,15 +151,19 @@ describe("Proof Atlas", () => {
     expect(
       screen.getByRole("button", { name: "Invisible Window" }),
     ).toHaveAttribute("aria-pressed", "true");
-    expect(svg.querySelectorAll(".proof-atlas-edge")).toHaveLength(2);
+    // Flagged window to compositor, then one edge to each output plane.
+    expect(svg.querySelectorAll(".proof-atlas-edge")).toHaveLength(3);
     expect(svg.querySelectorAll(".proof-atlas-plane")).toHaveLength(2);
+    expect(svg.querySelectorAll(".proof-atlas-flagged-window")).toHaveLength(1);
     expect(
       screen.getByRole("link", { name: /open project evidence/i }),
     ).toHaveAttribute("href", "/projects/invisible-window-research");
 
     fireEvent.click(screen.getByRole("button", { name: "Project Zurvan" }));
-    expect(svg.querySelectorAll(".proof-atlas-edge")).toHaveLength(12);
-    expect(svg.querySelectorAll(".proof-atlas-node")).toHaveLength(9);
+    // The original twelve, plus the audit-trace drop; the opt-in write is a return path.
+    expect(svg.querySelectorAll(".proof-atlas-edge")).toHaveLength(13);
+    expect(svg.querySelectorAll(".proof-atlas-node")).toHaveLength(11);
+    expect(svg.querySelectorAll(".proof-atlas-return path")).toHaveLength(2);
     expect(
       screen.getByRole("link", { name: /open project evidence/i }),
     ).toHaveAttribute("href", "/projects/project-zurvan");
@@ -174,14 +187,54 @@ describe("Proof Atlas", () => {
     }
   });
 
-  it("keeps the Spanish Tool gate label above its plate so the Output plate cannot cover it", () => {
-    // Spanish "Puerta de herramientas" is about 157 units wide; below the node it runs under the Output plate at x 500.
+  it("keeps the gate and receiver names above their plates, clear of the evidence drops", () => {
+    // Below the plate, each name would sit on the connector that drops to its record.
     const { container } = render(<ProofAtlas locale="es" interactive />);
-    const label = Array.from(container.querySelectorAll("svg text")).find(
-      (text) => text.textContent === "Puerta de herramientas",
-    );
-    expect(label).toBeDefined();
-    expect(Number(label!.getAttribute("y"))).toBeLessThan(0);
+    for (const name of ["Puerta compuesta", "Receptor"]) {
+      const label = Array.from(container.querySelectorAll("svg text")).find(
+        (text) => text.textContent === name,
+      );
+      expect(label).toBeDefined();
+      expect(Number(label!.getAttribute("y"))).toBeLessThan(0);
+    }
+  });
+
+  it.each([
+    ["en", "start"],
+    ["fa", "end"],
+    ["ar", "end"],
+  ] as const)(
+    "starts the replay name beside its pack in %s",
+    (locale, anchor) => {
+      // In a right-to-left run `end` is the left edge, so the name never covers the pack.
+      const { container } = render(<ProofAtlas locale={locale} interactive />);
+      const label = container.querySelector(".proof-atlas-node--archive text")!;
+      expect(label).toHaveTextContent(getAtlasCopy(locale).nodeLabels.replay);
+      expect(label).toHaveAttribute("text-anchor", anchor);
+      expect(Number(label.getAttribute("x"))).toBeGreaterThan(31);
+    },
+  );
+
+  it("names every drawn node in every language", () => {
+    for (const locale of ["en", "fa", "ar", "es", "zh"] as const) {
+      const { container, unmount } = render(
+        <ProofAtlas locale={locale} interactive />,
+      );
+      const labels = getAtlasCopy(locale).nodeLabels;
+      for (const project of [0, 1, 2]) {
+        fireEvent.click(
+          container.querySelectorAll(".proof-atlas-option")[project],
+        );
+        const listed = [
+          ...container.querySelectorAll(".proof-atlas-node-labels li"),
+        ].map((item) => item.textContent);
+        expect(listed.length).toBeGreaterThan(3);
+        // A missing translation would fall back to the English map label.
+        for (const name of listed)
+          expect(Object.values(labels)).toContain(name);
+      }
+      unmount();
+    }
   });
 
   it("exposes the localized diagram description through the SVG accessible name", () => {
@@ -222,7 +275,7 @@ describe("Proof Atlas", () => {
     expect(atlas?.getAttribute("dir")).toBe(dir);
     expect(atlas?.getAttribute("data-motion-enabled")).toBe("false");
     expect(atlas?.getAttribute("data-project")).toBe("project-simurgh");
-    expect(svg?.querySelectorAll(".proof-atlas-edge")).toHaveLength(8);
+    expect(svg?.querySelectorAll(".proof-atlas-edge")).toHaveLength(6);
     expect(document.getElementById(describedBy)?.textContent).toBe(
       getAtlasCopy(locale).diagramDescription["project-simurgh"],
     );
@@ -239,7 +292,7 @@ describe("Proof Atlas", () => {
     );
     expect(svg).toHaveAttribute("aria-hidden", "true");
     expect(container.querySelector(".proof-atlas-caption")).toHaveTextContent(
-      /earlier frozen architecture/i,
+      /not a run trace/i,
     );
     expect(container.querySelector("button")).toBeNull();
     expect(container.querySelector(".proof-atlas")).toHaveAttribute(
@@ -264,7 +317,7 @@ describe("Proof Atlas", () => {
       "false",
     );
     expect(container.querySelector(".proof-atlas-caption")).toHaveTextContent(
-      /earlier frozen architecture/i,
+      /not a run trace/i,
     );
   });
 
@@ -278,7 +331,7 @@ describe("Proof Atlas", () => {
       "data-motion-enabled",
       "false",
     );
-    expect(container.querySelectorAll(".proof-atlas-edge")).toHaveLength(8);
+    expect(container.querySelectorAll(".proof-atlas-edge")).toHaveLength(6);
     fireEvent.pointerMove(container.querySelector("svg")!, {
       pointerType: "mouse",
       clientX: 120,
