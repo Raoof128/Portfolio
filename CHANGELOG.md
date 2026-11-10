@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-10 (Australia/Sydney) — Cloudflare Web Analytics disabled; CSP back to 'self' only
+
+- **Scope**: Owner asked to shut down Cloudflare Web Analytics after the runtime audit showed its injected beacon ran on every in-app navigation.
+- **Summary**: Real User Measurements for `raoufabedini.dev` were set to **Disable** in the Cloudflare dashboard (Web Analytics → Manage site; the wrangler OAuth token has no RUM scope, so the API could not do it). With nothing loading the beacon, the Content-Security-Policy drops `https://static.cloudflareinsights.com` from `script-src` and `https://cloudflareinsights.com` from `connect-src`; every source is now `'self'`. The production audit's approved policy changed to match. Before disabling, the dashboard's field data showed the window maximise button at 408–600 ms INP (mostly presentation delay) and one welcome-screen layout shift of 0.821; that data source is now gone.
+- **Files Changed**: `public/_headers`, `scripts/lib/production-audit.mjs`, `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: After the dashboard change, a reload still shows Disable. Live `/`, `/projects` and `/about` made one beacon request each before, and none 20 s later (checked twice). Header audit tests 17/17 and static security tests 14/14 passed; production audit run against the deployed site.
+- **Follow-ups**: None.
+
 ### Raouf: 2026-11-10 (Australia/Sydney) — Runtime audit: fewer main-thread hiccups
 
 - **Scope**: Owner asked for a full runtime audit and polish: remove hiccups, make the site faster and smoother.
