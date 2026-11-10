@@ -18,6 +18,10 @@ Severity: P0 critical, P1 high, P2 medium, P3 low. "Reproduced" means Opus re-ob
 | RR-F10 | P3 copy | `src/components/os/Desktop.tsx` | desktop | "Offensive security 1 · Defensive security 4" read like ranks | "Offensive security (1) · …" | `7c43d0a` |
 | RR-F11 | P3 exposure | `public/*.svg` | `/next.svg`, `/vercel.svg`, … | Five create-next-app boilerplate SVGs, unreferenced but publicly served and allow-listed | Removed with their allow-list entries | final commit |
 | RR-F12 | P3 test | `full-audit.spec.ts` | `/` | Coarse-pointer test predated the lock screen (pre-existing failure on `38842e2`) | Fixed in the round-3 pass | `769cb00` |
+| RR-F13 | Feature (owner request, 9 Nov) | `WorkspaceWindows.tsx`, `ResearchOS.tsx`, `reading-window.css` | every window | Windows could only maximise inside the desktop work area (taskbar and footer row stayed) | Toolbar **Full Screen** command using the Fullscreen API; Escape exits and keeps the window open; geometry restored exactly; five languages; hidden where unsupported. 3 unit and 2 Chromium tests | `53e45bb` |
+| RR-F14 | P3 a11y | `Desktop.tsx` | desktop | Two landmarks were both named "Portfolio Applications" | App grid named by its visible hint | `53e45bb` |
+| RR-F15 | P3 | `win7-taskbar.css` | fa/ar | Dock labels clipped about 2px of Vazirmatn's glyph box | Taller leading for fa/ar labels | `53e45bb` |
+| RR-F16 | P3 | `package.json` | — | `clsx`, `tailwind-merge` unused after RR-F06 | Removed (lockfile −25 lines) | `53e45bb` |
 
 ## Verified as not defects
 

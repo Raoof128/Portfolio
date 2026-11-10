@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowRight, ExternalLink, Mail } from "lucide-react";
 import type { Locale } from "@/i18n";
 import { projects, type Project } from "@/lib/data";
@@ -113,6 +113,7 @@ export function Desktop({
   interactive?: boolean;
 }) {
   const copy = getOSCopy(locale);
+  const appsHintId = useId();
   const reviewerCopy = getReviewerCopy(locale);
   const windowCopy = getWindowCopy(locale);
   const path = (value: string) =>
@@ -340,8 +341,9 @@ export function Desktop({
           }
         />
       </div>
-      <section className="os-apps" aria-label={copy.appNavigation}>
-        <p className="os-section-label">
+      {/* Named by its visible hint, so it does not share the taskbar's landmark name. */}
+      <section className="os-apps" aria-labelledby={appsHintId}>
+        <p className="os-section-label" id={appsHintId}>
           {copy.workspaceHint}
           {/* One caption line with the project count per category, after the hint. The count
               sits in parentheses so it cannot read as a rank ("Offensive security 1"). */}

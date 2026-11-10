@@ -460,3 +460,44 @@ test.describe("short viewport entry", () => {
     });
   }
 });
+
+test.describe("window full screen", () => {
+  for (const [name, width, height, hasTouch] of [
+    ["desktop", 1440, 900, false],
+    ["phone", 390, 844, true],
+  ] as const) {
+    test.describe(name, () => {
+      test.use({ hasTouch, viewport: { width, height } });
+
+      test("the toolbar command fills the screen with the window and Escape returns it", async ({ page }) => {
+        await prepare(page, "light");
+        await page.goto("/projects/project-simurgh", { waitUntil: "networkidle" });
+        const frame = pane(page);
+        const before = await frame.boundingBox();
+        const enter = frame.getByRole("button", { name: "Full Screen", exact: true });
+        await expect(enter).toHaveAttribute("aria-pressed", "false");
+        await enter.click();
+
+        const exit = frame.getByRole("button", { name: "Exit Full Screen", exact: true });
+        await expect(exit).toHaveAttribute("aria-pressed", "true");
+        await expect.poll(() => page.evaluate(() =>
+          document.fullscreenElement?.matches("[data-window-path]") ?? false)).toBe(true);
+        const box = await frame.boundingBox();
+        expect(box).toMatchObject({ x: 0, y: 0, width, height });
+        // The window body is the scroller, and its heading is still reachable.
+        const body = frame.locator(".os-page-content");
+        expect(await body.evaluate((element) => element.scrollHeight > element.clientHeight)).toBe(true);
+        await expect(frame.locator(".os-window-title")).toBeInViewport();
+
+        // Escape from the window chrome leaves full screen and keeps the window open.
+        await exit.focus();
+        await page.keyboard.press("Escape");
+        await expect.poll(() => page.evaluate(() => document.fullscreenElement === null)).toBe(true);
+        await expect(frame).toBeVisible();
+        await expect(page).toHaveURL(/\/projects\/project-simurgh$/);
+        await expect(enter).toHaveAttribute("aria-pressed", "false");
+        if (!hasTouch) expect(await frame.boundingBox()).toEqual(before);
+      });
+    });
+  }
+});

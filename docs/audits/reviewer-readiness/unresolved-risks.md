@@ -10,11 +10,9 @@ Ordered by impact on a serious reviewer.
 | P3 | Desktop renders a second, hidden and inert Desktop tree after workspace registration | RR-L1-04; seen live as two `.os-desktop` nodes, one hidden | Render one Desktop per state |
 | P3 | 1024px first window overlaps the icon column by 4px (LTR and mirrored RTL) | Measured; icon column 268px versus a 240px fallback before icons mount | Breakpoint-aware `--win7-icon-column-edge` |
 | P3 | fa/ar standalone 404 uses Tahoma/system font (Vazirmatn not loaded there) | Measured computed font | Load Vazirmatn in `global-not-found` |
-| P3 | Persian/Arabic dock labels clip about 2px of glyph box at 1280×720 | scrollHeight 19 vs clientHeight 17; visually legible at 2× | Locale-specific line height for dock labels |
 | P3 | Mail draft body is unbounded (long Persian messages produce about 12k-character `mailto:` URLs) | RR-L2-01, RR-L5-F12 | Cap length with a visible counter, or offer copy-to-clipboard over a size threshold |
 | P3 | 73 of 160 meta descriptions exceed about 160 characters (home pages up to 486) | Export crawl | Shorter, page-specific descriptions (owner copy) |
 | P3 | Duplicated route→app mapping, three clipboard helpers, effect dependency nits | RR-L1-05/07/08/09/18 | Small refactors with tests |
-| P3 | `clsx`, `tailwind-merge` now unused dependencies | After RR-F06 | Remove in a lockfile-reviewed change |
 | Tooling | Browser suites do not run in CI; a missing Cloudflare token silently skips deploy | RR-L5-F01, F-17 | Add a Pages-preview Playwright job; fail the deploy job when the token is absent |
 | Tooling | 8 moderate dev-tool advisories (down from 16 on 4 Nov); runtime 0 | `npm audit` | Track upstream; high-severity gate passes |
 
@@ -33,6 +31,7 @@ Ordered by impact on a serious reviewer.
 
 ## Verification gaps (not run, never reported as passed)
 
+- Full screen: verified in Chromium only. iPhone Safari does not offer element full screen, so the command is not shown there (by design).
 - Firefox and WebKit: not installed, and installing is forbidden in this environment.
 - Screen-reader speech, physical phones and tablets, software keyboards, OS-level 200%/400% zoom and orientation changes on real devices.
 - Field Core Web Vitals (no RUM data). Lab numbers come from one Linux container.

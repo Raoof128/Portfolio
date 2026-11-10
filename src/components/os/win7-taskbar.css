@@ -306,6 +306,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Vazirmatn's glyph box is taller than the Latin stack (19px against a 16.8px line at
+   14px), so the clipped single-line label needs more leading to keep marks below the line. */
+.os-shell.win7 .os-dock .os-dock-app > span:last-child:lang(fa),
+.os-shell.win7 .os-dock .os-dock-app > span:last-child:lang(ar) {
+  line-height: 1.4;
+}
 .os-shell.win7 .os-dock .os-dock-app:is(:hover, :focus-visible) {
   background: var(--win7-plate-hover);
   border-color: rgb(255 255 255 / 0.7);
