@@ -804,9 +804,12 @@
   line-height: 1;
   white-space: nowrap;
 }
-.os-shell.win7 .os-search-field:focus-within {
-  outline: 2px solid #0066cc;
-  outline-offset: -2px;
+/* 7.css draws no focus on a search field; this ring is for more-contrast and forced colours. */
+@media (prefers-contrast: more), (forced-colors: active) {
+  .os-shell.win7 .os-search-field:focus-within {
+    outline: 2px solid #0066cc;
+    outline-offset: -2px;
+  }
 }
 /* Keep the installed 7.css searchbox inset and magnifier, with layout-only extensions.
    The trailing reserve prevents the placeholder from colliding with the native icon. */

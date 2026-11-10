@@ -441,10 +441,25 @@
     opacity: 0;
   }
 }
-.os-shell.win7 :focus-visible {
+.os-shell.win7
+  :focus-visible:not(
+    :where(.title-bar-controls > button, input[type="search"])
+  ) {
   outline: 2px solid var(--win7-focus-outer);
   outline-offset: 2px;
   box-shadow: 0 0 0 2px var(--win7-focus-inner);
+}
+/* Owner decision (10 Nov 2026): exact 7.css parity by default. 7.css draws no keyboard
+   focus indicator on caption buttons or search fields, so the ring above skips them and
+   their accessible indicators (win7-windows.css, project-explorer.css, win7-pages.css,
+   win7-taskbar.css) apply only when the visitor asks for more contrast or uses forced
+   colours. The same condition keeps the 3:1 text-field edge and the red invalid edge. */
+@media (prefers-contrast: more), (forced-colors: active) {
+  .os-shell.win7 input[type="search"]:focus-visible {
+    outline: 1px dotted var(--win7-focus-inner);
+    outline-offset: -4px;
+    box-shadow: inset 0 0 0 2px var(--win7-focus-ring);
+  }
 }
 /* Inside a window, native push buttons and unselected tabs keep the canonical 7.css
    focus: a 1px dotted ring inset 4px over a 2px #98d1ef inset edge. The two-tone ring

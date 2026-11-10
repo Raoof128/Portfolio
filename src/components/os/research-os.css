@@ -1239,9 +1239,11 @@ html:has(.os-shell[data-appearance="light"]) {
   border-radius: var(--radius-s);
   background: var(--os-surface);
 }
-.os-search-field:focus-within {
-  outline: 2px solid var(--os-focus);
-  outline-offset: 2px;
+@media (prefers-contrast: more), (forced-colors: active) {
+  .os-search-field:focus-within {
+    outline: 2px solid var(--os-focus);
+    outline-offset: 2px;
+  }
 }
 .os-search-field > svg {
   width: 18px;

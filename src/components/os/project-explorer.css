@@ -271,11 +271,8 @@
   background-position: 8px center;
   padding-inline-start: 6px;
 }
-.os-shell .os-project-explorer .os-explorer-search input:focus-visible {
-  outline: 1px dotted #000;
-  outline-offset: -4px;
-  box-shadow: inset 0 0 0 2px #98d1ef;
-}
+/* 7.css gives a focused search field the caret only; the ring for visitors who ask for
+   more contrast is in win7-theme.css. */
 .os-shell .os-project-explorer .os-explorer-controls select {
   width: 100%;
   min-width: 0;

@@ -122,11 +122,7 @@
   background-position: 8px center;
   padding-inline-start: 6px;
 }
-.win7 .os-library-search input:focus-visible {
-  outline: 1px dotted #000;
-  outline-offset: -4px;
-  box-shadow: inset 0 0 0 2px #98d1ef;
-}
+/* Search focus follows 7.css (caret only); see win7-theme.css for the high-contrast ring. */
 .win7 .os-library-topic select {
   padding-inline: 3px 30px;
   font-family: var(--win7-font);
@@ -487,18 +483,25 @@
   inline-size: 100%;
   box-sizing: border-box;
 }
-/* Field edges (WCAG 1.4.11). 7.css draws the top edge of a text field at #abadb3, about
-   2.2:1 on white, so the enabled resting edge takes the 7.css control line, #8e8f8f (3.2:1).
+/* Field edges. 7.css draws the top edge of a text field at #abadb3, about 2.2:1 on white,
+   and that is the default here (owner decision, see win7-theme.css). For visitors who ask
+   for more contrast the enabled resting edge takes the 7.css control line, #8e8f8f (3.2:1).
    Hover and focus keep the 7.css blue, and invalid fields keep the danger red. Disabled
    fields are exempt from the contrast rule, so they keep the canonical disabled edge. */
-.win7 .os-secure-field :is(input, textarea):not(:hover, :focus, :disabled) {
-  border-color: var(--w7-el-bd);
+@media (prefers-contrast: more), (forced-colors: active) {
+  .win7 .os-secure-field :is(input, textarea):not(:hover, :focus, :disabled) {
+    border-color: var(--w7-el-bd);
+  }
 }
 .win7 .os-secure-field textarea {
   resize: vertical;
 }
-.win7 .os-secure-field :is(input, textarea)[aria-invalid="true"] {
-  border-color: var(--win7-danger);
+/* An invalid field keeps the 7.css edge by default; its error text and aria-invalid carry
+   the state. The red edge is added for more-contrast and forced colours. */
+@media (prefers-contrast: more), (forced-colors: active) {
+  .win7 .os-secure-field :is(input, textarea)[aria-invalid="true"] {
+    border-color: var(--win7-danger);
+  }
 }
 /* Phones and touch: 16px fields, so iOS does not zoom the page when a field takes focus. The
    selector must outrank the reading-field rule above, or the native 12px value wins
