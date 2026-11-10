@@ -294,6 +294,14 @@
   gap: var(--space-2);
   min-width: 0;
 }
+/* Wide fine-pointer layouts: Windows push buttons are as wide as their label (7.css
+   min-width 75px), not stretched into equal columns. Phones and touch keep the grid. */
+@media (min-width: 701px) and (pointer: fine) {
+  .proof-atlas-options {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 
 /* Project selectors use the control primitive (design system section 4): 44px
    minimum (coarse-pointer size), --radius-s, --text-ui at weight 500. These base

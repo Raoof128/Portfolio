@@ -282,6 +282,9 @@
   /* 7.css consumes this as the font shorthand, not just a font-family. */
   --w7-font: 9pt / normal var(--win7-font);
   --w7-surface: #f0f0f0;
+  /* The untouched 7.css surface, for controls that must keep it where a window body
+     re-points --w7-surface at its white reading surface (disabled fields). */
+  --win7-canonical-surface: #f0f0f0;
   --w7-tab-bg: var(--win7-surface-body);
   --w7-w-bd: rgb(0 0 0 / 0.7);
   --w7-link-c: var(--win7-link);
@@ -440,6 +443,18 @@
   outline-offset: 2px;
   box-shadow: 0 0 0 2px var(--win7-focus-inner);
 }
+/* Inside a window, native push buttons and unselected tabs keep the canonical 7.css
+   focus: a 1px dotted ring inset 4px over a 2px #98d1ef inset edge. The two-tone ring
+   above is for the desktop, taskbar and glass, where focus sits on the wallpaper. Caption
+   buttons stay on the two-tone ring (7.css draws no focus for them), and the selected tab
+   keeps its own canonical rule. */
+.os-shell.win7
+  :is(.window-body, .os-window-toolbar)
+  button:not(:disabled, [aria-selected="true"]):focus-visible {
+  outline: 1px dotted var(--win7-focus-inner);
+  outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px var(--win7-focus-ring);
+}
 /* Icon-only controls inherit the 7.css button sizing (75px minimum, 12px padding). */
 .os-shell.win7 .os-control,
 .os-shell.win7 .os-theme-switch {
@@ -584,4 +599,20 @@
    legend in the app keeps its own spacing. */
 :where(.win7) legend {
   padding-inline: revert;
+}
+
+/* Tailwind preflight also sets `color: inherit` on form controls, which hides the UA's
+   grey disabled text that canonical 7.css fields rely on. Restore it, and give disabled
+   fields the canonical surface again. Zero specificity: enabled and classed rules win. */
+:where(.win7) :is(input, textarea):disabled {
+  --w7-surface: var(--win7-canonical-surface);
+  color: revert;
+}
+
+/* Preflight also replaces the UA placeholder ink with 50% of the text colour. Canonical
+   7.css fields show the UA ink, so every field in the scope takes the placeholder token
+   (the Chromium value, 4.61:1 on white); opacity 1 keeps Firefox from fading it. */
+:where(.win7) ::placeholder {
+  color: var(--win7-field-placeholder);
+  opacity: 1;
 }
