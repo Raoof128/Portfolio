@@ -1338,9 +1338,6 @@ export function ResearchOS({
             {!workspaceDisplayed && !isHome && (
               <>
                 <div className="os-windowbar os-windowbar--route title-bar">
-                  <div className="os-window-navigation">
-                    <OSIcon app={activeApp} />
-                  </div>
                   <span
                     className={`os-window-title title-bar-text ${reading.desktop ? "os-window-title--movable" : ""}`}
                     id="os-window-title"
@@ -1642,18 +1639,6 @@ export function ResearchOS({
               maxLength={200}
               onChange={(event) => setQuery(event.target.value)}
             />
-            {query && (
-              <button
-                className="os-control"
-                onClick={() => {
-                  setQuery("");
-                  searchField.current?.focus();
-                }}
-                aria-label={copy.clearSearch}
-              >
-                <X aria-hidden="true" />
-              </button>
-            )}
           </div>
           <div
             className="os-search-scopes"

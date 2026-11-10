@@ -1047,22 +1047,17 @@ html:has(.os-shell[data-appearance="light"]) {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
 }
-.os-shell .os-windowbar--route > .os-window-navigation {
-  justify-self: start;
-}
+/* Column 1 is empty now the route bar has no app icon, so the title and actions are placed
+   explicitly and the title stays centred in the middle column. */
 .os-shell .os-windowbar--route > .os-window-title {
+  grid-column: 2;
   justify-self: center;
   max-width: 100%;
   text-align: center;
 }
 .os-shell .os-windowbar--route > .os-window-actions {
+  grid-column: 3;
   justify-self: end;
-}
-.os-window-navigation {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-width: 0;
 }
 .os-window-back {
   min-width: 40px;
@@ -1275,9 +1270,6 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-search-field input::placeholder {
   color: var(--win7-field-placeholder);
   opacity: 1;
-}
-.os-search-field input::-webkit-search-cancel-button {
-  display: none;
 }
 /* Scope bar: a segmented control. Selected = accent tint and accent text. */
 .os-search-scopes {
@@ -1820,14 +1812,8 @@ html:has(.os-shell[data-appearance="light"]) {
   .os-shell .os-windowbar--route {
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   }
-  .os-window-navigation {
-    gap: var(--space-1);
-  }
   .os-window-back > span,
   .os-window-close > span {
-    display: none;
-  }
-  .os-window-navigation > .os-small-icon {
     display: none;
   }
   .os-window-title {

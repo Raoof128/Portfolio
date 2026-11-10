@@ -1652,6 +1652,16 @@ describe("ResearchOS keyboard and search", () => {
     ).toBeVisible();
   });
 
+  it("clears a typed query with the browser's native search control, not an app button", () => {
+    renderWorkspace(shell());
+    const { dialog, input } = openSearch();
+    fireEvent.change(input, { target: { value: "Simurgh" } });
+    expect(input).toHaveAttribute("type", "search");
+    expect(
+      within(dialog).queryByRole("button", { name: copy.clearSearch }),
+    ).toBeNull();
+  });
+
   it("names each search result by its kind and title, and describes it by its summary", () => {
     renderWorkspace(shell());
     const { dialog, input } = openSearch();

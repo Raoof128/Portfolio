@@ -6,19 +6,6 @@
 }
 /* The window open animation is driven by data-opening and runs from win7-windows.css, so the
    frame itself sets none here. Reading text stays opaque throughout. */
-.os-workspace-window.os-window--floating
-  .os-window-navigation
-  > .os-small-icon {
-  animation: os-workspace-icon-appear var(--motion-quick) var(--ease-standard);
-}
-@keyframes os-workspace-icon-appear {
-  from {
-    transform: scale(0.94);
-  }
-  to {
-    transform: scale(1);
-  }
-}
 
 /* Title: a centred, single-line label in the title bar. It is the drag handle on desktop. */
 .os-shell :is(button, div).os-window-title {
@@ -239,9 +226,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .os-workspace-window.os-window--floating
-    .os-window-navigation
-    > .os-small-icon,
   .os-shell .os-window-scan {
     animation: none;
   }

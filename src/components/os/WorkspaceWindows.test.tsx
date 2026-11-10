@@ -110,6 +110,14 @@ describe("workspace window controls", () => {
     expect(title?.closest("button")).toBeNull();
   });
 
+  it("carries only the title text in the title bar, with no app icon", () => {
+    renderWindow();
+    const bar = document.querySelector(".os-windowbar.title-bar");
+    expect(bar?.querySelector(".os-window-navigation")).toBeNull();
+    expect(bar?.querySelector(".os-small-icon")).toBeNull();
+    expect(bar?.firstElementChild).toHaveClass("os-window-title");
+  });
+
   it("keeps Back as a parent link", () => {
     // The navigation decision (use-reading-window.ts): Back goes to the parent page by link.
     renderWindow();

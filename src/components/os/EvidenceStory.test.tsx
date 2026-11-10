@@ -80,6 +80,10 @@ describe("Simurgh evidence walkthrough", () => {
 
     expect(input).toHaveAttribute("aria-pressed", "false");
     expect(tool).toHaveAttribute("aria-pressed", "true");
+    expect(tool).toHaveClass("active");
+    expect(input).not.toHaveClass("active");
+    expect(tool).toHaveAccessibleName(/^tool invocation$/i);
+    expect(tool.querySelector("strong")).toBeNull();
     expect(screen.getByRole("listitem", { current: "step" })).toHaveTextContent(
       copy.boundaries[2].detail,
     );

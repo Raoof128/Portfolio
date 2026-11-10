@@ -58,9 +58,16 @@ export function SimurghEvidenceStory({
               data-path-active={index >= selectedStep}
               key={step.title}
             >
+              {/* Plain inline text: the number is hidden from assistive tech, and the
+                  space separates it from the label. No strong or b, so the button
+                  reads as a canonical 7.css push button. */}
               <button
                 type="button"
-                className="os-simurgh-instrument-control"
+                className={
+                  selectedStep === index
+                    ? "os-simurgh-instrument-control active"
+                    : "os-simurgh-instrument-control"
+                }
                 aria-pressed={selectedStep === index}
                 aria-describedby={`${id}-detail-${index}`}
                 onClick={() => setSelectedStep(index)}
@@ -73,8 +80,8 @@ export function SimurghEvidenceStory({
                     minimumIntegerDigits: 2,
                     useGrouping: false,
                   })}
-                </span>
-                <strong>{step.title}</strong>
+                </span>{" "}
+                {step.title}
               </button>
             </li>
           ))}

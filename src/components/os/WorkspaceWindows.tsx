@@ -670,9 +670,6 @@ function ApplicationWindow({
           // stays so the existing pending-state test keeps its hook.
           <div className="os-window-scan" aria-hidden="true" />
         )}
-        <div className="os-window-navigation">
-          <OSIcon app={app} />
-        </div>
         {/* The title names the window (aria-labelledby on the frame). It is not a tab stop:
             keyboard users move through the caption buttons and the page. The pointer drag
             stays on desktop. The full title is in the tooltip; phones wrap it instead. */}

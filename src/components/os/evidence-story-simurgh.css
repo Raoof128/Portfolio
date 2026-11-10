@@ -1,46 +1,41 @@
-/* Simurgh evidence story: the signed-pack chain. One layout: a numbered list
-   below the wide breakpoint and a six-stage row at and above it. Selection is a
-   single accent ring on a tinted fill. Markers are 28px, so the numerals sit well
-   above the 12px floor. */
+/* Simurgh evidence story: the signed-pack chain. Each stage is a native push button
+   with the canonical 7.css face, and the stages wrap in one row at every width. The
+   selected stage carries the canonical `active` class (7.css pressed face); aria-pressed
+   stays the semantic state. No custom box, type or paint is applied to the button on
+   fine pointers, so `.win7 button` and `.win7 button.active` apply untouched. The
+   numbered explanations list below keeps its own layout. */
 
 .os-shell .os-project-explorer .os-project-section .os-simurgh-instrument {
   margin-block-start: var(--space-6);
 }
 
+/* Stations wrap in a row of intrinsic-width buttons. */
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-simurgh-instrument-chain {
-  display: grid;
-  gap: var(--space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-simurgh-instrument-station {
+  display: flex;
   position: relative;
   min-width: 0;
 }
 
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-control {
-  display: grid;
-  grid-template-columns: 28px minmax(0, 1fr);
-  align-items: center;
-  gap: var(--space-3);
-  width: 100%;
-  min-height: 48px;
-  margin: 0;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--os-control-line);
-  border-radius: var(--radius-s);
-  color: var(--os-text);
-  background: var(--os-bg);
-  font: inherit;
-  text-align: start;
+/* Touch and narrow layouts: the same native buttons, with a 44px target. */
+@media (pointer: coarse), (max-width: 700px) {
+  .os-shell
+    .os-project-explorer
+    .os-project-section
+    .os-simurgh-instrument-control {
+    min-height: 44px;
+  }
 }
 
 .os-shell
@@ -50,27 +45,6 @@
   cursor: pointer;
 }
 
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-control:hover {
-  border-color: var(--os-control-line);
-}
-
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-control
-  strong {
-  min-width: 0;
-  color: var(--os-text);
-  font-size: var(--text-ui);
-  font-weight: 500;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-}
-
-.os-shell .os-project-explorer .os-project-section .os-simurgh-instrument-point,
 .os-shell
   .os-project-explorer
   .os-project-section
@@ -88,46 +62,6 @@
   font-weight: 600;
   line-height: 1;
   font-variant-numeric: tabular-nums;
-}
-
-/* The selected station is the single ring; markers on the signed path take the accent. */
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-station[data-selected="true"]
-  > .os-simurgh-instrument-control {
-  border-color: var(--os-accent);
-  background: var(--os-accent-tint);
-  color: var(--os-on-tint);
-}
-
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-station[data-selected="true"]
-  > .os-simurgh-instrument-control
-  strong {
-  color: var(--os-on-tint);
-}
-
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-station[data-path-active="true"]
-  .os-simurgh-instrument-point {
-  border-color: var(--os-accent);
-  color: var(--os-accent);
-}
-
-/* On the selected tint the marker keeps its accent ring but takes text colour:
-   accent text stays off tinted rows. Declared after the path rule so it wins. */
-.os-shell
-  .os-project-explorer
-  .os-project-section
-  .os-simurgh-instrument-station[data-selected="true"]
-  .os-simurgh-instrument-point {
-  border-color: var(--os-accent);
-  color: var(--os-on-tint);
 }
 
 .os-shell .os-project-explorer .os-project-section .os-simurgh-explanations {
@@ -179,42 +113,16 @@
   color: var(--explorer-active-fg);
 }
 
-/* Wide story: six stages in one row, markers above their titles. */
-@container evidence-story (min-width: 681px) {
-  .os-shell
-    .os-project-explorer
-    .os-project-section
-    .os-simurgh-instrument-chain {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    align-items: stretch;
-  }
-  .os-shell
-    .os-project-explorer
-    .os-project-section
-    .os-simurgh-instrument-station {
-    display: flex;
-  }
-  .os-shell
-    .os-project-explorer
-    .os-project-section
-    .os-simurgh-instrument-control {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: 112px;
-    gap: var(--space-2);
-  }
-}
-
 @media (forced-colors: active) {
+  /* Keep the latched native face opaque in either system palette, as in
+     evidence-story-invisible.css. */
   .os-shell
     .os-project-explorer
     .os-project-section
-    .os-simurgh-instrument-station[data-selected="true"]
-    > .os-simurgh-instrument-control {
-    border: 2px solid Highlight;
-    color: CanvasText;
+    .os-simurgh-instrument-control.active:not(:disabled) {
     background: Canvas;
+    color: CanvasText;
+    border: 2px solid Highlight;
+    box-shadow: none;
   }
 }

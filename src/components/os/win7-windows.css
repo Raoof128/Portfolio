@@ -125,26 +125,6 @@
   }
 }
 
-/* Icon: the app glyph sits at the start of the title bar, a flex sibling of the title, so the
-   title never runs under it. */
-.os-shell.win7 .window.glass > .title-bar > .os-window-navigation {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  min-width: 0;
-  gap: 0;
-}
-.os-shell.win7 .window.glass > .title-bar > .os-window-navigation > * {
-  display: block;
-  width: 16px;
-  height: 16px;
-}
-.os-shell.win7 .window.glass > .title-bar > .os-window-navigation svg {
-  display: block;
-  width: 16px;
-  height: 16px;
-}
-
 /* Command toolbar: a white-to-grey Explorer strip under the title bar. It holds Back, Copy Link
    and the Window Controls disclosure. Every control is at least 24px, and 44px on phones. */
 .os-shell.win7 .window.glass > .os-window-toolbar {

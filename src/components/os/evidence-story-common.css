@@ -171,15 +171,13 @@
   list-style: none;
 }
 
-/* Focus rings use the shared 2px focus token with a 2px offset. */
+/* Focus rings use the shared 2px focus token with a 2px offset. Simurgh stations are
+   native 7.css buttons and keep the canonical focus. */
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-evidence-story
-  :is(
-    .os-simurgh-instrument-control,
-    .os-zurvan-typed
-  ):focus-visible {
+  .os-zurvan-typed:focus-visible {
   outline: 2px solid var(--os-focus);
   outline-offset: 2px;
 }
@@ -270,16 +268,13 @@
 
 /* Aero pressed controls take the Win7 select gradient, and the text pair comes from the
    explorer tokens (black on the light face, white on the navy face in Aero Night). The
-   rule covers the Simurgh and Zurvan diagram controls only: native platform buttons
-   latch their pressed face in evidence-story-invisible.css. */
+   rule covers the Zurvan diagram control only: the Simurgh stations and the platform
+   buttons are native 7.css buttons that latch with the canonical `active` class. */
 .os-shell
   .os-project-explorer
   .os-project-section
   .os-evidence-story
-  :is(
-    .os-simurgh-instrument-control,
-    .os-zurvan-typed
-  )[aria-pressed="true"]:not(:disabled) {
+  .os-zurvan-typed[aria-pressed="true"]:not(:disabled) {
   color: var(--explorer-select-text);
   background: var(--explorer-select);
   border-color: var(--explorer-select-line);
