@@ -79,9 +79,17 @@ for (const mode of [
           await expect(
             page.locator('meta[name="description"]'),
           ).toHaveAttribute("content", project.description);
-          expect(
-            await active().locator(`a[href="${project.links.repo}"]`).count(),
-          ).toBeGreaterThan(0);
+          const publicRepo = active().locator(`a[href="${project.links.repo}"]`);
+          if (project.links.repoVisibility === "private") {
+            // A private repository is never linked; the page offers a source request by
+            // email and says the source is private (030e261).
+            expect(await publicRepo.count()).toBe(0);
+            expect(
+              await active().locator('a[href^="mailto:"][href*="subject="]').count(),
+            ).toBeGreaterThan(0);
+          } else {
+            expect(await publicRepo.count()).toBeGreaterThan(0);
+          }
           const schema = await page
             .locator('script[type="application/ld+json"]')
             .evaluateAll((nodes) =>
@@ -93,7 +101,10 @@ for (const mode of [
             (node) => node["@type"] === "SoftwareSourceCode",
           );
           expect(software?.codeRepository).toBe(project.links.repo);
-          expect(software).not.toHaveProperty("conditionsOfAccess");
+          // Only a private repository declares access conditions in its schema.
+          if (project.links.repoVisibility === "private")
+            expect(typeof software?.conditionsOfAccess).toBe("string");
+          else expect(software).not.toHaveProperty("conditionsOfAccess");
           if (project.links.doiKind === "software") {
             expect(software?.identifier?.value).toBe("10.5281/zenodo.21737792");
             expect(software?.sameAs).toBe(project.links.doi);

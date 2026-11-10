@@ -285,6 +285,9 @@
   /* The untouched 7.css surface, for controls that must keep it where a window body
      re-points --w7-surface at its white reading surface (disabled fields). */
   --win7-canonical-surface: #f0f0f0;
+  /* The UA's light-scheme disabled text. Fields keep their light surface in Aero Night, so
+     the dark-scheme value (a pale grey) must not be picked up there. */
+  --win7-field-disabled-ink: #545454;
   --w7-tab-bg: var(--win7-surface-body);
   --w7-w-bd: rgb(0 0 0 / 0.7);
   --w7-link-c: var(--win7-link);
@@ -602,11 +605,12 @@
 }
 
 /* Tailwind preflight also sets `color: inherit` on form controls, which hides the UA's
-   grey disabled text that canonical 7.css fields rely on. Restore it, and give disabled
-   fields the canonical surface again. Zero specificity: enabled and classed rules win. */
+   grey disabled text that canonical 7.css fields rely on. Restore that ink (as a token,
+   so both appearances use the light-scheme value) and give disabled fields the canonical
+   surface again. Zero specificity: enabled and classed rules win. */
 :where(.win7) :is(input, textarea):disabled {
   --w7-surface: var(--win7-canonical-surface);
-  color: revert;
+  color: var(--win7-field-disabled-ink);
 }
 
 /* Preflight also replaces the UA placeholder ink with 50% of the text colour. Canonical
