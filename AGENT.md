@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-10 (Australia/Sydney) — Runtime audit: fewer main-thread hiccups
+
+- **Scope**: Owner asked for a full runtime audit and polish: remove hiccups, make the site faster and smoother.
+- **Summary**: Measured the live site (long tasks and frame timing per interaction, at 1x and 4x CPU), then traced and CPU-profiled a source-mapped build. Idle, maximise and window dragging hold 60 fps; the hiccups are main-thread blocks when a window or project opens (about 100 ms locally at 1x, 280 ms on the live site, 2 s at 4x CPU). Two causes fixed: (1) every displayed number and date built a new `Intl.NumberFormat`/`Intl.DateTimeFormat`; formatters are now cached per language and options. (2) Each dock press wrote `--dock-origin-x/y` onto `<html>`, an inherited custom property, which forced a whole-document restyle right as a window opened; the origin is now one style rule scoped to `.os-window`. Investigated and left as is: focus moves into new content (needed for keyboard and screen-reader users; the layout they force happens anyway), project artwork canvases (already pause off screen), `content-visibility` on long windows (no reliable gain in an A/B test).
+- **Files Changed**: `src/i18n/format.ts`, `src/i18n/format.test.ts`, `src/components/os/spotlight.ts`, `src/components/os/spotlight.test.ts` (new), `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: Before/after builds served side by side, main-thread blocking time at 4x CPU, median of 5 alternating runs: open Projects 2163→1507 ms (−30%), open About 1955→1460 ms (−25%), switch project 697→579 ms (−17%), open a project 1462→1443 ms, enter workspace 1069→1298 ms (neither fix runs on that path; run-to-run noise), total 7346→6287 ms (−14%). New tests fail without each fix and pass with it. 753/753 unit tests, typecheck and source lint passed. The site CSP allows the inline style rule (`style-src 'self' 'unsafe-inline'`).
+- **Follow-ups**: Cloudflare Web Analytics injects `beacon.min.js`, which ran about 70 ms (4x CPU) on each in-app navigation; turning it off is an owner decision in the Cloudflare dashboard. Scrolling inside a window still drops some frames while the animated project artwork is on screen (browser paint work, not JavaScript).
+
 ### Raouf: 2026-11-10 (Australia/Sydney) — Full Size fills the screen on every window
 
 - **Scope**: Owner reported, tested on different machines, that the Proof Atlas window on the home desktop goes under the screen when made full size, and that the other windows never fill the screen.
