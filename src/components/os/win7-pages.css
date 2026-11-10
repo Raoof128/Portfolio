@@ -237,8 +237,8 @@
 }
 
 /* Reading fields keep the native 7.css font and geometry. The separate search
-   rule retains its 24px height. Text fields add visible keyboard focus; selects
-   retain their canonical dotted outline and blue inset instead of text-field edges. */
+   rule retains its 24px height. Text fields keep the canonical focus (blue edge and
+   caret); selects retain their canonical dotted outline and blue inset. */
 .os-shell.win7
   .os-support
   :is(
@@ -260,8 +260,9 @@
 .os-shell.win7
   .os-support
   :is(input, textarea):not(.os-library-search *):focus-visible {
-  outline: 1px dotted #000000;
-  outline-offset: -4px;
+  /* Canonical 7.css text-field focus: the blue edge and the caret, no ring. Stated here
+     because the shell's two-tone focus ring would otherwise outrank the canonical rule. */
+  outline: none;
   border-color: #3d7bad #a4c9e3 #b7d9ed #b5cfe7;
   box-shadow: none;
 }
