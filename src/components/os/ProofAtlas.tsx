@@ -551,7 +551,11 @@ export function ProofAtlas({
                 <button
                   key={project}
                   type="button"
-                  className="proof-atlas-option"
+                  className={
+                    selected === project
+                      ? "proof-atlas-option active"
+                      : "proof-atlas-option"
+                  }
                   aria-pressed={selected === project}
                   onClick={() => setSelected(project)}
                 >

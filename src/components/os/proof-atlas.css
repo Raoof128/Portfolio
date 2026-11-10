@@ -296,8 +296,10 @@
 }
 
 /* Project selectors use the control primitive (design system section 4): 44px
-   minimum (coarse-pointer size), --radius-s, --text-ui at weight 500. The pressed
-   one takes the accent tint and text. */
+   minimum (coarse-pointer size), --radius-s, --text-ui at weight 500. These base
+   values are the non-7.css fallback; the desktop window (always rendered with
+   .proof-atlas--desktop, see Desktop.tsx) takes canonical 7.css button geometry
+   and type instead, and the selected one carries the canonical `active` class. */
 .proof-atlas-option {
   min-width: 0;
   min-height: 44px;
@@ -319,18 +321,6 @@
     color var(--motion-quick) var(--ease-standard),
     border-color var(--motion-quick) var(--ease-standard),
     background-color var(--motion-quick) var(--ease-standard);
-}
-
-.proof-atlas-option:is(:hover, :focus-visible),
-.proof-atlas-option[aria-pressed="true"] {
-  border-color: var(--os-accent);
-  background: var(--os-accent-tint);
-}
-
-/* The pressed selector is one accent ring on the tint. Its label stays text
-   colour: accent text is reserved for the base and surface tiers, not tints. */
-.proof-atlas-option[aria-pressed="true"] {
-  color: var(--os-text);
 }
 
 .proof-atlas-summary {
@@ -645,31 +635,11 @@
   line-height: 1.55;
 }
 
-/* Project selectors are Win7 push buttons: the 7.css gradients for rest, hover and
-   pressed. The pressed one is the selected project. */
-.proof-atlas--desktop .proof-atlas-option {
-  min-height: 30px;
-  padding: 3px 12px;
-  border: 1px solid var(--w7-el-bd);
-  border-radius: var(--w7-el-bdr);
-  background: var(--w7-el-grad);
-  box-shadow: var(--w7-el-sd);
-  color: var(--w7-el-c);
-  font-family: var(--win7-font);
-  font-size: var(--win7-ui-size);
-  font-weight: 400;
-}
-
-.proof-atlas--desktop .proof-atlas-option:is(:hover, :focus-visible) {
-  border-color: var(--w7-el-bd-h);
-  background: var(--w7-el-grad-h);
-}
-
-.proof-atlas--desktop .proof-atlas-option[aria-pressed="true"] {
-  border-color: var(--w7-el-bd-a);
-  background: var(--w7-el-grad-a);
-  box-shadow: var(--w7-el-sd-a);
-}
+/* Project selectors are canonical 7.css push buttons (.win7 button): geometry (23px
+   minimum height, 75px minimum width, 0 12px padding), the 9pt face, the gradients for
+   rest, hover, pressed and focus, and the `active` pressed face for the selected project.
+   No size, type, border or paint override is set here, so the reference values apply.
+   The coarse-pointer and narrow-viewport 44px sizing stays in win7-desktop.css and below. */
 
 .proof-atlas--desktop .proof-atlas-link {
   min-height: 30px;

@@ -3,8 +3,9 @@
    flat drawings with one accent for the captured window. */
 
 /* Platform choices are ordinary 7.css toggle buttons in a labelled group. Native
-   button selectors supply every momentary state; aria-pressed keeps the selected
-   face latched using the same pressed gradient and inset shadow. */
+   button selectors supply every state. The selected choice carries the canonical
+   `active` class (7.css pressed face on ::after, border-color bd-a); aria-pressed
+   stays the semantic state. No custom face, shadow or ::before paint is applied. */
 .os-shell .os-project-explorer .os-project-section .os-story-platform-picker {
   min-width: 0;
   margin: var(--space-4) 0 var(--space-3);
@@ -21,14 +22,6 @@
 .os-shell .os-project-explorer .os-project-section .os-story-platform-picker button {
   font-family: var(--win7-font);
 }
-.os-shell .os-project-explorer .os-project-section .os-story-platform-picker button[aria-pressed="true"]:not(:disabled) {
-  background: var(--w7-el-grad-a);
-  border-color: var(--w7-el-bd-a);
-  box-shadow: var(--w7-el-sd-a);
-}
-.os-shell .os-project-explorer .os-project-section .os-story-platform-picker button[aria-pressed="true"]:not(:disabled)::before {
-  opacity: 0;
-}
 .os-shell .os-project-explorer .os-project-section .os-story-platform-picker button:not(:disabled):focus-visible {
   outline: 1px dotted var(--win7-focus-inner);
   outline-offset: -4px;
@@ -38,7 +31,7 @@
 @media (forced-colors: active) {
   /* Keep the latched native face opaque in either system palette. A gradient with
      HighlightText can lose its label to the browser's forced-colour backplate. */
-  .os-shell .os-project-explorer .os-project-section .os-story-platform-picker button[aria-pressed="true"]:not(:disabled) {
+  .os-shell .os-project-explorer .os-project-section .os-story-platform-picker button.active:not(:disabled) {
     background: Canvas;
     color: CanvasText;
     border: 2px solid Highlight;

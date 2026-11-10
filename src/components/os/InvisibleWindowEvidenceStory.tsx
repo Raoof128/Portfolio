@@ -43,6 +43,7 @@ export function InvisibleWindowEvidenceStory({
         <div className="os-story-platform-options">
           <button
             type="button"
+            className={platform === "windows" ? "active" : undefined}
             aria-pressed={platform === "windows"}
             onClick={() => setPlatform("windows")}
           >
@@ -50,6 +51,7 @@ export function InvisibleWindowEvidenceStory({
           </button>
           <button
             type="button"
+            className={platform === "macos" ? "active" : undefined}
             aria-pressed={platform === "macos"}
             onClick={() => setPlatform("macos")}
           >
