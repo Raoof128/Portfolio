@@ -556,10 +556,9 @@
   content: none;
 }
 
-/* Body: a white reading surface with a hairline edge. --w7-surface follows so 7.css
-   footers and groups inside the body stay white too. Reading text is 16px at 1.55. */
+/* Body: the 7.css window body as it ships (grey surface, hairline edge, 9pt UI font).
+   Only box mechanics are set here. */
 .os-shell.win7 .window.glass > .window-body {
-  --w7-surface: var(--win7-body-bg);
   /* Paint the native outer highlight after the preceding title background without
      changing containing blocks for positioned content or the portalled controls. */
   isolation: isolate;
@@ -568,11 +567,41 @@
   margin: 0 var(--w7-w-space) var(--w7-w-space);
   border: 1px solid var(--w7-w-bd);
   border-radius: 0;
-  background: var(--win7-body-bg);
   box-shadow: 0 0 0 1px #fff9;
+}
+/* The isolated body would paint over the title's glow where it reaches the body's top
+   edge. In 7.css the glow lies over that edge, so the title text is lifted above the body. */
+.os-shell.win7 .window.glass > .title-bar > .title-bar-text {
+  position: relative;
+  z-index: 1;
+}
+/* The white reading sheet belongs to the app's own content, not to the 7.css body: the
+   page root of a reading window, and the bodies of the portfolio's own windows (desktop
+   introduction, Proof Atlas, terminal, locale 404). --w7-surface follows so 7.css footers
+   and groups inside the sheet stay white. Reading text is 16px at 1.55. */
+.os-shell.win7
+  .window.glass
+  > .os-page-content.window-body
+  > :is(.os-support, .os-project-explorer),
+.os-shell.win7 .os-desktop .window.glass > .window-body,
+.os-shell.win7
+  .window.glass
+  > .window-body:is(.proof-atlas-body, .os-terminal-console),
+.os-shell.win7 .os-not-found .window.glass > .window-body {
+  --w7-surface: var(--win7-body-bg);
+  background: var(--win7-body-bg);
   color: var(--win7-body-text);
   font-size: var(--win7-body-size);
   line-height: 1.55;
+}
+/* A reading sheet fills its window body, so the grey 7.css surface shows only where a
+   window has no page (a load or error state). */
+.os-shell.win7
+  .window.glass
+  > .os-page-content.window-body
+  > :is(.os-support, .os-project-explorer) {
+  box-sizing: border-box;
+  min-block-size: 100%;
 }
 
 /* Window Controls popover: a white Win7 panel with the frame edge. The panel is portalled
@@ -717,6 +746,17 @@
     margin-left: max(var(--w7-w-space), env(safe-area-inset-left, 0px));
     margin-right: max(var(--w7-w-space), env(safe-area-inset-right, 0px));
     padding-block-end: var(--os-dock-clearance);
+  }
+  /* A reading window's taskbar clearance is part of its white sheet, so the page does not
+     end on a band of the grey 7.css body. */
+  .os-shell.win7 .window.glass > .os-page-content.window-body {
+    padding-block-end: 0;
+  }
+  .os-shell.win7
+    .window.glass
+    > .os-page-content.window-body
+    > :is(.os-support, .os-project-explorer) {
+    border-block-end: var(--os-dock-clearance) solid var(--win7-body-bg);
   }
   .os-shell.win7 .window.glass > .os-window-toolbar {
     margin-left: max(var(--w7-w-space), env(safe-area-inset-left, 0px));

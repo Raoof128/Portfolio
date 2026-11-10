@@ -483,6 +483,18 @@ try {
         `<html><head><style>${officialCSS}</style><style>${snapshots[specimen.page].fontFaces}</style><style>${camera}</style></head><body><div class="win7">${specimen.markup}</div></body></html>`,
         { waitUntil: "load" },
       );
+      // 7.css's `has-space` body padding is optional. The reference body carries it only when
+      // the actual window body does, so the same canonical variant is compared on both sides.
+      if (specimen.window) {
+        const hasSpace = await candidate
+          .locator(specimen.candidate)
+          .first()
+          .evaluate((el) => el.querySelector(".window-body")?.classList.contains("has-space") ?? true);
+        await reference
+          .locator(".window-body")
+          .first()
+          .evaluate((body, on) => body.classList.toggle("has-space", on), hasSpace);
+      }
       // Equal wording for content-dependent control dimensions, without altering either skin.
       if (specimen.id === "document-action" || specimen.matchContent) {
         const content = await candidate

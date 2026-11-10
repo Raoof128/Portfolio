@@ -28,8 +28,16 @@
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  padding-bottom: 44px;
   scroll-padding-block: 16px;
+}
+/* Reading clearance above the resize grip is part of the page sheet, not of the 7.css
+   body, so the body's scroll range stays canonical. A border in the sheet colour extends
+   the sheet without touching each page's own padding. */
+.os-window--floating > .os-page-content > :is(.os-support, .os-project-explorer),
+.os-workspace-window:fullscreen
+  > .os-page-content
+  > :is(.os-support, .os-project-explorer) {
+  border-block-end: 44px solid var(--win7-body-bg);
 }
 
 /* Frame paint belongs to the installed 7.css rules and the Aero extension layer.
@@ -296,7 +304,6 @@
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  padding-bottom: 24px;
 }
 /* Nothing to drag or size while the frame owns the screen. */
 .os-shell.win7 .os-workspace-window:fullscreen > .os-window-resize,

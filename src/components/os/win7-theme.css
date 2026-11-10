@@ -620,3 +620,10 @@
   color: var(--win7-field-placeholder);
   opacity: 1;
 }
+
+/* Preflight also zeroes paragraph margins. A bare paragraph placed directly in a 7.css
+   group box or window body keeps the UA margins 7.css assumes; the app's own paragraphs
+   all carry a class and set their spacing themselves. */
+:where(.win7) :is(fieldset, .window-body) > p:not([class]) {
+  margin-block: revert;
+}

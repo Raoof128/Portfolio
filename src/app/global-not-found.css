@@ -77,13 +77,37 @@ html[data-global-not-found] body {
   inline-size: min(100%, 36rem);
   margin: 0;
 }
+/* The dialog body is the 7.css window body as it ships (grey surface, 6px `has-space`
+   padding, 9pt). The message, actions, language and section rows carry the reading type
+   and the dialog's inner spacing themselves. */
 .global-not-found .global-not-found-dialog.window > .window-body {
   box-sizing: border-box;
-  padding: 18px 20px 20px;
-  background: var(--win7-body-bg);
+}
+.global-not-found
+  .global-not-found-dialog.window
+  > .window-body
+  > :is(
+    .global-not-found-message,
+    .global-not-found-actions,
+    .global-not-found-language,
+    .global-not-found-sections
+  ) {
+  margin-inline: 14px;
   color: var(--win7-body-text);
   font-size: var(--win7-body-size);
   line-height: 1.6;
+}
+.global-not-found
+  .global-not-found-dialog.window
+  > .window-body
+  > .global-not-found-message {
+  margin-block-start: 12px;
+}
+.global-not-found
+  .global-not-found-dialog.window
+  > .window-body
+  > .global-not-found-sections {
+  margin-block-end: 14px;
 }
 .global-not-found-code {
   margin: 0;
