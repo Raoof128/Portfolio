@@ -1310,23 +1310,26 @@
   font-size: 1em;
   padding: 0;
 }
+/* Write-up tables are 7.css list views: its 9pt font, header gradient, cell borders and
+   padding apply untouched. Only layout is set here. Phones and touch keep larger type and
+   roomier cells, where a 9pt table is hard to read and to tap. */
 .os-writeup-body table {
-  border: 1px solid var(--os-line);
-  border-collapse: collapse;
-  font-size: var(--text-s);
   inline-size: 100%;
   min-inline-size: 480px;
 }
 .os-writeup-body th,
 .os-writeup-body td {
-  border-block-end: 1px solid var(--os-line);
-  padding: var(--space-2) var(--space-3);
   text-align: start;
   vertical-align: top;
 }
-.os-writeup-body th {
-  color: var(--os-text);
-  font-weight: 600;
+@media (pointer: coarse), (max-width: 700px) {
+  .os-writeup-body table {
+    font-size: var(--text-s);
+  }
+  .os-writeup-body th,
+  .os-writeup-body td {
+    padding: var(--space-2) var(--space-3);
+  }
 }
 .os-writeup-footer {
   border-block-start: 1px solid var(--os-line);
