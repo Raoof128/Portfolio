@@ -290,8 +290,14 @@ test("Full Size fills the screen down to the taskbar on every window", async ({ 
   // Home desktop windows: Full Size used to widen the grid cell only, so the Proof Atlas ran
   // under the taskbar and Research Highlights barely changed.
   await ready(page, "/");
-  await page.locator(".os-enter").click();
-  await expect(page.locator(".os-welcome")).not.toBeVisible();
+  // A press before hydration does nothing, so press again until the orb starts its wait.
+  // It is disabled while waiting, so a second press is never sent (same entry as
+  // full-audit.spec.ts). The lock screen must still go away.
+  const enter = page.locator(".os-enter");
+  await expect(async () => {
+    if ((await enter.isVisible()) && (await enter.isEnabled())) await enter.click({ timeout: 1_000 });
+    await expect(page.locator(".os-welcome")).not.toBeVisible({ timeout: 4_500 });
+  }).toPass({ timeout: 20_000 });
   for (const [title, selector] of [["Where the evidence connects", ".proof-atlas--desktop"], ["Research Highlights", ".os-intro"]]) {
     const toggle = page.getByRole("button", { name: `Full Size: ${title}`, exact: true });
     await toggle.click();
