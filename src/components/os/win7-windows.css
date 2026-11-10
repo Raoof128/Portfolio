@@ -579,6 +579,13 @@
   position: relative;
   z-index: 1;
 }
+/* 7.css paints the title text before the caption group. Lifting the text alone reversed
+   that, so the caption group is lifted one step further and the order is canonical again:
+   title background, body edge, title text, caption buttons. */
+.os-shell.win7 .window.glass > .title-bar > .title-bar-controls {
+  position: relative;
+  z-index: 2;
+}
 /* The white reading sheet belongs to the app's own content, not to the 7.css body: the
    page root of a reading window, and the bodies of the portfolio's own windows (desktop
    introduction, Proof Atlas, terminal, locale 404). --w7-surface follows so 7.css footers
