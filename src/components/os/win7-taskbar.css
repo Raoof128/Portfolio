@@ -816,6 +816,9 @@
   min-width: 0;
   margin: 0;
   padding-inline-end: 26px;
+}
+/* Enabled text only. A disabled field keeps the UA disabled colour. */
+.os-shell.win7 .os-search-field input:not(:disabled) {
   color: var(--win7-body-text);
 }
 .os-shell.win7:dir(rtl) .os-search-field input:placeholder-shown {

@@ -1261,8 +1261,11 @@ html:has(.os-shell[data-appearance="light"]) {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--os-text);
   font-size: var(--text-ui);
+}
+/* Enabled text only. A disabled field keeps the UA disabled colour. */
+.os-search-field input:not(:disabled) {
+  color: var(--os-text);
 }
 /* The field draws the one focus ring (.os-search-field:focus-within). The input's
    global ring is removed here with enough specificity to beat controls.css. */

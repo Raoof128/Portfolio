@@ -487,9 +487,10 @@
   box-sizing: border-box;
 }
 /* Field edges (WCAG 1.4.11). 7.css draws the top edge of a text field at #abadb3, about
-   2.2:1 on white, so the resting edge takes the 7.css control line, #8e8f8f (3.2:1). Hover
-   and focus keep the 7.css blue, and invalid fields keep the danger red. */
-.win7 .os-secure-field :is(input, textarea):not(:hover, :focus) {
+   2.2:1 on white, so the enabled resting edge takes the 7.css control line, #8e8f8f (3.2:1).
+   Hover and focus keep the 7.css blue, and invalid fields keep the danger red. Disabled
+   fields are exempt from the contrast rule, so they keep the canonical disabled edge. */
+.win7 .os-secure-field :is(input, textarea):not(:hover, :focus, :disabled) {
   border-color: var(--w7-el-bd);
 }
 .win7 .os-secure-field textarea {
