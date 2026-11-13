@@ -44,7 +44,13 @@ import {
 import { formatDate, formatNumber } from "@/i18n/format";
 import { searchEntries, type SearchEntry } from "@/lib/os-search-query";
 import { getOSCopy } from "./os-copy";
-import { markWelcomeSeen, WelcomeEnter } from "./WelcomeEnter";
+import {
+  clearWelcomeSeen,
+  markWelcomeSeen,
+  WelcomeEnter,
+  welcomeSeenThisSession,
+} from "./WelcomeEnter";
+import { WELCOME_RESTORING_ATTRIBUTE } from "./welcome-session";
 import "./controls.css";
 import "./theme-switch.css";
 import { OSIcon, OSMark, type PortfolioApp } from "./OSIcon";
@@ -408,8 +414,8 @@ export function ResearchOS({
   );
   const shortcutText = applePlatform ? "⌘ K" : "Ctrl K";
   const shortcutKeys = applePlatform ? "Meta+K" : "Control+K";
-  // Home page loads start on the profile screen, including reloads in the same
-  // session. Direct document links retain their route-backed reading window.
+  // Server and first client render agree; a returning tab restores its desktop
+  // after hydration. Direct document links retain their route-backed window.
   const [lockedPath, setLockedPath] = useState<string | null>(() =>
     isHome ? pathname : null,
   );
@@ -523,22 +529,28 @@ export function ResearchOS({
   const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const disposed = useRef(false);
   const lockRequested = useRef(false);
+  const sessionRestored = useRef(false);
   const languageMenu = useRef<HTMLDetailsElement>(null);
   const locked = lockedPath === pathname;
   useEffect(() => {
-    // Remember entry without using that flag to bypass the next home-page load.
     if (!locked) markWelcomeSeen();
   }, [locked]);
   useLayoutEffect(() => {
     if (getLocaleFromPath(pathname) !== locale) return;
     const open = consumeLanguageNavigation(pathname);
-    // Restore only an explicit language change before the hydrated shell paints.
-    // A deliberately locked language change retains the optional logon.
+    // Language handoffs take precedence over the tab's saved entry state.
     if (open !== null) {
+      sessionRestored.current = true;
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot state across a locale-root remount
       setLockedPath(open ? null : home);
+    } else if (!sessionRestored.current) {
+      sessionRestored.current = true;
+      if (isHome && welcomeSeenThisSession()) {
+        setLockedPath(null);
+      }
     }
-  }, [home, locale, pathname]);
+    document.body.removeAttribute(WELCOME_RESTORING_ATTRIBUTE);
+  }, [home, isHome, locale, pathname]);
   const activeApp = appForPath(relativePath);
   const getPath = (path: string) =>
     locale === "en" ? path : `/${locale}${path}`;
@@ -591,6 +603,7 @@ export function ResearchOS({
   function enterWorkspace(event?: MouseEvent<HTMLAnchorElement>) {
     if (event && !isPlainClick(event)) return;
     clearLanguageNavigation();
+    markWelcomeSeen();
     focusAfterUnlock.current = true;
     setLockedPath(null);
   }
@@ -843,6 +856,7 @@ export function ResearchOS({
 
   function lockWorkspace() {
     clearLanguageNavigation();
+    clearWelcomeSeen();
     reading.stopGesture();
     searchDialog.current?.close();
     rememberLastPath(isHome ? null : pathname);

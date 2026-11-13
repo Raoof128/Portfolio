@@ -326,6 +326,24 @@ html:has(.os-shell[data-appearance="light"]) {
 .os-shell [hidden] {
   display: none !important;
 }
+
+/* A returning tab can show the server-rendered desktop while React hydrates.
+   Hydration or the early script's timeout removes this override. */
+@layer base {
+  body[data-researchos-restoring] .os-shell .os-welcome {
+    display: none !important;
+  }
+  body[data-researchos-restoring]
+    .os-shell:has(> .os-welcome)
+    .os-content[hidden] {
+    display: block !important;
+  }
+  body[data-researchos-restoring]
+    .os-shell:has(> .os-welcome)
+    .os-dock[hidden] {
+    display: flex !important;
+  }
+}
 .os-shell button,
 .os-shell input,
 .os-shell select,

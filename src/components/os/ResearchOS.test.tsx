@@ -1264,7 +1264,7 @@ describe("ResearchOS logon session", () => {
     expect(navigation.push).not.toHaveBeenCalled();
   });
 
-  it("shows the logon again when home is reloaded within the same session", () => {
+  it("keeps the desktop open when home is reloaded within the same session", () => {
     navigation.pathname = "/";
     const first = render(shell());
     expect(first.container.querySelector(".os-welcome")).toBeVisible();
@@ -1273,15 +1273,37 @@ describe("ResearchOS logon session", () => {
     expect(screen.queryByRole("button", { name: orbName("en") })).toBeNull();
     first.unmount();
 
-    // The session flag must not silently bypass a new home-page load.
+    // A full reload remounts the shell but retains this tab's session storage.
+    const returning = render(shell());
+    expect(returning.container.querySelector(".os-welcome")).toBeNull();
+    expect(returning.container.querySelector(".os-content")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
+  });
+
+  it("keeps an explicitly locked workspace locked after a reload", () => {
+    const first = renderWorkspace(shell());
+    fireEvent.click(screen.getByRole("button", { name: copy.lock }));
+    expect(first.container.querySelector(".os-welcome")).toBeVisible();
+    first.unmount();
+
     const returning = render(shell());
     expect(returning.container.querySelector(".os-welcome")).toBeVisible();
-    expect(screen.getByRole("heading", { name: copy.fullName })).toBeVisible();
-    expect(
-      document
-        .querySelector<HTMLElement>(".os-content")
-        ?.hasAttribute("hidden"),
-    ).toBe(true);
+    expect(returning.container.querySelector(".os-content")).toHaveAttribute(
+      "hidden",
+    );
+  });
+
+  it("still allows entry when session storage is unavailable", () => {
+    vi.spyOn(window, "sessionStorage", "get").mockImplementation(() => {
+      throw new DOMException("Blocked", "SecurityError");
+    });
+    const first = render(shell());
+    fireEvent.click(screen.getByRole("button", { name: orbName("en") }));
+    expect(screen.getByRole("heading", { name: "Workspace" })).toBeVisible();
+    first.unmount();
+
+    const returning = render(shell());
+    expect(returning.container.querySelector(".os-welcome")).toBeVisible();
   });
 
   it("reopens the page a lock left when the visitor unlocks", () => {
@@ -1500,10 +1522,10 @@ describe("ResearchOS keyboard and search", () => {
       expect(
         window.sessionStorage.getItem("researchos:language-navigation"),
       ).toBeNull();
-      // A new page load shows the profile even after this session entered once.
+      // Reloading the destination keeps the current session's desktop open.
       cleanup();
       const returning = render(localizedShell(destination));
-      expect(returning.container.querySelector(".os-welcome")).toBeVisible();
+      expect(returning.container.querySelector(".os-welcome")).toBeNull();
       // A fresh session also starts on the lock screen.
       cleanup();
       window.sessionStorage.clear();

@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Preserve the open desktop on reload
+
+- **Scope**: Keep an entered workspace open when the same browser tab reloads.
+- **Summary**: Restore entry from session storage after hydration, clear it when the visitor explicitly locks the workspace, and use a bounded pre-hydration visual override to avoid a lock-screen flash. Fresh sessions and unavailable storage keep the welcome screen. Consulted the [Next.js hydration-flash guide](https://nextjs.org/docs/app/guides/preventing-flash-before-hydration) and [MDN session storage documentation](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+- **Files Changed**: Locale layout, ResearchOS and welcome-session components/styles, focused unit and browser regressions, AGENT.md and CHANGELOG.md.
+- **Verification**: All 771 tests across 46 files passed; production build, TypeScript, changed-source lint, static security and the 165-route agent audit passed. Six export-browser checks passed in Chromium, Firefox and WebKit, covering reload, explicit lock and delayed hydration. No-JavaScript and blocked-storage fallbacks were checked. WebKit could not load the Wrangler local preview, so the export was also served by a local static fixture. The prior minimise fix was published as 36aaa80 and verified on both production domains.
+- **Follow-ups**: Verify this change through CI and deployment; physical-device testing remains open.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Centre the mobile minimise icon
 
 - **Scope**: Correct the phone-sized window caption icon alignment.

@@ -15,6 +15,7 @@ import { resolveLocale, getLocaleConfig, locales, getDictionary } from "@/i18n";
 import { I18nProvider } from "@/i18n/provider";
 import { MotionPreferences } from "@/components/ui/MotionPreferences";
 import { ResearchOS } from "@/components/os/ResearchOS";
+import { WELCOME_RESTORE_SCRIPT } from "@/components/os/welcome-session";
 import { buildSearchEntries } from "@/lib/os-search";
 import {
   buildAlternates,
@@ -180,6 +181,7 @@ export default async function RootLayout({
         style={{ fontFamily: config.fontFamily } as React.CSSProperties}
         suppressHydrationWarning
       >
+        <script dangerouslySetInnerHTML={{ __html: WELCOME_RESTORE_SCRIPT }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString }}

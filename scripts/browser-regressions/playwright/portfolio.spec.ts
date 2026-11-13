@@ -66,6 +66,72 @@ async function geometry(page: Page) {
   }));
 }
 
+test("home reload preserves entry but respects an explicit lock", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await prepare(page);
+  await ready(page, "/");
+  const welcome = page.locator(".os-welcome");
+  const content = page.locator(".os-content");
+  await expect(welcome).toBeVisible();
+  // The server-rendered entry becomes interactive after hydration.
+  await expect(content).toHaveAttribute("inert", "");
+  await page.locator(".os-enter").click();
+  await expect(welcome).not.toBeVisible();
+  await expect(content).toBeVisible();
+
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await expect(content).toBeVisible();
+  await expect(welcome).not.toBeVisible();
+
+  await page.locator(".os-tray-lock").click();
+  await expect(welcome).toBeVisible();
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await expect(welcome).toBeVisible();
+  await expect(content).toHaveAttribute("inert", "");
+  expect(errors).toEqual([]);
+});
+
+test("returning desktop stays visible before hydration", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await prepare(page);
+  await ready(page, "/");
+  await expect(page.locator(".os-content")).toHaveAttribute("inert", "");
+  await page.locator(".os-enter").click();
+  await expect(page.locator(".os-welcome")).not.toBeVisible();
+
+  let releaseScripts!: () => void;
+  const gate = new Promise<void>((resolve) => {
+    releaseScripts = resolve;
+  });
+  await page.route("**/_next/static/chunks/**", async (route) => {
+    if (new URL(route.request().url()).pathname.endsWith(".js")) await gate;
+    await route.continue();
+  });
+  try {
+    await page.reload({ waitUntil: "commit" });
+    await expect(page.locator("body")).toHaveAttribute("data-researchos-restoring", "");
+    await expect(page.locator(".os-content")).toBeVisible();
+    await expect(page.locator(".os-content").getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(page.locator(".os-welcome")).toHaveCount(1);
+    await expect(page.locator(".os-welcome")).not.toBeVisible();
+  } finally {
+    releaseScripts();
+  }
+  await expect(page.locator("body")).not.toHaveAttribute("data-researchos-restoring");
+  await expect(page.locator(".os-content")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("reviewer journey, window controls, history, search and contact", async ({ page }, info) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));

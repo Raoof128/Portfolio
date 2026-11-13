@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import type { Locale } from "@/i18n";
+import { WELCOME_SESSION_KEY } from "./welcome-session";
 import "./welcome-enter.css";
 
 /** How long arrow activation waits before the workspace opens. */
@@ -18,9 +19,6 @@ export const WELCOME_LOADER_MS = 3000;
 
 /** The logon fades over this many milliseconds at the end of the wait (the hand-off). */
 const HANDOFF_MS = 120;
-/** Session flag: the desktop has been shown in this browser session. */
-const SEEN_KEY = "researchos:welcome-seen";
-
 /** The visible orb caption, keyed by locale. It is also the start of the orb's accessible name. */
 const welcomeCopy: Record<Locale, { enterWorkspace: string }> = {
   en: { enterWorkspace: "Enter workspace" },
@@ -37,13 +35,10 @@ export function setWelcomeLoaderDuration(ms: number) {
   loaderMs = ms;
 }
 
-/**
- * Records that the desktop has been shown in this browser session. This marker
- * never bypasses the profile screen or shortens its entry delay.
- */
+/** Whether this tab can restore its desktop after a reload. */
 export function welcomeSeenThisSession(): boolean {
   try {
-    return window.sessionStorage.getItem(SEEN_KEY) === "1";
+    return window.sessionStorage.getItem(WELCOME_SESSION_KEY) === "1";
   } catch {
     return false;
   }
@@ -52,9 +47,18 @@ export function welcomeSeenThisSession(): boolean {
 /** Records desktop entry when session storage is available. */
 export function markWelcomeSeen() {
   try {
-    window.sessionStorage.setItem(SEEN_KEY, "1");
+    window.sessionStorage.setItem(WELCOME_SESSION_KEY, "1");
   } catch {
     // Storage can be blocked; the logon then appears on the next visit.
+  }
+}
+
+/** An explicit lock must remain locked when this tab reloads. */
+export function clearWelcomeSeen() {
+  try {
+    window.sessionStorage.removeItem(WELCOME_SESSION_KEY);
+  } catch {
+    // Storage can be blocked; the current lock still works in memory.
   }
 }
 
