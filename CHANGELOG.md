@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Place FORMA after Project Zurvan
+
+- **Scope**: Adjust the project explorer order as requested.
+- **Summary**: Move FORMA immediately after Project Zurvan in project summaries, preserving all other project positions and leaving the independently ranked site-wide search unchanged. The order applies to the index and project navigation in all five languages.
+- **Files Changed**: src/lib/project-summaries.ts, src/lib/project-localization.test.ts, AGENT.md and CHANGELOG.md.
+- **Verification**: 101 focused localization, explorer and search tests passed in three files; the five new locale cases check adjacency and uniqueness. Production build/typecheck and changed-source lint passed. Independently inspected all 14 generated project rows in each locale: Zurvan immediately precedes FORMA, with the rest in their previous order.
+- **Follow-ups**: Verify the committed change through CI and the deployed site.
+
 ### Raouf: 2026-11-13 (Australia/Sydney) — Five-language portfolio localization audit
 
 - **Scope**: Audit English, Persian, Arabic, Spanish and Simplified Chinese across the portfolio's pages, content and interface.

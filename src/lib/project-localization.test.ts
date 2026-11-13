@@ -97,6 +97,17 @@ function numericValues(text: string): string[] {
 
 describe("Complete project localization", () => {
   it.each(["en", ...translatedLocales] as Locale[])(
+    "lists FORMA immediately after Project Zurvan in %s",
+    (locale) => {
+      const slugs = buildProjectSummaries(locale).map((project) => project.slug);
+      const zurvan = slugs.indexOf("project-zurvan");
+      expect(zurvan).toBeGreaterThanOrEqual(0);
+      expect(slugs[zurvan + 1]).toBe("forma");
+      expect(new Set(slugs).size).toBe(Object.keys(projects).length);
+    },
+  );
+
+  it.each(["en", ...translatedLocales] as Locale[])(
     "qualifies cloud processing and generated-answer claims in %s",
     (locale) => {
       const zurvan = getLocalizedProject(projects["project-zurvan"], locale);
