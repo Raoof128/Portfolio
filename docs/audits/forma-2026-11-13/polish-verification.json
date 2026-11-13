@@ -1,0 +1,553 @@
+{
+  "date": "2026-11-13",
+  "base_commit": "ce0ee2790228d802bc64f21230a18c5e14eae0d9",
+  "browser_regressions": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ]
+  },
+  "unit_tests": {
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "files": 2
+  },
+  "layout_checks": [
+    {
+      "name": "chromium",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "chromium",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "en",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "light",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    },
+    {
+      "name": "webkit",
+      "locale": "fa",
+      "width": 240.796875,
+      "theme": "dark",
+      "overflow": false,
+      "animations": 0,
+      "dupes": [],
+      "centerError": 0.0078125,
+      "height": 240.796875,
+      "missingReferences": []
+    }
+  ],
+  "frame_sample": [
+    {
+      "slug": "forma",
+      "sample": {
+        "median": 49.900000000000546,
+        "p95": 83.30000000000018,
+        "max": 183.4000000000001
+      },
+      "errors": []
+    },
+    {
+      "slug": "syllabus-sync",
+      "sample": {
+        "median": 66.69999999999982,
+        "p95": 100.09999999999991,
+        "max": 150.09999999999945
+      },
+      "errors": []
+    }
+  ],
+  "frame_sample_caveat": "High host load; not an isolated performance benchmark.",
+  "native_safari": "27.2 native UI smoke on ce0ee27 before refinement; updated artwork covered in WebKit",
+  "earlier_webkit_matrix": {
+    "results": [
+      "webkit/en/390/light",
+      "webkit/en/390/dark",
+      "webkit/en/1440/light",
+      "webkit/en/1440/dark",
+      "webkit/fa/390/light",
+      "webkit/fa/390/dark",
+      "webkit/fa/1440/light",
+      "webkit/fa/1440/dark"
+    ],
+    "failures": [],
+    "violations": [],
+    "consoleErrors": [
+      {
+        "label": "webkit/en/390/light",
+        "error": "/raoufabedini.dev/write-ups/__next.$d$locale.write-ups.__PAGE__.txt?_rsc=yrLlAQye8XitqNUV due to access control checks."
+      },
+      {
+        "label": "webkit/en/390/light",
+        "error": "/raoufabedini.dev/projects/__next.$d$locale.projects.__PAGE__.txt?_rsc=PxPr3sIBNBEwTnC1 due to access control checks."
+      },
+      {
+        "label": "webkit/en/390/light",
+        "error": "/raoufabedini.dev/about/__next.$d$locale.about.__PAGE__.txt?_rsc=jdRa0c2-So6BNjkB due to access control checks."
+      },
+      {
+        "label": "webkit/en/390/light",
+        "error": "/raoufabedini.dev/resume/__next.$d$locale.resume.__PAGE__.txt?_rsc=SpoARkHywmnuGz0n due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/security-policy due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/hall-of-fame due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/forma due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/invisible-window-research due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/project-simurgh due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/project-zurvan due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/gitswitch due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/mehr-guard due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/syllabus-sync due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/divan-open-day due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/nexus-archive due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/nanomatch due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/__next.$d$locale.txt?_rsc=Qt_0_i6aA6aQM4Hh due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/projects/__next.$d$locale.projects.__PAGE__.txt?_rsc=PxPr3sIBNBEwTnC1 due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/write-ups/__next.$d$locale.write-ups.__PAGE__.txt?_rsc=yrLlAQye8XitqNUV due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/about/__next.$d$locale.about.__PAGE__.txt?_rsc=jdRa0c2-So6BNjkB due to access control checks."
+      },
+      {
+        "label": "webkit/en/1440/light",
+        "error": "/raoufabedini.dev/__next.$d$locale.__PAGE__.txt?_rsc=htA_8msOIzH_Lp9M due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/divan-open-day due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/nexus-archive due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/nanomatch due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/__next.$d$locale.projects.__PAGE__.txt?_rsc=F0Osu6_N-8KZA6CN due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/write-ups/__next.$d$locale.write-ups.__PAGE__.txt?_rsc=n7xLFLzh9n_o-viD due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/about/__next.$d$locale.about.__PAGE__.txt?_rsc=xcU9luKY6NFl7Eko due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/resume/__next.$d$locale.resume.__PAGE__.txt?_rsc=q7sfQPFEcOKP4QRX due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=zxu7Yy2qbBj327Pa due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/lab/__next.$d$locale.lab.__PAGE__.txt?_rsc=tbdnrt-jr4qrYWDJ due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/security-policy/__next.$d$locale.security-policy.__PAGE__.txt?_rsc=lR5bW3KEs_jCLP6S due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/hall-of-fame/__next.$d$locale.hall-of-fame.__PAGE__.txt?_rsc=DTq1yF3v_CAgGmZT due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/forma/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/invisible-window-research/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/project-simurgh/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/projects/project-zurvan/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/light",
+        "error": "/raoufabedini.dev/fa/__next.$d$locale.__PAGE__.txt?_rsc=hlj2cyFC2gWk9fj- due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/divan-open-day due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/nexus-archive due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/nanomatch due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/__next.$d$locale.txt?_rsc=7YRWA0vSILIYuQmT due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/__next.$d$locale.projects.__PAGE__.txt?_rsc=F0Osu6_N-8KZA6CN due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/write-ups/__next.$d$locale.write-ups.__PAGE__.txt?_rsc=n7xLFLzh9n_o-viD due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/about/__next.$d$locale.about.__PAGE__.txt?_rsc=xcU9luKY6NFl7Eko due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/resume/__next.$d$locale.resume.__PAGE__.txt?_rsc=q7sfQPFEcOKP4QRX due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=zxu7Yy2qbBj327Pa due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/sentinelflow/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/__next.$d$locale.__PAGE__.txt?_rsc=hlj2cyFC2gWk9fj- due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/lab/__next.$d$locale.lab.__PAGE__.txt?_rsc=tbdnrt-jr4qrYWDJ due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/security-policy/__next.$d$locale.security-policy.__PAGE__.txt?_rsc=lR5bW3KEs_jCLP6S due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/hall-of-fame/__next.$d$locale.hall-of-fame.__PAGE__.txt?_rsc=DTq1yF3v_CAgGmZT due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/forma/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/invisible-window-research/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      },
+      {
+        "label": "webkit/fa/1440/dark",
+        "error": "/raoufabedini.dev/fa/projects/project-simurgh/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=lrg9GJrm5iC406Ro due to access control checks."
+      }
+    ]
+  },
+  "prefetch_diagnostic": [
+    {
+      "phase": "navigating",
+      "type": "requestfailed",
+      "url": "https://raoufabedini.dev/projects/mehr-guard",
+      "failure": {
+        "errorText": "cancelled"
+      }
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/gitswitch/__next._tree.txt?_rsc=NOjhQwKDLlUK_ANX due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/project-zurvan/__next._tree.txt?_rsc=NOjhQwKDLlUK_ANX due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/__next.$d$locale.__PAGE__.txt?_rsc=htA_8msOIzH_Lp9M due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/mehr-guard/__next._tree.txt?_rsc=NOjhQwKDLlUK_ANX due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/__next.$d$locale.projects.__PAGE__.txt?_rsc=PxPr3sIBNBEwTnC1 due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/write-ups/__next.$d$locale.write-ups.__PAGE__.txt?_rsc=yrLlAQye8XitqNUV due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/about/__next.$d$locale.about.__PAGE__.txt?_rsc=jdRa0c2-So6BNjkB due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/resume/__next.$d$locale.resume.__PAGE__.txt?_rsc=SpoARkHywmnuGz0n due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/contact/__next.$d$locale.contact.__PAGE__.txt?_rsc=-9VtfYUQpu45Eo9p due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/lab/__next.$d$locale.lab.__PAGE__.txt?_rsc=3u0ar_cPMM1ykg2d due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/security-policy/__next.$d$locale.security-policy.__PAGE__.txt?_rsc=vwcj2dE2dJZHVEsd due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/hall-of-fame/__next.$d$locale.hall-of-fame.__PAGE__.txt?_rsc=KSPKY2EMaNE_7izq due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/forma/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=_K2uVhbJBS1SYkii due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/invisible-window-research/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=_K2uVhbJBS1SYkii due to access control checks."
+    },
+    {
+      "phase": "navigating",
+      "type": "pageerror",
+      "message": "/raoufabedini.dev/projects/project-simurgh/__next.$d$locale.projects.$d$slug.__PAGE__.txt?_rsc=_K2uVhbJBS1SYkii due to access control checks."
+    }
+  ]
+}

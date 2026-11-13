@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-13 (Australia/Sydney) — FORMA animation polish and Safari follow-up
+
+- **Scope**: Test Safari/WebKit and refine the SVG after consulting current internet sources and 2026 documentation.
+- **Summary**: Refined the kinetic laurel into veined enamel leaves, brass inner blades and a layered centre. Static shading, explicit viewBox transform origins and three restrained CSS animation cycles retain existing pause, visibility and reduced-motion behavior. Shared 7.css layout and controls remain unchanged. Consulted the October 2026 SVG 2 draft, MDN transform/motion guidance and official 7.css documentation; sources are linked in the audit supplement.
+- **Files Changed**: FormaArtwork.tsx, forma-artwork.css, docs/audits/forma-2026-11-13, AGENT.md and CHANGELOG.md.
+- **Verification**: Nine revised-export browser regressions passed across Chromium, Firefox and WebKit; 21 artwork lifecycle unit tests passed; 16 artwork layout/theme/locale checks passed. Build/typecheck, source lint, static security (1,099 files) and route audit (165 URLs, zero warnings) passed. Native Safari 27.2 smoke checks passed on the preceding ce0ee27 release; revised artwork tested in WebKit. Prior live WebKit matrix passed eight case assertions but logged navigation-time prefetch errors, reproduced only while leaving the page in a focused probe. The first local run hit fixture 404s; the corrected run passed. Frame samples were slow under heavy host load and are retained without a frame-rate claim.
+- **Follow-ups**: Publish through the existing main-branch workflow and verify the served version. Physical iOS, assistive-technology and clean field-performance checks remain separate. See animation-polish.md and polish-verification.json for evidence and research.
+
 ### Raouf: 2026-11-13 (Australia/Sydney) — FORMA visual parity and interaction audit
 
 - **Scope**: Audit FORMA against existing project pages and 7.css, including search and animation.

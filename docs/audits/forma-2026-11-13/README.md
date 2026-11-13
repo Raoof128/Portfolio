@@ -4,6 +4,9 @@ Scope: the portfolio dossier at `/projects/forma`, its four translated routes,
 project explorer, site-wide search, artwork lifecycle and shared 7.css controls.
 This is an audit of the portfolio entry, not of the separate FORMA application.
 
+The subsequent [animation refinement and Safari follow-up](animation-polish.md)
+supersedes the original WebKit verification gap and records the revised artwork.
+
 ## Visual authority and method
 
 The existing ResearchOS implementation and installed `7.css@0.21.1` are the
@@ -64,8 +67,10 @@ text, links, tabs, fields and controls retain shared theme styling.
 - Repeatable browser checks live in
   `scripts/browser-regressions/playwright/forma.spec.ts`: artwork timeline,
   reduced motion, search-to-dossier navigation and fragment history/focus.
-- Local WebKit timed out on page navigation. Safari/WebKit is explicitly unverified.
-  Playwright was used because the Browser plugin was not available.
+- The original local WebKit attempt timed out. Subsequent live WebKit tests and
+  a native Safari smoke test passed; see the linked follow-up for the navigation
+  error caveat and the revised artwork results. Playwright was used because the
+  Browser plugin was not available.
 
 ## Audit health
 
@@ -80,8 +85,8 @@ text, links, tabs, fields and controls retain shared theme styling.
 
 Implementation integrity: pass for the audited scope. No replacement page layout,
 standalone control styling, external artwork requests or new package was added.
-The remaining work is verification in WebKit/physical Safari and assistive technology,
-not an assertion that those environments passed.
+Physical iPhone/iPad, assistive-technology and field-performance checks remain
+open. Desktop Safari/WebKit follow-up results are recorded separately above.
 
 ## Reproduce
 

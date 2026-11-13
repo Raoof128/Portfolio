@@ -13,20 +13,28 @@
   aspect-ratio: 1;
 }
 
+.forma-sculpture svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
 .forma-crown,
 .forma-seeds,
 .forma-core {
+  /* All layers share the SVG viewBox centre, independent of their own bounds. */
+  transform-box: view-box;
   transform-origin: 120px 120px;
 }
 
 .forma-crown {
-  animation: forma-turn 36s linear infinite;
+  animation: forma-turn 60s linear infinite;
 }
 .forma-seeds {
-  animation: forma-turn 48s linear infinite reverse;
+  animation: forma-turn 40s linear infinite reverse;
 }
 .forma-core {
-  animation: forma-breathe 6s ease-in-out infinite;
+  animation: forma-breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 @keyframes forma-turn {
@@ -37,10 +45,10 @@
 @keyframes forma-breathe {
   0%,
   100% {
-    transform: scale(0.94);
+    transform: scale(0.97) rotate(-4deg);
   }
   50% {
-    transform: scale(1.04);
+    transform: scale(1.03) rotate(4deg);
   }
 }
 
