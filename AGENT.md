@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-13 (Australia/Sydney) — FORMA visual parity and interaction audit
+
+- **Scope**: Audit FORMA against existing project pages and 7.css, including search and animation.
+- **Summary**: Compared four incumbent artworks and 66 shared computed style properties per reference. Replaced the small SMIL dumbbell motif with a layered kinetic laurel using the shared pause/visibility hook. Removed the redundant dossier self-link. Fixed a shared fragment-navigation race that scheduled focus twice; isolated test URLs after cleanup. Preserved the existing page layout, controls, themes and translations. The prior FORMA release c9eab53 was successfully deployed and verified live, superseding its preparation-time follow-up.
+- **Files Changed**: FormaArtwork and its scoped CSS; FORMA data; shared ProjectDetailClient and its tests; dedicated browser regressions; docs/audits/forma-2026-11-13; AGENT.md and CHANGELOG.md.
+- **Verification**: 58 Chromium/Firefox responsive, theme, locale, search and keyboard combinations passed. Eight scoped axe scans: zero violations. Six final browser regression tests passed. Initial focused unit run: 111 passed, 6 failed; after fixing the shared focus race, all 30 dossier tests passed (the other 87 targeted tests had passed). Build/typecheck, changed-source lint, static security and route audits passed. Full CI runs before deployment. See the audit report for evidence and commands.
+- **Follow-ups**: Local WebKit navigation timed out; Safari remains unverified. Physical-device, assistive-technology, native-speaker and field-performance checks remain separate.
+
 ### Raouf: 2026-11-13 (Australia/Sydney) — FORMA portfolio project
 
 - **Scope**: Add FORMA to the portfolio in new-port.

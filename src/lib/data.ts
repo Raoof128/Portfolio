@@ -61,7 +61,6 @@ export const projects: Record<string, Project> = {
     tags: ["React", "TypeScript", "Vite", "iOS"],
     links: {
       demo: "https://forma.raoufabedini.dev",
-      caseStudy: "/projects/forma",
     },
     build: {
       stack: [

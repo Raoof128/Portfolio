@@ -31,7 +31,11 @@ vi.mock("@/components/os/ProjectMotion", () => ({ ProjectMotion: () => null }));
 vi.mock("@/components/os/ProjectDiagram", () => ({
   ProjectDiagram: () => <div data-testid="project-diagram" />,
 }));
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  // Each dossier starts from its own URL, even if an earlier assertion failed.
+  window.history.replaceState(null, "", "/");
+});
 
 describe("project source availability", () => {
   it("waits for the section commit before focusing when an animation frame arrives early", async () => {

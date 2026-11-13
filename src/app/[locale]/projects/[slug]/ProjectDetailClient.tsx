@@ -359,6 +359,16 @@ export function ProjectDetailClient({
                     href={`#${contentId(target)}`}
                     onClick={(event) => {
                       if (!isPrimaryLinkClick(event)) return;
+                      // Handle this fragment once: the browser's default hashchange
+                      // would otherwise schedule a second, delayed focus transfer.
+                      event.preventDefault();
+                      if (window.location.hash !== event.currentTarget.hash) {
+                        window.history.pushState(
+                          null,
+                          "",
+                          event.currentTarget.href,
+                        );
+                      }
                       setActiveSection(section);
                       scheduleSectionFocus(contentId(target));
                     }}
@@ -531,6 +541,14 @@ export function ProjectDetailClient({
                 href={`#${contentId("overview-heading")}`}
                 onClick={(event) => {
                   if (!isPrimaryLinkClick(event)) return;
+                  event.preventDefault();
+                  if (window.location.hash !== event.currentTarget.hash) {
+                    window.history.pushState(
+                      null,
+                      "",
+                      event.currentTarget.href,
+                    );
+                  }
                   setActiveSection("overview");
                   scheduleSectionFocus(contentId("overview-heading"));
                 }}

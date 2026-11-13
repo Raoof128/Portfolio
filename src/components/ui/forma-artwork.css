@@ -1,0 +1,52 @@
+/* Artwork owns its palette; the surrounding frame and controls remain shared 7.css. */
+.forma-artwork {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  background: #12201d;
+}
+
+.forma-sculpture {
+  block-size: 86%;
+  max-inline-size: 86%;
+  aspect-ratio: 1;
+}
+
+.forma-crown,
+.forma-seeds,
+.forma-core {
+  transform-origin: 120px 120px;
+}
+
+.forma-crown {
+  animation: forma-turn 36s linear infinite;
+}
+.forma-seeds {
+  animation: forma-turn 48s linear infinite reverse;
+}
+.forma-core {
+  animation: forma-breathe 6s ease-in-out infinite;
+}
+
+@keyframes forma-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes forma-breathe {
+  0%,
+  100% {
+    transform: scale(0.94);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+/* A complete still composition survives reduced motion, including standalone use. */
+@media (prefers-reduced-motion: reduce) {
+  .forma-artwork * {
+    animation: none !important;
+  }
+}
