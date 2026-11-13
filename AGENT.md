@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-13 (Australia/Sydney) — FORMA delivery and thumbnail release verified
+
+- **Scope**: Complete the release record for today's FORMA portfolio work.
+- **Summary**: The dossier, visual and accessibility audit, kinetic SVG polish and thumbnail correction were delivered in c9eab53, ce0ee27, c8bf1fc and 8a904d7 respectively. The latter fixed thumbnail cropping while retaining the shared layout and full-size artwork. This entry supersedes the thumbnail entry's pending deployment follow-up.
+- **Files Changed**: AGENT.md and CHANGELOG.md (release record).
+- **Verification**: CI run 43372145646 and deploy run 43372145636 succeeded for 8a904d71a66d383c241f58866213eb140194c60e; CI reported 759 passed across 46 files. Live version.json returned that commit. The local production export passed all 12 Chromium/Firefox/WebKit regressions. A live two-browser run timed out under heavy machine load (Chromium waiting for artwork and WebKit during setup); a subsequent live Chromium measurement passed at 390 and 1440 pixels, matching FORMA, Syllabus-Sync and GitSwitch dimensions and centering. The earlier native Safari smoke predates the polished artwork; device, assistive technology and clean performance measurements remain separate.
+- **Follow-ups**: Publish this documentation update and record the final release state in Zurvan.
+
 ### Raouf: 2026-11-13 (Australia/Sydney) — FORMA thumbnail alignment and release record
 
 - **Scope**: Align FORMA's project-index thumbnail and reconcile today's FORMA portfolio delivery.
