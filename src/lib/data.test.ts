@@ -214,7 +214,11 @@ describe("Data Layer", () => {
 
     it("each project should have valid links structure", () => {
       Object.values(projects).forEach((project: Project) => {
-        expect(project.links).toHaveProperty("repo");
+        // A deployed app can be showcased without publishing its source repository.
+        expect(project.links.repo ?? project.links.demo).toBeTruthy();
+        for (const link of [project.links.repo, project.links.demo]) {
+          if (link) expect(new URL(link).protocol).toBe("https:");
+        }
       });
     });
 

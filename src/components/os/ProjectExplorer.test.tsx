@@ -224,8 +224,8 @@ describe("original project index previews", () => {
       const searchedProject = summaries.find(
         (project) => project.slug === "gitswitch",
       )!;
-      expect(screen.getAllByRole("article")).toHaveLength(13);
-      expect(container.querySelectorAll("[data-project-art]")).toHaveLength(13);
+      expect(screen.getAllByRole("article")).toHaveLength(14);
+      expect(container.querySelectorAll("[data-project-art]")).toHaveLength(14);
       const cards = screen.getAllByRole("article");
       for (const [index, project] of summaries.entries()) {
         const article = cards[index];
@@ -583,10 +583,10 @@ describe("original project index previews", () => {
       const { element, summaries } = await explorer(locale);
       const container = document.createElement("div");
       container.innerHTML = renderToStaticMarkup(element);
-      expect(container.querySelectorAll("article")).toHaveLength(13);
+      expect(container.querySelectorAll("article")).toHaveLength(14);
       expect(
         container.querySelectorAll("[data-project-art][aria-hidden=true]"),
-      ).toHaveLength(13);
+      ).toHaveLength(14);
       for (const project of summaries) {
         const article = container
           .querySelector(`[data-project-art="${project.slug}"]`)!

@@ -48,6 +48,57 @@ export interface Project {
 }
 
 export const projects: Record<string, Project> = {
+  forma: {
+    slug: "forma",
+    title: "FORMA",
+    category: "ENGINEERING",
+    year: "2026",
+    updatedAt: "2026-11-13",
+    description:
+      "A workout planner for building routines, logging every set and tracking progress. Live on the web with member accounts and local guest mode; native iPhone and Apple Watch apps are in development.",
+    fullDescription:
+      "FORMA brings routine planning, workout logging and progress review into one training workspace. The React and TypeScript web app supports member accounts with synchronised workout history, alongside a separate browser-local guest mode. A native SwiftUI project extends the experience to iPhone, Apple Watch and widgets. The web app is live; the native apps are development builds, not published App Store releases.",
+    tags: ["React", "TypeScript", "Vite", "iOS"],
+    links: {
+      demo: "https://forma.raoufabedini.dev",
+      caseStudy: "/projects/forma",
+    },
+    build: {
+      stack: [
+        "React",
+        "TypeScript",
+        "Vite",
+        "PostgreSQL",
+        "Cloudflare Workers",
+        "SwiftUI",
+        "WidgetKit",
+      ],
+      features: [
+        "Custom routines, weekly scheduling and a searchable exercise library.",
+        "Set logging for weight, repetitions, time and distance, with rest timers and session notes.",
+        "Workout history, personal bests and validated JSON backup and restore.",
+      ],
+    },
+    secure: {
+      measures: [
+        "Server-validated sessions and member-scoped workspace queries protect account data.",
+        "Multi-factor authentication, session revocation and expiring, revocable coach tokens.",
+        "Guest data stays in browser storage and is not encrypted; clearing site data requires a backup first.",
+      ],
+    },
+    problem:
+      "Training plans and workout notes often live in separate places, making it difficult to follow a routine and review progress consistently.",
+    solution: [
+      "Bring planning, active workouts and progress review into one workspace.",
+      "Offer synchronised member accounts alongside a separate local guest mode.",
+      "Develop native iPhone, Apple Watch and widget experiences for training away from the browser.",
+    ],
+    proof: [
+      "The public web app is available at forma.raoufabedini.dev.",
+      "The repository documents routine planning, set logging, workout history and account security controls.",
+      "Native iPhone and Apple Watch work remains in development; physical-device acceptance and App Store release are separate gates.",
+    ],
+  },
   "invisible-window-research": {
     slug: "invisible-window-research",
     title: "Invisible Window Research",

@@ -1,6 +1,34 @@
 import type { ProjectTranslations } from "./types";
 
 export const esProjects = {
+  forma: {
+    description:
+      "Una aplicación para crear rutinas, registrar cada serie y seguir el progreso. Disponible en la web con cuentas y modo invitado local; las aplicaciones nativas para iPhone y Apple Watch están en desarrollo.",
+    fullDescription:
+      "FORMA reúne la planificación, el registro de entrenamientos y la revisión del progreso. La aplicación web, creada con React y TypeScript, ofrece cuentas con historial sincronizado y un modo invitado independiente con almacenamiento local en el navegador. Un proyecto nativo en SwiftUI lleva la experiencia a iPhone, Apple Watch y widgets. La web está disponible; las aplicaciones nativas son versiones de desarrollo, todavía no publicadas en App Store.",
+    problem:
+      "Los planes y las notas de entrenamiento suelen estar repartidos entre distintas herramientas, lo que dificulta seguir una rutina y revisar el progreso de forma constante.",
+    solution: [
+      "Reunir la planificación, el entrenamiento activo y la revisión del progreso en un solo espacio.",
+      "Ofrecer cuentas sincronizadas junto a un modo invitado local independiente.",
+      "Desarrollar experiencias nativas para iPhone, Apple Watch y widgets que permitan entrenar sin el navegador.",
+    ],
+    proof: [
+      "La aplicación web pública está disponible en forma.raoufabedini.dev.",
+      "El repositorio documenta la planificación, el registro de series, el historial y los controles de seguridad de las cuentas.",
+      "Las aplicaciones nativas para iPhone y Apple Watch siguen en desarrollo; la aceptación en dispositivos físicos y la publicación en App Store son etapas independientes.",
+    ],
+    features: [
+      "Rutinas personalizadas, calendario semanal y biblioteca de ejercicios con búsqueda.",
+      "Registro de peso, repeticiones, tiempo y distancia, con temporizadores de descanso y notas.",
+      "Historial, marcas personales y copia de seguridad y restauración en JSON con validación.",
+    ],
+    measures: [
+      "Sesiones validadas por el servidor y consultas limitadas a los datos del miembro autenticado.",
+      "Autenticación multifactor, revocación de sesiones y tokens de entrenador revocables con caducidad.",
+      "Los datos de invitado permanecen en el navegador sin cifrar; hay que guardar una copia antes de borrar los datos del sitio.",
+    ],
+  },
   "invisible-window-research": {
     title: "Investigación de la ventana invisible",
     description:

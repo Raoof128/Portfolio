@@ -38,6 +38,8 @@ Security researcher focused on keeping tool-using AI agents safe and beneficial:
 12. Nexus Archive: React/Litestar/Supabase media vault and job tracker. Takeaway-note Fernet encryption requires configuration. Backend HttpOnly cookies coexist with browser-visible bearer tokens; no whole-app frontend-token-isolation claim is made. CI definitions are evidence of configured checks, not a demonstrated green HEAD run.
 13. SimurghForge: Tauri v2/Rust/React 19 local file converter with 9 engine variants. CLI-backed conversions require installed tools. Backend limits: 50 files and 1–8 concurrent jobs. Supported conversions depend on the input/output pair and available engines; no blanket 49-format guarantee is asserted.
 
+14. FORMA: Workout planner with custom routines, set logging, workout history, member accounts and a separate local guest mode. React, TypeScript, Vite, PostgreSQL and Cloudflare Workers. Native SwiftUI iPhone, Apple Watch and widget projects are in development, not published App Store releases. https://forma.raoufabedini.dev · https://raoufabedini.dev/projects/forma
+
 ## Professional Experience
 
 - AI Safety Evaluator (Claude) — Alignerr, Jan 2026 – Mar 2026. Anthropic safety-evaluation program · Remote. Stress-tested Claude's safety guardrails: assessed outputs for exploitable code and harmful patterns, analyzed circumvention methods, and delivered rubric-based findings.

@@ -11,7 +11,7 @@ Next.js portfolio for AI security research, cybersecurity engineering projects, 
 - Security-first content and disclosure workflow (`security.txt`, Hall of Fame, policy page).
 - ResearchOS welcome screen, dock and one current route-backed reading window with bounded movement/resize, minimize/restore and maximize/restore.
 - Retained application state on desktop and a single foreground reading panel on phones, with keyboard and single-pointer alternatives to dragging.
-- 13 project dossiers with search, category filtering and on-demand previews of the original artwork.
+- 14 project dossiers with search, category filtering and on-demand previews of the original artwork.
 - Technical articles, a separate publication library indexed by global search, and direct access to résumé skills, experience and certifications.
 - English, Persian, Arabic, Chinese and Spanish content, including RTL layouts.
 

@@ -1,6 +1,34 @@
 import type { ProjectTranslations } from "./types";
 
 export const zhProjects = {
+  forma: {
+    description:
+      "用于制定训练计划、记录每组练习和追踪进步的应用。网页版已上线，支持会员账户和本地访客模式；iPhone 和 Apple Watch 原生应用仍在开发中。",
+    fullDescription:
+      "FORMA 将训练规划、运动记录和进度回顾整合到同一个工作区。基于 React 和 TypeScript 的网页应用支持会员账户与训练历史同步，也提供独立的浏览器本地访客模式。原生 SwiftUI 项目将体验扩展到 iPhone、Apple Watch 和小组件。网页版已上线；原生应用仍是开发版本，尚未在 App Store 发布。",
+    problem:
+      "训练计划和运动笔记经常分散在不同工具中，使坚持训练和持续回顾进步变得困难。",
+    solution: [
+      "将计划制定、训练进行和进度回顾整合到同一个工作区。",
+      "同时提供可同步的会员账户和独立的本地访客模式。",
+      "开发 iPhone、Apple Watch 原生应用及小组件，让用户无需浏览器也能训练。",
+    ],
+    proof: [
+      "公开网页应用可通过 forma.raoufabedini.dev 访问。",
+      "项目文档介绍了训练计划、分组记录、训练历史和账户安全控制。",
+      "iPhone 和 Apple Watch 原生应用仍在开发；真机验收与 App Store 发布是独立的阶段。",
+    ],
+    features: [
+      "自定义训练计划、每周日程和可搜索的动作库。",
+      "记录每组的重量、次数、时间和距离，提供休息计时器及训练笔记。",
+      "训练历史、个人最佳成绩，以及经过数据校验的 JSON 备份与恢复。",
+    ],
+    measures: [
+      "服务器验证会话，并将工作区数据查询限定于已登录会员。",
+      "多因素认证、会话撤销，以及可撤销、有有效期的教练访问令牌。",
+      "访客数据保存在浏览器中且未加密；清除网站数据前需要先备份。",
+    ],
+  },
   "invisible-window-research": {
     title: "隐形窗口研究",
     description:

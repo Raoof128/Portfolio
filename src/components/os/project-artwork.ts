@@ -7,6 +7,13 @@ export type ProjectArtworkComponent = ComponentType<{
 
 /** The existing dossier identities, shared by previews without project data. */
 export const projectArtworkRegistry = {
+  forma: {
+    background: "#12201d",
+    load: () =>
+      import("@/components/ui/FormaArtwork").then(
+        (module) => module.FormaArtwork,
+      ),
+  },
   "invisible-window-research": {
     background: "#05020a",
     load: () =>

@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-13 (Australia/Sydney) — FORMA portfolio project
+
+- **Scope**: Add FORMA to the portfolio in new-port.
+- **Summary**: Added an engineering dossier with the public web app link, training features, stack and account security boundaries in all five languages. Native iPhone and Apple Watch work is explicitly described as development, not an App Store release. Added a workout illustration that respects existing motion controls, updated project inventory assertions and machine-readable content. No private infrastructure details or credentials were copied.
+- **Files Changed**: Project data, four translation dictionaries, slug registry, artwork registry and FormaArtwork component, project explorer/localisation tests, public/llms.txt, README.md, AGENT.md and CHANGELOG.md.
+- **Verification**: Typecheck and static export (173 pages), route audit (165 URLs, zero warnings), static security audit and tracked-source lint passed. Focused explorer/localisation checks: 59 passed. Chromium browser checks passed for Projects search → FORMA dossier → live app link in all five locales at 1440×900 and 390×900, with no console errors or horizontal overflow; English/Persian screenshots reviewed. Browser plugin unavailable, so Playwright was used. The full local suite completed with 752 passed and 7 failed (old route-count and mandatory-repository-link assumptions); after correction, all 68 tests in those two affected files passed. CI will rerun the full suite before deployment.
+- **Follow-ups**: Publish through the existing main-branch workflow and verify the live FORMA routes. Translations have not had native-speaker review.
+
 ### Raouf: 2026-11-11 (Australia/Sydney) — Release record: Aero parity branch, Atlas redraw and taskbar fix all live
 
 - **Scope**: Owner asked to bring every log and Zurvan up to date after the day's three releases.

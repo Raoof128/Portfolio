@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n";
 import type { Project, ProjectPaper } from "../data";
 
 export const projectSlugs = [
+  "forma",
   "invisible-window-research",
   "project-simurgh",
   "project-zurvan",

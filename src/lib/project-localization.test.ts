@@ -289,7 +289,7 @@ describe("Complete project localization", () => {
     "ships compact active-locale summaries and diagram labels for %s",
     (locale) => {
       const summaries = buildProjectSummaries(locale);
-      expect(summaries).toHaveLength(13);
+      expect(summaries).toHaveLength(Object.keys(projects).length);
       summaries.forEach((summary) => {
         expect(summary.descriptionLocale).toBe(locale);
         expect(summary).not.toHaveProperty("proof");
