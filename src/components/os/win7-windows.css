@@ -816,8 +816,18 @@
     min-width: 44px;
     min-height: 44px;
   }
-  /* 7.css places each caption glyph 10px from the top, which suits a 30px bar. At 44px the glyph
-     is centred instead. */
+  /* 7.css paints the active minimise glyph on the button as well as its hover layer.
+     Centre both when the caption grows for touch. */
+  .os-shell.win7
+    .window.glass
+    > .title-bar
+    .title-bar-controls
+    > button.is-minimize,
+  .os-shell.win7
+    .window.glass
+    > .title-bar
+    .title-bar-controls
+    > button.is-minimize::before,
   .os-shell.win7
     .window.glass
     > .title-bar
@@ -1033,5 +1043,20 @@
   }
   .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button.is-close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+/* Keep the touch target and the centred minimise glyph in high-contrast mode too. */
+@media (forced-colors: active) and (pointer: coarse),
+  (forced-colors: active) and (max-width: 700px) {
+  .os-shell.win7 .window.glass > .title-bar .title-bar-controls > button {
+    min-height: 44px;
+  }
+  .os-shell.win7
+    .window.glass
+    > .title-bar
+    .title-bar-controls
+    > button.is-minimize::before {
+    margin-block-start: 0;
   }
 }

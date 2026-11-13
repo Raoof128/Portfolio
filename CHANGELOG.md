@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Centre the mobile minimise icon
+
+- **Scope**: Correct the phone-sized window caption icon alignment.
+- **Summary**: Centre the 7.css minimise bitmap on the button and its hover/pressed layer for phone and coarse-pointer controls. In forced colours, retain the 44px touch height and centre the drawn glyph.
+- **Files Changed**: src/components/os/win7-windows.css, AGENT.md and CHANGELOG.md.
+- **Verification**: Production build and TypeScript passed; all 769 tests across 46 files passed. Seventeen local Playwright checks covered Chromium, Firefox and WebKit at mobile, coarse-tablet and desktop sizes, including forced colours, the 700/701px breakpoint, Persian RTL, and minimise/restore. Static security passed for 1,099 files. Lint passed excluding ignored local artifacts; the unfiltered command reported 22 errors in old generated bundles. The high-severity npm audit gate passed with seven moderate advisories. The existing stylesheet fails Prettier on both the original and changed file; unrelated formatting was left intact.
+- **Follow-ups**: Verify the deployed version and test on a physical device.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Place FORMA after Project Zurvan
 
 - **Scope**: Adjust the project explorer order as requested.
