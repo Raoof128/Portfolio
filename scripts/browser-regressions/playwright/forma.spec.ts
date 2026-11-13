@@ -1,5 +1,31 @@
 import { test, expect } from "@playwright/test";
 
+test("FORMA thumbnail is centred and sized like the other project previews", async ({
+  page,
+}) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/projects");
+    await page.locator('input[type="search"][id^="_r_"]').waitFor({ state: "attached" });
+    const dimensions = [];
+    for (const slug of ["forma", "syllabus-sync"]) {
+      const frame = page.locator(`[data-project-art="${slug}"]`);
+      await frame.scrollIntoViewIfNeeded();
+      const svg = frame.locator("svg").first();
+      await svg.waitFor();
+      const box = await frame.boundingBox();
+      const art = await svg.boundingBox();
+      expect(box).not.toBeNull();
+      expect(art).not.toBeNull();
+      expect(Math.abs(art!.x + art!.width / 2 - (box!.x + box!.width / 2))).toBeLessThan(1);
+      expect(Math.abs(art!.y + art!.height / 2 - (box!.y + box!.height / 2))).toBeLessThan(1);
+      expect(art!.height).toBeLessThan(box!.height);
+      dimensions.push(art!.height);
+    }
+    expect(Math.abs(dimensions[0] - dimensions[1])).toBeLessThan(1);
+  }
+});
+
 test("FORMA preserves its animation phase when paused and respects reduced motion", async ({
   page,
 }) => {

@@ -44,10 +44,17 @@
   min-block-size: 0;
 }
 
+/* Keep FORMA's grid track inside the fixed preview frame before sizing its artwork. */
+.os-shell .os-project-thumbnail .forma-artwork {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+
 .os-shell
   .os-project-thumbnail
   :is(
     .dandelion-bloom,
+    .forma-sculpture,
     .kl-container,
     .ka-container,
     .cc-container,

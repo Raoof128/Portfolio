@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-13 (Australia/Sydney) — FORMA thumbnail alignment and release record
+
+- **Scope**: Align FORMA's project-index thumbnail and reconcile today's FORMA portfolio delivery.
+- **Summary**: The thumbnail grid's intrinsic track let the FORMA SVG exceed its frame and crop. Constrained the preview grid and added its sculpture to the same height-based square sizing as the other artworks; the full-size dossier is unchanged. Today's previous releases added the five-locale FORMA dossier (c9eab53), audited shared layout/search and focus behavior (ce0ee27), and polished the accessible kinetic SVG (c8bf1fc). The latter was deployed and live-verified at c8bf1fc; this supersedes its earlier publish follow-up.
+- **Files Changed**: project-thumbnails.css, forma.spec.ts, AGENT.md and CHANGELOG.md.
+- **Verification**: The new thumbnail regression failed against the previous live site, then passed in Chromium, Firefox and WebKit at 390 and 1440 pixels. All 12 FORMA browser regressions passed; production export, TypeScript and changed-test lint passed. Measured SVG size matched Syllabus-Sync and GitSwitch (54.55px desktop, 139.03px mobile) and was centered. Previous c8bf1fc CI had 759 tests pass; its live WebKit regressions passed 3/3. Earlier Safari native smoke covered the preceding release, and final native refresh timed out; clean field performance and physical-device checks remain open.
+- **Follow-ups**: Verify the thumbnail commit through CI, deployment and the live site; record final state in Zurvan.
+
 ### Raouf: 2026-11-13 (Australia/Sydney) — FORMA animation polish and Safari follow-up
 
 - **Scope**: Test Safari/WebKit and refine the SVG after consulting current internet sources and 2026 documentation.
