@@ -233,7 +233,7 @@ export function AboutClient() {
               <Image
                 key={photoSource}
                 src={photoSource}
-                alt="Mohammad Raouf Abedini"
+                alt={t.about.hero_title}
                 fill
                 sizes="(max-width: 700px) 240px, 300px"
                 unoptimized

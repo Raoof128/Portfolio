@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-13 (Australia/Sydney) — Five-language portfolio localization audit
+
+- **Scope**: Audit English, Persian, Arabic, Spanish and Simplified Chinese across the portfolio's pages, content and interface.
+- **Summary**: Checked dictionaries, project narratives, article/lab overlays, source revisions, metadata, locale routes and rendered text. The About portrait's alternative text was hard-coded to the Latin-script name; it now uses the locale's authored heading. Official English source titles, code and the English résumé identity remain explicitly source-language content.
+- **Files Changed**: AboutClient.tsx, AboutClient.test.tsx, docs/audits/localization-2026-11-13, AGENT.md and CHANGELOG.md.
+- **Verification**: 113 focused tests across seven files passed; six schema tests and the 165-URL route audit passed, zero warnings. Production build/typecheck and changed-source lint passed. An independent 32-page-per-locale static comparison found no missing counterparts and classified 38 exact English matches as names, placeholders, URLs or technical/source identifiers. Ten Chromium locale/viewport combinations passed for direction, portrait name, dossier tabs, search and language switching. The initial browser fixture timed out twice because it waited for an input absent on About; the corrected run passed all ten. See the audit report for method and limits.
+- **Follow-ups**: Verify deployment if published. Native-speaker, assistive-technology and physical-device review remain open; structural coverage does not certify linguistic quality.
+
 ### Raouf: 2026-11-13 (Australia/Sydney) — FORMA delivery and thumbnail release verified
 
 - **Scope**: Complete the release record for today's FORMA portfolio work.

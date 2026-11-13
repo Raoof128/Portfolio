@@ -3,6 +3,10 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { AboutClient } from "./AboutClient";
 import { I18nProvider } from "@/i18n/provider";
 import en from "@/i18n/locales/en";
+import fa from "@/i18n/locales/fa";
+import ar from "@/i18n/locales/ar";
+import es from "@/i18n/locales/es";
+import zh from "@/i18n/locales/zh";
 
 function renderAbout() {
   return render(
@@ -13,6 +17,26 @@ function renderAbout() {
 }
 
 describe("AboutClient", () => {
+  it.each([
+    ["en", en],
+    ["fa", fa],
+    ["ar", ar],
+    ["es", es],
+    ["zh", zh],
+  ] as const)(
+    "uses the %s name for portrait alternative text",
+    (locale, dictionary) => {
+      render(
+        <I18nProvider locale={locale} dictionary={dictionary}>
+          <AboutClient />
+        </I18nProvider>,
+      );
+      expect(
+        screen.getByRole("img", { name: dictionary.about.hero_title }),
+      ).toBeInTheDocument();
+    },
+  );
+
   it("renders stable About heading and profile image", () => {
     renderAbout();
 
