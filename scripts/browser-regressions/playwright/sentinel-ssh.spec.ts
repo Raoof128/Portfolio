@@ -84,7 +84,7 @@ test("SentinelSSH preserves its animation phase when paused and respects reduced
   await expect(page.locator(".os-motion-preference")).toHaveText("Still");
 });
 
-test("SentinelSSH follows Zurvan and opens its localized dossier", async ({
+test("Aion follows Zurvan and SentinelSSH navigation stays available", async ({
   page,
 }) => {
   for (const locale of ["en", "fa", "ar", "es", "zh"]) {
@@ -101,9 +101,9 @@ test("SentinelSSH follows Zurvan and opens its localized dossier", async ({
     expect(
       slugs.slice(
         slugs.indexOf("project-zurvan") + 1,
-        slugs.indexOf("project-zurvan") + 3,
+        slugs.indexOf("project-zurvan") + 4,
       ),
-    ).toEqual(["sentinel-ssh", "forma"]);
+    ).toEqual(["aion", "sentinel-ssh", "forma"]);
     await page.keyboard.press("Control+k");
     await page.locator("#os-search-input").fill("SentinelSSH");
     const result = page.locator("#os-search-results a").first();

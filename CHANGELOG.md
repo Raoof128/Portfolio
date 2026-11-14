@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Move Aion directly below Zurvan
+
+- **Scope**: Move Aion up in the project explorer as requested.
+- **Summary**: The shared explorer and dossier navigation now place Zurvan, Aion, SentinelSSH and FORMA together in that order in all five languages. Other projects retain their relative order. This publication also includes the previously prepared SentinelSSH release-log updates; their local-only status describes the earlier preparation stage.
+- **Files Changed**: Summary ordering, existing locale/browser order assertions, README, release handover, AGENT.md and CHANGELOG.md.
+- **Verification**: All 64 focused tests passed across two files; production build and changed-source lint passed. Three browser tests passed in Chromium, Firefox and WebKit, each verifying all five locale orders and SentinelSSH navigation.
+- **Follow-ups**: Verify CI, deployment and live order for the published commit.
+
+### Raouf: 2026-11-14 (Australia/Sydney) — SentinelSSH release verified and handover synchronised
+
+- **Scope**: Update all Portfolio release logs and private Zurvan records after the SentinelSSH deployment.
+- **Summary**: SentinelSSH is live directly below Zurvan and above FORMA in all five languages, with a custom SVG inspection lens, static previews, pause/resume and reduced-motion support. The previous mobile/reload documentation updates were also published in this release.
+- **Release**: `deda2793d92e26584689f91cba966257dee59bf4`, built `2026-11-14T00:17:29.963Z`, verified on both raoufabedini.dev and raoufabedini.pages.dev. CI 43532873052 and deployment 43532873019 succeeded.
+- **Verification**: Final local unit suite: 771 passed, zero failed/skipped across 46 files. Nine local and nine live Playwright tests passed across Chromium, Firefox and WebKit, including all five locales, project order, search, repository link, responsive alignment and animation controls. Both production audits passed. Production export generated 178 pages; TypeScript, lint and static security passed; route audit covered 170 URLs with zero warnings.
+- **Zurvan**: Added the SentinelSSH release handover and accepted ordering decision; older handovers link to the new release and preserve historical evidence. Readback, hybrid retrieval and graph links verified. Search and graph are fresh at ledger revision 3421 CLEAN (457,528 chunks; 15,769 nodes; 22,065 edges), using the existing real embedding model. All 13 isolated memory tests, public-repository guard and whitespace checks passed; the full Zurvan test suite was not run.
+- **Follow-ups**: Physical-device, assistive-technology and native-speaker verification remain separate. Earlier reload-specific WebKit caveats are not cleared by these SentinelSSH checks. This post-release documentation sync is local and uncommitted; no new deployment is part of it.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Add SentinelSSH below Zurvan
 
 - **Scope**: Add the public SentinelSSH repository to the portfolio with a dedicated SVG animation.

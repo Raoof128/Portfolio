@@ -6,16 +6,33 @@ release evidence. Earlier audit reports and the
 builds, measurements and limitations. Their earlier no-deployment statements
 describe those historical stages.
 
+## Aion ordering update (14 November 2026)
+
+The owner requested Aion immediately below Zurvan. Current explorer and dossier
+navigation order is Zurvan → Aion → SentinelSSH → FORMA in all five languages.
+The earlier direct Zurvan → SentinelSSH adjacency below is historical.
+All 64 focused tests and three browser tests passed across Chromium, Firefox
+and WebKit; production build and changed-source lint passed. This release also
+publishes the previously local SentinelSSH release-log updates.
+
 ## SentinelSSH addition (14 November 2026)
 
-The next release adds SentinelSSH immediately below Zurvan, followed by FORMA,
+The verified release `deda2793d92e26584689f91cba966257dee59bf4` adds SentinelSSH immediately below Zurvan, followed by FORMA,
 in all five locales. A custom SVG inspection lens supports the existing motion
 controls and reduced-motion stills. The dossier links the public repository and
 states its observer-mode development status and gateway enforcement boundary.
-All 771 unit tests and nine Chromium/Firefox/WebKit browser tests passed. See
+All 771 unit tests, nine local and nine live Chromium/Firefox/WebKit browser tests passed. See
 [the addition audit](audits/sentinel-ssh-2026-11-14/README.md). This release also
 publishes the documentation updates prepared after the mobile/reload release
 below; their earlier local-only status describes that preparation stage.
+
+Both production domains reported this commit, built `2026-11-14T00:17:29.963Z`.
+[CI 43532873052](https://github.com/Raoof128/Portfolio/actions/runs/43532873052)
+and [deployment 43532873019](https://github.com/Raoof128/Portfolio/actions/runs/43532873019)
+succeeded, and both production audits passed. The private Zurvan record is
+`wiki/note-portfolio-sentinelssh-release-handover-2026-11-14.md`; older handovers
+link to it. These post-release log edits are local and uncommitted.
+
 
 ## Verified release: mobile controls and reload (14 November 2026)
 
@@ -38,7 +55,7 @@ and Firefox passed; the two strict WebKit checks reached the expected UI but
 failed their error assertions during rapid reload while background prefetches
 were cancelled. A slower WebKit interaction completed without those errors.
 Physical-device verification remains open. Documentation updates following
-this verification are local and are not part of `c25af79`.
+this verification were subsequently published in `deda279`.
 
 ## Earlier release: résumé alignment (9 November 2026)
 
@@ -215,7 +232,8 @@ separately from the pinned release snapshot.
 
 Zurvan entry points:
 
-- `wiki/note-portfolio-mobile-and-reload-release-handover-2026-.md` (14 November release record)
+- `wiki/note-portfolio-sentinelssh-release-handover-2026-11-14.md` (latest release record)
+- `wiki/note-portfolio-mobile-and-reload-release-handover-2026-.md` (earlier release record)
 - `wiki/note-portfolio-current-handover-2026-11-04.md`
 - `wiki/note-portfolio-full-ingestion-2026-11-04.md`
 - The ingestion inventory links every original file to its source page, hash

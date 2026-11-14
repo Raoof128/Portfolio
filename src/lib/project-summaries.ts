@@ -32,7 +32,7 @@ export function buildProjectSummaries(locale: Locale): ProjectSummary[] {
   });
 
   // The explorer has an editorial order independent of site-wide search ranking.
-  const following = ["sentinel-ssh", "forma"];
+  const following = ["aion", "sentinel-ssh", "forma"];
   for (const slug of [...following].reverse()) {
     const index = summaries.findIndex((project) => project.slug === slug);
     if (

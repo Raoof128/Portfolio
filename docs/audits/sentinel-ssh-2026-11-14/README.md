@@ -19,3 +19,19 @@ Validation:
 - Initial unit run: 760 passed and 11 failed due to the new project inventory and the SSH technology tag. Those expectations were updated; final results are recorded in the changelog.
 
 Physical-device, assistive-technology and native-speaker review were not performed. Browser screenshots and transient runner output remain outside version control.
+
+## Deployment verification
+
+Commit `deda2793d92e26584689f91cba966257dee59bf4` was pushed to main and deployed
+on both production origins, built `2026-11-14T00:17:29.963Z`.
+[CI](https://github.com/Raoof128/Portfolio/actions/runs/43532873052) and
+[deployment](https://github.com/Raoof128/Portfolio/actions/runs/43532873019)
+succeeded. Both production audits passed, with commit identity matching the
+release. All nine browser regressions also passed against the live site across
+Chromium, Firefox and WebKit. Final unit suite: 771 passed, zero failed or
+skipped, across 46 files. The historical 11 initial failures were resolved.
+
+See [release-verification.json](release-verification.json) for the structured
+receipt. This is release and interaction verification, not byte-for-byte export
+attestation or a new audit of SentinelSSH itself. Post-release log updates remain
+local until a subsequent authorised publication.

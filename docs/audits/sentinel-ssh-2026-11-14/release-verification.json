@@ -1,0 +1,61 @@
+{
+  "verified_on": "2026-11-14",
+  "commit": "deda2793d92e26584689f91cba966257dee59bf4",
+  "built_at": "2026-11-14T00:17:29.963Z",
+  "domains": [
+    "https://raoufabedini.dev",
+    "https://raoufabedini.pages.dev"
+  ],
+  "ci": {
+    "run": 43532873052,
+    "conclusion": "success"
+  },
+  "deployment": {
+    "run": 43532873019,
+    "conclusion": "success"
+  },
+  "local_unit_tests": {
+    "passed": 771,
+    "failed": 0,
+    "skipped": 0,
+    "files": 46
+  },
+  "local_browser_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "live_browser_tests": {
+    "passed": 9,
+    "failed": 0,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ]
+  },
+  "production_audits": "passed on both domains",
+  "scope_limits": [
+    "Not a full source-tree ingestion into Zurvan",
+    "No physical-device, assistive-technology or native-speaker verification",
+    "No fresh execution or independent security audit of SentinelSSH",
+    "Earlier reload-specific WebKit caveat remains historical and unresolved by these tests"
+  ],
+  "zurvan_sync": {
+    "ledger_revision": 3421,
+    "ledger_state": "CLEAN",
+    "search_revision": 3421,
+    "graph_revision": 3421,
+    "chunks": 457528,
+    "nodes": 15769,
+    "edges": 22065,
+    "embedding_provider": "sentence_transformers",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "readback_search_and_links": "verified",
+    "focused_tests": {
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    "full_suite": "not run"
+  }
+}

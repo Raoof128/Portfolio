@@ -98,14 +98,15 @@ function numericValues(text: string): string[] {
 
 describe("Complete project localization", () => {
   it.each(["en", ...translatedLocales] as Locale[])(
-    "lists SentinelSSH then FORMA immediately after Project Zurvan in %s",
+    "lists Aion, SentinelSSH and FORMA immediately after Project Zurvan in %s",
     (locale) => {
       const slugs = buildProjectSummaries(locale).map(
         (project) => project.slug,
       );
       const zurvan = slugs.indexOf("project-zurvan");
       expect(zurvan).toBeGreaterThanOrEqual(0);
-      expect(slugs.slice(zurvan + 1, zurvan + 3)).toEqual([
+      expect(slugs.slice(zurvan + 1, zurvan + 4)).toEqual([
+        "aion",
         "sentinel-ssh",
         "forma",
       ]);
