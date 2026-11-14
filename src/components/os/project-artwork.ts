@@ -7,6 +7,13 @@ export type ProjectArtworkComponent = ComponentType<{
 
 /** The existing dossier identities, shared by previews without project data. */
 export const projectArtworkRegistry = {
+  "sentinel-ssh": {
+    background: "#071b24",
+    load: () =>
+      import("@/components/ui/SentinelSSHArtwork").then(
+        (module) => module.SentinelSSHArtwork,
+      ),
+  },
   forma: {
     background: "#12201d",
     load: () =>

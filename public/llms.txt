@@ -39,6 +39,7 @@ Security researcher focused on keeping tool-using AI agents safe and beneficial:
 13. SimurghForge: Tauri v2/Rust/React 19 local file converter with 9 engine variants. CLI-backed conversions require installed tools. Backend limits: 50 files and 1–8 concurrent jobs. Supported conversions depend on the input/output pair and available engines; no blanket 49-format guarantee is asserted.
 
 14. FORMA: Workout planner with custom routines, set logging, workout history, member accounts and a separate local guest mode. React, TypeScript, Vite, PostgreSQL and Cloudflare Workers. Native SwiftUI iPhone, Apple Watch and widget projects are in development, not published App Store releases. https://forma.raoufabedini.dev · https://raoufabedini.dev/projects/forma
+15. SentinelSSH: Rust MCP gateway with 17 typed, read-only inspection tools for registered Linux hosts. Observer-mode development release; gateway policy is not a remote sandbox. https://github.com/Raoof128/sentinel-ssh · https://raoufabedini.dev/projects/sentinel-ssh
 
 ## Professional Experience
 

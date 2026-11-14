@@ -1,15 +1,49 @@
-# Portfolio release handover — 4 November 2026 (updated 9 November)
+# Portfolio release handover — updated 14 November 2026
 
-This handover records the current arrow-only entry flow followed by earlier
+This handover records the latest verified release followed by earlier
 release evidence. Earlier audit reports and the
 [12 October handover](portfolio-handover-2026-10-12.md) retain their original
 builds, measurements and limitations. Their earlier no-deployment statements
 describe those historical stages.
 
-## Current release: résumé alignment (9 November 2026)
+## SentinelSSH addition (14 November 2026)
 
-`main` is at `16cc419485385a343da079428cd8de94186c0e09`, live on both
-production origins (deploy workflow
+The next release adds SentinelSSH immediately below Zurvan, followed by FORMA,
+in all five locales. A custom SVG inspection lens supports the existing motion
+controls and reduced-motion stills. The dossier links the public repository and
+states its observer-mode development status and gateway enforcement boundary.
+All 771 unit tests and nine Chromium/Firefox/WebKit browser tests passed. See
+[the addition audit](audits/sentinel-ssh-2026-11-14/README.md). This release also
+publishes the documentation updates prepared after the mobile/reload release
+below; their earlier local-only status describes that preparation stage.
+
+## Verified release: mobile controls and reload (14 November 2026)
+
+At verification, both production domains served application commit
+`c25af79c14aac6f1367cd4583809c05499e1a3af` (built
+`2026-11-13T23:44:37.882Z`). The preceding `36aaa80` centres the mobile
+minimise glyph; `c25af79` preserves an entered desktop across reloads in the
+same tab. A fresh session and an explicit Lock retain the welcome screen; the
+arrow still starts the three-second entry on that screen. With JavaScript
+enabled but session storage unavailable, reload falls back to the welcome
+screen; the no-JavaScript fallback keeps content readable. A bounded early
+restore avoids showing the welcome screen while the returning page hydrates.
+
+[CI 43529115694](https://github.com/Raoof128/Portfolio/actions/runs/43529115694)
+and [deployment 43529115610](https://github.com/Raoof128/Portfolio/actions/runs/43529115610)
+passed; CI ran 771 tests in 46 files. Production audits passed on both
+domains. Six local export checks passed in Chromium, Firefox and WebKit,
+including delayed hydration and explicit locking. On production, Chromium
+and Firefox passed; the two strict WebKit checks reached the expected UI but
+failed their error assertions during rapid reload while background prefetches
+were cancelled. A slower WebKit interaction completed without those errors.
+Physical-device verification remains open. Documentation updates following
+this verification are local and are not part of `c25af79`.
+
+## Earlier release: résumé alignment (9 November 2026)
+
+At the time, `main` was at `16cc419485385a343da079428cd8de94186c0e09`, live on
+both production origins (deploy workflow
 [42541382082](https://github.com/Raoof128/Portfolio/actions/runs/42541382082),
 https://3e4b1102.raoufabedini.pages.dev, content revision 2026-11-09).
 
@@ -25,8 +59,8 @@ https://3e4b1102.raoufabedini.pages.dev, content revision 2026-11-09).
 
 ## Reviewer readiness and Aero round 3 (9 November 2026)
 
-`main` is at `e7de6a8461076fb7dc232138e5887ca16d4a1641`, a fast-forward of
-the `claude/dazzling-feynman-cp1q08` branch (15 commits from `38842e2`). It is
+At the time, `main` was at `e7de6a8461076fb7dc232138e5887ca16d4a1641`, a fast-forward of
+the `claude/dazzling-feynman-cp1q08` branch (15 commits from `38842e2`). It was
 live on both production origins, deployed by GitHub workflow
 [42534569341](https://github.com/Raoof128/Portfolio/actions/runs/42534569341)
 as https://ba41077e.raoufabedini.pages.dev; `version.json` reports build time
@@ -44,11 +78,11 @@ as https://ba41077e.raoufabedini.pages.dev; `version.json` reports build time
   [unresolved risks](audits/reviewer-readiness/unresolved-risks.md). Entry
   behavior is unchanged: only the **Enter workspace** arrow opens the desktop.
 
-## Arrow-only entry (4 November 2026)
+## Historical arrow-only entry (4 November 2026)
 
 The owner requested removal of profile login. The portrait and name are now a
 passive display; only the **Enter workspace** arrow starts entry. The full
-three-second loader, welcome screen on home loads/reloads, status/focus,
+three-second loader, welcome screen on home loads/reloads at that time, status/focus,
 reduced-motion behavior, five languages and direct document access remain.
 
 The maintained regression clicks the name and portrait to confirm neither
@@ -169,7 +203,7 @@ This release does not add physical-device, native-speaker, assistive-technology
 or field Web Vitals evidence. Earlier incomplete contrast checks, PDF tagging
 limitations and dated upstream failed/open receipts retain their stated scope.
 
-## Full local Zurvan ingestion
+## Historical full local Zurvan ingestion
 
 The pinned release repository contains 1,028 tracked files: 792 UTF-8 text
 files and 236 binary assets. The ingestion preserves every Git file in an
@@ -181,17 +215,20 @@ separately from the pinned release snapshot.
 
 Zurvan entry points:
 
+- `wiki/note-portfolio-mobile-and-reload-release-handover-2026-.md` (14 November release record)
 - `wiki/note-portfolio-current-handover-2026-11-04.md`
 - `wiki/note-portfolio-full-ingestion-2026-11-04.md`
 - The ingestion inventory links every original file to its source page, hash
   and GitHub source URL. Older Portfolio knowledge remains historical.
 
-Later release changes use a fresh full archive and per-file inventory, with
+Earlier release changes used a fresh full archive and per-file inventory, with
 delta source pages for changed files and reuse of byte-identical source pages.
 Archives, manifests, verification helpers and receipts remain private local
 artifacts, outside the website. Source preservation and derived-index freshness
 are separate checks: use the current private receipt and `zurvan_status` before
-relying on retrieval. No Zurvan public push is part of this task.
+relying on retrieval. The 14 November release has a private handover and
+decision; no complete source-tree ingestion for `c25af79` is claimed. No
+Zurvan public push is part of this task.
 
 ## Maintenance
 

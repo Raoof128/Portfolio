@@ -25,12 +25,12 @@ describe("OS application route schema", () => {
     expect([...osExperimentIds]).toEqual(
       labExperiments.map((experiment) => experiment.id),
     );
-    expect(osAppRoutes).toHaveLength(32);
-    expect(new Set(osAppRoutes).size).toBe(32);
+    expect(osAppRoutes).toHaveLength(33);
+    expect(new Set(osAppRoutes).size).toBe(33);
   });
 
   it.each(osAppLocales)(
-    "round-trips all 32 reading routes for %s",
+    "round-trips all 33 reading routes for %s",
     (locale) => {
       const ids = new Set<string>();
       for (const route of osAppRoutes) {
@@ -47,7 +47,7 @@ describe("OS application route schema", () => {
         expect(isOSAppDescriptor(descriptor)).toBe(true);
         ids.add(descriptor!.id);
       }
-      expect(ids.size).toBe(32);
+      expect(ids.size).toBe(33);
     },
   );
 

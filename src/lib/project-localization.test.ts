@@ -19,6 +19,7 @@ const technologyTags = new Set([
   "Python",
   "LLM",
   "MCP",
+  "SSH",
   "SQLite",
   "Electron",
   "React",
@@ -97,12 +98,17 @@ function numericValues(text: string): string[] {
 
 describe("Complete project localization", () => {
   it.each(["en", ...translatedLocales] as Locale[])(
-    "lists FORMA immediately after Project Zurvan in %s",
+    "lists SentinelSSH then FORMA immediately after Project Zurvan in %s",
     (locale) => {
-      const slugs = buildProjectSummaries(locale).map((project) => project.slug);
+      const slugs = buildProjectSummaries(locale).map(
+        (project) => project.slug,
+      );
       const zurvan = slugs.indexOf("project-zurvan");
       expect(zurvan).toBeGreaterThanOrEqual(0);
-      expect(slugs[zurvan + 1]).toBe("forma");
+      expect(slugs.slice(zurvan + 1, zurvan + 3)).toEqual([
+        "sentinel-ssh",
+        "forma",
+      ]);
       expect(new Set(slugs).size).toBe(Object.keys(projects).length);
     },
   );

@@ -48,6 +48,44 @@ export interface Project {
 }
 
 export const projects: Record<string, Project> = {
+  "sentinel-ssh": {
+    slug: "sentinel-ssh",
+    title: "SentinelSSH",
+    category: "DEFENSIVE",
+    year: "2026",
+    updatedAt: "2026-11-14",
+    description:
+      "Policy-scoped SSH inspection for AI agents. A Rust MCP gateway exposes 17 typed, read-only tools for registered Linux hosts, without giving the agent a shell.",
+    fullDescription:
+      "SentinelSSH connects AI agents to registered Linux hosts through MCP and native OpenSSH. Its observer-mode gateway checks policy, paths and resource budgets before dispatching fixed inspection commands. File downloads become SHA-256-verified local artefacts that can be read by handle and range. The development release enforces its interface at the gateway; it is not a remote sandbox and has not been independently security-reviewed.",
+    tags: ["Rust", "MCP", "SSH"],
+    links: {
+      repo: "https://github.com/Raoof128/sentinel-ssh",
+    },
+    build: {
+      stack: ["Rust", "MCP", "OpenSSH", "Linux"],
+      features: [
+        "17 tools cover host facts, files, logs, services, health checks, downloads and operation control.",
+        "Bounded results, ranged reads, cancellation and batches keep inspection manageable.",
+      ],
+    },
+    secure: {
+      measures: [
+        "Pinned host keys, deny-by-default policy and scoped paths constrain gateway requests.",
+        "The SSH account may permit more than the gateway exposes. Remote content remains untrusted; credential filtering is best effort.",
+      ],
+    },
+    problem:
+      "Giving an agent unrestricted SSH access exposes everything its account can do and can flood model context with sensitive remote output.",
+    solution: [
+      "Replace arbitrary commands with typed inspection tools and operator-registered hosts, roots and services.",
+      "Separate bounded results from bulk downloads, with explicit export permission and verified local artefacts.",
+    ],
+    proof: [
+      "The public repository documents observer mode, tool contracts, the security model and a disposable SSH test fixture.",
+      "A host-side enforcement broker, changes, approvals and uploads are future work; no independent audit or fresh test run is claimed here.",
+    ],
+  },
   forma: {
     slug: "forma",
     title: "FORMA",

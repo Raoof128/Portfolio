@@ -1,0 +1,49 @@
+.sentinel-artwork {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  background: #071b24;
+}
+.sentinel-sculpture {
+  block-size: 90%;
+  max-inline-size: 90%;
+  aspect-ratio: 1;
+}
+.sentinel-sculpture svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+.sentinel-rotor,
+.sentinel-scan {
+  /* SVG viewBox coordinates keep both layers centred in every preview size. */
+  transform-box: view-box;
+  transform-origin: 150px 150px;
+}
+.sentinel-rotor {
+  animation: sentinel-turn 64s linear infinite;
+}
+.sentinel-scan {
+  animation: sentinel-turn 12s linear infinite reverse;
+}
+.sentinel-signal {
+  animation: sentinel-flow 4s linear infinite;
+}
+@keyframes sentinel-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes sentinel-flow {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sentinel-artwork * {
+    animation: none !important;
+  }
+}

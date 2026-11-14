@@ -32,12 +32,19 @@ export function buildProjectSummaries(locale: Locale): ProjectSummary[] {
   });
 
   // The explorer has an editorial order independent of site-wide search ranking.
-  const formaIndex = summaries.findIndex((project) => project.slug === "forma");
-  const zurvanIndex = summaries.findIndex((project) => project.slug === "project-zurvan");
-  if (formaIndex !== -1 && zurvanIndex !== -1) {
-    const [forma] = summaries.splice(formaIndex, 1);
-    const position = summaries.findIndex((project) => project.slug === "project-zurvan");
-    summaries.splice(position + 1, 0, forma);
+  const following = ["sentinel-ssh", "forma"];
+  for (const slug of [...following].reverse()) {
+    const index = summaries.findIndex((project) => project.slug === slug);
+    if (
+      index === -1 ||
+      !summaries.some((project) => project.slug === "project-zurvan")
+    )
+      continue;
+    const [project] = summaries.splice(index, 1);
+    const anchor = summaries.findIndex(
+      (item) => item.slug === "project-zurvan",
+    );
+    summaries.splice(anchor + 1, 0, project);
   }
   return summaries;
 }

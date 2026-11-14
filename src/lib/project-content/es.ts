@@ -1,6 +1,30 @@
 import type { ProjectTranslations } from "./types";
 
 export const esProjects = {
+  "sentinel-ssh": {
+    description:
+      "Inspección SSH limitada por políticas para agentes de IA. Una pasarela MCP en Rust ofrece 17 herramientas tipadas de solo lectura para hosts Linux registrados, sin dar acceso a un intérprete de comandos.",
+    fullDescription:
+      "SentinelSSH conecta agentes de IA con hosts Linux registrados mediante MCP y OpenSSH. La pasarela en modo observador comprueba políticas, rutas y límites de recursos antes de ejecutar comandos de inspección predefinidos. Las descargas se guardan como artefactos locales verificados con SHA-256, accesibles por identificador y rango. Esta versión de desarrollo aplica sus límites en la pasarela; no es un entorno aislado remoto ni cuenta con una revisión de seguridad independiente.",
+    problem:
+      "El acceso SSH sin restricciones expone todas las capacidades de la cuenta y puede llenar el contexto del modelo con información remota sensible.",
+    solution: [
+      "Sustituir comandos arbitrarios por herramientas tipadas y hosts, directorios raíz y servicios registrados por el operador.",
+      "Separar resultados acotados de descargas masivas, con permiso de exportación explícito y artefactos locales verificados.",
+    ],
+    proof: [
+      "El repositorio público documenta el modo observador, los contratos de las herramientas, el modelo de seguridad y un entorno SSH de pruebas desechable.",
+      "La aplicación de restricciones en el host, los cambios, las aprobaciones y las subidas quedan para etapas futuras; aquí no se afirma una auditoría independiente ni una nueva ejecución de pruebas.",
+    ],
+    features: [
+      "17 herramientas cubren datos del host, archivos, registros, servicios, comprobaciones de salud, descargas y control de operaciones.",
+      "Los resultados acotados, las lecturas por rango, la cancelación y los lotes facilitan la inspección.",
+    ],
+    measures: [
+      "Las claves de host fijadas, la denegación por defecto y las rutas acotadas restringen las solicitudes de la pasarela.",
+      "La cuenta SSH puede permitir más acciones que la pasarela. El contenido remoto no es de confianza; el filtrado de credenciales no garantiza eliminar todos los secretos.",
+    ],
+  },
   forma: {
     description:
       "Una aplicación para crear rutinas, registrar cada serie y seguir el progreso. Disponible en la web con cuentas y modo invitado local; las aplicaciones nativas para iPhone y Apple Watch están en desarrollo.",

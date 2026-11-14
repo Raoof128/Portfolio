@@ -2,6 +2,23 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Add SentinelSSH below Zurvan
+
+- **Scope**: Add the public SentinelSSH repository to the portfolio with a dedicated SVG animation.
+- **Summary**: Added the five-language dossier, repository link, search entry and inspection-lens artwork. Explorer order is Zurvan, SentinelSSH, FORMA. Content retains observer-mode development status and gateway security limits. This release also includes the previously prepared mobile/reload documentation updates; their earlier local-only status is historical.
+- **Files Changed**: Project data and translations, summary order, artwork registry and component/CSS, inventory and browser tests, machine-readable project listing, audit note and project logs.
+- **Verification**: Final unit suite: 771 passed, zero failed/skipped across 46 files. Production export: 178 pages. TypeScript, changed-source lint and static security passed; route audit: 170 URLs, zero warnings. Nine browser tests passed in Chromium, Firefox and WebKit, covering five locales, search, repository link, order, responsive preview alignment and animation controls. See docs/audits/sentinel-ssh-2026-11-14/README.md for sources and limitations.
+- **Follow-ups**: Verify the published commit and deployment. Physical-device and native-speaker checks remain separate.
+
+### Raouf: 2026-11-14 (Australia/Sydney) — Record the verified mobile and reload release
+
+- **Scope**: Synchronise the Portfolio release logs and current handover after deployment.
+- **Summary**: Record the centred mobile minimise control and same-tab reload behaviour; correct the README, architecture and dated handover while preserving earlier release evidence as historical.
+- **Files Changed**: README.md, docs/ARCHITECTURE.md, docs/portfolio-release-handover-2026-11-04.md, AGENT.md and CHANGELOG.md; the parent workspace logs are updated separately.
+- **Verification**: Both live domains reported `c25af79c14aac6f1367cd4583809c05499e1a3af`; CI 43529115694 and deploy 43529115610 passed, with 771 tests across 46 files. Both production audits passed. Six local export checks passed; live Chromium and Firefox passed, while two strict WebKit checks reported errors during rapid reload as background prefetches were cancelled. A slower WebKit interaction completed without those errors.
+- **Zurvan**: The private release note and accepted session decision were read back; the older handover was marked historical. Search and graph were rebuilt and verified at ledger revision 3418 CLEAN, with the new records searchable and linked.
+- **Follow-ups**: Physical-device verification remains open. These post-release documentation changes are local and uncommitted; they do not change the deployed commit.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Preserve the open desktop on reload
 
 - **Scope**: Keep an entered workspace open when the same browser tab reloads.

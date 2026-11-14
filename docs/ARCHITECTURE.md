@@ -61,7 +61,7 @@ Next navigation continues to own URLs, fragments, metadata and normal browser ba
 
 Below the floating-layout thresholds (1024px wide and 600px high), one foreground document uses ordinary page scrolling. The reading hook records offsets separately from window geometry and restores them on app activation, minimize/restore and desktop/phone transitions. Desktop pointer operations are bounded, coalesced and cancelled on interruption. Maximize stores the previous rectangle; restore clamps it against the current viewport. The panel's reset action returns to default layout rather than the saved maximize rectangle.
 
-Window records, geometry, filters, input state and reading positions are in-memory state for the mounted workspace. Reloading or leaving its locale resets them. The existing dark/light appearance value is the only setting stored locally.
+Window records, geometry, filters, input state and reading positions are in-memory state for the mounted workspace. Reloading or leaving its locale resets them. The dark/light appearance preference is stored locally; the tab-scoped entered state also survives reload until the visitor explicitly locks the workspace, when session storage is available.
 
 ### Data Layer (`src/lib/data.ts`)
 

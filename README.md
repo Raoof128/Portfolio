@@ -39,9 +39,11 @@ flowchart TD
 
 Detailed design notes are documented in [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
 
-Current release (11 November 2026): the Proof Atlas maps are redrawn from current repository evidence (`fff79bc`), and the desktop windows stop above the taskbar (`34d03c8`); the site has followed the Anthropic Research Resident résumé line by line since 9 November 2026 (`16cc419`). Entry flow (unchanged since 4 November 2026): home loads and reloads show the welcome screen. Use the **Enter workspace** arrow to start the full three-second loader before the desktop opens. The portrait and name are a passive display. Returning sessions and reduced motion retain the delay. See the [current release handover](./docs/portfolio-release-handover-2026-11-04.md) for current behavior, earlier deployment evidence and local Zurvan source coverage.
+SentinelSSH joins the project explorer directly below Zurvan, with a five-language dossier, public repository link and a custom animated SVG inspection lens. See the [addition audit](./docs/audits/sentinel-ssh-2026-11-14/README.md).
 
-The [12 October handover](./docs/portfolio-handover-2026-10-12.md), earlier frontend-gauntlet reports and build-10 evidence are historical. Their branch names, counts and no-deployment statements describe their original snapshots. Physical-device, assistive-technology, native-speaker and field Web Vitals verification remain separate; incomplete contrast and PDF-tagging limits are not cleared by deployment. The runtime dependency audit reports zero vulnerabilities; 16 moderate tooling advisories remain in the full audit. See the [maintenance instructions](./docs/dependency-security.md) and [goal checklist](./docs/research-os-goal-checklist.md).
+Verified release (14 November 2026): the mobile minimise icon is centred (`36aaa80`), and an entered workspace stays open when the same tab reloads (`c25af79`). A fresh session or an explicit Lock still shows the welcome screen. Select the **Enter workspace** arrow to start the three-second loader; the portrait and name are passive. Direct content URLs open immediately. See the [release handover](./docs/portfolio-release-handover-2026-11-04.md) for deployment evidence, limitations and earlier releases.
+
+The [12 October handover](./docs/portfolio-handover-2026-10-12.md), earlier frontend-gauntlet reports and build-10 evidence are historical. Their branch names, counts and no-deployment statements describe their original snapshots. Physical-device, assistive-technology, native-speaker and field Web Vitals verification remain separate; incomplete contrast and PDF-tagging limits are not cleared by deployment. The 14 November full dependency audit passed the high-severity gate and reported seven moderate tooling advisories. See the [maintenance instructions](./docs/dependency-security.md) and [goal checklist](./docs/research-os-goal-checklist.md).
 
 ## Repository Structure
 
@@ -80,7 +82,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-Select the **Enter workspace** arrow, wait three seconds, then open Projects, type a search, then open About. Opening another page disposes the previous window; there is no opened-page history strip. Minimize temporarily preserves only the current page, with one restore button and a dock indicator. Desktop title dragging and the resize handle have a **Window controls** menu with click steps and keyboard arrows; phones use ordinary document scrolling. Direct content URLs open immediately. Only the appearance preference persists across reloads; the current page’s filters, geometry and reading position are temporary state that ends when navigating away.
+On a fresh session, select the **Enter workspace** arrow and wait three seconds, then open Projects, type a search, then open About. Opening another page disposes the previous window; there is no opened-page history strip. Minimize temporarily preserves only the current page, with one restore button and a dock indicator. Desktop title dragging and the resize handle have a **Window controls** menu with click steps and keyboard arrows; phones use ordinary document scrolling. Direct content URLs open immediately. Appearance and the tab’s entered or explicitly locked state persist across reloads when browser storage is available; the current page’s filters, geometry and reading position are temporary state that ends when navigating away.
 
 ## Quality Commands
 
