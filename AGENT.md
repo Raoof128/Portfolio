@@ -2,6 +2,14 @@
 
 This file provides context and rules for AI coding assistants (agents) working on the **Mohammad Raouf Abedini Portfolio**.
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Invisible Window: public record repository, paper address redirect, source wording
+
+- **Scope**: Owner instruction to apply every fix found while checking the Invisible Window links. The residency application was already submitted with `github.com/Raoof128/invisible-window-research` printed in it, and the paper prints `raoufabedini.dev/invisible-window`, which returned 404.
+- **Summary**: Outside this repo, the private research repository was renamed to `invisible-window-research-private` and a public README-only repository now sits at the original address (README, `CITATION.cff`, CC BY 4.0 licence, no proof-of-concept source), so the submitted link loads. In this repo, `/invisible-window` now redirects (302) to the case study, and `llms-full.txt` describes that GitHub address as "public record only; the source is private". The project page is unchanged and still offers "request source" by email.
+- **Files Changed**: `public/_redirects`, `src/app/llms-full.txt/route.ts`, `src/lib/data.ts` (comment only), `AGENT.md`, `CHANGELOG.md`.
+- **Verification**: `tsc --noEmit` clean; 771/771 unit tests; `eslint src scripts` clean; `next build` clean; static security audit passed; the built `_redirects` and `llms-full.txt` carry the new lines. Signed-out checks of GitHub: the original address returns 200 with the README, the renamed private repository and the old `/poc` path return 404. The browser suites were not rerun.
+- **Follow-ups**: The redirect sends readers to the case study, which shows the capture evidence but does not host the forensic data files the paper mentions; a real data page can replace it. The Zenodo release webhook on the private repository was switched off so a new release is not archived publicly.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Résumé cites the Invisible Window preprint, not the private repository
 
 - **Scope**: Owner decision: the Invisible Window repository stays private because it holds the proof-of-concept code, and publishing it would break the dual-use position the paper states. The résumé printed that repository's URL, which returns 404 to a reviewer and sat directly above the line "Proof-of-concept code is withheld on dual-use grounds".

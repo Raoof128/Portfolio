@@ -190,6 +190,9 @@ export const projects: Record<string, Project> = {
       "PoC",
     ],
     links: {
+      // This address is a public README-only record of the research. The source
+      // (PoC, paper source) is in a separate private repository, so the page
+      // still offers "request source" instead of linking here as code.
       repo: "https://github.com/Raoof128/invisible-window-research",
       repoVisibility: "private",
       paper: "/Invisible_Window_Research_Preprint_V2.0.pdf",

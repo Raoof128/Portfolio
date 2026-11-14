@@ -13,6 +13,13 @@
 /zh/lab/001  /zh/lab  301
 /es/lab/001  /es/lab  301
 
+# The Invisible Window paper (Section VII-F) prints this address for its forensic
+# capture data. No page ever existed here, so readers go to the case study, which
+# shows the capture evidence and how to request the data. 302 keeps the address free
+# for a real data page later.
+/invisible-window   /projects/invisible-window-research  302
+/invisible-window/  /projects/invisible-window-research  302
+
 # Trailing-slash variants of the top-level pages go straight to the canonical path in
 # one hop. Without these, /projects/ matched the /projects/* rewrite below and then
 # took a second redirect. Exact paths must stay above their /* wildcards.

@@ -151,7 +151,7 @@ function projectBlock(slug: string, p: (typeof projects)[string]): string {
   if (p.links.repo)
     links.push(
       p.links.repoVisibility === "private"
-        ? `Repo (private; contact the author to request access): ${p.links.repo}`
+        ? `Repo (public record only; the source is private, contact the author to request access): ${p.links.repo}`
         : `Repo: ${p.links.repo}`,
     );
   if (p.links.demo) links.push(`Demo: ${p.links.demo}`);
