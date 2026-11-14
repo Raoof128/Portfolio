@@ -70,7 +70,7 @@ github.com/Raoof128/Project-Simurgh · 92 releases · software DOI 10.5281/zenod
   earlier closeouts, in the README.
 
 ### The Invisible Window — Screen-Capture Evasion in WebRTC Proctoring (Sole Author) · Feb 2026 – May 2026
-github.com/Raoof128/invisible-window-research · IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495
+IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495
 - Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while
   contributing zero pixels to screen capture: 100% evasion of WebRTC proctoring on every platform tested, including
   macOS 26.

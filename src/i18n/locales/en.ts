@@ -191,8 +191,7 @@ const en = {
     iw_title:
       "The Invisible Window — Screen-Capture Evasion in WebRTC Proctoring (Sole Author)",
     iw_period: "Feb 2026 – May 2026",
-    iw_meta:
-      "github.com/Raoof128/invisible-window-research · IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495",
+    iw_meta: "IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture: 100% evasion of WebRTC proctoring on every platform tested, including macOS 26.",
     iw_b2:

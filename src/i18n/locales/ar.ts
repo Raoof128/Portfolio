@@ -192,7 +192,7 @@ const ar: Dictionary = {
       "The Invisible Window — التهرب من التقاط الشاشة في مراقبة WebRTC (المؤلف الوحيد)",
     iw_period: "فبراير 2026 – مايو 2026",
     iw_meta:
-      "github.com/Raoof128/invisible-window-research · نسخة ما قبل النشر بتنسيق IEEE الإصدار v2.0 · DOI 10.5281/zenodo.20376495",
+      "نسخة ما قبل النشر بتنسيق IEEE الإصدار v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "وجدت أن واجهات ارتباط العرض الموثّقة (display-affinity) في Windows وmacOS تتيح لنافذة أن تبقى ظاهرة على الشاشة دون أن تسهم بأي بكسل في التقاط الشاشة: تجاوز بنسبة 100% لمراقبة WebRTC على كل منصة اختُبرت، بما فيها macOS 26.",
     iw_b2:

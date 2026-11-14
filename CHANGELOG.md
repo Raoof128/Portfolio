@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Résumé cites the Invisible Window preprint, not the private repository
+
+- **Scope**: Owner decision: the Invisible Window repository stays private because it holds the proof-of-concept code, and publishing it would break the dual-use position the paper states. The résumé printed that repository's URL, which returns 404 to a reviewer and sat directly above the line "Proof-of-concept code is withheld on dual-use grounds".
+- **Summary**: The résumé's Invisible Window line now reads "IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495" on the `/resume` page in all five languages, in `llms-full.txt` and in the served PDF. The project page is unchanged: it already offers "request source" by email with a private-source note and renders no link to the repository, and `llms-full.txt` already labels the project's repository as private.
+- **Files Changed**: `src/i18n/locales/{en,fa,ar,zh,es}.ts` (`resume.iw_meta`), `src/app/llms-full.txt/route.ts`, `public/Mohammad_Raouf_Abedini_Resume.pdf` (regenerated from the résumé build script, without the phone number, LibreOffice 26.8.3.1), `AGENT.md`, `CHANGELOG.md`. The résumé source outside the repo (in `Job_Projects/`) carries the same one-line change; its originals are backed up beside it.
+- **Verification**: `tsc --noEmit` clean; 771/771 unit tests; `eslint src scripts` clean; `next build` clean; static security audit passed. A `pdftotext` diff of the old and new PDF shows one changed line, the new PDF holds no phone number, and it stays at 2 pages. The built `/resume` pages in five languages contain no repository URL. The browser suites were not rerun for this change.
+- **Follow-ups**: Any résumé copy already uploaded to an application still prints the old line. The LinkedIn Invisible Window entry still names the private repository.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Reviewer-readiness copy pass against the residency résumé
 
 - **Scope**: Owner request: make every project and site text professional and reviewer-ready, checked against `Mohammad_Raouf_Abedini_Resume_Anthropic_Research_Resident.pdf`, with a stop-slop pass. Owner decisions taken in session: remove the About "Current work" labs, rebuild the About skills from the résumé, withdraw the keylogger lab sample, commit and push.

@@ -196,8 +196,7 @@ const es: Dictionary = {
     iw_title:
       "The Invisible Window — Evasión de la captura de pantalla en la supervisión de exámenes por WebRTC (único autor)",
     iw_period: "feb. 2026 – may. 2026",
-    iw_meta:
-      "github.com/Raoof128/invisible-window-research · preprint en formato IEEE v2.0 · DOI 10.5281/zenodo.20376495",
+    iw_meta: "preprint en formato IEEE v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "Descubrí que las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla: evasión del 100% de la supervisión de exámenes por WebRTC en todas las plataformas probadas, incluido macOS 26.",
     iw_b2:

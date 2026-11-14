@@ -182,8 +182,7 @@ const zh: Dictionary = {
     iw_title:
       "The Invisible Window — WebRTC 在线监考中的屏幕捕获规避（独立作者）",
     iw_period: "2026年2月 – 2026年5月",
-    iw_meta:
-      "github.com/Raoof128/invisible-window-research · IEEE 格式预印本 v2.0 · DOI 10.5281/zenodo.20376495",
+    iw_meta: "IEEE 格式预印本 v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "发现 Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素：在所有受测平台（包括 macOS 26）上对 WebRTC 监考的规避率均为100%。",
     iw_b2:

@@ -192,8 +192,7 @@ const fa: Dictionary = {
     iw_title:
       "The Invisible Window: دورزدن ضبط صفحه در نظارت آزمون WebRTC (تنها نویسنده)",
     iw_period: "فوریه 2026 – مه 2026",
-    iw_meta:
-      "github.com/Raoof128/invisible-window-research · پیش‌چاپ قالب IEEE نسخه 2.0 · DOI 10.5281/zenodo.20376495",
+    iw_meta: "پیش‌چاپ قالب IEEE نسخه 2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "کشف کردم که APIهای مستند display-affinity در Windows و macOS اجازه می‌دهند پنجره روی نمایشگر دیده شود، در حالی که صفر پیکسل به ضبط صفحه می‌رسد: دورزدن 100% نظارت آزمون WebRTC روی هر پلتفرم آزموده‌شده، از جمله macOS 26.",
     iw_b2:
