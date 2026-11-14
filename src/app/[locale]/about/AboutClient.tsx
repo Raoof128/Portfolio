@@ -17,7 +17,6 @@ import {
   Linkedin,
   Mail,
   Shield,
-  Cloud,
   Brain,
   FileCode2,
   Fingerprint,
@@ -51,137 +50,23 @@ export function AboutClient() {
   const [photoLoadFailed, setPhotoLoadFailed] = useState(false);
   const photoSource = PROFILE_PHOTO_SOURCES[photoSourceIndex];
 
+  // The About lists reuse the résumé's four skill lines, so the page and the
+  // PDF make the same claims in every language.
+  const skillLine = (label: string, items: string) => ({
+    label: label.replace(/[:：]\s*$/, ""),
+    items: items.split(" · "),
+  });
   const specializations = [
-    {
-      icon: Shield,
-      label: t.about.spec1_label,
-      items: [
-        t.about.spec1_item1,
-        t.about.spec1_item2,
-        t.about.spec1_item3,
-        t.about.spec1_item4,
-        t.about.spec1_item5,
-      ],
-    },
-    {
-      icon: Brain,
-      label: t.about.spec2_label,
-      items: [
-        t.about.spec2_item1,
-        t.about.spec2_item2,
-        t.about.spec2_item3,
-        t.about.spec2_item4,
-        t.about.spec2_item5,
-      ],
-    },
-    {
-      icon: Cloud,
-      label: t.about.spec3_label,
-      items: [
-        t.about.spec3_item1,
-        t.about.spec3_item2,
-        t.about.spec3_item3,
-        t.about.spec3_item4,
-        t.about.spec3_item5,
-      ],
-    },
+    { icon: Brain, ...skillLine(t.resume.skill1_label, t.resume.skill1_desc) },
     {
       icon: FileCode2,
-      label: t.about.spec4_label,
-      items: [
-        t.about.spec4_item1,
-        t.about.spec4_item2,
-        t.about.spec4_item3,
-        t.about.spec4_item4,
-        t.about.spec4_item5,
-      ],
+      ...skillLine(t.resume.skill2_label, t.resume.skill2_desc),
     },
+    { icon: Shield, ...skillLine(t.resume.skill3_label, t.resume.skill3_desc) },
   ];
-
   const skillGroups = [
-    {
-      label: t.about.skill_group1_label,
-      skills: [
-        t.about.skill_group1_1,
-        t.about.skill_group1_2,
-        t.about.skill_group1_3,
-        t.about.skill_group1_4,
-        t.about.skill_group1_5,
-        t.about.skill_group1_6,
-        t.about.skill_group1_7,
-        t.about.skill_group1_8,
-        t.about.skill_group1_9,
-        t.about.skill_group1_10,
-      ],
-    },
-    {
-      label: t.about.skill_group2_label,
-      skills: [
-        t.about.skill_group2_1,
-        t.about.skill_group2_2,
-        t.about.skill_group2_3,
-        t.about.skill_group2_4,
-        t.about.skill_group2_5,
-        t.about.skill_group2_6,
-        t.about.skill_group2_7,
-        t.about.skill_group2_8,
-        t.about.skill_group2_9,
-      ],
-    },
-    {
-      label: t.about.skill_group3_label,
-      skills: [
-        t.about.skill_group3_1,
-        t.about.skill_group3_2,
-        t.about.skill_group3_3,
-        t.about.skill_group3_4,
-        t.about.skill_group3_5,
-        t.about.skill_group3_6,
-      ],
-    },
-    {
-      label: t.about.skill_group4_label,
-      skills: [
-        t.about.skill_group4_1,
-        t.about.skill_group4_2,
-        t.about.skill_group4_3,
-        t.about.skill_group4_4,
-        t.about.skill_group4_5,
-        t.about.skill_group4_6,
-        t.about.skill_group4_7,
-        t.about.skill_group4_8,
-        t.about.skill_group4_9,
-      ],
-    },
-    {
-      label: t.about.skill_group5_label,
-      skills: [
-        t.about.skill_group5_1,
-        t.about.skill_group5_2,
-        t.about.skill_group5_3,
-        t.about.skill_group5_4,
-      ],
-    },
-  ];
-
-  const statusLabel = (status: string) =>
-    status === "ACTIVE"
-      ? t.about.status_active
-      : status === "ARCHIVED"
-        ? t.about.status_archived
-        : t.about.status_concept;
-
-  // "OPS-" prefix keeps these work-stream labels distinct from the real
-  // /lab/001... experiment IDs, which they previously appeared to reference.
-  const activeLabs = [
-    { id: "OPS-01", status: "ACTIVE", title: t.about.ops_lab1_title },
-    { id: "OPS-02", status: "ACTIVE", title: t.about.ops_lab2_title },
-    { id: "OPS-03", status: "ACTIVE", title: t.about.ops_lab3_title },
-    { id: "OPS-04", status: "ACTIVE", title: t.about.ops_lab4_title },
-    { id: "OPS-05", status: "ARCHIVED", title: t.about.ops_lab5_title },
-    { id: "OPS-06", status: "ARCHIVED", title: t.about.ops_lab6_title },
-    { id: "OPS-07", status: "CONCEPT", title: t.about.ops_lab7_title },
-  ].map((lab) => ({ ...lab, tags: copy.aboutLabTags[lab.id] }));
+    skillLine(t.resume.skill4_label, t.resume.skill4_desc),
+  ].map((group) => ({ label: group.label, skills: group.items }));
 
   const getPath = (path: string) => {
     if (locale === defaultLocale) return path;
@@ -348,40 +233,6 @@ export function AboutClient() {
 
       <section
         className="os-about-section"
-        aria-labelledby={contentId("about-operations")}
-      >
-        <div className="os-support-section-heading">
-          <h2 id={contentId("about-operations")}>
-            {t.about.active_operations}
-          </h2>
-          <Link href={getPath("/lab")} className="os-button--secondary">
-            {t.lab.enter_lab}
-            <ArrowUpRight className="os-flip" aria-hidden="true" size={16} />
-          </Link>
-        </div>
-        <div className="os-about-labs">
-          {activeLabs.map((lab) => (
-            <article key={lab.id}>
-              <span className="os-about-lab-id" dir="ltr">
-                {lab.id}
-              </span>
-              <div>
-                <h3>{lab.title}</h3>
-                <p>{lab.tags.join(" · ")}</p>
-              </div>
-              <span
-                className="os-status"
-                data-state={lab.status === "ACTIVE" ? "active" : "inactive"}
-              >
-                {statusLabel(lab.status)}
-              </span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section
-        className="os-about-section"
         aria-labelledby={contentId("about-education")}
       >
         <h2 id={contentId("about-education")}>{t.about.education}</h2>
@@ -394,9 +245,7 @@ export function AboutClient() {
             <h3>{t.about.degree_bachelor}</h3>
             <p>
               {t.resume.expected_completion}:{" "}
-              <time dateTime="2027-06">
-                {monthYear("2027-06-01")}
-              </time>
+              <time dateTime="2027-06">{monthYear("2027-06-01")}</time>
             </p>
             <p>{copy.university}</p>
             <p>{t.resume.education_final_session}</p>

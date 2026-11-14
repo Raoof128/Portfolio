@@ -148,7 +148,7 @@ for (const locale of LOCALES) {
   for (const [kind, suffix] of [
     ["project", `/projects/${sampleSlug}`],
     ["article", "/write-ups/project-simurgh-containment"],
-    ["lab", "/lab/001"],
+    ["lab", "/lab/002"],
   ]) {
     const prefix = locale === "en" ? "" : `/${locale}`;
     const path = `${prefix}${suffix}`;

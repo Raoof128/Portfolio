@@ -268,8 +268,8 @@ describe("Data Layer", () => {
   });
 
   describe("Lab Experiments", () => {
-    it("should have at least 3 experiments", () => {
-      expect(labExperiments.length).toBeGreaterThanOrEqual(3);
+    it("should have at least 2 experiments", () => {
+      expect(labExperiments.length).toBeGreaterThanOrEqual(2);
     });
 
     it("each experiment should have required fields", () => {
@@ -291,12 +291,13 @@ describe("Data Layer", () => {
       expect(uniqueIds.size).toBe(ids.length);
     });
 
-    it("should have experiment with ID 001 (Keylogger)", () => {
-      const keylogger = labExperiments.find(
-        (e: LabExperiment) => e.id === "001",
-      );
-      expect(keylogger).toBeDefined();
-      expect(keylogger?.title).toContain("Keylogger");
+    it("publishes only the sniffer and steganography experiments", () => {
+      // The keylogger sample was withdrawn on dual-use grounds; ids are not reused.
+      expect(labExperiments.map((e: LabExperiment) => e.id)).toEqual([
+        "002",
+        "003",
+      ]);
+      expect(JSON.stringify(labExperiments)).not.toMatch(/keylogger/i);
     });
   });
 

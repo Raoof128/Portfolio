@@ -8,15 +8,6 @@ type LabText = Pick<
 
 const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
   fa: {
-    "001": {
-      title: "اثبات مفهوم ثبت فشردن کلیدها با Rust",
-      description:
-        "نمونه آموزشی ثبت فشردن کلیدها در Windows که کاربرد SetWindowsHookEx و زنجیره‌سازی درست هوک‌ها را برای تحلیل تشخیص نشان می‌دهد.",
-      objective:
-        "شناخت سوءاستفاده از هوک‌های پیام Windows برای رهگیری اطلاعات ورود و بررسی نحوه تشخیص تزریق هوک توسط EDR.",
-      constraints:
-        "فقط برای آموزش. پس از راه‌اندازی دوباره باقی نمی‌ماند و خروجی را فقط در stdout ثبت می‌کند.",
-    },
     "002": {
       title: "شنود بسته با سوکت خام",
       description:
@@ -37,15 +28,6 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     },
   },
   ar: {
-    "001": {
-      title: "إثبات مفهوم لتسجيل ضغطات المفاتيح باستخدام Rust",
-      description:
-        "نموذج تعليمي لتسجيل ضغطات المفاتيح على Windows يوضح استخدام SetWindowsHookEx وتسلسل الخطافات الصحيح لتحليل أساليب الكشف.",
-      objective:
-        "فهم إساءة استخدام خطافات رسائل Windows لاعتراض بيانات الدخول وكيف تكشف أنظمة EDR حقن الخطافات.",
-      constraints:
-        "للتعليم فقط. لا يستمر بعد إعادة التشغيل، ويسجّل المخرجات في stdout فقط.",
-    },
     "002": {
       title: "التقاط الحزم باستخدام المقابس الخام",
       description:
@@ -66,14 +48,6 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     },
   },
   zh: {
-    "001": {
-      title: "Rust 按键记录概念验证",
-      description:
-        "用于教学检测分析的 Windows 按键记录示例，演示 SetWindowsHookEx 的使用和正确的钩子链调用。",
-      objective:
-        "理解 Windows 消息钩子如何被滥用于截取凭据，以及 EDR 如何检测钩子注入。",
-      constraints: "仅用于教学。重启后不会保留，仅输出到 stdout。",
-    },
     "002": {
       title: "原始套接字抓包工具",
       description:
@@ -94,15 +68,6 @@ const translations: Record<Exclude<Locale, "en">, Record<string, LabText>> = {
     },
   },
   es: {
-    "001": {
-      title: "Prueba de concepto de registro de teclas en Rust",
-      description:
-        "Ejemplo educativo de registro de teclas en Windows que demuestra SetWindowsHookEx y el encadenamiento correcto de hooks para analizar su detección.",
-      objective:
-        "Comprender cómo se pueden usar indebidamente los hooks de mensajes de Windows para interceptar credenciales y cómo los EDR detectan su inyección.",
-      constraints:
-        "Solo con fines educativos. No persiste tras reiniciar y registra únicamente en stdout.",
-    },
     "002": {
       title: "Capturador de paquetes con sockets sin procesar",
       description:

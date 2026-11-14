@@ -30,7 +30,8 @@ describe("research and qualification integrity", () => {
     const dossier = schema["@graph"].find(
       (node: Record<string, unknown>) => node["@type"] === "SoftwareSourceCode",
     );
-    expect(dossier.dateModified).toBe(SITE_LAST_MODIFIED);
+    // The dossier carries the project's own revision date, not the site-wide one.
+    expect(dossier.dateModified).toBe(projects["project-simurgh"].updatedAt);
     expect(dossier.sameAs).toBe(projects["project-simurgh"].links.doi);
     expect(dossier.identifier).toEqual({
       "@type": "PropertyValue",

@@ -31,7 +31,7 @@ export const osWriteupSlugs = Object.freeze([
   "kmp-security",
   "electron-security",
 ] as const);
-export const osExperimentIds = Object.freeze(["001", "002", "003"] as const);
+export const osExperimentIds = Object.freeze(["002", "003"] as const);
 
 type IndexRoute = keyof typeof indexRoutes;
 type WriteupSlug = (typeof osWriteupSlugs)[number];

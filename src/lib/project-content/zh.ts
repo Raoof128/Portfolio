@@ -14,7 +14,7 @@ export const zhProjects = {
     ],
     proof: [
       "仓库记录了 38 个 Gmail 工具，以及涵盖 OAuth、所有者批准发送和附件双向传输的线上演示。",
-      "五项外部资格验证仍未完成；本页面不证明发布资格，也未独立重跑这些检查。",
+      "五项外部资格验证仍未完成，因此项目仍处于预发布阶段。本页面未重新运行仓库的检查。",
     ],
     features: [
       "多个 Google 账户分别配置别名、策略和发送限制。",
@@ -38,7 +38,7 @@ export const zhProjects = {
     ],
     proof: [
       "公开仓库记录了观察模式、工具契约、安全模型和一次性 SSH 测试环境。",
-      "主机端强制限制、变更、审批和上传仍是未来工作；本页不声称已完成独立审计或重新运行测试。",
+      "主机端强制限制、变更、审批和上传仍是未来工作。该项目尚未经过独立安全审计，本页面也未重新运行其测试。",
     ],
     features: [
       "17 个工具涵盖主机信息、文件、日志、服务、健康检查、下载和操作控制。",
@@ -291,7 +291,7 @@ export const zhProjects = {
     fullDescription:
       "Mehr Guard 是基于 Kotlin Multiplatform 的离线二维码与 URL 钓鱼扫描器，在 5 个目标平台上提供原生或浏览器界面：集成机器学习加 25 项启发式规则，F1 为 87%，耗时低于 5 毫秒，并提供 19 个场景的红队模式。",
     problem:
-      "QR 码是常见钓鱼入口，但多数扫描器将数据上传云端，损害隐私。用户需要验证 URL 而不泄露浏览记录。",
+      "QR 码是常见的钓鱼入口，而通过云服务检查 URL 的扫描器会知道用户扫描了什么。Mehr Guard 在设备上分析每个 URL，因此检查无需上传。",
     solution: [
       "使用 Kotlin Multiplatform 构建本地 URL 分析核心",
       "将集成机器学习（逻辑回归、梯度提升和决策规则）与 25 项启发式规则结合",
@@ -316,7 +316,7 @@ export const zhProjects = {
       "本地 PhishingEngine 分析旨在不进行云端 URL 查询",
       "在设备上进行 ML 与启发式评分",
       "分析不要求上传扫描得到的 URL",
-      "离线单元检查覆盖完成性、确定性和耗时；网络拦截并未得到独立验证",
+      "离线单元检查覆盖完成性、确定性和耗时；它们不捕获出站网络流量",
     ],
   },
   "syllabus-sync": {
@@ -333,9 +333,9 @@ export const zhProjects = {
       "将大学课程大纲转换为结构化数据",
     ],
     proof: [
-      "提供的简历与职业档案记录了初创项目获 麦考瑞大学孵化器 接纳以及联合创始人角色",
+      "Syllabus-Sync 是 麦考瑞大学孵化器 的初创企业，Raouf 是联合创始人",
       "92 个文件共 503 项测试",
-      "通过 Cloudflare Workers 部署；当前演示可用性未得到独立验证",
+      "部署在 Cloudflare Workers 上；公开演示运行于 syllabus-sync.app",
       "中间件源码在受保护 API 的身份认证无法确定时返回 503，在未认证时返回 401",
       "Raouf 主导安全后端：WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全和防篡改审计日志",
       "通行密钥使用公钥凭据；这不意味着所有受支持的身份认证流程均无密码",
@@ -417,7 +417,7 @@ export const zhProjects = {
     fullDescription:
       "Nexus Archive 是赛博朋克风格的个人媒体库及求职跟踪器，结合 React frontend、Litestar API 以及 Supabase 支持的身份与持久存储。在同一仪表板管理书籍、电影、动漫、求职申请、评分、摘要笔记、持久聊天会话和 AI 辅助推荐。摘要写入要求已配置的 Fernet 密钥，生产 Cookie、令牌有效期与数据库控制依赖文档中的部署设置。",
     problem:
-      "媒体追踪工具把娱乐收藏分散在不同平台，安全控制也可能薄弱。Nexus Archive 将标题、评分、笔记和推荐汇聚到一个账户，并采用行级访问控制。",
+      "书籍、电影、动漫和求职申请通常分散在不同的追踪工具里。Nexus Archive 将标题、评分、笔记和推荐汇聚到一个账户，并采用行级访问控制。",
     solution: [
       "构建 React 19 + Litestar API 全栈媒体库，以 Supabase PostgreSQL 和 Row Level Security 为支撑",
       "实现 backend 签发的 HttpOnly SameSite=Strict Cookie 与刷新流程；访问令牌也会在 frontend 可读的会话响应中返回",
@@ -448,9 +448,9 @@ export const zhProjects = {
     description:
       "采用价格—时间优先的 C++20 撮合引擎，支持四种订单类型及按交易品种独立的订单簿。仓库报告在 Apple M-series、Release 模式的单线程合成基准中，混合新增/撤单吞吐为每秒 9.29M 次操作。",
     fullDescription:
-      "NanoMatch 是按价格—时间优先撮合的 C++20 限价订单簿与撮合引擎。它支持 Limit、Market、IOC 和 FOK 订单、按交易品种独立的订单簿、CSV 输入/输出，以及混合操作吞吐和插单延迟的合成基准。README 报告 Apple M-series 在 Release 模式下达到每秒 9.29M 次操作；本次审计未重跑该结果。",
+      "NanoMatch 是按价格—时间优先撮合的 C++20 限价订单簿与撮合引擎。它支持 Limit、Market、IOC 和 FOK 订单、按交易品种独立的订单簿、CSV 输入/输出，以及混合操作吞吐和插单延迟的合成基准。README 报告 Apple M-series 在 Release 模式下达到每秒 9.29M 次操作；本页面未重跑该数据。",
     problem:
-      "金融交易所需要超低延迟的订单撮合。要从系统层面理解引擎，必须在真实性能约束下从零构建。",
+      "交易所在严格的延迟预算内撮合订单。NanoMatch 是从零构建的撮合引擎，用于研究价格—时间优先背后的数据结构与开销。",
     solution: [
       "实现价格—时间优先（FIFO）撮合，支持 Limit、Market、IOC 和 FOK 订单",
       "实现期望 O(1) 的订单 ID 查找、通过价格档位树进行 O(log M) 撤单，以及先撤再加的改单",
@@ -460,7 +460,7 @@ export const zhProjects = {
     proof: [
       "仓库报告的吞吐：Apple M-series、Release -O3 -march=native 下每秒 9.29M 次混合新增/撤单操作；5M 次合成操作，固定随机种子 42",
       "插单延迟基准报告 add_order 的 p50/p99/p99.9；这些不是撤单延迟测量",
-      "源码在 18 个测试文件中定义 137 个 Google Test 用例；本次审计未重跑以确定当前通过状态",
+      "源码在 18 个测试文件中定义 137 个 Google Test 用例；本页面未重跑该测试套件",
       "CI 配置包括针对 main 分支推送和 pull request 的 ASan、UBSan、cppcheck 和 clang-format 检查",
     ],
     features: [
@@ -521,7 +521,7 @@ export const zhProjects = {
     description:
       "教育用途的运行时安全原型，包含只读 eBPF tracepoint 代码、Go 元数据启发式规则、通过 SSE 接收数据的 React 仪表板和 Kubernetes 部署模板。",
     fullDescription:
-      "ECRSM 是教育用途的运行时安全原型，包含 eBPF 系统调用 tracepoint 程序、Go perf-buffer 读取器与元数据规则、接收 SSE 的 React 仪表板及 Helm 部署模板。它展示内核级可观测性的组成部分。本次源码审计未验证端到端事件捕获、检测准确率、开销或 Kubernetes 部署。",
+      "ECRSM 是教育用途的运行时安全原型，包含 eBPF 系统调用 tracepoint 程序、Go perf-buffer 读取器与元数据规则、接收 SSE 的 React 仪表板及 Helm 部署模板。它展示内核级可观测性的组成部分。端到端事件捕获、检测准确率、开销和 Kubernetes 部署仍未经验证。",
     problem:
       "内核级运行时监控难以学习。ECRSM 为隔离实验室中的系统调用元数据收集、启发式告警与仪表板呈现提供教育参考。",
     solution: [
@@ -532,9 +532,9 @@ export const zhProjects = {
     ],
     proof: [
       "源码定义针对 shell 连接、注入原语和可疑执行路径的启发式规则；此处未测量检测准确率",
-      "存在 perf-buffer 传输代码；本次审计未对运行时开销进行基准测试",
+      "存在 perf-buffer 传输代码；本页面未对运行时开销进行基准测试",
       "容器 ID 从 /proc cgroups 中解析；pod 标签是 agent 环境提示，而非经验证的逐进程 Kubernetes 归属",
-      "提供本地合成脚本，但本次审计未进行端到端检测运行",
+      "提供本地合成脚本，但本页面未进行端到端检测运行",
     ],
     stack: [
       "eBPF (C)",
@@ -552,16 +552,16 @@ export const zhProjects = {
       "通过只读 eBPF 收集进程和网络元数据",
       "探针不捕获数据包载荷；进程名和文件名仍可能包含敏感元数据",
       "部署模板使用特权模式、hostPID 及 BPF/SYS_ADMIN/SYS_PTRACE 能力；仅面向隔离实验室",
-      "提供用于隔离教育环境的本地模拟脚本；本次审计未执行",
+      "提供用于隔离教育环境的本地模拟脚本；本页面未运行这些脚本",
     ],
   },
   simurghforge: {
     description:
       "使用 Tauri v2、Rust 与 React 19 构建的本地优先 macOS 文件转换器。九个引擎适配器覆盖图像、文档、音频、视频和结构化数据；基于 CLI 的转换要求安装相应工具。",
     fullDescription:
-      "SimurghForge 是使用 Tauri v2、Rust backend 与 React 19/TypeScript 构建的本地优先 macOS 转换器。它将兼容的文件格式对路由至四个原生 Rust 引擎和五个 CLI 适配器。批量转换使用有界并发并显示逐文件进度。FFmpeg、LibreOffice、Pandoc、ImageMagick 和 Python/Pandas 功能要求相应本地工具。本次源码审计未测试格式对覆盖范围或打包后的 macOS 执行。",
+      "SimurghForge 是使用 Tauri v2、Rust backend 与 React 19/TypeScript 构建的本地优先 macOS 转换器。它将兼容的文件格式对路由至四个原生 Rust 引擎和五个 CLI 适配器。批量转换使用有界并发并显示逐文件进度。FFmpeg、LibreOffice、Pandoc、ImageMagick 和 Python/Pandas 功能要求相应本地工具。本页面未测试格式对覆盖范围或打包后的 macOS 执行。",
     problem:
-      "文件转换通常需要把敏感文档上传云端、使用多个专用工具，或安装庞大的 Electron 应用。用户需要统一、快速、尊重隐私的本地转换工具。",
+      "转换文件往往意味着上传到网络服务，或来回切换多个单一用途的工具。SimurghForge 直接在 Mac 上转换文件，并为每个格式对选择合适的引擎。",
     solution: [
       "构建两个引擎层：四个原生 Rust 引擎和五个 CLI 适配器，包括 Python/Pandas",
       "实现文件头检测、扩展名回退及按格式对路由引擎",
@@ -569,7 +569,7 @@ export const zhProjects = {
       "配置 macOS .app 目标及 Low/Medium/High/Lossless 预设标签；CLI 依赖仍需单独安装",
     ],
     proof: [
-      "源码覆盖五类文件；宣传的 49 种格式总数尚未与当前 UI 的 44 键输入注册表核对一致",
+      "源码覆盖五类文件。宣传的总数为 49 种格式，而当前 UI 输入注册表有 44 个键",
       "定义了九种引擎变体，基于检测到的输入类型和请求的输出格式进行路由",
       "backend 使用 Tokio 信号量，限制最多 50 个文件和 1–8 个并发转换作业",
       "转换使用本地引擎且不要求云 API；未进行网络出站测试",
@@ -605,7 +605,7 @@ export const zhProjects = {
     fullDescription:
       "Aion 是识别经文引用的圣经伴读工具：直接经节/章节查找、关键词筛选和 pgvector 语义搜索提供上下文，Gemini 3.1 Flash Lite 经 Supabase Edge Functions 流式输出答案。它包含带出处的经文卡片、React Native/Expo 移动客户端及 Tauri v2 桌面封装。其 40 题基准评分检索质量、引用支持与错误前提鲁棒性：R@5 为 0.941，平均引用支持为 0.978，零条无支持引用，错误前提拒答 6/6。可选原生语音另有客户端凭据限制。",
     problem:
-      "圣经研读工具要么只有关键词搜索而无法理解语义，要么使用会编造经文的 AI 聊天机器人。用户需要有真实经文依据、引文可核验的对话助手。",
+      "对经文做关键词搜索，会漏掉措辞不同的提问；通用聊天机器人则可能错引或编造经文。Aion 先检索相关经文，再给出读者可核对的引用作答。",
     solution: [
       "构建识别经文引用的检索，结合直接经节/章节查找、关键词筛选、OpenAI 1536 维嵌入及 pgvector 语义排序",
       "通过 Supabase Edge Functions 实现来自 Gemini 的实时 SSE 流",

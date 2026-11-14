@@ -1,0 +1,78 @@
+{
+  "verified_on": "2026-11-14",
+  "commit": "5b2016a3bd3990918e16f6244aa724ec0516f3b6",
+  "built_at": "2026-11-14T00:48:23.605Z",
+  "domains": [
+    "https://raoufabedini.dev",
+    "https://raoufabedini.pages.dev"
+  ],
+  "ci": {
+    "run": 43536335643,
+    "conclusion": "success"
+  },
+  "deployment": {
+    "run": 43536335652,
+    "conclusion": "success"
+  },
+  "local_unit_tests": {
+    "passed": 771,
+    "failed": 0,
+    "skipped": 0,
+    "files": 46
+  },
+  "local_browser_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "live_browser_tests": {
+    "passed": 9,
+    "failed": 0,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "locales": [
+      "en",
+      "fa",
+      "ar",
+      "es",
+      "zh"
+    ]
+  },
+  "production_audits": "passed on both domains",
+  "preceding_aion_release": {
+    "commit": "0286100782a0e10a69cc054165892adff5effb7d",
+    "ci_run": 43535197628,
+    "deploy_run": 43535197735,
+    "workflow_conclusions": "success",
+    "focused_tests_passed": 64,
+    "local_browser_tests_passed": 3,
+    "live_browser_tests_passed": 3
+  },
+  "scope_limits": [
+    "No physical-device, assistive-technology or native-speaker review",
+    "No fresh Gmail MCP application audit or qualification",
+    "No Gmail service or mailbox operations",
+    "No complete source-tree reingestion into Zurvan",
+    "Earlier reload-specific WebKit caveat not cleared"
+  ],
+  "zurvan_sync": {
+    "ledger_revision": 3424,
+    "ledger_state": "CLEAN",
+    "search_revision": 3424,
+    "graph_revision": 3424,
+    "chunks": 457540,
+    "nodes": 15771,
+    "edges": 22074,
+    "embedding_provider": "sentence_transformers",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "readback_search_and_graph_links": "verified",
+    "focused_tests": {
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    "full_suite": "not run"
+  }
+}

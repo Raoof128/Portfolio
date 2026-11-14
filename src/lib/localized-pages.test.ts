@@ -165,9 +165,6 @@ describe("complete localized page content", () => {
         original.officialCertificateNames,
       );
       expect(copy.coFounderSociety).not.toBe(original.coFounderSociety);
-      expect(Object.keys(copy.aboutLabTags)).toEqual(
-        Object.keys(original.aboutLabTags),
-      );
     });
   }
 

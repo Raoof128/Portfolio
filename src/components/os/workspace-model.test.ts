@@ -150,7 +150,7 @@ describe("current-page OS workspace model", () => {
   });
 
   it("preserves identity for focus, restore and minimize no-ops", () => {
-    const active = createWorkspaceState("zh", app("/lab/001", "zh"));
+    const active = createWorkspaceState("zh", app("/lab/002", "zh"));
     expect(
       workspaceReducer(active, { type: "focus", id: active.activeId! }),
     ).toBe(active);
@@ -162,7 +162,7 @@ describe("current-page OS workspace model", () => {
       id: active.activeId!,
     });
     expect(
-      workspaceReducer(minimized, { type: "minimize", id: "/zh/lab/001" }),
+      workspaceReducer(minimized, { type: "minimize", id: "/zh/lab/002" }),
     ).toBe(minimized);
   });
 

@@ -13,19 +13,32 @@ dossier navigation order is Zurvan → Aion → SentinelSSH → Gmail MCP → FO
 The new dossier links the public repository and preserves its documented
 pre-release status and five open external qualification gates. A bespoke
 sealed-courier SVG uses the shared motion controls and reduced-motion stills.
-All 771 unit tests and nine Chromium/Firefox/WebKit checks passed locally;
+All 771 unit tests, nine local and nine live Chromium/Firefox/WebKit checks passed;
 see [the addition audit](audits/gmail-mcp-2026-11-14/README.md).
 
-## Aion ordering update (14 November 2026)
+Both production origins served `5b2016a3bd3990918e16f6244aa724ec0516f3b6`,
+built `2026-11-14T00:48:23.605Z`. [CI 43536335643](https://github.com/Raoof128/Portfolio/actions/runs/43536335643)
+and [deployment 43536335652](https://github.com/Raoof128/Portfolio/actions/runs/43536335652)
+succeeded; both production audits passed. The private Zurvan handover is
+`wiki/note-portfolio-gmail-mcp-and-aion-release-handover-2026.md`. Earlier release
+records remain historical. Today's post-release log edits are local and uncommitted.
 
-The owner requested Aion immediately below Zurvan. Current explorer and dossier
-navigation order is Zurvan → Aion → SentinelSSH → FORMA in all five languages.
+## Earlier Aion ordering update (14 November 2026)
+
+The owner requested Aion immediately below Zurvan. At that release, explorer and dossier
+navigation order was Zurvan → Aion → SentinelSSH → FORMA in all five languages.
 The earlier direct Zurvan → SentinelSSH adjacency below is historical.
 All 64 focused tests and three browser tests passed across Chromium, Firefox
 and WebKit; production build and changed-source lint passed. This release also
 publishes the previously local SentinelSSH release-log updates.
 
-## SentinelSSH addition (14 November 2026)
+Release `0286100782a0e10a69cc054165892adff5effb7d` was deployed and verified on
+both domains. [CI 43535197628](https://github.com/Raoof128/Portfolio/actions/runs/43535197628)
+and [deployment 43535197735](https://github.com/Raoof128/Portfolio/actions/runs/43535197735)
+succeeded. All three corresponding live browser checks passed across Chromium,
+Firefox and WebKit. Gmail MCP was added immediately afterwards.
+
+## Earlier SentinelSSH addition (14 November 2026)
 
 The verified release `deda2793d92e26584689f91cba966257dee59bf4` adds SentinelSSH immediately below Zurvan, followed by FORMA,
 in all five locales. A custom SVG inspection lens supports the existing motion
@@ -41,8 +54,7 @@ Both production domains reported this commit, built `2026-11-14T00:17:29.963Z`.
 and [deployment 43532873019](https://github.com/Raoof128/Portfolio/actions/runs/43532873019)
 succeeded, and both production audits passed. The private Zurvan record is
 `wiki/note-portfolio-sentinelssh-release-handover-2026-11-14.md`; older handovers
-link to it. These post-release log edits are local and uncommitted.
-
+link to it. Those post-release log edits were subsequently published in `0286100`.
 
 ## Verified release: mobile controls and reload (14 November 2026)
 
@@ -242,7 +254,8 @@ separately from the pinned release snapshot.
 
 Zurvan entry points:
 
-- `wiki/note-portfolio-sentinelssh-release-handover-2026-11-14.md` (latest release record)
+- `wiki/note-portfolio-gmail-mcp-and-aion-release-handover-2026.md` (latest release record)
+- `wiki/note-portfolio-sentinelssh-release-handover-2026-11-14.md` (earlier release record)
 - `wiki/note-portfolio-mobile-and-reload-release-handover-2026-.md` (earlier release record)
 - `wiki/note-portfolio-current-handover-2026-11-04.md`
 - `wiki/note-portfolio-full-ingestion-2026-11-04.md`
@@ -255,7 +268,7 @@ Archives, manifests, verification helpers and receipts remain private local
 artifacts, outside the website. Source preservation and derived-index freshness
 are separate checks: use the current private receipt and `zurvan_status` before
 relying on retrieval. The 14 November release has a private handover and
-decision; no complete source-tree ingestion for `c25af79` is claimed. No
+decision; no complete source-tree ingestion for `c25af79` or the subsequent November releases is claimed. No
 Zurvan public push is part of this task.
 
 ## Maintenance

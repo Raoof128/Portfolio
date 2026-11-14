@@ -25,7 +25,7 @@ for (const mode of [
     });
 
     for (const locale of locales) {
-      test(`all thirteen dossiers and seven articles retain reviewed content: ${locale}`, async ({
+      test(`every dossier and article retains reviewed content: ${locale}`, async ({
         page,
       }, info) => {
         await page.addInitScript((theme) => {
@@ -87,9 +87,10 @@ for (const mode of [
             expect(
               await active().locator('a[href^="mailto:"][href*="subject="]').count(),
             ).toBeGreaterThan(0);
-          } else {
+          } else if (project.links.repo) {
             expect(await publicRepo.count()).toBeGreaterThan(0);
           }
+          // A project without a repository (FORMA) links only its live demo.
           const schema = await page
             .locator('script[type="application/ld+json"]')
             .evaluateAll((nodes) =>
@@ -104,7 +105,8 @@ for (const mode of [
           // Only a private repository declares access conditions in its schema.
           if (project.links.repoVisibility === "private")
             expect(typeof software?.conditionsOfAccess).toBe("string");
-          else expect(software).not.toHaveProperty("conditionsOfAccess");
+          else if (software)
+            expect(software).not.toHaveProperty("conditionsOfAccess");
           if (project.links.doiKind === "software") {
             expect(software?.identifier?.value).toBe("10.5281/zenodo.21737792");
             expect(software?.sameAs).toBe(project.links.doi);

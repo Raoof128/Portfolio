@@ -14,7 +14,7 @@ export const esProjects = {
     ],
     proof: [
       "El repositorio documenta 38 herramientas Gmail y una demostración en vivo de OAuth, envío aprobado por el propietario y transferencia de adjuntos en ambos sentidos.",
-      "Quedan cinco verificaciones externas pendientes; esta página no acredita la aptitud para lanzamiento ni repite esas comprobaciones de forma independiente.",
+      "Quedan cinco verificaciones externas pendientes, por lo que el proyecto sigue en fase previa al lanzamiento. Las comprobaciones del repositorio no se volvieron a ejecutar para esta página.",
     ],
     features: [
       "Varias cuentas de Google con alias, políticas y límites de envío independientes.",
@@ -38,7 +38,7 @@ export const esProjects = {
     ],
     proof: [
       "El repositorio público documenta el modo observador, los contratos de las herramientas, el modelo de seguridad y un entorno SSH de pruebas desechable.",
-      "La aplicación de restricciones en el host, los cambios, las aprobaciones y las subidas quedan para etapas futuras; aquí no se afirma una auditoría independiente ni una nueva ejecución de pruebas.",
+      "La aplicación de restricciones en el host, los cambios, las aprobaciones y las subidas quedan para etapas futuras. El proyecto no ha tenido una auditoría de seguridad independiente y sus pruebas no se volvieron a ejecutar para esta página.",
     ],
     features: [
       "17 herramientas cubren datos del host, archivos, registros, servicios, comprobaciones de salud, descargas y control de operaciones.",
@@ -291,7 +291,7 @@ export const esProjects = {
     fullDescription:
       "Mehr Guard es un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas: ML de ensamble más 25 heurísticas con 87% de F1 y menos de 5 ms, con un modo red team de 19 escenarios.",
     problem:
-      "Los QR son un vector frecuente de phishing, pero la mayoría de los escáneres suben datos a la nube, comprometiendo la privacidad. Los usuarios necesitan verificar URL sin filtrar su historial de navegación.",
+      "Los QR son un vector frecuente de phishing, y un escáner que comprueba las URL mediante un servicio en la nube se entera de lo que escanea su usuario. Mehr Guard analiza cada URL en el dispositivo, así que la comprobación no requiere subir nada.",
     solution: [
       "Creé un núcleo local de análisis de URL con Kotlin Multiplatform",
       "Combiné ML de ensamble (regresión logística, gradient boosting y reglas de decisión) con 25 heurísticas",
@@ -316,7 +316,7 @@ export const esProjects = {
       "El análisis local de PhishingEngine está diseñado para no consultar URL en la nube",
       "ML y puntuación heurística en el dispositivo",
       "El análisis no requiere subir la URL escaneada",
-      "Las pruebas unitarias sin conexión comprueban finalización, determinismo y tiempos; la interceptación de tráfico de red no se ha verificado de forma independiente",
+      "Las pruebas unitarias sin conexión comprueban finalización, determinismo y tiempos; no capturan el tráfico de red saliente",
     ],
   },
   "syllabus-sync": {
@@ -333,9 +333,9 @@ export const esProjects = {
       "Convierte programas de asignaturas universitarias en datos estructurados",
     ],
     proof: [
-      "La aceptación de la startup en Macquarie University Incubator y el papel de cofundador constan en el currículo y perfil aportados",
+      "Syllabus-Sync es una startup de Macquarie University Incubator, y Raouf es cofundador",
       "503 pruebas en 92 archivos",
-      "Desplegado con Cloudflare Workers; la disponibilidad actual de la demo no se verificó de forma independiente",
+      "Desplegado en Cloudflare Workers; la demo pública funciona en syllabus-sync.app",
       "El código del middleware devuelve 503 si no se resuelve la autenticación de una API protegida y 401 para API protegidas sin autenticación",
       "Raouf dirigió el backend de seguridad: passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres y registro de auditoría resistente a manipulaciones",
       "Las passkeys usan credenciales de clave pública; esto no significa que todos los flujos de autenticación compatibles prescindan de contraseñas",
@@ -417,7 +417,7 @@ export const esProjects = {
     fullDescription:
       "Nexus Archive es una bóveda multimedia personal y seguimiento de empleo con estética ciberpunk que combina frontend React, API Litestar e identidad y persistencia en Supabase. Un panel reúne libros, películas, anime, candidaturas, valoraciones, notas de conclusiones, sesiones de chat persistentes y recomendaciones asistidas por IA. Las escrituras de notas requieren una clave Fernet configurada, y los controles de cookies, duración de tokens y base de datos en producción dependen de la configuración documentada del despliegue.",
     problem:
-      "Los gestores de medios fragmentan las colecciones de entretenimiento entre plataformas y pueden tener controles de seguridad débiles. Nexus Archive reúne títulos, valoraciones, notas y recomendaciones en una sola cuenta con controles de acceso a nivel de fila.",
+      "Los libros, las películas, el anime y las solicitudes de empleo suelen estar en gestores separados. Nexus Archive reúne títulos, valoraciones, notas y recomendaciones en una sola cuenta con controles de acceso a nivel de fila.",
     solution: [
       "Creé una bóveda full-stack con React 19 + API Litestar, respaldada por Supabase PostgreSQL con Row Level Security",
       "Implementé cookies HttpOnly SameSite=Strict emitidas por el backend y renovación; los tokens de acceso también se devuelven en respuestas de sesión legibles por el frontend",
@@ -448,9 +448,9 @@ export const esProjects = {
     description:
       "Motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo. El repositorio declara 9.29M operaciones mixtas de alta/cancelación por segundo en un benchmark sintético de un solo hilo en Apple M-series, compilado en Release.",
     fullDescription:
-      "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks sintéticos de rendimiento con operaciones mixtas y latencia de inserción. README declara 9.29M operaciones/s en Apple M-series en modo Release; esta auditoría no volvió a ejecutar ese resultado.",
+      "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks sintéticos de rendimiento con operaciones mixtas y latencia de inserción. README declara 9.29M operaciones/s en Apple M-series en modo Release; esa cifra no se volvió a ejecutar para esta página.",
     problem:
-      "Las bolsas necesitan cruzar órdenes con latencias muy bajas. Entender el motor a nivel de sistemas requiere construirlo desde cero con restricciones reales de rendimiento.",
+      "Las bolsas cruzan órdenes con márgenes de latencia muy ajustados. NanoMatch es un motor de cruce construido desde cero para estudiar las estructuras de datos y los costes detrás de la prioridad precio-tiempo.",
     solution: [
       "Implementé cruce con prioridad precio-tiempo (FIFO) para órdenes Limit, Market, IOC y FOK",
       "Implementé búsqueda por ID de orden con complejidad esperada O(1), cancelación O(log M) mediante el árbol de niveles de precio y modificación por cancelación y nueva alta",
@@ -460,7 +460,7 @@ export const esProjects = {
     proof: [
       "Rendimiento declarado por el repositorio: 9.29M operaciones mixtas de alta/cancelación/s en Apple M-series, Release -O3 -march=native; 5 millones de operaciones sintéticas, semilla fija 42",
       "El benchmark de latencia de inserción informa p50/p99/p99.9 para add_order; no son medidas de latencia de cancelación",
-      "El código define 137 casos de Google Test en 18 archivos de pruebas; esta auditoría no volvió a comprobar su estado de aprobación actual",
+      "El código define 137 casos de Google Test en 18 archivos de pruebas; el conjunto de pruebas no se volvió a ejecutar para esta página",
       "La configuración de CI incluye ASan, UBSan, cppcheck y clang-format para envíos a main y pull requests",
     ],
     features: [
@@ -521,7 +521,7 @@ export const esProjects = {
     description:
       "Prototipo educativo de seguridad en ejecución con código eBPF de tracepoints de solo lectura, heurísticas de metadatos en Go, panel React alimentado por SSE y plantillas de despliegue en Kubernetes.",
     fullDescription:
-      "ECRSM es un prototipo educativo de seguridad en ejecución con programas eBPF de tracepoints de syscalls, lector de perf-buffer y reglas de metadatos en Go, panel React que consume SSE y plantillas Helm de despliegue. Muestra los componentes de la visibilidad a nivel del kernel. Esta auditoría de fuentes no validó la captura de eventos de extremo a extremo, precisión de detección, sobrecarga ni despliegue en Kubernetes.",
+      "ECRSM es un prototipo educativo de seguridad en ejecución con programas eBPF de tracepoints de syscalls, lector de perf-buffer y reglas de metadatos en Go, panel React que consume SSE y plantillas Helm de despliegue. Muestra los componentes de la visibilidad a nivel del kernel. La captura de eventos de extremo a extremo, la precisión de detección, la sobrecarga y el despliegue en Kubernetes siguen sin validarse.",
     problem:
       "La monitorización en ejecución a nivel del kernel es difícil de estudiar. ECRSM ofrece una referencia educativa para recopilar metadatos de syscalls, generar alertas heurísticas y presentarlas en un panel en laboratorios aislados.",
     solution: [
@@ -532,9 +532,9 @@ export const esProjects = {
     ],
     proof: [
       "El código define heurísticas para conexiones de shells, primitivas de inyección y rutas de ejecución sospechosas; aquí no se midió la precisión de detección",
-      "Existe código de transporte por perf-buffer; esta auditoría no midió su sobrecarga de ejecución",
+      "Existe código de transporte por perf-buffer; su sobrecarga de ejecución no se midió para esta página",
       "Los ID de contenedores se extraen de cgroups en /proc; las etiquetas de pod son indicios del entorno del agente, no atribución Kubernetes verificada por proceso",
-      "Incluye scripts locales sintéticos, pero esta auditoría no realizó una ejecución de detección de extremo a extremo",
+      "Incluye scripts locales sintéticos, pero no se realizó una ejecución de detección de extremo a extremo para esta página",
     ],
     stack: ["eBPF (C)", "Go (agente)", "React (panel)", "Kubernetes (Helm)"],
     features: [
@@ -547,16 +547,16 @@ export const esProjects = {
       "Recopilación eBPF de solo lectura de metadatos de procesos y red",
       "La sonda no captura el contenido de los paquetes; los nombres de procesos y archivos aún pueden contener metadatos sensibles",
       "La plantilla de despliegue usa modo privilegiado, hostPID y capacidades BPF/SYS_ADMIN/SYS_PTRACE; está destinada a laboratorios aislados",
-      "Incluye scripts de simulación locales para entornos educativos aislados; esta auditoría no los ejecutó",
+      "Incluye scripts de simulación locales para entornos educativos aislados; no se ejecutaron para esta página",
     ],
   },
   simurghforge: {
     description:
       "Conversor de archivos local para macOS creado con Tauri v2, Rust y React 19. Nueve adaptadores de motor cubren imágenes, documentos, audio, vídeo y datos estructurados; las conversiones respaldadas por CLI requieren herramientas instaladas.",
     fullDescription:
-      "SimurghForge es un conversor local para macOS creado con Tauri v2, backend Rust y React 19/TypeScript. Enruta pares de archivos compatibles a través de cuatro motores Rust nativos y cinco adaptadores CLI. La conversión por lotes usa concurrencia acotada y progreso por archivo. Las funciones FFmpeg, LibreOffice, Pandoc, ImageMagick y Python/Pandas requieren las herramientas locales correspondientes. Esta auditoría de fuentes no probó la cobertura de pares de formatos ni la ejecución del paquete macOS.",
+      "SimurghForge es un conversor local para macOS creado con Tauri v2, backend Rust y React 19/TypeScript. Enruta pares de archivos compatibles a través de cuatro motores Rust nativos y cinco adaptadores CLI. La conversión por lotes usa concurrencia acotada y progreso por archivo. Las funciones FFmpeg, LibreOffice, Pandoc, ImageMagick y Python/Pandas requieren las herramientas locales correspondientes. La cobertura de pares de formatos y la ejecución del paquete macOS no se probaron para esta página.",
     problem:
-      "Convertir archivos suele exigir subir documentos sensibles a la nube, usar varias herramientas o instalar aplicaciones Electron pesadas. Hace falta una herramienta única, rápida y privada que procese formatos habituales localmente.",
+      "Convertir un archivo suele significar subirlo a un servicio web o combinar varias herramientas de un solo propósito. SimurghForge convierte archivos en el propio Mac y dirige cada par de formatos a un motor adecuado.",
     solution: [
       "Creé dos niveles de motores: cuatro motores Rust nativos y cinco adaptadores CLI, incluido Python/Pandas",
       "Implementé detección por cabecera con alternativa por extensión y enrutamiento del motor por par de formatos",
@@ -564,7 +564,7 @@ export const esProjects = {
       "Configuré un objetivo macOS .app y etiquetas de ajustes Low/Medium/High/Lossless; las dependencias CLI siguen siendo independientes",
     ],
     proof: [
-      "El código cubre cinco categorías de archivos; el total anunciado de 49 formatos no está conciliado con el registro actual de 44 claves de entrada de la interfaz",
+      "El código cubre cinco categorías de archivos. El total anunciado es de 49 formatos, mientras que el registro actual de entrada de la interfaz tiene 44 claves",
       "Se definen nueve variantes de motor, con enrutamiento según tipo de entrada detectado y formato de salida solicitado",
       "El backend limita a 50 archivos y 1–8 trabajos de conversión concurrentes mediante semáforo Tokio",
       "La conversión usa motores locales y no requiere API de nube; no se realizó una prueba de tráfico de red saliente",
@@ -600,7 +600,7 @@ export const esProjects = {
     fullDescription:
       "Aion es un acompañante bíblico con recuperación que reconoce referencias: consulta directa de versículos/capítulos, filtrado por palabras clave y búsqueda semántica pgvector aportan contexto, y Gemini 3.1 Flash Lite transmite las respuestas mediante Supabase Edge Functions. Incluye tarjetas de versículos con atribución, cliente móvil React Native/Expo y envoltorio de escritorio Tauri v2. Su benchmark de 40 preguntas puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. La voz nativa opcional tiene una limitación separada de credenciales del cliente.",
     problem:
-      "Las herramientas de estudio bíblico buscan solo palabras clave y pierden el sentido, o usan chatbots que inventan versículos. Hace falta conversación basada en las Escrituras con citas verificables.",
+      "La búsqueda por palabras clave en las Escrituras no encuentra preguntas formuladas con otras palabras, y un chatbot genérico puede citar mal o inventar versículos. Aion recupera primero los pasajes relevantes y responde con citas que el lector puede comprobar.",
     solution: [
       "Creé recuperación con reconocimiento de referencias combinando consulta directa de versículos/capítulos, filtrado por palabras clave, embeddings OpenAI de 1536 dimensiones y ordenación (ranking) semántica pgvector",
       "Implementé streaming SSE en tiempo real desde Gemini mediante Supabase Edge Functions",

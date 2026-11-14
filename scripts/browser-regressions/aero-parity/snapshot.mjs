@@ -115,7 +115,7 @@ try {
     const routes = [
         ["projects", "/projects"], ["about", "/about"], ["contact", "/contact"], ["project-detail", "/projects/project-simurgh"],
         ...(expanded ? [
-            ["writeups", "/write-ups"], ["lab", "/lab/001"], ["resume", "/resume"],
+            ["writeups", "/write-ups"], ["lab", "/lab/002"], ["resume", "/resume"],
             ["evidence", "/projects/invisible-window-research"], ["writeup-detail", "/write-ups/invisible-window-research"], ["not-found", "/not-a-portfolio-route", "404"],
             ["desktop", "/", "enter"], ["window-controls", "/projects", "window-controls"],
             ["language-menu", "/projects", "language-menu"], ["global-search", "/projects", "search"],

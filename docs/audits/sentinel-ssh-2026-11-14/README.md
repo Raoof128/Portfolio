@@ -33,5 +33,5 @@ skipped, across 46 files. The historical 11 initial failures were resolved.
 
 See [release-verification.json](release-verification.json) for the structured
 receipt. This is release and interaction verification, not byte-for-byte export
-attestation or a new audit of SentinelSSH itself. Post-release log updates remain
-local until a subsequent authorised publication.
+attestation or a new audit of SentinelSSH itself. Those post-release log updates were subsequently published in `0286100`.
+Later ordering and Gmail MCP evidence is in the current release handover.

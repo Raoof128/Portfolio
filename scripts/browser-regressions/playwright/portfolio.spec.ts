@@ -466,7 +466,7 @@ for (const theme of ["light", "dark"]) for (const locale of locales) {
     const observations = [];
     for (const [width, height] of sizes) {
       await page.setViewportSize({ width, height });
-      for (const path of ["/", "/projects", "/lab/001", "/contact"]) {
+      for (const path of ["/", "/projects", "/lab/002", "/contact"]) {
         await ready(page, route(locale, path), theme);
         const state = await geometry(page);
         expect(state.scrollWidth, `${locale} ${path} ${width} overflow`).toBeLessThanOrEqual(width + 1);

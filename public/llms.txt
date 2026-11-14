@@ -1,6 +1,6 @@
 # Mohammad Raouf Abedini - AI Security Research Portfolio
 
-> Last updated: 2026-11-09. Full machine-readable corpus (every project, write-up,
+> Last updated: 2026-11-14. Full machine-readable corpus (every project, write-up,
 > lab experiment, paper): https://raoufabedini.dev/llms-full.txt
 
 ## Identity
@@ -51,7 +51,7 @@ Security researcher focused on keeping tool-using AI agents safe and beneficial:
 
 ## Education
 
-- Bachelor of Cyber Security — Macquarie University, Sydney; expected June 2027 (Expected Jun 2027). Final session Feb–Jun 2027 is fully online · Coursework: Natural Language Processing & Machine Learning.
+- Bachelor of Cyber Security — Macquarie University, Sydney; expected June 2027. Final session Feb–Jun 2027 is fully online · Coursework: Natural Language Processing & Machine Learning.
 - Diploma of Information Technology — Macquarie University, 2023 – 2024.
 
 ## Certifications & Credentials
@@ -64,9 +64,9 @@ Security researcher focused on keeping tool-using AI agents safe and beneficial:
 - SentinelSSH: a Rust MCP server that gives AI agents policy-scoped, read-only inspection of Linux hosts through 17 typed tools and no shell.
 - Self-audit: audited 919 of Project Simurgh's own documents and published all 141 dated findings, including overstatements in earlier closeouts, in the README.
 
-## Philosophy
+## Approach
 
-Focus: privacy by design, local-first processing, and security from design through deployment. Current work measures and contains the cyber capabilities of frontier AI.
+Privacy by design, local-first processing and security from design through deployment. Current work tests host-side authorisation controls for tool-using AI agents and publishes null results alongside positive ones.
 
 ## Contact
 

@@ -33,18 +33,6 @@ function normalizeDigits(value: string): string {
 // These are the only dictionary paths whose entire value may match English.
 const sourceIdentifiers = new Set([
   "about.hero_title",
-  "about.spec3_item4",
-  "about.spec3_item5",
-  "about.spec4_item3",
-  ...Array.from({ length: 8 }, (_, index) => `about.skill_group1_${index + 2}`),
-  "about.skill_group2_7",
-  "about.skill_group2_8",
-  "about.skill_group2_9",
-  "about.skill_group3_3",
-  ...Array.from({ length: 9 }, (_, index) => `about.skill_group4_${index + 1}`),
-  "about.skill_group5_1",
-  "about.skill_group5_2",
-  "about.skill_group5_3",
   "lab_page.id_label",
   // Résumé lines made only of names, years or code identifiers.
   "resume.skill4_desc",
