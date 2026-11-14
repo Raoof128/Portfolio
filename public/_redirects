@@ -3,6 +3,16 @@
 # stale cached asset that a plain deploy leaves at this exact path).
 /pgp-key.txt  /.well-known/security.txt  301
 
+# Withdrawn lab sample (2026-11-14): send stale links and edge-cached hits to the
+# Lab index in the same language. Exact paths must stay above the /* wildcards.
+/lab/001     /lab     301
+/lab/001/    /lab     301
+/en/lab/001  /lab     301
+/fa/lab/001  /fa/lab  301
+/ar/lab/001  /ar/lab  301
+/zh/lab/001  /zh/lab  301
+/es/lab/001  /es/lab  301
+
 # Trailing-slash variants of the top-level pages go straight to the canonical path in
 # one hop. Without these, /projects/ matched the /projects/* rewrite below and then
 # took a second redirect. Exact paths must stay above their /* wildcards.
