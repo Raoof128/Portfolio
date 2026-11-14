@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-14 (Australia/Sydney) — Add Gmail MCP below SentinelSSH
+
+- **Scope**: Add the public Gmail MCP repository to the portfolio immediately below SentinelSSH.
+- **Summary**: Added an English, Persian, Arabic, Spanish and Chinese dossier, repository link and bespoke sealed-courier SVG. Order is Zurvan, Aion, SentinelSSH, Gmail MCP, FORMA. Content preserves server-side allow/ask/deny authority, attachment staging and the documented pre-release status with five open external qualification gates.
+- **Files Changed**: Project data/translations, artwork component/CSS and registry, summary order, inventory and browser assertions, machine-readable listing, README, handover, audit report and logs.
+- **Verification**: 771 tests passed, zero failed/skipped across 46 files. Production build (183 pages), TypeScript, changed-source lint and static security (1,163 files) passed. Route audit: 175 URLs, zero warnings. Nine browser tests passed across Chromium, Firefox and WebKit, covering all five locales, order, search, repository link, mobile/desktop preview alignment, pause/resume and reduced motion. Desktop and Persian mobile artwork screenshots inspected. The first screenshot helper raced hydration; waiting for the existing hydrated search control resolved it.
+- **Follow-ups**: Verify CI, deployment and live interaction. Physical-device, assistive-technology and native-speaker checks remain separate. No Gmail service or mailbox operations were performed.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Move Aion directly below Zurvan
 
 - **Scope**: Move Aion up in the project explorer as requested.

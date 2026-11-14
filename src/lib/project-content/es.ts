@@ -1,6 +1,30 @@
 import type { ProjectTranslations } from "./types";
 
 export const esProjects = {
+  "gmail-mcp": {
+    description:
+      "Un servidor Gmail MCP con permisos explícitos, varias cuentas y transferencia de adjuntos al disco. Los cambios en el correo siguen políticas de permitir, preguntar o denegar aplicadas por el servidor.",
+    fullDescription:
+      "Gmail MCP combina un Cloudflare Worker con un complemento local para macOS. El Worker controla la autenticación, las políticas, las aprobaciones y el seguimiento de operaciones; el complemento mueve adjuntos entre identificadores de preparación y directorios configurados sin pasar sus bytes por el contexto del modelo. El repositorio documenta una demostración integral en vivo, pero el proyecto sigue en fase previa al lanzamiento con cinco verificaciones externas pendientes.",
+    problem:
+      "Las herramientas de correo para IA necesitan gestionar adjuntos y contar con una autoridad explícita para modificar el buzón, especialmente cuando los mensajes pueden contener instrucciones maliciosas.",
+    solution: [
+      "Mantener la identidad de las cuentas, las políticas y la aplicación de aprobaciones en el servidor autenticado.",
+      "Usar identificadores opacos y un complemento local con acceso limitado para transferir adjuntos.",
+    ],
+    proof: [
+      "El repositorio documenta 38 herramientas Gmail y una demostración en vivo de OAuth, envío aprobado por el propietario y transferencia de adjuntos en ambos sentidos.",
+      "Quedan cinco verificaciones externas pendientes; esta página no acredita la aptitud para lanzamiento ni repite esas comprobaciones de forma independiente.",
+    ],
+    features: [
+      "Varias cuentas de Google con alias, políticas y límites de envío independientes.",
+      "Preparación de adjuntos, aprobaciones en el navegador, seguimiento de operaciones y registros de auditoría.",
+    ],
+    measures: [
+      "La aprobación queda ligada al contenido exacto almacenado; los envíos ambiguos pasan a delivery_unknown y no se reintentan automáticamente.",
+      "No se ofrece borrado permanente. El complemento limita las operaciones a los directorios configurados; no aísla otros procesos del mismo usuario.",
+    ],
+  },
   "sentinel-ssh": {
     description:
       "Inspección SSH limitada por políticas para agentes de IA. Una pasarela MCP en Rust ofrece 17 herramientas tipadas de solo lectura para hosts Linux registrados, sin dar acceso a un intérprete de comandos.",

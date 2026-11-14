@@ -39,7 +39,9 @@ flowchart TD
 
 Detailed design notes are documented in [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
 
-Project explorer order: Zurvan → Aion → SentinelSSH → FORMA.
+Project explorer order: Zurvan → Aion → SentinelSSH → Gmail MCP → FORMA.
+
+Gmail MCP has a five-language dossier, public repository link and animated sealed-courier SVG. Its documented pre-release qualification limits are retained.
 
 Verified release `deda279` (14 November 2026): SentinelSSH joins the project explorer, with a five-language dossier, public repository link and a custom animated SVG inspection lens. See the [addition audit](./docs/audits/sentinel-ssh-2026-11-14/README.md).
 

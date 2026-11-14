@@ -48,6 +48,44 @@ export interface Project {
 }
 
 export const projects: Record<string, Project> = {
+  "gmail-mcp": {
+    slug: "gmail-mcp",
+    title: "Gmail MCP",
+    category: "ENGINEERING",
+    year: "2026",
+    updatedAt: "2026-11-14",
+    description:
+      "A permission-aware Gmail MCP server with multi-account support and attachment transfers to disk. Mailbox changes follow server-enforced allow, ask or deny policies.",
+    fullDescription:
+      "Gmail MCP combines a Cloudflare Worker with a local macOS companion. The Worker owns authentication, mailbox policy, approvals and operation tracking; the companion moves attachments between staging handles and configured filesystem roots without sending their bytes through model context. The repository reports a live end-to-end demonstration, but the project remains pre-release with five external qualification gates open.",
+    tags: ["TypeScript", "MCP", "Node.js"],
+    links: {
+      repo: "https://github.com/Raoof128/gmail-mcp",
+    },
+    build: {
+      stack: ["TypeScript", "Cloudflare Workers", "D1", "R2", "KV", "Swift"],
+      features: [
+        "Multiple Google accounts with separate aliases, policies and send limits.",
+        "Attachment staging, browser approvals, operation tracking and audit records.",
+      ],
+    },
+    secure: {
+      measures: [
+        "Approval binds to the exact stored payload; ambiguous sends become delivery_unknown and are not automatically retried.",
+        "Permanent deletion is not exposed. The companion confines file operations to configured roots; it is not a sandbox against other processes owned by the same user.",
+      ],
+    },
+    problem:
+      "AI email tools need practical attachment handling and explicit authority for mailbox changes, especially when messages may contain malicious instructions.",
+    solution: [
+      "Keep account identity, policy and approval enforcement on the authenticated server.",
+      "Use opaque staging handles and a confined local companion to transfer attachments.",
+    ],
+    proof: [
+      "The repository documents 38 Gmail tools and a live demonstration of OAuth, owner-approved sending and an attachment round trip.",
+      "Five external qualification gates remain open; this portfolio entry does not establish release qualification or independently rerun those checks.",
+    ],
+  },
   "sentinel-ssh": {
     slug: "sentinel-ssh",
     title: "SentinelSSH",

@@ -40,6 +40,7 @@ Security researcher focused on keeping tool-using AI agents safe and beneficial:
 
 14. FORMA: Workout planner with custom routines, set logging, workout history, member accounts and a separate local guest mode. React, TypeScript, Vite, PostgreSQL and Cloudflare Workers. Native SwiftUI iPhone, Apple Watch and widget projects are in development, not published App Store releases. https://forma.raoufabedini.dev · https://raoufabedini.dev/projects/forma
 15. SentinelSSH: Rust MCP gateway with 17 typed, read-only inspection tools for registered Linux hosts. Observer-mode development release; gateway policy is not a remote sandbox. https://github.com/Raoof128/sentinel-ssh · https://raoufabedini.dev/projects/sentinel-ssh
+16. Gmail MCP: Multi-account Gmail server with server-enforced allow/ask/deny policy and attachment transfers through a local companion. Pre-release; five external qualification gates remain open. https://github.com/Raoof128/gmail-mcp · https://raoufabedini.dev/projects/gmail-mcp
 
 ## Professional Experience
 

@@ -101,9 +101,9 @@ test("Aion follows Zurvan and SentinelSSH navigation stays available", async ({
     expect(
       slugs.slice(
         slugs.indexOf("project-zurvan") + 1,
-        slugs.indexOf("project-zurvan") + 4,
+        slugs.indexOf("project-zurvan") + 5,
       ),
-    ).toEqual(["aion", "sentinel-ssh", "forma"]);
+    ).toEqual(["aion", "sentinel-ssh", "gmail-mcp", "forma"]);
     await page.keyboard.press("Control+k");
     await page.locator("#os-search-input").fill("SentinelSSH");
     const result = page.locator("#os-search-results a").first();

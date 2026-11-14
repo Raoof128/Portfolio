@@ -6,6 +6,16 @@ release evidence. Earlier audit reports and the
 builds, measurements and limitations. Their earlier no-deployment statements
 describe those historical stages.
 
+## Gmail MCP addition (14 November 2026)
+
+Gmail MCP now follows SentinelSSH in all five languages. Current explorer and
+dossier navigation order is Zurvan → Aion → SentinelSSH → Gmail MCP → FORMA.
+The new dossier links the public repository and preserves its documented
+pre-release status and five open external qualification gates. A bespoke
+sealed-courier SVG uses the shared motion controls and reduced-motion stills.
+All 771 unit tests and nine Chromium/Firefox/WebKit checks passed locally;
+see [the addition audit](audits/gmail-mcp-2026-11-14/README.md).
+
 ## Aion ordering update (14 November 2026)
 
 The owner requested Aion immediately below Zurvan. Current explorer and dossier

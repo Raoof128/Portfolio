@@ -1,0 +1,54 @@
+.gmail-artwork {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  background: #24191d;
+}
+.gmail-sculpture {
+  block-size: 90%;
+  max-inline-size: 90%;
+  aspect-ratio: 1;
+}
+.gmail-sculpture svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+.gmail-courier {
+  animation: gmail-float 7s ease-in-out infinite;
+}
+.gmail-transfer {
+  animation: gmail-transfer 6s linear infinite;
+}
+.gmail-seal {
+  transform-box: view-box;
+  transform-origin: 150px 162px;
+  animation: gmail-seal 32s linear infinite;
+}
+@keyframes gmail-float {
+  0%,
+  100% {
+    transform: translateY(3px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes gmail-transfer {
+  to {
+    stroke-dashoffset: -184;
+  }
+}
+@keyframes gmail-seal {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gmail-artwork * {
+    animation: none !important;
+  }
+}

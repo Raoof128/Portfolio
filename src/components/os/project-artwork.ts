@@ -7,6 +7,13 @@ export type ProjectArtworkComponent = ComponentType<{
 
 /** The existing dossier identities, shared by previews without project data. */
 export const projectArtworkRegistry = {
+  "gmail-mcp": {
+    background: "#24191d",
+    load: () =>
+      import("@/components/ui/GmailArtwork").then(
+        (module) => module.GmailArtwork,
+      ),
+  },
   "sentinel-ssh": {
     background: "#071b24",
     load: () =>
