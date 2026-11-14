@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Raouf: 2026-11-14 (Australia/Sydney) — GitHub profile README rebuilt as research-OS windows
+
+- **Scope**: Owner request: update the profile repository `github.com/Raoof128/Raoof128` from the current portfolio and `Mohammad_Raouf_Abedini_Resume_Anthropic_Research_Resident.pdf`, with the residency listing as the emphasis guide, and make it distinctive.
+- **Summary**: Commit `6890763` on that repository's `main` replaces the badge and stats-widget README with three hand-drawn SVGs in the portfolio's Aero style: an animated hero window (name, statement, four counts, agent tool calls reaching a host authorization gate), a dot-grid chart of the October 2026 Simurgh transfer study that shows the gpt-6-luna null result beside the Llama-3.2-3B result with the per-state Wilson intervals, and a closing taskbar. The text follows the résumé: Simurgh as agent authorization and containment, the five preprints with current DOIs, shipped tooling, background and December 2026 availability. Removed: "Calibrating AI for Anthropic", the "research directions proposed to Anthropic's Fellows team" line, the old Invisible Window DOI `20319832`, the Nov 2026 graduation date, the third-party stats, streak, activity, visitor and snake widgets, and six superseded SVGs (kept in git history). Invisible Window cites DOI `10.5281/zenodo.20376495` and the public record repository only, worded as "every tested lab configuration". Visa status and phone number are not on the page.
+- **Files Changed**: In `Raoof128/Raoof128`: `README.md`, new `Assets/hero.svg`, `Assets/study.svg`, `Assets/taskbar.svg`; deleted `Assets/{header,terminal,cosmic,divider,alien,footer}.svg`. Here: Portfolio `AGENT.md` and `CHANGELOG.md`, workspace `AGENT.md` and `CHANGELOG.md`. No Portfolio source change.
+- **Verification**: `xmllint` clean on the three SVGs. Every repository and site link in the README returned 200; the six DOIs resolve through the doi.org handle API (Zenodo answers plain `curl` with 403); LinkedIn answers bots with 999 and was not verified. Signed-out Chromium screenshots of the live profile in dark, light and 390 px phone layouts: all three images loaded at their natural width and the gate animation was running. Only the dark desktop screenshot was inspected by eye. Firefox and WebKit were not run.
+- **Zurvan**: Decision recorded under project `github-profile` (`wiki/decisions/github-profile-readme-rebuilt-as-aero-research-os-.md`).
+- **Follow-ups**: The profile repository's `3d-contrib.yml` workflow fails on every run and was left alone. `Assets/Header.jpg` and `Assets/Footer.jpg` (9 MB, unreferenced) remain. The GitHub bio and the Project-Simurgh repository description still carry the older framing.
+
 ### Raouf: 2026-11-14 (Australia/Sydney) — Invisible Window: public record repository, paper address redirect, source wording
 
 - **Scope**: Owner instruction to apply every fix found while checking the Invisible Window links. The residency application was already submitted with `github.com/Raoof128/invisible-window-research` printed in it, and the paper prints `raoufabedini.dev/invisible-window`, which returned 404.
@@ -17,6 +26,15 @@
 - **Files Changed**: `src/i18n/locales/{en,fa,ar,zh,es}.ts` (`resume.iw_meta`), `src/app/llms-full.txt/route.ts`, `public/Mohammad_Raouf_Abedini_Resume.pdf` (regenerated from the résumé build script, without the phone number, LibreOffice 26.8.3.1), `AGENT.md`, `CHANGELOG.md`. The résumé source outside the repo (in `Job_Projects/`) carries the same one-line change; its originals are backed up beside it.
 - **Verification**: `tsc --noEmit` clean; 771/771 unit tests; `eslint src scripts` clean; `next build` clean; static security audit passed. A `pdftotext` diff of the old and new PDF shows one changed line, the new PDF holds no phone number, and it stays at 2 pages. The built `/resume` pages in five languages contain no repository URL. The browser suites were not rerun for this change.
 - **Follow-ups**: Any résumé copy already uploaded to an application still prints the old line. The LinkedIn Invisible Window entry still names the private repository.
+
+### Raouf: 2026-11-14 (Australia/Sydney) — LinkedIn profile and SentinelSSH project
+
+- **Scope**: Align the LinkedIn profile with the portfolio and supplied résumé, add SentinelSSH, and record the outcome in the project logs and private Zurvan.
+- **Summary**: Updated About, the Syllabus-Sync project and the tested-scope wording for Invisible Window. Added SentinelSSH with its observer-mode limitations and a cropped still of its portfolio animation as the first project image. The existing More Details media card links to the portfolio.
+- **Files Changed**: Workspace `AGENT.md` and `CHANGELOG.md`; Portfolio `AGENT.md` and `CHANGELOG.md`; private Zurvan handover and automatic knowledge log. The screenshot working copy is local on the Desktop.
+- **Verification**: LinkedIn confirmed each save; the signed-in profile showed the revised text, the SentinelSSH entry and the uploaded image. No signed-out profile verification or Portfolio application tests were performed for these profile and documentation changes.
+- **Zurvan**: The private handover was read back and found by exact-title search at index revision 3430. A graph rebuild was interrupted after more than seven minutes in Markdown-link matching; the previous graph remained intact at revision 3429. A private risk note records the limitation. A subsequent search rebuild was stopped under load while another rebuild and a separate ledger write were observed; last status was ledger 3432 CLEAN, search 3430 and graph 3429, both behind. Recheck status after the other rebuild finishes. The full Zurvan test suite was not run.
+- **Follow-ups**: The requested removal of the older More Details card is pending the computer-use policy's action-time confirmation; it has not been deleted. The Invisible Window description names a repository documented as private, so its accessibility to a reviewer remains a separate check. FORMA, Gmail MCP and ECRSM were not added to LinkedIn. No Portfolio source change, commit, push or deployment is part of this task.
 
 ### Raouf: 2026-11-14 (Australia/Sydney) — Reviewer-readiness copy pass against the residency résumé
 
