@@ -565,7 +565,8 @@ export const zurvanEvidenceStoryCopy: Record<Locale, ZurvanEvidenceStoryCopy> =
         },
         {
           name: "مفهوم",
-          detail: "تربط عقدة المفهوم موضوعًا بمعرفة ذات صلة عبر الويكي المحلية.",
+          detail:
+            "تربط عقدة المفهوم موضوعًا بمعرفة ذات صلة عبر الويكي المحلية.",
         },
         {
           name: "كيان",
