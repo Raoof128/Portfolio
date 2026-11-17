@@ -373,7 +373,7 @@ export const projects: Record<string, Project> = {
       "Reduced a live Llama-3.3-70B agent's targeted attack success on AgentDojo from 9/140 to 0/140 over pre-registered injections in the workspace suite (frozen stage, 2026); the full four-suite deterministic run scored 0/949 attack success with 949/949 unattacked utility (both scoped as small experiments)",
       "Built the work to be reproduced: Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 92 releases. The root package declares AGPL-3.0-or-later",
       "Audited 919 of the project's own documents and published all 141 dated findings, including overstatements in earlier closeouts, in the README",
-      "Current software archive DOI 10.5281/zenodo.21737792 is separate from the original device-integrity preprint DOI 10.5281/zenodo.20374849 and the other published preprints",
+      "Software archive DOI (v2.54.1, August 2026) 10.5281/zenodo.21737792 is separate from the original device-integrity preprint DOI 10.5281/zenodo.20374849 and the other published preprints",
     ],
     updatedAt: "2026-11-09",
   },
@@ -415,7 +415,7 @@ export const projects: Record<string, Project> = {
         "Hybrid FTS5 + local semantic retrieval and graph-neighbour expansion assemble context bundles with index/ledger freshness stamps",
         "The Rust MCP stdio server serves native reads; writes and evaluation use a Python bridge, preserving the reference implementation and opt-in write boundary",
         "Multi-project federation supports registered cross-vault search, contradiction detection and policy monitoring",
-        "Serves claims and decisions to agents over MCP; 218 tests",
+        "Serves claims and decisions to agents over MCP; 4,109 tests",
       ],
     },
     secure: {
@@ -439,7 +439,7 @@ export const projects: Record<string, Project> = {
       "Federates explicitly registered vaults for cross-project search, decision memory, contradiction detection and policy monitoring",
     ],
     proof: [
-      "Local-first knowledge engine serving claims and decisions to agents over MCP (218 tests)",
+      "Local-first knowledge engine serving claims and decisions to agents over MCP (4,109 tests)",
       "20 October Rust/Python live parity receipt: 314 cases per protocol, 312 PASS, 2 expected divergences and 0 FAIL on MCP 2025-11-25 and 2026-07-28; these are repository-reported measurements",
       "Obsidian-compatible vault with seven documented graph node types: claims, concepts, entities, decisions, sessions, contradictions and syntheses",
       "Evidence pack → report → review → publish can run locally; extraction’s network use still depends on the configured LLM provider",
@@ -507,7 +507,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2024",
     description:
-      "Offline QR and URL phishing scanner in Kotlin Multiplatform: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms, 19-scenario red-team mode.",
+      "QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device. CI measures 90.7% F1 on the repository's 100 author-written URLs (not a held-out benchmark); 18-scenario red-team mode.",
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
@@ -524,34 +524,34 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "5 Platform Targets (Android, iOS, JVM, JS, Wasm)",
-        "Ensemble model: logistic regression, gradient boosting and decision rules",
+        "Small hand-set scoring model (weights set by hand, not trained)",
         "Brand-impersonation, homograph-attack & malicious-redirect detection",
         "Heuristics engine (25 heuristics)",
-        "19-scenario red-team mode",
+        "18-scenario red-team mode",
       ],
     },
     secure: {
       measures: [
         "Local PhishingEngine analysis is designed without cloud URL lookups",
-        "On-device ML and heuristic scoring",
-        "Analysis does not require uploading the scanned URL",
+        "On-device heuristic and hand-set scoring",
+        "Analysis does not require uploading the scanned URL: scanned URLs are never sent anywhere. The Android app checks for rule updates at startup",
         "Offline unit checks exercise completion, determinism and timing; they do not capture outbound network traffic",
       ],
     },
     fullDescription:
-      "Mehr Guard is an offline QR and URL phishing scanner in Kotlin Multiplatform, with native or browser interfaces across 5 targets: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms, with a 19-scenario red-team mode.",
+      "Mehr Guard is a QR and URL phishing scanner in Kotlin Multiplatform, with native or browser interfaces across 5 targets. It analyses URLs on the device with 25 heuristics plus a small hand-set scoring model; scanned URLs are never sent anywhere, although the Android app checks for rule updates at startup. CI measures 90.7% F1 (precision 84.5%, recall 98.0%) on the repository's 100 author-written URLs, which is not a held-out benchmark; 9 of the 50 legitimate sites are flagged. It has an 18-scenario red-team mode.",
     problem:
       "QR codes are a common phishing vector, and a scanner that checks URLs through a cloud service learns what its user scans. Mehr Guard analyses each URL on the device, so the check needs no upload.",
     solution: [
       "Built a local URL-analysis core using Kotlin Multiplatform",
-      "Combined ensemble ML (logistic regression, gradient boosting and decision rules) with 25 heuristics",
+      "Combined 25 heuristics with a small hand-set scoring model (weights set by hand, not trained)",
       "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); the repository reports ~100% shared detection logic (~52% of total code)",
-      "Analysis completes in under 5 ms",
+      "Tests assert a 99th-percentile analysis time under 50 ms per URL",
     ],
     proof: [
-      "Ensemble ML plus 25 heuristics at 87% F1",
-      "Under 5 ms analysis",
-      "19-scenario red-team mode",
+      "CI measures 90.7% F1 (precision 84.5%, recall 98.0%) on the repository's 100 author-written URLs; this is not a held-out benchmark, and 9 of the 50 legitimate sites are flagged",
+      "Tests assert a 99th-percentile analysis time under 50 ms per URL",
+      "18-scenario red-team mode",
       "./judge/verify_offline.sh invokes shared-engine unit checks; these tests are not an independent capture of outbound network traffic",
       "Repository reports ~100% shared detection logic (~52% of total codebase)",
     ],
@@ -563,7 +563,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "Macquarie University Incubator startup: a shared Next.js/TypeScript codebase that converts university syllabi into structured data. Raouf is cofounder and led the security backend; 503 tests across 92 files.",
+      "Macquarie University Incubator startup: a student platform for academic planning (units, deadlines, calendar, campus map) on a shared Next.js/TypeScript codebase; syllabus parsing is planned and not built. Raouf is cofounder and led the security backend; 1,399 tests across 167 files.",
     tags: [
       "MQ Incubator Startup",
       "Next.js 16",
@@ -590,9 +590,8 @@ export const projects: Record<string, Project> = {
       ],
       features: [
         "Academic planning, assessment deadlines, calendar, campus navigation and notifications",
-        "Converts university syllabi into structured data",
         "Multi-profile student tools and institution-specific academic datasets",
-        "503 tests across 92 files",
+        "1,399 tests across 167 files",
       ],
     },
     secure: {
@@ -600,26 +599,26 @@ export const projects: Record<string, Project> = {
         "Middleware protects configured page routes and non-public APIs, with explicit public exceptions and fail-closed handling of unresolved API authentication",
         "Supabase Row-Level Security and user-scoped database access",
         "WebAuthn/FIDO2 passkeys alongside supported password and MFA flows",
-        "Schema validation, CSRF controls, audit logging and route-specific rate limiting",
+        "Schema validation, CSRF controls, append-only audit logging (enforced by row-level security) and route-specific rate limiting",
         "Configured CI secret scanning",
       ],
     },
     fullDescription:
-      "Syllabus-Sync is an independent student experience platform initially built for Macquarie University students, covering academic planning, assessment deadlines, campus navigation, notifications and profile management. Raouf is cofounder of this Macquarie University Incubator startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of its shared Next.js/TypeScript codebase, which converts university syllabi into structured data; 503 tests across 92 files.",
+      "Syllabus-Sync is an independent student experience platform initially built for Macquarie University students, covering academic planning, assessment deadlines, campus navigation, notifications and profile management. Raouf is cofounder of this Macquarie University Incubator startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, append-only audit logging enforced by row-level security) of its shared Next.js/TypeScript codebase; 1,399 tests across 167 files. Syllabus parsing is planned; no code for it exists yet.",
     problem:
       "Students need a consistent place for assessment deadlines, academic planning and campus information, with account security and clear boundaries around personal data.",
     solution: [
-      "Cofounded the startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of the shared Next.js/TypeScript codebase",
+      "Cofounded the startup and led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, append-only audit logging) of the shared Next.js/TypeScript codebase",
       "Implemented protected-route middleware, passkeys, MFA, user-scoped data access and audit controls",
       "Integrated planning, calendars, campus navigation and notifications around configurable academic datasets",
-      "Converts university syllabi into structured data",
+      "Syllabus parsing is planned and not built; the README states that no code for it exists yet",
     ],
     proof: [
       "Syllabus-Sync is a Macquarie University Incubator startup, and Raouf is a cofounder",
-      "503 tests across 92 files",
+      "1,399 tests across 167 files",
       "Deployed on Cloudflare Workers; the public demo runs at syllabus-sync.app",
       "Middleware source returns 503 for unresolved protected API authentication and 401 for unauthenticated protected APIs",
-      "Raouf led the security backend: WebAuthn passkeys, TOTP MFA, Postgres row-level security and tamper-resistant audit logging",
+      "Raouf led the security backend: WebAuthn passkeys, TOTP MFA, Postgres row-level security and append-only audit logging",
       "Passkeys use public-key credentials; this does not mean every supported authentication flow is passwordless",
     ],
     updatedAt: "2026-11-14",
@@ -757,7 +756,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "C++20 price-time matching engine with four order types and per-symbol books. The repository reports 9.29M mixed add/cancel operations per second in a single-thread synthetic Apple M-series Release benchmark.",
+      "C++20 price-time matching engine with four order types and per-symbol books. The repository reports 9.29M mixed operations per second (about 80% adds) in a single-thread synthetic benchmark, recorded once on an Apple M-series laptop in a Release build.",
     tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/NanoMatch",
@@ -788,7 +787,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "NanoMatch is a C++20 limit order book and matching engine for price-time priority matching. It supports Limit, Market, IOC and FOK orders, independent books per symbol, CSV input/output, and synthetic mixed-operation throughput and insertion-latency benchmarks. The README reports 9.29M operations/s on Apple M-series in Release mode; that figure was not rerun for this page.",
+      "NanoMatch is a C++20 limit order book and matching engine for price-time priority matching. It supports Limit, Market, IOC and FOK orders, independent books per symbol, CSV input/output, and synthetic mixed-operation throughput and insertion-latency benchmarks. The README reports 9.29M operations/s on an Apple M-series laptop in Release mode: a single-thread, synthetic workload of about 80% adds, recorded once; that figure was not rerun for this page. The order book does not use the standalone pool allocator, so the repository does not claim an allocation-free hot path.",
     problem:
       "Exchanges match orders under tight latency budgets. NanoMatch is a from-scratch matching engine built to study the data structures and costs behind price-time priority.",
     solution: [
@@ -798,8 +797,8 @@ export const projects: Record<string, Project> = {
       "Added multi-instrument support with independent order books per symbol",
     ],
     proof: [
-      "Repository-reported throughput: 9.29M mixed add/cancel operations/s on Apple M-series, Release -O3 -march=native; 5M synthetic operations, fixed seed 42",
-      "Insertion-latency benchmark reports p50/p99/p99.9 for add_order; these are not cancellation-latency measurements",
+      "Repository-reported throughput: 9.29M mixed operations/s (about 80% adds) on an Apple M-series laptop, Release -O3 -march=native; single thread, 5M synthetic operations, fixed seed 42, recorded once",
+      "Insertion-latency benchmark reports p50/p99/p99.9 for add_order only, including timer overhead (p50 84 ns); these are not cancellation-latency measurements",
       "Source defines 137 Google Test cases in 18 test files; the suite was not rerun for this page",
       "CI config includes ASan, UBSan, cppcheck and clang-format checks for main-branch pushes and pull requests",
     ],
@@ -811,7 +810,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description:
-      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. It processes 500,000+ packets/sec in a synthetic single-thread benchmark.",
+      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. Its benchmark covers header parsing only. A study project with known limitations listed in its README.",
     tags: [
       "C++17",
       "libpcap",
@@ -858,7 +857,8 @@ export const projects: Record<string, Project> = {
       "Added a single-thread parser microbenchmark over 5M repeated synthetic Ethernet/IPv4/TCP SYN-ACK packets; capture, detection and alerting are excluded",
     ],
     proof: [
-      "500,000+ packets/sec in a synthetic single-thread benchmark",
+      "Its benchmark covers header parsing of one fixed packet only; it does not measure capture, detection or alerting",
+      "A study project: known limitations are listed in the repository README",
       "Protocol coverage: 7 protocols across Layers 2-7",
       "Source defines 27 Google Test cases across 10 test files; the March 2026 changelog reports a historical 27/27 pass",
       "Supports both live capture and pcap file analysis",
@@ -1084,7 +1084,7 @@ export const writeups: Writeup[] = [
   {
     slug: "project-simurgh-containment",
     title: "Testing Host-Side Authorisation Across Two Models",
-    date: "2026-06-28",
+    date: "2026-11-04",
     updatedAt: "2026-11-04",
     tag: "AI Security",
     takeaway:
@@ -1136,7 +1136,7 @@ The author audited **919 of the project’s own documents** and published **all 
 
 ### Sources and limits
 
-The current software archive has DOI **10.5281/zenodo.21737792**. The earlier device-integrity preprint has a different DOI, **10.5281/zenodo.20374849**; it records the project’s original high-stakes-session research and is not the current software study. The root package declares **AGPL-3.0-or-later**.
+The software archive DOI (v2.54.1, August 2026) is **10.5281/zenodo.21737792**. The earlier device-integrity preprint has a different DOI, **10.5281/zenodo.20374849**; it records the project’s original high-stakes-session research and is not the current software study. The root package declares **AGPL-3.0-or-later**.
 
 The October results describe this protocol, these controls and two tested models. They include a null result, state-cluster uncertainty, a gap that partly holds by construction and an unresolved authorised-workflow refusal. The host, provisioning, storage and receiver remain trusted; the two models use different tool interfaces, the tasks are internally authored, and independent outside reproduction remains open. The study does not establish universal containment, model ranking or prevention of every unsafe model output.
 `,
@@ -1327,11 +1327,11 @@ The pinned README reports these results for an Apple M-series Release build usin
 | Repository-reported metric | Value | Scope |
 |----------------------------|-------|-------|
 | Throughput | 9,290,192 operations/s | 5M pre-generated synthetic operations, roughly 80% adds and 20% cancel attempts, fixed seed 42, single thread |
-| p50 | 84 ns | Separate \`add_order\` latency benchmark |
+| p50 | 84 ns | Separate \`add_order\` latency benchmark: add-only, including timer overhead |
 | p99 | 625 ns | Separate \`add_order\` latency benchmark |
 | p99.9 | 1,250 ns | Separate \`add_order\` latency benchmark |
 
-The latency timer surrounds **\`add_order()\`**, not cancellation. Throughput counts mixed operations, including cancel attempts, rather than an equal number of completed new orders. These published figures were not rerun in the November 2026 source audit. Exact CPU model, compiler version and raw run artifacts are not supplied in the inspected benchmark documentation, so they are not portable performance guarantees. The source does not establish causes for the tail samples.
+The latency timer surrounds **\`add_order()\`**, not cancellation, so the 84 ns p50 is add-only latency that includes timer overhead. The throughput figure is single-thread, synthetic and was recorded once on an Apple M-series laptop; it is not a claim about sub-microsecond matching under realistic load. Throughput counts mixed operations, including cancel attempts, rather than an equal number of completed new orders. These published figures were not rerun in the November 2026 source audit. Exact CPU model, compiler version and raw run artifacts are not supplied in the inspected benchmark documentation, so they are not portable performance guarantees. The source does not establish causes for the tail samples.
 
 ### Tests and evidence boundaries
 
@@ -1353,7 +1353,7 @@ The pinned source defines **137 Google Test cases across 18 test source files**,
     updatedAt: "2026-11-04",
     tag: "Network Security",
     takeaway:
-      "A C++17 Capture → Parse → Detect → Alert pipeline that processes 500,000+ packets/sec in a synthetic single-thread benchmark.",
+      "A C++17 Capture → Parse → Detect → Alert pipeline, built as a study project with known limitations; its benchmark covers header parsing only.",
     content: `
 ## Four stages with different costs
 
@@ -1387,7 +1387,7 @@ The code performs lazy cleanup when records are accessed. These are heuristic in
 
 ### Throughput
 
-SentinelFlow processes **500,000+ packets/sec** in a synthetic single-thread benchmark.
+The repository's benchmark covers **header parsing only**: it repeatedly parses one fixed synthetic packet, so it says nothing about capture, detection or alerting capacity, and no packets-per-second figure is claimed here. SentinelFlow is a study project, and its README lists known limitations.
 
 ### Alerts and verification
 
@@ -1406,7 +1406,7 @@ The source defines **27 Google Test cases across 10 test files** for selected pa
   {
     slug: "ecrsm-deep-dive",
     title: "Deep Dive: eBPF Runtime Monitoring",
-    date: "2025-01-15",
+    date: "2026-01-30",
     updatedAt: "2026-11-04",
     tag: "eBPF",
     takeaway:
@@ -1467,11 +1467,11 @@ The repository makes the component boundaries visible: probe code, perf reading,
   {
     slug: "kmp-security",
     title: "Building Offline-First Security Tools with KMP",
-    date: "2025-01-02",
+    date: "2026-01-30",
     updatedAt: "2026-11-04",
     tag: "Kotlin",
     takeaway:
-      "An offline QR and URL phishing scanner in Kotlin Multiplatform: ensemble ML plus 25 heuristics at 87% F1 and under 5 ms.",
+      "A QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device. CI measures 90.7% F1 on the repository's 100 author-written URLs, which is not a held-out benchmark.",
     content: `
 ## One security core, five platforms
 
@@ -1481,32 +1481,32 @@ The repository makes the component boundaries visible: probe code, perf reading,
 
 The security logic is platform-agnostic and lives once, in shared code:
 
-- **Ensemble model**: logistic regression, gradient boosting and decision rules score URL features.
+- **Scoring model**: a small hand-set model (weights set by hand, not trained) combines URL feature scores with the heuristics.
 - **Heuristics engine**: 25 heuristics, including homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
 - **Threat-intelligence lists**: allow/deny sets, versioned centrally.
 
 KMP's \`expect\`/\`actual\` boundaries cover platform services, the QR-camera bridge and UI integration. The repository reports ~100% shared detection logic (~52% of total code); native integrations and browser variants still need their own review.
 
-### Offline by design
+### On-device by design
 
-PhishingEngine scores URL strings locally without requiring a cloud reputation lookup. The offline judge script runs unit checks for completion, determinism and timing. Their source explicitly says they do not block network access, so they do not independently attest that every build or UI makes zero outbound connections.
+PhishingEngine scores URL strings on the device: scanned URLs are never sent anywhere, and no cloud reputation lookup is needed. The Android app does check for rule updates at startup, so the app is not network-silent. The offline judge script runs unit checks for completion, determinism and timing. Their source explicitly says they do not block network access, so they do not independently attest that every build or UI makes zero outbound connections.
 
 ### The numbers
 
 | Metric | Value |
 |--------|-------|
-| F1 (ensemble ML plus 25 heuristics) | 87% |
-| Analysis time | under 5 ms |
-| Red-team mode | 19 scenarios |
+| F1 (25 heuristics plus hand-set scoring; CI, 100 author-written URLs) | 90.7% (precision 84.5%, recall 98.0%) |
+| Analysis time | 99th percentile under 50 ms per URL (asserted in tests) |
+| Red-team mode | 18 scenarios |
 | Platform targets | 5 (Android, iOS, JVM, JS, Wasm) |
 
-The 19-scenario red-team mode exercises known phishing patterns.
+The 100 URLs are author-written and are not a held-out benchmark; 9 of the 50 legitimate sites are flagged. The 18-scenario red-team mode exercises known phishing patterns.
     `,
   },
   {
     slug: "electron-security",
     title: "Securing Electron Apps: A Practical Guide",
-    date: "2024-12-20",
+    date: "2026-01-30",
     updatedAt: "2026-11-04",
     tag: "Electron",
     takeaway:

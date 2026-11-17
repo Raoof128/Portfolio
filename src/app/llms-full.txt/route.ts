@@ -72,10 +72,12 @@ github.com/Raoof128/Project-Simurgh · 92 releases · software DOI 10.5281/zenod
 ### The Invisible Window — Screen-Capture Evasion in WebRTC Proctoring (Sole Author) · Feb 2026 – May 2026
 IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495
 - Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while
-  contributing zero pixels to screen capture: 100% evasion of WebRTC proctoring on every platform tested, including
-  macOS 26.
+  contributing zero pixels to screen capture: 100% evasion in every tested lab configuration. On macOS 26 the tests
+  used native capture APIs, not browser getDisplayMedia or ScreenCaptureKit; no commercial proctoring product or Linux
+  system was tested.
 - Disclosed to Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) before publication; both classified
-  the behavior as by design. Proof-of-concept code is withheld on dual-use grounds.
+  the behavior as by design. The full proof-of-concept code is withheld on dual-use grounds; a minimal macOS test
+  fixture is public.
 
 ### Aion-BibleQA — Retrieval and Citation Faithfulness in a RAG System (Sole Author) · Jun 2026
 Preprint · DOI 10.5281/zenodo.20522874
@@ -83,18 +85,19 @@ Preprint · DOI 10.5281/zenodo.20522874
   0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals.
 
 ### Further Preprints and Shipped Security Tooling · 2024 – 2026
-- Banking Shield (DOI 10.5281/zenodo.20675513): machine-checked proofs that privacy-sensitive values never reach
-  AI-generated explanations; five-tester dry run, zero leaks.
+- Banking Shield (DOI 10.5281/zenodo.20675513): machine-checked evidence, on a fictional research prototype, about
+  what an AI-style explanation layer did not receive, transmit or claim; formative dry run with five internal testers.
 - Simurgh device-integrity proofs (DOI 10.5281/zenodo.20374849): preprint on privacy-preserving device integrity
   proofs for high-stakes sessions.
 - Student-society event pilot (DOI 10.5281/zenodo.20549736): 31 consented sessions; ballot choices excluded from
   records; HMAC-chained audit logs.
-- Mehr Guard: offline QR and URL phishing scanner in Kotlin Multiplatform; ensemble ML plus 25 heuristics at 87% F1
-  and under 5 ms, 19-scenario red-team mode.
+- Mehr Guard: QR and URL phishing scanner in Kotlin Multiplatform; 25 heuristics plus a small hand-set scoring model,
+  analysed on-device (scanned URLs are never sent anywhere). CI measures 90.7% F1 on the repository's 100 author-written
+  URLs, not a held-out benchmark; 18-scenario red-team mode.
 - Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only
-  inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (500,000+
-  packets/sec, synthetic single-thread benchmark); Project Zurvan, local-first knowledge engine serving claims and
-  decisions to agents over MCP (218 tests).
+  inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (study
+  project with known limitations; its benchmark covers header parsing only); Project Zurvan, local-first knowledge
+  engine serving claims and decisions to agents over MCP (4,109 tests).
 
 ## Professional Experience
 ### AI Safety Evaluator (Claude) — Alignerr · Jan 2026 – Mar 2026
@@ -104,9 +107,9 @@ Anthropic safety-evaluation program · Remote
 
 ### Cofounder — Syllabus-Sync · May 2026 – Present
 Macquarie University Incubator startup · Sydney · syllabus-sync.app
-- Led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit
-  logging) of a shared Next.js/TypeScript codebase that converts university syllabi into structured data; 503 tests across
-  92 files.
+- Led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, append-only audit logging
+  enforced by row-level security) of a shared Next.js/TypeScript codebase for a student platform for academic planning
+  (units, deadlines, calendar, campus map); syllabus parsing is planned and not built; 1,399 tests across 167 files.
 
 ### Security Engineer & Full-Stack Developer — Self-Employed (Freelance) · Jan 2024 – Present
 Sydney

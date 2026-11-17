@@ -28,7 +28,7 @@
       "La implementación actual incluye controles Python y un explorador de evidencia React con una CLI JSON compartida. El proyecto tiene **92 versiones**.",
       "El autor auditó **919 de los documentos propios del proyecto** y publicó **los 141 hallazgos fechados**, incluidas exageraciones de cierres anteriores, en el README. Forma parte de la trazabilidad, no de una afirmación de ausencia de defectos.",
       "### Fuentes y límites",
-      "El archivo actual de software tiene DOI **10.5281/zenodo.21737792**. El preprint anterior de integridad del dispositivo tiene otro DOI, **10.5281/zenodo.20374849**; documenta la investigación original para sesiones de alto impacto, no el estudio actual del software. El paquete raíz declara **AGPL-3.0-or-later**.",
+      "El DOI del archivo de software (v2.54.1, agosto de 2026) es **10.5281/zenodo.21737792**. El preprint anterior de integridad del dispositivo tiene otro DOI, **10.5281/zenodo.20374849**; documenta la investigación original para sesiones de alto impacto, no el estudio actual del software. El paquete raíz declara **AGPL-3.0-or-later**.",
       "Los resultados de octubre describen este protocolo, estos controles y dos modelos probados. Incluyen un resultado nulo, incertidumbre por grupos de estados, una diferencia parcialmente determinada por construcción y un rechazo autorizado sin resolver. El anfitrión, el aprovisionamiento, el almacenamiento y el receptor siguen siendo de confianza; los modelos usan interfaces de herramientas distintas, las tareas son internas y la reproducción externa independiente sigue pendiente. El estudio no establece contención universal, un ranking de modelos ni prevención de todas las salidas inseguras."
     ]
   },
@@ -106,10 +106,10 @@
       "El README fijado informa de estos resultados para una compilación Release en Apple serie M con `-O3 -march=native`:",
       "| Métrica comunicada por el repositorio | Valor | Alcance |",
       "| Rendimiento | 9,290,192 operaciones/s | 5 millones de operaciones sintéticas pregeneradas, aproximadamente 80% de altas y 20% de intentos de cancelación, semilla fija 42, un solo hilo |",
-      "| p50 | 84 ns | Benchmark separado de latencia de `add_order` |",
+      "| p50 | 84 ns | Benchmark separado de latencia de `add_order`: solo altas, con la sobrecarga del temporizador |",
       "| p99 | 625 ns | Benchmark separado de latencia de `add_order` |",
       "| p99.9 | 1,250 ns | Benchmark separado de latencia de `add_order` |",
-      "El temporizador rodea **`add_order()`**, no la cancelación. El rendimiento cuenta operaciones mixtas, incluidos intentos de cancelación, no un número equivalente de órdenes nuevas completadas. Estas cifras publicadas no se repitieron en la auditoría de noviembre de 2026. La documentación revisada no aporta el modelo exacto de CPU, la versión del compilador ni los artefactos brutos, por lo que no garantiza rendimiento portable. El código no establece las causas de las muestras de cola.",
+      "El temporizador rodea **`add_order()`**, no la cancelación, por lo que los 84 ns de p50 son latencia solo de altas e incluyen la sobrecarga del temporizador. La cifra de rendimiento es de un solo hilo, sintética y se registró una vez en un portátil Apple M-series; no es una afirmación sobre un cruce submicrosegundo con carga realista. El rendimiento cuenta operaciones mixtas, incluidos intentos de cancelación, no un número equivalente de órdenes nuevas completadas. Estas cifras publicadas no se repitieron en la auditoría de noviembre de 2026. La documentación revisada no aporta el modelo exacto de CPU, la versión del compilador ni los artefactos brutos, por lo que no garantiza rendimiento portable. El código no establece las causas de las muestras de cola.",
       "### Pruebas y límites de la evidencia",
       "El código fijado define **137 casos Google Test en 18 archivos de pruebas**, con 20 nombres distintos de suites Google Test. CI está configurada para pushes a la rama principal y pull requests, con matrices de compilador/build, ASan, UBSan, cppcheck y formato. La auditoría contó declaraciones e inspeccionó la configuración; no ejecutó la suite ni estableció un resultado reciente de CI.",
       "### Fuentes fijadas",
@@ -123,7 +123,7 @@
   "sentinelflow-deep-dive": {
     "title": "Anatomía de un sistema de detección de intrusiones de red",
     "tag": "Seguridad de redes",
-    "takeaway": "Canalización C++17 Capturar → Analizar → Detectar → Alertar que procesa 500,000+ paquetes/s en un benchmark sintético de un solo hilo.",
+    "takeaway": "Canalización C++17 Capturar → Analizar → Detectar → Alertar, construida como proyecto de estudio con limitaciones conocidas; su benchmark cubre solo el análisis de cabeceras.",
     "lines": [
       "## Cuatro etapas con costes distintos",
       "**SentinelFlow** implementa una canalización C++17: **Capturar → Analizar → Detectar → Alertar**. Admite captura libpcap en vivo y pcap sin conexión, siete analizadores, firmas básicas inspiradas en Snort, heurísticas con estado y alertas de consola/CSV.",
@@ -140,7 +140,7 @@
       "- **Indicios de túneles DNS:** colas por origen cuentan nombres de consulta de más de 50 caracteres; se activan con 20 consultas en 60 segundos.",
       "El código limpia los registros antiguos al acceder. Son indicadores heurísticos; su existencia no demuestra tasas de falsos positivos, resistencia a la evasión ni precisión en producción.",
       "### Rendimiento",
-      "SentinelFlow procesa **500,000+ paquetes/s** en un benchmark sintético de un solo hilo.",
+      "El benchmark del repositorio cubre **solo el análisis de cabeceras**: analiza repetidamente un único paquete sintético fijo, así que no dice nada sobre la capacidad de captura, detección o alertas, y aquí no se afirma ninguna cifra de paquetes por segundo. SentinelFlow es un proyecto de estudio y su README enumera limitaciones conocidas.",
       "### Alertas y verificación",
       "La capa de alertas puede enviar eventos estructurados a una consola por colores y a CSV. La exportación facilita análisis posteriores; el repositorio no demuestra una integración SIEM desplegada.",
       "El código define **27 casos Google Test en 10 archivos de pruebas**, para analizadores y detectores seleccionados, reglas, firmas e integración. El changelog de marzo de 2026 comunica un resultado histórico de 27/27. Esta auditoría no repitió las pruebas ni afirma cubrir todo protocolo, detector o camino de entrada malformada.",
@@ -192,25 +192,25 @@
   "kmp-security": {
     "title": "Construir herramientas de seguridad offline-first con KMP",
     "tag": "Kotlin",
-    "takeaway": "Un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform: ML de ensamble más 25 heurísticas con 87% de F1 y menos de 5 ms.",
+    "takeaway": "Un escáner de phishing en QR y URL en Kotlin Multiplatform: 25 heurísticas más un pequeño modelo de puntuación ajustado a mano, con análisis en el dispositivo. La CI mide un 90.7% de F1 sobre las 100 URL escritas por el autor en el repositorio, que no es un conjunto de evaluación reservado.",
     "lines": [
       "## Un núcleo de seguridad, cinco plataformas",
       "**Mehr Guard** busca reducir las divergencias entre plataformas con un núcleo de detección compartido en Kotlin Multiplatform e interfaces para Android, iOS, JVM, JS y WebAssembly. Compartir el código fuente no demuestra por sí solo un comportamiento idéntico en cada compilación; la paridad entre plataformas requiere una comprobación independiente.",
       "### Qué reside en `commonMain`",
       "La lógica de seguridad es independiente de la plataforma y tiene una sola implementación compartida:",
-      "- **Modelo de ensamble**: la regresión logística, el gradient boosting y las reglas de decisión puntúan las características de las URL.",
+      "- **Modelo de puntuación**: un pequeño modelo ajustado a mano (pesos fijados a mano, sin entrenamiento) combina las puntuaciones de las características de las URL con las heurísticas.",
       "- **Motor heurístico**: 25 heurísticas, entre ellas homógrafos y punycode, suplantación de marcas, cadenas de redirección, TLD sospechosos, credenciales incrustadas y direcciones IP usadas como host.",
       "- **Listas de inteligencia de amenazas**: conjuntos permitidos y bloqueados con versiones centralizadas.",
       "Los límites `expect`/`actual` de KMP abarcan los servicios de plataforma, el puente de la cámara QR y la integración de la interfaz. El repositorio declara ~100% de lógica de detección compartida (~52% del código total); las integraciones nativas y las variantes de navegador aún requieren una revisión propia.",
-      "### Sin conexión por diseño",
-      "PhishingEngine puntúa cadenas URL localmente sin exigir una consulta de reputación en la nube. El script de evaluación sin conexión ejecuta comprobaciones unitarias de finalización, determinismo y tiempos. Su código indica expresamente que no bloquean el acceso a la red, por lo que no certifican de manera independiente que cada compilación o interfaz carezca de conexiones salientes.",
+      "### En el dispositivo por diseño",
+      "PhishingEngine puntúa cadenas URL en el dispositivo: las URL escaneadas nunca se envían a ningún sitio y no hace falta una consulta de reputación en la nube. La app de Android sí comprueba si hay actualizaciones de reglas al iniciarse, así que la app no es silenciosa en red. El script de evaluación sin conexión ejecuta comprobaciones unitarias de finalización, determinismo y tiempos. Su código indica expresamente que no bloquean el acceso a la red, por lo que no certifican de manera independiente que cada compilación o interfaz carezca de conexiones salientes.",
       "### Las cifras",
       "| Métrica | Valor |",
-      "| F1 (ML de ensamble más 25 heurísticas) | 87% |",
-      "| Tiempo de análisis | menos de 5 ms |",
-      "| Modo red team | 19 escenarios |",
+      "| F1 (25 heurísticas más puntuación ajustada a mano; CI, 100 URL escritas por el autor) | 90.7% (precisión 84.5%, exhaustividad 98.0%) |",
+      "| Tiempo de análisis | percentil 99 inferior a 50 ms por URL (comprobado en las pruebas) |",
+      "| Modo red team | 18 escenarios |",
       "| Plataformas objetivo | 5 (Android, iOS, JVM, JS, Wasm) |",
-      "El modo red team de 19 escenarios ejercita patrones conocidos de phishing."
+      "Las 100 URL están escritas por el autor y no forman un conjunto de evaluación reservado; se marcan 9 de los 50 sitios legítimos. El modo red team de 18 escenarios ejercita patrones conocidos de phishing."
     ]
   },
   "electron-security": {

@@ -192,7 +192,7 @@ describe("Simurgh evidence walkthrough", () => {
       expect(scope).toContain("Lean 4");
       expect(scope).not.toMatch(/SHA-256|x86_64/);
       const zurvanScope = getDossierScope("project-zurvan", locale);
-      for (const token of ["Rust", "Python", "MCP", "218"])
+      for (const token of ["Rust", "Python", "MCP", "4,109"])
         expect(zurvanScope).toContain(token);
       const pilotScope = getDossierScope("aion", locale);
       for (const token of [
