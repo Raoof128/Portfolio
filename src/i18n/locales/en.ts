@@ -96,7 +96,7 @@ const en = {
     bio_2:
       "Project Simurgh is a host-side agent-authorisation prototype. Its October 2026 study used 24 tasks, two trials, three matched controls and two models: 288 replayed branches. On Llama-3.2-3B, restricted-state trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions and no valid proposal blocked. OpenAI gpt-6-luna’s baseline was already 0/24, so no incremental protection was observed. Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 92 releases. Software DOI: 10.5281/zenodo.21737792; the earlier device-integrity preprint is 10.5281/zenodo.20374849.",
     bio_3:
-      "I also authored The Invisible Window: documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture, with 100% evasion of WebRTC proctoring on every platform tested, including macOS 26. Microsoft MSRC and Apple Product Security both classified the behavior as by design. Aion-BibleQA scores retrieval quality, citation support and false-premise robustness on a 40-question benchmark: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online.",
+      "I also authored The Invisible Window: documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture. Evasion was 100% in every tested lab configuration; on macOS 26 the tests used native capture APIs and did not exercise browser getDisplayMedia or ScreenCaptureKit, no commercial proctoring product was tested, and Linux was not tested. Microsoft MSRC and Apple Product Security both classified the behavior as by design. Aion-BibleQA scores retrieval quality, citation support and false-premise robustness on a 40-question benchmark: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online.",
     stats_projects: "Projects",
     stats_evasion: "Evasion in Tested Lab Configurations",
     stats_vendors: "Coordinated vendor disclosures",
@@ -193,9 +193,9 @@ const en = {
     iw_period: "Feb 2026 – May 2026",
     iw_meta: "IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
-      "Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture: 100% evasion of WebRTC proctoring on every platform tested, including macOS 26.",
+      "Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture: 100% evasion in every tested lab configuration. On macOS 26 the tests used native capture APIs, not browser getDisplayMedia or ScreenCaptureKit; no commercial proctoring product or Linux system was tested.",
     iw_b2:
-      "Disclosed to Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) before publication; both classified the behavior as by design. Proof-of-concept code is withheld on dual-use grounds.",
+      "Disclosed to Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) before publication; both classified the behavior as by design. The full proof-of-concept code is withheld on dual-use grounds; a minimal macOS test fixture is public.",
     aion_title:
       "Aion-BibleQA — Retrieval and Citation Faithfulness in a RAG System (Sole Author)",
     aion_period: "Jun 2026",
@@ -205,15 +205,15 @@ const en = {
     further_title: "Further Preprints and Shipped Security Tooling",
     further_period: "2024 – 2026",
     further_b1:
-      "Banking Shield (DOI 10.5281/zenodo.20675513): machine-checked proofs that privacy-sensitive values never reach AI-generated explanations; five-tester dry run, zero leaks.",
+      "Banking Shield (DOI 10.5281/zenodo.20675513): machine-checked evidence, on a fictional research prototype, about what an AI-style explanation layer did not receive, transmit or claim; formative dry run with five internal testers.",
     further_b2:
       "Simurgh device-integrity proofs (DOI 10.5281/zenodo.20374849): preprint on privacy-preserving device integrity proofs for high-stakes sessions.",
     further_b3:
       "Student-society event pilot (DOI 10.5281/zenodo.20549736): 31 consented sessions; ballot choices excluded from records; HMAC-chained audit logs.",
     further_b4:
-      "Mehr Guard: offline QR and URL phishing scanner in Kotlin Multiplatform; ensemble ML plus 25 heuristics at 87% F1 and under 5 ms, 19-scenario red-team mode.",
+      "Mehr Guard: QR and URL phishing scanner in Kotlin Multiplatform; 25 heuristics plus a small hand-set scoring model, analysed on-device (scanned URLs are never sent anywhere). CI measures 90.7% F1 on the repository's 100 author-written URLs, not a held-out benchmark; 18-scenario red-team mode.",
     further_b5:
-      "Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (500,000+ packets/sec, synthetic single-thread benchmark); Project Zurvan, local-first knowledge engine serving claims and decisions to agents over MCP (218 tests).",
+      "Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (study project with known limitations; its benchmark covers header parsing only); Project Zurvan, local-first knowledge engine serving claims and decisions to agents over MCP (4,109 tests).",
     s06_heading: "Professional Experience",
     alignerr_title: "AI Safety Evaluator (Claude) — Alignerr",
     alignerr_period: "Jan 2026 – Mar 2026",
@@ -225,7 +225,7 @@ const en = {
     syllabus_meta:
       "Macquarie University Incubator startup · Sydney · syllabus-sync.app",
     syllabus_b1:
-      "Led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, tamper-resistant audit logging) of a shared Next.js/TypeScript codebase that converts university syllabi into structured data; 503 tests across 92 files.",
+      "Led the security backend (WebAuthn passkeys, TOTP MFA, Postgres row-level security, append-only audit logging enforced by row-level security) of a shared Next.js/TypeScript codebase for a student platform for academic planning (units, deadlines, calendar, campus map); syllabus parsing is planned and not built; 1,399 tests across 167 files.",
     freelance_title:
       "Security Engineer & Full-Stack Developer — Self-Employed (Freelance)",
     freelance_period: "Jan 2024 – Present",

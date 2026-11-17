@@ -91,7 +91,7 @@ const zh: Dictionary = {
     bio_2:
       "Project Simurgh 是主机侧智能体授权原型。2026年10月研究涵盖24项任务、每项两次试验、三种匹配对照和两个模型，共重放288个分支。Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24，因此未观察到额外保护。经 Ed25519 签名的证据归档可通过一条命令离线重放；39项 Lean 4 证明置于一道门禁之后，只要出现任何未证明的“sorry”占位符，门禁即失败；2026年10月19日冒烟运行通过5,171项测试；92个发布版本。软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本 DOI：10.5281/zenodo.20374849。",
     bio_3:
-      "我还独立撰写了 The Invisible Window：Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素，在所有受测平台（包括 macOS 26）上对 WebRTC 在线监考的规避率均为100%。Microsoft MSRC 和 Apple Product Security 均将该行为归类为设计使然。Aion-BibleQA 在一个40题基准上评分检索质量、引用支持与错误前提鲁棒性：R@5 为0.941，平均引用支持为0.978，零条无支持引用，错误前提拒答6/6。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。",
+      "我还独立撰写了 The Invisible Window：Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素。在所有受测实验室配置中规避率均为100%；在 macOS 26 上，测试使用的是原生捕获 API，未涉及浏览器 getDisplayMedia 或 ScreenCaptureKit，也没有测试任何商业监考产品，Linux 同样未测试。Microsoft MSRC 和 Apple Product Security 均将该行为归类为设计使然。Aion-BibleQA 在一个40题基准上评分检索质量、引用支持与错误前提鲁棒性：R@5 为0.941，平均引用支持为0.978，零条无支持引用，错误前提拒答6/6。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。",
     stats_projects: "项目",
     stats_evasion: "测试实验室配置中的规避率",
     stats_vendors: "协调披露的厂商案例",
@@ -184,9 +184,9 @@ const zh: Dictionary = {
     iw_period: "2026年2月 – 2026年5月",
     iw_meta: "IEEE 格式预印本 v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
-      "发现 Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素：在所有受测平台（包括 macOS 26）上对 WebRTC 监考的规避率均为100%。",
+      "发现 Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素：在所有受测实验室配置中规避率均为100%。在 macOS 26 上，测试使用的是原生捕获 API，而非浏览器 getDisplayMedia 或 ScreenCaptureKit；未测试任何商业监考产品，也未测试 Linux。",
     iw_b2:
-      "在发表前向 Microsoft MSRC（2026年2月）和 Apple Product Security（2026年3月）披露；两者均将该行为归类为设计使然。概念验证代码因存在双重用途风险而不公开。",
+      "在发表前向 Microsoft MSRC（2026年2月）和 Apple Product Security（2026年3月）披露；两者均将该行为归类为设计使然。完整的概念验证代码因存在双重用途风险而不公开；一个最小化的 macOS 测试夹具（test fixture）已公开。",
     aion_title: "Aion-BibleQA — RAG 系统中的检索与引用忠实度（独立作者）",
     aion_period: "2026年6月",
     aion_meta: "预印本 · DOI 10.5281/zenodo.20522874",
@@ -195,15 +195,15 @@ const zh: Dictionary = {
     further_title: "更多预印本与已交付的安全工具",
     further_period: "2024年 – 2026年",
     further_b1:
-      "Banking Shield（DOI 10.5281/zenodo.20675513）：经机器检查的证明，确保隐私敏感值绝不会进入 AI 生成的解释；五名测试者的试运行，零泄漏。",
+      "Banking Shield（DOI 10.5281/zenodo.20675513）：在一个虚构的研究原型上，对类 AI 解释层未接收、未传输、未声称的内容给出经机器检查的证据；与五名内部测试者进行的形成性试运行。",
     further_b2:
       "Simurgh 设备完整性证明（DOI 10.5281/zenodo.20374849）：关于面向高风险会话的隐私保护设备完整性证明的预印本。",
     further_b3:
       "学生社团活动试点（DOI 10.5281/zenodo.20549736）：31次经知情同意的会话；选票选择不进入记录；HMAC 链式审计日志。",
     further_b4:
-      "Mehr Guard：基于 Kotlin Multiplatform 的离线二维码与 URL 钓鱼扫描器；集成机器学习加 25 项启发式规则，F1 为87%，耗时低于5毫秒，另有19个场景的红队模式。",
+      "Mehr Guard：基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器；25 项启发式规则加一个手工设定的小型评分模型，在设备上完成分析（被扫描的 URL 不会发送到任何地方）。CI 在仓库自带的 100 个作者自编 URL 上测得 F1 为90.7%，并非留出的测试基准；另有18个场景的红队模式。",
     further_b5:
-      "系统工作（Rust、C++）：SentinelSSH，一个 Rust MCP 服务器，通过17种类型化工具、不提供 shell，让 AI 智能体对 Linux 主机进行按策略限定的只读检查；SentinelFlow，C++17 入侵检测（每秒处理 500,000+ 个数据包，合成单线程基准测试）；Project Zurvan，本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（218 项测试）。",
+      "系统工作（Rust、C++）：SentinelSSH，一个 Rust MCP 服务器，通过17种类型化工具、不提供 shell，让 AI 智能体对 Linux 主机进行按策略限定的只读检查；SentinelFlow，C++17 入侵检测（学习性质的项目，已知局限已列出；其基准测试仅覆盖报头解析）；Project Zurvan，本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（4,109 项测试）。",
     s06_heading: "职业经历",
     alignerr_title: "AI 安全评估员（Claude）— Alignerr",
     alignerr_period: "2026年1月 – 2026年3月",
@@ -214,7 +214,7 @@ const zh: Dictionary = {
     syllabus_period: "2026年5月 – 至今",
     syllabus_meta: "麦考瑞大学孵化器初创企业 · 悉尼 · syllabus-sync.app",
     syllabus_b1:
-      "主导共享 Next.js/TypeScript 代码库的安全后端（WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全、防篡改审计日志），该代码库将大学课程大纲转换为结构化数据；92个文件共503项测试。",
+      "主导共享 Next.js/TypeScript 代码库的安全后端（WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全、仅追加审计日志，由行级安全强制执行），该代码库用于面向学生的学业规划平台（课程单元、截止日期、日历、校园地图）；课程大纲解析已列入计划，尚未开发；167个文件共1,399项测试。",
     freelance_title: "安全工程师与全栈开发者 — 自雇（自由职业）",
     freelance_period: "2024年1月 – 至今",
     freelance_meta: "悉尼",

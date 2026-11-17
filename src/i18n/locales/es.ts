@@ -98,7 +98,7 @@ const es: Dictionary = {
     bio_2:
       "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos: 288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección adicional. Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. DOI del software: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
     bio_3:
-      "También escribí The Invisible Window: las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla, con evasión del 100% de la supervisión de exámenes por WebRTC en todas las plataformas probadas, incluido macOS 26. Microsoft MSRC y Apple Product Security clasificaron ambos el comportamiento como diseño previsto (by design). Aion-BibleQA puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas en un benchmark de 40 preguntas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. Mi licenciatura en ciberseguridad finalizará, según lo previsto, en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
+      "También escribí The Invisible Window: las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla. La evasión fue del 100% en todas las configuraciones de laboratorio probadas; en macOS 26 las pruebas usaron API de captura nativas y no ejercitaron getDisplayMedia del navegador ni ScreenCaptureKit, no se probó ningún producto comercial de supervisión de exámenes y tampoco se probó Linux. Microsoft MSRC y Apple Product Security clasificaron ambos el comportamiento como diseño previsto (by design). Aion-BibleQA puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas en un benchmark de 40 preguntas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. Mi licenciatura en ciberseguridad finalizará, según lo previsto, en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
     stats_projects: "Proyectos",
     stats_evasion: "Evasión en configuraciones de laboratorio probadas",
     stats_vendors: "Divulgaciones coordinadas a proveedores",
@@ -198,9 +198,9 @@ const es: Dictionary = {
     iw_period: "feb. 2026 – may. 2026",
     iw_meta: "preprint en formato IEEE v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
-      "Descubrí que las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla: evasión del 100% de la supervisión de exámenes por WebRTC en todas las plataformas probadas, incluido macOS 26.",
+      "Descubrí que las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla: evasión del 100% en todas las configuraciones de laboratorio probadas. En macOS 26 las pruebas usaron API de captura nativas, no getDisplayMedia del navegador ni ScreenCaptureKit; no se probó ningún producto comercial de supervisión de exámenes ni Linux.",
     iw_b2:
-      "Notifiqué de forma coordinada a Microsoft MSRC (feb. 2026) y a Apple Product Security (mar. 2026) antes de la publicación; ambos clasificaron el comportamiento como diseño previsto (by design). El código de prueba de concepto se retiene por motivos de doble uso.",
+      "Notifiqué de forma coordinada a Microsoft MSRC (feb. 2026) y a Apple Product Security (mar. 2026) antes de la publicación; ambos clasificaron el comportamiento como diseño previsto (by design). El código completo de la prueba de concepto se retiene por motivos de doble uso; un fixture de pruebas mínimo para macOS es público.",
     aion_title:
       "Aion-BibleQA — Recuperación y fidelidad de citas en un sistema RAG (único autor)",
     aion_period: "jun. 2026",
@@ -210,15 +210,15 @@ const es: Dictionary = {
     further_title: "Otros preprints y herramientas de seguridad entregadas",
     further_period: "2024 – 2026",
     further_b1:
-      "Banking Shield (DOI 10.5281/zenodo.20675513): demostraciones verificadas por máquina de que los valores sensibles para la privacidad nunca llegan a las explicaciones generadas por IA; ensayo con cinco evaluadores, cero filtraciones.",
+      "Banking Shield (DOI 10.5281/zenodo.20675513): evidencia verificada por máquina, sobre un prototipo de investigación ficticio, de lo que una capa de explicación de estilo IA no recibió, no transmitió ni afirmó; ensayo formativo con cinco evaluadores internos.",
     further_b2:
       "Pruebas de integridad de dispositivos de Simurgh (DOI 10.5281/zenodo.20374849): preprint sobre pruebas de integridad de dispositivos que preservan la privacidad para sesiones de alto impacto.",
     further_b3:
       "Piloto de eventos de una asociación estudiantil (DOI 10.5281/zenodo.20549736): 31 sesiones con consentimiento; opciones votadas excluidas de los registros; registros de auditoría encadenados con HMAC.",
     further_b4:
-      "Mehr Guard: escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform; ML de ensamble (ensemble) más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
+      "Mehr Guard: escáner de phishing en QR y URL en Kotlin Multiplatform; 25 heurísticas más un pequeño modelo de puntuación ajustado a mano, con análisis en el dispositivo (las URL escaneadas nunca se envían a ningún sitio). La CI mide un 90.7% de F1 sobre las 100 URL escritas por el autor en el repositorio, que no es un conjunto de evaluación reservado; modo red team de 18 escenarios.",
     further_b5:
-      "Trabajo de sistemas (Rust, C++): SentinelSSH, un servidor MCP en Rust que da a los agentes de IA inspección de solo lectura, limitada por políticas, de anfitriones Linux mediante 17 herramientas tipadas y sin shell; SentinelFlow, detección de intrusiones en C++17 (500,000+ paquetes/s, benchmark sintético de un solo hilo); Project Zurvan, motor de conocimiento local-first (con prioridad local) que sirve afirmaciones y decisiones a agentes mediante MCP (218 pruebas).",
+      "Trabajo de sistemas (Rust, C++): SentinelSSH, un servidor MCP en Rust que da a los agentes de IA inspección de solo lectura, limitada por políticas, de anfitriones Linux mediante 17 herramientas tipadas y sin shell; SentinelFlow, detección de intrusiones en C++17 (proyecto de estudio con limitaciones conocidas; su benchmark cubre solo el análisis de cabeceras); Project Zurvan, motor de conocimiento local-first (con prioridad local) que sirve afirmaciones y decisiones a agentes mediante MCP (4,109 pruebas).",
     s06_heading: "Experiencia profesional",
     alignerr_title: "Evaluador de seguridad de IA (Claude) — Alignerr",
     alignerr_period: "ene. 2026 – mar. 2026",
@@ -230,7 +230,7 @@ const es: Dictionary = {
     syllabus_meta:
       "Startup de la incubadora de Macquarie University · Sídney · syllabus-sync.app",
     syllabus_b1:
-      "Dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría resistente a manipulaciones) de una base de código Next.js/TypeScript compartida que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
+      "Dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría de solo anexado aplicado mediante seguridad a nivel de fila) de una base de código Next.js/TypeScript compartida para una plataforma estudiantil de planificación académica (asignaturas, plazos, calendario, mapa del campus); el análisis de programas de asignaturas está planificado y no se ha construido; 1,399 pruebas en 167 archivos.",
     freelance_title:
       "Ingeniero de seguridad y desarrollador full stack — Autónomo (freelance)",
     freelance_period: "ene. 2024 – actualidad",

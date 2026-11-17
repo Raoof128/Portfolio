@@ -47,10 +47,14 @@ describe("research and qualification integrity", () => {
       .split("2. The Invisible Window:")[1]
       .split("\n")[0];
     expect(invisible).toContain(
-      "100% evasion of WebRTC proctoring on every platform tested, including macOS 26",
+      "100% evasion in every tested lab configuration",
+    );
+    expect(invisible).not.toContain("every platform tested");
+    expect(invisible).toContain(
+      "no commercial proctoring product or Linux system was tested",
     );
     expect(invisible).toContain(
-      "Proof-of-concept code is withheld on dual-use grounds.",
+      "The full proof-of-concept code is withheld on dual-use grounds; a minimal macOS test fixture is public.",
     );
     expect(invisible).toContain("10.5281/zenodo.20376495");
   });
@@ -65,8 +69,11 @@ describe("research and qualification integrity", () => {
     expect(corpus).not.toContain(
       `Repo (private; contact the author to request access): ${projects["project-zurvan"].links.repo}`,
     );
-    expect(corpus).toContain("decisions to agents over MCP (218 tests)");
-    expect(corpus).toContain("503 tests across\n  92 files");
+    expect(corpus).toContain("decisions to agents over MCP (4,109 tests)");
+    expect(corpus).toContain("1,399 tests across 167 files");
+    expect(corpus).toContain("syllabus parsing is planned and not built");
+    expect(corpus).toContain("append-only audit logging");
+    expect(corpus).not.toMatch(/tamper-resistant|converts university syllabi/);
     for (const writeup of writeups.filter((entry) => entry.updatedAt)) {
       expect(corpus).toContain(
         `Published: ${writeup.date} · Updated: ${writeup.updatedAt}`,
@@ -101,13 +108,15 @@ describe("research and qualification integrity", () => {
     }
   });
 
-  it("retains the synthetic parsing scope in both machine-readable summaries", async () => {
+  it("keeps the corrected Mehr Guard, SentinelFlow and Banking Shield scope in both machine-readable summaries", async () => {
     const concise = readFileSync("public/llms.txt", "utf8");
     const corpus = await fullCorpus().text();
     for (const text of [concise, corpus]) {
-      expect(text).toMatch(
-        /500,000\+\s+packets\/sec, synthetic single-thread benchmark/,
-      );
+      expect(text).not.toMatch(/500,000/);
+      expect(text).toMatch(/benchmark\s+covers\s+header\s+parsing\s+only/);
+      expect(text).toContain("90.7% F1");
+      expect(text).toMatch(/18-scenario\s+red-team\s+mode/);
+      expect(text).not.toMatch(/87% F1|19-scenario|ensemble ML|under 5 ms/);
       expect(text).not.toMatch(/28\.4M|3,334|1,343/);
     }
   });

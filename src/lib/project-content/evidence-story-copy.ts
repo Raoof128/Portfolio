@@ -107,7 +107,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "A producer-independent reviewer can replay decisions offline and check evidence completeness without producer access.",
     sourceNote:
-      "Ed25519-signed evidence archives replay offline in one command. The diagram and VCA command describe an earlier frozen stage, not a replay of the October transfer study. Current software DOI: 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849.",
+      "Ed25519-signed evidence archives replay offline in one command. The diagram and VCA command describe an earlier frozen stage, not a replay of the October transfer study. Software archive DOI (v2.54.1, August 2026): 10.5281/zenodo.21737792; earlier device-integrity preprint: 10.5281/zenodo.20374849.",
     repositoryLink: "Current Simurgh repository",
     reproduceLink: "Replay earlier frozen VCA evidence",
   },
@@ -150,7 +150,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "بازبین مستقل از تولیدکننده می‌تواند تصمیم‌ها را آفلاین بازاجرا کند و بدون دسترسی به تولیدکننده، کامل‌بودن شواهد را بسنجد.",
     sourceNote:
-      "بایگانی‌های شواهدِ امضاشده با Ed25519 با یک فرمان به‌صورت آفلاین بازاجرا می‌شوند. نمودار و فرمان VCA مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند، نه بازاجرای پژوهش انتقال اکتبر. DOI نرم‌افزار کنونی: 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849.",
+      "بایگانی‌های شواهدِ امضاشده با Ed25519 با یک فرمان به‌صورت آفلاین بازاجرا می‌شوند. نمودار و فرمان VCA مرحلهٔ تثبیت‌شدهٔ پیشین را توضیح می‌دهند، نه بازاجرای پژوهش انتقال اکتبر. DOI بایگانی نرم‌افزار (v2.54.1، اوت 2026): 10.5281/zenodo.21737792؛ پیش‌چاپ قدیمی یکپارچگی دستگاه: 10.5281/zenodo.20374849.",
     repositoryLink: "مخزن کنونی Simurgh",
     reproduceLink: "بازاجرای شواهد VCA تثبیت‌شدهٔ پیشین",
   },
@@ -192,7 +192,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "يمكن لمراجع مستقل عن الجهة المنتجة إعادة تشغيل القرارات دون اتصال والتحقق من اكتمال الأدلة دون الوصول إلى الجهة المنتجة.",
     sourceNote:
-      "تُعاد أرشيفات الأدلة الموقّعة بـ Ed25519 دون اتصال بأمر واحد. يصف المخطط وأمر VCA مرحلة سابقة مجمّدة، لا إعادة دراسة النقل في أكتوبر. DOI البرنامج الحالي: 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849.",
+      "تُعاد أرشيفات الأدلة الموقّعة بـ Ed25519 دون اتصال بأمر واحد. يصف المخطط وأمر VCA مرحلة سابقة مجمّدة، لا إعادة دراسة النقل في أكتوبر. DOI أرشيف البرنامج (v2.54.1، أغسطس 2026): 10.5281/zenodo.21737792؛ مسودة سلامة الأجهزة السابقة: 10.5281/zenodo.20374849.",
     repositoryLink: "مستودع Simurgh الحالي",
     reproduceLink: "إعادة تشغيل أدلة VCA السابقة المجمّدة",
   },
@@ -229,7 +229,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "独立于生成方的审查者可以离线重放决策，并在不接触生成方的情况下检查证据是否完整。",
     sourceNote:
-      "经 Ed25519 签名的证据归档可通过一条命令离线重放。图示与 VCA 命令描述早期冻结阶段，并非重跑10月迁移研究。当前软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。",
+      "经 Ed25519 签名的证据归档可通过一条命令离线重放。图示与 VCA 命令描述早期冻结阶段，并非重跑10月迁移研究。软件归档 DOI（v2.54.1，2026年八月）：10.5281/zenodo.21737792；早期设备完整性预印本：10.5281/zenodo.20374849。",
     repositoryLink: "当前 Simurgh 仓库",
     reproduceLink: "重放早期冻结的 VCA 证据",
   },
@@ -273,7 +273,7 @@ export const simurghEvidenceStoryCopy: Record<
     verifierDetail:
       "Una persona revisora independiente del productor puede reproducir las decisiones sin conexión y comprobar que la evidencia esté completa sin acceder al productor.",
     sourceNote:
-      "Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando. El esquema y el comando VCA describen una etapa anterior congelada; no repiten el estudio de transferencia de octubre. DOI del software actual: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
+      "Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando. El esquema y el comando VCA describen una etapa anterior congelada; no repiten el estudio de transferencia de octubre. DOI del archivo de software (v2.54.1, agosto de 2026): 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
     repositoryLink: "Repositorio actual de Simurgh",
     reproduceLink: "Repetir las evidencias VCA anteriores congeladas",
   },

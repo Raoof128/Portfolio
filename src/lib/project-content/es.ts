@@ -154,7 +154,7 @@ export const esProjects = {
       "Reduje el éxito de ataque dirigido de un agente Llama-3.3-70B en vivo en AgentDojo de 9/140 a 0/140 con inyecciones preregistradas en la suite workspace (etapa congelada, 2026); la ejecución determinista completa de las cuatro suites registró 0/949 de éxito de ataque con 949/949 de utilidad sin ataque (ambos acotados a experimentos pequeños)",
       "Construí el trabajo para que pueda reproducirse: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. El paquete raíz declara AGPL-3.0-or-later.",
       "Auditoría de 919 de los documentos propios del proyecto y publicación de los 141 hallazgos fechados, incluidas exageraciones de cierres anteriores, en el README.",
-      "El DOI del archivo de software actual 10.5281/zenodo.21737792 se distingue del DOI de la prepublicación original de integridad del dispositivo 10.5281/zenodo.20374849 y de las demás prepublicaciones",
+      "El DOI del archivo de software (v2.54.1, agosto de 2026) 10.5281/zenodo.21737792 se distingue del DOI de la prepublicación original de integridad del dispositivo 10.5281/zenodo.20374849 y de las demás prepublicaciones",
     ],
     stack: [
       "Controles de autorización compuestos y herramientas de reproducción en Python 3.12",
@@ -214,7 +214,7 @@ export const esProjects = {
       "Federa almacenes registrados explícitamente para búsqueda entre proyectos, memoria de decisiones, detección de contradicciones y seguimiento de políticas.",
     ],
     proof: [
-      "Motor de conocimiento que prioriza el almacenamiento local y sirve afirmaciones y decisiones a agentes mediante MCP (218 pruebas)",
+      "Motor de conocimiento que prioriza el almacenamiento local y sirve afirmaciones y decisiones a agentes mediante MCP (4,109 pruebas)",
       "Registro de paridad real Rust/Python del 20 de octubre: 314 casos por protocolo, 312 PASS, 2 divergencias esperadas y 0 FAIL con MCP 2025-11-25 y 2026-07-28; mediciones comunicadas por el repositorio.",
       "Almacén compatible con Obsidian con siete tipos documentados de nodos: afirmaciones, conceptos, entidades, decisiones, sesiones, contradicciones y síntesis.",
       "El flujo paquete de evidencias → informe → revisión → publicación puede ejecutarse localmente; la red usada por la extracción sigue dependiendo del proveedor LLM configurado.",
@@ -235,7 +235,7 @@ export const esProjects = {
       "La recuperación híbrida FTS5 y semántica local, con expansión de vecinos del grafo, reúne contexto con marcas de vigencia del índice y el registro de conocimiento.",
       "El servidor Rust MCP stdio sirve lecturas nativas; las escrituras y la evaluación usan un puente Python, conservando la implementación de referencia y la activación explícita de escritura.",
       "La federación de proyectos permite búsqueda entre almacenes registrados, detección de contradicciones y seguimiento de políticas.",
-      "Sirve afirmaciones y decisiones a agentes mediante MCP; 218 pruebas",
+      "Sirve afirmaciones y decisiones a agentes mediante MCP; 4,109 pruebas",
     ],
     measures: [
       "Los documentos y la recuperación de embeddings locales permanecen en el almacén configurado; la extracción LLM puede usar proveedores locales/simulados u OpenAI/Anthropic configurados, por lo que el procesamiento externo depende del proveedor elegido.",
@@ -287,70 +287,69 @@ export const esProjects = {
   },
   "mehr-guard": {
     description:
-      "Escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform: ML de ensamble más 25 heurísticas con 87% de F1 y menos de 5 ms, modo red team de 19 escenarios.",
+      "Escáner de phishing en QR y URL en Kotlin Multiplatform: 25 heurísticas más un pequeño modelo de puntuación ajustado a mano, con análisis en el dispositivo. La CI mide un 90.7% de F1 sobre las 100 URL escritas por el autor en el repositorio (no es un conjunto de evaluación reservado); modo red team de 18 escenarios.",
     fullDescription:
-      "Mehr Guard es un escáner sin conexión de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas: ML de ensamble más 25 heurísticas con 87% de F1 y menos de 5 ms, con un modo red team de 19 escenarios.",
+      "Mehr Guard es un escáner de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas. Analiza las URL en el dispositivo con 25 heurísticas más un pequeño modelo de puntuación ajustado a mano; las URL escaneadas nunca se envían a ningún sitio, aunque la app de Android comprueba si hay actualizaciones de reglas al iniciarse. La CI mide un 90.7% de F1 (precisión 84.5%, exhaustividad 98.0%) sobre las 100 URL escritas por el autor en el repositorio, que no es un conjunto de evaluación reservado (held-out); se marcan 9 de los 50 sitios legítimos. Incluye un modo red team de 18 escenarios.",
     problem:
       "Los QR son un vector frecuente de phishing, y un escáner que comprueba las URL mediante un servicio en la nube se entera de lo que escanea su usuario. Mehr Guard analiza cada URL en el dispositivo, así que la comprobación no requiere subir nada.",
     solution: [
       "Creé un núcleo local de análisis de URL con Kotlin Multiplatform",
-      "Combiné ML de ensamble (regresión logística, gradient boosting y reglas de decisión) con 25 heurísticas",
+      "Combiné 25 heurísticas con un pequeño modelo de puntuación ajustado a mano (pesos fijados a mano, sin entrenamiento)",
       "Orientado a 5 plataformas (Android, iOS, JVM, JS, Wasm); el repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
-      "El análisis se completa en menos de 5 ms",
+      "Las pruebas exigen un tiempo de análisis en el percentil 99 inferior a 50 ms por URL",
     ],
     proof: [
-      "ML de ensamble más 25 heurísticas con 87% de F1",
-      "Análisis en menos de 5 ms",
-      "Modo red team de 19 escenarios",
+      "La CI mide un 90.7% de F1 (precisión 84.5%, exhaustividad 98.0%) sobre las 100 URL escritas por el autor en el repositorio; no es un conjunto de evaluación reservado (held-out) y se marcan 9 de los 50 sitios legítimos",
+      "Las pruebas exigen un tiempo de análisis en el percentil 99 inferior a 50 ms por URL",
+      "Modo red team de 18 escenarios",
       "./judge/verify_offline.sh ejecuta pruebas unitarias del motor compartido; no constituyen una captura independiente del tráfico de red saliente",
       "El repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
     ],
     features: [
       "5 plataformas de destino (Android, iOS, JVM, JS, Wasm)",
-      "Modelo de ensamble: regresión logística, gradient boosting y reglas de decisión",
+      "Pequeño modelo de puntuación ajustado a mano (pesos fijados a mano, sin entrenamiento)",
       "Detección de suplantación de marcas, ataques homógrafos y redirecciones maliciosas",
       "Motor heurístico (25 heurísticas)",
-      "Modo red team de 19 escenarios",
+      "Modo red team de 18 escenarios",
     ],
     measures: [
       "El análisis local de PhishingEngine está diseñado para no consultar URL en la nube",
-      "ML y puntuación heurística en el dispositivo",
-      "El análisis no requiere subir la URL escaneada",
+      "Puntuación heurística y ajustada a mano en el dispositivo",
+      "El análisis no requiere subir la URL escaneada: las URL escaneadas nunca se envían a ningún sitio. La app de Android comprueba si hay actualizaciones de reglas al iniciarse",
       "Las pruebas unitarias sin conexión comprueban finalización, determinismo y tiempos; no capturan el tráfico de red saliente",
     ],
   },
   "syllabus-sync": {
     description:
-      "Startup de Macquarie University Incubator: una base de código Next.js/TypeScript compartida que convierte programas de asignaturas universitarias en datos estructurados. Raouf es cofundador y dirigió el backend de seguridad; 503 pruebas en 92 archivos.",
+      "Startup de Macquarie University Incubator: una plataforma estudiantil de planificación académica (asignaturas, plazos, calendario, mapa del campus) sobre una base de código Next.js/TypeScript compartida; el análisis de programas de asignaturas está planificado y no se ha construido. Raouf es cofundador y dirigió el backend de seguridad; 1,399 pruebas en 167 archivos.",
     fullDescription:
-      "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University, que abarca planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador de esta startup de Macquarie University Incubator y dirigió el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría resistente a manipulaciones) de su base de código Next.js/TypeScript compartida, que convierte programas de asignaturas universitarias en datos estructurados; 503 pruebas en 92 archivos.",
+      "Syllabus-Sync es una plataforma independiente para la experiencia estudiantil creada inicialmente para estudiantes de Macquarie University, que abarca planificación académica, plazos de evaluación, orientación por el campus, notificaciones y gestión de perfiles. Raouf es cofundador de esta startup de Macquarie University Incubator y dirigió el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría de solo anexado aplicado mediante seguridad a nivel de fila) de su base de código Next.js/TypeScript compartida; 1,399 pruebas en 167 archivos. El análisis de programas de asignaturas está planificado; todavía no existe código para ello.",
     problem:
       "Los estudiantes necesitan un lugar coherente para plazos de evaluación, planificación académica e información del campus, con seguridad de cuentas y límites claros para los datos personales.",
     solution: [
-      "Cofundé la startup y dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría resistente a manipulaciones) de la base de código Next.js/TypeScript compartida",
+      "Cofundé la startup y dirigí el backend de seguridad (passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres, registro de auditoría de solo anexado) de la base de código Next.js/TypeScript compartida",
       "Implementé middleware de rutas protegidas, passkeys, MFA, acceso a datos limitado al usuario y controles de auditoría",
       "Integré planificación, calendarios, orientación por el campus y notificaciones sobre conjuntos de datos académicos configurables",
-      "Convierte programas de asignaturas universitarias en datos estructurados",
+      "El análisis de programas de asignaturas está planificado y no se ha construido; el README indica que todavía no existe código para ello",
     ],
     proof: [
       "Syllabus-Sync es una startup de Macquarie University Incubator, y Raouf es cofundador",
-      "503 pruebas en 92 archivos",
+      "1,399 pruebas en 167 archivos",
       "Desplegado en Cloudflare Workers; la demo pública funciona en syllabus-sync.app",
       "El código del middleware devuelve 503 si no se resuelve la autenticación de una API protegida y 401 para API protegidas sin autenticación",
-      "Raouf dirigió el backend de seguridad: passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres y registro de auditoría resistente a manipulaciones",
+      "Raouf dirigió el backend de seguridad: passkeys WebAuthn, MFA con TOTP, seguridad a nivel de fila de Postgres y registro de auditoría de solo anexado",
       "Las passkeys usan credenciales de clave pública; esto no significa que todos los flujos de autenticación compatibles prescindan de contraseñas",
     ],
     features: [
       "Planificación académica, plazos de evaluación, calendario, orientación por el campus y notificaciones",
-      "Convierte programas de asignaturas universitarias en datos estructurados",
       "Herramientas estudiantiles con múltiples perfiles y conjuntos de datos académicos específicos de cada institución",
-      "503 pruebas en 92 archivos",
+      "1,399 pruebas en 167 archivos",
     ],
     measures: [
       "El middleware protege las rutas de página configuradas y las API no públicas, con excepciones públicas explícitas y rechazo seguro si no se resuelve la autenticación de la API",
       "Row-Level Security de Supabase y acceso a base de datos limitado al usuario",
       "Passkeys WebAuthn/FIDO2 junto con los flujos compatibles de contraseña y MFA",
-      "Validación de esquemas, controles CSRF, registro de auditoría y limitación de frecuencia por ruta",
+      "Validación de esquemas, controles CSRF, registro de auditoría de solo anexado (aplicado mediante seguridad a nivel de fila) y límites de tasa específicos de cada ruta",
       "Escaneo de secretos configurado en CI",
     ],
     stack: [
@@ -446,9 +445,9 @@ export const esProjects = {
   },
   nanomatch: {
     description:
-      "Motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo. El repositorio declara 9.29M operaciones mixtas de alta/cancelación por segundo en un benchmark sintético de un solo hilo en Apple M-series, compilado en Release.",
+      "Motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo. El repositorio declara 9.29M operaciones mixtas por segundo (alrededor del 80% altas) en un benchmark sintético de un solo hilo, registrado una vez en un portátil Apple M-series con compilación Release.",
     fullDescription:
-      "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks sintéticos de rendimiento con operaciones mixtas y latencia de inserción. README declara 9.29M operaciones/s en Apple M-series en modo Release; esa cifra no se volvió a ejecutar para esta página.",
+      "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks sintéticos de rendimiento con operaciones mixtas y latencia de inserción. README declara 9.29M operaciones/s en un portátil Apple M-series en modo Release: una carga sintética de un solo hilo con alrededor del 80% de altas, registrada una vez; esa cifra no se volvió a ejecutar para esta página. El libro de órdenes no usa el asignador de pool independiente, así que el repositorio no afirma un camino crítico sin asignaciones de memoria.",
     problem:
       "Las bolsas cruzan órdenes con márgenes de latencia muy ajustados. NanoMatch es un motor de cruce construido desde cero para estudiar las estructuras de datos y los costes detrás de la prioridad precio-tiempo.",
     solution: [
@@ -458,8 +457,8 @@ export const esProjects = {
       "Añadí múltiples instrumentos con libros de órdenes independientes por símbolo",
     ],
     proof: [
-      "Rendimiento declarado por el repositorio: 9.29M operaciones mixtas de alta/cancelación/s en Apple M-series, Release -O3 -march=native; 5 millones de operaciones sintéticas, semilla fija 42",
-      "El benchmark de latencia de inserción informa p50/p99/p99.9 para add_order; no son medidas de latencia de cancelación",
+      "Rendimiento declarado por el repositorio: 9.29M operaciones mixtas/s (alrededor del 80% altas) en un portátil Apple M-series, Release -O3 -march=native; un solo hilo, 5 millones de operaciones sintéticas, semilla fija 42, registrado una vez",
+      "El benchmark de latencia de inserción informa p50/p99/p99.9 solo para add_order, con la sobrecarga del temporizador incluida (p50 de 84 ns); no son medidas de latencia de cancelación",
       "El código define 137 casos de Google Test en 18 archivos de pruebas; el conjunto de pruebas no se volvió a ejecutar para esta página",
       "La configuración de CI incluye ASan, UBSan, cppcheck y clang-format para envíos a main y pull requests",
     ],
@@ -478,7 +477,7 @@ export const esProjects = {
   },
   sentinelflow: {
     description:
-      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Procesa 500,000+ paquetes/s en un benchmark sintético de un solo hilo.",
+      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Su benchmark cubre solo el análisis de cabeceras. Es un proyecto de estudio con limitaciones conocidas indicadas en su README.",
     fullDescription:
       "SentinelFlow es un sistema de detección de intrusiones de red en tiempo real que captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y exporta alertas a consola y CSV.",
     problem:
@@ -490,7 +489,8 @@ export const esProjects = {
       "Añadí un microbenchmark de un solo hilo del analizador sobre 5 millones de paquetes sintéticos Ethernet/IPv4/TCP SYN-ACK repetidos; excluye captura, detección y alertas",
     ],
     proof: [
-      "500,000+ paquetes/s en un benchmark sintético de un solo hilo",
+      "Su benchmark cubre solo el análisis de cabeceras de un único paquete fijo; no mide captura, detección ni alertas",
+      "Proyecto de estudio: las limitaciones conocidas figuran en el README del repositorio",
       "Cobertura: 7 protocolos en las capas 2-7",
       "El código define 27 casos de Google Test en 10 archivos; el registro de cambios de marzo de 2026 declara un resultado histórico de 27/27",
       "Admite captura en vivo y análisis de archivos pcap",
