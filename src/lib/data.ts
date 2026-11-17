@@ -507,7 +507,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2025",
     description:
-      "QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device. CI measures 90.7% F1 on the repository's 100 author-written URLs (not a held-out benchmark); 18-scenario red-team mode.",
+      "QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device and checked in CI against the repository's 100 author-written URLs (a regression set, not a held-out benchmark); 18-scenario red-team mode.",
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
@@ -539,7 +539,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Mehr Guard is a QR and URL phishing scanner in Kotlin Multiplatform, with native or browser interfaces across 5 targets. It analyses URLs on the device with 25 heuristics plus a small hand-set scoring model; scanned URLs are never sent anywhere, although the Android app checks for rule updates at startup. CI measures 90.7% F1 (precision 84.5%, recall 98.0%) on the repository's 100 author-written URLs, which is not a held-out benchmark; 9 of the 50 legitimate sites are flagged. It has an 18-scenario red-team mode.",
+      "Mehr Guard is a QR and URL phishing scanner in Kotlin Multiplatform, with native or browser interfaces across 5 targets. It analyses URLs on the device with 25 heuristics plus a small hand-set scoring model; scanned URLs are never sent anywhere, although the Android app checks for rule updates at startup. First measured in CI at 90.7% F1 on 100 author-written URLs, with 9 of 50 legitimate sites flagged. A public-suffix bug found through those errors was then fixed and all 100 are now classified as labelled; because the fix was guided by the same URLs, that is a regression check, not an accuracy estimate. There is no held-out benchmark. It has an 18-scenario red-team mode.",
     problem:
       "QR codes are a common phishing vector, and a scanner that checks URLs through a cloud service learns what its user scans. Mehr Guard analyses each URL on the device, so the check needs no upload.",
     solution: [
@@ -549,13 +549,13 @@ export const projects: Record<string, Project> = {
       "Tests assert a 99th-percentile analysis time under 50 ms per URL",
     ],
     proof: [
-      "CI measures 90.7% F1 (precision 84.5%, recall 98.0%) on the repository's 100 author-written URLs; this is not a held-out benchmark, and 9 of the 50 legitimate sites are flagged",
+      "First measured in CI at 90.7% F1 on 100 author-written URLs, with 9 of 50 legitimate sites flagged. A public-suffix bug found through those errors was then fixed and all 100 are now classified as labelled; because the fix was guided by the same URLs, that is a regression check, not an accuracy estimate. There is no held-out benchmark",
       "Tests assert a 99th-percentile analysis time under 50 ms per URL",
       "18-scenario red-team mode",
       "./judge/verify_offline.sh invokes shared-engine unit checks; these tests are not an independent capture of outbound network traffic",
       "The detection logic lives in one shared Kotlin module",
     ],
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-17",
   },
   "syllabus-sync": {
     slug: "syllabus-sync",
@@ -700,7 +700,6 @@ export const projects: Record<string, Project> = {
       "Cyberpunk-styled personal media vault and job tracker with React, Litestar and Supabase. AI-assisted recommendations, persistent chat, configured Fernet encryption for takeaway notes, and backend-issued auth cookies with a refresh flow.",
     tags: ["React", "Python", "Litestar", "Supabase", "AI", "Full-Stack"],
     links: {
-      demo: "https://home-notes-app.uk/",
       repo: "https://github.com/Raoof128/Nexus_Archive",
       caseStudy: "/projects/nexus-archive",
     },
@@ -733,7 +732,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Nexus Archive is a cyberpunk-styled personal media vault and job tracker combining a React frontend, a Litestar API and Supabase-backed identity and persistence. Manage books, movies, anime, job applications, ratings, takeaway notes, persistent chat sessions and AI-assisted recommendations from one dashboard. Takeaway writes require a configured Fernet key, and production cookie, token-lifetime and database controls depend on the documented deployment settings.",
+      "Nexus Archive is a cyberpunk-styled personal media vault and job tracker combining a React frontend, a Litestar API and Supabase-backed identity and persistence. Manage books, movies, anime, job applications, ratings, takeaway notes, persistent chat sessions and AI-assisted recommendations from one dashboard. Takeaway writes require a configured Fernet key, and production cookie, token-lifetime and database controls depend on the documented deployment settings. It is the first version of what became Nexus OS; work on this repository stopped in April 2026, and no demo is hosted for it.",
     problem:
       "Books, films, anime and job applications usually sit in separate trackers. Nexus Archive brings titles, ratings, notes and recommendations into one account with row-level access controls.",
     solution: [
@@ -748,7 +747,7 @@ export const projects: Record<string, Project> = {
       "Locust scenarios exercise authenticated requests to the recommendation endpoint; no measured performance result is claimed",
       "Terraform IaC scaffold for reproducible Supabase + Vercel deployments",
     ],
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-17",
   },
   nanomatch: {
     slug: "nanomatch",
@@ -756,7 +755,7 @@ export const projects: Record<string, Project> = {
     category: "ENGINEERING",
     year: "2026",
     description:
-      "C++20 price-time matching engine with four order types and per-symbol books. The repository reports 9.29M mixed operations per second (about 80% adds) in a single-thread synthetic benchmark, recorded once on an Apple M-series laptop in a Release build.",
+      "C++20 price-time limit order book and matching engine with four order types and per-symbol books; 170 tests including a randomized differential test. Its benchmark reports 7.6 to 8.2 million operations per second on a GitHub-hosted runner and 11.7 million on an Apple M2 (one thread, synthetic load, every cancel hitting a resting order).",
     tags: ["C++20", "CMake", "Google Test", "HFT", "Systems Programming"],
     links: {
       repo: "https://github.com/Raoof128/NanoMatch",
@@ -766,7 +765,7 @@ export const projects: Record<string, Project> = {
       stack: [
         "C++20",
         "CMake 3.20+",
-        "Google Test 1.17",
+        "Google Test",
         "GitHub Actions CI/CD",
         "AddressSanitizer",
         "UBSan",
@@ -774,35 +773,35 @@ export const projects: Record<string, Project> = {
       features: [
         "Price-time priority (FIFO) matching algorithm",
         "4 order types: Limit, Market, IOC, Fill-or-Kill",
-        "Expected O(1) order-ID lookup; cancellation also searches a price-level tree in O(log M), and modification cancels then re-adds",
+        "Expected O(1) order-ID lookup; cancellation also searches a price-level tree in O(log M); a quantity reduction keeps its place in the queue and any other modification re-queues the order",
         "Standalone fixed-capacity pool allocator with a separate allocation benchmark",
       ],
     },
     secure: {
       measures: [
         "AddressSanitizer and UndefinedBehaviorSanitizer in CI",
-        "137 Google Test cases declared across 18 test source files",
+        "170 Google Test cases in 20 test files, including a regression test per defect found in review and a randomized differential test",
         "cppcheck static-analysis job configured for main-branch pushes and pull requests",
         "No external runtime dependencies",
       ],
     },
     fullDescription:
-      "NanoMatch is a C++20 limit order book and matching engine for price-time priority matching. It supports Limit, Market, IOC and FOK orders, independent books per symbol, CSV input/output, and synthetic mixed-operation throughput and insertion-latency benchmarks. The README reports 9.29M operations/s on an Apple M-series laptop in Release mode: a single-thread, synthetic workload of about 80% adds, recorded once; that figure was not rerun for this page. The order book does not use the standalone pool allocator, so the repository does not claim an allocation-free hot path.",
+      "NanoMatch is a C++20 limit order book and matching engine for price-time priority matching. It supports Limit, Market, IOC and FOK orders, independent books per symbol, CSV input/output, and throughput and per-call latency benchmarks (adds that rest, adds that trade, cancels). The README reports 7.6 to 8.2 million operations/s on a GitHub-hosted runner (GCC 15.2) and 11.7 million on an idle Apple M2, one thread, synthetic workload in which every cancel removes a resting order; the book stays shallow in that workload. The order book does not use the standalone pool allocator, so the repository does not claim an allocation-free hot path.",
     problem:
       "Exchanges match orders under tight latency budgets. NanoMatch is a from-scratch matching engine built to study the data structures and costs behind price-time priority.",
     solution: [
       "Implemented price-time priority (FIFO) matching with support for Limit, Market, IOC, and FOK orders",
-      "Implemented expected O(1) order-ID lookup, O(log M) cancellation through the price-level tree, and cancel-and-re-add modification",
+      "Implemented expected O(1) order-ID lookup, O(log M) cancellation through the price-level tree, and modification that keeps time priority for a quantity reduction and re-queues otherwise",
       "Built a standalone fixed-capacity pool allocator and a benchmark comparing it with new/delete",
       "Added multi-instrument support with independent order books per symbol",
     ],
     proof: [
-      "Repository-reported throughput: 9.29M mixed operations/s (about 80% adds) on an Apple M-series laptop, Release -O3 -march=native; single thread, 5M synthetic operations, fixed seed 42, recorded once",
-      "Insertion-latency benchmark reports p50/p99/p99.9 for add_order only, including timer overhead (p50 84 ns); these are not cancellation-latency measurements",
-      "Source defines 137 Google Test cases in 18 test files; the suite was not rerun for this page",
+      "Repository-reported throughput: median 7,575,135 and 8,157,600 ops/s on two GitHub-hosted CI runs (GCC 15.2) and 11,723,239 on an idle Apple M2; Release -O3 -march=native, single thread, 5M synthetic operations, five runs each",
+      "Latency benchmark reports p50/p99/p99.9 per call type; on CI p50 is 120-128 ns for an add that rests, 170-186 ns for an add that trades and 90-99 ns for a cancel, each including about 20 ns of clock overhead",
+      "170 Google Test cases in 20 test files, including a regression test per defect found in review and a randomized differential test; they pass in CI under ASan and UBSan",
       "CI config includes ASan, UBSan, cppcheck and clang-format checks for main-branch pushes and pull requests",
     ],
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-17",
   },
   sentinelflow: {
     slug: "sentinelflow",
@@ -810,7 +809,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description:
-      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. An end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic (libpcap, NIC and disk I/O excluded); 146 tests. Remaining limits are listed in its README.",
+      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. An end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic (libpcap, NIC and disk I/O excluded); 147 tests. Remaining limits are listed in its README.",
     tags: [
       "C++17",
       "libpcap",
@@ -841,13 +840,13 @@ export const projects: Record<string, Project> = {
     secure: {
       measures: [
         "Colour-coded severity-level alerting (LOW → CRITICAL)",
-        "146 tests covering parsers, rules, signature matching, the stateful detectors and their state limits, and the pipeline end to end",
-        "CSV export for forensic analysis and SIEM integration",
+        "147 tests covering parsers, rules, signature matching, the stateful detectors and their state limits, and the pipeline end to end",
+        "CSV alert log",
         "Configurable BPF filters for targeted capture",
       ],
     },
     fullDescription:
-      "SentinelFlow is a real-time network intrusion detection system that captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and exports security alerts to console and CSV formats.",
+      "SentinelFlow is a network intrusion detection system, written as a study project. It captures live network traffic or processes pcap files, dissects protocol headers across multiple OSI layers, identifies known attack signatures and anomalies, and writes alerts to the console and a CSV log.",
     problem:
       "Understanding network intrusion detection requires tracing packet capture, protocol parsing, signature checks and stateful heuristics as separate stages with different performance costs.",
     solution: [
@@ -857,13 +856,13 @@ export const projects: Record<string, Project> = {
       "Added a single-thread parser microbenchmark and an end-to-end pipeline benchmark over synthetic in-memory traffic; libpcap, NIC and disk I/O are excluded",
     ],
     proof: [
-      "An end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic (libpcap, NIC and disk I/O excluded); about 8.3 million on an Apple M2 and 4.3 to 7.8 million on a shared GitHub-hosted runner",
+      "An end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic (libpcap, NIC and disk I/O excluded); 8.1 to 8.3 million on an Apple M2 and 4.3 to 7.8 million on a shared GitHub-hosted runner",
       "Remaining limits are listed in the repository README",
       "Protocol coverage: 7 protocols across Layers 2-7",
-      "146 tests in the repository, including an end-to-end test from raw frames to alerts",
+      "147 tests in the repository, including an end-to-end test from raw frames to alerts; CI also runs the suite and the sample captures under ASan and UBSan",
       "Supports both live capture and pcap file analysis",
     ],
-    updatedAt: "2026-11-09",
+    updatedAt: "2026-11-17",
   },
   ecrsm: {
     slug: "ecrsm",
@@ -871,7 +870,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2025",
     description:
-      "Educational runtime-security prototype containing read-only eBPF tracepoint code, Go metadata heuristics, an SSE-fed React dashboard and Kubernetes deployment templates.",
+      "Educational runtime-security prototype: one read-only eBPF program on the raw sys_enter tracepoint watching six system calls, a Go agent with single-event heuristic rules, an SSE-fed React dashboard and a Helm chart template. The probe-to-alert path is checked on every CI run.",
     tags: ["eBPF", "Go", "React", "Kernel", "Runtime Security"],
     links: {
       repo: "https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor",
@@ -885,37 +884,37 @@ export const projects: Record<string, Project> = {
         "Kubernetes (Helm)",
       ],
       features: [
-        "eBPF tracepoint programs for execve, connect, ptrace, memfd_create and executable mmap",
+        "One eBPF program on the raw sys_enter tracepoint, reporting execve, execveat, connect, ptrace, memfd_create and mmap",
         "Go metadata enrichment and educational reverse-shell, injection-primitive and suspicious-exec heuristics",
         "React dashboard consuming Server-Sent Events at /events",
-        "Helm DaemonSet and dashboard templates for isolated-lab deployment",
+        "Helm chart template (privileged DaemonSet and dashboard Deployment); it renders in CI and has never been installed",
       ],
     },
     secure: {
       measures: [
         "Read-only eBPF collection of process and network metadata",
         "No packet payload capture in the probe; process names and filenames can still contain sensitive metadata",
-        "Deployment template uses privileged mode, hostPID, and BPF/SYS_ADMIN/SYS_PTRACE capabilities; intended for isolated labs",
-        "Local simulation scripts are provided for isolated educational environments; they were not run for this page",
+        "Deployment template runs the agent in privileged mode with hostPID and does not expose the alert stream; intended for isolated labs",
+        "Local simulation scripts make harmless system calls for isolated educational environments; CI runs them in its end-to-end job",
       ],
     },
     fullDescription:
-      "ECRSM is an educational runtime-security prototype with eBPF syscall tracepoint programs, a Go perf-buffer reader and metadata rules, a React dashboard consuming SSE, and Helm deployment templates. It demonstrates the components of kernel-level visibility. End-to-end event capture, detection accuracy, overhead and Kubernetes deployment remain unvalidated.",
+      "ECRSM is an educational runtime-security prototype: an eBPF program on the raw sys_enter tracepoint that reports six system calls, a Go agent that loads it, reads the perf buffer and applies single-event rules, a React dashboard consuming SSE, and a Helm chart template. The probe-to-alert path is checked in CI on every run (x86-64, kernel 7.0, eight checks). Detection accuracy, overhead, arm64 and Kubernetes deployment remain unvalidated.",
     problem:
       "Kernel-level runtime monitoring is difficult to study. ECRSM provides an educational reference for syscall metadata collection, heuristic alerting and dashboard presentation in isolated labs.",
     solution: [
-      "Wrote read-only eBPF tracepoint programs for five syscall event types",
+      "Wrote one read-only eBPF program on the raw sys_enter tracepoint that reports six system calls",
       "Built a Go perf-buffer reader, container-ID lookup, environment-based pod hints and metadata heuristics",
       "Created a React dashboard backed by a Server-Sent Events alert endpoint",
-      "Added local simulation scripts and Helm assets for educational lab use",
+      "Added local simulation scripts, an end-to-end check that CI runs, and a Helm chart template for educational lab use",
     ],
     proof: [
-      "Source defines heuristics for shell connections, injection primitives and suspicious execution paths; detection accuracy is unmeasured here",
-      "Perf-buffer transport code is present; runtime overhead was not benchmarked for this page",
+      "Six single-event rules: reverse_shell (watched ports, IPv4 and IPv6), shell_network_activity, process_injection, ptrace_activity, anonymous_exec_mapping and suspicious_exec; detection accuracy is unmeasured",
+      "Events travel through a perf buffer; runtime overhead was not benchmarked",
       "Container IDs are parsed from /proc cgroups; pod labels are agent environment hints, not verified per-process Kubernetes attribution",
-      "Synthetic local scripts are provided, but no end-to-end detection run was performed for this page",
+      "CI compiles the probe, loads it into the runner's kernel and expects eight alerts from harmless system calls (x86-64, kernel 7.0); the arm64 path is untested",
     ],
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-17",
   },
   simurghforge: {
     slug: "simurghforge",
@@ -968,12 +967,12 @@ export const projects: Record<string, Project> = {
       "Configured a macOS .app target and Low/Medium/High/Lossless preset labels; CLI dependencies remain separate",
     ],
     proof: [
-      "Source covers five file categories. The advertised total is 49 formats, while the current UI input registry has 44 keys",
+      "Source covers five file categories; the README lists 44 input formats (45 file extensions counting GIF, which is output only)",
       "Nine engine variants are defined, with routing based on detected input type and requested output format",
       "Backend enforces at most 50 files and 1–8 concurrent conversion jobs using a Tokio semaphore",
       "Conversion uses local engines and does not require cloud APIs; no network-egress test was performed",
     ],
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-17",
   },
   aion: {
     slug: "aion",
@@ -1291,14 +1290,16 @@ The full 13-page IEEE-format preprint is linked from the project page (DOI **10.
     title:
       "Inside NanoMatch: Matching Data Structures and Synthetic Benchmarks",
     date: "2026-03-21",
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-17",
     tag: "C++",
     takeaway:
-      "Expected O(1) order-ID lookup, O(log M) cancellation, insertion-latency measurements and a standalone pool allocator in a C++20 matching-engine prototype.",
+      "Expected O(1) order-ID lookup, O(log M) cancellation, per-call latency measurements and a standalone pool allocator in a C++20 matching-engine prototype.",
     content: `
 ## Matching orders with explicit data structures
 
 **NanoMatch** is a C++20 price-time matching engine with Limit, Market, Immediate-or-Cancel (IOC) and Fill-or-Kill (FOK) orders. A \`MatchingEngine\` routes requests to independent books per symbol. CSV input/output and deterministic synthetic benchmarks make the implementation inspectable.
+
+> **Updated 17 November 2026.** NanoMatch pull request #3 fixed defects found in review and rewrote the benchmarks. The figures, test counts and source links on this page follow the repository after that change.
 
 ### Three cooperating structures
 
@@ -1308,7 +1309,7 @@ The full 13-page IEEE-format preprint is linked from the project page (DOI **10.
 | Per-level queue | \`std::list<Order>\` | Maintains FIFO time priority and permits constant-time erase by a stored iterator |
 | Order-ID index | \`std::unordered_map<OrderID, OrderLocation>\` | Provides expected O(1) ID lookup and stores the price, side and queue iterator |
 
-**ID lookup and cancellation have different costs.** After the hash lookup, \`cancel_order()\` calls \`BookSide::remove_order()\`, which searches the price-level tree with \`std::map::find\`. Cancellation therefore includes O(log M) work. Modification cancels and re-adds the order, preserving its type and losing its previous time priority.
+**ID lookup and cancellation have different costs.** After the hash lookup, \`cancel_order()\` calls \`BookSide::remove_order()\`, which searches the price-level tree with \`std::map::find\`. Cancellation therefore includes O(log M) work. Reducing an order's quantity keeps its place in the queue; any other modification cancels and re-adds the order, preserving its type and losing its previous time priority.
 
 ### Matching and order types
 
@@ -1322,44 +1323,44 @@ The matching book still stores orders in a default \`std::list\`, with ordinary 
 
 ### Read the benchmark as a workload
 
-The pinned README reports these results for an Apple M-series Release build using \`-O3 -march=native\`:
+The README reports these results for Release builds using \`-O3 -march=native\`, all taken on 17 November 2026:
 
 | Repository-reported metric | Value | Scope |
 |----------------------------|-------|-------|
-| Throughput | 9,290,192 operations/s | 5M pre-generated synthetic operations, roughly 80% adds and 20% cancel attempts, fixed seed 42, single thread |
-| p50 | 84 ns | Separate \`add_order\` latency benchmark: add-only, including timer overhead |
-| p99 | 625 ns | Separate \`add_order\` latency benchmark |
-| p99.9 | 1,250 ns | Separate \`add_order\` latency benchmark |
+| Throughput | 7.6 to 8.2 million operations/s on GitHub-hosted runners (GCC 15.2); 11.7 million on an idle Apple M2 | Median of five runs over 5M synthetic \`add_order\` / \`cancel_order\` calls, about one in five a cancel of an order resting at that moment; single thread |
+| Add that rests | p50 120 ns, p99 220 ns, p99.9 290 ns | Per-call latency benchmark, second CI run; every sample includes about 20 ns of clock reads |
+| Add that trades on arrival | p50 170 ns, p99 441 ns, p99.9 621 ns | Same benchmark and run |
+| Cancel of a resting order | p50 90 ns, p99 160 ns, p99.9 210 ns | Same benchmark and run |
 
-The latency timer surrounds **\`add_order()\`**, not cancellation, so the 84 ns p50 is add-only latency that includes timer overhead. The throughput figure is single-thread, synthetic and was recorded once on an Apple M-series laptop; it is not a claim about sub-microsecond matching under realistic load. Throughput counts mixed operations, including cancel attempts, rather than an equal number of completed new orders. These published figures were not rerun in the November 2026 source audit. Exact CPU model, compiler version and raw run artifacts are not supplied in the inspected benchmark documentation, so they are not portable performance guarantees. The source does not establish causes for the tail samples.
+The benchmarks these figures replace cancelled the same ID over and over, so most of those cancels were lookups that missed and cost almost nothing, and the latency figure covered adds only. The rewritten benchmarks cancel an order that is resting at that moment and time adds that rest, adds that trade and cancels separately. Read the numbers with their limits: the CI runs are on shared virtual machines and the two differ by about 8%; buys and sells are drawn from the same price range, so the book stays shallow and long queues are not exercised; and only the order book is timed, not parsing, validation or I/O. They are not portable performance guarantees and not a claim about matching under realistic load.
 
 ### Tests and evidence boundaries
 
-The pinned source defines **137 Google Test cases across 18 test source files**, with 20 distinct Google Test suite names. CI is configured for main-branch pushes and pull requests, including compiler/build matrices, ASan, UBSan, cppcheck and formatting checks. This audit counted source declarations and inspected configuration; it did not execute the suite or establish a fresh CI pass.
+The repository defines **170 Google Test cases across 20 test files**. They include a regression test for each defect found in review and a randomized differential test that compares the book with a naive reference after every request. CI runs them under AddressSanitizer and UndefinedBehaviorSanitizer, alongside compiler/build matrices, cppcheck and formatting checks. This page reports the repository's counts and its CI configuration; the suite was not rerun separately for it.
 
 ### Pinned sources
 
-- [README and reported measurements](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/README.md)
-- [Cancellation and modification](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/src/book/order_book.cpp)
-- [Price-level tree lookup](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/include/nanomatch/book/book_side.hpp)
-- [Insertion-latency benchmark](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/bench/bench_latency.cpp)
-- [Standalone pool benchmark](https://github.com/Raoof128/NanoMatch/blob/b92593f4593c504029626619bd936a36fc157208/bench/bench_memory.cpp)
+- [README and reported measurements](https://github.com/Raoof128/NanoMatch/blob/779a61529b8865b5f67d3fcf9c018e1770d14b87/README.md)
+- [Cancellation and modification](https://github.com/Raoof128/NanoMatch/blob/779a61529b8865b5f67d3fcf9c018e1770d14b87/src/book/order_book.cpp)
+- [Price-level tree lookup](https://github.com/Raoof128/NanoMatch/blob/779a61529b8865b5f67d3fcf9c018e1770d14b87/include/nanomatch/book/book_side.hpp)
+- [Per-call latency benchmark](https://github.com/Raoof128/NanoMatch/blob/779a61529b8865b5f67d3fcf9c018e1770d14b87/bench/bench_latency.cpp)
+- [Standalone pool benchmark](https://github.com/Raoof128/NanoMatch/blob/779a61529b8865b5f67d3fcf9c018e1770d14b87/bench/bench_memory.cpp)
 `,
   },
   {
     slug: "sentinelflow-deep-dive",
     title: "Anatomy of a Network Intrusion Detection System",
     date: "2026-03-21",
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-17",
     tag: "Network Security",
     takeaway:
-      "A C++17 Capture → Parse → Detect → Alert pipeline with 146 tests; an end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic; remaining limits are listed in its README.",
+      "A C++17 Capture → Parse → Detect → Alert pipeline with 147 tests; an end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic; remaining limits are listed in its README.",
     content: `
 ## Four stages with different costs
 
 **SentinelFlow** implements a C++17 network intrusion detection pipeline: **Capture → Parse → Detect → Alert**. It supports libpcap live capture and offline pcap input, seven protocol parsers, basic Snort-inspired signatures, stateful heuristics, and console/CSV alerts.
 
-At the pinned commit, the repository's throughput measurement covered only part of that pipeline. Its parser benchmark is useful for studying parsing cost; it does not measure live IDS capacity.
+> **Updated 17 November 2026.** SentinelFlow pull requests #4 and #5 wired rule thresholds into the detectors, bounded per-source state, and added an end-to-end benchmark and a sanitizer job; the suite now has 147 tests. This page follows the repository after those changes.
 
 ### Capture and protocol dissection
 
@@ -1375,93 +1376,93 @@ The rule parser accepts a small rule syntax with protocol/address/port fields an
 alert tcp any any -> any 22 (msg:"SSH connection attempt"; sid:1001;)
 \`\`\`
 
-There is an implementation limit: \`SignatureMatcher\` skips rules with threshold or DNS-query-length options. The three stateful detectors are constructed separately with fixed thresholds. Parsing an option is therefore not proof that it configures the associated stateful detector, and the implementation is not a drop-in Snort rule engine.
+The rule language is small. The \`action\` field is ignored, so every matching rule alerts; port ranges, negation and address lists are not supported; and rules with options the parser does not know are rejected. Threshold rules feed the stateful detectors: the SYN-flood threshold and window and the DNS name length come from the rules file, while the port-scan detector always uses its built-in values. The implementation is not a drop-in Snort rule engine.
 
 ### Stateful heuristics
 
-- **Port scans:** per-source/destination records collect distinct destination ports and timestamps; the configured trigger is 15 ports within a 60-second record window.
-- **SYN floods:** per-destination timestamp queues count SYN packets without ACK, triggering at 100 events over 10 seconds.
-- **DNS tunnelling indicators:** per-source queues count query names longer than 50 characters, triggering at 20 such queries over 60 seconds.
+- **Port scans:** distinct destination ports per source within a time window; the trigger is fixed in code at 15 ports in 60 seconds.
+- **SYN floods:** SYN packets without ACK counted over a window; the default rule triggers at 100 in 10 seconds.
+- **DNS tunnelling indicators:** query names longer than the rule's length, 50 characters in the default rules, counted per source over a window.
 
-The code performs lazy cleanup when records are accessed. These are heuristic indicators. Their presence does not establish false-positive rates, resistance to evasion or production detection accuracy.
+Per-source state is bounded: idle records expire with their window, and each detector tracks at most 65,536 sources. When the table is full a heuristic chooses which record to drop, and an attacker who can spoof enough sources can still push a record out. These are heuristic indicators. Their presence does not establish false-positive rates, resistance to evasion or production detection accuracy.
 
 ### Throughput
 
-The repository now also has an end-to-end pipeline benchmark, which reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic that excludes libpcap, NIC and disk I/O; treat it as a yardstick, not a capacity statement. The pinned audit below covers only header parsing, and later fixes (rule thresholds reaching the detectors, bounded per-source state) are not reflected in the limits described above. The repository now has 146 tests and lists its remaining limits in its README.
+An end-to-end pipeline benchmark replays 10,000,000 synthetic Ethernet frames through framing, parsing, the default rules, the three stateful detectors and alert dispatch on one thread. The README reports 8.1 to 8.3 million packets/sec on an idle Apple M2 and 4.3 to 7.8 million across five runs on a shared GitHub-hosted runner. The traffic is built in memory, so libpcap, the network card and disk I/O are excluded; treat it as a yardstick for comparing changes, not a capacity statement. A separate parser benchmark covers header parsing only.
 
 ### Alerts and verification
 
 The alert layer can dispatch structured events to colour-coded console output and CSV logging. CSV export can support later analysis; the repository does not establish a deployed SIEM integration.
 
-The source defines **27 Google Test cases across 10 test files** for selected parsers, detector cases, rule parsing, signature matching and integration. The March 2026 changelog reports a historical 27/27 pass. This source audit did not rerun tests and does not claim complete coverage of every protocol, detector or malformed-input path.
+The repository has **147 tests** covering the parsers, rule parsing and signature matching, the three stateful detectors and their state limits, and the pipeline end to end, from raw Ethernet frames to alerts. CI runs the suite and replays the sample captures under AddressSanitizer and UndefinedBehaviorSanitizer. There is no fuzzing, and the README lists the limits that remain: VLAN tags and IPv6 are not parsed, fragments and TCP streams are not reassembled, and packet timestamps are trusted.
 
 ### Pinned sources
 
-- [README and reported benchmark](https://github.com/Raoof128/SentinelFlow/blob/91e195204505e30008d17a1d0dd6d637a7e3ecf3/README.md)
-- [Exact parser benchmark workload](https://github.com/Raoof128/SentinelFlow/blob/91e195204505e30008d17a1d0dd6d637a7e3ecf3/bench/benchmark_throughput.cpp)
-- [Signature matcher limits](https://github.com/Raoof128/SentinelFlow/blob/91e195204505e30008d17a1d0dd6d637a7e3ecf3/src/detection/signature_matcher.cpp)
-- [Stateful detector configuration](https://github.com/Raoof128/SentinelFlow/blob/91e195204505e30008d17a1d0dd6d637a7e3ecf3/src/detection/detection_engine.cpp)
+- [README and reported benchmarks](https://github.com/Raoof128/SentinelFlow/blob/86932ddb68e668a41c34c518d24e875f5dc5147e/README.md)
+- [End-to-end pipeline benchmark](https://github.com/Raoof128/SentinelFlow/blob/86932ddb68e668a41c34c518d24e875f5dc5147e/bench/benchmark_pipeline.cpp)
+- [Signature matcher](https://github.com/Raoof128/SentinelFlow/blob/86932ddb68e668a41c34c518d24e875f5dc5147e/src/detection/signature_matcher.cpp)
+- [Stateful detector configuration](https://github.com/Raoof128/SentinelFlow/blob/86932ddb68e668a41c34c518d24e875f5dc5147e/src/detection/detection_engine.cpp)
 `,
   },
   {
     slug: "ecrsm-deep-dive",
     title: "Deep Dive: eBPF Runtime Monitoring",
     date: "2026-01-30",
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-17",
     tag: "eBPF",
     takeaway:
-      "An educational eBPF/Go/React monitoring scaffold: perf-buffer event transport, SSE presentation and heuristic rules, with privileged lab templates and an uncompleted attachment path.",
+      "An educational eBPF/Go/React runtime monitor: one sys_enter program watching six system calls, perf-buffer transport, single-event heuristic rules and an SSE dashboard. The probe-to-alert path is checked in CI; accuracy, overhead and Kubernetes deployment are not.",
     content: `
 ## A runtime-security teaching scaffold
 
-**ECRSM** contains read-only eBPF tracepoint program source, a Go perf-buffer reader and rules engine, an SSE-fed React dashboard, local simulation scripts and Helm deployment assets. It is an educational reference, not validated production EDR.
+**ECRSM** contains one read-only eBPF program, a Go agent that loads it, reads the perf buffer and applies rules, an SSE-fed React dashboard, local simulation scripts and a Helm chart template. It is an educational reference, not validated production EDR.
 
-In the pinned source, the Go startup loads a collection specification and obtains the perf-event map, but it contains no tracepoint link/attach calls. End-to-end syscall capture and live detection are therefore not established by the supplied startup path or this source audit.
+> **Updated 17 November 2026.** Pull request #1 in the repository made the agent load and attach the probe, fixed event decoding and added an end-to-end check that CI runs. An earlier version of this page described a startup path that never attached the probe; this page now follows the repository after that change.
 
-### Five tracepoint programs
+### One program, six system calls
 
-| Program | Metadata signal |
+| System call | Metadata signal |
 |---------|-----------------|
-| \`execve\` | Executable filename and process identity |
-| \`connect\` | IPv4 destination address/port and process identity |
-| \`ptrace\` | A ptrace syscall attempt |
+| \`execve\`, \`execveat\` | Executable path and process identity |
+| \`connect\` | Address family, IPv4 or IPv6 destination address and port, and process identity |
+| \`ptrace\` | The request number of every ptrace call |
 | \`memfd_create\` | Anonymous-memory file creation metadata |
-| \`mmap\` with \`PROT_EXEC\` | An executable-memory mapping request |
+| \`mmap\` | Mapping requests, except a read-only executable mapping of a file, which every library load makes |
 
-These events can have legitimate causes. Observing an injection primitive or a shell connection does not by itself prove an attack. Kernel support, tracepoint availability and verifier acceptance must be checked on the target system; the verifier is not a general safety, privacy or detection-accuracy guarantee.
+The probe is one program on the raw \`sys_enter\` tracepoint: it runs at the entry of every system call and returns at once unless the call is one of these six. These events can have legitimate causes, and observing an injection primitive or a shell connection does not by itself prove an attack. The probe sees only a call's arguments at entry, so a refused or failed call is reported like a successful one.
 
-### The intended data path
+### The data path
 
-1. **eBPF source:** collects PID, UID/GID, process name, filename, cgroup ID and selected connection metadata, then calls \`bpf_perf_event_output\` into a perf-event array. This is **perf-buffer transport**, not a BPF ring-buffer implementation. The probe currently sets PPID to zero.
-2. **Go source:** reads perf records, parses container IDs from \`/proc/<pid>/cgroup\`, adds pod hints from the agent's environment/hostname and evaluates heuristic rules. Those hints are not verified per-process Kubernetes attribution or container-image discovery.
-3. **Presentation:** the HTTP agent emits \`text/event-stream\` at \`/events\`; the React client consumes it through \`EventSource\`. The implemented protocol is **Server-Sent Events**, despite older WebSocket wording in parts of the documentation and UI.
+1. **eBPF program:** collects PID, UID/GID, process name, path, cgroup ID and selected connection metadata, then calls \`bpf_perf_event_output\` into a perf-event array. This is **perf-buffer transport**, not a BPF ring-buffer implementation. The probe sets PPID to zero, so there is no process lineage.
+2. **Go agent:** loads the compiled object, attaches the program, reads perf records, parses container IDs from \`/proc/<pid>/cgroup\`, adds pod hints from the agent's environment and evaluates the rules. Those hints are not verified per-process Kubernetes attribution or container-image discovery.
+3. **Presentation:** the agent prints alerts as JSON lines and emits \`text/event-stream\` at \`/events\`; the React client consumes it through \`EventSource\`. The agent listens on the loopback address by default and refuses any other address unless a bearer token is set.
 
-No measured low-overhead claim follows from using perf buffers. Event loss, transport correctness, dashboard rendering and end-to-end latency need runtime evidence.
+No measured low-overhead claim follows from using perf buffers. If the agent reads slower than the kernel writes, events are dropped and the agent logs how many. Overhead and end-to-end latency were not measured.
 
 ### What the rules express
 
-The Go rules flag non-root shell/known-port connection indicators, ptrace/executable-mmap/memfd primitives, and suspicious execution paths. They are broad educational heuristics. The audit did not establish attack detection rates, false-positive rates or resistance to an adversarial workload.
+Six rules each look at one event on its own: \`reverse_shell\` (a connection over IPv4 or IPv6 to a watched port), \`shell_network_activity\`, \`process_injection\`, \`ptrace_activity\`, \`anonymous_exec_mapping\` and \`suspicious_exec\`. They are broad educational heuristics with fixed lists. \`suspicious_exec\` matches a path string in user space and can be walked around with a symbolic link. Attack detection rates, false-positive rates and resistance to an adversarial workload are not established.
 
 ### Read-only collection is not least-privilege deployment
 
 The probe source observes metadata rather than modifying syscall arguments or packet contents. It does not capture packet payloads. Process names and filenames can still contain sensitive information, so “metadata only” is not a guarantee that secrets cannot appear.
 
-The Helm DaemonSet template explicitly sets **\`privileged: true\`**, enables **\`hostPID\`**, and adds **\`BPF\`, \`SYS_ADMIN\` and \`SYS_PTRACE\`** capabilities. It is not a BPF/SYS_ADMIN-only or least-privilege deployment. The repository's security policy limits simulations to isolated educational environments and excludes production use.
+The Helm DaemonSet template sets **\`privileged: true\`** and enables **\`hostPID\`**; a narrower capability set has not been worked out. The chart renders in CI and has never been installed: there is no published image, and the chart does not expose the alert stream. The README says to run the monitor only on a machine you own.
 
-Local reverse-shell and ptrace demonstration scripts are supplied. They were not executed in this audit, and their presence does not establish safe behavior on every host or successful end-to-end detection.
+The demo scripts make refused local connections, one refused ptrace request, one exec from \`/tmp\` and one in-memory run of \`/bin/true\`. CI runs them in its end-to-end job, which loads the probe into the runner's kernel and expects eight alerts with their fields decoded: x86-64, kernel 7.0, eight of eight.
 
 ### What can be claimed
 
-The repository makes the component boundaries visible: probe code, perf reading, enrichment, heuristic decisions, SSE transport and dashboard presentation. It provides a scaffold for studying how those pieces fit together. Live probe attachment, kernel delivery, Kubernetes deployment, performance, privacy and production hardening remain unverified here.
+The repository makes the component boundaries visible: probe code, perf reading, enrichment, heuristic decisions, SSE transport and dashboard presentation. The probe-to-alert path is checked on every CI run on x86-64. Detection accuracy, overhead, the arm64 register offsets, Kubernetes deployment, privacy and production hardening remain unverified.
 
 ### Pinned sources
 
-- [Read-only collector programs](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/ebpf/process_monitor.c)
-- [Go startup and perf reader](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/agent/main.go)
-- [SSE server](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/agent/server.go)
-- [Limited metadata enrichment](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/agent/containers.go)
-- [Privileged Helm template](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/deploy/helm/templates/daemonset.yaml)
-- [Security scope](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/40a88a63d06e0c9c9f286dbaf17a6291f9052ce2/SECURITY.md)
+- [The probe](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/116f303c5b6de03e73f1ec90ada0e9b377a8d7c9/ebpf/process_monitor.c)
+- [Agent loader and perf reader](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/116f303c5b6de03e73f1ec90ada0e9b377a8d7c9/agent/main_linux.go)
+- [SSE server](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/116f303c5b6de03e73f1ec90ada0e9b377a8d7c9/agent/server.go)
+- [Limited metadata enrichment](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/116f303c5b6de03e73f1ec90ada0e9b377a8d7c9/agent/containers.go)
+- [Privileged Helm template](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/116f303c5b6de03e73f1ec90ada0e9b377a8d7c9/deploy/helm/templates/daemonset.yaml)
+- [End-to-end check](https://github.com/Raoof128/eBPF-Cloud-Runtime-Security-Monitor/blob/116f303c5b6de03e73f1ec90ada0e9b377a8d7c9/scripts/e2e_smoke.sh)
 `,
   },
   {
@@ -1471,7 +1472,7 @@ The repository makes the component boundaries visible: probe code, perf reading,
     updatedAt: "2026-11-17",
     tag: "Kotlin",
     takeaway:
-      "A QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device. CI measures 90.7% F1 on the repository's 100 author-written URLs, which is not a held-out benchmark.",
+      "A QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device and checked in CI against the repository's 100 author-written URLs, a regression set and not a held-out benchmark.",
     content: `
 ## One security core, five platforms
 
@@ -1495,12 +1496,12 @@ PhishingEngine scores URL strings on the device: scanned URLs are never sent any
 
 | Metric | Value |
 |--------|-------|
-| F1 (25 heuristics plus hand-set scoring; CI, 100 author-written URLs) | 90.7% (precision 84.5%, recall 98.0%) |
+| Dataset check (CI, 100 author-written URLs) | First measured at 90.7% F1 with 9 of 50 legitimate sites flagged; all 100 classified as labelled after a public-suffix bug found through those errors was fixed |
 | Analysis time | 99th percentile under 50 ms per URL (asserted in tests) |
 | Red-team mode | 18 scenarios |
 | Platform targets | 5 (Android, iOS, JVM, JS, Wasm) |
 
-The 100 URLs are author-written and are not a held-out benchmark; 9 of the 50 legitimate sites are flagged. The 18-scenario red-team mode exercises known phishing patterns.
+The 100 URLs are author-written, and there is no held-out benchmark. Because the bug fix was guided by the same URLs, the current result is a regression check, not an accuracy estimate. The 18-scenario red-team mode exercises known phishing patterns.
     `,
   },
   {

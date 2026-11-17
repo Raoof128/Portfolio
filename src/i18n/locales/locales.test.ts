@@ -221,8 +221,8 @@ describe("translation contracts", () => {
       const resume = dictionaries[locale].resume;
       const facts: Array<[string, string[]]> = [
         [resume.syllabus_b1, ["1,399", "167", "WebAuthn", "TOTP", "Postgres"]],
-        [resume.further_b5, ["4,109", "146", "17", "SentinelSSH"]],
-        [resume.further_b4, ["25", "90.7%", "100", "18"]],
+        [resume.further_b5, ["4,109", "147", "17", "SentinelSSH"]],
+        [resume.further_b4, ["25", "100", "18"]],
         [resume.aion_b1, ["40", "0.941", "0.978", "6/6"]],
         [resume.simurgh_b5, ["9/140", "0/140", "0/949", "949/949"]],
         [resume.simurgh_b6, ["Ed25519", "39", "Lean 4", "5,171"]],

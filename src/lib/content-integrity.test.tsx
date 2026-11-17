@@ -113,7 +113,8 @@ describe("research and qualification integrity", () => {
     const corpus = await fullCorpus().text();
     for (const text of [concise, corpus]) {
       expect(text).not.toMatch(/500,000/);
-      expect(text).toContain("146 tests");
+      expect(text).toContain("147 tests");
+      expect(text).not.toMatch(/9\.29M|146 tests|49-format/);
       expect(text).toMatch(/packets\/sec/);
       expect(text).toContain("90.7% F1");
       expect(text).toMatch(/18-scenario\s+red-team\s+mode/);

@@ -287,9 +287,9 @@ export const zhProjects = {
   },
   "mehr-guard": {
     description:
-      "基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器：25 项启发式规则加一个手工设定的小型评分模型，在设备上完成分析。CI 在仓库自带的 100 个作者自编 URL 上测得 F1 为 90.7%（并非留出的测试基准）；另有 18 个场景的红队模式。",
+      "基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器：25 项启发式规则加一个手工设定的小型评分模型，在设备上完成分析，并在 CI 中用仓库自带的 100 个作者自编 URL 进行检查（这是回归集，并非留出的测试基准）；另有 18 个场景的红队模式。",
     fullDescription:
-      "Mehr Guard 是基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器，在 5 个目标平台上提供原生或浏览器界面。它在设备上用 25 项启发式规则加一个手工设定的小型评分模型分析 URL；被扫描的 URL 不会发送到任何地方，不过 Android 应用在启动时会检查规则更新。CI 在仓库自带的 100 个作者自编 URL 上测得 F1 为 90.7%（精确率 84.5%，召回率 98.0%），这并非留出的测试基准；50 个合法网站中有 9 个被误标。它提供 18 个场景的红队模式。",
+      "Mehr Guard 是基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器，在 5 个目标平台上提供原生或浏览器界面。它在设备上用 25 项启发式规则加一个手工设定的小型评分模型分析 URL；被扫描的 URL 不会发送到任何地方，不过 Android 应用在启动时会检查规则更新。CI 首次测量时，在 100 个作者自编 URL 上的 F1 为 90.7%，50 个合法网站中有 9 个被误标。随后修复了一个通过这些错误发现的公共后缀缺陷，现在 100 个 URL 全部按标注分类；由于修复正是参照这同一批 URL 进行的，这只是回归检查，而不是准确率估计。目前没有留出的测试基准。它提供 18 个场景的红队模式。",
     problem:
       "QR 码是常见的钓鱼入口，而通过云服务检查 URL 的扫描器会知道用户扫描了什么。Mehr Guard 在设备上分析每个 URL，因此检查无需上传。",
     solution: [
@@ -299,7 +299,7 @@ export const zhProjects = {
       "测试断言每个 URL 的分析耗时第 99 百分位低于 50 毫秒",
     ],
     proof: [
-      "CI 在仓库自带的 100 个作者自编 URL 上测得 F1 为 90.7%（精确率 84.5%，召回率 98.0%）；这并非留出的测试基准，50 个合法网站中有 9 个被误标",
+      "CI 首次测量时，在 100 个作者自编 URL 上的 F1 为 90.7%，50 个合法网站中有 9 个被误标。随后修复了一个通过这些错误发现的公共后缀缺陷，现在 100 个 URL 全部按标注分类；由于修复正是参照这同一批 URL 进行的，这只是回归检查，而不是准确率估计。目前没有留出的测试基准",
       "测试断言每个 URL 的分析耗时第 99 百分位低于 50 毫秒",
       "18 个场景的红队模式",
       "./judge/verify_offline.sh 调用共享引擎单元检查；这些测试不是对出站网络流量的独立抓包",
@@ -414,7 +414,7 @@ export const zhProjects = {
     description:
       "采用 React、Litestar 与 Supabase 的赛博朋克风格个人媒体库及求职跟踪器。提供 AI 辅助推荐、持久聊天、需配置的摘要笔记 Fernet 加密，以及 backend 签发的认证 Cookie 和刷新流程。",
     fullDescription:
-      "Nexus Archive 是赛博朋克风格的个人媒体库及求职跟踪器，结合 React frontend、Litestar API 以及 Supabase 支持的身份与持久存储。在同一仪表板管理书籍、电影、动漫、求职申请、评分、摘要笔记、持久聊天会话和 AI 辅助推荐。摘要写入要求已配置的 Fernet 密钥，生产 Cookie、令牌有效期与数据库控制依赖文档中的部署设置。",
+      "Nexus Archive 是赛博朋克风格的个人媒体库及求职跟踪器，结合 React frontend、Litestar API 以及 Supabase 支持的身份与持久存储。在同一仪表板管理书籍、电影、动漫、求职申请、评分、摘要笔记、持久聊天会话和 AI 辅助推荐。摘要写入要求已配置的 Fernet 密钥，生产 Cookie、令牌有效期与数据库控制依赖文档中的部署设置。它是后来发展为 Nexus OS 的项目的第一个版本；该仓库的工作已于 2026 年 4 月停止，也没有为它托管的演示。",
     problem:
       "书籍、电影、动漫和求职申请通常分散在不同的追踪工具里。Nexus Archive 将标题、评分、笔记和推荐汇聚到一个账户，并采用行级访问控制。",
     solution: [
@@ -445,41 +445,41 @@ export const zhProjects = {
   },
   nanomatch: {
     description:
-      "采用价格—时间优先的 C++20 撮合引擎，支持四种订单类型及按交易品种独立的订单簿。仓库报告在 Apple M-series 笔记本、Release 构建的单线程合成基准中，混合操作吞吐为每秒 9.29M 次（约 80% 为新增），仅记录一次。",
+      "采用价格—时间优先的 C++20 限价订单簿与撮合引擎，支持四种订单类型及按交易品种独立的订单簿；共 170 项测试，其中包括一项随机差分测试。其基准报告在 GitHub 托管的运行器上每秒 7.6 至 8.2 百万次操作，在 Apple M2 上为 11.7 百万次（单线程、合成负载，每次撤单都命中一笔挂单）。",
     fullDescription:
-      "NanoMatch 是按价格—时间优先撮合的 C++20 限价订单簿与撮合引擎。它支持 Limit、Market、IOC 和 FOK 订单、按交易品种独立的订单簿、CSV 输入/输出，以及混合操作吞吐和插单延迟的合成基准。README 报告 Apple M-series 笔记本在 Release 模式下达到每秒 9.29M 次操作：单线程合成负载，约 80% 为新增，仅记录一次；本页面未重跑该数据。订单簿并未使用独立的内存池分配器，因此仓库并不声称热路径上没有堆分配。",
+      "NanoMatch 是按价格—时间优先撮合的 C++20 限价订单簿与撮合引擎。它支持 Limit、Market、IOC 和 FOK 订单、按交易品种独立的订单簿、CSV 输入/输出，以及吞吐和逐次调用延迟的基准（挂入订单簿的新增、到达即成交的新增和撤单）。README 报告在 GitHub 托管的运行器（GCC 15.2）上每秒 7.6 至 8.2 百万次操作，在空闲的 Apple M2 上为 11.7 百万次：单线程合成负载，其中每次撤单都移除一笔挂单；在该负载下订单簿保持较浅。订单簿并未使用独立的内存池分配器，因此仓库并不声称热路径上没有堆分配。",
     problem:
       "交易所在严格的延迟预算内撮合订单。NanoMatch 是从零构建的撮合引擎，用于研究价格—时间优先背后的数据结构与开销。",
     solution: [
       "实现价格—时间优先（FIFO）撮合，支持 Limit、Market、IOC 和 FOK 订单",
-      "实现期望 O(1) 的订单 ID 查找、通过价格档位树进行 O(log M) 撤单，以及先撤再加的改单",
+      "实现期望 O(1) 的订单 ID 查找、通过价格档位树进行 O(log M) 撤单，以及减少数量时保留时间优先级、其他情况下重新排队的改单",
       "构建独立的固定容量内存池分配器，并以基准与 new/delete 比较",
       "添加多交易品种支持，每个品种拥有独立订单簿",
     ],
     proof: [
-      "仓库报告的吞吐：Apple M-series 笔记本、Release -O3 -march=native 下每秒 9.29M 次混合操作（约 80% 为新增）；单线程，5M 次合成操作，固定随机种子 42，仅记录一次",
-      "插单延迟基准仅报告 add_order 的 p50/p99/p99.9，且包含计时器开销（p50 为 84 ns）；这些不是撤单延迟测量",
-      "源码在 18 个测试文件中定义 137 个 Google Test 用例；本页面未重跑该测试套件",
+      "仓库报告的吞吐：两次 GitHub 托管的 CI 运行（GCC 15.2）中位数分别为每秒 7,575,135 和 8,157,600 次操作，空闲的 Apple M2 上为 11,723,239 次；Release -O3 -march=native，单线程，5M 次合成操作，各运行五次",
+      "延迟基准按调用类型报告 p50/p99/p99.9；在 CI 上，挂入订单簿的新增 p50 为 120-128 ns，成交的新增为 170-186 ns，撤单为 90-99 ns，各含约 20 ns 的时钟开销",
+      "20 个测试文件中共 170 个 Google Test 用例，包括针对评审中发现的每个缺陷的回归测试和一项随机差分测试；它们在 CI 中于 ASan 和 UBSan 下通过",
       "CI 配置包括针对 main 分支推送和 pull request 的 ASan、UBSan、cppcheck 和 clang-format 检查",
     ],
     features: [
       "价格—时间优先（FIFO）撮合算法",
       "4 种订单类型：Limit、Market、IOC、Fill-or-Kill",
-      "订单 ID 查找的期望复杂度为 O(1)；撤单还需以 O(log M) 搜索价格档位树，改单则先撤单再重新添加",
+      "订单 ID 查找的期望复杂度为 O(1)；撤单还需以 O(log M) 搜索价格档位树；减少数量会保留订单在队列中的位置，其他任何改单都会让订单重新排队",
       "独立的固定容量内存池分配器，另附分配基准",
     ],
     measures: [
       "CI 中的 AddressSanitizer 与 UndefinedBehaviorSanitizer",
-      "18 个测试源文件中声明 137 个 Google Test 用例",
+      "20 个测试文件中共 170 个 Google Test 用例，包括针对评审中发现的每个缺陷的回归测试和一项随机差分测试",
       "为 main 分支推送和 pull request 配置 cppcheck 静态分析作业",
       "无外部运行时依赖",
     ],
   },
   sentinelflow: {
     description:
-      "C++17 网络入侵检测系统，包含 libpcap 抓包、七种协议解析器、受 Snort 启发的规则，以及检测扫描、SYN 洪泛和 DNS 隧道的有状态启发式规则。端到端流水线基准测试报告称，在单线程、合成的内存中流量下每秒处理 4 至 8 百万个数据包（不含 libpcap、网卡和磁盘 I/O）；共 146 项测试。其余局限列于其 README。",
+      "C++17 网络入侵检测系统，包含 libpcap 抓包、七种协议解析器、受 Snort 启发的规则，以及检测扫描、SYN 洪泛和 DNS 隧道的有状态启发式规则。端到端流水线基准测试报告称，在单线程、合成的内存中流量下每秒处理 4 至 8 百万个数据包（不含 libpcap、网卡和磁盘 I/O）；共 147 项测试。其余局限列于其 README。",
     fullDescription:
-      "SentinelFlow 实时网络入侵检测系统可捕获实时流量或处理 pcap 文件，解析多个 OSI 层的协议头，识别已知攻击签名与异常，并将安全告警导出到控制台和 CSV。",
+      "SentinelFlow 是作为学习项目编写的网络入侵检测系统，可捕获实时流量或处理 pcap 文件，解析多个 OSI 层的协议头，识别已知攻击签名与异常，并将告警写入控制台和 CSV 日志。",
     problem:
       "理解网络入侵检测，需要将抓包、协议解析、签名检查与有状态启发式检测视为不同阶段，分别追踪其性能成本。",
     solution: [
@@ -489,10 +489,10 @@ export const zhProjects = {
       "添加单线程解析器微基准，以及基于合成内存流量的端到端流水线基准；不包括 libpcap、网卡和磁盘 I/O",
     ],
     proof: [
-      "端到端流水线基准测试报告称，在单线程、合成的内存中流量下每秒处理 4 至 8 百万个数据包（不含 libpcap、网卡和磁盘 I/O）；Apple M2 上约 8.3 百万，GitHub 共享运行器上为 4.3 至 7.8 百万",
+      "端到端流水线基准测试报告称，在单线程、合成的内存中流量下每秒处理 4 至 8 百万个数据包（不含 libpcap、网卡和磁盘 I/O）；Apple M2 上为 8.1 至 8.3 百万，GitHub 共享运行器上为 4.3 至 7.8 百万",
       "其余局限列于仓库 README",
       "协议覆盖：第 2-7 层的 7 种协议",
-      "仓库中有 146 项测试，包括一项从原始帧到告警的端到端测试",
+      "仓库中有 147 项测试，包括一项从原始帧到告警的端到端测试；CI 还在 ASan 和 UBSan 下运行测试套件和示例抓包",
       "同时支持实时抓包和 pcap 文件分析",
     ],
     stack: [
@@ -511,30 +511,30 @@ export const zhProjects = {
     ],
     measures: [
       "按颜色区分严重级别的告警（LOW → CRITICAL）",
-      "146 项测试，覆盖解析器、规则、签名匹配、有状态检测器及其状态上限，以及端到端流水线",
-      "导出 CSV 以用于取证分析和 SIEM 集成",
+      "147 项测试，覆盖解析器、规则、签名匹配、有状态检测器及其状态上限，以及端到端流水线",
+      "CSV 告警日志",
       "可配置 BPF 过滤器，用于定向抓包",
     ],
   },
   ecrsm: {
     title: "eBPF 云运行时安全监控器",
     description:
-      "教育用途的运行时安全原型，包含只读 eBPF tracepoint 代码、Go 元数据启发式规则、通过 SSE 接收数据的 React 仪表板和 Kubernetes 部署模板。",
+      "教育用途的运行时安全原型：一个挂在原始 sys_enter tracepoint 上、监视六种系统调用的只读 eBPF 程序，一个带单事件启发式规则的 Go 代理，一个通过 SSE 接收数据的 React 仪表板，以及一个 Helm chart 模板。从探针到告警的路径在每次 CI 运行中都会检查。",
     fullDescription:
-      "ECRSM 是教育用途的运行时安全原型，包含 eBPF 系统调用 tracepoint 程序、Go perf-buffer 读取器与元数据规则、接收 SSE 的 React 仪表板及 Helm 部署模板。它展示内核级可观测性的组成部分。端到端事件捕获、检测准确率、开销和 Kubernetes 部署仍未经验证。",
+      "ECRSM 是教育用途的运行时安全原型：一个挂在原始 sys_enter tracepoint 上、上报六种系统调用的 eBPF 程序，一个负责加载它、读取 perf-buffer 并应用单事件规则的 Go 代理，一个接收 SSE 的 React 仪表板，以及一个 Helm chart 模板。从探针到告警的路径在每次 CI 运行中都会检查（x86-64，内核 7.0，八项检查）。检测准确率、开销、arm64 和 Kubernetes 部署仍未经验证。",
     problem:
       "内核级运行时监控难以学习。ECRSM 为隔离实验室中的系统调用元数据收集、启发式告警与仪表板呈现提供教育参考。",
     solution: [
-      "编写面向五种系统调用事件类型的只读 eBPF tracepoint 程序",
+      "编写一个挂在原始 sys_enter tracepoint 上、上报六种系统调用的只读 eBPF 程序",
       "构建 Go perf-buffer 读取器、容器 ID 查找、基于环境的 pod 提示及元数据启发式规则",
       "创建由 Server-Sent Events 告警端点支持的 React 仪表板",
-      "添加用于教育实验室的本地模拟脚本和 Helm 资源",
+      "添加本地模拟脚本、一项由 CI 运行的端到端检查，以及用于教育实验室的 Helm chart 模板",
     ],
     proof: [
-      "源码定义针对 shell 连接、注入原语和可疑执行路径的启发式规则；此处未测量检测准确率",
-      "存在 perf-buffer 传输代码；本页面未对运行时开销进行基准测试",
+      "六条单事件规则：reverse_shell（受监视端口，IPv4 与 IPv6）、shell_network_activity、process_injection、ptrace_activity、anonymous_exec_mapping 和 suspicious_exec；检测准确率未经测量",
+      "事件通过 perf-buffer 传输；未对运行时开销进行基准测试",
       "容器 ID 从 /proc cgroups 中解析；pod 标签是 agent 环境提示，而非经验证的逐进程 Kubernetes 归属",
-      "提供本地合成脚本，但本页面未进行端到端检测运行",
+      "CI 编译探针，将其加载到运行器的内核中，并期望由无害的系统调用产生八条告警（x86-64，内核 7.0）；arm64 路径未经测试",
     ],
     stack: [
       "eBPF (C)",
@@ -543,16 +543,16 @@ export const zhProjects = {
       "Kubernetes（Helm）",
     ],
     features: [
-      "针对 execve、connect、ptrace、memfd_create 和可执行 mmap 的 eBPF tracepoint 程序",
+      "一个挂在原始 sys_enter tracepoint 上的 eBPF 程序，上报 execve、execveat、connect、ptrace、memfd_create 和 mmap",
       "Go 元数据补充，以及教育用途的反向 shell、注入原语与可疑执行启发式规则",
       "React 仪表板在 /events 接收 Server-Sent Events",
-      "用于隔离实验室部署的 Helm DaemonSet 和仪表板模板",
+      "Helm chart 模板（特权 DaemonSet 和仪表板 Deployment）；它在 CI 中渲染，从未被安装过",
     ],
     measures: [
       "通过只读 eBPF 收集进程和网络元数据",
       "探针不捕获数据包载荷；进程名和文件名仍可能包含敏感元数据",
-      "部署模板使用特权模式、hostPID 及 BPF/SYS_ADMIN/SYS_PTRACE 能力；仅面向隔离实验室",
-      "提供用于隔离教育环境的本地模拟脚本；本页面未运行这些脚本",
+      "部署模板以特权模式和 hostPID 运行代理，且不对外暴露告警流；仅面向隔离实验室",
+      "本地模拟脚本为隔离教育环境发起无害的系统调用；CI 在其端到端作业中运行这些脚本",
     ],
   },
   simurghforge: {
@@ -569,7 +569,7 @@ export const zhProjects = {
       "配置 macOS .app 目标及 Low/Medium/High/Lossless 预设标签；CLI 依赖仍需单独安装",
     ],
     proof: [
-      "源码覆盖五类文件。宣传的总数为 49 种格式，而当前 UI 输入注册表有 44 个键",
+      "源码覆盖五类文件；README 列出 44 种输入格式（算上仅用于输出的 GIF，共 45 个文件扩展名）",
       "定义了九种引擎变体，基于检测到的输入类型和请求的输出格式进行路由",
       "backend 使用 Tokio 信号量，限制最多 50 个文件和 1–8 个并发转换作业",
       "转换使用本地引擎且不要求云 API；未进行网络出站测试",

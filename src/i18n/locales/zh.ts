@@ -201,9 +201,9 @@ const zh: Dictionary = {
     further_b3:
       "学生社团活动试点（DOI 10.5281/zenodo.20549736）：31次经知情同意的会话；选票选择不进入记录；HMAC 链式审计日志。",
     further_b4:
-      "Mehr Guard：基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器，在设备上完成分析；25 项启发式规则加一个手工设定的评分模型。CI 在 100 个作者自编 URL 上测得 F1 为90.7%（并非留出的测试基准）；另有18个场景的红队模式。",
+      "Mehr Guard：基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器，在设备上完成分析；25 项启发式规则加一个手工设定的评分模型，并在 CI 中用 100 个作者自编 URL 进行检查（这是回归集，并非留出的测试基准）；另有18个场景的红队模式。",
     further_b5:
-      "系统工作（Rust、C++）：SentinelSSH，一个 Rust MCP 服务器，通过17种类型化工具、不提供 shell，让 AI 智能体对 Linux 主机进行按策略限定的只读检查；SentinelFlow，C++17 入侵检测（端到端每秒 4M+ 个数据包，合成单线程基准测试；146 项测试）；Project Zurvan，本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（4,109 项测试）。",
+      "系统工作（Rust、C++）：SentinelSSH，一个 Rust MCP 服务器，通过17种类型化工具、不提供 shell，让 AI 智能体对 Linux 主机进行按策略限定的只读检查；SentinelFlow，C++17 入侵检测（端到端每秒 4M+ 个数据包，合成单线程基准测试；147 项测试）；Project Zurvan，本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（4,109 项测试）。",
     s06_heading: "职业经历",
     alignerr_title: "AI 安全评估员（Claude）— Alignerr",
     alignerr_period: "2026年1月 – 2026年3月",

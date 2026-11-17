@@ -217,9 +217,9 @@ const es: Dictionary = {
     further_b3:
       "Piloto de eventos de una asociación estudiantil (DOI 10.5281/zenodo.20549736): 31 sesiones con consentimiento; opciones votadas excluidas de los registros; registros de auditoría encadenados con HMAC.",
     further_b4:
-      "Mehr Guard: escáner de phishing en QR y URL en Kotlin Multiplatform con análisis en el dispositivo; 25 heurísticas más un modelo de puntuación ajustado a mano. La CI mide un 90.7% de F1 sobre 100 URL escritas por el autor (no es un conjunto de evaluación reservado); modo red team de 18 escenarios.",
+      "Mehr Guard: escáner de phishing en QR y URL en Kotlin Multiplatform con análisis en el dispositivo; 25 heurísticas más un modelo de puntuación ajustado a mano, comprobado en CI con 100 URL escritas por el autor (un conjunto de regresión, no un conjunto de evaluación reservado); modo red team de 18 escenarios.",
     further_b5:
-      "Trabajo de sistemas (Rust, C++): SentinelSSH, un servidor MCP en Rust que da a los agentes de IA inspección de solo lectura, limitada por políticas, de anfitriones Linux mediante 17 herramientas tipadas y sin shell; SentinelFlow, detección de intrusiones en C++17 (más de 4M paquetes/s de extremo a extremo, benchmark sintético de un solo hilo; 146 pruebas); Project Zurvan, motor de conocimiento local-first (con prioridad local) que sirve afirmaciones y decisiones a agentes mediante MCP (4,109 pruebas).",
+      "Trabajo de sistemas (Rust, C++): SentinelSSH, un servidor MCP en Rust que da a los agentes de IA inspección de solo lectura, limitada por políticas, de anfitriones Linux mediante 17 herramientas tipadas y sin shell; SentinelFlow, detección de intrusiones en C++17 (más de 4M paquetes/s de extremo a extremo, benchmark sintético de un solo hilo; 147 pruebas); Project Zurvan, motor de conocimiento local-first (con prioridad local) que sirve afirmaciones y decisiones a agentes mediante MCP (4,109 pruebas).",
     s06_heading: "Experiencia profesional",
     alignerr_title: "Evaluador de seguridad de IA (Claude) — Alignerr",
     alignerr_period: "ene. 2026 – mar. 2026",
