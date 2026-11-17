@@ -142,7 +142,7 @@ describe("Data Layer", () => {
         "39 Lean 4 proofs",
         "5,171",
         "19 October 2026",
-        "92 releases",
+        "93 releases",
         "919",
         "141",
         "10.5281/zenodo.21737792",

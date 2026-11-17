@@ -17,7 +17,7 @@ export const dossierCopy = {
         "The source repository is public and includes a Rust MCP read server with Python writes/reference fallback. Project Zurvan is a local-first knowledge engine serving claims and decisions to agents over MCP (4,109 tests). Images remain pending-visual stubs, and PDF figures are not automatically transcribed. Local storage does not guarantee offline LLM extraction: external processing depends on the configured provider.",
       "invisible-window-research":
         "The results cover controlled, simulated Windows and macOS configurations as of March 2026. Commercial proctoring products and Linux were not tested. The macOS 26 checks used native capture, not browser getDisplayMedia() or a direct ScreenCaptureKit test; behavioural detection results came from a small sample.",
-      aion: "Aion-BibleQA built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. Chat credentials use server-side secrets, while optional native voice expects a client-provided OpenAI credential outside that isolation boundary.",
+      aion: "Aion-BibleQA built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941 (development set, 40 author-written questions), mean citation support of 0.978, zero unsupported citations (LLM judge) and 6/6 refusal-category questions refused (4 false-premise, 2 adversarial); the benchmark has no held-out split. Chat credentials use server-side secrets, while optional native voice expects a client-provided OpenAI credential outside that isolation boundary.",
     },
   },
   fa: {
@@ -35,7 +35,7 @@ export const dossierCopy = {
         "مخزن کد عمومی است و سرور خواندن MCP با Rust را همراه نوشتن و مرجع جایگزین Python دارد. Project Zurvan موتور دانشِ محلی‌محور است که ادعاها و تصمیم‌ها را از راه MCP در اختیار عامل‌ها می‌گذارد (4,109 آزمون). تصویرها در انتظار بررسی بصری می‌مانند و شکل‌های PDF خودکار رونویسی نمی‌شوند. ذخیرهٔ محلی، استخراج آفلاین LLM را تضمین نمی‌کند؛ پردازش بیرونی به ارائه‌دهندهٔ پیکربندی‌شده بستگی دارد.",
       "invisible-window-research":
         "نتایج به پیکربندی‌های کنترل‌شده و شبیه‌سازی‌شدهٔ Windows و macOS تا مارس ۲۰۲۶ محدودند. محصولات تجاری نظارت و Linux آزموده نشدند. بررسی‌های macOS 26 از ضبط بومی استفاده کردند، نه getDisplayMedia() مرورگر یا آزمون مستقیم ScreenCaptureKit؛ نمونهٔ بررسی تشخیص رفتاری کوچک بود.",
-      aion: "Aion-BibleQA یک محک 40 پرسشی برای کیفیت بازیابی، پشتیبانی ارجاع و پایداری در برابر پیش‌فرض نادرست ساخت و نمره‌گذاری کرد: R@5 برابر 0.941، میانگین پشتیبانی ارجاع 0.978، صفر ارجاع بی‌پشتوانه و 6/6 امتناع در برابر پیش‌فرض نادرست. اعتبارنامه‌های گفت‌وگو در رازهای سمت سرورند، اما صدای بومی اختیاری به اعتبارنامهٔ OpenAI در کلاینت و بیرون از آن مرز جداسازی نیاز دارد.",
+      aion: "Aion-BibleQA یک محک 40 پرسشی برای کیفیت بازیابی، پشتیبانی ارجاع و پایداری در برابر پیش‌فرض نادرست ساخت و نمره‌گذاری کرد: R@5 برابر 0.941 (روی مجموعهٔ توسعه، 40 پرسش نوشتهٔ خود نویسنده)، میانگین پشتیبانی ارجاع 0.978، صفر ارجاع بی‌پشتوانه (به داوری یک مدل زبانی) و امتناع در 6/6 پرسش ردهٔ امتناع (4 پرسش با پیش‌فرض نادرست و 2 پرسش خصمانه)؛ محک مجموعهٔ آزمون جداگانه ندارد. اعتبارنامه‌های گفت‌وگو در رازهای سمت سرورند، اما صدای بومی اختیاری به اعتبارنامهٔ OpenAI در کلاینت و بیرون از آن مرز جداسازی نیاز دارد.",
     },
   },
   ar: {
@@ -53,7 +53,7 @@ export const dossierCopy = {
         "مستودع المصدر عام، ويضم خادم قراءة MCP بلغة Rust مع كتابة ومرجع بديل بلغة Python. Project Zurvan محرك معرفة محلي أولًا يقدّم الادعاءات والقرارات للوكلاء عبر MCP (4,109 اختبارًا). تبقى الصور معلّقة للفحص البصري ولا تُنسخ أشكال PDF آليًا. لا يضمن التخزين المحلي استخراج LLM دون اتصال؛ فالمعالجة الخارجية تعتمد على المزوّد المضبوط.",
       "invisible-window-research":
         "تغطي النتائج إعدادات Windows وmacOS مضبوطة ومحاكاة حتى مارس ٢٠٢٦. لم تُختبر منتجات المراقبة التجارية أو Linux. استخدمت فحوص macOS 26 التقاطًا أصليًا، وليس getDisplayMedia() في المتصفح أو اختبارًا مباشرًا لـScreenCaptureKit؛ وكانت عينة كشف السلوك صغيرة.",
-      aion: "بنى Aion-BibleQA معيارًا من 40 سؤالًا وقيّمه لجودة الاسترجاع ودعم الاستشهادات والصمود أمام المقدمات الخاطئة: R@5 بقيمة 0.941، ومتوسط دعم الاستشهاد 0.978، وصفر استشهادات غير مدعومة، و6/6 حالات رفض للمقدمات الخاطئة. تستخدم بيانات اعتماد المحادثة أسرار الخادم، بينما يتطلب الصوت الأصلي الاختياري بيانات اعتماد OpenAI لدى العميل خارج حد العزل هذا.",
+      aion: "بنى Aion-BibleQA معيارًا من 40 سؤالًا وقيّمه لجودة الاسترجاع ودعم الاستشهادات والصمود أمام المقدمات الخاطئة: R@5 بقيمة 0.941 (على مجموعة التطوير، 40 سؤالًا كتبها المؤلف)، ومتوسط دعم الاستشهاد 0.978، وصفر استشهادات غير مدعومة (بتحكيم نموذج لغوي)، ورفض 6/6 من أسئلة فئة الرفض (4 بمقدمات خاطئة و2 عدائيان)؛ ولا يتضمن المعيار قسمًا محجوزًا للاختبار. تستخدم بيانات اعتماد المحادثة أسرار الخادم، بينما يتطلب الصوت الأصلي الاختياري بيانات اعتماد OpenAI لدى العميل خارج حد العزل هذا.",
     },
   },
   es: {
@@ -71,7 +71,7 @@ export const dossierCopy = {
         "El repositorio es público e incluye un servidor MCP de lectura en Rust con escrituras y referencia alternativa en Python. Project Zurvan es un motor de conocimiento local que sirve afirmaciones y decisiones a agentes mediante MCP (4,109 tests). Las imágenes quedan pendientes de revisión visual y las figuras PDF no se transcriben automáticamente. El almacenamiento local no garantiza extracción LLM sin conexión: el procesamiento externo depende del proveedor configurado.",
       "invisible-window-research":
         "Los resultados cubren configuraciones controladas y simuladas de Windows y macOS hasta marzo de 2026. No se probaron productos comerciales de supervisión ni Linux. Las pruebas de macOS 26 usaron captura nativa, no getDisplayMedia() del navegador ni una prueba directa de ScreenCaptureKit; la muestra de detección conductual fue pequeña.",
-      aion: "Aion-BibleQA construyó y puntuó un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. Las credenciales del chat usan secretos del servidor; la voz nativa opcional necesita una credencial OpenAI del cliente, fuera de ese límite de aislamiento.",
+      aion: "Aion-BibleQA construyó y puntuó un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941 (conjunto de desarrollo, 40 preguntas escritas por el autor), respaldo medio de citas de 0.978, cero citas sin respaldo (según un juez LLM) y rechazo de 6/6 preguntas de la categoría de rechazo (4 con premisas falsas, 2 adversarias); el benchmark no tiene una partición reservada. Las credenciales del chat usan secretos del servidor; la voz nativa opcional necesita una credencial OpenAI del cliente, fuera de ese límite de aislamiento.",
     },
   },
   zh: {
@@ -89,7 +89,7 @@ export const dossierCopy = {
         "源仓库已公开，包含 Rust MCP 读取服务器与 Python 写入及参考后备实现。Project Zurvan 是本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（4,109 项测试）。图像保持待视觉处理占位状态，PDF 图表不会自动转录。本地存储不保证 LLM 提取完全离线；外部处理取决于所配置的提供方。",
       "invisible-window-research":
         "结果限于截至 2026 年 3 月的受控、模拟 Windows 与 macOS 配置，未测试商业监考产品或 Linux。macOS 26 使用原生捕获，而非浏览器 getDisplayMedia() 或直接 ScreenCaptureKit 测试；行为检测样本较小。",
-      aion: "Aion-BibleQA 构建并评分了一个 40 题基准，衡量检索质量、引用支持与错误前提鲁棒性：R@5 为 0.941，平均引用支持为 0.978，零条无支持引用，错误前提拒答 6/6。聊天凭证使用服务器秘密，选配原生语音则需要客户端提供 OpenAI 凭证，处于该隔离边界之外。",
+      aion: "Aion-BibleQA 构建并评分了一个 40 题基准，衡量检索质量、引用支持与错误前提鲁棒性：R@5 为 0.941（开发集，40 道作者自拟问题），平均引用支持为 0.978，零条无支持引用（由 LLM 评审打分），拒答类问题 6/6 全部拒答（4 道错误前提、2 道对抗性）；该基准没有留出的测试集。聊天凭证使用服务器秘密，选配原生语音则需要客户端提供 OpenAI 凭证，处于该隔离边界之外。",
     },
   },
 } satisfies Record<

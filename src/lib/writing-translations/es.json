@@ -25,7 +25,7 @@
       "Otra etapa congelada de 2026 redujo el éxito de ataque dirigido de un agente **Llama-3.3-70B** en vivo en AgentDojo de **9/140 a 0/140** con inyecciones preregistradas en la suite workspace. La ejecución determinista completa de las cuatro suites registró **0/949** de éxito de ataque con **949/949 de utilidad sin ataque**. Ambos son experimentos pequeños acotados, distintos del estudio de transferencia de octubre.",
       "### Qué puede inspeccionarse",
       "El trabajo está construido para que pueda reproducirse: los **archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando**; **39 demostraciones en Lean 4** están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; **5,171 pruebas** superadas en la ejecución de humo del 19 de octubre de 2026.",
-      "La implementación actual incluye controles Python y un explorador de evidencia React con una CLI JSON compartida. El proyecto tiene **92 versiones**.",
+      "La implementación actual incluye controles Python y un explorador de evidencia React con una CLI JSON compartida. El proyecto tiene **93 versiones**.",
       "El autor auditó **919 de los documentos propios del proyecto** y publicó **los 141 hallazgos fechados**, incluidas exageraciones de cierres anteriores, en el README. Forma parte de la trazabilidad, no de una afirmación de ausencia de defectos.",
       "### Fuentes y límites",
       "El DOI del archivo de software (v2.54.1, agosto de 2026) es **10.5281/zenodo.21737792**. El preprint anterior de integridad del dispositivo tiene otro DOI, **10.5281/zenodo.20374849**; documenta la investigación original para sesiones de alto impacto, no el estudio actual del software. El paquete raíz declara **AGPL-3.0-or-later**.",
@@ -81,7 +81,7 @@
       "Ambos proveedores clasificaron el comportamiento como diseño previsto (by design): Apple como no problema de seguridad de Apple, Microsoft como no vulnerabilidad de seguridad. La investigación presenta un fallo posterior de fidelidad visual, no un día cero del sistema operativo.",
       "## Conclusión",
       "Las rutas de captura probadas en Windows y macOS pueden omitir una ventana visible para el usuario, sin privilegios elevados ni rastros observados en la captura. Esto revela una discrepancia entre la protección de contenido y la suposición de que los píxeles capturados representan todo el monitor físico. El estudio establece esa brecha dentro de su alcance de laboratorio; no demuestra que pueda eludirse cualquier producto comercial de supervisión ni cualquier API de captura.",
-      "El preprint completo de 13 páginas en formato IEEE está enlazado en la página del proyecto (DOI **10.5281/zenodo.20376495**, CC BY 4.0). El código de prueba de concepto se retiene por motivos de doble uso. Los ejemplos de API siguen siendo ilustraciones, no pruebas ejecutadas de nuevo."
+      "El preprint completo de 13 páginas en formato IEEE está enlazado en la página del proyecto (DOI **10.5281/zenodo.20376495**, CC BY 4.0). El código completo de la prueba de concepto se retiene por motivos de doble uso; un fixture de prueba mínimo para macOS es público en el repositorio Project-Simurgh. Los ejemplos de API siguen siendo ilustraciones, no pruebas ejecutadas de nuevo."
     ]
   },
   "nanomatch-deep-dive": {
@@ -201,7 +201,7 @@
       "- **Modelo de puntuación**: un pequeño modelo ajustado a mano (pesos fijados a mano, sin entrenamiento) combina las puntuaciones de las características de las URL con las heurísticas.",
       "- **Motor heurístico**: 25 heurísticas, entre ellas homógrafos y punycode, suplantación de marcas, cadenas de redirección, TLD sospechosos, credenciales incrustadas y direcciones IP usadas como host.",
       "- **Listas de inteligencia de amenazas**: conjuntos permitidos y bloqueados con versiones centralizadas.",
-      "Los límites `expect`/`actual` de KMP abarcan los servicios de plataforma, el puente de la cámara QR y la integración de la interfaz. El repositorio declara ~100% de lógica de detección compartida (~52% del código total); las integraciones nativas y las variantes de navegador aún requieren una revisión propia.",
+      "Los límites `expect`/`actual` de KMP abarcan los servicios de plataforma, el puente de la cámara QR y la integración de la interfaz. La lógica de detección está en un único módulo compartido; las integraciones nativas y las variantes de navegador aún requieren una revisión propia.",
       "### En el dispositivo por diseño",
       "PhishingEngine puntúa cadenas URL en el dispositivo: las URL escaneadas nunca se envían a ningún sitio y no hace falta una consulta de reputación en la nube. La app de Android sí comprueba si hay actualizaciones de reglas al iniciarse, así que la app no es silenciosa en red. El script de evaluación sin conexión ejecuta comprobaciones unitarias de finalización, determinismo y tiempos. Su código indica expresamente que no bloquean el acceso a la red, por lo que no certifican de manera independiente que cada compilación o interfaz carezca de conexiones salientes.",
       "### Las cifras",

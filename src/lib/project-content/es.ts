@@ -118,7 +118,7 @@ export const esProjects = {
       "Notificación a Microsoft MSRC en febrero de 2026; en abril de 2026 se clasificó como diseño previsto (by design), no como vulnerabilidad de seguridad.",
       "Notificación a Apple Product Security en marzo de 2026; ese mes se clasificó como diseño previsto (by design), no como problema de seguridad.",
       "Publicación tras las respuestas de los proveedores en mayo de 2026.",
-      "El código de prueba de concepto se retiene por motivos de doble uso.",
+      "El código completo de la prueba de concepto se retiene por motivos de doble uso; un fixture de prueba mínimo para macOS es público en el repositorio Project-Simurgh.",
       "Solo APIs documentadas de usuario, sin explotación del kernel ni elevación de privilegios.",
       "Conforme a los códigos éticos de ACM e IEEE y las directrices de divulgación coordinada de CISA.",
     ],
@@ -152,7 +152,7 @@ export const esProjects = {
       "Defecto de integración de OpenAI Responses API: un error de ubicación del rol provocó 8/8 rechazos de flujos. Se conservaron las trazas originales; una corrección congelada del rol developer completó 2/3 flujos autorizados y rechazó 5/5 restringidos, con un rechazo aún abierto",
       "Etapa anterior congelada del clasificador (2026): Llama Guard 4 12B real sobre 180 casos; la evidencia de contención cubrió los 138/138 casos maliciosos omitidos, incluidos 120 de inyección en etapas posteriores del flujo fuera de la visión de un clasificador de entrada. Es una afirmación de cobertura, no un ranking de clasificadores",
       "Reduje el éxito de ataque dirigido de un agente Llama-3.3-70B en vivo en AgentDojo de 9/140 a 0/140 con inyecciones preregistradas en la suite workspace (etapa congelada, 2026); la ejecución determinista completa de las cuatro suites registró 0/949 de éxito de ataque con 949/949 de utilidad sin ataque (ambos acotados a experimentos pequeños)",
-      "Construí el trabajo para que pueda reproducirse: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. El paquete raíz declara AGPL-3.0-or-later.",
+      "Construí el trabajo para que pueda reproducirse: los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 93 versiones. El paquete raíz declara AGPL-3.0-or-later.",
       "Auditoría de 919 de los documentos propios del proyecto y publicación de los 141 hallazgos fechados, incluidas exageraciones de cierres anteriores, en el README.",
       "El DOI del archivo de software (v2.54.1, agosto de 2026) 10.5281/zenodo.21737792 se distingue del DOI de la prepublicación original de integridad del dispositivo 10.5281/zenodo.20374849 y de las demás prepublicaciones",
     ],
@@ -295,7 +295,7 @@ export const esProjects = {
     solution: [
       "Creé un núcleo local de análisis de URL con Kotlin Multiplatform",
       "Combiné 25 heurísticas con un pequeño modelo de puntuación ajustado a mano (pesos fijados a mano, sin entrenamiento)",
-      "Orientado a 5 plataformas (Android, iOS, JVM, JS, Wasm); el repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
+      "Orientado a 5 plataformas (Android, iOS, JVM, JS, Wasm); la lógica de detección está en un único módulo Kotlin compartido",
       "Las pruebas exigen un tiempo de análisis en el percentil 99 inferior a 50 ms por URL",
     ],
     proof: [
@@ -303,7 +303,7 @@ export const esProjects = {
       "Las pruebas exigen un tiempo de análisis en el percentil 99 inferior a 50 ms por URL",
       "Modo red team de 18 escenarios",
       "./judge/verify_offline.sh ejecuta pruebas unitarias del motor compartido; no constituyen una captura independiente del tráfico de red saliente",
-      "El repositorio declara ~100% de lógica de detección compartida (~52% del código total)",
+      "La lógica de detección está en un único módulo Kotlin compartido",
     ],
     features: [
       "5 plataformas de destino (Android, iOS, JVM, JS, Wasm)",
@@ -598,7 +598,7 @@ export const esProjects = {
     description:
       "Preguntas y respuestas bíblicas con reconocimiento de referencias, búsqueda directa de versículos/capítulos, recuperación semántica con palabras clave + pgvector y streaming en tiempo real de Gemini 3.1 Flash Lite. Aplicación móvil React Native/Expo y envoltorio de escritorio Tauri v2.",
     fullDescription:
-      "Aion es un acompañante bíblico con recuperación que reconoce referencias: consulta directa de versículos/capítulos, filtrado por palabras clave y búsqueda semántica pgvector aportan contexto, y Gemini 3.1 Flash Lite transmite las respuestas mediante Supabase Edge Functions. Incluye tarjetas de versículos con atribución, cliente móvil React Native/Expo y envoltorio de escritorio Tauri v2. Su benchmark de 40 preguntas puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. La voz nativa opcional tiene una limitación separada de credenciales del cliente.",
+      "Aion es un acompañante bíblico con recuperación que reconoce referencias: consulta directa de versículos/capítulos, filtrado por palabras clave y búsqueda semántica pgvector aportan contexto, y Gemini 3.1 Flash Lite transmite las respuestas mediante Supabase Edge Functions. Incluye tarjetas de versículos con atribución, cliente móvil React Native/Expo y envoltorio de escritorio Tauri v2. Su benchmark de 40 preguntas puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas: R@5 de 0.941 (conjunto de desarrollo, 40 preguntas escritas por el autor), respaldo medio de citas de 0.978, cero citas sin respaldo (según un juez LLM) y rechazo de 6/6 preguntas de la categoría de rechazo (4 con premisas falsas, 2 adversarias); el benchmark no tiene una partición reservada. La voz nativa opcional tiene una limitación separada de credenciales del cliente.",
     problem:
       "La búsqueda por palabras clave en las Escrituras no encuentra preguntas formuladas con otras palabras, y un chatbot genérico puede citar mal o inventar versículos. Aion recupera primero los pasajes relevantes y responde con citas que el lector puede comprobar.",
     solution: [
@@ -608,7 +608,7 @@ export const esProjects = {
       "Añadí soporte multiplataforma: React Native para móvil + Tauri v2 para escritorio nativo",
     ],
     proof: [
-      "Construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas",
+      "Construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941 (conjunto de desarrollo, 40 preguntas escritas por el autor), respaldo medio de citas de 0.978, cero citas sin respaldo (según un juez LLM) y rechazo de 6/6 preguntas de la categoría de rechazo (4 con premisas falsas, 2 adversarias); el benchmark no tiene una partición reservada",
       "Limitación por IP (ráfaga de 5/min, 30/3 h, 200/día) con denegación por defecto",
       "La caché de respuestas por coincidencia exacta evita llamadas LLM repetidas para consultas idénticas",
       "Autenticación anónima sin registro; Supabase RLS se aplica a todas las tablas",
@@ -632,7 +632,7 @@ export const esProjects = {
         label: "Prepublicación",
         status: "Prepublicación de benchmark piloto",
         description:
-          "Prepublicación de 8 páginas: construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas.",
+          "Prepublicación de 8 páginas: construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941 (conjunto de desarrollo, 40 preguntas escritas por el autor), respaldo medio de citas de 0.978, cero citas sin respaldo (según un juez LLM) y rechazo de 6/6 preguntas de la categoría de rechazo (4 con premisas falsas, 2 adversarias); el benchmark no tiene una partición reservada.",
       },
     ],
     stack: [
