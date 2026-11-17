@@ -810,7 +810,7 @@ export const projects: Record<string, Project> = {
     category: "DEFENSIVE",
     year: "2026",
     description:
-      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. Its benchmark covers header parsing only. A study project with known limitations listed in its README.",
+      "C++17 network intrusion detection system with libpcap capture, seven protocol parsers, Snort-inspired rules and stateful scan, SYN-flood and DNS-tunnelling heuristics. An end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic (libpcap, NIC and disk I/O excluded); 146 tests. Remaining limits are listed in its README.",
     tags: [
       "C++17",
       "libpcap",
@@ -841,7 +841,7 @@ export const projects: Record<string, Project> = {
     secure: {
       measures: [
         "Colour-coded severity-level alerting (LOW → CRITICAL)",
-        "27 Google Test cases declared across 10 parser, detector, rule and integration test files",
+        "146 tests covering parsers, rules, signature matching, the stateful detectors and their state limits, and the pipeline end to end",
         "CSV export for forensic analysis and SIEM integration",
         "Configurable BPF filters for targeted capture",
       ],
@@ -854,13 +854,13 @@ export const projects: Record<string, Project> = {
       "Implemented layered protocol dissection covering Ethernet, IPv4, TCP, UDP, ICMP, DNS, and ARP",
       "Built a Snort-inspired configurable rule engine for flexible signature matching",
       "Added stateful threat detection for port scans, SYN floods, and DNS tunnelling",
-      "Added a single-thread parser microbenchmark over 5M repeated synthetic Ethernet/IPv4/TCP SYN-ACK packets; capture, detection and alerting are excluded",
+      "Added a single-thread parser microbenchmark and an end-to-end pipeline benchmark over synthetic in-memory traffic; libpcap, NIC and disk I/O are excluded",
     ],
     proof: [
-      "Its benchmark covers header parsing of one fixed packet only; it does not measure capture, detection or alerting",
-      "A study project: known limitations are listed in the repository README",
+      "An end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic (libpcap, NIC and disk I/O excluded); about 8.3 million on an Apple M2 and 4.3 to 7.8 million on a shared GitHub-hosted runner",
+      "Remaining limits are listed in the repository README",
       "Protocol coverage: 7 protocols across Layers 2-7",
-      "Source defines 27 Google Test cases across 10 test files; the March 2026 changelog reports a historical 27/27 pass",
+      "146 tests in the repository, including an end-to-end test from raw frames to alerts",
       "Supports both live capture and pcap file analysis",
     ],
     updatedAt: "2026-11-09",
@@ -1353,13 +1353,13 @@ The pinned source defines **137 Google Test cases across 18 test source files**,
     updatedAt: "2026-11-04",
     tag: "Network Security",
     takeaway:
-      "A C++17 Capture → Parse → Detect → Alert pipeline, built as a study project with known limitations; its benchmark covers header parsing only.",
+      "A C++17 Capture → Parse → Detect → Alert pipeline with 146 tests; an end-to-end pipeline benchmark reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic; remaining limits are listed in its README.",
     content: `
 ## Four stages with different costs
 
 **SentinelFlow** implements a C++17 network intrusion detection pipeline: **Capture → Parse → Detect → Alert**. It supports libpcap live capture and offline pcap input, seven protocol parsers, basic Snort-inspired signatures, stateful heuristics, and console/CSV alerts.
 
-The repository's throughput measurement covers only part of that pipeline. Its parser benchmark is useful for studying parsing cost; it does not measure live IDS capacity.
+At the pinned commit, the repository's throughput measurement covered only part of that pipeline. Its parser benchmark is useful for studying parsing cost; it does not measure live IDS capacity.
 
 ### Capture and protocol dissection
 
@@ -1387,7 +1387,7 @@ The code performs lazy cleanup when records are accessed. These are heuristic in
 
 ### Throughput
 
-The repository's benchmark covers **header parsing only**: it repeatedly parses one fixed synthetic packet, so it says nothing about capture, detection or alerting capacity, and no packets-per-second figure is claimed here. SentinelFlow is a study project, and its README lists known limitations.
+The repository now also has an end-to-end pipeline benchmark, which reports 4 to 8 million packets/sec on one thread with synthetic in-memory traffic that excludes libpcap, NIC and disk I/O; treat it as a yardstick, not a capacity statement. The pinned audit below covers only header parsing, and later fixes (rule thresholds reaching the detectors, bounded per-source state) are not reflected in the limits described above. The repository now has 146 tests and lists its remaining limits in its README.
 
 ### Alerts and verification
 

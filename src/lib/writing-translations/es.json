@@ -123,11 +123,11 @@
   "sentinelflow-deep-dive": {
     "title": "Anatomía de un sistema de detección de intrusiones de red",
     "tag": "Seguridad de redes",
-    "takeaway": "Canalización C++17 Capturar → Analizar → Detectar → Alertar, construida como proyecto de estudio con limitaciones conocidas; su benchmark cubre solo el análisis de cabeceras.",
+    "takeaway": "Canalización C++17 Capturar → Analizar → Detectar → Alertar con 146 pruebas; un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria; las limitaciones restantes figuran en su README.",
     "lines": [
       "## Cuatro etapas con costes distintos",
       "**SentinelFlow** implementa una canalización C++17: **Capturar → Analizar → Detectar → Alertar**. Admite captura libpcap en vivo y pcap sin conexión, siete analizadores, firmas básicas inspiradas en Snort, heurísticas con estado y alertas de consola/CSV.",
-      "La medición de rendimiento del repositorio cubre solo parte de la canalización. El benchmark ayuda a estudiar el coste del análisis, no mide la capacidad de un IDS en vivo.",
+      "En el commit fijado, la medición de rendimiento del repositorio cubría solo una parte de esa canalización. Su benchmark del analizador sirve para estudiar el coste del análisis; no mide la capacidad real de un IDS en vivo.",
       "### Captura y disección de protocolos",
       "`LiveCapture` envuelve `pcap_open_live`, compila expresiones BPF opcionales y las instala mediante libpcap. `PcapFileReader` usa `pcap_open_offline`. La ejecución real de captura y filtrado depende de la plataforma y libpcap; esta auditoría no midió el filtrado del núcleo ni el ahorro de copias.",
       "Los analizadores abarcan **Ethernet, IPv4, TCP, UDP, ICMP, DNS y ARP**. Las cabeceras tienen longitudes y reglas distintas, por lo que se registran las capas presentes en cada paquete. Análisis de cabeceras, decodificación DNS, estado de detección y alertas deben evaluarse por separado, no como una operación universalmente libre de asignaciones de memoria.",
@@ -140,7 +140,7 @@
       "- **Indicios de túneles DNS:** colas por origen cuentan nombres de consulta de más de 50 caracteres; se activan con 20 consultas en 60 segundos.",
       "El código limpia los registros antiguos al acceder. Son indicadores heurísticos; su existencia no demuestra tasas de falsos positivos, resistencia a la evasión ni precisión en producción.",
       "### Rendimiento",
-      "El benchmark del repositorio cubre **solo el análisis de cabeceras**: analiza repetidamente un único paquete sintético fijo, así que no dice nada sobre la capacidad de captura, detección o alertas, y aquí no se afirma ninguna cifra de paquetes por segundo. SentinelFlow es un proyecto de estudio y su README enumera limitaciones conocidas.",
+      "El repositorio ahora también incluye un benchmark de canalización de extremo a extremo, que informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria que excluye libpcap, la NIC y la E/S de disco; debe tomarse como referencia, no como declaración de capacidad. La auditoría fijada que sigue cubre solo el análisis de cabeceras, y las correcciones posteriores (umbrales de reglas que llegan a los detectores, estado por origen acotado) no se reflejan en los límites descritos arriba. El repositorio tiene ahora 146 pruebas y enumera sus limitaciones restantes en su README.",
       "### Alertas y verificación",
       "La capa de alertas puede enviar eventos estructurados a una consola por colores y a CSV. La exportación facilita análisis posteriores; el repositorio no demuestra una integración SIEM desplegada.",
       "El código define **27 casos Google Test en 10 archivos de pruebas**, para analizadores y detectores seleccionados, reglas, firmas e integración. El changelog de marzo de 2026 comunica un resultado histórico de 27/27. Esta auditoría no repitió las pruebas ni afirma cubrir todo protocolo, detector o camino de entrada malformada.",
