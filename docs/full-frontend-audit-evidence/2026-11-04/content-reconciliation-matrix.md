@@ -1,6 +1,6 @@
 # Uploaded-source reconciliation matrix
 
-R = the supplied two-page Research Resident résumé; P = the supplied three-page LinkedIn profile. Exact uploaded/extracted hashes, source paths, target fields, conflict resolutions and limits are in `content-reconciliation-matrix.json`. Both documents were read in full as reference data.
+R = the supplied two-page résumé; P = the supplied three-page LinkedIn profile. Exact uploaded/extracted hashes, source paths, target fields, conflict resolutions and limits are in `content-reconciliation-matrix.json`. Both documents were read in full as reference data.
 
 | ID | Source | Previous candidate → resolution |
 |---|---|---|

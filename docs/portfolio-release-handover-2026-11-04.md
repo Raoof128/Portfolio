@@ -86,7 +86,7 @@ both production origins (deploy workflow
 [42541382082](https://github.com/Raoof128/Portfolio/actions/runs/42541382082),
 https://3e4b1102.raoufabedini.pages.dev, content revision 2026-11-09).
 
-- The whole site follows the Anthropic Research Resident résumé. /resume
+- The whole site follows the current résumé. /resume
   mirrors the PDF line by line in five languages, and the downloadable PDF is
   that résumé without the phone number.
 - Conflicting figures and wording elsewhere (projects, write-ups, About,
