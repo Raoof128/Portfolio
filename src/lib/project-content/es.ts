@@ -287,9 +287,9 @@ export const esProjects = {
   },
   "mehr-guard": {
     description:
-      "Escáner de phishing en QR y URL en Kotlin Multiplatform: 25 heurísticas más un pequeño modelo de puntuación ajustado a mano, con análisis en el dispositivo. La CI mide un 90.7% de F1 sobre las 100 URL escritas por el autor en el repositorio (no es un conjunto de evaluación reservado); modo red team de 18 escenarios.",
+      "Escáner de phishing en QR y URL en Kotlin Multiplatform: 25 heurísticas más un pequeño modelo de puntuación ajustado a mano, con análisis en el dispositivo y comprobado en CI con las 100 URL escritas por el autor en el repositorio (un conjunto de regresión, no un conjunto de evaluación reservado); modo red team de 18 escenarios.",
     fullDescription:
-      "Mehr Guard es un escáner de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas. Analiza las URL en el dispositivo con 25 heurísticas más un pequeño modelo de puntuación ajustado a mano; las URL escaneadas nunca se envían a ningún sitio, aunque la app de Android comprueba si hay actualizaciones de reglas al iniciarse. La CI mide un 90.7% de F1 (precisión 84.5%, exhaustividad 98.0%) sobre las 100 URL escritas por el autor en el repositorio, que no es un conjunto de evaluación reservado (held-out); se marcan 9 de los 50 sitios legítimos. Incluye un modo red team de 18 escenarios.",
+      "Mehr Guard es un escáner de phishing en QR y URL en Kotlin Multiplatform, con interfaces nativas o de navegador para 5 plataformas. Analiza las URL en el dispositivo con 25 heurísticas más un pequeño modelo de puntuación ajustado a mano; las URL escaneadas nunca se envían a ningún sitio, aunque la app de Android comprueba si hay actualizaciones de reglas al iniciarse. Medido por primera vez en CI con un 90.7% de F1 sobre 100 URL escritas por el autor, con 9 de los 50 sitios legítimos marcados. Después se corrigió un error de sufijos públicos hallado a través de esos fallos y las 100 se clasifican ahora según su etiqueta; como la corrección se guio por esas mismas URL, es una comprobación de regresión, no una estimación de precisión. No existe un conjunto de evaluación reservado (held-out). Incluye un modo red team de 18 escenarios.",
     problem:
       "Los QR son un vector frecuente de phishing, y un escáner que comprueba las URL mediante un servicio en la nube se entera de lo que escanea su usuario. Mehr Guard analiza cada URL en el dispositivo, así que la comprobación no requiere subir nada.",
     solution: [
@@ -299,7 +299,7 @@ export const esProjects = {
       "Las pruebas exigen un tiempo de análisis en el percentil 99 inferior a 50 ms por URL",
     ],
     proof: [
-      "La CI mide un 90.7% de F1 (precisión 84.5%, exhaustividad 98.0%) sobre las 100 URL escritas por el autor en el repositorio; no es un conjunto de evaluación reservado (held-out) y se marcan 9 de los 50 sitios legítimos",
+      "Medido por primera vez en CI con un 90.7% de F1 sobre 100 URL escritas por el autor, con 9 de los 50 sitios legítimos marcados. Después se corrigió un error de sufijos públicos hallado a través de esos fallos y las 100 se clasifican ahora según su etiqueta; como la corrección se guio por esas mismas URL, es una comprobación de regresión, no una estimación de precisión. No existe un conjunto de evaluación reservado (held-out)",
       "Las pruebas exigen un tiempo de análisis en el percentil 99 inferior a 50 ms por URL",
       "Modo red team de 18 escenarios",
       "./judge/verify_offline.sh ejecuta pruebas unitarias del motor compartido; no constituyen una captura independiente del tráfico de red saliente",
@@ -414,7 +414,7 @@ export const esProjects = {
     description:
       "Bóveda multimedia personal y seguimiento de empleo con estética ciberpunk, React, Litestar y Supabase. Recomendaciones asistidas por IA, chat persistente, cifrado Fernet configurado para notas de conclusiones y cookies de autenticación emitidas por el backend con un flujo de renovación.",
     fullDescription:
-      "Nexus Archive es una bóveda multimedia personal y seguimiento de empleo con estética ciberpunk que combina frontend React, API Litestar e identidad y persistencia en Supabase. Un panel reúne libros, películas, anime, candidaturas, valoraciones, notas de conclusiones, sesiones de chat persistentes y recomendaciones asistidas por IA. Las escrituras de notas requieren una clave Fernet configurada, y los controles de cookies, duración de tokens y base de datos en producción dependen de la configuración documentada del despliegue.",
+      "Nexus Archive es una bóveda multimedia personal y seguimiento de empleo con estética ciberpunk que combina frontend React, API Litestar e identidad y persistencia en Supabase. Un panel reúne libros, películas, anime, candidaturas, valoraciones, notas de conclusiones, sesiones de chat persistentes y recomendaciones asistidas por IA. Las escrituras de notas requieren una clave Fernet configurada, y los controles de cookies, duración de tokens y base de datos en producción dependen de la configuración documentada del despliegue. Es la primera versión de lo que pasó a ser Nexus OS; el trabajo en este repositorio se detuvo en abril de 2026 y no tiene ninguna demo alojada.",
     problem:
       "Los libros, las películas, el anime y las solicitudes de empleo suelen estar en gestores separados. Nexus Archive reúne títulos, valoraciones, notas y recomendaciones en una sola cuenta con controles de acceso a nivel de fila.",
     solution: [
@@ -445,41 +445,41 @@ export const esProjects = {
   },
   nanomatch: {
     description:
-      "Motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo. El repositorio declara 9.29M operaciones mixtas por segundo (alrededor del 80% altas) en un benchmark sintético de un solo hilo, registrado una vez en un portátil Apple M-series con compilación Release.",
+      "Libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo, cuatro tipos de órdenes y libros por símbolo; 170 pruebas, incluida una prueba diferencial aleatorizada. Su benchmark informa de 7.6 a 8.2 millones de operaciones por segundo en un runner alojado por GitHub y 11.7 millones en un Apple M2 (un solo hilo, carga sintética, cada cancelación sobre una orden en reposo).",
     fullDescription:
-      "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks sintéticos de rendimiento con operaciones mixtas y latencia de inserción. README declara 9.29M operaciones/s en un portátil Apple M-series en modo Release: una carga sintética de un solo hilo con alrededor del 80% de altas, registrada una vez; esa cifra no se volvió a ejecutar para esta página. El libro de órdenes no usa el asignador de pool independiente, así que el repositorio no afirma un camino crítico sin asignaciones de memoria.",
+      "NanoMatch es un libro de órdenes limitadas y motor de cruce C++20 con prioridad precio-tiempo. Admite órdenes Limit, Market, IOC y FOK, libros independientes por símbolo, entrada/salida CSV y benchmarks de rendimiento y de latencia por llamada (altas que quedan en el libro, altas que cruzan y cancelaciones). El README informa de 7.6 a 8.2 millones de operaciones/s en un runner alojado por GitHub (GCC 15.2) y 11.7 millones en un Apple M2 inactivo, con un solo hilo y una carga sintética en la que cada cancelación retira una orden en reposo; el libro se mantiene poco profundo con esa carga. El libro de órdenes no usa el asignador de pool independiente, así que el repositorio no afirma un camino crítico sin asignaciones de memoria.",
     problem:
       "Las bolsas cruzan órdenes con márgenes de latencia muy ajustados. NanoMatch es un motor de cruce construido desde cero para estudiar las estructuras de datos y los costes detrás de la prioridad precio-tiempo.",
     solution: [
       "Implementé cruce con prioridad precio-tiempo (FIFO) para órdenes Limit, Market, IOC y FOK",
-      "Implementé búsqueda por ID de orden con complejidad esperada O(1), cancelación O(log M) mediante el árbol de niveles de precio y modificación por cancelación y nueva alta",
+      "Implementé búsqueda por ID de orden con complejidad esperada O(1), cancelación O(log M) mediante el árbol de niveles de precio y una modificación que conserva la prioridad temporal al reducir la cantidad y vuelve a encolar la orden en los demás casos",
       "Creé un asignador independiente con pool de capacidad fija y un benchmark comparativo con new/delete",
       "Añadí múltiples instrumentos con libros de órdenes independientes por símbolo",
     ],
     proof: [
-      "Rendimiento declarado por el repositorio: 9.29M operaciones mixtas/s (alrededor del 80% altas) en un portátil Apple M-series, Release -O3 -march=native; un solo hilo, 5 millones de operaciones sintéticas, semilla fija 42, registrado una vez",
-      "El benchmark de latencia de inserción informa p50/p99/p99.9 solo para add_order, con la sobrecarga del temporizador incluida (p50 de 84 ns); no son medidas de latencia de cancelación",
-      "El código define 137 casos de Google Test en 18 archivos de pruebas; el conjunto de pruebas no se volvió a ejecutar para esta página",
+      "Rendimiento declarado por el repositorio: medianas de 7,575,135 y 8,157,600 ops/s en dos ejecuciones de CI alojadas por GitHub (GCC 15.2) y 11,723,239 en un Apple M2 inactivo; Release -O3 -march=native, un solo hilo, 5M operaciones sintéticas, cinco ejecuciones cada una",
+      "El benchmark de latencia informa p50/p99/p99.9 por tipo de llamada; en CI el p50 es de 120-128 ns para un alta que queda en el libro, 170-186 ns para un alta que cruza y 90-99 ns para una cancelación, cada uno con unos 20 ns de sobrecarga del reloj incluidos",
+      "170 casos de Google Test en 20 archivos de pruebas, con una prueba de regresión por cada defecto hallado en la revisión y una prueba diferencial aleatorizada; pasan en CI con ASan y UBSan",
       "La configuración de CI incluye ASan, UBSan, cppcheck y clang-format para envíos a main y pull requests",
     ],
     features: [
       "Algoritmo de cruce con prioridad precio-tiempo (FIFO)",
       "4 tipos de órdenes: Limit, Market, IOC, Fill-or-Kill",
-      "Búsqueda por ID de orden de complejidad esperada O(1); la cancelación también busca en un árbol de niveles de precio en O(log M), y la modificación cancela y vuelve a añadir",
+      "Búsqueda por ID de orden de complejidad esperada O(1); la cancelación también busca en un árbol de niveles de precio en O(log M); reducir la cantidad conserva el puesto en la cola y cualquier otra modificación vuelve a encolar la orden",
       "Asignador independiente con pool de capacidad fija y benchmark de asignación separado",
     ],
     measures: [
       "AddressSanitizer y UndefinedBehaviorSanitizer en CI",
-      "137 casos de Google Test declarados en 18 archivos fuente de pruebas",
+      "170 casos de Google Test en 20 archivos de pruebas, con una prueba de regresión por cada defecto hallado en la revisión y una prueba diferencial aleatorizada",
       "Trabajo de análisis estático cppcheck configurado para envíos a main y pull requests",
       "Sin dependencias externas en tiempo de ejecución",
     ],
   },
   sentinelflow: {
     description:
-      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria (sin libpcap, NIC ni E/S de disco); 146 pruebas. Las limitaciones restantes figuran en su README.",
+      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria (sin libpcap, NIC ni E/S de disco); 147 pruebas. Las limitaciones restantes figuran en su README.",
     fullDescription:
-      "SentinelFlow es un sistema de detección de intrusiones de red en tiempo real que captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y exporta alertas a consola y CSV.",
+      "SentinelFlow es un sistema de detección de intrusiones de red escrito como proyecto de estudio. Captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y escribe las alertas en la consola y en un registro CSV.",
     problem:
       "Comprender la detección de intrusiones de red exige seguir por separado la captura de paquetes, el análisis de protocolos, las comprobaciones de firmas y las heurísticas con estado, ya que tienen costes de rendimiento distintos.",
     solution: [
@@ -489,10 +489,10 @@ export const esProjects = {
       "Añadí un microbenchmark de un solo hilo del analizador y un benchmark de canalización de extremo a extremo con tráfico sintético en memoria; se excluyen libpcap, la NIC y la E/S de disco",
     ],
     proof: [
-      "Un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria (sin libpcap, NIC ni E/S de disco); unos 8.3 millones en un Apple M2 y de 4.3 a 7.8 millones en un runner compartido de GitHub",
+      "Un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria (sin libpcap, NIC ni E/S de disco); de 8.1 a 8.3 millones en un Apple M2 y de 4.3 a 7.8 millones en un runner compartido de GitHub",
       "Las limitaciones restantes figuran en el README del repositorio",
       "Cobertura: 7 protocolos en las capas 2-7",
-      "146 pruebas en el repositorio, incluida una prueba de extremo a extremo desde tramas sin procesar hasta alertas",
+      "147 pruebas en el repositorio, incluida una prueba de extremo a extremo desde tramas sin procesar hasta alertas; la CI ejecuta además la suite y las capturas de ejemplo con ASan y UBSan",
       "Admite captura en vivo y análisis de archivos pcap",
     ],
     stack: [
@@ -511,43 +511,43 @@ export const esProjects = {
     ],
     measures: [
       "Alertas con gravedad codificada por colores (LOW → CRITICAL)",
-      "146 pruebas que cubren analizadores, reglas, coincidencia de firmas, detectores con estado y sus límites de estado, y la canalización de extremo a extremo",
-      "Exportación CSV para análisis forense e integración SIEM",
+      "147 pruebas que cubren analizadores, reglas, coincidencia de firmas, detectores con estado y sus límites de estado, y la canalización de extremo a extremo",
+      "Registro de alertas en CSV",
       "Filtros BPF configurables para captura dirigida",
     ],
   },
   ecrsm: {
     title: "Monitor de seguridad de ejecución en la nube con eBPF",
     description:
-      "Prototipo educativo de seguridad en ejecución con código eBPF de tracepoints de solo lectura, heurísticas de metadatos en Go, panel React alimentado por SSE y plantillas de despliegue en Kubernetes.",
+      "Prototipo educativo de seguridad en ejecución: un programa eBPF de solo lectura en el tracepoint sin procesar sys_enter que vigila seis llamadas al sistema, un agente Go con reglas heurísticas de un solo evento, un panel React alimentado por SSE y una plantilla de chart Helm. El recorrido de la sonda a la alerta se comprueba en cada ejecución de CI.",
     fullDescription:
-      "ECRSM es un prototipo educativo de seguridad en ejecución con programas eBPF de tracepoints de syscalls, lector de perf-buffer y reglas de metadatos en Go, panel React que consume SSE y plantillas Helm de despliegue. Muestra los componentes de la visibilidad a nivel del kernel. La captura de eventos de extremo a extremo, la precisión de detección, la sobrecarga y el despliegue en Kubernetes siguen sin validarse.",
+      "ECRSM es un prototipo educativo de seguridad en ejecución: un programa eBPF en el tracepoint sin procesar sys_enter que informa de seis llamadas al sistema, un agente Go que lo carga, lee el perf-buffer y aplica reglas de un solo evento, un panel React que consume SSE y una plantilla de chart Helm. El recorrido de la sonda a la alerta se comprueba en CI en cada ejecución (x86-64, kernel 7.0, ocho comprobaciones). La precisión de detección, la sobrecarga, arm64 y el despliegue en Kubernetes siguen sin validarse.",
     problem:
       "La monitorización en ejecución a nivel del kernel es difícil de estudiar. ECRSM ofrece una referencia educativa para recopilar metadatos de syscalls, generar alertas heurísticas y presentarlas en un panel en laboratorios aislados.",
     solution: [
-      "Escribí programas eBPF de tracepoints de solo lectura para cinco tipos de eventos de syscalls",
+      "Escribí un programa eBPF de solo lectura en el tracepoint sin procesar sys_enter que informa de seis llamadas al sistema",
       "Creé un lector de perf-buffer en Go, búsqueda de ID de contenedor, indicios de pod basados en el entorno y heurísticas de metadatos",
       "Creé un panel React respaldado por un endpoint de alertas Server-Sent Events",
-      "Añadí scripts locales de simulación y recursos Helm para uso educativo en laboratorio",
+      "Añadí scripts locales de simulación, una comprobación de extremo a extremo que ejecuta la CI y una plantilla de chart Helm para uso educativo en laboratorio",
     ],
     proof: [
-      "El código define heurísticas para conexiones de shells, primitivas de inyección y rutas de ejecución sospechosas; aquí no se midió la precisión de detección",
-      "Existe código de transporte por perf-buffer; su sobrecarga de ejecución no se midió para esta página",
+      "Seis reglas de un solo evento: reverse_shell (puertos vigilados, IPv4 e IPv6), shell_network_activity, process_injection, ptrace_activity, anonymous_exec_mapping y suspicious_exec; la precisión de detección no se ha medido",
+      "Los eventos viajan por un perf-buffer; la sobrecarga de ejecución no se midió",
       "Los ID de contenedores se extraen de cgroups en /proc; las etiquetas de pod son indicios del entorno del agente, no atribución Kubernetes verificada por proceso",
-      "Incluye scripts locales sintéticos, pero no se realizó una ejecución de detección de extremo a extremo para esta página",
+      "La CI compila la sonda, la carga en el kernel del runner y espera ocho alertas a partir de llamadas al sistema inofensivas (x86-64, kernel 7.0); la ruta arm64 no se ha probado",
     ],
     stack: ["eBPF (C)", "Go (agente)", "React (panel)", "Kubernetes (Helm)"],
     features: [
-      "Programas eBPF de tracepoints para execve, connect, ptrace, memfd_create y mmap ejecutable",
+      "Un programa eBPF en el tracepoint sin procesar sys_enter que informa de execve, execveat, connect, ptrace, memfd_create y mmap",
       "Enriquecimiento de metadatos en Go y heurísticas educativas para reverse shells, primitivas de inyección y ejecuciones sospechosas",
       "Panel React que consume Server-Sent Events en /events",
-      "Plantillas Helm DaemonSet y del panel para despliegues en laboratorios aislados",
+      "Plantilla de chart Helm (DaemonSet privilegiado y Deployment del panel); se renderiza en CI y nunca se ha instalado",
     ],
     measures: [
       "Recopilación eBPF de solo lectura de metadatos de procesos y red",
       "La sonda no captura el contenido de los paquetes; los nombres de procesos y archivos aún pueden contener metadatos sensibles",
-      "La plantilla de despliegue usa modo privilegiado, hostPID y capacidades BPF/SYS_ADMIN/SYS_PTRACE; está destinada a laboratorios aislados",
-      "Incluye scripts de simulación locales para entornos educativos aislados; no se ejecutaron para esta página",
+      "La plantilla de despliegue ejecuta el agente en modo privilegiado con hostPID y no expone el flujo de alertas; está destinada a laboratorios aislados",
+      "Los scripts de simulación locales hacen llamadas al sistema inofensivas para entornos educativos aislados; la CI los ejecuta en su trabajo de extremo a extremo",
     ],
   },
   simurghforge: {
@@ -564,7 +564,7 @@ export const esProjects = {
       "Configuré un objetivo macOS .app y etiquetas de ajustes Low/Medium/High/Lossless; las dependencias CLI siguen siendo independientes",
     ],
     proof: [
-      "El código cubre cinco categorías de archivos. El total anunciado es de 49 formatos, mientras que el registro actual de entrada de la interfaz tiene 44 claves",
+      "El código cubre cinco categorías de archivos; el README enumera 44 formatos de entrada (45 extensiones de archivo contando GIF, que es solo de salida)",
       "Se definen nueve variantes de motor, con enrutamiento según tipo de entrada detectado y formato de salida solicitado",
       "El backend limita a 50 archivos y 1–8 trabajos de conversión concurrentes mediante semáforo Tokio",
       "La conversión usa motores locales y no requiere API de nube; no se realizó una prueba de tráfico de red saliente",

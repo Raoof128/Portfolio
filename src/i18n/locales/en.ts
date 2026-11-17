@@ -211,9 +211,9 @@ const en = {
     further_b3:
       "Student-society event pilot (DOI 10.5281/zenodo.20549736): 31 consented sessions; ballot choices excluded from records; HMAC-chained audit logs.",
     further_b4:
-      "Mehr Guard: QR and URL phishing scanner in Kotlin Multiplatform with on-device analysis; 25 heuristics plus a hand-set scoring model. CI measures 90.7% F1 on 100 author-written URLs (not a held-out benchmark); 18-scenario red-team mode.",
+      "Mehr Guard: QR and URL phishing scanner in Kotlin Multiplatform with on-device analysis; 25 heuristics plus a hand-set scoring model, checked in CI against 100 author-written URLs (a regression set, not a held-out benchmark); 18-scenario red-team mode.",
     further_b5:
-      "Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (4M+ packets/sec end to end, synthetic single-thread benchmark; 146 tests); Project Zurvan, local-first knowledge engine serving claims and decisions to agents over MCP (4,109 tests).",
+      "Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (4M+ packets/sec end to end, synthetic single-thread benchmark; 147 tests); Project Zurvan, local-first knowledge engine serving claims and decisions to agents over MCP (4,109 tests).",
     s06_heading: "Professional Experience",
     alignerr_title: "AI Safety Evaluator (Claude) — Alignerr",
     alignerr_period: "Jan 2026 – Mar 2026",
