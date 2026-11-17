@@ -32,7 +32,7 @@ its major phases so later handoffs keep their context:
   static/client hydration mismatch.
 - **June–July — Research identity, auditability, and security.** Research
   identity and project publication metadata expanded; the résumé and site copy
-  were reconciled for the Frontier Red Team application, with explicit
+  were reconciled for the updated résumé, with explicit
   credibility qualifiers and an honest Claude/Alignerr relationship. SEO and
   agent-discovery work added locale-aware canonical/OG data, reciprocal
   alternates, `ProfilePage` identity, `version.json`, and a live audit tool.

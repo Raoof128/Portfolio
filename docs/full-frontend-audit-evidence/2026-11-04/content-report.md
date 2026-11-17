@@ -1,6 +1,6 @@
 # Content and internationalisation review: current candidate
 
-The supplied two-page Research Resident résumé and three-page LinkedIn profile now supersede the earlier audit candidate. Both complete extracted documents were read as reference data. The **23-row reconciliation matrix** records exact source page/line references, prior and current facts, target fields, conflicts and retained evidence:
+The supplied two-page résumé and three-page LinkedIn profile now supersede the earlier audit candidate. Both complete extracted documents were read as reference data. The **23-row reconciliation matrix** records exact source page/line references, prior and current facts, target fields, conflicts and retained evidence:
 
 - `content-reconciliation-matrix.md` / `.json`
 - `content-review.json`: original complete **31-file / 9,215-line** read accounting, current hashes and links to the final source/peer review records.
