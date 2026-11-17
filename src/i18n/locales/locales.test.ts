@@ -145,7 +145,7 @@ describe("translation contracts", () => {
       expect(currentStudy).toContain("5,171");
       expect(currentStudy).toMatch(/(?:^|\D)39(?:\D|$)/);
       expect(currentStudy).toContain("Lean 4");
-      expect(currentStudy).toMatch(/(?:^|\D)92(?:\D|$)/);
+      expect(currentStudy).toMatch(/(?:^|\D)93(?:\D|$)/);
       expect(currentStudy).not.toMatch(/3,057|989/);
     },
   );
@@ -233,7 +233,9 @@ describe("translation contracts", () => {
       for (const [line, tokens] of facts) {
         const text = normalizeDigits(line);
         for (const token of tokens) expect(text).toContain(token);
-        expect(text).not.toMatch(/1,343|155|28\.4|3,334|0\.75|97\/97|7\/10|x86_64|SHA-256/);
+        expect(text).not.toMatch(
+          /1,343|155|28\.4|3,334|0\.75|97\/97|7\/10|x86_64|SHA-256/,
+        );
       }
       expect(resume.education_final_session).toContain("2027");
     },

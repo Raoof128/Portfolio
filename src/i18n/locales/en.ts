@@ -94,9 +94,9 @@ const en = {
     bio_1:
       "I am a security researcher focused on keeping tool-using AI agents safe and beneficial: I build host-side controls for what an agent is permitted to do and stress-test them with matched-control experiments against live models. I evaluated Claude for exploitable code and guardrail circumvention in Anthropic’s safety-evaluation program via Alignerr. I have five sole-author preprints and two coordinated vendor disclosures (Microsoft, Apple) after seven years in security operations and engineering, and I am available full-time from December 2026 for a three- to six-month San Francisco placement; visa sponsorship is required.",
     bio_2:
-      "Project Simurgh is a host-side agent-authorisation prototype. Its October 2026 study used 24 tasks, two trials, three matched controls and two models: 288 replayed branches. On Llama-3.2-3B, restricted-state trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions and no valid proposal blocked. OpenAI gpt-6-luna’s baseline was already 0/24, so no incremental protection was observed. Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 92 releases. Software DOI: 10.5281/zenodo.21737792; the earlier device-integrity preprint is 10.5281/zenodo.20374849.",
+      "Project Simurgh is a host-side agent-authorisation prototype. Its October 2026 study used 24 tasks, two trials, three matched controls and two models: 288 replayed branches. On Llama-3.2-3B, restricted-state trials with new effects fell from 17/24 to 0/24, with 23/24 useful completions and no valid proposal blocked. OpenAI gpt-6-luna’s baseline was already 0/24, so no incremental protection was observed. Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 93 releases. Software DOI: 10.5281/zenodo.21737792; the earlier device-integrity preprint is 10.5281/zenodo.20374849.",
     bio_3:
-      "I also authored The Invisible Window: documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture. Evasion was 100% in every tested lab configuration; on macOS 26 the tests used native capture APIs and did not exercise browser getDisplayMedia or ScreenCaptureKit, no commercial proctoring product was tested, and Linux was not tested. Microsoft MSRC and Apple Product Security both classified the behavior as by design. Aion-BibleQA scores retrieval quality, citation support and false-premise robustness on a 40-question benchmark: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online.",
+      "I also authored The Invisible Window: documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to screen capture. Evasion was 100% in every tested lab configuration; on macOS 26 the tests used native capture APIs and did not exercise browser getDisplayMedia or ScreenCaptureKit, no commercial proctoring product was tested, and Linux was not tested. Microsoft MSRC and Apple Product Security both classified the behavior as by design. Aion-BibleQA scores retrieval quality, citation support and false-premise robustness on a 40-question benchmark: R@5 of 0.941 (development set, 40 author-written questions), mean citation support of 0.978, zero unsupported citations (LLM judge) and 6/6 refusal-category questions refused (4 false-premise, 2 adversarial); the benchmark has no held-out split. I co-founded Syllabus-Sync, a Macquarie University Incubator startup. My Bachelor of Cyber Security is expected in June 2027; the final February–June 2027 session is fully online.",
     stats_projects: "Projects",
     stats_evasion: "Evasion in Tested Lab Configurations",
     stats_vendors: "Coordinated vendor disclosures",
@@ -164,7 +164,7 @@ const en = {
       "Claude API and Claude Code · OpenAI Responses API with tool calling · self-hosted Llama (3.2-3B, 3.3-70B) · Llama Guard 4 · AgentDojo · MCP servers",
     skill3_label: "AI security, safeguards and red-teaming:",
     skill3_desc:
-      "guardrail-circumvention analysis · red-team scenario design · vulnerability research and coordinated disclosure · offensive proofs of concept · intrusion detection · phishing-detection ML · incident response · MITRE ATT&CK",
+      "guardrail-circumvention analysis · red-team scenario design · vulnerability research and coordinated disclosure · offensive proofs of concept · intrusion detection · phishing detection · incident response · MITRE ATT&CK",
     skill4_label: "Languages and systems:",
     skill4_desc:
       "Python · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash · Docker · GitHub Actions · PostgreSQL · Linux · eBPF",
@@ -190,20 +190,20 @@ const en = {
       "Audited 919 of the project's own documents and published all 141 dated findings, including overstatements in earlier closeouts, in the README.",
     iw_title:
       "The Invisible Window — Screen-Capture Evasion in WebRTC Proctoring (Sole Author)",
-    iw_period: "Feb 2026 – May 2026",
+    iw_period: "Jan 2026 – May 2026",
     iw_meta: "IEEE-format preprint v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "Found that documented display-affinity APIs on Windows and macOS let a window stay visible on the monitor while contributing zero pixels to the tested capture paths: 100% evasion in every tested lab configuration. On macOS 26 the tests covered native capture APIs, not browser capture; no commercial proctoring product was tested.",
     iw_b2:
-      "Disclosed to Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) before publication; both classified the behavior as by design. The full proof of concept is withheld on dual-use grounds.",
+      "Disclosed to Microsoft MSRC (Feb 2026) and Apple Product Security (Mar 2026) before publication; both classified the behavior as by design. The full proof of concept is withheld on dual-use grounds; a minimal macOS test fixture is public.",
     aion_title:
       "Aion-BibleQA — Retrieval and Citation Faithfulness in a RAG System (Sole Author)",
     aion_period: "Jun 2026",
     aion_meta: "Preprint · DOI 10.5281/zenodo.20522874",
     aion_b1:
-      "Built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals.",
+      "Built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941 (development set, 40 author-written questions), mean citation support of 0.978, zero unsupported citations (LLM judge) and 6/6 refusal-category questions refused (4 false-premise, 2 adversarial); the benchmark has no held-out split.",
     further_title: "Further Preprints and Shipped Security Tooling",
-    further_period: "2024 – 2026",
+    further_period: "2025 – 2026",
     further_b1:
       "Banking Shield (DOI 10.5281/zenodo.20675513): machine-checked evidence, on a fictional research prototype, about what an AI-style explanation layer did not receive, transmit or claim; formative dry run with five internal testers.",
     further_b2:
@@ -217,7 +217,8 @@ const en = {
     s06_heading: "Professional Experience",
     alignerr_title: "AI Safety Evaluator (Claude) — Alignerr",
     alignerr_period: "Jan 2026 – Mar 2026",
-    alignerr_meta: "Anthropic safety-evaluation program · Remote",
+    alignerr_meta:
+      "Anthropic safety-evaluation program, engaged through Alignerr (not an Anthropic employee) · Remote",
     alignerr_b1:
       "Stress-tested Claude's safety guardrails: assessed outputs for exploitable code and harmful patterns, analyzed circumvention methods, and delivered rubric-based findings.",
     syllabus_title: "Cofounder — Syllabus-Sync",
@@ -246,9 +247,9 @@ const en = {
     edu2_period: "2023 – 2024",
     certs_heading: "Certifications & Credentials",
     cert1:
-      "Anthropic (Jul 2026), 20 courses including: Building with the Claude API · Claude Code in Action · Model Context Protocol",
+      "Anthropic Academy online courses (Jul 2026), 20 completed, including: Building with the Claude API · Claude Code in Action · Model Context Protocol",
     cert2:
-      "Macquarie University micro-credentials (2026, 93–100%): Security of AI · Application of AI · Data Security & Information Privacy · DevSecOps · Identity & Access Management",
+      "Macquarie University micro-credentials (2026, 92.8–100%): Security of AI · Application of AI · Data Security & Information Privacy · DevSecOps · Identity & Access Management",
   },
   not_found: {
     description:

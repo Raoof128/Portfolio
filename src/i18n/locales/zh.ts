@@ -89,9 +89,9 @@ const zh: Dictionary = {
     bio_1:
       "我是一名安全研究员，专注于让使用工具的 AI 智能体保持安全且有益：我构建针对智能体获准执行的操作的主机侧控制，并通过针对实时模型的匹配对照实验对其进行压力测试。我通过 Alignerr 在 Anthropic 的安全评估项目中评估了 Claude 的可利用代码和护栏绕过问题。在七年安全运营和工程工作之后，我有五篇独立署名预印本和两次协调的厂商披露（Microsoft、Apple）；我自2026年12月起可全职赴旧金山，开展为期三至六个月的派驻安排，需要签证担保。",
     bio_2:
-      "Project Simurgh 是主机侧智能体授权原型。2026年10月研究涵盖24项任务、每项两次试验、三种匹配对照和两个模型，共重放288个分支。Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24，因此未观察到额外保护。经 Ed25519 签名的证据归档可通过一条命令离线重放；39项 Lean 4 证明置于一道门禁之后，只要出现任何未证明的“sorry”占位符，门禁即失败；2026年10月19日冒烟运行通过5,171项测试；92个发布版本。软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本 DOI：10.5281/zenodo.20374849。",
+      "Project Simurgh 是主机侧智能体授权原型。2026年10月研究涵盖24项任务、每项两次试验、三种匹配对照和两个模型，共重放288个分支。Llama-3.2-3B 受限状态下产生新影响的试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。OpenAI gpt-6-luna 的基线已为0/24，因此未观察到额外保护。经 Ed25519 签名的证据归档可通过一条命令离线重放；39项 Lean 4 证明置于一道门禁之后，只要出现任何未证明的“sorry”占位符，门禁即失败；2026年10月19日冒烟运行通过5,171项测试；93个发布版本。软件 DOI：10.5281/zenodo.21737792；早期设备完整性预印本 DOI：10.5281/zenodo.20374849。",
     bio_3:
-      "我还独立撰写了 The Invisible Window：Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素。在所有受测实验室配置中规避率均为100%；在 macOS 26 上，测试使用的是原生捕获 API，未涉及浏览器 getDisplayMedia 或 ScreenCaptureKit，也没有测试任何商业监考产品，Linux 同样未测试。Microsoft MSRC 和 Apple Product Security 均将该行为归类为设计使然。Aion-BibleQA 在一个40题基准上评分检索质量、引用支持与错误前提鲁棒性：R@5 为0.941，平均引用支持为0.978，零条无支持引用，错误前提拒答6/6。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。",
+      "我还独立撰写了 The Invisible Window：Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素。在所有受测实验室配置中规避率均为100%；在 macOS 26 上，测试使用的是原生捕获 API，未涉及浏览器 getDisplayMedia 或 ScreenCaptureKit，也没有测试任何商业监考产品，Linux 同样未测试。Microsoft MSRC 和 Apple Product Security 均将该行为归类为设计使然。Aion-BibleQA 在一个40题基准上评分检索质量、引用支持与错误前提鲁棒性：R@5 为 0.941（开发集，40 道作者自拟问题），平均引用支持为 0.978，零条无支持引用（由 LLM 评审打分），拒答类问题 6/6 全部拒答（4 道错误前提、2 道对抗性）；该基准没有留出的测试集。我联合创立了麦考瑞大学孵化器初创企业 Syllabus-Sync。网络安全学士预计2027年6月完成；2027年2月至6月的最后一个学期全程在线。",
     stats_projects: "项目",
     stats_evasion: "测试实验室配置中的规避率",
     stats_vendors: "协调披露的厂商案例",
@@ -155,7 +155,7 @@ const zh: Dictionary = {
       "Claude API 与 Claude Code · 支持工具调用的 OpenAI Responses API · 自托管 Llama（3.2-3B、3.3-70B） · Llama Guard 4 · AgentDojo · MCP 服务器",
     skill3_label: "AI 安全、防护措施与红队测试：",
     skill3_desc:
-      "护栏绕过分析 · 红队场景设计 · 漏洞研究与协调披露 · 攻击性概念验证 · 入侵检测 · 钓鱼检测机器学习 · 事件响应 · MITRE ATT&CK",
+      "护栏绕过分析 · 红队场景设计 · 漏洞研究与协调披露 · 攻击性概念验证 · 入侵检测 · 钓鱼检测 · 事件响应 · MITRE ATT&CK",
     skill4_label: "编程语言与系统：",
     skill4_desc:
       "Python · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash · Docker · GitHub Actions · PostgreSQL · Linux · eBPF",
@@ -181,19 +181,19 @@ const zh: Dictionary = {
       "审计了项目自己的919份文档，并在 README 中发布全部141项带日期的发现，包括早期结项报告中的过度陈述。",
     iw_title:
       "The Invisible Window — WebRTC 在线监考中的屏幕捕获规避（独立作者）",
-    iw_period: "2026年2月 – 2026年5月",
+    iw_period: "2026年1月 – 2026年5月",
     iw_meta: "IEEE 格式预印本 v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "发现 Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对受测捕获路径贡献零像素：在所有受测实验室配置中规避率均为100%。在 macOS 26 上，测试涵盖原生捕获 API，不含浏览器捕获；未测试任何商业监考产品。",
     iw_b2:
-      "在发表前向 Microsoft MSRC（2026年2月）和 Apple Product Security（2026年3月）披露；两者均将该行为归类为设计使然。完整的概念验证因存在双重用途风险而不公开。",
+      "在发表前向 Microsoft MSRC（2026年2月）和 Apple Product Security（2026年3月）披露；两者均将该行为归类为设计使然。完整的概念验证因存在双重用途风险而不公开；一个最小化的 macOS 测试夹具已公开。",
     aion_title: "Aion-BibleQA — RAG 系统中的检索与引用忠实度（独立作者）",
     aion_period: "2026年6月",
     aion_meta: "预印本 · DOI 10.5281/zenodo.20522874",
     aion_b1:
-      "构建并评分了一个40题基准，衡量检索质量、引用支持与错误前提鲁棒性：R@5 为0.941，平均引用支持为0.978，零条无支持引用，错误前提拒答6/6。",
+      "构建并评分了一个40题基准，衡量检索质量、引用支持与错误前提鲁棒性：R@5 为 0.941（开发集，40 道作者自拟问题），平均引用支持为 0.978，零条无支持引用（由 LLM 评审打分），拒答类问题 6/6 全部拒答（4 道错误前提、2 道对抗性）；该基准没有留出的测试集。",
     further_title: "更多预印本与已交付的安全工具",
-    further_period: "2024年 – 2026年",
+    further_period: "2025年 – 2026年",
     further_b1:
       "Banking Shield（DOI 10.5281/zenodo.20675513）：在一个虚构的研究原型上，对类 AI 解释层未接收、未传输、未声称的内容给出经机器检查的证据；与五名内部测试者进行的形成性试运行。",
     further_b2:
@@ -207,7 +207,8 @@ const zh: Dictionary = {
     s06_heading: "职业经历",
     alignerr_title: "AI 安全评估员（Claude）— Alignerr",
     alignerr_period: "2026年1月 – 2026年3月",
-    alignerr_meta: "Anthropic 安全评估项目 · 远程",
+    alignerr_meta:
+      "Anthropic 安全评估项目，经由 Alignerr 参与（并非 Anthropic 员工） · 远程",
     alignerr_b1:
       "对 Claude 的安全护栏进行压力测试：评估输出中的可利用代码和有害模式，分析绕过方法，并交付基于评分标准的发现。",
     syllabus_title: "联合创始人 — Syllabus-Sync",
@@ -234,9 +235,9 @@ const zh: Dictionary = {
     edu2_period: "2023年 – 2024年",
     certs_heading: "证书与资质",
     cert1:
-      "Anthropic（2026年7月），20门课程，包括：Building with the Claude API · Claude Code in Action · Model Context Protocol",
+      "Anthropic Academy 在线课程（2026年7月），已完成20门，包括：Building with the Claude API · Claude Code in Action · Model Context Protocol",
     cert2:
-      "麦考瑞大学微证书（2026年，93–100%）：Security of AI · Application of AI · Data Security & Information Privacy · DevSecOps · Identity & Access Management",
+      "麦考瑞大学微证书（2026年，92.8–100%）：Security of AI · Application of AI · Data Security & Information Privacy · DevSecOps · Identity & Access Management",
   },
   not_found: {
     description: "找不到这个页面。页面可能已移至其他位置，或地址有误。",

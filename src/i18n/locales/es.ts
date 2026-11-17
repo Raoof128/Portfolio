@@ -96,9 +96,9 @@ const es: Dictionary = {
     bio_1:
       "Soy investigador de seguridad centrado en mantener seguros y beneficiosos a los agentes de IA que usan herramientas: construyo controles en el anfitrión sobre lo que se permite hacer a un agente y los someto a pruebas de estrés con experimentos de control emparejado contra modelos en vivo. Evalué Claude en busca de código explotable y elusión de barreras de seguridad en el programa de evaluación de seguridad de Anthropic a través de Alignerr. Tengo cinco preprints de autor único y dos divulgaciones coordinadas a proveedores (Microsoft, Apple) tras siete años en operaciones e ingeniería de seguridad, y estoy disponible a tiempo completo desde diciembre de 2026 para una estancia de tres a seis meses en San Francisco; necesito patrocinio de visado.",
     bio_2:
-      "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos: 288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección adicional. Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 92 versiones. DOI del software: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
+      "Project Simurgh es un prototipo de autorización de agentes en el anfitrión. El estudio de octubre de 2026 incluyó 24 tareas, dos ensayos, tres controles emparejados y dos modelos: 288 ramas reproducidas. En Llama-3.2-3B, los ensayos restringidos con efectos nuevos bajaron de 17/24 a 0/24, con 23/24 finalizaciones útiles y ninguna propuesta válida bloqueada. La línea base de OpenAI gpt-6-luna ya era 0/24, por lo que no se observó protección adicional. Los archivos de evidencia firmados con Ed25519 se reproducen sin conexión con un solo comando; 39 demostraciones en Lean 4 están tras una compuerta de verificación que falla ante cualquier marcador de posición “sorry” sin demostrar; 5,171 pruebas superadas en la ejecución de humo del 19 de octubre de 2026; 93 versiones. DOI del software: 10.5281/zenodo.21737792; preprint anterior de integridad de dispositivos: 10.5281/zenodo.20374849.",
     bio_3:
-      "También escribí The Invisible Window: las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla. La evasión fue del 100% en todas las configuraciones de laboratorio probadas; en macOS 26 las pruebas usaron API de captura nativas y no ejercitaron getDisplayMedia del navegador ni ScreenCaptureKit, no se probó ningún producto comercial de supervisión de exámenes y tampoco se probó Linux. Microsoft MSRC y Apple Product Security clasificaron ambos el comportamiento como diseño previsto (by design). Aion-BibleQA puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas en un benchmark de 40 preguntas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas. Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. Mi licenciatura en ciberseguridad finalizará, según lo previsto, en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
+      "También escribí The Invisible Window: las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a la captura de pantalla. La evasión fue del 100% en todas las configuraciones de laboratorio probadas; en macOS 26 las pruebas usaron API de captura nativas y no ejercitaron getDisplayMedia del navegador ni ScreenCaptureKit, no se probó ningún producto comercial de supervisión de exámenes y tampoco se probó Linux. Microsoft MSRC y Apple Product Security clasificaron ambos el comportamiento como diseño previsto (by design). Aion-BibleQA puntúa la calidad de recuperación, el respaldo de citas y la robustez ante premisas falsas en un benchmark de 40 preguntas: R@5 de 0.941 (conjunto de desarrollo, 40 preguntas escritas por el autor), respaldo medio de citas de 0.978, cero citas sin respaldo (según un juez LLM) y rechazo de 6/6 preguntas de la categoría de rechazo (4 con premisas falsas, 2 adversarias); el benchmark no tiene una partición reservada. Cofundé Syllabus-Sync, una startup de la incubadora de Macquarie University. Mi licenciatura en ciberseguridad finalizará, según lo previsto, en junio de 2027; el último periodo, de febrero a junio de 2027, es totalmente en línea.",
     stats_projects: "Proyectos",
     stats_evasion: "Evasión en configuraciones de laboratorio probadas",
     stats_vendors: "Divulgaciones coordinadas a proveedores",
@@ -138,7 +138,8 @@ const es: Dictionary = {
   writeups_page: {
     classified_archive: "Publicaciones y artículos",
     title: "Artículos",
-    description: "Informes de investigación y análisis técnicos de mis proyectos.",
+    description:
+      "Informes de investigación y análisis técnicos de mis proyectos.",
   },
   projects_page: {
     subtitle:
@@ -169,7 +170,7 @@ const es: Dictionary = {
       "Claude API y Claude Code · OpenAI Responses API con llamadas a herramientas · Llama autoalojado (3.2-3B, 3.3-70B) · Llama Guard 4 · AgentDojo · servidores MCP",
     skill3_label: "Seguridad de la IA, salvaguardas y red teaming:",
     skill3_desc:
-      "análisis de elusión de barreras de seguridad · diseño de escenarios de red team · investigación de vulnerabilidades y divulgación coordinada · pruebas de concepto ofensivas · detección de intrusiones · ML para detección de phishing · respuesta a incidentes · MITRE ATT&CK",
+      "análisis de elusión de barreras de seguridad · diseño de escenarios de red team · investigación de vulnerabilidades y divulgación coordinada · pruebas de concepto ofensivas · detección de intrusiones · detección de phishing · respuesta a incidentes · MITRE ATT&CK",
     skill4_label: "Lenguajes y sistemas:",
     skill4_desc:
       "Python · TypeScript · C · C++17/20 · Rust · Kotlin · Lean 4 · SQL · Bash · Docker · GitHub Actions · PostgreSQL · Linux · eBPF",
@@ -195,20 +196,20 @@ const es: Dictionary = {
       "Audité 919 de los documentos propios del proyecto y publiqué los 141 hallazgos fechados, incluidas exageraciones en cierres anteriores, en el README.",
     iw_title:
       "The Invisible Window — Evasión de la captura de pantalla en la supervisión de exámenes por WebRTC (único autor)",
-    iw_period: "feb. 2026 – may. 2026",
+    iw_period: "ene. 2026 – may. 2026",
     iw_meta: "preprint en formato IEEE v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
       "Descubrí que las API de afinidad de pantalla documentadas en Windows y macOS permiten que una ventana siga visible en el monitor sin aportar ningún píxel a las rutas de captura probadas: evasión del 100% en todas las configuraciones de laboratorio probadas. En macOS 26 las pruebas abarcaron API de captura nativas, no la captura del navegador; no se probó ningún producto comercial de supervisión de exámenes.",
     iw_b2:
-      "Notifiqué de forma coordinada a Microsoft MSRC (feb. 2026) y a Apple Product Security (mar. 2026) antes de la publicación; ambos clasificaron el comportamiento como diseño previsto (by design). La prueba de concepto completa se retiene por motivos de doble uso.",
+      "Notifiqué de forma coordinada a Microsoft MSRC (feb. 2026) y a Apple Product Security (mar. 2026) antes de la publicación; ambos clasificaron el comportamiento como diseño previsto (by design). La prueba de concepto completa se retiene por motivos de doble uso; un fixture de prueba mínimo para macOS es público.",
     aion_title:
       "Aion-BibleQA — Recuperación y fidelidad de citas en un sistema RAG (único autor)",
     aion_period: "jun. 2026",
     aion_meta: "Preprint · DOI 10.5281/zenodo.20522874",
     aion_b1:
-      "Construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941, respaldo medio de citas de 0.978, cero citas sin respaldo y 6/6 rechazos de premisas falsas.",
+      "Construí y puntué un benchmark de 40 preguntas sobre calidad de recuperación, respaldo de citas y robustez ante premisas falsas: R@5 de 0.941 (conjunto de desarrollo, 40 preguntas escritas por el autor), respaldo medio de citas de 0.978, cero citas sin respaldo (según un juez LLM) y rechazo de 6/6 preguntas de la categoría de rechazo (4 con premisas falsas, 2 adversarias); el benchmark no tiene una partición reservada.",
     further_title: "Otros preprints y herramientas de seguridad entregadas",
-    further_period: "2024 – 2026",
+    further_period: "2025 – 2026",
     further_b1:
       "Banking Shield (DOI 10.5281/zenodo.20675513): evidencia verificada por máquina, sobre un prototipo de investigación ficticio, de lo que una capa de explicación de estilo IA no recibió, no transmitió ni afirmó; ensayo formativo con cinco evaluadores internos.",
     further_b2:
@@ -222,7 +223,8 @@ const es: Dictionary = {
     s06_heading: "Experiencia profesional",
     alignerr_title: "Evaluador de seguridad de IA (Claude) — Alignerr",
     alignerr_period: "ene. 2026 – mar. 2026",
-    alignerr_meta: "Programa de evaluación de seguridad de Anthropic · Remoto",
+    alignerr_meta:
+      "Programa de evaluación de seguridad de Anthropic, participación a través de Alignerr (no como empleado de Anthropic) · Remoto",
     alignerr_b1:
       "Sometí a pruebas de estrés las barreras de seguridad de Claude: evalué resultados en busca de código explotable y patrones dañinos, analicé métodos de elusión y entregué hallazgos basados en rúbricas.",
     syllabus_title: "Cofundador — Syllabus-Sync",
@@ -237,7 +239,8 @@ const es: Dictionary = {
     freelance_meta: "Sídney",
     freelance_b1:
       "Entregué aplicaciones web seguras a clientes comerciales con controles OWASP Top 10 y OAuth 2.0; valoración de 5.0 estrellas en 31 reseñas de Airtasker.",
-    pharmacy_title: "Responsable de TI y operaciones de seguridad — Iran Pharmacy",
+    pharmacy_title:
+      "Responsable de TI y operaciones de seguridad — Iran Pharmacy",
     pharmacy_period: "ago. 2019 – ene. 2024",
     pharmacy_meta: "Más de 50 empleados · Irán",
     pharmacy_b1:
@@ -252,9 +255,9 @@ const es: Dictionary = {
     edu2_period: "2023 – 2024",
     certs_heading: "Certificaciones y credenciales",
     cert1:
-      "Anthropic (jul. 2026), 20 cursos, entre ellos: Building with the Claude API · Claude Code in Action · Model Context Protocol",
+      "Cursos en línea de Anthropic Academy (jul. 2026), 20 completados, entre ellos: Building with the Claude API · Claude Code in Action · Model Context Protocol",
     cert2:
-      "Microcredenciales de Macquarie University (2026, 93–100%): Security of AI · Application of AI · Data Security & Information Privacy · DevSecOps · Identity & Access Management",
+      "Microcredenciales de Macquarie University (2026, 92.8–100%): Security of AI · Application of AI · Data Security & Information Privacy · DevSecOps · Identity & Access Management",
   },
   not_found: {
     description:

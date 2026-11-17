@@ -235,7 +235,7 @@ export const projects: Record<string, Project> = {
         "Microsoft MSRC was notified in February 2026 and classified the issue as by-design, not a security vulnerability, in April 2026",
         "Apple Product Security was notified in March 2026 and classified the behavior as by design, not a security issue, that month",
         "Public release following OS vendor responses (May 2026)",
-        "Proof-of-concept code is withheld on dual-use grounds",
+        "The full proof-of-concept code is withheld on dual-use grounds; a minimal macOS test fixture is public in the Project-Simurgh repository",
         "Uses documented, user-level OS APIs. No kernel exploits or privilege escalation are involved",
         "Aligned with ACM and IEEE codes of ethics and CISA coordinated disclosure guidelines",
       ],
@@ -371,7 +371,7 @@ export const projects: Record<string, Project> = {
       "OpenAI Responses API integration defect: a role-placement error caused 8/8 workflow declines. Original traces were retained; a frozen developer-role correction completed 2/3 authorised workflows and declined 5/5 restricted workflows, with one refusal still open",
       "Earlier frozen classifier stage (2026): real Llama Guard 4 12B over 180 cases; containment evidence covered all 138/138 malicious cases it missed, including 120 downstream injections outside an input-only classifier’s view. This is a coverage claim, not a classifier ranking",
       "Reduced a live Llama-3.3-70B agent's targeted attack success on AgentDojo from 9/140 to 0/140 over pre-registered injections in the workspace suite (frozen stage, 2026); the full four-suite deterministic run scored 0/949 attack success with 949/949 unattacked utility (both scoped as small experiments)",
-      "Built the work to be reproduced: Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 92 releases. The root package declares AGPL-3.0-or-later",
+      "Built the work to be reproduced: Ed25519-signed evidence archives replay offline in one command; 39 Lean 4 proofs sit behind a gate that fails on any unproven “sorry” placeholder; 5,171 tests passed in the 19 October 2026 smoke run; 93 releases. The root package declares AGPL-3.0-or-later",
       "Audited 919 of the project's own documents and published all 141 dated findings, including overstatements in earlier closeouts, in the README",
       "Software archive DOI (v2.54.1, August 2026) 10.5281/zenodo.21737792 is separate from the original device-integrity preprint DOI 10.5281/zenodo.20374849 and the other published preprints",
     ],
@@ -451,7 +451,7 @@ export const projects: Record<string, Project> = {
     slug: "gitswitch",
     title: "GitSwitch",
     category: "ENGINEERING",
-    year: "2024",
+    year: "2026",
     description:
       "Cross-platform Git client for multiple developer identities, repository review and AI-assisted commits, with cloud, local-model and offline generation modes.",
     tags: ["Electron", "React", "TypeScript", "AI", "Dev Tool"],
@@ -505,13 +505,13 @@ export const projects: Record<string, Project> = {
     slug: "mehr-guard",
     title: "Mehr Guard",
     category: "DEFENSIVE",
-    year: "2024",
+    year: "2025",
     description:
       "QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device. CI measures 90.7% F1 on the repository's 100 author-written URLs (not a held-out benchmark); 18-scenario red-team mode.",
     tags: ["KMP", "Security Tool", "Android", "iOS", "Desktop", "Web"],
     links: {
       demo: "https://raoof128.github.io/dashboard.html",
-      repo: "https://github.com/Raoof128/Raoof128.github.io",
+      repo: "https://github.com/Raoof128/MehrGuard",
       caseStudy: "/projects/mehr-guard",
     },
     build: {
@@ -545,7 +545,7 @@ export const projects: Record<string, Project> = {
     solution: [
       "Built a local URL-analysis core using Kotlin Multiplatform",
       "Combined 25 heuristics with a small hand-set scoring model (weights set by hand, not trained)",
-      "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); the repository reports ~100% shared detection logic (~52% of total code)",
+      "Targeted 5 platforms (Android, iOS, JVM, JS, Wasm); the detection logic lives in one shared Kotlin module",
       "Tests assert a 99th-percentile analysis time under 50 ms per URL",
     ],
     proof: [
@@ -553,7 +553,7 @@ export const projects: Record<string, Project> = {
       "Tests assert a 99th-percentile analysis time under 50 ms per URL",
       "18-scenario red-team mode",
       "./judge/verify_offline.sh invokes shared-engine unit checks; these tests are not an independent capture of outbound network traffic",
-      "Repository reports ~100% shared detection logic (~52% of total codebase)",
+      "The detection logic lives in one shared Kotlin module",
     ],
     updatedAt: "2026-11-14",
   },
@@ -1005,7 +1005,7 @@ export const projects: Record<string, Project> = {
         year: "2026",
         status: "Pilot benchmark preprint",
         description:
-          "8-page preprint: built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals.",
+          "8-page preprint: built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941 (development set, 40 author-written questions), mean citation support of 0.978, zero unsupported citations (LLM judge) and 6/6 refusal-category questions refused (4 false-premise, 2 adversarial); the benchmark has no held-out split.",
         doi: "10.5281/zenodo.20522874",
       },
     ],
@@ -1040,7 +1040,7 @@ export const projects: Record<string, Project> = {
       ],
     },
     fullDescription:
-      "Aion is a Bible companion with reference-aware retrieval: direct verse/chapter lookup, keyword filtering and pgvector semantic search provide context, and Gemini 3.1 Flash Lite streams answers through Supabase Edge Functions. It includes attributed verse cards, a React Native/Expo mobile client and a Tauri v2 desktop wrapper. Its 40-question benchmark scores retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals. Optional native voice has a separate client-credential limitation.",
+      "Aion is a Bible companion with reference-aware retrieval: direct verse/chapter lookup, keyword filtering and pgvector semantic search provide context, and Gemini 3.1 Flash Lite streams answers through Supabase Edge Functions. It includes attributed verse cards, a React Native/Expo mobile client and a Tauri v2 desktop wrapper. Its 40-question benchmark scores retrieval quality, citation support and false-premise robustness: R@5 of 0.941 (development set, 40 author-written questions), mean citation support of 0.978, zero unsupported citations (LLM judge) and 6/6 refusal-category questions refused (4 false-premise, 2 adversarial); the benchmark has no held-out split. Optional native voice has a separate client-credential limitation.",
     problem:
       "Keyword search over scripture misses questions phrased in other words, and a general chatbot can misquote or invent verses. Aion retrieves the relevant passages first and answers with citations a reader can check.",
     solution: [
@@ -1050,7 +1050,7 @@ export const projects: Record<string, Project> = {
       "Added cross-platform support: React Native for mobile + Tauri v2 for native desktop",
     ],
     proof: [
-      "Built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941, mean citation support of 0.978, zero unsupported citations and 6/6 false-premise refusals",
+      "Built and scored a 40-question benchmark for retrieval quality, citation support and false-premise robustness: R@5 of 0.941 (development set, 40 author-written questions), mean citation support of 0.978, zero unsupported citations (LLM judge) and 6/6 refusal-category questions refused (4 false-premise, 2 adversarial); the benchmark has no held-out split",
       "IP-based rate limiting (5/min burst, 30/3hrs, 200/day) with fail-closed defaults",
       "Exact-match response cache avoids repeat LLM calls for identical queries",
       "Anonymous authentication with no sign-up; Supabase RLS applies to all tables",
@@ -1085,7 +1085,7 @@ export const writeups: Writeup[] = [
     slug: "project-simurgh-containment",
     title: "Testing Host-Side Authorisation Across Two Models",
     date: "2026-11-04",
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-17",
     tag: "AI Security",
     takeaway:
       "October 2026 matched-control study: Llama-3.2-3B restricted-state trials with new effects 17/24 → 0/24, with 23/24 useful completions; no incremental protection on an already-clean gpt-6-luna baseline.",
@@ -1130,7 +1130,7 @@ Another frozen 2026 stage reduced a live **Llama-3.3-70B** agent’s targeted at
 
 The work is built to be reproduced: **Ed25519-signed evidence archives replay offline in one command**; **39 Lean 4 proofs** sit behind a gate that fails on any unproven “sorry” placeholder; **5,171 tests** passed in the 19 October 2026 smoke run.
 
-The current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. The project has **92 releases**.
+The current implementation includes Python controls and a React evidence explorer with a shared JSON CLI. The project has **93 releases**.
 
 The author audited **919 of the project’s own documents** and published **all 141 dated findings**, including overstatements in earlier closeouts, in the README. This is part of the evidence trail, not a claim that the prototype has no remaining defects.
 
@@ -1144,8 +1144,8 @@ The October results describe this protocol, these controls and two tested models
   {
     slug: "invisible-window-research",
     title: "Testing What Screen Capture Can Miss",
-    date: "2026-03-20",
-    updatedAt: "2026-11-04",
+    date: "2026-03-26",
+    updatedAt: "2026-11-17",
     tag: "Security Research",
     takeaway:
       "Documented window-capture settings achieved 100% evasion without capture artefacts in controlled laboratory simulations on tested Windows and macOS versions. Commercial proctoring products and Linux were not tested.",
@@ -1283,14 +1283,14 @@ Both vendors classified the behavior as by design: Apple as not an Apple securit
 
 The tested Windows and macOS capture paths can omit an application window while it remains visible to the user, without elevated privileges or observed capture artefacts. This exposes a mismatch between content-protection features and the assumption that captured pixels fully represent the physical display. The study establishes that gap within its tested laboratory scope; it does not establish that every commercial proctoring product or every capture API can be bypassed.
 
-The full 13-page IEEE-format preprint is linked from the project page (DOI **10.5281/zenodo.20376495**, CC BY 4.0). Proof-of-concept code is withheld on dual-use grounds. The illustrative API examples above remain illustrations rather than fresh test evidence.
+The full 13-page IEEE-format preprint is linked from the project page (DOI **10.5281/zenodo.20376495**, CC BY 4.0). The full proof-of-concept code is withheld on dual-use grounds; a minimal macOS test fixture is public in the Project-Simurgh repository. The illustrative API examples above remain illustrations rather than fresh test evidence.
     `,
   },
   {
     slug: "nanomatch-deep-dive",
     title:
       "Inside NanoMatch: Matching Data Structures and Synthetic Benchmarks",
-    date: "2026-03-10",
+    date: "2026-03-21",
     updatedAt: "2026-11-04",
     tag: "C++",
     takeaway:
@@ -1349,7 +1349,7 @@ The pinned source defines **137 Google Test cases across 18 test source files**,
   {
     slug: "sentinelflow-deep-dive",
     title: "Anatomy of a Network Intrusion Detection System",
-    date: "2026-03-15",
+    date: "2026-03-21",
     updatedAt: "2026-11-04",
     tag: "Network Security",
     takeaway:
@@ -1468,7 +1468,7 @@ The repository makes the component boundaries visible: probe code, perf reading,
     slug: "kmp-security",
     title: "Building Offline-First Security Tools with KMP",
     date: "2026-01-30",
-    updatedAt: "2026-11-04",
+    updatedAt: "2026-11-17",
     tag: "Kotlin",
     takeaway:
       "A QR and URL phishing scanner in Kotlin Multiplatform: 25 heuristics plus a small hand-set scoring model, analysed on-device. CI measures 90.7% F1 on the repository's 100 author-written URLs, which is not a held-out benchmark.",
@@ -1485,7 +1485,7 @@ The security logic is platform-agnostic and lives once, in shared code:
 - **Heuristics engine**: 25 heuristics, including homograph and punycode look-alikes, brand-impersonation patterns, redirect chains, suspicious TLDs, embedded credentials, and IP-literal hosts.
 - **Threat-intelligence lists**: allow/deny sets, versioned centrally.
 
-KMP's \`expect\`/\`actual\` boundaries cover platform services, the QR-camera bridge and UI integration. The repository reports ~100% shared detection logic (~52% of total code); native integrations and browser variants still need their own review.
+KMP's \`expect\`/\`actual\` boundaries cover platform services, the QR-camera bridge and UI integration. The detection logic lives in one shared module; native integrations and browser variants still need their own review.
 
 ### On-device by design
 

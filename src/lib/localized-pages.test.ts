@@ -60,7 +60,7 @@ describe("complete localized page content", () => {
     const source = writeups.find(
       (post) => post.slug === "invisible-window-research",
     )!;
-    expect(source.updatedAt).toBe("2026-11-04");
+    expect(source.updatedAt).toBe("2026-11-17");
     expect(source.content).toContain(
       "controlled laboratory, not commercial products",
     );
@@ -69,7 +69,7 @@ describe("complete localized page content", () => {
     expect(source.content).toContain("p = 0.41");
     expect(source.content).toContain("not a browser `getDisplayMedia()` call");
     expect(source.content).toContain(
-      "Proof-of-concept code is withheld on dual-use grounds.",
+      "The full proof-of-concept code is withheld on dual-use grounds; a minimal macOS test fixture is public in the Project-Simurgh repository.",
     );
     expect(source.content).not.toMatch(/\/\/[^\n]*all (?:screen )?capture/);
     expect(source.content).toContain(
