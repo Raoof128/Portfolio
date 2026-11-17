@@ -95,9 +95,9 @@ Preprint · DOI 10.5281/zenodo.20522874
   analysed on-device (scanned URLs are never sent anywhere). CI measures 90.7% F1 on the repository's 100 author-written
   URLs, not a held-out benchmark; 18-scenario red-team mode.
 - Systems work (Rust, C++): SentinelSSH, a Rust MCP server that gives AI agents policy-scoped, read-only
-  inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (study
-  project with known limitations; its benchmark covers header parsing only); Project Zurvan, local-first knowledge
-  engine serving claims and decisions to agents over MCP (4,109 tests).
+  inspection of Linux hosts through 17 typed tools and no shell; SentinelFlow, C++17 intrusion detection (4M+
+  packets/sec end to end, synthetic single-thread benchmark; 146 tests); Project Zurvan, local-first knowledge engine
+  serving claims and decisions to agents over MCP (4,109 tests).
 
 ## Professional Experience
 ### AI Safety Evaluator (Claude) — Alignerr · Jan 2026 – Mar 2026

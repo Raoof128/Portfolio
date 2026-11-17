@@ -477,7 +477,7 @@ export const esProjects = {
   },
   sentinelflow: {
     description:
-      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Su benchmark cubre solo el análisis de cabeceras. Es un proyecto de estudio con limitaciones conocidas indicadas en su README.",
+      "Sistema de detección de intrusiones de red C++17 con captura libpcap, siete analizadores de protocolos, reglas inspiradas en Snort y heurísticas con estado para escaneos, inundaciones SYN y túneles DNS. Un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria (sin libpcap, NIC ni E/S de disco); 146 pruebas. Las limitaciones restantes figuran en su README.",
     fullDescription:
       "SentinelFlow es un sistema de detección de intrusiones de red en tiempo real que captura tráfico en vivo o procesa archivos pcap, analiza cabeceras en varias capas OSI, identifica firmas de ataque y anomalías, y exporta alertas a consola y CSV.",
     problem:
@@ -486,13 +486,13 @@ export const esProjects = {
       "Implementé análisis por capas de Ethernet, IPv4, TCP, UDP, ICMP, DNS y ARP",
       "Creé un motor de reglas configurable inspirado en Snort para coincidencias flexibles de firmas",
       "Añadí detección de amenazas con estado para escaneos de puertos, inundaciones SYN y túneles DNS",
-      "Añadí un microbenchmark de un solo hilo del analizador sobre 5 millones de paquetes sintéticos Ethernet/IPv4/TCP SYN-ACK repetidos; excluye captura, detección y alertas",
+      "Añadí un microbenchmark de un solo hilo del analizador y un benchmark de canalización de extremo a extremo con tráfico sintético en memoria; se excluyen libpcap, la NIC y la E/S de disco",
     ],
     proof: [
-      "Su benchmark cubre solo el análisis de cabeceras de un único paquete fijo; no mide captura, detección ni alertas",
-      "Proyecto de estudio: las limitaciones conocidas figuran en el README del repositorio",
+      "Un benchmark de canalización de extremo a extremo informa de 4 a 8 millones de paquetes/s en un solo hilo con tráfico sintético en memoria (sin libpcap, NIC ni E/S de disco); unos 8.3 millones en un Apple M2 y de 4.3 a 7.8 millones en un runner compartido de GitHub",
+      "Las limitaciones restantes figuran en el README del repositorio",
       "Cobertura: 7 protocolos en las capas 2-7",
-      "El código define 27 casos de Google Test en 10 archivos; el registro de cambios de marzo de 2026 declara un resultado histórico de 27/27",
+      "146 pruebas en el repositorio, incluida una prueba de extremo a extremo desde tramas sin procesar hasta alertas",
       "Admite captura en vivo y análisis de archivos pcap",
     ],
     stack: [
@@ -511,7 +511,7 @@ export const esProjects = {
     ],
     measures: [
       "Alertas con gravedad codificada por colores (LOW → CRITICAL)",
-      "27 casos de Google Test declarados en 10 archivos de pruebas de analizadores, detectores, reglas e integración",
+      "146 pruebas que cubren analizadores, reglas, coincidencia de firmas, detectores con estado y sus límites de estado, y la canalización de extremo a extremo",
       "Exportación CSV para análisis forense e integración SIEM",
       "Filtros BPF configurables para captura dirigida",
     ],

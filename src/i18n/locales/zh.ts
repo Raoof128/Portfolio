@@ -164,7 +164,7 @@ const zh: Dictionary = {
       "Project Simurgh — 面向 AI 智能体的可检查授权与遏制（独立作者）",
     simurgh_period: "2026年5月 – 至今",
     simurgh_meta:
-      "github.com/Raoof128/Project-Simurgh · 92 个发布版本 · 软件 DOI 10.5281/zenodo.21737792",
+      "github.com/Raoof128/Project-Simurgh · 93 个发布版本 · 软件 DOI 10.5281/zenodo.21737792（v2.54.1，2026年八月）",
     simurgh_b1:
       "设计并开展了一项迁移研究（2026年10月）：24项任务，每项两次试验，三种匹配对照（仅凭据、组合、全部拒绝）和两个模型；重放288个分支。在 Meta Llama-3.2-3B 上，组合主机控制将产生新影响的受限状态试验从17/24降至0/24，保留23/24项有效完成，且未阻止任何有效提议。在 OpenAI gpt-6-luna 上基线已为0/24，因此研究在该模型上未报告增量保护。从协议到发布包用时三天（2026年10月15日至17日）。",
     simurgh_b2:
@@ -184,9 +184,9 @@ const zh: Dictionary = {
     iw_period: "2026年2月 – 2026年5月",
     iw_meta: "IEEE 格式预印本 v2.0 · DOI 10.5281/zenodo.20376495",
     iw_b1:
-      "发现 Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对屏幕捕获贡献零像素：在所有受测实验室配置中规避率均为100%。在 macOS 26 上，测试使用的是原生捕获 API，而非浏览器 getDisplayMedia 或 ScreenCaptureKit；未测试任何商业监考产品，也未测试 Linux。",
+      "发现 Windows 和 macOS 上有文档记录的显示亲和性 API 可让窗口在显示器上保持可见，同时对受测捕获路径贡献零像素：在所有受测实验室配置中规避率均为100%。在 macOS 26 上，测试涵盖原生捕获 API，不含浏览器捕获；未测试任何商业监考产品。",
     iw_b2:
-      "在发表前向 Microsoft MSRC（2026年2月）和 Apple Product Security（2026年3月）披露；两者均将该行为归类为设计使然。完整的概念验证代码因存在双重用途风险而不公开；一个最小化的 macOS 测试夹具（test fixture）已公开。",
+      "在发表前向 Microsoft MSRC（2026年2月）和 Apple Product Security（2026年3月）披露；两者均将该行为归类为设计使然。完整的概念验证因存在双重用途风险而不公开。",
     aion_title: "Aion-BibleQA — RAG 系统中的检索与引用忠实度（独立作者）",
     aion_period: "2026年6月",
     aion_meta: "预印本 · DOI 10.5281/zenodo.20522874",
@@ -201,9 +201,9 @@ const zh: Dictionary = {
     further_b3:
       "学生社团活动试点（DOI 10.5281/zenodo.20549736）：31次经知情同意的会话；选票选择不进入记录；HMAC 链式审计日志。",
     further_b4:
-      "Mehr Guard：基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器；25 项启发式规则加一个手工设定的小型评分模型，在设备上完成分析（被扫描的 URL 不会发送到任何地方）。CI 在仓库自带的 100 个作者自编 URL 上测得 F1 为90.7%，并非留出的测试基准；另有18个场景的红队模式。",
+      "Mehr Guard：基于 Kotlin Multiplatform 的二维码与 URL 钓鱼扫描器，在设备上完成分析；25 项启发式规则加一个手工设定的评分模型。CI 在 100 个作者自编 URL 上测得 F1 为90.7%（并非留出的测试基准）；另有18个场景的红队模式。",
     further_b5:
-      "系统工作（Rust、C++）：SentinelSSH，一个 Rust MCP 服务器，通过17种类型化工具、不提供 shell，让 AI 智能体对 Linux 主机进行按策略限定的只读检查；SentinelFlow，C++17 入侵检测（学习性质的项目，已知局限已列出；其基准测试仅覆盖报头解析）；Project Zurvan，本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（4,109 项测试）。",
+      "系统工作（Rust、C++）：SentinelSSH，一个 Rust MCP 服务器，通过17种类型化工具、不提供 shell，让 AI 智能体对 Linux 主机进行按策略限定的只读检查；SentinelFlow，C++17 入侵检测（端到端每秒 4M+ 个数据包，合成单线程基准测试；146 项测试）；Project Zurvan，本地优先的知识引擎，通过 MCP 向智能体提供主张与决策（4,109 项测试）。",
     s06_heading: "职业经历",
     alignerr_title: "AI 安全评估员（Claude）— Alignerr",
     alignerr_period: "2026年1月 – 2026年3月",
@@ -214,7 +214,7 @@ const zh: Dictionary = {
     syllabus_period: "2026年5月 – 至今",
     syllabus_meta: "麦考瑞大学孵化器初创企业 · 悉尼 · syllabus-sync.app",
     syllabus_b1:
-      "主导共享 Next.js/TypeScript 代码库的安全后端（WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全、仅追加审计日志，由行级安全强制执行），该代码库用于面向学生的学业规划平台（课程单元、截止日期、日历、校园地图）；课程大纲解析已列入计划，尚未开发；167个文件共1,399项测试。",
+      "主导共享 Next.js/TypeScript 学生规划平台（课程单元、截止日期、日历、校园地图）的安全后端（WebAuthn 通行密钥、TOTP 多因素认证、Postgres 行级安全、仅追加审计日志）；167个文件共1,399项测试。",
     freelance_title: "安全工程师与全栈开发者 — 自雇（自由职业）",
     freelance_period: "2024年1月 – 至今",
     freelance_meta: "悉尼",
